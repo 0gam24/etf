@@ -89,32 +89,50 @@ Next.js는 Vercel 본사가 만든 프레임워크라 **별도 설정 없이 완
 5. **Deploy**
 6. 배포 완료 후 Custom Domain 연결
 
-### Option B. **Cloudflare Pages** (복잡 · 코드 수정 필요)
+### Option B. **Cloudflare Workers** (OpenNext 어댑터 · 이미 설정됨)
 
-Cloudflare는 Next.js 직접 실행이 아니라 **Workers 위에서 컴파일**된 형태로 동작.
+`@opennextjs/cloudflare`로 Next.js 16을 Cloudflare Workers에 통째로 배포. `nodejs_compat` 플래그 덕분에 **`/api/etf` 등 fs 기반 라우트도 수정 없이 동작**.
 
 **장점**
-- 무제한 대역폭 (무료)
-- 전세계 CDN 엣지 가장 빠름
+- 무제한 대역폭 (무료 Workers 요청 10만/일)
+- 전세계 엣지 CDN — 응답 속도 최상위
+- 코드 리팩토링 불필요 (기존 fs/path 그대로)
 
-**단점 — 반드시 수정해야 할 것**
-1. `@cloudflare/next-on-pages` 어댑터 추가 (`npm i -D @cloudflare/next-on-pages`)
-2. `/api/etf`, `/api/search` 라우트가 `fs.readFileSync`/`fs.writeFileSync`로 캐시를 쓰고 있음 → **Workers KV 또는 외부 저장소로 이전 필요** (edge runtime은 fs 미지원)
-3. 각 API route에 `export const runtime = 'edge'` 추가
-4. `next.config.ts`에 Cloudflare Pages 설정 추가
-5. `package.json`에 `pages:build` 스크립트 추가
+**단점**
+- Vercel 대비 초기 설정 약간 복잡 (이미 완료됨)
+- 무료 일 10만 요청 초과 시 유료 (5 달러/월 최소)
 
-**⚠️ 일감 추정**: 1~2시간 리팩토링. 동작 검증 추가.
+**이미 설정된 것들**
+- `package.json` 스크립트: `cf:build`, `cf:preview`, `cf:deploy`
+- `wrangler.jsonc` — Workers 설정 (nodejs_compat 활성)
+- `open-next.config.ts` — OpenNext Cloudflare 설정
 
-**설정 절차 (리팩토링 후)**
-1. https://dash.cloudflare.com → **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**
-2. repo 선택 → Root Directory: `etf-platform`
-3. Build command: `npx @cloudflare/next-on-pages@1`
-4. Build output: `.vercel/output/static`
-5. Environment variables: Secrets와 동일
-6. Deploy
+**설정 절차**
 
-### 추천: **1차 배포는 Vercel로** — 안정 확인 후 시간 될 때 Cloudflare 이전 검토
+1. https://dash.cloudflare.com → 좌측 **Workers & Pages** → **Create** → **Import a repository**
+2. **Connect to Git** → 0gam24/etf 선택
+3. **Build configuration:**
+   - Framework preset: `Next.js` 선택 (또는 None)
+   - Build command: `npm run cf:build`
+   - Deploy command: `npx wrangler deploy`
+   - Root directory: (비워두거나 `/`)
+4. **Environment variables** (Build + Runtime 둘 다 추가):
+   - `GEMINI_API_KEY`, `DATA_GO_KR_API_KEY`, `BOK_ECOS_API_KEY`
+   - `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET`
+   - `SITE_URL` — 배포 완료 후 실제 도메인으로 업데이트
+5. **Save and Deploy**
+
+**로컬 미리보기:**
+```bash
+npm run cf:preview  # 로컬에서 Workers 환경 시뮬레이션
+```
+
+**수동 배포:**
+```bash
+npm run cf:deploy  # wrangler로 바로 업로드
+```
+
+### 추천: Cloudflare 선택 — Next.js 16 지원 + 기존 코드 수정 없음
 
 ---
 

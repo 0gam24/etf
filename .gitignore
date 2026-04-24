@@ -71,6 +71,10 @@ logs/
 # vercel
 .vercel
 
+# Cloudflare / OpenNext 빌드 산출물
+.open-next/
+.wrangler/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
