@@ -1,0 +1,85 @@
+name: Daily ETF Pulse
+
+# 매일 KST 09:00 = UTC 00:00 에 파이프라인 실행.
+# 수동 트리거 가능 (workflow_dispatch).
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+# 동시 실행 방지 (이전 run 진행 중이면 큐잉 후 직전 run 취소).
+concurrency:
+  group: daily-pulse
+  cancel-in-progress: false
+
+jobs:
+  pulse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    # git push 권한 필요 — GITHUB_TOKEN에 write 부여
+    permissions:
+      contents: write
+
+    env:
+      TZ: Asia/Seoul
+      # === Secrets (GitHub → Settings → Secrets and variables → Actions) ===
+      GEMINI_API_KEY:      ${{ secrets.GEMINI_API_KEY }}
+      DATA_GO_KR_API_KEY:  ${{ secrets.DATA_GO_KR_API_KEY }}
+      BOK_ECOS_API_KEY:    ${{ secrets.BOK_ECOS_API_KEY }}
+      NAVER_CLIENT_ID:     ${{ secrets.NAVER_CLIENT_ID }}
+      NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
+      SITE_URL:            ${{ secrets.SITE_URL }}
+      # 선택 (없으면 자동 스킵)
+      PULSE_IMAGE_URL:         ${{ secrets.PULSE_IMAGE_URL }}
+      INDEXNOW_KEY:            ${{ secrets.INDEXNOW_KEY }}
+      GOOGLE_INDEXING_KEY:     ${{ secrets.GOOGLE_INDEXING_KEY }}
+      THREADS_USER_ID:         ${{ secrets.THREADS_USER_ID }}
+      THREADS_ACCESS_TOKEN:    ${{ secrets.THREADS_ACCESS_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Run pipeline (npm run pulse)
+        run: npm run pulse
+
+      - name: Commit generated content + data
+        id: commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/ data/ public/ || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            TODAY=$(date +%Y-%m-%d)
+            git commit -m "chore(pulse): daily update $TODAY [skip ci]"
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Push
+        if: steps.commit.outputs.changed == 'true'
+        run: git push
+
+      - name: Summary
+        run: |
+          echo "## Daily ETF Pulse Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Changed: ${{ steps.commit.outputs.changed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Time (KST): $(date)" >> $GITHUB_STEP_SUMMARY
+          if [ -d content/breaking ]; then
+            echo "- Breaking posts: $(ls content/breaking/*.mdx 2>/dev/null | wc -l)" >> $GITHUB_STEP_SUMMARY
+          fi

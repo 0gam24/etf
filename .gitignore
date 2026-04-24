@@ -1,0 +1,76 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ============================================
+# 🔒 보안: API 키 / 민감 파일 절대 업로드 금지
+# ============================================
+
+# 환경변수 파일 (.env.example은 허용 — 템플릿이라 키가 없음)
+.env
+.env.local
+.env.development
+.env.production
+.env*.local
+!.env.example
+
+# Google 서비스 계정 키 파일 (JSON)
+*-service-account.json
+*credentials*.json
+service-account*.json
+google-*.json
+# Google Cloud 프로젝트 ID로 시작하는 키 (일반 패턴)
+# 예: tribal-bonsai-*.json, my-project-*-*.json
+tribal-*.json
+*-[a-f0-9]{12}.json
+# 보수적으로 모든 root-level JSON 중 서비스 계정 형태 차단
+# (프로젝트 내 데이터 JSON은 data/· public/ 아래에 있으므로 영향 없음)
+/*.json
+!/package.json
+!/package-lock.json
+!/tsconfig.json
+!/tsconfig.tsbuildinfo
+!/next-env.d.ts
+
+# 수집된 원본 데이터 · 가공 데이터
+# ⚠️ 공공데이터(KRX·ECOS)·뉴스 요약만 저장. 개인정보 없음.
+# 프론트엔드(lib/data.ts · chart loader 등)가 런타임에 읽으므로 **반드시 git에 포함**.
+# 단, 바이너리 이미지·디버그 로그는 제외.
+data/raw/pulse_images/
+data/raw/pulse_image_cache/
+logs/
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

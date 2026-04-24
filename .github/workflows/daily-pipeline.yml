@@ -1,0 +1,42 @@
+name: Daily Financial Content Pipeline
+
+on:
+  schedule:
+    # 0 21:00 UTC = 오전 6:00 KST
+    # 0 09:00 UTC = 오후 6:00 KST
+    - cron: '0 21,9 * * *'
+  workflow_dispatch: # 수동 실행 버튼 추가
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Pipeline
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          DATA_GO_KR_API_KEY: ${{ secrets.DATA_GO_KR_API_KEY }}
+          BOK_ECOS_API_KEY: ${{ secrets.BOK_ECOS_API_KEY }}
+          SITE_URL: ${{ secrets.SITE_URL || 'https://iknowhowinfo.com' }}
+        run: node pipeline/orchestrator.js
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add content/ data/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 자동 포스팅 업데이트: $(date +'%Y-%m-%d %H:%M')" && git push)

@@ -1,0 +1,163 @@
+{
+  "_meta": {
+    "createdBy": "NewsCollector",
+    "createdAt": "2026-04-23T08:09:06.152Z",
+    "fileName": "news_20260423.json"
+  },
+  "data": {
+    "byKeyword": {
+      "4월 23일 오늘의 ETF 관전포인트": {
+        "query": "ETF 시장 동향",
+        "strategyId": "pulse_20260423",
+        "category": "pulse",
+        "headlines": [
+          {
+            "title": "[하우머니] 하루 1조원씩 불어나…ETF 시장 동향은? - v.daum.net",
+            "source": "v.daum.net",
+            "pubDate": "Thu, 23 Apr 2026 01:25:30 GMT"
+          },
+          {
+            "title": "[하우머니] 하루 1조원씩 불어나…ETF 시장 동향은? - SBSBiz",
+            "source": "SBSBiz",
+            "pubDate": "Thu, 23 Apr 2026 01:23:00 GMT"
+          },
+          {
+            "title": "\"주식보다 '이것' 대세라더니\"…하루 1조원씩 불어났다 - 한국경제",
+            "source": "한국경제",
+            "pubDate": "Wed, 15 Apr 2026 08:53:48 GMT"
+          },
+          {
+            "title": "ETF 시장, 외형은 커졌지만… 성장 이면엔 건전성 ‘우려’ - ceodaily.co.kr",
+            "source": "ceodaily.co.kr",
+            "pubDate": "Tue, 23 Sep 2025 07:00:00 GMT"
+          },
+          {
+            "title": "자산운용사 작년 순이익 3조원 달성…ETF 시장 규모 300조 육박 - 뉴시스",
+            "source": "뉴시스",
+            "pubDate": "Mon, 30 Mar 2026 07:00:00 GMT"
+          },
+          {
+            "title": "삼성·미래 '과점'시장 굳었는데…중·소형 운용사, 왜 지금 ETF로 몰리나 - 인베스트조선",
+            "source": "인베스트조선",
+            "pubDate": "Thu, 19 Mar 2026 07:00:00 GMT"
+          }
+        ],
+        "summary": "- ETF 시장 규모가 300조원에 육박하며 하루 1조원씩"
+      },
+      "KODEX 방산TOP10 급등 이유 — 방위산업 ETF 수주 이슈": {
+        "query": "KODEX 방산TOP10",
+        "strategyId": "surge_20260423",
+        "category": "surge",
+        "headlines": [
+          {
+            "title": "삼성운용 “KODEX 방산 ETF 2종, 이틀만에 개인 순매수 1000억 돌파” - 브릿지경제",
+            "source": "브릿지경제",
+            "pubDate": "Fri, 17 Apr 2026 10:01:37 GMT"
+          },
+          {
+            "title": "‘KODEX 방산TOP10’에 개미 몰렸다…이틀간 1100억 순매수 - v.daum.net",
+            "source": "v.daum.net",
+            "pubDate": "Thu, 05 Mar 2026 08:00:00 GMT"
+          },
+          {
+            "title": "KODEX 방산TOP10레버리지, +12.00% 상승폭 확대 - 조선비즈 - Chosunbiz",
+            "source": "Chosunbiz",
+            "pubDate": "Thu, 02 Apr 2026 07:00:00 GMT"
+          },
+          {
+            "title": "[2026 필수 보유 ETF 18선]전 세계가 주목하는 K-웨폰의 저력…KODEX K방산TOP10 - 한경매거진&북",
+            "source": "한경매거진&amp;북",
+            "pubDate": "Wed, 04 Feb 2026 08:00:00 GMT"
+          },
+          {
+            "title": "삼성자산운용 'KODEX 방산 ETF' 2종 이틀간 개인 순매수 1100억 - 중소기업신문",
+            "source": "중소기업신문",
+            "pubDate": "Thu, 05 Mar 2026 08:00:00 GMT"
+          },
+          {
+            "title": "“미·이란 전쟁에 방산 ETF로 자금 몰린다” KODEX 방산TOP10·레버리지, 이틀간 개인 순매수 1101억 - 이코노미톡뉴스",
+            "source": "이코노미톡뉴스",
+            "pubDate": "Thu, 05 Mar 2026 08:00:00 GMT"
+          }
+        ],
+        "summary": "- 삼성운용 “KODEX 방산 ETF 2종, 이틀만에 개인 순매수 1000억 돌파” - 브릿지경제\n- ‘KODEX 방산TOP10’에 개미 몰렸다…이틀간 1100억 순매수 - v.daum.net\n- KODEX 방산TOP10레버리지, +12.00% 상승폭 확대 - 조선비즈 - Chosunbiz"
+      },
+      "주간 자금 흐름 리포트 — 조선 섹터 +11.87%": {
+        "query": "조선 ETF 자금",
+        "strategyId": "flow_20260423",
+        "category": "flow",
+        "headlines": [
+          {
+            "title": "변동성 큰 장세에 인기… 커버드콜 ETF에 ‘뭉칫돈’ - 조선비즈 - Chosunbiz",
+            "source": "Chosunbiz",
+            "pubDate": "Fri, 17 Apr 2026 09:29:00 GMT"
+          },
+          {
+            "title": "에프앤가이드 지수 ETF 55조 돌파…반도체·방산·조선 자금 유입 확대 - 인사이트코리아",
+            "source": "인사이트코리아",
+            "pubDate": "Thu, 09 Apr 2026 07:00:00 GMT"
+          },
+          {
+            "title": "증시 출렁일수록 반도체·금융 종목으로만 몰리는 자금 - 인베스트조선",
+            "source": "인베스트조선",
+            "pubDate": "Fri, 20 Feb 2026 08:00:00 GMT"
+          },
+          {
+            "title": "[인터뷰]김정현 신한자산운용 ETF사업그룹장 \"'고배당'과 '반도체'에 집중\" - PRESS9",
+            "source": "PRESS9",
+            "pubDate": "Tue, 17 Mar 2026 07:00:00 GMT"
+          },
+          {
+            "title": "ETF 400조 시대… ‘액티브 ETF’도 100조 돌파 - 조선비즈 - Chosunbiz",
+            "source": "Chosunbiz",
+            "pubDate": "Fri, 17 Apr 2026 00:58:00 GMT"
+          },
+          {
+            "title": "조선주에서 뛰어내려 반도체 탑승…‘트럼프’ 수혜에도 배 갈아탔다 [투자360] - v.daum.net",
+            "source": "v.daum.net",
+            "pubDate": "Wed, 29 Oct 2025 07:00:00 GMT"
+          }
+        ],
+        "summary": "- 변동성 큰 장세에 인기… 커버드콜 ETF에 ‘뭉칫돈’ - 조선비즈 - Chosunbiz\n- 에프앤가이드 지수 ETF 55조 돌파…반도체·방산·조선 자금 유입 확대 - 인사이트코리아\n- 증시 출렁일수록 반도체·금융 종목으로만 몰리는 자금 - 인베스트조선"
+      },
+      "퇴직연금 DC형 커버드콜 비중 전략": {
+        "query": "월배당 ETF 커버드콜",
+        "strategyId": "income_20260423",
+        "category": "income",
+        "headlines": [
+          {
+            "title": "미래에셋 \"'반도체 성장+월배당' ETF, 첫 개별주식 옵션 활용\" - 연합뉴스",
+            "source": "연합뉴스",
+            "pubDate": "Mon, 20 Apr 2026 02:19:45 GMT"
+          },
+          {
+            "title": "미래에셋자산운용, 반도체 커버드콜 월배당 ETF 상장 - 파이낸셜투데이",
+            "source": "파이낸셜투데이",
+            "pubDate": "Tue, 21 Apr 2026 02:20:27 GMT"
+          },
+          {
+            "title": "“반도체 성장에 월배당 더했다”…미래에셋, ‘TIGER 반도체TOP10커버드콜액티브 ETF’ 상장 - 투데이e코노믹",
+            "source": "투데이e코노믹",
+            "pubDate": "Tue, 21 Apr 2026 06:08:37 GMT"
+          },
+          {
+            "title": "\"국내 최초 개별주식 커버드콜\"…미래에셋, '반도체 커버드콜' ETF 출시 - 연합인포맥스",
+            "source": "연합인포맥스",
+            "pubDate": "Mon, 20 Apr 2026 01:58:03 GMT"
+          },
+          {
+            "title": "반도체·월배당 더했다…'TIGER 반도체TOP10커버드콜액티브' ETF 상장 - 뉴시스",
+            "source": "뉴시스",
+            "pubDate": "Mon, 20 Apr 2026 07:40:41 GMT"
+          },
+          {
+            "title": "59조 몰린 월 배당 ETF…커버드콜 상품 투자 1순위 - 한국경제",
+            "source": "한국경제",
+            "pubDate": "Sun, 18 Jan 2026 08:00:00 GMT"
+          }
+        ],
+        "summary": "- 미래에셋 \"'반도체 성장+월배당' ETF, 첫 개별주식 옵션 활용\" - 연합뉴스\n- 미래에셋자산운용, 반도체 커버드콜 월배당 ETF 상장 - 파이낸셜투데이\n- “반도체 성장에 월배당 더했다”…미래에셋, ‘TIGER 반도체TOP10커버드콜액티브 ETF’ 상장 - 투데이e코노믹"
+      }
+    }
+  }
+}

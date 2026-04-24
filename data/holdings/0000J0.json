@@ -1,0 +1,14 @@
+{
+  "code": "0000J0",
+  "name": "PLUS 한화그룹주",
+  "asOf": "2026-04-22",
+  "source": "hanwhafund.co.kr (대표 비중)",
+  "type": "equity",
+  "holdings": [
+    { "name": "한화에어로스페이스", "ticker": "012450", "weight": 24.0 },
+    { "name": "한화시스템",         "ticker": "272210", "weight": 18.5 },
+    { "name": "한화오션",           "ticker": "042660", "weight": 15.7 },
+    { "name": "한화솔루션",         "ticker": "009830", "weight": 11.2 },
+    { "name": "한화",               "ticker": "000880", "weight": 8.6 }
+  ]
+}

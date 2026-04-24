@@ -1,0 +1,14 @@
+{
+  "code": "0008T0",
+  "name": "SOL 화장품TOP3플러스",
+  "asOf": "2026-04-22",
+  "source": "shinhansfund.com (대표 비중)",
+  "type": "equity",
+  "holdings": [
+    { "name": "아모레퍼시픽",     "ticker": "090430", "weight": 26.5 },
+    { "name": "LG생활건강",       "ticker": "051900", "weight": 24.3 },
+    { "name": "코스맥스",         "ticker": "192820", "weight": 18.7 },
+    { "name": "한국콜마",         "ticker": "161890", "weight": 12.4 },
+    { "name": "코스메카코리아",   "ticker": "241710", "weight": 8.9 }
+  ]
+}

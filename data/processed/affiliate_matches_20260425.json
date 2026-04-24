@@ -1,0 +1,177 @@
+{
+  "_meta": {
+    "createdBy": "CpaDealMaker",
+    "createdAt": "2026-04-24T15:06:35.855Z",
+    "fileName": "affiliate_matches_20260425.json"
+  },
+  "data": [
+    {
+      "articleSlug": "pulse-20260425",
+      "category": "pulse",
+      "products": [
+        {
+          "id": "pulse_mirae_account",
+          "name": "미래에셋증권 계좌개설",
+          "type": "CPA",
+          "commission": 25000,
+          "category": "증권사",
+          "ctaText": "📊 오늘의 ETF 바로 매수하기 →",
+          "url": "#"
+        },
+        {
+          "id": "pulse_kb_account",
+          "name": "KB증권 M-able 계좌개설",
+          "type": "CPA",
+          "commission": 22000,
+          "category": "증권사",
+          "ctaText": "⚡ ETF 수수료 평생 무료 →",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "articleSlug": "0080g0-kodex-방산top10-surge",
+      "category": "surge",
+      "products": [
+        {
+          "id": "surge_samsung_account",
+          "name": "삼성증권 해외주식 계좌",
+          "type": "CPA",
+          "commission": 30000,
+          "category": "증권사",
+          "ctaText": "🚀 글로벌 급등주 매매 →",
+          "url": "#"
+        },
+        {
+          "id": "surge_nh_account",
+          "name": "NH투자증권 나무 계좌",
+          "type": "CPA",
+          "commission": 25000,
+          "category": "증권사",
+          "ctaText": "🔥 국내 ETF 수수료 0원 →",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "articleSlug": "flow-20260425-조선",
+      "category": "flow",
+      "products": [
+        {
+          "id": "flow_shinhan_account",
+          "name": "신한투자증권 프라임 계좌",
+          "type": "CPA",
+          "commission": 28000,
+          "category": "증권사",
+          "ctaText": "🌊 기관급 리서치 리포트 →",
+          "url": "#"
+        },
+        {
+          "id": "flow_hana_account",
+          "name": "하나증권 계좌개설",
+          "type": "CPA",
+          "commission": 20000,
+          "category": "증권사",
+          "ctaText": "📊 섹터 로테이션 매매 →",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "articleSlug": "income-20260425-0000d0",
+      "category": "income",
+      "products": [
+        {
+          "id": "income_nh_irp",
+          "name": "NH투자증권 IRP 계좌",
+          "type": "CPA",
+          "commission": 35000,
+          "category": "연금·IRP",
+          "ctaText": "💎 세액공제 148만 원 받기 →",
+          "url": "#"
+        },
+        {
+          "id": "income_mirae_isa",
+          "name": "미래에셋 중개형 ISA",
+          "type": "CPA",
+          "commission": 32000,
+          "category": "ISA",
+          "ctaText": "🛡️ 배당 비과세 200만 원 →",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "articleSlug": "breaking-20260425-1-0080g0",
+      "category": "breaking",
+      "products": [
+        {
+          "id": "pulse_mirae_account",
+          "name": "미래에셋증권 계좌개설",
+          "type": "CPA",
+          "commission": 25000,
+          "category": "증권사",
+          "ctaText": "📊 오늘의 ETF 바로 매수하기 →",
+          "url": "#"
+        },
+        {
+          "id": "pulse_kb_account",
+          "name": "KB증권 M-able 계좌개설",
+          "type": "CPA",
+          "commission": 22000,
+          "category": "증권사",
+          "ctaText": "⚡ ETF 수수료 평생 무료 →",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "articleSlug": "breaking-20260425-2-0080y0",
+      "category": "breaking",
+      "products": [
+        {
+          "id": "pulse_mirae_account",
+          "name": "미래에셋증권 계좌개설",
+          "type": "CPA",
+          "commission": 25000,
+          "category": "증권사",
+          "ctaText": "📊 오늘의 ETF 바로 매수하기 →",
+          "url": "#"
+        },
+        {
+          "id": "pulse_kb_account",
+          "name": "KB증권 M-able 계좌개설",
+          "type": "CPA",
+          "commission": 22000,
+          "category": "증권사",
+          "ctaText": "⚡ ETF 수수료 평생 무료 →",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "articleSlug": "breaking-20260425-3-0005d0",
+      "category": "breaking",
+      "products": [
+        {
+          "id": "pulse_mirae_account",
+          "name": "미래에셋증권 계좌개설",
+          "type": "CPA",
+          "commission": 25000,
+          "category": "증권사",
+          "ctaText": "📊 오늘의 ETF 바로 매수하기 →",
+          "url": "#"
+        },
+        {
+          "id": "pulse_kb_account",
+          "name": "KB증권 M-able 계좌개설",
+          "type": "CPA",
+          "commission": 22000,
+          "category": "증권사",
+          "ctaText": "⚡ ETF 수수료 평생 무료 →",
+          "url": "#"
+        }
+      ]
+    }
+  ]
+}

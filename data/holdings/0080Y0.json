@@ -1,0 +1,15 @@
+{
+  "code": "0080Y0",
+  "name": "SOL 조선TOP3플러스레버리지",
+  "asOf": "2026-04-22",
+  "source": "shinhansfund.com (대표 비중)",
+  "type": "equity",
+  "leverage": 2,
+  "holdings": [
+    { "name": "한화오션",         "ticker": "042660", "weight": 32.0 },
+    { "name": "HD한국조선해양",   "ticker": "009540", "weight": 30.0 },
+    { "name": "삼성중공업",       "ticker": "010140", "weight": 28.0 },
+    { "name": "HD현대중공업",     "ticker": "329180", "weight": 6.5 },
+    { "name": "현금성자산",       "ticker": "",       "weight": 3.5 }
+  ]
+}

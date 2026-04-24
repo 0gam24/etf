@@ -1,0 +1,14 @@
+{
+  "code": "0005D0",
+  "name": "SOL 전고체배터리&실리콘음극재",
+  "asOf": "2026-04-22",
+  "source": "shinhansfund.com (대표 비중)",
+  "type": "equity",
+  "holdings": [
+    { "name": "에코프로비엠",       "ticker": "247540", "weight": 18.4 },
+    { "name": "LG에너지솔루션",     "ticker": "373220", "weight": 14.2 },
+    { "name": "포스코퓨처엠",       "ticker": "003670", "weight": 12.0 },
+    { "name": "삼성SDI",            "ticker": "006400", "weight": 10.8 },
+    { "name": "엔켐",               "ticker": "348370", "weight": 7.5 }
+  ]
+}

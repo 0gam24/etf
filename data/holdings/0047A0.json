@@ -1,0 +1,15 @@
+{
+  "code": "0047A0",
+  "name": "TIGER 차이나테크TOP10",
+  "asOf": "2026-04-22",
+  "source": "tigeretf.com (대표 비중)",
+  "type": "equity",
+  "market": "CN",
+  "holdings": [
+    { "name": "Tencent",      "ticker": "0700.HK", "weight": 14.6 },
+    { "name": "Alibaba",      "ticker": "9988.HK", "weight": 13.2 },
+    { "name": "Meituan",      "ticker": "3690.HK", "weight": 10.5 },
+    { "name": "Xiaomi",       "ticker": "1810.HK", "weight": 9.7 },
+    { "name": "JD.com",       "ticker": "9618.HK", "weight": 7.8 }
+  ]
+}

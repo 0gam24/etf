@@ -1,0 +1,119 @@
+{
+  "_meta": {
+    "description": "월배당·커버드콜 ETF 레지스트리 (수기 시드). 실제 분배율·지급일은 각 운용사 공시 기준으로 정기 갱신이 필요합니다.",
+    "asOf": "2026-04-22",
+    "disclaimer": "분배율은 최근 12개월 실적 기반 추정치로, 실제 수익률은 시장 상황·기초자산 변동성에 따라 달라질 수 있습니다. stabilityGrade는 과거 분배 변동성 추정이며 미래 분배를 보장하지 않습니다."
+  },
+  "etfs": [
+    {
+      "code": "0000D0",
+      "name": "TIGER 엔비디아미국채커버드콜밸런스(합성)",
+      "issuer": "미래에셋자산운용",
+      "yield": 11.2,
+      "frequency": "monthly",
+      "payMonths": [1,2,3,4,5,6,7,8,9,10,11,12],
+      "stabilityGrade": "A",
+      "underlying": "NVIDIA · 미국채 밸런스 커버드콜",
+      "note": "NVDA 단일주·미국채 혼합. 커버드콜 프리미엄 + 채권 쿠폰으로 월 분배 안정성 확보."
+    },
+    {
+      "code": "0040Y0",
+      "name": "SOL 팔란티어커버드콜OTM채권혼합",
+      "issuer": "한화자산운용",
+      "yield": 13.6,
+      "frequency": "monthly",
+      "payMonths": [1,2,3,4,5,6,7,8,9,10,11,12],
+      "stabilityGrade": "B",
+      "underlying": "Palantir · 미국채 혼합 OTM 커버드콜",
+      "note": "PLTR 변동성이 커 분배율 편차 발생 가능."
+    },
+    {
+      "code": "0040X0",
+      "name": "SOL 팔란티어미국채커버드콜혼합",
+      "issuer": "한화자산운용",
+      "yield": 12.4,
+      "frequency": "monthly",
+      "payMonths": [1,2,3,4,5,6,7,8,9,10,11,12],
+      "stabilityGrade": "B",
+      "underlying": "Palantir · 미국채 혼합 커버드콜",
+      "note": "0040Y0 대비 OTM 전략이 아닌 표준 커버드콜."
+    },
+    {
+      "code": "448290",
+      "name": "TIGER 미국배당다우존스타겟커버드콜2호",
+      "issuer": "미래에셋자산운용",
+      "yield": 10.8,
+      "frequency": "monthly",
+      "payMonths": [1,2,3,4,5,6,7,8,9,10,11,12],
+      "stabilityGrade": "S",
+      "underlying": "Schwab US Dividend Equity(SCHD) + 커버드콜",
+      "note": "SCHD 기반으로 변동성이 낮고, 분배 안정성 최상위권."
+    },
+    {
+      "code": "441680",
+      "name": "TIGER 미국나스닥100커버드콜(합성)",
+      "issuer": "미래에셋자산운용",
+      "yield": 11.8,
+      "frequency": "monthly",
+      "payMonths": [1,2,3,4,5,6,7,8,9,10,11,12],
+      "stabilityGrade": "A",
+      "underlying": "NASDAQ 100 · 커버드콜",
+      "note": "국내 커버드콜 시장 대표 상품. 거래량·AUM 안정적."
+    },
+    {
+      "code": "462900",
+      "name": "KODEX 미국배당커버드콜액티브",
+      "issuer": "삼성자산운용",
+      "yield": 9.6,
+      "frequency": "monthly",
+      "payMonths": [1,2,3,4,5,6,7,8,9,10,11,12],
+      "stabilityGrade": "A",
+      "underlying": "미국 배당주 · 액티브 커버드콜",
+      "note": "액티브 운용으로 시장 국면별 콜옵션 매도 비중 조정."
+    },
+    {
+      "code": "481190",
+      "name": "RISE 200고배당커버드콜ATM",
+      "issuer": "KB자산운용",
+      "yield": 10.2,
+      "frequency": "monthly",
+      "payMonths": [1,2,3,4,5,6,7,8,9,10,11,12],
+      "stabilityGrade": "B",
+      "underlying": "KOSPI 200 고배당 · ATM 커버드콜",
+      "note": "국내주식 기반. 환율 노출 없음 — 달러 변동성 회피 투자자에게 적합."
+    },
+    {
+      "code": "458760",
+      "name": "KBSTAR 미국S&P500고정배당형",
+      "issuer": "KB자산운용",
+      "yield": 7.0,
+      "frequency": "monthly",
+      "payMonths": [1,2,3,4,5,6,7,8,9,10,11,12],
+      "stabilityGrade": "S",
+      "underlying": "S&P 500 · 고정 배당 구조",
+      "note": "연 7% 고정 타겟 분배 설계. 커버드콜 대비 원금 변동 완화."
+    },
+    {
+      "code": "161510",
+      "name": "PLUS 고배당주",
+      "issuer": "한화자산운용",
+      "yield": 5.4,
+      "frequency": "quarterly",
+      "payMonths": [3,6,9,12],
+      "stabilityGrade": "A",
+      "underlying": "국내 고배당주 바스켓",
+      "note": "전통 고배당 ETF. 분기 지급이지만 커버드콜 대비 원금 안정성 높음."
+    },
+    {
+      "code": "279530",
+      "name": "KODEX 고배당",
+      "issuer": "삼성자산운용",
+      "yield": 4.8,
+      "frequency": "quarterly",
+      "payMonths": [3,6,9,12],
+      "stabilityGrade": "A",
+      "underlying": "국내 고배당주 바스켓",
+      "note": "보수 0.15%로 저비용. 은퇴자 코어 포지션 후보."
+    }
+  ]
+}

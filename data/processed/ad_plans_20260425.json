@@ -1,0 +1,651 @@
+{
+  "_meta": {
+    "createdBy": "FrontendPlanner",
+    "createdAt": "2026-04-24T15:06:35.846Z",
+    "fileName": "ad_plans_20260425.json"
+  },
+  "data": [
+    {
+      "article": {
+        "keyword": "4월 25일 오늘의 ETF 관전포인트",
+        "title": "4월 25일 오늘의 ETF 관전포인트 — 거래량 1위 KODEX 방산TOP10 외 2종목",
+        "slug": "pulse-20260425",
+        "category": "pulse",
+        "templateType": "pulse",
+        "tickers": [
+          "0080G0",
+          "0080Y0",
+          "0005D0"
+        ],
+        "content": "## 저의 관전포인트\n\n제가 VVIP 고객 상담할 때 자주 받은 질문이… 오늘 이 주제를 왜 짚어야 하는지 세 줄로 먼저 정리해 드릴게요.\n\n## 오늘의 3줄 관전포인트\n\n- **거래량 1위**: KODEX 방산TOP10가 -1.87%로 시장의 관심을 받습니다.\n- **섹터 리더**: 조선가 평균 +3.09%로 자금이 몰리는 모습입니다.\n- **체크 포인트**: 장중 변동성에 대비해 분할 매수 원칙을 유지하세요.\n\n![4월 25일 오늘의 ETF 관전포인트 — 거래량 1위 KODEX 방산TOP10 외 2종목](/api/og?category=pulse&title=4%EC%9B%94+25%EC%9D%BC+%EC%98%A4%EB%8A%98%EC%9D%98+ETF+%EA%B4%80%EC%A0%84%ED%8F%AC%EC%9D%B8%ED%8A%B8+%E2%80%94+%EA%B1%B0%EB%9E%98%EB%9F%89+1%EC%9C%84+KODEX+%EB%B0%A9%EC%82%B0TOP10+%EC%99%B8+2%EC%A2%85%EB%AA%A9&date=2026.+4.+25.&tickers=0080G0%2C0080Y0%2C0005D0)\n\n\n> 관련 분석: [[04월 24일 속보] SOL 전고체배터리&실리콘음극재 — 조정 4.62%, 왜 움직였나](/breaking/breaking-20260424-3-0005d0) — 같은 종목을 다른 각도에서 다룹니다.\n\n## 거래량 TOP3 완벽 해설\n\n| 순위 | 종목명 | 코드 | 등락률 | 거래량 | 섹터 |\n|---|---|---|---|---|---|\n| 1 | KODEX 방산TOP10 | 0080G0 | -1.87% | 542만주 | 방산 |\n| 2 | SOL 조선TOP3플러스레버리지 | 0080Y0 | +3.09% | 411만주 | 조선 |\n| 3 | SOL 전고체배터리&실리콘음극재 | 0005D0 | -4.62% | 251만주 | 2차전지 |\n\n## 섹터 흐름 한눈에 (4050 투자자 관점)\n\n오늘 자금은 **조선**에 집중되며 평균 +3.09% 흐름입니다. 은퇴 자산을 관리하는 4050 세대에게 지금 중요한 것은 **\"이 섹터가 내 포트폴리오에 이미 있는지, 추가 편입 가능한 계좌가 어디인지\"** 입니다.\n\n\n| 섹터 | 평균 등락률 | 4050 투자자 관점 |\n|---|---|---|\n| 조선 | +3.09% | 🔥 과열 구간 — 분할 매수 필수, ISA/연금 계좌로 세금 방어 |\n| 해외주식 | +0.24% | 안정적 상승 — 월배당·커버드콜 병행 편입 검토 |\n| 커버드콜·월배당 | +0.22% | 안정적 상승 — 월배당·커버드콜 병행 편입 검토 |\n\n\n### 오늘 가장 유용한 액션 3가지\n1. **보유 확인**: 조선 관련 ETF가 연금저축·IRP·ISA 계좌에 있는지 먼저 체크하세요.\n2. **비중 조정**: 단일 섹터가 전체 자산의 15%를 넘으면 분산 리밸런싱을 검토합니다.\n3. **분배금 확인**: 커버드콜·월배당 ETF 보유 시, 이번 주 분배락 일정과 세후 수령액을 재확인하세요.\n\n\n> 섹터 배경: [[04월 24일 속보] KODEX 방산TOP10 — 조정 1.87%, 왜 움직였나](/breaking/breaking-20260424-1-0080g0)을 함께 읽으면 이해가 빠릅니다.\n\n## 오늘 체크할 뉴스·지표\n\n- 미국 증시 마감 지수 (S&P500, 나스닥)\n- 원/달러 환율 1400원 돌파 여부\n- 주요 섹터 공시·실적 발표\n- 본인의 연금·ISA 연간 한도 잔액 (세액공제 기회 재확인)\n\n## 자주 묻는 질문 (FAQ)\n\n**Q1: 거래량 1위 ETF는 무조건 사야 하나요?**\n\n거래량만으로 매수 근거가 되지는 않습니다. 뉴스와 섹터 흐름을 함께 확인한 뒤, 본인의 투자 기간에 맞춰 결정하시기 바랍니다.\n\n**Q2: 오전에만 확인해도 되나요?**\n\n장중 변동성이 큰 종목은 오후 장 흐름을 추가 확인하는 편이 안전합니다.\n\n**Q3: 4050 세대에게 적합한가요?**\n\n단기 매매보다는 배당·커버드콜 ETF 중심으로 포트폴리오를 구성하는 것을 권장합니다.\n\n## 저의 결론\n\n개인적으로는 이 전략을 추천하는 편입니다. 오늘 내용을 실전에 옮길 때는 본인의 투자 기간과 리스크 허용 범위부터 정리하시는 걸 권합니다. 숫자보다 원칙이 먼저입니다.\n\n— 김성훈, 은퇴 자산 설계 전문\n",
+        "wordCount": 2124,
+        "generatedBy": "sample",
+        "author": "김성훈",
+        "authorId": "pb_kim",
+        "authorTitle": "前 증권사 프라이빗 뱅커 (25년 차)",
+        "relatedLinks": [
+          {
+            "category": "breaking",
+            "slug": "breaking-20260424-3-0005d0",
+            "title": "[04월 24일 속보] SOL 전고체배터리&실리콘음극재 — 조정 4.62%, 왜 움직였나",
+            "date": "2026-04-24T14:39:21.410Z",
+            "tickers": [
+              "0005D0"
+            ],
+            "keywords": [
+              "SOL 전고체배터리&실리콘음극재 속보 — 오늘 하락 4.62% · 거래량 3위",
+              "ETF 속보",
+              "거래량 TOP",
+              "ETF 뉴스",
+              "당일 ETF 분석"
+            ],
+            "reason": "ticker-overlap"
+          },
+          {
+            "category": "breaking",
+            "slug": "breaking-20260424-1-0080g0",
+            "title": "[04월 24일 속보] KODEX 방산TOP10 — 조정 1.87%, 왜 움직였나",
+            "date": "2026-04-24T14:39:21.406Z",
+            "tickers": [
+              "0080G0"
+            ],
+            "keywords": [
+              "KODEX 방산TOP10 속보 — 오늘 하락 1.87% · 거래량 1위",
+              "ETF 속보",
+              "거래량 TOP",
+              "ETF 뉴스",
+              "당일 ETF 분석"
+            ],
+            "reason": "sector-overlap"
+          }
+        ]
+      },
+      "plan": {
+        "totalLines": 70,
+        "placements": [
+          {
+            "type": "in-article",
+            "position": "after-first-h2",
+            "lineIndex": 1,
+            "adFormat": "display",
+            "size": "responsive",
+            "priority": "high"
+          },
+          {
+            "type": "in-content",
+            "position": "mid-content",
+            "lineIndex": 35,
+            "adFormat": "in-feed",
+            "size": "responsive",
+            "priority": "medium"
+          },
+          {
+            "type": "cta-banner",
+            "position": "before-faq",
+            "lineIndex": 49,
+            "adFormat": "affiliate-card",
+            "priority": "high"
+          },
+          {
+            "type": "bottom-banner",
+            "position": "end-of-article",
+            "lineIndex": 70,
+            "adFormat": "matched-content",
+            "size": "responsive",
+            "priority": "medium"
+          }
+        ]
+      },
+      "articleSlug": "pulse-20260425",
+      "category": "pulse",
+      "totalPlacements": 4
+    },
+    {
+      "article": {
+        "keyword": "KODEX 방산TOP10 급등 이유 — 방위산업 ETF 전망",
+        "title": "KODEX 방산TOP10, 왜 오늘 거래량 1위인가 — 방위산업 ETF 전망",
+        "slug": "0080g0-kodex-방산top10-surge",
+        "category": "surge",
+        "templateType": "surge",
+        "tickers": [
+          "0080G0"
+        ],
+        "content": "## 저의 관전포인트\n\n제가 VVIP 고객 상담할 때 자주 받은 질문이… 오늘 이 주제를 왜 짚어야 하는지 세 줄로 먼저 정리해 드릴게요.\n\n## 3줄 급등 요약\n\n- **KODEX 방산TOP10**가 거래량 542만주, 등락률 -1.87%로 오늘 시장의 주인공이 되었습니다.\n- 방산 테마 자금 유입이 관찰됩니다.\n- 단기 과열 가능성을 염두에 두고, 분할 매수·목표가 관리가 필요합니다.\n\n![KODEX 방산TOP10 급등 분석](/api/og?category=surge&title=KODEX+%EB%B0%A9%EC%82%B0TOP10%2C+%EC%99%9C+%EC%98%A4%EB%8A%98+%EA%B1%B0%EB%9E%98%EB%9F%89+1%EC%9C%84%EC%9D%B8%EA%B0%80+%E2%80%94+%EB%B0%A9%EC%9C%84%EC%82%B0%EC%97%85+ETF+%EC%A0%84%EB%A7%9D&date=2026.+4.+25.&tickers=0080G0)\n\n## 오늘의 거래 데이터\n\n| 항목 | 값 |\n|---|---|\n| 종목명 | KODEX 방산TOP10 |\n| 현재가 | 15,245원 |\n| 등락률 | -1.87% |\n| 거래량 | 542만주 |\n| 거래대금 | 824억 원 |\n| 시가/고가/저가 | 15,520 / 15,520 / 15,000원 |\n\n\n> 관련 분석: [[04월 24일 속보] KODEX 방산TOP10 — 조정 1.87%, 왜 움직였나](/breaking/breaking-20260424-1-0080g0) — 같은 종목을 다른 각도에서 다룹니다.\n\n## 급등 사유 분석\n\n지정학적 긴장 고조와 글로벌 방위비 증액 기조가 방산 ETF 전반에 자금 유입을 부추기고 있습니다.\n\n## 이 ETF가 담고 있는 것\n\nKODEX 방산TOP10의 공식 구성종목 데이터가 아직 준비되지 않았습니다. 운용사 공식 상품 페이지(PDP)에서 최신 포트폴리오를 확인하시기 바랍니다.\n\n### 4050 투자자가 확인할 포인트\n- **비중 상위 기업** 1~2개가 전체의 30% 이상이면 단일 종목 리스크 고려\n- **연금·ISA 계좌 내 중복 편입** 여부 점검\n- **총보수·추적오차** 확인 후 유사 상품과 비교\n\n## 단기(1주)·중기(1개월) 전망과 리스크\n\n단기적으로는 모멘텀 유지가 가능해 보이나, 섹터 전반의 밸류에이션 부담과 외국인 수급 변동에는 주의가 필요합니다.\n\n\n> 섹터 배경: [KODEX 방산TOP10, 왜 오늘 거래량 1위인가 — 방위산업 ETF 수주 이슈](/surge/449450-kodex-방산top10-surge)을 함께 읽으면 이해가 빠릅니다.\n\n## 4050 투자자 체크리스트\n\n1. 전체 자산 대비 테마 ETF 비중이 15%를 넘지 않도록 관리\n2. 분할 매수 원칙 (3~5회 분할)\n3. 손절·익절 라인 사전 설정\n\n## FAQ\n\n**Q1: 지금이 매수 타이밍인가요?**\n\n단기 과열 구간일 수 있습니다. 분할 매수로 접근하되, 본인의 리스크 허용 범위를 먼저 고려하시기 바랍니다.\n\n**Q2: 얼마나 오를 수 있나요?**\n\n개별 종목의 주가 전망은 확정할 수 없습니다. 본문에서 제시한 근거와 리스크를 종합적으로 고려하세요.\n\n**Q3: 커버드콜 버전도 있나요?**\n\n해당 섹터의 커버드콜 ETF가 있다면 연금·ISA 계좌 활용이 효과적일 수 있습니다.\n\n## 저의 결론\n\n개인적으로는 이 전략을 추천하는 편입니다. 오늘 내용을 실전에 옮길 때는 본인의 투자 기간과 리스크 허용 범위부터 정리하시는 걸 권합니다. 숫자보다 원칙이 먼저입니다.\n\n— 김성훈, 은퇴 자산 설계 전문\n",
+        "wordCount": 1766,
+        "generatedBy": "sample",
+        "author": "김성훈",
+        "authorId": "pb_kim",
+        "authorTitle": "前 증권사 프라이빗 뱅커 (25년 차)",
+        "relatedLinks": [
+          {
+            "category": "breaking",
+            "slug": "breaking-20260424-1-0080g0",
+            "title": "[04월 24일 속보] KODEX 방산TOP10 — 조정 1.87%, 왜 움직였나",
+            "date": "2026-04-24T14:39:21.406Z",
+            "tickers": [
+              "0080G0"
+            ],
+            "keywords": [
+              "KODEX 방산TOP10 속보 — 오늘 하락 1.87% · 거래량 1위",
+              "ETF 속보",
+              "거래량 TOP",
+              "ETF 뉴스",
+              "당일 ETF 분석"
+            ],
+            "reason": "ticker-overlap"
+          },
+          {
+            "category": "surge",
+            "slug": "449450-kodex-방산top10-surge",
+            "title": "KODEX 방산TOP10, 왜 오늘 거래량 1위인가 — 방위산업 ETF 수주 이슈",
+            "date": "2026-04-23T07:58:49.443Z",
+            "tickers": [
+              "449450"
+            ],
+            "keywords": [
+              "KODEX 방산TOP10 급등 이유 — 방위산업 ETF 수주 이슈",
+              "급등 ETF",
+              "거래량 급등",
+              "ETF 급등 이유"
+            ],
+            "reason": "sector-overlap"
+          }
+        ]
+      },
+      "plan": {
+        "totalLines": 72,
+        "placements": [
+          {
+            "type": "in-article",
+            "position": "after-first-h2",
+            "lineIndex": 1,
+            "adFormat": "display",
+            "size": "responsive",
+            "priority": "high"
+          },
+          {
+            "type": "cta-banner",
+            "position": "before-faq",
+            "lineIndex": 51,
+            "adFormat": "affiliate-card",
+            "priority": "high"
+          }
+        ]
+      },
+      "articleSlug": "0080g0-kodex-방산top10-surge",
+      "category": "surge",
+      "totalPlacements": 2
+    },
+    {
+      "article": {
+        "keyword": "주간 자금 흐름 리포트 — 조선 섹터 +3.09%",
+        "title": "이번 주 자금은 어디로? 조선 섹터에 몰린 898억 원",
+        "slug": "flow-20260425-조선",
+        "category": "flow",
+        "templateType": "flow",
+        "tickers": [
+          "0080G0",
+          "0080Y0",
+          "0005D0",
+          "0072R0",
+          "0015B0"
+        ],
+        "content": "## 저의 관전포인트\n\n제가 VVIP 고객 상담할 때 자주 받은 질문이… 오늘 이 주제를 왜 짚어야 하는지 세 줄로 먼저 정리해 드릴게요.\n\n## 이번 주 Flow 3줄 요약\n\n- 자금은 **조선**로 집중되며 평균 +3.09% 상승세입니다.\n- 반대로 **채권**는 -0.13%로 자금 이탈이 관찰됩니다.\n- 기관·외국인 수급 동향은 다음 섹션에서 자세히 다룹니다.\n\n![섹터별 자금 흐름 — 조선](/api/og?category=flow&title=%EC%9D%B4%EB%B2%88+%EC%A3%BC+%EC%9E%90%EA%B8%88%EC%9D%80+%EC%96%B4%EB%94%94%EB%A1%9C%3F+%EC%A1%B0%EC%84%A0+%EC%84%B9%ED%84%B0%EC%97%90+%EB%AA%B0%EB%A6%B0+898%EC%96%B5+%EC%9B%90&date=2026.+4.+25.&tickers=0080G0%2C0080Y0%2C0005D0)\n\n\n> 관련 분석: [[04월 24일 속보] SOL 전고체배터리&실리콘음극재 — 조정 4.62%, 왜 움직였나](/breaking/breaking-20260424-3-0005d0) — 같은 종목을 다른 각도에서 다룹니다.\n\n## 섹터별 자금 유입 총정리\n\n| 섹터 | 평균 등락률 | 거래대금(억원) | 종목수 |\n|---|---|---|---|\n| 조선 | +3.09% | 898 | 1 |\n| 해외주식 | +0.24% | 1,131 | 34 |\n| 커버드콜·월배당 | +0.22% | 248 | 10 |\n| 기타 | +0.08% | 966 | 29 |\n| 채권 | -0.13% | 12 | 6 |\n\n## 기관·외국인 수급 관점 해석\n\n상위 섹터로의 자금 집중은 기관 투자자의 섹터 로테이션 신호일 가능성이 있습니다. 특히 외국인 매수세가 동반될 때 추세 지속성이 강해지는 경향이 있습니다.\n\n## 상위 섹터 대표 ETF 3종\n\n| 섹터 | 대표 ETF | 특징 |\n|---|---|---|\n| 조선 | 대표 ETF | 섹터 직접 노출 |\n| 해외주식 | 대표 ETF | 분산 효과 |\n| 커버드콜·월배당 | 대표 ETF | 배당 병행 |\n\n\n> 섹터 배경: [[04월 24일 속보] KODEX 방산TOP10 — 조정 1.87%, 왜 움직였나](/breaking/breaking-20260424-1-0080g0)을 함께 읽으면 이해가 빠릅니다.\n\n## 다음 주 관전포인트\n\n- 미국 CPI·FOMC 일정\n- 환율 변동성\n- 주요 섹터 실적 발표\n\n## FAQ\n\n**Q1: 섹터 로테이션은 어떻게 추적하나요?**\n\n매주 자금 흐름과 외국인 순매수 데이터를 함께 확인하시는 것이 좋습니다.\n\n**Q2: 개인이 따라가도 되나요?**\n\n장기 관점이라면 분산·적립식이 더 안전합니다. 단기 로테이션 추종은 리스크가 큽니다.\n\n**Q3: ETF보다 개별 종목이 낫지 않나요?**\n\n섹터 전반 베팅에는 ETF가, 구체적 기업 확신이 있다면 개별 종목이 유리할 수 있습니다.\n\n## 저의 결론\n\n개인적으로는 이 전략을 추천하는 편입니다. 오늘 내용을 실전에 옮길 때는 본인의 투자 기간과 리스크 허용 범위부터 정리하시는 걸 권합니다. 숫자보다 원칙이 먼저입니다.\n\n— 김성훈, 은퇴 자산 설계 전문\n",
+        "wordCount": 1594,
+        "generatedBy": "sample",
+        "author": "김성훈",
+        "authorId": "pb_kim",
+        "authorTitle": "前 증권사 프라이빗 뱅커 (25년 차)",
+        "relatedLinks": [
+          {
+            "category": "breaking",
+            "slug": "breaking-20260424-3-0005d0",
+            "title": "[04월 24일 속보] SOL 전고체배터리&실리콘음극재 — 조정 4.62%, 왜 움직였나",
+            "date": "2026-04-24T14:39:21.410Z",
+            "tickers": [
+              "0005D0"
+            ],
+            "keywords": [
+              "SOL 전고체배터리&실리콘음극재 속보 — 오늘 하락 4.62% · 거래량 3위",
+              "ETF 속보",
+              "거래량 TOP",
+              "ETF 뉴스",
+              "당일 ETF 분석"
+            ],
+            "reason": "ticker-overlap"
+          },
+          {
+            "category": "breaking",
+            "slug": "breaking-20260424-1-0080g0",
+            "title": "[04월 24일 속보] KODEX 방산TOP10 — 조정 1.87%, 왜 움직였나",
+            "date": "2026-04-24T14:39:21.406Z",
+            "tickers": [
+              "0080G0"
+            ],
+            "keywords": [
+              "KODEX 방산TOP10 속보 — 오늘 하락 1.87% · 거래량 1위",
+              "ETF 속보",
+              "거래량 TOP",
+              "ETF 뉴스",
+              "당일 ETF 분석"
+            ],
+            "reason": "sector-overlap"
+          }
+        ]
+      },
+      "plan": {
+        "totalLines": 66,
+        "placements": [
+          {
+            "type": "in-article",
+            "position": "after-first-h2",
+            "lineIndex": 1,
+            "adFormat": "display",
+            "size": "responsive",
+            "priority": "high"
+          },
+          {
+            "type": "in-content",
+            "position": "mid-content",
+            "lineIndex": 33,
+            "adFormat": "in-feed",
+            "size": "responsive",
+            "priority": "medium"
+          },
+          {
+            "type": "cta-banner",
+            "position": "before-faq",
+            "lineIndex": 45,
+            "adFormat": "affiliate-card",
+            "priority": "high"
+          },
+          {
+            "type": "bottom-banner",
+            "position": "end-of-article",
+            "lineIndex": 66,
+            "adFormat": "matched-content",
+            "size": "responsive",
+            "priority": "medium"
+          }
+        ]
+      },
+      "articleSlug": "flow-20260425-조선",
+      "category": "flow",
+      "totalPlacements": 4
+    },
+    {
+      "article": {
+        "keyword": "ISA 계좌 필수 월배당 ETF 조합",
+        "title": "ISA 계좌 필수 월배당 ETF 조합 — 실제 분배금·세후 수익률 계산",
+        "slug": "income-20260425-0000d0",
+        "category": "income",
+        "templateType": "income",
+        "tickers": [
+          "0000D0"
+        ],
+        "content": "## 저의 관전포인트\n\n저도 처음엔 정말 헷갈렸어요. 오늘 이 주제를 왜 짚어야 하는지 세 줄로 먼저 정리해 드릴게요.\n\n## 이 글의 3줄 요약\n\n- **TIGER 엔비디아미국채커버드콜밸런스(합성)**의 구조와 실제 분배금을 계산합니다.\n- 일반계좌 대비 **연금저축·IRP에서 굴릴 때** 세후 수익률이 크게 차이납니다.\n- 4050 투자자에게 적합한 계좌 조합을 제시합니다.\n\n![커버드콜·월배당 ETF 가이드](/api/og?category=income&title=ISA+%EA%B3%84%EC%A2%8C+%ED%95%84%EC%88%98+%EC%9B%94%EB%B0%B0%EB%8B%B9+ETF+%EC%A1%B0%ED%95%A9+%E2%80%94+%EC%8B%A4%EC%A0%9C+%EB%B6%84%EB%B0%B0%EA%B8%88%C2%B7%EC%84%B8%ED%9B%84+%EC%88%98%EC%9D%B5%EB%A5%A0+%EA%B3%84%EC%82%B0&date=2026.+4.+25.&tickers=0000D0)\n\n## 커버드콜·월배당 ETF 구조\n\n커버드콜 전략은 보유 자산에 대해 콜옵션을 매도해 **옵션 프리미엄**을 분배금 재원으로 활용합니다. 주가 급등 시 상승분이 제한되는 단점이 있지만, 횡보·약세장에서는 안정적 현금흐름을 제공합니다.\n\n\n> 관련 분석: [IRP에서 사기 좋은 커버드콜 ETF TOP5 — 실제 분배금·세후 수익률 계산](/income/income-20260424-0000d0) — 같은 종목을 다른 각도에서 다룹니다.\n\n## 실제 분배금 계산 (1000만 원 투자)\n\n| 항목 | 금액 |\n|---|---|\n| 투자원금 | 10,000,000원 |\n| 연 분배율(예시) | 10% |\n| 연 분배금(세전) | 1,000,000원 |\n| 월 분배금(세전) | 83,333원 |\n| 일반계좌 세후(15.4%) | 70,500원/월 |\n| 연금저축·IRP 세후(3.3~5.5%) | 78,750~80,583원/월 |\n\n## 세후 수익률 비교\n\n| 계좌 유형 | 배당세율 | 1000만 원 연 세후 수익 |\n|---|---|---|\n| 일반 계좌 | 15.4% | 846,000원 |\n| ISA (비과세 한도 내) | 0% | 1,000,000원 |\n| 연금저축·IRP | 3.3~5.5% | 945,000~967,000원 |\n\n## 계좌 조합 전략\n\n1. **ISA 비과세 한도 200만 원** 먼저 채우기\n2. **연금저축·IRP 세액공제 한도** (연 900만 원)로 커버드콜 핵심 편입\n3. **일반 계좌**는 비중 최소화\n\n\n> 이어서 보기 좋은 글: [퇴직연금 DC형 커버드콜 비중 전략 — 실제 분배금·세후 수익률 계산](/income/income-20260423-0000d0).\n\n## 주의사항\n\n- 옵션 프리미엄은 시장 변동성에 따라 축소될 수 있습니다.\n- 기초자산 급등 시 상승분이 제한됩니다.\n- 분배금은 과거 실적일 뿐 미래를 확정하지 않습니다.\n\n## FAQ\n\n**Q1: ISA와 연금저축 중 어디를 먼저?**\n\n비과세 혜택이 큰 ISA를 먼저 채우고, 이후 연금저축·IRP로 세액공제까지 받는 순서를 권장합니다.\n\n**Q2: 분배율 10%가 항상 유지되나요?**\n\n아니요. 시장 변동성에 따라 축소될 수 있습니다.\n\n**Q3: 은퇴 시점에는?**\n\n인출 시점에 연금 수령으로 전환하면 저율 과세(3.3~5.5%)로 설계됩니다.\n\n## 저의 결론\n\n솔직히 이 부분은 저도 몇 번 시행착오를 겪었거든요. 오늘 내용을 실전에 옮길 때는 본인의 투자 기간과 리스크 허용 범위부터 정리하시는 걸 권합니다. 숫자보다 원칙이 먼저입니다.\n\n— 박미라, 워킹맘 15년 차 투자 블로거\n",
+        "wordCount": 1812,
+        "generatedBy": "sample",
+        "author": "박미라",
+        "authorId": "mom_park",
+        "authorTitle": "대기업 워킹맘 15년 차 / 생활 재테크 블로거",
+        "relatedLinks": [
+          {
+            "category": "income",
+            "slug": "income-20260424-0000d0",
+            "title": "IRP에서 사기 좋은 커버드콜 ETF TOP5 — 실제 분배금·세후 수익률 계산",
+            "date": "2026-04-24T14:39:21.405Z",
+            "tickers": [
+              "0000D0"
+            ],
+            "keywords": [
+              "IRP에서 사기 좋은 커버드콜 ETF TOP5",
+              "월배당 ETF",
+              "커버드콜",
+              "IRP ETF",
+              "ISA 필수 종목"
+            ],
+            "reason": "ticker-overlap"
+          },
+          {
+            "category": "income",
+            "slug": "income-20260423-0000d0",
+            "title": "퇴직연금 DC형 커버드콜 비중 전략 — 실제 분배금·세후 수익률 계산",
+            "date": "2026-04-23T08:10:13.188Z",
+            "tickers": [
+              "0000D0"
+            ],
+            "keywords": [
+              "퇴직연금 DC형 커버드콜 비중 전략",
+              "월배당 ETF",
+              "커버드콜",
+              "IRP ETF",
+              "ISA 필수 종목"
+            ],
+            "reason": "same-category"
+          }
+        ]
+      },
+      "plan": {
+        "totalLines": 73,
+        "placements": [
+          {
+            "type": "in-article",
+            "position": "after-first-h2",
+            "lineIndex": 1,
+            "adFormat": "display",
+            "size": "responsive",
+            "priority": "high"
+          },
+          {
+            "type": "in-content",
+            "position": "mid-content",
+            "lineIndex": 36,
+            "adFormat": "in-feed",
+            "size": "responsive",
+            "priority": "medium"
+          },
+          {
+            "type": "cta-banner",
+            "position": "before-faq",
+            "lineIndex": 52,
+            "adFormat": "affiliate-card",
+            "priority": "high"
+          },
+          {
+            "type": "bottom-banner",
+            "position": "end-of-article",
+            "lineIndex": 73,
+            "adFormat": "matched-content",
+            "size": "responsive",
+            "priority": "medium"
+          }
+        ]
+      },
+      "articleSlug": "income-20260425-0000d0",
+      "category": "income",
+      "totalPlacements": 4
+    },
+    {
+      "article": {
+        "keyword": "KODEX 방산TOP10 속보 — 오늘 하락 1.87% · 거래량 1위",
+        "title": "[04월 25일 속보] KODEX 방산TOP10 — 조정 1.87%, 왜 움직였나",
+        "slug": "breaking-20260425-1-0080g0",
+        "category": "breaking",
+        "templateType": "breaking",
+        "tickers": [
+          "0080G0"
+        ],
+        "content": "## 저의 관전포인트\n\n제가 VVIP 고객 상담할 때 자주 받은 질문이… 오늘 이 주제를 왜 짚어야 하는지 세 줄로 먼저 정리해 드릴게요.\n\n## 3줄 속보 요약\n\n- **거래량 1위**: KODEX 방산TOP10이(가) -1.87%로 오늘 시장에서 조정 흐름을 보였습니다.\n- **섹터 맥락**: 방산 테마 전반으로 자금이 이동 중이며, 구성종목 상위 비중의 영향이 큽니다.\n- **체크 포인트**: 단기 모멘텀과 뉴스 흐름을 함께 보고, 추격 진입보다 분할 진입·비중 점검을 권합니다.\n\n![[04월 25일 속보] KODEX 방산TOP10 — 조정 1.87%, 왜 움직였나](/api/og?category=breaking&title=%5B04%EC%9B%94+25%EC%9D%BC+%EC%86%8D%EB%B3%B4%5D+KODEX+%EB%B0%A9%EC%82%B0TOP10+%E2%80%94+%EC%A1%B0%EC%A0%95+1.87%25%2C+%EC%99%9C+%EC%9B%80%EC%A7%81%EC%98%80%EB%82%98&date=2026.+4.+25.&tickers=0080G0)\n\n## 오늘 이 ETF를 움직인 뉴스\n\n**1. [‘스페이스X’ 우주전쟁 시작됐다…“우주는 유행 타는 테마 아닌 인프...](https://biz.heraldcorp.com/article/10723897?ref=naver)** — *biz.heraldcorp.com*\n\n> biz.heraldcorp.com 기사 스니펫: \"전통 방산주나 드론 기업을 섞는 것과 달리, TIGER는 철저히 우주산업의 핵심 밸류체인에 집중했다”며 “진입장벽이 높고 승자독식 구조가 강한 우주산업 특성상, 종목을 분산하기보다 확실한 승자 10개 기업에...\"\n\n**2. [[더벨][신규 ETF 리뷰 | SOL 미국우주항공TOP10] 신한운용, 스페이스X 품...](https://www.thebell.co.kr/free/content/ArticleView.asp?key=202604210823179800104829)** — *thebell.co.kr*\n\n> thebell.co.kr 기사 스니펫: \"미국우주항공TOP10' 상장지수펀드(ETF)를 이날 유가증권시장에 신규 상장한다. 이 상품은 상장 첫날 1좌당... 대형 방산업체를 상당수 포함하는 방식으로 운용되어 왔다. 삼성자산운용이 선보인 'KODEX 미국우주항공' ETF의...\"\n\n**3. [[미국 우주 ETF vs] ①이름표는 우주, 뚜껑 열어보면 제각각…내 계좌에...](https://www.smarttoday.co.kr/ko-kr/articles/106834)** — *smarttoday.co.kr*\n\n> smarttoday.co.kr 기사 스니펫: \"두 ETF는 전통 방산 기업을 철저히 배제하고 우주 생태계에 직접적으로 속한 기업만으로 포트폴리오를... 로켓랩 편입 비중 (단위: %) 기준: 2026.04 SOL 미국우주항공TOP10 27.2% TIGER 미국우주테크 26.8% KODEX 미국우주항공 22.2...\"\n\n**4. [[상대강도과열 종목] DS단석 바이젠셀 나노 삼아알미늄 '불기둥'](https://www.pinpointnews.co.kr/news/articleView.html?idxno=447712)** — *pinpointnews.co.kr*\n\n> pinpointnews.co.kr 기사 스니펫: \"KODEX 조선TOP10은 주목받았다. 달바글로벌은 상승했다. 에스티아이는 강세를 보였다. 삼성 iSelect 조선 TOP10 TR ETN은 주목받았다. PLUS K방산소부장은 상승했다. 디엔에프는 오름세를 나타냈다. 태경비케이는 강세를...\"\n\n**5. [[ETF 시황] '조선·방산' 질주…글로벌·바이오 ETF '약세'](https://www.newspim.com/news/view/20260422001040)** — *뉴스핌*\n\n> 뉴스핌 기사 스니펫: \"이날 코스콤 ETF CHECK에 따르면 수익률 상위 ETF는 SOL 조선TOP3플러스레버리지(11.87%), KODEX 방산TOP10레버리지(8.84%), PLUS K방산레버리지(8.75%), KODEX 조선TOP10(7.23%), PLUS K방산소부장(6.69%) 순으로 집계됐다. 조선...\"\n\n\n\n### 뉴스가 이 ETF에 주는 의미\n\n\n\n오늘 KODEX 방산TOP10과 방산 관련 보도 5건이 수집되었습니다. 주요 흐름은 biz.heraldcorp.com에서 다룬 \"‘스페이스X’ 우주전쟁 시작됐다…“우주는 유행 타는 테마 아닌 인프...\" 관련 이슈이며, thebell.co.kr의 \"[더벨][신규 ETF 리뷰 | SOL 미국우주항공TOP10] 신한운용, 스페이스X 품...\"가 이를 보완합니다.\n\n\n\n보도 종합을 보면 방산에 대한 수급 쏠림이 조정 국면에 진입한 것으로 관찰되며, KODEX 방산TOP10의 오늘 하락(-1.87%)도 이 흐름과 맞물려 움직였을 가능성이 있습니다.\n\n\n> 관련 분석: [[04월 24일 속보] KODEX 방산TOP10 — 조정 1.87%, 왜 움직였나](/breaking/breaking-20260424-1-0080g0) — 같은 종목을 다른 각도에서 다룹니다.\n\n## 시세·거래량 데이터\n\n| 항목 | 값 |\n|---|---|\n| 종목명 | KODEX 방산TOP10 |\n| 종목코드 | 0080G0 |\n| 현재가 | 15,245원 |\n| 전일대비 | -290원 (-1.87%) |\n| 거래량 | 5,416,680주 |\n| 시가총액 | 5,778억 원 |\n| 섹터 | 방산 |\n\n## 섹터·구성종목과의 연결\n\nKODEX 방산TOP10의 기초자산·전략이 단일형이거나 바스켓 데이터 미확보 상태입니다. 운용사 공식 PDP 공시를 확인해 상위 비중·기초자산의 최신 상태를 점검해 보세요.\n\n## 시장 반응 해석\n\n같은 섹터(방산) 내 타 ETF와 비교해 KODEX 방산TOP10의 거래량이 상대적으로 큰지 확인해야 합니다. 특정 종목에만 수급이 몰리는 경우 단기 쏠림이고, 섹터 전반이 동반 움직였다면 테마 단위 흐름입니다. 외국인·기관 순매수 데이터는 장 마감 후 확인 가능합니다.\n\n변동성이 확대되었을 때는 **시가총액 대비 거래대금 비율**과 **호가 스프레드**를 체크해 유동성 리스크를 함께 점검하세요.\n\n\n> 섹터 배경: [KODEX 방산TOP10, 왜 오늘 거래량 1위인가 — 방위산업 ETF 지정학 수혜](/surge/0080g0-kodex-방산top10-surge)을 함께 읽으면 이해가 빠릅니다.\n\n## 4050 투자자 관점\n\n1. **포지션이 이미 있는 경우** — 비중이 자산 대비 과대하지 않은지(권장: 단일 섹터 15% 이내) 재점검. 이번 상승/조정으로 목표 수익률에 도달했다면 일부 차익 실현 고려.\n2. **신규 진입을 검토 중인 경우** — 추격 매수 대신 3~5회 분할 진입 계획 수립. 연금·ISA 계좌 한도가 남아 있다면 세후 수익률 관점에서 우선 활용.\n3. **관망 중인 경우** — 뉴스 후속 보도와 장중 거래량을 1~2일 관찰한 뒤 섹터 흐름이 추세인지 일회성인지 확인.\n\n## 단기 전망\n\n**낙관 시나리오**: 뉴스 흐름이 이어지고 섹터 자금이 추가 유입되면 단기 +3~5% 연장 가능. 체크 지표 — 다음 날 거래량 유지, 동반 ETF 상승.\n\n**조심 시나리오**: 뉴스 소멸 또는 차익 실현 매물 출회 시 반락 가능. 체크 지표 — 단기 이동평균 이탈, 섹터 평균 하락 전환.\n\n## FAQ\n\n**Q1: 오늘 많이 올랐는데 지금 사도 되나요?**\n\n당일 급등한 ETF를 고점에서 추격하는 것보다는, 며칠 관찰하며 거래량과 가격이 안정되는 지점에서 분할 진입하는 편이 위험을 줄입니다.\n\n**Q2: 왜 다른 ETF보다 이게 움직였나요?**\n\n종목의 거래량 순위·구성 비중·섹터 뉴스 민감도가 결합된 결과입니다. 같은 섹터의 타 ETF 수급을 함께 보면 개별 쏠림인지 테마 흐름인지 구분됩니다.\n\n**Q3: 내일도 이어질까요?**\n\n단일 세션의 흐름만으로 다음 날을 확언할 수 없습니다. 뉴스 후속 보도, 외국인·기관 순매수, 섹터 평균 흐름 3가지를 함께 확인하시길 권합니다.\n\n## 저의 결론\n\n개인적으로는 이 전략을 추천하는 편입니다. 오늘 내용을 실전에 옮길 때는 본인의 투자 기간과 리스크 허용 범위부터 정리하시는 걸 권합니다. 숫자보다 원칙이 먼저입니다.\n\n— 김성훈, 은퇴 자산 설계 전문\n",
+        "wordCount": 4094,
+        "generatedBy": "sample",
+        "author": "김성훈",
+        "authorId": "pb_kim",
+        "authorTitle": "前 증권사 프라이빗 뱅커 (25년 차)",
+        "relatedLinks": [
+          {
+            "category": "breaking",
+            "slug": "breaking-20260424-1-0080g0",
+            "title": "[04월 24일 속보] KODEX 방산TOP10 — 조정 1.87%, 왜 움직였나",
+            "date": "2026-04-24T14:39:21.406Z",
+            "tickers": [
+              "0080G0"
+            ],
+            "keywords": [
+              "KODEX 방산TOP10 속보 — 오늘 하락 1.87% · 거래량 1위",
+              "ETF 속보",
+              "거래량 TOP",
+              "ETF 뉴스",
+              "당일 ETF 분석"
+            ],
+            "reason": "ticker-overlap"
+          },
+          {
+            "category": "surge",
+            "slug": "0080g0-kodex-방산top10-surge",
+            "title": "KODEX 방산TOP10, 왜 오늘 거래량 1위인가 — 방위산업 ETF 지정학 수혜",
+            "date": "2026-04-24T14:39:21.403Z",
+            "tickers": [
+              "0080G0"
+            ],
+            "keywords": [
+              "KODEX 방산TOP10 급등 이유 — 방위산업 ETF 지정학 수혜",
+              "급등 ETF",
+              "거래량 급등",
+              "ETF 급등 이유"
+            ],
+            "reason": "sector-overlap"
+          }
+        ]
+      },
+      "plan": {
+        "totalLines": 106,
+        "placements": [
+          {
+            "type": "in-article",
+            "position": "after-first-h2",
+            "lineIndex": 1,
+            "adFormat": "display",
+            "size": "responsive",
+            "priority": "high"
+          },
+          {
+            "type": "in-content",
+            "position": "mid-content",
+            "lineIndex": 53,
+            "adFormat": "in-feed",
+            "size": "responsive",
+            "priority": "medium"
+          },
+          {
+            "type": "cta-banner",
+            "position": "before-faq",
+            "lineIndex": 85,
+            "adFormat": "affiliate-card",
+            "priority": "high"
+          },
+          {
+            "type": "bottom-banner",
+            "position": "end-of-article",
+            "lineIndex": 106,
+            "adFormat": "matched-content",
+            "size": "responsive",
+            "priority": "medium"
+          }
+        ]
+      },
+      "articleSlug": "breaking-20260425-1-0080g0",
+      "category": "breaking",
+      "totalPlacements": 4
+    },
+    {
+      "article": {
+        "keyword": "SOL 조선TOP3플러스레버리지 속보 — 오늘 상승 3.09% · 거래량 2위",
+        "title": "[04월 25일 속보] SOL 조선TOP3플러스레버리지 — 상승 3.09%, 왜 움직였나",
+        "slug": "breaking-20260425-2-0080y0",
+        "category": "breaking",
+        "templateType": "breaking",
+        "tickers": [
+          "0080Y0"
+        ],
+        "content": "## 저의 관전포인트\n\n제가 VVIP 고객 상담할 때 자주 받은 질문이… 오늘 이 주제를 왜 짚어야 하는지 세 줄로 먼저 정리해 드릴게요.\n\n## 3줄 속보 요약\n\n- **거래량 2위**: SOL 조선TOP3플러스레버리지이(가) +3.09%로 오늘 시장에서 상승 흐름을 보였습니다.\n- **섹터 맥락**: 조선 테마 전반으로 자금이 이동 중이며, 구성종목 상위 비중의 영향이 큽니다.\n- **체크 포인트**: 단기 모멘텀과 뉴스 흐름을 함께 보고, 추격 진입보다 분할 진입·비중 점검을 권합니다.\n\n![[04월 25일 속보] SOL 조선TOP3플러스레버리지 — 상승 3.09%, 왜 움직였나](/api/og?category=breaking&title=%5B04%EC%9B%94+25%EC%9D%BC+%EC%86%8D%EB%B3%B4%5D+SOL+%EC%A1%B0%EC%84%A0TOP3%ED%94%8C%EB%9F%AC%EC%8A%A4%EB%A0%88%EB%B2%84%EB%A6%AC%EC%A7%80+%E2%80%94+%EC%83%81%EC%8A%B9+3.09%25%2C+%EC%99%9C+%EC%9B%80%EC%A7%81%EC%98%80%EB%82%98&date=2026.+4.+25.&tickers=0080Y0)\n\n## 오늘 이 ETF를 움직인 뉴스\n\n**1. [[ETF 시황] '화장품·조선 ETF' 상승…글로벌 기술주 '약세'](https://www.newspim.com/news/view/20260424001148)** — *뉴스핌*\n\n> 뉴스핌 기사 스니펫: \"코스콤 ETF CHECK에 따르면 이날 수익률 상위 ETF는 PLUS 태양광&ESS(8.49%), SOL 조선기자재(7.67%), TIGER 코리아AI전력기기TOP3플러스(6.88%), TIGER Fn신재생에너지(6.77%), TIGER 미국필라델피아반도체레버리지(합성)(6.74...\"\n\n**2. [[박수진의 머니워치] 美·이란 긴장 속 열린 '코스피 6500'…반도체·AI ...](http://www.newswatch.kr/news/articleView.html?idxno=79412)** — *newswatch.kr*\n\n> newswatch.kr 기사 스니펫: \"거래량으로는 KEC가 가장 많았으며, 상장지수펀드(ETF)는 SOL 조선TOP3플러스레버리지가 가장 크게 상승했다. 24일 한국거래소에 따르면 20일부터 이날까지 코스피 시장에서 가장 높은 상승률을 보인 것은...\"\n\n**3. [코스피 100p 랠리…과열 신호 동시 점등](https://www.newspim.com/news/view/20260424000993)** — *뉴스핌*\n\n> 뉴스핌 기사 스니펫: \"SOL 조선TOP3플러스레버리지(+27.76%), TIGER 2차전지TOP10레버리지(+24.87%), KODEX 2차전지산업레버리지(+18.55%), PLUS 글로벌수소&차세대연료전지(+17.08%), TIGER 200IT레버리지(+16.12%) 등이 상위권에 올랐다. 이는 상승장 기대가...\"\n\n**4. [[주식마감] 트럼프 '휴전 연장' 선언에 중동 재건 기대감↑… 대원전선...](https://www.ggilbo.com/news/articleView.html?idxno=1154680)** — *ggilbo.com*\n\n> ggilbo.com 기사 스니펫: \"2차전지TOP10레버리지, KODEX 코스닥150, KODEX 200, TIGER 미국S&P500, 대한전선, SOL AI반도체TOP2플러스, LG디스플레이, KODEX 미국S&P500, 삼성 인버스 2X 코스닥150 선물 ETN, KODEX 조선TOP10, 대한해운, 삼성제약이다. 코스닥 시장...\"\n\n**5. [증시에 울리는 뱃고동…조선주, 실적 개선·데이터센터發 수혜 '겹호재...](https://www.imaeil.com/page/view/2026042309591269809)** — *imaeil.com*\n\n> imaeil.com 기사 스니펫: \"신한자산운용 'SOL 조선TOP3플러스레버리지'의 1주일 수익률은 43.64%로 전체 1091개 ETF 가운데 상위 3위를 기록했고 ▲삼성자산운용 'KODEX 조선TOP10(21.28%)' ▲SOL 조선TOP3플러스(20.25%) ▲미래에셋자산운용 'TIGER...\"\n\n\n\n### 뉴스가 이 ETF에 주는 의미\n\n\n\n오늘 SOL 조선TOP3플러스레버리지과 조선 관련 보도 5건이 수집되었습니다. 주요 흐름은 뉴스핌에서 다룬 \"[ETF 시황] '화장품·조선 ETF' 상승…글로벌 기술주 '약세'\" 관련 이슈이며, newswatch.kr의 \"[박수진의 머니워치] 美·이란 긴장 속 열린 '코스피 6500'…반도체·AI ...\"가 이를 보완합니다.\n\n\n\n보도 종합을 보면 조선에 대한 수급 쏠림이 확대 국면에 진입한 것으로 관찰되며, SOL 조선TOP3플러스레버리지의 오늘 상승(+3.09%)도 이 흐름과 맞물려 움직였을 가능성이 있습니다.\n\n\n> 관련 분석: [[04월 24일 속보] SOL 조선TOP3플러스레버리지 — 상승 3.09%, 왜 움직였나](/breaking/breaking-20260424-2-0080y0) — 같은 종목을 다른 각도에서 다룹니다.\n\n## 시세·거래량 데이터\n\n| 항목 | 값 |\n|---|---|\n| 종목명 | SOL 조선TOP3플러스레버리지 |\n| 종목코드 | 0080Y0 |\n| 현재가 | 22,160원 |\n| 전일대비 | +665원 (+3.09%) |\n| 거래량 | 4,108,422주 |\n| 시가총액 | 2,438억 원 |\n| 섹터 | 조선 |\n\n## 섹터·구성종목과의 연결\n\nSOL 조선TOP3플러스레버리지의 기초자산·전략이 단일형이거나 바스켓 데이터 미확보 상태입니다. 운용사 공식 PDP 공시를 확인해 상위 비중·기초자산의 최신 상태를 점검해 보세요.\n\n## 시장 반응 해석\n\n같은 섹터(조선) 내 타 ETF와 비교해 SOL 조선TOP3플러스레버리지의 거래량이 상대적으로 큰지 확인해야 합니다. 특정 종목에만 수급이 몰리는 경우 단기 쏠림이고, 섹터 전반이 동반 움직였다면 테마 단위 흐름입니다. 외국인·기관 순매수 데이터는 장 마감 후 확인 가능합니다.\n\n변동성이 확대되었을 때는 **시가총액 대비 거래대금 비율**과 **호가 스프레드**를 체크해 유동성 리스크를 함께 점검하세요.\n\n\n> 섹터 배경: [이번 주 자금은 어디로? 조선 섹터에 몰린 898억 원](/flow/flow-20260424-조선)을 함께 읽으면 이해가 빠릅니다.\n\n## 4050 투자자 관점\n\n1. **포지션이 이미 있는 경우** — 비중이 자산 대비 과대하지 않은지(권장: 단일 섹터 15% 이내) 재점검. 이번 상승/조정으로 목표 수익률에 도달했다면 일부 차익 실현 고려.\n2. **신규 진입을 검토 중인 경우** — 추격 매수 대신 3~5회 분할 진입 계획 수립. 연금·ISA 계좌 한도가 남아 있다면 세후 수익률 관점에서 우선 활용.\n3. **관망 중인 경우** — 뉴스 후속 보도와 장중 거래량을 1~2일 관찰한 뒤 섹터 흐름이 추세인지 일회성인지 확인.\n\n## 단기 전망\n\n**낙관 시나리오**: 뉴스 흐름이 이어지고 섹터 자금이 추가 유입되면 단기 +3~5% 연장 가능. 체크 지표 — 다음 날 거래량 유지, 동반 ETF 상승.\n\n**조심 시나리오**: 뉴스 소멸 또는 차익 실현 매물 출회 시 반락 가능. 체크 지표 — 단기 이동평균 이탈, 섹터 평균 하락 전환.\n\n## FAQ\n\n**Q1: 오늘 많이 올랐는데 지금 사도 되나요?**\n\n당일 급등한 ETF를 고점에서 추격하는 것보다는, 며칠 관찰하며 거래량과 가격이 안정되는 지점에서 분할 진입하는 편이 위험을 줄입니다.\n\n**Q2: 왜 다른 ETF보다 이게 움직였나요?**\n\n종목의 거래량 순위·구성 비중·섹터 뉴스 민감도가 결합된 결과입니다. 같은 섹터의 타 ETF 수급을 함께 보면 개별 쏠림인지 테마 흐름인지 구분됩니다.\n\n**Q3: 내일도 이어질까요?**\n\n단일 세션의 흐름만으로 다음 날을 확언할 수 없습니다. 뉴스 후속 보도, 외국인·기관 순매수, 섹터 평균 흐름 3가지를 함께 확인하시길 권합니다.\n\n## 저의 결론\n\n개인적으로는 이 전략을 추천하는 편입니다. 오늘 내용을 실전에 옮길 때는 본인의 투자 기간과 리스크 허용 범위부터 정리하시는 걸 권합니다. 숫자보다 원칙이 먼저입니다.\n\n— 김성훈, 은퇴 자산 설계 전문\n",
+        "wordCount": 4082,
+        "generatedBy": "sample",
+        "author": "김성훈",
+        "authorId": "pb_kim",
+        "authorTitle": "前 증권사 프라이빗 뱅커 (25년 차)",
+        "relatedLinks": [
+          {
+            "category": "breaking",
+            "slug": "breaking-20260424-2-0080y0",
+            "title": "[04월 24일 속보] SOL 조선TOP3플러스레버리지 — 상승 3.09%, 왜 움직였나",
+            "date": "2026-04-24T14:39:21.408Z",
+            "tickers": [
+              "0080Y0"
+            ],
+            "keywords": [
+              "SOL 조선TOP3플러스레버리지 속보 — 오늘 상승 3.09% · 거래량 2위",
+              "ETF 속보",
+              "거래량 TOP",
+              "ETF 뉴스",
+              "당일 ETF 분석"
+            ],
+            "reason": "ticker-overlap"
+          },
+          {
+            "category": "flow",
+            "slug": "flow-20260424-조선",
+            "title": "이번 주 자금은 어디로? 조선 섹터에 몰린 898억 원",
+            "date": "2026-04-24T14:39:21.404Z",
+            "tickers": [
+              "0080G0",
+              "0080Y0",
+              "0005D0",
+              "0072R0",
+              "0015B0"
+            ],
+            "keywords": [
+              "주간 자금 흐름 리포트 — 조선 섹터 +3.09%",
+              "자금 흐름",
+              "섹터 로테이션",
+              "기관 수급"
+            ],
+            "reason": "sector-overlap"
+          }
+        ]
+      },
+      "plan": {
+        "totalLines": 106,
+        "placements": [
+          {
+            "type": "in-article",
+            "position": "after-first-h2",
+            "lineIndex": 1,
+            "adFormat": "display",
+            "size": "responsive",
+            "priority": "high"
+          },
+          {
+            "type": "in-content",
+            "position": "mid-content",
+            "lineIndex": 53,
+            "adFormat": "in-feed",
+            "size": "responsive",
+            "priority": "medium"
+          },
+          {
+            "type": "cta-banner",
+            "position": "before-faq",
+            "lineIndex": 85,
+            "adFormat": "affiliate-card",
+            "priority": "high"
+          },
+          {
+            "type": "bottom-banner",
+            "position": "end-of-article",
+            "lineIndex": 106,
+            "adFormat": "matched-content",
+            "size": "responsive",
+            "priority": "medium"
+          }
+        ]
+      },
+      "articleSlug": "breaking-20260425-2-0080y0",
+      "category": "breaking",
+      "totalPlacements": 4
+    },
+    {
+      "article": {
+        "keyword": "SOL 전고체배터리&실리콘음극재 속보 — 오늘 하락 4.62% · 거래량 3위",
+        "title": "[04월 25일 속보] SOL 전고체배터리&실리콘음극재 — 조정 4.62%, 왜 움직였나",
+        "slug": "breaking-20260425-3-0005d0",
+        "category": "breaking",
+        "templateType": "breaking",
+        "tickers": [
+          "0005D0"
+        ],
+        "content": "## 저의 관전포인트\n\n수치상으로는 이렇게 해석됩니다. 오늘 이 주제를 왜 짚어야 하는지 세 줄로 먼저 정리해 드릴게요.\n\n## 3줄 속보 요약\n\n- **거래량 3위**: SOL 전고체배터리&실리콘음극재이(가) -4.62%로 오늘 시장에서 조정 흐름을 보였습니다.\n- **섹터 맥락**: 2차전지 테마 전반으로 자금이 이동 중이며, 구성종목 상위 비중의 영향이 큽니다.\n- **체크 포인트**: 단기 모멘텀과 뉴스 흐름을 함께 보고, 추격 진입보다 분할 진입·비중 점검을 권합니다.\n\n![[04월 25일 속보] SOL 전고체배터리&실리콘음극재 — 조정 4.62%, 왜 움직였나](/api/og?category=breaking&title=%5B04%EC%9B%94+25%EC%9D%BC+%EC%86%8D%EB%B3%B4%5D+SOL+%EC%A0%84%EA%B3%A0%EC%B2%B4%EB%B0%B0%ED%84%B0%EB%A6%AC%26%EC%8B%A4%EB%A6%AC%EC%BD%98%EC%9D%8C%EA%B7%B9%EC%9E%AC+%E2%80%94+%EC%A1%B0%EC%A0%95+4.62%25%2C+%EC%99%9C+%EC%9B%80%EC%A7%81%EC%98%80%EB%82%98&date=2026.+4.+25.&tickers=0005D0)\n\n## 오늘 이 ETF를 움직인 뉴스\n\n**1. [불안한 유가… 이차전지주가 들썩인다](https://www.chosun.com/economy/money/2026/04/24/D473J6MH6ND3PB5EEFAUTNTOLU/?utm_source=naver&utm_medium=referral&utm_campaign=naver-news)** — *조선일보*\n\n> 조선일보 기사 스니펫: \"이어 SOL 전고체배터리&실리콘음극재(21.64%), KODEX2차전지산업(19.28%), TIGER2차전지테마(18.61%), RISE2차전지TOP10(17.95%)이 뒤를 이었다. 이차전지 ETF가 수익률 상위권을 사실상 ‘싹쓸이’했다. 유가 불안에 에너지 안보...\"\n\n**2. [유가 불안에 들썩이는 이차전지...삼성SDI 최고가 행진에 이차전지 ETF도...](https://www.chosun.com/economy/money/2026/04/23/PMQTZIRT4RHJVJMMHBY42VMAXY/?utm_source=naver&utm_medium=referral&utm_campaign=naver-news)** — *조선일보*\n\n> 조선일보 기사 스니펫: \"이어 SOL 전고체배터리&실리콘음극재(21.64%), KODEX2차전지산업(19.28%), TIGER2차전지테마(18.61%), RISE2차전지TOP10(17.95%)이 뒤를 이었다. 이차전지 ETF가 수익률 상위권을 말 그대로 ‘싹쓸이’했다. ◇유가 불안에 에너지...\"\n\n**3. [수익률 꼴찌서 톱5로, 2차전지 ETF의 반란](https://www.hankyung.com/article/2026042296751)** — *한국경제*\n\n> 한국경제 기사 스니펫: \"22일 ETF체크에 따르면 전체 ETF 상품 가운데 지난 1주일 기준 수익률 상위 1~5위 모두 국내 2차전지 종목에 투자하는 ETF가 싹쓸이했다. 가장 수익률이 높은 상품은 ‘SOL 전고체배터리&실리콘음극재’(20.96%)였다....\"\n\n**4. [\"AI 다음은 양자컴퓨팅\"… 2차전지와 주도권 다투며 상승 '랠리'](https://www.g-enews.com/view.php?ud=202604211637119462edf69f862c_1)** — *g-enews.com*\n\n> g-enews.com 기사 스니펫: \"양자컴퓨팅과 2차전지 관련 상품들이 전체 수익률 상위권을 양분하며 장악했다. 전체 ETF 중 등락률 1위는 무려 26.67%의 수익률을 기록한 'SOL 전고체배터리&실리콘음극재'가 차지했으나, 양자컴퓨팅 테마 역시...\"\n\n**5. [전기차 캐즘 벗어날까 … 2차전지株 폭등, 삼성SDI 19.5%↑ 신고가 [마켓...](https://biz.newdaily.co.kr/site/data/html/2026/04/21/2026042100286.html)** — *biz.newdaily.co.kr*\n\n> biz.newdaily.co.kr 기사 스니펫: \"이어 'KODEX 2차전지산업레버리지'(+19.26%), 'SOL 전고체배터리&실리콘음극재'(+12.92%), 'TIGER 2차전지TOP10'(+11.80%), 'KODEX 2차전지산업'(+10.27%) 등 순이었다. 이들 대체로 삼성SDI와 LG에너지솔루션 등을 비중 있게 담은...\"\n\n\n\n### 뉴스가 이 ETF에 주는 의미\n\n\n\n오늘 SOL 전고체배터리&실리콘음극재과 2차전지 관련 보도 5건이 수집되었습니다. 주요 흐름은 조선일보에서 다룬 \"불안한 유가… 이차전지주가 들썩인다\" 관련 이슈이며, 조선일보의 \"유가 불안에 들썩이는 이차전지...삼성SDI 최고가 행진에 이차전지 ETF도...\"가 이를 보완합니다.\n\n\n\n보도 종합을 보면 2차전지에 대한 수급 쏠림이 조정 국면에 진입한 것으로 관찰되며, SOL 전고체배터리&실리콘음극재의 오늘 하락(-4.62%)도 이 흐름과 맞물려 움직였을 가능성이 있습니다.\n\n\n> 관련 분석: [[04월 24일 속보] SOL 전고체배터리&실리콘음극재 — 조정 4.62%, 왜 움직였나](/breaking/breaking-20260424-3-0005d0) — 같은 종목을 다른 각도에서 다룹니다.\n\n## 시세·거래량 데이터\n\n| 항목 | 값 |\n|---|---|\n| 종목명 | SOL 전고체배터리&실리콘음극재 |\n| 종목코드 | 0005D0 |\n| 현재가 | 23,560원 |\n| 전일대비 | -1140원 (-4.62%) |\n| 거래량 | 2,510,526주 |\n| 시가총액 | 2,144억 원 |\n| 섹터 | 2차전지 |\n\n## 섹터·구성종목과의 연결\n\nSOL 전고체배터리&실리콘음극재의 기초자산·전략이 단일형이거나 바스켓 데이터 미확보 상태입니다. 운용사 공식 PDP 공시를 확인해 상위 비중·기초자산의 최신 상태를 점검해 보세요.\n\n## 시장 반응 해석\n\n같은 섹터(2차전지) 내 타 ETF와 비교해 SOL 전고체배터리&실리콘음극재의 거래량이 상대적으로 큰지 확인해야 합니다. 특정 종목에만 수급이 몰리는 경우 단기 쏠림이고, 섹터 전반이 동반 움직였다면 테마 단위 흐름입니다. 외국인·기관 순매수 데이터는 장 마감 후 확인 가능합니다.\n\n변동성이 확대되었을 때는 **시가총액 대비 거래대금 비율**과 **호가 스프레드**를 체크해 유동성 리스크를 함께 점검하세요.\n\n\n> 이어서 보기 좋은 글: [[04월 24일 속보] SOL 조선TOP3플러스레버리지 — 상승 3.09%, 왜 움직였나](/breaking/breaking-20260424-2-0080y0).\n\n## 4050 투자자 관점\n\n1. **포지션이 이미 있는 경우** — 비중이 자산 대비 과대하지 않은지(권장: 단일 섹터 15% 이내) 재점검. 이번 상승/조정으로 목표 수익률에 도달했다면 일부 차익 실현 고려.\n2. **신규 진입을 검토 중인 경우** — 추격 매수 대신 3~5회 분할 진입 계획 수립. 연금·ISA 계좌 한도가 남아 있다면 세후 수익률 관점에서 우선 활용.\n3. **관망 중인 경우** — 뉴스 후속 보도와 장중 거래량을 1~2일 관찰한 뒤 섹터 흐름이 추세인지 일회성인지 확인.\n\n## 단기 전망\n\n**낙관 시나리오**: 뉴스 흐름이 이어지고 섹터 자금이 추가 유입되면 단기 +3~5% 연장 가능. 체크 지표 — 다음 날 거래량 유지, 동반 ETF 상승.\n\n**조심 시나리오**: 뉴스 소멸 또는 차익 실현 매물 출회 시 반락 가능. 체크 지표 — 단기 이동평균 이탈, 섹터 평균 하락 전환.\n\n## FAQ\n\n**Q1: 오늘 많이 올랐는데 지금 사도 되나요?**\n\n당일 급등한 ETF를 고점에서 추격하는 것보다는, 며칠 관찰하며 거래량과 가격이 안정되는 지점에서 분할 진입하는 편이 위험을 줄입니다.\n\n**Q2: 왜 다른 ETF보다 이게 움직였나요?**\n\n종목의 거래량 순위·구성 비중·섹터 뉴스 민감도가 결합된 결과입니다. 같은 섹터의 타 ETF 수급을 함께 보면 개별 쏠림인지 테마 흐름인지 구분됩니다.\n\n**Q3: 내일도 이어질까요?**\n\n단일 세션의 흐름만으로 다음 날을 확언할 수 없습니다. 뉴스 후속 보도, 외국인·기관 순매수, 섹터 평균 흐름 3가지를 함께 확인하시길 권합니다.\n\n## 저의 결론\n\n저는 데이터로만 이야기하는 편입니다. 오늘 내용을 실전에 옮길 때는 본인의 투자 기간과 리스크 허용 범위부터 정리하시는 걸 권합니다. 숫자보다 원칙이 먼저입니다.\n\n— 이재환, 데이터 분석가 / AICPA\n",
+        "wordCount": 4244,
+        "generatedBy": "sample",
+        "author": "이재환",
+        "authorId": "data_lee",
+        "authorTitle": "퀀트 데이터 분석가 / AICPA",
+        "relatedLinks": [
+          {
+            "category": "breaking",
+            "slug": "breaking-20260424-3-0005d0",
+            "title": "[04월 24일 속보] SOL 전고체배터리&실리콘음극재 — 조정 4.62%, 왜 움직였나",
+            "date": "2026-04-24T14:39:21.410Z",
+            "tickers": [
+              "0005D0"
+            ],
+            "keywords": [
+              "SOL 전고체배터리&실리콘음극재 속보 — 오늘 하락 4.62% · 거래량 3위",
+              "ETF 속보",
+              "거래량 TOP",
+              "ETF 뉴스",
+              "당일 ETF 분석"
+            ],
+            "reason": "ticker-overlap"
+          },
+          {
+            "category": "breaking",
+            "slug": "breaking-20260424-2-0080y0",
+            "title": "[04월 24일 속보] SOL 조선TOP3플러스레버리지 — 상승 3.09%, 왜 움직였나",
+            "date": "2026-04-24T14:39:21.408Z",
+            "tickers": [
+              "0080Y0"
+            ],
+            "keywords": [
+              "SOL 조선TOP3플러스레버리지 속보 — 오늘 상승 3.09% · 거래량 2위",
+              "ETF 속보",
+              "거래량 TOP",
+              "ETF 뉴스",
+              "당일 ETF 분석"
+            ],
+            "reason": "same-category"
+          }
+        ]
+      },
+      "plan": {
+        "totalLines": 106,
+        "placements": [
+          {
+            "type": "in-article",
+            "position": "after-first-h2",
+            "lineIndex": 1,
+            "adFormat": "display",
+            "size": "responsive",
+            "priority": "high"
+          },
+          {
+            "type": "in-content",
+            "position": "mid-content",
+            "lineIndex": 53,
+            "adFormat": "in-feed",
+            "size": "responsive",
+            "priority": "medium"
+          },
+          {
+            "type": "cta-banner",
+            "position": "before-faq",
+            "lineIndex": 85,
+            "adFormat": "affiliate-card",
+            "priority": "high"
+          },
+          {
+            "type": "bottom-banner",
+            "position": "end-of-article",
+            "lineIndex": 106,
+            "adFormat": "matched-content",
+            "size": "responsive",
+            "priority": "medium"
+          }
+        ]
+      },
+      "articleSlug": "breaking-20260425-3-0005d0",
+      "category": "breaking",
+      "totalPlacements": 4
+    }
+  ]
+}

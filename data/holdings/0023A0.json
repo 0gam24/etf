@@ -1,0 +1,15 @@
+{
+  "code": "0023A0",
+  "name": "SOL 미국양자컴퓨팅TOP10",
+  "asOf": "2026-04-22",
+  "source": "shinhansfund.com (대표 비중)",
+  "type": "equity",
+  "market": "US",
+  "holdings": [
+    { "name": "IonQ",        "ticker": "IONQ",  "weight": 16.2 },
+    { "name": "Rigetti",     "ticker": "RGTI",  "weight": 14.5 },
+    { "name": "D-Wave",      "ticker": "QBTS",  "weight": 12.8 },
+    { "name": "IBM",         "ticker": "IBM",   "weight": 10.1 },
+    { "name": "Quantum Computing", "ticker": "QUBT", "weight": 9.4 }
+  ]
+}

@@ -1,0 +1,411 @@
+{
+  "_meta": {
+    "createdBy": "SeoArchitect",
+    "createdAt": "2026-04-24T15:00:09.811Z",
+    "fileName": "keywords_20260425.json"
+  },
+  "data": {
+    "strategies": [
+      {
+        "id": "pulse_20260425",
+        "category": "pulse",
+        "templateType": "pulse",
+        "keyword": "4월 25일 오늘의 ETF 관전포인트",
+        "estimatedCpc": 1500,
+        "tickers": [
+          "0080G0",
+          "0080Y0",
+          "0005D0"
+        ],
+        "top3": [
+          {
+            "code": "0080G0",
+            "name": "KODEX 방산TOP10",
+            "price": 15245,
+            "change": -290,
+            "changeRate": -1.87,
+            "volume": 5416680,
+            "tradeAmount": 82401947010,
+            "marketCap": 577785500000,
+            "nav": 15271.4,
+            "highPrice": 15520,
+            "lowPrice": 15000,
+            "openPrice": 15520,
+            "date": "20260423",
+            "sector": "방산"
+          },
+          {
+            "code": "0080Y0",
+            "name": "SOL 조선TOP3플러스레버리지",
+            "price": 22160,
+            "change": 665,
+            "changeRate": 3.09,
+            "volume": 4108422,
+            "tradeAmount": 89846652435,
+            "marketCap": 243760000000,
+            "nav": 22312.92,
+            "highPrice": 22890,
+            "lowPrice": 20600,
+            "openPrice": 21880,
+            "date": "20260423",
+            "sector": "조선"
+          },
+          {
+            "code": "0005D0",
+            "name": "SOL 전고체배터리&실리콘음극재",
+            "price": 23560,
+            "change": -1140,
+            "changeRate": -4.62,
+            "volume": 2510526,
+            "tradeAmount": 59861905536,
+            "marketCap": 214396000000,
+            "nav": 23600.93,
+            "highPrice": 24785,
+            "lowPrice": 23015,
+            "openPrice": 24695,
+            "date": "20260423",
+            "sector": "2차전지"
+          }
+        ],
+        "leadSector": {
+          "sector": "조선",
+          "count": 1,
+          "avgChangeRate": 3.09,
+          "totalAmount": 89846652435
+        },
+        "sectorFlow": [
+          {
+            "sector": "조선",
+            "count": 1,
+            "avgChangeRate": 3.09,
+            "totalAmount": 89846652435
+          },
+          {
+            "sector": "해외주식",
+            "count": 34,
+            "avgChangeRate": 0.24,
+            "totalAmount": 113116115428
+          },
+          {
+            "sector": "커버드콜·월배당",
+            "count": 10,
+            "avgChangeRate": 0.22,
+            "totalAmount": 24820544809
+          },
+          {
+            "sector": "기타",
+            "count": 29,
+            "avgChangeRate": 0.08,
+            "totalAmount": 96604700863
+          },
+          {
+            "sector": "채권",
+            "count": 6,
+            "avgChangeRate": -0.13,
+            "totalAmount": 1222585575
+          }
+        ],
+        "suggestedTitle": "4월 25일 오늘의 ETF 관전포인트 — 거래량 1위 KODEX 방산TOP10 외 2종목",
+        "suggestedSlug": "pulse-20260425",
+        "contentDirection": {
+          "template": "pulse",
+          "minWords": 1800,
+          "requiredSections": [
+            "3줄 관전포인트",
+            "거래량 TOP3 요약",
+            "섹터 흐름 한눈에 (4050 관점)",
+            "오늘 체크할 뉴스·지표",
+            "FAQ"
+          ],
+          "dataFocus": "daily-briefing"
+        }
+      },
+      {
+        "id": "surge_20260425",
+        "category": "surge",
+        "templateType": "surge",
+        "keyword": "KODEX 방산TOP10 급등 이유 — 방위산업 ETF 전망",
+        "estimatedCpc": 2100,
+        "tickers": [
+          "0080G0"
+        ],
+        "focusEtf": {
+          "code": "0080G0",
+          "name": "KODEX 방산TOP10",
+          "price": 15245,
+          "change": -290,
+          "changeRate": -1.87,
+          "volume": 5416680,
+          "tradeAmount": 82401947010,
+          "marketCap": 577785500000,
+          "nav": 15271.4,
+          "highPrice": 15520,
+          "lowPrice": 15000,
+          "openPrice": 15520,
+          "date": "20260423",
+          "sector": "방산"
+        },
+        "portfolio": null,
+        "holdings": [],
+        "topN": 5,
+        "suggestedTitle": "KODEX 방산TOP10, 왜 오늘 거래량 1위인가 — 방위산업 ETF 전망",
+        "suggestedSlug": "0080g0-kodex-방산top10-surge",
+        "contentDirection": {
+          "template": "surge",
+          "minWords": 2500,
+          "requiredSections": [
+            "3줄 급등 요약",
+            "거래량 데이터",
+            "급등 사유 분석",
+            "ETF 구성종목 심층",
+            "단기·중기 전망",
+            "FAQ"
+          ],
+          "dataFocus": "etf-holdings"
+        }
+      },
+      {
+        "id": "flow_20260425",
+        "category": "flow",
+        "templateType": "flow",
+        "keyword": "주간 자금 흐름 리포트 — 조선 섹터 +3.09%",
+        "estimatedCpc": 1800,
+        "tickers": [
+          "0080G0",
+          "0080Y0",
+          "0005D0",
+          "0072R0",
+          "0015B0"
+        ],
+        "sectorFlow": [
+          {
+            "sector": "조선",
+            "count": 1,
+            "avgChangeRate": 3.09,
+            "totalAmount": 89846652435
+          },
+          {
+            "sector": "해외주식",
+            "count": 34,
+            "avgChangeRate": 0.24,
+            "totalAmount": 113116115428
+          },
+          {
+            "sector": "커버드콜·월배당",
+            "count": 10,
+            "avgChangeRate": 0.22,
+            "totalAmount": 24820544809
+          },
+          {
+            "sector": "기타",
+            "count": 29,
+            "avgChangeRate": 0.08,
+            "totalAmount": 96604700863
+          },
+          {
+            "sector": "채권",
+            "count": 6,
+            "avgChangeRate": -0.13,
+            "totalAmount": 1222585575
+          }
+        ],
+        "suggestedTitle": "이번 주 자금은 어디로? 조선 섹터에 몰린 898억 원",
+        "suggestedSlug": "flow-20260425-조선",
+        "contentDirection": {
+          "template": "flow",
+          "minWords": 2500,
+          "requiredSections": [
+            "주간 Flow 요약",
+            "섹터별 자금유입 표",
+            "기관·외국인 수급",
+            "다음 주 관전포인트",
+            "FAQ"
+          ],
+          "dataFocus": "sector-rotation"
+        }
+      },
+      {
+        "id": "income_20260425",
+        "category": "income",
+        "templateType": "income",
+        "keyword": "ISA 계좌 필수 월배당 ETF 조합",
+        "estimatedCpc": 2400,
+        "tickers": [
+          "0000D0"
+        ],
+        "focusEtf": {
+          "code": "0000D0",
+          "name": "TIGER 엔비디아미국채커버드콜밸런스(합성)",
+          "price": 10120,
+          "change": 35,
+          "changeRate": 0.35,
+          "volume": 58747,
+          "tradeAmount": 594332197,
+          "marketCap": 63250000000,
+          "nav": 10150.48,
+          "highPrice": 10135,
+          "lowPrice": 10085,
+          "openPrice": 10085,
+          "date": "20260423",
+          "sector": "커버드콜·월배당"
+        },
+        "suggestedTitle": "ISA 계좌 필수 월배당 ETF 조합 — 실제 분배금·세후 수익률 계산",
+        "suggestedSlug": "income-20260425-0000d0",
+        "contentDirection": {
+          "template": "income",
+          "minWords": 2800,
+          "requiredSections": [
+            "월배당 요약",
+            "분배금 계산 표",
+            "세후 수익률 비교",
+            "IRP·ISA·연금저축 조합법",
+            "주의사항",
+            "FAQ"
+          ],
+          "dataFocus": "dividend-yield-tax"
+        }
+      },
+      {
+        "id": "breaking_20260425_1",
+        "category": "breaking",
+        "templateType": "breaking",
+        "rank": 1,
+        "keyword": "KODEX 방산TOP10 속보 — 오늘 하락 1.87% · 거래량 1위",
+        "estimatedCpc": 2400,
+        "tickers": [
+          "0080G0"
+        ],
+        "focusEtf": {
+          "code": "0080G0",
+          "name": "KODEX 방산TOP10",
+          "price": 15245,
+          "change": -290,
+          "changeRate": -1.87,
+          "volume": 5416680,
+          "tradeAmount": 82401947010,
+          "marketCap": 577785500000,
+          "nav": 15271.4,
+          "highPrice": 15520,
+          "lowPrice": 15000,
+          "openPrice": 15520,
+          "date": "20260423",
+          "sector": "방산"
+        },
+        "portfolio": null,
+        "holdings": [],
+        "topN": 5,
+        "suggestedTitle": "[04월 25일 속보] KODEX 방산TOP10 — 조정 1.87%, 왜 움직였나",
+        "suggestedSlug": "breaking-20260425-1-0080g0",
+        "contentDirection": {
+          "template": "breaking",
+          "minWords": 3000,
+          "requiredSections": [
+            "3줄 속보 요약",
+            "뉴스 헤드라인 스캔",
+            "시세·거래량 데이터",
+            "섹터·구성종목 연결",
+            "시장 반응 해석",
+            "투자자 관점 (4050)",
+            "단기 전망 시나리오",
+            "FAQ"
+          ],
+          "dataFocus": "news-driven"
+        }
+      },
+      {
+        "id": "breaking_20260425_2",
+        "category": "breaking",
+        "templateType": "breaking",
+        "rank": 2,
+        "keyword": "SOL 조선TOP3플러스레버리지 속보 — 오늘 상승 3.09% · 거래량 2위",
+        "estimatedCpc": 2300,
+        "tickers": [
+          "0080Y0"
+        ],
+        "focusEtf": {
+          "code": "0080Y0",
+          "name": "SOL 조선TOP3플러스레버리지",
+          "price": 22160,
+          "change": 665,
+          "changeRate": 3.09,
+          "volume": 4108422,
+          "tradeAmount": 89846652435,
+          "marketCap": 243760000000,
+          "nav": 22312.92,
+          "highPrice": 22890,
+          "lowPrice": 20600,
+          "openPrice": 21880,
+          "date": "20260423",
+          "sector": "조선"
+        },
+        "portfolio": null,
+        "holdings": [],
+        "topN": 5,
+        "suggestedTitle": "[04월 25일 속보] SOL 조선TOP3플러스레버리지 — 상승 3.09%, 왜 움직였나",
+        "suggestedSlug": "breaking-20260425-2-0080y0",
+        "contentDirection": {
+          "template": "breaking",
+          "minWords": 3000,
+          "requiredSections": [
+            "3줄 속보 요약",
+            "뉴스 헤드라인 스캔",
+            "시세·거래량 데이터",
+            "섹터·구성종목 연결",
+            "시장 반응 해석",
+            "투자자 관점 (4050)",
+            "단기 전망 시나리오",
+            "FAQ"
+          ],
+          "dataFocus": "news-driven"
+        }
+      },
+      {
+        "id": "breaking_20260425_3",
+        "category": "breaking",
+        "templateType": "breaking",
+        "rank": 3,
+        "keyword": "SOL 전고체배터리&실리콘음극재 속보 — 오늘 하락 4.62% · 거래량 3위",
+        "estimatedCpc": 1900,
+        "tickers": [
+          "0005D0"
+        ],
+        "focusEtf": {
+          "code": "0005D0",
+          "name": "SOL 전고체배터리&실리콘음극재",
+          "price": 23560,
+          "change": -1140,
+          "changeRate": -4.62,
+          "volume": 2510526,
+          "tradeAmount": 59861905536,
+          "marketCap": 214396000000,
+          "nav": 23600.93,
+          "highPrice": 24785,
+          "lowPrice": 23015,
+          "openPrice": 24695,
+          "date": "20260423",
+          "sector": "2차전지"
+        },
+        "portfolio": null,
+        "holdings": [],
+        "topN": 5,
+        "suggestedTitle": "[04월 25일 속보] SOL 전고체배터리&실리콘음극재 — 조정 4.62%, 왜 움직였나",
+        "suggestedSlug": "breaking-20260425-3-0005d0",
+        "contentDirection": {
+          "template": "breaking",
+          "minWords": 3000,
+          "requiredSections": [
+            "3줄 속보 요약",
+            "뉴스 헤드라인 스캔",
+            "시세·거래량 데이터",
+            "섹터·구성종목 연결",
+            "시장 반응 해석",
+            "투자자 관점 (4050)",
+            "단기 전망 시나리오",
+            "FAQ"
+          ],
+          "dataFocus": "news-driven"
+        }
+      }
+    ]
+  }
+}

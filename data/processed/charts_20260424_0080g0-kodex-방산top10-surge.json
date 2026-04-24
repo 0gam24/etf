@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "createdBy": "Visualizer",
+    "createdAt": "2026-04-24T14:54:28.807Z",
+    "fileName": "charts_20260424_0080g0-kodex-방산top10-surge.json"
+  },
+  "data": [
+    {
+      "type": "card",
+      "title": "KODEX 방산TOP10 시세 스냅샷",
+      "items": [
+        {
+          "label": "현재가",
+          "value": "15,245원"
+        },
+        {
+          "label": "전일대비",
+          "value": "-290"
+        },
+        {
+          "label": "등락률",
+          "value": "-1.87%"
+        },
+        {
+          "label": "거래량",
+          "value": "542만주"
+        },
+        {
+          "label": "거래대금",
+          "value": "824억 원"
+        },
+        {
+          "label": "시가총액",
+          "value": "5,778억 원"
+        }
+      ]
+    },
+    {
+      "type": "bar",
+      "title": "방산 섹터 동일 테마 비교",
+      "data": [
+        {
+          "label": "KODEX 방산TOP10",
+          "value": -1.87,
+          "color": "#3B82F6"
+        },
+        {
+          "label": "HANARO 유럽방산",
+          "value": -2.13,
+          "color": "#3B82F6"
+        }
+      ]
+    }
+  ]
+}

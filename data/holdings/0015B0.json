@@ -1,0 +1,15 @@
+{
+  "code": "0015B0",
+  "name": "KoAct 미국나스닥성장기업액티브",
+  "asOf": "2026-04-22",
+  "source": "kbam.co.kr (대표 비중)",
+  "type": "equity",
+  "market": "US",
+  "holdings": [
+    { "name": "NVIDIA",     "ticker": "NVDA", "weight": 11.2 },
+    { "name": "Microsoft",  "ticker": "MSFT", "weight": 9.6 },
+    { "name": "Apple",      "ticker": "AAPL", "weight": 8.4 },
+    { "name": "Meta",       "ticker": "META", "weight": 6.1 },
+    { "name": "Amazon",     "ticker": "AMZN", "weight": 5.8 }
+  ]
+}

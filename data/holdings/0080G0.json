@@ -1,0 +1,14 @@
+{
+  "code": "0080G0",
+  "name": "KODEX 방산TOP10",
+  "asOf": "2026-04-22",
+  "source": "samsungfund.com (대표 비중)",
+  "type": "equity",
+  "holdings": [
+    { "name": "한화에어로스페이스", "ticker": "012450", "weight": 24.5 },
+    { "name": "현대로템",         "ticker": "064350", "weight": 18.2 },
+    { "name": "LIG넥스원",        "ticker": "079550", "weight": 14.7 },
+    { "name": "한화시스템",       "ticker": "272210", "weight": 11.3 },
+    { "name": "풍산",             "ticker": "103140", "weight": 9.6 }
+  ]
+}

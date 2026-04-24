@@ -1,0 +1,15 @@
+{
+  "code": "0048K0",
+  "name": "KODEX 차이나휴머노이드로봇",
+  "asOf": "2026-04-22",
+  "source": "samsungfund.com (대표 비중)",
+  "type": "equity",
+  "market": "CN",
+  "holdings": [
+    { "name": "UBTech Robotics",  "ticker": "9880.HK", "weight": 14.8 },
+    { "name": "Estun Automation", "ticker": "002747",  "weight": 11.2 },
+    { "name": "Inovance",         "ticker": "300124",  "weight": 10.5 },
+    { "name": "Siasun Robot",     "ticker": "300024",  "weight": 9.0 },
+    { "name": "Xiaomi",           "ticker": "1810.HK", "weight": 8.4 }
+  ]
+}
