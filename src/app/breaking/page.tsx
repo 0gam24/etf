@@ -14,6 +14,7 @@ import NextChapterCta from '@/components/NextChapterCta';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
+import { pickLatestTradeDayBreaking, tradeDateOf } from '@/lib/breaking';
 
 export const metadata: Metadata = {
   title: 'ETF 속보 — Daily ETF Pulse',
@@ -29,12 +30,17 @@ export default function BreakingLandingPage() {
   const etfList: RawEtf[] = (etfData?.etfList || []) as RawEtf[];
   const marketAvgVolume = computeMarketAvgVolume(etfList);
 
-  // 오늘자(최신 영업일) 속보 3건 + 그 뒤 아카이브
-  const todayPosts = posts.slice(0, TODAYS_LIMIT);
-  const archive = posts.slice(TODAYS_LIMIT);
+  // 오늘자(최신 영업일) 속보 — 거래일 기준 그룹핑 + rank 오름차순.
+  // UTC date 정렬은 자정 직후 발행 시 어제·오늘 글이 섞이므로 사용 금지.
+  const todayPosts = pickLatestTradeDayBreaking(posts, TODAYS_LIMIT);
+  const todaySlugs = new Set(todayPosts.map(p => p.meta.slug));
+  const archive = posts.filter(p => !todaySlugs.has(p.meta.slug));
 
-  const todayDate = todayPosts[0]
-    ? new Date(todayPosts[0].meta.date).toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short' })
+  // 헤로 표시용 거래일(YYYYMMDD) → 한국 표기로 변환
+  const headTradeDate = todayPosts[0] ? tradeDateOf(todayPosts[0]) : '';
+  const todayDate = headTradeDate
+    ? new Date(`${headTradeDate.slice(0, 4)}-${headTradeDate.slice(4, 6)}-${headTradeDate.slice(6, 8)}T00:00:00+09:00`)
+        .toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short' })
     : '오늘';
 
   return (

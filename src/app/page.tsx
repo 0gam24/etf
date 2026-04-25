@@ -2,7 +2,7 @@ import { getLatestPulse, getPostsByCategory, findPostByTickerInCategories } from
 import { getLatestEtfData, getLatestEcoData } from '@/lib/data';
 import { getIncomeRegistry } from '@/lib/income-server';
 import { AUTHOR_LIST, AUTHOR_COUNT, pickDailyAuthor } from '@/lib/authors';
-import { extractFirstHeadline } from '@/lib/breaking';
+import { extractFirstHeadline, pickLatestTradeDayBreaking } from '@/lib/breaking';
 import { buildHookCopy } from '@/lib/hook';
 import { computeTickerDiff } from '@/lib/pulse';
 import type { RawEtf } from '@/lib/surge';
@@ -54,16 +54,8 @@ export default async function HomePage() {
   const topEtf = etfData?.byVolume?.[0] || sortedByVolume[0];
 
   // 홈 속보 — 오늘의 도화선(topEtf 관련) + 3카드 스트립
-  const breakingAll = getPostsByCategory('breaking');
-  const latestDate = breakingAll[0]?.meta.date?.slice(0, 10);
-  const breakingPosts = breakingAll
-    .filter(p => (p.meta.date || '').startsWith(latestDate))
-    .sort((a, b) => {
-      const rankA = Number((a.meta.slug.match(/breaking-\d{8}-(\d+)-/) || [])[1]) || 99;
-      const rankB = Number((b.meta.slug.match(/breaking-\d{8}-(\d+)-/) || [])[1]) || 99;
-      return rankA - rankB;
-    })
-    .slice(0, 3);
+  // 거래일(pulseDate/slug) 기준 그룹핑 → rank 오름차순. UTC date 함정 회피.
+  const breakingPosts = pickLatestTradeDayBreaking(getPostsByCategory('breaking'), 3);
   const topEtfBreakingPost = topEtf
     ? findPostByTickerInCategories(topEtf.code, ['breaking'])
     : null;
