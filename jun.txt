@@ -219,6 +219,34 @@ A. 두 곳에 영구 명시 완료:
 **효과**: 사용자가 production(라이브 사이트) 영향 시점을 본인이 통제. 의도치 않은 자동 라이브 변경 방지.
 
 
+## 2026-04-25 · [production 슬러그 404 근본 원인 + 수정]
+
+### Q. 빌드 설정 확인했어 (Build command: npm run cf:build, Root: /, Branch: main).
+A. 빌드 명령어는 정확. 진짜 원인은 **OpenNext의 `populateCache local` 단계 누락**. 수정 완료.
+
+**진단 과정**
+1. production sitemap 라인 수: 19개 (홈 1 + 카테고리 5 + 가이드 6 + 저자 7) — 글 슬러그 0개
+2. → `getAllPosts()`가 빌드 시점에 동작하긴 했지만, prerender 결과물이 production에서 못 읽힘
+3. 로컬 `.open-next/cache/{buildId}/pulse/pulse-20260425.cache` 파일은 정상 생성됨
+4. 그러나 `.open-next/assets/cdn-cgi/_next_cache/` 폴더가 비어 있음 ← **결정적**
+5. OpenNext Cloudflare 어댑터의 `static-assets-incremental-cache.js` 분석 → cache 파일은 `ASSETS.fetch('/cdn-cgi/_next_cache/{buildId}/{key}.cache')`로 읽음
+6. `populate-cache.js#populateStaticAssetsIncrementalCache` 함수가 `.open-next/cache/` → `.open-next/assets/cdn-cgi/_next_cache/`로 cp하는데, `opennextjs-cloudflare build`는 이 함수를 자동 호출 안 함 → 별도 `populateCache` 커맨드로 호출 필요
+
+**수정 (3줄)**
+- `open-next.config.ts`: `staticAssetsIncrementalCache` import + `incrementalCache` 옵션 명시
+- `package.json` cf:build: `opennextjs-cloudflare build && opennextjs-cloudflare populateCache local`
+- `wrangler.jsonc` name: `etf-pulse` → `etf` (Cloudflare 대시보드와 일치, 경고 해소)
+
+**검증**
+- 로컬 rebuild → `.open-next/assets/cdn-cgi/_next_cache/{buildId}/pulse/pulse-20260425.cache` 등 18개 슬러그 캐시 파일 정상 복사
+- 다음 push 시 Cloudflare가 새 빌드 트리거 → populateCache까지 실행 → wrangler deploy가 cache 폴더 포함한 assets 전체 업로드 → production에서 ASSETS.fetch()로 슬러그 cache 읽음 → SSG 슬러그 200 OK
+
+**push 후 검증 명령어**
+```
+npm run verify:parity   # 18개 슬러그 모두 200 확인
+```
+
+
 ## 2026-04-25 · [로컬↔프로덕션 정보 100% 일치 보장 영구 규칙]
 
 ### Q. 앞으로 로컬에서 작업하고 push하면 모든 정보가 일치해야 해.
