@@ -10,6 +10,7 @@ import PulseTodayHero from '@/components/PulseTodayHero';
 import PulseDiff from '@/components/PulseDiff';
 import PulseWeekTimeline from '@/components/PulseWeekTimeline';
 import PulseRecurringThemes from '@/components/PulseRecurringThemes';
+import NextChapterCta from '@/components/NextChapterCta';
 
 export const metadata: Metadata = {
   title: '오늘의 관전포인트 — Daily ETF Pulse',
@@ -86,6 +87,12 @@ export default function PulseLandingPage() {
             </ul>
           )}
         </section>
+
+        <NextChapterCta
+          label="다음 챕터"
+          copy="오늘 거래량 1위 ETF가 왜 올랐는지 분석 보러 가기"
+          href="/surge"
+        />
       </div>
     </div>
   );

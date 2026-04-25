@@ -14,6 +14,7 @@ import FlowSectorGrid from '@/components/FlowSectorGrid';
 import FlowSectorLeaders from '@/components/FlowSectorLeaders';
 import FlowRecentList from '@/components/FlowRecentList';
 import FlowWeeklyTrend from '@/components/FlowWeeklyTrend';
+import NextChapterCta from '@/components/NextChapterCta';
 
 export const metadata: Metadata = {
   title: '자금 흐름 리포트 — Daily ETF Pulse',
@@ -77,6 +78,12 @@ export default function FlowLandingPage() {
         <p className="flow-disclaimer">
           오늘 1일치 시세 기반 스냅샷입니다. 주간·월간 누적 자금 흐름은 시계열 데이터가 누적된 후 자동 보강될 예정입니다.
         </p>
+
+        <NextChapterCta
+          label="다음 챕터"
+          copy="은퇴 자산이 매달 통장에 꽂히려면 얼마가 필요한지 계산하기"
+          href="/income"
+        />
       </div>
     </div>
   );

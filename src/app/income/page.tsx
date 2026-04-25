@@ -8,6 +8,7 @@ import IncomeCalendar from '@/components/IncomeCalendar';
 import IncomeStabilityTable from '@/components/IncomeStabilityTable';
 import IncomeTaxCompare from '@/components/IncomeTaxCompare';
 import IncomeGoalCalculator from '@/components/IncomeGoalCalculator';
+import NextChapterCta from '@/components/NextChapterCta';
 
 export const metadata: Metadata = {
   title: '월배당·커버드콜 — Daily ETF Pulse',
@@ -100,6 +101,12 @@ export default function IncomeLandingPage() {
         </section>
 
         <p className="income-disclaimer">{registry.disclaimer}</p>
+
+        <NextChapterCta
+          label="다음 챕터"
+          copy="오늘 시장을 움직인 속보 한 줄로 다시 짚어보기"
+          href="/breaking"
+        />
       </div>
     </div>
   );

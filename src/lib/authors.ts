@@ -24,7 +24,13 @@ interface RawPersona {
   voiceHints?: string[];
 }
 
-const PERSONAS_RAW = (personasModule as unknown as { PERSONAS: Record<string, RawPersona> }).PERSONAS;
+const PERSONAS_RAW = (personasModule as unknown as {
+  PERSONAS: Record<string, RawPersona>;
+  pickPersona: (opts: { category?: string; sector?: string; date?: string | Date | number }) => RawPersona;
+}).PERSONAS;
+const PICK_PERSONA = (personasModule as unknown as {
+  pickPersona: (opts: { category?: string; sector?: string; date?: string | Date | number }) => RawPersona;
+}).pickPersona;
 
 /** 저자별 카드 액센트 컬러 (프론트 전용 overlay) */
 const ACCENT_MAP: Record<string, string> = {
@@ -67,3 +73,30 @@ export const AUTHORS: Record<string, Author> = Object.fromEntries(
 
 export const AUTHOR_LIST: Author[] = Object.values(AUTHORS);
 export const AUTHOR_COUNT = AUTHOR_LIST.length;
+
+/**
+ * 메인 Chapter 6용 — 카테고리/섹터/날짜를 받아 오늘의 1인 + voiceHints 한 줄을 픽.
+ *  - 페르소나 선택은 agents/personas.js의 pickPersona 룰을 그대로 사용 (글 배정 룰과 일치)
+ *  - voiceLine은 해당 인물의 voiceHints에서 날짜 모듈로 결정적 픽 (페이지 새로고침에도 안정)
+ */
+export function pickDailyAuthor(opts: {
+  category?: string;
+  sector?: string;
+  date?: string | Date | number;
+}): { author: Author; voiceLine: string } {
+  const raw = PICK_PERSONA(opts) || (Object.values(PERSONAS_RAW)[0] as RawPersona);
+  const author = AUTHORS[raw.id] || toAuthor(raw);
+  const hints = raw.voiceHints || [];
+  let day: number;
+  if (typeof opts.date === 'string' && /^\d{4}-?\d{2}-?\d{2}/.test(opts.date)) {
+    day = parseInt(opts.date.replace(/[-/]/g, '').slice(6, 8), 10) || new Date().getDate();
+  } else if (opts.date instanceof Date) {
+    day = opts.date.getDate();
+  } else if (typeof opts.date === 'number') {
+    day = new Date(opts.date).getDate();
+  } else {
+    day = new Date().getDate();
+  }
+  const voiceLine = hints.length ? hints[day % hints.length] : '오늘 시장의 흐름을 한 줄로 정리해 보겠습니다.';
+  return { author, voiceLine };
+}

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Radio, ArrowRight } from 'lucide-react';
 import type { Post } from '@/lib/posts';
 import { findEtfByCode, type RawEtf } from '@/lib/surge';
+import { getEtfHoldings } from '@/lib/data';
 
 interface Props {
   posts: Post[];
@@ -34,6 +35,8 @@ export default function HomeBreakingStrip({ posts, etfs }: Props) {
           const ticker = p.meta.tickers?.[0];
           const etf = ticker ? findEtfByCode(etfs, ticker) : null;
           const isUp = (etf?.changeRate ?? 0) >= 0;
+          const holdings = ticker ? getEtfHoldings(ticker) : null;
+          const top3 = holdings?.holdings?.slice(0, 3) ?? [];
 
           return (
             <Link
@@ -56,6 +59,20 @@ export default function HomeBreakingStrip({ posts, etfs }: Props) {
                 </div>
               )}
               <div className="hbs-title">{p.meta.title}</div>
+              {top3.length > 0 && (
+                <div className="hbs-holdings" aria-label="구성 상위 3종목">
+                  <div className="hbs-holdings-label">담긴 기업 TOP 3</div>
+                  <ol className="hbs-holdings-list">
+                    {top3.map((h, hi) => (
+                      <li key={`${h.ticker || h.name}-${hi}`}>
+                        <span className="hbs-h-rank">{hi + 1}</span>
+                        <span className="hbs-h-name">{h.name}</span>
+                        <span className="hbs-h-weight">{h.weight.toFixed(1)}%</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
               <div className="hbs-cta">
                 속보 전문 <ArrowRight size={12} strokeWidth={2.5} />
               </div>

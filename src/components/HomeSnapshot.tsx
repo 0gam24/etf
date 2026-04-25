@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Flame, ArrowUpRight, ArrowDownRight, Activity } from 'lucide-react';
+import CountUpNumber from './CountUpNumber';
 
 interface Etf {
   code: string;
@@ -19,10 +20,31 @@ interface Props {
   totalCount: number;
 }
 
-function formatVolume(v: number): string {
-  if (v >= 10000000) return (v / 10000000).toFixed(1) + '천만';
-  if (v >= 10000) return (v / 10000).toFixed(0) + '만';
-  return v.toLocaleString();
+interface BigValue {
+  /** 정적 prefix (예: 빈 문자열) */
+  prefix?: string;
+  /** count-up 최종값 */
+  value: number;
+  /** 부호 (등락률용) */
+  sign?: boolean;
+  /** 소수점 자리수 */
+  decimals?: number;
+  /** 단위 (예: '%', '주', '만주') */
+  suffix?: string;
+  /** 천 단위 콤마 */
+  comma?: boolean;
+}
+
+/**
+ * 거래량은 너무 큰 숫자(수천만)를 카운트업하면 시각적으로 부담 → 단위 환산 후 카운트.
+ *  - 1천만 이상: '0.0천만주' 단위
+ *  - 1만 이상:   '0만주' 단위
+ *  - 그 외:      그대로
+ */
+function buildVolumeBig(v: number): BigValue {
+  if (v >= 10000000) return { value: +(v / 10000000).toFixed(1), decimals: 1, suffix: '천만주' };
+  if (v >= 10000) return { value: Math.round(v / 10000), decimals: 0, suffix: '만주' };
+  return { value: v, decimals: 0, suffix: '주' };
 }
 
 export default function HomeSnapshot({ topVolume, topGainer, topLoser, marketAvg, totalCount }: Props) {
@@ -30,7 +52,7 @@ export default function HomeSnapshot({ topVolume, topGainer, topLoser, marketAvg
     cls: string;
     icon: React.ReactNode;
     label: string;
-    big: string;
+    big: BigValue;
     name: string;
     sub: string;
     href?: string;
@@ -40,7 +62,7 @@ export default function HomeSnapshot({ topVolume, topGainer, topLoser, marketAvg
     cls: 'snap-volume',
     icon: <Flame size={15} strokeWidth={2.4} aria-hidden />,
     label: '거래량 1위',
-    big: `${formatVolume(topVolume.volume)}주`,
+    big: buildVolumeBig(topVolume.volume),
     name: topVolume.name,
     sub: topVolume.sector || topVolume.code,
   });
@@ -49,7 +71,7 @@ export default function HomeSnapshot({ topVolume, topGainer, topLoser, marketAvg
     cls: 'snap-up',
     icon: <ArrowUpRight size={15} strokeWidth={2.4} aria-hidden />,
     label: '상승 1위',
-    big: `+${topGainer.changeRate.toFixed(2)}%`,
+    big: { value: topGainer.changeRate, decimals: 2, suffix: '%', sign: true },
     name: topGainer.name,
     sub: topGainer.sector || topGainer.code,
   });
@@ -58,7 +80,7 @@ export default function HomeSnapshot({ topVolume, topGainer, topLoser, marketAvg
     cls: 'snap-down',
     icon: <ArrowDownRight size={15} strokeWidth={2.4} aria-hidden />,
     label: '하락 1위',
-    big: `${topLoser.changeRate.toFixed(2)}%`,
+    big: { value: topLoser.changeRate, decimals: 2, suffix: '%' },
     name: topLoser.name,
     sub: topLoser.sector || topLoser.code,
   });
@@ -67,7 +89,7 @@ export default function HomeSnapshot({ topVolume, topGainer, topLoser, marketAvg
     cls: marketAvg >= 0 ? 'snap-market-up' : 'snap-market-down',
     icon: <Activity size={15} strokeWidth={2.4} aria-hidden />,
     label: '시장 평균',
-    big: `${marketAvg >= 0 ? '+' : ''}${marketAvg.toFixed(2)}%`,
+    big: { value: marketAvg, decimals: 2, suffix: '%', sign: true },
     name: `분석 종목 ${totalCount}개`,
     sub: marketAvg >= 0 ? '자금 유입 우세' : '자금 유출 우세',
   });
@@ -84,7 +106,15 @@ export default function HomeSnapshot({ topVolume, topGainer, topLoser, marketAvg
                 <span className="home-snap-icon" aria-hidden>{c.icon}</span>
                 <span className="home-snap-label">{c.label}</span>
               </div>
-              <div className="home-snap-big">{c.big}</div>
+              <div className="home-snap-big">
+                <CountUpNumber
+                  value={c.big.value}
+                  decimals={c.big.decimals}
+                  suffix={c.big.suffix}
+                  sign={c.big.sign}
+                  comma={c.big.comma}
+                />
+              </div>
               <div className="home-snap-name">{c.name}</div>
               <div className="home-snap-sub">{c.sub}</div>
             </>

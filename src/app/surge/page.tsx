@@ -10,6 +10,7 @@ import {
 } from '@/lib/surge';
 import SurgeHero from '@/components/SurgeHero';
 import SurgeThemeTracker from '@/components/SurgeThemeTracker';
+import NextChapterCta from '@/components/NextChapterCta';
 import SurgeRecentList from '@/components/SurgeRecentList';
 
 export const metadata: Metadata = {
@@ -76,6 +77,12 @@ export default function SurgeLandingPage() {
             </p>
           </section>
         )}
+
+        <NextChapterCta
+          label="다음 챕터"
+          copy="기관·외국인의 손이 일주일째 어디로 옮겨가는지 보러 가기"
+          href="/flow"
+        />
       </div>
     </div>
   );

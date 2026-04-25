@@ -10,6 +10,7 @@ import {
   type RawEtf,
 } from '@/lib/surge';
 import SurgeRiskLabels from '@/components/SurgeRiskLabels';
+import NextChapterCta from '@/components/NextChapterCta';
 
 export const metadata: Metadata = {
   title: 'ETF 속보 — Daily ETF Pulse',
@@ -137,6 +138,12 @@ export default function BreakingLandingPage() {
             </ul>
           </section>
         )}
+
+        <NextChapterCta
+          label="다음 챕터"
+          copy="출근 전 5분, 오늘 시장의 무게중심을 한 호흡에 잡기"
+          href="/pulse"
+        />
       </div>
     </div>
   );

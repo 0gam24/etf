@@ -219,6 +219,37 @@ A. 두 곳에 영구 명시 완료:
 **효과**: 사용자가 production(라이브 사이트) 영향 시점을 본인이 통제. 의도치 않은 자동 라이브 변경 방지.
 
 
+## 2026-04-25 · [메인 페이지 v4 기획·구현]
+
+### Q. 메인 페이지 v4 "Story-Driven Trust Journey" 추천으로 모두 적용해.
+A. 8 챕터 스토리 구조로 구현 완료. 빌드 통과 (`npm run build` + `npm run cf:build`).
+
+**8 챕터 흐름**
+- 0 TRUST — TrustBar (유지)
+- 1 HOOK — HomeHookV1 신설 (오늘의 단 한 문장 + Noto Serif KR)
+- 2 DATA — HomeHeroV3 + HomeSnapshot count-up 애니메이션
+- 3 BREAKING — HomeBreakingStrip 호버 시 holdings TOP3 펼침
+- 4 WHY NOW — HomeScenarioRouter 카피 재작성 ("왜 지금" 어조)
+- 5 RISK — HomeDefenseTop3 신설 (안정성 S 등급 ETF 3종)
+- 6 INSIGHT — HomeDailyAuthor 신설 (7인 voiceHints 정적 매칭, 날짜 결정적)
+- 7 LIVE — EtfMarketPulse (유지)
+- 8 TOMORROW — HomeReturnTrigger 신설 (PulseDiff를 메인으로 끌어올림)
+- 9 TRUST — DataFooter (유지)
+
+**기술 결정**
+- Hook: 템플릿 기반 결정적 생성 (`lib/hook.ts`) — 강세/약세/보합 3분기 + 날짜 모듈로 안정 선택. Gemini 의존 0.
+- Daily Author: `agents/personas.js`의 `pickPersona`를 그대로 재사용해 글 배정 룰과 일치. voiceHints 한 줄을 날짜 모듈로 픽 (`lib/authors.ts` `pickDailyAuthor`).
+- count-up: `CountUpNumber` 클라이언트 컴포넌트 신설 — IntersectionObserver + easeOutCubic 900ms. `prefers-reduced-motion`에서 즉시 표시.
+- Defense Top 3: S 등급 우선, 부족하면 A 등급 폴백.
+- 카테고리 5개(pulse·surge·flow·income·breaking) 끝에 미니멀 `NextChapterCta` 추가 — 다음 챕터로 회유.
+
+**빌드 검증**
+- `npx tsc --noEmit` → 0 에러
+- `npm run build` → 46 정적 페이지 생성 성공
+- `npm run cf:build` → OpenNext bundle `.open-next/worker.js` 생성 성공
+
+**push 상태**: 4 commit 로컬 대기 중 (사용자 지시 시 push).
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================

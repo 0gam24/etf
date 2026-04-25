@@ -23,12 +23,12 @@ export default function HomeScenarioRouter({
   return (
     <section className="scenario-router">
       <div className="scenario-router-head">
-        <div className="scenario-router-eyebrow">YOUR QUESTION TODAY</div>
+        <div className="scenario-router-eyebrow">WHY NOW · 왜 지금</div>
         <h2 className="scenario-router-title">
-          오늘 당신의 질문은 <span className="accent">무엇인가요?</span>
+          오늘 당신이 봐야 할 <span className="accent">단 하나</span>는?
         </h2>
         <p className="scenario-router-sub">
-          4가지 의사결정 시나리오 중 본인의 상황을 골라 곧바로 답을 찾으세요.
+          오늘의 시장이 던진 4가지 질문. 본인의 상황과 가장 가까운 한 칸을 고르세요.
         </p>
       </div>
 
@@ -39,7 +39,7 @@ export default function HomeScenarioRouter({
           <div className="scenario-card-meta">PULSE · 매일 9시</div>
           <h3 className="scenario-card-q">&ldquo;오늘 뭘 봐야 하지?&rdquo;</h3>
           <p className="scenario-card-promise">
-            오늘의 시장 핵심 3줄. 5분 안에 데일리 브리핑.
+            출근 전 5분, 오늘 시장의 무게중심을 한 호흡에 잡습니다.
           </p>
           {latestPulse && (
             <div className="scenario-card-preview">
@@ -60,7 +60,7 @@ export default function HomeScenarioRouter({
           <div className="scenario-card-meta">SURGE · 급등 ETF 분석</div>
           <h3 className="scenario-card-q">&ldquo;이 ETF, 사도 되나?&rdquo;</h3>
           <p className="scenario-card-promise">
-            거래량 1위 종목의 도화선 · 지속성 · 위험 신호.
+            오늘 거래량 1위가 왜 올랐고, 내일도 갈 수 있는지 근거를 따집니다.
           </p>
           {latestSurge && (
             <div className="scenario-card-preview">
@@ -86,7 +86,7 @@ export default function HomeScenarioRouter({
           <div className="scenario-card-meta">FLOW · 주간 자금 흐름</div>
           <h3 className="scenario-card-q">&ldquo;큰 흐름은 어디로?&rdquo;</h3>
           <p className="scenario-card-promise">
-            섹터별 유입·유출과 기관·외국인 수급 해석.
+            기관·외국인의 손이 일주일째 어느 섹터로 옮겨가고 있는지 한눈에.
           </p>
           {latestFlow && (
             <div className="scenario-card-preview">
@@ -105,7 +105,7 @@ export default function HomeScenarioRouter({
           <div className="scenario-card-meta">INCOME · 월배당·커버드콜</div>
           <h3 className="scenario-card-q">&ldquo;월 OO만원 받으려면?&rdquo;</h3>
           <p className="scenario-card-promise">
-            슬라이더로 원금을 움직여 즉시 월수령액을 확인.
+            은퇴 자산이 매달 통장에 꽂히려면 얼마가 필요한지 즉시 계산합니다.
           </p>
           {topIncomeEtf ? (
             <IncomeMiniCalculator
