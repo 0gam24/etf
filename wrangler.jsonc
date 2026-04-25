@@ -5,7 +5,7 @@
  */
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "etf-pulse",
+  "name": "etf",
   "main": ".open-next/worker.js",
   "compatibility_date": "2025-10-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
