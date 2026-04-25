@@ -133,13 +133,12 @@ function buildPrompt(strategy, context, rejectionFeedback) {
 - 중요 문장은 **볼드**.
 - FAQ는 \`**Q1: 질문**\` 줄 → 빈 줄 → 답변 형식.
 
-## 🖼️ 이미지 1개 삽입 (본문 상단)
-본문 상단에 반드시 사이트 자체 OG 이미지 1장을 삽입하세요. 외부 이미지 서비스 URL 금지.
-형식:
-\`![{포스트 제목 + 섹터 키워드}](/api/og?category={카테고리}&title={제목 URL 인코딩}&tickers={종목코드들 쉼표}&date={YYYY-MM-DD})\`
-- category는 pulse/surge/flow/income 중 하나
-- 제목·날짜는 URL encodeURIComponent 기준으로 인코딩 (공백은 %20)
-- 대체 이미지·stock.adobe/Unsplash/pollinations 등 외부 URL 절대 사용 금지
+## 🖼️ 본문 이미지 금지
+본문에 \`![](...)\` 마크다운 이미지를 절대 넣지 마세요.
+- OG 이미지(\`/api/og?...\`)는 SNS 미리보기용으로 \`<head>\` 메타 태그에만 사용됩니다.
+- 본문에 박으면 1200x630 거대한 빈 카드가 페이지 한가운데에 노출되어 시청자 경험을 훼손합니다.
+- 외부 이미지 서비스(stock.adobe/Unsplash/pollinations 등) URL도 일절 금지.
+- 시각 데이터가 필요하면 frontmatter \`charts\` 필드만 사용하세요. 본문에는 표(\`|\`)와 텍스트만.
 `;
 
   // ── 템플릿별 분기 ──
@@ -390,22 +389,11 @@ function buildSampleArticle(strategy, context) {
   };
 }
 
-function ogImageUrl({ category, title, tickers }) {
-  const params = new URLSearchParams({
-    category,
-    title: (title || '').slice(0, 60),
-    date: new Date().toLocaleDateString('ko-KR'),
-  });
-  if (tickers && tickers.length) params.set('tickers', tickers.slice(0, 3).join(','));
-  return `/api/og?${params.toString()}`;
-}
-
 function samplePulse(s) {
   const t = s.top3 || [];
   const lead = s.leadSector;
   // 상위 3개 섹터 추출 (sectorFlow는 전략에 포함 안 될 수 있어 방어)
   const sectors = Array.isArray(s.sectorFlow) ? s.sectorFlow.slice(0, 3) : (lead ? [lead] : []);
-  const heroImg = ogImageUrl({ category: 'pulse', title: s.suggestedTitle || '오늘의 ETF 관전포인트', tickers: s.tickers });
 
   return `
 ## 오늘의 3줄 관전포인트
@@ -413,8 +401,6 @@ function samplePulse(s) {
 - **거래량 1위**: ${t[0]?.name || '상위 ETF'}가 ${t[0]?.changeRate >= 0 ? '+' : ''}${t[0]?.changeRate || 0}%로 시장의 관심을 받습니다.
 - **섹터 리더**: ${lead?.sector || '주요 섹터'}가 평균 ${lead?.avgChangeRate >= 0 ? '+' : ''}${lead?.avgChangeRate || 0}%로 자금이 몰리는 모습입니다.
 - **체크 포인트**: 장중 변동성에 대비해 분할 매수 원칙을 유지하세요.
-
-![${s.suggestedTitle || '오늘의 ETF 관전포인트'}](${heroImg})
 
 ## 거래량 TOP3 완벽 해설
 
@@ -564,7 +550,6 @@ function sampleSurge(s) {
   const e = s.focusEtf || {};
   const portfolio = s.portfolio;
   const holdings = Array.isArray(s.holdings) ? s.holdings : [];
-  const heroImg = ogImageUrl({ category: 'surge', title: s.suggestedTitle || `${e.name || 'ETF'} 급등 분석`, tickers: s.tickers });
 
   const holdingsLine = portfolio?.type === 'basket'
     ? `**${e.name}**이(가) 담고 있는 ${holdings.length}개 종목이 함께 움직입니다.`
@@ -580,8 +565,6 @@ function sampleSurge(s) {
 - **${e.name || 'ETF'}**가 거래량 ${(e.volume / 10000 || 0).toFixed(0)}만주, 등락률 ${e.changeRate >= 0 ? '+' : ''}${e.changeRate || 0}%로 오늘 시장의 주인공이 되었습니다.
 - ${holdingsLine}
 - 단기 과열 가능성을 염두에 두고, 분할 매수·목표가 관리가 필요합니다.
-
-![${e.name || 'ETF'} 급등 분석](${heroImg})
 
 ## 오늘의 거래 데이터
 
@@ -631,15 +614,12 @@ ${renderSurgeHoldings(portfolio, holdings, e)}
 
 function sampleFlow(s) {
   const sectors = s.sectorFlow || [];
-  const heroImg = ogImageUrl({ category: 'flow', title: s.suggestedTitle || '주간 자금 흐름 리포트', tickers: s.tickers });
   return `
 ## 이번 주 Flow 3줄 요약
 
 - 자금은 **${sectors[0]?.sector || '주도 섹터'}**로 집중되며 평균 ${sectors[0]?.avgChangeRate >= 0 ? '+' : ''}${sectors[0]?.avgChangeRate || 0}% 상승세입니다.
 - 반대로 **${sectors[sectors.length - 1]?.sector || '하위 섹터'}**는 ${sectors[sectors.length - 1]?.avgChangeRate || 0}%로 자금 이탈이 관찰됩니다.
 - 기관·외국인 수급 동향은 다음 섹션에서 자세히 다룹니다.
-
-![섹터별 자금 흐름 — ${sectors[0]?.sector || ''}](${heroImg})
 
 ## 섹터별 자금 유입 총정리
 
@@ -683,15 +663,12 @@ ${sectors.slice(0, 8).map(x => `| ${x.sector} | ${x.avgChangeRate >= 0 ? '+' : '
 
 function sampleIncome(s) {
   const e = s.focusEtf || {};
-  const heroImg = ogImageUrl({ category: 'income', title: s.suggestedTitle || '월배당·커버드콜 가이드', tickers: s.tickers });
   return `
 ## 이 글의 3줄 요약
 
 - **${e.name || '월배당 ETF'}**의 구조와 실제 분배금을 계산합니다.
 - 일반계좌 대비 **연금저축·IRP에서 굴릴 때** 세후 수익률이 크게 차이납니다.
 - 4050 투자자에게 적합한 계좌 조합을 제시합니다.
-
-![커버드콜·월배당 ETF 가이드](${heroImg})
 
 ## 커버드콜·월배당 ETF 구조
 
@@ -749,7 +726,6 @@ function sampleBreaking(s, context) {
   const holdings = (s.holdings || []).slice(0, 5);
   const news = context?.news || {};
   const headlines = (news.headlines || []).slice(0, 5);
-  const heroImg = ogImageUrl({ category: 'breaking', title: s.suggestedTitle || 'ETF 속보', tickers: s.tickers });
   const direction = e.changeRate >= 0 ? '상승' : '조정';
   const dirSign = e.changeRate >= 0 ? '+' : '';
 
@@ -759,8 +735,6 @@ function sampleBreaking(s, context) {
 - **거래량 ${s.rank || 1}위**: ${e.name || '-'}이(가) ${dirSign}${e.changeRate ?? 0}%로 오늘 시장에서 ${direction} 흐름을 보였습니다.
 - **섹터 맥락**: ${e.sector || '해당 섹터'} 테마 전반으로 자금이 이동 중이며, 구성종목 상위 비중의 영향이 큽니다.
 - **체크 포인트**: 단기 모멘텀과 뉴스 흐름을 함께 보고, 추격 진입보다 분할 진입·비중 점검을 권합니다.
-
-![${s.suggestedTitle || 'ETF 속보'}](${heroImg})
 
 ## 오늘 이 ETF를 움직인 뉴스
 

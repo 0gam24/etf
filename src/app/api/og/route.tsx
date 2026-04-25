@@ -1,7 +1,3 @@
-import { NextRequest, NextResponse } from 'next/server';
-
-export const runtime = 'edge';
-
 /**
  * OG 이미지 라우트 — Cloudflare Workers 호환 SVG 직접 생성.
  *
@@ -9,6 +5,8 @@ export const runtime = 'edge';
  *   wasm 모듈 로딩 실패로 500 에러 발생. SVG 직접 생성으로 전환:
  *     - 의존성 0 (순수 문자열)
  *     - wasm 미사용 → 100% 안정
+ *     - Web 표준 `Request`/`Response`만 사용 (next/server import 없음)
+ *     - `runtime = 'edge'` 명시 안 함 — opennext가 자동 cloudflare worker로 처리
  *     - Content-Type: image/svg+xml
  *     - 카카오톡·네이버·구글 미리보기 모두 SVG 지원
  *     - Twitter/Facebook은 og:image 메타에 PNG 선호하나 SVG도 fallback 지원
@@ -55,7 +53,7 @@ function wrapText(text: string, maxCharsPerLine: number, maxLines: number): stri
   return lines;
 }
 
-export async function GET(req: NextRequest) {
+export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const title = (searchParams.get('title') || 'Daily ETF Pulse').slice(0, 100);
   const category = (searchParams.get('category') || 'pulse').split('/')[0];
@@ -114,7 +112,7 @@ export async function GET(req: NextRequest) {
   ${tickerBoxes}
 </svg>`;
 
-  return new NextResponse(svg, {
+  return new Response(svg, {
     status: 200,
     headers: {
       'Content-Type': 'image/svg+xml; charset=utf-8',

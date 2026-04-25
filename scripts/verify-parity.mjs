@@ -121,7 +121,7 @@ async function main() {
   for (const cat of TOP_LEVEL) {
     const slugs = listSlugs(cat).filter(s => shouldInclude(s.slug));
     for (const { slug } of slugs) {
-      const url = `${SITE}/${cat}/${slug}`;
+      const url = `${SITE}/${cat}/${encodeURI(slug)}`;
       const r = await probe(url);
       if (!r.ok) {
         failures.push({ kind: 'post', url, slug, category: cat, status: r.status });
