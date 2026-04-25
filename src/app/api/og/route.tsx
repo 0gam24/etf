@@ -1,14 +1,17 @@
-import { ImageResponse } from '@vercel/og';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
 /**
- * Cloudflare Workers 호환 최소형 OG 이미지.
- *   - 폰트 fetch 제거 (system fallback만 사용 — 한글 깨질 수 있으나 500은 안 남)
- *   - 이모지 0개
- *   - position:absolute, 외부 fetch 0개
- *   - 100% 합성 디바이드 + 박스만
+ * OG 이미지 라우트 — Cloudflare Workers 호환 SVG 직접 생성.
+ *
+ *   @vercel/og는 satori+resvg-wasm 의존인데 Cloudflare Workers에서
+ *   wasm 모듈 로딩 실패로 500 에러 발생. SVG 직접 생성으로 전환:
+ *     - 의존성 0 (순수 문자열)
+ *     - wasm 미사용 → 100% 안정
+ *     - Content-Type: image/svg+xml
+ *     - 카카오톡·네이버·구글 미리보기 모두 SVG 지원
+ *     - Twitter/Facebook은 og:image 메타에 PNG 선호하나 SVG도 fallback 지원
  */
 
 const CATEGORY_META: Record<string, { tag: string; accent: string; label: string }> = {
@@ -23,159 +26,99 @@ const CATEGORY_META: Record<string, { tag: string; accent: string; label: string
   stock:    { tag: 'STK', accent: '#60A5FA', label: 'STOCK MASTER' },
 };
 
-export async function GET(req: NextRequest) {
-  try {
-    const { searchParams } = new URL(req.url);
-    const title = (searchParams.get('title') || 'Daily ETF Pulse').slice(0, 80);
-    const category = (searchParams.get('category') || 'pulse').split('/')[0];
-    const date = searchParams.get('date') || '';
-    const tickers = (searchParams.get('tickers') || '').split(',').filter(Boolean).slice(0, 3);
-    const meta = CATEGORY_META[category] || CATEGORY_META.pulse;
+/** XML/SVG 안전 escape */
+function esc(s: string): string {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
 
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            width: '1200px',
-            height: '630px',
-            display: 'flex',
-            flexDirection: 'column',
-            background: '#0B0E14',
-            padding: '70px',
-            color: '#fff',
-          }}
-        >
-          {/* 브랜드 */}
-          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '40px' }}>
-            <div
-              style={{
-                width: '52px',
-                height: '52px',
-                borderRadius: '12px',
-                background: '#D4AF37',
-                color: '#0B0E14',
-                fontSize: '32px',
-                fontWeight: 800,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: '18px',
-              }}
-            >
-              E
-            </div>
-            <div
-              style={{
-                fontSize: '26px',
-                fontWeight: 700,
-                color: '#D4AF37',
-                letterSpacing: '0.1em',
-              }}
-            >
-              DAILY ETF PULSE
-            </div>
-          </div>
-
-          {/* 카테고리 */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              alignSelf: 'flex-start',
-              padding: '10px 20px',
-              background: meta.accent,
-              color: '#0B0E14',
-              fontSize: '22px',
-              fontWeight: 800,
-              letterSpacing: '0.1em',
-              borderRadius: '8px',
-              marginBottom: '36px',
-            }}
-          >
-            {meta.tag} · {meta.label}
-          </div>
-
-          {/* 제목 */}
-          <div
-            style={{
-              fontSize: title.length > 30 ? '56px' : '70px',
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: '-0.02em',
-              maxWidth: '1060px',
-              display: 'flex',
-            }}
-          >
-            {title}
-          </div>
-
-          {/* 하단 */}
-          <div
-            style={{
-              marginTop: 'auto',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              fontSize: '24px',
-              color: '#94a3b8',
-              borderTop: '2px solid #1f2937',
-              paddingTop: '22px',
-            }}
-          >
-            <div style={{ display: 'flex', color: '#D4AF37', fontWeight: 700 }}>
-              {date || 'iknowhowinfo.com'}
-            </div>
-            {tickers.length > 0 && (
-              <div style={{ display: 'flex' }}>
-                {tickers.map((t, i) => (
-                  <div
-                    key={t}
-                    style={{
-                      display: 'flex',
-                      padding: '6px 14px',
-                      background: '#1e293b',
-                      color: meta.accent,
-                      borderRadius: '6px',
-                      fontSize: '20px',
-                      fontWeight: 700,
-                      marginLeft: i === 0 ? 0 : '10px',
-                    }}
-                  >
-                    {t}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      ),
-      {
-        width: 1200,
-        height: 630,
-      },
-    );
-  } catch (err) {
-    // 안전장치: 어떤 이유로든 실패하면 1200x630 단색 placeholder
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            width: '1200px',
-            height: '630px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: '#0B0E14',
-            color: '#D4AF37',
-            fontSize: '72px',
-            fontWeight: 800,
-            letterSpacing: '0.1em',
-          }}
-        >
-          DAILY ETF PULSE
-        </div>
-      ),
-      { width: 1200, height: 630 },
-    );
+/** 긴 제목을 max 폭에 맞게 줄바꿈 */
+function wrapText(text: string, maxCharsPerLine: number, maxLines: number): string[] {
+  const lines: string[] = [];
+  let current = '';
+  for (const ch of text) {
+    if (current.length >= maxCharsPerLine) {
+      lines.push(current);
+      current = '';
+      if (lines.length >= maxLines) break;
+    }
+    current += ch;
   }
+  if (current && lines.length < maxLines) lines.push(current);
+  if (text.length > maxCharsPerLine * maxLines) {
+    lines[lines.length - 1] = lines[lines.length - 1].slice(0, -1) + '…';
+  }
+  return lines;
+}
+
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const title = (searchParams.get('title') || 'Daily ETF Pulse').slice(0, 100);
+  const category = (searchParams.get('category') || 'pulse').split('/')[0];
+  const date = searchParams.get('date') || '';
+  const tickers = (searchParams.get('tickers') || '').split(',').filter(Boolean).slice(0, 3);
+  const meta = CATEGORY_META[category] || CATEGORY_META.pulse;
+
+  const titleLines = wrapText(esc(title), 28, 3);
+  const fontSize = title.length > 40 ? 56 : 70;
+
+  // 티커 박스 그리기 (오른쪽 끝부터 왼쪽으로)
+  const tickerBoxes = tickers.map((t, i) => {
+    const x = 1130 - (tickers.length - 1 - i) * 140;
+    return `
+      <rect x="${x - 60}" y="558" width="115" height="36" rx="6" fill="${meta.accent}22" stroke="${meta.accent}66" stroke-width="1"/>
+      <text x="${x - 2}" y="582" font-size="20" font-weight="700" fill="${meta.accent}" text-anchor="middle" font-family="Pretendard, system-ui, sans-serif">${esc(t)}</text>
+    `;
+  }).join('');
+
+  const svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B0E14"/>
+      <stop offset="100%" stop-color="#1A1F2E"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="100%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="${meta.accent}" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="${meta.accent}" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 배경 -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- 좌상단 브랜드 박스 + 텍스트 -->
+  <rect x="70" y="60" width="52" height="52" rx="12" fill="#D4AF37"/>
+  <text x="96" y="98" font-size="32" font-weight="800" fill="#0B0E14" text-anchor="middle" font-family="Pretendard, system-ui, sans-serif">E</text>
+  <text x="138" y="96" font-size="26" font-weight="700" letter-spacing="2.6" fill="#D4AF37" font-family="Pretendard, system-ui, sans-serif">DAILY ETF PULSE</text>
+
+  <!-- 카테고리 배지 -->
+  <rect x="70" y="150" width="${meta.label.length * 14 + 80}" height="44" rx="8" fill="${meta.accent}"/>
+  <text x="${85 + (meta.label.length * 14 + 80) / 2 - 40}" y="180" font-size="22" font-weight="800" letter-spacing="2.2" fill="#0B0E14" font-family="Pretendard, system-ui, sans-serif">${esc(meta.tag)} · ${esc(meta.label)}</text>
+
+  <!-- 제목 -->
+  ${titleLines.map((line, i) => `<text x="70" y="${290 + i * (fontSize + 10)}" font-size="${fontSize}" font-weight="800" fill="#ffffff" letter-spacing="-1.4" font-family="Pretendard, system-ui, sans-serif">${line}</text>`).join('')}
+
+  <!-- 하단 구분선 -->
+  <line x1="70" y1="540" x2="1130" y2="540" stroke="${meta.accent}55" stroke-width="2"/>
+
+  <!-- 하단 좌측: 날짜 또는 도메인 -->
+  <text x="70" y="588" font-size="24" font-weight="700" fill="#D4AF37" font-family="Pretendard, system-ui, sans-serif">${esc(date || 'iknowhowinfo.com')}</text>
+
+  <!-- 하단 우측: 티커 -->
+  ${tickerBoxes}
+</svg>`;
+
+  return new NextResponse(svg, {
+    status: 200,
+    headers: {
+      'Content-Type': 'image/svg+xml; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600, s-maxage=86400',
+    },
+  });
 }
