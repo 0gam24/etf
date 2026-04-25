@@ -17,7 +17,7 @@ export default function FlowWeeklyTrend({ series, daysAvailable }: Props) {
 
   const isSingleDay = daysAvailable <= 1;
   const subtitle = isSingleDay
-    ? '파이프라인이 매일 적재하면 이 영역이 주간 추세로 확장됩니다 (현재 1일치 기준)'
+    ? '내일부터 5영업일 추세가 이 자리에 누적됩니다 (현재 1일치 기준)'
     : `최근 ${daysAvailable}거래일 섹터 추세 · 평균 등락률 + 주간 거래대금`;
 
   return (

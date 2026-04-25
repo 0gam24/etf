@@ -45,8 +45,8 @@ export default function BreakingLandingPage() {
             오늘 시장을 움직인 <span className="breaking-hero-accent">3편의 심층 속보</span>
           </h1>
           <p className="breaking-hero-sub">
-            거래량 TOP 3 ETF에 대해 매일 **뉴스를 크롤링해 교차 분석**합니다. 시세·구성종목·뉴스·투자자 관점을
-            한 편에 묶어 3,000자 이상으로 발행 — 개장 전 5분에 오늘의 핵심을 끝낼 수 있도록.
+            오늘 가장 많이 거래된 ETF 3종이 왜 움직였는지, 어떤 뉴스가 시장을 흔들었는지 한 편에 정리합니다.
+            출근 전 5분, 이 페이지면 오늘 시장의 핵심이 잡힙니다.
           </p>
           <div className="breaking-hero-meta">
             {todayDate} 기준 · 총 {posts.length}편 누적
@@ -60,7 +60,7 @@ export default function BreakingLandingPage() {
           <section className="breaking-today">
             <div className="pulse-section-head">
               <h2 className="pulse-section-title">오늘의 속보 · 거래량 TOP {todayPosts.length}</h2>
-              <p className="pulse-section-hint">뉴스 + 시세 + 구성종목을 한 편에 — 3,000자+ 심층 분석</p>
+              <p className="pulse-section-hint">어떤 뉴스가 어떤 종목을 어떻게 움직였는지 한 편에</p>
             </div>
 
             <div className="breaking-today-grid">
@@ -110,7 +110,7 @@ export default function BreakingLandingPage() {
         ) : (
           <section className="breaking-today">
             <p className="pulse-section-empty">
-              아직 오늘의 속보가 발행되지 않았습니다. 매일 오전 9시 전 자동 발행됩니다.
+              오늘의 속보가 곧 올라옵니다. 매일 아침 9시 전 새 분석이 갱신됩니다.
             </p>
           </section>
         )}

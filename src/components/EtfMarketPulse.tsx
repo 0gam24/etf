@@ -161,7 +161,7 @@ export default function EtfMarketPulse() {
             </h2>
             <p className="pulse-subtitle">
               공공데이터포털 기반 실시간 랭킹 · {formatDate(data.baseDate)} 기준
-              {!data.isRealData && <span className="pulse-sample-tag">샘플</span>}
+              {!data.isRealData && process.env.NODE_ENV !== 'production' && <span className="pulse-sample-tag">샘플</span>}
             </p>
           </div>
           <div className="pulse-header-right">
@@ -284,7 +284,7 @@ export default function EtfMarketPulse() {
             <div className="pulse-ai-comment">
               <div className="ai-comment-header">
                 <span className="ai-badge">
-                  <Sparkles size={13} strokeWidth={2.4} aria-hidden /> AI 인사이트
+                  <Sparkles size={13} strokeWidth={2.4} aria-hidden /> 오늘의 시장 코멘트
                 </span>
               </div>
               <p className="ai-comment-text">

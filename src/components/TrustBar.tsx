@@ -17,7 +17,7 @@ export default function TrustBar({ authorCount, etfCount }: Props) {
         <span className="trust-divider" aria-hidden>·</span>
         <span className="trust-item">
           <Clock size={13} strokeWidth={2.4} aria-hidden />
-          매일 오전 9시 자동 발행
+          매일 아침 9시 새 분석
         </span>
         <span className="trust-divider" aria-hidden>·</span>
         <Link href="/author/pb_kim" className="trust-item trust-item-link">

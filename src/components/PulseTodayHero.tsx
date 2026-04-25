@@ -11,7 +11,7 @@ export default function PulseTodayHero({ today }: Props) {
   if (!today) {
     return (
       <section className="pulse-today-hero pulse-today-hero-empty">
-        <p>오늘의 관전포인트가 아직 발행되지 않았습니다. 매일 오전 9시 전 자동 발행됩니다.</p>
+        <p>오늘의 관전포인트가 곧 올라옵니다. 매일 아침 9시 전 갱신됩니다.</p>
       </section>
     );
   }

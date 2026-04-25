@@ -35,11 +35,12 @@ export default function AdBanner({ slot, format = 'auto', style }: AdBannerProps
         data-ad-format={format}
         data-full-width-responsive="true"
       />
-      {/* 개발 중에는 광고 영역임을 표시 */}
-      <div className="ad-placeholder">
-        <span className="ad-badge">ADVERTISEMENT</span>
-        <p className="ad-notice">구글 애드센스 광고가 이곳에 표시됩니다.</p>
-      </div>
+      {/* 개발 환경에서만 placeholder 표시 (production은 실 광고 또는 빈 영역) */}
+      {process.env.NODE_ENV !== 'production' && (
+        <div className="ad-placeholder">
+          <span className="ad-badge">[DEV] AD AREA</span>
+        </div>
+      )}
     </div>
   );
 }

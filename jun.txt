@@ -158,6 +158,50 @@ push   → GitHub  → (자동) Cloudflare 빌드 → iknowhowinfo.com 라이브
 ```
 
 
+## 2026-04-25 · [UX 카피 원칙]
+
+### Q. /breaking에 "3,000자 이상으로 발행" 같은 게 나에겐 필요해도 시청자에겐 필요 없잖아. 모든 페이지·기획에 같은 오류 없도록 영구 적용해.
+A. 영구 규칙 박음 + 전체 코드 audit → 10지점 일괄 수정.
+
+**규칙 (CLAUDE.md + 메모리 + jun.txt 3중 박힘)**
+
+❌ 절대 노출 금지
+- 작업량 자랑: `3,000자`, `13에이전트`, `7인 페르소나`
+- 자동화 메타: `자동 발행`, `자동 작성` (단순 자랑일 때)
+- 기술 스택: `AI`, `Gemini`, `GPT`, `LLM`, `크롤링`, `에이전트`, `봇`, `파이프라인`
+- 디버깅 흔적: `샘플 데이터`, `fallback`, `placeholder` (production 숨김)
+- 광고 노골: "구글 애드센스 광고가 이곳에"
+
+✅ 시청자 가치 표현
+- "한 편에 정리" / "출근 전 5분"
+- "매일 새 분석" / "매일 아침 9시 갱신"
+- "오늘의 시장 코멘트"
+
+🟢 신뢰/약속 신호 (OK)
+- 출처: KRX·한국은행·DART
+- 시각: 매일 아침 9시
+- 면책: 투자 책임 본인
+- 저자 실명·경력
+- 자원 통계: "분석 ETF 100종"
+
+**수정 완료 10지점** (이번 audit)
+1. /breaking hero — "뉴스 크롤링·3,000자" 제거 → 시청자 가치 카피
+2. /breaking section hint — "3,000자+ 심층 분석" 제거
+3. /breaking empty state — "자동 발행" → "매일 아침 갱신"
+4. /[category] empty state — 동일 변환
+5. PulseTodayHero empty state — 동일
+6. TrustBar — "자동 발행" → "새 분석"
+7. EtfMarketPulse "AI 인사이트" → "오늘의 시장 코멘트"
+8. EtfMarketPulse "샘플" 태그 → production 숨김
+9. FlowWeeklyTrend hint — "파이프라인" 제거
+10. AdBanner placeholder — production 숨김 (dev에서만 [DEV] 표시)
+
+**적용 절차** (앞으로 자동)
+- 새 컴포넌트 작성 시 ❌ 패턴 자가 검사
+- 기존 코드 수정 시 같은 commit 내 leak 도입 방지
+- 새 기능 기획 시 시작 전 Grep audit
+
+
 ## 2026-04-25 · [Claude 작업 규칙]
 
 ### Q. 앞으로 자동 push 금지. 내가 push할 때만 보내. 영구 기억해.

@@ -73,7 +73,7 @@ export default async function CategoryPage({ params }: PageProps) {
       <section className="post-list">
         {posts.length === 0 ? (
           <div className="empty-state">
-            <p>아직 이 카테고리에 발행된 글이 없습니다. 매일 오전 9시 전 자동 발행됩니다.</p>
+            <p>이 카테고리의 새 분석이 곧 올라옵니다. 매일 아침 9시 전 갱신됩니다.</p>
           </div>
         ) : (
           <div className="post-list-items">
