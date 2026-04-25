@@ -1,0 +1,116 @@
+================================================================================
+  Daily ETF Pulse — 사용자 Q&A 아카이브
+
+  - 사용자가 던진 질문(개념·방법·기획·의사결정)과 답변 요약을 누적 정리.
+  - 새 항목은 파일 맨 아래에 append.
+  - 시간순 정렬, 가장 위가 가장 오래된 질문.
+  - 단순 진행 트리거(`진행`·`a`·`ok`)는 기록 안 함.
+================================================================================
+
+
+## 2026-04-25 · [Cloudflare 일반]
+
+### Q. Cloudflare는 한 사이트밖에 못 해?
+A. 아니요, 무제한입니다.
+- Cloudflare Free 플랜에서 도메인(사이트) 수 제한 없음
+- DNS 레코드 도메인당 무제한
+- Workers 무료 100개 (일 10만 요청)
+- Pages 프로젝트 무제한
+- SSL 인증서 모든 도메인 자동 무료
+호스팅케이알에 도메인 두고 CNAME만 가리키는 대안도 있지만 루트 도메인 불가·SSL 미자동·CDN 혜택 없음. Cloudflare로 옮기는 게 정답.
+
+
+## 2026-04-25 · [멀티 프로젝트 운영]
+
+### Q. 다른 웹사이트도 같은 방식으로 만들 거야. GitHub·Cloudflare 여러 프로젝트 가능?
+A. 둘 다 무제한.
+- GitHub Public Repo: 무제한 (Actions도 무제한)
+- GitHub Private Repo: 무제한 (Actions 월 2,000분 공유)
+- Cloudflare Workers: 100개, Pages 무제한
+- 도메인 등록은 호스팅케이알이나 Cloudflare Registrar(원가 $9.15/년)
+- 새 프로젝트마다: 별도 repo + 별도 Worker + 별도 도메인(또는 서브도메인)
+- 효율 팁:
+  - Gemini API 키는 프로젝트별 분리 권장 (각 일 20건 한도 별도 확보)
+  - 이번 etf 프로젝트 완성 후 fork·복제로 새 콘텐츠 사이트 빠르게 생성 가능
+  - Cloudflare 한 계정에 여러 도메인 묶어 통합 관리
+
+
+## 2026-04-25 · [Cloudflare 대시보드 사용법]
+
+### Q. Cloudflare에서 프로젝트(Worker) 선택은 어떻게 해?
+A. 좌측 메뉴 Workers & Pages 들어가면 모든 프로젝트가 한 화면에 표시됨.
+- 각 프로젝트 이름 클릭 → 상세 화면 진입
+- 화면 상단 breadcrumb (`Workers & Pages > etf`)에서 `Workers & Pages` 클릭하면 목록 복귀
+- 빠른 전환은 Ctrl+K (Quick search) → 프로젝트 이름 입력
+- 도메인 관리는 별도 메뉴: 좌측 Domains
+- 계정 전환은 좌측 상단 계정명 클릭
+
+
+## 2026-04-25 · [배포 자동화 안전성]
+
+### Q. 앞으로 프론트엔드/기획을 계속 수정 보완할 건데, 그때마다 빌드 → 커밋 → push → 자동 재배포 사이클 문제 없을까?
+A. 대부분 무문제. 5가지 주의 + 권장 워크플로 정리:
+
+**한도 (Free 플랜)**
+- Cloudflare Workers 빌드: 월 500회 (일 10번 push해도 월 300회 → 충분)
+- Workers 요청: 일 10만건
+- 번들 크기: 1MB (현재 ~600KB 여유)
+
+**5가지 리스크 + 대응**
+1. 잘못된 코드 push = 즉시 라이브 → Cloudflare 1-클릭 롤백 가능 (Deployments → 직전 버전 → Rollback)
+2. local push와 GitHub Actions cron 동시 = 충돌 → push 전 `git pull --rebase` 습관
+3. preview 없이 main 직접 push = 위험 → 큰 변경은 feature 브랜치 + Cloudflare 자동 preview URL
+4. 빌드 횟수 급증 = 캐시 미스 → 작은 수정 묶어서 한 번에 push
+5. 콘텐츠+코드 git log 섞임 → grep로 분리 가능, 실 영향 없음
+
+**권장 워크플로 (변경 크기별)**
+- 작은 수정 (텍스트·CSS): main 직접 push (현재 방식)
+- 중간 (라우팅·UI 개편): feature 브랜치 → PR → preview URL → merge
+- 큰 (에이전트·파이프라인): 위 + 로컬 `npm run cf:build` + `npm run pulse` 사전 검증
+
+**안전망**
+- Cloudflare 자동 preview URL (모든 브랜치)
+- 1-클릭 롤백 (5초)
+- 로컬 사전 검증 3종: dev / cf:build / pulse
+
+
+## 2026-04-25 · [배포 흐름 개념]
+
+### Q. 로컬에서 수정 → GitHub push → Cloudflare로 가는 게 맞아? 개념부터 잡아야 해.
+A. 정확히 그 흐름.
+
+```
+[로컬 PC]              [GitHub main]              [Cloudflare]
+ 코드 수정 ── push ──▶  새 commit ── webhook ──▶ 자동 빌드 + 배포
+                                                   ↓
+                                               iknowhowinfo.com
+                                               (3~5분 후 라이브)
+```
+
+**단계 상세**
+1. 로컬에서 파일 수정 (VSCode)
+2. git add → git commit → git push (1초+30초)
+3. Cloudflare가 GitHub webhook으로 push 감지 (1초)
+4. Cloudflare가 최신 코드 clone + npm run cf:build (2~3분)
+5. Workers에 배포 + iknowhowinfo.com 새 버전 적용 (30초)
+6. 총 3~5분 후 브라우저에서 확인 가능
+
+**두 번째 흐름 — 매일 09:00 자동 cron**
+- GitHub Actions 서버에서 cron 실행 (사용자 PC 안 켜져도 동작)
+- npm run pulse → 새 MDX·데이터 생성 → 봇이 git push
+- Cloudflare가 같은 webhook으로 자동 빌드·배포
+
+**핵심 개념**
+- 모든 길은 GitHub main을 통과
+- Cloudflare는 항상 GitHub의 main을 source-of-truth로 봄
+- 로컬 → GitHub → Cloudflare 한 방향만 흐름
+- Cloudflare에 직접 코드 업로드 불필요
+
+**자주 헷갈리는 점**
+- Q: 로컬과 GitHub이 다르면? → 매일 cron이 push하므로 작업 시작 전 항상 `git pull --rebase`
+- Q: 커밋 안 하고 push만? → 불가능, git push는 commit된 변경만 전송
+
+
+================================================================================
+  END — 새 질문 답변 시 위에 새 항목 append
+================================================================================
