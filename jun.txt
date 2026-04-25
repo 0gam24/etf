@@ -111,6 +111,70 @@ A. 정확히 그 흐름.
 - Q: 커밋 안 하고 push만? → 불가능, git push는 commit된 변경만 전송
 
 
+
+## 2026-04-25 · [Git 기초]
+
+### Q. push와 commit 차이가 뭐야?
+A. 저장 위치가 다른 두 단계.
+
+**한 줄 요약**
+- commit = 내 PC 안 저장소(.git)에 스냅샷 박기 — 인터넷 없어도 가능, 나만 봄
+- push = 그 스냅샷을 GitHub 서버로 업로드 — 인터넷 필요, 공개됨, Cloudflare 자동 배포 트리거
+
+**흐름**
+```
+파일 수정 ─add─▶ staging ─commit─▶ 로컬 .git ─push─▶ GitHub ─webhook─▶ Cloudflare
+```
+
+**비유 (책 출판)**
+- commit = 챕터 끝나면 USB에 백업 (내 책상 안)
+- push = 출판사에 원고 보내기
+
+**왜 둘로 나뉘었나**
+- 오프라인 작업 가능 (commit 누적 후 한꺼번에 push)
+- 실수 방지 (commit만 하면 GitHub은 깨끗)
+- 효율성 (작은 commit 여러 개 → push 1번 → Cloudflare 빌드 1번)
+
+**자주 묻는 패턴**
+- commit만 하고 GitHub에 안 보임? → 정상, push 안 했으니까
+- commit 없이 push만? → 불가능, push는 commit된 것만 보냄
+- 여러 commit → 한 번에 push? → 일반적, Cloudflare는 마지막 push만 트리거
+- push 후 잘못 발견? → 새 commit으로 수정(안전), git revert, 또는 Cloudflare 1-클릭 롤백
+
+**우리 프로젝트 실전**
+```bash
+git pull --rebase    # 자동 cron이 push한 것 가져오기
+# 파일 수정
+git add -A
+git commit -m "메시지"
+git push             # 라이브 반영 트리거
+```
+
+### 보강 — "commit은 내 PC만, push는 GitHub로" 이렇게 외워도 돼?
+A. 정확. push는 GitHub까지만 의식하면 됨. Cloudflare 빌드·배포는 GitHub webhook 받아 자동 동작 → 사용자 행동 불필요.
+```
+commit → 내 PC
+push   → GitHub  → (자동) Cloudflare 빌드 → iknowhowinfo.com 라이브
+```
+
+
+## 2026-04-25 · [Claude 작업 규칙]
+
+### Q. 앞으로 자동 push 금지. 내가 push할 때만 보내. 영구 기억해.
+A. 두 곳에 영구 명시 완료:
+- `etf-platform/CLAUDE.md` — 이 repo 모든 Claude Code 세션에 자동 로드
+- 영구 메모리 `feedback_no_auto_push.md` — 모든 대화에 자동 로드
+
+**규칙 요지**
+- push 허용 트리거: "푸쉬"·"push"·"올려"·"배포해"·"라이브 반영해"·"GitHub에 올려" 등 명백한 지시
+- 그 외 행동(파일 수정·로컬 빌드·`git add`·`git commit`)은 자유롭게 수행
+- 작업 종료 시 변경 파일 + commit hash + "push 대기 중" 보고
+
+**예외**: 매일 09:00 KST GitHub Actions cron의 자동 push는 시스템 사전 승인된 워크플로라 별개 (Claude 직접 행동에만 적용).
+
+**효과**: 사용자가 production(라이브 사이트) 영향 시점을 본인이 통제. 의도치 않은 자동 라이브 변경 방지.
+
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================

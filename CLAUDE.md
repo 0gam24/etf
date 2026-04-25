@@ -48,6 +48,44 @@ data/raw/pulse_images/
 3. **새 비밀 파일 발견 시** 우선 `.gitignore`에 추가 → 그 다음 작업
 4. **실수로 노출했을 때** 즉시 사과 + 영향받는 키 **재발급 권고**
 
+# 🚫 git push 금지 — 사용자 명시 지시할 때만
+
+## 규칙
+
+**`git push`는 사용자가 명시적으로 지시할 때만 실행한다.** 자동·임의 push 절대 금지.
+
+## 사용자가 push를 원할 때 쓰는 표현 (이 중 하나라도 있을 때만 push 허용)
+
+- "푸쉬" / "push" / "올려" / "올려줘"
+- "배포해" / "deploy"
+- "라이브 반영해"
+- "GitHub에 올려"
+- 명백한 지시 ("이거 푸쉬해줘")
+
+## 허용되는 행동 (push 없이)
+
+- ✅ 파일 수정 (Edit·Write)
+- ✅ 로컬 검증 (`npm run dev`·`npm run cf:build`·`npm run pulse` 등)
+- ✅ `git add` (스테이징)
+- ✅ `git commit` (작업 단위가 명확하면 로컬에만 저장 — 사용자가 push 지시할 때 같이 올라감)
+
+## 금지 행동
+
+- ❌ `git push` (명시 지시 없이)
+- ❌ `git push origin main` 등 모든 push 변형
+- ❌ "곧 push해야 하니까 미리 해두자" 같은 자체 판단
+
+## 작업 종료 시 보고 형식
+
+작업 끝나면 사용자에게 다음을 알린다:
+- 변경된 파일 목록
+- commit 했으면 commit hash 와 메시지
+- **"push 대기 중 — 라이브 반영하려면 알려주세요"** 명시
+
+## 예외 — GitHub Actions cron의 자동 push
+
+`.github/workflows/daily-pulse.yml`이 매일 09:00 KST에 자동 push하는 것은 **시스템적으로 사전 승인된 워크플로**라 별개. 이 규칙은 **내(Claude)의 직접 행동**에만 적용됨. cron 워크플로 자체를 disable하거나 변경할 일은 사용자 지시 필요.
+
 # 📝 Q&A 아카이브 의무
 
 ## 규칙
