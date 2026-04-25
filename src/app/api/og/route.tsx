@@ -15,16 +15,18 @@ async function loadFont(url: string) {
   return res.arrayBuffer();
 }
 
-const CATEGORY_META: Record<string, { icon: string; accent: string; label: string }> = {
-  pulse:    { icon: '⚡', accent: '#F59E0B', label: 'DAILY PULSE' },
-  surge:    { icon: '🚀', accent: '#EF4444', label: 'SURGE' },
-  flow:     { icon: '🌊', accent: '#3B82F6', label: 'FLOW' },
-  income:   { icon: '💰', accent: '#10B981', label: 'INCOME' },
-  breaking: { icon: '📡', accent: '#F59E0B', label: 'ETF BREAKING' },
-  theme:   { icon: '🎯', accent: '#8B5CF6', label: 'THEME' },
-  account: { icon: '🏦', accent: '#D4AF37', label: 'ACCOUNT' },
-  weekly:  { icon: '📅', accent: '#D4AF37', label: 'WEEKLY' },
-  stock:   { icon: '📊', accent: '#60A5FA', label: 'STOCK MASTER' },
+// ⚠️ Cloudflare Workers Edge 런타임은 system 이모지 폰트가 없어 이모지 렌더링 시 500.
+// 이모지 제거하고 텍스트·숫자 라벨로만 구성.
+const CATEGORY_META: Record<string, { tag: string; accent: string; label: string }> = {
+  pulse:    { tag: '01', accent: '#F59E0B', label: 'DAILY PULSE' },
+  surge:    { tag: '02', accent: '#EF4444', label: 'SURGE' },
+  flow:     { tag: '03', accent: '#3B82F6', label: 'FLOW' },
+  income:   { tag: '04', accent: '#10B981', label: 'INCOME' },
+  breaking: { tag: 'NEW',accent: '#F59E0B', label: 'ETF BREAKING' },
+  theme:   { tag: 'TH', accent: '#8B5CF6', label: 'THEME' },
+  account: { tag: 'AC', accent: '#D4AF37', label: 'ACCOUNT' },
+  weekly:  { tag: 'WK', accent: '#D4AF37', label: 'WEEKLY' },
+  stock:   { tag: 'ST', accent: '#60A5FA', label: 'STOCK MASTER' },
 };
 
 export async function GET(req: NextRequest) {
@@ -67,8 +69,22 @@ export async function GET(req: NextRequest) {
         }}
       >
         {/* 좌상단 브랜드 바 */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '28px' }}>
-          <div style={{ fontSize: '36px' }}>⚡</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '28px' }}>
+          <div
+            style={{
+              width: '36px', height: '36px',
+              borderRadius: '8px',
+              background: 'linear-gradient(135deg, #D4AF37, #FBBF24)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '22px',
+              fontWeight: 800,
+              color: '#0B0E14',
+            }}
+          >
+            E
+          </div>
           <div
             style={{
               fontSize: '22px',
@@ -87,7 +103,7 @@ export async function GET(req: NextRequest) {
             display: 'flex',
             alignSelf: 'flex-start',
             alignItems: 'center',
-            gap: '10px',
+            gap: '12px',
             padding: '8px 18px',
             background: `${meta.accent}22`,
             border: `1px solid ${meta.accent}66`,
@@ -99,7 +115,18 @@ export async function GET(req: NextRequest) {
             marginBottom: '24px',
           }}
         >
-          <span style={{ fontSize: '26px' }}>{meta.icon}</span>
+          <span
+            style={{
+              fontSize: '14px',
+              padding: '2px 8px',
+              borderRadius: '4px',
+              background: meta.accent,
+              color: '#0B0E14',
+              fontWeight: 800,
+            }}
+          >
+            {meta.tag}
+          </span>
           {meta.label}
         </div>
 
@@ -150,8 +177,7 @@ export async function GET(req: NextRequest) {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <span style={{ color: '#D4AF37' }}>📅</span>
-            <span>{date}</span>
+            <span style={{ color: '#D4AF37', fontWeight: 700 }}>{date}</span>
           </div>
           {tickers.length > 0 && (
             <div style={{ display: 'flex', gap: '10px' }}>
