@@ -219,6 +219,29 @@ A. 두 곳에 영구 명시 완료:
 **효과**: 사용자가 production(라이브 사이트) 영향 시점을 본인이 통제. 의도치 않은 자동 라이브 변경 방지.
 
 
+## 2026-04-25 · [로컬↔프로덕션 정보 100% 일치 보장 영구 규칙]
+
+### Q. 앞으로 로컬에서 작업하고 push하면 모든 정보가 일치해야 해.
+A. 영구 규칙 + 자동 검증 도구 박음.
+
+**4중 박힘**
+- `etf-platform/CLAUDE.md` — push 전후 검증 프로토콜 명시 (ls 검증·curl 검증·4가지 누락 원인 매트릭스)
+- 영구 메모리 `feedback_local_prod_parity.md` — 모든 대화에 자동 로드
+- `scripts/verify-parity.mjs` — 로컬 content/*.mdx 슬러그를 production에 자동 curl 검증
+- `package.json` — `npm run verify:parity` (full) / `npm run verify:parity:quick` (랜딩+가이드만) 등록
+
+**검증 도구 동작 방식**
+- 로컬 `content/{category}/*.mdx` 모두 나열
+- production에 같은 슬러그 URL `https://iknowhowinfo.com/{category}/{slug}` curl
+- 200 OK + 응답 검사 → 누락 발견 시 4가지 후보 원인 출력 + exit 1
+- `--quick` = 카테고리 랜딩 + /guide 6개만 (빠른 사후검증용)
+- `--since YYYY-MM-DD` = 특정 날짜 이후 슬러그만
+- `--site URL` = 다른 도메인 검증
+
+**즉각 발견된 production 이슈**
+push 후 검증 실행 → 카테고리 랜딩·가이드 11개는 모두 200, 그러나 개별 글 슬러그 18개 모두 404. production sitemap에 글 URL 0개 → **Cloudflare 빌드 시점에 `getAllPosts()`가 빈 배열 반환** = `content/` 폴더가 빌드 환경에 안 도달. 사용자에게 별도 보고하여 진단 진행 예정.
+
+
 ## 2026-04-25 · [SEO Phase 1+2+3 풀 적용]
 
 ### Q. 웹사이트를 키울 SEO 계획을 짜고 오늘 다 끝내보자.

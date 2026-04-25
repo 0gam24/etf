@@ -116,6 +116,47 @@ data/raw/pulse_images/
 )}
 ```
 
+# 🔁 로컬 ↔ 프로덕션 정보 100% 일치 보장
+
+## 핵심 원칙
+
+로컬에서 작업한 모든 변경(코드·콘텐츠·데이터)이 push 후 **production(`iknowhowinfo.com`)에 100% 동일하게 반영**되어야 한다. 콘텐츠·데이터·페이지 누락 절대 금지.
+
+## Push 전 (로컬에서 사전 검증 의무)
+
+1. `npm run cf:build` — Cloudflare bundle 생성 성공 확인 (실패 시 push 금지)
+2. `.open-next/server-functions/default/content/{category}/`에 push 대상 MDX 파일이 모두 들어 있는지 확인
+3. `git status content/ data/` — 모든 변경이 staged/committed 인지
+4. `git log origin/main..HEAD --stat` — push할 commit이 의도한 파일을 모두 포함하는지
+
+## Push 직후 (production 검증 의무)
+
+push 후 **5~7분 대기 → 검증 실행**:
+
+1. `npm run verify:parity` — 로컬 핵심 슬러그 vs production 응답 자동 비교 (있을 때)
+2. 또는 수동 curl:
+   ```bash
+   curl -s -o /dev/null -w "%{http_code}\n" "https://iknowhowinfo.com/pulse"
+   curl -s -o /dev/null -w "%{http_code}\n" "https://iknowhowinfo.com/pulse/pulse-{YYYYMMDD}"
+   ```
+3. 누락 발견 시 즉시 사용자에게 보고 + 4가지 후보 원인으로 분석:
+   - **Cloudflare build cache**: 빌드가 옛 결과 재사용 → 새 코드 변경 commit 또는 대시보드 "Retry build"
+   - **gitignore 누락**: `data/raw/` 같은 폴더가 ignore 되어 production에서 fs.readdir 빈 배열
+   - **webhook miss**: GitHub→Cloudflare 연결 끊김. 빈 commit 한번 push 또는 수동 redeploy
+   - **add 누락**: `git add` 안 한 채 commit. push 전 `git status content/ data/` 강제 확인
+
+## Push 후 보고 형식
+
+push 결과 보고할 때 반드시 포함:
+- push된 commit hash 범위 (예: `ef1f79d..cb2f116`)
+- Cloudflare 예상 배포 완료 시각 (보통 5분 후)
+- "5분 후 다음 URL 확인 권장" — push로 신규/갱신된 핵심 페이지 1~3개 URL 명시
+- 사용자가 안 됐다고 알리면 즉시 검증 + 원인 분석
+
+## 사건 기록
+
+- **2026-04-25** — `/pulse` 콘텐츠 4월 23~25일분이 GitHub에는 있었지만 production은 "아직 발행" + 직접 슬러그 404. 원인: Cloudflare가 옛 빌드 살려둠. 해결: 새 commit (`cb2f116`) push로 빌드 강제 트리거.
+
 # 🚫 git push 금지 — 사용자 명시 지시할 때만
 
 ## 규칙
