@@ -19,13 +19,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const post = getPostBySlug('weekly', slug);
   if (!post) return { title: '주간 리포트를 찾을 수 없습니다' };
+  const canonicalPath = `/weekly/${encodeURI(slug)}`;
+  const ogImage = `/api/og?category=weekly&title=${encodeURIComponent(post.meta.title)}&date=${encodeURIComponent(new Date(post.meta.date).toLocaleDateString('ko-KR'))}`;
   return {
     title: post.meta.title,
     description: post.meta.description,
+    alternates: { canonical: canonicalPath },
     openGraph: {
       title: post.meta.title,
       description: post.meta.description,
-      images: [`/api/og?category=weekly&title=${encodeURIComponent(post.meta.title)}&date=${encodeURIComponent(new Date(post.meta.date).toLocaleDateString('ko-KR'))}`],
+      type: 'article',
+      url: canonicalPath,
+      publishedTime: post.meta.date,
+      authors: [post.meta.author],
+      images: [ogImage],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.meta.title,
+      description: post.meta.description,
+      images: [ogImage],
     },
   };
 }

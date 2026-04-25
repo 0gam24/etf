@@ -17,9 +17,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const key = `account/${type}`;
   const name = CATEGORY_NAMES[key];
   if (!name) return { title: '계좌 가이드를 찾을 수 없습니다' };
+  const canonicalPath = `/account/${type}`;
+  const desc = ACCOUNT_META[type]?.desc || `${name} 활용 ETF 전략과 세후 수익률 가이드.`;
   return {
     title: `${name} ETF 가이드 — Daily ETF Pulse`,
-    description: ACCOUNT_META[type]?.desc,
+    description: desc,
+    alternates: { canonical: canonicalPath },
+    openGraph: {
+      title: `${name} ETF 가이드 — Daily ETF Pulse`,
+      description: desc,
+      type: 'website',
+      url: canonicalPath,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${name} ETF 가이드`,
+      description: desc,
+    },
   };
 }
 

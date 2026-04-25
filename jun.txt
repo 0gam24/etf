@@ -219,6 +219,47 @@ A. 두 곳에 영구 명시 완료:
 **효과**: 사용자가 production(라이브 사이트) 영향 시점을 본인이 통제. 의도치 않은 자동 라이브 변경 방지.
 
 
+## 2026-04-25 · [SEO Phase 1+2+3 풀 적용]
+
+### Q. 웹사이트를 키울 SEO 계획을 짜고 오늘 다 끝내보자.
+A. Phase 1(인덱싱 기반) + Phase 2(스키마 풍부화) + Phase 3(5 필러 페이지) 코드 작업 완료. 외부 등록(Google/Naver)은 사용자가 직접 진행.
+
+**Phase 1 — 기술 SEO**
+- `metadataBase` 기준 모든 페이지에 canonical URL 자동 설정 (layout 기본 + 동적 페이지별 override)
+- Twitter Card meta 전 페이지 (summary_large_image)
+- robots: googleBot 옵션 강화, Naver Yeti·Daum Daumoa 명시 허용
+- robots.sitemap에 host 라인 추가
+
+**Phase 2 — 스키마 풍부화 (`lib/schema.ts` 빌더 일원화)**
+- BreadcrumbList — `Breadcrumbs` 컴포넌트 신설, 모든 카테고리·글·가이드 페이지에 삽입
+- Article / NewsArticle (속보용) — 글 상세 페이지에 author·publisher·images·section·keywords 포함
+- Person — 글 상세 + 저자 페이지에 jobTitle·knowsAbout·worksFor 포함
+- FAQPage — 카테고리 5종(pulse·surge·flow·income·breaking) 끝에 `FaqSection` 컴포넌트 + Q&A 데이터(`category-faq.ts`)
+- FinancialProduct — `/stock/[ticker]`에 ETF 코드·운용사·카테고리 노출
+
+**Phase 3 — 5 필러(클러스터) 가이드 페이지**
+신규 라우트 `/guide` + `/guide/[slug]`:
+1. `/guide/monthly-dividend` — 월배당 ETF 완전 가이드
+2. `/guide/covered-call` — 커버드콜 ETF 비교
+3. `/guide/defense-etf` — 방산 ETF 비교
+4. `/guide/ai-semi-etf` — AI·반도체 ETF
+5. `/guide/retirement` — 은퇴 자산 설계 (IRP+ISA+연금저축)
+
+각 가이드는 `lib/guides.ts`의 정의를 읽고, `GuideDataBlock` 컴포넌트가 `dividend-registry`·`etf_portfolios`·일일 시세에서 데이터를 끌어와 표·캘린더·세후 비교·테마 ETF 목록·관련 글 리스트를 동적으로 렌더. 매일 데이터가 새로고침되어 콘텐츠가 자동 갱신됨.
+
+**기타**
+- 헤더 네비게이션에 "가이드" 추가
+- sitemap에 /guide + 5 필러 페이지 우선순위 0.85로 등록
+- 모든 신규 컴포넌트(Breadcrumbs·FaqSection·GuideDataBlock·GuideIndex·GuideArticle) CSS 추가
+
+**빌드 검증**
+- `npx tsc --noEmit` ✓
+- `npm run build` 52 페이지 정적 생성 ✓ (이전 46 + /guide 6)
+- `npm run cf:build` ✓
+
+**push 보류 — 다음 commit과 함께 사용자 지시 시 push.**
+
+
 ## 2026-04-25 · [메인 페이지 v4 기획·구현]
 
 ### Q. 메인 페이지 v4 "Story-Driven Trust Journey" 추천으로 모두 적용해.

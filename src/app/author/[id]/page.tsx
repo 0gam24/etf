@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getAllPosts } from '@/lib/posts';
 import { AUTHORS } from '@/lib/authors';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import { buildPersonSchema, jsonLd } from '@/lib/schema';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -15,9 +17,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { id } = await params;
   const a = AUTHORS[id];
   if (!a) return { title: '저자를 찾을 수 없습니다' };
+  const canonicalPath = `/author/${id}`;
   return {
     title: `${a.name} — ${a.title}`,
     description: a.bio,
+    alternates: { canonical: canonicalPath },
+    openGraph: {
+      title: `${a.name} — ${a.title}`,
+      description: a.bio,
+      type: 'profile',
+      url: canonicalPath,
+    },
+    twitter: {
+      card: 'summary',
+      title: `${a.name} — ${a.title}`,
+      description: a.bio,
+    },
   };
 }
 
@@ -27,21 +42,25 @@ export default async function AuthorPage({ params }: PageProps) {
   if (!author) notFound();
 
   const posts = getAllPosts().filter(p => p.meta.authorId === id);
-  const baseUrl = process.env.SITE_URL || '';
 
-  const personSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
+  const personSchema = buildPersonSchema({
     name: author.name,
     jobTitle: author.title,
     description: author.bio,
     knowsAbout: author.expertise,
-    url: `${baseUrl}/author/${id}`,
-  };
+    url: `/author/${id}`,
+  });
 
   return (
     <div className="animate-fade-in">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(personSchema) }} />
+      <Breadcrumbs
+        items={[
+          { name: '홈', href: '/' },
+          { name: '저자', href: '/' },
+          { name: author.name, href: `/author/${id}` },
+        ]}
+      />
 
       <section className="category-hero" style={{ paddingBottom: '4rem', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="category-hero-inner">

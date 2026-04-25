@@ -9,6 +9,9 @@ import IncomeStabilityTable from '@/components/IncomeStabilityTable';
 import IncomeTaxCompare from '@/components/IncomeTaxCompare';
 import IncomeGoalCalculator from '@/components/IncomeGoalCalculator';
 import NextChapterCta from '@/components/NextChapterCta';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import FaqSection from '@/components/FaqSection';
+import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 
 export const metadata: Metadata = {
   title: '월배당·커버드콜 — Daily ETF Pulse',
@@ -45,6 +48,12 @@ export default function IncomeLandingPage() {
 
   return (
     <div className="income-landing animate-fade-in">
+      <Breadcrumbs
+        items={[
+          { name: '홈', href: '/' },
+          { name: '월배당·커버드콜', href: '/income' },
+        ]}
+      />
       <IncomeHero etfCount={etfs.length} topYield={topYield} monthlyCount={monthlyCount} asOf={asOf} />
 
       <div className="income-landing-body">
@@ -101,6 +110,8 @@ export default function IncomeLandingPage() {
         </section>
 
         <p className="income-disclaimer">{registry.disclaimer}</p>
+
+        <FaqSection title={CATEGORY_FAQ_TITLE.income} items={CATEGORY_FAQ.income} />
 
         <NextChapterCta
           label="다음 챕터"

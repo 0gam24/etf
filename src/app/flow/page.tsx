@@ -15,6 +15,9 @@ import FlowSectorLeaders from '@/components/FlowSectorLeaders';
 import FlowRecentList from '@/components/FlowRecentList';
 import FlowWeeklyTrend from '@/components/FlowWeeklyTrend';
 import NextChapterCta from '@/components/NextChapterCta';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import FaqSection from '@/components/FaqSection';
+import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 
 export const metadata: Metadata = {
   title: '자금 흐름 리포트 — Daily ETF Pulse',
@@ -37,6 +40,12 @@ export default function FlowLandingPage() {
 
   return (
     <div className="flow-landing animate-fade-in">
+      <Breadcrumbs
+        items={[
+          { name: '홈', href: '/' },
+          { name: '자금 흐름 리포트', href: '/flow' },
+        ]}
+      />
       <FlowHero
         hottest={hottest}
         coldest={coldest}
@@ -78,6 +87,8 @@ export default function FlowLandingPage() {
         <p className="flow-disclaimer">
           오늘 1일치 시세 기반 스냅샷입니다. 주간·월간 누적 자금 흐름은 시계열 데이터가 누적된 후 자동 보강될 예정입니다.
         </p>
+
+        <FaqSection title={CATEGORY_FAQ_TITLE.flow} items={CATEGORY_FAQ.flow} />
 
         <NextChapterCta
           label="다음 챕터"

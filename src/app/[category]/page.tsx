@@ -35,9 +35,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const name = CATEGORY_NAMES[category];
   if (!name) return { title: '카테고리를 찾을 수 없습니다' };
   const meta = CATEGORY_META[category];
+  const canonicalPath = `/${category}`;
+  const description = meta?.desc || `${name} 관련 최신 분석을 한눈에 확인하세요.`;
   return {
     title: `${name} — Daily ETF Pulse`,
-    description: meta?.desc || `${name} 관련 최신 분석을 한눈에 확인하세요.`,
+    description,
+    alternates: { canonical: canonicalPath },
+    openGraph: {
+      title: `${name} — Daily ETF Pulse`,
+      description,
+      type: 'website',
+      url: canonicalPath,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${name} — Daily ETF Pulse`,
+      description,
+    },
   };
 }
 

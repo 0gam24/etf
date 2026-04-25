@@ -11,6 +11,9 @@ import PulseDiff from '@/components/PulseDiff';
 import PulseWeekTimeline from '@/components/PulseWeekTimeline';
 import PulseRecurringThemes from '@/components/PulseRecurringThemes';
 import NextChapterCta from '@/components/NextChapterCta';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import FaqSection from '@/components/FaqSection';
+import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 
 export const metadata: Metadata = {
   title: '오늘의 관전포인트 — Daily ETF Pulse',
@@ -35,6 +38,12 @@ export default function PulseLandingPage() {
 
   return (
     <div className="pulse-landing animate-fade-in">
+      <Breadcrumbs
+        items={[
+          { name: '홈', href: '/' },
+          { name: '오늘의 관전포인트', href: '/pulse' },
+        ]}
+      />
       <PulseTodayHero today={today} />
 
       <div className="pulse-landing-body">
@@ -87,6 +96,8 @@ export default function PulseLandingPage() {
             </ul>
           )}
         </section>
+
+        <FaqSection title={CATEGORY_FAQ_TITLE.pulse} items={CATEGORY_FAQ.pulse} />
 
         <NextChapterCta
           label="다음 챕터"

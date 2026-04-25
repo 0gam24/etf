@@ -11,6 +11,9 @@ import {
 import SurgeHero from '@/components/SurgeHero';
 import SurgeThemeTracker from '@/components/SurgeThemeTracker';
 import NextChapterCta from '@/components/NextChapterCta';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import FaqSection from '@/components/FaqSection';
+import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 import SurgeRecentList from '@/components/SurgeRecentList';
 
 export const metadata: Metadata = {
@@ -43,6 +46,12 @@ export default function SurgeLandingPage() {
 
   return (
     <div className="surge-landing animate-fade-in">
+      <Breadcrumbs
+        items={[
+          { name: '홈', href: '/' },
+          { name: '급등 테마 분석', href: '/surge' },
+        ]}
+      />
       <SurgeHero
         post={featuredPost}
         etf={heroEtf}
@@ -77,6 +86,8 @@ export default function SurgeLandingPage() {
             </p>
           </section>
         )}
+
+        <FaqSection title={CATEGORY_FAQ_TITLE.surge} items={CATEGORY_FAQ.surge} />
 
         <NextChapterCta
           label="다음 챕터"

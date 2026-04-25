@@ -18,9 +18,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const key = `theme/${theme}`;
   const name = CATEGORY_NAMES[key];
   if (!name) return { title: '테마를 찾을 수 없습니다' };
+  const canonicalPath = `/theme/${theme}`;
+  const desc = THEME_META[theme]?.desc || `${name} 테마 ETF의 종목별 비교와 최신 분석.`;
   return {
     title: `${name} 테마 ETF — Daily ETF Pulse`,
-    description: THEME_META[theme]?.desc,
+    description: desc,
+    alternates: { canonical: canonicalPath },
+    openGraph: {
+      title: `${name} 테마 ETF — Daily ETF Pulse`,
+      description: desc,
+      type: 'website',
+      url: canonicalPath,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${name} 테마 ETF`,
+      description: desc,
+    },
   };
 }
 

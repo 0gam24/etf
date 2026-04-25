@@ -11,6 +11,9 @@ import {
 } from '@/lib/surge';
 import SurgeRiskLabels from '@/components/SurgeRiskLabels';
 import NextChapterCta from '@/components/NextChapterCta';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import FaqSection from '@/components/FaqSection';
+import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 
 export const metadata: Metadata = {
   title: 'ETF 속보 — Daily ETF Pulse',
@@ -36,6 +39,12 @@ export default function BreakingLandingPage() {
 
   return (
     <div className="breaking-landing animate-fade-in">
+      <Breadcrumbs
+        items={[
+          { name: '홈', href: '/' },
+          { name: 'ETF 속보', href: '/breaking' },
+        ]}
+      />
       <section className="breaking-hero">
         <div className="breaking-hero-bg" aria-hidden />
         <div className="breaking-hero-inner">
@@ -138,6 +147,8 @@ export default function BreakingLandingPage() {
             </ul>
           </section>
         )}
+
+        <FaqSection title={CATEGORY_FAQ_TITLE.breaking} items={CATEGORY_FAQ.breaking} />
 
         <NextChapterCta
           label="다음 챕터"

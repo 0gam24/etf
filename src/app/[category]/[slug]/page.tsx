@@ -13,6 +13,9 @@ import ShareRow from '@/components/ShareRow';
 import Toc from '@/components/Toc';
 import HoldingsPanel from '@/components/HoldingsPanel';
 import PostRelatedEtfs from '@/components/PostRelatedEtfs';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import { AUTHORS } from '@/lib/authors';
+import { buildArticleSchema, buildPersonSchema, jsonLd } from '@/lib/schema';
 
 interface PageProps {
   params: Promise<{ category: string; slug: string }>;
@@ -30,18 +33,29 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
   if (post.meta.tickers?.length) ogParams.set('tickers', post.meta.tickers.slice(0, 3).join(','));
 
+  const canonicalPath = `/${category}/${encodeURI(slug)}`;
+  const ogImage = `/api/og?${ogParams.toString()}`;
+
   return {
     title: post.meta.title,
     description: post.meta.description,
     keywords: post.meta.keywords,
     authors: [{ name: post.meta.author }],
+    alternates: { canonical: canonicalPath },
     openGraph: {
       title: post.meta.title,
       description: post.meta.description,
       type: 'article',
+      url: canonicalPath,
       publishedTime: post.meta.date,
       authors: [post.meta.author],
-      images: [`/api/og?${ogParams.toString()}`],
+      images: [ogImage],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.meta.title,
+      description: post.meta.description,
+      images: [ogImage],
     },
   };
 }
@@ -106,19 +120,73 @@ export default async function PostPage({ params }: PageProps) {
   const marketAvgVolume = computeMarketAvgVolume(etfList);
   const tickersForPanel = post.meta.tickers?.slice(0, 5) || [];
 
+  // Article (or NewsArticle for breaking) + author Person 스키마
+  const ogParams = new URLSearchParams({
+    title: post.meta.title.slice(0, 60),
+    category,
+    date: new Date(post.meta.date).toLocaleDateString('ko-KR'),
+  });
+  if (post.meta.tickers?.length) ogParams.set('tickers', post.meta.tickers.slice(0, 3).join(','));
+  const ogImage = `/api/og?${ogParams.toString()}`;
+  const authorMeta = post.meta.authorId ? AUTHORS[post.meta.authorId] : null;
+
+  const articleSchema = buildArticleSchema({
+    type: category === 'breaking' ? 'NewsArticle' : 'Article',
+    headline: post.meta.title,
+    description: post.meta.description,
+    url: `/${category}/${slug}`,
+    datePublished: post.meta.date,
+    images: [ogImage],
+    author: {
+      name: post.meta.author,
+      authorId: post.meta.authorId,
+      title: authorMeta?.title,
+    },
+    keywords: post.meta.keywords,
+    section: post.categoryName,
+  });
+
+  const personSchema = authorMeta
+    ? buildPersonSchema({
+        name: authorMeta.name,
+        jobTitle: authorMeta.title,
+        description: authorMeta.bio,
+        knowsAbout: authorMeta.expertise,
+        url: `/author/${authorMeta.id}`,
+      })
+    : null;
+
   return (
     <>
       <ReadingProgress />
 
       {/* JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd(articleSchema) }}
+      />
+      {personSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLd(personSchema) }}
+        />
+      )}
       {post.meta.schemas?.map((s, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
       ))}
 
+      <Breadcrumbs
+        items={[
+          { name: '홈', href: '/' },
+          { name: post.categoryName, href: `/${category}` },
+          { name: post.meta.title, href: `/${category}/${slug}` },
+        ]}
+      />
+
       <div className="post-v2">
         <article className="post-v2-main">
           <header className="post-v2-hero">
-            <div className="post-v2-crumb">
+            <div className="post-v2-crumb" aria-hidden>
               <Link href="/">홈</Link>
               <span>/</span>
               <Link href={`/${category}`}>{post.categoryName}</Link>

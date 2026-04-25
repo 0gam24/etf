@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Menu, X, Search, Zap, TrendingUp, Waves, Coins, Radio } from 'lucide-react';
+import { Menu, X, Search, Zap, TrendingUp, Waves, Coins, Radio, BookOpen } from 'lucide-react';
 
 const CAT_ICON: Record<string, React.ReactNode> = {
   pulse: <Zap size={18} strokeWidth={2.4} aria-hidden />,
@@ -11,6 +11,7 @@ const CAT_ICON: Record<string, React.ReactNode> = {
   flow: <Waves size={18} strokeWidth={2.4} aria-hidden />,
   income: <Coins size={18} strokeWidth={2.4} aria-hidden />,
   breaking: <Radio size={18} strokeWidth={2.4} aria-hidden />,
+  guide: <BookOpen size={18} strokeWidth={2.4} aria-hidden />,
 };
 import SearchModal from './SearchModal';
 
@@ -20,6 +21,7 @@ const NAV_ITEMS = [
   { href: '/surge',    label: '급등 테마',         cat: 'surge' },
   { href: '/flow',     label: '자금 흐름',          cat: 'flow' },
   { href: '/income',   label: '월배당·커버드콜',   cat: 'income' },
+  { href: '/guide',    label: '가이드',             cat: 'guide' },
 ];
 
 export default function Header() {

@@ -10,10 +10,28 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { theme, slug } = await params;
   const post = getPostBySlug(`theme/${theme}`, slug);
   if (!post) return { title: '포스팅을 찾을 수 없습니다' };
+  const canonicalPath = `/theme/${theme}/${encodeURI(slug)}`;
+  const ogImage = `/api/og?title=${encodeURIComponent(post.meta.title)}&category=theme`;
   return {
     title: post.meta.title,
     description: post.meta.description,
     keywords: post.meta.keywords,
+    alternates: { canonical: canonicalPath },
+    openGraph: {
+      title: post.meta.title,
+      description: post.meta.description,
+      type: 'article',
+      url: canonicalPath,
+      publishedTime: post.meta.date,
+      authors: [post.meta.author],
+      images: [ogImage],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.meta.title,
+      description: post.meta.description,
+      images: [ogImage],
+    },
   };
 }
 
