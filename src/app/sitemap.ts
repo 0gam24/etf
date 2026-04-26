@@ -9,8 +9,7 @@ import {
 import { AUTHOR_LIST } from '@/lib/authors';
 import { GUIDES } from '@/lib/guides';
 import { getProductsRegistry } from '@/lib/products';
-import { getLatestEtfData, getKnownShortcodes, resolveEtfTicker, findEtfByAnyCode } from '@/lib/data';
-import type { RawEtf } from '@/lib/surge';
+import { getLatestEtfData, getKnownShortcodes } from '@/lib/data';
 
 /**
  * Daily ETF Pulse — 동적 sitemap.xml
@@ -101,9 +100,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // 종목 사전 — /etf/[ticker] (거래량 상위 100종, 매일 시세 갱신)
+  // 종목 사전 — /etf/[ticker] (KRX 등록 ETF 전체)
   const etfData = getLatestEtfData();
-  const etfList = (etfData?.etfList || []) as RawEtf[];
   // baseDate는 "YYYYMMDD" 문자열이라 Date에 직접 못 넘김 → ISO로 정규화
   function ymdToDate(ymd?: string): Date | null {
     if (!ymd || ymd.length !== 8) return null;
@@ -113,25 +111,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
   const etfLastModified = ymdToDate(etfData?.baseDate) || fallback;
 
-  // 거래량 상위 100 issueCode + 알려진 shortcode 모두 노출 (canonical은 페이지 metadata가 처리)
-  const etfSlugs = new Set<string>();
-  etfList
-    .slice()
-    .sort((a, b) => (b.volume || 0) - (a.volume || 0))
-    .slice(0, 100)
-    .forEach(e => {
-      // shortcode가 있으면 shortcode 우선, 없으면 issueCode
-      const slug = resolveEtfTicker(e.code).canonicalSlug;
-      etfSlugs.add(slug);
-    });
-  // 등록된 PORTFOLIOS shortcode도 추가 — etfList에서 resolve되는 것만 (404 회피)
-  getKnownShortcodes()
-    .filter(code => findEtfByAnyCode(etfList, code) !== null)
-    .forEach(code => etfSlugs.add(code.toLowerCase()));
-
-  etfSlugs.forEach(slug => {
+  // KRX 공식 등록 모든 ETF (krx-etf-codes.json) — 시세 없는 종목도 minimal 페이지로 노출
+  getKnownShortcodes().forEach(code => {
     routes.push({
-      url: `${baseUrl}/etf/${slug}`,
+      url: `${baseUrl}/etf/${code.toLowerCase()}`,
       lastModified: etfLastModified,
       changeFrequency: 'daily',
       priority: 0.8,

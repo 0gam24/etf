@@ -153,72 +153,106 @@ export interface EtfSnapshot {
   }[];
 }
 
+// ─────────────────────────────────────────────────────────────────────
+// KRX 공식 단축코드 매핑 — data/krx-etf-codes.json (1095종)
+// scripts/fetch-etf-codes.mjs로 갱신. KRX 공공데이터 srtnCd 기준.
+// ─────────────────────────────────────────────────────────────────────
+const KRX_CODES_FILE = path.join(process.cwd(), 'data', 'krx-etf-codes.json');
+
+export interface KrxEtfCode {
+  shortcode: string;
+  issueCode: string; // ISIN (KR7...)
+  name: string;
+}
+
+interface KrxCodeRegistry {
+  fetchedAt: string;
+  baseDate: string;
+  count: number;
+  byShortcode: Record<string, KrxEtfCode>;
+  byIssueCode: Record<string, KrxEtfCode>;
+  list: KrxEtfCode[];
+}
+
+let _krxCache: KrxCodeRegistry | null = null;
+function loadKrxRegistry(): KrxCodeRegistry {
+  if (_krxCache) return _krxCache;
+  if (!fs.existsSync(KRX_CODES_FILE)) {
+    _krxCache = { fetchedAt: '', baseDate: '', count: 0, byShortcode: {}, byIssueCode: {}, list: [] };
+    return _krxCache;
+  }
+  try {
+    _krxCache = JSON.parse(fs.readFileSync(KRX_CODES_FILE, 'utf-8')) as KrxCodeRegistry;
+  } catch {
+    _krxCache = { fetchedAt: '', baseDate: '', count: 0, byShortcode: {}, byIssueCode: {}, list: [] };
+  }
+  return _krxCache;
+}
+
 /**
- * shortcode(449450) ↔ issueCode(0080G0) 양방향 해결.
- *   /etf/[ticker] URL은 사용자가 친숙한 shortcode를 우선 받지만,
- *   etf_prices 데이터는 issueCode만 있어 매핑이 필요.
- *   매핑 소스: agents/etf_portfolios.js 의 PORTFOLIOS{ shortcode → { issueCode, ... } }
+ * 입력값을 KRX 공식 단축코드(srtnCd) 기준으로 해결.
+ *   /etf/[ticker] URL의 ticker는 KRX 단축코드(예: 069500, 0080G0).
+ *   - input이 shortcode면 그대로 사용
+ *   - input이 ISIN(KR7...)이면 byIssueCode로 역매칭
+ *   매핑 누락 시 input을 그대로 반환 (404 trigger)
  */
 export function resolveEtfTicker(input: string): {
   shortcode?: string;
   issueCode?: string;
-  /** 정규화된 URL slug — shortcode가 있으면 shortcode, 없으면 issueCode 소문자 */
+  name?: string;
+  /** URL slug — shortcode 우선, 없으면 input lowercase */
   canonicalSlug: string;
 } {
   if (!input) return { canonicalSlug: '' };
   const upper = input.toUpperCase();
   const lower = input.toLowerCase();
+  const krx = loadKrxRegistry();
 
-  try {
-    const portfolios = (portfoliosModule as unknown as { PORTFOLIOS: Record<string, PortfolioEntry> }).PORTFOLIOS || {};
+  // case A: input이 KRX shortcode
+  const direct = krx.byShortcode[upper] || krx.byShortcode[input];
+  if (direct) {
+    return {
+      shortcode: direct.shortcode,
+      issueCode: direct.issueCode,
+      name: direct.name,
+      canonicalSlug: direct.shortcode.toLowerCase(),
+    };
+  }
 
-    // case A: input이 shortcode (PORTFOLIOS 키)
-    const directKey = portfolios[input] || portfolios[lower] || portfolios[upper];
-    if (directKey) {
-      return {
-        shortcode: input,
-        issueCode: directKey.issueCode,
-        canonicalSlug: input.toLowerCase(),
-      };
-    }
+  // case B: input이 ISIN
+  const byIsin = krx.byIssueCode[upper];
+  if (byIsin) {
+    return {
+      shortcode: byIsin.shortcode,
+      issueCode: byIsin.issueCode,
+      name: byIsin.name,
+      canonicalSlug: byIsin.shortcode.toLowerCase(),
+    };
+  }
 
-    // case B: input이 issueCode → 매칭되는 shortcode 찾기
-    const reverseEntry = Object.entries(portfolios).find(
-      ([, p]) => p.issueCode && p.issueCode.toUpperCase() === upper,
-    );
-    if (reverseEntry) {
-      return {
-        shortcode: reverseEntry[0],
-        issueCode: input,
-        canonicalSlug: reverseEntry[0].toLowerCase(), // shortcode 우선
-      };
-    }
-  } catch { /* fall through */ }
-
-  // 매핑 없으면 input 그대로 (issueCode로 추정)
-  return {
-    issueCode: input,
-    canonicalSlug: lower,
-  };
+  // 매핑 없음 — fallback (typo / 신규 상장 / 폐지 종목)
+  return { canonicalSlug: lower };
 }
 
-/** etfList에서 shortcode 또는 issueCode로 매칭. 둘 다 시도. */
+/** etfList(시세)에서 shortcode 또는 issueCode로 매칭. */
 export function findEtfByAnyCode<T extends { code: string }>(etfList: T[], input: string): T | null {
   const resolved = resolveEtfTicker(input);
-  const candidates = [resolved.issueCode, resolved.shortcode, input]
+  const candidates = [resolved.shortcode, resolved.issueCode, input]
     .filter((x): x is string => Boolean(x))
     .map(c => c.toUpperCase());
   return etfList.find(e => candidates.includes(e.code.toUpperCase())) || null;
 }
 
-/** 알려진 shortcode 전체 (PORTFOLIOS 키) — generateStaticParams용 */
+/** KRX에 등록된 모든 ETF shortcode (1000+) — generateStaticParams·sitemap용 */
 export function getKnownShortcodes(): string[] {
-  try {
-    const portfolios = (portfoliosModule as unknown as { PORTFOLIOS: Record<string, unknown> }).PORTFOLIOS || {};
-    return Object.keys(portfolios);
-  } catch {
-    return [];
-  }
+  return loadKrxRegistry().list.map(e => e.shortcode);
+}
+
+/** KRX 매핑 1건 조회 — minimal 페이지 렌더용 */
+export function getKrxEtfMeta(input: string): KrxEtfCode | null {
+  const r = resolveEtfTicker(input);
+  if (!r.shortcode) return null;
+  return loadKrxRegistry().byShortcode[r.shortcode] || null;
 }
 
 export function getRecentEtfSnapshots(limit = 20): EtfSnapshot[] {

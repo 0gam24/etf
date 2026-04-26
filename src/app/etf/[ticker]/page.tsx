@@ -7,6 +7,7 @@ import {
   findEtfByAnyCode,
   getKnownShortcodes,
   resolveEtfTicker,
+  getKrxEtfMeta,
 } from '@/lib/data';
 import { getIncomeRegistry } from '@/lib/income-server';
 import { getAllPosts } from '@/lib/posts';
@@ -48,23 +49,11 @@ const FREQ_LABEL: Record<string, string> = {
 };
 
 export async function generateStaticParams() {
-  const etfData = getLatestEtfData();
-  const list = (etfData?.etfList || []) as RawEtf[];
-
-  // 1) etf_prices의 issueCode 상위 100종 (거래량 우선)
-  const issueCodeParams = list
-    .slice()
-    .sort((a, b) => (b.volume || 0) - (a.volume || 0))
-    .slice(0, 100)
-    .map(e => ({ ticker: e.code.toLowerCase() }));
-
-  // 2) PORTFOLIOS의 shortcode — etfList에서 실제로 resolve되는 것만 emit
-  //    (data.go.kr API가 100종 한정이라 매핑 있어도 etfList에 없으면 404 발생)
-  const resolvableShortcodes = getKnownShortcodes()
-    .filter(code => findEtfByAnyCode(list, code) !== null)
-    .map(code => ({ ticker: code.toLowerCase() }));
-
-  return [...issueCodeParams, ...resolvableShortcodes];
+  // KRX 공식 등록 1000+ ETF 모두 prerender.
+  //   - 시세 있는 종목(상위 100): 풀 데이터 페이지
+  //   - 시세 없는 종목(나머지): KRX 메타(코드·이름)만 minimal 페이지
+  //   둘 다 SEO 가치 있음 (롱테일 키워드 흡수).
+  return getKnownShortcodes().map(code => ({ ticker: code.toLowerCase() }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -72,41 +61,42 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const etfData = getLatestEtfData();
   const list = (etfData?.etfList || []) as RawEtf[];
   const etf = findEtfByAnyCode(list, ticker);
-  if (!etf) return { title: '종목 정보를 찾을 수 없습니다' };
+  const krxMeta = getKrxEtfMeta(ticker);
 
-  // canonical은 알려진 shortcode가 있으면 shortcode 우선 (사용자 친숙도)
+  // KRX 매핑조차 없으면 진짜 404
+  if (!etf && !krxMeta) return { title: '종목 정보를 찾을 수 없습니다' };
+
   const resolved = resolveEtfTicker(ticker);
   const canonicalPath = `/etf/${resolved.canonicalSlug}`;
-  const title = `${etf.name} (${etf.code}) — 현재가·구성종목·분배금`;
-  const description = `${etf.name}(${etf.code}) ETF의 오늘 시세 ${etf.price.toLocaleString()}원, ${etf.changeRate >= 0 ? '+' : ''}${etf.changeRate.toFixed(2)}%, 거래량 ${etf.volume.toLocaleString()}주. 구성종목 TOP 10·분배금 내역·관련 분석 한 페이지에 정리.`;
-  const ogImage = `/api/og?title=${encodeURIComponent(etf.name)}&category=stock&tickers=${etf.code}`;
+  const name = etf?.name || krxMeta?.name || ticker;
+  const code = etf?.code || krxMeta?.shortcode || ticker;
+  const sector = etf?.sector;
+
+  const title = etf
+    ? `${name} (${code}) — 현재가·구성종목·분배금`
+    : `${name} (${code}) — 종목 정보·구성종목`;
+
+  const description = etf
+    ? `${name}(${code}) ETF의 오늘 시세 ${etf.price.toLocaleString()}원, ${etf.changeRate >= 0 ? '+' : ''}${etf.changeRate.toFixed(2)}%, 거래량 ${etf.volume.toLocaleString()}주. 구성종목·분배금 내역·관련 분석 한 페이지에 정리.`
+    : `${name}(${code}) ETF의 종목 정보, 구성종목, 관련 분석을 정리한 한국거래소(KRX) 상장 ETF 종목 사전.`;
+
+  const ogImage = `/api/og?title=${encodeURIComponent(name)}&category=stock&tickers=${code}`;
 
   return {
     title,
     description,
     keywords: [
-      etf.name,
-      `${etf.name} 주가`,
-      `${etf.name} 분배금`,
-      `${etf.name} 구성종목`,
-      `${etf.name} 시세`,
-      `${etf.code} ETF`,
-      etf.sector || 'ETF',
+      name,
+      `${name} 주가`,
+      `${name} 분배금`,
+      `${name} 구성종목`,
+      `${name} 시세`,
+      `${code} ETF`,
+      sector || 'ETF',
     ],
     alternates: { canonical: canonicalPath },
-    openGraph: {
-      title,
-      description,
-      type: 'website',
-      url: canonicalPath,
-      images: [ogImage],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [ogImage],
-    },
+    openGraph: { title, description, type: 'website', url: canonicalPath, images: [ogImage] },
+    twitter: { card: 'summary_large_image', title, description, images: [ogImage] },
   };
 }
 
@@ -115,22 +105,32 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
   const etfData = getLatestEtfData();
   const list = (etfData?.etfList || []) as RawEtf[];
   const etf = findEtfByAnyCode(list, ticker);
-  if (!etf) notFound();
+  const krxMeta = getKrxEtfMeta(ticker);
+
+  // KRX 매핑조차 없으면 404 (오타·폐지·신규 등)
+  if (!etf && !krxMeta) notFound();
+
   const resolved = resolveEtfTicker(ticker);
   const canonicalSlug = resolved.canonicalSlug;
+  const hasPriceData = etf !== null;
 
-  const holdings = getEtfHoldings(etf.code);
+  // 표시용 통합 객체 — 시세 있으면 etf, 없으면 KRX 메타로 대체
+  const displayName = etf?.name || krxMeta?.name || ticker;
+  const displayCode = etf?.code || krxMeta?.shortcode || ticker;
+  const displaySector = etf?.sector;
+
+  const holdings = getEtfHoldings(displayCode);
   const incomeRegistry = getIncomeRegistry();
-  const incomeEntry = incomeRegistry?.etfs.find(e => e.code === etf.code) || null;
+  const incomeEntry = incomeRegistry?.etfs.find(e => e.code === displayCode) || null;
 
   // 관련 분석 글 (티커 기준)
   const allPosts = getAllPosts();
   const relatedPosts = allPosts
-    .filter(p => (p.meta.tickers || []).some(t => t.toUpperCase() === etf.code.toUpperCase()))
+    .filter(p => (p.meta.tickers || []).some(t => t.toUpperCase() === displayCode.toUpperCase()))
     .slice(0, 6);
 
-  const isUp = etf.change > 0;
-  const isDown = etf.change < 0;
+  const isUp = etf ? etf.change > 0 : false;
+  const isDown = etf ? etf.change < 0 : false;
   const baseDate = etfData?.baseDate || '';
   const formattedBaseDate = baseDate
     ? `${baseDate.slice(0, 4)}-${baseDate.slice(4, 6)}-${baseDate.slice(6, 8)}`
@@ -140,24 +140,28 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: '홈', href: '/' },
     { name: '종목 사전', href: '/etf' },
-    { name: `${etf.name} (${etf.code})`, href: `/etf/${canonicalSlug}` },
+    { name: `${displayName} (${displayCode})`, href: `/etf/${canonicalSlug}` },
   ]);
 
   const financialProductSchema = buildFinancialProductSchema({
-    name: etf.name,
-    code: etf.code,
-    description: `${etf.name} ETF — 한국거래소(KRX) 상장. 섹터: ${etf.sector || '-'}, 현재가 ${etf.price.toLocaleString()}원, 거래량 ${etf.volume.toLocaleString()}주.`,
+    name: displayName,
+    code: displayCode,
+    description: hasPriceData
+      ? `${displayName} ETF — 한국거래소(KRX) 상장. 섹터: ${displaySector || '-'}, 현재가 ${etf!.price.toLocaleString()}원, 거래량 ${etf!.volume.toLocaleString()}주.`
+      : `${displayName} ETF — 한국거래소(KRX) 상장 종목. 단축코드 ${displayCode}.`,
     url: `/etf/${canonicalSlug}`,
     category: 'ETF',
   });
 
   const datasetSchema = buildDatasetSchema({
-    name: `${etf.name} (${etf.code}) — 일별 시세·구성종목 데이터셋`,
-    description: `${etf.name} ETF의 일별 종가·등락률·거래량·거래대금 + 구성종목 TOP 10 + 분배 정보. 한국거래소(KRX) 공공데이터 기준.`,
+    name: `${displayName} (${displayCode}) — ETF 종목 정보`,
+    description: hasPriceData
+      ? `${displayName} ETF의 일별 종가·등락률·거래량·거래대금 + 구성종목 TOP 10 + 분배 정보. 한국거래소(KRX) 공공데이터 기준.`
+      : `${displayName} ETF의 단축코드·운용사·종목 메타 정보. 한국거래소(KRX) 공공데이터 기준.`,
     url: `/etf/${canonicalSlug}`,
     dateModified: formattedBaseDate,
     publisher: '한국거래소(KRX) 공공데이터 포털',
-    keywords: [etf.name, etf.code, 'ETF', '시세', '구성종목', '분배금', etf.sector || ''],
+    keywords: [displayName, displayCode, 'ETF', '시세', '구성종목', '분배금', displaySector || ''],
   });
 
   return (
@@ -170,70 +174,94 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
       <Breadcrumbs items={[
         { name: '홈', href: '/' },
         { name: '종목 사전', href: '/etf' },
-        { name: `${etf.name}`, href: `/etf/${canonicalSlug}` },
+        { name: displayName, href: `/etf/${canonicalSlug}` },
       ]} />
 
       <header className="etf-dict-hero">
         <div className="etf-dict-eyebrow">
-          <span className="etf-dict-code">{etf.code}</span>
-          {etf.sector && <span className="etf-dict-sector">{etf.sector}</span>}
+          <span className="etf-dict-code">{displayCode}</span>
+          {displaySector && <span className="etf-dict-sector">{displaySector}</span>}
         </div>
-        <h1 className="etf-dict-title">{etf.name}</h1>
+        <h1 className="etf-dict-title">{displayName}</h1>
         <p className="etf-dict-tagline">
-          {etf.name} ETF — 오늘 시세, 구성종목, 분배금 한 페이지 정리. 매일 09:00 갱신.
+          {hasPriceData
+            ? `${displayName} ETF — 오늘 시세, 구성종목, 분배금 한 페이지 정리. 매일 09:00 갱신.`
+            : `${displayName} ETF — 단축코드 ${displayCode}. 한국거래소(KRX) 상장 종목 정보.`}
         </p>
       </header>
 
       <RecommendBox position="top" />
 
-      {/* 시세 요약 */}
-      <section className="etf-dict-section">
-        <h2 className="etf-dict-h2">오늘의 시세 ({formattedBaseDate} 기준)</h2>
-        <div className="etf-dict-stats">
-          <div className="etf-dict-stat">
-            <div className="etf-dict-stat-label">현재가</div>
-            <div className="etf-dict-stat-value">{etf.price.toLocaleString()}<small>원</small></div>
-          </div>
-          <div className="etf-dict-stat">
-            <div className="etf-dict-stat-label">전일대비</div>
-            <div className={`etf-dict-stat-value ${isUp ? 'is-up' : isDown ? 'is-down' : ''}`}>
-              {isUp ? '▲' : isDown ? '▼' : '–'} {Math.abs(etf.change).toLocaleString()}원 ({isUp ? '+' : ''}{etf.changeRate.toFixed(2)}%)
-            </div>
-          </div>
-          <div className="etf-dict-stat">
-            <div className="etf-dict-stat-label">거래량</div>
-            <div className="etf-dict-stat-value">{etf.volume.toLocaleString()}<small>주</small></div>
-          </div>
-          <div className="etf-dict-stat">
-            <div className="etf-dict-stat-label">거래대금</div>
-            <div className="etf-dict-stat-value">{Math.round((etf.tradeAmount || 0) / 1e8).toLocaleString()}<small>억원</small></div>
-          </div>
-          <div className="etf-dict-stat">
-            <div className="etf-dict-stat-label">시가/고가/저가</div>
-            <div className="etf-dict-stat-value-small">
-              {etf.openPrice?.toLocaleString() || '-'} / {etf.highPrice?.toLocaleString() || '-'} / {etf.lowPrice?.toLocaleString() || '-'}원
-            </div>
-          </div>
-          {typeof etf.marketCap === 'number' && etf.marketCap > 0 && (
+      {/* 시세 요약 — 시세 데이터가 있을 때만 */}
+      {hasPriceData && etf && (
+        <section className="etf-dict-section">
+          <h2 className="etf-dict-h2">오늘의 시세 ({formattedBaseDate} 기준)</h2>
+          <div className="etf-dict-stats">
             <div className="etf-dict-stat">
-              <div className="etf-dict-stat-label">시가총액</div>
-              <div className="etf-dict-stat-value">{Math.round(etf.marketCap / 1e8).toLocaleString()}<small>억원</small></div>
+              <div className="etf-dict-stat-label">현재가</div>
+              <div className="etf-dict-stat-value">{etf.price.toLocaleString()}<small>원</small></div>
             </div>
-          )}
-        </div>
-        <p className="etf-dict-source">
-          출처: 한국거래소(KRX) 공공데이터 포털 · 기준일 {formattedBaseDate}
-        </p>
-      </section>
+            <div className="etf-dict-stat">
+              <div className="etf-dict-stat-label">전일대비</div>
+              <div className={`etf-dict-stat-value ${isUp ? 'is-up' : isDown ? 'is-down' : ''}`}>
+                {isUp ? '▲' : isDown ? '▼' : '–'} {Math.abs(etf.change).toLocaleString()}원 ({isUp ? '+' : ''}{etf.changeRate.toFixed(2)}%)
+              </div>
+            </div>
+            <div className="etf-dict-stat">
+              <div className="etf-dict-stat-label">거래량</div>
+              <div className="etf-dict-stat-value">{etf.volume.toLocaleString()}<small>주</small></div>
+            </div>
+            <div className="etf-dict-stat">
+              <div className="etf-dict-stat-label">거래대금</div>
+              <div className="etf-dict-stat-value">{Math.round((etf.tradeAmount || 0) / 1e8).toLocaleString()}<small>억원</small></div>
+            </div>
+            <div className="etf-dict-stat">
+              <div className="etf-dict-stat-label">시가/고가/저가</div>
+              <div className="etf-dict-stat-value-small">
+                {etf.openPrice?.toLocaleString() || '-'} / {etf.highPrice?.toLocaleString() || '-'} / {etf.lowPrice?.toLocaleString() || '-'}원
+              </div>
+            </div>
+            {typeof etf.marketCap === 'number' && etf.marketCap > 0 && (
+              <div className="etf-dict-stat">
+                <div className="etf-dict-stat-label">시가총액</div>
+                <div className="etf-dict-stat-value">{Math.round(etf.marketCap / 1e8).toLocaleString()}<small>억원</small></div>
+              </div>
+            )}
+          </div>
+          <p className="etf-dict-source">
+            출처: 한국거래소(KRX) 공공데이터 포털 · 기준일 {formattedBaseDate}
+          </p>
+        </section>
+      )}
+
+      {/* 시세 미수집 안내 — minimal 모드 */}
+      {!hasPriceData && (
+        <section className="etf-dict-section">
+          <h2 className="etf-dict-h2">{displayName} 종목 정보</h2>
+          <div className="etf-dict-stats">
+            <div className="etf-dict-stat">
+              <div className="etf-dict-stat-label">단축코드</div>
+              <div className="etf-dict-stat-value">{displayCode}</div>
+            </div>
+            <div className="etf-dict-stat">
+              <div className="etf-dict-stat-label">상장 시장</div>
+              <div className="etf-dict-stat-value">한국거래소(KRX) ETF 시장</div>
+            </div>
+          </div>
+          <p className="etf-dict-source">
+            오늘의 시세는 거래량 상위 종목 중심으로 매일 09:00에 갱신됩니다. {displayName}의 시세는 다음 갱신 주기에 반영됩니다.
+          </p>
+        </section>
+      )}
 
       {/* 구성종목 */}
       {holdings && holdings.holdings.length > 0 && (
         <section className="etf-dict-section">
-          <h2 className="etf-dict-h2">{etf.name} 구성종목 TOP {Math.min(10, holdings.holdings.length)}</h2>
+          <h2 className="etf-dict-h2">{displayName} 구성종목 TOP {Math.min(10, holdings.holdings.length)}</h2>
           <HoldingsPanel
-            code={etf.code}
+            code={displayCode}
             variant="detail"
-            label={`${etf.code} 구성종목 (기준일 ${holdings.asOf})`}
+            label={`${displayCode} 구성종목 (기준일 ${holdings.asOf})`}
             asOfOverride={holdings.asOf}
           />
           <p className="etf-dict-note">
@@ -245,7 +273,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
       {/* 분배 정보 (income ETF인 경우) */}
       {incomeEntry && (
         <section className="etf-dict-section">
-          <h2 className="etf-dict-h2">{etf.name} 분배금 정보</h2>
+          <h2 className="etf-dict-h2">{displayName} 분배금 정보</h2>
           <div className="etf-dict-stats">
             <div className="etf-dict-stat">
               <div className="etf-dict-stat-label">연 분배율</div>
@@ -276,7 +304,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
       {/* 관련 분석 글 */}
       {relatedPosts.length > 0 && (
         <section className="etf-dict-section">
-          <h2 className="etf-dict-h2">{etf.name} 관련 분석 ({relatedPosts.length}편)</h2>
+          <h2 className="etf-dict-h2">{displayName} 관련 분석 ({relatedPosts.length}편)</h2>
           <ul className="etf-dict-related">
             {relatedPosts.map(p => (
               <li key={p.meta.slug}>
