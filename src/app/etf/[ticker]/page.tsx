@@ -8,6 +8,8 @@ import {
   getKnownShortcodes,
   resolveEtfTicker,
   getKrxEtfMeta,
+  extractIssuerLabel,
+  classifyEtfSector,
 } from '@/lib/data';
 import { getIncomeRegistry } from '@/lib/income-server';
 import { getAllPosts } from '@/lib/posts';
@@ -117,7 +119,9 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
   // 표시용 통합 객체 — 시세 있으면 etf, 없으면 KRX 메타로 대체
   const displayName = etf?.name || krxMeta?.name || ticker;
   const displayCode = etf?.code || krxMeta?.shortcode || ticker;
-  const displaySector = etf?.sector;
+  // 시세에 sector 있으면 우선, 없으면 이름 기반 분류
+  const displaySector = etf?.sector || classifyEtfSector(displayName) || undefined;
+  const issuerLabel = extractIssuerLabel(displayName);
 
   const holdings = getEtfHoldings(displayCode);
   const incomeRegistry = getIncomeRegistry();
@@ -181,16 +185,17 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
         <div className="etf-dict-eyebrow">
           <span className="etf-dict-code">{displayCode}</span>
           {displaySector && <span className="etf-dict-sector">{displaySector}</span>}
+          {!hasPriceData && (
+            <span className="etf-dict-status-pill">시세 갱신 예정</span>
+          )}
         </div>
         <h1 className="etf-dict-title">{displayName}</h1>
         <p className="etf-dict-tagline">
           {hasPriceData
             ? `${displayName} ETF — 오늘 시세, 구성종목, 분배금 한 페이지 정리. 매일 09:00 갱신.`
-            : `${displayName} ETF — 단축코드 ${displayCode}. 한국거래소(KRX) 상장 종목 정보.`}
+            : `${displayName} ETF — ${issuerLabel ? `${issuerLabel.split(' ')[0]} 운용 · ` : ''}단축코드 ${displayCode}. 한국거래소(KRX) 상장 종목 정보.`}
         </p>
       </header>
-
-      <RecommendBox position="top" />
 
       {/* 시세 요약 — 시세 데이터가 있을 때만 */}
       {hasPriceData && etf && (
@@ -234,7 +239,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
         </section>
       )}
 
-      {/* 시세 미수집 안내 — minimal 모드 */}
+      {/* 시세 미수집 안내 — minimal 모드: 종목 메타 확장 */}
       {!hasPriceData && (
         <section className="etf-dict-section">
           <h2 className="etf-dict-h2">{displayName} 종목 정보</h2>
@@ -243,16 +248,32 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
               <div className="etf-dict-stat-label">단축코드</div>
               <div className="etf-dict-stat-value">{displayCode}</div>
             </div>
+            {issuerLabel && (
+              <div className="etf-dict-stat">
+                <div className="etf-dict-stat-label">운용사</div>
+                <div className="etf-dict-stat-value-small">{issuerLabel}</div>
+              </div>
+            )}
+            {displaySector && (
+              <div className="etf-dict-stat">
+                <div className="etf-dict-stat-label">섹터 분류</div>
+                <div className="etf-dict-stat-value-small">{displaySector}</div>
+              </div>
+            )}
             <div className="etf-dict-stat">
               <div className="etf-dict-stat-label">상장 시장</div>
-              <div className="etf-dict-stat-value">한국거래소(KRX) ETF 시장</div>
+              <div className="etf-dict-stat-value-small">한국거래소(KRX) ETF</div>
             </div>
           </div>
-          <p className="etf-dict-source">
-            오늘의 시세는 거래량 상위 종목 중심으로 매일 09:00에 갱신됩니다. {displayName}의 시세는 다음 갱신 주기에 반영됩니다.
-          </p>
+          <div className="etf-dict-status-banner" role="note">
+            <strong>오늘 시세는 다음 갱신에 반영됩니다.</strong>
+            {' '}본 사이트는 거래량 상위 100종의 일별 시세를 09:00에 갱신합니다. {displayName}의 분배 정보·구성종목은 운용사 공시 기준으로 아래에 정리되며, 시세는 다음 갱신 주기에 추가됩니다.
+          </div>
         </section>
       )}
+
+      {/* 추천 자료는 첫 정보 섹션 이후에 노출 — 빈 페이지 인상 회피 */}
+      <RecommendBox position="top" />
 
       {/* 구성종목 */}
       {holdings && holdings.holdings.length > 0 && (

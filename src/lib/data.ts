@@ -255,6 +255,58 @@ export function getKrxEtfMeta(input: string): KrxEtfCode | null {
   return loadKrxRegistry().byShortcode[r.shortcode] || null;
 }
 
+/**
+ * ETF 이름에서 운용사(브랜드) 추출 — 첫 단어가 거의 항상 브랜드.
+ *   예: 'KODEX 200' → 'KODEX', 'TIGER 미국나스닥100' → 'TIGER', 'SOL 조선TOP3' → 'SOL'
+ */
+const ISSUER_LABELS: Record<string, string> = {
+  KODEX: 'KODEX (미래에셋)',
+  TIGER: 'TIGER (미래에셋)',
+  SOL: 'SOL (신한자산운용)',
+  ACE: 'ACE (한국투자신탁운용)',
+  PLUS: 'PLUS (한화자산운용)',
+  RISE: 'RISE (KB자산운용)',
+  HANARO: 'HANARO (NH아문디)',
+  KOSEF: 'KOSEF (삼성자산운용)',
+  HK: 'HK (흥국자산운용)',
+  KIWOOM: 'KIWOOM (키움투자자산운용)',
+  TIME: 'TIME (한화자산운용)',
+  '1Q': '1Q (하나자산운용)',
+  KoAct: 'KoAct (한국투자신탁운용)',
+};
+
+export function extractIssuerLabel(etfName: string): string | null {
+  if (!etfName) return null;
+  const first = etfName.split(/\s+/)[0];
+  return ISSUER_LABELS[first] || (first.length <= 8 ? first : null);
+}
+
+/**
+ * ETF 이름 기반 섹터 분류 (시세 데이터에 sector가 없는 minimal 페이지용).
+ *   1_data_miner.js의 SECTOR_RULES와 동일 로직 — TS 포팅.
+ */
+const SECTOR_RULES: Array<{ sector: string; patterns: RegExp[] }> = [
+  { sector: '방산', patterns: [/방산/, /방위/, /K방산/i] },
+  { sector: '조선', patterns: [/조선/] },
+  { sector: 'AI·데이터', patterns: [/AI/i, /데이터센터/, /팔란티어/i, /PLTR/i] },
+  { sector: '반도체', patterns: [/반도체/, /SK하이닉스/, /삼성전자/, /SOXX/i, /SMH/i, /HBM/i] },
+  { sector: '커버드콜·월배당', patterns: [/커버드콜/, /OTM/i, /월배당/, /SCHD/i, /배당다우존스/, /배당퀄리티/] },
+  { sector: '해외주식', patterns: [/S&P500/i, /나스닥/i, /미국/, /SPY/i, /QQQ/i, /NYSE/i] },
+  { sector: '채권', patterns: [/채권/, /국채/, /회사채/, /TLT/i] },
+  { sector: '원자재·금', patterns: [/금현물/, /골드/, /원유/, /은$/, /GLD/i] },
+  { sector: '2차전지', patterns: [/2차전지/, /배터리/, /LG에너지/, /LIT/i] },
+  { sector: '국내주식', patterns: [/KODEX\s*200/, /TIGER\s*200/, /코스피/, /KOSPI/i, /KOSDAQ150/] },
+  { sector: '바이오·헬스', patterns: [/바이오/, /헬스케어/, /제약/] },
+];
+
+export function classifyEtfSector(etfName: string): string | null {
+  if (!etfName) return null;
+  for (const rule of SECTOR_RULES) {
+    if (rule.patterns.some(p => p.test(etfName))) return rule.sector;
+  }
+  return null;
+}
+
 export function getRecentEtfSnapshots(limit = 20): EtfSnapshot[] {
   if (!fs.existsSync(RAW_DATA_DIR)) return [];
   const files = fs.readdirSync(RAW_DATA_DIR)

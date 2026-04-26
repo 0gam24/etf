@@ -7415,3 +7415,242 @@ a.scenario-card:hover .scenario-card-cta {
   padding-top: 0.6rem;
 }
 
+/* ─────────────────────────────────────────────────────────────────────
+ * /etf/[ticker] — 종목 사전 페이지
+ * ───────────────────────────────────────────────────────────────────── */
+.etf-dict {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+.etf-dict-hero {
+  padding: 2rem 0 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 2rem;
+}
+.etf-dict-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.875rem;
+}
+.etf-dict-code {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  background: rgba(96,165,250,0.15);
+  color: #60A5FA;
+  border-radius: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.etf-dict-sector {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  background: rgba(212,175,55,0.12);
+  color: #D4AF37;
+  border-radius: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.etf-dict-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.7rem;
+  background: rgba(244,114,182,0.12);
+  color: #F472B6;
+  border-radius: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.etf-dict-status-pill::before {
+  content: '●';
+  font-size: 0.6rem;
+}
+.etf-dict-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 0.875rem 0;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+.etf-dict-tagline {
+  font-size: 1rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 48rem;
+}
+
+.etf-dict-section {
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.etf-dict-section:last-of-type {
+  border-bottom: none;
+}
+.etf-dict-h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 1.25rem 0;
+  color: var(--text-primary);
+  padding-left: 0.875rem;
+  border-left: 3px solid var(--accent-gold);
+  line-height: 1.4;
+}
+
+.etf-dict-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.875rem;
+  margin-bottom: 0.875rem;
+}
+.etf-dict-stat {
+  padding: 1rem 1.125rem;
+  background: var(--bg-card, rgba(255,255,255,0.025));
+  border: 1px solid var(--border-color, rgba(255,255,255,0.06));
+  border-radius: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.etf-dict-stat-label {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.etf-dict-stat-value {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+.etf-dict-stat-value small {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin-left: 0.2rem;
+}
+.etf-dict-stat-value.is-up { color: #EF4444; }
+.etf-dict-stat-value.is-down { color: #60A5FA; }
+.etf-dict-stat-value-small {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+.etf-dict-source {
+  margin: 0.75rem 0 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.etf-dict-note {
+  margin: 0.75rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+/* minimal 모드 안내 배너 — 빈 페이지 인상 회피 */
+.etf-dict-status-banner {
+  margin-top: 1rem;
+  padding: 1rem 1.125rem;
+  background: rgba(96,165,250,0.06);
+  border: 1px solid rgba(96,165,250,0.18);
+  border-left: 3px solid #60A5FA;
+  border-radius: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.etf-dict-status-banner strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* 관련 분석 글 리스트 */
+.etf-dict-related {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.625rem;
+}
+.etf-dict-related li a {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.875rem;
+  align-items: center;
+  padding: 0.875rem 1rem;
+  background: var(--bg-card, rgba(255,255,255,0.025));
+  border: 1px solid var(--border-color, rgba(255,255,255,0.06));
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.etf-dict-related li a:hover {
+  border-color: rgba(212,175,55,0.4);
+  transform: translateX(2px);
+}
+.etf-dict-related-cat {
+  font-size: 0.7rem;
+  color: #D4AF37;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.5rem;
+  background: rgba(212,175,55,0.12);
+  border-radius: 0.3rem;
+}
+.etf-dict-related-title {
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.etf-dict-related-date {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-weight: 600;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.etf-dict-disclaimer {
+  margin: 2rem 0 3rem;
+  padding: 1rem 1.125rem;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  background: rgba(255,255,255,0.02);
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .etf-dict-stats { grid-template-columns: 1fr 1fr; gap: 0.625rem; }
+  .etf-dict-stat { padding: 0.75rem 0.875rem; }
+  .etf-dict-stat-value { font-size: 1.05rem; }
+  .etf-dict-related li a {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+  .etf-dict-related-date { font-size: 0.72rem; }
+}
+
