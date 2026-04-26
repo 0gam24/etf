@@ -9,7 +9,7 @@ import {
 import { AUTHOR_LIST } from '@/lib/authors';
 import { GUIDES } from '@/lib/guides';
 import { getProductsRegistry } from '@/lib/products';
-import { getLatestEtfData } from '@/lib/data';
+import { getLatestEtfData, getKnownShortcodes, resolveEtfTicker } from '@/lib/data';
 import type { RawEtf } from '@/lib/surge';
 
 /**
@@ -112,18 +112,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return isNaN(d.getTime()) ? null : d;
   }
   const etfLastModified = ymdToDate(etfData?.baseDate) || fallback;
+
+  // 거래량 상위 100 issueCode + 알려진 shortcode 모두 노출 (canonical은 페이지 metadata가 처리)
+  const etfSlugs = new Set<string>();
   etfList
     .slice()
     .sort((a, b) => (b.volume || 0) - (a.volume || 0))
     .slice(0, 100)
     .forEach(e => {
-      routes.push({
-        url: `${baseUrl}/etf/${e.code.toLowerCase()}`,
-        lastModified: etfLastModified,
-        changeFrequency: 'daily',
-        priority: 0.8,
-      });
+      // shortcode가 있으면 shortcode 우선, 없으면 issueCode
+      const slug = resolveEtfTicker(e.code).canonicalSlug;
+      etfSlugs.add(slug);
     });
+  // 등록된 PORTFOLIOS shortcode도 추가 (issueCode 매칭이 없는 종목 포함)
+  getKnownShortcodes().forEach(code => etfSlugs.add(code.toLowerCase()));
+
+  etfSlugs.forEach(slug => {
+    routes.push({
+      url: `${baseUrl}/etf/${slug}`,
+      lastModified: etfLastModified,
+      changeFrequency: 'daily',
+      priority: 0.8,
+    });
+  });
 
   return routes;
 }

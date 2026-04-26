@@ -153,6 +153,74 @@ export interface EtfSnapshot {
   }[];
 }
 
+/**
+ * shortcode(449450) ↔ issueCode(0080G0) 양방향 해결.
+ *   /etf/[ticker] URL은 사용자가 친숙한 shortcode를 우선 받지만,
+ *   etf_prices 데이터는 issueCode만 있어 매핑이 필요.
+ *   매핑 소스: agents/etf_portfolios.js 의 PORTFOLIOS{ shortcode → { issueCode, ... } }
+ */
+export function resolveEtfTicker(input: string): {
+  shortcode?: string;
+  issueCode?: string;
+  /** 정규화된 URL slug — shortcode가 있으면 shortcode, 없으면 issueCode 소문자 */
+  canonicalSlug: string;
+} {
+  if (!input) return { canonicalSlug: '' };
+  const upper = input.toUpperCase();
+  const lower = input.toLowerCase();
+
+  try {
+    const portfolios = (portfoliosModule as unknown as { PORTFOLIOS: Record<string, PortfolioEntry> }).PORTFOLIOS || {};
+
+    // case A: input이 shortcode (PORTFOLIOS 키)
+    const directKey = portfolios[input] || portfolios[lower] || portfolios[upper];
+    if (directKey) {
+      return {
+        shortcode: input,
+        issueCode: directKey.issueCode,
+        canonicalSlug: input.toLowerCase(),
+      };
+    }
+
+    // case B: input이 issueCode → 매칭되는 shortcode 찾기
+    const reverseEntry = Object.entries(portfolios).find(
+      ([, p]) => p.issueCode && p.issueCode.toUpperCase() === upper,
+    );
+    if (reverseEntry) {
+      return {
+        shortcode: reverseEntry[0],
+        issueCode: input,
+        canonicalSlug: reverseEntry[0].toLowerCase(), // shortcode 우선
+      };
+    }
+  } catch { /* fall through */ }
+
+  // 매핑 없으면 input 그대로 (issueCode로 추정)
+  return {
+    issueCode: input,
+    canonicalSlug: lower,
+  };
+}
+
+/** etfList에서 shortcode 또는 issueCode로 매칭. 둘 다 시도. */
+export function findEtfByAnyCode<T extends { code: string }>(etfList: T[], input: string): T | null {
+  const resolved = resolveEtfTicker(input);
+  const candidates = [resolved.issueCode, resolved.shortcode, input]
+    .filter((x): x is string => Boolean(x))
+    .map(c => c.toUpperCase());
+  return etfList.find(e => candidates.includes(e.code.toUpperCase())) || null;
+}
+
+/** 알려진 shortcode 전체 (PORTFOLIOS 키) — generateStaticParams용 */
+export function getKnownShortcodes(): string[] {
+  try {
+    const portfolios = (portfoliosModule as unknown as { PORTFOLIOS: Record<string, unknown> }).PORTFOLIOS || {};
+    return Object.keys(portfolios);
+  } catch {
+    return [];
+  }
+}
+
 export function getRecentEtfSnapshots(limit = 20): EtfSnapshot[] {
   if (!fs.existsSync(RAW_DATA_DIR)) return [];
   const files = fs.readdirSync(RAW_DATA_DIR)
