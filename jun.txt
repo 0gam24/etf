@@ -450,6 +450,121 @@ A. 8 챕터 스토리 구조로 구현 완료. 빌드 통과 (`npm run build` + 
 
 **push 상태**: 4 commit 로컬 대기 중 (사용자 지시 시 push).
 
+## 2026-04-26 · [SEO 트래픽 확대 — /etf 종목 사전 + HowTo + 자동 키워드 링크]
+
+### Q. (사용자 SEO 기획안 첨부) "모두 즉시 실행 진행해"
+A. 7가지 즉시 적용 — 모두 commit `ce697cf`.
+
+1) **lib/schema.ts** — Dataset·HowTo 스키마 빌더 추가 (Google Rich Result 후보 확장).
+
+2) **/etf/[ticker] 종목 사전** — 거래량 상위 100종 SSG. 시세·구성종목·분배·관련 글 한 페이지. FinancialProduct + Dataset + Breadcrumb JSON-LD. 롱테일 검색 ("KODEX 200 분배금", "TIGER 미국나스닥100 구성종목" 등) 흡수.
+
+3) **sitemap.ts** — /etf 100 URL 추가. lastmod = etfData.baseDate (YYYYMMDD → ISO 정규화). 빌드 시 prerender 에러("Invalid time value") 한 번 잡고 수정.
+
+4) **카테고리 hero 키워드 강화** — IncomeHero ("월배당 ETF·커버드콜 ETF — 매월 분배금이 들어오는 ETF 분배금 정리"), FlowHero ("오늘의 ETF 섹터 자금 흐름"), breaking ("오늘의 ETF 속보 — 거래량 TOP 3 ETF"). H1·서브타이틀에 검색 키워드 자연 노출.
+
+5) **HowTo 스키마 가이드 적용** — guides.ts에 `howTo?: { totalTime?, description? }` 옵션. monthly-dividend (PT15M)·retirement (PT20M)에 활성화. /guide/[slug] 페이지가 sections를 step으로 매핑 (관련 글·책 추천 보조 섹션은 자동 제외 — heading 정규식 + dataBlock 필터).
+
+6) **internal linker 자동 키워드 링크** — 4b_internal_linker.js에 `injectKeywordGuideLinks` 추가. 본문 첫 등장 시 [월배당 ETF](/guide/monthly-dividend), [IRP](/guide/retirement) 등 자동 링크. 코드블록·헤딩·기존 링크 안에는 회피. 키워드당·가이드당 최대 1회.
+
+7) **lib/surge.ts RawEtf 확장** — tradeAmount/marketCap/nav/openPrice/highPrice/lowPrice 추가 (etf_prices 데이터에는 있었지만 타입에 미선언이었던 필드).
+
+**빌드 검증**: `npx tsc --noEmit` 0 에러 + `npm run cf:build` 성공 (157 페이지 생성).
+
+**push 상태**: commit `ce697cf` 로컬 대기 중. 사용자 "푸쉬" 명시 시 배포.
+
+## 2026-04-26 · [SEO 규칙 MD 문서화 + HarnessDeployer 자동 검증]
+
+### Q. "구글 노출을 위한 SEO관련된 내용은 MD파일에 정확하게 명시하여 하네스 하도록 하자"
+A. SEO.md 신설 + HarnessDeployer 자동 검증 연동 (`32b5106`).
+
+**SEO.md 12개 항목 정의**:
+1. URL slug — 영문 ASCII만, KOREAN_SLUG_MAP 강제, 80자 제한, 변경 시 301
+2. Meta — title 60자, description 120~155자, keywords 3~7개
+3. H1/H2 키워드 — 카테고리별 강제 키워드 패턴 표
+4. JSON-LD 스키마 — 페이지 유형별 의무 (Article·Person·HowTo·FinancialProduct·Dataset·Breadcrumb·FAQPage)
+5. Sitemap lastmod — 콘텐츠 실제 갱신일 derive, /etf shortcode+issueCode 모두 등록
+6. 내부 링크 — KEYWORD_GUIDE_MAP 자동 가이드 링크 + h2 경계 관련 글
+7. 이미지 SEO — alt 의무 + /sitemap-images.xml
+8. /etf/{ticker} — shortcode↔issueCode 양방향, canonical=shortcode 우선
+9. Affiliate 면책 (CLAUDE.md 참고)
+10. 운영자 메타 노출 금지 (CLAUDE.md 참고)
+11. HarnessDeployer 자동 검증 (slug regex/title 길이/desc 길이/tickers/H1 개수/운영자 메타 단어)
+12. 검증 도구 (cf:build · 5분 후 curl · 분기 Lighthouse audit)
+
+**HarnessDeployer.validateSeo(article)** 신설:
+- blockers: slug 한글/특수문자 → deploy 차단 + 발행 skip
+- warnings: title 60자 초과·desc 범위 이탈·tickers 누락·H1 다중·운영자 단어 → 로그 알림 (발행은 진행)
+- module.exports에 validateSeo 추가 (단위 테스트 가능)
+
+**자동 로딩**: CLAUDE.md에 `@SEO.md` 추가 → 모든 Claude 세션 시작 시 자동 컨텍스트.
+
+**스모크 테스트**: 정상/한글슬러그/운영자단어 3 케이스 모두 의도대로 분류 확인.
+
+**push 상태**: commit `32b5106` 로컬 대기 중. 사용자 "푸쉬" 명시 시 배포.
+
+## 2026-04-26 · [Google E-E-A-T 정책 적용 — 7 페르소나 → AI 에이전트 투명 공개]
+
+### Q. (사용자 첨부 분석) "AI 가상 인물 사칭은 Google 영구 노출 제외 사유. 투명 공개·발행 책임자 명시·AI 모델 카드 노출이 정답. 적용해."
+A. 5개 영역 일괄 전환 — commit `dbb904c`.
+
+**1) 7명 페르소나 전면 재정의** (`agents/personas.js`):
+- pb_kim '김성훈 전 PB 25년차' → **AI 에이전트 K · 은퇴 자산 설계 모델**
+- mom_park '워킹맘 박미라' → **AI 에이전트 P · ISA·연금저축 비교 모델**
+- data_lee '퀀트 이재환' → **AI 에이전트 L · 퀀트 시그널·거래량 분석**
+- homemaker_jung '전업주부 정유진' → **AI 에이전트 J · 월배당 캐시플로 시뮬레이션**
+- biz_cho '자영업자 조태훈' → **AI 에이전트 C · 개인사업자 절세·노란우산·IRP**
+- dev_song '반도체 개발자 송재혁' → **AI 에이전트 S · AI·반도체 공급망 분석**
+- analyst_han '리서치 한혜린' → **AI 에이전트 H · 매크로·외국인 수급 분석**
+
+각 에이전트에 isAi:true·callsign·modelDescription·dataSources·methodology·voiceHints 부여. age 필드 제거. closingSignature를 'AI 에이전트 X · 모델명' 형식으로 통일.
+
+**2) AiAgentDisclosure 컴포넌트 신설** (`src/components/AiAgentDisclosure.tsx`):
+- inline variant: 글 본문 후 노출. AI 작성 사실·실존 인물 아님·이 글의 분석 모델·데이터 출처·발행 책임자 표기.
+- compact variant: 바이라인 옆 작은 'AI ANALYSIS AGENT' 골드 배지.
+
+**3) 모든 글 자동 적용** (`/[category]/[slug]/page.tsx`):
+- 바이라인에 compact 배지
+- 본문·관련 글 직후 inline 공시 (RecommendBox bottom 직전)
+
+**4) /author/[id] AI 모델 카드 의무 노출**:
+- 모델 설명 + 데이터 출처 리스트 + 분석 방법론 + 발행 책임자
+- Person 스키마에 additionalType=schema.org/SoftwareApplication 추가 (검색엔진 신호)
+
+**5) /about 편집팀 페이지 신설** (`src/app/about/page.tsx`):
+- NewsMediaOrganization 스키마 (publishingPrinciples·correctionsPolicy 등 E-E-A-T 신호)
+- 발행 원칙 4개 (데이터 우선·AI 투명 공개·발행 책임·투자 권유 아님)
+- 7 에이전트 그리드 카드
+- sitemap.ts에 /about 추가 (priority 0.7, monthly)
+
+**부수 갱신**:
+- SiteFooter: '저자 김성훈 (前 PB)' → 'AI K · 은퇴 자산 설계'. /about 링크. 면책 문구도 AI 공개 반영.
+- AuthorSlider: '52세' → 'AI' 배지.
+- SEO.md 규칙 10 전면 재작성: 'AI 단어 금지' → 'AI 투명 공개 의무'.
+- CLAUDE.md UX 카피 규칙 갱신: AI 단어 허용 (모델명 Gemini/GPT는 여전히 금지).
+- HarnessDeployer FORBIDDEN_OPS_META: 'AI ' 제거, 'Claude' 추가.
+- 메모리 feedback_ux_user_centric_copy.md: 정책 갱신 명시.
+
+**빌드**: tsc 0 에러, cf:build 성공. /about prerender 확인. 7 author 페이지 모두 새 모델 카드 형식.
+
+**push 상태**: commit `dbb904c` 로컬 대기 중 (이전 3개 commit과 함께 4개 대기).
+
+## 2026-04-26 · [/etf 페이지 UI 정리]
+
+### Q. (스크린샷) "/etf/069500 /etf/091160 페이지 다 잘못됐어. UI 프론트엔드 신경써서 마무리해."
+A. 원인: globals.css에 `.etf-dict-*` 클래스가 전혀 없어 stat 카드가 그냥 div로 흘러내렸음. minimal 모드(시세 없음)에서 hero 직후 RecommendBox가 나와 빈 페이지 인상까지.
+
+**수정 (`c522233`)**:
+1. **globals.css에 .etf-dict-* 풀 셋 추가** (321줄): hero·eyebrow·code/sector/status pill·stats grid·stat card·h2·source·note·status-banner·related list·disclaimer + 모바일 반응형 (640px 미만 2col grid).
+2. **lib/data.ts**: `extractIssuerLabel()` (KODEX → 'KODEX (미래에셋)'), `classifyEtfSector()` (이름 기반 섹터 분류, 1_data_miner SECTOR_RULES TS 포팅).
+3. **/etf/[ticker]/page.tsx minimal 모드**:
+   - eyebrow에 'SHARE 갱신 예정' pill 배지 추가
+   - 종목 정보 섹션 확장: 단축코드·운용사(KRX 매핑 ETF명에서 추출)·섹터 분류·상장 시장 4개
+   - RecommendBox top을 첫 정보 섹션 *이후*로 이동 (빈 페이지 인상 회피)
+   - status-banner: "오늘 시세는 다음 갱신에 반영됩니다" + 운영 정책 문구
+
+**push 상태**: commit `c522233` 로컬 대기 중. 사용자가 "여기까지 하고 마무리"로 종료 — 내일 "푸쉬" 명시 시 배포.
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
