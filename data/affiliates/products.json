@@ -2,6 +2,48 @@
   "reviewedAt": "2026-04-26",
   "products": [
     {
+      "id": "cpg-9339169250",
+      "title": "돈 걱정 없는 인생을 만드는나의 첫 월배당 ETF",
+      "subtitle": "",
+      "source": "",
+      "price": 19800,
+      "blurb": "",
+      "deeplink": "https://link.coupang.com/re/AFFSDP?lptag=AF4833721&pageKey=9339169250&itemId=27695316352&vendorItemId=94994884107&traceid=V0-153-8d5159badcd13187&requestid=20260426120414889264739410&token=31850C%7CMIXED",
+      "image": "https://ads-partners.coupang.com/image1/W_Uzmjx8q-txS2tuW4arCyV6hYyotugA7QD0qNtcnVTfCSvyLg8nMZQ3yuINsQ8ORACpqsvBi2syixm4pKdrPWaHFWBFT8wybMFelRWugWWXl0zZ6bVAoEFG-ejPBy2TYi9xZo26K1CKlM1eJtpZmPcYqjW3k_dnUsYlk1Ba-Vh637FtazpOcdN5ppdjsVag-_fk6YchJzj3g9QP4mn4iBY9bbNF3Z_4zxQbKBnPDiXsZHWGhzyWZnnrtkkJR-cZeE8x0rJllHHyZZwGAGGArL4VSKmChDMkZ8L0iUKxOGxnEuV2n64n",
+      "categories": [
+        "income"
+      ],
+      "tone": "book",
+      "isRocket": true,
+      "pickedAt": "2026-04-26T03:04:14.215Z",
+      "pickedFromKeyword": "월배당 ETF",
+      "hook": "두려움 없이 첫 매수하는 단계별 가이드",
+      "needs": [
+        "monthly-cashflow"
+      ]
+    },
+    {
+      "id": "cpg-9340572633",
+      "title": "[경이로움]1000만 원으로 3년 안에 300만 원 월배당 만들기 : 미국 ETF 초간단 인컴 포트폴리오 전략",
+      "subtitle": "",
+      "source": "",
+      "price": 20700,
+      "blurb": "",
+      "deeplink": "https://link.coupang.com/re/AFFSDP?lptag=AF4833721&pageKey=9340572633&itemId=27700508939&vendorItemId=95173707903&traceid=V0-153-0a028a9bfe64f884&requestid=20260426120414889264739410&token=31850C%7CMIXED",
+      "image": "https://ads-partners.coupang.com/image1/CxuNeRM4rFIGB9sDCxAatOWvwsDNaNAIwTQEs_8Wu6Q69QCP4RJGYhEx2DuZx50O5NoMPQ8nI3u6HndR3Po1WCHvNXtOzXIHv0pXzItCEdXHophiARAt4DjJtXwSXx52phmDC2a7XG0x1MzjYZN1AvY95foJ48Mmsv8Vs00P54Cpth3UErseBpqi8_w0XcCyi4mG8CuV7NEQW1D4KN98lqdgglcu5ljWnnJ5eoZSpwxQdrbGacipFnU0Yy3AQwqvKGUUPgqZOtqFz6OJhOuKyXiaIfJQEPrmeNH6NrU_uBupIs8dxnwi1Q==",
+      "categories": [
+        "income"
+      ],
+      "tone": "book",
+      "isRocket": true,
+      "pickedAt": "2026-04-26T03:04:14.215Z",
+      "pickedFromKeyword": "월배당 ETF",
+      "hook": "미국 ETF 인컴 포트폴리오 3년 시뮬레이션",
+      "needs": [
+        "monthly-cashflow"
+      ]
+    },
+    {
       "id": "cpg-9353337355",
       "title": "나의 첫 월배당 ETF (GROW BOOK 그로우북)",
       "subtitle": "",
@@ -21,27 +63,6 @@
       "needs": [
         "monthly-cashflow",
         "etf-basics"
-      ]
-    },
-    {
-      "id": "cpg-9339169250",
-      "title": "돈 걱정 없는 인생을 만드는나의 첫 월배당 ETF",
-      "subtitle": "",
-      "source": "",
-      "price": 19800,
-      "blurb": "",
-      "deeplink": "https://link.coupang.com/re/AFFSDP?lptag=AF4833721&pageKey=9339169250&itemId=27695316352&vendorItemId=94994884107&traceid=V0-153-8d5159badcd13187&requestid=20260426120414889264739410&token=31850C%7CMIXED",
-      "image": "https://ads-partners.coupang.com/image1/W_Uzmjx8q-txS2tuW4arCyV6hYyotugA7QD0qNtcnVTfCSvyLg8nMZQ3yuINsQ8ORACpqsvBi2syixm4pKdrPWaHFWBFT8wybMFelRWugWWXl0zZ6bVAoEFG-ejPBy2TYi9xZo26K1CKlM1eJtpZmPcYqjW3k_dnUsYlk1Ba-Vh637FtazpOcdN5ppdjsVag-_fk6YchJzj3g9QP4mn4iBY9bbNF3Z_4zxQbKBnPDiXsZHWGhzyWZnnrtkkJR-cZeE8x0rJllHHyZZwGAGGArL4VSKmChDMkZ8L0iUKxOGxnEuV2n64n",
-      "categories": [
-        "income"
-      ],
-      "tone": "book",
-      "isRocket": true,
-      "pickedAt": "2026-04-26T03:04:14.215Z",
-      "pickedFromKeyword": "월배당 ETF",
-      "hook": "두려움 없이 첫 매수하는 단계별 가이드",
-      "needs": [
-        "monthly-cashflow"
       ]
     },
     {
@@ -67,67 +88,24 @@
       ]
     },
     {
-      "id": "cpg-9340572633",
-      "title": "[경이로움]1000만 원으로 3년 안에 300만 원 월배당 만들기 : 미국 ETF 초간단 인컴 포트폴리오 전략",
-      "subtitle": "",
-      "source": "",
-      "price": 20700,
-      "blurb": "",
-      "deeplink": "https://link.coupang.com/re/AFFSDP?lptag=AF4833721&pageKey=9340572633&itemId=27700508939&vendorItemId=95173707903&traceid=V0-153-0a028a9bfe64f884&requestid=20260426120414889264739410&token=31850C%7CMIXED",
-      "image": "https://ads-partners.coupang.com/image1/CxuNeRM4rFIGB9sDCxAatOWvwsDNaNAIwTQEs_8Wu6Q69QCP4RJGYhEx2DuZx50O5NoMPQ8nI3u6HndR3Po1WCHvNXtOzXIHv0pXzItCEdXHophiARAt4DjJtXwSXx52phmDC2a7XG0x1MzjYZN1AvY95foJ48Mmsv8Vs00P54Cpth3UErseBpqi8_w0XcCyi4mG8CuV7NEQW1D4KN98lqdgglcu5ljWnnJ5eoZSpwxQdrbGacipFnU0Yy3AQwqvKGUUPgqZOtqFz6OJhOuKyXiaIfJQEPrmeNH6NrU_uBupIs8dxnwi1Q==",
+      "id": "manual-monthly-dividend",
+      "title": "월배당 ETF로 매월 월급받기",
+      "subtitle": "이재범 지음",
+      "source": "한스미디어",
+      "year": 2024,
+      "price": 18900,
+      "blurb": "TIGER·KODEX·SOL 커버드콜과 월배당 ETF의 분배 구조·세후 수익을 사례로 보여주는 실전 가이드.",
+      "deeplink": "",
+      "image": "",
       "categories": [
-        "income"
-      ],
-      "tone": "book",
-      "isRocket": true,
-      "pickedAt": "2026-04-26T03:04:14.215Z",
-      "pickedFromKeyword": "월배당 ETF",
-      "hook": "미국 ETF 인컴 포트폴리오 3년 시뮬레이션",
-      "needs": [
-        "monthly-cashflow"
-      ]
-    },
-    {
-      "id": "cpg-18789221",
-      "title": "쉽고 편안하게 고수익 내는퀀트&커버드 콜 전략:",
-      "subtitle": "",
-      "source": "",
-      "price": 13500,
-      "blurb": "",
-      "deeplink": "https://link.coupang.com/re/AFFSDP?lptag=AF4833721&pageKey=18789221&itemId=75426477&vendorItemId=92583091477&traceid=V0-153-a2fe347c900472f8&requestid=20260426120415447026857798&token=31850C%7CGM",
-      "image": "https://ads-partners.coupang.com/image1/5T876anZh2vr8CmW5Uz9uBp4lL9tm8mv-9-CP8Q7juQfo1Zr7aVxRuzwzBL4hzdhlMXVPtMNjkESXTPps-1bTB8-ya87ybVoNrQvor5MfmSQDw-RF1EzcgvprtLpaLz9CD6jt3mjLeWi40VuQq1Rsoil47oR6iuc4AQgqJ3ouoSerwGUvC87B_HirTF_XH4tzP3_j4YGQrVwONLZAeBF36JXhzco3NxMwLgvUXrVUvtLYM7mgn_nOPLUZwN6KxBTsjcoDSuyhM1-kHICAFLghiFmqeju3pXV6sw6dZOGI7iY2kShUek30bYrKM2q3ZhKYCT1MLRE",
-      "categories": [
+        "income",
         "covered-call"
       ],
       "tone": "book",
-      "isRocket": false,
-      "pickedAt": "2026-04-26T03:04:14.732Z",
-      "pickedFromKeyword": "커버드콜",
-      "hook": "옵션 매도 구조를 수식 없이 이해한다",
-      "needs": [
-        "covered-call-structure"
-      ]
-    },
-    {
-      "id": "cpg-8818637363",
-      "title": "김범곤의 월 300만원 평생연금 / 사은품증정",
-      "subtitle": "",
-      "source": "",
-      "price": 21600,
-      "blurb": "",
-      "deeplink": "https://link.coupang.com/re/AFFSDP?lptag=AF4833721&pageKey=8818637363&itemId=25697831320&vendorItemId=92686919714&traceid=V0-153-7c71dcfea18bf902&requestid=20260426120415621269556953&token=31850C%7CMIXED",
-      "image": "https://ads-partners.coupang.com/image1/aYh2WdE9ZghL3b_gadBj5FRHolWA84obecCm_uclI6PO9FBDoPTqE-q6iAIKZa0Z4IKlq-dZtZQAChj7487aLsvy_GMmloxmL3er93s_06MkssJ4z47dLpxsQRI5eymJaAIgCDwPP-Q-xBlfOYvJmc7QSN-vSd3CfLk0gxpVR3VXSHIlJmdb4bQnFdhlmVzRL9352GPhMUo8_r2zjqC1cSbqyyLp78DDHt2Jg2zhJsZKTu_bRcRIPN1KqUG25X9XsQxppxjRfJoZCNK-S0bXrRYbbXzUGAApCYnoblJSp_AbUAJuuOEYhPZBsxBftiimnTqlRw==",
-      "categories": [
-        "retirement"
-      ],
-      "tone": "book",
-      "isRocket": false,
-      "pickedAt": "2026-04-26T03:04:14.889Z",
-      "pickedFromKeyword": "IRP ETF",
-      "hook": "한국 시장 기준 평생 현금흐름 설계",
+      "hook": "TIGER·KODEX·SOL 커버드콜 비교를 사례로",
       "needs": [
         "monthly-cashflow",
-        "retirement-30y"
+        "covered-call-structure"
       ]
     },
     {
@@ -148,8 +126,30 @@
       "pickedFromKeyword": "IRP ETF",
       "hook": "마법의 연금 굴리기와 함께 읽는 조기 은퇴 실전",
       "needs": [
-        "monthly-cashflow",
-        "retirement-30y"
+        "retirement-30y",
+        "monthly-cashflow"
+      ]
+    },
+    {
+      "id": "cpg-8818637363",
+      "title": "김범곤의 월 300만원 평생연금 / 사은품증정",
+      "subtitle": "",
+      "source": "",
+      "price": 21600,
+      "blurb": "",
+      "deeplink": "https://link.coupang.com/re/AFFSDP?lptag=AF4833721&pageKey=8818637363&itemId=25697831320&vendorItemId=92686919714&traceid=V0-153-7c71dcfea18bf902&requestid=20260426120415621269556953&token=31850C%7CMIXED",
+      "image": "https://ads-partners.coupang.com/image1/aYh2WdE9ZghL3b_gadBj5FRHolWA84obecCm_uclI6PO9FBDoPTqE-q6iAIKZa0Z4IKlq-dZtZQAChj7487aLsvy_GMmloxmL3er93s_06MkssJ4z47dLpxsQRI5eymJaAIgCDwPP-Q-xBlfOYvJmc7QSN-vSd3CfLk0gxpVR3VXSHIlJmdb4bQnFdhlmVzRL9352GPhMUo8_r2zjqC1cSbqyyLp78DDHt2Jg2zhJsZKTu_bRcRIPN1KqUG25X9XsQxppxjRfJoZCNK-S0bXrRYbbXzUGAApCYnoblJSp_AbUAJuuOEYhPZBsxBftiimnTqlRw==",
+      "categories": [
+        "retirement"
+      ],
+      "tone": "book",
+      "isRocket": false,
+      "pickedAt": "2026-04-26T03:04:14.889Z",
+      "pickedFromKeyword": "IRP ETF",
+      "hook": "한국 시장 기준 평생 현금흐름 설계",
+      "needs": [
+        "retirement-30y",
+        "monthly-cashflow"
       ]
     },
     {
@@ -174,25 +174,6 @@
       ]
     },
     {
-      "id": "manual-etf-introduction",
-      "title": "ETF 처음공부",
-      "subtitle": "강환국 지음",
-      "source": "이레미디어",
-      "year": 2023,
-      "price": 17820,
-      "blurb": "ETF가 무엇인지부터 자산배분·재조정까지, 4050이 처음 ETF를 시작할 때 가장 자주 추천되는 입문서.",
-      "deeplink": "",
-      "image": "",
-      "categories": [
-        "general"
-      ],
-      "tone": "book",
-      "hook": "ETF가 무엇이고 왜 사야 하는지 1장부터 정직하게",
-      "needs": [
-        "etf-basics"
-      ]
-    },
-    {
       "id": "manual-magic-pension",
       "title": "마법의 연금 굴리기",
       "subtitle": "김성일 지음",
@@ -211,6 +192,26 @@
       "needs": [
         "retirement-30y",
         "etf-basics"
+      ]
+    },
+    {
+      "id": "manual-salary-retire",
+      "title": "월급쟁이 부자로 은퇴하라",
+      "subtitle": "너나위 지음",
+      "source": "알에이치코리아",
+      "year": 2023,
+      "price": 17100,
+      "blurb": "직장인이 월급을 자산으로 바꾸는 단계별 실전 — 4050 은퇴 준비 필독.",
+      "deeplink": "",
+      "image": "",
+      "categories": [
+        "retirement",
+        "general"
+      ],
+      "tone": "book",
+      "hook": "월급쟁이가 자산가로 가는 단계별 실전",
+      "needs": [
+        "retirement-30y"
       ]
     },
     {
@@ -234,44 +235,82 @@
       ]
     },
     {
-      "id": "manual-monthly-dividend",
-      "title": "월배당 ETF로 매월 월급받기",
-      "subtitle": "이재범 지음",
-      "source": "한스미디어",
-      "year": 2024,
-      "price": 18900,
-      "blurb": "TIGER·KODEX·SOL 커버드콜과 월배당 ETF의 분배 구조·세후 수익을 사례로 보여주는 실전 가이드.",
+      "id": "manual-etf-introduction",
+      "title": "ETF 처음공부",
+      "subtitle": "강환국 지음",
+      "source": "이레미디어",
+      "year": 2023,
+      "price": 17820,
+      "blurb": "ETF가 무엇인지부터 자산배분·재조정까지, 4050이 처음 ETF를 시작할 때 가장 자주 추천되는 입문서.",
       "deeplink": "",
       "image": "",
       "categories": [
-        "income",
+        "general"
+      ],
+      "tone": "book",
+      "hook": "ETF가 무엇이고 왜 사야 하는지 1장부터 정직하게",
+      "needs": [
+        "etf-basics"
+      ]
+    },
+    {
+      "id": "manual-etf-startup",
+      "title": "주식투자 ETF로 시작하라",
+      "subtitle": "systrader79 지음",
+      "source": "이레미디어",
+      "year": 2023,
+      "price": 17820,
+      "blurb": "개별 종목 대신 ETF 포트폴리오로 시작 — 자산배분·리밸런싱까지.",
+      "deeplink": "",
+      "image": "",
+      "categories": [
+        "general"
+      ],
+      "tone": "book",
+      "hook": "개별 종목 고민 없이 ETF로 분산 시작",
+      "needs": [
+        "etf-basics"
+      ]
+    },
+    {
+      "id": "cpg-18789221",
+      "title": "쉽고 편안하게 고수익 내는퀀트&커버드 콜 전략:",
+      "subtitle": "",
+      "source": "",
+      "price": 13500,
+      "blurb": "",
+      "deeplink": "https://link.coupang.com/re/AFFSDP?lptag=AF4833721&pageKey=18789221&itemId=75426477&vendorItemId=92583091477&traceid=V0-153-a2fe347c900472f8&requestid=20260426120415447026857798&token=31850C%7CGM",
+      "image": "https://ads-partners.coupang.com/image1/5T876anZh2vr8CmW5Uz9uBp4lL9tm8mv-9-CP8Q7juQfo1Zr7aVxRuzwzBL4hzdhlMXVPtMNjkESXTPps-1bTB8-ya87ybVoNrQvor5MfmSQDw-RF1EzcgvprtLpaLz9CD6jt3mjLeWi40VuQq1Rsoil47oR6iuc4AQgqJ3ouoSerwGUvC87B_HirTF_XH4tzP3_j4YGQrVwONLZAeBF36JXhzco3NxMwLgvUXrVUvtLYM7mgn_nOPLUZwN6KxBTsjcoDSuyhM1-kHICAFLghiFmqeju3pXV6sw6dZOGI7iY2kShUek30bYrKM2q3ZhKYCT1MLRE",
+      "categories": [
         "covered-call"
       ],
       "tone": "book",
-      "hook": "TIGER·KODEX·SOL 커버드콜 비교를 사례로",
+      "isRocket": false,
+      "pickedAt": "2026-04-26T03:04:14.732Z",
+      "pickedFromKeyword": "커버드콜",
+      "hook": "옵션 매도 구조를 수식 없이 이해한다",
       "needs": [
-        "monthly-cashflow",
         "covered-call-structure"
       ]
     },
     {
-      "id": "manual-psychology-of-money",
-      "title": "돈의 심리학",
-      "subtitle": "모건 하우절 지음",
-      "source": "인플루엔셜",
-      "year": 2021,
-      "price": 16650,
-      "blurb": "투자 의사결정의 비합리성과 장기 복리의 힘. 매매 타이밍이 아니라 '오래 버티는 법'을 익히는 책.",
+      "id": "manual-cashflow-ledger",
+      "title": "월간 현금흐름 가계부",
+      "subtitle": "분배금·생활비 매칭용",
+      "source": "(브랜드는 큐레이션 후 채움)",
+      "price": 14000,
+      "blurb": "월배당 ETF 분배금이 들어오는 날과 카드 결제일을 한 화면에 정리.",
       "deeplink": "",
       "image": "",
       "categories": [
-        "general",
+        "income",
         "retirement"
       ],
-      "tone": "book",
-      "hook": "단기 흔들림에 무너지지 않는 마음가짐 한 권",
+      "tone": "tool",
+      "hook": "분배금 들어오는 날을 가계부에 옮긴다",
       "needs": [
-        "investor-psychology"
+        "tool-cashflow",
+        "monthly-cashflow"
       ]
     },
     {
@@ -310,6 +349,46 @@
       "needs": [
         "tool-cashflow",
         "retirement-30y"
+      ]
+    },
+    {
+      "id": "manual-money-property",
+      "title": "돈의 속성",
+      "subtitle": "김승호 지음",
+      "source": "스노우폭스북스",
+      "year": 2020,
+      "price": 17500,
+      "blurb": "돈을 다루는 태도와 자산 형성 마인드를 사례로 풀어낸 베스트셀러.",
+      "deeplink": "",
+      "image": "",
+      "categories": [
+        "general",
+        "retirement"
+      ],
+      "tone": "book",
+      "hook": "돈을 대하는 태도를 바꾸면 결과가 바뀐다",
+      "needs": [
+        "investor-psychology"
+      ]
+    },
+    {
+      "id": "manual-psychology-of-money",
+      "title": "돈의 심리학",
+      "subtitle": "모건 하우절 지음",
+      "source": "인플루엔셜",
+      "year": 2021,
+      "price": 16650,
+      "blurb": "투자 의사결정의 비합리성과 장기 복리의 힘. 매매 타이밍이 아니라 '오래 버티는 법'을 익히는 책.",
+      "deeplink": "",
+      "image": "",
+      "categories": [
+        "general",
+        "retirement"
+      ],
+      "tone": "book",
+      "hook": "단기 흔들림에 무너지지 않는 마음가짐 한 권",
+      "needs": [
+        "investor-psychology"
       ]
     }
   ]

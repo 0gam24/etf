@@ -164,8 +164,16 @@ export function getProductsGroupedByCategory(): Array<{ category: ProductCategor
   })).filter(g => g.products.length > 0);
 }
 
-/** /resources 페이지 viewer-first — 시청자 니즈(질문)별 그룹 */
-export function getProductsGroupedByNeed(): Array<{ need: ProductNeed; products: ProductEntry[] }> {
+/**
+ * /resources 페이지 viewer-first — 시청자 니즈(질문)별 그룹.
+ *
+ *   중복 제거 정책: 각 책의 needs[0] = primary need로 정의.
+ *   책은 primary need 섹션에만 노출. 다른 secondary 매칭은 무시.
+ *   결과: 한 책이 여러 섹션에 중복 노출 X, 각 책은 단 한 섹션.
+ *
+ *   limitPerSection: 섹션당 카드 갯수 상한 (기본 5)
+ */
+export function getProductsGroupedByNeed(limitPerSection = 5): Array<{ need: ProductNeed; products: ProductEntry[] }> {
   const all = getAllProducts();
   const needs: ProductNeed[] = [
     'monthly-cashflow',
@@ -175,10 +183,13 @@ export function getProductsGroupedByNeed(): Array<{ need: ProductNeed; products:
     'tool-cashflow',
     'investor-psychology',
   ];
-  return needs.map(need => ({
-    need,
-    products: all.filter(p => p.needs?.includes(need)),
-  })).filter(g => g.products.length > 0);
+  return needs
+    .map(need => {
+      // primary need = needs[0]만 매칭 → 자동 중복 제거
+      const matched = all.filter(p => p.needs && p.needs[0] === need);
+      return { need, products: matched.slice(0, limitPerSection) };
+    })
+    .filter(g => g.products.length > 0);
 }
 
 /** 단일 니즈로 필터 (필요 시) */
