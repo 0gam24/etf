@@ -9,7 +9,7 @@ import {
 import { AUTHOR_LIST } from '@/lib/authors';
 import { GUIDES } from '@/lib/guides';
 import { getProductsRegistry } from '@/lib/products';
-import { getLatestEtfData, getKnownShortcodes, resolveEtfTicker } from '@/lib/data';
+import { getLatestEtfData, getKnownShortcodes, resolveEtfTicker, findEtfByAnyCode } from '@/lib/data';
 import type { RawEtf } from '@/lib/surge';
 
 /**
@@ -124,8 +124,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const slug = resolveEtfTicker(e.code).canonicalSlug;
       etfSlugs.add(slug);
     });
-  // 등록된 PORTFOLIOS shortcode도 추가 (issueCode 매칭이 없는 종목 포함)
-  getKnownShortcodes().forEach(code => etfSlugs.add(code.toLowerCase()));
+  // 등록된 PORTFOLIOS shortcode도 추가 — etfList에서 resolve되는 것만 (404 회피)
+  getKnownShortcodes()
+    .filter(code => findEtfByAnyCode(etfList, code) !== null)
+    .forEach(code => etfSlugs.add(code.toLowerCase()));
 
   etfSlugs.forEach(slug => {
     routes.push({

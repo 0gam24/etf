@@ -58,11 +58,13 @@ export async function generateStaticParams() {
     .slice(0, 100)
     .map(e => ({ ticker: e.code.toLowerCase() }));
 
-  // 2) PORTFOLIOS의 shortcode 전체 — 사용자가 친숙한 6자리 숫자 코드
-  //    (issueCode로 이미 만든 것과 중복되어도 Next.js가 자동 dedup)
-  const shortcodeParams = getKnownShortcodes().map(code => ({ ticker: code.toLowerCase() }));
+  // 2) PORTFOLIOS의 shortcode — etfList에서 실제로 resolve되는 것만 emit
+  //    (data.go.kr API가 100종 한정이라 매핑 있어도 etfList에 없으면 404 발생)
+  const resolvableShortcodes = getKnownShortcodes()
+    .filter(code => findEtfByAnyCode(list, code) !== null)
+    .map(code => ({ ticker: code.toLowerCase() }));
 
-  return [...issueCodeParams, ...shortcodeParams];
+  return [...issueCodeParams, ...resolvableShortcodes];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
