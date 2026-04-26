@@ -14,8 +14,22 @@ import Toc from '@/components/Toc';
 import HoldingsPanel from '@/components/HoldingsPanel';
 import PostRelatedEtfs from '@/components/PostRelatedEtfs';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import RecommendBox from '@/components/RecommendBox';
+import type { ProductCategory } from '@/lib/products';
 import { AUTHORS } from '@/lib/authors';
 import { buildArticleSchema, buildPersonSchema, jsonLd } from '@/lib/schema';
+
+/** 글 카테고리 → 추천 자료 매칭 */
+function postCategoryToProductCategory(category: string): ProductCategory | undefined {
+  const map: Record<string, ProductCategory> = {
+    'income':   'income',
+    'breaking': 'general',
+    'pulse':    'general',
+    'surge':    'general',
+    'flow':     'general',
+  };
+  return map[category];
+}
 
 interface PageProps {
   params: Promise<{ category: string; slug: string }>;
@@ -219,6 +233,8 @@ export default async function PostPage({ params }: PageProps) {
             </div>
           </header>
 
+          <RecommendBox position="top" category={postCategoryToProductCategory(category)} />
+
           {category === 'surge' && post.meta.tickers && post.meta.tickers[0] && (
             <section className="holdings-detail-section">
               <HoldingsPanel
@@ -282,6 +298,8 @@ export default async function PostPage({ params }: PageProps) {
               </div>
             </section>
           )}
+
+          <RecommendBox position="bottom" category={postCategoryToProductCategory(category)} />
         </article>
 
         <Toc />

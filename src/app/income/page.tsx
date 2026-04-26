@@ -12,6 +12,7 @@ import NextChapterCta from '@/components/NextChapterCta';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
+import RecommendBox from '@/components/RecommendBox';
 
 export const metadata: Metadata = {
   title: '월배당·커버드콜 — Daily ETF Pulse',
@@ -55,6 +56,8 @@ export default function IncomeLandingPage() {
         ]}
       />
       <IncomeHero etfCount={etfs.length} topYield={topYield} monthlyCount={monthlyCount} asOf={asOf} />
+
+      <RecommendBox position="top" category="income" />
 
       <div className="income-landing-body">
         <IncomeGoalCalculator etfs={etfs} />
@@ -118,6 +121,8 @@ export default function IncomeLandingPage() {
           copy="오늘 시장을 움직인 속보 한 줄로 다시 짚어보기"
           href="/breaking"
         />
+
+        <RecommendBox position="bottom" category="income" />
       </div>
     </div>
   );

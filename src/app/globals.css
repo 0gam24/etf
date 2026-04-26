@@ -6993,6 +6993,117 @@ a.scenario-card:hover .scenario-card-cta {
   gap: var(--space-4);
 }
 
+/* RecommendBox — 사이트 전체 페이지에 노출되는 추천 자료 박스 */
+.recommend-box {
+  max-width: 76rem;
+  margin: var(--space-6) auto;
+  padding: var(--space-4) var(--space-5);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 0.7rem;
+}
+.recommend-box-top {
+  margin-top: 0;
+  margin-bottom: var(--space-8);
+}
+.recommend-box-bottom {
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-6);
+}
+.recommend-box-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.recommend-box-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin: 0;
+}
+.recommend-box-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--accent-gold);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: gap 0.15s ease;
+}
+.recommend-box-more:hover {
+  gap: 0.45rem;
+}
+.recommend-box-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-3);
+}
+.recommend-box-card,
+.recommend-box-card-pending {
+  display: block;
+  padding: var(--space-3);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  color: var(--text-secondary);
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  height: 100%;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.recommend-box-card:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-2px);
+}
+.recommend-box-card-pending {
+  opacity: 0.55;
+  border-style: dashed;
+}
+.recommend-box-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+}
+.recommend-box-card-tag {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.recommend-box-card-meta svg {
+  color: var(--text-muted);
+}
+.recommend-box-card-title {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+  word-break: keep-all;
+}
+.recommend-box-card-sub {
+  color: var(--text-dim);
+  margin-top: 0.2rem;
+  font-size: 0.74rem;
+}
+.recommend-box-disclaimer {
+  margin: var(--space-3) 0 0;
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  line-height: 1.6;
+}
+
 /* Hero 직후 — 가이드 above-the-fold 큐레이션 카드 */
 .guide-hero-affiliate {
   max-width: 50rem;

@@ -14,6 +14,7 @@ import NextChapterCta from '@/components/NextChapterCta';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
+import RecommendBox from '@/components/RecommendBox';
 
 export const metadata: Metadata = {
   title: '오늘의 관전포인트 — Daily ETF Pulse',
@@ -45,6 +46,8 @@ export default function PulseLandingPage() {
         ]}
       />
       <PulseTodayHero today={today} />
+
+      <RecommendBox position="top" category="general" />
 
       <div className="pulse-landing-body">
         <PulseDiff diff={diff} hasYesterday={!!yesterday} />
@@ -104,6 +107,8 @@ export default function PulseLandingPage() {
           copy="오늘 거래량 1위 ETF가 왜 올랐는지 분석 보러 가기"
           href="/surge"
         />
+
+        <RecommendBox position="bottom" category="general" />
       </div>
     </div>
   );

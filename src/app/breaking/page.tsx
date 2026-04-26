@@ -15,6 +15,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 import { pickLatestTradeDayBreaking, tradeDateOf } from '@/lib/breaking';
+import RecommendBox from '@/components/RecommendBox';
 
 export const metadata: Metadata = {
   title: 'ETF 속보 — Daily ETF Pulse',
@@ -69,6 +70,8 @@ export default function BreakingLandingPage() {
           </div>
         </div>
       </section>
+
+      <RecommendBox position="top" category="general" />
 
       <div className="breaking-landing-body">
         {/* 오늘의 속보 3카드 */}
@@ -161,6 +164,8 @@ export default function BreakingLandingPage() {
           copy="출근 전 5분, 오늘 시장의 무게중심을 한 호흡에 잡기"
           href="/pulse"
         />
+
+        <RecommendBox position="bottom" category="general" />
       </div>
     </div>
   );

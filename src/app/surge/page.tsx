@@ -14,6 +14,7 @@ import NextChapterCta from '@/components/NextChapterCta';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
+import RecommendBox from '@/components/RecommendBox';
 import SurgeRecentList from '@/components/SurgeRecentList';
 
 export const metadata: Metadata = {
@@ -59,6 +60,8 @@ export default function SurgeLandingPage() {
         baseDate={etfData?.baseDate}
       />
 
+      <RecommendBox position="top" category="general" />
+
       <div className="surge-landing-body">
         <SurgeThemeTracker groups={themeGroups} />
 
@@ -94,6 +97,8 @@ export default function SurgeLandingPage() {
           copy="기관·외국인의 손이 일주일째 어디로 옮겨가는지 보러 가기"
           href="/flow"
         />
+
+        <RecommendBox position="bottom" category="general" />
       </div>
     </div>
   );

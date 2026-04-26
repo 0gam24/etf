@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { ArrowRight, BookOpen } from 'lucide-react';
 import { GUIDES } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import RecommendBox from '@/components/RecommendBox';
 
 export const metadata: Metadata = {
   title: '가이드 — Daily ETF Pulse',
@@ -39,6 +40,8 @@ export default function GuideIndexPage() {
         </p>
       </section>
 
+      <RecommendBox position="top" />
+
       <ul className="guide-index-list">
         {GUIDES.map(g => (
           <li key={g.slug} className="guide-index-card">
@@ -53,6 +56,8 @@ export default function GuideIndexPage() {
           </li>
         ))}
       </ul>
+
+      <RecommendBox position="bottom" />
     </div>
   );
 }

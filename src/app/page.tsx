@@ -19,6 +19,7 @@ import HomeDailyAuthor from '@/components/HomeDailyAuthor';
 import HomeReturnTrigger from '@/components/HomeReturnTrigger';
 import AuthorSlider from '@/components/AuthorSlider';
 import DataFooter from '@/components/DataFooter';
+import RecommendBox from '@/components/RecommendBox';
 
 export default async function HomePage() {
   const latestPulse = getLatestPulse();
@@ -108,6 +109,8 @@ export default async function HomePage() {
         catalystNews={catalystNews}
         catalystHref={catalystHref}
       />
+
+      <RecommendBox position="top" />
 
       {/* Chapter 3 — BREAKING: 오늘의 ETF 속보 (홀딩스 펼침) */}
       <HomeBreakingStrip posts={breakingPosts} etfs={(etfData?.etfList || []) as RawEtf[]} />
@@ -202,6 +205,8 @@ export default async function HomePage() {
         hasYesterday={!!yesterdayPulse}
         todayPulseHref={todayPulseHref}
       />
+
+      <RecommendBox position="bottom" />
 
       {/* Chapter 9 — TRUST: 데이터 출처/면책 */}
       <DataFooter

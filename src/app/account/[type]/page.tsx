@@ -1,6 +1,7 @@
 import { getPostsByCategory, CATEGORY_NAMES, ACCOUNT_CATEGORIES } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import RecommendBox from '@/components/RecommendBox';
 
 interface PageProps {
   params: Promise<{ type: string }>;
@@ -62,6 +63,8 @@ export default async function AccountPage({ params }: PageProps) {
         </div>
       </section>
 
+      <RecommendBox position="top" category="retirement" />
+
       <section className="post-list">
         {posts.length === 0 ? (
           <div className="empty-state">
@@ -88,6 +91,8 @@ export default async function AccountPage({ params }: PageProps) {
           </div>
         )}
       </section>
+
+      <RecommendBox position="bottom" category="retirement" />
     </div>
   );
 }

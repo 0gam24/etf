@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { getAllPosts } from '@/lib/posts';
 import { AUTHORS } from '@/lib/authors';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import RecommendBox from '@/components/RecommendBox';
 import { buildPersonSchema, jsonLd } from '@/lib/schema';
 
 interface PageProps {
@@ -78,6 +79,8 @@ export default async function AuthorPage({ params }: PageProps) {
         </div>
       </section>
 
+      <RecommendBox position="top" />
+
       <section className="post-list">
         {posts.length === 0 ? (
           <div className="empty-state"><p>아직 발행된 글이 없습니다.</p></div>
@@ -96,6 +99,8 @@ export default async function AuthorPage({ params }: PageProps) {
           </div>
         )}
       </section>
+
+      <RecommendBox position="bottom" />
     </div>
   );
 }

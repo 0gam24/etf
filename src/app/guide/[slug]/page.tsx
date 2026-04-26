@@ -7,10 +7,21 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import GuideDataBlock from '@/components/GuideDataBlock';
 import AffiliateInline from '@/components/AffiliateInline';
-import AffiliateNotice from '@/components/AffiliateNotice';
-import ProductCard from '@/components/ProductCard';
-import { getProductById } from '@/lib/products';
+import RecommendBox from '@/components/RecommendBox';
+import type { ProductCategory } from '@/lib/products';
 import { buildArticleSchema, jsonLd } from '@/lib/schema';
+
+/** 가이드 슬러그 → 추천 자료 매칭 카테고리 */
+function guideToProductCategory(slug: string): ProductCategory | undefined {
+  const map: Record<string, ProductCategory> = {
+    'monthly-dividend': 'income',
+    'covered-call':     'covered-call',
+    'defense-etf':      'defense-etf',
+    'ai-semi-etf':      'ai-semi-etf',
+    'retirement':       'retirement',
+  };
+  return map[slug];
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -87,22 +98,8 @@ export default async function GuidePage({ params }: PageProps) {
         </div>
       </header>
 
-      {/* heroAffiliate / affiliateInline / product-rec dataBlock 중 하나라도 있으면 면책 1회 */}
-      {(g.heroAffiliate || g.sections.some(s => s.affiliateInline || (s.dataBlock && s.dataBlock.startsWith('product-rec:')))) && (
-        <AffiliateNotice variant="top" />
-      )}
-
-      {/* Hero 직후 단일 mini-card — above the fold 큐레이션 */}
-      {g.heroAffiliate && (() => {
-        const heroProduct = getProductById(g.heroAffiliate.productId);
-        if (!heroProduct) return null;
-        return (
-          <aside className="guide-hero-affiliate" aria-label="이 가이드와 함께 읽기">
-            <p className="guide-hero-affiliate-leadin">{g.heroAffiliate.leadIn}</p>
-            <ProductCard product={heroProduct} variant="mini" />
-          </aside>
-        );
-      })()}
+      {/* Hero 직후 RecommendBox top — 4카드 박스 (가이드 카테고리 매칭) */}
+      <RecommendBox position="top" category={guideToProductCategory(g.slug)} />
 
       <div className="guide-article-body">
         {g.sections.map((sec, i) => (
@@ -142,6 +139,8 @@ export default async function GuidePage({ params }: PageProps) {
           ))}
         </ul>
       </nav>
+
+      <RecommendBox position="bottom" category={guideToProductCategory(g.slug)} />
     </article>
   );
 }

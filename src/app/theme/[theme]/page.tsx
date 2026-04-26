@@ -1,4 +1,16 @@
 import { getPostsByCategory, CATEGORY_NAMES, THEME_CATEGORIES } from '@/lib/posts';
+import RecommendBox from '@/components/RecommendBox';
+import type { ProductCategory } from '@/lib/products';
+
+function themeToProductCategory(theme: string): ProductCategory | undefined {
+  const map: Record<string, ProductCategory> = {
+    'ai':           'ai-semi-etf',
+    'semi':         'ai-semi-etf',
+    'defense':      'defense-etf',
+    'shipbuilding': 'general',
+  };
+  return map[theme];
+}
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
@@ -63,6 +75,8 @@ export default async function ThemePage({ params }: PageProps) {
         </div>
       </section>
 
+      <RecommendBox position="top" category={themeToProductCategory(theme)} />
+
       <section className="post-list">
         {posts.length === 0 ? (
           <div className="empty-state">
@@ -89,6 +103,8 @@ export default async function ThemePage({ params }: PageProps) {
           </div>
         )}
       </section>
+
+      <RecommendBox position="bottom" category={themeToProductCategory(theme)} />
     </div>
   );
 }

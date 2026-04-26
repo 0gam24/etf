@@ -7,6 +7,7 @@ import ReadingProgress from '@/components/ReadingProgress';
 import ShareRow from '@/components/ShareRow';
 import Toc from '@/components/Toc';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import RecommendBox from '@/components/RecommendBox';
 import { AUTHORS } from '@/lib/authors';
 import {
   buildArticleSchema,
@@ -145,8 +146,10 @@ export default async function StockMasterPage({ params }: PageProps) {
               <span>· {post.readingTime}분 읽기</span>
             </div>
           </header>
+          <RecommendBox position="top" category="general" />
           <MarkdownRenderer content={post.content} />
           <ShareRow title={post.meta.title} path={`/stock/${ticker}`} />
+          <RecommendBox position="bottom" category="general" />
         </article>
         <Toc />
       </div>

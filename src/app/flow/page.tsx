@@ -18,6 +18,7 @@ import NextChapterCta from '@/components/NextChapterCta';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
+import RecommendBox from '@/components/RecommendBox';
 
 export const metadata: Metadata = {
   title: '자금 흐름 리포트 — Daily ETF Pulse',
@@ -53,6 +54,8 @@ export default function FlowLandingPage() {
         baseDate={etfData?.baseDate}
         latestPost={latestPost}
       />
+
+      <RecommendBox position="top" category="general" />
 
       <div className="flow-landing-body">
         <FlowExtremes hottest={hottest} coldest={coldest} />
@@ -95,6 +98,8 @@ export default function FlowLandingPage() {
           copy="은퇴 자산이 매달 통장에 꽂히려면 얼마가 필요한지 계산하기"
           href="/income"
         />
+
+        <RecommendBox position="bottom" category="general" />
       </div>
     </div>
   );

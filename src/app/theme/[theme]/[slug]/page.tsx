@@ -1,6 +1,18 @@
 import { getPostBySlug, getAllPostSlugs, CATEGORY_NAMES } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import RecommendBox from '@/components/RecommendBox';
+import type { ProductCategory } from '@/lib/products';
+
+function themeToProductCategory(theme: string): ProductCategory | undefined {
+  const map: Record<string, ProductCategory> = {
+    'ai':           'ai-semi-etf',
+    'semi':         'ai-semi-etf',
+    'defense':      'defense-etf',
+    'shipbuilding': 'general',
+  };
+  return map[theme];
+}
 
 interface PageProps {
   params: Promise<{ theme: string; slug: string }>;
@@ -64,11 +76,13 @@ export default async function ThemePostPage({ params }: PageProps) {
           <div className="post-meta-item">⏱️ {post.readingTime}분 읽기</div>
         </div>
       </section>
+      <RecommendBox position="top" category={themeToProductCategory(theme)} />
       <section className="post-body" style={{ marginTop: '2rem' }}>
         <article className="post-content prose" style={{ whiteSpace: 'pre-wrap' }}>
           {post.content}
         </article>
       </section>
+      <RecommendBox position="bottom" category={themeToProductCategory(theme)} />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import MarkdownRenderer from '@/components/MarkdownRenderer';
 import ReadingProgress from '@/components/ReadingProgress';
 import ShareRow from '@/components/ShareRow';
 import Toc from '@/components/Toc';
+import RecommendBox from '@/components/RecommendBox';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -79,8 +80,10 @@ export default async function WeeklyPage({ params }: PageProps) {
               <span>⏱️ {post.readingTime}분 읽기</span>
             </div>
           </header>
+          <RecommendBox position="top" category="general" />
           <MarkdownRenderer content={post.content} />
           <ShareRow title={post.meta.title} path={`/weekly/${slug}`} />
+          <RecommendBox position="bottom" category="general" />
         </article>
         <Toc />
       </div>
