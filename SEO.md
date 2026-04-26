@@ -1,0 +1,143 @@
+# SEO 규칙 — Daily ETF Pulse
+
+이 문서는 **구글 검색 노출**을 위한 사이트 전체 SEO 규칙을 정의합니다. 모든 신규 페이지·컴포넌트·콘텐츠 작성 시 이 규칙을 강제 준수하며, **HarnessDeployer(agent #8)가 deploy 직전에 자동 검증**합니다.
+
+규칙 위반 발견 시: ❶ 동일 commit에서 함께 수정 ❷ HarnessDeployer 검증 통과 ❸ commit·push.
+
+---
+
+## 1. URL Slug — 영문 ASCII만
+
+- **모든 슬러그는 영문 소문자 + 하이픈** (kebab-case). 한글·특수문자(`·`·`%`·공백) 금지.
+- 한국어 키워드는 `agents/2_seo_architect.js`의 `KOREAN_SLUG_MAP`에서 영문 매핑.
+  - 예: `방산top10 → defense-top10`, `조선top3 → shipbuilding-top3`, `커버드콜·월배당 → covered-call-income`
+- 새 한국어 키워드 등장 시 **MAP에 먼저 추가** → 슬러그 생성. MAP 누락은 SeoArchitect 출력 차단.
+- 슬러그 길이: 최대 **80자**.
+- 슬러그 변경 시 [next.config.ts](next.config.ts) `redirects()`에 **301 영구 리다이렉트** 등록 (검색 가치 보존).
+
+## 2. Meta — title / description / keywords
+
+| 필드 | 규칙 | 예시 |
+|---|---|---|
+| `title` | **60자 이내**, 핵심 키워드 앞쪽 배치, 사이트명은 ` — Daily ETF Pulse` 접미사 | `KODEX 방산TOP10 — 현재가·구성종목·분배금` |
+| `description` | **120~155자**, 자연 문장, 핵심 키워드 1~2회 자연 노출 | `KODEX 방산TOP10(449450) ETF의 오늘 시세, 구성종목 TOP 10, 분배 정보를 한 페이지에…` |
+| `keywords` | **3~7개**, 가장 구체적인 롱테일 우선 | `["KODEX 방산TOP10", "방산 ETF", "449450 ETF", "방산주 ETF 추천"]` |
+
+- 모든 페이지에 `alternates.canonical` 설정 (절대 또는 절대화 가능 경로).
+- OG·Twitter 메타에 동일 title·description + `/api/og` 동적 이미지 사용.
+
+## 3. 헤딩 키워드 강제 (H1·H2)
+
+- **H1은 페이지당 1개만**, 페이지의 핵심 검색 키워드를 자연 어절로 포함.
+- H2는 보조 키워드를 자연 노출 (본문 흐름 구분 + 검색 의도 매칭).
+- 카테고리별 H1 키워드 패턴:
+
+| 페이지 | H1 필수 키워드 |
+|---|---|
+| `/` (홈) | "ETF" + 행동 동사 (오늘의 ETF / 오르는 ETF / 분배금 ETF 등) |
+| `/pulse` | "오늘의 관전포인트" + ETF |
+| `/surge` | "{ETF명}" (post 제목 그대로) — 종목명이 H1 |
+| `/flow` | "ETF 섹터 자금 흐름" |
+| `/income` | "월배당 ETF" + "커버드콜 ETF" 동시 노출 |
+| `/breaking` | "오늘의 ETF 속보" + "거래량 TOP" |
+| `/guide/{slug}` | 가이드 정식 제목 (월배당 ETF 완전 가이드 등) |
+| `/etf/{ticker}` | "{ETF 정식명}" (예: `KODEX 방산TOP10`) |
+
+## 4. JSON-LD 스키마 (페이지 유형별 의무)
+
+빌더는 [src/lib/schema.ts](src/lib/schema.ts)의 함수만 사용. 직접 JSON 작성 금지.
+
+| 페이지 유형 | 필수 스키마 |
+|---|---|
+| 모든 페이지 | `BreadcrumbList` |
+| 글 (pulse/surge/flow/income/breaking) | `Article` 또는 `NewsArticle` (속보) + `Person` (저자) |
+| 가이드 일반 | `Article` |
+| 가이드 단계형 (`howTo: true`) | `Article` + **`HowTo`** (단계 자동 매핑) |
+| `/etf/{ticker}` | **`FinancialProduct` + `Dataset`** + `BreadcrumbList` |
+| `/author/{id}` | `Person` |
+| FAQ 섹션 포함 | `FAQPage` |
+
+- `</script>` 인젝션 회피: `jsonLd(obj)` 헬퍼만 사용 (자동 escape).
+- `inLanguage: 'ko-KR'` 명시.
+- 작성자(`author.url`)는 `/author/{authorId}` 절대 경로.
+
+## 5. Sitemap — lastmod 정확성
+
+[src/app/sitemap.ts](src/app/sitemap.ts) 규칙:
+
+- **`lastmod`는 콘텐츠 실제 갱신일에서 derive**. sitemap 재생성 시각(`new Date()`) 사용 금지 (Google이 부정확한 lastmod는 무시).
+- 홈 = `getSiteLastModified()`, 카테고리 = `getCategoryLastModified(cat)`, 저자 = `getAuthorLastModified(id)`, 자료실 = `products.json.reviewedAt`, /etf/* = `etfData.baseDate` (YYYYMMDD → ISO 정규화).
+- changeFrequency·priority:
+  - 홈 1.0 daily / 카테고리 0.9 daily / 글 7일 이내 0.9 weekly · 이후 0.7 weekly / `/etf/*` 0.8 daily / `/guide/*` 0.85 weekly / 저자 0.6 weekly.
+- `/etf/{ticker}`는 **shortcode + issueCode 모두 등록** (Set 중복 제거). canonical은 페이지 metadata가 처리.
+- 보조 sitemap: `/sitemap-images.xml`, `/sitemap-news.xml`, `/sitemap-index.xml` 별도 라우트 유지.
+
+## 6. 내부 링크 — 키워드 자동 가이드 링크
+
+[agents/4b_internal_linker.js](agents/4b_internal_linker.js) 규칙:
+
+- 본문에서 핵심 키워드 **첫 등장 1회**를 `[키워드](/guide/{slug})` 자동 링크.
+- 매핑: `KEYWORD_GUIDE_MAP` (월배당 ETF→monthly-dividend, 커버드콜 ETF→covered-call, 방산 ETF→defense-etf, AI ETF·반도체 ETF→ai-semi-etf, IRP·ISA·연금저축→retirement).
+- 회피: 코드블록(```), 헤딩(`#~######`) 라인, 기존 링크 안.
+- 본문 중간 h2 경계에 관련 글 1~2개 (티커·섹터·카테고리 우선순위).
+- 키워드당·가이드당 1회 제한 (스팸 방지).
+
+## 7. 이미지 SEO
+
+- 모든 `<img>`·`<Image>`에 `alt` 의무 (시청자 가치 표현 — "차트 1" 같은 빈 alt 금지).
+- /sitemap-images.xml에 OG 이미지·차트 이미지 등록.
+- OG 이미지: 1200×630, `/api/og?title=…&category=…&tickers=…` 동적 생성.
+
+## 8. /etf/{ticker} 종목 사전
+
+[src/app/etf/[ticker]/page.tsx](src/app/etf/[ticker]/page.tsx) 규칙:
+
+- `generateStaticParams`: 거래량 상위 100 issueCode + `PORTFOLIOS`의 모든 shortcode (둘 다 prerender).
+- 라우팅: shortcode(449450) ↔ issueCode(0080G0) 양방향. `findEtfByAnyCode` + `resolveEtfTicker` 사용.
+- canonical URL: shortcode가 있으면 shortcode 우선 (사용자 친숙).
+- 필수 섹션: hero(H1=ETF명) → 시세 stats → 구성종목 TOP 10 → 분배 정보(income ETF만) → 관련 분석 글 → RecommendBox.
+- 필수 스키마: BreadcrumbList + FinancialProduct + Dataset.
+
+## 9. Affiliate 면책 (SEO+공정위 동시)
+
+자세한 규칙은 [CLAUDE.md](CLAUDE.md)의 "Affiliate 경제적 이해관계 표시" 참고.
+
+- affiliate 링크 노출 페이지 **상단**에 `<AffiliateNotice variant="top" />` 자동 삽입.
+- 카드별 [광고] 라벨은 의무 X (페이지 면책으로 충분).
+- 카드 링크에 `rel="sponsored nofollow noopener noreferrer"` + `target="_blank"` 의무.
+
+## 10. 운영자 메타 노출 금지
+
+자세한 규칙은 [CLAUDE.md](CLAUDE.md)의 "UX 카피 — 시청자 가치 관점만" 참고.
+
+- meta description·H1·본문 어디에도 **AI·크롤링·에이전트·자동 발행·글자수·파이프라인** 단어 노출 금지.
+- 검색 결과 노출 텍스트(`metadata.title`·`description`)도 동일 규칙 적용.
+
+## 11. HarnessDeployer 자동 검증 (push 전 차단)
+
+[agents/8_harness_deployer.js](agents/8_harness_deployer.js)가 MDX 저장 직전에 다음을 검증:
+
+| 검증 항목 | 실패 시 동작 |
+|---|---|
+| `slug`이 `/^[a-z0-9-]{1,80}$/` 매칭 | **차단** (KOREAN_SLUG_MAP 누락 추정) |
+| `title.length` ≤ 60 | warning + 60자로 truncate |
+| `description.length` 120~155 | warning |
+| `keywords.length` 3~7 | warning |
+| `tickers` 배열 비어 있지 않음 (글이 종목 분석인 경우) | warning |
+| 본문 H1 1개 (선택 — pages는 별도) | warning |
+| 운영자 메타 단어("AI", "자동 발행", "크롤링" 등) 본문 출현 | warning |
+
+검증 결과는 `pipeline/logger`로 출력 + Linear/Slack 알림 (옵션).
+
+## 12. 검증 도구
+
+- 빌드 시 `npm run cf:build`가 sitemap 생성 → 빌드 실패 시 즉시 차단.
+- production push 후 **5~7분 대기** → 핵심 페이지 1~3개 curl 응답 코드 검증 (CLAUDE.md "로컬 ↔ 프로덕션 정보 100% 일치" 참고).
+- 분기별 Search Console + Lighthouse SEO 점수 audit (95+ 유지 목표).
+
+---
+
+이 문서를 수정할 때는 동일 커밋에서:
+1. `agents/8_harness_deployer.js`의 검증 로직도 함께 업데이트
+2. `CLAUDE.md` 규칙과 충돌 없는지 확인
+3. 신규 규칙은 "왜 이 규칙이 필요한가"를 한 줄로 설명

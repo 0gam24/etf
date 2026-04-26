@@ -25,6 +25,68 @@ function yamlEscape(s) {
   return String(s).replace(/"/g, '\\"');
 }
 
+// ─────────────────────────────────────────────────────────────────────
+// SEO 검증 (SEO.md 11번 항목 — push 전 자동 차단·경고)
+// ─────────────────────────────────────────────────────────────────────
+const SLUG_RE = /^[a-z0-9-]{1,80}$/;
+const FORBIDDEN_OPS_META = [
+  'AI ', '자동 발행', '자동 작성', '자동 생성', '크롤링', '스크래핑',
+  '에이전트', '파이프라인', '워크플로우', 'Gemini', 'GPT', 'LLM',
+  '샘플 데이터', 'placeholder', 'fallback', 'mock',
+];
+
+/**
+ * 글 메타·본문에 SEO.md 규칙 위반이 있는지 검증.
+ *   { blockers: string[], warnings: string[] } 반환.
+ *   blockers가 1개라도 있으면 호출자가 deploy 차단해야 함.
+ */
+function validateSeo(article) {
+  const blockers = [];
+  const warnings = [];
+
+  // 1. slug — 영문 ASCII만 (KOREAN_SLUG_MAP 누락 시 차단)
+  if (!article.slug || !SLUG_RE.test(article.slug)) {
+    blockers.push(`slug 규칙 위반 ("${article.slug}") — 영문 소문자·숫자·하이픈만, 80자 이내. KOREAN_SLUG_MAP 매핑 누락 의심.`);
+  }
+
+  // 2. title 길이 (60자 권장)
+  const title = String(article.title || '');
+  if (title.length === 0) {
+    blockers.push('title 비어 있음.');
+  } else if (title.length > 60) {
+    warnings.push(`title ${title.length}자 — 60자 이내 권장 (검색 결과 잘릴 수 있음).`);
+  }
+
+  // 3. description / keyword 검사 (description은 frontmatter에 keyword + 접미사로 자동 생성)
+  const desc = String(article.description || article.keyword || '');
+  if (desc.length > 0 && (desc.length < 50 || desc.length > 160)) {
+    warnings.push(`description ${desc.length}자 — 120~155자 권장.`);
+  }
+
+  // 4. tickers — 종목 분석 글이면 비어 있으면 안됨
+  const tickers = article.tickers || [];
+  const isStockAnalysis = ['surge', 'flow', 'income', 'breaking'].includes(article.category);
+  if (isStockAnalysis && tickers.length === 0) {
+    warnings.push(`${article.category} 글인데 tickers 비어 있음 — Article 스키마/관련 글 매칭 실패 위험.`);
+  }
+
+  // 5. 본문 운영자 메타 단어 노출 검사
+  const content = String(article.content || '');
+  for (const word of FORBIDDEN_OPS_META) {
+    if (content.includes(word)) {
+      warnings.push(`본문에 운영자 메타 단어 "${word.trim()}" 출현 — 시청자 가치 표현으로 변환 필요.`);
+    }
+  }
+
+  // 6. H1 1개 검사 (마크다운 # heading)
+  const h1Count = (content.match(/^#\s/gm) || []).length;
+  if (h1Count > 1) {
+    warnings.push(`본문 H1 ${h1Count}개 — 페이지당 1개만 권장.`);
+  }
+
+  return { blockers, warnings };
+}
+
 function saveAsMdx(article, chartData, adPlan, affiliateMatch, today) {
   const extraKeywords = CATEGORY_KEYWORDS[article.category] || [];
   const keywordsYaml = [article.keyword, ...extraKeywords]
@@ -116,7 +178,19 @@ async function run({ today, previousResults }) {
   }
 
   const published = [];
+  const blocked = [];
   for (const article of verifiedArticles) {
+    // SEO.md 11번 — push 전 자동 검증
+    const { blockers, warnings } = validateSeo(article);
+    if (warnings.length > 0) {
+      warnings.forEach(w => logger.warn(AGENT_NAME, `  ⚠️ SEO [${article.slug}] ${w}`));
+    }
+    if (blockers.length > 0) {
+      blockers.forEach(b => logger.warn(AGENT_NAME, `  ⛔ SEO [${article.slug}] ${b}`));
+      blocked.push({ slug: article.slug, blockers });
+      continue; // 차단 항목 — 발행 skip
+    }
+
     const chartData = chartSets.find(c => c.articleSlug === article.slug)?.charts;
     const layout = approvedLayouts.find(a => a.articleSlug === article.slug || a.article?.slug === article.slug);
     const affiliateMatch = affiliateMatches.find(a => a.articleSlug === article.slug);
@@ -125,10 +199,14 @@ async function run({ today, previousResults }) {
     published.push({ slug: article.slug, category: article.category, filePath });
   }
 
+  if (blocked.length > 0) {
+    logger.warn(AGENT_NAME, `⛔ SEO 검증 차단 ${blocked.length}건 — 발행 제외`);
+  }
+
   await requestGoogleIndexing(published.map(p => `/${p.category}/${p.slug}`));
   logger.success(AGENT_NAME, `🎉 ${published.length}개 발행`);
 
   return { summary: `${published.length}개 글 발행`, published };
 }
 
-module.exports = { run };
+module.exports = { run, validateSeo };
