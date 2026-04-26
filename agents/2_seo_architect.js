@@ -211,11 +211,88 @@ function buildPulseStrategy(etfData, today) {
   };
 }
 
+/**
+ * 한국어 ETF/섹터/키워드 → 영문 슬러그 매핑.
+ *
+ *   Google SEO 가이드:
+ *     - 영문 슬러그 권장 (URL 가독성·CTR·공유 시 인코딩 깨짐 회피)
+ *     - 키워드 포함 (단순 음역보다 의미 단어가 SEO ↑)
+ *     - 소문자, 하이픈 구분
+ *
+ *   확장 시 여기에만 추가하면 모든 슬러그가 자동 영문화됨.
+ */
+const KOREAN_SLUG_MAP = {
+  // 섹터 (data/raw/etf_prices_*.json sector 필드 모두 커버)
+  '커버드콜·월배당': 'covered-call-income',
+  '커버드콜월배당':   'covered-call-income',
+  '커버드콜':         'covered-call',
+  '월배당':           'monthly-dividend',
+  '원자재·금':        'commodities-gold',
+  '원자재금':         'commodities-gold',
+  '원자재':           'commodities',
+  'AI·데이터':        'ai-data',
+  'AI데이터':         'ai-data',
+  '데이터':           'data',
+  '2차전지':          'battery',
+  '반도체':           'semiconductor',
+  '바이오':           'biotech',
+  '헬스케어':         'healthcare',
+  '금융':             'finance',
+  '에너지':           'energy',
+  '해외주식':         'overseas',
+  '국내주식':         'kr-stock',
+  '채권':             'bond',
+  '조선':             'shipbuilding',
+  '방산':             'defense',
+  '항공':             'aerospace',
+  '게임':             'gaming',
+  '자동차':           'auto',
+  '인프라':           'infrastructure',
+  '리츠':             'reit',
+  '기타':             'misc',
+  // ETF 이름 흔한 토큰
+  // 합성어 우선 (가장 긴 매칭이 먼저 적용되므로 안전하지만 명시적으로 분리)
+  '방산top10':         'defense-top10',
+  '방산top':           'defense-top',
+  '조선top3':          'shipbuilding-top3',
+  '조선top':           'shipbuilding-top',
+  '플러스레버리지':     'plus-leverage',
+  '플러스':           'plus',
+  '레버리지':         'leverage',
+  '인버스':           'inverse',
+  '전고체배터리':      'solid-state-battery',
+  '실리콘음극재':      'silicon-anode',
+  // 카테고리
+  '속보':             'breaking',
+  '관전포인트':       'pulse',
+  '급등':             'surge',
+  '자금흐름':         'flow',
+};
+
+/**
+ * SEO 최적 슬러그 생성.
+ *   1. KOREAN_SLUG_MAP으로 한국어 토큰 → 영문 치환 (가장 긴 매칭 우선)
+ *   2. 잔여 한국어/특수문자 제거
+ *   3. 공백 → 하이픈, 소문자, 80자 cap
+ *
+ *   결과: 알파벳·숫자·하이픈·점·언더바만 포함 (점·언더바는 거의 없지만 ID 형식 유지)
+ */
 function slugify(s) {
-  return s
-    .replace(/[^a-zA-Z0-9가-힣 -]/g, '')
-    .replace(/\s+/g, '-')
-    .toLowerCase()
+  if (!s) return '';
+  // 1. lowercase 먼저 — ETF 코드 "0080G0" → "0080g0", 매핑 키 케이스 일관성
+  let out = String(s).toLowerCase();
+  // 2. 매핑 — 긴 키부터 적용 (예: "방산top10" 같은 합성어 우선)
+  const entries = Object.entries(KOREAN_SLUG_MAP).sort((a, b) => b[0].length - a[0].length);
+  for (const [ko, en] of entries) {
+    out = out.split(ko).join(en);
+  }
+  // 3. 정리
+  return out
+    .replace(/·/g, '-')                  // 가운뎃점 → 하이픈
+    .replace(/[^a-z0-9 _.-]/g, '')       // 소문자·숫자·공백·하이픈·언더바·점만 유지 (잔여 한글 자동 제거)
+    .replace(/\s+/g, '-')                // 공백 → 하이픈
+    .replace(/-+/g, '-')                 // 연속 하이픈 정리
+    .replace(/^-|-$/g, '')               // 양끝 하이픈 제거
     .slice(0, 80);
 }
 
@@ -249,4 +326,4 @@ async function run({ today, previousResults }) {
   };
 }
 
-module.exports = { run };
+module.exports = { run, slugify, KOREAN_SLUG_MAP };
