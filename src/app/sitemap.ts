@@ -119,6 +119,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
   const etfLastModified = ymdToDate(etfData?.baseDate) || fallback;
 
+  // 종목 사전 인덱스 페이지 (/etf)
+  routes.push({
+    url: `${baseUrl}/etf`,
+    lastModified: etfLastModified,
+    changeFrequency: 'daily',
+    priority: 0.85,
+  });
+
   // KRX 공식 등록 모든 ETF (krx-etf-codes.json) — 시세 없는 종목도 minimal 페이지로 노출
   getKnownShortcodes().forEach(code => {
     routes.push({
