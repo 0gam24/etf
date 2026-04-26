@@ -126,7 +126,9 @@ function passesFilter(p, filters, blacklist) {
 }
 
 // ── Normalize CoupangProduct → ProductEntry ──
-function normalize(p, category, tone, keyword) {
+// needs[] 는 카테고리 config의 needs / toolNeeds 에서 읽어와 자동 할당.
+// /resources 페이지의 viewer-first 그룹핑이 즉시 작동.
+function normalize(p, category, tone, keyword, needs) {
   const id = `cpg-${p.productId}`;
   return {
     id,
@@ -144,6 +146,7 @@ function normalize(p, category, tone, keyword) {
     isRocket: Boolean(p.isRocket),
     pickedAt: new Date().toISOString(),
     pickedFromKeyword: keyword,
+    needs: Array.isArray(needs) && needs.length ? needs : undefined,
   };
 }
 
@@ -191,7 +194,7 @@ async function main() {
           if (seen.has(p.productId)) continue;
           if (!passesFilter(p, config.filters, config.blacklist)) continue;
           seen.add(p.productId);
-          collected.push(normalize(p, cat.id, tone, keyword));
+          collected.push(normalize(p, cat.id, tone, keyword, cat.needs));
         }
         console.log(`  ✓ ${cat.id}/${tone} "${keyword}" → ${products.length} fetched`);
       } catch (err) {
@@ -213,7 +216,7 @@ async function main() {
           if (seen.has(p.productId)) continue;
           if (!passesFilter(p, config.filters, config.blacklist)) continue;
           seen.add(p.productId);
-          collected.push(normalize(p, cat.id, tone, keyword));
+          collected.push(normalize(p, cat.id, tone, keyword, cat.toolNeeds));
         }
         console.log(`  ✓ ${cat.id}/${tone} "${keyword}" → ${products.length} fetched`);
       } catch (err) {

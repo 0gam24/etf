@@ -24,39 +24,55 @@
   },
   "limitPerCategory": 5,
   "fetchLimitPerKeyword": 10,
+  "_needsHowTo": "각 카테고리에 needs[] 와 toolNeeds[] 명시 — fetch-products.mjs가 자동으로 cpg-* 상품에 needs 필드를 부여. /resources 페이지의 viewer-first 그룹핑에 사용.",
   "categories": [
     {
       "id": "income",
       "tone": "mixed",
-      "keywords": ["월배당 ETF", "커버드콜 ETF", "월배당 투자"],
+      "needs": ["monthly-cashflow"],
+      "toolNeeds": ["tool-cashflow"],
+      "keywords": ["월배당 ETF", "월배당 투자", "월배당 인컴"],
       "toolKeywords": ["월간 가계부", "현금흐름 가계부"]
     },
     {
       "id": "covered-call",
       "tone": "book",
-      "keywords": ["커버드콜", "옵션 매도 전략"]
+      "needs": ["covered-call-structure"],
+      "keywords": ["커버드콜 ETF", "커버드콜 투자", "JEPI 한국", "QYLD 한국", "고배당 ETF"]
     },
     {
       "id": "retirement",
       "tone": "mixed",
-      "keywords": ["IRP ETF", "연금저축 ETF", "은퇴 자산 설계"],
+      "needs": ["retirement-30y"],
+      "toolNeeds": ["tool-cashflow"],
+      "keywords": ["IRP ETF", "연금저축 ETF", "은퇴 자산", "월급쟁이 부자"],
       "toolKeywords": ["은퇴 설계 워크북", "연금 자산 노트"]
     },
     {
       "id": "defense-etf",
       "tone": "book",
+      "needs": [],
       "keywords": ["방산 ETF", "방위산업 투자"]
     },
     {
       "id": "ai-semi-etf",
       "tone": "book",
+      "needs": [],
       "keywords": ["AI ETF", "반도체 ETF", "엔비디아 투자"]
     },
     {
       "id": "general",
       "tone": "mixed",
-      "keywords": ["ETF 처음", "ETF 투자 입문", "자산배분"],
+      "needs": ["etf-basics"],
+      "toolNeeds": ["tool-cashflow"],
+      "keywords": ["ETF 처음", "ETF 투자 입문", "ETF 사용설명서", "왕초보 ETF", "자산배분 ETF"],
       "toolKeywords": ["투자 다이어리", "주식 투자 노트"]
+    },
+    {
+      "id": "general",
+      "tone": "book",
+      "needs": ["investor-psychology"],
+      "keywords": ["부의 추월차선", "현명한 투자자", "돈의 속성", "전설로 떠나는 월가의 영웅", "돈의 심리학", "투자 마인드"]
     }
   ],
   "whitelist": [],
@@ -71,6 +87,10 @@
     {"reason": "헌책·재고 SKU 코드가 제목에 박힌 항목 제외", "match": "NSB9"},
     {"reason": "스테이책터 등 헌책 거래 매장 제목 패턴 제외", "match": "스테이책터"},
     {"reason": "여러 권 세트 상품 — 큐레이션 의도 흐림", "match": "권 세트"},
+    {"reason": "전 2권/3권 묶음 세트 제외", "match": "전 2권"},
+    {"reason": "전 3권 세트 제외", "match": "전 3권"},
+    {"reason": "쁘띠수첩·책갈피 등 사은품 묶음 제외", "match": "쁘띠수첩"},
+    {"reason": "부록 사은품 명시 제외", "match": "+책갈피"},
     {"reason": "스마트폰·전자기기 — 'AI ETF' 검색 노이즈", "match": "스마트폰"},
     {"reason": "주식 차트 분석 무관 매매 도구 제외", "match": "트레이딩 시그널"}
   ]
