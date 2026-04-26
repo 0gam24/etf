@@ -198,6 +198,44 @@ export function getProductsByNeed(need: ProductNeed, limit?: number): ProductEnt
   return typeof limit === 'number' ? list.slice(0, limit) : list;
 }
 
+/**
+ * RecommendBox ticker 모드 — 여러 니즈에서 균형 있게 mix.
+ *   각 니즈에서 1~2개씩 라운드로빈으로 뽑아 limit개 채움.
+ *   ticker는 6+개 카드가 있어야 자연스럽게 회전.
+ */
+export function getMixedProductsForTicker(limit = 8): ProductEntry[] {
+  const all = getAllProducts();
+  const needs: ProductNeed[] = [
+    'monthly-cashflow',
+    'covered-call-structure',
+    'retirement-30y',
+    'etf-basics',
+    'tool-cashflow',
+    'investor-psychology',
+  ];
+  // 니즈별 후보 — primary need 기준
+  const buckets = needs.map(n => all.filter(p => p.needs?.[0] === n));
+  const result: ProductEntry[] = [];
+  const used = new Set<string>();
+  let round = 0;
+  // 라운드로빈: 1라운드씩 각 니즈에서 1개씩 픽
+  while (result.length < limit && round < 5) {
+    let pickedAny = false;
+    for (const bucket of buckets) {
+      if (result.length >= limit) break;
+      const pick = bucket[round];
+      if (pick && !used.has(pick.id)) {
+        result.push(pick);
+        used.add(pick.id);
+        pickedAny = true;
+      }
+    }
+    if (!pickedAny) break;
+    round++;
+  }
+  return result;
+}
+
 export const CATEGORY_LABEL: Record<ProductCategory, string> = {
   'income':       '월배당·커버드콜',
   'covered-call': '커버드콜 전략',

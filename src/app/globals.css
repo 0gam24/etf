@@ -7093,6 +7093,66 @@ a.scenario-card:hover .scenario-card-cta {
   line-height: 1.6;
 }
 
+/* ── RecommendBox ticker (top 위치) — 골드 강조 + 좌측 자동 회전 ── */
+.recommend-box-ticker {
+  border-top: 3px solid var(--accent-gold);
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.08), var(--bg-elevated) 60%);
+}
+.recommend-box-ticker .recommend-box-title {
+  color: var(--accent-gold);
+}
+.recommend-box-ticker-window {
+  overflow: hidden;
+  width: 100%;
+  /* 가장자리 페이드 — 회전이 자연스럽게 사라짐 */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+}
+.recommend-box-ticker-track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-3);
+  width: max-content;
+  animation: recommend-box-ticker-scroll 40s linear infinite;
+  padding: 2px; /* 카드 hover transform 잘림 방지 */
+}
+.recommend-box-ticker-track:hover,
+.recommend-box-ticker-track:focus-within {
+  animation-play-state: paused;
+}
+.recommend-box-ticker-track > li {
+  flex: 0 0 280px; /* 카드 폭 고정 — 회전 거리 일관 */
+  list-style: none;
+}
+.recommend-box-ticker-track .recommend-box-card,
+.recommend-box-ticker-track .recommend-box-card-pending {
+  height: 100%;
+}
+@keyframes recommend-box-ticker-scroll {
+  from { transform: translateX(0); }
+  /* 카드 2번 복제 → 50% 이동하면 첫 set의 끝과 두 번째 set의 시작이 정확히 일치 (seamless loop) */
+  to   { transform: translateX(-50%); }
+}
+@media (max-width: 720px) {
+  .recommend-box-ticker-track > li {
+    flex: 0 0 240px;
+  }
+  .recommend-box-ticker-track {
+    animation-duration: 60s; /* 모바일은 느리게 (배터리·산만함 ↓) */
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* 접근성 — 모션 비활성 사용자는 정적 첫 화면만 */
+  .recommend-box-ticker-track {
+    animation: none;
+    flex-wrap: wrap;
+  }
+  .recommend-box-ticker-window {
+    -webkit-mask-image: none;
+            mask-image: none;
+  }
+}
+
 /* Hero 직후 — 가이드 above-the-fold 큐레이션 카드 */
 .guide-hero-affiliate {
   max-width: 50rem;
