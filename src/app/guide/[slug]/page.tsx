@@ -8,6 +8,8 @@ import FaqSection from '@/components/FaqSection';
 import GuideDataBlock from '@/components/GuideDataBlock';
 import AffiliateInline from '@/components/AffiliateInline';
 import AffiliateNotice from '@/components/AffiliateNotice';
+import ProductCard from '@/components/ProductCard';
+import { getProductById } from '@/lib/products';
 import { buildArticleSchema, jsonLd } from '@/lib/schema';
 
 interface PageProps {
@@ -85,10 +87,22 @@ export default async function GuidePage({ params }: PageProps) {
         </div>
       </header>
 
-      {/* affiliateInline 또는 product-rec dataBlock이 있으면 페이지 상단에 단일 면책 1회 */}
-      {g.sections.some(s => s.affiliateInline || (s.dataBlock && s.dataBlock.startsWith('product-rec:'))) && (
+      {/* heroAffiliate / affiliateInline / product-rec dataBlock 중 하나라도 있으면 면책 1회 */}
+      {(g.heroAffiliate || g.sections.some(s => s.affiliateInline || (s.dataBlock && s.dataBlock.startsWith('product-rec:')))) && (
         <AffiliateNotice variant="top" />
       )}
+
+      {/* Hero 직후 단일 mini-card — above the fold 큐레이션 */}
+      {g.heroAffiliate && (() => {
+        const heroProduct = getProductById(g.heroAffiliate.productId);
+        if (!heroProduct) return null;
+        return (
+          <aside className="guide-hero-affiliate" aria-label="이 가이드와 함께 읽기">
+            <p className="guide-hero-affiliate-leadin">{g.heroAffiliate.leadIn}</p>
+            <ProductCard product={heroProduct} variant="mini" />
+          </aside>
+        );
+      })()}
 
       <div className="guide-article-body">
         {g.sections.map((sec, i) => (

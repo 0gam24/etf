@@ -6993,6 +6993,26 @@ a.scenario-card:hover .scenario-card-cta {
   gap: var(--space-4);
 }
 
+/* Hero 직후 — 가이드 above-the-fold 큐레이션 카드 */
+.guide-hero-affiliate {
+  max-width: 50rem;
+  margin: var(--space-6) auto var(--space-8);
+  padding: var(--space-4) var(--space-5);
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.06), rgba(212, 175, 55, 0.02));
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 0.7rem;
+}
+.guide-hero-affiliate-leadin {
+  margin: 0 0 var(--space-3);
+  font-size: 0.86rem;
+  color: var(--text-dim);
+  font-style: italic;
+  letter-spacing: 0.005em;
+}
+.guide-hero-affiliate .product-mini {
+  background: var(--bg-card);
+}
+
 /* AffiliateInline — 단락 끝 자연 인용 */
 .affiliate-inline-mini {
   margin: var(--space-4) 0 0;

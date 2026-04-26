@@ -69,6 +69,17 @@ export interface GuideDef {
   faq: GuideFaq[];
   /** 마지막 업데이트 표시 (실제 데이터는 매일 새로고침) */
   lastReviewed: string;
+  /**
+   * Hero 직후 단일 mini-card.
+   *   - 가이드 첫 화면(above the fold)에 1권 노출
+   *   - 모바일·데스크톱 동일 노출 (sticky sidebar 회피)
+   *   - 광고 톤 X — "함께 읽기" leadIn으로 큐레이션 톤 유지
+   *   - productId가 가리키는 상품의 deeplink가 비어 있으면 production에서 자동 숨김
+   */
+  heroAffiliate?: {
+    leadIn: string;
+    productId: string;
+  };
 }
 
 /** Pillar 1 — 월배당 ETF 완전 가이드 */
@@ -81,6 +92,10 @@ const monthlyDividend: GuideDef = {
   keywords: ['월배당 ETF', '월배당 ETF 추천', '월배당 ETF 종류', 'TIGER 월배당', 'KODEX 월배당', '커버드콜 월배당', '월 100만원 배당'],
   section: '월배당 가이드',
   lastReviewed: '2026-04-25',
+  heroAffiliate: {
+    leadIn: '이 가이드와 함께 읽기 좋은 책',
+    productId: 'cpg-9353337355', // 나의 첫 월배당 ETF
+  },
   sections: [
     {
       heading: '월배당 ETF란 — 분기·반기 배당과 무엇이 다른가',
@@ -182,6 +197,10 @@ const coveredCall: GuideDef = {
   keywords: ['커버드콜 ETF', '커버드콜 ETF 비교', 'TIGER 커버드콜', 'KODEX 커버드콜', 'JEPI 한국판', '나스닥100 커버드콜', '미국S&P500 커버드콜'],
   section: '커버드콜 가이드',
   lastReviewed: '2026-04-25',
+  heroAffiliate: {
+    leadIn: '커버드콜 전략 심화 학습에 적합한 책',
+    productId: 'cpg-18789221', // 쉽고 편안하게 고수익 내는 퀀트&커버드 콜 전략
+  },
   sections: [
     {
       heading: '커버드콜 전략이 ETF에 적용되면 어떻게 동작하나',
@@ -351,6 +370,10 @@ const retirement: GuideDef = {
   keywords: ['IRP ETF', 'ISA 비과세 ETF', '연금저축 ETF', '은퇴 자산 ETF', '4050 은퇴 설계', '연금 ETF 추천', 'ISA 연금저축 차이'],
   section: '은퇴 자산 가이드',
   lastReviewed: '2026-04-25',
+  heroAffiliate: {
+    leadIn: '은퇴 자산 설계를 한 권으로 정리하고 싶다면',
+    productId: 'cpg-9097642998', // 박곰희 연금 부자 수업
+  },
   sections: [
     {
       heading: '은퇴 자산은 왜 "계좌부터" 정해야 하나',
