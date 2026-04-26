@@ -98,8 +98,8 @@ const monthlyDividend: GuideDef = {
       ],
       dataBlock: 'income-stability-table',
       affiliateInline: {
-        leadIn: '커버드콜과 분배 구조를 사례 중심으로 더 깊이 보고 싶다면',
-        productId: 'manual-monthly-dividend',
+        leadIn: '월배당 ETF의 분배 구조를 사례 중심으로 더 깊이 보고 싶다면',
+        productId: 'cpg-9353337355', // 나의 첫 월배당 ETF
         style: 'mini-card',
       },
     },
@@ -111,8 +111,8 @@ const monthlyDividend: GuideDef = {
       ],
       dataBlock: 'income-monthly-calendar',
       affiliateInline: {
-        leadIn: '분배 일정을 가계부와 매칭해 정리하려면',
-        productId: 'manual-cashflow-ledger',
+        leadIn: '월 단위로 따박따박 들어오는 분배금 설계를 책 한 권으로 정리하고 싶다면',
+        productId: 'cpg-9438194901', // 평생 월 500만 원 받는 월배당 ETF
         style: 'mini-card',
       },
     },
@@ -375,8 +375,8 @@ const retirement: GuideDef = {
         '연금저축펀드: 연 600만원까지 세액공제(IRP 합산 900만원). 가입 후 5년 경과 + 55세 이후부터 인출 가능.',
       ],
       affiliateInline: {
-        leadIn: '계좌별 한도·세제·납입 시점을 빈칸으로 채우며 정리하고 싶다면',
-        productId: 'manual-pension-workbook',
+        leadIn: '계좌별 한도·세제 활용을 사례로 정리한 가이드를 보고 싶다면',
+        productId: 'cpg-9097642998', // 박곰희 연금 부자 수업
         style: 'mini-card',
       },
     },
@@ -388,8 +388,8 @@ const retirement: GuideDef = {
         '테마(5~10%): 방산·AI·반도체·바이오 등 기회 포착용 — 일반 계좌에서 자유롭게 매매.',
       ],
       affiliateInline: {
-        leadIn: '코어-위성 전략을 실제 사례로 풀어낸 책으로 더 깊이 들여다보려면',
-        productId: 'manual-magic-pension',
+        leadIn: '월배당 ETF 코어-위성 전략을 실전 사례로 풀어낸 책으로 더 깊이 보려면',
+        productId: 'cpg-8534086995', // 나는 미국 월배당 ETF로 40대에 은퇴한다 + 마법의 연금 굴리기 (전2권)
         style: 'mini-card',
       },
     },
