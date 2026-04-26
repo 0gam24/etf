@@ -9,7 +9,7 @@ import {
 import { AUTHOR_LIST } from '@/lib/authors';
 import { GUIDES } from '@/lib/guides';
 import { getProductsRegistry } from '@/lib/products';
-import { getLatestEtfData, getKnownShortcodes } from '@/lib/data';
+import { getLatestEtfData, getAllEtfSlugs } from '@/lib/data';
 
 /**
  * Daily ETF Pulse — 동적 sitemap.xml
@@ -127,10 +127,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   });
 
-  // KRX 공식 등록 모든 ETF (krx-etf-codes.json) — 시세 없는 종목도 minimal 페이지로 노출
-  getKnownShortcodes().forEach(code => {
+  // KRX 공식 등록 모든 ETF — SEO 친화 슬러그(이름 기반) URL.
+  //   코드 기반 URL(/etf/0080g0)은 next.config.ts에서 301 → 슬러그로 자동 이동.
+  getAllEtfSlugs().forEach(slug => {
     routes.push({
-      url: `${baseUrl}/etf/${code.toLowerCase()}`,
+      url: `${baseUrl}/etf/${slug}`,
       lastModified: etfLastModified,
       changeFrequency: 'daily',
       priority: 0.8,

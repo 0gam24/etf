@@ -4,7 +4,7 @@ import path from 'path';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getPostBySlug, getAllPostSlugs, CATEGORY_NAMES, getAllPosts } from '@/lib/posts';
-import { getLatestEtfData, getKrxEtfMeta } from '@/lib/data';
+import { getLatestEtfData, getKrxEtfMeta, codeToSlug } from '@/lib/data';
 import { computeMarketAvgVolume, type RawEtf } from '@/lib/surge';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 import ChartRenderer from '@/components/ChartRenderer';
@@ -233,7 +233,7 @@ export default async function PostPage({ params }: PageProps) {
                     return (
                       <Link
                         key={t}
-                        href={`/etf/${t.toLowerCase()}`}
+                        href={`/etf/${codeToSlug(t)}`}
                         prefetch={false}
                         title={name || undefined}
                         style={{ padding: '0.15rem 0.5rem', background: 'rgba(96,165,250,0.15)', color: '#60A5FA', borderRadius: '0.375rem', fontSize: '0.75rem', fontWeight: 700, textDecoration: 'none', display: 'inline-flex', alignItems: 'baseline', gap: '0.25rem' }}

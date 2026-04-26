@@ -5,8 +5,8 @@ import {
   getLatestEtfData,
   getEtfHoldings,
   findEtfByAnyCode,
-  getKnownShortcodes,
-  resolveEtfTicker,
+  getAllEtfSlugs,
+  resolveEtfTickerOrSlug,
   getKrxEtfMeta,
   extractIssuerLabel,
   classifyEtfSector,
@@ -51,38 +51,37 @@ const FREQ_LABEL: Record<string, string> = {
 };
 
 export async function generateStaticParams() {
-  // KRX 공식 등록 1000+ ETF 모두 prerender.
-  //   - 시세 있는 종목(상위 100): 풀 데이터 페이지
-  //   - 시세 없는 종목(나머지): KRX 메타(코드·이름)만 minimal 페이지
-  //   둘 다 SEO 가치 있음 (롱테일 키워드 흡수).
-  return getKnownShortcodes().map(code => ({ ticker: code.toLowerCase() }));
+  // SEO 친화 슬러그(이름 기반) 1095종 prerender.
+  //   - 코드 기반 URL(/etf/0080g0)은 next.config.ts redirects로 슬러그 URL로 301 이동.
+  return getAllEtfSlugs().map(slug => ({ ticker: slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { ticker } = await params;
+  const resolved = resolveEtfTickerOrSlug(ticker);
+  const code = resolved.shortcode;
   const etfData = getLatestEtfData();
   const list = (etfData?.etfList || []) as RawEtf[];
-  const etf = findEtfByAnyCode(list, ticker);
-  const krxMeta = getKrxEtfMeta(ticker);
+  const etf = code ? findEtfByAnyCode(list, code) : null;
+  const krxMeta = code ? getKrxEtfMeta(code) : null;
 
   // KRX 매핑조차 없으면 진짜 404
   if (!etf && !krxMeta) return { title: '종목 정보를 찾을 수 없습니다' };
 
-  const resolved = resolveEtfTicker(ticker);
   const canonicalPath = `/etf/${resolved.canonicalSlug}`;
   const name = etf?.name || krxMeta?.name || ticker;
-  const code = etf?.code || krxMeta?.shortcode || ticker;
+  const displayCode = etf?.code || krxMeta?.shortcode || code || ticker;
   const sector = etf?.sector;
 
   const title = etf
-    ? `${name} (${code}) — 현재가·구성종목·분배금`
-    : `${name} (${code}) — 종목 정보·구성종목`;
+    ? `${name} (${displayCode}) — 현재가·구성종목·분배금`
+    : `${name} (${displayCode}) — 종목 정보·구성종목`;
 
   const description = etf
-    ? `${name}(${code}) ETF의 오늘 시세 ${etf.price.toLocaleString()}원, ${etf.changeRate >= 0 ? '+' : ''}${etf.changeRate.toFixed(2)}%, 거래량 ${etf.volume.toLocaleString()}주. 구성종목·분배금 내역·관련 분석 한 페이지에 정리.`
-    : `${name}(${code}) ETF의 종목 정보, 구성종목, 관련 분석을 정리한 한국거래소(KRX) 상장 ETF 종목 사전.`;
+    ? `${name}(${displayCode}) ETF의 오늘 시세 ${etf.price.toLocaleString()}원, ${etf.changeRate >= 0 ? '+' : ''}${etf.changeRate.toFixed(2)}%, 거래량 ${etf.volume.toLocaleString()}주. 구성종목·분배금 내역·관련 분석 한 페이지에 정리.`
+    : `${name}(${displayCode}) ETF의 종목 정보, 구성종목, 관련 분석을 정리한 한국거래소(KRX) 상장 ETF 종목 사전.`;
 
-  const ogImage = `/api/og?title=${encodeURIComponent(name)}&category=stock&tickers=${code}`;
+  const ogImage = `/api/og?title=${encodeURIComponent(name)}&category=stock&tickers=${displayCode}`;
 
   return {
     title,
@@ -93,7 +92,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `${name} 분배금`,
       `${name} 구성종목`,
       `${name} 시세`,
-      `${code} ETF`,
+      `${displayCode} ETF`,
       sector || 'ETF',
     ],
     alternates: { canonical: canonicalPath },
@@ -104,15 +103,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function EtfDictionaryPage({ params }: PageProps) {
   const { ticker } = await params;
+  const resolved = resolveEtfTickerOrSlug(ticker);
+  const code = resolved.shortcode;
   const etfData = getLatestEtfData();
   const list = (etfData?.etfList || []) as RawEtf[];
-  const etf = findEtfByAnyCode(list, ticker);
-  const krxMeta = getKrxEtfMeta(ticker);
+  const etf = code ? findEtfByAnyCode(list, code) : null;
+  const krxMeta = code ? getKrxEtfMeta(code) : null;
 
   // KRX 매핑조차 없으면 404 (오타·폐지·신규 등)
   if (!etf && !krxMeta) notFound();
 
-  const resolved = resolveEtfTicker(ticker);
   const canonicalSlug = resolved.canonicalSlug;
   const hasPriceData = etf !== null;
 

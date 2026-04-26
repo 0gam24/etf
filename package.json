@@ -18,6 +18,7 @@
     "fetch:products:dry": "node scripts/fetch-products.mjs --dry",
     "fetch:products:merge": "node scripts/fetch-products.mjs --merge",
     "fetch:etf-codes": "node scripts/fetch-etf-codes.mjs",
+    "generate:etf-slugs": "node scripts/generate-etf-slugs.mjs",
     "audit:seo": "node scripts/audit-seo.mjs"
   },
   "dependencies": {

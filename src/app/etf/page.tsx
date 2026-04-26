@@ -8,6 +8,7 @@ import {
   getKrxEtfMeta,
   classifyEtfSector,
   extractIssuerLabel,
+  codeToSlug,
 } from '@/lib/data';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
 
@@ -164,7 +165,7 @@ export default function EtfIndexPage() {
               const isDown = (r.changeRate || 0) < 0;
               return (
                 <li key={r.shortcode}>
-                  <Link href={`/etf/${r.shortcode.toLowerCase()}`} className="etf-index-top-row">
+                  <Link href={`/etf/${codeToSlug(r.shortcode)}`} className="etf-index-top-row">
                     <span className="etf-index-top-rank">{i + 1}</span>
                     <span className="etf-index-top-name">
                       <strong>{r.name}</strong>
@@ -218,7 +219,7 @@ export default function EtfIndexPage() {
               const isDown = (r.changeRate || 0) < 0;
               return (
                 <li key={r.shortcode}>
-                  <Link href={`/etf/${r.shortcode.toLowerCase()}`} className="etf-index-card">
+                  <Link href={`/etf/${codeToSlug(r.shortcode)}`} className="etf-index-card">
                     <div className="etf-index-card-head">
                       <span className="etf-index-card-code">{r.shortcode}</span>
                       {r.issuer && <span className="etf-index-card-issuer">{r.issuer}</span>}

@@ -248,6 +248,100 @@ export function getKnownShortcodes(): string[] {
   return loadKrxRegistry().list.map(e => e.shortcode);
 }
 
+// ─────────────────────────────────────────────────────────────────────
+// 슬러그 매핑 (data/etf-slug-map.json) — SEO 친화 URL
+// scripts/generate-etf-slugs.mjs로 갱신.
+// 정책: 한 번 결정된 슬러그는 영구 불변 (이름 변경되어도 슬러그 유지).
+// ─────────────────────────────────────────────────────────────────────
+const SLUG_MAP_FILE = path.join(process.cwd(), 'data', 'etf-slug-map.json');
+
+interface SlugMapEntry { code: string; name: string; }
+interface SlugRegistry {
+  generatedAt: string;
+  count: number;
+  byCode: Record<string, string>;        // code → slug
+  bySlug: Record<string, SlugMapEntry>;  // slug → { code, name }
+}
+
+let _slugCache: SlugRegistry | null = null;
+function loadSlugRegistry(): SlugRegistry {
+  if (_slugCache) return _slugCache;
+  if (!fs.existsSync(SLUG_MAP_FILE)) {
+    _slugCache = { generatedAt: '', count: 0, byCode: {}, bySlug: {} };
+    return _slugCache;
+  }
+  try {
+    _slugCache = JSON.parse(fs.readFileSync(SLUG_MAP_FILE, 'utf-8')) as SlugRegistry;
+  } catch {
+    _slugCache = { generatedAt: '', count: 0, byCode: {}, bySlug: {} };
+  }
+  return _slugCache;
+}
+
+/** 코드 → SEO 슬러그 ('0080G0' → 'kodex-defense-top10'). 매핑 없으면 코드 lowercase. */
+export function codeToSlug(code: string): string {
+  if (!code) return '';
+  const upper = code.toUpperCase();
+  return loadSlugRegistry().byCode[upper] || code.toLowerCase();
+}
+
+/** 슬러그 → 코드 ('kodex-defense-top10' → '0080G0'). 매핑 없으면 null. */
+export function slugToCode(slug: string): string | null {
+  if (!slug) return null;
+  const entry = loadSlugRegistry().bySlug[slug.toLowerCase()];
+  return entry?.code || null;
+}
+
+/**
+ * /etf/[ticker] URL 입력값 통합 해석.
+ *   - 슬러그 ('kodex-200') → KRX shortcode 매칭
+ *   - 코드 ('0080G0' / '069500') → KRX shortcode 매칭 + 표준 슬러그로 변환
+ *   - 어느 쪽도 매칭 없으면 input 그대로 (페이지에서 404 trigger)
+ */
+export function resolveEtfTickerOrSlug(input: string): {
+  shortcode?: string;
+  issueCode?: string;
+  name?: string;
+  /** SEO 정규 URL slug (이름 기반 우선) */
+  canonicalSlug: string;
+} {
+  if (!input) return { canonicalSlug: '' };
+
+  // 1) 슬러그 매칭 시도
+  const code = slugToCode(input);
+  if (code) {
+    const krxMeta = getKrxEtfMeta(code);
+    return {
+      shortcode: code,
+      issueCode: krxMeta?.issueCode,
+      name: krxMeta?.name,
+      canonicalSlug: input.toLowerCase(),
+    };
+  }
+
+  // 2) 코드 매칭 시도 (legacy URL 호환)
+  const ticker = resolveEtfTicker(input);
+  if (ticker.shortcode) {
+    return {
+      ...ticker,
+      canonicalSlug: codeToSlug(ticker.shortcode),
+    };
+  }
+
+  // 3) 둘 다 실패
+  return { canonicalSlug: input.toLowerCase() };
+}
+
+/** generateStaticParams·sitemap용 — 슬러그 전체 목록 */
+export function getAllEtfSlugs(): string[] {
+  return Object.keys(loadSlugRegistry().bySlug);
+}
+
+/** 슬러그 매핑 전체 — next.config.ts redirects 생성용 (코드 → 슬러그) */
+export function getCodeToSlugMap(): Record<string, string> {
+  return { ...loadSlugRegistry().byCode };
+}
+
 /** KRX 매핑 1건 조회 — minimal 페이지 렌더용 */
 export function getKrxEtfMeta(input: string): KrxEtfCode | null {
   const r = resolveEtfTicker(input);
