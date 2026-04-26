@@ -173,7 +173,7 @@ export function getProductsGroupedByCategory(): Array<{ category: ProductCategor
  *
  *   limitPerSection: 섹션당 카드 갯수 상한 (기본 5)
  */
-export function getProductsGroupedByNeed(limitPerSection = 5): Array<{ need: ProductNeed; products: ProductEntry[] }> {
+export function getProductsGroupedByNeed(limitPerSection = 8): Array<{ need: ProductNeed; products: ProductEntry[] }> {
   const all = getAllProducts();
   const needs: ProductNeed[] = [
     'monthly-cashflow',

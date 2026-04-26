@@ -57,7 +57,8 @@ function buildAuthHeader(method, pathWithQuery, accessKey, secretKey) {
 // ── Rate limiter ──
 const callTimes = [];
 const HOUR_MS = 3600 * 1000;
-const HOURLY_CAP = 8;
+// Coupang 공식 한도 시간당 10회 — 보수 buffer 1 (실제 10회까지 시도, 1초 간격)
+const HOURLY_CAP = 10;
 
 class RateCapError extends Error {
   constructor(secondsToWait) {
