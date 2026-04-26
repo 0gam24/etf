@@ -16,7 +16,9 @@
     "verify:parity:quick": "node scripts/verify-parity.mjs --quick",
     "fetch:products": "node scripts/fetch-products.mjs",
     "fetch:products:dry": "node scripts/fetch-products.mjs --dry",
-    "fetch:products:merge": "node scripts/fetch-products.mjs --merge"
+    "fetch:products:merge": "node scripts/fetch-products.mjs --merge",
+    "fetch:etf-codes": "node scripts/fetch-etf-codes.mjs",
+    "audit:seo": "node scripts/audit-seo.mjs"
   },
   "dependencies": {
     "@vercel/og": "^0.11.1",

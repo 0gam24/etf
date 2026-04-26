@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Radio, ArrowRight } from 'lucide-react';
 import type { Post } from '@/lib/posts';
 import { findEtfByCode, type RawEtf } from '@/lib/surge';
-import { getEtfHoldings } from '@/lib/data';
+import { getEtfHoldings, getKrxEtfMeta } from '@/lib/data';
 
 interface Props {
   posts: Post[];
@@ -34,6 +34,9 @@ export default function HomeBreakingStrip({ posts, etfs }: Props) {
         {top.map((p, i) => {
           const ticker = p.meta.tickers?.[0];
           const etf = ticker ? findEtfByCode(etfs, ticker) : null;
+          // 시세에 없는 종목도 KRX 매핑으로 정식명 노출
+          const krxName = ticker ? getKrxEtfMeta(ticker)?.name : null;
+          const displayName = etf?.name || krxName || p.meta.title;
           const isUp = (etf?.changeRate ?? 0) >= 0;
           const holdings = ticker ? getEtfHoldings(ticker) : null;
           const top3 = holdings?.holdings?.slice(0, 3) ?? [];
@@ -48,10 +51,10 @@ export default function HomeBreakingStrip({ posts, etfs }: Props) {
             >
               <div className="hbs-head">
                 <span className="hbs-rank">#{i + 1}</span>
-                {ticker && <span className="hbs-ticker">{ticker}</span>}
+                {ticker && <span className="hbs-ticker" title={displayName}>{ticker}</span>}
                 {etf?.sector && <span className="hbs-sector">{etf.sector}</span>}
               </div>
-              <div className="hbs-name">{etf?.name || p.meta.title}</div>
+              <div className="hbs-name">{displayName}</div>
               {etf && (
                 <div className={`hbs-change ${isUp ? 'is-up' : 'is-down'}`}>
                   {isUp ? '+' : ''}{etf.changeRate.toFixed(2)}%

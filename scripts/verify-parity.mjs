@@ -112,11 +112,67 @@ async function main() {
     }
   }
 
+  // 3) E-E-A-T 핵심 페이지 — /about + /author/* + /etf 인덱스 + /etf/{ticker} 샘플
+  console.log('\n[parity] checking E-E-A-T + ETF dictionary core pages...');
+  const eeatPaths = [
+    '/about',
+    '/author/pb_kim',     // AI 에이전트 K
+    '/author/data_lee',   // AI 에이전트 L
+    '/etf',               // 종목 사전 인덱스
+    '/etf/0080g0',        // KODEX 방산TOP10 (시세 풀)
+    '/etf/069500',        // KODEX 200 (minimal mode)
+    '/etf/091160',        // KODEX 반도체 (minimal mode)
+    '/sitemap.xml',
+    '/robots.txt',
+    '/resources',
+  ];
+  for (const path of eeatPaths) {
+    const url = `${SITE}${path}`;
+    const r = await probe(url);
+    if (!r.ok) {
+      failures.push({ kind: 'eeat', url, status: r.status });
+      console.log(`  ✗ ${path}  HTTP ${r.status}`);
+    } else {
+      console.log(`  ✓ ${path}  HTTP ${r.status}`);
+    }
+  }
+
+  // 4) sitemap.xml 안에 /etf/* + /about 포함 여부 (핵심 SEO 시그널 확인)
+  console.log('\n[parity] checking sitemap content...');
+  const smr = await probeContains(`${SITE}/sitemap.xml`, '/etf/0080g0');
+  if (!smr.contains) {
+    failures.push({ kind: 'sitemap', url: `${SITE}/sitemap.xml`, missing: '/etf/0080g0' });
+    console.log('  ✗ sitemap.xml — /etf/0080g0 누락');
+  } else {
+    console.log('  ✓ sitemap.xml — /etf/0080g0 포함');
+  }
+  const smr2 = await probeContains(`${SITE}/sitemap.xml`, '/about');
+  if (!smr2.contains) {
+    failures.push({ kind: 'sitemap', url: `${SITE}/sitemap.xml`, missing: '/about' });
+    console.log('  ✗ sitemap.xml — /about 누락');
+  } else {
+    console.log('  ✓ sitemap.xml — /about 포함');
+  }
+
+  // 5) AI 공시 컴포넌트 — 핵심 글 1편에서 'AI 분석 에이전트' 텍스트 노출 확인
+  console.log('\n[parity] checking AI disclosure on article...');
+  const recentBreakings = listSlugs('breaking').sort((a, b) => b.slug.localeCompare(a.slug));
+  if (recentBreakings.length > 0) {
+    const sampleUrl = `${SITE}/breaking/${recentBreakings[0].slug}`;
+    const ar = await probeContains(sampleUrl, 'AI 분석 에이전트');
+    if (!ar.contains) {
+      failures.push({ kind: 'ai-disclosure', url: sampleUrl });
+      console.log(`  ✗ ${sampleUrl.replace(SITE, '')} — 'AI 분석 에이전트' 텍스트 누락`);
+    } else {
+      console.log(`  ✓ ${sampleUrl.replace(SITE, '')} — AI 공시 노출 확인`);
+    }
+  }
+
   if (QUICK) {
     return failures;
   }
 
-  // 3) 모든 top-level 카테고리의 글 슬러그 — 200 + 슬러그 텍스트 노출 확인
+  // 6) 모든 top-level 카테고리의 글 슬러그 — 200 + 슬러그 텍스트 노출 확인
   console.log('\n[parity] checking individual slugs...');
   for (const cat of TOP_LEVEL) {
     const slugs = listSlugs(cat).filter(s => shouldInclude(s.slug));
@@ -133,7 +189,7 @@ async function main() {
     process.stdout.write('\n');
   }
 
-  // 4) nested (theme/account) — slug 추출은 폴더 구조에서
+  // 7) nested (theme/account) — slug 추출은 폴더 구조에서
   for (const [routeBase, contentBase] of NESTED) {
     const baseDir = join(CONTENT_DIR, contentBase);
     let subs = [];

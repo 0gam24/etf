@@ -151,7 +151,27 @@
 
 - 빌드 시 `npm run cf:build`가 sitemap 생성 → 빌드 실패 시 즉시 차단.
 - production push 후 **5~7분 대기** → 핵심 페이지 1~3개 curl 응답 코드 검증 (CLAUDE.md "로컬 ↔ 프로덕션 정보 100% 일치" 참고).
-- 분기별 Search Console + Lighthouse SEO 점수 audit (95+ 유지 목표).
+- **분기별 Lighthouse SEO audit**: `npm run audit:seo` (의존성: `npm i -D lighthouse chrome-launcher`).
+  - 13개 핵심 페이지 (홈·카테고리·가이드·종목 사전·about·author) 일괄 SEO 점수 측정.
+  - 95+ 유지 목표. 95점 미만 페이지는 위반 audits 출력 + exit code 2.
+  - 결과는 `scripts/.audit-seo-report.json`에 저장 (gitignore 권장).
+
+### 분기 audit 체크리스트
+- [ ] `npm run audit:seo` 실행, 모든 페이지 95+ 확인
+- [ ] sitemap.xml 응답 200, 1095+ ETF + /about + /etf 인덱스 포함
+- [ ] robots.txt 200, sitemap 참조 정확
+- [ ] OG 이미지 응답 200 (`/api/og?...`)
+- [ ] 신규 한국어 슬러그 0건 (HarnessDeployer 차단 로그 확인)
+- [ ] schema.org 검증: https://search.google.com/test/rich-results 으로 Article·FinancialProduct·Person·HowTo 샘플 5개 통과
+- [ ] Search Console "Coverage" 보고 색인 비율 80%+ 유지
+
+### Search Console 등록 절차 (최초 1회)
+1. https://search.google.com/search-console 접속 → "도메인" 속성 추가 → `iknowhowinfo.com`
+2. 소유권 확인: DNS TXT 레코드 등록 (Cloudflare DNS 대시보드)
+3. Sitemap 제출: `https://iknowhowinfo.com/sitemap.xml` (`https://iknowhowinfo.com/sitemap-index.xml`도 같이 제출 권장)
+4. URL 검사 도구로 핵심 페이지 5개 색인 요청:
+   - `/` · `/etf/0080g0` · `/about` · `/guide/monthly-dividend` · 최근 발행 글 1개
+5. 2주 후 "성능" 보고에서 색인 진행률 확인 (URL 노출 vs 클릭 비율 추적).
 
 ---
 

@@ -19,9 +19,9 @@
 
 const PORTFOLIOS = {
   // ───── 방산 ─────
-  '449450': {
+  // KRX 공식 단축코드 = 0080G0 (구 키 '449450'은 PLUS K방산이라 수정)
+  '0080G0': {
     type: 'basket',
-    issueCode: '0080G0', // data.go.kr 공공데이터포털 이슈코드
     name: 'KODEX 방산TOP10',
     updated: '2026-Q1',
     source: 'Mirae Asset KODEX PDP',
@@ -41,12 +41,13 @@ const PORTFOLIOS = {
   },
 
   // ───── 조선 ─────
-  '466920': {
+  // KRX 공식 단축코드 = 0080Y0 (구 키 '466920'은 SOL 조선TOP3플러스 다른 종목)
+  '0080Y0': {
     type: 'basket',
-    name: 'SOL 조선TOP3',
+    name: 'SOL 조선TOP3플러스레버리지',
     updated: '2026-Q1',
     source: 'Shinhan SOL PDP',
-    desc: '국내 조선업 빅3에 집중 투자',
+    desc: '국내 조선업 빅3 레버리지 (시세 변동 1.5~2배)',
     holdings: [
       { rank: 1, name: 'HD현대중공업', code: '329180', weight: 39.8, note: '🎯 대장주 · LNG선' },
       { rank: 2, name: '한화오션',     code: '042660', weight: 34.5, note: '🔥 군함·수소 선박' },
@@ -55,15 +56,16 @@ const PORTFOLIOS = {
   },
 
   // ───── 커버드콜 (단일 종목 + 옵션) ─────
-  '487350': {
+  // KRX 공식 단축코드 = 0040Y0 (구 키 '487350'은 KRX 미등록)
+  '0040Y0': {
     type: 'single-option',
-    name: 'SOL 팔란티어커버드콜OTM',
+    name: 'SOL 팔란티어커버드콜OTM채권혼합',
     updated: '2026-Q1',
     source: 'Shinhan SOL PDP',
     underlying: { name: '팔란티어 테크놀로지스', code: 'PLTR (미국)', weight: 70, note: 'AI 데이터분석 플랫폼' },
     strategy: {
-      name: 'OTM 콜옵션 매도 커버드콜',
-      description: '팔란티어 현물 70% 보유 + 행사가 10~15% 이상 OTM 콜옵션 매도로 옵션 프리미엄 수익 창출',
+      name: 'OTM 콜옵션 매도 커버드콜 + 채권 혼합',
+      description: '팔란티어 현물 70% 보유 + 행사가 10~15% 이상 OTM 콜옵션 매도로 옵션 프리미엄 수익 창출. 채권 혼합으로 변동성 완화.',
       distribution: '월 분배 (연 환산 12~15% 수준 목표)',
       risk: '팔란티어 주가 급등 시 상승분 제한 · 급락 시 기초자산 하락 동반',
     },
@@ -86,25 +88,9 @@ const PORTFOLIOS = {
     note: '지수 내 전체 종목 200개 중 시가총액 상위 5개만 표시. 실제 구성종목은 정기 리밸런싱으로 조정.',
   },
 
-  // ───── 미국 대형주 ─────
-  '379800': {
-    type: 'basket',
-    name: 'KODEX 미국S&P500TR',
-    updated: '2026-Q1',
-    source: 'Mirae Asset KODEX PDP',
-    desc: 'S&P500 지수 추종 — 미국 시총 상위 500개',
-    holdings: [
-      { rank: 1, name: 'Apple',             code: 'AAPL',  weight: 7.1, note: '🎯 대장주' },
-      { rank: 2, name: 'Microsoft',         code: 'MSFT',  weight: 6.6, note: 'AI·클라우드' },
-      { rank: 3, name: 'Nvidia',            code: 'NVDA',  weight: 6.2, note: '🔥 AI 반도체' },
-      { rank: 4, name: 'Amazon',            code: 'AMZN',  weight: 3.5, note: '클라우드·커머스' },
-      { rank: 5, name: 'Alphabet (Google)', code: 'GOOGL', weight: 3.2, note: 'AI·검색' },
-    ],
-    note: '상위 500개 중 시가총액 상위 5개만 표시.',
-  },
-
   // ───── 미국 배당 ─────
-  '448290': {
+  // KRX 공식 단축코드 = 489250 (구 키 '448290'은 TIGER 미국S&P500(H)로 다른 종목)
+  '489250': {
     type: 'basket',
     name: 'KODEX 미국배당다우존스',
     updated: '2026-Q1',
@@ -120,7 +106,8 @@ const PORTFOLIOS = {
     note: '지수 내 100개 중 비중 상위 5개. 배당수익률 3~4% 수준.',
   },
 
-  '411060': {
+  // KRX 공식 단축코드 = 402970 (구 키 '411060'은 ACE KRX금현물로 다른 종목)
+  '402970': {
     type: 'basket',
     name: 'ACE 미국배당다우존스',
     updated: '2026-Q1',
@@ -136,24 +123,8 @@ const PORTFOLIOS = {
     note: '지수 내 100개 중 비중 상위 5개. KODEX 시리즈 대비 낮은 총보수.',
   },
 
-  // ───── 채권·파생 ─────
-  '261240': {
-    type: 'futures',
-    name: 'KODEX 미국채울트라30년선물(H)',
-    updated: '2026-Q1',
-    source: 'Mirae Asset KODEX PDP',
-    underlying: {
-      name: 'ICE U.S. Treasury 30-Year Bond Futures',
-      desc: '미국 재무부 발행 30년 만기 국채를 기초로 하는 선물 계약',
-    },
-    hedge: '원/달러 환헤지 (H) — 환율 변동 최소화',
-    sensitivities: [
-      { factor: '미국 기준금리 인하', impact: '+ 가격 상승 (수혜)' },
-      { factor: '장기 금리 상승',   impact: '− 가격 하락 (부담)' },
-      { factor: '원/달러 환율',       impact: '중립 (환헤지 적용)' },
-      { factor: '미국 재정 리스크',   impact: '− 신용 스프레드 확대 시 하락' },
-    ],
-  },
+  // 구 키 '379800' KODEX 미국S&P500TR · '261240' KODEX 미국채울트라30년선물(H) 제거 — 현재 KRX 등록부에 미존재 (delisted 또는 명칭 변경).
+  // 필요 시 KRX 공식 등록부 확인 후 정확한 shortcode로 재등록.
 
   // ───── 2차전지 ─────
   '305720': {

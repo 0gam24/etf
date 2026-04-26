@@ -37,8 +37,7 @@ export default async function AuthorPage({ params }: PageProps) {
 
   const posts = getAllPosts().filter(p => p.meta.authorId === id);
 
-  // Person 스키마는 AI 모델이라도 발행 책임자(편집팀)가 있어 신뢰 신호로 유지.
-  // schema.org/Person 대신 더 정확한 표기는 작성자 인격이 AI임을 메타로 명시.
+  // Person 스키마 + AI 모델 신호 (additionalType: SoftwareApplication)
   const personSchema = {
     ...buildPersonSchema({
       name: author.name,
@@ -47,13 +46,12 @@ export default async function AuthorPage({ params }: PageProps) {
       knowsAbout: author.expertise,
       url: `/author/${id}`,
     }),
-    // E-E-A-T 투명성 — AI 에이전트임을 schema에서도 공개
     additionalType: 'https://schema.org/SoftwareApplication',
     applicationCategory: 'AnalyticsApplication',
   };
 
   return (
-    <div className="animate-fade-in">
+    <div className="author-page animate-fade-in">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(personSchema) }} />
       <Breadcrumbs
         items={[
@@ -63,73 +61,48 @@ export default async function AuthorPage({ params }: PageProps) {
         ]}
       />
 
-      <section className="category-hero" style={{ paddingBottom: '4rem', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-        <div className="category-hero-inner">
-          <div className="author-avatar-xl">{author.callsign || author.name.charAt(0)}</div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--accent-gold)', letterSpacing: '0.2em', marginBottom: '0.75rem', textTransform: 'uppercase', fontWeight: 700 }}>
-            AI ANALYSIS AGENT
-          </div>
-          <h1 className="category-hero-title">{author.name}</h1>
-          <p className="category-hero-desc" style={{ maxWidth: '52rem' }}>{author.title}</p>
-          <p style={{ maxWidth: '52rem', margin: '1.25rem auto', color: 'var(--text-dim)', fontSize: '1rem', lineHeight: 1.7 }}>
-            {author.modelDescription}
-          </p>
-          <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '1.5rem' }}>
-            {author.expertise.map(e => (
-              <span key={e} style={{ padding: '0.375rem 0.875rem', background: 'rgba(212,175,55,0.12)', color: '#D4AF37', fontSize: '0.8rem', borderRadius: '9999px', fontWeight: 600 }}>{e}</span>
-            ))}
-          </div>
-          <div className="category-hero-count" style={{ marginTop: '2rem' }}>{posts.length}편 분석 발행</div>
+      <header className="author-hero">
+        <div className="author-hero-avatar">{author.callsign || author.name.charAt(0)}</div>
+        <div className="author-hero-eyebrow">AI ANALYSIS AGENT</div>
+        <h1 className="author-hero-title">{author.name}</h1>
+        <p className="author-hero-subtitle">{author.title}</p>
+        <p className="author-hero-desc">{author.modelDescription}</p>
+        <div className="author-hero-tags">
+          {author.expertise.map(e => (
+            <span key={e} className="author-hero-tag">{e}</span>
+          ))}
         </div>
-      </section>
+        <div className="author-hero-count">{posts.length}편 분석 발행</div>
+      </header>
 
-      {/* AI 모델 정보 카드 — E-E-A-T 투명성 핵심 섹션 */}
-      <section className="ai-agent-disclosure" aria-labelledby="agent-info-heading" style={{
-        maxWidth: '52rem',
-        margin: '2.5rem auto',
-        padding: '2rem',
-        background: 'rgba(212,175,55,0.06)',
-        border: '1px solid rgba(212,175,55,0.25)',
-        borderRadius: '0.75rem',
-      }}>
-        <h2 id="agent-info-heading" style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '1.25rem', color: 'var(--accent-gold)' }}>
+      {/* AI 모델 정보 카드 — E-E-A-T 핵심 섹션 */}
+      <section className="author-disclosure" aria-labelledby="agent-info-heading">
+        <h2 id="agent-info-heading" className="author-disclosure-h2">
           이 에이전트는 어떻게 분석하나
         </h2>
 
-        <div style={{ display: 'grid', gap: '1.25rem' }}>
-          <div>
-            <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, marginBottom: '0.5rem' }}>
-              데이터 출처
-            </div>
-            <ul style={{ listStyle: 'disc', paddingLeft: '1.25rem', color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.8 }}>
-              {author.dataSources.map(s => <li key={s}>{s}</li>)}
-            </ul>
+        <div className="author-disclosure-block">
+          <div className="author-disclosure-label">데이터 출처</div>
+          <ul className="author-disclosure-sources">
+            {author.dataSources.map(s => <li key={s}>{s}</li>)}
+          </ul>
+        </div>
+
+        {author.methodology && (
+          <div className="author-disclosure-block">
+            <div className="author-disclosure-label">분석 방법론</div>
+            <p className="author-disclosure-text">{author.methodology}</p>
           </div>
+        )}
 
-          {author.methodology && (
-            <div>
-              <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, marginBottom: '0.5rem' }}>
-                분석 방법론
-              </div>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7, margin: 0 }}>
-                {author.methodology}
-              </p>
-            </div>
-          )}
-
-          <div>
-            <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, marginBottom: '0.5rem' }}>
-              발행·검수 책임
-            </div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7, margin: 0 }}>
-              {PUBLISHER.name} — {PUBLISHER.description}
-            </p>
-          </div>
-
-          <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)', lineHeight: 1.7, margin: 0, paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-            {AI_DISCLOSURE}
+        <div className="author-disclosure-block">
+          <div className="author-disclosure-label">발행·검수 책임</div>
+          <p className="author-disclosure-text">
+            {PUBLISHER.name} — {PUBLISHER.description}
           </p>
         </div>
+
+        <p className="author-disclosure-foot">{AI_DISCLOSURE}</p>
       </section>
 
       <RecommendBox position="top" />

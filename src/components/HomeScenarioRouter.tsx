@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight, Zap, TrendingUp, Waves, Coins } from 'lucide-react';
 import type { Post } from '@/lib/posts';
 import { extractPulseBullets } from '@/lib/pulse';
+import { getKrxEtfMeta } from '@/lib/data';
 import IncomeMiniCalculator from './IncomeMiniCalculator';
 
 interface Props {
@@ -68,9 +69,19 @@ export default function HomeScenarioRouter({
               <div className="scenario-card-preview-line">{latestSurge.meta.title}</div>
               {latestSurge.meta.tickers && latestSurge.meta.tickers[0] && (
                 <div className="scenario-card-tickers">
-                  {latestSurge.meta.tickers.slice(0, 3).map(t => (
-                    <span key={t} className="scenario-ticker-chip">{t}</span>
-                  ))}
+                  {latestSurge.meta.tickers.slice(0, 3).map(t => {
+                    const name = getKrxEtfMeta(t)?.name;
+                    return (
+                      <span key={t} className="scenario-ticker-chip" title={name || undefined}>
+                        {name ? (
+                          <>
+                            <strong style={{ color: 'var(--text-primary)' }}>{name}</strong>
+                            <span style={{ opacity: 0.7, marginLeft: '0.25rem' }}>· {t}</span>
+                          </>
+                        ) : t}
+                      </span>
+                    );
+                  })}
                 </div>
               )}
             </div>

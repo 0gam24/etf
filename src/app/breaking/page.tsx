@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Radio, ArrowRight } from 'lucide-react';
 import { getPostsByCategory } from '@/lib/posts';
-import { getLatestEtfData } from '@/lib/data';
+import { getLatestEtfData, getKrxEtfMeta } from '@/lib/data';
 import {
   computeMarketAvgVolume,
   computeRiskLabels,
@@ -86,6 +86,9 @@ export default function BreakingLandingPage() {
               {todayPosts.map((p, i) => {
                 const ticker = (p.meta.tickers || [])[0];
                 const etf = ticker ? findEtfByCode(etfList, ticker) : null;
+                // 시세에 없는 종목도 KRX 매핑으로 정식명 노출
+                const krxName = ticker ? getKrxEtfMeta(ticker)?.name : null;
+                const etfName = etf?.name || krxName;
                 const labels = etf ? computeRiskLabels(etf, marketAvgVolume) : [];
                 const isUp = (etf?.changeRate ?? 0) >= 0;
 
@@ -98,7 +101,18 @@ export default function BreakingLandingPage() {
                   >
                     <div className="breaking-card-head">
                       <span className="breaking-card-rank">#{i + 1}</span>
-                      {ticker && <span className="breaking-card-ticker">{ticker}</span>}
+                      {ticker && (
+                        <span className="breaking-card-ticker" title={etfName || undefined}>
+                          {etfName ? (
+                            <>
+                              <strong className="breaking-card-ticker-name">{etfName}</strong>
+                              <span className="breaking-card-ticker-code">· {ticker}</span>
+                            </>
+                          ) : (
+                            ticker
+                          )}
+                        </span>
+                      )}
                       {etf?.sector && <span className="breaking-card-sector">{etf.sector}</span>}
                     </div>
                     <h3 className="breaking-card-title">{p.meta.title}</h3>

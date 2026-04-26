@@ -1,5 +1,6 @@
 import { Plus, Minus, Repeat } from 'lucide-react';
 import type { TickerDiff } from '@/lib/pulse';
+import { getKrxEtfMeta } from '@/lib/data';
 
 interface Props {
   diff: TickerDiff;
@@ -64,9 +65,19 @@ export default function PulseDiff({ diff, hasYesterday }: Props) {
             </div>
             {c.items.length > 0 ? (
               <ul className="pulse-diff-list">
-                {c.items.map(t => (
-                  <li key={t} className="pulse-diff-chip">{t}</li>
-                ))}
+                {c.items.map(t => {
+                  const name = getKrxEtfMeta(t)?.name;
+                  return (
+                    <li key={t} className="pulse-diff-chip" title={name || undefined}>
+                      {name ? (
+                        <>
+                          <strong className="pulse-diff-chip-name">{name}</strong>
+                          <span className="pulse-diff-chip-code">· {t}</span>
+                        </>
+                      ) : t}
+                    </li>
+                  );
+                })}
               </ul>
             ) : (
               <p className="pulse-diff-col-empty">—</p>
