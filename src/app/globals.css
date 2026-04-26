@@ -5979,22 +5979,11 @@ a.scenario-card:hover .scenario-card-cta {
   .home-hook-inner { padding: var(--space-6) var(--space-4); }
 }
 
-/* Chapter 3 — BREAKING strip holdings (hover-pop) */
+/* Chapter 3 — BREAKING strip holdings (항상 노출) */
 .hbs-holdings {
   margin-top: var(--space-3);
   padding-top: var(--space-3);
   border-top: 1px dashed var(--border-color);
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(-4px);
-  transition: max-height 0.35s ease, opacity 0.25s ease, transform 0.25s ease, padding-top 0.2s ease, margin-top 0.2s ease;
-}
-.home-breaking-strip-card:hover .hbs-holdings,
-.home-breaking-strip-card:focus-visible .hbs-holdings {
-  max-height: 200px;
-  opacity: 1;
-  transform: translateY(0);
 }
 .hbs-holdings-label {
   font-size: 0.66rem;
