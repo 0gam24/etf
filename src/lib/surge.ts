@@ -15,6 +15,18 @@ export interface RawEtf {
   changeRate: number;
   volume: number;
   sector?: string;
+  /** 거래대금 (원) */
+  tradeAmount?: number;
+  /** 시가총액 (원) */
+  marketCap?: number;
+  /** NAV */
+  nav?: number;
+  /** 시가 */
+  openPrice?: number;
+  /** 고가 */
+  highPrice?: number;
+  /** 저가 */
+  lowPrice?: number;
 }
 
 export type RiskSeverity = 'critical' | 'warning' | 'momentum' | 'stable' | 'neutral';

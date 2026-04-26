@@ -9,7 +9,7 @@ import GuideDataBlock from '@/components/GuideDataBlock';
 import AffiliateInline from '@/components/AffiliateInline';
 import RecommendBox from '@/components/RecommendBox';
 import type { ProductCategory } from '@/lib/products';
-import { buildArticleSchema, jsonLd } from '@/lib/schema';
+import { buildArticleSchema, buildHowToSchema, jsonLd } from '@/lib/schema';
 
 /** 가이드 슬러그 → 추천 자료 매칭 카테고리 */
 function guideToProductCategory(slug: string): ProductCategory | undefined {
@@ -73,12 +73,41 @@ export default async function GuidePage({ params }: PageProps) {
     section: g.section,
   });
 
+  // HowTo 스키마 (가이드가 단계형일 때만) — 보조 섹션은 자동 제외
+  const howToSchema = g.howTo
+    ? buildHowToSchema({
+        name: g.title,
+        description: g.howTo.description || g.description,
+        url: `/guide/${slug}`,
+        ...(g.howTo.totalTime ? { totalTime: g.howTo.totalTime } : {}),
+        steps: g.sections
+          .filter(sec => {
+            const h = sec.heading;
+            // 본문 단락이 있고, 보조 섹션(관련 글·책 추천)이 아닌 것만 단계화
+            if (!sec.paragraphs?.length) return false;
+            if (/함께\s*보면|책으로\s*더\s*깊이|관련\s*분석/.test(h)) return false;
+            if (sec.dataBlock && /related-posts|product-rec/.test(sec.dataBlock)) return false;
+            return true;
+          })
+          .map((sec, idx) => ({
+            name: `${idx + 1}. ${sec.heading}`,
+            text: sec.paragraphs.join(' '),
+          })),
+      })
+    : null;
+
   return (
     <article className="guide-article animate-fade-in">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLd(articleSchema) }}
       />
+      {howToSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLd(howToSchema) }}
+        />
+      )}
 
       <Breadcrumbs
         items={[

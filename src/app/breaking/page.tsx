@@ -59,11 +59,11 @@ export default function BreakingLandingPage() {
             <Radio size={13} strokeWidth={3} aria-hidden /> ETF 속보 · 매일 오전 9시
           </span>
           <h1 className="breaking-hero-title">
-            오늘 시장을 움직인 <span className="breaking-hero-accent">3편의 심층 속보</span>
+            오늘의 ETF 속보 — <span className="breaking-hero-accent">거래량 TOP 3 ETF가 왜 움직였나</span>
           </h1>
           <p className="breaking-hero-sub">
-            오늘 가장 많이 거래된 ETF 3종이 왜 움직였는지, 어떤 뉴스가 시장을 흔들었는지 한 편에 정리합니다.
-            출근 전 5분, 이 페이지면 오늘 시장의 핵심이 잡힙니다.
+            오늘 가장 많이 거래된 ETF 3종의 등락 원인·관련 뉴스·구성종목을 한 편에 정리한 ETF 속보.
+            출근 전 5분, 오늘의 ETF 속보 한 페이지로 시장 핵심이 잡힙니다.
           </p>
           <div className="breaking-hero-meta">
             {todayDate} 기준 · 총 {posts.length}편 누적

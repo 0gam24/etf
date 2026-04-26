@@ -154,6 +154,86 @@ export function buildFinancialProductSchema(input: FinancialProductInput) {
   };
 }
 
+// ── Dataset 스키마 (종목 사전 페이지용 — 가격·구성종목 데이터셋 마크업) ──
+
+export interface DatasetSchemaInput {
+  name: string;
+  description: string;
+  url: string;
+  /** 데이터 갱신일 ISO */
+  dateModified: string;
+  /** 출처 (예: "한국거래소(KRX) 공공데이터 포털") */
+  publisher?: string;
+  /** 데이터 키워드 */
+  keywords?: string[];
+  /** 라이선스 (선택) */
+  license?: string;
+}
+
+export function buildDatasetSchema(input: DatasetSchemaInput) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Dataset',
+    name: input.name,
+    description: input.description,
+    url: abs(input.url),
+    dateModified: input.dateModified,
+    inLanguage: 'ko-KR',
+    isAccessibleForFree: true,
+    ...(input.keywords?.length ? { keywords: input.keywords.join(', ') } : {}),
+    ...(input.license ? { license: input.license } : {}),
+    publisher: {
+      '@type': 'Organization',
+      name: input.publisher || SITE_NAME,
+      ...(input.publisher ? {} : { url: SITE }),
+    },
+    creator: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: SITE,
+    },
+  };
+}
+
+// ── HowTo 스키마 (가이드의 단계별 콘텐츠용) ──
+
+export interface HowToStepInput {
+  /** 단계 이름 (예: "1. ISA 계좌 개설") */
+  name: string;
+  /** 단계 본문 */
+  text: string;
+  /** 외부 자료/관련 페이지 (선택) */
+  url?: string;
+}
+
+export interface HowToSchemaInput {
+  name: string;
+  description: string;
+  url: string;
+  steps: HowToStepInput[];
+  /** 총 소요 시간 ISO 8601 duration (예: PT30M) */
+  totalTime?: string;
+}
+
+export function buildHowToSchema(input: HowToSchemaInput) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: input.name,
+    description: input.description,
+    inLanguage: 'ko-KR',
+    ...(input.totalTime ? { totalTime: input.totalTime } : {}),
+    step: input.steps.map((s, idx) => ({
+      '@type': 'HowToStep',
+      position: idx + 1,
+      name: s.name,
+      text: s.text,
+      ...(s.url ? { url: abs(s.url) } : {}),
+    })),
+    mainEntityOfPage: { '@type': 'WebPage', '@id': abs(input.url) },
+  };
+}
+
 /** JSON-LD를 안전하게 escape하여 HTML에 직접 inject 가능한 string으로 변환 */
 export function jsonLd(obj: object): string {
   // </script> 인젝션 방지

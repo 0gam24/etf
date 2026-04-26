@@ -88,6 +88,75 @@ function pickRelated(article, sector, allPosts) {
 }
 
 /**
+ * 가이드(허브) 페이지로의 자동 키워드 링크.
+ *   본문에서 핵심 키워드 첫 등장 1회를 [키워드](/guide/{slug}) 로 치환.
+ *   - 코드 블록(```), 기존 마크다운 링크 [..](..), 헤딩(#~######) 라인은 건너뜀
+ *   - 키워드당 1회만 링크 (스팸 방지)
+ *   - 동일 가이드로의 링크는 한 글에 최대 1개 (다양성 확보)
+ *
+ *   결과: 데일리 글이 자연스레 가이드 허브로 트래픽 흐름을 보내고
+ *         Google이 가이드 페이지의 권위/주제 신호로 인식.
+ */
+const KEYWORD_GUIDE_MAP = [
+  // 더 구체적인 키워드를 먼저 — 매칭 우선순위
+  { keyword: '월배당 ETF',        slug: 'monthly-dividend' },
+  { keyword: '커버드콜 ETF',      slug: 'covered-call' },
+  { keyword: '방산 ETF',          slug: 'defense-etf' },
+  { keyword: 'AI ETF',           slug: 'ai-semi-etf' },
+  { keyword: '반도체 ETF',        slug: 'ai-semi-etf' },
+  { keyword: '연금저축',          slug: 'retirement' },
+  { keyword: 'IRP',              slug: 'retirement' },
+  { keyword: 'ISA',              slug: 'retirement' },
+  { keyword: '월배당',            slug: 'monthly-dividend' },
+  { keyword: '커버드콜',          slug: 'covered-call' },
+];
+
+function injectKeywordGuideLinks(content) {
+  if (!content) return content;
+
+  const lines = content.split('\n');
+  const usedSlugs = new Set();
+  const usedKeywords = new Set();
+  let inCodeFence = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (line.startsWith('```')) { inCodeFence = !inCodeFence; continue; }
+    if (inCodeFence) continue;
+    if (/^#{1,6}\s/.test(line)) continue; // 헤딩 라인 skip
+
+    let mutated = line;
+    for (const { keyword, slug } of KEYWORD_GUIDE_MAP) {
+      if (usedSlugs.has(slug)) continue;
+      if (usedKeywords.has(keyword)) continue;
+
+      // 기존 링크 텍스트 안에 들어 있으면 skip — `[...keyword...](...)` 패턴 방지
+      const insideLinkRe = new RegExp(`\\[[^\\]]*${escapeRegex(keyword)}[^\\]]*\\]\\([^)]+\\)`);
+      if (insideLinkRe.test(mutated)) {
+        usedKeywords.add(keyword);
+        continue;
+      }
+
+      // 첫 등장만 링크화 — lookahead로 직후 ']'/`(` 같은 링크 컨텍스트 회피
+      const re = new RegExp(`(^|[^\\[\\]\\w가-힣])${escapeRegex(keyword)}(?![\\]\\w가-힣])`, '');
+      const m = mutated.match(re);
+      if (!m) continue;
+
+      const replaceWith = `${m[1]}[${keyword}](/guide/${slug})`;
+      mutated = mutated.replace(re, replaceWith);
+      usedSlugs.add(slug);
+      usedKeywords.add(keyword);
+    }
+    lines[i] = mutated;
+  }
+  return lines.join('\n');
+}
+
+function escapeRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/**
  * 본문 중간 h2 경계에 소프트 인라인 링크 1~2개 삽입.
  *   - 0개 관련: 변화 없음
  *   - 1개: 중앙 h2 위치에 삽입
@@ -142,12 +211,17 @@ async function run({ today, previousResults }) {
 
     const related = pickRelated(article, sector, allPosts);
 
-    // 본문 중간 소프트 링크만 삽입 (하단 "함께 읽어보면 좋은 분석"은 프론트가 렌더)
-    const newContent = injectSoftLinks(article.content, related);
+    // 본문 중간 소프트 링크 + 핵심 키워드 자동 가이드 링크
+    const withSoftLinks = injectSoftLinks(article.content, related);
+    const newContent = injectKeywordGuideLinks(withSoftLinks);
+
+    // 자동 가이드 링크 카운트 (감사 로그용) — 새로 추가된 /guide/ 링크 수
+    const guideLinksAdded = (newContent.match(/\]\(\/guide\//g) || []).length
+                          - (article.content.match(/\]\(\/guide\//g) || []).length;
 
     const next = { ...article, content: newContent, wordCount: newContent.length, relatedLinks: related };
     linked.push(next);
-    logger.log(AGENT_NAME, `  🔗 [${article.category}] ${related.length}개 본문 링크 (티커 ${related.filter(r => r.reason === 'ticker-overlap').length} · 섹터 ${related.filter(r => r.reason === 'sector-overlap').length} · 카테고리 ${related.filter(r => r.reason === 'same-category').length})`);
+    logger.log(AGENT_NAME, `  🔗 [${article.category}] 본문 링크 ${related.length}개 + 가이드 링크 ${guideLinksAdded}개 (티커 ${related.filter(r => r.reason === 'ticker-overlap').length} · 섹터 ${related.filter(r => r.reason === 'sector-overlap').length} · 카테고리 ${related.filter(r => r.reason === 'same-category').length})`);
   }
 
   previousResults.LogicSpecialist.articles = linked;

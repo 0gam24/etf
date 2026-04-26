@@ -70,6 +70,18 @@ export interface GuideDef {
   /** 마지막 업데이트 표시 (실제 데이터는 매일 새로고침) */
   lastReviewed: string;
   /**
+   * HowTo 스키마를 발행할 가이드인지 여부.
+   *   true이면 sections 중 본문 단락(paragraphs)이 있는 항목을 단계로 매핑해
+   *   schema.org/HowTo 마크업을 함께 발행. "함께 보면 좋은 분석"·"책으로 더 깊이"
+   *   같은 보조 섹션은 헤딩에 "함께"·"책으로"·"product-rec"·"related-posts" 포함 여부로 자동 제외.
+   */
+  howTo?: {
+    /** 총 소요 시간 (ISO 8601 duration, 예: PT15M) */
+    totalTime?: string;
+    /** HowTo의 짧은 description (없으면 가이드의 description 재사용) */
+    description?: string;
+  };
+  /**
    * Hero 직후 단일 mini-card.
    *   - 가이드 첫 화면(above the fold)에 1권 노출
    *   - 모바일·데스크톱 동일 노출 (sticky sidebar 회피)
@@ -92,6 +104,10 @@ const monthlyDividend: GuideDef = {
   keywords: ['월배당 ETF', '월배당 ETF 추천', '월배당 ETF 종류', 'TIGER 월배당', 'KODEX 월배당', '커버드콜 월배당', '월 100만원 배당'],
   section: '월배당 가이드',
   lastReviewed: '2026-04-25',
+  howTo: {
+    totalTime: 'PT15M',
+    description: '월배당 ETF의 분배 캘린더·계좌별 세후 수익률·목표 현금흐름 역산을 6단계로 따라가는 가이드.',
+  },
   heroAffiliate: {
     leadIn: '이 가이드와 함께 읽기 좋은 책',
     productId: 'cpg-9353337355', // 나의 첫 월배당 ETF
@@ -370,6 +386,10 @@ const retirement: GuideDef = {
   keywords: ['IRP ETF', 'ISA 비과세 ETF', '연금저축 ETF', '은퇴 자산 ETF', '4050 은퇴 설계', '연금 ETF 추천', 'ISA 연금저축 차이'],
   section: '은퇴 자산 가이드',
   lastReviewed: '2026-04-25',
+  howTo: {
+    totalTime: 'PT20M',
+    description: 'IRP·ISA·연금저축의 한도와 세제 차이를 비교하고, 월배당·인덱스 ETF를 어떤 계좌에 담아야 가장 효율적인지 단계별로 정리한 가이드.',
+  },
   heroAffiliate: {
     leadIn: '은퇴 자산 설계를 한 권으로 정리하고 싶다면',
     productId: 'cpg-9097642998', // 박곰희 연금 부자 수업

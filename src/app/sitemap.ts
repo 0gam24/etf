@@ -9,6 +9,8 @@ import {
 import { AUTHOR_LIST } from '@/lib/authors';
 import { GUIDES } from '@/lib/guides';
 import { getProductsRegistry } from '@/lib/products';
+import { getLatestEtfData } from '@/lib/data';
+import type { RawEtf } from '@/lib/surge';
 
 /**
  * Daily ETF Pulse — 동적 sitemap.xml
@@ -98,6 +100,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority,
     });
   });
+
+  // 종목 사전 — /etf/[ticker] (거래량 상위 100종, 매일 시세 갱신)
+  const etfData = getLatestEtfData();
+  const etfList = (etfData?.etfList || []) as RawEtf[];
+  // baseDate는 "YYYYMMDD" 문자열이라 Date에 직접 못 넘김 → ISO로 정규화
+  function ymdToDate(ymd?: string): Date | null {
+    if (!ymd || ymd.length !== 8) return null;
+    const iso = `${ymd.slice(0, 4)}-${ymd.slice(4, 6)}-${ymd.slice(6, 8)}T00:00:00+09:00`;
+    const d = new Date(iso);
+    return isNaN(d.getTime()) ? null : d;
+  }
+  const etfLastModified = ymdToDate(etfData?.baseDate) || fallback;
+  etfList
+    .slice()
+    .sort((a, b) => (b.volume || 0) - (a.volume || 0))
+    .slice(0, 100)
+    .forEach(e => {
+      routes.push({
+        url: `${baseUrl}/etf/${e.code.toLowerCase()}`,
+        lastModified: etfLastModified,
+        changeFrequency: 'daily',
+        priority: 0.8,
+      });
+    });
 
   return routes;
 }
