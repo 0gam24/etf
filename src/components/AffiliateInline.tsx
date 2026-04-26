@@ -39,7 +39,7 @@ export default function AffiliateInline({ leadIn, productId, style = 'mini-card'
           className="affiliate-inline-link"
           prefetch={false}
         >
-          《{product.title}》<span className="affiliate-inline-ad-label">[광고]</span>
+          《{product.title}》
           <ArrowRight size={11} strokeWidth={2.4} aria-hidden />
         </Link>
       </p>

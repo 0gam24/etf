@@ -127,8 +127,8 @@ export default function SiteFooter() {
                       lineHeight: 1.5,
                     }}
                   >
-                    <div style={{ color: 'var(--accent-gold)', fontSize: '0.65rem', marginBottom: '0.25rem', fontWeight: 700 }}>
-                      [광고] {p.tone === 'book' ? '도서' : '학습 도구'}
+                    <div style={{ color: 'var(--text-muted)', fontSize: '0.65rem', marginBottom: '0.25rem', fontWeight: 600 }}>
+                      {p.tone === 'book' ? '도서' : '학습 도구'}
                     </div>
                     <div style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{p.title}</div>
                     {p.subtitle && <div style={{ color: 'var(--text-dim)', marginTop: '0.2rem' }}>{p.subtitle}</div>}

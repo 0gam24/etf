@@ -36,7 +36,6 @@ export default function ProductCard({ product, variant = 'full' }: Props) {
 
   const meta = (
     <div className="product-card-meta">
-      <span className="product-card-ad-label">[광고]</span>
       {product.source && <span className="product-card-source">{product.source}{product.year ? ` · ${product.year}` : ''}</span>}
     </div>
   );
@@ -65,7 +64,7 @@ export default function ProductCard({ product, variant = 'full' }: Props) {
 
   const cta = hasLink ? (
     <span className="product-card-cta">
-      쿠팡에서 보기 <ExternalLink size={11} strokeWidth={2.5} aria-hidden />
+      자세히 보기 <ExternalLink size={11} strokeWidth={2.5} aria-hidden />
     </span>
   ) : (
     <span className="product-card-cta product-card-cta-pending">[준비 중]</span>
@@ -76,10 +75,11 @@ export default function ProductCard({ product, variant = 'full' }: Props) {
       <>
         <div className="product-mini-cover">{cover}</div>
         <div className="product-mini-body">
-          <div className="product-mini-meta">
-            <span className="product-card-ad-label">[광고]</span>
-            {product.source && <span className="product-mini-source">{product.source}</span>}
-          </div>
+          {product.source && (
+            <div className="product-mini-meta">
+              <span className="product-mini-source">{product.source}</span>
+            </div>
+          )}
           <div className="product-mini-title">{product.title}</div>
           {(product.subtitle || product.blurb) && (
             <div className="product-mini-sub">{product.subtitle || product.blurb}</div>
@@ -94,7 +94,7 @@ export default function ProductCard({ product, variant = 'full' }: Props) {
         target="_blank"
         rel="nofollow sponsored noopener noreferrer"
         className="product-mini"
-        aria-label={`[광고] ${product.title} — 쿠팡에서 보기 (새 탭)`}
+        aria-label={`${product.title} — 자세히 보기 (새 탭)`}
       >
         {inner}
       </a>
@@ -132,7 +132,7 @@ export default function ProductCard({ product, variant = 'full' }: Props) {
       target="_blank"
       rel="nofollow sponsored noopener noreferrer"
       className="product-card"
-      aria-label={`[광고] ${product.title} — 쿠팡에서 보기 (새 탭)`}
+      aria-label={`${product.title} — 자세히 보기 (새 탭)`}
     >
       {innerFull}
     </a>
