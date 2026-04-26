@@ -34,7 +34,16 @@ export default function PulseRecurringThemes({ themes, windowDays }: Props) {
           return (
             <li key={t.ticker} className="pulse-themes-row">
               <span className="pulse-themes-rank">{i + 1}</span>
-              <span className="pulse-themes-ticker">{t.ticker}</span>
+              <span className="pulse-themes-ticker">
+                {t.name ? (
+                  <>
+                    <strong className="pulse-themes-name">{t.name}</strong>
+                    <span className="pulse-themes-code"> · {t.ticker}</span>
+                  </>
+                ) : (
+                  t.ticker
+                )}
+              </span>
               <span className="pulse-themes-bar-wrap" aria-hidden>
                 <span className="pulse-themes-bar" style={{ width: `${widthPct}%` }} />
               </span>

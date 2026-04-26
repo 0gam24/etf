@@ -28,6 +28,8 @@ export interface DayCell {
 
 export interface ThemeCount {
   ticker: string;
+  /** ETF 정식명 (KRX 매핑에서 해석된 이름) */
+  name?: string;
   count: number;
   /** 가장 최근 등장 포스트 (스파클라인/링크용) */
   latestPost?: Post;
@@ -83,8 +85,15 @@ export function buildWeekTimeline(posts: Post[], today = new Date()): DayCell[] 
   return cells.reverse(); // 월요일부터 왼쪽
 }
 
-/** 최근 N일 포스트에서 가장 자주 등장한 티커 랭킹 */
-export function computeRecurringThemes(posts: Post[], days = 7, top = 5): ThemeCount[] {
+/** 최근 N일 포스트에서 가장 자주 등장한 티커 랭킹.
+ *   nameResolver를 넘기면 각 항목에 ETF 정식명을 함께 채워 반환 (사용자 가독성).
+ */
+export function computeRecurringThemes(
+  posts: Post[],
+  days = 7,
+  top = 5,
+  nameResolver?: (ticker: string) => string | null,
+): ThemeCount[] {
   const cutoff = Date.now() - days * 86400000;
   const recent = posts.filter(p => new Date(p.meta.date).getTime() >= cutoff);
   const counts = new Map<string, { count: number; latest: Post }>();
@@ -100,7 +109,12 @@ export function computeRecurringThemes(posts: Post[], days = 7, top = 5): ThemeC
     }
   }
   return Array.from(counts.entries())
-    .map(([ticker, v]) => ({ ticker, count: v.count, latestPost: v.latest }))
+    .map(([ticker, v]) => ({
+      ticker,
+      name: nameResolver?.(ticker) || undefined,
+      count: v.count,
+      latestPost: v.latest,
+    }))
     .sort((a, b) => b.count - a.count || a.ticker.localeCompare(b.ticker))
     .slice(0, top);
 }

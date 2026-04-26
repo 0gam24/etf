@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getPostsByCategory } from '@/lib/posts';
+import { getKrxEtfMeta, getLatestEtfData } from '@/lib/data';
 import {
   buildWeekTimeline,
   computeRecurringThemes,
@@ -32,7 +33,16 @@ export default function PulseLandingPage() {
 
   const diff = computeTickerDiff(today, yesterday);
   const timeline = buildWeekTimeline(posts);
-  const themes = computeRecurringThemes(posts, RECURRING_WINDOW_DAYS);
+
+  // ETF 정식명 resolver — KRX 매핑 우선, 없으면 etfList(시세)에서 fallback
+  const etfList = (getLatestEtfData()?.etfList || []) as Array<{ code: string; name: string }>;
+  const resolveName = (ticker: string): string | null => {
+    const krx = getKrxEtfMeta(ticker);
+    if (krx?.name) return krx.name;
+    const fromPrice = etfList.find(e => e.code.toUpperCase() === ticker.toUpperCase());
+    return fromPrice?.name || null;
+  };
+  const themes = computeRecurringThemes(posts, RECURRING_WINDOW_DAYS, 5, resolveName);
   const todayIso = today ? new Date(today.meta.date).toISOString().slice(0, 10) : '';
 
   const recent = posts.slice(0, RECENT_LIST_LIMIT);
