@@ -56,6 +56,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   });
 
+  // About — 편집팀 소개 (E-E-A-T 핵심 페이지)
+  routes.push({
+    url: `${baseUrl}/about`,
+    lastModified: getSiteLastModified() || fallback,
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  });
+
   // 가이드 인덱스 — 가이드 5종 중 가장 최근 lastReviewed
   const guideMostRecent = GUIDES
     .map(g => new Date(g.lastReviewed).getTime())

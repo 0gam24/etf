@@ -13,10 +13,13 @@ import personasModule from '../../agents/personas';
 
 interface RawPersona {
   id: string;
+  isAi?: boolean;
+  callsign?: string;
   name: string;
-  age: number;
   title: string;
-  bio: string;
+  modelDescription?: string;
+  dataSources?: string[];
+  methodology?: string;
   expertise: string[];
   closingSignature: string;
   categories?: string[];
@@ -24,13 +27,22 @@ interface RawPersona {
   voiceHints?: string[];
 }
 
-const PERSONAS_RAW = (personasModule as unknown as {
+interface PublisherInfo {
+  name: string;
+  url: string;
+  description: string;
+}
+
+const PERSONAS_MODULE = personasModule as unknown as {
   PERSONAS: Record<string, RawPersona>;
+  PUBLISHER: PublisherInfo;
+  AI_DISCLOSURE: string;
   pickPersona: (opts: { category?: string; sector?: string; date?: string | Date | number }) => RawPersona;
-}).PERSONAS;
-const PICK_PERSONA = (personasModule as unknown as {
-  pickPersona: (opts: { category?: string; sector?: string; date?: string | Date | number }) => RawPersona;
-}).pickPersona;
+};
+const PERSONAS_RAW = PERSONAS_MODULE.PERSONAS;
+const PICK_PERSONA = PERSONAS_MODULE.pickPersona;
+export const PUBLISHER: PublisherInfo = PERSONAS_MODULE.PUBLISHER;
+export const AI_DISCLOSURE: string = PERSONAS_MODULE.AI_DISCLOSURE;
 
 /** 저자별 카드 액센트 컬러 (프론트 전용 overlay) */
 const ACCENT_MAP: Record<string, string> = {
@@ -45,22 +57,35 @@ const ACCENT_MAP: Record<string, string> = {
 
 export interface Author {
   id: string;
+  isAi: boolean;
+  callsign?: string;
   name: string;
-  age: number;
   title: string;
+  /** AI 분석 모델 상세 설명 (구 bio 필드 호환) */
+  modelDescription: string;
+  /** modelDescription의 alias — 기존 컴포넌트 호환 */
   bio: string;
+  /** 데이터 출처 (KRX·운용사·한국은행 등) */
+  dataSources: string[];
+  /** 분석 방법론 (퀀트·시뮬레이션 등) */
+  methodology?: string;
   expertise: string[];
   signature: string;
   accent: string;
 }
 
 function toAuthor(p: RawPersona): Author {
+  const desc = p.modelDescription || '';
   return {
     id: p.id,
+    isAi: p.isAi !== false, // 기본 true (모든 페르소나는 AI)
+    callsign: p.callsign,
     name: p.name,
-    age: p.age,
     title: p.title,
-    bio: p.bio,
+    modelDescription: desc,
+    bio: desc,
+    dataSources: p.dataSources || [],
+    methodology: p.methodology,
     expertise: p.expertise,
     signature: p.closingSignature,
     accent: ACCENT_MAP[p.id] || '#D4AF37',

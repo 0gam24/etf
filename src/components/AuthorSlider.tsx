@@ -37,7 +37,7 @@ export default function AuthorSlider({ authors }: Props) {
                 </div>
                 <div className="author-card-name-row">
                   <span className="author-card-name">{a.name}</span>
-                  <span className="author-card-age">{a.age}세</span>
+                  <span className="author-card-age" title="AI 분석 에이전트">AI</span>
                 </div>
               </div>
               <div className="author-card-title">{a.title}</div>

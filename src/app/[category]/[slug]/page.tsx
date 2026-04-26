@@ -11,6 +11,7 @@ import ChartRenderer from '@/components/ChartRenderer';
 import ReadingProgress from '@/components/ReadingProgress';
 import ShareRow from '@/components/ShareRow';
 import Toc from '@/components/Toc';
+import AiAgentDisclosure from '@/components/AiAgentDisclosure';
 import HoldingsPanel from '@/components/HoldingsPanel';
 import PostRelatedEtfs from '@/components/PostRelatedEtfs';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -214,11 +215,13 @@ export default async function PostPage({ params }: PageProps) {
                 <Link href={`/author/${post.meta.authorId}`} className="post-v2-meta-author">
                   <span className="post-v2-avatar">{getInitial(post.meta.author)}</span>
                   <span>{post.meta.author}</span>
+                  <AiAgentDisclosure variant="compact" />
                 </Link>
               ) : (
                 <span className="post-v2-meta-author">
                   <span className="post-v2-avatar">{getInitial(post.meta.author)}</span>
                   <span>{post.meta.author}</span>
+                  <AiAgentDisclosure variant="compact" />
                 </span>
               )}
               <span>{date}</span>
@@ -298,6 +301,8 @@ export default async function PostPage({ params }: PageProps) {
               </div>
             </section>
           )}
+
+          <AiAgentDisclosure author={authorMeta} variant="inline" />
 
           <RecommendBox position="bottom" category={postCategoryToProductCategory(category)} />
         </article>

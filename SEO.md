@@ -106,12 +106,30 @@
 - 카드별 [광고] 라벨은 의무 X (페이지 면책으로 충분).
 - 카드 링크에 `rel="sponsored nofollow noopener noreferrer"` + `target="_blank"` 의무.
 
-## 10. 운영자 메타 노출 금지
+## 10. AI 작성 투명 공개 (E-E-A-T 의무)
 
-자세한 규칙은 [CLAUDE.md](CLAUDE.md)의 "UX 카피 — 시청자 가치 관점만" 참고.
+**정책 갱신 (2026-04-26)**: Google 정책상 AI 콘텐츠 자체는 허용되지만 "사용자를 속이는 행위(실존 인물 사칭)"는 검색 노출 영구 제외 사유. 따라서 본 사이트는 **AI 작성을 투명하게 공개**하는 정책을 채택합니다.
 
-- meta description·H1·본문 어디에도 **AI·크롤링·에이전트·자동 발행·글자수·파이프라인** 단어 노출 금지.
-- 검색 결과 노출 텍스트(`metadata.title`·`description`)도 동일 규칙 적용.
+### 의무 사항
+- **모든 AI 작성 글 하단**에 `<AiAgentDisclosure variant="inline" />` 컴포넌트 노출 의무. AI 작성 사실·실존 인물 아님·발행 책임자(편집팀) 명시.
+- **글 바이라인 옆**에 `<AiAgentDisclosure variant="compact" />` 작은 배지로 추가 노출.
+- **/author/{id}** 페이지에 AI 모델 정보 카드 (modelDescription·dataSources·methodology·publisher) 의무 노출.
+- **/about** 페이지에 7개 에이전트 설명 + Organization 스키마 + 발행 원칙 명시.
+- **schema.org/Person** 작성자에 `additionalType: SoftwareApplication` 추가 (AI 모델 신호).
+
+### 여전히 금지 (작업 메타 자랑)
+- `13개 에이전트`, `매일 4편 발행`, `3,000자` 같은 **작업량 자랑** 표현
+- `Gemini`, `GPT`, `Claude`, `LLM` 등 **사용 모델명** 노출 (브랜드 신뢰 저하)
+- `크롤링`, `스크래핑`, `파이프라인` 등 **기술 스택 디테일**
+- `샘플 데이터`, `placeholder`, `fallback`, `mock` 등 **불안 유발 디버깅 단어**
+
+### 허용 (시청자 가치 관점에서)
+- `AI 분석 에이전트` (모델 페르소나)
+- `AI 분석 모델 K`, `AI 에이전트 P` (구체적 에이전트 식별자)
+- `데이터 기반 AI 분석`, `자동 분석` (데이터·과정 투명성)
+- 출처 명시: `KRX 공공데이터`, `한국은행 ECOS`, `운용사 공시`
+
+자세한 운영자 메타 vs 시청자 가치 표현 가이드는 [CLAUDE.md](CLAUDE.md)의 "UX 카피" 참고.
 
 ## 11. HarnessDeployer 자동 검증 (push 전 차단)
 
