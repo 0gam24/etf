@@ -21,6 +21,37 @@ export type ProductCategory =
 
 export type ProductTone = 'book' | 'tool';
 
+/**
+ * 시청자 니즈(질문)별 분류 — /resources 페이지의 viewer-first 그룹핑.
+ *   카테고리(income·retirement 등)와 별도 — 한 책이 여러 니즈에 매칭 가능.
+ */
+export type ProductNeed =
+  | 'monthly-cashflow'        // 월 OO만원 통장에 꽂히려면 얼마가 필요한가?
+  | 'retirement-30y'          // 은퇴 후 30년, 자산이 안 떨어지게 굴리려면?
+  | 'etf-basics'              // ETF가 뭔지부터 차근차근 알고 싶다
+  | 'covered-call-structure'  // 커버드콜이 진짜 안전한가? 옵션 매도 구조가 궁금
+  | 'tool-cashflow'           // 분배금·종목·자산을 한 권에 정리하고 싶다 (도구)
+  | 'investor-psychology';    // 투자에서 후회를 줄이려면 마음가짐이 어떻게?
+
+export const NEED_QUESTION: Record<ProductNeed, string> = {
+  'monthly-cashflow':        '"월 OO만원 통장에 꽂히려면 얼마가 필요한가?"',
+  'retirement-30y':          '"은퇴 후 30년, 자산이 안 떨어지게 굴리려면?"',
+  'etf-basics':              '"ETF가 뭔지부터 차근차근 알고 싶다"',
+  'covered-call-structure':  '"커버드콜이 진짜 안전한가? 옵션 매도 구조가 궁금"',
+  'tool-cashflow':           '"분배금·종목·자산을 한 권에 정리하고 싶다"',
+  'investor-psychology':     '"투자에서 후회를 줄이려면 마음가짐이 어떻게?"',
+};
+
+/** 니즈별 부제 — 섹션 헤더 보조 설명 */
+export const NEED_CAPTION: Record<ProductNeed, string> = {
+  'monthly-cashflow':        '월배당 분배 사이클·실전 시뮬레이션을 다룬 자료',
+  'retirement-30y':          '계좌 활용·자산배분·인출 시뮬레이션 실전 가이드',
+  'etf-basics':              'ETF가 뭔지·왜 사야 하는지·운용보수까지 처음부터',
+  'covered-call-structure':  '옵션 매도 구조와 분배의 실제 동작',
+  'tool-cashflow':           '본인 가계부·종목 노트로 옮기기 좋은 워크북·다이어리',
+  'investor-psychology':     '단기 흔들림에 무너지지 않는 마음가짐',
+};
+
 export interface ProductEntry {
   /** 내부 식별자 (slug-like 또는 productId) */
   id: string;
@@ -56,6 +87,13 @@ export interface ProductEntry {
   pickedAt?: string;
   /** 자동 fetch 시 어떤 키워드에서 나왔는지 */
   pickedFromKeyword?: string;
+  /**
+   * 시청자 가치 관점 한 문장 — /resources 카드의 가격 자리에 노출.
+   *   책 광고 카피가 아니라 "이 책이 시청자 니즈를 어떻게 푸는가".
+   */
+  hook?: string;
+  /** 어떤 시청자 니즈(질문)에 매칭되는지 (다중) */
+  needs?: ProductNeed[];
 }
 
 export interface ProductsRegistry {
@@ -112,7 +150,7 @@ export function getAllProducts(): ProductEntry[] {
   return loadRegistry().products.filter(visible);
 }
 
-/** /resources 카테고리 필터 */
+/** /resources 카테고리 필터 (legacy — 카테고리 그룹) */
 export function getProductsGroupedByCategory(): Array<{ category: ProductCategory; products: ProductEntry[] }> {
   const all = getAllProducts();
   const cats: ProductCategory[] = ['income', 'retirement', 'covered-call', 'defense-etf', 'ai-semi-etf', 'general'];
@@ -120,6 +158,29 @@ export function getProductsGroupedByCategory(): Array<{ category: ProductCategor
     category,
     products: all.filter(p => p.categories.includes(category)),
   })).filter(g => g.products.length > 0);
+}
+
+/** /resources 페이지 viewer-first — 시청자 니즈(질문)별 그룹 */
+export function getProductsGroupedByNeed(): Array<{ need: ProductNeed; products: ProductEntry[] }> {
+  const all = getAllProducts();
+  const needs: ProductNeed[] = [
+    'monthly-cashflow',
+    'retirement-30y',
+    'etf-basics',
+    'covered-call-structure',
+    'tool-cashflow',
+    'investor-psychology',
+  ];
+  return needs.map(need => ({
+    need,
+    products: all.filter(p => p.needs?.includes(need)),
+  })).filter(g => g.products.length > 0);
+}
+
+/** 단일 니즈로 필터 (필요 시) */
+export function getProductsByNeed(need: ProductNeed, limit?: number): ProductEntry[] {
+  const list = getAllProducts().filter(p => p.needs?.includes(need));
+  return typeof limit === 'number' ? list.slice(0, limit) : list;
 }
 
 export const CATEGORY_LABEL: Record<ProductCategory, string> = {

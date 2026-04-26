@@ -7161,7 +7161,7 @@ a.scenario-card:hover .scenario-card-cta {
   font-weight: 700;
 }
 
-/* /resources page */
+/* /resources page — viewer-first 니즈 그룹 + 통일 그리드 */
 .resources-page {
   max-width: 76rem;
   margin: 0 auto;
@@ -7203,27 +7203,49 @@ a.scenario-card:hover .scenario-card-cta {
   padding: var(--space-12);
   color: var(--text-muted);
 }
-.resources-groups {
+
+/* 니즈(질문) 그룹 */
+.resources-niches {
   display: flex;
   flex-direction: column;
-  gap: var(--space-10);
-  margin-top: var(--space-6);
+  gap: var(--space-12);
+  margin-top: var(--space-8);
 }
-.resources-group-title {
-  font-size: 1.2rem;
-  color: var(--text-primary);
-  margin: 0 0 var(--space-4);
-  padding-left: var(--space-3);
+.resources-niche {}
+.resources-niche-head {
+  margin-bottom: var(--space-5);
+  padding-left: var(--space-4);
   border-left: 3px solid var(--accent-gold);
 }
-.resources-group-list {
+.resources-niche-question {
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  color: var(--text-primary);
+  margin: 0 0 0.35rem;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+.resources-niche-caption {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+
+/* 통일 그리드 — 모든 카드 동일 크기 */
+.resources-niche-list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: var(--space-4);
+  align-items: stretch; /* 같은 높이 보장 */
 }
+.resources-niche-list li {
+  display: flex; /* 카드를 셀 전체 높이에 stretch */
+}
+
 .resources-disclaimer {
   margin-top: var(--space-12);
   padding-top: var(--space-5);
@@ -7232,5 +7254,96 @@ a.scenario-card:hover .scenario-card-cta {
   font-size: 0.78rem;
   line-height: 1.65;
   text-align: center;
+}
+
+/* ProductCard variant='resource' — /resources 전용, viewer-first */
+.product-card-resource,
+.product-card-resource-pending {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 360px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 0.7rem;
+  overflow: hidden;
+  color: inherit;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.product-card-resource:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-2px);
+}
+.product-card-resource-pending {
+  opacity: 0.55;
+  border-style: dashed;
+}
+.product-card-resource-cover {
+  width: 100%;
+  aspect-ratio: 4 / 5; /* 책 표지 표준 비율 — 모든 카드 통일 */
+  background: var(--bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.product-card-resource-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.product-card-resource-body {
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* 본문 영역이 카드 남은 높이 채움 */
+  gap: 0.4rem;
+}
+.product-card-resource-tag {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+.product-card-resource-source {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.product-card-resource-title {
+  margin: 0.1rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+  word-break: keep-all;
+  /* 2줄 line-clamp — 길이 통일 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.product-card-resource-hook {
+  margin: 0.2rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  /* 2줄 line-clamp — 가격 자리에 들어가는 핵심 카피 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.product-card-resource-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+.product-card-resource .product-card-cta {
+  margin-top: auto; /* CTA 카드 하단 고정 */
+  padding-top: 0.6rem;
 }
 

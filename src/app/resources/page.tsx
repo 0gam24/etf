@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { BookOpen, Notebook } from 'lucide-react';
-import { getProductsGroupedByCategory, CATEGORY_LABEL } from '@/lib/products';
+import { getProductsGroupedByNeed, NEED_QUESTION, NEED_CAPTION } from '@/lib/products';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductCard from '@/components/ProductCard';
 import AffiliateNotice from '@/components/AffiliateNotice';
@@ -8,23 +8,23 @@ import AffiliateNotice from '@/components/AffiliateNotice';
 export const metadata: Metadata = {
   title: '추천 자료실 — ETF 도서·학습 도구',
   description:
-    '월배당·커버드콜·은퇴 자산·테마 ETF 가이드와 함께 보면 좋은 도서·학습 도구 큐레이션. 본 사이트의 데이터와 짝지어 두면 좋은 책과 도구.',
+    '시청자의 고민(월 OO만원 받기·은퇴 30년 자산·ETF 입문·커버드콜 구조·가계부·투자 심리)에 가장 가까운 책 한 권을 골라보세요. 본 사이트의 데이터와 짝지어 두면 좋은 큐레이션.',
   alternates: { canonical: '/resources' },
   openGraph: {
     title: '추천 자료실 — ETF 도서·학습 도구',
-    description: '월배당·커버드콜·은퇴 자산 가이드와 짝지어 두면 좋은 도서·도구 큐레이션.',
+    description: '당신의 고민에 가장 가까운 책 한 권 골라보세요.',
     type: 'website',
     url: '/resources',
   },
   twitter: {
     card: 'summary_large_image',
     title: '추천 자료실',
-    description: 'ETF 가이드와 함께 보면 좋은 도서·도구.',
+    description: '당신의 고민에 가장 가까운 책 한 권.',
   },
 };
 
 export default function ResourcesPage() {
-  const groups = getProductsGroupedByCategory();
+  const groups = getProductsGroupedByNeed();
 
   return (
     <div className="resources-page animate-fade-in">
@@ -35,11 +35,10 @@ export default function ResourcesPage() {
           <BookOpen size={14} strokeWidth={2.6} aria-hidden /> RESOURCES · 함께 읽기 좋은 자료
         </div>
         <h1 className="resources-title">
-          가이드와 짝지어 두면 좋은 <span className="accent">도서·학습 도구</span>
+          당신의 고민에 가장 가까운 <span className="accent">한 권</span>을 골라보세요
         </h1>
         <p className="resources-sub">
-          본 사이트가 매일 보여주는 데이터를 더 깊이 이해하거나, 본인 가계부·노트로 옮기고 싶을 때 함께 보면 좋은 자료들입니다.
-          쿠팡 파트너스 링크로 클릭 후 24시간 안에 발생한 구매에 대해 일정 수수료를 받습니다.
+          본 사이트의 데이터와 짝지어 두면 좋은 도서·학습 도구. 시청자가 자주 가진 고민 6가지로 묶었습니다.
         </p>
       </header>
 
@@ -51,14 +50,17 @@ export default function ResourcesPage() {
           <p>큐레이션 자료가 곧 채워집니다.</p>
         </div>
       ) : (
-        <div className="resources-groups">
+        <div className="resources-niches">
           {groups.map(g => (
-            <section key={g.category} className="resources-group">
-              <h2 className="resources-group-title">{CATEGORY_LABEL[g.category]}</h2>
-              <ul className="resources-group-list">
+            <section key={g.need} className="resources-niche">
+              <div className="resources-niche-head">
+                <h2 className="resources-niche-question">{NEED_QUESTION[g.need]}</h2>
+                <p className="resources-niche-caption">{NEED_CAPTION[g.need]}</p>
+              </div>
+              <ul className="resources-niche-list">
                 {g.products.map(p => (
                   <li key={p.id}>
-                    <ProductCard product={p} variant="full" />
+                    <ProductCard product={p} variant="resource" />
                   </li>
                 ))}
               </ul>

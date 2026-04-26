@@ -3,8 +3,12 @@ import type { ProductEntry } from '@/lib/products';
 
 interface Props {
   product: ProductEntry;
-  /** mini = 텍스트 인라인 옆 작은 카드, full = 그리드 카드 (기본) */
-  variant?: 'full' | 'mini';
+  /**
+   * full = 그리드 카드 (기본, 가격·별점·로켓 표시)
+   * mini = 텍스트 인라인 옆 작은 카드 (단락별 affiliateInline용)
+   * resource = /resources 페이지용 viewer-first 카드 (가격 X, 가격 자리에 hook, 통일 그리드)
+   */
+  variant?: 'full' | 'mini' | 'resource';
 }
 
 /**
@@ -100,6 +104,57 @@ export default function ProductCard({ product, variant = 'full' }: Props) {
       </a>
     ) : (
       <div className="product-mini product-mini-pending">{inner}</div>
+    );
+  }
+
+  // resource 카드 — /resources 페이지 전용 (viewer-first)
+  if (variant === 'resource') {
+    const innerResource = (
+      <>
+        <div className="product-card-resource-cover" aria-hidden>{cover}</div>
+        <div className="product-card-resource-body">
+          <div className="product-card-resource-tag">
+            {product.tone === 'book' ? '도서' : '학습 도구'}
+            {product.source && <span className="product-card-resource-source"> · {product.source}</span>}
+          </div>
+          <h3 className="product-card-resource-title">{product.title}</h3>
+          <p className="product-card-resource-hook">
+            {product.hook || product.blurb || product.subtitle || ''}
+          </p>
+          {(product.ratingAverage || product.isRocket) && (
+            <div className="product-card-resource-stats">
+              {typeof product.ratingAverage === 'number' && product.ratingAverage > 0 && (
+                <span className="product-card-rating">
+                  <Star size={11} strokeWidth={2.4} fill="currentColor" aria-hidden />
+                  {product.ratingAverage.toFixed(1)}
+                  {typeof product.ratingCount === 'number' && product.ratingCount > 0 && (
+                    <span className="product-card-rating-count"> · 리뷰 {product.ratingCount.toLocaleString()}</span>
+                  )}
+                </span>
+              )}
+              {product.isRocket && (
+                <span className="product-card-rocket">
+                  <Truck size={11} strokeWidth={2.4} aria-hidden /> 로켓배송
+                </span>
+              )}
+            </div>
+          )}
+          {cta}
+        </div>
+      </>
+    );
+    return hasLink ? (
+      <a
+        href={product.deeplink}
+        target="_blank"
+        rel="nofollow sponsored noopener noreferrer"
+        className="product-card-resource"
+        aria-label={`${product.title} — 자세히 보기 (새 탭)`}
+      >
+        {innerResource}
+      </a>
+    ) : (
+      <div className="product-card-resource product-card-resource-pending">{innerResource}</div>
     );
   }
 

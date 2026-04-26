@@ -16,7 +16,12 @@
       "tone": "book",
       "isRocket": false,
       "pickedAt": "2026-04-26T03:04:14.211Z",
-      "pickedFromKeyword": "월배당 ETF"
+      "pickedFromKeyword": "월배당 ETF",
+      "hook": "처음 시작하는 사람도 한 권으로 월배당 구조를 손에 잡힌다",
+      "needs": [
+        "monthly-cashflow",
+        "etf-basics"
+      ]
     },
     {
       "id": "cpg-9339169250",
@@ -33,7 +38,11 @@
       "tone": "book",
       "isRocket": true,
       "pickedAt": "2026-04-26T03:04:14.215Z",
-      "pickedFromKeyword": "월배당 ETF"
+      "pickedFromKeyword": "월배당 ETF",
+      "hook": "두려움 없이 첫 매수하는 단계별 가이드",
+      "needs": [
+        "monthly-cashflow"
+      ]
     },
     {
       "id": "cpg-9438194901",
@@ -50,7 +59,12 @@
       "tone": "book",
       "isRocket": true,
       "pickedAt": "2026-04-26T03:04:14.215Z",
-      "pickedFromKeyword": "월배당 ETF"
+      "pickedFromKeyword": "월배당 ETF",
+      "hook": "한 달에 두 번 받는 분배 사이클을 사례로 짜준다",
+      "needs": [
+        "monthly-cashflow",
+        "retirement-30y"
+      ]
     },
     {
       "id": "cpg-9340572633",
@@ -67,7 +81,11 @@
       "tone": "book",
       "isRocket": true,
       "pickedAt": "2026-04-26T03:04:14.215Z",
-      "pickedFromKeyword": "월배당 ETF"
+      "pickedFromKeyword": "월배당 ETF",
+      "hook": "미국 ETF 인컴 포트폴리오 3년 시뮬레이션",
+      "needs": [
+        "monthly-cashflow"
+      ]
     },
     {
       "id": "cpg-18789221",
@@ -84,7 +102,11 @@
       "tone": "book",
       "isRocket": false,
       "pickedAt": "2026-04-26T03:04:14.732Z",
-      "pickedFromKeyword": "커버드콜"
+      "pickedFromKeyword": "커버드콜",
+      "hook": "옵션 매도 구조를 수식 없이 이해한다",
+      "needs": [
+        "covered-call-structure"
+      ]
     },
     {
       "id": "cpg-8818637363",
@@ -101,7 +123,12 @@
       "tone": "book",
       "isRocket": false,
       "pickedAt": "2026-04-26T03:04:14.889Z",
-      "pickedFromKeyword": "IRP ETF"
+      "pickedFromKeyword": "IRP ETF",
+      "hook": "한국 시장 기준 평생 현금흐름 설계",
+      "needs": [
+        "monthly-cashflow",
+        "retirement-30y"
+      ]
     },
     {
       "id": "cpg-8534086995",
@@ -118,7 +145,12 @@
       "tone": "book",
       "isRocket": false,
       "pickedAt": "2026-04-26T03:04:14.889Z",
-      "pickedFromKeyword": "IRP ETF"
+      "pickedFromKeyword": "IRP ETF",
+      "hook": "마법의 연금 굴리기와 함께 읽는 조기 은퇴 실전",
+      "needs": [
+        "monthly-cashflow",
+        "retirement-30y"
+      ]
     },
     {
       "id": "cpg-9097642998",
@@ -135,7 +167,11 @@
       "tone": "book",
       "isRocket": false,
       "pickedAt": "2026-04-26T03:04:14.889Z",
-      "pickedFromKeyword": "IRP ETF"
+      "pickedFromKeyword": "IRP ETF",
+      "hook": "IRP·ISA·연금저축 한도와 종목 선택을 사례로 풀어낸다",
+      "needs": [
+        "retirement-30y"
+      ]
     },
     {
       "id": "manual-etf-introduction",
@@ -150,7 +186,11 @@
       "categories": [
         "general"
       ],
-      "tone": "book"
+      "tone": "book",
+      "hook": "ETF가 무엇이고 왜 사야 하는지 1장부터 정직하게",
+      "needs": [
+        "etf-basics"
+      ]
     },
     {
       "id": "manual-magic-pension",
@@ -166,7 +206,12 @@
         "retirement",
         "general"
       ],
-      "tone": "book"
+      "tone": "book",
+      "hook": "30년 인출 시뮬레이션과 자산배분 비율을 숫자로",
+      "needs": [
+        "retirement-30y",
+        "etf-basics"
+      ]
     },
     {
       "id": "manual-etf-essence",
@@ -182,7 +227,11 @@
         "general",
         "income"
       ],
-      "tone": "book"
+      "tone": "book",
+      "hook": "운용보수·추적오차·세제까지 데이터로 정리",
+      "needs": [
+        "etf-basics"
+      ]
     },
     {
       "id": "manual-monthly-dividend",
@@ -198,7 +247,12 @@
         "income",
         "covered-call"
       ],
-      "tone": "book"
+      "tone": "book",
+      "hook": "TIGER·KODEX·SOL 커버드콜 비교를 사례로",
+      "needs": [
+        "monthly-cashflow",
+        "covered-call-structure"
+      ]
     },
     {
       "id": "manual-psychology-of-money",
@@ -214,7 +268,11 @@
         "general",
         "retirement"
       ],
-      "tone": "book"
+      "tone": "book",
+      "hook": "단기 흔들림에 무너지지 않는 마음가짐 한 권",
+      "needs": [
+        "investor-psychology"
+      ]
     },
     {
       "id": "manual-investment-diary",
@@ -229,7 +287,11 @@
         "general",
         "income"
       ],
-      "tone": "tool"
+      "tone": "tool",
+      "hook": "종목별 매수가·메모를 한 권에",
+      "needs": [
+        "tool-cashflow"
+      ]
     },
     {
       "id": "manual-pension-workbook",
@@ -243,7 +305,12 @@
       "categories": [
         "retirement"
       ],
-      "tone": "tool"
+      "tone": "tool",
+      "hook": "계좌별 한도를 빈칸으로 채워가며 정리",
+      "needs": [
+        "tool-cashflow",
+        "retirement-30y"
+      ]
     }
   ]
 }

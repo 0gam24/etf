@@ -257,7 +257,7 @@ async function main() {
       merged = finalProducts.map(p => {
         const old = oldById.get(p.id);
         if (!old) return p;
-        // 수동 채운 필드 보존
+        // 수동 채운 필드 보존 — viewer-first 큐레이션 데이터 (hook + needs 포함)
         return {
           ...p,
           subtitle: old.subtitle || p.subtitle,
@@ -265,6 +265,8 @@ async function main() {
           year: old.year ?? p.year,
           blurb: old.blurb || p.blurb,
           originalPrice: old.originalPrice ?? p.originalPrice,
+          hook: old.hook || p.hook,
+          needs: old.needs || p.needs,
         };
       });
       // 기존에만 있는 수동 항목(자동 fetch에 안 잡힌 것)은 보존
