@@ -1,7 +1,11 @@
 import Link from 'next/link';
-import { Zap } from 'lucide-react';
+import { Zap, BookOpen } from 'lucide-react';
+import { getAllProducts } from '@/lib/products';
 
 export default function SiteFooter() {
+  // 추천 자료 미니 — 상위 4개 (이미 visible 필터됨)
+  const featured = getAllProducts().slice(0, 4);
+
   return (
     <footer
       style={{
@@ -77,6 +81,81 @@ export default function SiteFooter() {
           </p>
         </div>
       </div>
+
+      {/* 추천 자료 미니 섹션 — 사이트 전체 푸터에 가벼운 큐레이션 */}
+      {featured.length > 0 && (
+        <div
+          style={{
+            maxWidth: '80rem',
+            margin: 'var(--space-10) auto 0',
+            padding: '0 var(--space-6)',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 'var(--space-4)' }}>
+            <h4 style={{ color: 'var(--text-primary)', fontSize: 'var(--fs-sm)', letterSpacing: '0.12em', textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+              <BookOpen size={13} strokeWidth={2.4} aria-hidden /> 추천 자료
+            </h4>
+            <Link href="/resources" style={{ color: 'var(--accent-gold)', fontSize: 'var(--fs-xs)', fontWeight: 600 }}>
+              전체 자료실 →
+            </Link>
+          </div>
+          <ul
+            style={{
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+              gap: 'var(--space-3)',
+            }}
+          >
+            {featured.map(p => (
+              <li key={p.id}>
+                {p.deeplink ? (
+                  <a
+                    href={p.deeplink}
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    style={{
+                      display: 'block',
+                      padding: 'var(--space-3)',
+                      background: 'var(--bg-card)',
+                      border: '1px solid var(--border-color)',
+                      borderRadius: '0.5rem',
+                      color: 'var(--text-secondary)',
+                      fontSize: 'var(--fs-xs)',
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    <div style={{ color: 'var(--accent-gold)', fontSize: '0.65rem', marginBottom: '0.25rem', fontWeight: 700 }}>
+                      [광고] {p.tone === 'book' ? '도서' : '학습 도구'}
+                    </div>
+                    <div style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{p.title}</div>
+                    {p.subtitle && <div style={{ color: 'var(--text-dim)', marginTop: '0.2rem' }}>{p.subtitle}</div>}
+                  </a>
+                ) : (
+                  <div
+                    style={{
+                      padding: 'var(--space-3)',
+                      background: 'var(--bg-card)',
+                      border: '1px dashed var(--border-color)',
+                      borderRadius: '0.5rem',
+                      fontSize: 'var(--fs-xs)',
+                      color: 'var(--text-muted)',
+                    }}
+                  >
+                    <div style={{ fontSize: '0.65rem', marginBottom: '0.25rem' }}>[준비 중]</div>
+                    <div style={{ color: 'var(--text-dim)', fontWeight: 600 }}>{p.title}</div>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+          <p style={{ marginTop: 'var(--space-3)', color: 'var(--text-muted)', fontSize: 'var(--fs-xs)', lineHeight: 1.6 }}>
+            이 영역은 쿠팡 파트너스 활동의 일환으로, 클릭 후 24시간 내 발생한 구매에 대해 일정 수수료를 받습니다.
+          </p>
+        </div>
+      )}
 
       <div
         style={{

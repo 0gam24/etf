@@ -27,6 +27,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
+  // 추천 자료실 (도서·도구 큐레이션)
+  routes.push({
+    url: `${baseUrl}/resources`,
+    lastModified: now,
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  });
+
   // 가이드 인덱스 + 5 필러 페이지 (백링크 허브)
   routes.push({
     url: `${baseUrl}/guide`,

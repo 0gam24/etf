@@ -6705,3 +6705,401 @@ a.scenario-card:hover .scenario-card-cta {
   color: var(--accent-gold);
 }
 
+/* ───────── Affiliate (쿠팡 파트너스) — 공정위 + 약관 준수 ───────── */
+
+/* AffiliateNotice — 공정위 표시 의무: 본문 텍스트와 동등 이상 가시성 */
+.affiliate-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.7rem 0.95rem;
+  border-radius: 0.5rem;
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+.affiliate-notice-top {
+  max-width: 50rem;
+  margin: var(--space-4) auto var(--space-6);
+}
+.affiliate-notice-inline {
+  margin: 0 0 var(--space-4);
+}
+.affiliate-notice-icon {
+  flex-shrink: 0;
+  margin-top: 0.18rem;
+  color: var(--accent-gold);
+}
+.affiliate-notice-text {
+  margin: 0;
+}
+.affiliate-notice-extra {
+  color: var(--text-dim);
+}
+
+/* ProductCard — full grid 카드 */
+.product-card,
+.product-card-pending {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 0.7rem;
+  overflow: hidden;
+  color: inherit;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.product-card:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-2px);
+}
+.product-card-pending {
+  opacity: 0.55;
+  border-style: dashed;
+}
+.product-card-cover {
+  aspect-ratio: 4 / 3;
+  background: var(--bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.product-card-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.product-card-cover-placeholder {
+  color: var(--text-muted);
+}
+.product-card-body {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.product-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+.product-card-ad-label {
+  color: var(--accent-gold);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+.product-card-source {
+  color: var(--text-muted);
+}
+.product-card-title {
+  font-size: 0.96rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin: 0.15rem 0 0.1rem;
+}
+.product-card-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+.product-card-blurb {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+.product-card-price {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.product-card-price-original {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+.product-card-price-now {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  font-variant-numeric: tabular-nums;
+}
+.product-card-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.74rem;
+  color: var(--text-dim);
+}
+.product-card-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: #fbbf24;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.product-card-rating-count {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.product-card-rocket {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  background: rgba(96, 165, 250, 0.14);
+  color: #60A5FA;
+  font-weight: 700;
+}
+.product-card-discount {
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  background: rgba(239, 68, 68, 0.14);
+  color: #f87171;
+  font-weight: 800;
+}
+.product-card-cta {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--accent-gold);
+  font-size: 0.82rem;
+  font-weight: 700;
+  transition: gap 0.15s ease;
+}
+.product-card:hover .product-card-cta {
+  gap: 0.5rem;
+}
+.product-card-cta-pending {
+  color: var(--text-muted);
+}
+
+/* ProductCard — mini variant (AffiliateInline 안에서) */
+.product-mini,
+.product-mini-pending {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 0.85rem;
+  padding: 0.7rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 0.55rem;
+  color: inherit;
+  transition: border-color 0.15s ease;
+}
+.product-mini:hover {
+  border-color: var(--accent-gold);
+}
+.product-mini-pending {
+  opacity: 0.55;
+  border-style: dashed;
+}
+.product-mini-cover {
+  width: 80px;
+  height: 100px;
+  background: var(--bg-elevated);
+  border-radius: 0.4rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-mini-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-mini-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+.product-mini-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+}
+.product-mini-source {
+  color: var(--text-muted);
+}
+.product-mini-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+  word-break: keep-all;
+}
+.product-mini-sub {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* ProductRecommendBlock */
+.product-rec-block {
+  margin: var(--space-6) 0 0;
+  padding: var(--space-5);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+}
+.product-rec-head {
+  margin-bottom: var(--space-3);
+}
+.product-rec-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.product-rec-title {
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin: 0 0 0.3rem;
+  letter-spacing: -0.01em;
+}
+.product-rec-caption {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+.product-rec-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+
+/* AffiliateInline — 단락 끝 자연 인용 */
+.affiliate-inline-mini {
+  margin: var(--space-4) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--border-color);
+}
+.affiliate-inline-leadin {
+  margin: 0 0 0.5rem;
+  font-size: 0.84rem;
+  color: var(--text-dim);
+  font-style: italic;
+}
+.affiliate-inline-text {
+  margin: var(--space-3) 0 0;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.affiliate-inline-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--accent-gold);
+  font-weight: 700;
+  border-bottom: 1px dashed currentColor;
+  padding: 0 0.05rem;
+}
+.affiliate-inline-link:hover {
+  border-bottom-style: solid;
+}
+.affiliate-inline-ad-label {
+  margin-left: 0.25rem;
+  font-size: 0.66rem;
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+/* /resources page */
+.resources-page {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0 1.5rem var(--space-16);
+}
+.resources-hero {
+  text-align: center;
+  padding: var(--space-10) 0 var(--space-6);
+}
+.resources-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+.resources-title {
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  margin: 0 0 var(--space-3);
+  letter-spacing: -0.01em;
+}
+.resources-title .accent {
+  color: var(--accent-gold);
+}
+.resources-sub {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  max-width: 40rem;
+  margin: 0 auto;
+  line-height: 1.65;
+  word-break: keep-all;
+}
+.resources-empty {
+  text-align: center;
+  padding: var(--space-12);
+  color: var(--text-muted);
+}
+.resources-groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  margin-top: var(--space-6);
+}
+.resources-group-title {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-4);
+  padding-left: var(--space-3);
+  border-left: 3px solid var(--accent-gold);
+}
+.resources-group-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+}
+.resources-disclaimer {
+  margin-top: var(--space-12);
+  padding-top: var(--space-5);
+  border-top: 1px dashed var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.65;
+  text-align: center;
+}
+

@@ -1,0 +1,61 @@
+{
+  "_comment": "Coupang 자동 큐레이션 정책. fetch-products.mjs가 이 설정을 읽어 카테고리별로 상품을 수집·필터링.",
+  "_howToTune": [
+    "categories[].keywords: 키워드 OR 검색 — 추가하면 노출 폭 ↑",
+    "filters: 별점·리뷰·가격 등 (책과 학습 도구 모두 적용)",
+    "limitPerCategory: 카테고리당 저장 상품 수 (보통 5)",
+    "whitelist: 무조건 포함할 productId 또는 productName 부분일치",
+    "blacklist: 무조건 제외할 productId 또는 productName 부분일치 (정치·잡지·중복 등)",
+    "tone: 'book' = 도서만, 'tool' = 학습 도구만, 'mixed' = 둘 다"
+  ],
+  "filters": {
+    "minRatingAverage": 0.0,
+    "minRatingCount": 0,
+    "minPrice": 5000,
+    "maxPrice": 80000,
+    "requireImage": true
+  },
+  "limitPerCategory": 5,
+  "fetchLimitPerKeyword": 10,
+  "categories": [
+    {
+      "id": "income",
+      "tone": "mixed",
+      "keywords": ["월배당 ETF", "커버드콜 ETF", "월배당 투자"],
+      "toolKeywords": ["월간 가계부", "현금흐름 가계부"]
+    },
+    {
+      "id": "covered-call",
+      "tone": "book",
+      "keywords": ["커버드콜", "옵션 매도 전략"]
+    },
+    {
+      "id": "retirement",
+      "tone": "mixed",
+      "keywords": ["IRP ETF", "연금저축 ETF", "은퇴 자산 설계"],
+      "toolKeywords": ["은퇴 설계 워크북", "연금 자산 노트"]
+    },
+    {
+      "id": "defense-etf",
+      "tone": "book",
+      "keywords": ["방산 ETF", "방위산업 투자"]
+    },
+    {
+      "id": "ai-semi-etf",
+      "tone": "book",
+      "keywords": ["AI ETF", "반도체 ETF", "엔비디아 투자"]
+    },
+    {
+      "id": "general",
+      "tone": "mixed",
+      "keywords": ["ETF 처음", "ETF 투자 입문", "자산배분"],
+      "toolKeywords": ["투자 다이어리", "주식 투자 노트"]
+    }
+  ],
+  "whitelist": [],
+  "blacklist": [
+    {"reason": "잡지·정기간행물 제외", "match": "월간"},
+    {"reason": "어린이 대상 제외", "match": "어린이"},
+    {"reason": "만화 제외", "match": "만화"}
+  ]
+}

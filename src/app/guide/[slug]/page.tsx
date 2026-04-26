@@ -6,6 +6,8 @@ import { GUIDES, getGuideBySlug } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import GuideDataBlock from '@/components/GuideDataBlock';
+import AffiliateInline from '@/components/AffiliateInline';
+import AffiliateNotice from '@/components/AffiliateNotice';
 import { buildArticleSchema, jsonLd } from '@/lib/schema';
 
 interface PageProps {
@@ -83,6 +85,11 @@ export default async function GuidePage({ params }: PageProps) {
         </div>
       </header>
 
+      {/* affiliateInline 또는 product-rec dataBlock이 있으면 페이지 상단에 단일 면책 1회 */}
+      {g.sections.some(s => s.affiliateInline || (s.dataBlock && s.dataBlock.startsWith('product-rec:'))) && (
+        <AffiliateNotice variant="top" />
+      )}
+
       <div className="guide-article-body">
         {g.sections.map((sec, i) => (
           <section key={i} className="guide-article-section-block">
@@ -94,6 +101,13 @@ export default async function GuidePage({ params }: PageProps) {
               <div className="guide-article-data">
                 <GuideDataBlock block={sec.dataBlock} />
               </div>
+            )}
+            {sec.affiliateInline && (
+              <AffiliateInline
+                leadIn={sec.affiliateInline.leadIn}
+                productId={sec.affiliateInline.productId}
+                style={sec.affiliateInline.style}
+              />
             )}
           </section>
         ))}

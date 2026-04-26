@@ -13,7 +13,10 @@
     "cf:preview": "opennextjs-cloudflare preview",
     "cf:deploy": "opennextjs-cloudflare deploy",
     "verify:parity": "node scripts/verify-parity.mjs",
-    "verify:parity:quick": "node scripts/verify-parity.mjs --quick"
+    "verify:parity:quick": "node scripts/verify-parity.mjs --quick",
+    "fetch:products": "node scripts/fetch-products.mjs",
+    "fetch:products:dry": "node scripts/fetch-products.mjs --dry",
+    "fetch:products:merge": "node scripts/fetch-products.mjs --merge"
   },
   "dependencies": {
     "@vercel/og": "^0.11.1",

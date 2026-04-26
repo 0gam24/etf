@@ -36,6 +36,9 @@ jobs:
       GOOGLE_INDEXING_KEY:     ${{ secrets.GOOGLE_INDEXING_KEY }}
       THREADS_USER_ID:         ${{ secrets.THREADS_USER_ID }}
       THREADS_ACCESS_TOKEN:    ${{ secrets.THREADS_ACCESS_TOKEN }}
+      # Coupang Partners Open API (선택 — 없으면 fetch:products가 dry-run으로 자동 폴백)
+      COUPANG_PARTNERS_ACCESS_KEY: ${{ secrets.COUPANG_PARTNERS_ACCESS_KEY }}
+      COUPANG_PARTNERS_SECRET_KEY: ${{ secrets.COUPANG_PARTNERS_SECRET_KEY }}
 
     steps:
       - name: Checkout
@@ -55,6 +58,10 @@ jobs:
 
       - name: Run pipeline (npm run pulse)
         run: npm run pulse
+
+      - name: Refresh Coupang Partners products (merge with manual curation)
+        # 키 없으면 자동으로 dry-run 폴백 → step 실패 안 함
+        run: npm run fetch:products:merge || true
 
       - name: Commit generated content + data
         id: commit

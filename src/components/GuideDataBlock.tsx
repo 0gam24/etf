@@ -6,6 +6,8 @@ import { getLatestEtfData } from '@/lib/data';
 import { getPostsByCategory } from '@/lib/posts';
 import IncomeTaxCompare from './IncomeTaxCompare';
 import IncomeCalendar from './IncomeCalendar';
+import ProductRecommendBlock from './ProductRecommendBlock';
+import type { ProductCategory } from '@/lib/products';
 
 interface Props {
   block: NonNullable<import('@/lib/guides').GuideSection['dataBlock']>;
@@ -86,6 +88,12 @@ export default function GuideDataBlock({ block }: Props) {
       return <div className="guide-block-empty">{sector} 섹터 ETF 데이터가 아직 수집되지 않았습니다.</div>;
     }
     return <ThemeEtfList etfs={matched} />;
+  }
+
+  // ── product-rec:{category} ── 쿠팡 파트너스 상품 추천 (책 + 학습 도구)
+  if (block.startsWith('product-rec:') || block.startsWith('book-rec:')) {
+    const cat = block.replace(/^(product|book)-rec:/, '') as ProductCategory;
+    return <ProductRecommendBlock category={cat} limit={3} />;
   }
 
   // ── related-posts:{category} ──

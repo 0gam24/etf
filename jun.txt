@@ -219,6 +219,60 @@ A. 두 곳에 영구 명시 완료:
 **효과**: 사용자가 production(라이브 사이트) 영향 시점을 본인이 통제. 의도치 않은 자동 라이브 변경 방지.
 
 
+## 2026-04-25 · [쿠팡 파트너스 Open API 통합 (viewer-first 재설계 최종 실행)]
+
+### Q. 진행 (viewer-first 재설계 통합 실행 계획)
+A. 코드 작업 완료. 단일 커밋 묶어서 push 보류.
+
+**핵심 원리** (24h lookback + 책 외 상품 3% 수수료 반영)
+- "책을 팔 필요가 없다, 클릭만 받으면 된다." 한 클릭이 24h 동안 어떤 쿠팡 구매든 매출.
+- 따라서 "구매 압박" → "정확한 도구 큐레이션"으로 톤 전환.
+
+**viewer-first 재설계 핵심 변경**
+- **노출 위치 최소화** — 광고 카드는 가이드(학습 모드)에만, 카테고리 랜딩·홈은 노출 X
+- **단락별 정밀 매칭** — 가이드 H2 단락마다 그 단락이 푼 니즈에 매칭되는 단일 affiliateInline 카드
+- **상품 범위 제한** — 책 80% + 학습 도구(다이어리·가계부·워크북) 20%만, 그 외 카테고리 X
+- **/store → /resources** — "광고 페이지" 인식이 아니라 "추천 자료실" 가치
+- **푸터 칩 → 추천 자료 미니 4카드** — 광고 슬롯이 아니라 큐레이션
+
+**구현 산출물**
+- `lib/coupang.ts` — HMAC SHA-256 + search/deeplink/bestcategories + 자체 rate limiter (시간당 8회 cap)
+- `lib/products.ts` — books.ts 일반화 (book + tool, dev/prod 분기)
+- `data/affiliates/curation-config.json` — 6 카테고리 키워드 + 필터 + whitelist/blacklist
+- `data/affiliates/products.json` — 시드 8개 (책 5 + 도구 3, deeplink 비어 production 자동 숨김)
+- `scripts/fetch-products.mjs` — Coupang API 자동 fetch (--dry / --merge 모드)
+- `components/ProductCard.tsx` — 별점·리뷰·로켓·할인·[광고] 라벨 (full + mini 두 모드)
+- `components/ProductRecommendBlock.tsx` — 그리드 + AffiliateNotice 자동
+- `components/AffiliateInline.tsx` — 단락 끝 자연 인용 (mini-card / text-link)
+- `app/resources/page.tsx` — 카테고리 그룹별 큐레이션 + Article 스키마 + Breadcrumbs
+- `lib/guides.ts` — GuideSection.affiliateInline 옵션 추가 + 단락 3곳 매칭 (monthly-dividend 2 + retirement 2)
+- `components/SiteFooter.tsx` — 추천 자료 미니 4카드 + 면책 한 줄
+- `.github/workflows/daily-pulse.yml` — `npm run fetch:products:merge` step (Secrets 미등록 시 dry-run 폴백)
+- `.env.example` — COUPANG_PARTNERS_ACCESS/SECRET_KEY 추가
+- `package.json` — fetch:products / dry / merge scripts
+- 구 파일 제거: BookCard, BookRecommendBlock, lib/books.ts, books.json
+
+**공정위 + 쿠팡 약관 준수**
+- 페이지 상단 AffiliateNotice (가이드: affiliateInline/product-rec 있을 때만 자동, /resources: 항상)
+- 모든 카드에 [광고] 라벨 (본문과 동등 색·크기, 회색 muted X)
+- rel="sponsored nofollow noopener noreferrer" + target="_blank"
+- 푸터 미니 카드도 동일 적용 + 24h lookback 안내 한 줄
+
+**빌드 검증**
+- tsc 통과 (0 에러)
+- npm run build 통과 (/resources 정적 생성)
+- npm run cf:build 통과 (.open-next/assets/cdn-cgi/_next_cache/.../resources.cache 생성)
+- npm run fetch:products:dry 통과 (22 키워드 × 6 카테고리 검증)
+
+**사용자 다음 액션**
+1. `.env.local`에 COUPANG_PARTNERS_ACCESS_KEY / SECRET_KEY 추가 (이미 발급됨)
+2. `npm run fetch:products` 1회 실행해 products.json 자동 채움 확인
+3. GitHub Settings → Secrets에 같은 키 등록 (cron용)
+4. 책 표지 이미지·blurb 수동 검토 후 push
+
+**push 보류** — 사용자 확인 후 명시 지시 시.
+
+
 ## 2026-04-25 · [Affiliate 경제적 이해관계 표시 가이드 — 영구 규칙]
 
 ### Q. 쿠팡 파트너스 관련 경제적 이해관계 표시 가이드 꼭 지켜.
