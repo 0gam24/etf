@@ -13,7 +13,14 @@
     "minRatingCount": 0,
     "minPrice": 5000,
     "maxPrice": 80000,
-    "requireImage": true
+    "requireImage": true,
+    "_titleKeywordWhitelistComment": "tone='book'·'tool' 모두 적용 — 제목에 이 단어 중 하나가 있어야 통과 (도서·재테크 도구 키워드). search API는 카테고리 필터가 없어 검색 노이즈(과자·화장품·eSIM)가 섞이는 것을 방지.",
+    "titleKeywordWhitelist": [
+      "ETF", "투자", "재테크", "주식", "연금", "은퇴", "월배당", "포트폴리오",
+      "증권", "자산", "현금흐름", "파이어", "FIRE", "배당", "옵션",
+      "퀀트", "분산", "분배", "수익", "공부", "가계부", "노트", "다이어리",
+      "워크북", "북", "도서", "책"
+    ]
   },
   "limitPerCategory": 5,
   "fetchLimitPerKeyword": 10,
@@ -54,8 +61,17 @@
   ],
   "whitelist": [],
   "blacklist": [
-    {"reason": "잡지·정기간행물 제외", "match": "월간"},
+    {"reason": "잡지·정기간행물 제외 (가계부의 '월간'은 살리도록 더 좁은 패턴)", "match": "월간지"},
+    {"reason": "잡지·정기간행물 제외", "match": "정기구독"},
     {"reason": "어린이 대상 제외", "match": "어린이"},
-    {"reason": "만화 제외", "match": "만화"}
+    {"reason": "만화 제외", "match": "만화"},
+    {"reason": "화장품 — '커버드콜' 검색 노이즈 (커버쿠션·커버팩트 등)", "match": "커버쿠션"},
+    {"reason": "화장품 — 동일", "match": "커버팩트"},
+    {"reason": "화장품 — 동일", "match": "마스커버"},
+    {"reason": "헌책·재고 SKU 코드가 제목에 박힌 항목 제외", "match": "NSB9"},
+    {"reason": "스테이책터 등 헌책 거래 매장 제목 패턴 제외", "match": "스테이책터"},
+    {"reason": "여러 권 세트 상품 — 큐레이션 의도 흐림", "match": "권 세트"},
+    {"reason": "스마트폰·전자기기 — 'AI ETF' 검색 노이즈", "match": "스마트폰"},
+    {"reason": "주식 차트 분석 무관 매매 도구 제외", "match": "트레이딩 시그널"}
   ]
 }

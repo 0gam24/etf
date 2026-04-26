@@ -24,6 +24,9 @@ import { createHmac } from 'node:crypto';
 const args = process.argv.slice(2);
 const DRY = args.includes('--dry');
 const MERGE = args.includes('--merge');
+// 기본: rate cap 도달 시 부분 저장 후 즉시 종료 (1시간 대기 X)
+// --wait 명시하면 한도까지 기다려서 모든 키워드 fetch
+const WAIT_ON_CAP = args.includes('--wait');
 
 const ROOT = process.cwd();
 const CONFIG_FILE = join(ROOT, 'data', 'affiliates', 'curation-config.json');
@@ -56,12 +59,23 @@ const callTimes = [];
 const HOUR_MS = 3600 * 1000;
 const HOURLY_CAP = 8;
 
+class RateCapError extends Error {
+  constructor(secondsToWait) {
+    super(`rate cap hit (${HOURLY_CAP}/h). Wait ${secondsToWait}s.`);
+    this.name = 'RateCapError';
+    this.secondsToWait = secondsToWait;
+  }
+}
+
 async function throttle() {
   const now = Date.now();
   while (callTimes.length && now - callTimes[0] > HOUR_MS) callTimes.shift();
   if (callTimes.length >= HOURLY_CAP) {
     const wait = HOUR_MS - (now - callTimes[0]) + 1000;
-    console.warn(`[fetch] rate cap hit. sleeping ${Math.round(wait / 1000)}s`);
+    if (!WAIT_ON_CAP) {
+      throw new RateCapError(Math.round(wait / 1000));
+    }
+    console.warn(`[fetch] rate cap hit. sleeping ${Math.round(wait / 1000)}s (--wait mode)`);
     await new Promise(r => setTimeout(r, wait));
     return throttle();
   }
@@ -96,6 +110,13 @@ function passesFilter(p, filters, blacklist) {
   if (filters.requireImage && !p.productImage) return false;
   if (typeof p.ratingAverage === 'number' && filters.minRatingAverage && p.ratingAverage < filters.minRatingAverage) return false;
   if (typeof p.ratingCount === 'number' && filters.minRatingCount && p.ratingCount < filters.minRatingCount) return false;
+  // 제목 화이트리스트 — 도서/재테크 도구 키워드가 제목에 있어야 통과 (food/cosmetic/eSIM 노이즈 방지)
+  const wl = filters.titleKeywordWhitelist;
+  if (Array.isArray(wl) && wl.length > 0) {
+    const title = p.productName || '';
+    const hit = wl.some(kw => title.includes(kw));
+    if (!hit) return false;
+  }
   // blacklist
   for (const bl of blacklist || []) {
     if (bl.match && p.productName?.includes(bl.match)) return false;
@@ -154,7 +175,10 @@ async function main() {
   console.log('[fetch] live mode — Coupang API 호출 시작');
   const collected = [];
   const seen = new Set(); // 중복 제거
+  let rateCapped = false;
+  let secondsToWait = 0;
 
+  outer:
   for (const cat of config.categories) {
     const bookKeywords = cat.keywords || [];
     const toolKeywords = cat.tone !== 'book' ? (cat.toolKeywords || []) : [];
@@ -171,6 +195,12 @@ async function main() {
         }
         console.log(`  ✓ ${cat.id}/${tone} "${keyword}" → ${products.length} fetched`);
       } catch (err) {
+        if (err instanceof RateCapError) {
+          rateCapped = true;
+          secondsToWait = err.secondsToWait;
+          console.warn(`  ⏸  ${cat.id}/${tone} "${keyword}" — ${err.message}`);
+          break outer;
+        }
         console.warn(`  ✗ ${cat.id}/${tone} "${keyword}" failed:`, err.message);
       }
     }
@@ -187,9 +217,21 @@ async function main() {
         }
         console.log(`  ✓ ${cat.id}/${tone} "${keyword}" → ${products.length} fetched`);
       } catch (err) {
+        if (err instanceof RateCapError) {
+          rateCapped = true;
+          secondsToWait = err.secondsToWait;
+          console.warn(`  ⏸  ${cat.id}/${tone} "${keyword}" — ${err.message}`);
+          break outer;
+        }
         console.warn(`  ✗ ${cat.id}/${tone} "${keyword}" failed:`, err.message);
       }
     }
+  }
+
+  if (rateCapped) {
+    console.log(`[fetch] rate cap reached. saving partial results (${collected.length} products) and exiting.`);
+    console.log(`[fetch] re-run after ~${Math.round(secondsToWait / 60)} minutes (or use --wait to wait now).`);
+    console.log(`[fetch] tip: --merge mode preserves existing products.json so multiple runs accumulate.`);
   }
 
   // 카테고리당 limit cap
