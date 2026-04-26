@@ -88,6 +88,37 @@ export function getLatestPulse(): Post | null {
 }
 
 /**
+ * 카테고리별 가장 최근 글의 발행일.
+ *   sitemap의 lastmod 정확화에 사용 — Google 가이드:
+ *   "lastmod는 페이지가 마지막으로 의미 있게 변경된 시점이어야 한다."
+ *   글 하나 더 발행 = 카테고리 랜딩이 바뀐 것 (최신 글 노출).
+ */
+export function getCategoryLastModified(category: string): Date | null {
+  const posts = getPostsByCategory(category);
+  if (!posts.length) return null;
+  return new Date(posts[0].meta.date);
+}
+
+/**
+ * 사이트 전체에서 가장 최근 발행된 글의 날짜 (홈 lastmod용).
+ */
+export function getSiteLastModified(): Date | null {
+  const all = getAllPosts();
+  if (!all.length) return null;
+  return new Date(all[0].meta.date);
+}
+
+/**
+ * 특정 저자의 가장 최근 글 발행일 (저자 허브 lastmod용).
+ */
+export function getAuthorLastModified(authorId: string): Date | null {
+  const all = getAllPosts();
+  const byAuthor = all.filter(p => p.meta.authorId === authorId);
+  if (!byAuthor.length) return null;
+  return new Date(byAuthor[0].meta.date);
+}
+
+/**
  * 주식(종목) 포스트 중 frontmatter의 ticker가 일치하는 것을 찾습니다.
  * 한국 6자리/미국 3-4자리 티커 모두 지원. 없으면 null.
  */

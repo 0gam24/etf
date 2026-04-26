@@ -16,7 +16,12 @@ export default function robots(): MetadataRoute.Robots {
       // Daum 검색봇
       { userAgent: 'Daumoa', allow: '/', disallow: ['/api/'] },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    // 두 개 sitemap 모두 명시 — index + main
+    // (검색엔진은 둘 다 처리. index가 우선 권장이지만 main 단독 발견도 가능하게 둠.)
+    sitemap: [
+      `${baseUrl}/sitemap-index.xml`,
+      `${baseUrl}/sitemap.xml`,
+    ],
     host: baseUrl,
   };
 }

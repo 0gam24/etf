@@ -105,6 +105,10 @@ export interface ProductsRegistry {
 
 const REGISTRY_FILE = path.join(process.cwd(), 'data', 'affiliates', 'products.json');
 
+export function getProductsRegistry(): ProductsRegistry {
+  return loadRegistry();
+}
+
 function loadRegistry(): ProductsRegistry {
   if (!fs.existsSync(REGISTRY_FILE)) return { reviewedAt: '', products: [] };
   try {

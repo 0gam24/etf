@@ -1,47 +1,72 @@
 import { MetadataRoute } from 'next';
-import { getAllPosts, TOP_LEVEL_CATEGORIES } from '@/lib/posts';
+import {
+  getAllPosts,
+  TOP_LEVEL_CATEGORIES,
+  getCategoryLastModified,
+  getSiteLastModified,
+  getAuthorLastModified,
+} from '@/lib/posts';
 import { AUTHOR_LIST } from '@/lib/authors';
 import { GUIDES } from '@/lib/guides';
+import { getProductsRegistry } from '@/lib/products';
 
 /**
  * Daily ETF Pulse — 동적 sitemap.xml
- *   홈 · 4개 전용 카테고리 랜딩(/pulse·/surge·/flow·/income) · 7인 저자 허브 · 모든 포스트.
- *   최신 글일수록 priority 상향 (0.7 → 0.9).
+ *
+ *   Google 가이드 (developers.google.com/search/docs/crawling-indexing/sitemaps):
+ *     - lastmod는 "페이지가 마지막으로 의미 있게 변경된 시점"이어야 한다
+ *     - 부정확한 lastmod는 Google이 신뢰하지 않고 무시한다
+ *     - priority/changefreq는 Google이 무시 (단, Naver Yeti는 처리 — 한국 시장 타겟이라 유지)
+ *
+ *   따라서 카테고리·홈·저자·자료실의 lastmod를 sitemap 재생성 시각이 아닌
+ *   실제 콘텐츠 갱신일에서 derive.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.SITE_URL || 'https://iknowhowinfo.com';
   const allPosts = getAllPosts();
-  const now = new Date();
+  const fallback = new Date(); // 콘텐츠 0개일 때만 사용
 
-  const routes: MetadataRoute.Sitemap = [
-    { url: baseUrl, lastModified: now, changeFrequency: 'daily', priority: 1.0 },
-  ];
+  const routes: MetadataRoute.Sitemap = [];
 
-  // 전용 카테고리 랜딩 (우선순위 0.9 — 매일 자동 갱신되는 데이터 대시보드)
+  // 홈 — 사이트 전체 최신 글 발행일
+  routes.push({
+    url: baseUrl,
+    lastModified: getSiteLastModified() || fallback,
+    changeFrequency: 'daily',
+    priority: 1.0,
+  });
+
+  // 전용 카테고리 랜딩 — 그 카테고리의 최신 글 날짜
   TOP_LEVEL_CATEGORIES.forEach(cat => {
     routes.push({
       url: `${baseUrl}/${cat}`,
-      lastModified: now,
+      lastModified: getCategoryLastModified(cat) || fallback,
       changeFrequency: 'daily',
       priority: 0.9,
     });
   });
 
-  // 추천 자료실 (도서·도구 큐레이션)
+  // 추천 자료실 — products.json reviewedAt
+  const productsReviewedAt = getProductsRegistry().reviewedAt;
   routes.push({
     url: `${baseUrl}/resources`,
-    lastModified: now,
+    lastModified: productsReviewedAt ? new Date(productsReviewedAt) : fallback,
     changeFrequency: 'weekly',
     priority: 0.7,
   });
 
-  // 가이드 인덱스 + 5 필러 페이지 (백링크 허브)
+  // 가이드 인덱스 — 가이드 5종 중 가장 최근 lastReviewed
+  const guideMostRecent = GUIDES
+    .map(g => new Date(g.lastReviewed).getTime())
+    .reduce((a, b) => Math.max(a, b), 0);
   routes.push({
     url: `${baseUrl}/guide`,
-    lastModified: now,
+    lastModified: guideMostRecent > 0 ? new Date(guideMostRecent) : fallback,
     changeFrequency: 'weekly',
     priority: 0.85,
   });
+
+  // 가이드 5종
   GUIDES.forEach(g => {
     routes.push({
       url: `${baseUrl}/guide/${g.slug}`,
@@ -51,18 +76,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // 저자 허브
+  // 저자 허브 — 그 저자의 최신 글 날짜 (없으면 fallback)
   AUTHOR_LIST.forEach(a => {
     routes.push({
       url: `${baseUrl}/author/${a.id}`,
-      lastModified: now,
+      lastModified: getAuthorLastModified(a.id) || fallback,
       changeFrequency: 'weekly',
       priority: 0.6,
     });
   });
 
-  // 포스트 상세 — 최근 글일수록 priority 상향
-  const sevenDaysAgo = now.getTime() - 7 * 86400000;
+  // 포스트 상세 — 글 자체 발행일 (이미 정확)
+  const sevenDaysAgo = Date.now() - 7 * 86400000;
   allPosts.forEach(post => {
     const pubTs = new Date(post.meta.date).getTime();
     const priority = pubTs >= sevenDaysAgo ? 0.9 : 0.7;
