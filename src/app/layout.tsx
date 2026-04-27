@@ -54,13 +54,25 @@ export const viewport: Viewport = {
 
 const SITE_URL = process.env.SITE_URL || 'https://iknowhowinfo.com';
 
+// Organization 강화 — Google E-E-A-T 신뢰 신호. NewsMediaOrganization으로 publisher type 일관화.
 const ORG_SCHEMA = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': 'NewsMediaOrganization',
   name: 'Daily ETF Pulse',
   url: SITE_URL,
-  logo: `${SITE_URL}/og-logo.png`,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${SITE_URL}/og-logo.png`,
+    width: 600,
+    height: 60,
+  },
   description: '거래량 1위 ETF의 급등 사유, 섹터별 자금 흐름, 월배당·커버드콜 전략까지. 매일 오전 9시 전 업데이트되는 실시간 ETF 투자 의사결정 플랫폼.',
+  inLanguage: 'ko-KR',
+  // E-E-A-T 정책 페이지 (Google 권장)
+  publishingPrinciples: `${SITE_URL}/about`,
+  correctionsPolicy: `${SITE_URL}/about`,
+  diversityPolicy: `${SITE_URL}/about`,
+  actionableFeedbackPolicy: `${SITE_URL}/about`,
   sameAs: [] as string[],
 };
 
@@ -70,7 +82,7 @@ const WEBSITE_SCHEMA = {
   name: 'Daily ETF Pulse',
   url: SITE_URL,
   inLanguage: 'ko-KR',
-  publisher: { '@type': 'Organization', name: 'Daily ETF Pulse' },
+  publisher: { '@type': 'NewsMediaOrganization', name: 'Daily ETF Pulse', url: SITE_URL },
   potentialAction: {
     '@type': 'SearchAction',
     target: `${SITE_URL}/?q={search_term_string}`,

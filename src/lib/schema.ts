@@ -76,9 +76,17 @@ export function buildArticleSchema(input: ArticleSchemaInput) {
     dateModified: input.dateModified || input.datePublished,
     author,
     publisher: {
-      '@type': 'Organization',
+      '@type': 'NewsMediaOrganization', // Google E-E-A-T 신뢰 신호
       name: SITE_NAME,
-      logo: { '@type': 'ImageObject', url: ORG_LOGO },
+      url: SITE,
+      logo: {
+        '@type': 'ImageObject',
+        url: ORG_LOGO,
+        width: 600,  // Google 권장 — 최소 폭 명시
+        height: 60,
+      },
+      publishingPrinciples: `${SITE}/about`,
+      correctionsPolicy: `${SITE}/about`,
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': abs(input.url) },
     ...(input.keywords?.length ? { keywords: input.keywords.join(', ') } : {}),

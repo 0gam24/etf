@@ -9,18 +9,18 @@ import {
 import { AUTHOR_LIST } from '@/lib/authors';
 import { GUIDES } from '@/lib/guides';
 import { getProductsRegistry } from '@/lib/products';
-import { getLatestEtfData, getAllEtfSlugs } from '@/lib/data';
+import { getLatestEtfData } from '@/lib/data';
 
 /**
- * Daily ETF Pulse — 동적 sitemap.xml
+ * Daily ETF Pulse — 메인 sitemap.xml (홈·카테고리·글·가이드·저자 ~200 URL)
+ *
+ *   ⚠️ /etf/{slug} 1095종은 별도 분리 → /sitemap-etf.xml (크롤링 효율 + Naver 안정성)
+ *   sitemap-index.xml에서 둘을 함께 노출.
  *
  *   Google 가이드 (developers.google.com/search/docs/crawling-indexing/sitemaps):
  *     - lastmod는 "페이지가 마지막으로 의미 있게 변경된 시점"이어야 한다
  *     - 부정확한 lastmod는 Google이 신뢰하지 않고 무시한다
  *     - priority/changefreq는 Google이 무시 (단, Naver Yeti는 처리 — 한국 시장 타겟이라 유지)
- *
- *   따라서 카테고리·홈·저자·자료실의 lastmod를 sitemap 재생성 시각이 아닌
- *   실제 콘텐츠 갱신일에서 derive.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.SITE_URL || 'https://iknowhowinfo.com';
@@ -108,9 +108,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // 종목 사전 — /etf/[ticker] (KRX 등록 ETF 전체)
+  // 종목 사전 인덱스 페이지 (/etf) — 1095 ETF는 별도 sitemap-etf.xml에서 처리
   const etfData = getLatestEtfData();
-  // baseDate는 "YYYYMMDD" 문자열이라 Date에 직접 못 넘김 → ISO로 정규화
   function ymdToDate(ymd?: string): Date | null {
     if (!ymd || ymd.length !== 8) return null;
     const iso = `${ymd.slice(0, 4)}-${ymd.slice(4, 6)}-${ymd.slice(6, 8)}T00:00:00+09:00`;
@@ -118,24 +117,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return isNaN(d.getTime()) ? null : d;
   }
   const etfLastModified = ymdToDate(etfData?.baseDate) || fallback;
-
-  // 종목 사전 인덱스 페이지 (/etf)
   routes.push({
     url: `${baseUrl}/etf`,
     lastModified: etfLastModified,
     changeFrequency: 'daily',
     priority: 0.85,
-  });
-
-  // KRX 공식 등록 모든 ETF — SEO 친화 슬러그(이름 기반) URL.
-  //   코드 기반 URL(/etf/0080g0)은 next.config.ts에서 301 → 슬러그로 자동 이동.
-  getAllEtfSlugs().forEach(slug => {
-    routes.push({
-      url: `${baseUrl}/etf/${slug}`,
-      lastModified: etfLastModified,
-      changeFrequency: 'daily',
-      priority: 0.8,
-    });
   });
 
   return routes;

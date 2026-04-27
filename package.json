@@ -19,7 +19,8 @@
     "fetch:products:merge": "node scripts/fetch-products.mjs --merge",
     "fetch:etf-codes": "node scripts/fetch-etf-codes.mjs",
     "generate:etf-slugs": "node scripts/generate-etf-slugs.mjs",
-    "audit:seo": "node scripts/audit-seo.mjs"
+    "audit:seo": "node scripts/audit-seo.mjs",
+    "validate:schema": "node scripts/validate-schema.mjs"
   },
   "dependencies": {
     "@vercel/og": "^0.11.1",
