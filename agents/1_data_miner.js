@@ -277,16 +277,17 @@ function getSampleETFData() {
     baseDate: formatDate(new Date()),
     etfCount: 10,
     etfList: [
-      { code: '449450', name: 'KODEX 방산TOP10', price: 18450, change: 820, changeRate: 4.65, volume: 8420000, tradeAmount: 155000000000, marketCap: 580000000000, nav: 18470, highPrice: 18500, lowPrice: 17800, openPrice: 17850, date: formatDate(new Date()) },
-      { code: '466920', name: 'SOL 조선TOP3', price: 21300, change: 950, changeRate: 4.67, volume: 6210000, tradeAmount: 132000000000, marketCap: 410000000000, nav: 21320, highPrice: 21500, lowPrice: 20400, openPrice: 20450, date: formatDate(new Date()) },
-      { code: '487350', name: 'SOL 팔란티어커버드콜OTM', price: 12850, change: 65, changeRate: 0.51, volume: 4850000, tradeAmount: 62000000000, marketCap: 310000000000, nav: 12860, highPrice: 12900, lowPrice: 12800, openPrice: 12830, date: formatDate(new Date()) },
+      // KRX 공식 srtnCd 기준 (data/krx-etf-codes.json 참조). 2026-04-27 갱신.
+      { code: '0080G0', name: 'KODEX 방산TOP10', price: 18450, change: 820, changeRate: 4.65, volume: 8420000, tradeAmount: 155000000000, marketCap: 580000000000, nav: 18470, highPrice: 18500, lowPrice: 17800, openPrice: 17850, date: formatDate(new Date()) },
+      { code: '0080Y0', name: 'SOL 조선TOP3플러스레버리지', price: 21300, change: 950, changeRate: 4.67, volume: 6210000, tradeAmount: 132000000000, marketCap: 410000000000, nav: 21320, highPrice: 21500, lowPrice: 20400, openPrice: 20450, date: formatDate(new Date()) },
+      { code: '0040Y0', name: 'SOL 팔란티어커버드콜OTM채권혼합', price: 12850, change: 65, changeRate: 0.51, volume: 4850000, tradeAmount: 62000000000, marketCap: 310000000000, nav: 12860, highPrice: 12900, lowPrice: 12800, openPrice: 12830, date: formatDate(new Date()) },
       { code: '069500', name: 'KODEX 200', price: 35250, change: 150, changeRate: 0.43, volume: 3254000, tradeAmount: 114000000000, marketCap: 7200000000000, nav: 35280, highPrice: 35400, lowPrice: 35100, openPrice: 35200, date: formatDate(new Date()) },
-      { code: '379800', name: 'KODEX 미국S&P500TR', price: 18520, change: -80, changeRate: -0.43, volume: 1520000, tradeAmount: 28000000000, marketCap: 4500000000000, nav: 18535, highPrice: 18600, lowPrice: 18450, openPrice: 18560, date: formatDate(new Date()) },
-      { code: '448290', name: 'KODEX 미국배당다우존스', price: 12850, change: 45, changeRate: 0.35, volume: 890000, tradeAmount: 11400000000, marketCap: 1200000000000, nav: 12860, highPrice: 12900, lowPrice: 12800, openPrice: 12830, date: formatDate(new Date()) },
-      { code: '411060', name: 'ACE 미국배당다우존스', price: 13200, change: 30, changeRate: 0.23, volume: 1120000, tradeAmount: 14800000000, marketCap: 980000000000, nav: 13210, highPrice: 13250, lowPrice: 13150, openPrice: 13180, date: formatDate(new Date()) },
+      { code: '0026S0', name: '1Q 미국S&P500', price: 18520, change: -80, changeRate: -0.43, volume: 1520000, tradeAmount: 28000000000, marketCap: 4500000000000, nav: 18535, highPrice: 18600, lowPrice: 18450, openPrice: 18560, date: formatDate(new Date()) },
+      { code: '489250', name: 'KODEX 미국배당다우존스', price: 12850, change: 45, changeRate: 0.35, volume: 890000, tradeAmount: 11400000000, marketCap: 1200000000000, nav: 12860, highPrice: 12900, lowPrice: 12800, openPrice: 12830, date: formatDate(new Date()) },
+      { code: '402970', name: 'ACE 미국배당다우존스', price: 13200, change: 30, changeRate: 0.23, volume: 1120000, tradeAmount: 14800000000, marketCap: 980000000000, nav: 13210, highPrice: 13250, lowPrice: 13150, openPrice: 13180, date: formatDate(new Date()) },
       { code: '305720', name: 'KODEX 2차전지산업', price: 9850, change: -220, changeRate: -2.18, volume: 2100000, tradeAmount: 20700000000, marketCap: 450000000000, nav: 9860, highPrice: 10080, lowPrice: 9820, openPrice: 10070, date: formatDate(new Date()) },
       { code: '091160', name: 'KODEX 반도체', price: 41200, change: 580, changeRate: 1.43, volume: 1780000, tradeAmount: 73000000000, marketCap: 850000000000, nav: 41220, highPrice: 41500, lowPrice: 40600, openPrice: 40620, date: formatDate(new Date()) },
-      { code: '261240', name: 'KODEX 미국채울트라30년선물(H)', price: 8950, change: -120, changeRate: -1.32, volume: 2300000, tradeAmount: 20500000000, marketCap: 650000000000, nav: 8960, highPrice: 9000, lowPrice: 8900, openPrice: 8980, date: formatDate(new Date()) },
+      { code: '464470', name: 'PLUS 미국채30년액티브', price: 8950, change: -120, changeRate: -1.32, volume: 2300000, tradeAmount: 20500000000, marketCap: 650000000000, nav: 8960, highPrice: 9000, lowPrice: 8900, openPrice: 8980, date: formatDate(new Date()) },
     ],
   };
 }

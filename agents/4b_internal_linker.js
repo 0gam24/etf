@@ -127,9 +127,11 @@ const ANCHOR_VARIATIONS = {
 function pickAnchorVariation(slug, articleSlug, fallback) {
   const variations = ANCHOR_VARIATIONS[slug];
   if (!variations || variations.length === 0) return fallback;
-  // 결정적 hash — 같은 글은 같은 앵커
+  // 결정적 hash (32-bit 마스킹) — 긴 slug에서도 안정적, 같은 글은 항상 같은 앵커
   let h = 0;
-  for (let i = 0; i < (articleSlug || '').length; i++) h = ((h << 5) - h) + articleSlug.charCodeAt(i);
+  for (let i = 0; i < (articleSlug || '').length; i++) {
+    h = (((h << 5) - h) + articleSlug.charCodeAt(i)) | 0; // | 0 으로 32-bit signed int 강제
+  }
   return variations[Math.abs(h) % variations.length];
 }
 

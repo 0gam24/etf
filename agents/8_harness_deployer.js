@@ -102,6 +102,18 @@ function saveAsMdx(article, chartData, adPlan, affiliateMatch, today) {
     ? `author: "${yamlEscape(article.author)}"`
     : `author: "Daily ETF Pulse"`;
   const authorIdLine = article.authorId ? `authorId: "${yamlEscape(article.authorId)}"` : '';
+  // E-E-A-T 저자 메타 — HumanTouch가 article에 emit한 AI 모델 정보를 frontmatter에 보존
+  const authorTitleLine = article.authorTitle ? `authorTitle: "${yamlEscape(article.authorTitle)}"` : '';
+  const authorModelDescLine = article.authorModelDescription
+    ? `authorModelDescription: "${yamlEscape(article.authorModelDescription)}"`
+    : '';
+  const authorMethodologyLine = article.authorMethodology
+    ? `authorMethodology: "${yamlEscape(article.authorMethodology)}"`
+    : '';
+  const authorIsAiLine = typeof article.authorIsAi === 'boolean' ? `authorIsAi: ${article.authorIsAi}` : '';
+  const authorDataSourcesYaml = (article.authorDataSources && article.authorDataSources.length > 0)
+    ? `authorDataSources:\n${article.authorDataSources.map(s => `  - "${yamlEscape(s)}"`).join('\n')}`
+    : '';
   const schemasLine = article.schemas
     ? `schemas: ${JSON.stringify(article.schemas).replace(/\n/g, ' ')}`
     : '';
@@ -120,6 +132,11 @@ tickers:
 ${tickersYaml || '  []'}
 ${authorLine}
 ${authorIdLine}
+${authorTitleLine}
+${authorModelDescLine}
+${authorMethodologyLine}
+${authorIsAiLine}
+${authorDataSourcesYaml}
 charts: ${chartData ? JSON.stringify(chartData.map(c => c.type)) : '[]'}
 affiliates: ${affiliateMatch ? JSON.stringify(affiliateMatch.products.map(p => p.id)) : '[]'}
 adPlacements: ${adPlan?.plan?.placements?.length || adPlan?.totalPlacements || 0}
