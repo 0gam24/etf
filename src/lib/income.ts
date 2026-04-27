@@ -17,6 +17,10 @@ export interface IncomeEtf {
   frequency: Frequency;
   /** 지급 월 1~12 */
   payMonths: number[];
+  /** 다음 분배락일 ISO (YYYY-MM-DD) — 운용사 공시 fetch 후 채워짐, optional */
+  nextExDividendDate?: string;
+  /** 최근 분배락일 ISO (YYYY-MM-DD) — 추적용, optional */
+  recentExDividendDates?: string[];
   stabilityGrade: StabilityGrade;
   underlying: string;
   note?: string;

@@ -7513,6 +7513,28 @@ a.scenario-card:hover .scenario-card-cta {
   content: '●';
   font-size: 0.6rem;
 }
+/* 1F. freshness pill — 사용자 신뢰 + Google freshness 신호 */
+.etf-dict-fresh-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.7rem;
+  background: rgba(16,185,129,0.12);
+  color: #10B981;
+  border-radius: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+/* 1B. H1 코드 표기 */
+.etf-dict-title-code {
+  font-size: 0.65em;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin: 0 0.3em;
+  font-variant-numeric: tabular-nums;
+}
 .etf-dict-title {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 800;
@@ -7681,6 +7703,135 @@ a.scenario-card:hover .scenario-card-cta {
   line-height: 1.7;
   background: rgba(255,255,255,0.02);
   border-radius: 0.5rem;
+}
+
+/* Phase 2C — 투자 포인트 섹션 */
+.etf-dict-points-summary {
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.125rem;
+  background: rgba(96,165,250,0.06);
+  border-left: 3px solid #60A5FA;
+  border-radius: 0.45rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.etf-dict-points-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+.etf-dict-point-card {
+  padding: 1.125rem 1.25rem;
+  background: var(--bg-card, rgba(255,255,255,0.025));
+  border: 1px solid var(--border-color, rgba(255,255,255,0.06));
+  border-radius: 0.625rem;
+}
+.etf-dict-point-heading {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+.etf-dict-point-body {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
+/* Phase 2A·2B — 같은 섹터/운용사 다른 ETF 카드 그리드 */
+.etf-dict-related-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.625rem;
+}
+.etf-dict-related-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.875rem 1rem;
+  background: var(--bg-card, rgba(255,255,255,0.025));
+  border: 1px solid var(--border-color, rgba(255,255,255,0.06));
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+  height: 100%;
+}
+.etf-dict-related-card:hover {
+  border-color: rgba(212,175,55,0.4);
+  transform: translateY(-1px);
+}
+.etf-dict-related-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+.etf-dict-related-card-code {
+  font-size: 0.7rem;
+  color: #60A5FA;
+  background: rgba(96,165,250,0.12);
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.3rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.etf-dict-related-card-issuer {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  font-weight: 700;
+}
+.etf-dict-related-card-name {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: keep-all;
+  flex: 1;
+}
+.etf-dict-related-card-change {
+  font-size: 0.78rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-dim);
+}
+.etf-dict-related-card-change.is-up { color: #EF4444; }
+.etf-dict-related-card-change.is-down { color: #60A5FA; }
+
+/* Phase 3B — 운용사 공식 외부 링크 */
+.etf-dict-official-link {
+  margin: 1.5rem 0 0;
+  padding: 0.875rem 1.125rem;
+  background: rgba(96,165,250,0.04);
+  border: 1px solid rgba(96,165,250,0.15);
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.etf-dict-official-link a {
+  color: #60A5FA;
+  font-weight: 700;
+  text-decoration: none;
+}
+.etf-dict-official-link a:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .etf-dict-points-grid { grid-template-columns: 1fr; }
+  .etf-dict-related-grid { grid-template-columns: 1fr 1fr; }
+  .etf-dict-title-code { display: block; margin: 0.25em 0 0; font-size: 0.55em; }
 }
 
 @media (max-width: 640px) {

@@ -147,6 +147,7 @@ export function buildFinancialProductSchema(input: FinancialProductInput) {
     '@type': 'FinancialProduct',
     name: input.name,
     identifier: input.code,
+    tickerSymbol: input.code, // Google 금융 상품 인식 강화 (리치 스니펫)
     description: input.description,
     url: abs(input.url),
     category: input.category || 'ETF',

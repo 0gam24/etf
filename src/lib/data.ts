@@ -342,6 +342,89 @@ export function getCodeToSlugMap(): Record<string, string> {
   return { ...loadSlugRegistry().byCode };
 }
 
+/** 같은 섹터의 다른 ETF 추천 — Phase 2A
+ *   현재 종목 제외 + 시세 있는 종목 우선 + 거래량 내림차순 + limit개.
+ */
+export interface RelatedEtfRow {
+  shortcode: string;
+  slug: string;
+  name: string;
+  issuer?: string;
+  price?: number;
+  changeRate?: number;
+  hasPrice: boolean;
+}
+
+function buildRelatedRow(code: string, etfList: { code: string; name: string; price: number; changeRate: number; volume: number; sector?: string }[]): RelatedEtfRow | null {
+  const meta = getKrxEtfMeta(code);
+  if (!meta) return null;
+  const upper = code.toUpperCase();
+  const price = etfList.find(e => e.code.toUpperCase() === upper);
+  const issuerLabel = extractIssuerLabel(meta.name);
+  return {
+    shortcode: code,
+    slug: codeToSlug(code),
+    name: meta.name,
+    issuer: issuerLabel?.split(' ')[0],
+    price: price?.price,
+    changeRate: price?.changeRate,
+    hasPrice: !!price,
+  };
+}
+
+export function getEtfsBySector(
+  sector: string,
+  excludeCode: string,
+  limit = 6,
+  etfList: Parameters<typeof buildRelatedRow>[1] = [],
+): RelatedEtfRow[] {
+  if (!sector || sector === '기타') return [];
+  const upperExclude = excludeCode.toUpperCase();
+  // KRX 1095종 중 같은 섹터 매칭 (시세 sector 또는 이름 기반 분류)
+  const krx = loadKrxRegistry();
+  const candidates: RelatedEtfRow[] = [];
+  for (const e of krx.list) {
+    if (e.shortcode.toUpperCase() === upperExclude) continue;
+    const priceEntry = etfList.find(p => p.code.toUpperCase() === e.shortcode.toUpperCase());
+    const candidateSector = priceEntry?.sector || classifyEtfSector(e.name);
+    if (candidateSector !== sector) continue;
+    const row = buildRelatedRow(e.shortcode, etfList);
+    if (row) candidates.push(row);
+  }
+  // 시세 있는 종목 우선 + 가격이 있으면 거래량 내림차순(이미 etfList sorted), 없으면 이름 정렬
+  candidates.sort((a, b) => {
+    if (a.hasPrice !== b.hasPrice) return a.hasPrice ? -1 : 1;
+    return a.name.localeCompare(b.name, 'ko');
+  });
+  return candidates.slice(0, limit);
+}
+
+/** 같은 운용사의 다른 ETF 추천 — Phase 2B */
+export function getEtfsByIssuer(
+  issuer: string,
+  excludeCode: string,
+  limit = 6,
+  etfList: Parameters<typeof buildRelatedRow>[1] = [],
+): RelatedEtfRow[] {
+  if (!issuer) return [];
+  const upperExclude = excludeCode.toUpperCase();
+  const krx = loadKrxRegistry();
+  const candidates: RelatedEtfRow[] = [];
+  for (const e of krx.list) {
+    if (e.shortcode.toUpperCase() === upperExclude) continue;
+    // 이름 첫 단어 == issuer
+    const firstToken = e.name.split(/\s+/)[0];
+    if (firstToken !== issuer) continue;
+    const row = buildRelatedRow(e.shortcode, etfList);
+    if (row) candidates.push(row);
+  }
+  candidates.sort((a, b) => {
+    if (a.hasPrice !== b.hasPrice) return a.hasPrice ? -1 : 1;
+    return a.name.localeCompare(b.name, 'ko');
+  });
+  return candidates.slice(0, limit);
+}
+
 /** KRX 매핑 1건 조회 — minimal 페이지 렌더용 */
 export function getKrxEtfMeta(input: string): KrxEtfCode | null {
   const r = resolveEtfTicker(input);
@@ -373,6 +456,28 @@ export function extractIssuerLabel(etfName: string): string | null {
   if (!etfName) return null;
   const first = etfName.split(/\s+/)[0];
   return ISSUER_LABELS[first] || (first.length <= 8 ? first : null);
+}
+
+/** 운용사 공식 ETF 안내 사이트 URL — Phase 3B (E-E-A-T 외부 권위 link out) */
+const ISSUER_OFFICIAL_URL: Record<string, string> = {
+  KODEX: 'https://www.kodex.com',
+  TIGER: 'https://www.tigeretf.com',
+  SOL: 'https://www.shinhansolview.com',
+  ACE: 'https://www.kiminvestment.com/etf/',
+  PLUS: 'https://www.hanwhaplusetf.com',
+  RISE: 'https://www.kbam.co.kr/etf',
+  HANARO: 'https://www.amundi.co.kr',
+  KOSEF: 'https://www.samsungfund.com',
+  HK: 'https://www.heungkukfund.com',
+  KIWOOM: 'https://www.kiwoomam.com',
+  TIME: 'https://www.hanwhaplusetf.com',
+  KoAct: 'https://www.kiminvestment.com',
+};
+
+export function getIssuerOfficialUrl(etfName: string): string | null {
+  if (!etfName) return null;
+  const first = etfName.split(/\s+/)[0];
+  return ISSUER_OFFICIAL_URL[first] || null;
 }
 
 /**

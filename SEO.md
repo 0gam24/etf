@@ -175,6 +175,78 @@
 
 ---
 
+## 13. /etf/{slug} 종목 사전 페이지 — 영구 구조 (1095+ 페이지 일괄 적용)
+
+**정책 (2026-04-27 신설)**: 1095종 ETF 모든 페이지는 단일 template ([src/app/etf/[ticker]/page.tsx](src/app/etf/[ticker]/page.tsx))에서 렌더링되므로, 아래 구조를 **template 단계에서 영구 보장**한다. KRX에 신규 ETF가 등록되면 (`npm run fetch:etf-codes && npm run generate:etf-slugs`) **자동으로 동일 구조 적용**.
+
+### 13-1. URL 슬러그
+- 형식: `/etf/{name-slug}` (예: `/etf/kodex-defense-top10`)
+- 매핑: [data/etf-slug-map.json](data/etf-slug-map.json) — **불변 source of truth**
+- 충돌 시: 코드 suffix (`/etf/kodex-200-069500`)
+- 코드 URL(`/etf/0080g0`)은 next.config.ts의 영구 301 redirect로 슬러그 URL로 자동 이동
+
+### 13-2. Title Tag (60자 이내)
+```
+{name} ({code}) ETF | 구성종목·분배금·주가 실시간 갱신
+```
+이유: "ETF" 키워드 = "{ETF명} ETF" 검색 직접 매칭. "실시간 갱신" = freshness 신호.
+
+### 13-3. Meta Description
+- 시세 있는 종목: `현재가 ${price}원, 전일대비 ±${rate}%. 주요 구성: ${holding1}, ${holding2} 등 TOP 10. 분배금·분배락일·투자 포인트·관련 분석을 한 페이지에.`
+- 시세 없는 종목 (minimal): `KRX 상장 종목. 주요 구성: ... 등 TOP 10. 운용사·섹터·구성종목·관련 분석을 정리한 종목 사전.`
+
+이유: 구성종목 이름 = 롱테일 검색 ("라인메탈 ETF") 매칭.
+
+### 13-4. H1 패턴
+```
+{name} (Ticker: {code}) 분석 리포트
+```
+이유: 코드도 H1에 포함 = 코드 검색 사용자 확보. "분석 리포트" = 검색 의도 매칭.
+
+### 13-5. H2 번호 + 키워드 강제 (모든 ETF 동일 구조)
+```
+1. 실시간 시세 및 수익률 ({YYYY-MM-DD} 기준)   — 시세 있을 때
+1. {name} 종목 정보                          — 시세 없을 때 (minimal)
+2. 주요 구성 종목 (Top 10)                   — holdings 있을 때
+3. 분배금·분배락일 정보                       — income ETF만
+4. {sector} 투자 포인트                       — 섹터별 정형 템플릿
+5. {sector} 다른 ETF                         — 같은 섹터 카드 그리드
+6. {issuer} 다른 ETF                         — 같은 운용사 카드 그리드
+7. {name} 관련 분석 ({n}편)                  — 매칭되는 글 있을 때
+```
+
+### 13-6. JSON-LD 스키마 (3종 의무)
+- **BreadcrumbList**: 홈 > 종목 사전 > {name} ({code})
+- **FinancialProduct**: `name`, `identifier: code`, **`tickerSymbol: code` (의무)**, `description`, `url`, `category: 'ETF'`
+- **Dataset**: 데이터 갱신일·출처 (`한국거래소(KRX) 공공데이터 포털`)
+
+### 13-7. 시각 구성 (UX·SEO 동시)
+- **Hero eyebrow 영역**: 코드 pill (파랑) + 섹터 pill (골드) + 시세 있을 때 freshness pill (`📅 YYYY-MM-DD 갱신`, 초록)
+- **시세 stats**: 6 카드 그리드 (현재가/전일대비/거래량/거래대금/시가-고가-저가/시가총액). 등락 색상 = 빨강(상승)/파랑(하락)
+- **구성종목**: HoldingsPanel detail variant. 이름·코드·비중 표
+- **투자 포인트**: 섹터 한 줄 요약 + 3~5개 카드 (모멘텀·리스크·핵심 변수)
+- **다른 ETF 추천**: 카드 그리드 (코드+운용사+이름+등락률, 6개 limit)
+- **운용사 외부 링크**: 페이지 하단 (`rel="noopener noreferrer"` + `target="_blank"`) — E-E-A-T 외부 권위
+
+### 13-8. 데이터 무결성
+- 모든 코드 표기는 KRX 공식 단축코드(`srtnCd`) 기준 ([data/krx-etf-codes.json](data/krx-etf-codes.json))
+- 슬러그는 영구 불변 (이름 변경되어도 슬러그 유지) — 외부 링크 보존
+- 시세 없는 995종은 minimal 모드: KRX 메타(코드·이름·운용사·섹터)만 표시 + "시세 갱신 예정" pill
+
+### 13-9. 미래 보장 (자동화)
+- 신규 ETF: GitHub Actions cron `weekly-etf-fetch.yml` 매주 월요일 09:00 KST에 `fetch:etf-codes + generate:etf-slugs` 자동 실행. 신규 ETF 자동 매핑·prerender·sitemap 등록.
+- 기존 ETF 이름 변경: 슬러그 불변, 표시 이름만 갱신
+
+### 13-10. 영구 검증
+- HarnessDeployer `validateEtfPage()`: 빌드 후 prerender HTML 5종 sample 검증
+  - title 패턴 매칭 (`* ETF | *`)
+  - H1 코드 병기 (`(Ticker: *)`)
+  - schema.org/FinancialProduct + tickerSymbol 존재
+  - 필수 H2 섹션 (1~7) 존재 여부
+- `npm run audit:seo`에서 /etf/{slug} sample 5개 점검
+
+---
+
 이 문서를 수정할 때는 동일 커밋에서:
 1. `agents/8_harness_deployer.js`의 검증 로직도 함께 업데이트
 2. `CLAUDE.md` 규칙과 충돌 없는지 확인

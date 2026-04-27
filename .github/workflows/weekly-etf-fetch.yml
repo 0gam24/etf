@@ -1,0 +1,71 @@
+name: Weekly KRX ETF Codes Fetch
+
+# KRX 신규 상장 ETF 자동 흡수 — 매주 월요일 KST 09:00 = UTC 일요일 00:00.
+# 1) data.go.kr getETFPriceInfo 1500종 fetch → data/krx-etf-codes.json
+# 2) generate-etf-slugs.mjs → data/etf-slug-map.json (기존 매핑 보존, 신규만 추가)
+# 3) 변경된 파일이 있으면 커밋·푸시 → Cloudflare 자동 배포 → 신규 ETF 페이지 자동 노출
+on:
+  schedule:
+    # UTC 일요일 00:00 = 월요일 09:00 KST
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+concurrency:
+  group: weekly-etf-fetch
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: write
+
+    env:
+      TZ: Asia/Seoul
+      DATA_GO_KR_API_KEY: ${{ secrets.DATA_GO_KR_API_KEY }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch KRX ETF codes
+        run: npm run fetch:etf-codes
+
+      - name: Generate ETF slugs (preserve existing)
+        run: npm run generate:etf-slugs
+
+      - name: Audit slug map vs KRX
+        run: |
+          echo "📊 KRX 종목 수:"
+          node -e "console.log(require('./data/krx-etf-codes.json').count)"
+          echo "📊 슬러그 매핑 종목 수:"
+          node -e "console.log(require('./data/etf-slug-map.json').count)"
+
+      - name: Commit changes (only if changed)
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/krx-etf-codes.json data/etf-slug-map.json
+          if git diff --cached --quiet; then
+            echo "변경 없음 — 스킵"
+          else
+            DATE=$(date +%Y-%m-%d)
+            git commit -m "data(etf): KRX 신규 ETF 자동 흡수 ($DATE) [skip ci]"
+            git push origin main
+            echo "✅ 신규 ETF 매핑 push 완료"
+          fi

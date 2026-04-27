@@ -112,16 +112,18 @@ async function main() {
     }
   }
 
-  // 3) E-E-A-T 핵심 페이지 — /about + /author/* + /etf 인덱스 + /etf/{ticker} 샘플
+  // 3) E-E-A-T 핵심 페이지 + /etf 신규 슬러그 URL 샘플
   console.log('\n[parity] checking E-E-A-T + ETF dictionary core pages...');
   const eeatPaths = [
     '/about',
-    '/author/pb_kim',     // AI 에이전트 K
-    '/author/data_lee',   // AI 에이전트 L
-    '/etf',               // 종목 사전 인덱스
-    '/etf/0080g0',        // KODEX 방산TOP10 (시세 풀)
-    '/etf/069500',        // KODEX 200 (minimal mode)
-    '/etf/091160',        // KODEX 반도체 (minimal mode)
+    '/author/pb_kim',                       // AI 에이전트 K
+    '/author/data_lee',                     // AI 에이전트 L
+    '/etf',                                 // 종목 사전 인덱스
+    '/etf/kodex-defense-top10',             // 슬러그 신규 URL (시세 풀)
+    '/etf/kodex-200',                       // 슬러그 (minimal mode)
+    '/etf/kodex-semiconductor',             // 슬러그 (minimal mode)
+    '/etf/kodex-battery',                   // 슬러그
+    '/etf/0080g0',                          // 코드 URL → 슬러그로 301 redirect 확인
     '/sitemap.xml',
     '/robots.txt',
     '/resources',
@@ -137,14 +139,14 @@ async function main() {
     }
   }
 
-  // 4) sitemap.xml 안에 /etf/* + /about 포함 여부 (핵심 SEO 시그널 확인)
+  // 4) sitemap.xml 안에 /etf/{slug} + /about 포함 여부 (핵심 SEO 시그널 확인)
   console.log('\n[parity] checking sitemap content...');
-  const smr = await probeContains(`${SITE}/sitemap.xml`, '/etf/0080g0');
+  const smr = await probeContains(`${SITE}/sitemap.xml`, '/etf/kodex-defense-top10');
   if (!smr.contains) {
-    failures.push({ kind: 'sitemap', url: `${SITE}/sitemap.xml`, missing: '/etf/0080g0' });
-    console.log('  ✗ sitemap.xml — /etf/0080g0 누락');
+    failures.push({ kind: 'sitemap', url: `${SITE}/sitemap.xml`, missing: '/etf/kodex-defense-top10' });
+    console.log('  ✗ sitemap.xml — /etf/kodex-defense-top10 누락');
   } else {
-    console.log('  ✓ sitemap.xml — /etf/0080g0 포함');
+    console.log('  ✓ sitemap.xml — /etf/kodex-defense-top10 포함');
   }
   const smr2 = await probeContains(`${SITE}/sitemap.xml`, '/about');
   if (!smr2.contains) {
@@ -152,6 +154,27 @@ async function main() {
     console.log('  ✗ sitemap.xml — /about 누락');
   } else {
     console.log('  ✓ sitemap.xml — /about 포함');
+  }
+
+  // 5) /etf/{slug} 페이지 SEO 구조 검증 (SEO.md 규칙 13)
+  console.log('\n[parity] checking /etf/{slug} SEO structure (SEO.md 13)...');
+  const sampleSlug = '/etf/kodex-defense-top10';
+  const etfHtmlReq = await fetch(`${SITE}${sampleSlug}`, { headers: { 'User-Agent': 'parity-check/1.0' } }).catch(() => null);
+  const etfHtml = etfHtmlReq && etfHtmlReq.ok ? await etfHtmlReq.text() : '';
+  const checks = [
+    { label: 'Title에 "ETF" 포함', test: /<title>[^<]*ETF[^<]*<\/title>/.test(etfHtml) },
+    { label: 'H1에 "(Ticker: " 포함', test: /<h1[^>]*>[\s\S]*?\(Ticker:\s*[^)]+\)/.test(etfHtml) },
+    { label: 'FinancialProduct 스키마', test: /"@type"\s*:\s*"FinancialProduct"/.test(etfHtml) },
+    { label: 'tickerSymbol 필드', test: /"tickerSymbol"/.test(etfHtml) },
+    { label: '투자 포인트 섹션', test: /투자 포인트/.test(etfHtml) },
+  ];
+  for (const c of checks) {
+    if (!c.test) {
+      failures.push({ kind: 'etf-seo', url: `${SITE}${sampleSlug}`, missing: c.label });
+      console.log(`  ✗ ${sampleSlug} — ${c.label} 누락`);
+    } else {
+      console.log(`  ✓ ${sampleSlug} — ${c.label}`);
+    }
   }
 
   // 5) AI 공시 컴포넌트 — 핵심 글 1편에서 'AI 분석 에이전트' 텍스트 노출 확인
