@@ -873,6 +873,61 @@ function injectLsiKeywords(article, strategy) {
   return { ...article, content: newContent, wordCount: newContent.length };
 }
 
+/**
+ * 비교 가치 섹션 — Google E-E-A-T "Why is this content different/better?" 신호.
+ *   카테고리별 정형 차별점을 글 하단에 자동 부착. AI 동적 생성 X (신뢰성).
+ */
+const COMPARISON_BY_CATEGORY = {
+  pulse:    [
+    '뉴스 요약 사이트와 달리 **KRX 일별 거래량·섹터 자금 흐름 수치를 직접 추출**해 분석합니다.',
+    '단순 시세 알림이 아니라 **4050 자산 점검 관점**의 액션을 함께 제시합니다.',
+    '데이터는 매일 09:00 자동 갱신, 출처(`KRX 공공데이터·한국은행 ECOS`)를 글마다 명시합니다.',
+  ],
+  surge:    [
+    '"왜 올랐는가"를 **뉴스 + 거래량 z-score + 섹터 동조도**로 함께 검증합니다.',
+    '추격 매수 권유가 아니라, **분할 진입·리스크 라벨·관전 포인트**로 정리합니다.',
+    'AI 분석 모델의 데이터 출처와 방법론을 글마다 공개합니다 (실존 인물 사칭 X).',
+  ],
+  flow:     [
+    '단편적 "수급 지표"가 아니라, **섹터별 자금 누적 흐름 + 매크로 회귀**를 함께 봅니다.',
+    '국내 ETF 1095종 중 **거래대금·외국인 매매동향**을 동시 추적합니다.',
+    '주간 트렌드와 일별 변동을 분리해 noise vs signal 구분에 도움이 되도록 정리합니다.',
+  ],
+  income:   [
+    '단순 "분배율 랭킹"이 아니라, **분배 안정성 등급 + 계좌별 세후 수익률 시뮬레이션**까지 산출합니다.',
+    'ISA·연금저축·IRP 한도와 세제를 분배금 계산에 직접 반영합니다.',
+    '커버드콜 구조의 한계(상승장 시세 차익 제한)도 함께 설명합니다.',
+  ],
+  breaking: [
+    '뉴스 헤드라인 단편이 아니라, **거래량 TOP 3 ETF의 등락 원인·관련 뉴스·구성종목**을 한 페이지에 정리합니다.',
+    '같은 섹터 다른 ETF와의 등락 격차도 함께 비교합니다.',
+    '면책·출처를 명시해 의사결정의 근거 자료로 활용 가능합니다.',
+  ],
+};
+
+function buildComparisonSection(strategy) {
+  const cat = strategy.templateType || strategy.category;
+  const items = COMPARISON_BY_CATEGORY[cat];
+  if (!items || items.length === 0) return '';
+  return [
+    '',
+    '## 🆚 이 분석이 다른 결과와 다른 점',
+    '',
+    ...items.map(s => `- ${s}`),
+    '',
+  ].join('\n');
+}
+
+/** 본문에 비교 가치 섹션 자동 삽입 (이미 있으면 skip) */
+function injectComparisonSection(article, strategy) {
+  if (!article || !article.content) return article;
+  if (article.content.includes('## 🆚 이 분석이 다른 결과와 다른 점')) return article;
+  const block = buildComparisonSection(strategy);
+  if (!block) return article;
+  const newContent = article.content.replace(/(\n)?$/, `\n${block}`);
+  return { ...article, content: newContent, wordCount: newContent.length };
+}
+
 // ───── run ─────
 async function run({ today, previousResults, rejectionFeedback }) {
   logger.log(AGENT_NAME, '🚀 PulseAnalyst 본문 작성 시작');
@@ -895,8 +950,9 @@ async function run({ today, previousResults, rejectionFeedback }) {
     const newsForStrategy = newsByKeyword[strategy.keyword] || null;
     const context = { etfData, economicData, pulseImage, news: newsForStrategy };
     const rawArticle = await generateArticle(strategy, context, rejectionFeedback);
-    // LSI 키워드 자동 삽입 (롱테일 검색 흡수 + 의미 깊이 신호)
-    const article = injectLsiKeywords(rawArticle, strategy);
+    // LSI 키워드 + 비교 가치 섹션 자동 삽입 (롱테일 검색 + E-E-A-T 차별화)
+    const withLsi = injectLsiKeywords(rawArticle, strategy);
+    const article = injectComparisonSection(withLsi, strategy);
     articles.push(article);
     state.saveData(AGENT_NAME, 'processed', `article_${today}_${article.slug}.json`, article);
     logger.log(AGENT_NAME, `  📄 [${article.templateType}] ${article.wordCount}자 (${article.generatedBy || 'unknown'})`);

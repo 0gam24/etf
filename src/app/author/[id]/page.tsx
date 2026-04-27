@@ -105,6 +105,20 @@ export default async function AuthorPage({ params }: PageProps) {
         <p className="author-disclosure-foot">{AI_DISCLOSURE}</p>
       </section>
 
+      {/* Experience 사례 자리 — Google E-E-A-T 2025 신규 강조 항목.
+          AI 자동 생성 X (YMYL 분야 신뢰성) — 운영팀이 수동 큐레이션 후 채워 넣음. */}
+      <section className="author-experience-placeholder" aria-labelledby="experience-heading">
+        <h2 id="experience-heading" className="author-experience-h2">
+          이 모델로 분석된 실제 사례
+        </h2>
+        <p className="author-experience-desc">
+          검증된 실전 사례를 정기적으로 추가하고 있습니다. 본 분석 모델로 산출한 시그널이 실제 시장에서 어떻게 적용됐는지, 후속 가격 변화·분배금 입금·계좌 수익률 변화를 함께 추적해 사례로 정리합니다.
+        </p>
+        <p className="author-experience-note">
+          실제 사용자 후기·운영팀 검증 사례는 분기마다 추가됩니다. 본 모델 활용 사례를 공유해 주시면 검토 후 익명으로 게재합니다.
+        </p>
+      </section>
+
       <RecommendBox position="top" />
 
       <section className="post-list">

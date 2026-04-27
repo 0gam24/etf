@@ -12,6 +12,7 @@ import ReadingProgress from '@/components/ReadingProgress';
 import ShareRow from '@/components/ShareRow';
 import Toc from '@/components/Toc';
 import AiAgentDisclosure from '@/components/AiAgentDisclosure';
+import HelpfulFeedback from '@/components/HelpfulFeedback';
 import HoldingsPanel from '@/components/HoldingsPanel';
 import PostRelatedEtfs from '@/components/PostRelatedEtfs';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -313,6 +314,8 @@ export default async function PostPage({ params }: PageProps) {
               </div>
             </section>
           )}
+
+          <HelpfulFeedback contentId={`${category}/${slug}`} category={category} />
 
           <AiAgentDisclosure author={authorMeta} variant="inline" />
 

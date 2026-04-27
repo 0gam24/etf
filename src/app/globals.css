@@ -7810,6 +7810,90 @@ a.scenario-card:hover .scenario-card-cta {
 .etf-dict-related-card-change.is-up { color: #EF4444; }
 .etf-dict-related-card-change.is-down { color: #60A5FA; }
 
+/* HelpfulFeedback — 글 하단 사용자 만족도 신호 (E-E-A-T) */
+.helpful-feedback {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.625rem;
+  text-align: center;
+}
+.helpful-feedback-question {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.875rem;
+}
+.helpful-feedback-buttons {
+  display: inline-flex;
+  gap: 0.625rem;
+  justify-content: center;
+}
+.helpful-feedback-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.helpful-feedback-btn:hover {
+  border-color: rgba(212,175,55,0.5);
+  color: var(--text-primary);
+}
+.helpful-feedback-btn-up:hover { background: rgba(16,185,129,0.08); color: #10B981; border-color: rgba(16,185,129,0.4); }
+.helpful-feedback-btn-down:hover { background: rgba(244,114,182,0.08); color: #F472B6; border-color: rgba(244,114,182,0.4); }
+.helpful-feedback-thanks {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  color: #10B981;
+  font-weight: 600;
+}
+
+/* Authority 외부 권위 링크 (hero 하단) — E-E-A-T Trustworthiness 신호 */
+.etf-dict-authority {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.etf-dict-authority-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.etf-dict-authority-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.65rem;
+  background: rgba(96,165,250,0.08);
+  border: 1px solid rgba(96,165,250,0.2);
+  border-radius: 0.4rem;
+  color: #60A5FA;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.etf-dict-authority-link:hover {
+  background: rgba(96,165,250,0.15);
+  border-color: rgba(96,165,250,0.4);
+}
+
 /* Phase 3B — 운용사 공식 외부 링크 */
 .etf-dict-official-link {
   margin: 1.5rem 0 0;
@@ -8450,10 +8534,41 @@ a.scenario-card:hover .scenario-card-cta {
   word-break: keep-all;
 }
 
+/* Experience 사례 placeholder (E-E-A-T) */
+.author-experience-placeholder {
+  max-width: 48rem;
+  margin: 1.5rem auto 2.5rem;
+  padding: 1.5rem 1.875rem;
+  background: rgba(255,255,255,0.025);
+  border: 1px dashed rgba(255,255,255,0.12);
+  border-radius: 0.75rem;
+}
+.author-experience-h2 {
+  font-size: 1.075rem;
+  font-weight: 700;
+  margin: 0 0 0.875rem 0;
+  color: var(--text-primary);
+}
+.author-experience-desc {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin: 0 0 0.875rem 0;
+}
+.author-experience-note {
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  margin: 0;
+  padding-top: 0.875rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
 @media (max-width: 640px) {
   .author-hero-avatar { width: 4rem; height: 4rem; font-size: 1.6rem; }
   .author-hero-tag { font-size: 0.72rem; padding: 0.25rem 0.625rem; }
   .author-disclosure { padding: 1.25rem 1.25rem; margin: 1.5rem auto; }
   .author-disclosure-h2 { font-size: 1rem; }
+  .author-experience-placeholder { padding: 1.25rem; }
 }
 

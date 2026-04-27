@@ -214,6 +214,45 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
             ? `${displayName} ETF — 오늘 시세, 구성종목, 분배금, 투자 포인트 한 페이지 정리. 매일 09:00 갱신.`
             : `${displayName} ETF — ${issuerLabel ? `${issuerLabel.split(' ')[0]} 운용 · ` : ''}단축코드 ${displayCode}. 한국거래소(KRX) 상장 종목 정보.`}
         </p>
+
+        {/* Authority 외부 권위 링크 — Google E-E-A-T (Trustworthiness) 신호 */}
+        <div className="etf-dict-authority" aria-label="공식 자료 출처">
+          <span className="etf-dict-authority-label">공식 자료:</span>
+          <a
+            href={`https://kind.krx.co.kr/common/disclsviewer.do?method=search&searchCodeType=&forward=corpsearch&searchCorpName=${encodeURIComponent(displayName)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="etf-dict-authority-link"
+            title="KRX 한국거래소 종목 정보"
+          >KRX 종목정보 ↗</a>
+          <a
+            href={`https://dart.fss.or.kr/dsab007/main.do?textCrpNm=${encodeURIComponent(displayName)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="etf-dict-authority-link"
+            title="금융감독원 전자공시"
+          >DART 공시 ↗</a>
+          {issuerLabel && (() => {
+            const officialUrl = getIssuerOfficialUrl(displayName);
+            if (!officialUrl) return null;
+            return (
+              <a
+                href={officialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="etf-dict-authority-link"
+                title={`${issuerLabel.split(' ')[0]} 공식 안내`}
+              >{issuerLabel.split(' ')[0]} 공식 ↗</a>
+            );
+          })()}
+          <a
+            href="https://www.fss.or.kr/edu/main/main.do"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="etf-dict-authority-link"
+            title="금융감독원 금융 교육"
+          >금감원 투자자교육 ↗</a>
+        </div>
       </header>
 
       {/* 시세 요약 — 시세 데이터가 있을 때만 */}
