@@ -1,9 +1,13 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import TickerStrip from "@/components/TickerStrip";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollRevealProvider from "@/components/ScrollRevealProvider";
+
+// Google Analytics 4 — 사이트 트래픽·HelpfulFeedback·Threads UTM 추적
+const GA4_ID = 'G-LRB1GBGQDN';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL || 'https://iknowhowinfo.com'),
@@ -41,6 +45,12 @@ export const metadata: Metadata = {
       follow: true,
       'max-image-preview': 'large',
       'max-snippet': -1,
+    },
+  },
+  // 검색엔진 사이트 소유 확인 (Naver Search Advisor)
+  verification: {
+    other: {
+      'naver-site-verification': 'c80bf43073cfdf2dd0a8056b3f3c62a914bcbd66',
     },
   },
 };
@@ -101,6 +111,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
+      <head>
+        {/* Google Analytics 4 — afterInteractive 전략으로 LCP 영향 최소화 */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA4_ID}');`}
+        </Script>
+      </head>
       <body>
         <script
           type="application/ld+json"
