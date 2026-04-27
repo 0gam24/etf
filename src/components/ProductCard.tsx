@@ -31,7 +31,11 @@ export default function ProductCard({ product, variant = 'full' }: Props) {
 
   const cover = product.image ? (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={product.image} alt="" loading="lazy" />
+    <img
+      src={product.image}
+      alt={`${product.title}${product.source ? ` — ${product.source}` : ''} 표지`}
+      loading="lazy"
+    />
   ) : (
     <div className="product-card-cover-placeholder">
       <Icon size={variant === 'mini' ? 22 : 28} strokeWidth={1.6} aria-hidden />
