@@ -24,7 +24,19 @@ function scanAllPosts() {
   const posts = [];
   if (!fs.existsSync(contentDir)) return posts;
 
+  // realpath 추적으로 symlink 순환 방지 (content/foo → content 같은 자기참조)
+  const visited = new Set();
+
   function walk(dir, prefix = '') {
+    let realDir;
+    try {
+      realDir = fs.realpathSync(dir);
+    } catch {
+      return; // 깨진 심볼릭 링크 등
+    }
+    if (visited.has(realDir)) return;
+    visited.add(realDir);
+
     const entries = fs.readdirSync(dir, { withFileTypes: true });
     for (const entry of entries) {
       const full = path.join(dir, entry.name);

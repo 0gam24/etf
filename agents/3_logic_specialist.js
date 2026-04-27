@@ -163,7 +163,7 @@ ${top3.map((e, i) => `${i + 1}. ${e.name} (${e.code}) · ${e.price.toLocaleStrin
 **섹터 리더:** ${strategy.leadSector?.sector || '-'} (평균 ${strategy.leadSector?.avgChangeRate >= 0 ? '+' : ''}${strategy.leadSector?.avgChangeRate || 0}%)
 
 **섹터별 평균 등락률 (상위 5):**
-${sectorFlow.map(x => `- ${x.sector}: ${x.avgChangeRate >= 0 ? '+' : ''}${x.avgChangeRate}% (거래대금 ${Math.round(x.totalAmount / 1e8).toLocaleString()}억)`).join('\n')}
+${sectorFlow.filter(x => x && x.sector).map(x => `- ${x.sector}: ${(x.avgChangeRate ?? 0) >= 0 ? '+' : ''}${x.avgChangeRate ?? 0}% (거래대금 ${Math.round((x.totalAmount || 0) / 1e8).toLocaleString()}억)`).join('\n')}
 
 **거시:** 기준금리 ${ind.baseRate || '-'}% · 환율 ${ind.exchangeRate || '-'}원
 
@@ -203,7 +203,7 @@ ${sectorFlow.map(x => `- ${x.sector}: ${x.avgChangeRate >= 0 ? '+' : ''}${x.avgC
 
     if (portfolio?.type === 'basket') {
       holdingsBlock = `**${portfolio.name}이(가) 담고 있는 구성종목 (비중 상위 ${topN}):**
-${holdings.map(h => `${h.rank}. ${h.name} (${h.code}) · 비중 ${h.weight}% · ${h.note || ''}`).join('\n')}
+${holdings.map((h, idx) => `${h.rank || (idx + 1)}. ${h.name || '미명시 종목'} (${h.code || '-'}) · 비중 ${typeof h.weight === 'number' ? h.weight : '-'}% · ${h.note || ''}`).join('\n')}
 자료: ${portfolio.source} · ${portfolio.updated}`;
 
       section4Instruction = `4. ## ${portfolio.name}이(가) 담은 ${portfolio.holdings.length}개 기업 TOP ${topN}

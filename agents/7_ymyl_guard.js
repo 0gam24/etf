@@ -89,11 +89,17 @@ const AUTO_REPLACE_MAP = [
 /**
  * 자동 수정 시도 → 수정된 콘텐츠 + 수정 카운트 반환.
  *   `validateArticle` 전에 호출. 수정 후에도 issue 남으면 reject.
+ *
+ *   ⚠️ 패턴 오버래핑 회피 — 긴 패턴 우선 적용 후 짧은 패턴.
+ *      예: "무조건 수익을 보장" → 짧은 "수익을 보장"이 먼저 매칭되면 부자연스러운 결과.
+ *      pattern.source 길이 기준 desc 정렬 후 순차 치환.
  */
 function autoFixArticle(article) {
   let content = article.content;
   let fixed = 0;
-  for (const { pattern, replacement } of AUTO_REPLACE_MAP) {
+  // pattern.source 길이 desc → 긴 매칭 우선 (오버래핑 안전)
+  const sortedMap = AUTO_REPLACE_MAP.slice().sort((a, b) => b.pattern.source.length - a.pattern.source.length);
+  for (const { pattern, replacement } of sortedMap) {
     const matches = content.match(pattern);
     if (matches) {
       content = content.replace(pattern, replacement);

@@ -79,9 +79,15 @@ function saveData(agentName, dataType, fileName, data) {
     data: data,
   };
 
-  fs.writeFileSync(filePath, JSON.stringify(wrappedData, null, 2), 'utf-8');
-  console.log(`💾 [${agentName}] 저장 완료: ${filePath}`);
-  return filePath;
+  // fs.writeFileSync 실패는 로그만 — pipeline 전체 중단 회피 (disk full · perm 등 비치명 케이스)
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(wrappedData, null, 2), 'utf-8');
+    console.log(`💾 [${agentName}] 저장 완료: ${filePath}`);
+    return filePath;
+  } catch (err) {
+    console.warn(`⚠️ [${agentName}] 저장 실패 (${filePath}): ${err.message} — pipeline 계속 진행`);
+    return null;
+  }
 }
 
 /**
