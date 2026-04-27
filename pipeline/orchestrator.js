@@ -8,9 +8,32 @@
 
 require('./env'); // .env.local 자동 로드 (Node 직접 실행 시 필수)
 
+const fs = require('fs');
+const path = require('path');
 const state = require('./state_manager');
 const logger = require('./logger');
 const { runSecurityCheck, printReport } = require('./security_guard');
+
+/**
+ * 직전 발행 시 사용한 거래일(baseDate) 기록 파일.
+ *   같은 거래일이면 새 글 못 만들 거라 pipeline 중단 — workflow run 시간·token 절약.
+ */
+const LAST_BASE_DATE_FILE = path.join(__dirname, '..', 'data', '.last-pulse-base-date');
+
+function readLastBaseDate() {
+  try {
+    if (!fs.existsSync(LAST_BASE_DATE_FILE)) return null;
+    return fs.readFileSync(LAST_BASE_DATE_FILE, 'utf-8').trim();
+  } catch { return null; }
+}
+
+function writeLastBaseDate(baseDate) {
+  try {
+    fs.writeFileSync(LAST_BASE_DATE_FILE, baseDate, 'utf-8');
+  } catch (err) {
+    logger.warn('Orchestrator', `last-base-date 저장 실패: ${err.message}`);
+  }
+}
 
 const DataMiner       = require('../agents/1_data_miner');
 const SeoArchitect    = require('../agents/2_seo_architect');
@@ -91,6 +114,26 @@ async function runPipeline() {
       results[name] = result;
       state.logPipelineStep(name, 'completed', { outputSummary: result?.summary || 'OK' });
       logger.success(name, `${description} 완료!`);
+
+      // DataMiner 직후: 거래일이 직전 발행과 동일하면 pipeline 조기 종료
+      if (name === 'DataMiner') {
+        const currentBaseDate = result?.etfData?.baseDate || '';
+        const lastBaseDate = readLastBaseDate();
+        if (currentBaseDate && lastBaseDate && currentBaseDate === lastBaseDate) {
+          logger.warn('Orchestrator', `⏸  거래일(${currentBaseDate}) 직전 발행과 동일 — KRX 휴장·갱신 지연으로 추정. 새 글 생성 skip.`);
+          logger.warn('Orchestrator', '   (다음 거래일 데이터가 들어오면 자동 진행. 강제 발행 필요시 data/.last-pulse-base-date 삭제)');
+          return results; // 즉시 종료 — 후속 에이전트 모두 skip
+        }
+      }
+
+      // HarnessDeployer 직후: 실제 발행됐으면 baseDate 갱신
+      if (name === 'HarnessDeployer' && (result?.published || []).length > 0) {
+        const currentBaseDate = results.DataMiner?.etfData?.baseDate;
+        if (currentBaseDate) {
+          writeLastBaseDate(currentBaseDate);
+          logger.success('Orchestrator', `📌 last-base-date 갱신 → ${currentBaseDate}`);
+        }
+      }
 
       // UiDesigner 반려 → FrontendPlanner 재기획
       if (name === 'UiDesigner' && result.rejectedLayouts?.length > 0) {
