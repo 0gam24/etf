@@ -7810,6 +7810,113 @@ a.scenario-card:hover .scenario-card-cta {
 .etf-dict-related-card-change.is-up { color: #EF4444; }
 .etf-dict-related-card-change.is-down { color: #60A5FA; }
 
+/* /etf 인덱스 검색·필터 (client-side facet) */
+.etf-search {
+  margin: 1.5rem 0 2rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.75rem;
+}
+.etf-search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.875rem;
+}
+.etf-search-icon {
+  position: absolute;
+  left: 0.875rem;
+  color: var(--text-dim);
+  pointer-events: none;
+}
+.etf-search-input {
+  flex: 1;
+  padding: 0.65rem 0.875rem 0.65rem 2.5rem;
+  background: var(--bg-card, rgba(255,255,255,0.025));
+  border: 1px solid var(--border-color, rgba(255,255,255,0.1));
+  border-radius: 0.5rem;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.etf-search-input:focus { border-color: rgba(212,175,55,0.5); }
+.etf-search-input::placeholder { color: var(--text-muted); }
+.etf-search-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.45rem 0.7rem;
+  background: rgba(244,114,182,0.1);
+  border: 1px solid rgba(244,114,182,0.25);
+  border-radius: 0.5rem;
+  color: #F472B6;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.etf-search-reset:hover { background: rgba(244,114,182,0.2); }
+
+.etf-search-facets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  margin-bottom: 0.875rem;
+}
+.etf-search-facet {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.etf-search-facet-label {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-weight: 700;
+}
+.etf-search-select {
+  padding: 0.4rem 0.625rem;
+  background: var(--bg-card, rgba(255,255,255,0.025));
+  border: 1px solid var(--border-color, rgba(255,255,255,0.1));
+  border-radius: 0.4rem;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+}
+.etf-search-facet-toggle {
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.etf-search-result-count {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+.etf-search-empty {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+.etf-search-results { margin-top: 0.5rem; }
+.etf-search-more {
+  margin: 0.875rem 0 0;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+@media (max-width: 640px) {
+  .etf-search-facets { flex-direction: column; align-items: flex-start; gap: 0.625rem; }
+  .etf-search-facet { width: 100%; justify-content: space-between; }
+  .etf-search-select { flex: 1; max-width: 12rem; }
+}
+
 /* HelpfulFeedback — 글 하단 사용자 만족도 신호 (E-E-A-T) */
 .helpful-feedback {
   margin: 2rem 0;

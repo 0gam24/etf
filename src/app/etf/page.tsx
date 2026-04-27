@@ -11,6 +11,7 @@ import {
   codeToSlug,
 } from '@/lib/data';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import EtfIndexSearch from '@/components/EtfIndexSearch';
 
 export const metadata: Metadata = {
   title: '종목 사전 — KRX 상장 ETF 1000+종 한 페이지 정리 | Daily ETF Pulse',
@@ -154,6 +155,20 @@ export default function EtfIndexPage() {
           {formattedBaseDate && <> 시세 기준일 {formattedBaseDate}.</>}
         </p>
       </header>
+
+      {/* 검색·필터 (client-side 1095종 facet) */}
+      <EtfIndexSearch
+        rows={rows.map(r => ({
+          shortcode: r.shortcode,
+          slug: codeToSlug(r.shortcode),
+          name: r.name,
+          sector: r.sector,
+          issuer: r.issuer,
+          hasPrice: typeof r.price === 'number',
+        }))}
+        sectors={Array.from(new Set(rows.map(r => r.sector).filter((s): s is string => !!s))).sort()}
+        issuers={Array.from(new Set(rows.map(r => r.issuer).filter((i): i is string => !!i))).sort()}
+      />
 
       {/* 거래량 TOP 20 */}
       {topByVolume.length > 0 && (

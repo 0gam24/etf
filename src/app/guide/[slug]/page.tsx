@@ -19,6 +19,10 @@ function guideToProductCategory(slug: string): ProductCategory | undefined {
     'defense-etf':      'defense-etf',
     'ai-semi-etf':      'ai-semi-etf',
     'retirement':       'retirement',
+    // 신규 가이드 (2026-04-27) — 가장 가까운 카테고리에 매핑
+    'us-dividend':      'income',          // 배당 → income
+    'currency-hedge':   'general',         // 환헤지 → 일반
+    'overseas-etf':     'general',         // 해외 직구 → 일반
   };
   return map[slug];
 }

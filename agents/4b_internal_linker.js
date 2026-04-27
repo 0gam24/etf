@@ -111,6 +111,17 @@ function pickRelated(article, sector, allPosts) {
  */
 const KEYWORD_GUIDE_MAP = [
   // 더 구체적인 키워드를 먼저 — 매칭 우선순위
+  { keyword: '미국 배당주 ETF',    slug: 'us-dividend' },
+  { keyword: '미국 배당 ETF',      slug: 'us-dividend' },
+  { keyword: '배당주 ETF',         slug: 'us-dividend' },
+  { keyword: 'SCHD',              slug: 'us-dividend' },
+  { keyword: '환헤지 ETF',         slug: 'currency-hedge' },
+  { keyword: '환헤지',             slug: 'currency-hedge' },
+  { keyword: '환헷지',             slug: 'currency-hedge' },
+  { keyword: '해외 ETF',           slug: 'overseas-etf' },
+  { keyword: '해외상장',           slug: 'overseas-etf' },
+  { keyword: 'SPY',               slug: 'overseas-etf' },
+  { keyword: 'QQQ',               slug: 'overseas-etf' },
   { keyword: '월배당 ETF',        slug: 'monthly-dividend' },
   { keyword: '커버드콜 ETF',      slug: 'covered-call' },
   { keyword: '방산 ETF',          slug: 'defense-etf' },
@@ -134,6 +145,9 @@ const ANCHOR_VARIATIONS = {
   'defense-etf':      ['방산 ETF', '방산 ETF 비교', 'K-방산 ETF 가이드'],
   'ai-semi-etf':      ['AI 반도체 ETF', 'AI ETF 가이드', '반도체 ETF 비교'],
   'retirement':       ['은퇴 자산 가이드', 'IRP·ISA 비교', '연금저축 ETF 가이드', '4050 자산 설계'],
+  'us-dividend':      ['미국 배당주 ETF', 'SCHD 한국판 비교', '미국 배당 ETF 가이드'],
+  'currency-hedge':   ['환헤지 ETF 가이드', '환헷지 vs 비헷지', '환헤지 비용 정리'],
+  'overseas-etf':     ['해외 ETF 직구 가이드', 'SPY vs KODEX 비교', '해외상장 ETF 세금'],
 };
 
 function pickAnchorVariation(slug, articleSlug, fallback) {
