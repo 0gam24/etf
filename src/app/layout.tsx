@@ -47,10 +47,11 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  // 검색엔진 사이트 소유 확인 (Naver Search Advisor)
+  // 검색엔진 사이트 소유 확인 (Naver Search Advisor + Bing Webmaster Tools)
   verification: {
     other: {
       'naver-site-verification': 'c80bf43073cfdf2dd0a8056b3f3c62a914bcbd66',
+      'msvalidate.01': '3FFCB7BA4AF3D296367F2023230FD9E6',
     },
   },
 };
