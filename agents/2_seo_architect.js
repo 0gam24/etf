@@ -42,12 +42,49 @@ const ACCOUNT_KEYWORDS = [
 /**
  * surge 템플릿용 전략 생성 (거래량 1위 종목의 급등 사유 분석)
  */
+/**
+ * 모멘텀 스코어 — 거래량·등락률 기반 0~100 정규화.
+ *   거래량 z-score(상위 10 평균 대비) + |등락률| 곱.
+ *   80+ = 강한 모멘텀 → CPC 1.5배 boost
+ *   60+ = 중간 → CPC 1.2배
+ *   else = 1.0배 (변화 없음)
+ */
+function computeMomentumScore(etf, etfList = []) {
+  if (!etf) return 0;
+  const volumes = etfList.map(e => e.volume || 0).filter(v => v > 0).slice(0, 30);
+  const avgVol = volumes.length ? volumes.reduce((a, b) => a + b, 0) / volumes.length : 1;
+  const volRatio = avgVol > 0 ? Math.min(5, (etf.volume || 0) / avgVol) : 1; // cap 5x
+  const absChange = Math.min(10, Math.abs(etf.changeRate || 0));              // cap 10%
+  // 0~100 스케일: volRatio(0~5) × absChange(0~10) × 2
+  return Math.min(100, Math.round(volRatio * absChange * 2));
+}
+
+function applyMomentumBoost(baseCpc, score) {
+  if (score >= 80) return Math.round(baseCpc * 1.5);
+  if (score >= 60) return Math.round(baseCpc * 1.2);
+  return baseCpc;
+}
+
+function momentumModifier(score) {
+  if (score >= 80) return '— 강한 모멘텀, 폭발적 거래량';
+  if (score >= 60) return '— 거래량 평소 대비 2배+';
+  return '';
+}
+
 function buildSurgeStrategy(etfData, today) {
   const top = etfData.byVolume?.[0] || etfData.etfList?.[0];
   if (!top) return null;
   const sectorMeta = SECTOR_KEYWORDS[top.sector] || SECTOR_KEYWORDS['기타'];
   const modifier = sectorMeta.modifiers[new Date().getDay() % sectorMeta.modifiers.length];
-  const keyword = `${top.name} 급등 이유 — ${sectorMeta.topic} ${modifier}`;
+
+  // 모멘텀 스코어로 CPC 동적 보정
+  const momentumScore = computeMomentumScore(top, etfData.etfList || []);
+  const boostedCpc = applyMomentumBoost(sectorMeta.cpc, momentumScore);
+  const momentumTag = momentumModifier(momentumScore);
+
+  const keyword = momentumTag
+    ? `${top.name} 급등 이유 — ${sectorMeta.topic} ${modifier} ${momentumTag}`
+    : `${top.name} 급등 이유 — ${sectorMeta.topic} ${modifier}`;
 
   // ETF 구성종목·기초자산 DB 조회 (Phase A 샘플)
   const portfolio = getPortfolio(top.code);
@@ -63,7 +100,8 @@ function buildSurgeStrategy(etfData, today) {
     category: 'surge',
     templateType: 'surge',
     keyword,
-    estimatedCpc: sectorMeta.cpc,
+    estimatedCpc: boostedCpc,
+    momentumScore, // 0~100, downstream 에이전트에서 활용 가능
     tickers: [top.code],
     focusEtf: top,
     portfolio,        // 전체 포트폴리오 메타 (type·description·holdings 등)

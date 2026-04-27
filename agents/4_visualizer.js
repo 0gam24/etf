@@ -150,14 +150,37 @@ function makeIncomeCharts(article, etfData) {
   ];
 }
 
+/** 차트별 SEO·접근성 ALT 텍스트 자동 생성 — Google 이미지 검색 + screen reader 동시 대응 */
+function autoEnrichChartAlt(charts, article) {
+  const ticker = article.tickers?.[0] || '';
+  const date = new Date().toLocaleDateString('ko-KR', { month: 'long', day: 'numeric' });
+  return charts.map(c => {
+    if (c.alt) return c; // 이미 있으면 보존
+    let alt = c.title || '데이터 시각화';
+    // 카테고리·티커 컨텍스트 추가
+    if (article.templateType === 'surge' && ticker) {
+      alt = `${ticker} ${date} ${c.title || '시세 차트'} — Daily ETF Pulse`;
+    } else if (article.templateType === 'pulse') {
+      alt = `${date} ${c.title || 'KRX ETF 일별 시세'} — Daily ETF Pulse`;
+    } else if (article.templateType === 'flow') {
+      alt = `${c.title || '섹터별 자금 흐름'} — KRX 데이터 ${date}`;
+    } else if (article.templateType === 'income') {
+      alt = `${c.title || '월배당 ETF 분배금 비교'} — Daily ETF Pulse`;
+    }
+    return { ...c, alt };
+  });
+}
+
 function generateChartData(article, etfData) {
+  let charts;
   switch (article.templateType || article.category) {
-    case 'pulse': return makePulseCharts(article, etfData);
-    case 'surge': return makeSurgeCharts(article, etfData);
-    case 'flow': return makeFlowCharts(article, etfData);
-    case 'income': return makeIncomeCharts(article, etfData);
-    default: return [];
+    case 'pulse': charts = makePulseCharts(article, etfData); break;
+    case 'surge': charts = makeSurgeCharts(article, etfData); break;
+    case 'flow': charts = makeFlowCharts(article, etfData); break;
+    case 'income': charts = makeIncomeCharts(article, etfData); break;
+    default: charts = [];
   }
+  return autoEnrichChartAlt(charts, article);
 }
 
 async function run({ today, previousResults }) {

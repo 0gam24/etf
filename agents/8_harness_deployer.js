@@ -207,7 +207,55 @@ async function run({ today, previousResults }) {
   await requestGoogleIndexing(published.map(p => `/${p.category}/${p.slug}`));
   logger.success(AGENT_NAME, `🎉 ${published.length}개 발행`);
 
-  return { summary: `${published.length}개 글 발행`, published };
+  // 배포 후 검증 — Cloudflare 배포 완료(약 5분) 후 200 응답 확인.
+  // pipeline 종료를 막지 않도록 백그라운드 fire-and-forget.
+  if (published.length > 0 && process.env.SITE_URL) {
+    schedulePostDeployVerification(published).catch(err =>
+      logger.warn(AGENT_NAME, `post-deploy verification 실패: ${err.message}`),
+    );
+  }
+
+  return { summary: `${published.length}개 글 발행`, published, blocked };
 }
 
-module.exports = { run, validateSeo };
+/**
+ * 배포 후 검증 — Cloudflare 배포 완료 대기 후 200 응답 확인.
+ *   실패 시 logger 알림만 (자동 재배포 X — Cloudflare 빌드는 push로만 트리거).
+ *   GitHub Actions에서 실행 시 timeout 내 완료되도록 5분 한 번만 시도.
+ */
+async function schedulePostDeployVerification(published) {
+  const WAIT_MS = 5 * 60 * 1000; // 5분 대기 후 검증
+  const siteUrl = process.env.SITE_URL.replace(/\/+$/, '');
+  logger.log(AGENT_NAME, `⏱️  ${WAIT_MS / 1000}초 후 배포 검증 시작...`);
+  await new Promise(r => setTimeout(r, WAIT_MS));
+
+  let okCount = 0;
+  const failures = [];
+  for (const p of published) {
+    const url = `${siteUrl}/${p.category}/${p.slug}`;
+    try {
+      const res = await fetch(url, {
+        redirect: 'follow',
+        headers: { 'User-Agent': 'pulse-deploy-verify/1.0' },
+      });
+      if (res.status === 200) {
+        okCount++;
+        logger.success(AGENT_NAME, `  ✅ verify ${url} → 200`);
+      } else {
+        failures.push({ url, status: res.status });
+        logger.warn(AGENT_NAME, `  ⚠️ verify ${url} → HTTP ${res.status}`);
+      }
+    } catch (err) {
+      failures.push({ url, error: err.message });
+      logger.warn(AGENT_NAME, `  ⚠️ verify ${url} → ${err.message}`);
+    }
+  }
+
+  if (failures.length > 0) {
+    logger.warn(AGENT_NAME, `⚠️ 배포 검증 실패 ${failures.length}/${published.length} — Cloudflare 빌드 캐시 확인 필요`);
+  } else {
+    logger.success(AGENT_NAME, `🎯 배포 검증 100% 통과 (${okCount}/${published.length})`);
+  }
+}
+
+module.exports = { run, validateSeo, schedulePostDeployVerification };

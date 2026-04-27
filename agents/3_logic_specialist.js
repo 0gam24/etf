@@ -817,6 +817,62 @@ ${holdings.map(h => `| ${h.rank} | ${h.name} | ${h.code} | ${h.weight}% | ${(h.n
 `;
 }
 
+/**
+ * LSI(Latent Semantic Indexing) 키워드 — 카테고리·섹터별 의미 관련 개념어.
+ *   글 하단에 "💡 함께 알면 좋은 개념" 섹션으로 자동 삽입.
+ *   롱테일 검색 흡수 + Google 의미 깊이 신호 강화.
+ */
+const LSI_BY_CATEGORY = {
+  pulse:    ['장 마감 시황', 'KRX 일별 시세', '코스피 흐름', '거시 지표 영향', '섹터 로테이션', '4050 자산 점검'],
+  surge:    ['거래량 z-score', '단기 모멘텀', '갭 상승', '신고가 분석', '추격 매수 리스크', '분할 진입 전략'],
+  flow:     ['외국인 수급', '기관 매매동향', '섹터별 자금 유입', '주간 자금 흐름', '국고채 금리 영향'],
+  income:   ['ETF 분배율', '커버드콜 옵션 매도', '월배당 캐시플로', 'ISA 비과세 한도', '연금저축 세액공제', '계좌별 세후 수익률'],
+  breaking: ['ETF 속보', '거래량 TOP', '오늘의 시장 이슈', '단기 변동성', '뉴스·종목 연관성'],
+};
+
+const LSI_BY_SECTOR = {
+  '방산':           ['NATO 국방비', '한화에어로스페이스', 'LIG넥스원', 'K-방산 수출', '지정학 리스크'],
+  '조선':           ['LNG 추진선', 'IMO 환경규제', '한화오션', 'HD현대중공업', '수주 잔고'],
+  'AI·데이터':      ['엔비디아 GPU', 'HBM 메모리', '데이터센터 CapEx', 'SK하이닉스', '하이퍼스케일러'],
+  '반도체':         ['HBM3E', 'DDR5', '파운드리', '메모리 사이클', '한미반도체'],
+  '커버드콜·월배당':  ['옵션 매도 프리미엄', '분배 안정성 등급', 'NAV 변동성', 'JEPI 한국판', '월배당 일정'],
+  '해외주식':       ['환헤지 H', 'S&P500 추종', '나스닥100', '미국 빅테크', '환차익'],
+  '국내주식':       ['코스피 200', '밸류업 정책', '주주환원', 'PBR 1배 미만', '시가총액 상위'],
+  '2차전지':       ['리튬·니켈 가격', 'IRA 보조금', '북미 캐파', 'LG에너지솔루션', '양극재'],
+  '바이오·헬스':    ['CDMO 위탁생산', 'GLP-1 비만치료제', '면역항암제', '임상 결과', '삼성바이오로직스'],
+  '채권':          ['듀레이션', '금리 인하 사이클', '미국 국채', '회사채 스프레드', 'TLT'],
+  '원자재·금':     ['금 ETF', '달러 약세 수혜', '안전자산', '인플레이션 헤지', 'GLD'],
+};
+
+function buildLsiSection(strategy) {
+  const cat = strategy.templateType || strategy.category;
+  const sector = strategy.focusEtf?.sector || strategy.leadSector?.sector;
+  const fromCat = LSI_BY_CATEGORY[cat] || [];
+  const fromSector = sector ? (LSI_BY_SECTOR[sector] || []) : [];
+  // 카테고리 + 섹터 합치고 중복 제거 후 6개 cap
+  const merged = [...new Set([...fromCat, ...fromSector])].slice(0, 6);
+  if (merged.length < 4) return '';
+  return [
+    '',
+    '## 💡 함께 알면 좋은 개념',
+    '',
+    '본 분석과 관련된 핵심 개념을 빠르게 짚어보세요.',
+    '',
+    ...merged.map(k => `- **${k}**`),
+    '',
+  ].join('\n');
+}
+
+/** 본문에 LSI 섹션을 disclaimer 직전에 자동 삽입 (이미 있으면 skip) */
+function injectLsiKeywords(article, strategy) {
+  if (!article || !article.content) return article;
+  if (article.content.includes('## 💡 함께 알면 좋은 개념')) return article;
+  const lsiBlock = buildLsiSection(strategy);
+  if (!lsiBlock) return article;
+  const newContent = article.content.replace(/(\n)?$/, `\n${lsiBlock}`);
+  return { ...article, content: newContent, wordCount: newContent.length };
+}
+
 // ───── run ─────
 async function run({ today, previousResults, rejectionFeedback }) {
   logger.log(AGENT_NAME, '🚀 PulseAnalyst 본문 작성 시작');
@@ -838,7 +894,9 @@ async function run({ today, previousResults, rejectionFeedback }) {
     const strategy = strategies[i];
     const newsForStrategy = newsByKeyword[strategy.keyword] || null;
     const context = { etfData, economicData, pulseImage, news: newsForStrategy };
-    const article = await generateArticle(strategy, context, rejectionFeedback);
+    const rawArticle = await generateArticle(strategy, context, rejectionFeedback);
+    // LSI 키워드 자동 삽입 (롱테일 검색 흡수 + 의미 깊이 신호)
+    const article = injectLsiKeywords(rawArticle, strategy);
     articles.push(article);
     state.saveData(AGENT_NAME, 'processed', `article_${today}_${article.slug}.json`, article);
     logger.log(AGENT_NAME, `  📄 [${article.templateType}] ${article.wordCount}자 (${article.generatedBy || 'unknown'})`);

@@ -46,18 +46,24 @@ function buildArticleSchema(article, baseUrl) {
       '@type': 'Person',
       name: persona.name,
       jobTitle: persona.title,
-      description: persona.bio,
+      description: persona.modelDescription || persona.title,
       url: `${baseUrl}/author/${persona.id}`,
+      // AI 에이전트임을 schema에서 투명 공개 (E-E-A-T 정책)
+      additionalType: 'https://schema.org/SoftwareApplication',
+      applicationCategory: 'AnalyticsApplication',
     } : {
       '@type': 'Organization',
       name: 'Daily ETF Pulse',
       url: baseUrl,
     },
     publisher: {
-      '@type': 'Organization',
+      '@type': 'NewsMediaOrganization',
       name: 'Daily ETF Pulse',
       url: baseUrl,
       logo: { '@type': 'ImageObject', url: `${baseUrl}/og-logo.png` },
+      // 발행 책임 명시 — Google E-E-A-T 신뢰 신호
+      publishingPrinciples: `${baseUrl}/about`,
+      correctionsPolicy: `${baseUrl}/about`,
     },
   };
 }

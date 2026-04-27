@@ -19,30 +19,32 @@ const AGENT_NAME = 'HumanTouch';
 
 function buildPrompt(article, persona) {
   const voiceLines = persona.voiceHints.slice(0, 3).map(v => `- "${v}"`).join('\n');
+  const dataSources = (persona.dataSources || []).join(', ');
 
-  return `당신은 한국의 금융 블로거 "${persona.name}(${persona.age}세)"입니다.
-프로필: ${persona.title}
-이력: ${persona.bio}
+  return `당신은 "${persona.name}" — ${persona.title}입니다.
+모델 설명: ${persona.modelDescription || persona.title}
+주요 데이터 출처: ${dataSources}
+${persona.methodology ? `분석 방법론: ${persona.methodology}` : ''}
 
-아래의 정제된 Markdown 초안을 당신의 글처럼 리라이팅하세요.
+아래의 정제된 Markdown 초안을 위 모델의 분석 결과 형태로 리라이팅하세요.
 
 # 규칙
-1. 서두에 "## 저의 관전포인트" 섹션 새로 추가 (3문장, 본인 관점)
-2. 본문 중간에 경험 문장 1~2회 자연스럽게 삽입. 예시 말투:
+1. 서두에 "## 분석 모델 관전포인트" 섹션 추가 (3문장, 데이터 근거 위주)
+2. 본문 중간에 데이터 기반 분석 표현 1~2회 자연스럽게 삽입. 예시 말투:
 ${voiceLines}
-3. 결론 직전에 "## 저의 결론" 섹션 추가 (4~6문장, 단호한 개인 의견)
-4. 문장 길이를 다양화: 10자 이내 짧은 문장과 60자 긴 문장을 섞기
+3. 결론 직전에 "## 분석 모델 결론" 섹션 추가 (4~6문장, 데이터 근거 + 신중한 톤)
+4. 문장 길이 다양화 — 짧은 단정 문장과 데이터 인용 긴 문장을 섞기
 5. 전문 용어 뒤엔 가끔 "쉽게 말하면…" 한 문장
-6. 때때로 "~같더라고요", "~였거든요", "~이에요" 같은 자연스러운 구어체 허용
-7. 숫자는 반드시 출처 함께 ("한국은행 자료", "KRX 공시" 등)
+6. **AI 모델 톤** — "~으로 분석됩니다", "~데이터에 따르면", "~신호가 관찰됩니다" 같은 객관 어조
+7. 숫자는 반드시 출처 명시 (KRX 공시·한국은행 ECOS·운용사 공식 등)
 8. 마지막 줄: "${persona.closingSignature}"
 
 # 금지
-- "CPC", "고단가", "애드센스", "SEO", "타겟 독자", "포스팅 전략" 등 메타 데이터 노출 금지
+- "CPC", "고단가", "애드센스", "SEO", "타겟 독자", "포스팅 전략" 등 운영자 메타 노출 금지
 - "수익 보장", "원금 보장", "무조건 수익", "지금 바로 매수" 등 확정적·권유 표현 금지
+- 실존 인물 사칭 표현 금지 — "제가 25년 PB로", "현직 시절에" 같은 인간 경력 표현 X
 - H1(#) 사용 금지 — 시스템이 자동 삽입
 - 기존 구조(H2 섹션·표·FAQ·이미지 링크)는 모두 유지
-- 이미지 마크다운(![...](...)) 은 그대로 두되 위치는 이동 가능
 
 # 출력
 Markdown 본문만 출력하세요. 다른 설명 없이.
@@ -82,18 +84,18 @@ async function rewriteWithPersona(article, persona) {
   }
 }
 
-// API 없을 때 로컬로 서두·결론만 덧붙여 톤 흉내
+// API 없을 때 로컬로 서두·결론만 덧붙여 AI 모델 톤 흉내
 function injectLocalPersona(article, persona) {
-  const intro = `## 저의 관전포인트
+  const intro = `## 분석 모델 관전포인트
 
-${persona.voiceHints[0]} 오늘 이 주제를 왜 짚어야 하는지 세 줄로 먼저 정리해 드릴게요.
+${persona.voiceHints[0]} 오늘의 주요 데이터 신호를 세 줄로 먼저 정리합니다.
 
 `;
   const outro = `
 
-## 저의 결론
+## 분석 모델 결론
 
-${persona.voiceHints[persona.voiceHints.length - 1]} 오늘 내용을 실전에 옮길 때는 본인의 투자 기간과 리스크 허용 범위부터 정리하시는 걸 권합니다. 숫자보다 원칙이 먼저입니다.
+${persona.voiceHints[persona.voiceHints.length - 1]} 본 분석 결과는 참고용이며, 최종 투자 결정은 본인의 투자 기간과 리스크 허용 범위에 맞춰 판단하세요. 데이터는 매일 09:00 갱신됩니다.
 
 ${persona.closingSignature}
 `;
@@ -118,9 +120,14 @@ async function run({ today, previousResults }) {
       ...article,
       content: rewritten,
       wordCount: rewritten.length,
+      // E-E-A-T byline 메타 — frontmatter + Person 스키마에서 활용
       author: persona.name,
       authorId: persona.id,
       authorTitle: persona.title,
+      authorModelDescription: persona.modelDescription,
+      authorDataSources: persona.dataSources || [],
+      authorMethodology: persona.methodology,
+      authorIsAi: persona.isAi !== false,
     };
     enriched.push(next);
 

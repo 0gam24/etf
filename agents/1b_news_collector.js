@@ -18,6 +18,31 @@ const { BANNED_PHRASES } = require('./7_ymyl_guard');
 
 const AGENT_NAME = 'NewsCollector';
 
+/**
+ * 헤드라인 텍스트에서 가이드 키워드를 추출 — 내부 링크 후보.
+ *   InternalLinker가 본문 작성 후 활용 가능 (4b).
+ */
+const NEWS_TOPIC_TAGS = [
+  { tag: 'monthly-dividend', patterns: [/월배당/, /분배금/, /배당락/] },
+  { tag: 'covered-call',     patterns: [/커버드콜/, /OTM/i, /옵션 매도/, /JEPI/] },
+  { tag: 'defense-etf',      patterns: [/방산/, /방위/, /무기/, /K-방산/] },
+  { tag: 'ai-semi-etf',      patterns: [/반도체/, /HBM/i, /AI 반도체/, /엔비디아/, /SK하이닉스/] },
+  { tag: 'retirement',       patterns: [/IRP/, /ISA/, /연금저축/, /은퇴/, /노후/] },
+  { tag: 'shipbuilding',     patterns: [/조선/, /LNG선/, /암모니아/, /HD현대중공업/] },
+  { tag: 'battery',          patterns: [/2차전지/, /배터리/, /LG에너지솔루션/, /양극재/] },
+  { tag: 'us-equity',        patterns: [/미국 증시/, /나스닥/, /S&P500/i, /빅테크/] },
+];
+
+function tagHeadline(headline) {
+  if (!headline) return [];
+  const text = `${headline.title || ''} ${headline.snippet || ''}`;
+  const tags = new Set();
+  for (const { tag, patterns } of NEWS_TOPIC_TAGS) {
+    if (patterns.some(p => p.test(text))) tags.add(tag);
+  }
+  return Array.from(tags);
+}
+
 /** 헤드라인이 YMYL 금지 단어를 포함하는지 검사 */
 function hasBannedTerm(headline) {
   if (!headline) return false;
@@ -338,10 +363,12 @@ async function run({ today, previousResults }) {
         snippet: h.snippet || '',
       })),
       summary,
+      // 헤드라인별 내부 링크 후보 태그 (가이드 slug 매핑) — InternalLinker가 활용 가능
+      topicTags: Array.from(new Set(headlines.flatMap(tagHeadline))),
     };
     allHeadlines.push(...headlines.slice(0, 3));
     const g = googleHeadlines.length, n = naverHeadlines.length;
-    logger.log(AGENT_NAME, `     ↳ ${headlines.length}개 헤드라인 (Google ${g} · Naver ${n}), 요약 ${summary.length}자`);
+    logger.log(AGENT_NAME, `     ↳ ${headlines.length}개 헤드라인 (Google ${g} · Naver ${n}), 요약 ${summary.length}자, 태그 ${byKeyword[strategy.keyword].topicTags.join(',') || '-'}`);
   }
 
   state.saveData(AGENT_NAME, 'raw', `news_${today}.json`, { byKeyword });

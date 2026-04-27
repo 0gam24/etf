@@ -17,11 +17,18 @@ const { postThread } = require('../pipeline/threads_client');
 
 const AGENT_NAME = 'ThreadsBot';
 
+/** UTM 파라미터 자동 부착 — Threads 유입 트래픽 분리 추적 */
+function withUtm(rawUrl, category) {
+  const sep = rawUrl.includes('?') ? '&' : '?';
+  // utm_source=threads, utm_medium=social, utm_campaign={category}
+  return `${rawUrl}${sep}utm_source=threads&utm_medium=social&utm_campaign=${category}`;
+}
+
 function buildText(published, etfData) {
   const cat = published.category;
   const slug = encodeURIComponent(published.slug);
   const siteUrl = (process.env.SITE_URL || '').replace(/\/+$/, '');
-  const url = `${siteUrl}/${cat}/${slug}`;
+  const url = withUtm(`${siteUrl}/${cat}/${slug}`, cat);
 
   if (cat === 'pulse') {
     const top3 = etfData?.byVolume?.slice(0, 3) || [];

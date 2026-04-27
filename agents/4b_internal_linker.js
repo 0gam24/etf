@@ -111,7 +111,29 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: '커버드콜',          slug: 'covered-call' },
 ];
 
-function injectKeywordGuideLinks(content) {
+/**
+ * 같은 가이드(slug)로 가는 링크라도 글마다 다른 앵커 텍스트 사용 → Google 자연성 신호 ↑.
+ *   글 slug + 카테고리 hash로 결정적 픽 (같은 글 = 같은 앵커, 다른 글 = 다른 앵커).
+ *   첫 등장 키워드는 원래 그대로 유지 (의미 매칭 보존), 추가 등장 시 변형 앵커 시도.
+ */
+const ANCHOR_VARIATIONS = {
+  'monthly-dividend': ['월배당 ETF', '월배당 가이드', '월배당 종합 정리', '월배당 ETF 비교'],
+  'covered-call':     ['커버드콜 ETF', '커버드콜 전략 가이드', '커버드콜 비교', 'JEPI 한국판 ETF'],
+  'defense-etf':      ['방산 ETF', '방산 ETF 비교', 'K-방산 ETF 가이드'],
+  'ai-semi-etf':      ['AI 반도체 ETF', 'AI ETF 가이드', '반도체 ETF 비교'],
+  'retirement':       ['은퇴 자산 가이드', 'IRP·ISA 비교', '연금저축 ETF 가이드', '4050 자산 설계'],
+};
+
+function pickAnchorVariation(slug, articleSlug, fallback) {
+  const variations = ANCHOR_VARIATIONS[slug];
+  if (!variations || variations.length === 0) return fallback;
+  // 결정적 hash — 같은 글은 같은 앵커
+  let h = 0;
+  for (let i = 0; i < (articleSlug || '').length; i++) h = ((h << 5) - h) + articleSlug.charCodeAt(i);
+  return variations[Math.abs(h) % variations.length];
+}
+
+function injectKeywordGuideLinks(content, articleSlug = '') {
   if (!content) return content;
 
   const lines = content.split('\n');
@@ -142,7 +164,10 @@ function injectKeywordGuideLinks(content) {
       const m = mutated.match(re);
       if (!m) continue;
 
-      const replaceWith = `${m[1]}[${keyword}](/guide/${slug})`;
+      // 앵커 텍스트 다양화: 글마다 다른 앵커 시도 (자연성 신호 ↑)
+      // 첫 매칭은 원본 키워드 유지 (의미 손실 방지), 변형은 inline link text만 다르게
+      const anchor = pickAnchorVariation(slug, articleSlug, keyword);
+      const replaceWith = `${m[1]}[${anchor}](/guide/${slug})`;
       mutated = mutated.replace(re, replaceWith);
       usedSlugs.add(slug);
       usedKeywords.add(keyword);
@@ -213,7 +238,7 @@ async function run({ today, previousResults }) {
 
     // 본문 중간 소프트 링크 + 핵심 키워드 자동 가이드 링크
     const withSoftLinks = injectSoftLinks(article.content, related);
-    const newContent = injectKeywordGuideLinks(withSoftLinks);
+    const newContent = injectKeywordGuideLinks(withSoftLinks, article.slug);
 
     // 자동 가이드 링크 카운트 (감사 로그용) — 새로 추가된 /guide/ 링크 수
     const guideLinksAdded = (newContent.match(/\]\(\/guide\//g) || []).length
