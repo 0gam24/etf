@@ -73,7 +73,11 @@ const ORG_SCHEMA = {
   correctionsPolicy: `${SITE_URL}/about`,
   diversityPolicy: `${SITE_URL}/about`,
   actionableFeedbackPolicy: `${SITE_URL}/about`,
-  sameAs: [] as string[],
+  // sameAs — 같은 entity의 외부 채널 명시 (Knowledge Panel 자격 신호)
+  // RSS는 항상 활성, Threads는 토큰 등록 후 자동 발행
+  sameAs: [
+    `${SITE_URL}/rss.xml`,
+  ] as string[],
 };
 
 const WEBSITE_SCHEMA = {

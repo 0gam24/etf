@@ -10,7 +10,7 @@ import {
   extractIssuerLabel,
   codeToSlug,
 } from '@/lib/data';
-import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { buildBreadcrumbSchema, buildItemListSchema, jsonLd } from '@/lib/schema';
 import EtfIndexSearch from '@/components/EtfIndexSearch';
 
 export const metadata: Metadata = {
@@ -133,9 +133,19 @@ export default function EtfIndexPage() {
     { name: '종목 사전', href: '/etf' },
   ]);
 
+  // Google Carousel rich result — 거래량 TOP 20 ItemList
+  const itemListSchema = buildItemListSchema(
+    topByVolume.slice(0, 20).map(r => ({
+      url: `/etf/${codeToSlug(r.shortcode)}`,
+      name: r.name,
+    })),
+    `오늘 거래량 TOP ${Math.min(20, topByVolume.length)} ETF`,
+  );
+
   return (
     <article className="etf-index animate-fade-in">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(itemListSchema) }} />
 
       <Breadcrumbs items={[
         { name: '홈', href: '/' },

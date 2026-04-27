@@ -4,14 +4,15 @@ import { ArrowRight, BookOpen } from 'lucide-react';
 import { GUIDES } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
+import { buildBreadcrumbSchema, buildItemListSchema, jsonLd } from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: '가이드 — Daily ETF Pulse',
   description:
-    '월배당·커버드콜·방산·AI·은퇴 자산 5종의 ETF 가이드. 한 페이지에 정리된 비교와 계좌별 세후 수익률.',
+    '월배당·커버드콜·방산·AI·은퇴·미국배당·환헤지·해외상장 8종의 ETF 가이드. 한 페이지에 정리된 비교와 계좌별 세후 수익률.',
   alternates: { canonical: '/guide' },
   openGraph: {
-    title: 'ETF 가이드 — 월배당·커버드콜·방산·AI·은퇴 자산',
+    title: 'ETF 가이드 — 월배당·커버드콜·방산·AI·은퇴·미국배당·환헤지·해외상장',
     description: '한 페이지에 정리된 ETF 비교와 계좌별 세후 수익률.',
     type: 'website',
     url: '/guide',
@@ -19,13 +20,26 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'ETF 가이드',
-    description: '월배당·커버드콜·방산·AI·은퇴 자산 — 5개 핵심 가이드.',
+    description: '8개 핵심 가이드 — 월배당·커버드콜·방산·AI·은퇴·미국배당·환헤지·해외상장.',
   },
 };
 
 export default function GuideIndexPage() {
+  // Google Carousel rich result + Breadcrumb 스키마
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: '홈', href: '/' },
+    { name: '가이드', href: '/guide' },
+  ]);
+  const itemListSchema = buildItemListSchema(
+    GUIDES.map(g => ({ url: `/guide/${g.slug}`, name: g.title })),
+    `Daily ETF Pulse 가이드 ${GUIDES.length}종`,
+  );
+
   return (
     <div className="guide-index animate-fade-in">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(itemListSchema) }} />
+
       <Breadcrumbs items={[{ name: '홈', href: '/' }, { name: '가이드', href: '/guide' }]} />
 
       <section className="guide-index-hero">
@@ -33,7 +47,7 @@ export default function GuideIndexPage() {
           <BookOpen size={14} strokeWidth={2.6} aria-hidden /> GUIDES · 한 페이지 정리
         </span>
         <h1 className="guide-index-title">
-          5개 가이드, <span className="accent">한 페이지에 끝내는 ETF 결정</span>
+          {GUIDES.length}개 가이드, <span className="accent">한 페이지에 끝내는 ETF 결정</span>
         </h1>
         <p className="guide-index-sub">
           매일 발행되는 분석을 모아둔 핵심 주제별 가이드. 검색 한 번이면 그 주제의 답이 한 자리에서 정리됩니다.

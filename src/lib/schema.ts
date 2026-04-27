@@ -243,6 +243,32 @@ export function buildHowToSchema(input: HowToSchemaInput) {
   };
 }
 
+// ── ItemList / Carousel 스키마 (인덱스 페이지 — Google Carousel rich result) ──
+//   /etf 인덱스 (TOP 거래량) · /guide 인덱스 (8 가이드) 같은 list 페이지에 부착.
+//   Google Search Carousel 자격 (모바일 SERP에서 가로 스크롤 카드 노출).
+
+export interface CarouselItemInput {
+  url: string;
+  name: string;
+  /** 이미지 URL (선택) — 절대/상대 모두 허용 */
+  image?: string;
+}
+
+export function buildItemListSchema(items: CarouselItemInput[], listName?: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    ...(listName ? { name: listName } : {}),
+    itemListElement: items.map((it, idx) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      url: abs(it.url),
+      name: it.name,
+      ...(it.image ? { image: abs(it.image) } : {}),
+    })),
+  };
+}
+
 /** JSON-LD를 안전하게 escape하여 HTML에 직접 inject 가능한 string으로 변환 */
 export function jsonLd(obj: object): string {
   // </script> 인젝션 방지

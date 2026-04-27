@@ -10,6 +10,7 @@ import { AUTHOR_LIST } from '@/lib/authors';
 import { GUIDES } from '@/lib/guides';
 import { getProductsRegistry } from '@/lib/products';
 import { getLatestEtfData } from '@/lib/data';
+import { COMPARE_PAIRS } from '@/lib/etf-compare-pairs';
 
 /**
  * Daily ETF Pulse — 메인 sitemap.xml (홈·카테고리·글·가이드·저자 ~200 URL)
@@ -122,6 +123,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: etfLastModified,
     changeFrequency: 'daily',
     priority: 0.85,
+  });
+
+  // /compare 인덱스 + 각 비교 페어
+  routes.push({
+    url: `${baseUrl}/compare`,
+    lastModified: etfLastModified,
+    changeFrequency: 'weekly',
+    priority: 0.75,
+  });
+  COMPARE_PAIRS.forEach(p => {
+    routes.push({
+      url: `${baseUrl}/compare/${p.slug}`,
+      lastModified: etfLastModified,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    });
   });
 
   return routes;
