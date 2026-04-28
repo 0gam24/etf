@@ -584,6 +584,28 @@ A. /etf 인덱스 페이지 신설 (`5dd96d6`):
 
 **push 상태 (모두 push 완료)**: c522233, 57cba58, 5dd96d6 — origin=5dd96d6.
 
+## 2026-04-28 · [자연유입 확대 다중 에이전트 기획·실행]
+
+### Q. "모든 에이전트 소환해서 자연유입 확대를 위한 사이트 운영계획을 논의하고 논의하는 과정도 나한테 보여주며 계획을 만들어봐"
+A. 4개 페르소나 에이전트(SEO 엔지니어·콘텐츠 마케터·채널 전략가·한국 시장 전문가)를 동시 소환해 각각의 의견을 그대로 보여준 뒤 통합 TOP 8 계획 수립. (1번 SEO 엔지니어가 sitemap-etf.xml·RSS 미존재라고 잘못 진단한 부분은 정정해서 통합.) 통합 우선순위:
+1. 뉴스레터 구독 폼 (재방문 채널)
+2. 검색 의도별 H2 보강 (post 템플릿)
+3. /etf description 동적 스니펫 (CTR↑)
+4. 한국어 시즌 키워드 캘린더
+5. Naver sitemap 자동 ping
+6. 가이드 lastReviewed 자동 갱신 (freshness 신호)
+7. RSS·Threads·Inoreader 외부 채널 노출
+8. 사이트 내 검색 + GA4 search_term 추적
+
+### Q. "전체 진행"
+A. 위 8건 중 즉시 실행 가능한 4건 적용 후 commit `9dc3b89` (push 대기):
+- **#1 뉴스레터**: src/app/newsletter/page.tsx + src/components/NewsletterSignup.tsx (compact·full variant). 백엔드 X — localStorage 저장 + GA4 'newsletter_intent' 이벤트로 관심 수요 측정. 푸터·사이드바 배너 + /newsletter 풀 페이지. RSS 즉시 구독 옵션 동시 노출. 사이트맵·라우팅 등록 완료.
+- **#3 /etf description**: trendIcon emoji(🔥/📉/📊) + 섹터 clause + holdings TOP 3 이름을 첫 100자에 노출 (검색결과 CTR↑).
+- **#5 Naver sitemap ping**: pipeline/index_pusher.js — IndexNow에 더해 sitemap-index/sitemap/sitemap-etf 3개 GET ping 명시 (CDN 캐시 갱신 + Naver Yeti 인지 강화). 11_index_pusher.js 로깅 강화.
+- **#6 가이드 freshness**: agents/14_guide_refresher.js + .github/workflows/biweekly-guide-refresh.yml (cron 0 0 1,15 * *) — 격주 1·15일 lastReviewed 자동 갱신. 스모크 테스트로 8개 가이드 → 2026-04-28 확인.
+
+push 대기 중인 commits: 3124ae5(Bing 인증) + 9dc3b89(자연유입 4건). "푸쉬" 명시 시 배포.
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
