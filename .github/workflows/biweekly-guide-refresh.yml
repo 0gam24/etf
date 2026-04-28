@@ -1,0 +1,54 @@
+name: Biweekly Guide Refresh (lastReviewed → today)
+
+# 매월 1일·15일 KST 09:00 = UTC 00:00 자동 실행.
+# 8 가이드의 lastReviewed 필드를 오늘 날짜로 갱신 → Google freshness 신호 + 사용자 신뢰.
+# 변경 없으면 skip (no commit). 변경 있으면 자동 commit + push → Cloudflare 자동 배포.
+on:
+  schedule:
+    # 매월 1일, 15일 UTC 00:00 = KST 09:00
+    - cron: '0 0 1,15 * *'
+  workflow_dispatch:
+
+concurrency:
+  group: biweekly-guide-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    permissions:
+      contents: write
+
+    env:
+      TZ: Asia/Seoul
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Refresh guide lastReviewed
+        run: node agents/14_guide_refresher.js
+
+      - name: Commit changes (only if changed)
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/lib/guides.ts
+          if git diff --cached --quiet; then
+            echo "변경 없음 — 스킵"
+          else
+            DATE=$(date +%Y-%m-%d)
+            git commit -m "chore(guide): biweekly lastReviewed refresh ($DATE) [skip ci]"
+            git push origin main
+            echo "✅ 가이드 lastReviewed 갱신 push 완료"
+          fi

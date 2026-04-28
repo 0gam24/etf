@@ -65,6 +65,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   });
 
+  // 뉴스레터 구독 페이지 (재방문 채널)
+  routes.push({
+    url: `${baseUrl}/newsletter`,
+    lastModified: getSiteLastModified() || fallback,
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  });
+
   // 가이드 인덱스 — 가이드 5종 중 가장 최근 lastReviewed
   const guideMostRecent = GUIDES
     .map(g => new Date(g.lastReviewed).getTime())

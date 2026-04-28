@@ -38,7 +38,10 @@ async function run({ today, previousResults }) {
     return { summary: `${paths.length}개 URL 예약 (키 미설정)`, results: result };
   }
 
-  logger.success(AGENT_NAME, `✅ IndexNow ${result.indexNow.status} — ${paths.length}개 URL 제출`);
+  logger.success(AGENT_NAME, `✅ IndexNow ${result.indexNow.status} — ${paths.length}개 URL 제출 (Bing + Naver Yeti + Yandex 동시 통보)`);
+  if (result.naver?.sitemapsRefreshed != null) {
+    logger.log(AGENT_NAME, `  📡 sitemap GET ping ${result.naver.sitemapsRefreshed}/${result.naver.sitemapsTotal} 갱신 (CDN 캐시·Naver Yeti 인지 강화)`);
+  }
   return {
     summary: `${paths.length}개 URL 색인 요청 완료 (IndexNow HTTP ${result.indexNow.status})`,
     results: result,

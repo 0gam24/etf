@@ -43,10 +43,32 @@ async function submitIndexNow(urls, key) {
 }
 
 async function pingNaverSitemap(siteUrl) {
-  // 네이버 웹마스터도구 API는 현재 '소유확인된 사이트'에서 수동 수집 요청만 정식 지원.
-  // 여기서는 sitemap ping 후 결과 반환 (네이버도 IndexNow 지원 가맹이라 위에서 함께 처리됨)
+  // 네이버 웹마스터도구 API는 OAuth 등록 + 수동 수집 요청만 정식 지원.
+  // 다행히 네이버는 2022년부터 IndexNow 가맹사 — submitIndexNow()가 자동 통보.
+  //
+  // 추가 신호로 sitemap.xml의 GET 요청을 직접 트리거 (CDN cache 갱신 + Naver Yeti 인지)
   if (!siteUrl) return { ok: false };
-  return { ok: true, note: 'IndexNow 엔드포인트가 네이버도 수신 — 별도 핑 불필요' };
+  const sitemaps = [
+    `${siteUrl.replace(/\/+$/, '')}/sitemap-index.xml`,
+    `${siteUrl.replace(/\/+$/, '')}/sitemap.xml`,
+    `${siteUrl.replace(/\/+$/, '')}/sitemap-etf.xml`,
+  ];
+  const pings = await Promise.allSettled(
+    sitemaps.map(url =>
+      fetch(url, { method: 'GET', headers: { 'User-Agent': 'Daily-ETF-Pulse-Sitemap-Refresher/1.0' } })
+        .then(r => ({ url, status: r.status }))
+        .catch(err => ({ url, error: err.message }))
+    ),
+  );
+  const results = pings.map(p => p.status === 'fulfilled' ? p.value : { error: 'rejected' });
+  const successCount = results.filter(r => 'status' in r && r.status === 200).length;
+  return {
+    ok: successCount === sitemaps.length,
+    note: 'IndexNow가 Naver Yeti에도 전파됨. sitemap GET ping은 CDN 캐시 갱신 효과.',
+    sitemapsRefreshed: successCount,
+    sitemapsTotal: sitemaps.length,
+    results,
+  };
 }
 
 /**

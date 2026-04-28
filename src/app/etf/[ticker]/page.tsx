@@ -82,16 +82,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ? `${name} (${displayCode}) ETF | 구성종목·분배금·주가 실시간 갱신`
     : `${name} (${displayCode}) ETF | 종목 정보·구성종목·분배금`;
 
-  // 1D. Meta — 구성종목 이름 1~2개 자동 삽입 (롱테일 키워드 흡수)
+  // 1D. Meta — 첫 100자에 키워드 3개 압축 (Naver snippet + Google CTR 최적화)
+  // 한국 사용자는 검색결과 첫 100자만 봄 → 종목명·등락률·구성종목·섹터를 앞에 배치
   const holdingsForMeta = code ? getEtfHoldings(code)?.holdings || [] : [];
-  const topHoldingNames = holdingsForMeta.slice(0, 2).map(h => h.name).join(', ');
-  const constituentClause = topHoldingNames
-    ? ` 주요 구성: ${topHoldingNames} 등 TOP 10.`
-    : '';
+  const topHoldingNames = holdingsForMeta.slice(0, 2).map(h => h.name).join('·');
+  const sectorClause = sector ? ` ${sector}` : '';
+  const trendIcon = etf ? (etf.changeRate > 0 ? '🔥' : etf.changeRate < 0 ? '📉' : '📊') : '📊';
 
   const description = etf
-    ? `${name}(${displayCode}) ETF의 오늘 시세 ${etf.price.toLocaleString()}원, 전일대비 ${etf.changeRate >= 0 ? '+' : ''}${etf.changeRate.toFixed(2)}%.${constituentClause} 분배금·분배락일·투자 포인트·관련 분석을 한 페이지에.`
-    : `${name}(${displayCode}) ETF — 한국거래소(KRX) 상장 종목.${constituentClause} 운용사·섹터·구성종목·관련 분석을 정리한 종목 사전.`;
+    ? `${trendIcon} ${name}(${displayCode}) ETF${sectorClause} — ${etf.price.toLocaleString()}원 ${etf.changeRate >= 0 ? '+' : ''}${etf.changeRate.toFixed(2)}%.${topHoldingNames ? ` ${topHoldingNames} 등 TOP 10 구성.` : ''} 분배금·분배락일·투자 포인트·관련 분석을 한 페이지에.`
+    : `📊 ${name}(${displayCode}) ETF${sectorClause} — KRX 상장 종목.${topHoldingNames ? ` ${topHoldingNames} 등 TOP 10 구성.` : ''} 운용사·섹터·구성종목·관련 분석 정리.`;
 
   const ogImage = `/api/og?title=${encodeURIComponent(name)}&category=stock&tickers=${displayCode}`;
 
