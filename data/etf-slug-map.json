@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-04-26T22:52:50.475Z",
-  "sourceBaseDate": "20260423",
-  "count": 1095,
+  "generatedAt": "2026-05-03T03:28:10.161Z",
+  "sourceBaseDate": "20260429",
+  "count": 1099,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -1097,925 +1097,13 @@
     "091180": "kodex-auto",
     "091220": "tiger-091220",
     "091230": "tiger-semiconductor",
-    "099140": "kodex-chinah"
+    "099140": "kodex-chinah",
+    "0178H0": "itf-usai-top1050",
+    "0186L0": "koact-usaiactive",
+    "0186S0": "1q-kosdaq150bond-blend50active",
+    "0189B0": "tiger-active-0189b0"
   },
   "bySlug": {
-    "tiger-us-treasurycovered-callsynthetic": {
-      "code": "0000D0",
-      "name": "TIGER 엔비디아미국채커버드콜밸런스(합성)"
-    },
-    "kodex-indianifty100": {
-      "code": "0000H0",
-      "name": "KODEX 인도Nifty미드캡100"
-    },
-    "plus-0000j0": {
-      "code": "0000J0",
-      "name": "PLUS 한화그룹주"
-    },
-    "hk-26-12-corporate-bondaa-plusactive": {
-      "code": "0000Y0",
-      "name": "HK 26-12 회사채(AA-이상)액티브"
-    },
-    "rise-biotechtop10active": {
-      "code": "0000Z0",
-      "name": "RISE 바이오TOP10액티브"
-    },
-    "mighty-biotechcdmoactive": {
-      "code": "0001P0",
-      "name": "마이티 바이오시밀러&CDMO액티브"
-    },
-    "asset-plus-india20active": {
-      "code": "0002C0",
-      "name": "에셋플러스 인도일등기업포커스20액티브"
-    },
-    "1q-ustop30": {
-      "code": "0004G0",
-      "name": "1Q 미국배당TOP30"
-    },
-    "kodex-us-sp500covered-callotm": {
-      "code": "0005A0",
-      "name": "KODEX 미국S&P500데일리커버드콜OTM"
-    },
-    "rise-us-sp500synthetic-h": {
-      "code": "0005C0",
-      "name": "RISE 미국S&P500엔화노출(합성 H)"
-    },
-    "sol-solid-state-batterysilicon-anode": {
-      "code": "0005D0",
-      "name": "SOL 전고체배터리&실리콘음극재"
-    },
-    "itf-k-aisemiconductortech": {
-      "code": "0005G0",
-      "name": "ITF K-AI반도체코어테크"
-    },
-    "kodex-27-12-corporate-bondaa-plusactive": {
-      "code": "0007F0",
-      "name": "KODEX 27-12 회사채(AA-이상)액티브"
-    },
-    "plus-global": {
-      "code": "0007G0",
-      "name": "PLUS 글로벌원자력밸류체인"
-    },
-    "200-0007n0": {
-      "code": "0007N0",
-      "name": "아이엠에셋 200"
-    },
-    "ace-us": {
-      "code": "0008E0",
-      "name": "ACE 미국중심중소형제조업"
-    },
-    "tiger-us-dividend-djonescovered-call": {
-      "code": "0008S0",
-      "name": "TIGER 미국배당다우존스타겟데일리커버드콜"
-    },
-    "sol-top3plus": {
-      "code": "0008T0",
-      "name": "SOL 화장품TOP3플러스"
-    },
-    "rise-ustop10": {
-      "code": "0013P0",
-      "name": "RISE 미국은행TOP10"
-    },
-    "rise-us-treasurycovered-callsynthetic": {
-      "code": "0013R0",
-      "name": "RISE 테슬라미국채타겟커버드콜혼합(합성)"
-    },
-    "koact-us-nasdaqactive": {
-      "code": "0015B0",
-      "name": "KoAct 미국나스닥성장기업액티브"
-    },
-    "kiwoom-us30yactiveh": {
-      "code": "0015E0",
-      "name": "KIWOOM 엔비디아미국30년국채혼합액티브(H)"
-    },
-    "kiwoom-us30yactiveh-0015f0": {
-      "code": "0015F0",
-      "name": "KIWOOM 팔란티어미국30년국채혼합액티브(H)"
-    },
-    "tiger-usactive": {
-      "code": "0015K0",
-      "name": "TIGER 미국소비트렌드액티브"
-    },
-    "sol-corporate-bonda-plusactive": {
-      "code": "0016X0",
-      "name": "SOL 중단기회사채(A-이상)액티브"
-    },
-    "1q-total-bondaa-plusactive": {
-      "code": "0017Y0",
-      "name": "1Q 종합채권(AA-이상)액티브"
-    },
-    "plus-covered-call": {
-      "code": "0018C0",
-      "name": "PLUS 고배당주위클리고정커버드콜"
-    },
-    "rise-us": {
-      "code": "0018Z0",
-      "name": "RISE 미국양자컴퓨팅"
-    },
-    "time-us-nasdaq100bond-blend50active": {
-      "code": "0019K0",
-      "name": "TIME 미국나스닥100채권혼합50액티브"
-    },
-    "koact-globalactive": {
-      "code": "0020H0",
-      "name": "KoAct 글로벌양자컴퓨팅액티브"
-    },
-    "ace-tdfactive": {
-      "code": "0021C0",
-      "name": "ACE TDF장기자산배분액티브"
-    },
-    "ace-tdf2030active-qualified": {
-      "code": "0021D0",
-      "name": "ACE TDF2030액티브 적격"
-    },
-    "ace-tdf2050active-qualified": {
-      "code": "0021E0",
-      "name": "ACE TDF2050액티브 적격"
-    },
-    "sol-covered-callactive": {
-      "code": "0022T0",
-      "name": "SOL 국제금커버드콜액티브"
-    },
-    "sol-ustop10": {
-      "code": "0023A0",
-      "name": "SOL 미국양자컴퓨팅TOP10"
-    },
-    "plus-ustop10": {
-      "code": "0023B0",
-      "name": "PLUS 미국양자컴퓨팅TOP10"
-    },
-    "tiger-tdf2045-qualified": {
-      "code": "0025N0",
-      "name": "TIGER TDF2045 적격"
-    },
-    "kodex-us-sp5003active": {
-      "code": "0026E0",
-      "name": "KODEX 미국S&P500버퍼3월액티브"
-    },
-    "1q-us-sp500": {
-      "code": "0026S0",
-      "name": "1Q 미국S&P500"
-    },
-    "kodex-usfinancetechactive": {
-      "code": "0028X0",
-      "name": "KODEX 미국금융테크액티브"
-    },
-    "plus-globalactive": {
-      "code": "0035T0",
-      "name": "PLUS 글로벌휴머노이드로봇액티브"
-    },
-    "time-us-dividend-djonesactive": {
-      "code": "0036D0",
-      "name": "TIME 미국배당다우존스액티브"
-    },
-    "rise-us-0036r0": {
-      "code": "0036R0",
-      "name": "RISE 미국휴머노이드로봇"
-    },
-    "rise-us-0036z0": {
-      "code": "0036Z0",
-      "name": "RISE 미국천연가스밸류체인"
-    },
-    "kodex-us": {
-      "code": "0038A0",
-      "name": "KODEX 미국휴머노이드로봇"
-    },
-    "hanaro-globalaiactive": {
-      "code": "0040S0",
-      "name": "HANARO 글로벌피지컬AI액티브"
-    },
-    "sol-us-treasurycovered-call": {
-      "code": "0040X0",
-      "name": "SOL 팔란티어미국채커버드콜혼합"
-    },
-    "sol-covered-callotmbond-blend": {
-      "code": "0040Y0",
-      "name": "SOL 팔란티어커버드콜OTM채권혼합"
-    },
-    "kodex-usaisoftwaretop10": {
-      "code": "0041D0",
-      "name": "KODEX 미국AI소프트웨어TOP10"
-    },
-    "kodex-us-sp500active": {
-      "code": "0041E0",
-      "name": "KODEX 미국S&P500액티브"
-    },
-    "tiger-mma-active": {
-      "code": "0043B0",
-      "name": "TIGER 머니마켓액티브"
-    },
-    "time-chinaaitechactive": {
-      "code": "0043Y0",
-      "name": "TIME 차이나AI테크액티브"
-    },
-    "tiger-us3": {
-      "code": "0046A0",
-      "name": "TIGER 미국초단기(3개월이하)국채"
-    },
-    "ace-us-dividend-quality": {
-      "code": "0046Y0",
-      "name": "ACE 미국배당퀄리티"
-    },
-    "tiger-chinatechtop10": {
-      "code": "0047A0",
-      "name": "TIGER 차이나테크TOP10"
-    },
-    "plus-chinaaitechtop10": {
-      "code": "0047N0",
-      "name": "PLUS 차이나AI테크TOP10"
-    },
-    "rise-tech100": {
-      "code": "0047P0",
-      "name": "RISE 테슬라고정테크100"
-    },
-    "rise-tech100-0047r0": {
-      "code": "0047R0",
-      "name": "RISE 팔란티어고정테크100"
-    },
-    "kodex-usmma-active": {
-      "code": "0048J0",
-      "name": "KODEX 미국머니마켓액티브"
-    },
-    "kodex-china": {
-      "code": "0048K0",
-      "name": "KODEX 차이나휴머노이드로봇"
-    },
-    "ace-us-dividend-qualitybond-blend50": {
-      "code": "0049K0",
-      "name": "ACE 미국배당퀄리티채권혼합50"
-    },
-    "ace-us-dividend-qualitycovered-callactive": {
-      "code": "0049M0",
-      "name": "ACE 미국배당퀄리티+커버드콜액티브"
-    },
-    "plus-usai": {
-      "code": "0050E0",
-      "name": "PLUS 미국AI에이전트"
-    },
-    "koact-active": {
-      "code": "0051A0",
-      "name": "KoAct 브로드컴밸류체인액티브"
-    },
-    "sol-ussmr": {
-      "code": "0051G0",
-      "name": "SOL 미국원자력SMR"
-    },
-    "tiger-0052d0": {
-      "code": "0052D0",
-      "name": "TIGER 코리아배당다우존스"
-    },
-    "1q-us-sp500us-treasury-blend50active": {
-      "code": "0052S0",
-      "name": "1Q 미국S&P500미국채혼합50액티브"
-    },
-    "1q-corporate-bonda-plusactive": {
-      "code": "0052T0",
-      "name": "1Q 중단기회사채(A-이상)액티브"
-    },
-    "tiger-china": {
-      "code": "0053L0",
-      "name": "TIGER 차이나휴머노이드로봇"
-    },
-    "active": {
-      "code": "0053M0",
-      "name": "더제이 중소형포커스액티브"
-    },
-    "plus-us-sp500us-treasury-blend50active": {
-      "code": "0057H0",
-      "name": "PLUS 미국S&P500미국채혼합50액티브"
-    },
-    "tiger-active": {
-      "code": "0060H0",
-      "name": "TIGER 토탈월드스탁액티브"
-    },
-    "rise-active": {
-      "code": "0061Z0",
-      "name": "RISE 단기특수은행채액티브"
-    },
-    "kodex-active": {
-      "code": "0064K0",
-      "name": "KODEX 금액티브"
-    },
-    "kodex-chinatechtop10": {
-      "code": "0065G0",
-      "name": "KODEX 차이나테크TOP10"
-    },
-    "sol-0066w0": {
-      "code": "0066W0",
-      "name": "SOL 국제금"
-    },
-    "tiger-chinaglobaltop3": {
-      "code": "0067V0",
-      "name": "TIGER 차이나글로벌리더스TOP3+"
-    },
-    "tiger-chinaaisoftware": {
-      "code": "0067Y0",
-      "name": "TIGER 차이나AI소프트웨어"
-    },
-    "kodex-us-sp5006active": {
-      "code": "0068M0",
-      "name": "KODEX 미국S&P500버퍼6월액티브"
-    },
-    "1q-us-nasdaq100": {
-      "code": "0069M0",
-      "name": "1Q 미국나스닥100"
-    },
-    "tiger-krx": {
-      "code": "0072R0",
-      "name": "TIGER KRX금현물"
-    },
-    "focus-us-treasurycovered-call": {
-      "code": "0073X0",
-      "name": "FOCUS 알리바바미국채커버드콜혼합"
-    },
-    "koact-ktop30active": {
-      "code": "0074K0",
-      "name": "KoAct K수출핵심기업TOP30액티브"
-    },
-    "plus-us": {
-      "code": "0078V0",
-      "name": "PLUS 미국로보택시"
-    },
-    "ace-bydactive": {
-      "code": "0079X0",
-      "name": "ACE BYD밸류체인액티브"
-    },
-    "kodex-defense-top10": {
-      "code": "0080G0",
-      "name": "KODEX 방산TOP10"
-    },
-    "sol-us-sp500us-treasury-blend50": {
-      "code": "0080X0",
-      "name": "SOL 미국S&P500미국채혼합50"
-    },
-    "sol-shipbuilding-top3plus-leverage": {
-      "code": "0080Y0",
-      "name": "SOL 조선TOP3플러스레버리지"
-    },
-    "hanaro-defense": {
-      "code": "0082F0",
-      "name": "HANARO 유럽방산"
-    },
-    "kodex-tdf2060active-qualified": {
-      "code": "0082V0",
-      "name": "KODEX TDF2060액티브 적격"
-    },
-    "1q-usai": {
-      "code": "0083S0",
-      "name": "1Q 미국메디컬AI"
-    },
-    "kiwoom-us-tech100active": {
-      "code": "0084D0",
-      "name": "KIWOOM 미국테크100월간목표헤지액티브"
-    },
-    "kiwoom-us500active": {
-      "code": "0084E0",
-      "name": "KIWOOM 미국대형주500월간목표헤지액티브"
-    },
-    "ace-us10year-treasury-activeh": {
-      "code": "0085N0",
-      "name": "ACE 미국10년국채액티브(H)"
-    },
-    "ace-us10year-treasury-active": {
-      "code": "0085P0",
-      "name": "ACE 미국10년국채액티브"
-    },
-    "tiger-reitinfrastructuretop10active": {
-      "code": "0086B0",
-      "name": "TIGER 리츠부동산인프라TOP10액티브"
-    },
-    "tiger-reitinfrastructure10bond-blendactive": {
-      "code": "0086C0",
-      "name": "TIGER 리츠부동산인프라10채권혼합액티브"
-    },
-    "ace-chinaaitechtop2active": {
-      "code": "0087F0",
-      "name": "ACE 차이나AI빅테크TOP2+액티브"
-    },
-    "won-k-global": {
-      "code": "0088N0",
-      "name": "WON K-글로벌수급상위"
-    },
-    "plus-us-nasdaq100us-treasury-blend50": {
-      "code": "0089B0",
-      "name": "PLUS 미국나스닥100미국채혼합50"
-    },
-    "kodex-us-sp500covered-call": {
-      "code": "0089C0",
-      "name": "KODEX 미국S&P500변동성확대시커버드콜"
-    },
-    "kodex-financetop10": {
-      "code": "0089D0",
-      "name": "KODEX 금융고배당TOP10"
-    },
-    "plus-kdefense": {
-      "code": "0090B0",
-      "name": "PLUS K방산소부장"
-    },
-    "kodex-us10year-treasury-activeh": {
-      "code": "0091C0",
-      "name": "KODEX 미국10년국채액티브(H)"
-    },
-    "hanaro-27-06-corporate-bondaa-plusactive": {
-      "code": "0091M0",
-      "name": "HANARO 27-06 회사채(AA-이상)액티브"
-    },
-    "tiger-0091p0": {
-      "code": "0091P0",
-      "name": "TIGER 코리아원자력"
-    },
-    "sol-smr": {
-      "code": "0092B0",
-      "name": "SOL 한국원자력SMR"
-    },
-    "sol-27-12-corporate-bondaa-plusactive": {
-      "code": "0092C0",
-      "name": "SOL 27-12 회사채(AA-이상)액티브"
-    },
-    "rise-aisemiconductortop10": {
-      "code": "0093A0",
-      "name": "RISE AI반도체TOP10"
-    },
-    "rise-tech100-0093b0": {
-      "code": "0093B0",
-      "name": "RISE 엔비디아고정테크100"
-    },
-    "koact-active-0093d0": {
-      "code": "0093D0",
-      "name": "KoAct 팔란티어밸류체인액티브"
-    },
-    "tiger-28-04-corporate-bondaplusactive": {
-      "code": "0094K0",
-      "name": "TIGER 28-04 회사채(A+이상)액티브"
-    },
-    "rise-chinatechtop10covered-call": {
-      "code": "0094L0",
-      "name": "RISE 차이나테크TOP10위클리타겟커버드콜"
-    },
-    "rise-korea-valueupcovered-call": {
-      "code": "0094M0",
-      "name": "RISE 코리아밸류업위클리고정커버드콜"
-    },
-    "1q-active": {
-      "code": "0094X0",
-      "name": "1Q 샤오미밸류체인액티브"
-    },
-    "kiwoom-usaitech": {
-      "code": "0097L0",
-      "name": "KIWOOM 한국고배당&미국AI테크"
-    },
-    "kodex-smr": {
-      "code": "0098F0",
-      "name": "KODEX 원자력SMR"
-    },
-    "plus-0098n0": {
-      "code": "0098N0",
-      "name": "PLUS 자사주매입고배당주"
-    },
-    "focus-200": {
-      "code": "0098Z0",
-      "name": "FOCUS 200"
-    },
-    "ace-corporate-bondaa-plusactive": {
-      "code": "0099L0",
-      "name": "ACE 우량회사채(AA-이상)액티브"
-    },
-    "kodex-defense-top10leverage": {
-      "code": "0100K0",
-      "name": "KODEX 방산TOP10레버리지"
-    },
-    "rise-aiinfrastructure": {
-      "code": "0101N0",
-      "name": "RISE AI전력인프라"
-    },
-    "tiger-usaisoftwaretop4plus": {
-      "code": "0102A0",
-      "name": "TIGER 미국AI소프트웨어TOP4Plus"
-    },
-    "ace-defense-top10": {
-      "code": "0102X0",
-      "name": "ACE 유럽방산TOP10"
-    },
-    "1q-kai": {
-      "code": "0103T0",
-      "name": "1Q K소버린AI"
-    },
-    "plus-kdefenseleverage": {
-      "code": "0104G0",
-      "name": "PLUS K방산레버리지"
-    },
-    "koact-us-nasdaqbond-blend50active": {
-      "code": "0104H0",
-      "name": "KoAct 미국나스닥채권혼합50액티브"
-    },
-    "tiger-200covered-call": {
-      "code": "0104N0",
-      "name": "TIGER 200타겟위클리커버드콜"
-    },
-    "tiger-covered-call": {
-      "code": "0104P0",
-      "name": "TIGER 코리아배당다우존스위클리커버드콜"
-    },
-    "sol-aisoftware": {
-      "code": "0105D0",
-      "name": "SOL 한국AI소프트웨어"
-    },
-    "sol-0105e0": {
-      "code": "0105E0",
-      "name": "SOL 코리아고배당"
-    },
-    "kiwoom-usaitech-0107f0": {
-      "code": "0107F0",
-      "name": "KIWOOM 미국고배당&AI테크"
-    },
-    "hanaro-top3plus": {
-      "code": "0111J0",
-      "name": "HANARO 증권고배당TOP3플러스"
-    },
-    "1q-us-nasdaq100us-treasury-blend50active": {
-      "code": "0111P0",
-      "name": "1Q 미국나스닥100미국채혼합50액티브"
-    },
-    "mighty-200tr": {
-      "code": "0112X0",
-      "name": "마이티 200TR"
-    },
-    "time-globalactive": {
-      "code": "0113D0",
-      "name": "TIME 글로벌탑픽액티브"
-    },
-    "koact-usbiotechhealthcareactive": {
-      "code": "0113G0",
-      "name": "KoAct 미국바이오헬스케어액티브"
-    },
-    "hk-mma-active": {
-      "code": "0113P0",
-      "name": "HK 머니마켓액티브"
-    },
-    "rise-globalgamingtechtop3plus": {
-      "code": "0114X0",
-      "name": "RISE 글로벌게임테크TOP3Plus"
-    },
-    "rise-ustop10-0115c0": {
-      "code": "0115C0",
-      "name": "RISE 미국고배당다우존스TOP10"
-    },
-    "kodex-shipbuilding-top10": {
-      "code": "0115D0",
-      "name": "KODEX 조선TOP10"
-    },
-    "kodex-ai": {
-      "code": "0115E0",
-      "name": "KODEX 코리아소버린AI"
-    },
-    "kodex-26-12-financeaa-plusactive": {
-      "code": "0117L0",
-      "name": "KODEX 26-12 금융채(AA-이상)액티브"
-    },
-    "tiger-aitop3plus": {
-      "code": "0117V0",
-      "name": "TIGER 코리아AI전력기기TOP3플러스"
-    },
-    "sol-ustechtop10active": {
-      "code": "0118S0",
-      "name": "SOL 미국넥스트테크TOP10액티브"
-    },
-    "ace-usaitechactive": {
-      "code": "0118Z0",
-      "name": "ACE 미국AI테크핵심산업액티브"
-    },
-    "kodex-28-12-corporate-bondaa-plusactive": {
-      "code": "0119H0",
-      "name": "KODEX 28-12 회사채(AA-이상)액티브"
-    },
-    "bnk-0120j0": {
-      "code": "0120J0",
-      "name": "BNK 카카오그룹포커스"
-    },
-    "rise-26-11-corporate-bondaa-plusactive": {
-      "code": "0122W0",
-      "name": "RISE 26-11 회사채(AA-이상)액티브"
-    },
-    "tiger-usaismr": {
-      "code": "0123G0",
-      "name": "TIGER 미국AI전력SMR"
-    },
-    "hanaro-26-12-aaplusactive": {
-      "code": "0123S0",
-      "name": "HANARO 26-12 은행채(AA+이상)액티브"
-    },
-    "ace-usactive": {
-      "code": "0127M0",
-      "name": "ACE 미국대형가치주액티브"
-    },
-    "ace-usactive-0127p0": {
-      "code": "0127P0",
-      "name": "ACE 미국대형성장주액티브"
-    },
-    "rise-usaiinfrastructure": {
-      "code": "0127R0",
-      "name": "RISE 미국AI클라우드인프라"
-    },
-    "kiwoom-us-sp500": {
-      "code": "0127T0",
-      "name": "KIWOOM 미국S&P500&배당다우존스비중전환"
-    },
-    "kiwoom-us-sp500-top10": {
-      "code": "0127V0",
-      "name": "KIWOOM 미국S&P500 TOP10&배당다우비중전환"
-    },
-    "plus-chinatechcovered-call": {
-      "code": "0128D0",
-      "name": "PLUS 차이나항셍테크위클리타겟커버드콜"
-    },
-    "sol-china": {
-      "code": "0131A0",
-      "name": "SOL 차이나소비트렌드"
-    },
-    "1q-usaerospacetech": {
-      "code": "0131V0",
-      "name": "1Q 미국우주항공테크"
-    },
-    "1q-active-0131w0": {
-      "code": "0131W0",
-      "name": "1Q 단기특수은행채액티브"
-    },
-    "koact-globalkactive": {
-      "code": "0132D0",
-      "name": "KoAct 글로벌K컬처밸류체인액티브"
-    },
-    "kodex-ussmr": {
-      "code": "0132H0",
-      "name": "KODEX 미국원자력SMR"
-    },
-    "plus-covered-callbond-blend": {
-      "code": "0132K0",
-      "name": "PLUS 테슬라위클리커버드콜채권혼합"
-    },
-    "tiger-china-0133e0": {
-      "code": "0133E0",
-      "name": "TIGER 차이나증권"
-    },
-    "itf-total-bondaa-plusactive": {
-      "code": "0135Y0",
-      "name": "ITF 중기종합채권(AA-이상)액티브"
-    },
-    "kiwoom-us-sp500-0137v0": {
-      "code": "0137V0",
-      "name": "KIWOOM 미국S&P500모멘텀"
-    },
-    "kiwoom-us-sp500gold": {
-      "code": "0137W0",
-      "name": "KIWOOM 미국S&P500&GOLD"
-    },
-    "rise-0138d0": {
-      "code": "0138D0",
-      "name": "RISE 동학개미"
-    },
-    "rise-us-sp500covered-call": {
-      "code": "0138T0",
-      "name": "RISE 미국S&P500데일리고정커버드콜"
-    },
-    "plus-bond-blend": {
-      "code": "0138Y0",
-      "name": "PLUS 금채권혼합"
-    },
-    "tiger-12financeaa-plusactive": {
-      "code": "0139F0",
-      "name": "TIGER 12월자동연장금융채(AA-이상)액티브"
-    },
-    "ace-0139p0": {
-      "code": "0139P0",
-      "name": "ACE 고배당주"
-    },
-    "sol-shipbuilding": {
-      "code": "0141S0",
-      "name": "SOL 조선기자재"
-    },
-    "sol-total-bondaa-plusactive": {
-      "code": "0141T0",
-      "name": "SOL 중기종합채권(AA-이상)액티브"
-    },
-    "tiger-usaidatatop4plus": {
-      "code": "0142D0",
-      "name": "TIGER 미국AI데이터센터TOP4Plus"
-    },
-    "kodex-uscovered-callactive": {
-      "code": "0144L0",
-      "name": "KODEX 미국성장커버드콜액티브"
-    },
-    "kodex-usuam-top10": {
-      "code": "0144M0",
-      "name": "KODEX 미국드론UAM TOP10"
-    },
-    "tiger-0148j0": {
-      "code": "0148J0",
-      "name": "TIGER 코리아휴머노이드로봇산업"
-    },
-    "koact-essinfrastructureactive": {
-      "code": "0150K0",
-      "name": "KoAct 수소전력ESS인프라액티브"
-    },
-    "rise-active-0151p0": {
-      "code": "0151P0",
-      "name": "RISE 코리아전략산업액티브"
-    },
-    "kodex-usaisemiconductortop3plus": {
-      "code": "0151S0",
-      "name": "KODEX 미국AI반도체TOP3플러스"
-    },
-    "sol-active": {
-      "code": "0152E0",
-      "name": "SOL 배당성향탑픽액티브"
-    },
-    "kodex-0153k0": {
-      "code": "0153K0",
-      "name": "KODEX 주주환원고배당주"
-    },
-    "ace-reitinfrastructureactive": {
-      "code": "0153P0",
-      "name": "ACE 리츠부동산인프라액티브"
-    },
-    "plus-usactive": {
-      "code": "0153X0",
-      "name": "PLUS 미국고배당주액티브"
-    },
-    "won-ibfinance": {
-      "code": "0154F0",
-      "name": "WON 초대형IB&금융지주"
-    },
-    "koact-chinabiotechhealthcareactive": {
-      "code": "0154H0",
-      "name": "KoAct 차이나바이오헬스케어액티브"
-    },
-    "ace-ussmrtop10": {
-      "code": "0155M0",
-      "name": "ACE 미국SMR원자력TOP10"
-    },
-    "hanaro-ktop10": {
-      "code": "0155N0",
-      "name": "HANARO K휴머노이드테마TOP10"
-    },
-    "kodex-chinaaisemiconductortop10": {
-      "code": "0162L0",
-      "name": "KODEX 차이나AI반도체TOP10"
-    },
-    "kodex-finance12yaa-plusplusactive": {
-      "code": "0162M0",
-      "name": "KODEX 금융채1~2년(AA-이상)PLUS액티브"
-    },
-    "time-kosdaqactive": {
-      "code": "0162Y0",
-      "name": "TIME 코스닥액티브"
-    },
-    "rise-skbond-blend50": {
-      "code": "0162Z0",
-      "name": "RISE 삼성전자SK하이닉스채권혼합50"
-    },
-    "koact-kosdaqactive": {
-      "code": "0163Y0",
-      "name": "KoAct 코스닥액티브"
-    },
-    "rise-chinaaisemiconductortop4plus": {
-      "code": "0164G0",
-      "name": "RISE 차이나AI반도체TOP4Plus"
-    },
-    "plus-kosdaq150active": {
-      "code": "0166N0",
-      "name": "PLUS 코스닥150액티브"
-    },
-    "plus-kactive": {
-      "code": "0166S0",
-      "name": "PLUS K제조업핵심기업액티브"
-    },
-    "plus-globalactive-0166t0": {
-      "code": "0166T0",
-      "name": "PLUS 글로벌저작권핵심기업액티브"
-    },
-    "sol-aisemiconductortop2plus": {
-      "code": "0167A0",
-      "name": "SOL AI반도체TOP2플러스"
-    },
-    "sol-200covered-call": {
-      "code": "0167B0",
-      "name": "SOL 200타겟위클리커버드콜"
-    },
-    "kodex-usaerospace": {
-      "code": "0167Z0",
-      "name": "KODEX 미국우주항공"
-    },
-    "tiger-biotechactive": {
-      "code": "0168K0",
-      "name": "TIGER 기술이전바이오액티브"
-    },
-    "1q-active-0172v0": {
-      "code": "0172V0",
-      "name": "1Q 은액티브"
-    },
-    "ace-ktop10active": {
-      "code": "0172Y0",
-      "name": "ACE K수출핵심TOP10산업액티브"
-    },
-    "kodex-usai": {
-      "code": "0173Y0",
-      "name": "KODEX 미국AI광통신네트워크"
-    },
-    "koact-globalaisemiconductoractive": {
-      "code": "0174B0",
-      "name": "KoAct 글로벌AI메모리반도체액티브"
-    },
-    "daishin343-reitplus": {
-      "code": "0174J0",
-      "name": "DAISHIN343 오피스리츠플러스"
-    },
-    "kiwoom-us": {
-      "code": "0174R0",
-      "name": "KIWOOM 미국성장다우존스"
-    },
-    "rise-usaiinfrastructureactive": {
-      "code": "0176E0",
-      "name": "RISE 미국AI전력인프라액티브"
-    },
-    "focus-aisemiconductorcovered-call": {
-      "code": "0176P0",
-      "name": "FOCUS AI반도체위클리고정커버드콜"
-    },
-    "won-0177a0": {
-      "code": "0177A0",
-      "name": "WON 두산그룹포커스"
-    },
-    "kodex-skbond-blend50": {
-      "code": "0177N0",
-      "name": "KODEX 삼성전자SK하이닉스채권혼합50"
-    },
-    "tiger-semiconductortop10covered-callactive": {
-      "code": "0177R0",
-      "name": "TIGER 반도체TOP10커버드콜액티브"
-    },
-    "ace-ktop2": {
-      "code": "0177X0",
-      "name": "ACE K휴머노이드로봇산업TOP2+"
-    },
-    "ace-ustechactive": {
-      "code": "0180V0",
-      "name": "ACE 미국우주테크액티브"
-    },
-    "sol-usaerospacetop10": {
-      "code": "0181L0",
-      "name": "SOL 미국우주항공TOP10"
-    },
-    "1q-ksemiconductortop2": {
-      "code": "0182R0",
-      "name": "1Q K반도체TOP2+"
-    },
-    "1q-ksemiconductortop2bond-blend50": {
-      "code": "0182S0",
-      "name": "1Q K반도체TOP2채권혼합50"
-    },
-    "tiger-ustech": {
-      "code": "0183J0",
-      "name": "TIGER 미국우주테크"
-    },
-    "kiwoom-skbond-blend50": {
-      "code": "0183V0",
-      "name": "KIWOOM 삼성전자&SK하이닉스채권혼합50"
-    },
-    "1q-200bond-blend50active": {
-      "code": "0184E0",
-      "name": "1Q 200채권혼합50액티브"
-    },
-    "kodex-200": {
-      "code": "069500",
-      "name": "KODEX 200"
-    },
-    "kiwoom-200": {
-      "code": "069660",
-      "name": "KIWOOM 200"
-    },
-    "kodex-semiconductor": {
-      "code": "091160",
-      "name": "KODEX 반도체"
-    },
-    "kodex-091170": {
-      "code": "091170",
-      "name": "KODEX 은행"
-    },
-    "kodex-auto": {
-      "code": "091180",
-      "name": "KODEX 자동차"
-    },
-    "tiger-091220": {
-      "code": "091220",
-      "name": "TIGER 은행"
-    },
-    "tiger-semiconductor": {
-      "code": "091230",
-      "name": "TIGER 반도체"
-    },
-    "kodex-chinah": {
-      "code": "099140",
-      "name": "KODEX 차이나H"
-    },
     "kiwoom-krx100": {
       "code": "100910",
       "name": "KIWOOM KRX100"
@@ -2046,7 +1134,7 @@
     },
     "kiwoom-104530": {
       "code": "104530",
-      "name": "KIWOOM 고배당"
+      "name": "KIWOOM 코리아고배당"
     },
     "tiger-35": {
       "code": "105010",
@@ -4754,7 +3842,7 @@
     },
     "kiwoom-k-techtop10": {
       "code": "469790",
-      "name": "KIWOOM K-테크TOP10"
+      "name": "KIWOOM 코리아테크TOP10"
     },
     "sol-bondactive": {
       "code": "469830",
@@ -5479,6 +4567,938 @@
     "tiger-cdplusactivesynthetic": {
       "code": "499660",
       "name": "TIGER CD금리플러스액티브(합성)"
+    },
+    "tiger-us-treasurycovered-callsynthetic": {
+      "code": "0000D0",
+      "name": "TIGER 엔비디아미국채커버드콜밸런스(합성)"
+    },
+    "kodex-indianifty100": {
+      "code": "0000H0",
+      "name": "KODEX 인도Nifty미드캡100"
+    },
+    "plus-0000j0": {
+      "code": "0000J0",
+      "name": "PLUS 한화그룹주"
+    },
+    "hk-26-12-corporate-bondaa-plusactive": {
+      "code": "0000Y0",
+      "name": "HK 26-12 회사채(AA-이상)액티브"
+    },
+    "rise-biotechtop10active": {
+      "code": "0000Z0",
+      "name": "RISE 바이오TOP10액티브"
+    },
+    "mighty-biotechcdmoactive": {
+      "code": "0001P0",
+      "name": "마이티 바이오시밀러&CDMO액티브"
+    },
+    "asset-plus-india20active": {
+      "code": "0002C0",
+      "name": "에셋플러스 인도일등기업포커스20액티브"
+    },
+    "1q-ustop30": {
+      "code": "0004G0",
+      "name": "1Q 미국배당TOP30"
+    },
+    "kodex-us-sp500covered-callotm": {
+      "code": "0005A0",
+      "name": "KODEX 미국S&P500데일리커버드콜OTM"
+    },
+    "rise-us-sp500synthetic-h": {
+      "code": "0005C0",
+      "name": "RISE 미국S&P500엔화노출(합성 H)"
+    },
+    "sol-solid-state-batterysilicon-anode": {
+      "code": "0005D0",
+      "name": "SOL 전고체배터리&실리콘음극재"
+    },
+    "itf-k-aisemiconductortech": {
+      "code": "0005G0",
+      "name": "ITF K-AI반도체코어테크"
+    },
+    "kodex-27-12-corporate-bondaa-plusactive": {
+      "code": "0007F0",
+      "name": "KODEX 27-12 회사채(AA-이상)액티브"
+    },
+    "plus-global": {
+      "code": "0007G0",
+      "name": "PLUS 글로벌원자력밸류체인"
+    },
+    "200-0007n0": {
+      "code": "0007N0",
+      "name": "아이엠에셋 200"
+    },
+    "ace-us": {
+      "code": "0008E0",
+      "name": "ACE 미국중심중소형제조업"
+    },
+    "tiger-us-dividend-djonescovered-call": {
+      "code": "0008S0",
+      "name": "TIGER 미국배당다우존스타겟데일리커버드콜"
+    },
+    "sol-top3plus": {
+      "code": "0008T0",
+      "name": "SOL 화장품TOP3플러스"
+    },
+    "rise-ustop10": {
+      "code": "0013P0",
+      "name": "RISE 미국은행TOP10"
+    },
+    "rise-us-treasurycovered-callsynthetic": {
+      "code": "0013R0",
+      "name": "RISE 테슬라미국채타겟커버드콜혼합(합성)"
+    },
+    "koact-us-nasdaqactive": {
+      "code": "0015B0",
+      "name": "KoAct 미국나스닥성장기업액티브"
+    },
+    "kiwoom-us30yactiveh": {
+      "code": "0015E0",
+      "name": "KIWOOM 엔비디아미국30년국채혼합액티브(H)"
+    },
+    "kiwoom-us30yactiveh-0015f0": {
+      "code": "0015F0",
+      "name": "KIWOOM 팔란티어미국30년국채혼합액티브(H)"
+    },
+    "tiger-usactive": {
+      "code": "0015K0",
+      "name": "TIGER 미국소비트렌드액티브"
+    },
+    "sol-corporate-bonda-plusactive": {
+      "code": "0016X0",
+      "name": "SOL 중단기회사채(A-이상)액티브"
+    },
+    "1q-total-bondaa-plusactive": {
+      "code": "0017Y0",
+      "name": "1Q 종합채권(AA-이상)액티브"
+    },
+    "plus-covered-call": {
+      "code": "0018C0",
+      "name": "PLUS 고배당주위클리고정커버드콜"
+    },
+    "rise-us": {
+      "code": "0018Z0",
+      "name": "RISE 미국양자컴퓨팅"
+    },
+    "time-us-nasdaq100bond-blend50active": {
+      "code": "0019K0",
+      "name": "TIME 미국나스닥100채권혼합50액티브"
+    },
+    "koact-globalactive": {
+      "code": "0020H0",
+      "name": "KoAct 글로벌양자컴퓨팅액티브"
+    },
+    "ace-tdfactive": {
+      "code": "0021C0",
+      "name": "ACE TDF장기자산배분액티브"
+    },
+    "ace-tdf2030active-qualified": {
+      "code": "0021D0",
+      "name": "ACE TDF2030액티브 적격"
+    },
+    "ace-tdf2050active-qualified": {
+      "code": "0021E0",
+      "name": "ACE TDF2050액티브 적격"
+    },
+    "sol-covered-callactive": {
+      "code": "0022T0",
+      "name": "SOL 국제금커버드콜액티브"
+    },
+    "sol-ustop10": {
+      "code": "0023A0",
+      "name": "SOL 미국양자컴퓨팅TOP10"
+    },
+    "plus-ustop10": {
+      "code": "0023B0",
+      "name": "PLUS 미국양자컴퓨팅TOP10"
+    },
+    "tiger-tdf2045-qualified": {
+      "code": "0025N0",
+      "name": "TIGER TDF2045 적격"
+    },
+    "kodex-us-sp5003active": {
+      "code": "0026E0",
+      "name": "KODEX 미국S&P500버퍼3월액티브"
+    },
+    "1q-us-sp500": {
+      "code": "0026S0",
+      "name": "1Q 미국S&P500"
+    },
+    "kodex-usfinancetechactive": {
+      "code": "0028X0",
+      "name": "KODEX 미국금융테크액티브"
+    },
+    "plus-globalactive": {
+      "code": "0035T0",
+      "name": "PLUS 글로벌휴머노이드로봇액티브"
+    },
+    "time-us-dividend-djonesactive": {
+      "code": "0036D0",
+      "name": "TIME 미국배당다우존스액티브"
+    },
+    "rise-us-0036r0": {
+      "code": "0036R0",
+      "name": "RISE 미국휴머노이드로봇"
+    },
+    "rise-us-0036z0": {
+      "code": "0036Z0",
+      "name": "RISE 미국천연가스밸류체인"
+    },
+    "kodex-us": {
+      "code": "0038A0",
+      "name": "KODEX 미국휴머노이드로봇"
+    },
+    "hanaro-globalaiactive": {
+      "code": "0040S0",
+      "name": "HANARO 글로벌피지컬AI액티브"
+    },
+    "sol-us-treasurycovered-call": {
+      "code": "0040X0",
+      "name": "SOL 팔란티어미국채커버드콜혼합"
+    },
+    "sol-covered-callotmbond-blend": {
+      "code": "0040Y0",
+      "name": "SOL 팔란티어커버드콜OTM채권혼합"
+    },
+    "kodex-usaisoftwaretop10": {
+      "code": "0041D0",
+      "name": "KODEX 미국AI소프트웨어TOP10"
+    },
+    "kodex-us-sp500active": {
+      "code": "0041E0",
+      "name": "KODEX 미국S&P500액티브"
+    },
+    "tiger-mma-active": {
+      "code": "0043B0",
+      "name": "TIGER 머니마켓액티브"
+    },
+    "time-chinaaitechactive": {
+      "code": "0043Y0",
+      "name": "TIME 차이나AI테크액티브"
+    },
+    "tiger-us3": {
+      "code": "0046A0",
+      "name": "TIGER 미국초단기(3개월이하)국채"
+    },
+    "ace-us-dividend-quality": {
+      "code": "0046Y0",
+      "name": "ACE 미국배당퀄리티"
+    },
+    "tiger-chinatechtop10": {
+      "code": "0047A0",
+      "name": "TIGER 차이나테크TOP10"
+    },
+    "plus-chinaaitechtop10": {
+      "code": "0047N0",
+      "name": "PLUS 차이나AI테크TOP10"
+    },
+    "rise-tech100": {
+      "code": "0047P0",
+      "name": "RISE 테슬라고정테크100"
+    },
+    "rise-tech100-0047r0": {
+      "code": "0047R0",
+      "name": "RISE 팔란티어고정테크100"
+    },
+    "kodex-usmma-active": {
+      "code": "0048J0",
+      "name": "KODEX 미국머니마켓액티브"
+    },
+    "kodex-china": {
+      "code": "0048K0",
+      "name": "KODEX 차이나휴머노이드로봇"
+    },
+    "ace-us-dividend-qualitybond-blend50": {
+      "code": "0049K0",
+      "name": "ACE 미국배당퀄리티채권혼합50"
+    },
+    "ace-us-dividend-qualitycovered-callactive": {
+      "code": "0049M0",
+      "name": "ACE 미국배당퀄리티+커버드콜액티브"
+    },
+    "plus-usai": {
+      "code": "0050E0",
+      "name": "PLUS 미국AI에이전트"
+    },
+    "koact-active": {
+      "code": "0051A0",
+      "name": "KoAct 브로드컴밸류체인액티브"
+    },
+    "sol-ussmr": {
+      "code": "0051G0",
+      "name": "SOL 미국원자력SMR"
+    },
+    "tiger-0052d0": {
+      "code": "0052D0",
+      "name": "TIGER 코리아배당다우존스"
+    },
+    "1q-us-sp500us-treasury-blend50active": {
+      "code": "0052S0",
+      "name": "1Q 미국S&P500미국채혼합50액티브"
+    },
+    "1q-corporate-bonda-plusactive": {
+      "code": "0052T0",
+      "name": "1Q 중단기회사채(A-이상)액티브"
+    },
+    "tiger-china": {
+      "code": "0053L0",
+      "name": "TIGER 차이나휴머노이드로봇"
+    },
+    "active": {
+      "code": "0053M0",
+      "name": "더제이 중소형포커스액티브"
+    },
+    "plus-us-sp500us-treasury-blend50active": {
+      "code": "0057H0",
+      "name": "PLUS 미국S&P500미국채혼합50액티브"
+    },
+    "tiger-active": {
+      "code": "0060H0",
+      "name": "TIGER 토탈월드스탁액티브"
+    },
+    "rise-active": {
+      "code": "0061Z0",
+      "name": "RISE 단기특수은행채액티브"
+    },
+    "kodex-active": {
+      "code": "0064K0",
+      "name": "KODEX 금액티브"
+    },
+    "kodex-chinatechtop10": {
+      "code": "0065G0",
+      "name": "KODEX 차이나테크TOP10"
+    },
+    "sol-0066w0": {
+      "code": "0066W0",
+      "name": "SOL 국제금"
+    },
+    "tiger-chinaglobaltop3": {
+      "code": "0067V0",
+      "name": "TIGER 차이나글로벌리더스TOP3+"
+    },
+    "tiger-chinaaisoftware": {
+      "code": "0067Y0",
+      "name": "TIGER 차이나AI소프트웨어"
+    },
+    "kodex-us-sp5006active": {
+      "code": "0068M0",
+      "name": "KODEX 미국S&P500버퍼6월액티브"
+    },
+    "1q-us-nasdaq100": {
+      "code": "0069M0",
+      "name": "1Q 미국나스닥100"
+    },
+    "tiger-krx": {
+      "code": "0072R0",
+      "name": "TIGER KRX금현물"
+    },
+    "focus-us-treasurycovered-call": {
+      "code": "0073X0",
+      "name": "FOCUS 알리바바미국채커버드콜혼합"
+    },
+    "koact-ktop30active": {
+      "code": "0074K0",
+      "name": "KoAct K수출핵심기업TOP30액티브"
+    },
+    "plus-us": {
+      "code": "0078V0",
+      "name": "PLUS 미국로보택시"
+    },
+    "ace-bydactive": {
+      "code": "0079X0",
+      "name": "ACE BYD밸류체인액티브"
+    },
+    "kodex-defense-top10": {
+      "code": "0080G0",
+      "name": "KODEX 방산TOP10"
+    },
+    "sol-us-sp500us-treasury-blend50": {
+      "code": "0080X0",
+      "name": "SOL 미국S&P500미국채혼합50"
+    },
+    "sol-shipbuilding-top3plus-leverage": {
+      "code": "0080Y0",
+      "name": "SOL 조선TOP3플러스레버리지"
+    },
+    "hanaro-defense": {
+      "code": "0082F0",
+      "name": "HANARO 유럽방산"
+    },
+    "kodex-tdf2060active-qualified": {
+      "code": "0082V0",
+      "name": "KODEX TDF2060액티브 적격"
+    },
+    "1q-usai": {
+      "code": "0083S0",
+      "name": "1Q 미국메디컬AI"
+    },
+    "kiwoom-us-tech100active": {
+      "code": "0084D0",
+      "name": "KIWOOM 미국테크100월간목표헤지액티브"
+    },
+    "kiwoom-us500active": {
+      "code": "0084E0",
+      "name": "KIWOOM 미국대형주500월간목표헤지액티브"
+    },
+    "ace-us10year-treasury-activeh": {
+      "code": "0085N0",
+      "name": "ACE 미국10년국채액티브(H)"
+    },
+    "ace-us10year-treasury-active": {
+      "code": "0085P0",
+      "name": "ACE 미국10년국채액티브"
+    },
+    "tiger-reitinfrastructuretop10active": {
+      "code": "0086B0",
+      "name": "TIGER 리츠부동산인프라TOP10액티브"
+    },
+    "tiger-reitinfrastructure10bond-blendactive": {
+      "code": "0086C0",
+      "name": "TIGER 리츠부동산인프라10채권혼합액티브"
+    },
+    "ace-chinaaitechtop2active": {
+      "code": "0087F0",
+      "name": "ACE 차이나AI빅테크TOP2+액티브"
+    },
+    "won-k-global": {
+      "code": "0088N0",
+      "name": "WON K-글로벌수급상위"
+    },
+    "plus-us-nasdaq100us-treasury-blend50": {
+      "code": "0089B0",
+      "name": "PLUS 미국나스닥100미국채혼합50"
+    },
+    "kodex-us-sp500covered-call": {
+      "code": "0089C0",
+      "name": "KODEX 미국S&P500변동성확대시커버드콜"
+    },
+    "kodex-financetop10": {
+      "code": "0089D0",
+      "name": "KODEX 금융고배당TOP10"
+    },
+    "plus-kdefense": {
+      "code": "0090B0",
+      "name": "PLUS K방산소부장"
+    },
+    "kodex-us10year-treasury-activeh": {
+      "code": "0091C0",
+      "name": "KODEX 미국10년국채액티브(H)"
+    },
+    "hanaro-27-06-corporate-bondaa-plusactive": {
+      "code": "0091M0",
+      "name": "HANARO 27-06 회사채(AA-이상)액티브"
+    },
+    "tiger-0091p0": {
+      "code": "0091P0",
+      "name": "TIGER 코리아원자력"
+    },
+    "sol-smr": {
+      "code": "0092B0",
+      "name": "SOL 한국원자력SMR"
+    },
+    "sol-27-12-corporate-bondaa-plusactive": {
+      "code": "0092C0",
+      "name": "SOL 27-12 회사채(AA-이상)액티브"
+    },
+    "rise-aisemiconductortop10": {
+      "code": "0093A0",
+      "name": "RISE AI반도체TOP10"
+    },
+    "rise-tech100-0093b0": {
+      "code": "0093B0",
+      "name": "RISE 엔비디아고정테크100"
+    },
+    "koact-active-0093d0": {
+      "code": "0093D0",
+      "name": "KoAct 팔란티어밸류체인액티브"
+    },
+    "tiger-28-04-corporate-bondaplusactive": {
+      "code": "0094K0",
+      "name": "TIGER 28-04 회사채(A+이상)액티브"
+    },
+    "rise-chinatechtop10covered-call": {
+      "code": "0094L0",
+      "name": "RISE 차이나테크TOP10위클리타겟커버드콜"
+    },
+    "rise-korea-valueupcovered-call": {
+      "code": "0094M0",
+      "name": "RISE 코리아밸류업위클리고정커버드콜"
+    },
+    "1q-active": {
+      "code": "0094X0",
+      "name": "1Q 샤오미밸류체인액티브"
+    },
+    "kiwoom-usaitech": {
+      "code": "0097L0",
+      "name": "KIWOOM 한국고배당&미국AI테크"
+    },
+    "kodex-smr": {
+      "code": "0098F0",
+      "name": "KODEX 원자력SMR"
+    },
+    "plus-0098n0": {
+      "code": "0098N0",
+      "name": "PLUS 자사주매입고배당주"
+    },
+    "focus-200": {
+      "code": "0098Z0",
+      "name": "FOCUS 200"
+    },
+    "ace-corporate-bondaa-plusactive": {
+      "code": "0099L0",
+      "name": "ACE 우량회사채(AA-이상)액티브"
+    },
+    "kodex-defense-top10leverage": {
+      "code": "0100K0",
+      "name": "KODEX 방산TOP10레버리지"
+    },
+    "rise-aiinfrastructure": {
+      "code": "0101N0",
+      "name": "RISE AI전력인프라"
+    },
+    "tiger-usaisoftwaretop4plus": {
+      "code": "0102A0",
+      "name": "TIGER 미국AI소프트웨어TOP4Plus"
+    },
+    "ace-defense-top10": {
+      "code": "0102X0",
+      "name": "ACE 유럽방산TOP10"
+    },
+    "1q-kai": {
+      "code": "0103T0",
+      "name": "1Q K소버린AI"
+    },
+    "plus-kdefenseleverage": {
+      "code": "0104G0",
+      "name": "PLUS K방산레버리지"
+    },
+    "koact-us-nasdaqbond-blend50active": {
+      "code": "0104H0",
+      "name": "KoAct 미국나스닥채권혼합50액티브"
+    },
+    "tiger-200covered-call": {
+      "code": "0104N0",
+      "name": "TIGER 200타겟위클리커버드콜"
+    },
+    "tiger-covered-call": {
+      "code": "0104P0",
+      "name": "TIGER 코리아배당다우존스위클리커버드콜"
+    },
+    "sol-aisoftware": {
+      "code": "0105D0",
+      "name": "SOL 한국AI소프트웨어"
+    },
+    "sol-0105e0": {
+      "code": "0105E0",
+      "name": "SOL 코리아고배당"
+    },
+    "kiwoom-usaitech-0107f0": {
+      "code": "0107F0",
+      "name": "KIWOOM 미국고배당&AI테크"
+    },
+    "hanaro-top3plus": {
+      "code": "0111J0",
+      "name": "HANARO 증권고배당TOP3플러스"
+    },
+    "1q-us-nasdaq100us-treasury-blend50active": {
+      "code": "0111P0",
+      "name": "1Q 미국나스닥100미국채혼합50액티브"
+    },
+    "mighty-200tr": {
+      "code": "0112X0",
+      "name": "마이티 200TR"
+    },
+    "time-globalactive": {
+      "code": "0113D0",
+      "name": "TIME 글로벌탑픽액티브"
+    },
+    "koact-usbiotechhealthcareactive": {
+      "code": "0113G0",
+      "name": "KoAct 미국바이오헬스케어액티브"
+    },
+    "hk-mma-active": {
+      "code": "0113P0",
+      "name": "HK 머니마켓액티브"
+    },
+    "rise-globalgamingtechtop3plus": {
+      "code": "0114X0",
+      "name": "RISE 글로벌게임테크TOP3Plus"
+    },
+    "rise-ustop10-0115c0": {
+      "code": "0115C0",
+      "name": "RISE 미국고배당다우존스TOP10"
+    },
+    "kodex-shipbuilding-top10": {
+      "code": "0115D0",
+      "name": "KODEX 조선TOP10"
+    },
+    "kodex-ai": {
+      "code": "0115E0",
+      "name": "KODEX 코리아소버린AI"
+    },
+    "kodex-26-12-financeaa-plusactive": {
+      "code": "0117L0",
+      "name": "KODEX 26-12 금융채(AA-이상)액티브"
+    },
+    "tiger-aitop3plus": {
+      "code": "0117V0",
+      "name": "TIGER 코리아AI전력기기TOP3플러스"
+    },
+    "sol-ustechtop10active": {
+      "code": "0118S0",
+      "name": "SOL 미국넥스트테크TOP10액티브"
+    },
+    "ace-usaitechactive": {
+      "code": "0118Z0",
+      "name": "ACE 미국AI테크핵심산업액티브"
+    },
+    "kodex-28-12-corporate-bondaa-plusactive": {
+      "code": "0119H0",
+      "name": "KODEX 28-12 회사채(AA-이상)액티브"
+    },
+    "bnk-0120j0": {
+      "code": "0120J0",
+      "name": "BNK 카카오그룹포커스"
+    },
+    "rise-26-11-corporate-bondaa-plusactive": {
+      "code": "0122W0",
+      "name": "RISE 26-11 회사채(AA-이상)액티브"
+    },
+    "tiger-usaismr": {
+      "code": "0123G0",
+      "name": "TIGER 미국AI전력SMR"
+    },
+    "hanaro-26-12-aaplusactive": {
+      "code": "0123S0",
+      "name": "HANARO 26-12 은행채(AA+이상)액티브"
+    },
+    "ace-usactive": {
+      "code": "0127M0",
+      "name": "ACE 미국대형가치주액티브"
+    },
+    "ace-usactive-0127p0": {
+      "code": "0127P0",
+      "name": "ACE 미국대형성장주액티브"
+    },
+    "rise-usaiinfrastructure": {
+      "code": "0127R0",
+      "name": "RISE 미국AI클라우드인프라"
+    },
+    "kiwoom-us-sp500": {
+      "code": "0127T0",
+      "name": "KIWOOM 미국S&P500&배당다우존스비중전환"
+    },
+    "kiwoom-us-sp500-top10": {
+      "code": "0127V0",
+      "name": "KIWOOM 미국S&P500 TOP10&배당다우비중전환"
+    },
+    "plus-chinatechcovered-call": {
+      "code": "0128D0",
+      "name": "PLUS 차이나항셍테크위클리타겟커버드콜"
+    },
+    "sol-china": {
+      "code": "0131A0",
+      "name": "SOL 차이나소비트렌드"
+    },
+    "1q-usaerospacetech": {
+      "code": "0131V0",
+      "name": "1Q 미국우주항공테크"
+    },
+    "1q-active-0131w0": {
+      "code": "0131W0",
+      "name": "1Q 단기특수은행채액티브"
+    },
+    "koact-globalkactive": {
+      "code": "0132D0",
+      "name": "KoAct 글로벌K컬처밸류체인액티브"
+    },
+    "kodex-ussmr": {
+      "code": "0132H0",
+      "name": "KODEX 미국원자력SMR"
+    },
+    "plus-covered-callbond-blend": {
+      "code": "0132K0",
+      "name": "PLUS 테슬라위클리커버드콜채권혼합"
+    },
+    "tiger-china-0133e0": {
+      "code": "0133E0",
+      "name": "TIGER 차이나증권"
+    },
+    "itf-total-bondaa-plusactive": {
+      "code": "0135Y0",
+      "name": "ITF 중기종합채권(AA-이상)액티브"
+    },
+    "kiwoom-us-sp500-0137v0": {
+      "code": "0137V0",
+      "name": "KIWOOM 미국S&P500모멘텀"
+    },
+    "kiwoom-us-sp500gold": {
+      "code": "0137W0",
+      "name": "KIWOOM 미국S&P500&GOLD"
+    },
+    "rise-0138d0": {
+      "code": "0138D0",
+      "name": "RISE 동학개미"
+    },
+    "rise-us-sp500covered-call": {
+      "code": "0138T0",
+      "name": "RISE 미국S&P500데일리고정커버드콜"
+    },
+    "plus-bond-blend": {
+      "code": "0138Y0",
+      "name": "PLUS 금채권혼합"
+    },
+    "tiger-12financeaa-plusactive": {
+      "code": "0139F0",
+      "name": "TIGER 12월자동연장금융채(AA-이상)액티브"
+    },
+    "ace-0139p0": {
+      "code": "0139P0",
+      "name": "ACE 고배당주"
+    },
+    "sol-shipbuilding": {
+      "code": "0141S0",
+      "name": "SOL 조선기자재"
+    },
+    "sol-total-bondaa-plusactive": {
+      "code": "0141T0",
+      "name": "SOL 중기종합채권(AA-이상)액티브"
+    },
+    "tiger-usaidatatop4plus": {
+      "code": "0142D0",
+      "name": "TIGER 미국AI데이터센터TOP4Plus"
+    },
+    "kodex-uscovered-callactive": {
+      "code": "0144L0",
+      "name": "KODEX 미국성장커버드콜액티브"
+    },
+    "kodex-usuam-top10": {
+      "code": "0144M0",
+      "name": "KODEX 미국드론UAM TOP10"
+    },
+    "tiger-0148j0": {
+      "code": "0148J0",
+      "name": "TIGER 코리아휴머노이드로봇산업"
+    },
+    "koact-essinfrastructureactive": {
+      "code": "0150K0",
+      "name": "KoAct 수소전력ESS인프라액티브"
+    },
+    "rise-active-0151p0": {
+      "code": "0151P0",
+      "name": "RISE 코리아전략산업액티브"
+    },
+    "kodex-usaisemiconductortop3plus": {
+      "code": "0151S0",
+      "name": "KODEX 미국AI반도체TOP3플러스"
+    },
+    "sol-active": {
+      "code": "0152E0",
+      "name": "SOL 배당성향탑픽액티브"
+    },
+    "kodex-0153k0": {
+      "code": "0153K0",
+      "name": "KODEX 주주환원고배당주"
+    },
+    "ace-reitinfrastructureactive": {
+      "code": "0153P0",
+      "name": "ACE 리츠부동산인프라액티브"
+    },
+    "plus-usactive": {
+      "code": "0153X0",
+      "name": "PLUS 미국고배당주액티브"
+    },
+    "won-ibfinance": {
+      "code": "0154F0",
+      "name": "WON 초대형IB&금융지주"
+    },
+    "koact-chinabiotechhealthcareactive": {
+      "code": "0154H0",
+      "name": "KoAct 차이나바이오헬스케어액티브"
+    },
+    "ace-ussmrtop10": {
+      "code": "0155M0",
+      "name": "ACE 미국SMR원자력TOP10"
+    },
+    "hanaro-ktop10": {
+      "code": "0155N0",
+      "name": "HANARO K휴머노이드테마TOP10"
+    },
+    "kodex-chinaaisemiconductortop10": {
+      "code": "0162L0",
+      "name": "KODEX 차이나AI반도체TOP10"
+    },
+    "kodex-finance12yaa-plusplusactive": {
+      "code": "0162M0",
+      "name": "KODEX 금융채1~2년(AA-이상)PLUS액티브"
+    },
+    "time-kosdaqactive": {
+      "code": "0162Y0",
+      "name": "TIME 코스닥액티브"
+    },
+    "rise-skbond-blend50": {
+      "code": "0162Z0",
+      "name": "RISE 삼성전자SK하이닉스채권혼합50"
+    },
+    "koact-kosdaqactive": {
+      "code": "0163Y0",
+      "name": "KoAct 코스닥액티브"
+    },
+    "rise-chinaaisemiconductortop4plus": {
+      "code": "0164G0",
+      "name": "RISE 차이나AI반도체TOP4Plus"
+    },
+    "plus-kosdaq150active": {
+      "code": "0166N0",
+      "name": "PLUS 코스닥150액티브"
+    },
+    "plus-kactive": {
+      "code": "0166S0",
+      "name": "PLUS K제조업핵심기업액티브"
+    },
+    "plus-globalactive-0166t0": {
+      "code": "0166T0",
+      "name": "PLUS 글로벌저작권핵심기업액티브"
+    },
+    "sol-aisemiconductortop2plus": {
+      "code": "0167A0",
+      "name": "SOL AI반도체TOP2플러스"
+    },
+    "sol-200covered-call": {
+      "code": "0167B0",
+      "name": "SOL 200타겟위클리커버드콜"
+    },
+    "kodex-usaerospace": {
+      "code": "0167Z0",
+      "name": "KODEX 미국우주항공"
+    },
+    "tiger-biotechactive": {
+      "code": "0168K0",
+      "name": "TIGER 기술이전바이오액티브"
+    },
+    "1q-active-0172v0": {
+      "code": "0172V0",
+      "name": "1Q 은액티브"
+    },
+    "ace-ktop10active": {
+      "code": "0172Y0",
+      "name": "ACE K수출핵심TOP10산업액티브"
+    },
+    "kodex-usai": {
+      "code": "0173Y0",
+      "name": "KODEX 미국AI광통신네트워크"
+    },
+    "koact-globalaisemiconductoractive": {
+      "code": "0174B0",
+      "name": "KoAct 글로벌AI메모리반도체액티브"
+    },
+    "daishin343-reitplus": {
+      "code": "0174J0",
+      "name": "DAISHIN343 오피스리츠플러스"
+    },
+    "kiwoom-us": {
+      "code": "0174R0",
+      "name": "KIWOOM 미국성장다우존스"
+    },
+    "rise-usaiinfrastructureactive": {
+      "code": "0176E0",
+      "name": "RISE 미국AI전력인프라액티브"
+    },
+    "focus-aisemiconductorcovered-call": {
+      "code": "0176P0",
+      "name": "FOCUS AI반도체위클리고정커버드콜"
+    },
+    "won-0177a0": {
+      "code": "0177A0",
+      "name": "WON 두산그룹포커스"
+    },
+    "kodex-skbond-blend50": {
+      "code": "0177N0",
+      "name": "KODEX 삼성전자SK하이닉스채권혼합50"
+    },
+    "tiger-semiconductortop10covered-callactive": {
+      "code": "0177R0",
+      "name": "TIGER 반도체TOP10커버드콜액티브"
+    },
+    "ace-ktop2": {
+      "code": "0177X0",
+      "name": "ACE K휴머노이드로봇산업TOP2+"
+    },
+    "ace-ustechactive": {
+      "code": "0180V0",
+      "name": "ACE 미국우주테크액티브"
+    },
+    "sol-usaerospacetop10": {
+      "code": "0181L0",
+      "name": "SOL 미국우주항공TOP10"
+    },
+    "1q-ksemiconductortop2": {
+      "code": "0182R0",
+      "name": "1Q K반도체TOP2+"
+    },
+    "1q-ksemiconductortop2bond-blend50": {
+      "code": "0182S0",
+      "name": "1Q K반도체TOP2채권혼합50"
+    },
+    "tiger-ustech": {
+      "code": "0183J0",
+      "name": "TIGER 미국우주테크"
+    },
+    "kiwoom-skbond-blend50": {
+      "code": "0183V0",
+      "name": "KIWOOM 삼성전자&SK하이닉스채권혼합50"
+    },
+    "1q-200bond-blend50active": {
+      "code": "0184E0",
+      "name": "1Q 200채권혼합50액티브"
+    },
+    "kodex-200": {
+      "code": "069500",
+      "name": "KODEX 200"
+    },
+    "kiwoom-200": {
+      "code": "069660",
+      "name": "KIWOOM 200"
+    },
+    "kodex-semiconductor": {
+      "code": "091160",
+      "name": "KODEX 반도체"
+    },
+    "kodex-091170": {
+      "code": "091170",
+      "name": "KODEX 은행"
+    },
+    "kodex-auto": {
+      "code": "091180",
+      "name": "KODEX 자동차"
+    },
+    "tiger-091220": {
+      "code": "091220",
+      "name": "TIGER 은행"
+    },
+    "tiger-semiconductor": {
+      "code": "091230",
+      "name": "TIGER 반도체"
+    },
+    "kodex-chinah": {
+      "code": "099140",
+      "name": "KODEX 차이나H"
+    },
+    "itf-usai-top1050": {
+      "code": "0178H0",
+      "name": "ITF 미국AI TOP10국채혼합50"
+    },
+    "koact-usaiactive": {
+      "code": "0186L0",
+      "name": "KoAct 미국로봇피지컬AI액티브"
+    },
+    "1q-kosdaq150bond-blend50active": {
+      "code": "0186S0",
+      "name": "1Q 코스닥150채권혼합50액티브"
+    },
+    "tiger-active-0189b0": {
+      "code": "0189B0",
+      "name": "TIGER 은액티브"
     }
   }
 }
