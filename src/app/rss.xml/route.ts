@@ -50,8 +50,10 @@ ${itemsXml}
   return new Response(rssFeed, {
     headers: {
       'Content-Type': 'application/xml; charset=utf-8',
-      // CDN이나 브라우저 캐시를 사용하되 24시간마다 백그라운드에서 갱신(stale-while-revalidate)
-      'Cache-Control': 's-maxage=86400, stale-while-revalidate',
+      // 1시간 CDN 캐시 + stale-while-revalidate.
+      //   매일 cron(KST 16:00)으로 새 글이 push되면 Cloudflare 가 자동 재배포 → RSS route 도 새로 빌드.
+      //   재배포 사이에는 1h 윈도우 내 새 글이 RSS 에 반영. 24h 였을 때는 아침 새 글이 다음날 오후까지 RSS 에 안 보임.
+      'Cache-Control': 's-maxage=3600, stale-while-revalidate=86400',
     },
   });
 }
