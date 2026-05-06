@@ -86,22 +86,75 @@ jobs:
         run: git push
 
       - name: Summary
+        if: always()
         run: |
           echo "## Daily ETF Pulse Summary" >> $GITHUB_STEP_SUMMARY
           echo "- Changed: ${{ steps.commit.outputs.changed }}" >> $GITHUB_STEP_SUMMARY
           echo "- Time (KST): $(date)" >> $GITHUB_STEP_SUMMARY
+
+          # ── DataMiner 결과 진단 (KRX API 정상 응답 여부) ───────────────
+          LATEST_PRICE=$(ls -t data/raw/etf_prices_*.json 2>/dev/null | head -1)
+          if [ -n "$LATEST_PRICE" ]; then
+            DIAG=$(node -e "
+              const d = require('./$LATEST_PRICE');
+              const x = d.data || {};
+              const out = {
+                isRealData: x.isRealData ?? null,
+                source: x.source ?? '',
+                baseDate: x.baseDate ?? '',
+                etfCount: x.etfCount ?? 0,
+                byVolumeLen: (x.byVolume || []).length,
+                sectorFlowLen: (x.sectorFlow || []).length,
+              };
+              console.log(JSON.stringify(out));
+            " 2>/dev/null || echo '{}')
+            echo "- DataMiner: \`$DIAG\`" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- DataMiner: ⚠️ data/raw/etf_prices_*.json 파일 없음 (DataMiner 실행 자체 실패 추정)" >> $GITHUB_STEP_SUMMARY
+          fi
+
           if [ -f data/.last-pulse-base-date ]; then
-            echo "- Last published baseDate (KRX 거래일): $(cat data/.last-pulse-base-date)" >> $GITHUB_STEP_SUMMARY
+            echo "- Last published baseDate (KRX 거래일): \`$(cat data/.last-pulse-base-date)\`" >> $GITHUB_STEP_SUMMARY
           fi
-          # 누적 카운트 (오늘 새 글 수가 아님 — 폴더 전체)
-          if [ -d content/breaking ]; then
-            echo "- Breaking posts (cumulative): $(ls content/breaking/*.mdx 2>/dev/null | wc -l)" >> $GITHUB_STEP_SUMMARY
+
+          # ── 오늘 cron 의 에이전트 실행 추적 (어디서 막혔는지) ──────────
+          LOG_FILE="logs/pipeline_$(date +%Y%m%d).json"
+          if [ -f "$LOG_FILE" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### Agent 실행 추적 (시간순 마지막 12건)" >> $GITHUB_STEP_SUMMARY
+            echo '```json' >> $GITHUB_STEP_SUMMARY
+            node -e "
+              const l = require('./$LOG_FILE');
+              l.slice(-12).forEach(e => console.log(JSON.stringify({
+                agent: e.agent,
+                status: e.status,
+                summary: (e.outputSummary || '').slice(0, 120),
+                error: (e.error || '').slice(0, 200),
+              })));
+            " >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ⚠️ logs/pipeline_$(date +%Y%m%d).json 없음 — 파이프라인이 첫 단계 전 종료된 것" >> $GITHUB_STEP_SUMMARY
           fi
-          if [ -d content/pulse ]; then
-            echo "- Pulse posts (cumulative): $(ls content/pulse/*.mdx 2>/dev/null | wc -l)" >> $GITHUB_STEP_SUMMARY
-          fi
-          # 오늘 변경된 파일이 있으면 명시 — Changed: false의 진짜 의미를 표면화
+
+          # ── 누적 카운트 ────────────────────────────────────────────
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 콘텐츠 누적 카운트" >> $GITHUB_STEP_SUMMARY
+          for cat in pulse surge flow income breaking; do
+            if [ -d "content/$cat" ]; then
+              echo "- $cat: $(ls content/$cat/*.mdx 2>/dev/null | wc -l)" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+
+          # ── 변경 없음 진단 — 자가진단 가이드 ─────────────────────────
           if [ "${{ steps.commit.outputs.changed }}" = "false" ]; then
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "⚠️  **신규 발행 0건** — 직전 발행과 같은 거래일 데이터 (KRX 휴장·data.go.kr 갱신 지연 가능). 다음 cron까지 자동 대기." >> $GITHUB_STEP_SUMMARY
+            echo "### ⚠️ 신규 발행 0건 — 자가진단" >> $GITHUB_STEP_SUMMARY
+            echo "위 Agent 실행 추적에서 마지막 status=completed 인 에이전트가 어디인지 확인하면 어디서 막혔는지 알 수 있음. 일반 원인:" >> $GITHUB_STEP_SUMMARY
+            echo "  1. **DataMiner isRealData=false** → DATA_GO_KR_API_KEY 만료 또는 KRX API 일시 장애" >> $GITHUB_STEP_SUMMARY
+            echo "  2. **DataMiner status=completed 후 즉시 종료** → orchestrator 의 same-baseDate skip 게이트 (직전 발행과 같은 거래일)" >> $GITHUB_STEP_SUMMARY
+            echo "  3. **SeoArchitect summary='0개 전략'** → DataMiner 의 byVolume/sectorFlow 가 비어있음" >> $GITHUB_STEP_SUMMARY
+            echo "  4. **LogicSpecialist status=failed** → Gemini 쿼터 (RESOURCE_EXHAUSTED) 또는 GEMINI_API_KEY 만료" >> $GITHUB_STEP_SUMMARY
+            echo "  5. **YmylGuard summary='검증 통과 0건'** → 본문 BANNED_PHRASES 또는 메타 단어로 전부 차단" >> $GITHUB_STEP_SUMMARY
+            echo "  6. **HarnessDeployer summary='발행 0건'** → 슬러그 정규식 미일치 또는 콘텐츠 길이 미달로 SEO 차단" >> $GITHUB_STEP_SUMMARY
           fi
