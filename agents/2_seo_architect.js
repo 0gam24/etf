@@ -401,10 +401,24 @@ async function run({ today, previousResults }) {
   strategies.forEach((s, i) => {
     logger.log(AGENT_NAME, `  ${i + 1}. [${s.category}·CPC ${s.estimatedCpc}원] ${s.keyword}`);
   });
+
+  // 0개 전략 — DataMiner 의 etfData 가 정상이지만 byVolume/sectorFlow 가 비어있거나
+  //   builder 들이 모두 null 반환한 비정상 상태. 후속 에이전트는 빈 articles 로 chain → 발행 0건 silent fail.
+  //   여기서 진단 정보 로그로 어느 입력이 비정상인지 즉시 식별.
+  if (strategies.length === 0) {
+    logger.error(AGENT_NAME, '⛔ 0개 전략 — pipeline 정상 진행하지만 LogicSpecialist 가 빈 articles 반환 → 발행 0건 결과.');
+    logger.error(AGENT_NAME, `   진단: isRealData=${etfData.isRealData} · source=${etfData.source} · baseDate=${etfData.baseDate}`);
+    logger.error(AGENT_NAME, `         etfList=${(etfData.etfList || []).length} · byVolume=${(etfData.byVolume || []).length} · byGain=${(etfData.byGain || []).length} · sectorFlow=${(etfData.sectorFlow || []).length}`);
+    logger.error(AGENT_NAME, '   원인 후보: (a) KRX API 가 빈 items 반환 → enrichETFData 의 byVolume 빈배열  (b) classifySector 가 모두 "기타" 분류 → buildFlowStrategy null  (c) build*Strategy 의 sector 매칭 누락');
+    return { summary: '⛔ 0개 전략 (DataMiner byVolume/sectorFlow 비정상)', strategies: [] };
+  }
+
   logger.success(AGENT_NAME, `${strategies.length}개 전략 수립 완료`);
 
+  // Math.max(...[]) === -Infinity 회피 — 위 가드로 strategies.length>0 보장됨.
+  const maxCpc = Math.max(...strategies.map(s => s.estimatedCpc));
   return {
-    summary: `${strategies.length}개 전략 (pulse/surge/flow/income), 최고 CPC ${Math.max(...strategies.map(s => s.estimatedCpc))}원`,
+    summary: `${strategies.length}개 전략 (pulse/surge/flow/income), 최고 CPC ${maxCpc}원`,
     strategies,
   };
 }
