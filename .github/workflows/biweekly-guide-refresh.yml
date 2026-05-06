@@ -48,7 +48,7 @@ jobs:
             echo "변경 없음 — 스킵"
           else
             DATE=$(date +%Y-%m-%d)
-            git commit -m "chore(guide): biweekly lastReviewed refresh ($DATE) [skip ci]"
+            git commit -m "chore(guide): biweekly lastReviewed refresh ($DATE)"
             git push origin main
             echo "✅ 가이드 lastReviewed 갱신 push 완료"
           fi

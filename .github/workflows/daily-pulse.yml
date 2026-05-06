@@ -77,7 +77,7 @@ jobs:
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             TODAY=$(date +%Y-%m-%d)
-            git commit -m "chore(pulse): daily update $TODAY [skip ci]"
+            git commit -m "chore(pulse): daily update $TODAY"
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
