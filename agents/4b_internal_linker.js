@@ -110,28 +110,55 @@ function pickRelated(article, sector, allPosts) {
  *         Google이 가이드 페이지의 권위/주제 신호로 인식.
  */
 const KEYWORD_GUIDE_MAP = [
-  // 더 구체적인 키워드를 먼저 — 매칭 우선순위
+  // 더 구체적인 키워드를 먼저 — 매칭 우선순위. 8개 가이드(monthly-dividend·covered-call·
+  //   defense-etf·ai-semi-etf·retirement·us-dividend·currency-hedge·overseas-etf)로만 매핑.
+  //   본 매핑은 본문 첫 등장 1회만 [키워드](/guide/{slug}) 로 치환 — 가이드 허브 PageRank 강화.
+  // ─── us-dividend (미국 배당) ───
   { keyword: '미국 배당주 ETF',    slug: 'us-dividend' },
   { keyword: '미국 배당 ETF',      slug: 'us-dividend' },
   { keyword: '배당주 ETF',         slug: 'us-dividend' },
+  { keyword: '배당다우존스',       slug: 'us-dividend' },
   { keyword: 'SCHD',              slug: 'us-dividend' },
+  // ─── currency-hedge (환헤지) ───
   { keyword: '환헤지 ETF',         slug: 'currency-hedge' },
   { keyword: '환헤지',             slug: 'currency-hedge' },
   { keyword: '환헷지',             slug: 'currency-hedge' },
+  { keyword: '환차익',             slug: 'currency-hedge' },
+  { keyword: '환차손',             slug: 'currency-hedge' },
+  // ─── overseas-etf (해외상장·미국 직투) ───
   { keyword: '해외 ETF',           slug: 'overseas-etf' },
   { keyword: '해외상장',           slug: 'overseas-etf' },
+  { keyword: '미국 ETF',           slug: 'overseas-etf' },
+  { keyword: '나스닥 ETF',         slug: 'overseas-etf' },
+  { keyword: 'S&P500 ETF',        slug: 'overseas-etf' },
   { keyword: 'SPY',               slug: 'overseas-etf' },
   { keyword: 'QQQ',               slug: 'overseas-etf' },
+  // ─── monthly-dividend (월배당) ───
   { keyword: '월배당 ETF',        slug: 'monthly-dividend' },
-  { keyword: '커버드콜 ETF',      slug: 'covered-call' },
-  { keyword: '방산 ETF',          slug: 'defense-etf' },
-  { keyword: 'AI ETF',           slug: 'ai-semi-etf' },
-  { keyword: '반도체 ETF',        slug: 'ai-semi-etf' },
-  { keyword: '연금저축',          slug: 'retirement' },
-  { keyword: 'IRP',              slug: 'retirement' },
-  { keyword: 'ISA',              slug: 'retirement' },
+  { keyword: '월분배 ETF',        slug: 'monthly-dividend' },
   { keyword: '월배당',            slug: 'monthly-dividend' },
+  // ─── covered-call (커버드콜) ───
+  { keyword: '커버드콜 ETF',      slug: 'covered-call' },
   { keyword: '커버드콜',          slug: 'covered-call' },
+  { keyword: 'JEPI',              slug: 'covered-call' },
+  { keyword: 'JEPQ',              slug: 'covered-call' },
+  // ─── defense-etf (방산) ───
+  { keyword: '방산 ETF',          slug: 'defense-etf' },
+  { keyword: 'K-방산',            slug: 'defense-etf' },
+  { keyword: 'K방산',             slug: 'defense-etf' },
+  // ─── ai-semi-etf (AI·반도체) ───
+  { keyword: 'AI ETF',            slug: 'ai-semi-etf' },
+  { keyword: '반도체 ETF',        slug: 'ai-semi-etf' },
+  { keyword: 'HBM',               slug: 'ai-semi-etf' },
+  { keyword: '엔비디아',          slug: 'ai-semi-etf' },
+  { keyword: '팔란티어',          slug: 'ai-semi-etf' },
+  // ─── retirement (IRP·ISA·연금저축) ───
+  { keyword: '연금저축',          slug: 'retirement' },
+  { keyword: '퇴직연금',          slug: 'retirement' },
+  { keyword: 'IRP',               slug: 'retirement' },
+  { keyword: 'ISA',               slug: 'retirement' },
+  { keyword: '비과세 한도',       slug: 'retirement' },
+  { keyword: '4050',              slug: 'retirement' },
 ];
 
 /**
@@ -140,14 +167,14 @@ const KEYWORD_GUIDE_MAP = [
  *   첫 등장 키워드는 원래 그대로 유지 (의미 매칭 보존), 추가 등장 시 변형 앵커 시도.
  */
 const ANCHOR_VARIATIONS = {
-  'monthly-dividend': ['월배당 ETF', '월배당 가이드', '월배당 종합 정리', '월배당 ETF 비교'],
-  'covered-call':     ['커버드콜 ETF', '커버드콜 전략 가이드', '커버드콜 비교', 'JEPI 한국판 ETF'],
-  'defense-etf':      ['방산 ETF', '방산 ETF 비교', 'K-방산 ETF 가이드'],
-  'ai-semi-etf':      ['AI 반도체 ETF', 'AI ETF 가이드', '반도체 ETF 비교'],
-  'retirement':       ['은퇴 자산 가이드', 'IRP·ISA 비교', '연금저축 ETF 가이드', '4050 자산 설계'],
-  'us-dividend':      ['미국 배당주 ETF', 'SCHD 한국판 비교', '미국 배당 ETF 가이드'],
-  'currency-hedge':   ['환헤지 ETF 가이드', '환헷지 vs 비헷지', '환헤지 비용 정리'],
-  'overseas-etf':     ['해외 ETF 직구 가이드', 'SPY vs KODEX 비교', '해외상장 ETF 세금'],
+  'monthly-dividend': ['월배당 ETF', '월배당 가이드', '월배당 종합 정리', '월배당 ETF 비교', '월배당 ETF 추천'],
+  'covered-call':     ['커버드콜 ETF', '커버드콜 전략 가이드', '커버드콜 비교', 'JEPI 한국판 ETF', '커버드콜 ETF 정리'],
+  'defense-etf':      ['방산 ETF', '방산 ETF 비교', 'K-방산 ETF 가이드', '방산 ETF 정리', 'K방산 종합'],
+  'ai-semi-etf':      ['AI 반도체 ETF', 'AI ETF 가이드', '반도체 ETF 비교', 'HBM ETF 정리', 'AI·반도체 ETF 종합'],
+  'retirement':       ['은퇴 자산 가이드', 'IRP·ISA 비교', '연금저축 ETF 가이드', '4050 자산 설계', '비과세 계좌 활용', '퇴직연금 ETF 정리'],
+  'us-dividend':      ['미국 배당주 ETF', 'SCHD 한국판 비교', '미국 배당 ETF 가이드', '배당다우존스 정리'],
+  'currency-hedge':   ['환헤지 ETF 가이드', '환헷지 vs 비헷지', '환헤지 비용 정리', '환차익 ETF 영향'],
+  'overseas-etf':     ['해외 ETF 직구 가이드', 'SPY vs KODEX 비교', '해외상장 ETF 세금', '나스닥 ETF 정리', '미국 ETF 직투 가이드'],
 };
 
 function pickAnchorVariation(slug, articleSlug, fallback) {
