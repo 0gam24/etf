@@ -115,23 +115,33 @@ async function runPipeline() {
       state.logPipelineStep(name, 'completed', { outputSummary: result?.summary || 'OK' });
       logger.success(name, `${description} 완료!`);
 
-      // DataMiner 직후: 거래일이 직전 발행과 동일하면 pipeline 조기 종료
+      // DataMiner 직후: 거래일이 직전 발행과 동일하면 pipeline 조기 종료.
+      //   sample fallback(KRX API 실패)일 때는 baseDate=오늘이 박혀 매 cron마다 self-match 가능 →
+      //   isRealData=true(공공데이터포털 정상 응답)일 때만 휴장 skip 게이트 적용.
       if (name === 'DataMiner') {
         const currentBaseDate = result?.etfData?.baseDate || '';
+        const isRealData = result?.etfData?.isRealData === true;
         const lastBaseDate = readLastBaseDate();
-        if (currentBaseDate && lastBaseDate && currentBaseDate === lastBaseDate) {
+        if (isRealData && currentBaseDate && lastBaseDate && currentBaseDate === lastBaseDate) {
           logger.warn('Orchestrator', `⏸  거래일(${currentBaseDate}) 직전 발행과 동일 — KRX 휴장·갱신 지연으로 추정. 새 글 생성 skip.`);
           logger.warn('Orchestrator', '   (다음 거래일 데이터가 들어오면 자동 진행. 강제 발행 필요시 data/.last-pulse-base-date 삭제)');
           return results; // 즉시 종료 — 후속 에이전트 모두 skip
         }
+        if (!isRealData) {
+          logger.warn('Orchestrator', '⚠️ DataMiner sample fallback 동작 중 — DATA_GO_KR_API_KEY 또는 KRX 응답 점검 필요. last-base-date 갱신은 건너뜀.');
+        }
       }
 
-      // HarnessDeployer 직후: 실제 발행됐으면 baseDate 갱신
+      // HarnessDeployer 직후: 실제 KRX 데이터 + 실 발행 시에만 baseDate 갱신.
+      //   sample baseDate 가 last-base-date 에 박히면 다음날 cron 까지 skip 트리거 — 차단.
       if (name === 'HarnessDeployer' && (result?.published || []).length > 0) {
         const currentBaseDate = results.DataMiner?.etfData?.baseDate;
-        if (currentBaseDate) {
+        const isRealData = results.DataMiner?.etfData?.isRealData === true;
+        if (isRealData && currentBaseDate) {
           writeLastBaseDate(currentBaseDate);
           logger.success('Orchestrator', `📌 last-base-date 갱신 → ${currentBaseDate}`);
+        } else {
+          logger.warn('Orchestrator', '⏭  last-base-date 갱신 skip (sample fallback 또는 baseDate 누락) — 다음 cron 에서 재시도');
         }
       }
 
