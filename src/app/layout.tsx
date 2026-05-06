@@ -29,13 +29,24 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     siteName: "Daily ETF Pulse",
     url: '/',
-    images: ['/api/og'],
+    // 명시적 width/height — Facebook·Slack·Threads 미리보기 최적화. 누락 시 일부 플랫폼은 SVG 이미지 skip.
+    images: [{
+      url: '/api/og',
+      width: 1200,
+      height: 630,
+      alt: 'Daily ETF Pulse — 오늘 뜨는 ETF의 진짜 이유',
+    }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Daily ETF Pulse — 오늘 뜨는 ETF의 진짜 이유',
     description: '거래량 1위 ETF의 급등 사유, 섹터별 자금 흐름, 월배당·커버드콜 전략. 매일 아침 9시 갱신.',
-    images: ['/api/og'],
+    images: [{
+      url: '/api/og',
+      width: 1200,
+      height: 630,
+      alt: 'Daily ETF Pulse — 오늘 뜨는 ETF의 진짜 이유',
+    }],
   },
   robots: {
     index: true,
