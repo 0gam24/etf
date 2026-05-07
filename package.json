@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/generate-network-mirror.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -19,6 +20,7 @@
     "fetch:products:merge": "node scripts/fetch-products.mjs --merge",
     "fetch:etf-codes": "node scripts/fetch-etf-codes.mjs",
     "generate:etf-slugs": "node scripts/generate-etf-slugs.mjs",
+    "generate:mirror": "node scripts/generate-network-mirror.mjs",
     "audit:seo": "node scripts/audit-seo.mjs",
     "validate:schema": "node scripts/validate-schema.mjs"
   },

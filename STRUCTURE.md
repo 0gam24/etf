@@ -230,10 +230,13 @@ charts[] · affiliates[] · adPlacements · schemas[] (인라인 JSON-LD)
 - `validate-schema.mjs` — schema.org JSON-LD 8종 페이지 검증
 - `verify-parity.mjs` — 로컬 ↔ production 응답 일치 검증 (push 후 5~7분 후 실행)
 - `migrate-personas-to-ai-agents.mjs` — 페르소나 → AI 에이전트 마이그레이션 (1회성 · 2026-04-26 E-E-A-T 정책)
+- `generate-network-mirror.mjs` — smartdata HQ sync용 메타 export → `public/network-mirror.json` (분석 글 18편 + ETF 사전 1099 별도 키 + 7 AI 에이전트 accent · `prebuild` 훅으로 자동 실행)
 
 ## 13. 빌드·배포 명령 (`package.json` scripts)
 - `npm run dev` — Next.js dev 서버
-- `npm run build` — Next.js 프로덕션 빌드
+- `npm run prebuild` — `network-mirror.json` 자동 재생성 (build 직전 자동 실행)
+- `npm run build` — Next.js 프로덕션 빌드 (prebuild 자동 동반)
+- `npm run generate:mirror` — network-mirror.json 단독 재생성
 - `npm run start` — 프로덕션 서버 실행
 - `npm run lint` — ESLint
 - `npm run pulse` — 파이프라인 1회 실행 (`pipeline/orchestrator.js`)
@@ -380,3 +383,4 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
 ## 23. 변경 이력
 - 2026-05-07 — 초기 자동 생성 (commit b37276b 기준)
 - 2026-05-07 — `MainBackrefBox` 추가: smartdatashop network 자매 backref 컴포넌트 + 글·종목사전·SiteFooter 3 위치 적용 + `buildArticleSchema()`에 `publisher.parentOrganization` + `isBasedOn` + RootLayout `ORG_SCHEMA.parentOrganization` 추가 (NETWORK.md v0.6 dual-brand 준수 · YMYL BANNED_PHRASES 통과 확인)
+- 2026-05-07 — Network Index 시스템 합류: `scripts/generate-network-mirror.mjs` 신설 + `prebuild` 훅 등록 → `public/network-mirror.json` 빌드마다 자동 재생성 (분석 18편 + ETF 사전 1099 별도 키 + 7 AI 에이전트 accent · `.gitignore`에 등재 · robots.txt는 기존 정책상 자연 허용)
