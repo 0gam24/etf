@@ -17,6 +17,7 @@ import HoldingsPanel from '@/components/HoldingsPanel';
 import PostRelatedEtfs from '@/components/PostRelatedEtfs';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
+import MainBackrefBox, { getBackrefUrlForCategory } from '@/components/MainBackrefBox';
 import type { ProductCategory } from '@/lib/products';
 import { AUTHORS } from '@/lib/authors';
 import { buildArticleSchema, buildPersonSchema, jsonLd } from '@/lib/schema';
@@ -316,6 +317,11 @@ export default async function PostPage({ params }: PageProps) {
           )}
 
           <HelpfulFeedback contentId={`${category}/${slug}`} category={category} />
+
+          <MainBackrefBox
+            variant="inline"
+            mainCategoryUrl={getBackrefUrlForCategory(category)}
+          />
 
           <AiAgentDisclosure author={authorMeta} variant="inline" />
 

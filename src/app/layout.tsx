@@ -100,6 +100,12 @@ const ORG_SCHEMA = {
   sameAs: [
     `${SITE_URL}/rss.xml`,
   ] as string[],
+  // smartdatashop network 자매 — 메인(1차 출처 데이터 저널) parentOrganization
+  parentOrganization: {
+    '@type': 'Organization',
+    name: '스마트데이터샵',
+    url: 'https://smartdatashop.kr',
+  },
 };
 
 const WEBSITE_SCHEMA = {

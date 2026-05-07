@@ -9,6 +9,14 @@ const SITE = process.env.SITE_URL || 'https://iknowhowinfo.com';
 const SITE_NAME = 'Daily ETF Pulse';
 const ORG_LOGO = `${SITE}/og-logo.png`;
 
+// smartdatashop network 자매 backref — 메인 사이트(1차 출처 데이터 저널) parentOrganization.
+//   schema.org/Organization spec: 자매가 메인의 sub-organization이라는 신뢰 신호 + 검색엔진 entity 연결.
+const PARENT_ORG = {
+  '@type': 'Organization',
+  name: '스마트데이터샵',
+  url: 'https://smartdatashop.kr',
+};
+
 function abs(path: string): string {
   if (!path) return SITE;
   if (path.startsWith('http')) return path;
@@ -87,7 +95,9 @@ export function buildArticleSchema(input: ArticleSchemaInput) {
       },
       publishingPrinciples: `${SITE}/about`,
       correctionsPolicy: `${SITE}/about`,
+      parentOrganization: PARENT_ORG, // smartdatashop network 자매 신호
     },
+    isBasedOn: PARENT_ORG.url, // 1차 출처 저널 backref (검색엔진 entity 연결)
     mainEntityOfPage: { '@type': 'WebPage', '@id': abs(input.url) },
     ...(input.keywords?.length ? { keywords: input.keywords.join(', ') } : {}),
     ...(input.section ? { articleSection: input.section } : {}),

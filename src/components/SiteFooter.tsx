@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Zap, BookOpen } from 'lucide-react';
 import { getAllProducts } from '@/lib/products';
+import MainBackrefBox from './MainBackrefBox';
 
 export default function SiteFooter() {
   // 추천 자료 미니 — 상위 4개 (이미 visible 필터됨)
@@ -81,6 +82,17 @@ export default function SiteFooter() {
             본 사이트의 분석은 데이터 기반 AI 에이전트가 작성하며, 실존 인물이 아닙니다. 발행·검수 책임은 Daily ETF Pulse 편집팀에 있습니다. 투자 참고 자료이며, 모든 투자 결정의 책임은 투자자 본인에게 있습니다. 출처: KRX · 한국은행 · DART.
           </p>
         </div>
+      </div>
+
+      {/* smartdatashop network 자매 backref — 메인(1차 출처 데이터 저널)으로 자연 funnel */}
+      <div
+        style={{
+          maxWidth: '80rem',
+          margin: 'var(--space-10) auto 0',
+          padding: '0 var(--space-6)',
+        }}
+      >
+        <MainBackrefBox variant="footer" />
       </div>
 
       {/* 추천 자료 미니 섹션 — 사이트 전체 푸터에 가벼운 큐레이션 */}

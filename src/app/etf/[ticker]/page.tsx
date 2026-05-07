@@ -20,6 +20,7 @@ import { getAllPosts } from '@/lib/posts';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import HoldingsPanel from '@/components/HoldingsPanel';
 import RecommendBox from '@/components/RecommendBox';
+import MainBackrefBox, { getBackrefUrlForCategory } from '@/components/MainBackrefBox';
 import {
   buildBreadcrumbSchema,
   buildFinancialProductSchema,
@@ -501,6 +502,12 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
           </p>
         );
       })()}
+
+      <MainBackrefBox
+        variant="inline"
+        mainCategoryUrl={getBackrefUrlForCategory('etf')}
+        pulseTitle={`${displayName} 시세·정책·산업 배경은 메인 데이터 저널에서 검증·해설됩니다.`}
+      />
 
       <RecommendBox position="bottom" category="general" />
 
