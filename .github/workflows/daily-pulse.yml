@@ -96,7 +96,15 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/ data/ public/ today.md || true
+          # public/ 은 git 추적 파일이 없어 fresh checkout 시 디렉토리 자체가 생성되지 않음.
+          #   `git add public/` 가 pathspec error 로 즉시 종료 → bash -e + `|| true` silent fail
+          #   → 전체 staging 실패 → "No changes to commit" 매일 반복 (2026-04-26 ~ 05-10 사건).
+          # 해결: mkdir -p 로 빈 디렉토리 보장 + 각 path 분리 add (한 path 실패해도 나머지 진행).
+          mkdir -p public
+          git add content/ || true
+          git add data/    || true
+          git add public/  || true
+          git add today.md || true
           if git diff --cached --quiet; then
             echo "No changes to commit"
             echo "changed=false" >> $GITHUB_OUTPUT

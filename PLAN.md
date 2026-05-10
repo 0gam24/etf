@@ -168,3 +168,58 @@ cron 외에 수동 trigger 가능 (이미 지원). 운영자가 매일 아침 to
 1. **로컬 수동 발행 시도?** — `.env.local` 키가 로컬에 있다면 `npm run pulse`로 즉시 1편 발행해 production에 한 번 반영해 stale 깨고 갈 수 있음. (cron fix 전 임시 우회)
 2. **GitHub Issue alert vs Threads/Slack webhook?** — 알림 방식 선호 채널.
 3. **메인페이지 freshness 띠 우선순위** — 즉시 적용? cron fix 검증 후?
+
+---
+
+## 8. 원인 100% 확정 (2026-05-11 23:09 UTC — workflow run 25642139510)
+
+### 진단 step 출력 핵심
+```
+=== content/* 디스크 상태 (HarnessDeployer write 직후) ===
+content/pulse/pulse-20260511.mdx        (16903 bytes · 정상)
+content/flow/flow-20260511-shipbuilding.mdx (17809 bytes · 정상)
+content/income/income-20260511-0000d0.mdx (15284 bytes · 정상)
+content/breaking/breaking-20260511-1-0080g0.mdx (25192 bytes · 정상)
+content/breaking/breaking-20260511-2-0080y0.mdx (21123 bytes · 정상)
+content/breaking/breaking-20260511-3-0072r0.mdx (27382 bytes · 정상)
+content/surge/0080g0-kodex-defense-top10-surge.mdx (변경됨)
+
+=== data/.last-pulse-base-date === 20260507 (정상)
+
+=== git status (untracked + modified) ===
+ M content/surge/0080g0-kodex-defense-top10-surge.mdx
+ M data/.last-pulse-base-date
+ M today.md
+?? content/pulse/pulse-20260511.mdx     ← 새 파일 7개 모두 있음
+?? content/breaking/breaking-20260511-1-0080g0.mdx
+... (30+ untracked files)
+```
+
+→ HarnessDeployer는 **정상 작동**. 7개 파일 disk write 완료. git status에도 30+ 변경사항 보임.
+
+### Commit step 로그의 결정타
+```
+git add content/ data/ public/ today.md || true
+fatal: pathspec 'public/' did not match any files
+No changes to commit
+```
+
+### 진짜 원인
+- `public/` 디렉토리는 git 추적 파일이 **0개** (network-mirror.json은 .gitignore). 빈 디렉토리는 git이 추적 안 함 → fresh checkout 시 디렉토리 자체가 안 만들어짐.
+- bash `-e` 모드(GitHub Actions 기본)에서 `git add public/`가 pathspec error로 **즉시 exit code 128**.
+- `|| true`는 마지막 명령에만 적용되는 게 아니라 `git add ... public/ today.md` 전체 chain의 결과에 적용. 즉 `git add` 자체가 중간에 죽으면 그 뒤 인자(today.md)도 처리 안 됨.
+- 결과: content/, data/, today.md **하나도 staging 안 됨** → `git diff --cached --quiet` true → commit skip.
+
+### Fix (이번 commit 적용)
+```bash
+mkdir -p public           # 빈 디렉토리 강제 보장 → pathspec error 회피
+git add content/ || true  # 각 path 분리 → 한 명령 실패해도 다음 진행
+git add data/    || true
+git add public/  || true
+git add today.md || true
+```
+
+### 사건 타임라인
+- 4/24: 마지막 정상 발행 (이때 push까지 성공한 commit)
+- 4/25~5/10: cron 16회 모두 success 표시. HarnessDeployer "발행 N개" 출력. 그러나 `git add public/` fail 때문에 매번 0건 commit. production 갱신 0건.
+- 5/11 23:09 UTC: 진단 step이 원인 확정.
