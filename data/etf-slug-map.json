@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-03T03:28:10.161Z",
-  "sourceBaseDate": "20260429",
+  "generatedAt": "2026-05-10T03:30:59.548Z",
+  "sourceBaseDate": "20260507",
   "count": 1099,
   "byCode": {
     "100910": "kiwoom-krx100",
@@ -1458,7 +1458,7 @@
     },
     "rise-bond-blend": {
       "code": "183700",
-      "name": "RISE 채권혼합"
+      "name": "RISE 200채권혼합50"
     },
     "rise-183710": {
       "code": "183710",

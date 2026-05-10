@@ -1,6 +1,6 @@
 {
-  "fetchedAt": "2026-05-03T03:28:09.994Z",
-  "baseDate": "20260429",
+  "fetchedAt": "2026-05-10T03:30:59.381Z",
+  "baseDate": "20260507",
   "count": 1099,
   "byShortcode": {
     "100910": {
@@ -446,7 +446,7 @@
     "183700": {
       "shortcode": "183700",
       "issueCode": "KR7183700004",
-      "name": "RISE 채권혼합"
+      "name": "RISE 200채권혼합50"
     },
     "183710": {
       "shortcode": "183710",
@@ -7108,7 +7108,7 @@
     "KR7183700004": {
       "shortcode": "183700",
       "issueCode": "KR7183700004",
-      "name": "RISE 채권혼합"
+      "name": "RISE 200채권혼합50"
     },
     "KR7183710003": {
       "shortcode": "183710",
@@ -12605,7 +12605,7 @@
     {
       "shortcode": "183700",
       "issueCode": "KR7183700004",
-      "name": "RISE 채권혼합"
+      "name": "RISE 200채권혼합50"
     },
     {
       "shortcode": "183710",
