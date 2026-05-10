@@ -2,9 +2,9 @@
 
 > 매일 평일 KST 16:00 자동 갱신 (KRX 마감 후 30분).
 >
-> **마지막 갱신**: 2026-05-11 07:43 KST
-> **마지막 발행일**: 2026-04-24
-> **최근 7일 발행**: 18편 / **총 누적**: 18편
+> **마지막 갱신**: 2026-05-11 08:25 KST
+> **마지막 발행일**: 2026-05-10
+> **최근 7일 발행**: 24편 / **총 누적**: 24편
 
 ---
 
@@ -25,12 +25,22 @@
 
 ## 📰 최근 7일 발행 (날짜별)
 
-### 2026-04-24 (총 13편)
+### 2026-05-10 (총 7편)
+
+- 🌅 **오늘의 관전포인트** — [5월 11일 오늘의 ETF 관전포인트 — 거래량 1위 KODEX 방산TOP10 외 2종목](https://iknowhowinfo.com/pulse/pulse-20260511)
+- 🚀 **급등 테마 분석** — [KODEX 방산TOP10, 왜 오늘 거래량 1위인가 — 방위산업 ETF 수주 이슈](https://iknowhowinfo.com/surge/0080g0-kodex-defense-top10-surge)
+- 💧 **자금 흐름 리포트** — [이번 주 자금은 어디로? 조선 섹터에 몰린 446억 원](https://iknowhowinfo.com/flow/flow-20260511-shipbuilding)
+- 💰 **월배당·커버드콜** — [퇴직연금 DC형 커버드콜 비중 전략 — 실제 분배금·세후 수익률 계산](https://iknowhowinfo.com/income/income-20260511-0000d0)
+- ⚡ **ETF 속보** (3건)
+  - [[05월 11일 속보] SOL 조선TOP3플러스레버리지 — 상승 5.75%, 왜 움직였나](https://iknowhowinfo.com/breaking/breaking-20260511-2-0080y0)
+  - [[05월 11일 속보] TIGER KRX금현물 — 상승 1.45%, 왜 움직였나](https://iknowhowinfo.com/breaking/breaking-20260511-3-0072r0)
+  - [[05월 11일 속보] KODEX 방산TOP10 — 조정 6.72%, 왜 움직였나](https://iknowhowinfo.com/breaking/breaking-20260511-1-0080g0)
+
+### 2026-04-24 (총 12편)
 
 - 🌅 **오늘의 관전포인트** (2건)
   - [4월 25일 오늘의 ETF 관전포인트 — 거래량 1위 KODEX 방산TOP10 외 2종목](https://iknowhowinfo.com/pulse/pulse-20260425)
   - [4월 24일 오늘의 ETF 관전포인트 — 거래량 1위 KODEX 방산TOP10 외 2종목](https://iknowhowinfo.com/pulse/pulse-20260424)
-- 🚀 **급등 테마 분석** — [KODEX 방산TOP10, 왜 오늘 거래량 1위인가 — 방위산업 ETF 전망](https://iknowhowinfo.com/surge/0080g0-kodex-defense-top10-surge)
 - 💧 **자금 흐름 리포트** (2건)
   - [이번 주 자금은 어디로? 조선 섹터에 몰린 898억 원](https://iknowhowinfo.com/flow/flow-20260425-shipbuilding)
   - [이번 주 자금은 어디로? 조선 섹터에 몰린 898억 원](https://iknowhowinfo.com/flow/flow-20260424-shipbuilding)
@@ -59,11 +69,11 @@
 
 ## 🗂 카테고리별 누적
 
-- 🌅 **오늘의 관전포인트** (`/pulse`) — 3편
+- 🌅 **오늘의 관전포인트** (`/pulse`) — 4편
 - 🚀 **급등 테마 분석** (`/surge`) — 2편
-- 💧 **자금 흐름 리포트** (`/flow`) — 3편
-- 💰 **월배당·커버드콜** (`/income`) — 4편
-- ⚡ **ETF 속보** (`/breaking`) — 6편
+- 💧 **자금 흐름 리포트** (`/flow`) — 4편
+- 💰 **월배당·커버드콜** (`/income`) — 5편
+- ⚡ **ETF 속보** (`/breaking`) — 9편
 
 ---
 
