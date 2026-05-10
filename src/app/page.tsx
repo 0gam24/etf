@@ -1,7 +1,6 @@
 import { getLatestPulse, getPostsByCategory, findPostByTickerInCategories } from '@/lib/posts';
 import { getLatestEtfData, getLatestEcoData } from '@/lib/data';
 import { getIncomeRegistry } from '@/lib/income-server';
-import { AUTHOR_LIST, AUTHOR_COUNT, pickDailyAuthor } from '@/lib/authors';
 import { extractFirstHeadline, pickLatestTradeDayBreaking } from '@/lib/breaking';
 import { buildHookCopy } from '@/lib/hook';
 import { computeTickerDiff } from '@/lib/pulse';
@@ -15,9 +14,7 @@ import HomeBreakingStrip from '@/components/HomeBreakingStrip';
 import HomeSnapshot from '@/components/HomeSnapshot';
 import HomeScenarioRouter from '@/components/HomeScenarioRouter';
 import HomeDefenseTop3 from '@/components/HomeDefenseTop3';
-import HomeDailyAuthor from '@/components/HomeDailyAuthor';
 import HomeReturnTrigger from '@/components/HomeReturnTrigger';
-import AuthorSlider from '@/components/AuthorSlider';
 import DataFooter from '@/components/DataFooter';
 import RecommendBox from '@/components/RecommendBox';
 
@@ -81,13 +78,6 @@ export default async function HomePage() {
   // Chapter 1: Hook 1문장 (templates 기반, 결정적)
   const hook = buildHookCopy(topEtf, etfData?.baseDate);
 
-  // Chapter 6: 오늘의 1인 (topEtf 섹터에 가장 적합한 인물 + voiceHints 한 줄)
-  const dailyAuthor = pickDailyAuthor({
-    category: 'surge',
-    sector: topEtf?.sector,
-    date: etfData?.baseDate || new Date(),
-  });
-
   // Chapter 8: 어제 대비 변화
   const tickerDiff = computeTickerDiff(latestPulse, yesterdayPulse);
   const todayPulseHref = latestPulse
@@ -97,7 +87,7 @@ export default async function HomePage() {
   return (
     <>
       {/* Chapter 0 — TRUST: 신뢰 띠 */}
-      <TrustBar authorCount={AUTHOR_COUNT} etfCount={totalCount || 100} />
+      <TrustBar etfCount={totalCount || 100} />
 
       {/* Chapter 1 — HOOK: 오늘의 단 한 문장 */}
       <HomeHookV1 hook={hook} />
@@ -185,16 +175,6 @@ export default async function HomePage() {
 
       {/* Chapter 5 — RISK: 안정성 S 등급 방어 라인업 */}
       {defenseEtfs.length > 0 && <HomeDefenseTop3 defenseEtfs={defenseEtfs} />}
-
-      {/* Chapter 6 — INSIGHT: 오늘의 칼럼니스트 한 줄 */}
-      <HomeDailyAuthor
-        author={dailyAuthor.author}
-        voiceLine={dailyAuthor.voiceLine}
-        href={`/author/${dailyAuthor.author.id}`}
-      />
-
-      {/* 저자 슬라이더 (인적 신뢰 보강) */}
-      <AuthorSlider authors={AUTHOR_LIST} />
 
       {/* Chapter 7 — LIVE: 라이브 시장 위젯 */}
       <EtfMarketPulse />

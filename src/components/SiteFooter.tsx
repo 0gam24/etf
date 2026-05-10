@@ -63,14 +63,14 @@ export default function SiteFooter() {
 
         <div>
           <h4 style={{ color: 'var(--text-primary)', fontSize: 'var(--fs-sm)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 'var(--space-4)' }}>
-            AI 분석 에이전트
+            데이터 출처
           </h4>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-            <Link href="/author/pb_kim" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>AI K · 은퇴 자산 설계</Link>
-            <Link href="/author/analyst_han" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>AI H · 매크로·외국인 수급</Link>
-            <Link href="/author/data_lee" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>AI L · 퀀트 시그널</Link>
-            <Link href="/author/mom_park" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>AI P · ISA·연금 비교</Link>
-            <Link href="/about" style={{ color: 'var(--accent-gold)', fontSize: 'var(--fs-sm)', marginTop: 'var(--space-2)' }}>편집팀 소개 →</Link>
+            <span style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>한국거래소(KRX) 공공데이터</span>
+            <span style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>한국은행 ECOS</span>
+            <span style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>DART 금융감독원</span>
+            <span style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>운용사 공식 공시</span>
+            <Link href="/about" style={{ color: 'var(--accent-gold)', fontSize: 'var(--fs-sm)', marginTop: 'var(--space-2)' }}>발행 원칙 →</Link>
           </div>
         </div>
 
@@ -79,7 +79,7 @@ export default function SiteFooter() {
             유의사항
           </h4>
           <p style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-xs)', lineHeight: 1.7 }}>
-            본 사이트의 분석은 데이터 기반 AI 에이전트가 작성하며, 실존 인물이 아닙니다. 발행·검수 책임은 Daily ETF Pulse 편집팀에 있습니다. 투자 참고 자료이며, 모든 투자 결정의 책임은 투자자 본인에게 있습니다. 출처: KRX · 한국은행 · DART.
+            본 사이트의 분석은 KRX 공공데이터를 기반으로 자동 생성되며, 발행·검수 책임은 Daily ETF Pulse 편집팀에 있습니다. 투자 참고 자료이며, 모든 투자 결정의 책임은 투자자 본인에게 있습니다. 출처: KRX · 한국은행 · DART.
           </p>
         </div>
       </div>

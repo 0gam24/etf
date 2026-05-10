@@ -35,7 +35,7 @@ const PERSONAS = {
       '계좌별 세후 수익률 시뮬레이션 결과,',
       '운용사 공시 기준 분배 일정을 분석하면,',
     ],
-    closingSignature: '— AI 에이전트 K · 은퇴 자산 설계 모델',
+    closingSignature: '— Daily ETF Pulse 편집팀 · 출처: KRX 공공데이터·운용사 공시·한국은행 ECOS',
   },
   mom_park: {
     id: 'mom_park',
@@ -56,7 +56,7 @@ const PERSONAS = {
       '동일 종목을 일반 vs ISA에서 받을 때,',
       '5년 누적 세후 수익률 차이는,',
     ],
-    closingSignature: '— AI 에이전트 P · ISA·연금저축 비교 모델',
+    closingSignature: '— Daily ETF Pulse 편집팀 · 출처: 국세청 세법·운용사 분배 데이터·KRX 시세',
   },
   data_lee: {
     id: 'data_lee',
@@ -77,7 +77,7 @@ const PERSONAS = {
       '최근 5일 평균 대비 거래량이 340% 증가했는데,',
       '섹터 자금 흐름 누적합은,',
     ],
-    closingSignature: '— AI 에이전트 L · 퀀트 시그널 분석 모델',
+    closingSignature: '— Daily ETF Pulse 편집팀 · 출처: KRX 일별 시세·한국은행 ECOS 거시지표',
   },
   homemaker_jung: {
     id: 'homemaker_jung',
@@ -98,7 +98,7 @@ const PERSONAS = {
       '연 분배율 7% 기준 누적 캐시플로는,',
       '월별 분배 시점이 겹치지 않게 조합하면,',
     ],
-    closingSignature: '— AI 에이전트 J · 월배당 캐시플로 시뮬레이션 모델',
+    closingSignature: '— Daily ETF Pulse 편집팀 · 출처: 운용사 분배 캘린더·국세청 분배소득 세율',
   },
   biz_cho: {
     id: 'biz_cho',
@@ -119,7 +119,7 @@ const PERSONAS = {
       '소득 8천만원 구간 기준 시뮬레이션 결과,',
       '공제 한도를 모두 활용하면,',
     ],
-    closingSignature: '— AI 에이전트 C · 개인사업자 절세 모델',
+    closingSignature: '— Daily ETF Pulse 편집팀 · 출처: 국세청 종합소득세 세법·노란우산공제 한도',
   },
   dev_song: {
     id: 'dev_song',
@@ -140,7 +140,7 @@ const PERSONAS = {
       'AI 인프라 공급망 모멘텀 모델 기준,',
       '엔비디아 관련 뉴스 빈도 변화는,',
     ],
-    closingSignature: '— AI 에이전트 S · AI·반도체 공급망 모델',
+    closingSignature: '— Daily ETF Pulse 편집팀 · 출처: 운용사 종목 비중·반도체 산업 매출 데이터',
   },
   analyst_han: {
     id: 'analyst_han',
@@ -161,7 +161,7 @@ const PERSONAS = {
       '기관 매매동향 3개월 추적 결과,',
       '환율·금리 지표 결합 시,',
     ],
-    closingSignature: '— AI 에이전트 H · 매크로·외국인 수급 모델',
+    closingSignature: '— Daily ETF Pulse 편집팀 · 출처: 한국은행 ECOS·KRX 외국인 순매수 데이터',
   },
 };
 

@@ -4,9 +4,7 @@ import {
   TOP_LEVEL_CATEGORIES,
   getCategoryLastModified,
   getSiteLastModified,
-  getAuthorLastModified,
 } from '@/lib/posts';
-import { AUTHOR_LIST } from '@/lib/authors';
 import { GUIDES } from '@/lib/guides';
 import { getProductsRegistry } from '@/lib/products';
 import { getLatestEtfData } from '@/lib/data';
@@ -94,15 +92,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // 저자 허브 — 그 저자의 최신 글 날짜 (없으면 fallback)
-  AUTHOR_LIST.forEach(a => {
-    routes.push({
-      url: `${baseUrl}/author/${a.id}`,
-      lastModified: getAuthorLastModified(a.id) || fallback,
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    });
-  });
+  // 저자 페이지 (/author/{id}) — 데이터 저널 톤으로 정리, robots noindex 처리됨. sitemap에서 제외.
 
   // 포스트 상세 — 글 자체 발행일 (이미 정확)
   const sevenDaysAgo = Date.now() - 7 * 86400000;

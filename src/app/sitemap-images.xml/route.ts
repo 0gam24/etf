@@ -1,6 +1,5 @@
 import { getAllPosts } from '@/lib/posts';
 import { GUIDES } from '@/lib/guides';
-import { AUTHOR_LIST } from '@/lib/authors';
 
 /**
  * Daily ETF Pulse — Image sitemap.
@@ -66,7 +65,7 @@ export async function GET() {
   // 정적 신뢰·자료실 페이지 — Google Image Search 노출 가능성 + OG 카드 양호 유지.
   //   (about·newsletter·resources·compare·etf 인덱스 모두 OG 이미지 동적 생성됨)
   const STATIC_PAGES: Array<{ path: string; title: string; category?: string }> = [
-    { path: '/about',      title: 'Daily ETF Pulse 편집팀 — AI 분석 에이전트 7인',  category: 'pulse' },
+    { path: '/about',      title: 'Daily ETF Pulse 편집팀 — 발행 원칙·데이터 출처',  category: 'pulse' },
     { path: '/newsletter', title: 'Daily ETF Pulse 뉴스레터 — 매일 아침 9시 갱신',  category: 'pulse' },
     { path: '/resources',  title: 'ETF 학습 자료실 — 도서·도구 큐레이션',           category: 'income' },
     { path: '/compare',    title: 'ETF 1:1 비교 허브 — 운용사·섹터·환헤지',         category: 'flow' },
@@ -84,19 +83,7 @@ export async function GET() {
   </url>`);
   });
 
-  // 저자 허브 페이지 7명 — Person 스키마 + OG 이미지 양호.
-  //   E-E-A-T 신호 강화 (저자 페이지가 Image Search 에서 인용되면 신뢰도 ↑).
-  AUTHOR_LIST.forEach(a => {
-    entries.push(`
-  <url>
-    <loc>${SITE}/author/${a.id}</loc>
-    <image:image>
-      <image:loc>${ogImageUrl({ title: `${a.name} — ${a.title}`.slice(0, 60), category: 'pulse' })}</image:loc>
-      <image:title>${escapeXml(`${a.name} — ${a.title}`)}</image:title>
-      <image:caption>${escapeXml(a.expertise?.slice(0, 3).join(', ') || '')}</image:caption>
-    </image:image>
-  </url>`);
-  });
+  // /author/{id} 페이지는 데이터 저널 톤으로 정리되어 robots noindex 처리됨. sitemap-images 에서도 제외.
 
   GUIDES.forEach(g => {
     entries.push(`

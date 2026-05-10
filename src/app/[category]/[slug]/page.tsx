@@ -108,12 +108,6 @@ function loadCharts(slug: string, today: string) {
   return null;
 }
 
-// 저자 이니셜 (아바타용)
-function getInitial(name: string) {
-  if (!name) return 'D';
-  return name.charAt(0);
-}
-
 export default async function PostPage({ params }: PageProps) {
   const { category, slug } = await params;
   const post = getPostBySlug(category, slug);
@@ -213,19 +207,11 @@ export default async function PostPage({ params }: PageProps) {
             </span>
             <h1 className="post-v2-title">{post.meta.title}</h1>
             <div className="post-v2-meta">
-              {post.meta.authorId ? (
-                <Link href={`/author/${post.meta.authorId}`} className="post-v2-meta-author">
-                  <span className="post-v2-avatar">{getInitial(post.meta.author)}</span>
-                  <span>{post.meta.author}</span>
-                  <AiAgentDisclosure variant="compact" />
-                </Link>
-              ) : (
-                <span className="post-v2-meta-author">
-                  <span className="post-v2-avatar">{getInitial(post.meta.author)}</span>
-                  <span>{post.meta.author}</span>
-                  <AiAgentDisclosure variant="compact" />
-                </span>
-              )}
+              <span className="post-v2-meta-author">
+                <span className="post-v2-avatar">D</span>
+                <span>Daily ETF Pulse 편집팀</span>
+                <AiAgentDisclosure variant="compact" />
+              </span>
               <span>{date}</span>
               <span>· {post.readingTime}분 읽기</span>
               {post.meta.tickers && post.meta.tickers.length > 0 && (
@@ -323,7 +309,7 @@ export default async function PostPage({ params }: PageProps) {
             mainCategoryUrl={getBackrefUrlForCategory(category)}
           />
 
-          <AiAgentDisclosure author={authorMeta} variant="inline" />
+          <AiAgentDisclosure variant="inline" />
 
           <RecommendBox position="bottom" category={postCategoryToProductCategory(category)} />
         </article>

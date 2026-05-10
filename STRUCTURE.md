@@ -385,3 +385,12 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
 - 2026-05-07 — 초기 자동 생성 (commit b37276b 기준)
 - 2026-05-07 — `MainBackrefBox` 추가: smartdatashop network 자매 backref 컴포넌트 + 글·종목사전·SiteFooter 3 위치 적용 + `buildArticleSchema()`에 `publisher.parentOrganization` + `isBasedOn` + RootLayout `ORG_SCHEMA.parentOrganization` 추가 (NETWORK.md v0.6 dual-brand 준수 · YMYL BANNED_PHRASES 통과 확인)
 - 2026-05-07 — Network Index 시스템 합류: `scripts/generate-network-mirror.mjs` 신설 + `prebuild` 훅 등록 → `public/network-mirror.json` 빌드마다 자동 재생성 (분석 18편 + ETF 사전 1099 별도 키 + 7 AI 에이전트 accent · `.gitignore`에 등재 · robots.txt는 기존 정책상 자연 허용)
+- 2026-05-11 — 인물 페르소나 → 데이터 저널 톤 전면 전환 (사용자 명시 "메인사이트나 다른사이트처럼 운영")
+  - 메인페이지: `AuthorSlider`("7명의 실전 투자자가 매일 분석합니다") / `HomeDailyAuthor`("오늘의 칼럼니스트") 제거
+  - `TrustBar`: "저자 N명 (前 PB·애널리스트·실전 투자자)" 항목 제거
+  - `SiteFooter`: "AI 분석 에이전트" 섹션 → "데이터 출처" (KRX·ECOS·DART·운용사 공시)
+  - `/about`: 7개 에이전트 카드 제거 → "분석 방법론" 섹션 (정량 지표 4종)
+  - 글 페이지 byline: "AI 에이전트 K" + 페르소나 link → "Daily ETF Pulse 편집팀" 단일 표기
+  - `AiAgentDisclosure`: 인물 페르소나 카드 → "자동 분석 공시" (단일 publisher 책임 명시)
+  - `/author/{id}`: `robots: { index: false }` + sitemap·sitemap-images 에서 제외 (schema entity 신호만 유지)
+  - `agents/personas.js`: 7명 `closingSignature` 모두 "Daily ETF Pulse 편집팀 · 출처:..." 으로 통일 (다음 발행부터 글 끝 표기 일괄 적용)

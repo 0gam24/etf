@@ -17,9 +17,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params;
   const a = AUTHORS[id];
-  if (!a) return { title: '에이전트를 찾을 수 없습니다' };
+  if (!a) return { title: '분석 모델 정보를 찾을 수 없습니다' };
   const canonicalPath = `/author/${id}`;
-  const title = `${a.name} — ${a.title} | Daily ETF Pulse`;
+  const title = `${a.title} | Daily ETF Pulse 분석 모델 정보`;
   const description = a.modelDescription;
   return {
     title,
@@ -27,6 +27,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: { canonical: canonicalPath },
     openGraph: { title, description, type: 'profile', url: canonicalPath },
     twitter: { card: 'summary', title, description },
+    // 인물 페르소나 노출 회피 — 사용자 가시 사이트에서 제외하되 schema entity 신호는 유지.
+    robots: { index: false, follow: true },
   };
 }
 
