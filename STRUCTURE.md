@@ -231,6 +231,7 @@ charts[] · affiliates[] · adPlacements · schemas[] (인라인 JSON-LD)
 - `verify-parity.mjs` — 로컬 ↔ production 응답 일치 검증 (push 후 5~7분 후 실행)
 - `migrate-personas-to-ai-agents.mjs` — 페르소나 → AI 에이전트 마이그레이션 (1회성 · 2026-04-26 E-E-A-T 정책)
 - `generate-network-mirror.mjs` — smartdata HQ sync용 메타 export → `public/network-mirror.json` (분석 글 18편 + ETF 사전 1099 별도 키 + 7 AI 에이전트 accent · `prebuild` 훅으로 자동 실행)
+- `generate-today.mjs` — 매일 발행 일지 → `today.md` (최근 7일 카테고리별 link + 자동 갱신 메커니즘 설명 · `daily-pulse.yml` cron 평일 16:00 KST 자동 실행)
 
 ## 13. 빌드·배포 명령 (`package.json` scripts)
 - `npm run dev` — Next.js dev 서버
