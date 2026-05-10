@@ -71,6 +71,26 @@ jobs:
         # 본 step 실패해도 commit·push 계속 진행 (today.md 는 부차적).
         run: npm run generate:today || true
 
+      - name: Diagnostic — disk + git state (왜 발행 0건인지 추적)
+        # 2026-04-25 ~ 05-08: cron 16회 모두 success / HarnessDeployer "발행 N개" 로그 / 그러나 commit 0건.
+        # 원인 찾기 위해 commit step 직전 디스크 상태·git 상태 명시 출력.
+        if: always()
+        run: |
+          echo "=== content/* 디스크 상태 (HarnessDeployer write 직후) ==="
+          for cat in pulse surge flow income breaking; do
+            echo "--- content/$cat/ ---"
+            ls -la "content/$cat/" 2>/dev/null | tail -10 || echo "(empty/missing)"
+          done
+          echo ""
+          echo "=== data/.last-pulse-base-date ==="
+          cat data/.last-pulse-base-date 2>/dev/null || echo "(missing — orchestrator skip 게이트 의심)"
+          echo ""
+          echo "=== git status (untracked + modified) ==="
+          git status --untracked-files=all --short | head -40
+          echo ""
+          echo "=== content/ 디렉토리 변경 ==="
+          git status content/ --short | head -20 || echo "(no content/ changes)"
+
       - name: Commit generated content + data
         id: commit
         run: |
