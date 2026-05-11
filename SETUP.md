@@ -100,6 +100,41 @@ cron 이 GitHub runner 에서 실행되므로 동일 키 등록 필수.
 
 ---
 
+## 2-B. KV namespace 생성 — 한투 토큰 공유 캐시 (권장 · 5분)
+
+> 한투 access_token (24h) 을 모든 Worker isolate 가 공유 → "1일 1회 발급 원칙" 위반 방지.
+> KV 없이도 작동하지만 사용자 트래픽 증가 시 isolate 마다 토큰 발급 → 한투 이용 제한 위험.
+
+### 절차
+1. Cloudflare Dashboard → **Workers & Pages** → 좌측 **KV** 메뉴
+2. "Create a namespace" 버튼
+3. Namespace name: `kis-token-cache` (또는 임의 이름)
+4. Create → 생성 후 namespace ID 복사 (32자 hex)
+
+### wrangler.jsonc 갱신
+[wrangler.jsonc](wrangler.jsonc) 의 주석 처리된 `kv_namespaces` 블록을 활성화:
+```jsonc
+{
+  ...
+  "kv_namespaces": [
+    {
+      "binding": "KIS_TOKEN_CACHE",
+      "id": "여기에_32자_hex_namespace_ID",
+      "preview_id": "여기에_같은_또는_별도_ID"
+    }
+  ],
+  ...
+}
+```
+저장 → commit → push → Cloudflare 자동 재배포 → KV binding 활성화.
+
+### 검증
+재배포 후 `/api/etf/realtime?codes=069500` 응답에서:
+- `tokenCache: "kv"` ✅ — KV 활성, 토큰 공유 작동
+- `tokenCache: "module"` ⚠️ — KV binding 없음 (트래픽 작을 때만 안전)
+
+---
+
 ## 3. Cloudflare Pages 환경변수 등록 (런타임용 · 5분)
 
 서버사이드 Route Handler (`/api/etf/realtime` 등) 가 한투 API 호출하므로 Cloudflare 에도 등록 필수.

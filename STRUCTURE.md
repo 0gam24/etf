@@ -385,6 +385,13 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
 - 2026-05-07 — 초기 자동 생성 (commit b37276b 기준)
 - 2026-05-07 — `MainBackrefBox` 추가: smartdatashop network 자매 backref 컴포넌트 + 글·종목사전·SiteFooter 3 위치 적용 + `buildArticleSchema()`에 `publisher.parentOrganization` + `isBasedOn` + RootLayout `ORG_SCHEMA.parentOrganization` 추가 (NETWORK.md v0.6 dual-brand 준수 · YMYL BANNED_PHRASES 통과 확인)
 - 2026-05-07 — Network Index 시스템 합류: `scripts/generate-network-mirror.mjs` 신설 + `prebuild` 훅 등록 → `public/network-mirror.json` 빌드마다 자동 재생성 (분석 18편 + ETF 사전 1099 별도 키 + 7 AI 에이전트 accent · `.gitignore`에 등재 · robots.txt는 기존 정책상 자연 허용)
+- 2026-05-11 — 한투 토큰 1일 1회 발급 위반 영구 방지 (Cloudflare KV 캐시 통합)
+  - `src/lib/kis.ts` 리팩토링 — `getAccessToken(env)` KV 1순위·모듈 캐시 2순위 폴백 + `KisEnv`/`isKvTokenCacheAvailable` export
+  - `fetchKisQuote/Quotes` 모두 `env` 옵션 인자 받아 KV 공유
+  - `src/app/api/etf/realtime/route.ts` — `getCloudflareContext` 로 `env` 추출 → kis 함수에 전달 + 응답에 `tokenCache: 'kv' | 'module'` 명시
+  - `wrangler.jsonc` — `KIS_TOKEN_CACHE` KV binding 주석 블록 + 활성화 가이드 (사용자가 namespace 생성 후 ID 입력)
+  - SETUP.md §2-B 신설 — KV namespace 생성 절차 + wrangler 갱신 + 검증 방법
+  - KV 무료 한도: 24h 안에 1 write + 수백 read → 무료로 영구 사용
 - 2026-05-11 — 키 등록·보안 강화 일괄 작업
   - `.env.example` KIS 섹션 명확화 (발급 절차·보안 권장·채우기 형식 가이드)
   - `.gitignore` 추가 패턴 — `.env.local.backup`/`*.key`/`*.crt`/`*.pfx`/Thumbs.db
