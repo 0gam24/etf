@@ -55,10 +55,75 @@ const KV_KEY = 'kis:access_token:v1';
 interface KVNamespace {
   get(key: string, options?: { type?: 'json' | 'text' }): Promise<unknown>;
   put(key: string, value: string, options?: { expirationTtl?: number }): Promise<void>;
+  list(options?: { prefix?: string; limit?: number }): Promise<{ keys: Array<{ name: string }> }>;
 }
 
 export interface KisEnv {
   KIS_TOKEN_CACHE?: KVNamespace;
+}
+
+// ── 호출량 통계 (운영자 대시보드용) ──────────────────────────────────────
+// KV 동일 namespace 에 prefix 분리 저장. 일별 카운터로 압축.
+//   - key: kis:stats:YYYY-MM-DD (KST 일자)
+//   - value: { date, total, success, fallback, mock, ts }
+//   - 30일 자동 만료 (expirationTtl)
+//   - read-modify-write 패턴 — 동시성 race 가능하나 ±5% 정확도면 충분
+
+interface DailyStats {
+  date: string;
+  total: number;
+  success: number;
+  fallback: number;
+  mock: number;
+  ts: number;
+}
+
+function kstYmd(now: Date = new Date()): string {
+  const kst = new Date(now.getTime() + 9 * 3600 * 1000);
+  const y = kst.getUTCFullYear();
+  const m = String(kst.getUTCMonth() + 1).padStart(2, '0');
+  const d = String(kst.getUTCDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
+async function incrementStats(env: KisEnv | undefined, outcome: 'success' | 'fallback' | 'mock'): Promise<void> {
+  if (!env?.KIS_TOKEN_CACHE) return; // KV 없으면 통계도 skip
+  const key = `kis:stats:${kstYmd()}`;
+  try {
+    const raw = await env.KIS_TOKEN_CACHE.get(key, { type: 'json' });
+    const current = (raw && typeof raw === 'object') ? raw as DailyStats : { date: kstYmd(), total: 0, success: 0, fallback: 0, mock: 0, ts: Date.now() };
+    current.total += 1;
+    current[outcome] += 1;
+    current.ts = Date.now();
+    await env.KIS_TOKEN_CACHE.put(key, JSON.stringify(current), { expirationTtl: 30 * 86400 });
+  } catch {
+    // 통계 실패는 silent — 실제 호출 영향 X
+  }
+}
+
+/**
+ * 운영자 대시보드용: 최근 N일 통계 조회.
+ *   응답: [{ date, total, success, fallback, mock, ts }, ...] 최신 우선
+ */
+export async function fetchKisDailyStats(env: KisEnv | undefined, days: number = 7): Promise<DailyStats[]> {
+  if (!env?.KIS_TOKEN_CACHE) return [];
+  const out: DailyStats[] = [];
+  const today = new Date();
+  for (let i = 0; i < days; i++) {
+    const d = new Date(today.getTime() - i * 86400000);
+    const key = `kis:stats:${kstYmd(d)}`;
+    try {
+      const raw = await env.KIS_TOKEN_CACHE.get(key, { type: 'json' });
+      if (raw && typeof raw === 'object') {
+        out.push(raw as DailyStats);
+      } else {
+        out.push({ date: kstYmd(d), total: 0, success: 0, fallback: 0, mock: 0, ts: 0 });
+      }
+    } catch {
+      out.push({ date: kstYmd(d), total: 0, success: 0, fallback: 0, mock: 0, ts: 0 });
+    }
+  }
+  return out;
 }
 
 async function readTokenFromKV(env: KisEnv | undefined): Promise<TokenCache | null> {
@@ -174,10 +239,16 @@ export interface KisQuote {
  * @param env Cloudflare 바인딩 (KV 토큰 캐시용). 없으면 모듈 캐시만 사용.
  */
 export async function fetchKisQuote(code: string, env?: KisEnv): Promise<KisQuote | null> {
-  if (getMode() === 'mock') return null;
+  if (getMode() === 'mock') {
+    await incrementStats(env, 'mock');
+    return null;
+  }
 
   const token = await getAccessToken(env);
-  if (!token) return null;
+  if (!token) {
+    await incrementStats(env, 'fallback');
+    return null;
+  }
 
   try {
     const url = new URL(`${getBaseUrl()}/uapi/domestic-stock/v1/quotations/inquire-price`);
@@ -196,16 +267,19 @@ export async function fetchKisQuote(code: string, env?: KisEnv): Promise<KisQuot
 
     if (!res.ok) {
       console.warn(`[kis] ${code} quote 실패 ${res.status}`);
+      await incrementStats(env, 'fallback');
       return null;
     }
 
     const json = await res.json() as { output?: Record<string, string>; rt_cd?: string; msg1?: string };
     if (json.rt_cd !== '0' || !json.output) {
       console.warn(`[kis] ${code} response error: ${json.msg1}`);
+      await incrementStats(env, 'fallback');
       return null;
     }
 
     const o = json.output;
+    await incrementStats(env, 'success');
     return {
       code,
       name: o.hts_kor_isnm,
@@ -223,6 +297,7 @@ export async function fetchKisQuote(code: string, env?: KisEnv): Promise<KisQuot
     };
   } catch (err) {
     console.warn(`[kis] ${code} 호출 예외`, err);
+    await incrementStats(env, 'fallback');
     return null;
   }
 }

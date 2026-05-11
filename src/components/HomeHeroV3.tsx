@@ -3,6 +3,7 @@ import { ArrowRight, Zap, Radio } from 'lucide-react';
 import type { Post } from '@/lib/posts';
 import { extractPulseBullets, freshnessLabel } from '@/lib/pulse';
 import { getEtfHoldings } from '@/lib/data';
+import LiveQuoteCard from './LiveQuoteCard';
 
 interface TopEtf {
   code: string;
@@ -132,24 +133,18 @@ export default function HomeHeroV3({ latestPulse, topEtf, catalystNews, catalyst
             </div>
             <div className="home-hero-v3-etf-name">{topEtf.name}</div>
 
-            <div className="home-hero-v3-price-row">
-              <div className="home-hero-v3-price">
-                {topEtf.price.toLocaleString()}<small>원</small>
-              </div>
-              <div className={`home-hero-v3-change ${isUp ? 'is-up' : isDown ? 'is-down' : ''}`}>
-                <span className="home-hero-v3-change-arrow">{isUp ? '▲' : isDown ? '▼' : '–'}</span>
-                {Math.abs(topEtf.change).toLocaleString()}원
-                {typeof topEtf.changeRate === 'number' && (
-                  <span className="home-hero-v3-change-pct">
-                    ({isUp ? '+' : ''}{topEtf.changeRate.toFixed(2)}%)
-                  </span>
-                )}
-              </div>
-            </div>
-
-            <div className="home-hero-v3-volume">
-              거래량 <strong>{topEtf.volume.toLocaleString()}</strong>주
-            </div>
+            {/* 가격·거래량을 클라이언트 컴포넌트로 분리 — 장중 30초 polling 으로 실시간 갱신.
+                서버사이드 SSR 로 initial 시세 1회 렌더 → 클라이언트가 hydration 후 한투 API 폴링 */}
+            <LiveQuoteCard
+              initial={{
+                code: topEtf.code,
+                name: topEtf.name,
+                price: topEtf.price,
+                change: topEtf.change,
+                changeRate: topEtf.changeRate,
+                volume: topEtf.volume,
+              }}
+            />
 
             {catalystNews && (
               catalystHref ? (

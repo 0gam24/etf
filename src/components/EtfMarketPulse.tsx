@@ -47,16 +47,91 @@ interface ETFData {
   fromCache?: boolean;
 }
 
+interface RealtimeQuote {
+  code: string;
+  price: number;
+  change: number;
+  changeRate: number;
+  volume: number;
+}
+interface RealtimeResponse {
+  quotes: Array<RealtimeQuote | null>;
+  marketStatus: 'pre_open' | 'open' | 'closed' | 'holiday';
+  source: 'kis' | 'fallback' | 'mock';
+  ts: number;
+}
+
 export default function EtfMarketPulse() {
   const [data, setData] = useState<ETFData | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'trending' | 'gainers' | 'losers'>('trending');
   const [isClient, setIsClient] = useState(false);
+  const [liveTs, setLiveTs] = useState<number | null>(null);
+  const [marketStatus, setMarketStatus] = useState<RealtimeResponse['marketStatus']>('closed');
+  const [liveSource, setLiveSource] = useState<RealtimeResponse['source']>('mock');
 
   useEffect(() => {
     setIsClient(true);
     fetchData();
   }, []);
+
+  // 장중 30초 polling — top10 종목만 실시간 시세 갱신 (한투 분당 한도 보호).
+  // /api/etf 의 기본 데이터(100 ETF 마감)는 그대로 유지하고 trending top10 의 price/change/rate 만 덮어씀.
+  useEffect(() => {
+    if (!data?.trending?.length) return;
+    let cancelled = false;
+
+    async function refreshLive() {
+      if (!data?.trending) return;
+      const codes = data.trending.slice(0, 10).map(e => e.code).filter(Boolean).join(',');
+      if (!codes) return;
+      try {
+        const res = await fetch(`/api/etf/realtime?codes=${codes}`);
+        if (!res.ok) return;
+        const live: RealtimeResponse = await res.json();
+        if (cancelled || !live.quotes?.length) return;
+        // realtime quote map
+        const liveMap = new Map<string, RealtimeQuote>();
+        for (const q of live.quotes) {
+          if (q && q.code) liveMap.set(q.code, q);
+        }
+        if (liveMap.size === 0) return;
+
+        setData(prev => {
+          if (!prev) return prev;
+          const apply = (list: ETFItem[]) => list.map(item => {
+            const q = liveMap.get(item.code);
+            if (!q || q.price === 0) return item;  // 시세 없으면 기존 값 유지 (pre_open 등)
+            return {
+              ...item,
+              price: q.price,
+              change: q.change,
+              changeRate: q.changeRate,
+              volume: q.volume || item.volume,
+            };
+          });
+          return {
+            ...prev,
+            trending: apply(prev.trending),
+            topGainers: apply(prev.topGainers),
+            topLosers: apply(prev.topLosers),
+            topMarketCap: apply(prev.topMarketCap),
+          };
+        });
+        setLiveTs(live.ts);
+        setMarketStatus(live.marketStatus);
+        setLiveSource(live.source);
+      } catch {
+        // silent — 다음 polling 에 재시도
+      }
+    }
+
+    refreshLive();
+    // 장중 30초 / 마감·휴장은 5분 (호출 절약)
+    const interval = marketStatus === 'open' ? 30000 : 5 * 60000;
+    const id = setInterval(refreshLive, interval);
+    return () => { cancelled = true; clearInterval(id); };
+  }, [data?.trending?.length, marketStatus]); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function fetchData() {
     try {
@@ -68,6 +143,20 @@ export default function EtfMarketPulse() {
     } finally {
       setLoading(false);
     }
+  }
+
+  function liveLabel(): string {
+    if (liveSource === 'mock') return '';
+    if (marketStatus === 'open') {
+      const kst = new Date((liveTs || Date.now()) + 9 * 3600 * 1000);
+      const hh = String(kst.getUTCHours()).padStart(2, '0');
+      const mm = String(kst.getUTCMinutes()).padStart(2, '0');
+      const ss = String(kst.getUTCSeconds()).padStart(2, '0');
+      return `장중 실시간 · ${hh}:${mm}:${ss} 갱신`;
+    }
+    if (marketStatus === 'closed') return '오늘 종가 · 15:30 마감';
+    if (marketStatus === 'pre_open') return '장 시작 전 · 09:00 개장 대기';
+    return '휴장 · 마지막 거래일 기준';
   }
 
   if (!isClient) return null;
@@ -160,7 +249,7 @@ export default function EtfMarketPulse() {
               지금 뜨는 ETF, <span className="text-shimmer">왜 오르는지까지</span>
             </h2>
             <p className="pulse-subtitle">
-              공공데이터포털 기반 실시간 랭킹 · {formatDate(data.baseDate)} 기준
+              {liveLabel() || `KRX ${formatDate(data.baseDate)} 종가 기준`}
               {!data.isRealData && process.env.NODE_ENV !== 'production' && <span className="pulse-sample-tag">샘플</span>}
             </p>
           </div>

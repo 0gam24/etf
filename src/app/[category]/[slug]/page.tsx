@@ -18,6 +18,7 @@ import PostRelatedEtfs from '@/components/PostRelatedEtfs';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
 import MainBackrefBox, { getBackrefUrlForCategory } from '@/components/MainBackrefBox';
+import LiveTickerChip from '@/components/LiveTickerChip';
 import type { ProductCategory } from '@/lib/products';
 import { AUTHORS } from '@/lib/authors';
 import { buildArticleSchema, buildPersonSchema, jsonLd } from '@/lib/schema';
@@ -217,18 +218,17 @@ export default async function PostPage({ params }: PageProps) {
               {post.meta.tickers && post.meta.tickers.length > 0 && (
                 <span style={{ display: 'inline-flex', gap: '0.375rem', flexWrap: 'wrap' }}>
                   {post.meta.tickers.slice(0, 3).map(t => {
-                    const name = getKrxEtfMeta(t)?.name;
+                    const meta = getKrxEtfMeta(t);
+                    const liveEtf = etfList.find(e => e.code === t);
                     return (
-                      <Link
+                      <LiveTickerChip
                         key={t}
-                        href={`/etf/${codeToSlug(t)}`}
-                        prefetch={false}
-                        title={name || undefined}
-                        style={{ padding: '0.15rem 0.5rem', background: 'rgba(96,165,250,0.15)', color: '#60A5FA', borderRadius: '0.375rem', fontSize: '0.75rem', fontWeight: 700, textDecoration: 'none', display: 'inline-flex', alignItems: 'baseline', gap: '0.25rem' }}
-                      >
-                        {name && <span style={{ color: 'var(--text-primary)' }}>{name}</span>}
-                        <span style={{ fontVariantNumeric: 'tabular-nums' }}>{name ? `· ${t}` : t}</span>
-                      </Link>
+                        code={t}
+                        name={meta?.name}
+                        slug={codeToSlug(t)}
+                        initialPrice={liveEtf?.price}
+                        initialChangeRate={liveEtf?.changeRate}
+                      />
                     );
                   })}
                 </span>

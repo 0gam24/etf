@@ -385,6 +385,15 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
 - 2026-05-07 — 초기 자동 생성 (commit b37276b 기준)
 - 2026-05-07 — `MainBackrefBox` 추가: smartdatashop network 자매 backref 컴포넌트 + 글·종목사전·SiteFooter 3 위치 적용 + `buildArticleSchema()`에 `publisher.parentOrganization` + `isBasedOn` + RootLayout `ORG_SCHEMA.parentOrganization` 추가 (NETWORK.md v0.6 dual-brand 준수 · YMYL BANNED_PHRASES 통과 확인)
 - 2026-05-07 — Network Index 시스템 합류: `scripts/generate-network-mirror.mjs` 신설 + `prebuild` 훅 등록 → `public/network-mirror.json` 빌드마다 자동 재생성 (분석 18편 + ETF 사전 1099 별도 키 + 7 AI 에이전트 accent · `.gitignore`에 등재 · robots.txt는 기존 정책상 자연 허용)
+- 2026-05-11 — Phase 2 본 작업: 실시간 시세 UI 통합 + 운영자 모니터링 대시보드
+  - `EtfMarketPulse` (메인 위젯) — 마운트 시 `/api/etf` 호출 후 top10 종목 코드만 `/api/etf/realtime` 로 장중 30초·마감 5분 polling. 가격·등락·거래량만 덮어씀. "장중 실시간 14:32:15 갱신" / "오늘 종가 15:30 마감" 자동 라벨 분기.
+  - `LiveQuoteCard` 신설 (`src/components/LiveQuoteCard.tsx`) + `HomeHeroV3` 의 "오늘 거래량 1위" 카드 가격·거래량 부분을 클라이언트 컴포넌트로 분리. SSR initial + 30초 polling 갱신.
+  - `LiveEtfStats` 신설 (`src/components/LiveEtfStats.tsx`) + `/etf/{slug}` 종목 사전 1099 페이지 hero stats 아래에 시장 상태 라벨 표시 (polling 없음 — 1099 페이지 × 사용자 수 호출 폭증 회피, 새로고침 기반 갱신 채택).
+  - `LiveTickerChip` 신설 (`src/components/LiveTickerChip.tsx`) + 글 페이지 byline ticker 칩에 mini price/등락률 표시. 페이지 진입 시 1회 fetch (polling 없음).
+  - `src/lib/kis.ts` 에 `incrementStats(env, outcome)` + `fetchKisDailyStats(env, days)` 추가 — KV `kis:stats:YYYY-MM-DD` key 에 일별 카운터 (total/success/fallback/mock) 저장. 30일 자동 만료.
+  - `src/app/api/kis/stats/route.ts` 신설 — `GET /api/kis/stats?days=N` (1~30일) 호출량 통계 JSON 반환 (요약·일별·KV 활성 여부).
+  - `src/app/admin/kis-stats/page.tsx` + `StatsClient.tsx` 신설 — 운영자용 대시보드. 14일 일별 표 + 4개 요약 카드 (누적·성공률·폴백률·분당 평균 vs 한도 20). robots noindex.
+  - 메인페이지 카피 동적 라벨 — `EtfMarketPulse` 부제 `liveLabel()` 함수 → 시장 상태 따라 "장중 실시간 / 오늘 종가 / 장 시작 전 / 휴장" 자동 분기
 - 2026-05-11 — 한투 토큰 1일 1회 발급 위반 영구 방지 (Cloudflare KV 캐시 통합)
   - `src/lib/kis.ts` 리팩토링 — `getAccessToken(env)` KV 1순위·모듈 캐시 2순위 폴백 + `KisEnv`/`isKvTokenCacheAvailable` export
   - `fetchKisQuote/Quotes` 모두 `env` 옵션 인자 받아 KV 공유

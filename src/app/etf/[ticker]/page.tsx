@@ -21,6 +21,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import HoldingsPanel from '@/components/HoldingsPanel';
 import RecommendBox from '@/components/RecommendBox';
 import MainBackrefBox, { getBackrefUrlForCategory } from '@/components/MainBackrefBox';
+import LiveEtfStats from '@/components/LiveEtfStats';
 import {
   buildBreadcrumbSchema,
   buildFinancialProductSchema,
@@ -296,6 +297,17 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
           <p className="etf-dict-source">
             출처: 한국거래소(KRX) 공공데이터 포털 · 기준일 {formattedBaseDate}
           </p>
+          {etf && (
+            <LiveEtfStats
+              initial={{
+                code: etf.code,
+                price: etf.price,
+                change: etf.change,
+                changeRate: etf.changeRate,
+                volume: etf.volume,
+              }}
+            />
+          )}
         </section>
       )}
 
