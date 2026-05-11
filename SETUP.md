@@ -7,11 +7,23 @@
 
 ## 1. 로컬 `.env.local` 채우기 (필수 · 5분)
 
-### 1-1. 파일 생성
+### 1-1. 새 PC 첫 셋업 — `.env.local` 이 아직 없는 경우
 ```bash
-cp .env.example .env.local
+npm run env:sync:apply
 ```
-이미 있으면 건너뛰고 아래 §1-3 새 키만 추가.
+→ `.env.example` 을 `.env.local` 로 복사. 그 후 텍스트 에디터로 열어 각 키 값 채우기.
+
+### 1-2. 기존 `.env.local` 이 있는 경우 (덮어쓰기 절대 금지)
+```bash
+# 1. 누락된 키 확인 (dry-run, 변경 없음)
+npm run env:sync
+
+# 2. 누락 키만 .env.local 끝에 빈 값으로 안전하게 append
+npm run env:sync:apply
+```
+→ 기존 키 값은 그대로 유지. `.env.local` 파일 끝에 **"sync-env 자동 추가"** 섹션으로 새 키만 추가됨. 그 빈 값들에 발급받은 값을 채우면 끝.
+
+⚠️ `cp .env.example .env.local` 같은 **단순 복사는 기존 키 값 모두 잃음 — 절대 금지**. 위 `npm run env:sync:apply` 가 안전한 append-only 방식.
 
 ### 1-2. 핵심 키 등록 (없으면 파이프라인 mock 모드)
 | 키 | 발급처 | 우선순위 |

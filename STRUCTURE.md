@@ -391,6 +391,7 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
   - `pipeline/security_guard.js` 강화 — KIS App Key/Secret 정규식·환경변수명 컨텍스트 패턴 7개 추가 + root-level .md 파일도 검사 + content/·scripts/ 스캔 디렉토리 확장
   - `.github/workflows/daily-pulse.yml` env 섹션에 KIS_* 4종 통과 추가
   - **SETUP.md** 신설 — 키 12종 한 페이지 가이드 (`.env.local` + GitHub Secrets + Cloudflare 환경변수 3곳 동기화 · 검증·폐기·재발급 절차)
+  - **`scripts/sync-env.mjs`** 신설 + `npm run env:sync` / `env:sync:apply` 등록 — 기존 `.env.local` 에 있는 키 값은 그대로 유지하고 `.env.example` 의 신규 키만 빈 값으로 안전 append (덮어쓰기 회피)
 - 2026-05-11 — Phase 4 진행: 한투 OpenAPI 실시간 시세 인프라 스켈레톤
   - `src/lib/kis.ts` 신설 — 한투 API 클라이언트 (access_token 자동 갱신·24h 캐시·rate limit 200ms throttle·KIS 키 없으면 mock 자동 폴백)
   - `src/app/api/etf/realtime/route.ts` 신설 — 다종목 시세 endpoint (`?codes=069500,114800` 최대 15) + edge 캐시 (open 30s·closed 30min·holiday 24h) + data.go.kr 폴백
