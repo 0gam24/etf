@@ -98,6 +98,7 @@ export default async function HomePage() {
         topEtf={topEtf}
         catalystNews={catalystNews}
         catalystHref={catalystHref}
+        baseDate={etfData?.baseDate}
       />
 
       <RecommendBox position="top" />

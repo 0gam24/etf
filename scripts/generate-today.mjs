@@ -139,6 +139,21 @@ function main() {
 
   const lastPublishedDate = posts[0]?.dateKey || '—';
 
+  // Staleness 감지 — 마지막 발행이 N일 이상 오래되면 경고 띠.
+  const STALENESS_THRESHOLD_DAYS = 3;
+  let stalenessBanner = '';
+  if (posts[0]) {
+    const ageMs = Date.now() - posts[0].date.getTime();
+    const ageDays = Math.floor(ageMs / 86400000);
+    if (ageDays >= STALENESS_THRESHOLD_DAYS) {
+      stalenessBanner = `
+> 🚨 **STALE 경고** — 마지막 발행이 **${ageDays}일 전**입니다. cron 진단 필요.
+>
+> 확인 순서: ① \`gh run list --workflow=daily-pulse.yml --limit 5\` → ② 최근 run 의 \`Diagnostic\` step 출력 → ③ commit step "No changes to commit" 라인 발견 시 ④ \`mkdir -p public\` fix 적용 여부 확인.
+`;
+    }
+  }
+
   const md = `# 📅 Today — Daily ETF Pulse 발행 일지
 
 > 매일 평일 KST 16:00 자동 갱신 (KRX 마감 후 30분).
@@ -146,7 +161,7 @@ function main() {
 > **마지막 갱신**: ${lastUpdated}
 > **마지막 발행일**: ${lastPublishedDate}
 > **최근 ${RECENT_DAYS}일 발행**: ${totalRecent}편 / **총 누적**: ${totalAll}편
-
+${stalenessBanner}
 ---
 
 ## 🔄 매일 자동 업데이트되는 것들

@@ -171,18 +171,36 @@ DAILY ETF PULSE
 
 ## 10. 즉시 시작 가능한 작업 (한투 키 발급 대기 중에도)
 
-A. **메인페이지 카피 정직화** (한투 API 무관 · 1~2시간)
-- 부제에 baseDate 명시
-- 시장 상태 분기 (장중·마감 후·휴장)
-- 발행일 표기를 baseDate 기준으로 변경
+A. **메인페이지 카피 정직화** (한투 API 무관 · 1~2시간) — ✅ 완료 (2026-05-11)
+- `HomeHeroV3` 에 `baseDate` prop 추가 → "KRX 5월 8일(금) 종가 기준" 부제 노출
+- 헤드라인 자동 분기: 오늘 데이터면 "오늘 뜨는 ETF, 왜 오르는지까지" / 휴장·과거 데이터면 "이번 거래일 거래량 TOP, 왜 움직였나"
+- "오늘 거래량 1위" 라벨 → 과거 데이터 시 "최근 거래일 거래량 1위"
 
-B. **`src/lib/kis.ts` 스켈레톤** (한투 키 없이 작성 가능)
-- 인터페이스 정의
-- 폴백 로직
-- 캐시 전략 구현
+B. **`src/lib/kis.ts` 스켈레톤** — ✅ 완료 (2026-05-11)
+- `getAccessToken()` 24h 캐시 + 만료 30분 전 자동 갱신
+- `fetchKisQuote(code)` / `fetchKisQuotes(codes)` 200ms throttle
+- `getMarketStatus()` pre_open/open/closed/holiday 분기 (공휴일 캘린더는 Phase 2)
+- KIS 키 없으면 자동 mock 모드 → 빌드/개발 영향 0
 
-C. **`/api/etf/realtime` route 스켈레톤**
-- mock 응답으로 동작 확인
-- 한투 키 등록 후 실제 호출로 전환
+C. **`/api/etf/realtime` route 스켈레톤** — ✅ 완료 (2026-05-11)
+- `GET /api/etf/realtime?codes=069500,114800` (최대 15종목)
+- edge 캐시: open 30s / closed 30min / pre_open 5min / holiday 24h
+- source: 'kis' | 'fallback' | 'mock' 명시 → 클라이언트가 UI 에 정직 표기
+- KIS 실패 시 폴백 신호 제공 (호출자가 `/api/etf` 일별 데이터로 대체)
 
-키 발급 대기하는 동안 A·B·C 진행하면 키 등록 직후 즉시 활성화 가능.
+D. **today.md staleness 배너** — ✅ 완료 (2026-05-11)
+- 마지막 발행 3일 이상 stale 이면 상단에 STALE 경고 + 진단 순서 자동 삽입
+
+E. **cron Health Alert** — ✅ 완료 (2026-05-11)
+- daily-pulse.yml 의 마지막 step 으로 추가
+- `data/.last-pulse-base-date` 3일 이상 stale 시 GitHub Issue 자동 생성 (`cron-stale` label, 중복 방지)
+- 운영자가 today.md 미확인 상태에서도 GitHub 알림으로 즉시 인지
+
+## 11. 다음 단계 (사용자 키 발급 후)
+
+1. 사용자가 한투 OpenAPI 키 발급 → GitHub Actions Secrets + Cloudflare Pages 환경변수 등록
+2. `EtfMarketPulse` 컴포넌트가 `/api/etf` 대신 `/api/etf/realtime` 호출하도록 분기 (장중 30초 polling)
+3. `HomeHeroV3` 의 topEtf 시세 부분을 클라이언트 컴포넌트로 분리 + `useSWR` (30s polling)
+4. 시장 상태 라벨 동적 노출 ("장중 실시간 14:32:15 갱신" / "오늘 종가 15:30 마감" / "마지막 거래일 5/8(금) 기준")
+5. `/etf/{slug}` 종목 사전 페이지 lazy fetch (Phase 2)
+6. 일별 호출량·실패율·rate limit 모니터링 (daily-pulse Summary 합류)

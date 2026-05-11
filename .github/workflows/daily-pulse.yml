@@ -191,3 +191,63 @@ jobs:
             echo "  5. **YmylGuard summary='검증 통과 0건'** → 본문 BANNED_PHRASES 또는 메타 단어로 전부 차단" >> $GITHUB_STEP_SUMMARY
             echo "  6. **HarnessDeployer summary='발행 0건'** → 슬러그 정규식 미일치 또는 콘텐츠 길이 미달로 SEO 차단" >> $GITHUB_STEP_SUMMARY
           fi
+
+      # ── Cron Health Alert ─────────────────────────────────────────────
+      # data/.last-pulse-base-date 가 N일 이상 stale 이면 GitHub Issue 자동 생성.
+      # 운영자가 today.md 보기 전까지 모르고 N주 멈출 수 있는 위험 방지.
+      # 2026-04-26 ~ 05-10 사건 (public/ pathspec error) 재발 방지 안전장치.
+      - name: Cron Health Alert — stale baseDate 감지
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          STALE_DAYS=3  # N일 이상 stale 이면 alert
+          LAST_BASE_FILE="data/.last-pulse-base-date"
+          if [ ! -f "$LAST_BASE_FILE" ]; then
+            echo "no .last-pulse-base-date — skip"
+            exit 0
+          fi
+          LAST_BASE=$(cat "$LAST_BASE_FILE")
+          if [ -z "$LAST_BASE" ] || [ ${#LAST_BASE} -ne 8 ]; then
+            echo "invalid baseDate format: $LAST_BASE — skip"
+            exit 0
+          fi
+          LAST_ISO="${LAST_BASE:0:4}-${LAST_BASE:4:2}-${LAST_BASE:6:2}"
+          LAST_EPOCH=$(date -d "$LAST_ISO" +%s 2>/dev/null || echo 0)
+          NOW_EPOCH=$(date +%s)
+          AGE_DAYS=$(( (NOW_EPOCH - LAST_EPOCH) / 86400 ))
+          echo "마지막 발행 baseDate: $LAST_BASE ($AGE_DAYS일 전)"
+          if [ "$AGE_DAYS" -lt "$STALE_DAYS" ]; then
+            echo "✅ stale 아님 — alert 불필요"
+            exit 0
+          fi
+          # 이미 동일 issue 가 열려 있으면 중복 생성 방지
+          EXISTING=$(gh issue list --label "cron-stale" --state open --json number --jq 'length' 2>/dev/null || echo 0)
+          if [ "$EXISTING" -gt 0 ]; then
+            echo "⚠️ 이미 cron-stale issue 열려 있음 — 중복 생성 안 함"
+            exit 0
+          fi
+          echo "🚨 stale ${AGE_DAYS}일 — GitHub Issue 자동 생성"
+          # Issue body 는 heredoc 으로 파일에 저장 후 --body-file 사용 (YAML 파서 회피).
+          ISSUE_BODY_FILE=$(mktemp)
+          cat > "$ISSUE_BODY_FILE" <<EOF
+          마지막 KRX baseDate: \`$LAST_BASE\` (${AGE_DAYS}일 전).
+
+          이는 daily-pulse cron 이 실행되긴 하지만 commit/push 에 실패하거나 빈 발행으로 끝나는 패턴입니다 (2026-04-26 ~ 05-10 사건 참고).
+
+          **즉시 점검 순서**:
+          1. 최근 run conclusion: \`gh run list --workflow=daily-pulse.yml --limit 5\`
+          2. Diagnostic step 확인: \`gh run view <id> --log | grep -A 50 Diagnostic\`
+          3. Commit step 의 fatal pathspec 메시지 존재 여부
+          4. mkdir -p public fix (commit a12f142) 작동 여부
+
+          **자동 복구 시도**: \`gh workflow run daily-pulse.yml\`
+
+          영구 복구는 PLAN.md 시나리오 참고.
+          EOF
+          gh issue create \
+            --title "Daily Pulse 발행 ${AGE_DAYS}일 연속 stale — 진단 필요" \
+            --label "cron-stale" \
+            --body-file "$ISSUE_BODY_FILE" \
+            || echo "issue 생성 실패 (권한·rate limit·label 미존재 가능)"
+          rm -f "$ISSUE_BODY_FILE"

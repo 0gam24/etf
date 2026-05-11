@@ -25,14 +25,38 @@ interface Props {
   catalystNews?: CatalystNews | null;
   /** 속보 포스트로 이동할 링크 (클릭 시 /breaking/{slug}) */
   catalystHref?: string;
+  /** KRX 마지막 거래일 (YYYYMMDD) — 시세 데이터 기준일 정직 표기용. */
+  baseDate?: string;
 }
 
-export default function HomeHeroV3({ latestPulse, topEtf, catalystNews, catalystHref }: Props) {
+function formatBaseDate(ymd?: string): { display: string; isToday: boolean; weekdayLabel: string } | null {
+  if (!ymd || ymd.length !== 8) return null;
+  const y = ymd.slice(0, 4);
+  const m = ymd.slice(4, 6);
+  const d = ymd.slice(6, 8);
+  const iso = `${y}-${m}-${d}T00:00:00+09:00`;
+  const dt = new Date(iso);
+  if (isNaN(dt.getTime())) return null;
+  const todayKst = new Date(Date.now() + 9 * 3600 * 1000);
+  const todayYmd = `${todayKst.getUTCFullYear()}${String(todayKst.getUTCMonth() + 1).padStart(2, '0')}${String(todayKst.getUTCDate()).padStart(2, '0')}`;
+  const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+  const wd = weekdays[dt.getUTCDay()];
+  return {
+    display: `${parseInt(m, 10)}월 ${parseInt(d, 10)}일(${wd})`,
+    isToday: ymd === todayYmd,
+    weekdayLabel: wd,
+  };
+}
+
+export default function HomeHeroV3({ latestPulse, topEtf, catalystNews, catalystHref, baseDate }: Props) {
   const bullets = latestPulse ? extractPulseBullets(latestPulse, 3) : [];
   const holdings = topEtf ? getEtfHoldings(topEtf.code) : null;
   const top3 = holdings?.holdings.slice(0, 3) ?? [];
   const isUp = (topEtf?.change ?? 0) > 0;
   const isDown = (topEtf?.change ?? 0) < 0;
+  const baseDateInfo = formatBaseDate(baseDate);
+  // 휴장일·과거 baseDate면 카피를 "오늘" 대신 "최근 거래일"로 정직 표기.
+  const isStaleData = baseDateInfo ? !baseDateInfo.isToday : false;
 
   return (
     <section className="home-hero-v3">
@@ -44,7 +68,18 @@ export default function HomeHeroV3({ latestPulse, topEtf, catalystNews, catalyst
             <span className="home-hero-v3-pill">
               <Zap size={13} strokeWidth={3} aria-hidden /> DAILY ETF PULSE
             </span>
-            {latestPulse && (
+            {baseDateInfo && (
+              <span className="home-hero-v3-fresh" title="KRX 마지막 거래일 시세 기준">
+                KRX {baseDateInfo.display} 종가 기준
+                {latestPulse && (
+                  <>
+                    <span className="home-hero-v3-dot" aria-hidden />
+                    {freshnessLabel(latestPulse.meta.date)} 발행
+                  </>
+                )}
+              </span>
+            )}
+            {!baseDateInfo && latestPulse && (
               <span className="home-hero-v3-fresh">
                 {new Date(latestPulse.meta.date).toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short' })}
                 <span className="home-hero-v3-dot" aria-hidden />
@@ -54,7 +89,11 @@ export default function HomeHeroV3({ latestPulse, topEtf, catalystNews, catalyst
           </div>
 
           <h1 className="home-hero-v3-title">
-            오늘 뜨는 ETF, <span className="gradient">왜 오르는지</span>까지<br />
+            {isStaleData ? (
+              <>이번 거래일 거래량 TOP, <span className="gradient">왜 움직였나</span><br /></>
+            ) : (
+              <>오늘 뜨는 ETF, <span className="gradient">왜 오르는지</span>까지<br /></>
+            )}
             <span className="accent">맥락과 근거</span>로 설명합니다.
           </h1>
 
@@ -86,7 +125,9 @@ export default function HomeHeroV3({ latestPulse, topEtf, catalystNews, catalyst
         {topEtf && (
           <aside className="home-hero-v3-right">
             <div className="home-hero-v3-right-head">
-              <span className="home-hero-v3-right-label">오늘 거래량 1위</span>
+              <span className="home-hero-v3-right-label">
+                {isStaleData ? '최근 거래일 거래량 1위' : '오늘 거래량 1위'}
+              </span>
               <span className="home-hero-v3-right-code">{topEtf.code}</span>
             </div>
             <div className="home-hero-v3-etf-name">{topEtf.name}</div>
