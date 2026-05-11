@@ -385,6 +385,12 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
 - 2026-05-07 — 초기 자동 생성 (commit b37276b 기준)
 - 2026-05-07 — `MainBackrefBox` 추가: smartdatashop network 자매 backref 컴포넌트 + 글·종목사전·SiteFooter 3 위치 적용 + `buildArticleSchema()`에 `publisher.parentOrganization` + `isBasedOn` + RootLayout `ORG_SCHEMA.parentOrganization` 추가 (NETWORK.md v0.6 dual-brand 준수 · YMYL BANNED_PHRASES 통과 확인)
 - 2026-05-07 — Network Index 시스템 합류: `scripts/generate-network-mirror.mjs` 신설 + `prebuild` 훅 등록 → `public/network-mirror.json` 빌드마다 자동 재생성 (분석 18편 + ETF 사전 1099 별도 키 + 7 AI 에이전트 accent · `.gitignore`에 등재 · robots.txt는 기존 정책상 자연 허용)
+- 2026-05-11 — 키 등록·보안 강화 일괄 작업
+  - `.env.example` KIS 섹션 명확화 (발급 절차·보안 권장·채우기 형식 가이드)
+  - `.gitignore` 추가 패턴 — `.env.local.backup`/`*.key`/`*.crt`/`*.pfx`/Thumbs.db
+  - `pipeline/security_guard.js` 강화 — KIS App Key/Secret 정규식·환경변수명 컨텍스트 패턴 7개 추가 + root-level .md 파일도 검사 + content/·scripts/ 스캔 디렉토리 확장
+  - `.github/workflows/daily-pulse.yml` env 섹션에 KIS_* 4종 통과 추가
+  - **SETUP.md** 신설 — 키 12종 한 페이지 가이드 (`.env.local` + GitHub Secrets + Cloudflare 환경변수 3곳 동기화 · 검증·폐기·재발급 절차)
 - 2026-05-11 — Phase 4 진행: 한투 OpenAPI 실시간 시세 인프라 스켈레톤
   - `src/lib/kis.ts` 신설 — 한투 API 클라이언트 (access_token 자동 갱신·24h 캐시·rate limit 200ms throttle·KIS 키 없으면 mock 자동 폴백)
   - `src/app/api/etf/realtime/route.ts` 신설 — 다종목 시세 endpoint (`?codes=069500,114800` 최대 15) + edge 캐시 (open 30s·closed 30min·holiday 24h) + data.go.kr 폴백

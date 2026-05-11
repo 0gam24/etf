@@ -42,6 +42,11 @@ jobs:
       # Coupang Partners Open API (선택 — 없으면 fetch:products가 dry-run으로 자동 폴백)
       COUPANG_PARTNERS_ACCESS_KEY: ${{ secrets.COUPANG_PARTNERS_ACCESS_KEY }}
       COUPANG_PARTNERS_SECRET_KEY: ${{ secrets.COUPANG_PARTNERS_SECRET_KEY }}
+      # 한국투자증권 OpenAPI (선택 — 장중 분단위 시세 보강용. 미등록 시 자동 mock 폴백.)
+      KIS_APP_KEY:     ${{ secrets.KIS_APP_KEY }}
+      KIS_APP_SECRET:  ${{ secrets.KIS_APP_SECRET }}
+      KIS_ACCOUNT_NO:  ${{ secrets.KIS_ACCOUNT_NO }}
+      KIS_MODE:        ${{ secrets.KIS_MODE }}
 
     steps:
       - name: Checkout

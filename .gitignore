@@ -82,3 +82,16 @@ logs/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 추가 비밀 패턴 — API 키·인증서·백업 (security_guard 와 함께 이중 방어)
+.env.local.backup
+.env.local.bak
+.env.*.bak
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+# OS 별 잡파일 (실수로 키 백업이 들어갈 수 있는 경로)
+Thumbs.db
+desktop.ini
