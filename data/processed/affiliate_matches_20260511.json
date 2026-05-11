@@ -1,7 +1,7 @@
 {
   "_meta": {
     "createdBy": "CpaDealMaker",
-    "createdAt": "2026-05-10T23:20:53.556Z",
+    "createdAt": "2026-05-11T10:48:44.689Z",
     "fileName": "affiliate_matches_20260511.json"
   },
   "data": [
@@ -54,7 +54,7 @@
       ]
     },
     {
-      "articleSlug": "flow-20260511-shipbuilding",
+      "articleSlug": "flow-20260511-commodities-gold",
       "category": "flow",
       "products": [
         {
@@ -126,7 +126,7 @@
       ]
     },
     {
-      "articleSlug": "breaking-20260511-2-0080y0",
+      "articleSlug": "breaking-20260511-2-0048k0",
       "category": "breaking",
       "products": [
         {
@@ -150,7 +150,7 @@
       ]
     },
     {
-      "articleSlug": "breaking-20260511-3-0072r0",
+      "articleSlug": "breaking-20260511-3-0080y0",
       "category": "breaking",
       "products": [
         {

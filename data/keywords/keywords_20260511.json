@@ -1,7 +1,7 @@
 {
   "_meta": {
     "createdBy": "SeoArchitect",
-    "createdAt": "2026-05-10T23:15:57.329Z",
+    "createdAt": "2026-05-11T10:32:28.697Z",
     "fileName": "keywords_20260511.json"
   },
   "data": {
@@ -14,95 +14,95 @@
         "estimatedCpc": 1500,
         "tickers": [
           "0080G0",
-          "0080Y0",
-          "0072R0"
+          "0048K0",
+          "0080Y0"
         ],
         "top3": [
           {
             "code": "0080G0",
             "name": "KODEX 방산TOP10",
-            "price": 14365,
-            "change": -1035,
-            "changeRate": -6.72,
-            "volume": 7635804,
-            "tradeAmount": 111920520590,
-            "marketCap": 564544500000,
-            "nav": 14367.64,
-            "highPrice": 15255,
-            "lowPrice": 14330,
-            "openPrice": 15100,
-            "date": "20260507",
+            "price": 13990,
+            "change": -375,
+            "changeRate": -2.61,
+            "volume": 6031768,
+            "tradeAmount": 84457607790,
+            "marketCap": 541413000000,
+            "nav": 13985.85,
+            "highPrice": 14550,
+            "lowPrice": 13790,
+            "openPrice": 14505,
+            "date": "20260508",
             "sector": "방산"
+          },
+          {
+            "code": "0048K0",
+            "name": "KODEX 차이나휴머노이드로봇",
+            "price": 11235,
+            "change": 490,
+            "changeRate": 4.56,
+            "volume": 2414423,
+            "tradeAmount": 26566645066,
+            "marketCap": 239867250000,
+            "nav": 10892.34,
+            "highPrice": 11355,
+            "lowPrice": 10650,
+            "openPrice": 10745,
+            "date": "20260508",
+            "sector": "기타"
           },
           {
             "code": "0080Y0",
             "name": "SOL 조선TOP3플러스레버리지",
-            "price": 23000,
-            "change": 1250,
-            "changeRate": 5.75,
-            "volume": 1991307,
-            "tradeAmount": 44572575525,
-            "marketCap": 243800000000,
-            "nav": 23326.27,
-            "highPrice": 23235,
-            "lowPrice": 21200,
-            "openPrice": 21795,
-            "date": "20260507",
+            "price": 21335,
+            "change": -1665,
+            "changeRate": -7.24,
+            "volume": 1884192,
+            "tradeAmount": 40362284365,
+            "marketCap": 224017500000,
+            "nav": 21198.59,
+            "highPrice": 22995,
+            "lowPrice": 20800,
+            "openPrice": 22905,
+            "date": "20260508",
             "sector": "조선"
-          },
-          {
-            "code": "0072R0",
-            "name": "TIGER KRX금현물",
-            "price": 14655,
-            "change": 210,
-            "changeRate": 1.45,
-            "volume": 1945759,
-            "tradeAmount": 28372133773,
-            "marketCap": 1451577750000,
-            "nav": 14721.1,
-            "highPrice": 14665,
-            "lowPrice": 14445,
-            "openPrice": 14445,
-            "date": "20260507",
-            "sector": "원자재·금"
           }
         ],
         "leadSector": {
-          "sector": "조선",
-          "count": 1,
-          "avgChangeRate": 5.75,
-          "totalAmount": 44572575525
+          "sector": "원자재·금",
+          "count": 4,
+          "avgChangeRate": 1.12,
+          "totalAmount": 24583891022
         },
         "sectorFlow": [
           {
-            "sector": "조선",
-            "count": 1,
-            "avgChangeRate": 5.75,
-            "totalAmount": 44572575525
+            "sector": "원자재·금",
+            "count": 4,
+            "avgChangeRate": 1.12,
+            "totalAmount": 24583891022
           },
           {
             "sector": "기타",
             "count": 29,
-            "avgChangeRate": 1.28,
-            "totalAmount": 112151320656
+            "avgChangeRate": 0.87,
+            "totalAmount": 116512942271
           },
           {
             "sector": "AI·데이터",
             "count": 13,
-            "avgChangeRate": 1.03,
-            "totalAmount": 29693624456
+            "avgChangeRate": 0.75,
+            "totalAmount": 26387900336
+          },
+          {
+            "sector": "커버드콜·월배당",
+            "count": 10,
+            "avgChangeRate": 0.73,
+            "totalAmount": 17765301278
           },
           {
             "sector": "해외주식",
             "count": 34,
-            "avgChangeRate": 0.92,
-            "totalAmount": 120840190694
-          },
-          {
-            "sector": "원자재·금",
-            "count": 4,
-            "avgChangeRate": 0.82,
-            "totalAmount": 34584332742
+            "avgChangeRate": 0.37,
+            "totalAmount": 108859623659
           }
         ],
         "suggestedTitle": "5월 11일 오늘의 ETF 관전포인트 — 거래량 1위 KODEX 방산TOP10 외 2종목",
@@ -124,26 +124,26 @@
         "id": "surge_20260511",
         "category": "surge",
         "templateType": "surge",
-        "keyword": "KODEX 방산TOP10 급등 이유 — 방위산업 ETF 수주 이슈 — 거래량 평소 대비 2배+",
-        "estimatedCpc": 2520,
-        "momentumScore": 67,
+        "keyword": "KODEX 방산TOP10 급등 이유 — 방위산업 ETF 수주 이슈",
+        "estimatedCpc": 2100,
+        "momentumScore": 26,
         "tickers": [
           "0080G0"
         ],
         "focusEtf": {
           "code": "0080G0",
           "name": "KODEX 방산TOP10",
-          "price": 14365,
-          "change": -1035,
-          "changeRate": -6.72,
-          "volume": 7635804,
-          "tradeAmount": 111920520590,
-          "marketCap": 564544500000,
-          "nav": 14367.64,
-          "highPrice": 15255,
-          "lowPrice": 14330,
-          "openPrice": 15100,
-          "date": "20260507",
+          "price": 13990,
+          "change": -375,
+          "changeRate": -2.61,
+          "volume": 6031768,
+          "tradeAmount": 84457607790,
+          "marketCap": 541413000000,
+          "nav": 13985.85,
+          "highPrice": 14550,
+          "lowPrice": 13790,
+          "openPrice": 14505,
+          "date": "20260508",
           "sector": "방산"
         },
         "portfolio": {
@@ -318,49 +318,49 @@
         "id": "flow_20260511",
         "category": "flow",
         "templateType": "flow",
-        "keyword": "주간 자금 흐름 리포트 — 조선 섹터 +5.75%",
+        "keyword": "주간 자금 흐름 리포트 — 원자재·금 섹터 +1.12%",
         "estimatedCpc": 1800,
         "tickers": [
           "0080G0",
+          "0048K0",
           "0080Y0",
-          "0072R0",
-          "0005D0",
-          "0008T0"
+          "0015B0",
+          "0072R0"
         ],
         "sectorFlow": [
           {
-            "sector": "조선",
-            "count": 1,
-            "avgChangeRate": 5.75,
-            "totalAmount": 44572575525
+            "sector": "원자재·금",
+            "count": 4,
+            "avgChangeRate": 1.12,
+            "totalAmount": 24583891022
           },
           {
             "sector": "기타",
             "count": 29,
-            "avgChangeRate": 1.28,
-            "totalAmount": 112151320656
+            "avgChangeRate": 0.87,
+            "totalAmount": 116512942271
           },
           {
             "sector": "AI·데이터",
             "count": 13,
-            "avgChangeRate": 1.03,
-            "totalAmount": 29693624456
+            "avgChangeRate": 0.75,
+            "totalAmount": 26387900336
+          },
+          {
+            "sector": "커버드콜·월배당",
+            "count": 10,
+            "avgChangeRate": 0.73,
+            "totalAmount": 17765301278
           },
           {
             "sector": "해외주식",
             "count": 34,
-            "avgChangeRate": 0.92,
-            "totalAmount": 120840190694
-          },
-          {
-            "sector": "원자재·금",
-            "count": 4,
-            "avgChangeRate": 0.82,
-            "totalAmount": 34584332742
+            "avgChangeRate": 0.37,
+            "totalAmount": 108859623659
           }
         ],
-        "suggestedTitle": "이번 주 자금은 어디로? 조선 섹터에 몰린 446억 원",
-        "suggestedSlug": "flow-20260511-shipbuilding",
+        "suggestedTitle": "이번 주 자금은 어디로? 원자재·금 섹터에 몰린 246억 원",
+        "suggestedSlug": "flow-20260511-commodities-gold",
         "contentDirection": {
           "template": "flow",
           "minWords": 2500,
@@ -386,17 +386,17 @@
         "focusEtf": {
           "code": "0000D0",
           "name": "TIGER 엔비디아미국채커버드콜밸런스(합성)",
-          "price": 9850,
-          "change": 245,
-          "changeRate": 2.55,
-          "volume": 124377,
-          "tradeAmount": 1221498390,
-          "marketCap": 62055000000,
-          "nav": 9924.32,
-          "highPrice": 9880,
-          "lowPrice": 9640,
-          "openPrice": 9645,
-          "date": "20260507",
+          "price": 10010,
+          "change": 160,
+          "changeRate": 1.62,
+          "volume": 108570,
+          "tradeAmount": 1081330282,
+          "marketCap": 70070000000,
+          "nav": 10069.62,
+          "highPrice": 10010,
+          "lowPrice": 9850,
+          "openPrice": 9850,
+          "date": "20260508",
           "sector": "커버드콜·월배당"
         },
         "suggestedTitle": "퇴직연금 DC형 커버드콜 비중 전략 — 실제 분배금·세후 수익률 계산",
@@ -420,7 +420,7 @@
         "category": "breaking",
         "templateType": "breaking",
         "rank": 1,
-        "keyword": "KODEX 방산TOP10 속보 — 오늘 하락 6.72% · 거래량 1위",
+        "keyword": "KODEX 방산TOP10 속보 — 오늘 하락 2.61% · 거래량 1위",
         "estimatedCpc": 2400,
         "tickers": [
           "0080G0"
@@ -428,17 +428,17 @@
         "focusEtf": {
           "code": "0080G0",
           "name": "KODEX 방산TOP10",
-          "price": 14365,
-          "change": -1035,
-          "changeRate": -6.72,
-          "volume": 7635804,
-          "tradeAmount": 111920520590,
-          "marketCap": 564544500000,
-          "nav": 14367.64,
-          "highPrice": 15255,
-          "lowPrice": 14330,
-          "openPrice": 15100,
-          "date": "20260507",
+          "price": 13990,
+          "change": -375,
+          "changeRate": -2.61,
+          "volume": 6031768,
+          "tradeAmount": 84457607790,
+          "marketCap": 541413000000,
+          "nav": 13985.85,
+          "highPrice": 14550,
+          "lowPrice": 13790,
+          "openPrice": 14505,
+          "date": "20260508",
           "sector": "방산"
         },
         "portfolio": {
@@ -593,7 +593,7 @@
           }
         ],
         "topN": 10,
-        "suggestedTitle": "[05월 11일 속보] KODEX 방산TOP10 — 조정 6.72%, 왜 움직였나",
+        "suggestedTitle": "[05월 11일 속보] KODEX 방산TOP10 — 조정 2.61%, 왜 움직였나",
         "suggestedSlug": "breaking-20260511-1-0080g0",
         "contentDirection": {
           "template": "breaking",
@@ -616,7 +616,54 @@
         "category": "breaking",
         "templateType": "breaking",
         "rank": 2,
-        "keyword": "SOL 조선TOP3플러스레버리지 속보 — 오늘 상승 5.75% · 거래량 2위",
+        "keyword": "KODEX 차이나휴머노이드로봇 속보 — 오늘 상승 4.56% · 거래량 2위",
+        "estimatedCpc": 1300,
+        "tickers": [
+          "0048K0"
+        ],
+        "focusEtf": {
+          "code": "0048K0",
+          "name": "KODEX 차이나휴머노이드로봇",
+          "price": 11235,
+          "change": 490,
+          "changeRate": 4.56,
+          "volume": 2414423,
+          "tradeAmount": 26566645066,
+          "marketCap": 239867250000,
+          "nav": 10892.34,
+          "highPrice": 11355,
+          "lowPrice": 10650,
+          "openPrice": 10745,
+          "date": "20260508",
+          "sector": "기타"
+        },
+        "portfolio": null,
+        "holdings": [],
+        "topN": 5,
+        "suggestedTitle": "[05월 11일 속보] KODEX 차이나휴머노이드로봇 — 상승 4.56%, 왜 움직였나",
+        "suggestedSlug": "breaking-20260511-2-0048k0",
+        "contentDirection": {
+          "template": "breaking",
+          "minWords": 3000,
+          "requiredSections": [
+            "3줄 속보 요약",
+            "뉴스 헤드라인 스캔",
+            "시세·거래량 데이터",
+            "섹터·구성종목 연결",
+            "시장 반응 해석",
+            "투자자 관점 (4050)",
+            "단기 전망 시나리오",
+            "FAQ"
+          ],
+          "dataFocus": "news-driven"
+        }
+      },
+      {
+        "id": "breaking_20260511_3",
+        "category": "breaking",
+        "templateType": "breaking",
+        "rank": 3,
+        "keyword": "SOL 조선TOP3플러스레버리지 속보 — 오늘 하락 7.24% · 거래량 3위",
         "estimatedCpc": 2300,
         "tickers": [
           "0080Y0"
@@ -624,17 +671,17 @@
         "focusEtf": {
           "code": "0080Y0",
           "name": "SOL 조선TOP3플러스레버리지",
-          "price": 23000,
-          "change": 1250,
-          "changeRate": 5.75,
-          "volume": 1991307,
-          "tradeAmount": 44572575525,
-          "marketCap": 243800000000,
-          "nav": 23326.27,
-          "highPrice": 23235,
-          "lowPrice": 21200,
-          "openPrice": 21795,
-          "date": "20260507",
+          "price": 21335,
+          "change": -1665,
+          "changeRate": -7.24,
+          "volume": 1884192,
+          "tradeAmount": 40362284365,
+          "marketCap": 224017500000,
+          "nav": 21198.59,
+          "highPrice": 22995,
+          "lowPrice": 20800,
+          "openPrice": 22905,
+          "date": "20260508",
           "sector": "조선"
         },
         "portfolio": {
@@ -691,55 +738,8 @@
           }
         ],
         "topN": 3,
-        "suggestedTitle": "[05월 11일 속보] SOL 조선TOP3플러스레버리지 — 상승 5.75%, 왜 움직였나",
-        "suggestedSlug": "breaking-20260511-2-0080y0",
-        "contentDirection": {
-          "template": "breaking",
-          "minWords": 3000,
-          "requiredSections": [
-            "3줄 속보 요약",
-            "뉴스 헤드라인 스캔",
-            "시세·거래량 데이터",
-            "섹터·구성종목 연결",
-            "시장 반응 해석",
-            "투자자 관점 (4050)",
-            "단기 전망 시나리오",
-            "FAQ"
-          ],
-          "dataFocus": "news-driven"
-        }
-      },
-      {
-        "id": "breaking_20260511_3",
-        "category": "breaking",
-        "templateType": "breaking",
-        "rank": 3,
-        "keyword": "TIGER KRX금현물 속보 — 오늘 상승 1.45% · 거래량 3위",
-        "estimatedCpc": 1700,
-        "tickers": [
-          "0072R0"
-        ],
-        "focusEtf": {
-          "code": "0072R0",
-          "name": "TIGER KRX금현물",
-          "price": 14655,
-          "change": 210,
-          "changeRate": 1.45,
-          "volume": 1945759,
-          "tradeAmount": 28372133773,
-          "marketCap": 1451577750000,
-          "nav": 14721.1,
-          "highPrice": 14665,
-          "lowPrice": 14445,
-          "openPrice": 14445,
-          "date": "20260507",
-          "sector": "원자재·금"
-        },
-        "portfolio": null,
-        "holdings": [],
-        "topN": 5,
-        "suggestedTitle": "[05월 11일 속보] TIGER KRX금현물 — 상승 1.45%, 왜 움직였나",
-        "suggestedSlug": "breaking-20260511-3-0072r0",
+        "suggestedTitle": "[05월 11일 속보] SOL 조선TOP3플러스레버리지 — 조정 7.24%, 왜 움직였나",
+        "suggestedSlug": "breaking-20260511-3-0080y0",
         "contentDirection": {
           "template": "breaking",
           "minWords": 3000,
