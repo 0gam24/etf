@@ -6,7 +6,6 @@
 ---
 
 ## 1. 로컬 `.env.local` 채우기 (필수 · 5분)
-
 ### 1-1. 새 PC 첫 셋업 — `.env.local` 이 아직 없는 경우
 ```bash
 npm run env:sync:apply
@@ -17,7 +16,6 @@ npm run env:sync:apply
 ```bash
 # 1. 누락된 키 확인 (dry-run, 변경 없음)
 npm run env:sync
-
 # 2. 누락 키만 .env.local 끝에 빈 값으로 안전하게 append
 npm run env:sync:apply
 ```
