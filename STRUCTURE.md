@@ -385,6 +385,13 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
 - 2026-05-07 — 초기 자동 생성 (commit b37276b 기준)
 - 2026-05-07 — `MainBackrefBox` 추가: smartdatashop network 자매 backref 컴포넌트 + 글·종목사전·SiteFooter 3 위치 적용 + `buildArticleSchema()`에 `publisher.parentOrganization` + `isBasedOn` + RootLayout `ORG_SCHEMA.parentOrganization` 추가 (NETWORK.md v0.6 dual-brand 준수 · YMYL BANNED_PHRASES 통과 확인)
 - 2026-05-07 — Network Index 시스템 합류: `scripts/generate-network-mirror.mjs` 신설 + `prebuild` 훅 등록 → `public/network-mirror.json` 빌드마다 자동 재생성 (분석 18편 + ETF 사전 1099 별도 키 + 7 AI 에이전트 accent · `.gitignore`에 등재 · robots.txt는 기존 정책상 자연 허용)
+- 2026-05-12 — Phase 3 Round 3: 변동성 폭증 알림 강화 + 트랙 레코드 시스템 + 미실행 항목 기획서
+  - `src/components/VolumeSurgeAlert.tsx` — A1 거래량 급증 + **A2 변동성 폭증** (등락률 ±3%) 통합. 두 시그널 우선순위 분기 (변동성 > 거래량).
+  - `scripts/evaluate-signals.mjs` 신설 — 어제 발행 시그널을 오늘 OHLC 로 자동 검증. win/loss/eod 판정 + `data/signals/track-record.json` 누적.
+  - `.github/workflows/daily-pulse.yml` 에 `evaluate:signal` step 추가 (generate:signal 다음).
+  - `package.json: evaluate:signal` 등록.
+  - `src/app/strategy/track-record/page.tsx` 신설 — 시그널 트랙 레코드 transparent 공개 페이지. 요약 카드 4종 (총 진입·승률·승패·누적 손익) + 일별 상세 + paper trading 면책.
+  - `PLAN-NEXT.md` 신설 — A3 외국인 시그널 / C4 Web Push 알림 / D3 속보 자동 발행 / E2 OG 분봉 차트 / D2 N일 추적 강화 — 5종 기획·인프라 요건·예상 작업 시간 정리.
 - 2026-05-12 — Phase 3 Round 2: 분배락일 알림 + 포트폴리오·세후 도구 + 인기 종목 + JSON-LD 가격 + R2 가이드
   - `src/components/ExDividendAlert.tsx` — 분배락일 D-5 이내 ETF 자동 강조 카드. income 페이지 hero 직후 노출. 매수 마지막 타이밍 안내.
   - `src/app/tools/portfolio/page.tsx` + `PortfolioSim.tsx` — 사용자가 ETF 코드·수량·평단가 입력 시 한투 실시간 시세로 손익 자동 계산. localStorage 저장. 장중 30초 polling.

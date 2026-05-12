@@ -40,7 +40,7 @@ interface RealtimeResponse {
  *   30초 polling — EtfMarketPulse 와 같은 endpoint 호출이라 edge 캐시 hit 률 높음.
  */
 export default function VolumeSurgeAlert({ baselineList }: Props) {
-  const [surge, setSurge] = useState<null | { code: string; name: string; ratio: number; changeRate: number }>(null);
+  const [surge, setSurge] = useState<null | { code: string; name: string; ratio: number; changeRate: number; type: 'volume' | 'volatility' }>(null);
   const [marketStatus, setMarketStatus] = useState<RealtimeResponse['marketStatus']>('closed');
 
   useEffect(() => {
@@ -57,14 +57,26 @@ export default function VolumeSurgeAlert({ baselineList }: Props) {
         if (cancelled) return;
         setMarketStatus(data.marketStatus);
         if (data.marketStatus !== 'open') { setSurge(null); return; }
-        let top: { code: string; name: string; ratio: number; changeRate: number } | null = null;
+        // 우선순위: 변동성 폭증 (등락률 ≥ 3%) > 거래량 급증 (1.5×)
+        let top: { code: string; name: string; ratio: number; changeRate: number; type: 'volume' | 'volatility' } | null = null;
         for (const q of data.quotes) {
           if (!q || q.volume === 0) continue;
           const base = baselineMap.get(q.code);
-          if (!base || base.volume === 0) continue;
+          if (!base) continue;
+
+          // A2 변동성 폭증 — 등락률 절댓값 3% 초과
+          if (Math.abs(q.changeRate) >= 3) {
+            const score = Math.abs(q.changeRate);
+            if (!top || (top.type !== 'volatility') || score > top.ratio) {
+              top = { code: q.code, name: base.name, ratio: score, changeRate: q.changeRate, type: 'volatility' };
+            }
+            continue;
+          }
+          // A1 거래량 급증 — baseline × 1.5
+          if (base.volume === 0) continue;
           const ratio = q.volume / base.volume;
-          if (ratio >= 1.5 && (!top || ratio > top.ratio)) {
-            top = { code: q.code, name: base.name, ratio, changeRate: q.changeRate };
+          if (ratio >= 1.5 && (!top || (top.type !== 'volatility' && ratio > top.ratio))) {
+            top = { code: q.code, name: base.name, ratio, changeRate: q.changeRate, type: 'volume' };
           }
         }
         setSurge(top);
@@ -78,6 +90,12 @@ export default function VolumeSurgeAlert({ baselineList }: Props) {
   if (!surge || marketStatus !== 'open') return null;
 
   const up = surge.changeRate > 0;
+  const isVolatility = surge.type === 'volatility';
+  const label = isVolatility ? '변동성 폭증' : '거래량 급증';
+  const detail = isVolatility
+    ? <>이상 변동 <strong>{Math.abs(surge.changeRate).toFixed(2)}%</strong></>
+    : <>평소 대비 <strong>{surge.ratio.toFixed(1)}배</strong></>;
+
   return (
     <Link
       href={`/etf/${surge.code.toLowerCase()}`}
@@ -99,12 +117,14 @@ export default function VolumeSurgeAlert({ baselineList }: Props) {
       }}
     >
       <Flame size={16} strokeWidth={2.5} color="#EF4444" aria-hidden />
-      <span><strong style={{ color: '#EF4444' }}>거래량 급증</strong> · {surge.name}</span>
+      <span><strong style={{ color: '#EF4444' }}>{label}</strong> · {surge.name}</span>
       <span style={{ color: 'var(--text-dim)' }}>
-        평소 대비 <strong>{surge.ratio.toFixed(1)}배</strong>
-        <span style={{ marginLeft: '0.5rem', color: up ? '#EF4444' : '#60A5FA' }}>
-          {up ? '▲' : '▼'}{Math.abs(surge.changeRate).toFixed(2)}%
-        </span>
+        {detail}
+        {!isVolatility && (
+          <span style={{ marginLeft: '0.5rem', color: up ? '#EF4444' : '#60A5FA' }}>
+            {up ? '▲' : '▼'}{Math.abs(surge.changeRate).toFixed(2)}%
+          </span>
+        )}
       </span>
       <span style={{ color: 'var(--accent-gold)', fontSize: '0.8rem' }}>→ 자세히</span>
     </Link>

@@ -81,6 +81,11 @@ jobs:
         # /strategy/kospi200-breakout 페이지가 이 데이터 SSR.
         run: npm run generate:signal || true
 
+      - name: Evaluate prior day signals (트랙 레코드 자동 누적)
+        # 어제 발행한 시그널을 오늘 OHLC 로 검증 → win/loss/eod 판정
+        # data/signals/track-record.json 누적 (transparent 백테스트 결과)
+        run: npm run evaluate:signal || true
+
       - name: Regenerate today.md (운영자 매일 한 눈에 보는 발행 일지)
         # content/ 발행 후 today.md 도 함께 갱신 — pipeline 0건이어도 lastUpdated 시점 갱신.
         # 본 step 실패해도 commit·push 계속 진행 (today.md 는 부차적).
