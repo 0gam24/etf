@@ -385,6 +385,17 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
 - 2026-05-07 — 초기 자동 생성 (commit b37276b 기준)
 - 2026-05-07 — `MainBackrefBox` 추가: smartdatashop network 자매 backref 컴포넌트 + 글·종목사전·SiteFooter 3 위치 적용 + `buildArticleSchema()`에 `publisher.parentOrganization` + `isBasedOn` + RootLayout `ORG_SCHEMA.parentOrganization` 추가 (NETWORK.md v0.6 dual-brand 준수 · YMYL BANNED_PHRASES 통과 확인)
 - 2026-05-07 — Network Index 시스템 합류: `scripts/generate-network-mirror.mjs` 신설 + `prebuild` 훅 등록 → `public/network-mirror.json` 빌드마다 자동 재생성 (분석 18편 + ETF 사전 1099 별도 키 + 7 AI 에이전트 accent · `.gitignore`에 등재 · robots.txt는 기존 정책상 자연 허용)
+- 2026-05-12 — Phase 5 "전역 실시간": SiteLiveBar + 휴장일 캘린더 + 분봉 차트 + schema dateModified
+  - `src/lib/market-calendar.ts` — KRX 2026~2027 휴장일 정적 매핑 + `getMarketSnapshot()` (kstNow/kstDateStr/weekday/prevTradingDay) + 5 상태 분기 (pre_open·open·closed·holiday) + 라벨·색상 헬퍼.
+  - `src/components/SiteLiveBar.tsx` — 사이트 전역 최상단 1줄 라이브 띠. 시장 상태 + 시각 + KRX 직전 거래일. 장중 1초 갱신 + LIVE 점멸 펄스. RootLayout 통합.
+  - `src/components/HomeHeroV3.tsx` — 헤더 카피 정직화 강화 ("📚 분석 베이스: KRX 5/8 종가 · 실시간 시세는 우측 →") + 분석/실시간 시각 분리 인지.
+  - `src/components/LiveEtfStats.tsx` — 종목 사전 페이지 30초 polling 추가 + 실시간 가격·등락 라벨에 inline 표시 ("🔴 장중 14:32:15 · 실시간 35,800원 +1.56%").
+  - `src/components/PublishedVsLive.tsx` — 시각 강조 강화 (gradient 배경·2px 테두리·LIVE 점멸 펄스·1.15rem 가격) + 시장 상태 따라 색상 분기.
+  - `src/lib/schema.ts` `buildArticleSchema` — `dateModified` 인자 활용. 글 페이지에서 KRX baseDate > 글 발행일이면 baseDate 시점을 dateModified 로 사용 → 검색결과 freshness 신호.
+  - `src/lib/kis.ts` — `fetchKisMinuteBars` 분봉 endpoint (`inquire-time-itemchartprice`) 추가.
+  - `src/app/api/etf/intraday/route.ts` — 분봉 시세 endpoint (`?code=069500`) + edge 캐시 60s/30min/24h.
+  - `src/components/IntradayChart.tsx` — Recharts 분봉 라인 차트 + 전일 종가 ReferenceLine + 추세 색상 자동 분기.
+  - `/etf/{ticker}` Hero 아래 IntradayChart 통합 (1099 페이지) — lazy fetch.
 - 2026-05-12 — sitemap·RSS 자동 갱신 하네스 (Phase 4 신규 페이지 통합)
   - `src/app/sitemap.ts` — 7 페르소나(`/for/{slug}`) · `/today` + `/today/{YYYY-MM-DD}` 최근 90일 · `/strategy/kospi200-breakout` · `/strategy/track-record` · `/tools/portfolio` · `/tools/tax-compare` 누락 페이지 14+ 일괄 추가. `ALL_PERSONAS` single source of truth → 새 페르소나 추가 시 자동 sitemap 등록.
   - `src/app/sitemap-images.xml/route.ts` — 동일 신규 페이지 11종 + 페르소나 7종 OG 이미지 등록 (Google Image Search · Naver 이미지 검색 인입 채널 확장).

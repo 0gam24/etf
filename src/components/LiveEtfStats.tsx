@@ -16,6 +16,8 @@ interface InitialStats {
 
 interface Props {
   initial: InitialStats;
+  /** 부모가 라이브 값 콜백을 받아 hero stats 갱신 (선택) */
+  onLive?: (q: { price: number; change: number; changeRate: number; volume: number }) => void;
 }
 
 interface RealtimeQuote {
@@ -47,10 +49,12 @@ interface RealtimeResponse {
  *   ※ /etf/{slug} 는 1099 페이지라 클라이언트 polling 으로 모든 페이지에 시세 갱신하면
  *      한투 분당 한도 초과 위험. 따라서 라벨 표시 + 사용자 새로고침 기반 갱신 패턴 채택.
  */
-export default function LiveEtfStats({ initial }: Props) {
+export default function LiveEtfStats({ initial, onLive }: Props) {
   const [marketStatus, setMarketStatus] = useState<RealtimeResponse['marketStatus']>('closed');
   const [liveTs, setLiveTs] = useState<number | null>(null);
   const [liveSource, setLiveSource] = useState<RealtimeResponse['source']>('mock');
+  const [livePrice, setLivePrice] = useState<number | null>(null);
+  const [liveChangeRate, setLiveChangeRate] = useState<number | null>(null);
 
   useEffect(() => {
     if (!initial.code) return;
@@ -64,13 +68,26 @@ export default function LiveEtfStats({ initial }: Props) {
         setMarketStatus(data.marketStatus);
         setLiveTs(data.ts);
         setLiveSource(data.source);
+        const q = data.quotes?.[0];
+        if (q && q.price > 0) {
+          setLivePrice(q.price);
+          setLiveChangeRate(q.changeRate);
+          onLive?.({ price: q.price, change: q.change, changeRate: q.changeRate, volume: q.volume });
+        }
       } catch { /* silent */ }
     }
     refresh();
-    return () => { cancelled = true; };
-  }, [initial.code]);
+    // 장중에만 30초 polling
+    const interval = marketStatus === 'open' ? 30000 : 5 * 60000;
+    const id = setInterval(refresh, interval);
+    return () => { cancelled = true; clearInterval(id); };
+  }, [initial.code, marketStatus, onLive]);
 
   if (liveSource === 'mock') return null;
+
+  const livePriceLabel = livePrice && livePrice !== initial.price
+    ? ` · 실시간 ${livePrice.toLocaleString()}원${liveChangeRate !== null ? ` (${liveChangeRate > 0 ? '+' : ''}${liveChangeRate.toFixed(2)}%)` : ''}`
+    : '';
 
   const label = (() => {
     if (marketStatus === 'open') {
@@ -78,9 +95,9 @@ export default function LiveEtfStats({ initial }: Props) {
       const hh = String(kst.getUTCHours()).padStart(2, '0');
       const mm = String(kst.getUTCMinutes()).padStart(2, '0');
       const ss = String(kst.getUTCSeconds()).padStart(2, '0');
-      return `🔴 장중 실시간 · ${hh}:${mm}:${ss} 갱신 · 새로고침으로 최신 가격`;
+      return `🔴 장중 실시간 · ${hh}:${mm}:${ss} 갱신${livePriceLabel}`;
     }
-    if (marketStatus === 'closed') return '✅ 오늘 종가 · 15:30 마감 데이터';
+    if (marketStatus === 'closed') return `✅ 오늘 종가 · 15:30 마감${livePriceLabel}`;
     if (marketStatus === 'pre_open') return '⏳ 장 시작 전 · 09:00 개장 대기';
     return '📅 휴장 · 마지막 거래일 기준';
   })();

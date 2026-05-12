@@ -75,34 +75,61 @@ export default function PublishedVsLive({ code, name, publishedPrice, publishedD
     <aside
       style={{
         margin: 'var(--space-6) 0',
-        padding: 'var(--space-4) var(--space-5)',
-        background: 'rgba(212,175,55,0.06)',
-        border: '1px solid rgba(212,175,55,0.2)',
+        padding: 'var(--space-5) var(--space-6)',
+        background: `linear-gradient(135deg, ${color}1a, rgba(212,175,55,0.08))`,
+        border: `2px solid ${color}66`,
         borderRadius: 'var(--radius)',
-        fontSize: '0.9rem',
+        fontSize: '0.95rem',
+        boxShadow: `0 4px 16px ${color}1a`,
       }}
       aria-label="발행 시점 대비 현재 시세"
     >
-      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
-        <span style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.5rem' }}>
+        <span style={{ color: 'var(--accent-gold)', fontWeight: 800, fontSize: '0.75rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
           📊 발행 vs 현재
         </span>
+        {marketStatus === 'open' && (
+          <span style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.25rem',
+            padding: '0.1rem 0.4rem',
+            background: 'rgba(239,68,68,0.2)',
+            color: '#EF4444',
+            borderRadius: '0.25rem',
+            fontSize: '0.65rem',
+            fontWeight: 800,
+            letterSpacing: '0.05em',
+          }}>
+            <span style={{ width: '0.4rem', height: '0.4rem', borderRadius: '50%', background: '#EF4444', animation: 'pulse 1.4s ease-in-out infinite' }} aria-hidden />
+            LIVE
+          </span>
+        )}
+      </div>
+      <div style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap', gap: '0.6rem', fontSize: '1rem' }}>
         <span style={{ color: 'var(--text-dim)' }}>
-          {publishedDate} 발행 당시 <strong style={{ color: 'var(--text-primary)' }}>{publishedPrice.toLocaleString()}원</strong>
+          {publishedDate} 발행 <strong style={{ color: 'var(--text-secondary)', fontVariantNumeric: 'tabular-nums' }}>{publishedPrice.toLocaleString()}원</strong>
         </span>
-        <span style={{ color: 'var(--text-muted)' }}>→</span>
+        <span style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>→</span>
         <span>
-          {statusLabel} <strong style={{ color: 'var(--text-primary)' }}>{livePrice.toLocaleString()}원</strong>
+          <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>{statusLabel}</span>{' '}
+          <strong style={{ color: 'var(--text-primary)', fontSize: '1.15rem', fontVariantNumeric: 'tabular-nums' }}>{livePrice.toLocaleString()}원</strong>
         </span>
-        <span style={{ color, fontWeight: 700 }}>
+        <span style={{ color, fontWeight: 800, fontSize: '1.1rem', fontVariantNumeric: 'tabular-nums' }}>
           {up ? '▲' : down ? '▼' : '–'} {Math.abs(diff).toLocaleString()}원 ({up ? '+' : ''}{diffPct.toFixed(2)}%)
         </span>
       </div>
       {name && (
-        <div style={{ marginTop: '0.4rem', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-          종목: {name} ({code})
+        <div style={{ marginTop: '0.5rem', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+          종목: {name} ({code}) · 발행 시점의 가격은 분석의 기준이며, 현재 시세는 한투 OpenAPI 실시간 (분 단위).
         </div>
       )}
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.4; }
+        }
+      `}</style>
     </aside>
   );
 }

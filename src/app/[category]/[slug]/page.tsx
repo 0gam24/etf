@@ -143,12 +143,23 @@ export default async function PostPage({ params }: PageProps) {
   const ogImage = `/api/og?${ogParams.toString()}`;
   const authorMeta = post.meta.authorId ? AUTHORS[post.meta.authorId] : null;
 
+  // dateModified — 글 자체는 발행일 그대로지만, 시세 데이터는 매 영업일 cron 갱신.
+  // KRX baseDate 가 글보다 최근이면 그 시점을 dateModified 로 사용 (검색결과 freshness 신호).
+  const krxBaseDate = etfData?.baseDate;
+  const krxBaseDateIso = krxBaseDate && krxBaseDate.length === 8
+    ? `${krxBaseDate.slice(0, 4)}-${krxBaseDate.slice(4, 6)}-${krxBaseDate.slice(6, 8)}T15:30:00+09:00`
+    : null;
+  const dateModified = (krxBaseDateIso && new Date(krxBaseDateIso) > new Date(post.meta.date))
+    ? krxBaseDateIso
+    : post.meta.date;
+
   const articleSchema = buildArticleSchema({
     type: category === 'breaking' ? 'NewsArticle' : 'Article',
     headline: post.meta.title,
     description: post.meta.description,
     url: `/${category}/${slug}`,
     datePublished: post.meta.date,
+    dateModified,
     images: [ogImage],
     author: {
       name: post.meta.author,

@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import TickerStrip from "@/components/TickerStrip";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollRevealProvider from "@/components/ScrollRevealProvider";
+import SiteLiveBar from "@/components/SiteLiveBar";
 
 // Google Analytics 4 — 사이트 트래픽·HelpfulFeedback·Threads UTM 추적
 const GA4_ID = 'G-LRB1GBGQDN';
@@ -151,6 +152,7 @@ gtag('config', '${GA4_ID}');`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
         />
+        <SiteLiveBar />
         <TickerStrip />
         <Header />
         <main className="main">{children}</main>

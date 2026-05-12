@@ -320,6 +320,65 @@ export async function fetchKisQuotes(codes: string[], env?: KisEnv): Promise<Arr
   return out;
 }
 
+// ── 분봉 시세 (intraday) ─────────────────────────────────────────────
+export interface KisMinuteBar {
+  time: string;     // 'HH:MM'
+  price: number;    // 종가
+  volume: number;
+  open?: number;
+  high?: number;
+  low?: number;
+}
+
+/**
+ * 분봉 시세 조회 — 한투 inquire-time-itemchartprice endpoint.
+ *
+ *   응답: 최근 80~120개 분봉 (1분 단위)
+ *   사용처: /etf/{slug} hero 아래 작은 차트, 메인페이지 mini chart
+ *
+ *   ⚠️ 분당 호출 한도 보호 — edge 캐시 권장 (장중 60s).
+ */
+export async function fetchKisMinuteBars(code: string, env?: KisEnv): Promise<KisMinuteBar[]> {
+  if (getMode() === 'mock') return [];
+  const token = await getAccessToken(env);
+  if (!token) return [];
+
+  try {
+    const url = new URL(`${getBaseUrl()}/uapi/domestic-stock/v1/quotations/inquire-time-itemchartprice`);
+    url.searchParams.set('FID_ETC_CLS_CODE', '');
+    url.searchParams.set('FID_COND_MRKT_DIV_CODE', 'J');
+    url.searchParams.set('FID_INPUT_ISCD', code);
+    url.searchParams.set('FID_INPUT_HOUR_1', '153000'); // 마감 시점 기준
+    url.searchParams.set('FID_PW_DATA_INCU_YN', 'N');
+
+    const res = await fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
+        appkey: process.env.KIS_APP_KEY!,
+        appsecret: process.env.KIS_APP_SECRET!,
+        tr_id: 'FHKST03010200', // 주식분봉조회
+      },
+    });
+    if (!res.ok) return [];
+    const json = await res.json() as { output2?: Array<Record<string, string>>; rt_cd?: string };
+    if (json.rt_cd !== '0' || !Array.isArray(json.output2)) return [];
+
+    // output2 는 최신부터 옴 — reverse 해서 시간 순으로
+    const bars: KisMinuteBar[] = json.output2.map(o => ({
+      time: `${o.stck_cntg_hour?.slice(0, 2)}:${o.stck_cntg_hour?.slice(2, 4)}`,
+      price: Number(o.stck_prpr) || 0,
+      volume: Number(o.cntg_vol) || 0,
+      open: Number(o.stck_oprc) || 0,
+      high: Number(o.stck_hgpr) || 0,
+      low: Number(o.stck_lwpr) || 0,
+    })).filter(b => b.price > 0).reverse();
+    return bars;
+  } catch {
+    return [];
+  }
+}
+
 // ── 헬퍼: KIS 가용 여부 확인 (Route Handler 분기용) ──────────────────────
 export function isKisAvailable(): boolean {
   return getMode() !== 'mock';

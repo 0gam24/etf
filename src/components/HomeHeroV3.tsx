@@ -70,14 +70,16 @@ export default function HomeHeroV3({ latestPulse, topEtf, catalystNews, catalyst
               <Zap size={13} strokeWidth={3} aria-hidden /> DAILY ETF PULSE
             </span>
             {baseDateInfo && (
-              <span className="home-hero-v3-fresh" title="KRX 마지막 거래일 시세 기준">
-                KRX {baseDateInfo.display} 종가 기준
+              <span className="home-hero-v3-fresh" title="분석 글은 직전 거래일 KRX 마감 데이터 기반">
+                📚 분석 베이스: KRX {baseDateInfo.display} 종가
                 {latestPulse && (
                   <>
                     <span className="home-hero-v3-dot" aria-hidden />
                     {freshnessLabel(latestPulse.meta.date)} 발행
                   </>
                 )}
+                <span className="home-hero-v3-dot" aria-hidden />
+                <span style={{ color: 'var(--accent-gold)', fontWeight: 600 }}>실시간 시세는 우측 →</span>
               </span>
             )}
             {!baseDateInfo && latestPulse && (
