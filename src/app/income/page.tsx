@@ -56,7 +56,7 @@ export default function IncomeLandingPage() {
           { name: '월배당·커버드콜', href: '/income' },
         ]}
       />
-      <IncomeHero etfCount={etfs.length} topYield={topYield} monthlyCount={monthlyCount} asOf={asOf} />
+      <IncomeHero etfCount={etfs.length} topYield={topYield} monthlyCount={monthlyCount} asOf={asOf} latestPostDate={posts[0]?.meta.date} />
 
       {/* 분배락일 D-5 이내 임박 ETF 알림 (자동 분기) */}
       <ExDividendAlert etfs={etfs} windowDays={5} />

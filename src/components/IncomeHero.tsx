@@ -1,20 +1,26 @@
 import { Coins } from 'lucide-react';
+import FreshnessPill from './FreshnessPill';
 
 interface Props {
   etfCount: number;
   topYield: number;
   monthlyCount: number;
   asOf: string;
+  /** 최신 income 글 ISO date — freshness pill 용 (선택) */
+  latestPostDate?: string;
 }
 
-export default function IncomeHero({ etfCount, topYield, monthlyCount, asOf }: Props) {
+export default function IncomeHero({ etfCount, topYield, monthlyCount, asOf, latestPostDate }: Props) {
   return (
     <section className="income-hero">
       <div className="income-hero-bg" aria-hidden />
       <div className="income-hero-inner">
-        <span className="income-hero-badge">
-          <Coins size={14} strokeWidth={3} aria-hidden /> INCOME · 월배당·커버드콜
-        </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <span className="income-hero-badge">
+            <Coins size={14} strokeWidth={3} aria-hidden /> INCOME · 월배당·커버드콜
+          </span>
+          <FreshnessPill isoDate={latestPostDate} />
+        </div>
         <h1 className="income-hero-title">
           월배당 ETF·커버드콜 ETF — <span className="income-hero-accent">매월 분배금이 들어오는</span> ETF 분배금 정리
         </h1>

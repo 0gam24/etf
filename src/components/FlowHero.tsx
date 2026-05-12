@@ -3,6 +3,7 @@ import { ArrowRight, Waves } from 'lucide-react';
 import type { SectorAggregate } from '@/lib/flow';
 import type { Post } from '@/lib/posts';
 import { formatTradeAmount } from '@/lib/flow';
+import FreshnessPill from './FreshnessPill';
 
 interface Props {
   hottest: SectorAggregate | null;
@@ -26,9 +27,12 @@ export default function FlowHero({ hottest, coldest, totalEtfs, baseDate, latest
     <section className="flow-hero">
       <div className="flow-hero-bg" aria-hidden />
       <div className="flow-hero-inner">
-        <span className="flow-hero-badge">
-          <Waves size={13} strokeWidth={3} aria-hidden /> FLOW · 섹터 자금 흐름
-        </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <span className="flow-hero-badge">
+            <Waves size={13} strokeWidth={3} aria-hidden /> FLOW · 섹터 자금 흐름
+          </span>
+          <FreshnessPill isoDate={latestPost?.meta.date} />
+        </div>
         <h1 className="flow-hero-title">
           오늘의 ETF 섹터 자금 흐름 — <span className="flow-hero-accent">어디로</span> 돈이 몰리고 빠지나
         </h1>

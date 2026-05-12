@@ -5,6 +5,7 @@ import type { RawEtf } from '@/lib/surge';
 import { computeRiskLabels, extractSurgeCatalyst } from '@/lib/surge';
 import HoldingsPanel from './HoldingsPanel';
 import SurgeRiskLabels from './SurgeRiskLabels';
+import FreshnessPill from './FreshnessPill';
 
 interface Props {
   post: Post | null;
@@ -33,9 +34,12 @@ export default function SurgeHero({ post, etf, marketAvgVolume, baseDate }: Prop
       <div className="surge-hero-bg" aria-hidden />
       <div className="surge-hero-inner">
         <div className="surge-hero-left">
-          <span className="surge-hero-badge">
-            <TrendingUp size={13} strokeWidth={3} aria-hidden /> TODAY&apos;S SURGE
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+            <span className="surge-hero-badge">
+              <TrendingUp size={13} strokeWidth={3} aria-hidden /> TODAY&apos;S SURGE
+            </span>
+            <FreshnessPill isoDate={post?.meta.date} />
+          </div>
 
           {etf && (
             <>
