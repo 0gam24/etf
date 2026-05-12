@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Flame, ArrowUpRight, ArrowDownRight, Activity } from 'lucide-react';
 import CountUpNumber from './CountUpNumber';
@@ -14,6 +17,7 @@ interface Etf {
 }
 
 interface Props {
+  /** SSR 초기값 — 한투 API 실패·장 시작 전 폴백 */
   topVolume: Etf | null;
   topGainer: Etf | null;
   topLoser: Etf | null;
@@ -21,36 +25,120 @@ interface Props {
   totalCount: number;
   /** KRX baseDate (YYYYMMDD) — 데이터 출처·갱신 시점 표기용 */
   baseDate?: string;
+  /** 실시간 재계산용 후보 — 거래량 top10. polling 후 4 카드 모두 재산출 */
+  baseline?: Etf[];
 }
 
 interface BigValue {
-  /** 정적 prefix (예: 빈 문자열) */
-  prefix?: string;
-  /** count-up 최종값 */
   value: number;
-  /** 부호 (등락률용) */
   sign?: boolean;
-  /** 소수점 자리수 */
   decimals?: number;
-  /** 단위 (예: '%', '주', '만주') */
   suffix?: string;
-  /** 천 단위 콤마 */
   comma?: boolean;
 }
 
-/**
- * 거래량은 너무 큰 숫자(수천만)를 카운트업하면 시각적으로 부담 → 단위 환산 후 카운트.
- *  - 1천만 이상: '0.0천만주' 단위
- *  - 1만 이상:   '0만주' 단위
- *  - 그 외:      그대로
- */
+interface RealtimeQuote {
+  code: string;
+  price: number;
+  change: number;
+  changeRate: number;
+  volume: number;
+}
+
+interface RealtimeResponse {
+  quotes: Array<RealtimeQuote | null>;
+  marketStatus: 'pre_open' | 'open' | 'closed' | 'holiday';
+  source: 'kis' | 'fallback' | 'mock';
+  ts: number;
+}
+
 function buildVolumeBig(v: number): BigValue {
   if (v >= 10000000) return { value: +(v / 10000000).toFixed(1), decimals: 1, suffix: '천만주' };
   if (v >= 10000) return { value: Math.round(v / 10000), decimals: 0, suffix: '만주' };
   return { value: v, decimals: 0, suffix: '주' };
 }
 
-export default function HomeSnapshot({ topVolume, topGainer, topLoser, marketAvg, totalCount, baseDate }: Props) {
+/**
+ * HomeSnapshot — 거래량 1위 / 상승 1위 / 하락 1위 / 시장 평균 4 카드.
+ *
+ *   SSR initial (KRX 마감) → 장중 한투 realtime polling 30s 마다 4 카드 모두 재계산.
+ *   baseline (top10) 의 라이브 등락률 기준으로:
+ *     - 거래량 1위 = volume max
+ *     - 상승 1위   = changeRate max (양수만, 없으면 hide)
+ *     - 하락 1위   = changeRate min (음수만, 없으면 hide)
+ *     - 시장 평균   = top10 평균
+ */
+export default function HomeSnapshot({
+  topVolume: initTopVolume,
+  topGainer: initTopGainer,
+  topLoser: initTopLoser,
+  marketAvg: initMarketAvg,
+  totalCount,
+  baseDate,
+  baseline,
+}: Props) {
+  const [topVolume, setTopVolume] = useState<Etf | null>(initTopVolume);
+  const [topGainer, setTopGainer] = useState<Etf | null>(initTopGainer);
+  const [topLoser, setTopLoser] = useState<Etf | null>(initTopLoser);
+  const [marketAvg, setMarketAvg] = useState<number>(initMarketAvg);
+  const [marketStatus, setMarketStatus] = useState<RealtimeResponse['marketStatus']>('closed');
+  const [liveSource, setLiveSource] = useState<RealtimeResponse['source']>('mock');
+  const [liveTs, setLiveTs] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!baseline?.length) return;
+    let cancelled = false;
+    async function refresh() {
+      if (!baseline?.length) return;
+      const codes = baseline.slice(0, 10).map(b => b.code).filter(Boolean).join(',');
+      if (!codes) return;
+      try {
+        const res = await fetch(`/api/etf/realtime?codes=${codes}`);
+        if (!res.ok) return;
+        const data: RealtimeResponse = await res.json();
+        if (cancelled) return;
+        setMarketStatus(data.marketStatus);
+        setLiveSource(data.source);
+        setLiveTs(data.ts);
+
+        const liveMap = new Map<string, RealtimeQuote>();
+        for (const q of data.quotes) {
+          if (q && q.code && q.price > 0) liveMap.set(q.code, q);
+        }
+        if (liveMap.size === 0) return; // pre_open 등 — SSR 유지
+
+        // baseline 항목별 라이브 합성
+        const live: Etf[] = baseline.slice(0, 10).map(b => {
+          const q = liveMap.get(b.code);
+          if (!q) return b;
+          return { ...b, price: q.price, change: q.change, changeRate: q.changeRate, volume: q.volume };
+        });
+
+        // 거래량 1위 (volume max)
+        const byVol = [...live].sort((a, b) => (b.volume ?? 0) - (a.volume ?? 0));
+        if (byVol[0]) setTopVolume(byVol[0]);
+
+        // 상승 1위 (양수만, 없으면 null)
+        const gainers = live.filter(e => (e.changeRate ?? 0) > 0).sort((a, b) => (b.changeRate ?? 0) - (a.changeRate ?? 0));
+        setTopGainer(gainers[0] || null);
+
+        // 하락 1위 (음수만, 없으면 null)
+        const losers = live.filter(e => (e.changeRate ?? 0) < 0).sort((a, b) => (a.changeRate ?? 0) - (b.changeRate ?? 0));
+        setTopLoser(losers[0] || null);
+
+        // 시장 평균 (top10 평균)
+        const avg = live.reduce((s, e) => s + (e.changeRate ?? 0), 0) / live.length;
+        setMarketAvg(avg);
+      } catch {
+        // silent — SSR initial 유지
+      }
+    }
+    refresh();
+    const interval = marketStatus === 'open' ? 30_000 : 5 * 60_000;
+    const id = setInterval(refresh, interval);
+    return () => { cancelled = true; clearInterval(id); };
+  }, [baseline, marketStatus]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const cards: Array<{
     cls: string;
     icon: React.ReactNode;
@@ -99,13 +187,19 @@ export default function HomeSnapshot({ topVolume, topGainer, topLoser, marketAvg
 
   if (cards.length === 0) return null;
 
+  // 라이브 vs KRX 폴백 표시
+  const isLive = marketStatus === 'open' && liveSource === 'kis' && liveTs;
+  const isKrxFallback = !isLive && baseDate;
+
   return (
     <section className="home-snap" aria-label="5초 시장 스냅샷">
-      {baseDate && (
-        <div style={{ maxWidth: '80rem', margin: '0 auto var(--space-3)', padding: '0 var(--space-5)', display: 'flex', justifyContent: 'flex-end' }}>
+      <div style={{ maxWidth: '80rem', margin: '0 auto var(--space-3)', padding: '0 var(--space-5)', display: 'flex', justifyContent: 'flex-end' }}>
+        {isLive ? (
+          <LiveDataBadge source="kis" ts={liveTs} compact />
+        ) : isKrxFallback ? (
           <LiveDataBadge source="krx" baseDate={baseDate} compact />
-        </div>
-      )}
+        ) : null}
+      </div>
       <div className="home-snap-grid">
         {cards.map((c, i) => {
           const inner = (

@@ -165,6 +165,9 @@ export default async function HomePage() {
         marketAvg={marketAvg}
         totalCount={totalCount}
         baseDate={etfData?.baseDate}
+        baseline={(etfData?.byVolume || []).slice(0, 10).map((e: { code: string; name: string; price: number; changeRate?: number; volume: number; sector?: string }) => ({
+          code: e.code, name: e.name, price: e.price, changeRate: e.changeRate || 0, volume: e.volume, sector: e.sector,
+        }))}
       />
 
       {/* Market Snapshot — 거시 지표 + 거래량 1위 holdings */}
