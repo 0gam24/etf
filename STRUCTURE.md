@@ -385,6 +385,13 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
 - 2026-05-07 — 초기 자동 생성 (commit b37276b 기준)
 - 2026-05-07 — `MainBackrefBox` 추가: smartdatashop network 자매 backref 컴포넌트 + 글·종목사전·SiteFooter 3 위치 적용 + `buildArticleSchema()`에 `publisher.parentOrganization` + `isBasedOn` + RootLayout `ORG_SCHEMA.parentOrganization` 추가 (NETWORK.md v0.6 dual-brand 준수 · YMYL BANNED_PHRASES 통과 확인)
 - 2026-05-07 — Network Index 시스템 합류: `scripts/generate-network-mirror.mjs` 신설 + `prebuild` 훅 등록 → `public/network-mirror.json` 빌드마다 자동 재생성 (분석 18편 + ETF 사전 1099 별도 키 + 7 AI 에이전트 accent · `.gitignore`에 등재 · robots.txt는 기존 정책상 자연 허용)
+- 2026-05-12 — Phase 5+ 후속 4종 (Push sender · 외국인 매매 · 장중 속보 trigger · WebSocket·OG plan)
+  - **C4 Web Push sender** — `src/lib/push-sender.ts` interface 정의 + `scripts/send-push.mjs` Node 환경 발송 (web-push lib 동적 import + Cloudflare KV REST API 직접 호출). daily-pulse cron 마지막 step 통합. VAPID/CF API 토큰 미설정 시 silent skip. payload 자동 결정 (시그널 도달·분배락 D-1·변동성 5%↑).
+  - **A3 외국인·기관 매매동향 인프라** — `kis.ts` `fetchKisInvestorTrend` (inquire-investor endpoint FHKST01010900) + `scripts/accumulate-foreign-flow.mjs` cron script. `data/foreign-flow/{code}.json` 60일 보관. 권한 미부여 시 빈 응답 silent skip. 추적 종목 6종 (069500·0080G0·0080Y0·0005D0·449450·122630).
+  - **D3/I 장중 속보 trigger** — `src/app/api/breaking/trigger/route.ts` POST endpoint. KV throttle (1시간 1건) + 일일 한도 3건 + `breaking:queue:{ts}:{code}` 큐 7일 보관. payload type: volume_surge / volatility_spike / signal_ready.
+  - **package.json**: `accumulate:foreign-flow` + `send:push` 등록.
+  - **daily-pulse.yml**: foreign-flow 누적 + Web Push 발송 step 추가 (VAPID + CF API 토큰 secret 통과).
+  - **PLAN-NEXT.md 보충** — H WebSocket 제약·작업·비용 분석 (현재 폴링으로 충분), E2 OG 동적 차트 보류 사유 (캐시 stale), A3 시그널 알고리즘 후속 계획.
 - 2026-05-12 — Phase 5 "전역 실시간": SiteLiveBar + 휴장일 캘린더 + 분봉 차트 + schema dateModified
   - `src/lib/market-calendar.ts` — KRX 2026~2027 휴장일 정적 매핑 + `getMarketSnapshot()` (kstNow/kstDateStr/weekday/prevTradingDay) + 5 상태 분기 (pre_open·open·closed·holiday) + 라벨·색상 헬퍼.
   - `src/components/SiteLiveBar.tsx` — 사이트 전역 최상단 1줄 라이브 띠. 시장 상태 + 시각 + KRX 직전 거래일. 장중 1초 갱신 + LIVE 점멸 펄스. RootLayout 통합.

@@ -138,3 +138,80 @@
 **C4 Web Push** — Cloudflare Workers + Service Worker 표준 API. 한투 키와 별개. 1주 내 가능.
 
 진행하시려면 알려주세요.
+
+---
+
+# Phase 5+ 보류 항목 (인프라 무거움)
+
+## H. WebSocket — 한투 OpenAPI 실시간 호가·체결 push
+
+### 제약·복잡성
+1. **Cloudflare Workers WebSocket 제약**
+   - Worker 안에서 outbound WebSocket 연결 → Durable Objects 필요 (state 유지)
+   - Durable Objects 무료 한도 일 1M request — 충분하지만 설정 복잡
+   - 또는 클라이언트가 직접 한투 WebSocket 연결 → 키 노출 위험 → 비추천
+2. **인증 — approval_key 발급**
+   - WebSocket 전용 approval_key (HTS 등록 + 일 5회 발급 한도)
+   - 매일 발급해 KV 에 저장 → cron 보장
+3. **메시지 처리량**
+   - 종목당 분당 수십~수백 tick → Worker CPU 한도 (50ms) 초과 위험
+   - 대량 메시지 → Cloudflare 워크 비용·한도
+
+### 권장 경로 (실제 사용 시)
+1. **별도 Worker (`etf-ws-relay`)** — Durable Object 기반
+2. 한투 WebSocket 1개 연결 (서버 측) + 클라이언트는 본 Worker WebSocket 연결
+3. KV `kis:ws_approval_key` 매일 갱신 (별도 cron)
+4. 클라이언트 측 컴포넌트 — `LiveQuoteCard` 를 WebSocket 버전으로 옵션 분기
+
+### 작업 시간: **2~3주** (Durable Objects 학습·인증 처리·메시지 라우팅·실패 복구)
+
+### 비용
+- Cloudflare Workers WebSocket: 일 1M 메시지까지 무료, 초과 시 $0.65/M
+- Durable Objects: 일 1M req + 100k 분 저장 무료
+- 예상: 사용자 100명 동시 X 분당 10 tick × 6.5시간 = ~390k tick/일 → 무료 한도 안
+
+### 결론
+**현재 폴링(30s) 으로 충분 — 사용자 트래픽 10,000명+ 도달 후 도입 고려.**
+
+---
+
+## E2. OG 동적 분봉 차트
+
+### 작동
+- `/api/og?code=069500&chart=true` — SVG path 로 작은 분봉 차트 그림
+- 검색결과·SNS 미리보기 시 시각 임팩트
+- Naver 이미지 검색 인입
+
+### 제약
+1. **OG 이미지는 캐시가 강함** — Twitter·Facebook·Naver 가 캐시. 30분~24h 갱신 X
+2. → 분봉 차트는 거의 stale (1시간 전 데이터)
+3. **fetch 비용** — OG 호출 시마다 한투 분봉 API 호출 → 호출량 폭증 위험
+
+### 권장
+1. **장중 자동 매시간 OG 재생성** — Cloudflare Cache Purge 통합 어려움
+2. **정적 OG (현재 방식) 유지** — 종목명·등락만 표시
+3. **차트는 클라이언트 페이지에만** — `IntradayChart.tsx` 이미 구현
+
+### 작업 시간: **3일** + Cache Purge 자동화 (별도)
+
+### 결론
+**SNS 미리보기는 정적 OG 로 충분. 차트는 페이지 안에서만 노출. 진행 가치 약함.**
+
+---
+
+## A3. 외국인 누적 순매수 시그널 — 인프라 완료, 시그널 알고리즘 보충 필요
+
+### 적용된 인프라 (2026-05-12)
+- `src/lib/kis.ts` `fetchKisInvestorTrend` — 한투 inquire-investor endpoint
+- `scripts/accumulate-foreign-flow.mjs` — data/foreign-flow/{code}.json 60일 누적
+- daily-pulse cron 통합 — 매일 자동 갱신
+
+### 남은 작업
+1. **Cross-over 감지 알고리즘** — 5일/20일 누적 변화 → 추세 전환 시점
+2. **/strategy/foreign-flow 페이지** — 누적 차트 + 시그널 카드
+3. **메인페이지 카드 통합** — "외국인 자금 흐름 전환" 알림
+
+### 작업 시간: **3일**
+
+### 권장
+**데이터 축적 21일 이후 시그널 알고리즘 정밀화 + 페이지 신설.**

@@ -91,6 +91,24 @@ jobs:
         # /today 페이지가 SSR. 영구 보관 (/today/YYYY-MM-DD 슬러그)
         run: npm run generate:today-report || true
 
+      - name: Accumulate foreign·institution flow (외국인·기관 매매동향 누적)
+        # 한투 inquire-investor → data/foreign-flow/{code}.json 60일 보관
+        # 권한 미부여 시 silent skip (cron 영향 X)
+        run: npm run accumulate:foreign-flow || true
+
+      - name: Send Web Push 알림 (분배락 D-1·시그널·변동성)
+        # VAPID + CF API 토큰 미설정 시 자동 skip
+        env:
+          VAPID_PRIVATE_KEY:           ${{ secrets.VAPID_PRIVATE_KEY }}
+          NEXT_PUBLIC_VAPID_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_VAPID_PUBLIC_KEY }}
+          VAPID_SUBJECT:               ${{ secrets.VAPID_SUBJECT }}
+          CLOUDFLARE_API_TOKEN:        ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID:       ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_KV_NAMESPACE_ID:  ${{ secrets.CLOUDFLARE_KV_NAMESPACE_ID }}
+        run: |
+          npm install web-push --no-save --silent 2>/dev/null || true
+          npm run send:push || true
+
       - name: Regenerate today.md (운영자 매일 한 눈에 보는 발행 일지)
         # content/ 발행 후 today.md 도 함께 갱신 — pipeline 0건이어도 lastUpdated 시점 갱신.
         # 본 step 실패해도 commit·push 계속 진행 (today.md 는 부차적).

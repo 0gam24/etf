@@ -379,6 +379,54 @@ export async function fetchKisMinuteBars(code: string, env?: KisEnv): Promise<Ki
   }
 }
 
+// ── 외국인·기관 매매동향 (investor trends) ───────────────────────────
+export interface KisInvestorTrend {
+  date: string;       // 'YYYY-MM-DD'
+  foreignNet: number; // 외국인 순매수 (수량 또는 금액)
+  institutionNet: number;
+  individualNet: number;
+}
+
+/**
+ * 외국인·기관 일별 매매동향 — 한투 inquire-investor endpoint.
+ *
+ *   ⚠️ 일부 endpoint 는 권한 별도. 권한 미부여 시 빈 배열 반환.
+ *   사용처: /strategy/foreign-flow 페이지·메인페이지 "자금 흐름 시그널" 카드.
+ */
+export async function fetchKisInvestorTrend(code: string, env?: KisEnv): Promise<KisInvestorTrend[]> {
+  if (getMode() === 'mock') return [];
+  const token = await getAccessToken(env);
+  if (!token) return [];
+
+  try {
+    const url = new URL(`${getBaseUrl()}/uapi/domestic-stock/v1/quotations/inquire-investor`);
+    url.searchParams.set('FID_COND_MRKT_DIV_CODE', 'J');
+    url.searchParams.set('FID_INPUT_ISCD', code);
+
+    const res = await fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
+        appkey: process.env.KIS_APP_KEY!,
+        appsecret: process.env.KIS_APP_SECRET!,
+        tr_id: 'FHKST01010900', // 종목별 외국인·기관 매매동향 (권한 별도 가능)
+      },
+    });
+    if (!res.ok) return [];
+    const json = await res.json() as { output?: Array<Record<string, string>>; rt_cd?: string };
+    if (json.rt_cd !== '0' || !Array.isArray(json.output)) return [];
+
+    return json.output.slice(0, 30).map(o => ({
+      date: o.stck_bsop_date ? `${o.stck_bsop_date.slice(0, 4)}-${o.stck_bsop_date.slice(4, 6)}-${o.stck_bsop_date.slice(6, 8)}` : '',
+      foreignNet: Number(o.frgn_ntby_qty) || 0,
+      institutionNet: Number(o.orgn_ntby_qty) || 0,
+      individualNet: Number(o.prsn_ntby_qty) || 0,
+    })).filter(t => t.date);
+  } catch {
+    return [];
+  }
+}
+
 // ── 헬퍼: KIS 가용 여부 확인 (Route Handler 분기용) ──────────────────────
 export function isKisAvailable(): boolean {
   return getMode() !== 'mock';
