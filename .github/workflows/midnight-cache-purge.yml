@@ -1,7 +1,15 @@
 name: Midnight Cache Purge
 
 # 매일 자정 KST (UTC 15:00 전일) — 메인페이지·일별 리포트 캐시 강제 무효화
-# ISR revalidate=300 와 별도로 자정 boundary 명시적 purge → "오늘 날짜" 즉시 반영
+#
+# ── 운영 정책 (2026-05-12 결정) ────────────────────────────────────────
+# 현재 기본 정책: **ISR 5분 자연 갱신**
+#   - src/app/page.tsx 의 export const revalidate = 300 이 핵심
+#   - 자정 boundary 진입 시 최대 5분 안에 다음 방문자에 새 SSR 자동 반영
+#   - 자정 트래픽이 0이라 즉시 purge 필요성 낮음 (사용자 명시 2026-05-12)
+#
+# 본 cron 은 OPTIONAL — CF_API_TOKEN / CF_ZONE_ID secret 미설정 시 silent skip.
+# 차후 자정 트래픽 증가 또는 정밀 boundary 가 필요해지면 secret 등록만으로 즉시 활성화.
 
 on:
   schedule:
