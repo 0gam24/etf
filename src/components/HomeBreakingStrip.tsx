@@ -10,6 +10,26 @@ interface Props {
 }
 
 /**
+ * 최신 속보 발행 시점 → '오늘 / 어제 / N일 전' KST 기준 라벨.
+ * publish date를 ISO timestamp 로 받아 ISR 5분마다 SSR 재계산.
+ */
+function freshnessFor(isoDate?: string): { label: string; tone: 'fresh' | 'stale' } {
+  if (!isoDate) return { label: '발행일 미상', tone: 'stale' };
+  const pub = new Date(isoDate);
+  if (isNaN(pub.getTime())) return { label: '발행일 미상', tone: 'stale' };
+  const now = new Date();
+  const pubKst = new Date(pub.getTime() + 9 * 3600 * 1000);
+  const nowKst = new Date(now.getTime() + 9 * 3600 * 1000);
+  const pubDay = pubKst.toISOString().slice(0, 10);
+  const nowDay = nowKst.toISOString().slice(0, 10);
+  if (pubDay === nowDay) return { label: '🔴 오늘 발행', tone: 'fresh' };
+  // 일 단위 차이
+  const diff = Math.floor((nowKst.getTime() - pubKst.getTime()) / 86400000);
+  if (diff === 1) return { label: '📅 어제 발행', tone: 'stale' };
+  return { label: `📅 ${diff}일 전 발행`, tone: 'stale' };
+}
+
+/**
  * Hero 직후 가로 3카드 스트립. /breaking 랜딩의 breaking-card를 축소한 형태.
  *   - 최근 속보 최대 3건을 순위·티커·등락률·제목·CTA로 표시
  *   - Hero의 "왜 오르는지" 카피를 구체화하는 역할
@@ -18,12 +38,23 @@ export default function HomeBreakingStrip({ posts, etfs }: Props) {
   if (posts.length === 0) return null;
 
   const top = posts.slice(0, 3);
+  const fresh = freshnessFor(top[0]?.meta.date);
 
   return (
     <section className="home-breaking-strip" aria-label="오늘의 ETF 속보">
       <div className="home-breaking-strip-head">
         <span className="home-breaking-strip-eyebrow">
           <Radio size={13} strokeWidth={2.6} aria-hidden /> TODAY&apos;S BREAKING · 오늘의 ETF 속보
+          <span style={{
+            marginLeft: '0.5rem',
+            padding: '0.1rem 0.45rem',
+            borderRadius: '0.3rem',
+            fontSize: '0.7rem',
+            fontWeight: 700,
+            letterSpacing: '0.02em',
+            background: fresh.tone === 'fresh' ? 'rgba(239,68,68,0.18)' : 'rgba(96,165,250,0.15)',
+            color: fresh.tone === 'fresh' ? '#EF4444' : '#60A5FA',
+          }}>{fresh.label}</span>
         </span>
         <Link href="/breaking" className="home-breaking-strip-more" prefetch={false}>
           전체 속보 보기 <ArrowRight size={13} strokeWidth={2.5} />
