@@ -1,4 +1,6 @@
 import { MetadataRoute } from 'next';
+import fs from 'node:fs';
+import path from 'node:path';
 import {
   getAllPosts,
   TOP_LEVEL_CATEGORIES,
@@ -9,6 +11,7 @@ import { GUIDES } from '@/lib/guides';
 import { getProductsRegistry } from '@/lib/products';
 import { getLatestEtfData } from '@/lib/data';
 import { COMPARE_PAIRS } from '@/lib/etf-compare-pairs';
+import { ALL_PERSONAS } from '@/lib/personas-config';
 
 /**
  * Daily ETF Pulse — 메인 sitemap.xml (홈·카테고리·글·가이드·저자 ~200 URL)
@@ -136,6 +139,74 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: etfLastModified,
       changeFrequency: 'weekly',
       priority: 0.7,
+    });
+  });
+
+  // ── 페르소나 entry pages (Phase 4) — 7종 ────────────────────────────
+  // PERSONAS 가 personas-config.ts 에서 single source of truth → 추가 시 자동 sitemap 반영.
+  ALL_PERSONAS.forEach(p => {
+    routes.push({
+      url: `${baseUrl}/for/${p.slug}`,
+      lastModified: getSiteLastModified() || fallback,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    });
+  });
+
+  // ── /today 종합 리포트 (Phase 4) ──────────────────────────────────
+  // /today (latest) + /today/{YYYY-MM-DD} 영구 보관 일별 리포트들
+  routes.push({
+    url: `${baseUrl}/today`,
+    lastModified: getSiteLastModified() || fallback,
+    changeFrequency: 'daily',
+    priority: 0.9,
+  });
+  try {
+    const todayDir = path.join(process.cwd(), 'data', 'today');
+    if (fs.existsSync(todayDir)) {
+      const dailyFiles = fs.readdirSync(todayDir)
+        .filter(f => /^\d{4}-\d{2}-\d{2}\.json$/.test(f))
+        .sort()
+        .reverse(); // 최신 우선
+      // 최근 90일만 sitemap 등록 (오래된 건 검색 가치 낮음)
+      dailyFiles.slice(0, 90).forEach(f => {
+        const date = f.replace('.json', '');
+        routes.push({
+          url: `${baseUrl}/today/${date}`,
+          lastModified: new Date(date),
+          changeFrequency: 'never', // 일별 리포트는 발행 후 불변
+          priority: 0.6,
+        });
+      });
+    }
+  } catch { /* silent — today dir 없으면 skip */ }
+
+  // ── /strategy/* (Phase 3) ──────────────────────────────────────────
+  const strategies = [
+    { slug: 'kospi200-breakout', priority: 0.85, changeFrequency: 'daily' as const },
+    { slug: 'track-record', priority: 0.75, changeFrequency: 'daily' as const },
+  ];
+  strategies.forEach(s => {
+    routes.push({
+      url: `${baseUrl}/strategy/${s.slug}`,
+      lastModified: getSiteLastModified() || fallback,
+      changeFrequency: s.changeFrequency,
+      priority: s.priority,
+    });
+  });
+
+  // ── /tools/* (Phase 2~3 — 자매 사이트 호스팅 전 자체 도구) ────────
+  // 자매 redirect (Phase 4D) 완료 후 본 sitemap 에서 제거 필요.
+  const tools = [
+    { slug: 'portfolio', priority: 0.7 },
+    { slug: 'tax-compare', priority: 0.7 },
+  ];
+  tools.forEach(t => {
+    routes.push({
+      url: `${baseUrl}/tools/${t.slug}`,
+      lastModified: getSiteLastModified() || fallback,
+      changeFrequency: 'monthly',
+      priority: t.priority,
     });
   });
 

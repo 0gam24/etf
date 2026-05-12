@@ -385,6 +385,12 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
 - 2026-05-07 — 초기 자동 생성 (commit b37276b 기준)
 - 2026-05-07 — `MainBackrefBox` 추가: smartdatashop network 자매 backref 컴포넌트 + 글·종목사전·SiteFooter 3 위치 적용 + `buildArticleSchema()`에 `publisher.parentOrganization` + `isBasedOn` + RootLayout `ORG_SCHEMA.parentOrganization` 추가 (NETWORK.md v0.6 dual-brand 준수 · YMYL BANNED_PHRASES 통과 확인)
 - 2026-05-07 — Network Index 시스템 합류: `scripts/generate-network-mirror.mjs` 신설 + `prebuild` 훅 등록 → `public/network-mirror.json` 빌드마다 자동 재생성 (분석 18편 + ETF 사전 1099 별도 키 + 7 AI 에이전트 accent · `.gitignore`에 등재 · robots.txt는 기존 정책상 자연 허용)
+- 2026-05-12 — sitemap·RSS 자동 갱신 하네스 (Phase 4 신규 페이지 통합)
+  - `src/app/sitemap.ts` — 7 페르소나(`/for/{slug}`) · `/today` + `/today/{YYYY-MM-DD}` 최근 90일 · `/strategy/kospi200-breakout` · `/strategy/track-record` · `/tools/portfolio` · `/tools/tax-compare` 누락 페이지 14+ 일괄 추가. `ALL_PERSONAS` single source of truth → 새 페르소나 추가 시 자동 sitemap 등록.
+  - `src/app/sitemap-images.xml/route.ts` — 동일 신규 페이지 11종 + 페르소나 7종 OG 이미지 등록 (Google Image Search · Naver 이미지 검색 인입 채널 확장).
+  - `src/app/rss.xml/route.ts` — `/today/{date}` 최근 30일 일별 리포트 RSS 통합 + 글 + today 시계열 정렬 + 상위 100 entries 노출.
+  - 자동 갱신 보장: `personas-config.ts` / `data/today/*.json` / `lib/guides.ts` / `compare-pairs.ts` 등 single source of truth 직접 import → 새 항목 추가 시 sitemap·RSS 모두 자동 반영. 별도 수동 갱신 단계 없음.
+  - **운영자 책무 (영구 룰)**: 신규 페이지·콘텐츠 추가 시 반드시 `sitemap.ts` + `sitemap-images.xml` + `rss.xml` 3종 검증 (CLAUDE.md SEO.md §5·§7 통합)
 - 2026-05-12 — Phase 4 (도구 자매 위임): 페르소나 entry pages + /today 자동 리포트 + Web Push + 글 personas 태그
   - `src/components/ToolLinkCard.tsx` — 자매 사이트(smartdatashop.kr) 도구 link 카드. 8 도구 메타(`SISTER_TOOLS`) 통합 + `target="_blank"` + `rel="sponsored noopener noreferrer"` + wheat 톤(메인 토큰).
   - `src/lib/personas-config.ts` — 페르소나 7종 메타 (retiree·newbie·freelancer·trader·working-couple·global·early-retire) + 자매 도구 매핑 + 카테고리 우선순위.

@@ -308,3 +308,51 @@ push 결과 보고할 때 반드시 포함:
 - 단순 트리거 신호 ("a", "진행", "ok", "done") → 기록 불필요
 - 작업 중간 단계 알림 → 기록 불필요
 - **개념 질문 · 방법 문의 · 기획 토론 · 의사결정** → 반드시 기록
+
+# 🗺 sitemap·RSS 자동 갱신 의무 (영구 하네스)
+
+## 규칙
+
+새 페이지·라우트·콘텐츠 자료가 추가될 때 **반드시 sitemap·RSS 3종을 동시 검증·갱신**한다. 누락 시 검색 색인 누락 → SEO 손실.
+
+## 검증 3종 파일
+
+1. **[src/app/sitemap.ts](src/app/sitemap.ts)** — main sitemap
+2. **[src/app/sitemap-images.xml/route.ts](src/app/sitemap-images.xml/route.ts)** — image sitemap (Google·Naver 이미지 검색)
+3. **[src/app/rss.xml/route.ts](src/app/rss.xml/route.ts)** — RSS 피드 (네이버 웹마스터·다음·구글 News)
+
+## 신규 작업 분류별 처리
+
+| 작업 | sitemap 영향 | 처리 |
+|---|---|---|
+| 새 카테고리 페이지 (예: `/strategy/{new}`) | sitemap 신규 entry | sitemap.ts 에 push + sitemap-images STATIC_PAGES 등록 |
+| 새 동적 라우트 (예: `/for/[persona]`) | dynamic SSR | sitemap.ts 가 single source of truth (`personas-config.ts`) 직접 import → 자동 |
+| 새 글 (MDX content/) | sitemap·RSS 자동 (`getAllPosts()` 기반) | 수동 작업 없음 |
+| 새 데이터 기반 페이지 (예: `/today/{date}`) | data/ 디렉토리 스캔 | sitemap.ts·rss.xml 이 디렉토리 직접 scan → 자동 |
+| 새 도구 페이지 (`/tools/{slug}`) | 정적 entry | sitemap.ts 의 `tools` 배열에 추가 + STATIC_PAGES |
+
+## Single Source of Truth (SSoT) 원칙
+
+- 페르소나 ↔ `src/lib/personas-config.ts` `ALL_PERSONAS`
+- 가이드 ↔ `src/lib/guides.ts` `GUIDES`
+- 비교 페어 ↔ `src/lib/etf-compare-pairs.ts` `COMPARE_PAIRS`
+- ETF 슬러그 ↔ `data/etf-slug-map.json`
+- 일별 리포트 ↔ `data/today/*.json` 디렉토리 스캔
+- 시그널 ↔ `data/signals/*.json`
+
+sitemap.ts·sitemap-images.xml·rss.xml 은 이 SSoT 직접 import → **추가 항목은 즉시 자동 반영**.
+
+## 검증 체크리스트 (PR · push 전)
+
+- [ ] sitemap.ts 신규 entry 등록되었는가 (또는 SSoT 직접 import 로 자동인가)
+- [ ] sitemap-images.xml STATIC_PAGES 에 신규 entry OG 등록되었는가
+- [ ] rss.xml 에 신규 콘텐츠 시계열 포함되었는가 (글·일별 리포트 type만)
+- [ ] 빌드 후 `/sitemap.xml` 응답에 신규 URL 포함 확인
+- [ ] `/sitemap-images.xml` 응답에 신규 페이지 image:image 태그 포함 확인
+- [ ] `/rss.xml` 응답에 새 item 포함 확인
+
+## 자동 검증
+
+- `monthly-seo-audit.yml` cron 이 분기마다 schema·sitemap 검증 + Lighthouse 95+ 강제
+- 누락 발견 시 GitHub Issue 자동 생성
+

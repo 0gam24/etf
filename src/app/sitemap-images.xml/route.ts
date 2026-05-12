@@ -1,5 +1,6 @@
 import { getAllPosts } from '@/lib/posts';
 import { GUIDES } from '@/lib/guides';
+import { ALL_PERSONAS } from '@/lib/personas-config';
 
 /**
  * Daily ETF Pulse — Image sitemap.
@@ -71,7 +72,21 @@ export async function GET() {
     { path: '/compare',    title: 'ETF 1:1 비교 허브 — 운용사·섹터·환헤지',         category: 'flow' },
     { path: '/etf',        title: 'KRX 1095종 ETF 종목 사전',                      category: 'surge' },
     { path: '/guide',      title: 'ETF 투자 가이드 8종 — 월배당·커버드콜·방산·AI', category: 'pulse' },
+    { path: '/today',      title: '오늘의 ETF 종합 리포트 — 시그널·분배락·거래량', category: 'pulse' },
+    { path: '/strategy/kospi200-breakout', title: '코스피200 변동성 돌파 시그널 — Andrea Unger',  category: 'surge' },
+    { path: '/strategy/track-record',      title: '시그널 트랙 레코드 — Transparent 결과 공개', category: 'surge' },
+    { path: '/tools/portfolio',  title: 'ETF 포트폴리오 실시간 시뮬레이션',                category: 'pulse' },
+    { path: '/tools/tax-compare', title: '계좌별 세후 수익률 비교 — IRP·ISA·연금저축',   category: 'income' },
   ];
+
+  // ── 페르소나 entry pages 7종 (Phase 4) — Image Sitemap 등록 ───────
+  ALL_PERSONAS.forEach(p => {
+    STATIC_PAGES.push({
+      path: `/for/${p.slug}`,
+      title: `${p.hero.title} | ${p.displayName}`,
+      category: 'pulse',
+    });
+  });
   STATIC_PAGES.forEach(p => {
     entries.push(`
   <url>
