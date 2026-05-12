@@ -3,6 +3,7 @@ import { Radio, ArrowRight } from 'lucide-react';
 import type { Post } from '@/lib/posts';
 import { findEtfByCode, type RawEtf } from '@/lib/surge';
 import { getEtfHoldings, getKrxEtfMeta } from '@/lib/data';
+import HbsLiveChange from './HbsLiveChange';
 
 interface Props {
   posts: Post[];
@@ -68,7 +69,6 @@ export default function HomeBreakingStrip({ posts, etfs }: Props) {
           // 시세에 없는 종목도 KRX 매핑으로 정식명 노출
           const krxName = ticker ? getKrxEtfMeta(ticker)?.name : null;
           const displayName = etf?.name || krxName || p.meta.title;
-          const isUp = (etf?.changeRate ?? 0) >= 0;
           const holdings = ticker ? getEtfHoldings(ticker) : null;
           const top3 = holdings?.holdings?.slice(0, 3) ?? [];
 
@@ -87,10 +87,11 @@ export default function HomeBreakingStrip({ posts, etfs }: Props) {
               </div>
               <div className="hbs-name">{displayName}</div>
               {etf && (
-                <div className={`hbs-change ${isUp ? 'is-up' : 'is-down'}`}>
-                  {isUp ? '+' : ''}{etf.changeRate.toFixed(2)}%
-                  <span className="hbs-volume">거래량 {(etf.volume / 10000).toFixed(0)}만주</span>
-                </div>
+                <HbsLiveChange
+                  code={etf.code}
+                  initialChangeRate={etf.changeRate}
+                  initialVolume={etf.volume}
+                />
               )}
               <div className="hbs-title">{p.meta.title}</div>
               {top3.length > 0 && (

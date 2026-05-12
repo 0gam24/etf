@@ -4,6 +4,7 @@ import type { Post } from '@/lib/posts';
 import { extractPulseBullets, freshnessLabel } from '@/lib/pulse';
 import { getEtfHoldings } from '@/lib/data';
 import LiveQuoteCard from './LiveQuoteCard';
+import HeroFeaturedLabel from './HeroFeaturedLabel';
 
 interface TopEtf {
   code: string;
@@ -155,14 +156,20 @@ export default function HomeHeroV3({ latestPulse, topEtf, catalystNews, catalyst
         {topEtf && (
           <aside className="home-hero-v3-right">
             <div className="home-hero-v3-right-head">
-              <span
-                className="home-hero-v3-right-label"
-                style={rightTone === 'gainer' ? { color: '#EF4444' } : undefined}
-              >
-                {rightLabel
-                  ? rightLabel
-                  : (isStaleData ? '최근 거래일 거래량 1위' : '오늘 거래량 1위')}
-              </span>
+              {rightTone === 'gainer' ? (
+                <HeroFeaturedLabel
+                  code={topEtf.code}
+                  initialChangeRate={topEtf.changeRate ?? 0}
+                  positiveLabel={rightLabel || '오늘 상승 1위'}
+                  negativeLabel={`${topEtf.code} (라이브 약세)`}
+                />
+              ) : (
+                <span className="home-hero-v3-right-label">
+                  {rightLabel
+                    ? rightLabel
+                    : (isStaleData ? '최근 거래일 거래량 1위' : '오늘 거래량 1위')}
+                </span>
+              )}
               <span className="home-hero-v3-right-code">{topEtf.code}</span>
             </div>
             <div className="home-hero-v3-etf-name">{topEtf.name}</div>
