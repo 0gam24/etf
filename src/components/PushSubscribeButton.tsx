@@ -19,13 +19,16 @@ interface Props {
 const STORAGE_KEY = 'push-subscribed-v1';
 const CATEGORIES_KEY = 'push-categories-v1';
 
-function urlBase64ToUint8Array(base64: string): Uint8Array {
+function urlBase64ToArrayBuffer(base64: string): ArrayBuffer {
+  // TypeScript 5 의 Uint8Array<ArrayBufferLike> generic 좁힘이 BufferSource 와 호환 안 됨.
+  // 명시적으로 새 ArrayBuffer 만들어 반환 — PushManager.subscribe applicationServerKey 타입 매치.
   const padding = '='.repeat((4 - (base64.length % 4)) % 4);
   const safe = (base64 + padding).replace(/-/g, '+').replace(/_/g, '/');
   const raw = atob(safe);
-  const arr = new Uint8Array(raw.length);
-  for (let i = 0; i < raw.length; i++) arr[i] = raw.charCodeAt(i);
-  return arr;
+  const buf = new ArrayBuffer(raw.length);
+  const view = new Uint8Array(buf);
+  for (let i = 0; i < raw.length; i++) view[i] = raw.charCodeAt(i);
+  return buf;
 }
 
 export default function PushSubscribeButton({ publicKey }: Props) {
@@ -59,7 +62,7 @@ export default function PushSubscribeButton({ publicKey }: Props) {
       const reg = await navigator.serviceWorker.register('/sw.js');
       const sub = await reg.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(publicKey),
+        applicationServerKey: urlBase64ToArrayBuffer(publicKey),
       });
 
       const subJson = sub.toJSON();
