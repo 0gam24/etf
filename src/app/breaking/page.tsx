@@ -16,6 +16,7 @@ import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 import { pickLatestTradeDayBreaking, tradeDateOf } from '@/lib/breaking';
 import RecommendBox from '@/components/RecommendBox';
+import FreshnessPill from '@/components/FreshnessPill';
 
 export const metadata: Metadata = {
   title: 'ETF 속보 — Daily ETF Pulse',
@@ -55,9 +56,12 @@ export default function BreakingLandingPage() {
       <section className="breaking-hero">
         <div className="breaking-hero-bg" aria-hidden />
         <div className="breaking-hero-inner">
-          <span className="breaking-hero-badge">
-            <Radio size={13} strokeWidth={3} aria-hidden /> ETF 속보 · 매일 오전 9시
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+            <span className="breaking-hero-badge">
+              <Radio size={13} strokeWidth={3} aria-hidden /> ETF 속보 · 매일 오전 9시
+            </span>
+            <FreshnessPill isoDate={todayPosts[0]?.meta.date} />
+          </div>
           <h1 className="breaking-hero-title">
             오늘의 ETF 속보 — <span className="breaking-hero-accent">거래량 TOP 3 ETF가 왜 움직였나</span>
           </h1>
