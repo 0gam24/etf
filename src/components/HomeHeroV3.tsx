@@ -59,6 +59,15 @@ export default function HomeHeroV3({ latestPulse, topEtf, catalystNews, catalyst
   // 휴장일·과거 baseDate면 카피를 "오늘" 대신 "최근 거래일"로 정직 표기.
   const isStaleData = baseDateInfo ? !baseDateInfo.isToday : false;
 
+  // 오늘 날짜 (KST) — ISR 5분마다 SSR 재계산 → 자정 후 자동 갱신
+  const todayLabel = (() => {
+    const kst = new Date(Date.now() + 9 * 3600 * 1000);
+    const m = kst.getUTCMonth() + 1;
+    const d = kst.getUTCDate();
+    const wd = ['일', '월', '화', '수', '목', '금', '토'][kst.getUTCDay()];
+    return `${m}월 ${d}일(${wd})`;
+  })();
+
   return (
     <section className="home-hero-v3">
       <div className="home-hero-v3-bg" aria-hidden />
@@ -68,6 +77,20 @@ export default function HomeHeroV3({ latestPulse, topEtf, catalystNews, catalyst
           <div className="home-hero-v3-meta">
             <span className="home-hero-v3-pill">
               <Zap size={13} strokeWidth={3} aria-hidden /> DAILY ETF PULSE
+            </span>
+            <span style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.3rem',
+              padding: '0.2rem 0.55rem',
+              background: 'rgba(212,175,55,0.12)',
+              color: 'var(--accent-gold)',
+              borderRadius: '0.375rem',
+              fontSize: '0.72rem',
+              fontWeight: 700,
+              letterSpacing: '0.02em',
+            }}>
+              📅 오늘 {todayLabel}
             </span>
             {baseDateInfo && (
               <span className="home-hero-v3-fresh" title="분석 글은 직전 거래일 KRX 마감 데이터 기반">
