@@ -2243,6 +2243,10 @@ a:hover { color: var(--blue-500); }
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(8,10,16,1), rgba(11,14,20,1));
+  box-shadow: 6px 0 12px rgba(0,0,0,0.6);
 }
 .ticker-strip-label::before {
   content: '';
