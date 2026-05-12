@@ -10,6 +10,7 @@ import HoldingsPanel from '@/components/HoldingsPanel';
 import TrustBar from '@/components/TrustBar';
 import VolumeSurgeAlert from '@/components/VolumeSurgeAlert';
 import TrendingNow from '@/components/TrendingNow';
+import PersonaSelector from '@/components/PersonaSelector';
 import HomeHookV1 from '@/components/HomeHookV1';
 import HomeHeroV3 from '@/components/HomeHeroV3';
 import HomeBreakingStrip from '@/components/HomeBreakingStrip';
@@ -183,6 +184,9 @@ export default async function HomePage() {
       {(etfData?.byVolume || []).length > 0 && (
         <TrendingNow baseline={(etfData?.byVolume || []).slice(0, 10) as { code: string; name: string; volume: number; changeRate: number; price: number }[]} />
       )}
+
+      {/* 페르소나 선택 — 7 상황별 entry page 라우팅 */}
+      <PersonaSelector />
 
       {/* Chapter 5 — RISK: 안정성 S 등급 방어 라인업 */}
       {defenseEtfs.length > 0 && <HomeDefenseTop3 defenseEtfs={defenseEtfs} />}

@@ -21,6 +21,43 @@ const CATEGORY_KEYWORDS = {
   breaking: ['ETF 속보', '거래량 TOP', 'ETF 뉴스', '당일 ETF 분석'],
 };
 
+// 글 → 페르소나 자동 분류 — frontmatter personas 태그 부착.
+// /for/{persona} entry page 가 이 태그 매칭으로 글 추천.
+const PERSONA_MAP = {
+  pulse:    ['retiree', 'working-couple', 'newbie'],
+  surge:    ['trader'],
+  flow:     ['trader', 'global'],
+  income:   ['retiree', 'freelancer', 'working-couple', 'early-retire'],
+  breaking: ['trader'],
+};
+
+function inferPersonas(article) {
+  const personas = new Set();
+  // 카테고리 기반
+  for (const p of PERSONA_MAP[article.category] || []) personas.add(p);
+  // 키워드 기반 보강
+  const text = `${article.title || ''} ${article.keyword || ''} ${(article.keywords || []).join(' ')}`.toLowerCase();
+  if (/ISA|연금저축|IRP|세액공제|배당소득세|커버드콜|월배당|분배/i.test(text)) {
+    personas.add('retiree'); personas.add('working-couple');
+  }
+  if (/노란우산|개인사업자|종합소득|자영업|프리랜서/i.test(text)) {
+    personas.add('freelancer');
+  }
+  if (/미국|S&P500|나스닥|해외|환헤지|환율/i.test(text)) {
+    personas.add('global');
+  }
+  if (/시그널|breakout|ATR|변동성|거래량/i.test(text)) {
+    personas.add('trader');
+  }
+  if (/55세|인출|연금소득세|은퇴/i.test(text)) {
+    personas.add('early-retire');
+  }
+  if (/입문|초보|시작|기본|용어/i.test(text)) {
+    personas.add('newbie');
+  }
+  return Array.from(personas);
+}
+
 function yamlEscape(s) {
   return String(s).replace(/"/g, '\\"');
 }
@@ -118,6 +155,12 @@ function saveAsMdx(article, chartData, adPlan, affiliateMatch, today) {
     ? `schemas: ${JSON.stringify(article.schemas).replace(/\n/g, ' ')}`
     : '';
 
+  // 페르소나 자동 분류 — /for/{persona} entry page 가 매칭으로 글 추천
+  const personas = inferPersonas(article);
+  const personasYaml = personas.length > 0
+    ? `personas:\n${personas.map(p => `  - "${p}"`).join('\n')}`
+    : '';
+
   const frontmatter = `---
 title: "${yamlEscape(article.title)}"
 slug: "${yamlEscape(article.slug)}"
@@ -140,6 +183,7 @@ ${authorDataSourcesYaml}
 charts: ${chartData ? JSON.stringify(chartData.map(c => c.type)) : '[]'}
 affiliates: ${affiliateMatch ? JSON.stringify(affiliateMatch.products.map(p => p.id)) : '[]'}
 adPlacements: ${adPlan?.plan?.placements?.length || adPlan?.totalPlacements || 0}
+${personasYaml}
 ${schemasLine}
 ---
 `;

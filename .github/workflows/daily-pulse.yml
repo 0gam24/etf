@@ -86,6 +86,11 @@ jobs:
         # data/signals/track-record.json 누적 (transparent 백테스트 결과)
         run: npm run evaluate:signal || true
 
+      - name: Generate /today report (매일 종합 리포트)
+        # 시세·시그널·트랙·분배락 결합 → data/today/{date}.json + latest.json
+        # /today 페이지가 SSR. 영구 보관 (/today/YYYY-MM-DD 슬러그)
+        run: npm run generate:today-report || true
+
       - name: Regenerate today.md (운영자 매일 한 눈에 보는 발행 일지)
         # content/ 발행 후 today.md 도 함께 갱신 — pipeline 0건이어도 lastUpdated 시점 갱신.
         # 본 step 실패해도 commit·push 계속 진행 (today.md 는 부차적).

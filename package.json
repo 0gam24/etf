@@ -25,6 +25,7 @@
     "accumulate:ohlc": "node scripts/accumulate-ohlc.mjs",
     "generate:signal": "node scripts/generate-breakout-signal.mjs",
     "evaluate:signal": "node scripts/evaluate-signals.mjs",
+    "generate:today-report": "node scripts/generate-today-report.mjs",
     "env:sync": "node scripts/sync-env.mjs",
     "env:sync:apply": "node scripts/sync-env.mjs --apply",
     "audit:seo": "node scripts/audit-seo.mjs",

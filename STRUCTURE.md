@@ -385,6 +385,17 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
 - 2026-05-07 — 초기 자동 생성 (commit b37276b 기준)
 - 2026-05-07 — `MainBackrefBox` 추가: smartdatashop network 자매 backref 컴포넌트 + 글·종목사전·SiteFooter 3 위치 적용 + `buildArticleSchema()`에 `publisher.parentOrganization` + `isBasedOn` + RootLayout `ORG_SCHEMA.parentOrganization` 추가 (NETWORK.md v0.6 dual-brand 준수 · YMYL BANNED_PHRASES 통과 확인)
 - 2026-05-07 — Network Index 시스템 합류: `scripts/generate-network-mirror.mjs` 신설 + `prebuild` 훅 등록 → `public/network-mirror.json` 빌드마다 자동 재생성 (분석 18편 + ETF 사전 1099 별도 키 + 7 AI 에이전트 accent · `.gitignore`에 등재 · robots.txt는 기존 정책상 자연 허용)
+- 2026-05-12 — Phase 4 (도구 자매 위임): 페르소나 entry pages + /today 자동 리포트 + Web Push + 글 personas 태그
+  - `src/components/ToolLinkCard.tsx` — 자매 사이트(smartdatashop.kr) 도구 link 카드. 8 도구 메타(`SISTER_TOOLS`) 통합 + `target="_blank"` + `rel="sponsored noopener noreferrer"` + wheat 톤(메인 토큰).
+  - `src/lib/personas-config.ts` — 페르소나 7종 메타 (retiree·newbie·freelancer·trader·working-couple·global·early-retire) + 자매 도구 매핑 + 카테고리 우선순위.
+  - `src/app/for/[persona]/page.tsx` — 동적 라우트 entry page 7종. 자체 link + 자매 도구 카드 + 관련 글 자동 매칭 (frontmatter `personas` 태그 우선·카테고리 fallback).
+  - `src/components/PersonaSelector.tsx` — 메인페이지 "당신의 상황에 맞는 ETF 자료" 7 카드 라우터. page.tsx 통합.
+  - `agents/8_harness_deployer.js` — `inferPersonas()` 함수 신설. 카테고리·키워드 기반 자동 페르소나 분류 → frontmatter `personas` 자동 부착. 다음 발행부터 적용.
+  - `scripts/generate-today-report.mjs` + `src/app/today/page.tsx` + `TodayReport.tsx` — 매일 영업일 종합 리포트 자동 발행. `data/today/{YYYY-MM-DD}.json` + `latest.json`. 거래량 TOP5·상승/하락·시그널·어제 결과·분배락 D-3 통합 1 페이지.
+  - `.github/workflows/daily-pulse.yml` `generate:today-report` step 추가 (signal evaluate 다음).
+  - Web Push 알림 — `src/app/api/push/subscribe/route.ts` + `src/components/PushSubscribeButton.tsx` + `public/sw.js` Service Worker. KV 익명 endpoint 저장 (90일 만료). 카테고리: dividend·signal·volatility. VAPID 키 env 분리.
+  - `.env.example`: `NEXT_PUBLIC_VAPID_PUBLIC_KEY` + `VAPID_PRIVATE_KEY` + `VAPID_SUBJECT` 추가 + 발급 가이드.
+  - **Phase 4D (자매 redirect) 홀드** — smartdata HQ 가 자매 사이트에 도구 호스팅 완료 후 진행.
 - 2026-05-12 — Phase 3 Round 3: 변동성 폭증 알림 강화 + 트랙 레코드 시스템 + 미실행 항목 기획서
   - `src/components/VolumeSurgeAlert.tsx` — A1 거래량 급증 + **A2 변동성 폭증** (등락률 ±3%) 통합. 두 시그널 우선순위 분기 (변동성 > 거래량).
   - `scripts/evaluate-signals.mjs` 신설 — 어제 발행 시그널을 오늘 OHLC 로 자동 검증. win/loss/eod 판정 + `data/signals/track-record.json` 누적.
