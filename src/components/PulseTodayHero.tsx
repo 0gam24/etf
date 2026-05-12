@@ -7,6 +7,22 @@ interface Props {
   today: Post | null;
 }
 
+/** 메인 HomeBreakingStrip 와 통일 — KST 기준 오늘/어제/N일 전 발행 pill */
+function freshnessPill(isoDate?: string): { label: string; tone: 'fresh' | 'stale' } {
+  if (!isoDate) return { label: '발행일 미상', tone: 'stale' };
+  const pub = new Date(isoDate);
+  if (isNaN(pub.getTime())) return { label: '발행일 미상', tone: 'stale' };
+  const now = new Date();
+  const pubKst = new Date(pub.getTime() + 9 * 3600 * 1000);
+  const nowKst = new Date(now.getTime() + 9 * 3600 * 1000);
+  const pubDay = pubKst.toISOString().slice(0, 10);
+  const nowDay = nowKst.toISOString().slice(0, 10);
+  if (pubDay === nowDay) return { label: '🔴 오늘 발행', tone: 'fresh' };
+  const diff = Math.floor((nowKst.getTime() - pubKst.getTime()) / 86400000);
+  if (diff === 1) return { label: '📅 어제 발행', tone: 'stale' };
+  return { label: `📅 ${diff}일 전 발행`, tone: 'stale' };
+}
+
 export default function PulseTodayHero({ today }: Props) {
   if (!today) {
     return (
@@ -19,6 +35,7 @@ export default function PulseTodayHero({ today }: Props) {
   const bullets = extractPulseBullets(today, 3);
   const publishedAt = new Date(today.meta.date);
   const tickers = (today.meta.tickers || []).slice(0, 3);
+  const fresh = freshnessPill(today.meta.date);
 
   return (
     <section className="pulse-today-hero">
@@ -28,6 +45,17 @@ export default function PulseTodayHero({ today }: Props) {
           <span className="pulse-today-badge">
             <Zap size={14} strokeWidth={3} aria-hidden /> TODAY&apos;S PULSE
           </span>
+          <span style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            padding: '0.15rem 0.5rem',
+            borderRadius: '0.3rem',
+            fontSize: '0.72rem',
+            fontWeight: 700,
+            letterSpacing: '0.02em',
+            background: fresh.tone === 'fresh' ? 'rgba(239,68,68,0.18)' : 'rgba(96,165,250,0.15)',
+            color: fresh.tone === 'fresh' ? '#EF4444' : '#60A5FA',
+          }}>{fresh.label}</span>
           <span className="pulse-today-freshness">
             {publishedAt.toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short' })}
             <span className="pulse-today-dot" aria-hidden />
