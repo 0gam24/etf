@@ -64,7 +64,7 @@ interface RealtimeResponse {
 export default function EtfMarketPulse() {
   const [data, setData] = useState<ETFData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'trending' | 'gainers' | 'losers'>('trending');
+  const [activeTab, setActiveTab] = useState<'trending' | 'gainers' | 'losers'>('gainers');
   const [isClient, setIsClient] = useState(false);
   const [liveTs, setLiveTs] = useState<number | null>(null);
   const [marketStatus, setMarketStatus] = useState<RealtimeResponse['marketStatus']>('closed');
