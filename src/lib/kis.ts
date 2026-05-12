@@ -51,6 +51,19 @@ let moduleTokenCache: TokenCache | null = null; // fallback
 
 const KV_KEY = 'kis:access_token:v1';
 
+// ── KIS 미지원 코드 denylist (per-isolate module cache) ────────────────
+// KIS inquire-price 가 500 을 반환하는 코드 (주로 알파벳 포함 신규 ETF) 를
+// 1h 동안 skip → 호출량 절감 + 로그 잡음 차단.
+const KIS_BAD_CODE_TTL_MS = 60 * 60 * 1000; // 1h
+const kisBadCodes = new Map<string, number>(); // code → 만료 epoch ms
+function markBadCode(code: string) { kisBadCodes.set(code, Date.now() + KIS_BAD_CODE_TTL_MS); }
+function isBadCode(code: string): boolean {
+  const exp = kisBadCodes.get(code);
+  if (!exp) return false;
+  if (Date.now() > exp) { kisBadCodes.delete(code); return false; }
+  return true;
+}
+
 // Cloudflare KV 타입 (최소 인터페이스 — runtime 제공 객체)
 interface KVNamespace {
   get(key: string, options?: { type?: 'json' | 'text' }): Promise<unknown>;
@@ -244,6 +257,12 @@ export async function fetchKisQuote(code: string, env?: KisEnv): Promise<KisQuot
     return null;
   }
 
+  // Denylist: KIS 가 1h 안에 500 을 반환한 코드는 skip
+  if (isBadCode(code)) {
+    await incrementStats(env, 'fallback');
+    return null;
+  }
+
   const token = await getAccessToken(env);
   if (!token) {
     await incrementStats(env, 'fallback');
@@ -266,7 +285,10 @@ export async function fetchKisQuote(code: string, env?: KisEnv): Promise<KisQuot
     });
 
     if (!res.ok) {
-      console.warn(`[kis] ${code} quote 실패 ${res.status}`);
+      // KIS 500 = 미지원 ticker 가능성 높음. 1h 동안 skip → 호출량·로그 절감.
+      // 한 번만 warn 로그 (재호출 시 isBadCode 가 사전 차단)
+      if (res.status === 500) markBadCode(code);
+      console.warn(`[kis] ${code} quote 실패 ${res.status}${res.status === 500 ? ' (1h denylist)' : ''}`);
       await incrementStats(env, 'fallback');
       return null;
     }
