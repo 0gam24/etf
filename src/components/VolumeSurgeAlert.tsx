@@ -80,6 +80,29 @@ export default function VolumeSurgeAlert({ baselineList }: Props) {
           }
         }
         setSurge(top);
+
+        // 장중 surge 감지 시 /api/breaking/trigger 호출 → KV queue 적재 (1h throttle · 일 3건 한도)
+        // 서버 측 KV throttle 이 보장하므로 클라이언트는 sessionStorage 로 같은 세션 중복 호출만 회피
+        if (top && data.marketStatus === 'open') {
+          try {
+            const sessionKey = `surge_trigger:${top.code}:${top.type}`;
+            const lastCallTs = typeof window !== 'undefined' ? Number(sessionStorage.getItem(sessionKey) || 0) : 0;
+            if (Date.now() - lastCallTs > 30 * 60 * 1000) { // 세션 내 30분 1회
+              await fetch('/api/breaking/trigger', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  type: top.type === 'volatility' ? 'volatility_spike' : 'volume_surge',
+                  code: top.code,
+                  name: top.name,
+                  ratio: top.ratio,
+                  changeRate: top.changeRate,
+                }),
+              }).catch(() => {/* silent — KV unavailable 등 */});
+              if (typeof window !== 'undefined') sessionStorage.setItem(sessionKey, String(Date.now()));
+            }
+          } catch { /* silent */ }
+        }
       } catch { /* silent */ }
     }
     check();

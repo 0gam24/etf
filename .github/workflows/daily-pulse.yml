@@ -96,6 +96,15 @@ jobs:
         # 권한 미부여 시 silent skip (cron 영향 X)
         run: npm run accumulate:foreign-flow || true
 
+      - name: Scout breaking queue (장중 trigger 점검 — log only)
+        # VolumeSurgeAlert 등이 적재한 KV breaking:queue:* entries 를 read + GITHUB_STEP_SUMMARY append.
+        # 현재는 log only — 실제 글 발행은 다음 phase 에서 별도 step.
+        env:
+          CLOUDFLARE_API_TOKEN:        ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID:       ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_KV_NAMESPACE_ID:  ${{ secrets.CLOUDFLARE_KV_NAMESPACE_ID }}
+        run: npm run scout:breaking-queue || true
+
       - name: Send Web Push 알림 (분배락 D-1·시그널·변동성)
         # VAPID + CF API 토큰 미설정 시 자동 skip
         env:

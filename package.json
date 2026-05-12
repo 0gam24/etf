@@ -28,6 +28,7 @@
     "generate:today-report": "node scripts/generate-today-report.mjs",
     "accumulate:foreign-flow": "node scripts/accumulate-foreign-flow.mjs",
     "send:push": "node scripts/send-push.mjs",
+    "scout:breaking-queue": "node scripts/scout-breaking-queue.mjs",
     "env:sync": "node scripts/sync-env.mjs",
     "env:sync:apply": "node scripts/sync-env.mjs --apply",
     "audit:seo": "node scripts/audit-seo.mjs",
