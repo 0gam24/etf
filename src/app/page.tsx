@@ -22,6 +22,10 @@ import HomeReturnTrigger from '@/components/HomeReturnTrigger';
 import DataFooter from '@/components/DataFooter';
 import RecommendBox from '@/components/RecommendBox';
 
+// 메인 페이지 ISR — 5분마다 SSR 재생성, 그 사이 stale-while-revalidate.
+// 자정 / 장중 데이터 갱신이 ~5분 내 메인 반영. Cloudflare 1년 캐시 문제 해소.
+export const revalidate = 300;
+
 export default async function HomePage() {
   const latestPulse = getLatestPulse();
   const latestSurge = getPostsByCategory('surge')[0] ?? null;
