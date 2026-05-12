@@ -5,6 +5,7 @@ import { buildMonthlyMatrix } from '@/lib/income';
 import { getIncomeRegistry } from '@/lib/income-server';
 import IncomeHero from '@/components/IncomeHero';
 import IncomeCalendar from '@/components/IncomeCalendar';
+import ExDividendAlert from '@/components/ExDividendAlert';
 import IncomeStabilityTable from '@/components/IncomeStabilityTable';
 import IncomeTaxCompare from '@/components/IncomeTaxCompare';
 import IncomeGoalCalculator from '@/components/IncomeGoalCalculator';
@@ -56,6 +57,9 @@ export default function IncomeLandingPage() {
         ]}
       />
       <IncomeHero etfCount={etfs.length} topYield={topYield} monthlyCount={monthlyCount} asOf={asOf} />
+
+      {/* 분배락일 D-5 이내 임박 ETF 알림 (자동 분기) */}
+      <ExDividendAlert etfs={etfs} windowDays={5} />
 
       <RecommendBox position="top" category="income" />
 

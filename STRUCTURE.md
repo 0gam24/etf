@@ -385,6 +385,14 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
 - 2026-05-07 — 초기 자동 생성 (commit b37276b 기준)
 - 2026-05-07 — `MainBackrefBox` 추가: smartdatashop network 자매 backref 컴포넌트 + 글·종목사전·SiteFooter 3 위치 적용 + `buildArticleSchema()`에 `publisher.parentOrganization` + `isBasedOn` + RootLayout `ORG_SCHEMA.parentOrganization` 추가 (NETWORK.md v0.6 dual-brand 준수 · YMYL BANNED_PHRASES 통과 확인)
 - 2026-05-07 — Network Index 시스템 합류: `scripts/generate-network-mirror.mjs` 신설 + `prebuild` 훅 등록 → `public/network-mirror.json` 빌드마다 자동 재생성 (분석 18편 + ETF 사전 1099 별도 키 + 7 AI 에이전트 accent · `.gitignore`에 등재 · robots.txt는 기존 정책상 자연 허용)
+- 2026-05-12 — Phase 3 Round 2: 분배락일 알림 + 포트폴리오·세후 도구 + 인기 종목 + JSON-LD 가격 + R2 가이드
+  - `src/components/ExDividendAlert.tsx` — 분배락일 D-5 이내 ETF 자동 강조 카드. income 페이지 hero 직후 노출. 매수 마지막 타이밍 안내.
+  - `src/app/tools/portfolio/page.tsx` + `PortfolioSim.tsx` — 사용자가 ETF 코드·수량·평단가 입력 시 한투 실시간 시세로 손익 자동 계산. localStorage 저장. 장중 30초 polling.
+  - `src/app/tools/tax-compare/page.tsx` + `TaxCompareClient.tsx` — 일반/ISA/연금저축/IRP 계좌별 세후 누적 수익 시뮬레이션. 원금·연수익률·분배율·기간 입력.
+  - `src/components/TrendingNow.tsx` — 메인페이지 "지금 뜨는 종목 TOP 3" 위젯. 등락률 절댓값 기준 + 30초 polling.
+  - `src/lib/schema.ts` `buildFinancialProductSchema` 에 `offers { price, priceCurrency: 'KRW', priceValidUntil }` 옵션 필드 추가. /etf/{ticker} schema 에 가격 동적 주입 → Google 금융 리치 스니펫 가능성.
+  - `PLAN-TIMESERIES.md` 신설 — R2 분봉 시계열 축적 아키텍처 + 사용자 1회 작업 + 비용 모니터링 + 백테스트 통합 로드맵.
+  - 통합: src/app/page.tsx · src/app/income/page.tsx · src/app/etf/[ticker]/page.tsx
 - 2026-05-11 — Phase 3 Round 1: Unger 변동성 돌파 시그널 시스템 + 거래량 급증 알림 + 발행 vs 현재 박스
   - `src/lib/strategies/breakout.ts` — Andrea Unger Volatility Breakout 공식 (5일 ATR · 0.5K 트리거 · 0.6K 손절 · 1.0K 익절 · 20일 SMA 추세 필터 · 0.8% 변동성 필터)
   - `scripts/accumulate-ohlc.mjs` + `scripts/generate-breakout-signal.mjs` — 매일 cron 이 KOSPI200 추적 9 종의 OHLC 일봉을 `data/ohlc/{code}.json` 60일 보관 + 시그널 산출 → `data/signals/breakout-{date}.json` + `breakout-latest.json`

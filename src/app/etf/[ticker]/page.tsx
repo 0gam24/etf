@@ -169,6 +169,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
       : `${displayName} ETF — 한국거래소(KRX) 상장 종목. 단축코드 ${displayCode}.`,
     url: `/etf/${canonicalSlug}`,
     category: 'ETF',
+    ...(hasPriceData ? { price: etf!.price, priceDate: formattedBaseDate } : {}),
   });
 
   const datasetSchema = buildDatasetSchema({

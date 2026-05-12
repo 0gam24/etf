@@ -157,9 +157,23 @@ export interface FinancialProductInput {
   description: string;
   url: string;
   category?: string; // ETF / 인덱스펀드 등
+  /** 현재가 (마감 데이터). 있으면 offers 필드 추가 — Google 금융 리치 스니펫 */
+  price?: number;
+  /** 가격 기준일 (YYYY-MM-DD) */
+  priceDate?: string;
 }
 
 export function buildFinancialProductSchema(input: FinancialProductInput) {
+  const offers = (input.price && input.price > 0) ? {
+    offers: {
+      '@type': 'Offer',
+      price: input.price,
+      priceCurrency: 'KRW',
+      ...(input.priceDate ? { priceValidUntil: input.priceDate } : {}),
+      availability: 'https://schema.org/InStock',
+    },
+  } : {};
+
   return {
     '@context': 'https://schema.org',
     '@type': 'FinancialProduct',
@@ -170,6 +184,7 @@ export function buildFinancialProductSchema(input: FinancialProductInput) {
     url: abs(input.url),
     category: input.category || 'ETF',
     ...(input.provider ? { provider: { '@type': 'Organization', name: input.provider } } : {}),
+    ...offers,
   };
 }
 

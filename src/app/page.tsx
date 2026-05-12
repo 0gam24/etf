@@ -9,6 +9,7 @@ import EtfMarketPulse from '@/components/EtfMarketPulse';
 import HoldingsPanel from '@/components/HoldingsPanel';
 import TrustBar from '@/components/TrustBar';
 import VolumeSurgeAlert from '@/components/VolumeSurgeAlert';
+import TrendingNow from '@/components/TrendingNow';
 import HomeHookV1 from '@/components/HomeHookV1';
 import HomeHeroV3 from '@/components/HomeHeroV3';
 import HomeBreakingStrip from '@/components/HomeBreakingStrip';
@@ -177,6 +178,11 @@ export default async function HomePage() {
         latestFlow={latestFlow}
         topIncomeEtf={topIncomeEtf}
       />
+
+      {/* Trending Now — 장중 30초 polling 으로 상위 등락률 ETF TOP3 */}
+      {(etfData?.byVolume || []).length > 0 && (
+        <TrendingNow baseline={(etfData?.byVolume || []).slice(0, 10) as { code: string; name: string; volume: number; changeRate: number; price: number }[]} />
+      )}
 
       {/* Chapter 5 — RISK: 안정성 S 등급 방어 라인업 */}
       {defenseEtfs.length > 0 && <HomeDefenseTop3 defenseEtfs={defenseEtfs} />}
