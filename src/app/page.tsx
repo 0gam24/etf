@@ -7,6 +7,7 @@ import { computeTickerDiff } from '@/lib/pulse';
 import type { RawEtf } from '@/lib/surge';
 import EtfMarketPulse from '@/components/EtfMarketPulse';
 import HoldingsPanel from '@/components/HoldingsPanel';
+import LiveQuoteTable from '@/components/LiveQuoteTable';
 import TrustBar from '@/components/TrustBar';
 import VolumeSurgeAlert from '@/components/VolumeSurgeAlert';
 import TrendingNow from '@/components/TrendingNow';
@@ -66,20 +67,31 @@ export default async function HomePage() {
   const topGainer = sortedByChange[0];
   const topLoser = sortedByChange[sortedByChange.length - 1];
 
-  // 홈 속보 — 상승 1위 ETF 관련 우선, 없으면 거래량 1위 폴백, 그것도 없으면 최근 거래일 3건
+  // ── 상승 1위 ETF 중심 연동 ──────────────────────────────────────
+  // HERO 좌측 분석 글 = 상승 1위 종목 관련 글 (pulse / surge / breaking 모든 카테고리 검색)
+  // 없으면 거래량 1위 폴백, 그것도 없으면 latestPulse
   const allBreakingPosts = getPostsByCategory('breaking');
+  const topGainerAnyPost = topGainer
+    ? findPostByTickerInCategories(topGainer.code, ['surge', 'pulse', 'breaking', 'flow'])
+    : null;
   const topGainerBreakingPost = topGainer
     ? findPostByTickerInCategories(topGainer.code, ['breaking'])
     : null;
   const topEtfBreakingPost = topEtf
     ? findPostByTickerInCategories(topEtf.code, ['breaking'])
     : null;
+
+  // HERO 분석 글 = 상승 1위 관련 글 (모든 카테고리) → 거래량 1위 글 폴백 → latestPulse
+  const heroAnalysisPost = topGainerAnyPost || (topEtf ? findPostByTickerInCategories(topEtf.code, ['pulse', 'surge', 'flow']) : null) || latestPulse;
+
+  // 도화선 = 상승 1위 관련 breaking → 거래량 1위 breaking 폴백
   const heroBreakingPost = topGainerBreakingPost || topEtfBreakingPost;
   const catalystNews = extractFirstHeadline(heroBreakingPost);
   const catalystHref = heroBreakingPost
     ? `/${heroBreakingPost.meta.category}/${heroBreakingPost.meta.slug}`
     : undefined;
-  // 속보 strip: 상승 1위 관련 글이 있으면 그것을 1순위로, 나머지는 최근 거래일 기준
+
+  // 속보 strip: 상승 1위 관련 글 1순위, 나머지는 최근 거래일 기준
   const latestTradeDayBreakings = pickLatestTradeDayBreaking(allBreakingPosts, 3);
   const breakingPosts = (() => {
     if (!topGainerBreakingPost) return latestTradeDayBreakings;
@@ -143,7 +155,7 @@ export default async function HomePage() {
           (Condensed "왜?" CTA anchor — 거래량 1위가 아니라 방향성 종목으로 전환) */}
       <div id="daily-pulse-hero" style={{ scrollMarginTop: '5rem' }}>
         <HomeHeroV3
-          latestPulse={latestPulse}
+          latestPulse={heroAnalysisPost}
           topEtf={topGainer || topEtf}
           catalystNews={catalystNews}
           catalystHref={catalystHref}
@@ -174,7 +186,7 @@ export default async function HomePage() {
       <section className="dashboard-section" style={{ marginTop: '0', position: 'relative', zIndex: 10 }}>
         <div className="section-title-group">
           <h2 className="section-title">Market Snapshot</h2>
-          <p className="section-subtitle">오늘의 거시 지표와 거래량 1위 ETF 심층 분석</p>
+          <p className="section-subtitle">오늘의 거시 지표와 {topGainer ? '상승 1위' : '거래량 1위'} ETF 심층 분석</p>
         </div>
         <div className="dashboard-grid">
           {ecoData && (
@@ -197,28 +209,36 @@ export default async function HomePage() {
             </div>
           )}
 
-          {topEtf && (
-            <div className="dashboard-card animate-slide-up reveal" style={{ gridColumn: 'span 2' }}>
-              <h3 className="dashboard-card-title">오늘 거래량 1위 · {topEtf.name}</h3>
-              <div className="top-etf-grid">
-                <div className="dashboard-table-wrap">
-                  <table className="dashboard-table">
-                    <tbody>
-                      <tr><td className="font-medium">현재가</td><td>{topEtf.price.toLocaleString()}원</td></tr>
-                      <tr><td className="font-medium">전일대비</td><td className={topEtf.change > 0 ? 'text-red' : (topEtf.change < 0 ? 'text-blue' : '')}>{topEtf.change > 0 ? '▲' : (topEtf.change < 0 ? '▼' : '-')} {Math.abs(topEtf.change).toLocaleString()}</td></tr>
-                      <tr><td className="font-medium">거래량</td><td>{topEtf.volume.toLocaleString()}주</td></tr>
-                    </tbody>
-                  </table>
-                </div>
+          {(topGainer || topEtf) && (() => {
+            const featured = topGainer || topEtf;
+            const isGainer = !!topGainer;
+            return (
+              <div className="dashboard-card animate-slide-up reveal" style={{ gridColumn: 'span 2' }}>
+                <h3 className="dashboard-card-title">
+                  {isGainer ? '오늘 상승 1위' : '오늘 거래량 1위'} · {featured.name}
+                </h3>
+                <div className="top-etf-grid">
+                  <LiveQuoteTable
+                    initial={{
+                      code: featured.code,
+                      name: featured.name,
+                      price: featured.price,
+                      change: featured.change,
+                      changeRate: featured.changeRate,
+                      volume: featured.volume,
+                    }}
+                    baseDate={etfData?.baseDate}
+                  />
 
-                <HoldingsPanel
-                  code={topEtf.code}
-                  variant="home"
-                  asOfOverride={etfData?.baseDate}
-                />
+                  <HoldingsPanel
+                    code={featured.code}
+                    variant="home"
+                    asOfOverride={etfData?.baseDate}
+                  />
+                </div>
               </div>
-            </div>
-          )}
+            );
+          })()}
         </div>
       </section>
 
