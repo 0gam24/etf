@@ -72,7 +72,10 @@ export default function MarketPulseCondensed({
   initialCategories,
   fullWidgetAnchor = '#market-pulse-full',
 }: Props) {
-  const [topVolume, setTopVolume] = useState<Etf | null>(initialTopVolume || null);
+  // 표시 대상은 항상 상승 1위. 데이터 없으면 거래량 1위 폴백.
+  const initialFeatured = initialTopGainer || initialTopVolume || null;
+  const [featured, setFeatured] = useState<Etf | null>(initialFeatured);
+  const isShowingGainer = !!initialTopGainer;
   const [marketAvg, setMarketAvg] = useState<number>(initialMarketAvg ?? 0);
   const [marketStatus, setMarketStatus] = useState<RealtimeResponse['marketStatus']>('closed');
   const [liveSource, setLiveSource] = useState<RealtimeResponse['source']>('mock');
@@ -85,12 +88,12 @@ export default function MarketPulseCondensed({
 
   // 장중 한투 API silent overlay — 폴백 데이터(KRX 마감)는 항상 표시
   useEffect(() => {
-    if (!topVolume?.code) return;
+    if (!featured?.code) return;
     let cancelled = false;
     async function refresh() {
-      if (!topVolume?.code) return;
+      if (!featured?.code) return;
       try {
-        const res = await fetch(`/api/etf/realtime?codes=${topVolume.code}`);
+        const res = await fetch(`/api/etf/realtime?codes=${featured.code}`);
         if (!res.ok) return;
         const data: RealtimeResponse = await res.json();
         if (cancelled) return;
@@ -98,9 +101,9 @@ export default function MarketPulseCondensed({
         setLiveSource(data.source);
         const q = data.quotes?.[0];
         if (q && q.price > 0) {
-          setTopVolume({
-            code: topVolume.code,
-            name: topVolume.name,
+          setFeatured({
+            code: featured.code,
+            name: featured.name,
             price: q.price,
             changeRate: q.changeRate,
             volume: q.volume,
@@ -114,15 +117,16 @@ export default function MarketPulseCondensed({
     const interval = marketStatus === 'open' ? 30_000 : 5 * 60_000;
     const id = setInterval(refresh, interval);
     return () => { cancelled = true; clearInterval(id); };
-  }, [topVolume?.code, marketStatus]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [featured?.code, marketStatus]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // 데이터 없으면 렌더 안 함 (사이트 정상 작동에 영향 X)
-  if (!topVolume) return null;
+  if (!featured) return null;
 
   const isLive = marketStatus === 'open' && liveSource === 'kis';
-  const tvUp = topVolume.changeRate > 0;
-  const tvDown = topVolume.changeRate < 0;
+  const tvUp = featured.changeRate > 0;
+  const tvDown = featured.changeRate < 0;
   const tvColor = tvUp ? '#EF4444' : tvDown ? '#60A5FA' : 'var(--text-secondary)';
+  const featuredLabel = isShowingGainer ? '상승 1위' : '거래량 1위';
 
   const avgUp = marketAvg > 0;
   const avgDown = marketAvg < 0;
@@ -144,20 +148,24 @@ export default function MarketPulseCondensed({
         boxShadow: '0 4px 16px rgba(0,0,0,0.25)',
       }}
     >
-      {/* 줄 1: 거래량 1위 ETF (한투 실시간 또는 KRX 마감) */}
+      {/* 줄 1: 상승 1위 ETF (한투 실시간 또는 KRX 마감) — 없으면 거래량 1위 폴백 */}
       <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.6rem', fontSize: '0.95rem', marginBottom: '0.5rem' }}>
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.8rem' }}>
+        <span style={{
+          display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
+          color: isShowingGainer ? '#EF4444' : 'var(--accent-gold)',
+          fontWeight: 700, fontSize: '0.8rem',
+        }}>
           <Flame size={14} strokeWidth={2.5} aria-hidden />
-          거래량 1위
+          {featuredLabel}
         </span>
-        <Link href={`/etf/${topVolume.code.toLowerCase()}`} prefetch={false} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontWeight: 700 }}>
-          {topVolume.name}
+        <Link href={`/etf/${featured.code.toLowerCase()}`} prefetch={false} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontWeight: 700 }}>
+          {featured.name}
         </Link>
         <span style={{ fontVariantNumeric: 'tabular-nums', color: 'var(--text-secondary)' }}>
-          {topVolume.price.toLocaleString()}원
+          {featured.price.toLocaleString()}원
         </span>
         <span style={{ fontVariantNumeric: 'tabular-nums', fontWeight: 800, color: tvColor }}>
-          {tvUp ? '▲' : tvDown ? '▼' : '–'} {Math.abs(topVolume.changeRate).toFixed(2)}%
+          {tvUp ? '▲' : tvDown ? '▼' : '–'} {Math.abs(featured.changeRate).toFixed(2)}%
         </span>
         {isLive && (
           <span style={{
