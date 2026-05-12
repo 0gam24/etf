@@ -483,3 +483,9 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
   - `AiAgentDisclosure`: 인물 페르소나 카드 → "자동 분석 공시" (단일 publisher 책임 명시)
   - `/author/{id}`: `robots: { index: false }` + sitemap·sitemap-images 에서 제외 (schema entity 신호만 유지)
   - `agents/personas.js`: 7명 `closingSignature` 모두 "Daily ETF Pulse 편집팀 · 출처:..." 으로 통일 (다음 발행부터 글 끝 표기 일괄 적용)
+- 2026-05-12 — `MarketPulseCondensed` 최상단 5초 스냅샷 (옵션 C — 압축 + 풀 위젯 분리)
+  - `src/components/MarketPulseCondensed.tsx` 신설 — 메인페이지 최상단 압축 2줄 위젯. SSR initial (KRX 마감) 항상 표시 + 한투 silent overlay (장중 30s · 마감 5min). 거래량 1위 + 시장 평균 + 가장 큰 카테고리 + LIVE 펄스 + 3 CTA.
+  - `src/app/page.tsx` 통합: `VolumeSurgeAlert` 다음에 `MarketPulseCondensed` 렌더. SSR props (topVolume / topGainer / marketAvg / categories) 전달.
+  - 페이지 내 anchor scroll: `#daily-pulse-hero` (HomeHeroV3 — "왜 움직였나" CTA) · `#persona-selector` (PersonaSelector — "내 상황은?" CTA) · `#market-pulse-full` (EtfMarketPulse — "전체 시장" CTA). 모두 `scrollMarginTop: 5rem` 적용.
+  - **좋은점 8 모두 반영**: 5초 첫인상 / 데이터 저널 톤 / 스토리텔링 출발점 / 재방문 동기 / 체류시간↑ / 카테고리 흐름 / 인지 정렬 / 모바일 2줄 fit.
+  - **단점 7 모두 fix**: 분석 글 클릭률 보존 (왜? CTA → HomeHeroV3 funnel) / HomeHeroV3 무효화 회피 (기존 위치 유지) / 카피 충돌 제거 (슬로건 X, 데이터 라벨만) / 정보 과다 회피 (3 데이터로 압축) / 모바일 flex-wrap / 시청자 의도 (내 상황은? CTA) / 한투 의존도 분리 (SSR initial 항상 표시).

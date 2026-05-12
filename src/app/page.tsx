@@ -11,6 +11,7 @@ import TrustBar from '@/components/TrustBar';
 import VolumeSurgeAlert from '@/components/VolumeSurgeAlert';
 import TrendingNow from '@/components/TrendingNow';
 import PersonaSelector from '@/components/PersonaSelector';
+import MarketPulseCondensed from '@/components/MarketPulseCondensed';
 import HomeHookV1 from '@/components/HomeHookV1';
 import HomeHeroV3 from '@/components/HomeHeroV3';
 import HomeBreakingStrip from '@/components/HomeBreakingStrip';
@@ -95,17 +96,30 @@ export default async function HomePage() {
       {/* Volume Surge — 장중 거래량 급증 ETF 발견 시 동적 노출 */}
       <VolumeSurgeAlert baselineList={(etfData?.byVolume || []).slice(0, 10) as { code: string; name: string; volume: number; changeRate: number; price: number }[]} />
 
+      {/* MarketPulseCondensed — 메인 최상단 5초 스냅샷.
+          SSR initial 데이터 (KRX 마감) 항상 표시 + 한투 silent overlay (장중 30s).
+          "왜?" CTA → HomeHeroV3 분석 funnel, "내 상황은?" → PersonaSelector. */}
+      <MarketPulseCondensed
+        initialTopVolume={topEtf ? { code: topEtf.code, name: topEtf.name, price: topEtf.price, changeRate: topEtf.changeRate || 0, volume: topEtf.volume } : null}
+        initialTopGainer={topGainer ? { code: topGainer.code, name: topGainer.name, price: topGainer.price, changeRate: topGainer.changeRate || 0 } : null}
+        initialMarketAvg={marketAvg}
+        initialCategories={Object.entries(etfData?.categories || {}).map(([key, c]) => ({ name: (c as { name?: string }).name || key, avgChange: (c as { avgChange?: number }).avgChange || 0 }))}
+        fullWidgetAnchor="#market-pulse-full"
+      />
+
       {/* Chapter 1 — HOOK: 오늘의 단 한 문장 */}
       <HomeHookV1 hook={hook} />
 
-      {/* Chapter 2 — DATA: 메인 히어로 + 5초 스냅샷 */}
-      <HomeHeroV3
-        latestPulse={latestPulse}
-        topEtf={topEtf}
-        catalystNews={catalystNews}
-        catalystHref={catalystHref}
-        baseDate={etfData?.baseDate}
-      />
+      {/* Chapter 2 — DATA: 메인 히어로 + 5초 스냅샷 (Condensed "왜?" CTA anchor) */}
+      <div id="daily-pulse-hero" style={{ scrollMarginTop: '5rem' }}>
+        <HomeHeroV3
+          latestPulse={latestPulse}
+          topEtf={topEtf}
+          catalystNews={catalystNews}
+          catalystHref={catalystHref}
+          baseDate={etfData?.baseDate}
+        />
+      </div>
 
       <RecommendBox position="top" />
 
@@ -185,14 +199,18 @@ export default async function HomePage() {
         <TrendingNow baseline={(etfData?.byVolume || []).slice(0, 10) as { code: string; name: string; volume: number; changeRate: number; price: number }[]} />
       )}
 
-      {/* 페르소나 선택 — 7 상황별 entry page 라우팅 */}
-      <PersonaSelector />
+      {/* 페르소나 선택 — 7 상황별 entry page 라우팅 (Condensed "내 상황은?" anchor) */}
+      <div id="persona-selector" style={{ scrollMarginTop: '5rem' }}>
+        <PersonaSelector />
+      </div>
 
       {/* Chapter 5 — RISK: 안정성 S 등급 방어 라인업 */}
       {defenseEtfs.length > 0 && <HomeDefenseTop3 defenseEtfs={defenseEtfs} />}
 
-      {/* Chapter 7 — LIVE: 라이브 시장 위젯 */}
-      <EtfMarketPulse />
+      {/* Chapter 7 — LIVE: 라이브 시장 위젯 (Condensed "전체 시장" CTA anchor) */}
+      <div id="market-pulse-full" style={{ scrollMarginTop: '5rem' }}>
+        <EtfMarketPulse />
+      </div>
 
       {/* Chapter 8 — TOMORROW: 어제 대비 변화 (재방문 트리거) */}
       <HomeReturnTrigger
