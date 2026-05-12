@@ -496,3 +496,16 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
   - **Breaking 매칭 우선순위 변경**: 상승 1위 ETF 관련 breaking 우선 → 없으면 거래량 1위 → 그것도 없으면 최근 거래일 3건 폴백. `heroBreakingPost = topGainerBreakingPost || topEtfBreakingPost`. Hero 도화선·Breaking strip 1순위가 모두 상승 1위 ETF 로 통일.
   - **줌-인 스토리텔링 의도** (니치 = KRX ETF 직접 투자 개인): 거시 LIVE → 한 문장 압축 → 상승 1위 종목 (방향성) → 그 종목 속보 (근거) → 시나리오 분기 (행동) → 페르소나 (개인화) → 재방문 트리거.
   - 기존 위치의 `EtfMarketPulse` 제거 (DefenseTop3 다음 위치) → 동일 anchor `#market-pulse-full` 신규 위치 (HookV1 다음) 유지.
+- 2026-05-12 — Phase 6 메인 페이지 실시간 통합 (사용자 명시 "모든 chapter 실시간 + 자정 boundary") ★★★
+  - **Phase 6-1 ISR 5분 자연 갱신**: `src/app/page.tsx export const revalidate = 300` — Cloudflare 1년 캐시 (`s-maxage=31536000`) → 5분 ISR + stale-while-revalidate. 자정 boundary / 장중 데이터 갱신이 ~5분 내 메인 반영.
+  - **Phase 6-1 시간대별 분기**: `buildHookCopy` / `buildMarketHookCopy` 에 KST 시간대 자동 caption (🌙 pre_open / 🔴 intraday / 🟡 closing / 📅 post_close). HomeHeroV3 "📅 오늘 N월 D일(요일)" pill 추가 (ISR 5분 SSR 재계산).
+  - **Phase 6-2 LiveDataBadge**: `src/components/LiveDataBadge.tsx` 공통 — 'LIVE · HH:MM:SS' (장중 1초 펄스) / '한투 종가 · HH:MM' / '📅 KRX YYYY-MM-DD 종가' 통일 라벨. HomeSnapshot · LiveQuoteTable 적용.
+  - **Phase 6-3 자정 cache purge cron**: `.github/workflows/midnight-cache-purge.yml` — KST 00:00 (UTC 15:00 전일) Cloudflare Cache Purge API 호출. CF_API_TOKEN/CF_ZONE_ID secret 미설정 silent skip (자정 트래픽 0 → ISR 5분 자연 갱신으로 충분, 사용자 결정 2026-05-12).
+  - **Phase 6-4-a 장중 trigger 호출**: `VolumeSurgeAlert` 가 surge 감지 시 `/api/breaking/trigger` POST + sessionStorage 30분 throttle. `scripts/scout-breaking-queue.mjs` 신설 — daily-pulse cron 새 step 으로 KV `breaking:queue:*` read + GITHUB_STEP_SUMMARY 표 append (24h 지난 entry 정리).
+  - **메인 줌-인 재배치**: 사용자 요청으로 Chapter 7 LIVE (`EtfMarketPulse`) → Chapter 2 위로 이동. 신규 흐름: TrustBar → VolumeSurgeAlert → MarketPulseCondensed → Hook (시장 전체) → LIVE 위젯 → HERO (상승 1위) → 광고 → BREAKING → Snapshot → Market Snapshot → 시나리오 → TrendingNow → PersonaSelector → DefenseTop3 → ReturnTrigger → 광고 → DataFooter.
+  - **상승 1위 ETF 중심 전 영역 연동** (사용자 명시 "전체 페이지 구성 검토"): MarketPulseCondensed 상승 1위 전환 (양수 max 재선택, 음수면 거래량 1위 폴백). HomeSnapshot 4 카드 client 변환 (top10 baseline polling, 양수/음수 자동 분류). HERO 좌측 `heroAnalysisPost` (상승 1위 → 거래량 1위 → latestPulse 폴백 체인). Market Snapshot section: '오늘 상승 1위 · {name}' 타이틀 + `LiveQuoteTable`. EtfMarketPulse 기본 탭 'gainers'.
+  - **실시간 분류 재계산 (3 곳)**: SSR 시점 카테고리(상승/하락)가 그대로 남으면 실시간 음수 종목이 '상승 TOP' 잔존 모순 → EtfMarketPulse refreshLive 후 trending+gainers+losers 합집합 → 양/음수 정렬 재구성. MarketPulseCondensed baseline 폴 → 양수 max 재선택. HomeSnapshot baseline 폴 → 4 카드 재산출.
+  - **HERO 우측 라벨 + Breaking 카드 실시간 동기화**: `HeroFeaturedLabel` client — HERO 우측 라벨이 30s polling 으로 changeRate 부호 따라 자동 분기 (양수 '오늘 상승 1위' 빨강 / 음수 '{code} (라이브 약세)' 회색). `HbsLiveChange` client — HomeBreakingStrip 카드 등락률·거래량 30s polling.
+  - **HomeHookV1 라이브 hook 재생성**: `LiveHookContent` client — 30s polling 으로 top10 평균 재계산 → `buildMarketHookCopy` 재호출 → Chapter 1 한 문장 라이브 갱신. HomeHookV1 (server) 는 next/font Noto_Serif_KR className 만 전달 (next/font 제약 회피).
+  - **신규 컴포넌트 6종**: `LiveDataBadge` · `LiveQuoteTable` · `HeroFeaturedLabel` · `HbsLiveChange` · `LiveHookContent` · `MarketPulseCondensed` (직전 사이클).
+  - **남은 Phase 6-4-b**: KV `breaking:queue:*` consumer (Gemini 호출 → MDX 발행) — 후속 단계로 보류 (높은 비용·YMYL 검증 필요).
