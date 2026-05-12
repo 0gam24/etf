@@ -39,6 +39,10 @@ interface Props {
   baseline: TopEtf[];
   /** baseline 각 ETF code 별 holdings + catalyst 사전 — featured swap 시 lookup */
   heroDict: Record<string, HeroDictEntry>;
+  /** 분석 글 대상 ETF 명 (frontmatter tickers[0] 으로 부터 resolve) */
+  analysisSubjectName?: string;
+  /** 분석 글이 우측 라이브 종목 (topGainer) 과 다른가 — true 면 폴백 안내 라벨 표시 */
+  analysisMismatch?: boolean;
 }
 
 function formatBaseDate(ymd?: string): { display: string; isToday: boolean; weekdayLabel: string } | null {
@@ -60,7 +64,7 @@ function formatBaseDate(ymd?: string): { display: string; isToday: boolean; week
   };
 }
 
-export default function HomeHeroV3({ latestPulse, topEtf, baseDate, baseline, heroDict }: Props) {
+export default function HomeHeroV3({ latestPulse, topEtf, baseDate, baseline, heroDict, analysisSubjectName, analysisMismatch }: Props) {
   const bullets = latestPulse ? extractPulseBullets(latestPulse, 3) : [];
   const baseDateInfo = formatBaseDate(baseDate);
   // 휴장일·과거 baseDate면 카피를 "오늘" 대신 "최근 거래일"로 정직 표기.
@@ -148,9 +152,30 @@ export default function HomeHeroV3({ latestPulse, topEtf, baseDate, baseline, he
           )}
 
           {latestPulse && (
-            <Link href={`/${latestPulse.meta.category}/${latestPulse.meta.slug}`} className="home-hero-v3-cta">
-              전체 브리핑 읽기 <ArrowRight size={16} strokeWidth={2.5} />
-            </Link>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.75rem', marginTop: '1rem' }}>
+              <Link href={`/${latestPulse.meta.category}/${latestPulse.meta.slug}`} className="home-hero-v3-cta">
+                전체 브리핑 읽기 <ArrowRight size={16} strokeWidth={2.5} />
+              </Link>
+              {analysisSubjectName && (
+                <span
+                  title={analysisMismatch ? '본 분석 글은 우측 라이브 종목과 다른 종목 기준입니다 (cron 발행 시점 기준)' : undefined}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.3rem',
+                    padding: '0.25rem 0.6rem',
+                    background: analysisMismatch ? 'rgba(96,165,250,0.12)' : 'rgba(212,175,55,0.12)',
+                    color: analysisMismatch ? '#60A5FA' : 'var(--accent-gold)',
+                    borderRadius: '0.375rem',
+                    fontSize: '0.72rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.01em',
+                  }}>
+                  분석 글 대상: <strong style={{ marginLeft: '0.25rem' }}>{analysisSubjectName}</strong>
+                  {analysisMismatch && <span style={{ marginLeft: '0.25rem', opacity: 0.85 }}>· 우측 라이브 종목과 다름</span>}
+                </span>
+              )}
+            </div>
           )}
         </div>
 

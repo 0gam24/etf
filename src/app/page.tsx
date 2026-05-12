@@ -84,6 +84,16 @@ export default async function HomePage() {
   // HERO 분석 글 = 상승 1위 관련 글 (모든 카테고리) → 거래량 1위 글 폴백 → latestPulse
   const heroAnalysisPost = topGainerAnyPost || (topEtf ? findPostByTickerInCategories(topEtf.code, ['pulse', 'surge', 'flow']) : null) || latestPulse;
 
+  // 분석 글 대상 ETF (좌측·우측 narrative 일치성 명시용)
+  // 분석 글이 상승 1위 종목과 다르면 사용자에게 명시 → 폴백 인지
+  const heroAnalysisSubjectTicker = heroAnalysisPost?.meta.tickers?.[0] || null;
+  const heroAnalysisSubjectEtf = heroAnalysisSubjectTicker
+    ? (etfData?.etfList || []).find((e: { code: string }) => e.code.toUpperCase() === heroAnalysisSubjectTicker.toUpperCase()) as { code: string; name: string } | undefined
+    : undefined;
+  const heroAnalysisSubjectName = heroAnalysisSubjectEtf?.name || heroAnalysisSubjectTicker || null;
+  // 분석 글 대상이 우측 라이브 카드 종목 (topGainer) 과 다른지 — 다르면 폴백 상태 명시 필요
+  const heroAnalysisMismatch = !!(topGainer && heroAnalysisSubjectTicker && heroAnalysisSubjectTicker.toUpperCase() !== topGainer.code.toUpperCase());
+
   // 도화선 = 상승 1위 관련 breaking → 거래량 1위 breaking 폴백
   const heroBreakingPost = topGainerBreakingPost || topEtfBreakingPost;
   const catalystNews = extractFirstHeadline(heroBreakingPost);
@@ -187,6 +197,8 @@ export default async function HomePage() {
             code: b.code, name: b.name, price: b.price, change: b.change ?? 0, changeRate: b.changeRate ?? 0, volume: b.volume,
           }))}
           heroDict={heroDict}
+          analysisSubjectName={heroAnalysisSubjectName ?? undefined}
+          analysisMismatch={heroAnalysisMismatch}
         />
       </div>
 
