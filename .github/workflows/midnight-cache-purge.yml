@@ -1,0 +1,44 @@
+name: Midnight Cache Purge
+
+# 매일 자정 KST (UTC 15:00 전일) — 메인페이지·일별 리포트 캐시 강제 무효화
+# ISR revalidate=300 와 별도로 자정 boundary 명시적 purge → "오늘 날짜" 즉시 반영
+
+on:
+  schedule:
+    # UTC 15:00 = KST 00:00 (다음 날). 자정 정시에 실행.
+    - cron: '0 15 * * *'
+  workflow_dispatch:
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Purge Cloudflare cache (home + today + RSS)
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+        run: |
+          if [ -z "$CF_API_TOKEN" ] || [ -z "$CF_ZONE_ID" ]; then
+            echo "::warning::CF_API_TOKEN 또는 CF_ZONE_ID secret 미설정 — 자연 ISR(5분) 갱신만 적용"
+            exit 0
+          fi
+          curl -sS -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
+            -H "Authorization: Bearer $CF_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data '{"files":[
+              "https://iknowhowinfo.com/",
+              "https://iknowhowinfo.com/sitemap.xml",
+              "https://iknowhowinfo.com/rss.xml",
+              "https://iknowhowinfo.com/today",
+              "https://iknowhowinfo.com/pulse",
+              "https://iknowhowinfo.com/breaking",
+              "https://iknowhowinfo.com/surge",
+              "https://iknowhowinfo.com/flow",
+              "https://iknowhowinfo.com/income"
+            ]}' | tee purge-result.json
+          if grep -q '"success":true' purge-result.json; then
+            echo "✅ 자정 cache purge 완료"
+          else
+            echo "::warning::purge 실패 — 자연 ISR(5분) 갱신으로 폴백"
+          fi
