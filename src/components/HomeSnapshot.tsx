@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Flame, ArrowUpRight, ArrowDownRight, Activity } from 'lucide-react';
 import CountUpNumber from './CountUpNumber';
+import LiveDataBadge from './LiveDataBadge';
 
 interface Etf {
   code: string;
@@ -18,6 +19,8 @@ interface Props {
   topLoser: Etf | null;
   marketAvg: number;
   totalCount: number;
+  /** KRX baseDate (YYYYMMDD) — 데이터 출처·갱신 시점 표기용 */
+  baseDate?: string;
 }
 
 interface BigValue {
@@ -47,7 +50,7 @@ function buildVolumeBig(v: number): BigValue {
   return { value: v, decimals: 0, suffix: '주' };
 }
 
-export default function HomeSnapshot({ topVolume, topGainer, topLoser, marketAvg, totalCount }: Props) {
+export default function HomeSnapshot({ topVolume, topGainer, topLoser, marketAvg, totalCount, baseDate }: Props) {
   const cards: Array<{
     cls: string;
     icon: React.ReactNode;
@@ -98,6 +101,11 @@ export default function HomeSnapshot({ topVolume, topGainer, topLoser, marketAvg
 
   return (
     <section className="home-snap" aria-label="5초 시장 스냅샷">
+      {baseDate && (
+        <div style={{ maxWidth: '80rem', margin: '0 auto var(--space-3)', padding: '0 var(--space-5)', display: 'flex', justifyContent: 'flex-end' }}>
+          <LiveDataBadge source="krx" baseDate={baseDate} compact />
+        </div>
+      )}
       <div className="home-snap-grid">
         {cards.map((c, i) => {
           const inner = (

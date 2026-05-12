@@ -136,6 +136,7 @@ export default async function HomePage() {
         topLoser={topLoser}
         marketAvg={marketAvg}
         totalCount={totalCount}
+        baseDate={etfData?.baseDate}
       />
 
       {/* Market Snapshot — 거시 지표 + 거래량 1위 holdings */}
