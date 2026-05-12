@@ -125,6 +125,9 @@ export default async function HomePage() {
         initialTopGainer={topGainer ? { code: topGainer.code, name: topGainer.name, price: topGainer.price, changeRate: topGainer.changeRate || 0 } : null}
         initialMarketAvg={marketAvg}
         initialCategories={Object.entries(etfData?.categories || {}).map(([key, c]) => ({ name: (c as { name?: string }).name || key, avgChange: (c as { avgChange?: number }).avgChange || 0 }))}
+        initialBaseline={(etfData?.byVolume || []).slice(0, 10).map((e: { code: string; name: string; price: number; changeRate?: number; volume: number }) => ({
+          code: e.code, name: e.name, price: e.price, changeRate: e.changeRate || 0, volume: e.volume,
+        }))}
         fullWidgetAnchor="#market-pulse-full"
       />
 

@@ -110,11 +110,32 @@ export default function EtfMarketPulse() {
               volume: q.volume || item.volume,
             };
           });
+
+          // ── 실시간 데이터로 카테고리 재분류 ──
+          // SSR 단계 분류 (마감 기준) 가 그대로 남으면 SOL 조선TOP3 +X% 가 장중 -X% 로 바뀌어도
+          // '상승 TOP' 에 잔존 → 시청자 혼란. 실시간 등락률 기준으로 매번 다시 정렬.
+          //
+          // 풀: trending(거래량) top10 + topGainers + topLosers 합집합 (라이브 적용 후 중복 제거)
+          const refreshedTrending = apply(prev.trending);
+          const allMap = new Map<string, ETFItem>();
+          for (const item of [...refreshedTrending, ...apply(prev.topGainers), ...apply(prev.topLosers)]) {
+            if (item.code) allMap.set(item.code, item);
+          }
+          const allItems = [...allMap.values()];
+          const refreshedGainers = allItems
+            .filter(e => (e.changeRate ?? 0) > 0)
+            .sort((a, b) => (b.changeRate ?? 0) - (a.changeRate ?? 0))
+            .slice(0, 5);
+          const refreshedLosers = allItems
+            .filter(e => (e.changeRate ?? 0) < 0)
+            .sort((a, b) => (a.changeRate ?? 0) - (b.changeRate ?? 0))
+            .slice(0, 5);
+
           return {
             ...prev,
-            trending: apply(prev.trending),
-            topGainers: apply(prev.topGainers),
-            topLosers: apply(prev.topLosers),
+            trending: refreshedTrending,
+            topGainers: refreshedGainers,
+            topLosers: refreshedLosers,
             topMarketCap: apply(prev.topMarketCap),
           };
         });

@@ -23,6 +23,8 @@ interface Props {
   initialTopGainer?: Etf | null;
   initialMarketAvg?: number;
   initialCategories?: CategoryInfo[];
+  /** 실시간 재분류용 후보 — 거래량 top10 코드+이름. polling 시 양수 max 가 새 featured. */
+  initialBaseline?: Etf[];
   /** 페이지 내 풀 위젯 anchor (예: '#market-pulse-full') */
   fullWidgetAnchor?: string;
 }
@@ -70,12 +72,15 @@ export default function MarketPulseCondensed({
   initialTopGainer,
   initialMarketAvg,
   initialCategories,
+  initialBaseline,
   fullWidgetAnchor = '#market-pulse-full',
 }: Props) {
-  // 표시 대상은 항상 상승 1위. 데이터 없으면 거래량 1위 폴백.
+  // 표시 대상: 우선순위 상승 1위 (SSR) → 거래량 1위 폴백.
+  // 장중 polling 후 baseline top10 중 양수 max 종목으로 재선택 (실시간 진정성).
   const initialFeatured = initialTopGainer || initialTopVolume || null;
   const [featured, setFeatured] = useState<Etf | null>(initialFeatured);
-  const isShowingGainer = !!initialTopGainer;
+  // featured 가 양수 등락률을 가지는가? — 라벨 분기용
+  const [isGainerActive, setIsGainerActive] = useState<boolean>(!!initialTopGainer && (initialTopGainer.changeRate ?? 0) > 0);
   const [marketAvg, setMarketAvg] = useState<number>(initialMarketAvg ?? 0);
   const [marketStatus, setMarketStatus] = useState<RealtimeResponse['marketStatus']>('closed');
   const [liveSource, setLiveSource] = useState<RealtimeResponse['source']>('mock');
@@ -86,28 +91,51 @@ export default function MarketPulseCondensed({
     return Math.abs(c.avgChange) > Math.abs(best.avgChange) ? c : best;
   }, null);
 
-  // 장중 한투 API silent overlay — 폴백 데이터(KRX 마감)는 항상 표시
+  // 장중 한투 API silent overlay — baseline top10 전체 fetch + 양수 max 재선택
+  // baseline 없으면 featured 코드만 단일 fetch (구버전 호환)
   useEffect(() => {
-    if (!featured?.code) return;
+    if (!featured?.code && !initialBaseline?.length) return;
     let cancelled = false;
     async function refresh() {
-      if (!featured?.code) return;
+      const baseline = initialBaseline && initialBaseline.length > 0 ? initialBaseline : (featured ? [featured] : []);
+      if (!baseline.length) return;
+      const codes = baseline.slice(0, 10).map(b => b.code).filter(Boolean).join(',');
+      if (!codes) return;
       try {
-        const res = await fetch(`/api/etf/realtime?codes=${featured.code}`);
+        const res = await fetch(`/api/etf/realtime?codes=${codes}`);
         if (!res.ok) return;
         const data: RealtimeResponse = await res.json();
         if (cancelled) return;
         setMarketStatus(data.marketStatus);
         setLiveSource(data.source);
-        const q = data.quotes?.[0];
-        if (q && q.price > 0) {
-          setFeatured({
-            code: featured.code,
-            name: featured.name,
-            price: q.price,
-            changeRate: q.changeRate,
-            volume: q.volume,
-          });
+
+        // baseline 과 quotes 를 code 키로 매핑하여 실시간 등락률 산출
+        const liveMap = new Map<string, { price: number; changeRate: number; volume: number }>();
+        for (const q of data.quotes) {
+          if (q && q.code && q.price > 0) {
+            liveMap.set(q.code, { price: q.price, changeRate: q.changeRate, volume: q.volume });
+          }
+        }
+        if (liveMap.size === 0) return; // 실시간 응답 0건 (pre_open 등) — SSR 값 유지
+
+        // baseline 항목별 라이브 데이터 합성
+        const liveItems: Etf[] = baseline.slice(0, 10).map(b => {
+          const q = liveMap.get(b.code);
+          if (!q) return b; // 라이브 없으면 SSR 그대로
+          return { code: b.code, name: b.name, price: q.price, changeRate: q.changeRate, volume: q.volume };
+        });
+
+        // 양수 등락률 max → 새 featured. 양수 없으면 거래량 1위 (= baseline[0]) 폴백.
+        const positives = liveItems.filter(e => (e.changeRate ?? 0) > 0);
+        if (positives.length > 0) {
+          positives.sort((a, b) => (b.changeRate ?? 0) - (a.changeRate ?? 0));
+          setFeatured(positives[0]);
+          setIsGainerActive(true);
+        } else {
+          // 전체 음수 — 거래량 1위 (baseline[0]) 의 라이브 데이터를 표시
+          const top = liveItems[0] || baseline[0];
+          setFeatured(top);
+          setIsGainerActive(false);
         }
       } catch {
         // silent — SSR initial 데이터 유지
@@ -117,7 +145,7 @@ export default function MarketPulseCondensed({
     const interval = marketStatus === 'open' ? 30_000 : 5 * 60_000;
     const id = setInterval(refresh, interval);
     return () => { cancelled = true; clearInterval(id); };
-  }, [featured?.code, marketStatus]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [initialBaseline, marketStatus]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // 데이터 없으면 렌더 안 함 (사이트 정상 작동에 영향 X)
   if (!featured) return null;
@@ -126,7 +154,7 @@ export default function MarketPulseCondensed({
   const tvUp = featured.changeRate > 0;
   const tvDown = featured.changeRate < 0;
   const tvColor = tvUp ? '#EF4444' : tvDown ? '#60A5FA' : 'var(--text-secondary)';
-  const featuredLabel = isShowingGainer ? '상승 1위' : '거래량 1위';
+  const featuredLabel = isGainerActive ? '상승 1위' : '거래량 1위';
 
   const avgUp = marketAvg > 0;
   const avgDown = marketAvg < 0;
@@ -152,7 +180,7 @@ export default function MarketPulseCondensed({
       <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.6rem', fontSize: '0.95rem', marginBottom: '0.5rem' }}>
         <span style={{
           display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
-          color: isShowingGainer ? '#EF4444' : 'var(--accent-gold)',
+          color: isGainerActive ? '#EF4444' : 'var(--accent-gold)',
           fontWeight: 700, fontSize: '0.8rem',
         }}>
           <Flame size={14} strokeWidth={2.5} aria-hidden />
