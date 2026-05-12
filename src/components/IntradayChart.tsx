@@ -114,7 +114,7 @@ export default function IntradayChart({ code, prevClose, height = 200 }: Props) 
           <Tooltip
             contentStyle={{ background: 'var(--bg-elevated)', border: '1px solid var(--border-color)', borderRadius: '0.375rem', fontSize: '0.75rem' }}
             labelStyle={{ color: 'var(--text-dim)' }}
-            formatter={(v: number) => [`${v.toLocaleString()}원`, '가격']}
+            formatter={(v) => [`${Number(v).toLocaleString()}원`, '가격']}
           />
           {prevClose && (
             <ReferenceLine y={prevClose} stroke="var(--text-muted)" strokeDasharray="3 3" label={{ value: '전일 종가', position: 'right', fontSize: 10, fill: 'var(--text-muted)' }} />
