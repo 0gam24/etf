@@ -1,5 +1,5 @@
 import { getLatestPulse, getPostsByCategory, findPostByTickerInCategories } from '@/lib/posts';
-import { getLatestEtfData, getLatestEcoData } from '@/lib/data';
+import { getLatestEtfData, getLatestEcoData, getEtfHoldings } from '@/lib/data';
 import { getIncomeRegistry } from '@/lib/income-server';
 import { extractFirstHeadline, pickLatestTradeDayBreaking } from '@/lib/breaking';
 import { buildMarketHookCopy } from '@/lib/hook';
@@ -99,6 +99,24 @@ export default async function HomePage() {
     return [topGainerBreakingPost, ...dedup].slice(0, 3);
   })();
 
+  // top10 baseline + 각 ETF 별 holdings + catalyst 사전 (HERO 우측 카드 live swap 용)
+  const baselineTop10 = (etfData?.byVolume || []).slice(0, 10) as Array<{
+    code: string; name: string; price: number; change?: number; changeRate?: number; volume: number;
+  }>;
+  const heroDict: Record<string, { holdings: Array<{ ticker?: string; name: string; weight: number }>; catalyst: { title: string; source: string; href?: string } | null }> = {};
+  for (const b of baselineTop10) {
+    const h = getEtfHoldings(b.code);
+    const top3 = (h?.holdings || []).slice(0, 3).map(x => ({ ticker: x.ticker, name: x.name, weight: x.weight }));
+    const post = findPostByTickerInCategories(b.code, ['breaking']);
+    const news = extractFirstHeadline(post);
+    heroDict[b.code] = {
+      holdings: top3,
+      catalyst: news
+        ? { title: news.title, source: news.source, href: post ? `/${post.meta.category}/${post.meta.slug}` : undefined }
+        : null,
+    };
+  }
+
   // 시장 평균 등락률
   const totalCount = (etfData?.etfList || []).length;
   const marketAvg = totalCount > 0
@@ -164,11 +182,11 @@ export default async function HomePage() {
         <HomeHeroV3
           latestPulse={heroAnalysisPost}
           topEtf={topGainer || topEtf}
-          catalystNews={catalystNews}
-          catalystHref={catalystHref}
           baseDate={etfData?.baseDate}
-          rightLabel={topGainer ? '오늘 상승 1위' : undefined}
-          rightTone={topGainer ? 'gainer' : 'auto'}
+          baseline={baselineTop10.map(b => ({
+            code: b.code, name: b.name, price: b.price, change: b.change ?? 0, changeRate: b.changeRate ?? 0, volume: b.volume,
+          }))}
+          heroDict={heroDict}
         />
       </div>
 

@@ -1,10 +1,8 @@
 import Link from 'next/link';
-import { ArrowRight, Zap, Radio } from 'lucide-react';
+import { ArrowRight, Zap } from 'lucide-react';
 import type { Post } from '@/lib/posts';
 import { extractPulseBullets, freshnessLabel } from '@/lib/pulse';
-import { getEtfHoldings } from '@/lib/data';
-import LiveQuoteCard from './LiveQuoteCard';
-import HeroFeaturedLabel from './HeroFeaturedLabel';
+import LiveHeroFeatured from './LiveHeroFeatured';
 
 interface TopEtf {
   code: string;
@@ -15,24 +13,32 @@ interface TopEtf {
   volume: number;
 }
 
-interface CatalystNews {
+interface Holding {
+  ticker?: string;
+  name: string;
+  weight: number;
+}
+
+interface CatalystEntry {
   title: string;
   source: string;
+  href?: string;
+}
+
+interface HeroDictEntry {
+  holdings: Holding[];
+  catalyst: CatalystEntry | null;
 }
 
 interface Props {
   latestPulse: Post | null;
   topEtf: TopEtf | null;
-  /** 오늘의 도화선 — topEtf 관련 속보 첫 헤드라인. breaking 포스트에서 추출. */
-  catalystNews?: CatalystNews | null;
-  /** 속보 포스트로 이동할 링크 (클릭 시 /breaking/{slug}) */
-  catalystHref?: string;
   /** KRX 마지막 거래일 (YYYYMMDD) — 시세 데이터 기준일 정직 표기용. */
   baseDate?: string;
-  /** 사이드 카드 라벨 — '오늘 상승 1위' / '오늘 거래량 1위' 등 분기. 미지정 시 거래량 1위 기본 */
-  rightLabel?: string;
-  /** 사이드 라벨 강조 톤 — 'gainer' (상승 빨강) | 'volume' (골드) | 'auto' */
-  rightTone?: 'gainer' | 'volume' | 'auto';
+  /** top10 baseline — LiveHeroFeatured 양수 max 재선택 */
+  baseline: TopEtf[];
+  /** baseline 각 ETF code 별 holdings + catalyst 사전 — featured swap 시 lookup */
+  heroDict: Record<string, HeroDictEntry>;
 }
 
 function formatBaseDate(ymd?: string): { display: string; isToday: boolean; weekdayLabel: string } | null {
@@ -54,12 +60,8 @@ function formatBaseDate(ymd?: string): { display: string; isToday: boolean; week
   };
 }
 
-export default function HomeHeroV3({ latestPulse, topEtf, catalystNews, catalystHref, baseDate, rightLabel, rightTone = 'auto' }: Props) {
+export default function HomeHeroV3({ latestPulse, topEtf, baseDate, baseline, heroDict }: Props) {
   const bullets = latestPulse ? extractPulseBullets(latestPulse, 3) : [];
-  const holdings = topEtf ? getEtfHoldings(topEtf.code) : null;
-  const top3 = holdings?.holdings.slice(0, 3) ?? [];
-  const isUp = (topEtf?.change ?? 0) > 0;
-  const isDown = (topEtf?.change ?? 0) < 0;
   const baseDateInfo = formatBaseDate(baseDate);
   // 휴장일·과거 baseDate면 카피를 "오늘" 대신 "최근 거래일"로 정직 표기.
   const isStaleData = baseDateInfo ? !baseDateInfo.isToday : false;
@@ -152,80 +154,13 @@ export default function HomeHeroV3({ latestPulse, topEtf, catalystNews, catalyst
           )}
         </div>
 
-        {/* 우측: HERO 종목 (상승 1위 OR 거래량 1위) + holdings TOP3 */}
+        {/* 우측: HERO 종목 — 라이브 양수 max 자동 swap + holdings·catalyst dict lookup */}
         {topEtf && (
-          <aside className="home-hero-v3-right">
-            <div className="home-hero-v3-right-head">
-              {rightTone === 'gainer' ? (
-                <HeroFeaturedLabel
-                  code={topEtf.code}
-                  initialChangeRate={topEtf.changeRate ?? 0}
-                  positiveLabel={rightLabel || '오늘 상승 1위'}
-                  negativeLabel={`${topEtf.code} (라이브 약세)`}
-                />
-              ) : (
-                <span className="home-hero-v3-right-label">
-                  {rightLabel
-                    ? rightLabel
-                    : (isStaleData ? '최근 거래일 거래량 1위' : '오늘 거래량 1위')}
-                </span>
-              )}
-              <span className="home-hero-v3-right-code">{topEtf.code}</span>
-            </div>
-            <div className="home-hero-v3-etf-name">{topEtf.name}</div>
-
-            {/* 가격·거래량을 클라이언트 컴포넌트로 분리 — 장중 30초 polling 으로 실시간 갱신.
-                서버사이드 SSR 로 initial 시세 1회 렌더 → 클라이언트가 hydration 후 한투 API 폴링 */}
-            <LiveQuoteCard
-              initial={{
-                code: topEtf.code,
-                name: topEtf.name,
-                price: topEtf.price,
-                change: topEtf.change,
-                changeRate: topEtf.changeRate,
-                volume: topEtf.volume,
-              }}
-            />
-
-            {catalystNews && (
-              catalystHref ? (
-                <Link href={catalystHref} prefetch={false} className="home-hero-v3-catalyst is-link">
-                  <span className="home-hero-v3-catalyst-label">
-                    <Radio size={12} strokeWidth={2.6} aria-hidden /> 오늘의 도화선
-                  </span>
-                  <span className="home-hero-v3-catalyst-text">{catalystNews.title}</span>
-                  {catalystNews.source && (
-                    <span className="home-hero-v3-catalyst-source">— {catalystNews.source}</span>
-                  )}
-                </Link>
-              ) : (
-                <div className="home-hero-v3-catalyst">
-                  <span className="home-hero-v3-catalyst-label">
-                    <Radio size={12} strokeWidth={2.6} aria-hidden /> 오늘의 도화선
-                  </span>
-                  <span className="home-hero-v3-catalyst-text">{catalystNews.title}</span>
-                  {catalystNews.source && (
-                    <span className="home-hero-v3-catalyst-source">— {catalystNews.source}</span>
-                  )}
-                </div>
-              )
-            )}
-
-            {top3.length > 0 && (
-              <div className="home-hero-v3-holdings">
-                <div className="home-hero-v3-holdings-label">담긴 기업 TOP 3</div>
-                <ol className="home-hero-v3-holdings-list">
-                  {top3.map((h, i) => (
-                    <li key={`${h.ticker || h.name}-${i}`}>
-                      <span className="home-hero-v3-h-rank">{i + 1}</span>
-                      <span className="home-hero-v3-h-name">{h.name}</span>
-                      <span className="home-hero-v3-h-weight">{h.weight.toFixed(1)}%</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            )}
-          </aside>
+          <LiveHeroFeatured
+            initial={topEtf}
+            baseline={baseline}
+            heroDict={heroDict}
+          />
         )}
       </div>
     </section>
