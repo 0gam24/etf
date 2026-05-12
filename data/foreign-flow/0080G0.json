@@ -1,0 +1,186 @@
+{
+  "code": "0080G0",
+  "updatedAt": "2026-05-12T09:42:42.321Z",
+  "history": [
+    {
+      "date": "2026-03-30",
+      "foreignNet": 280959,
+      "institutionNet": -433064,
+      "individualNet": 142554
+    },
+    {
+      "date": "2026-03-31",
+      "foreignNet": 40690,
+      "institutionNet": -168707,
+      "individualNet": 117577
+    },
+    {
+      "date": "2026-04-01",
+      "foreignNet": 18670,
+      "institutionNet": 225062,
+      "individualNet": -227306
+    },
+    {
+      "date": "2026-04-02",
+      "foreignNet": -38443,
+      "institutionNet": 380204,
+      "individualNet": -348093
+    },
+    {
+      "date": "2026-04-03",
+      "foreignNet": -62167,
+      "institutionNet": 195410,
+      "individualNet": -128926
+    },
+    {
+      "date": "2026-04-06",
+      "foreignNet": -55126,
+      "institutionNet": 117214,
+      "individualNet": -61930
+    },
+    {
+      "date": "2026-04-07",
+      "foreignNet": -65076,
+      "institutionNet": 81214,
+      "individualNet": -18404
+    },
+    {
+      "date": "2026-04-08",
+      "foreignNet": 73016,
+      "institutionNet": 411914,
+      "individualNet": -450792
+    },
+    {
+      "date": "2026-04-09",
+      "foreignNet": -74701,
+      "institutionNet": 137637,
+      "individualNet": -71105
+    },
+    {
+      "date": "2026-04-10",
+      "foreignNet": -58811,
+      "institutionNet": 303165,
+      "individualNet": -246283
+    },
+    {
+      "date": "2026-04-13",
+      "foreignNet": -73042,
+      "institutionNet": -50622,
+      "individualNet": 125705
+    },
+    {
+      "date": "2026-04-14",
+      "foreignNet": 76132,
+      "institutionNet": 8521,
+      "individualNet": -88546
+    },
+    {
+      "date": "2026-04-15",
+      "foreignNet": 3539,
+      "institutionNet": -115894,
+      "individualNet": 91734
+    },
+    {
+      "date": "2026-04-16",
+      "foreignNet": -24140,
+      "institutionNet": 118323,
+      "individualNet": -97315
+    },
+    {
+      "date": "2026-04-17",
+      "foreignNet": 34478,
+      "institutionNet": -141057,
+      "individualNet": 102803
+    },
+    {
+      "date": "2026-04-20",
+      "foreignNet": -29692,
+      "institutionNet": -3052,
+      "individualNet": 57010
+    },
+    {
+      "date": "2026-04-21",
+      "foreignNet": -27396,
+      "institutionNet": -231051,
+      "individualNet": 253082
+    },
+    {
+      "date": "2026-04-22",
+      "foreignNet": 132364,
+      "institutionNet": 167493,
+      "individualNet": -294933
+    },
+    {
+      "date": "2026-04-23",
+      "foreignNet": -27467,
+      "institutionNet": -474370,
+      "individualNet": 498106
+    },
+    {
+      "date": "2026-04-24",
+      "foreignNet": -46101,
+      "institutionNet": -233631,
+      "individualNet": 283475
+    },
+    {
+      "date": "2026-04-27",
+      "foreignNet": -43696,
+      "institutionNet": -149063,
+      "individualNet": 199935
+    },
+    {
+      "date": "2026-04-28",
+      "foreignNet": 50391,
+      "institutionNet": -216898,
+      "individualNet": 205387
+    },
+    {
+      "date": "2026-04-29",
+      "foreignNet": -43430,
+      "institutionNet": 237052,
+      "individualNet": -190539
+    },
+    {
+      "date": "2026-04-30",
+      "foreignNet": 36626,
+      "institutionNet": -30902,
+      "individualNet": -13207
+    },
+    {
+      "date": "2026-05-04",
+      "foreignNet": 65886,
+      "institutionNet": 212100,
+      "individualNet": -278649
+    },
+    {
+      "date": "2026-05-06",
+      "foreignNet": 35613,
+      "institutionNet": -155047,
+      "individualNet": 127412
+    },
+    {
+      "date": "2026-05-07",
+      "foreignNet": -47583,
+      "institutionNet": -623454,
+      "individualNet": 678076
+    },
+    {
+      "date": "2026-05-08",
+      "foreignNet": 14117,
+      "institutionNet": -535577,
+      "individualNet": 506071
+    },
+    {
+      "date": "2026-05-11",
+      "foreignNet": 53100,
+      "institutionNet": -152592,
+      "individualNet": 106559
+    },
+    {
+      "date": "2026-05-12",
+      "foreignNet": -165520,
+      "institutionNet": 230919,
+      "individualNet": -54777
+    }
+  ]
+}

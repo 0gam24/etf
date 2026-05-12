@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-05-12T09:42:39.810Z",
+  "baseDate": "20260511",
+  "strategy": "Unger Volatility Breakout (Andrea Unger Method)",
+  "params": {
+    "N": 5,
+    "K_TRIGGER": 0.5,
+    "K_STOP": 0.6,
+    "K_TARGET": 1,
+    "VOL_MIN": 0.008
+  },
+  "disclaimer": "정보 제공 목적 · 매매 권유 아님 · 결과 책임은 투자자 본인",
+  "signals": [
+    {
+      "code": "069500",
+      "name": "KODEX 200",
+      "status": "INSUFFICIENT_HISTORY",
+      "historyDays": 0
+    },
+    {
+      "code": "114800",
+      "name": "KODEX 인버스",
+      "status": "INSUFFICIENT_HISTORY",
+      "historyDays": 0
+    },
+    {
+      "code": "122630",
+      "name": "KODEX 레버리지",
+      "status": "INSUFFICIENT_HISTORY",
+      "historyDays": 0
+    },
+    {
+      "code": "251340",
+      "name": "KODEX 인버스2X",
+      "status": "INSUFFICIENT_HISTORY",
+      "historyDays": 0
+    }
+  ]
+}

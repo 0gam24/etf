@@ -1,0 +1,111 @@
+{
+  "date": "2026-05-12",
+  "generatedAt": "2026-05-12T09:42:40.093Z",
+  "baseDate": "20260511",
+  "market": {
+    "byVolume": [
+      {
+        "code": "0080G0",
+        "name": "KODEX 방산TOP10",
+        "price": 14200,
+        "changeRate": 1.5,
+        "volume": 4609294
+      },
+      {
+        "code": "0080Y0",
+        "name": "SOL 조선TOP3플러스레버리지",
+        "price": 22775,
+        "changeRate": 6.75,
+        "volume": 3188196
+      },
+      {
+        "code": "0072R0",
+        "name": "TIGER KRX금현물",
+        "price": 14635,
+        "changeRate": -1.65,
+        "volume": 2000642
+      },
+      {
+        "code": "0048K0",
+        "name": "KODEX 차이나휴머노이드로봇",
+        "price": 11265,
+        "changeRate": 0.27,
+        "volume": 1938852
+      },
+      {
+        "code": "0015B0",
+        "name": "KoAct 미국나스닥성장기업액티브",
+        "price": 22430,
+        "changeRate": 3.94,
+        "volume": 1885196
+      }
+    ],
+    "topGainers": [
+      {
+        "code": "0080Y0",
+        "name": "SOL 조선TOP3플러스레버리지",
+        "price": 22775,
+        "changeRate": 6.75
+      },
+      {
+        "code": "0007N0",
+        "name": "아이엠에셋 200",
+        "price": 122430,
+        "changeRate": 5.27
+      },
+      {
+        "code": "0005G0",
+        "name": "ITF K-AI반도체코어테크",
+        "price": 50630,
+        "changeRate": 4.93
+      },
+      {
+        "code": "0035T0",
+        "name": "PLUS 글로벌휴머노이드로봇액티브",
+        "price": 25030,
+        "changeRate": 4.88
+      },
+      {
+        "code": "0015B0",
+        "name": "KoAct 미국나스닥성장기업액티브",
+        "price": 22430,
+        "changeRate": 3.94
+      }
+    ],
+    "topLosers": [
+      {
+        "code": "0007G0",
+        "name": "PLUS 글로벌원자력밸류체인",
+        "price": 16805,
+        "changeRate": -3.67
+      },
+      {
+        "code": "0082F0",
+        "name": "HANARO 유럽방산",
+        "price": 10500,
+        "changeRate": -3.09
+      },
+      {
+        "code": "0001P0",
+        "name": "마이티 바이오시밀러&CDMO액티브",
+        "price": 12290,
+        "changeRate": -2.61
+      },
+      {
+        "code": "0051G0",
+        "name": "SOL 미국원자력SMR",
+        "price": 16860,
+        "changeRate": -2.29
+      },
+      {
+        "code": "0005D0",
+        "name": "SOL 전고체배터리&실리콘음극재",
+        "price": 24375,
+        "changeRate": -2.15
+      }
+    ]
+  },
+  "signals": [],
+  "outcomes": [],
+  "imminentDividends": []
+}

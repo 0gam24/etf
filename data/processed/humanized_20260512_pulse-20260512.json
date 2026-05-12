@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "createdBy": "HumanTouch",
+    "createdAt": "2026-05-12T09:35:00.137Z",
+    "fileName": "humanized_20260512_pulse-20260512.json"
+  },
+  "data": {
+    "keyword": "5월 12일 오늘의 ETF 관전포인트",
+    "title": "5월 12일 오늘의 ETF 관전포인트 — 거래량 1위 KODEX 방산TOP10 외 2종목",
+    "slug": "pulse-20260512",
+    "category": "pulse",
+    "templateType": "pulse",
+    "tickers": [
+      "0080G0",
+      "0080Y0",
+      "0072R0"
+    ],
+    "content": "## 5월 12일 오늘의 ETF 관전포인트 — 거래량 1위 KODEX 방산TOP10 외 2종목\n\n## 분석 모델 관전포인트\n5월 12일 KRX 공공데이터에 따르면, KODEX 방산TOP10은 461만 주로 거래량 1위를 기록하며 시장의 특정 섹터로의 자금 집중 신호를 보였습니다. SOL 조선TOP3플러스레버리지는 +6.75% 상승하며 높은 기초자산 변동성을 통해 시장 활황을 주도하는 모습이 관찰됩니다. 반면 TIGER KRX금현물은 -1.65% 하락하여 안전자산 선호 심리 변화가 감지됩니다.\n\n## 오늘의 3줄 관전포인트\n- **거래량 1위**: KRX 공시 데이터에 따르면, KODEX 방산TOP10은 +1.5% 상승하며 461만 주의 거래량으로 투자자 관심이 집중된 것으로 분석됩니다.\n- **섹터 리더**: SOL 조선TOP3플러스레버리지가 +6.75%의 높은 등락률을 기록하며 당일 시장의 섹터 상승을 주도한 것으로 관찰됩니다 (운용사 공식 공시).\n- **체크 포인트**: TIGER KRX금현물은 -1.65% 하락하여, 한국은행 ECOS 지표 및 시장 흐름에 비추어 안전자산 선호도",
+    "wordCount": 558,
+    "generatedBy": "gemini-2.5-flash-lite",
+    "author": "AI 에이전트 K",
+    "authorId": "pb_kim",
+    "authorTitle": "은퇴 자산 설계 분석 모델",
+    "authorModelDescription": "KRX 공공데이터·운용사 공식 공시·한국은행 ECOS를 입력으로, 분배 안정성 등급(12개월 분배 변동성 + 기초자산 변동성)과 계좌별(IRP·ISA·연금저축·일반) 세후 수익률을 산출하는 분석 모델.",
+    "authorDataSources": [
+      "KRX 공공데이터",
+      "운용사 공식 공시(분배 캘린더)",
+      "한국은행 ECOS 기준금리·환율"
+    ],
+    "authorMethodology": "분배 변동성 + NAV 변동성 + 기초자산 ATR을 가중 결합한 안정성 스코어, 계좌 유형별 세율 매트릭스 적용 시뮬레이션",
+    "authorIsAi": true
+  }
+}
