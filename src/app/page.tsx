@@ -143,8 +143,15 @@ export default async function HomePage() {
         fullWidgetAnchor="#market-pulse-full"
       />
 
-      {/* Chapter 1 — HOOK: 라이브 시장 전체 한 문장 (시간대별 caption 자동 분기) */}
-      <HomeHookV1 hook={hook} />
+      {/* Chapter 1 — HOOK: 라이브 시장 전체 한 문장 (30s polling 재생성) */}
+      <HomeHookV1
+        hook={hook}
+        baseline={(etfData?.byVolume || []).slice(0, 10).map((e: { code: string; name: string; price: number; changeRate?: number; volume: number }) => ({
+          code: e.code, name: e.name, changeRate: e.changeRate || 0, volume: e.volume,
+        }))}
+        initialCategories={Object.entries(etfData?.categories || {}).map(([key, c]) => ({ name: (c as { name?: string }).name || key, avgChange: (c as { avgChange?: number }).avgChange || 0 }))}
+        totalCount={totalCount}
+      />
 
       {/* Chapter 7 — LIVE: 라이브 시장 전체 위젯 (시청자에게 '지금 살아있다' 신호 먼저) */}
       <div id="market-pulse-full" style={{ scrollMarginTop: '5rem' }}>
