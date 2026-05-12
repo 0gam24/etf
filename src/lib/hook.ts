@@ -76,6 +76,72 @@ function pickByDate(items: string[], baseDate?: string): string {
  *  - 강한 하락(<-2%) → 긴장·관전 어조
  *  - 보합 → 누적/관망 어조
  */
+/**
+ * 시장 전체 1문장 hook — page.tsx 최상단 라이브 시장 위젯에 대응.
+ *   marketAvg (전 종목 평균 등락률) + topCategory (가장 큰 +/- 섹터) + 전체 종목 수
+ *   기반 결정적 카피. ETF 1종목이 아니라 '오늘 시장이 어떻게 움직이고 있는가'.
+ */
+export interface MarketHookInput {
+  marketAvg: number;
+  topCategory?: { name: string; avgChange: number } | null;
+  totalCount: number;
+}
+
+export function buildMarketHookCopy(input: MarketHookInput, baseDate?: string, now: Date = new Date()): HookCopy {
+  const phase = getKstPhase(now);
+  const hm = getKstHm(now);
+  const prefix = phaseLabel(phase, hm);
+
+  const { marketAvg, topCategory, totalCount } = input;
+
+  if (!totalCount) {
+    return {
+      line: '오늘 시장의 무게중심이 어디로 옮겨가는지, 함께 살펴봅니다.',
+      caption: `${prefix} · 분석 ETF 데이터 준비 중`,
+    };
+  }
+
+  const avgSign = marketAvg >= 0 ? '+' : '';
+  const avgPct = marketAvg.toFixed(2);
+  const tc = topCategory && topCategory.avgChange !== 0 ? topCategory : null;
+  const tcSign = tc && tc.avgChange >= 0 ? '+' : '';
+  const tcPct = tc ? tc.avgChange.toFixed(2) : '';
+
+  // 강한 상승 — 전체 평균 +1% 초과
+  if (marketAvg > 1) {
+    const variants = phase === 'pre_open' ? [
+      `어제 시장은 평균 ${avgSign}${avgPct}% 상승 마감, 오늘 자금이 어디로 흐를지 주목됩니다.`,
+      tc ? `어제 ${tc.name} 섹터가 ${tcSign}${tcPct}% 강세, 오늘도 흐름 이어질지 살펴봅니다.` : `어제 평균 ${avgSign}${avgPct}% 상승, 오늘 흐름 점검.`,
+    ] : [
+      tc ? `오늘 시장은 ${avgSign}${avgPct}% 상승, ${tc.name} 섹터가 ${tcSign}${tcPct}%로 흐름을 주도합니다.` : `오늘 시장 평균 ${avgSign}${avgPct}% 상승, 자금이 본격 유입 중입니다.`,
+      `${totalCount}종 평균 ${avgSign}${avgPct}% — 오늘 시장은 매수 우위로 출발했습니다.`,
+    ];
+    return { line: pickByDate(variants, baseDate), caption: `${prefix} · 분석 ${totalCount}종 평균 ${avgSign}${avgPct}%` };
+  }
+
+  // 강한 하락 — 평균 -1% 미만
+  if (marketAvg < -1) {
+    const variants = phase === 'pre_open' ? [
+      `어제 시장은 평균 ${avgPct}% 약세 마감, 오늘 반등 시점을 살펴봅니다.`,
+      tc ? `어제 ${tc.name} 섹터에서 ${tcPct}% 자금 이탈, 오늘 분위기 점검.` : `어제 평균 ${avgPct}% 약세, 위험 관리가 필요합니다.`,
+    ] : [
+      tc ? `오늘 시장은 ${avgPct}% 약세, ${tc.name} 섹터에서 ${tcPct}% 자금 이탈이 관찰됩니다.` : `오늘 시장 평균 ${avgPct}% 하락, 매도 압력이 우위입니다.`,
+      `${totalCount}종 평균 ${avgPct}% — 오늘은 위험 관리에 무게가 실립니다.`,
+    ];
+    return { line: pickByDate(variants, baseDate), caption: `${prefix} · 분석 ${totalCount}종 평균 ${avgPct}%` };
+  }
+
+  // 보합 — 약한 등락
+  const variants = phase === 'pre_open' ? [
+    `어제 시장은 평균 ${avgSign}${avgPct}% 관망세 마감, 오늘 새 흐름을 기다립니다.`,
+    tc ? `어제 ${tc.name} 섹터가 ${tcSign}${tcPct}%, 다른 섹터는 보합권에 머물렀습니다.` : `어제 평균 ${avgSign}${avgPct}% 보합, 오늘 변동성 확인 필요.`,
+  ] : [
+    tc ? `오늘 시장은 ${avgSign}${avgPct}% 좁은 흐름, ${tc.name} 섹터가 ${tcSign}${tcPct}%로 일부 차별화됩니다.` : `오늘 시장은 평균 ${avgSign}${avgPct}%, 방향을 찾는 관망 흐름입니다.`,
+    `${totalCount}종 평균 ${avgSign}${avgPct}% — 큰 자금 이동 없이 종목별 차별화가 보입니다.`,
+  ];
+  return { line: pickByDate(variants, baseDate), caption: `${prefix} · 분석 ${totalCount}종 평균 ${avgSign}${avgPct}%` };
+}
+
 export function buildHookCopy(
   topEtf: TopEtfLite | null,
   baseDate?: string,

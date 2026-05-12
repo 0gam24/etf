@@ -28,6 +28,10 @@ interface Props {
   catalystHref?: string;
   /** KRX 마지막 거래일 (YYYYMMDD) — 시세 데이터 기준일 정직 표기용. */
   baseDate?: string;
+  /** 사이드 카드 라벨 — '오늘 상승 1위' / '오늘 거래량 1위' 등 분기. 미지정 시 거래량 1위 기본 */
+  rightLabel?: string;
+  /** 사이드 라벨 강조 톤 — 'gainer' (상승 빨강) | 'volume' (골드) | 'auto' */
+  rightTone?: 'gainer' | 'volume' | 'auto';
 }
 
 function formatBaseDate(ymd?: string): { display: string; isToday: boolean; weekdayLabel: string } | null {
@@ -49,7 +53,7 @@ function formatBaseDate(ymd?: string): { display: string; isToday: boolean; week
   };
 }
 
-export default function HomeHeroV3({ latestPulse, topEtf, catalystNews, catalystHref, baseDate }: Props) {
+export default function HomeHeroV3({ latestPulse, topEtf, catalystNews, catalystHref, baseDate, rightLabel, rightTone = 'auto' }: Props) {
   const bullets = latestPulse ? extractPulseBullets(latestPulse, 3) : [];
   const holdings = topEtf ? getEtfHoldings(topEtf.code) : null;
   const top3 = holdings?.holdings.slice(0, 3) ?? [];
@@ -147,12 +151,17 @@ export default function HomeHeroV3({ latestPulse, topEtf, catalystNews, catalyst
           )}
         </div>
 
-        {/* 우측: 오늘 거래량 1위 ETF + holdings TOP3 */}
+        {/* 우측: HERO 종목 (상승 1위 OR 거래량 1위) + holdings TOP3 */}
         {topEtf && (
           <aside className="home-hero-v3-right">
             <div className="home-hero-v3-right-head">
-              <span className="home-hero-v3-right-label">
-                {isStaleData ? '최근 거래일 거래량 1위' : '오늘 거래량 1위'}
+              <span
+                className="home-hero-v3-right-label"
+                style={rightTone === 'gainer' ? { color: '#EF4444' } : undefined}
+              >
+                {rightLabel
+                  ? rightLabel
+                  : (isStaleData ? '최근 거래일 거래량 1위' : '오늘 거래량 1위')}
               </span>
               <span className="home-hero-v3-right-code">{topEtf.code}</span>
             </div>

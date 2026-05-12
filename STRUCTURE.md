@@ -489,3 +489,10 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
   - 페이지 내 anchor scroll: `#daily-pulse-hero` (HomeHeroV3 — "왜 움직였나" CTA) · `#persona-selector` (PersonaSelector — "내 상황은?" CTA) · `#market-pulse-full` (EtfMarketPulse — "전체 시장" CTA). 모두 `scrollMarginTop: 5rem` 적용.
   - **좋은점 8 모두 반영**: 5초 첫인상 / 데이터 저널 톤 / 스토리텔링 출발점 / 재방문 동기 / 체류시간↑ / 카테고리 흐름 / 인지 정렬 / 모바일 2줄 fit.
   - **단점 7 모두 fix**: 분석 글 클릭률 보존 (왜? CTA → HomeHeroV3 funnel) / HomeHeroV3 무효화 회피 (기존 위치 유지) / 카피 충돌 제거 (슬로건 X, 데이터 라벨만) / 정보 과다 회피 (3 데이터로 압축) / 모바일 flex-wrap / 시청자 의도 (내 상황은? CTA) / 한투 의존도 분리 (SSR initial 항상 표시).
+- 2026-05-12 — 메인 페이지 스토리텔링 줌-인 재배치 + Hook 시장 전체 + HERO 상승 1위 ★★
+  - **순서 재배치 (사용자 명시)**: Chapter 7 LIVE (`EtfMarketPulse`) 를 Chapter 2 위로 이동. 신규 흐름: TrustBar → VolumeSurgeAlert → MarketPulseCondensed → **Hook (시장 전체 한 문장)** → **LIVE 시장 위젯** → **HERO (상승 1위 분석)** → 광고 → BREAKING (상승 1위 매칭) → Snapshot → Market Snapshot section → 시나리오 → TrendingNow → PersonaSelector → DefenseTop3 → ReturnTrigger → 광고 → DataFooter.
+  - **Hook 시장 전체 모드**: `buildMarketHookCopy({ marketAvg, topCategory, totalCount }, baseDate)` 신규 함수. ETF 1종목이 아닌 시장 평균 + 가장 큰 카테고리 + 시간대 자동 분기 (🌙/🔴/🟡/📅). LIVE 위젯 다음 위치에 맞춰 한 단계 위 줌 레벨 카피 생성.
+  - **HERO 대상 변경**: `topEtf` (거래량 1위) → `topGainer` (상승 1위). LIVE 시장 위젯 직후 자연 funnel — "지금 가장 오르는 종목이 이거" 명확. props `rightLabel`/`rightTone='gainer'` 추가 → 우측 카드 라벨 "오늘 상승 1위" + 빨강 강조.
+  - **Breaking 매칭 우선순위 변경**: 상승 1위 ETF 관련 breaking 우선 → 없으면 거래량 1위 → 그것도 없으면 최근 거래일 3건 폴백. `heroBreakingPost = topGainerBreakingPost || topEtfBreakingPost`. Hero 도화선·Breaking strip 1순위가 모두 상승 1위 ETF 로 통일.
+  - **줌-인 스토리텔링 의도** (니치 = KRX ETF 직접 투자 개인): 거시 LIVE → 한 문장 압축 → 상승 1위 종목 (방향성) → 그 종목 속보 (근거) → 시나리오 분기 (행동) → 페르소나 (개인화) → 재방문 트리거.
+  - 기존 위치의 `EtfMarketPulse` 제거 (DefenseTop3 다음 위치) → 동일 anchor `#market-pulse-full` 신규 위치 (HookV1 다음) 유지.

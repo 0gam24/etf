@@ -2,7 +2,7 @@ import { getLatestPulse, getPostsByCategory, findPostByTickerInCategories } from
 import { getLatestEtfData, getLatestEcoData } from '@/lib/data';
 import { getIncomeRegistry } from '@/lib/income-server';
 import { extractFirstHeadline, pickLatestTradeDayBreaking } from '@/lib/breaking';
-import { buildHookCopy } from '@/lib/hook';
+import { buildMarketHookCopy } from '@/lib/hook';
 import { computeTickerDiff } from '@/lib/pulse';
 import type { RawEtf } from '@/lib/surge';
 import EtfMarketPulse from '@/components/EtfMarketPulse';
@@ -53,29 +53,39 @@ export default async function HomePage() {
     ? { name: defenseEtfs[0].name, yield: defenseEtfs[0].yield }
     : null;
 
-  // 거래량 1위
+  // 거래량 1위 (Condensed·Snapshot 보조 표시용 + breaking 폴백)
   const sortedByVolume = (etfData?.etfList || []).slice().sort(
     (a: { volume?: number }, b: { volume?: number }) => (b.volume || 0) - (a.volume || 0),
   );
   const topEtf = etfData?.byVolume?.[0] || sortedByVolume[0];
 
-  // 홈 속보 — 오늘의 도화선(topEtf 관련) + 3카드 스트립
-  // 거래일(pulseDate/slug) 기준 그룹핑 → rank 오름차순. UTC date 함정 회피.
-  const breakingPosts = pickLatestTradeDayBreaking(getPostsByCategory('breaking'), 3);
-  const topEtfBreakingPost = topEtf
-    ? findPostByTickerInCategories(topEtf.code, ['breaking'])
-    : null;
-  const catalystNews = extractFirstHeadline(topEtfBreakingPost);
-  const catalystHref = topEtfBreakingPost
-    ? `/${topEtfBreakingPost.meta.category}/${topEtfBreakingPost.meta.slug}`
-    : undefined;
-
-  // 상승/하락 1위
+  // 상승/하락 1위 — 새 HERO 의 분석 대상 (라이브 방향성 종목)
   const sortedByChange = (etfData?.etfList || []).slice().sort(
     (a: { changeRate?: number }, b: { changeRate?: number }) => (b.changeRate || 0) - (a.changeRate || 0),
   );
   const topGainer = sortedByChange[0];
   const topLoser = sortedByChange[sortedByChange.length - 1];
+
+  // 홈 속보 — 상승 1위 ETF 관련 우선, 없으면 거래량 1위 폴백, 그것도 없으면 최근 거래일 3건
+  const allBreakingPosts = getPostsByCategory('breaking');
+  const topGainerBreakingPost = topGainer
+    ? findPostByTickerInCategories(topGainer.code, ['breaking'])
+    : null;
+  const topEtfBreakingPost = topEtf
+    ? findPostByTickerInCategories(topEtf.code, ['breaking'])
+    : null;
+  const heroBreakingPost = topGainerBreakingPost || topEtfBreakingPost;
+  const catalystNews = extractFirstHeadline(heroBreakingPost);
+  const catalystHref = heroBreakingPost
+    ? `/${heroBreakingPost.meta.category}/${heroBreakingPost.meta.slug}`
+    : undefined;
+  // 속보 strip: 상승 1위 관련 글이 있으면 그것을 1순위로, 나머지는 최근 거래일 기준
+  const latestTradeDayBreakings = pickLatestTradeDayBreaking(allBreakingPosts, 3);
+  const breakingPosts = (() => {
+    if (!topGainerBreakingPost) return latestTradeDayBreakings;
+    const dedup = latestTradeDayBreakings.filter(p => p.meta.slug !== topGainerBreakingPost.meta.slug);
+    return [topGainerBreakingPost, ...dedup].slice(0, 3);
+  })();
 
   // 시장 평균 등락률
   const totalCount = (etfData?.etfList || []).length;
@@ -83,8 +93,15 @@ export default async function HomePage() {
     ? (etfData!.etfList as { changeRate?: number }[]).reduce((s, e) => s + (e.changeRate || 0), 0) / totalCount
     : 0;
 
-  // Chapter 1: Hook 1문장 (templates 기반, 결정적)
-  const hook = buildHookCopy(topEtf, etfData?.baseDate);
+  // 가장 큰 카테고리 (Hook 시장 전체 + Condensed 보조)
+  const topCategory = Object.entries(etfData?.categories || {})
+    .map(([key, c]) => ({ name: (c as { name?: string }).name || key, avgChange: (c as { avgChange?: number }).avgChange || 0 }))
+    .reduce<{ name: string; avgChange: number } | null>(
+      (best, c) => (!best || Math.abs(c.avgChange) > Math.abs(best.avgChange)) ? c : best, null,
+    );
+
+  // Chapter 1: Hook — '라이브 시장 전체' 한 문장 (LIVE 위젯 직후 위치)
+  const hook = buildMarketHookCopy({ marketAvg, topCategory, totalCount }, etfData?.baseDate);
 
   // Chapter 8: 어제 대비 변화
   const tickerDiff = computeTickerDiff(latestPulse, yesterdayPulse);
@@ -111,23 +128,31 @@ export default async function HomePage() {
         fullWidgetAnchor="#market-pulse-full"
       />
 
-      {/* Chapter 1 — HOOK: 오늘의 단 한 문장 */}
+      {/* Chapter 1 — HOOK: 라이브 시장 전체 한 문장 (시간대별 caption 자동 분기) */}
       <HomeHookV1 hook={hook} />
 
-      {/* Chapter 2 — DATA: 메인 히어로 + 5초 스냅샷 (Condensed "왜?" CTA anchor) */}
+      {/* Chapter 7 — LIVE: 라이브 시장 전체 위젯 (시청자에게 '지금 살아있다' 신호 먼저) */}
+      <div id="market-pulse-full" style={{ scrollMarginTop: '5rem' }}>
+        <EtfMarketPulse />
+      </div>
+
+      {/* Chapter 2 — DATA HERO: 라이브 상승 1위 ETF + '왜 오르고 있나' 분석 funnel
+          (Condensed "왜?" CTA anchor — 거래량 1위가 아니라 방향성 종목으로 전환) */}
       <div id="daily-pulse-hero" style={{ scrollMarginTop: '5rem' }}>
         <HomeHeroV3
           latestPulse={latestPulse}
-          topEtf={topEtf}
+          topEtf={topGainer || topEtf}
           catalystNews={catalystNews}
           catalystHref={catalystHref}
           baseDate={etfData?.baseDate}
+          rightLabel={topGainer ? '오늘 상승 1위' : undefined}
+          rightTone={topGainer ? 'gainer' : 'auto'}
         />
       </div>
 
       <RecommendBox position="top" />
 
-      {/* Chapter 3 — BREAKING: 오늘의 ETF 속보 (홀딩스 펼침) */}
+      {/* Chapter 3 — BREAKING: 상승 1위 ETF 관련 속보 우선 (+ 최근 거래일 폴백) */}
       <HomeBreakingStrip posts={breakingPosts} etfs={(etfData?.etfList || []) as RawEtf[]} />
 
       <HomeSnapshot
@@ -209,13 +234,8 @@ export default async function HomePage() {
         <PersonaSelector />
       </div>
 
-      {/* Chapter 5 — RISK: 안정성 S 등급 방어 라인업 */}
+      {/* Chapter 5 — RISK: 안정성 S 등급 방어 라인업 (페르소나 다음, 재방문 트리거 직전 위치 — 위험 관리 niche 충족) */}
       {defenseEtfs.length > 0 && <HomeDefenseTop3 defenseEtfs={defenseEtfs} />}
-
-      {/* Chapter 7 — LIVE: 라이브 시장 위젯 (Condensed "전체 시장" CTA anchor) */}
-      <div id="market-pulse-full" style={{ scrollMarginTop: '5rem' }}>
-        <EtfMarketPulse />
-      </div>
 
       {/* Chapter 8 — TOMORROW: 어제 대비 변화 (재방문 트리거) */}
       <HomeReturnTrigger
