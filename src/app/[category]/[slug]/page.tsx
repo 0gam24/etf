@@ -19,6 +19,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
 import MainBackrefBox, { getBackrefUrlForCategory } from '@/components/MainBackrefBox';
 import LiveTickerChip from '@/components/LiveTickerChip';
+import PublishedVsLive from '@/components/PublishedVsLive';
 import type { ProductCategory } from '@/lib/products';
 import { AUTHORS } from '@/lib/authors';
 import { buildArticleSchema, buildPersonSchema, jsonLd } from '@/lib/schema';
@@ -235,6 +236,23 @@ export default async function PostPage({ params }: PageProps) {
               )}
             </div>
           </header>
+
+          {/* 발행 vs 현재 — 글 1번째 ticker 의 시세 변동 transparent 표기 */}
+          {post.meta.tickers && post.meta.tickers[0] && (() => {
+            const t = post.meta.tickers[0];
+            const liveEtf = etfList.find(e => e.code === t);
+            if (!liveEtf || !liveEtf.price) return null;
+            const meta = getKrxEtfMeta(t);
+            const pubDate = new Date(post.meta.date).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
+            return (
+              <PublishedVsLive
+                code={t}
+                name={meta?.name || liveEtf.name}
+                publishedPrice={liveEtf.price}
+                publishedDate={pubDate}
+              />
+            );
+          })()}
 
           <RecommendBox position="top" category={postCategoryToProductCategory(category)} />
 

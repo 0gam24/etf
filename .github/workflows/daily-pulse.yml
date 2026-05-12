@@ -71,6 +71,16 @@ jobs:
         # 키 없으면 자동으로 dry-run 폴백 → step 실패 안 함
         run: npm run fetch:products:merge || true
 
+      - name: Accumulate OHLC history (시그널 발행용 시계열 축적)
+        # KOSPI200 추적 종목 9 종의 OHLC 일봉을 data/ohlc/{code}.json 에 누적.
+        # 첫 cron 실행 후 ~21일부터 변동성 breakout 시그널 생성 가능.
+        run: npm run accumulate:ohlc || true
+
+      - name: Generate breakout signal (코스피200 변동성 돌파)
+        # data/signals/breakout-{date}.json + breakout-latest.json 생성.
+        # /strategy/kospi200-breakout 페이지가 이 데이터 SSR.
+        run: npm run generate:signal || true
+
       - name: Regenerate today.md (운영자 매일 한 눈에 보는 발행 일지)
         # content/ 발행 후 today.md 도 함께 갱신 — pipeline 0건이어도 lastUpdated 시점 갱신.
         # 본 step 실패해도 commit·push 계속 진행 (today.md 는 부차적).

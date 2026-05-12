@@ -385,6 +385,14 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
 - 2026-05-07 — 초기 자동 생성 (commit b37276b 기준)
 - 2026-05-07 — `MainBackrefBox` 추가: smartdatashop network 자매 backref 컴포넌트 + 글·종목사전·SiteFooter 3 위치 적용 + `buildArticleSchema()`에 `publisher.parentOrganization` + `isBasedOn` + RootLayout `ORG_SCHEMA.parentOrganization` 추가 (NETWORK.md v0.6 dual-brand 준수 · YMYL BANNED_PHRASES 통과 확인)
 - 2026-05-07 — Network Index 시스템 합류: `scripts/generate-network-mirror.mjs` 신설 + `prebuild` 훅 등록 → `public/network-mirror.json` 빌드마다 자동 재생성 (분석 18편 + ETF 사전 1099 별도 키 + 7 AI 에이전트 accent · `.gitignore`에 등재 · robots.txt는 기존 정책상 자연 허용)
+- 2026-05-11 — Phase 3 Round 1: Unger 변동성 돌파 시그널 시스템 + 거래량 급증 알림 + 발행 vs 현재 박스
+  - `src/lib/strategies/breakout.ts` — Andrea Unger Volatility Breakout 공식 (5일 ATR · 0.5K 트리거 · 0.6K 손절 · 1.0K 익절 · 20일 SMA 추세 필터 · 0.8% 변동성 필터)
+  - `scripts/accumulate-ohlc.mjs` + `scripts/generate-breakout-signal.mjs` — 매일 cron 이 KOSPI200 추적 9 종의 OHLC 일봉을 `data/ohlc/{code}.json` 60일 보관 + 시그널 산출 → `data/signals/breakout-{date}.json` + `breakout-latest.json`
+  - `.github/workflows/daily-pulse.yml` 에 `accumulate:ohlc` + `generate:signal` 2 step 추가 (DataMiner 다음)
+  - `src/app/strategy/kospi200-breakout/page.tsx` — 4 종목 시그널 카드 (Long/Short 진입가·손절·익절·추세·변동성 표시) + 공식 파라미터 + ⚠️ 면책 조항
+  - `src/components/VolumeSurgeAlert.tsx` — 메인페이지 상단 거래량 급증 알림 띠. baseline (전 거래일) 대비 1.5배 초과 + 장중에만 노출. 30초 polling.
+  - `src/components/PublishedVsLive.tsx` — 글 페이지에 발행 당시 vs 현재 가격 비교 박스. 진입 시 1회 fetch.
+  - 통합: page.tsx (메인) · [category]/[slug] (글) 연결
 - 2026-05-11 — Phase 2 본 작업: 실시간 시세 UI 통합 + 운영자 모니터링 대시보드
   - `EtfMarketPulse` (메인 위젯) — 마운트 시 `/api/etf` 호출 후 top10 종목 코드만 `/api/etf/realtime` 로 장중 30초·마감 5분 polling. 가격·등락·거래량만 덮어씀. "장중 실시간 14:32:15 갱신" / "오늘 종가 15:30 마감" 자동 라벨 분기.
   - `LiveQuoteCard` 신설 (`src/components/LiveQuoteCard.tsx`) + `HomeHeroV3` 의 "오늘 거래량 1위" 카드 가격·거래량 부분을 클라이언트 컴포넌트로 분리. SSR initial + 30초 polling 갱신.

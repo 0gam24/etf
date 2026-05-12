@@ -8,6 +8,7 @@ import type { RawEtf } from '@/lib/surge';
 import EtfMarketPulse from '@/components/EtfMarketPulse';
 import HoldingsPanel from '@/components/HoldingsPanel';
 import TrustBar from '@/components/TrustBar';
+import VolumeSurgeAlert from '@/components/VolumeSurgeAlert';
 import HomeHookV1 from '@/components/HomeHookV1';
 import HomeHeroV3 from '@/components/HomeHeroV3';
 import HomeBreakingStrip from '@/components/HomeBreakingStrip';
@@ -88,6 +89,9 @@ export default async function HomePage() {
     <>
       {/* Chapter 0 — TRUST: 신뢰 띠 */}
       <TrustBar etfCount={totalCount || 100} />
+
+      {/* Volume Surge — 장중 거래량 급증 ETF 발견 시 동적 노출 */}
+      <VolumeSurgeAlert baselineList={(etfData?.byVolume || []).slice(0, 10) as { code: string; name: string; volume: number; changeRate: number; price: number }[]} />
 
       {/* Chapter 1 — HOOK: 오늘의 단 한 문장 */}
       <HomeHookV1 hook={hook} />

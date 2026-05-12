@@ -22,6 +22,8 @@
     "generate:etf-slugs": "node scripts/generate-etf-slugs.mjs",
     "generate:mirror": "node scripts/generate-network-mirror.mjs",
     "generate:today": "node scripts/generate-today.mjs",
+    "accumulate:ohlc": "node scripts/accumulate-ohlc.mjs",
+    "generate:signal": "node scripts/generate-breakout-signal.mjs",
     "env:sync": "node scripts/sync-env.mjs",
     "env:sync:apply": "node scripts/sync-env.mjs --apply",
     "audit:seo": "node scripts/audit-seo.mjs",
