@@ -1,0 +1,157 @@
+{
+  "_meta": {
+    "createdBy": "Visualizer",
+    "createdAt": "2026-05-13T09:45:00.567Z",
+    "fileName": "charts_20260513_income-20260513-0000d0.json"
+  },
+  "data": [
+    {
+      "type": "table",
+      "title": "투자원금별 월 분배금 & 세후 수령액 (연 분배율 10% 가정)",
+      "columns": [
+        "투자원금",
+        "월분배금(세전)",
+        "일반계좌(15.4%)",
+        "ISA 비과세",
+        "연금저축·IRP(5.5%)"
+      ],
+      "rows": [
+        [
+          "1,000만 원",
+          "83,333원",
+          "70,500원",
+          "83,333원",
+          "78,750원"
+        ],
+        [
+          "3,000만 원",
+          "250,000원",
+          "211,500원",
+          "250,000원",
+          "236,250원"
+        ],
+        [
+          "5,000만 원",
+          "416,666원",
+          "352,500원",
+          "416,666원",
+          "393,750원"
+        ],
+        [
+          "10,000만 원",
+          "833,333원",
+          "705,000원",
+          "833,333원",
+          "787,500원"
+        ]
+      ],
+      "alt": "투자원금별 월 분배금 & 세후 수령액 (연 분배율 10% 가정) — Daily ETF Pulse"
+    },
+    {
+      "type": "comparison",
+      "title": "계좌 유형별 배당 세율",
+      "data": [
+        {
+          "label": "일반 계좌",
+          "taxRate": 15.4,
+          "description": "배당소득세 15.4%"
+        },
+        {
+          "label": "ISA (비과세)",
+          "taxRate": 0,
+          "description": "연 200만 원 비과세"
+        },
+        {
+          "label": "연금저축·IRP",
+          "taxRate": 4.4,
+          "description": "연금 수령 시 3.3~5.5%"
+        }
+      ],
+      "alt": "계좌 유형별 배당 세율 — Daily ETF Pulse"
+    },
+    {
+      "type": "line",
+      "title": "월 50만 원 적립 + 재투자 10년 시뮬레이션",
+      "data": [
+        {
+          "label": "1년차",
+          "conservative": 609,
+          "moderate": 618,
+          "aggressive": 627
+        },
+        {
+          "label": "2년차",
+          "conservative": 1236,
+          "moderate": 1272,
+          "aggressive": 1308
+        },
+        {
+          "label": "3년차",
+          "conservative": 1881,
+          "moderate": 1962,
+          "aggressive": 2043
+        },
+        {
+          "label": "4년차",
+          "conservative": 2544,
+          "moderate": 2688,
+          "aggressive": 2832
+        },
+        {
+          "label": "5년차",
+          "conservative": 3225,
+          "moderate": 3450,
+          "aggressive": 3675
+        },
+        {
+          "label": "6년차",
+          "conservative": 3924,
+          "moderate": 4248,
+          "aggressive": 4572
+        },
+        {
+          "label": "7년차",
+          "conservative": 4641,
+          "moderate": 5082,
+          "aggressive": 5523
+        },
+        {
+          "label": "8년차",
+          "conservative": 5376,
+          "moderate": 5952,
+          "aggressive": 6528
+        },
+        {
+          "label": "9년차",
+          "conservative": 6129,
+          "moderate": 6858,
+          "aggressive": 7587
+        },
+        {
+          "label": "10년차",
+          "conservative": 6900,
+          "moderate": 7800,
+          "aggressive": 8700
+        }
+      ],
+      "series": [
+        {
+          "key": "conservative",
+          "label": "안정형 (3%)",
+          "color": "#3B82F6"
+        },
+        {
+          "key": "moderate",
+          "label": "중립형 (6%)",
+          "color": "#10B981"
+        },
+        {
+          "key": "aggressive",
+          "label": "적극형 (9%)",
+          "color": "#F59E0B"
+        }
+      ],
+      "alt": "월 50만 원 적립 + 재투자 10년 시뮬레이션 — Daily ETF Pulse"
+    }
+  ]
+}

@@ -2,9 +2,9 @@
 
 > 매일 평일 KST 16:00 자동 갱신 (KRX 마감 후 30분).
 >
-> **마지막 갱신**: 2026-05-12 18:42 KST
-> **마지막 발행일**: 2026-05-12
-> **최근 7일 발행**: 30편 / **총 누적**: 30편
+> **마지막 갱신**: 2026-05-13 18:50 KST
+> **마지막 발행일**: 2026-05-13
+> **최근 7일 발행**: 36편 / **총 누적**: 36편
 
 ---
 
@@ -25,10 +25,20 @@
 
 ## 📰 최근 7일 발행 (날짜별)
 
-### 2026-05-12 (총 7편)
+### 2026-05-13 (총 7편)
+
+- 🌅 **오늘의 관전포인트** — [5월 13일 오늘의 ETF 관전포인트 — 거래량 1위 KODEX 방산TOP10 외 2종목](https://iknowhowinfo.com/pulse/pulse-20260513)
+- 🚀 **급등 테마 분석** — [KODEX 방산TOP10, 왜 오늘 거래량 1위인가 — 방위산업 ETF 전망](https://iknowhowinfo.com/surge/0080g0-kodex-defense-top10-surge)
+- 💧 **자금 흐름 리포트** — [이번 주 자금은 어디로? 해외주식 섹터에 몰린 1605억 원](https://iknowhowinfo.com/flow/flow-20260513-overseas)
+- 💰 **월배당·커버드콜** — [ISA 계좌 필수 월배당 ETF 조합 — 실제 분배금·세후 수익률 계산](https://iknowhowinfo.com/income/income-20260513-0000d0)
+- ⚡ **ETF 속보** (3건)
+  - [[05월 13일 속보] KODEX 방산TOP10 — 조정 2.78%, 왜 움직였나](https://iknowhowinfo.com/breaking/breaking-20260513-1-0080g0)
+  - [[05월 13일 속보] SOL 조선TOP3플러스레버리지 — 조정 5.64%, 왜 움직였나](https://iknowhowinfo.com/breaking/breaking-20260513-2-0080y0)
+  - [[05월 13일 속보] TIGER KRX금현물 — 상승 1.50%, 왜 움직였나](https://iknowhowinfo.com/breaking/breaking-20260513-3-0072r0)
+
+### 2026-05-12 (총 6편)
 
 - 🌅 **오늘의 관전포인트** — [5월 12일 오늘의 ETF 관전포인트 — 거래량 1위 KODEX 방산TOP10 외 2종목](https://iknowhowinfo.com/pulse/pulse-20260512)
-- 🚀 **급등 테마 분석** — [KODEX 방산TOP10, 왜 오늘 거래량 1위인가 — 방위산업 ETF 지정학 수혜](https://iknowhowinfo.com/surge/0080g0-kodex-defense-top10-surge)
 - 💧 **자금 흐름 리포트** — [이번 주 자금은 어디로? 조선 섹터에 몰린 734억 원](https://iknowhowinfo.com/flow/flow-20260512-shipbuilding)
 - 💰 **월배당·커버드콜** — [IRP에서 사기 좋은 커버드콜 ETF TOP5 — 실제 분배금·세후 수익률 계산](https://iknowhowinfo.com/income/income-20260512-0000d0)
 - ⚡ **ETF 속보** (3건)
@@ -79,11 +89,11 @@
 
 ## 🗂 카테고리별 누적
 
-- 🌅 **오늘의 관전포인트** (`/pulse`) — 5편
+- 🌅 **오늘의 관전포인트** (`/pulse`) — 6편
 - 🚀 **급등 테마 분석** (`/surge`) — 2편
-- 💧 **자금 흐름 리포트** (`/flow`) — 5편
-- 💰 **월배당·커버드콜** (`/income`) — 6편
-- ⚡ **ETF 속보** (`/breaking`) — 12편
+- 💧 **자금 흐름 리포트** (`/flow`) — 6편
+- 💰 **월배당·커버드콜** (`/income`) — 7편
+- ⚡ **ETF 속보** (`/breaking`) — 15편
 
 ---
 
