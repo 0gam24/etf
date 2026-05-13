@@ -3,6 +3,7 @@ import path from 'node:path';
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import FreshnessPill from '@/components/FreshnessPill';
 
 interface BreakoutSignal {
   code: string;
@@ -67,8 +68,11 @@ export default function Kospi200BreakoutPage() {
       ]} />
 
       <header style={{ marginBottom: 'var(--space-8)' }}>
-        <div style={{ fontSize: '0.75rem', letterSpacing: '0.1em', color: 'var(--accent-gold)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-          SIGNAL · KOSPI200
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
+          <span style={{ fontSize: '0.75rem', letterSpacing: '0.1em', color: 'var(--accent-gold)', textTransform: 'uppercase' }}>
+            SIGNAL · KOSPI200
+          </span>
+          <FreshnessPill isoDate={data?.generatedAt} />
         </div>
         <h1 style={{ fontSize: 'var(--fs-h1)', marginBottom: 'var(--space-4)' }}>
           코스피200 변동성 돌파 시그널
