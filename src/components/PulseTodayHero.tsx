@@ -7,7 +7,7 @@ interface Props {
   today: Post | null;
 }
 
-/** 메인 HomeBreakingStrip 와 통일 — KST 기준 오늘/어제/N일 전 발행 pill */
+/** 메인 HomeBreakingStrip 와 통일 — KST 기준 오늘/어제/N일 전 발행 pill (date string 차이 정확 계산) */
 function freshnessPill(isoDate?: string): { label: string; tone: 'fresh' | 'stale' } {
   if (!isoDate) return { label: '발행일 미상', tone: 'stale' };
   const pub = new Date(isoDate);
@@ -18,7 +18,9 @@ function freshnessPill(isoDate?: string): { label: string; tone: 'fresh' | 'stal
   const pubDay = pubKst.toISOString().slice(0, 10);
   const nowDay = nowKst.toISOString().slice(0, 10);
   if (pubDay === nowDay) return { label: '🔴 오늘 발행', tone: 'fresh' };
-  const diff = Math.floor((nowKst.getTime() - pubKst.getTime()) / 86400000);
+  const pubMidnight = new Date(`${pubDay}T00:00:00Z`).getTime();
+  const nowMidnight = new Date(`${nowDay}T00:00:00Z`).getTime();
+  const diff = Math.round((nowMidnight - pubMidnight) / 86400000);
   if (diff === 1) return { label: '📅 어제 발행', tone: 'stale' };
   return { label: `📅 ${diff}일 전 발행`, tone: 'stale' };
 }

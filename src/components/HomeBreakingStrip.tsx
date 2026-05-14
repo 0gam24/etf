@@ -13,6 +13,7 @@ interface Props {
 /**
  * 최신 속보 발행 시점 → '오늘 / 어제 / N일 전' KST 기준 라벨.
  * publish date를 ISO timestamp 로 받아 ISR 5분마다 SSR 재계산.
+ * 자정 직후 ms diff 0 인 경우 0일 전 표시 버그 회피 — date string 차이로 정확 계산.
  */
 function freshnessFor(isoDate?: string): { label: string; tone: 'fresh' | 'stale' } {
   if (!isoDate) return { label: '발행일 미상', tone: 'stale' };
@@ -24,8 +25,9 @@ function freshnessFor(isoDate?: string): { label: string; tone: 'fresh' | 'stale
   const pubDay = pubKst.toISOString().slice(0, 10);
   const nowDay = nowKst.toISOString().slice(0, 10);
   if (pubDay === nowDay) return { label: '🔴 오늘 발행', tone: 'fresh' };
-  // 일 단위 차이
-  const diff = Math.floor((nowKst.getTime() - pubKst.getTime()) / 86400000);
+  const pubMidnight = new Date(`${pubDay}T00:00:00Z`).getTime();
+  const nowMidnight = new Date(`${nowDay}T00:00:00Z`).getTime();
+  const diff = Math.round((nowMidnight - pubMidnight) / 86400000);
   if (diff === 1) return { label: '📅 어제 발행', tone: 'stale' };
   return { label: `📅 ${diff}일 전 발행`, tone: 'stale' };
 }

@@ -25,7 +25,10 @@ export default function FreshnessPill({ isoDate, size = 'sm' }: Props) {
     label = '🔴 오늘 발행';
     tone = 'fresh';
   } else {
-    const diff = Math.floor((nowKst.getTime() - pubKst.getTime()) / 86400000);
+    // 일자 차이를 date string 으로 정확히 계산 (자정 직후 ms diff 0 인 경우 0일 전 표시 버그 회피)
+    const pubMidnight = new Date(`${pubDay}T00:00:00Z`).getTime();
+    const nowMidnight = new Date(`${nowDay}T00:00:00Z`).getTime();
+    const diff = Math.round((nowMidnight - pubMidnight) / 86400000);
     label = diff === 1 ? '📅 어제 발행' : `📅 ${diff}일 전 발행`;
     tone = 'stale';
   }
