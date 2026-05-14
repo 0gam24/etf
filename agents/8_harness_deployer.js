@@ -126,10 +126,11 @@ function validateSeo(article) {
   if (isStockAnalysis && content.length > 500) {
     const geoIssues = [];
 
-    // 7-1. 외부 권위 출처 hyperlink ≥ 2
-    const authorityLinks = (content.match(/\[(KRX 공시|DART 공시|한국은행 ECOS|운용사 공시|운용사 공식 공시)[^\]]*\]\(https?:\/\/[^)]+\)/g) || []).length;
+    // 7-1. 외부 권위 출처 hyperlink ≥ 2 (KRX·DART·ECOS·금융위 등 — anchor text 자유 + 도메인 매칭)
+    const authorityUrlRe = /\[[^\]]+\]\(https?:\/\/[^)]*(?:krx\.co\.kr|dart\.fss\.or\.kr|ecos\.bok\.or\.kr|kofia\.or\.kr|fsc\.go\.kr|fsa\.go\.kr|moef\.go\.kr|bok\.or\.kr)[^)]*\)/g;
+    const authorityLinks = (content.match(authorityUrlRe) || []).length;
     if (authorityLinks < 2) {
-      geoIssues.push(`외부 권위 출처 hyperlink ${authorityLinks}개 (KRX·DART·ECOS 등 ≥ 2 권장)`);
+      geoIssues.push(`외부 권위 출처 hyperlink ${authorityLinks}개 (KRX·DART·ECOS·금융위 도메인 ≥ 2 권장)`);
     }
 
     // 7-2. 시간 명시 ≥ 1
