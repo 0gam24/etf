@@ -511,5 +511,5 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
   - **4 곳 라이브 양수 max swap 패턴 통일**: MarketPulseCondensed · HomeSnapshot · LiveHeroFeatured (HERO 우측) · EtfMarketPulse. 모두 baseline top10 받아 한투 30s polling → 양수 max 재선택 → 음수만 있으면 거래량 1위 폴백.
   - **신규 컴포넌트 7종**: `LiveDataBadge` · `LiveQuoteTable` · `HeroFeaturedLabel` · `HbsLiveChange` · `LiveHookContent` · `MarketPulseCondensed` · `LiveHeroFeatured`.
   - **분석 글 대상 ETF 명시 라벨 (narrative 일치성 안 1)**: HERO 좌측 "전체 브리핑 읽기" CTA 옆에 분석 글 frontmatter `tickers[0]` resolved name pill. 우측 라이브 종목과 다르면 파랑 톤 "· 우측 라이브 종목과 다름" 보조 텍스트 + 툴팁. 사용자가 클릭 전 narrative 미스매치 인지 가능.
-  - **FreshnessPill 공통화 — 6 곳 시그널 통일**: `FreshnessPill` server component 신설 — KST 기준 '🔴 오늘 발행' / '📅 어제 발행' / '📅 N일 전 발행'. 메인 HomeBreakingStrip + /pulse PulseTodayHero + /surge SurgeHero + /flow FlowHero + /income IncomeHero + /breaking 인덱스 hero 6 곳 적용. 자정 boundary 자동 전환.
+  - **FreshnessPill 공통화 — 9 곳 시그널 통일**: `FreshnessPill` server component 신설 — KST 기준 '🔴 오늘 발행' / '📅 어제 발행' / '📅 N일 전 발행'. 메인 HomeBreakingStrip + /pulse PulseTodayHero + /surge SurgeHero + /flow FlowHero + /income IncomeHero + /breaking 인덱스 hero + /strategy/kospi200-breakout + /strategy/track-record + /today 9 곳 적용. 자정 boundary 자동 전환.
   - **남은 Phase 6-4-b**: KV `breaking:queue:*` consumer (Gemini 호출 → MDX 발행) — 후속 단계로 보류 (높은 비용·YMYL 검증 필요).

@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import FreshnessPill from '@/components/FreshnessPill';
 
 interface Outcome {
   code: string;
@@ -65,8 +66,11 @@ export default function TrackRecordPage() {
       ]} />
 
       <header style={{ marginBottom: 'var(--space-6)' }}>
-        <div style={{ fontSize: '0.75rem', letterSpacing: '0.1em', color: 'var(--accent-gold)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-          TRACK RECORD · TRANSPARENT
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
+          <span style={{ fontSize: '0.75rem', letterSpacing: '0.1em', color: 'var(--accent-gold)', textTransform: 'uppercase' }}>
+            TRACK RECORD · TRANSPARENT
+          </span>
+          <FreshnessPill isoDate={record?.updatedAt} />
         </div>
         <h1 style={{ fontSize: 'var(--fs-h1)', marginBottom: 'var(--space-3)' }}>
           시그널 결과 자동 공개

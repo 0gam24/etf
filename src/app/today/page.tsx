@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import TodayReport from './TodayReport';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import FreshnessPill from '@/components/FreshnessPill';
 
 function loadLatest() {
   try {
@@ -37,8 +38,13 @@ export default function TodayPage() {
       ]} />
 
       <header style={{ marginBottom: 'var(--space-6)' }}>
-        <div style={{ fontSize: '0.75rem', letterSpacing: '0.1em', color: 'var(--accent-gold)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-          TODAY · DAILY SNAPSHOT
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
+          <span style={{ fontSize: '0.75rem', letterSpacing: '0.1em', color: 'var(--accent-gold)', textTransform: 'uppercase' }}>
+            TODAY · DAILY SNAPSHOT
+          </span>
+          {report?.date && (
+            <FreshnessPill isoDate={`${report.date}T16:00:00+09:00`} />
+          )}
         </div>
         <h1 style={{ fontSize: 'var(--fs-h1)', marginBottom: 'var(--space-3)' }}>
           오늘의 ETF 종합 리포트
