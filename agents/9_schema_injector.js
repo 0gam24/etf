@@ -101,6 +101,43 @@ function buildBreadcrumbSchema(article, baseUrl) {
   };
 }
 
+/**
+ * Dataset 스키마 — GEO·LLM 검색 인용 신호 강화.
+ *   KRX·운용사 공시 데이터 기반 글에 Dataset 명시 → LLM 이 "이 ETF 시세는 데이터셋"으로 인식.
+ *   해당 글이 종목 분석 (tickers 보유) 인 경우만 추가.
+ */
+function buildDatasetSchema(article, baseUrl) {
+  const tickers = article.tickers || [];
+  if (tickers.length === 0) return null;
+  const pulseDate = article.pulseDate || '';
+  const dateModified = pulseDate.length === 8
+    ? `${pulseDate.slice(0, 4)}-${pulseDate.slice(4, 6)}-${pulseDate.slice(6, 8)}`
+    : new Date().toISOString().slice(0, 10);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Dataset',
+    name: `${article.title || article.keyword} — 시세·구성종목 데이터셋`,
+    description: `한국거래소(KRX) 공공데이터와 운용사 공식 공시를 기반으로 한 ETF 시세·구성종목·분배 정보. 종목코드 ${tickers.join(', ')}.`,
+    url: `${baseUrl}/${article.category}/${article.slug}`,
+    keywords: tickers.join(', '),
+    creator: {
+      '@type': 'Organization',
+      name: 'Daily ETF Pulse',
+      url: baseUrl,
+    },
+    spatialCoverage: 'KR',
+    isAccessibleForFree: true,
+    license: `${baseUrl}/about`,
+    distribution: [
+      { '@type': 'DataDownload', encodingFormat: 'text/html', contentUrl: `${baseUrl}/${article.category}/${article.slug}` },
+    ],
+    temporalCoverage: dateModified,
+    dateModified,
+    inLanguage: 'ko-KR',
+    variableMeasured: ['현재가(원)', '전일대비(원)', '등락률(%)', '거래량(주)', '거래대금(원)', '구성종목 비중(%)'],
+  };
+}
+
 async function run({ today, previousResults }) {
   logger.log(AGENT_NAME, '📐 JSON-LD 스키마 생성');
 
@@ -119,9 +156,13 @@ async function run({ today, previousResults }) {
     const faqSchema = buildFaqSchema(faqs);
     if (faqSchema) schemas.push(faqSchema);
 
+    // GEO 강화: 종목 분석 글이면 Dataset 스키마 추가 (LLM 검색 인용 신호)
+    const datasetSchema = buildDatasetSchema(article, baseUrl);
+    if (datasetSchema) schemas.push(datasetSchema);
+
     const next = { ...article, schemas, faqCount: faqs.length };
     enriched.push(next);
-    logger.log(AGENT_NAME, `  📐 [${article.category}] Article+Breadcrumb${faqSchema ? '+FAQPage(' + faqs.length + ')' : ''}`);
+    logger.log(AGENT_NAME, `  📐 [${article.category}] Article+Breadcrumb${faqSchema ? '+FAQPage(' + faqs.length + ')' : ''}${datasetSchema ? '+Dataset' : ''}`);
   }
 
   previousResults.YmylGuard.verifiedArticles = enriched;

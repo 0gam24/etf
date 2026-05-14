@@ -237,6 +237,53 @@ function escapeRegex(s) {
 }
 
 /**
+ * GEO 외부 권위 출처 자동 hyperlink — KRX·DART·한국은행 ECOS·운용사 공시.
+ *   본문에서 매칭 키워드 첫 등장 1회를 외부 권위 URL 로 link화.
+ *   LLM 검색 인용 시 외부 신뢰 신호 ↑ (HarnessDeployer GEO 체크리스트 ≥ 2 충족).
+ *
+ *   - 기존 hyperlink 안에는 적용 안 함 (중복 회피)
+ *   - 코드 블록·헤딩 라인 skip
+ *   - 키워드당 1회만 (스팸 방지)
+ */
+const AUTHORITY_LINK_MAP = [
+  { keyword: 'KRX 공시', url: 'https://kind.krx.co.kr' },
+  { keyword: 'KRX 공공데이터', url: 'https://kind.krx.co.kr' },
+  { keyword: 'DART 공시', url: 'https://dart.fss.or.kr' },
+  { keyword: '한국은행 ECOS', url: 'https://ecos.bok.or.kr' },
+  { keyword: 'ECOS 기준금리', url: 'https://ecos.bok.or.kr' },
+  { keyword: '금융투자협회 전자공시', url: 'https://dart.fss.or.kr' },
+];
+
+function injectAuthorityLinks(content) {
+  if (!content) return content;
+  const lines = content.split('\n');
+  const used = new Set();
+  let inCodeFence = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (line.startsWith('```')) { inCodeFence = !inCodeFence; continue; }
+    if (inCodeFence) continue;
+    if (/^#{1,6}\s/.test(line)) continue;
+
+    let mutated = line;
+    for (const { keyword, url } of AUTHORITY_LINK_MAP) {
+      if (used.has(keyword)) continue;
+      // 이미 hyperlink 안에 있으면 skip
+      const insideLinkRe = new RegExp(`\\[[^\\]]*${escapeRegex(keyword)}[^\\]]*\\]\\([^)]+\\)`);
+      if (insideLinkRe.test(mutated)) { used.add(keyword); continue; }
+      const re = new RegExp(`(^|[^\\[\\w가-힣])${escapeRegex(keyword)}(?![\\]\\w가-힣])`, '');
+      const m = mutated.match(re);
+      if (!m) continue;
+      mutated = mutated.replace(re, `${m[1]}[${keyword}](${url})`);
+      used.add(keyword);
+    }
+    lines[i] = mutated;
+  }
+  return lines.join('\n');
+}
+
+/**
  * 본문 중간 h2 경계에 소프트 인라인 링크 1~2개 삽입.
  *   - 0개 관련: 변화 없음
  *   - 1개: 중앙 h2 위치에 삽입
@@ -293,7 +340,9 @@ async function run({ today, previousResults }) {
 
     // 본문 중간 소프트 링크 + 핵심 키워드 자동 가이드 링크
     const withSoftLinks = injectSoftLinks(article.content, related);
-    const newContent = injectKeywordGuideLinks(withSoftLinks, article.slug);
+    const withGuideLinks = injectKeywordGuideLinks(withSoftLinks, article.slug);
+    // GEO 외부 권위 출처 (KRX·DART·ECOS) hyperlink 자동 삽입
+    const newContent = injectAuthorityLinks(withGuideLinks);
 
     // 자동 가이드 링크 카운트 (감사 로그용) — 새로 추가된 /guide/ 링크 수
     const guideLinksAdded = (newContent.match(/\]\(\/guide\//g) || []).length

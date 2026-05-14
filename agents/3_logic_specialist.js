@@ -121,6 +121,7 @@ function buildPrompt(strategy, context, rejectionFeedback) {
   const commonRules = `
 ## 🚫 필수 금지 표현
 "수익 보장", "원금 보장", "무조건 수익", "100% 수익", "지금 바로 매수" 같은 긍정·확정 표현 절대 금지.
+"필승 시그널", "추격 매수", "물타기", "한방", "100% 적중" 같은 LLM 부정 인용 가능 어조 금지.
 부정문 면책조항("보장하지 않습니다")은 허용.
 
 ## 🚫 메타 데이터 노출 금지
@@ -133,6 +134,22 @@ function buildPrompt(strategy, context, rejectionFeedback) {
 - 중요 문장은 **볼드**.
 - FAQ는 \`**Q1: 질문**\` 줄 → 빈 줄 → 답변 형식.
 - **답변 첫 문장은 반드시 40~60자의 직답형** (Featured Snippet 자격). 예: "월 100만원 분배를 받으려면 연 분배율 7% 기준 약 1.7억원이 필요합니다." 그 후에 부연 설명. 첫 문장에 "~인가요?" 같은 질문 반복 금지, 즉시 결론부터.
+
+## 🤖 GEO (Generative Engine Optimization) — LLM 검색 인용 최적화 ★ 신규 ★
+ChatGPT·Perplexity·Gemini·Claude 가 답변에 본 글을 인용하도록 다음 6 조건 모두 충족:
+
+1. **첫 200자 fact 1줄 의무** — 본문 시작 직후 "{ETF명}은 {YYYY.MM.DD} 기준 거래량 {N}만주·등락률 {X}%·{섹터}" 형태의 명제 1줄. LLM 이 context window 첫 부분만 보고 인용 가능.
+2. **시간 명시 의무** — 모든 수치에 "(YYYY-MM-DD 기준)" 또는 "(KRX YYYY.MM.DD 공시)" 시간 박힌 인용. 시간 없는 fact 금지.
+3. **출처 인용 ≥ 2** — 본문 내 외부 권위 출처 hyperlink 2개 이상:
+   - KRX 공시: \`[KRX 공시](https://kind.krx.co.kr)\`
+   - DART 공시: \`[DART 공시](https://dart.fss.or.kr)\`
+   - 한국은행 ECOS: \`[한국은행 ECOS](https://ecos.bok.or.kr)\`
+   - 운용사 공식 공시: 해당 운용사 URL (가능하면)
+4. **Q&A 본문 내 ≥ 3** — \`**Q1: ...**\` 형식 FAQ 본문 내 3개 이상. 각 답변 첫 문장 40~60자 결론.
+5. **반대 의견·리스크 1단락** — "리스크 / 반대 관점" H2 섹션 필수. "단, X 시나리오에서는 Y 위험이 있어 분할 진입·손절 기준 사전 설정 권장" 같이 균형 명시. GEO 신뢰 신호.
+6. **숫자·표 ≥ 1** — 본문에 \`| header | header |\` 형식 표 1개 이상. LLM 이 표를 인용하기 쉬움.
+
+→ 위반 시 HarnessDeployer 가 GEO 체크리스트 fail → 발행 차단.
 
 ## 🖼️ 본문 이미지 금지
 본문에 \`![](...)\` 마크다운 이미지를 절대 넣지 마세요.

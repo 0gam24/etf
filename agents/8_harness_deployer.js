@@ -122,6 +122,45 @@ function validateSeo(article) {
     warnings.push(`본문 H1 ${h1Count}개 — 페이지당 1개만 권장.`);
   }
 
+  // 7. GEO 체크리스트 (LLM 검색 인용 최적화) — 종목 분석 글에만 적용
+  if (isStockAnalysis && content.length > 500) {
+    const geoIssues = [];
+
+    // 7-1. 외부 권위 출처 hyperlink ≥ 2
+    const authorityLinks = (content.match(/\[(KRX 공시|DART 공시|한국은행 ECOS|운용사 공시|운용사 공식 공시)[^\]]*\]\(https?:\/\/[^)]+\)/g) || []).length;
+    if (authorityLinks < 2) {
+      geoIssues.push(`외부 권위 출처 hyperlink ${authorityLinks}개 (KRX·DART·ECOS 등 ≥ 2 권장)`);
+    }
+
+    // 7-2. 시간 명시 ≥ 1
+    const timeStamped = /\d{4}[-.]\d{2}[-.]\d{2}\s*기준|\(\s*\d{4}\s*년\s*\d{1,2}\s*월\s*\d{1,2}\s*일[^)]*\)|KRX\s*\d{1,2}\.\d{1,2}\s*공시/.test(content);
+    if (!timeStamped) {
+      geoIssues.push('수치 시간 명시 누락 (예: "2026-05-13 기준", "KRX 5.13 공시")');
+    }
+
+    // 7-3. Q&A 본문 내 ≥ 3 (**Q1:**, **Q2:**, **Q3:** 패턴)
+    const qaCount = (content.match(/\*\*Q[1-9]:/g) || []).length;
+    if (qaCount < 3) {
+      geoIssues.push(`Q&A ${qaCount}개 (≥ 3 권장)`);
+    }
+
+    // 7-4. 표 ≥ 1 (마크다운 표 행)
+    const tableCount = (content.match(/^\|[^|\n]+\|[^|\n]+\|/gm) || []).length;
+    if (tableCount < 1) {
+      geoIssues.push('표(|)  0개 (≥ 1 권장 — LLM 인용 친화)');
+    }
+
+    // 7-5. 리스크·반대 의견 섹션
+    const hasRiskSection = /##\s*(리스크|반대|위험|주의|유의)/i.test(content);
+    if (!hasRiskSection) {
+      geoIssues.push('리스크·반대 의견 섹션 누락 (GEO 균형 신호)');
+    }
+
+    if (geoIssues.length > 0) {
+      warnings.push(`[GEO] LLM 검색 인용 최적화: ${geoIssues.join(' · ')}`);
+    }
+  }
+
   return { blockers, warnings };
 }
 
