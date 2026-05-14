@@ -1,0 +1,17 @@
+{
+  "_meta": {
+    "createdBy": "DataMiner",
+    "createdAt": "2026-05-14T09:29:40.816Z",
+    "fileName": "economic_indicators_20260514.json"
+  },
+  "data": {
+    "source": "BOK_ECOS",
+    "isRealData": true,
+    "fetchedAt": "2026-05-14T09:29:40.816Z",
+    "indicators": {
+      "baseRate": 2.5,
+      "exchangeRate": 1482.9,
+      "cpi": 2.57
+    }
+  }
+}
