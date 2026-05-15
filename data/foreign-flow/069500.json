@@ -1,6 +1,6 @@
 {
   "code": "069500",
-  "updatedAt": "2026-05-14T09:40:36.417Z",
+  "updatedAt": "2026-05-15T09:58:21.370Z",
   "history": [
     {
       "date": "2026-03-30",
@@ -193,6 +193,12 @@
       "foreignNet": 16321,
       "institutionNet": -157231,
       "individualNet": 160314
+    },
+    {
+      "date": "2026-05-15",
+      "foreignNet": 8123,
+      "institutionNet": -2048478,
+      "individualNet": 2044631
     }
   ]
 }

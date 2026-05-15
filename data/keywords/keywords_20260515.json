@@ -1,0 +1,761 @@
+{
+  "_meta": {
+    "createdBy": "SeoArchitect",
+    "createdAt": "2026-05-15T09:42:11.566Z",
+    "fileName": "keywords_20260515.json"
+  },
+  "data": {
+    "strategies": [
+      {
+        "id": "pulse_20260515",
+        "category": "pulse",
+        "templateType": "pulse",
+        "keyword": "5월 15일 오늘의 ETF 관전포인트",
+        "estimatedCpc": 1500,
+        "tickers": [
+          "0080G0",
+          "0080Y0",
+          "0048K0"
+        ],
+        "top3": [
+          {
+            "code": "0080G0",
+            "name": "KODEX 방산TOP10",
+            "price": 13960,
+            "change": 300,
+            "changeRate": 2.2,
+            "volume": 6469577,
+            "tradeAmount": 88371266371,
+            "marketCap": 575152000000,
+            "nav": 13935,
+            "highPrice": 13960,
+            "lowPrice": 13500,
+            "openPrice": 13655,
+            "date": "20260514",
+            "sector": "방산"
+          },
+          {
+            "code": "0080Y0",
+            "name": "SOL 조선TOP3플러스레버리지",
+            "price": 20000,
+            "change": -1395,
+            "changeRate": -6.52,
+            "volume": 1975269,
+            "tradeAmount": 39561879289,
+            "marketCap": 204000000000,
+            "nav": 19747.58,
+            "highPrice": 21570,
+            "lowPrice": 19525,
+            "openPrice": 21365,
+            "date": "20260514",
+            "sector": "조선"
+          },
+          {
+            "code": "0048K0",
+            "name": "KODEX 차이나휴머노이드로봇",
+            "price": 11360,
+            "change": -65,
+            "changeRate": -0.57,
+            "volume": 1456601,
+            "tradeAmount": 16645139555,
+            "marketCap": 242536000000,
+            "nav": 11458.66,
+            "highPrice": 11597,
+            "lowPrice": 11260,
+            "openPrice": 11595,
+            "date": "20260514",
+            "sector": "기타"
+          }
+        ],
+        "leadSector": {
+          "sector": "2차전지",
+          "count": 1,
+          "avgChangeRate": 2.89,
+          "totalAmount": 30323658150
+        },
+        "sectorFlow": [
+          {
+            "sector": "2차전지",
+            "count": 1,
+            "avgChangeRate": 2.89,
+            "totalAmount": 30323658150
+          },
+          {
+            "sector": "방산",
+            "count": 2,
+            "avgChangeRate": 1.25,
+            "totalAmount": 88405273337
+          },
+          {
+            "sector": "커버드콜·월배당",
+            "count": 10,
+            "avgChangeRate": 1.15,
+            "totalAmount": 24810792220
+          },
+          {
+            "sector": "기타",
+            "count": 29,
+            "avgChangeRate": 0.75,
+            "totalAmount": 107485480121
+          },
+          {
+            "sector": "AI·데이터",
+            "count": 13,
+            "avgChangeRate": 0.2,
+            "totalAmount": 40337857605
+          }
+        ],
+        "suggestedTitle": "5월 15일 오늘의 ETF 관전포인트 — 거래량 1위 KODEX 방산TOP10 외 2종목",
+        "suggestedSlug": "pulse-20260515",
+        "contentDirection": {
+          "template": "pulse",
+          "minWords": 1800,
+          "requiredSections": [
+            "3줄 관전포인트",
+            "거래량 TOP3 요약",
+            "섹터 흐름 한눈에 (4050 관점)",
+            "오늘 체크할 뉴스·지표",
+            "FAQ"
+          ],
+          "dataFocus": "daily-briefing"
+        }
+      },
+      {
+        "id": "surge_20260515",
+        "category": "surge",
+        "templateType": "surge",
+        "keyword": "KODEX 방산TOP10 급등 이유 — 방위산업 ETF 지정학 수혜",
+        "estimatedCpc": 2100,
+        "momentumScore": 22,
+        "tickers": [
+          "0080G0"
+        ],
+        "focusEtf": {
+          "code": "0080G0",
+          "name": "KODEX 방산TOP10",
+          "price": 13960,
+          "change": 300,
+          "changeRate": 2.2,
+          "volume": 6469577,
+          "tradeAmount": 88371266371,
+          "marketCap": 575152000000,
+          "nav": 13935,
+          "highPrice": 13960,
+          "lowPrice": 13500,
+          "openPrice": 13655,
+          "date": "20260514",
+          "sector": "방산"
+        },
+        "portfolio": {
+          "type": "basket",
+          "name": "KODEX 방산TOP10",
+          "updated": "2026-Q1",
+          "source": "Mirae Asset KODEX PDP",
+          "desc": "국내 방위산업 대표 10개 기업에 동일 비중 가까이 투자",
+          "holdings": [
+            {
+              "rank": 1,
+              "name": "한화에어로스페이스",
+              "code": "012450",
+              "weight": 18.4,
+              "note": "🎯 대장주 · K9자주포·누리호"
+            },
+            {
+              "rank": 2,
+              "name": "LIG넥스원",
+              "code": "079550",
+              "weight": 14.2,
+              "note": "🔥 미사일·유도무기"
+            },
+            {
+              "rank": 3,
+              "name": "한화시스템",
+              "code": "272210",
+              "weight": 12.1,
+              "note": "레이더·방산 IT"
+            },
+            {
+              "rank": 4,
+              "name": "현대로템",
+              "code": "064350",
+              "weight": 10.8,
+              "note": "K2 전차·철도"
+            },
+            {
+              "rank": 5,
+              "name": "한국항공우주",
+              "code": "047810",
+              "weight": 9.5,
+              "note": "KAI · FA-50 수출"
+            },
+            {
+              "rank": 6,
+              "name": "풍산",
+              "code": "103140",
+              "weight": 8.2,
+              "note": "탄약·구리"
+            },
+            {
+              "rank": 7,
+              "name": "한화오션",
+              "code": "042660",
+              "weight": 7.6,
+              "note": "군함·잠수함"
+            },
+            {
+              "rank": 8,
+              "name": "SNT다이내믹스",
+              "code": "003570",
+              "weight": 6.4,
+              "note": "자주포 장갑"
+            },
+            {
+              "rank": 9,
+              "name": "빅텍",
+              "code": "065450",
+              "weight": 5.5,
+              "note": "군용 통신장비"
+            },
+            {
+              "rank": 10,
+              "name": "휴니드테크놀러지스",
+              "code": "005870",
+              "weight": 4.3,
+              "note": "국방 IT 시스템"
+            }
+          ]
+        },
+        "holdings": [
+          {
+            "rank": 1,
+            "name": "한화에어로스페이스",
+            "code": "012450",
+            "weight": 18.4,
+            "note": "🎯 대장주 · K9자주포·누리호"
+          },
+          {
+            "rank": 2,
+            "name": "LIG넥스원",
+            "code": "079550",
+            "weight": 14.2,
+            "note": "🔥 미사일·유도무기"
+          },
+          {
+            "rank": 3,
+            "name": "한화시스템",
+            "code": "272210",
+            "weight": 12.1,
+            "note": "레이더·방산 IT"
+          },
+          {
+            "rank": 4,
+            "name": "현대로템",
+            "code": "064350",
+            "weight": 10.8,
+            "note": "K2 전차·철도"
+          },
+          {
+            "rank": 5,
+            "name": "한국항공우주",
+            "code": "047810",
+            "weight": 9.5,
+            "note": "KAI · FA-50 수출"
+          },
+          {
+            "rank": 6,
+            "name": "풍산",
+            "code": "103140",
+            "weight": 8.2,
+            "note": "탄약·구리"
+          },
+          {
+            "rank": 7,
+            "name": "한화오션",
+            "code": "042660",
+            "weight": 7.6,
+            "note": "군함·잠수함"
+          },
+          {
+            "rank": 8,
+            "name": "SNT다이내믹스",
+            "code": "003570",
+            "weight": 6.4,
+            "note": "자주포 장갑"
+          },
+          {
+            "rank": 9,
+            "name": "빅텍",
+            "code": "065450",
+            "weight": 5.5,
+            "note": "군용 통신장비"
+          },
+          {
+            "rank": 10,
+            "name": "휴니드테크놀러지스",
+            "code": "005870",
+            "weight": 4.3,
+            "note": "국방 IT 시스템"
+          }
+        ],
+        "topN": 10,
+        "suggestedTitle": "KODEX 방산TOP10, 왜 오늘 거래량 1위인가 — 방위산업 ETF 지정학 수혜",
+        "suggestedSlug": "0080g0-kodex-defense-top10-surge",
+        "contentDirection": {
+          "template": "surge",
+          "minWords": 2500,
+          "requiredSections": [
+            "3줄 급등 요약",
+            "거래량 데이터",
+            "급등 사유 분석",
+            "ETF 구성종목 심층",
+            "단기·중기 전망",
+            "FAQ"
+          ],
+          "dataFocus": "etf-holdings"
+        }
+      },
+      {
+        "id": "flow_20260515",
+        "category": "flow",
+        "templateType": "flow",
+        "keyword": "주간 자금 흐름 리포트 — 2차전지 섹터 +2.89%",
+        "estimatedCpc": 1800,
+        "tickers": [
+          "0080G0",
+          "0080Y0",
+          "0048K0",
+          "0005D0",
+          "0072R0"
+        ],
+        "sectorFlow": [
+          {
+            "sector": "2차전지",
+            "count": 1,
+            "avgChangeRate": 2.89,
+            "totalAmount": 30323658150
+          },
+          {
+            "sector": "방산",
+            "count": 2,
+            "avgChangeRate": 1.25,
+            "totalAmount": 88405273337
+          },
+          {
+            "sector": "커버드콜·월배당",
+            "count": 10,
+            "avgChangeRate": 1.15,
+            "totalAmount": 24810792220
+          },
+          {
+            "sector": "기타",
+            "count": 29,
+            "avgChangeRate": 0.75,
+            "totalAmount": 107485480121
+          },
+          {
+            "sector": "AI·데이터",
+            "count": 13,
+            "avgChangeRate": 0.2,
+            "totalAmount": 40337857605
+          }
+        ],
+        "suggestedTitle": "이번 주 자금은 어디로? 2차전지 섹터에 몰린 303억 원",
+        "suggestedSlug": "flow-20260515-battery",
+        "contentDirection": {
+          "template": "flow",
+          "minWords": 2500,
+          "requiredSections": [
+            "주간 Flow 요약",
+            "섹터별 자금유입 표",
+            "기관·외국인 수급",
+            "다음 주 관전포인트",
+            "FAQ"
+          ],
+          "dataFocus": "sector-rotation"
+        }
+      },
+      {
+        "id": "income_20260515",
+        "category": "income",
+        "templateType": "income",
+        "keyword": "퇴직연금 DC형 커버드콜 비중 전략",
+        "estimatedCpc": 2500,
+        "tickers": [
+          "0000D0"
+        ],
+        "focusEtf": {
+          "code": "0000D0",
+          "name": "TIGER 엔비디아미국채커버드콜밸런스(합성)",
+          "price": 10400,
+          "change": 120,
+          "changeRate": 1.17,
+          "volume": 115313,
+          "tradeAmount": 1190858164,
+          "marketCap": 72800000000,
+          "nav": 10337.69,
+          "highPrice": 10400,
+          "lowPrice": 10280,
+          "openPrice": 10280,
+          "date": "20260514",
+          "sector": "커버드콜·월배당"
+        },
+        "suggestedTitle": "퇴직연금 DC형 커버드콜 비중 전략 — 실제 분배금·세후 수익률 계산",
+        "suggestedSlug": "income-20260515-0000d0",
+        "contentDirection": {
+          "template": "income",
+          "minWords": 2800,
+          "requiredSections": [
+            "월배당 요약",
+            "분배금 계산 표",
+            "세후 수익률 비교",
+            "IRP·ISA·연금저축 조합법",
+            "주의사항",
+            "FAQ"
+          ],
+          "dataFocus": "dividend-yield-tax"
+        }
+      },
+      {
+        "id": "breaking_20260515_1",
+        "category": "breaking",
+        "templateType": "breaking",
+        "rank": 1,
+        "keyword": "KODEX 방산TOP10 속보 — 오늘 상승 2.20% · 거래량 1위",
+        "estimatedCpc": 2400,
+        "tickers": [
+          "0080G0"
+        ],
+        "focusEtf": {
+          "code": "0080G0",
+          "name": "KODEX 방산TOP10",
+          "price": 13960,
+          "change": 300,
+          "changeRate": 2.2,
+          "volume": 6469577,
+          "tradeAmount": 88371266371,
+          "marketCap": 575152000000,
+          "nav": 13935,
+          "highPrice": 13960,
+          "lowPrice": 13500,
+          "openPrice": 13655,
+          "date": "20260514",
+          "sector": "방산"
+        },
+        "portfolio": {
+          "type": "basket",
+          "name": "KODEX 방산TOP10",
+          "updated": "2026-Q1",
+          "source": "Mirae Asset KODEX PDP",
+          "desc": "국내 방위산업 대표 10개 기업에 동일 비중 가까이 투자",
+          "holdings": [
+            {
+              "rank": 1,
+              "name": "한화에어로스페이스",
+              "code": "012450",
+              "weight": 18.4,
+              "note": "🎯 대장주 · K9자주포·누리호"
+            },
+            {
+              "rank": 2,
+              "name": "LIG넥스원",
+              "code": "079550",
+              "weight": 14.2,
+              "note": "🔥 미사일·유도무기"
+            },
+            {
+              "rank": 3,
+              "name": "한화시스템",
+              "code": "272210",
+              "weight": 12.1,
+              "note": "레이더·방산 IT"
+            },
+            {
+              "rank": 4,
+              "name": "현대로템",
+              "code": "064350",
+              "weight": 10.8,
+              "note": "K2 전차·철도"
+            },
+            {
+              "rank": 5,
+              "name": "한국항공우주",
+              "code": "047810",
+              "weight": 9.5,
+              "note": "KAI · FA-50 수출"
+            },
+            {
+              "rank": 6,
+              "name": "풍산",
+              "code": "103140",
+              "weight": 8.2,
+              "note": "탄약·구리"
+            },
+            {
+              "rank": 7,
+              "name": "한화오션",
+              "code": "042660",
+              "weight": 7.6,
+              "note": "군함·잠수함"
+            },
+            {
+              "rank": 8,
+              "name": "SNT다이내믹스",
+              "code": "003570",
+              "weight": 6.4,
+              "note": "자주포 장갑"
+            },
+            {
+              "rank": 9,
+              "name": "빅텍",
+              "code": "065450",
+              "weight": 5.5,
+              "note": "군용 통신장비"
+            },
+            {
+              "rank": 10,
+              "name": "휴니드테크놀러지스",
+              "code": "005870",
+              "weight": 4.3,
+              "note": "국방 IT 시스템"
+            }
+          ]
+        },
+        "holdings": [
+          {
+            "rank": 1,
+            "name": "한화에어로스페이스",
+            "code": "012450",
+            "weight": 18.4,
+            "note": "🎯 대장주 · K9자주포·누리호"
+          },
+          {
+            "rank": 2,
+            "name": "LIG넥스원",
+            "code": "079550",
+            "weight": 14.2,
+            "note": "🔥 미사일·유도무기"
+          },
+          {
+            "rank": 3,
+            "name": "한화시스템",
+            "code": "272210",
+            "weight": 12.1,
+            "note": "레이더·방산 IT"
+          },
+          {
+            "rank": 4,
+            "name": "현대로템",
+            "code": "064350",
+            "weight": 10.8,
+            "note": "K2 전차·철도"
+          },
+          {
+            "rank": 5,
+            "name": "한국항공우주",
+            "code": "047810",
+            "weight": 9.5,
+            "note": "KAI · FA-50 수출"
+          },
+          {
+            "rank": 6,
+            "name": "풍산",
+            "code": "103140",
+            "weight": 8.2,
+            "note": "탄약·구리"
+          },
+          {
+            "rank": 7,
+            "name": "한화오션",
+            "code": "042660",
+            "weight": 7.6,
+            "note": "군함·잠수함"
+          },
+          {
+            "rank": 8,
+            "name": "SNT다이내믹스",
+            "code": "003570",
+            "weight": 6.4,
+            "note": "자주포 장갑"
+          },
+          {
+            "rank": 9,
+            "name": "빅텍",
+            "code": "065450",
+            "weight": 5.5,
+            "note": "군용 통신장비"
+          },
+          {
+            "rank": 10,
+            "name": "휴니드테크놀러지스",
+            "code": "005870",
+            "weight": 4.3,
+            "note": "국방 IT 시스템"
+          }
+        ],
+        "topN": 10,
+        "suggestedTitle": "[05월 15일 속보] KODEX 방산TOP10 — 상승 2.20%, 왜 움직였나",
+        "suggestedSlug": "breaking-20260515-1-0080g0",
+        "contentDirection": {
+          "template": "breaking",
+          "minWords": 3000,
+          "requiredSections": [
+            "3줄 속보 요약",
+            "뉴스 헤드라인 스캔",
+            "시세·거래량 데이터",
+            "섹터·구성종목 연결",
+            "시장 반응 해석",
+            "투자자 관점 (4050)",
+            "단기 전망 시나리오",
+            "FAQ"
+          ],
+          "dataFocus": "news-driven"
+        }
+      },
+      {
+        "id": "breaking_20260515_2",
+        "category": "breaking",
+        "templateType": "breaking",
+        "rank": 2,
+        "keyword": "SOL 조선TOP3플러스레버리지 속보 — 오늘 하락 6.52% · 거래량 2위",
+        "estimatedCpc": 2300,
+        "tickers": [
+          "0080Y0"
+        ],
+        "focusEtf": {
+          "code": "0080Y0",
+          "name": "SOL 조선TOP3플러스레버리지",
+          "price": 20000,
+          "change": -1395,
+          "changeRate": -6.52,
+          "volume": 1975269,
+          "tradeAmount": 39561879289,
+          "marketCap": 204000000000,
+          "nav": 19747.58,
+          "highPrice": 21570,
+          "lowPrice": 19525,
+          "openPrice": 21365,
+          "date": "20260514",
+          "sector": "조선"
+        },
+        "portfolio": {
+          "type": "basket",
+          "name": "SOL 조선TOP3플러스레버리지",
+          "updated": "2026-Q1",
+          "source": "Shinhan SOL PDP",
+          "desc": "국내 조선업 빅3 레버리지 (시세 변동 1.5~2배)",
+          "holdings": [
+            {
+              "rank": 1,
+              "name": "HD현대중공업",
+              "code": "329180",
+              "weight": 39.8,
+              "note": "🎯 대장주 · LNG선"
+            },
+            {
+              "rank": 2,
+              "name": "한화오션",
+              "code": "042660",
+              "weight": 34.5,
+              "note": "🔥 군함·수소 선박"
+            },
+            {
+              "rank": 3,
+              "name": "삼성중공업",
+              "code": "010140",
+              "weight": 25.7,
+              "note": "해양플랜트"
+            }
+          ]
+        },
+        "holdings": [
+          {
+            "rank": 1,
+            "name": "HD현대중공업",
+            "code": "329180",
+            "weight": 39.8,
+            "note": "🎯 대장주 · LNG선"
+          },
+          {
+            "rank": 2,
+            "name": "한화오션",
+            "code": "042660",
+            "weight": 34.5,
+            "note": "🔥 군함·수소 선박"
+          },
+          {
+            "rank": 3,
+            "name": "삼성중공업",
+            "code": "010140",
+            "weight": 25.7,
+            "note": "해양플랜트"
+          }
+        ],
+        "topN": 3,
+        "suggestedTitle": "[05월 15일 속보] SOL 조선TOP3플러스레버리지 — 조정 6.52%, 왜 움직였나",
+        "suggestedSlug": "breaking-20260515-2-0080y0",
+        "contentDirection": {
+          "template": "breaking",
+          "minWords": 3000,
+          "requiredSections": [
+            "3줄 속보 요약",
+            "뉴스 헤드라인 스캔",
+            "시세·거래량 데이터",
+            "섹터·구성종목 연결",
+            "시장 반응 해석",
+            "투자자 관점 (4050)",
+            "단기 전망 시나리오",
+            "FAQ"
+          ],
+          "dataFocus": "news-driven"
+        }
+      },
+      {
+        "id": "breaking_20260515_3",
+        "category": "breaking",
+        "templateType": "breaking",
+        "rank": 3,
+        "keyword": "KODEX 차이나휴머노이드로봇 속보 — 오늘 하락 0.57% · 거래량 3위",
+        "estimatedCpc": 1300,
+        "tickers": [
+          "0048K0"
+        ],
+        "focusEtf": {
+          "code": "0048K0",
+          "name": "KODEX 차이나휴머노이드로봇",
+          "price": 11360,
+          "change": -65,
+          "changeRate": -0.57,
+          "volume": 1456601,
+          "tradeAmount": 16645139555,
+          "marketCap": 242536000000,
+          "nav": 11458.66,
+          "highPrice": 11597,
+          "lowPrice": 11260,
+          "openPrice": 11595,
+          "date": "20260514",
+          "sector": "기타"
+        },
+        "portfolio": null,
+        "holdings": [],
+        "topN": 5,
+        "suggestedTitle": "[05월 15일 속보] KODEX 차이나휴머노이드로봇 — 조정 0.57%, 왜 움직였나",
+        "suggestedSlug": "breaking-20260515-3-0048k0",
+        "contentDirection": {
+          "template": "breaking",
+          "minWords": 3000,
+          "requiredSections": [
+            "3줄 속보 요약",
+            "뉴스 헤드라인 스캔",
+            "시세·거래량 데이터",
+            "섹터·구성종목 연결",
+            "시장 반응 해석",
+            "투자자 관점 (4050)",
+            "단기 전망 시나리오",
+            "FAQ"
+          ],
+          "dataFocus": "news-driven"
+        }
+      }
+    ]
+  }
+}
