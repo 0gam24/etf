@@ -1,6 +1,6 @@
 {
   "code": "0080G0",
-  "updatedAt": "2026-05-15T09:58:21.924Z",
+  "updatedAt": "2026-05-18T11:14:01.946Z",
   "history": [
     {
       "date": "2026-03-30",
@@ -199,6 +199,12 @@
       "foreignNet": 57869,
       "institutionNet": -64316,
       "individualNet": 1093
+    },
+    {
+      "date": "2026-05-18",
+      "foreignNet": 97562,
+      "institutionNet": -103790,
+      "individualNet": 11309
     }
   ]
 }

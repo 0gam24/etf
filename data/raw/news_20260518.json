@@ -1,0 +1,491 @@
+{
+  "_meta": {
+    "createdBy": "NewsCollector",
+    "createdAt": "2026-05-18T11:02:55.980Z",
+    "fileName": "news_20260518.json"
+  },
+  "data": {
+    "byKeyword": {
+      "5월 18일 오늘의 ETF 관전포인트": {
+        "query": "ETF 시장 동향",
+        "strategyId": "pulse_20260518",
+        "category": "pulse",
+        "headlines": [
+          {
+            "title": "깊이가 다른 글로벌 투자 정보 GAM - 맛보기편 (5/18)",
+            "source": "뉴스핌",
+            "pubDate": "Mon, 18 May 2026 16:46:00 +0900",
+            "link": "https://www.newspim.com/news/view/20260518000786",
+            "snippet": "다시 요동치는 국채시장…엔비디아 결산 주목 메모리 ETF 'DRAM', 6주 만 100억달러…비트코인 추월 메모리... 투자동향① 'AI+상업우주' 집단 베팅 [AI 이미지 = 배상희 기자] [중국증시 주간 포인트] ①푸틴 방중, APEC..."
+          },
+          {
+            "title": "코스피, '매도 사이드카' 딛고 7500선 회복",
+            "source": "enewstoday.co.kr",
+            "pubDate": "Mon, 18 May 2026 16:36:00 +0900",
+            "link": "http://www.enewstoday.co.kr/news/articleView.html?idxno=2430512",
+            "snippet": "투자자별 매매동향을 보면 이날 외국인은 3조6493억원 순매도 했다. 외국인은 지난 7일 이후 8영업일... 한편, 서울외환시장에서 이날 원·달러 환율은 전거래일 대비 0.5원 내린 1500.3원에 주간거래를 마감했다...."
+          },
+          {
+            "title": "[연금테크 따라잡기] 코스피 '팔천피' 도전…글로벌 증시 상승률 1위",
+            "source": "biz.sbs.co.kr",
+            "pubDate": "Mon, 18 May 2026 14:40:00 +0900",
+            "link": "https://biz.sbs.co.kr/article_hub/20000311025?division=NAVER",
+            "snippet": "- 금·은 원자재 ETF, 인플레 시장 헷지용 - 금 안전자산 아냐…중동 전쟁 때 금값 하락 - 금리·달러 동향에 따라 금 ETF 마이너스가기도 - 금·은 무조건 안전 자산 아냐…변동성 발생 - 비트코인·이더리움 아직 연금 자산..."
+          },
+          {
+            "title": "[분석] 월가도 구조를 몰랐다···'금융 에이전틱 AI'의 계급 분화",
+            "source": "womaneconomy.co.kr",
+            "pubDate": "Mon, 18 May 2026 14:32:00 +0900",
+            "link": "https://www.womaneconomy.co.kr/news/articleView.html?idxno=253903",
+            "snippet": "시장 데이터, 기업 재무 구조, 실시간 뉴스, 경쟁사 동향을 하나의 분석 흐름으로 묶어 어떤 기업이 자금... 미래에셋증권·미래에셋자산운용은 별도로 연금·ETF·로보어드바이저를 결합한 자산관리 자동화에 강점을..."
+          },
+          {
+            "title": "7천피도 '흔들'? '줍줍'할까요? 전문가 \"Stop! '이것' 보고 들어가세요\"",
+            "source": "YTN",
+            "pubDate": "Mon, 18 May 2026 12:34:00 +0900",
+            "link": "https://www.ytn.co.kr/_ln/0102_202605181234363045",
+            "snippet": "수급 동향, 지금 외국인들이 대대적인 매도세를 연일 이어가고 있거든요? 오늘도 순매도예요. 이건 어떻게 봐야 됩니까? ◆ 이지환 : 그러니까 이 시각이 두 가지가 있는데, 그러니까 하나는 과거에 외국인들이 우리 시장에..."
+          },
+          {
+            "title": "[성창원 칼럼] 코스피 8000시대, 내 수익에 세금은 얼마나 붙나",
+            "source": "asiatime.co.kr",
+            "pubDate": "Mon, 18 May 2026 10:58:00 +0900",
+            "link": "https://www.asiatime.co.kr/article/20260515500219",
+            "snippet": "국내 주식시장(코스피·코스닥)에서 주식을 사고팔아 얻은 차익에 대해서는 원칙적으로 소득세가 없다. 즉... 코인 투자자라면 법 개정 동향을 꾸준히 주시하고, 과세 시행 시 취득가액 산정 방식(이동평균법 또는..."
+          },
+          {
+            "title": "[금융가 사람들] 미래에셋證 '1등 PB', 이지혜 대치WM 팀장",
+            "source": "news.einfomax.co.kr",
+            "pubDate": "Mon, 18 May 2026 09:18:00 +0900",
+            "link": "https://news.einfomax.co.kr/news/articleView.html?idxno=4415334",
+            "snippet": "전망이나 시장의 방향성을 맞추는 리테일 방식의 접근은 지양한다\"며 \"연기금과 사모펀드(PEF) 등 거대 자금을 굴리는 기관투자자들이 실제로 집행하는 포트폴리오의 변화, 특히 액티브 ETF로의 자금 유입 동향 등을..."
+          },
+          {
+            "title": "4,529달러 금·76달러 은, 역사적 고점서 '눈치 장세'… 강달러·중동 완...",
+            "source": "tokenpost.kr",
+            "pubDate": "Mon, 18 May 2026 09:12:00 +0900",
+            "link": "https://www.tokenpost.kr/news/economy/360652",
+            "snippet": "이러한 중앙은행의 실물 매매 동향은 현물 가격에 직접 영향을 주는 한편, ETF 시장에서는 이를 둘러싼 해석과 기대가 반영되며 가격 변동성이 확대되는 모습이다. 전쟁 초기 두바이 금 거래 차질과 미 연준의 고금리 장기..."
+          }
+        ],
+        "summary": "- 코스피는 7500선을 회복하며 상승세를 보였다.\n- 글로벌 증시 상승률 1위 기록, 8000선 도전 기대감도 있다.\n- 금, 은 가격은 역사적 고점 후 눈치 장세를 보이고 있다.",
+        "topicTags": [
+          "ai-semi-etf"
+        ]
+      },
+      "KODEX 방산TOP10 급등 이유 — 방위산업 ETF 수주 이슈 — 거래량 평소 대비 2배+": {
+        "query": "KODEX 방산TOP10",
+        "strategyId": "surge_20260518",
+        "category": "surge",
+        "headlines": [
+          {
+            "title": "[주식마감] '세계 최초' 원자층성장(ALG) 장비 출하 소식에 주성엔지니...",
+            "source": "ggilbo.com",
+            "pubDate": "Mon, 18 May 2026 19:40:00 +0900",
+            "link": "https://www.ggilbo.com/news/articleView.html?idxno=1158938",
+            "snippet": "회사는 우주·항공기 특수 원소재 공급을 비롯해 민항공기·방산항공기 구조물 생산, 군용기 창정비(MRO)... 반도체TOP10, KODEX 200, KODEX 레버리지, 한화생명, 한온시스템, 진원생명과학, RISE..."
+          },
+          {
+            "title": "[위클리 ETF] 5月 2주차, ‘TIGER 미국우주테크’ 39.65%...‘팔천피’ 흔...",
+            "source": "thevaluenews.co.kr",
+            "pubDate": "Mon, 18 May 2026 14:14:00 +0900",
+            "link": "http://www.thevaluenews.co.kr/news/view.php?idx=198802",
+            "snippet": "이어 ‘SOL 미국우주항공TOP10’이 29.53%, ‘ACE 미국우주테크액티브’가 26.11%, ‘KODEX 미국우주항공’이 24.45% 상승하며 우주·항공 ETF가 나란히 상위권에 올랐다. 최근 미국 방산·우주 산업에 대한 투자심리가..."
+          },
+          {
+            "title": "[ETF 열전] 스페이스머니 몰린다…우주항공 ETF, AI 다음 주도주 부상",
+            "source": "newsworks.co.kr",
+            "pubDate": "Mon, 18 May 2026 10:00:00 +0900",
+            "link": "https://www.newsworks.co.kr/news/articleView.html?idxno=841041",
+            "snippet": "단순 테마 순환이 아니라 AI 인프라와 방산, 위성통신 산업까지 연결되는 새로운 성장축에 시장 자금이... 이어 ▲SOL 미국우주항공TOP10(29.53%) ▲ACE 미국우주테크액티브(26.11%) ▲KODEX 미국우주항공(24.45%) ▲1Q..."
+          },
+          {
+            "title": "“영업익 30% 달라” K조선 번진 성과급 요구…오히려 좋다는 월가",
+            "source": "매일경제",
+            "pubDate": "Mon, 18 May 2026 06:13:00 +0900",
+            "link": "https://www.mk.co.kr/article/12050554",
+            "snippet": "이외에 초대형 원유 운반선(VLCC)과 잠수함 등 방산 사업 3각 축으로 움직인다. 오는 2분기 매출성장률은 6.1... ‘KODEX 조선TOP10’에도 주간 기준으로 5월 첫째주까지 11주 연속 돈이 들어오고 있다. 시가총액은..."
+          },
+          {
+            "title": "스페이스X 타고 '훨훨'… 美우주ETF, 일주일새 두 자릿수 급등",
+            "source": "asiatoday.co.kr",
+            "pubDate": "Sun, 17 May 2026 17:44:00 +0900",
+            "link": "https://www.asiatoday.co.kr/kn/view.php?key=20260518010004608",
+            "snippet": "미국우주항공TOP10'(26.90%), 'ACE 미국우주테크액티브'(24.17%), 'KODEX 미국우주항공'(22.29%) 등이 뒤를 이었다.... 항공·방산 기업은 제외해 우주 테마 순도를 높였다. 향후 스페이스X가 상장될 경우 최대 25% 비중으로..."
+          },
+          {
+            "title": "자동차·반도체 ETF 강세…주간 수익률 상위권 포진[펀드와치]",
+            "source": "이데일리",
+            "pubDate": "Sun, 17 May 2026 09:27:00 +0900",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=01249686645449904",
+            "snippet": "이어 삼성자산운용의 ‘KODEX반도체레버리지상장지수’ ETF가 20.78% 상승하며 3위에 올랐다. 한국투자신탁운용의 ‘ACEK휴머노이드로봇산업TOP2+상장지수’ ETF는 19.57%, 미래에셋자산운용의 ‘TIGER반도체TOP10레버리..."
+          },
+          {
+            "title": "중동전 끝나면 방산주도 멈춘다?…시장선 \"아직 갈 길 남았다\"",
+            "source": "imaeil.com",
+            "pubDate": "Fri, 15 May 2026 10:18:00 +0900",
+            "link": "https://www.imaeil.com/page/view/2026051509591052576",
+            "snippet": "한화자산운용의 'PLUS K방산(-10.86%)'을 비롯해 ▲미래에셋자산운용 'TIGER K방산＆우주(-10.68%)' ▲삼성자산운용 'KODEX 방산TOP10(-10.46%)' ▲신한자산운용 'SOL K방산(-8.06%)' 등도 약세장을 맞았으며 레버리지 종목인 'KODEX..."
+          },
+          {
+            "title": "DB증권 “국내 AI 반도체 ETF, 주도주 집중 전략 유효…SK하이닉스 비중...",
+            "source": "etoday.co.kr",
+            "pubDate": "Fri, 15 May 2026 07:40:00 +0900",
+            "link": "https://www.etoday.co.kr/news/view/2584715",
+            "snippet": "ETF별로는 ACE AI반도체포커스, TIGER AI반도체핵심공정, KODEX AI반도체핵심장비 등이 주도주 집중형 상품으로... K-반도체TOP10과 BNK 온디바이스AI를 추천했으며, 낙폭 과대 회복 전략으로는 TIGER K방산&우주와 글로벌..."
+          }
+        ],
+        "summary": "- KODEX 방산TOP10 관련 뉴스는 직접적으로 언급되지 않았습니다.\n- 우주항공, 반도체, 자동차 ETF가 강세를 보였습니다.\n- 방산주에 대한 시장의 전망은 긍정적인 것으로 나타났습니다.",
+        "topicTags": [
+          "defense-etf",
+          "ai-semi-etf",
+          "shipbuilding"
+        ]
+      },
+      "주간 자금 흐름 리포트 — 해외주식 섹터 +0.1%": {
+        "query": "해외주식 ETF 자금",
+        "strategyId": "flow_20260518",
+        "category": "flow",
+        "headlines": [
+          {
+            "title": "한국투자증권, 주식모으기 분석…\"반도체 대형주·미국 ETF 선호 뚜렷\"",
+            "source": "megaeconomy.co.kr",
+            "pubDate": "Mon, 18 May 2026 19:00:00 +0900",
+            "link": "https://www.megaeconomy.co.kr/news/newsview.php?ncode=1065607053434920",
+            "snippet": "한국투자증권은 지난달 출시한 ‘주식모으기’ 서비스 이용자들의 적립식 정기투자 패턴을 분석한 결과 국내주식은 반도체 대형주, 해외주식은 미국 지수 추종 ETF에 자금이 집중된 것으로 나타났다고 18일 밝혔다...."
+          },
+          {
+            "title": "유튜브 47만회 '화제의 인물'…김우석 삼성운용 대표가 추천한 ETF 톱5",
+            "source": "한국경제",
+            "pubDate": "Mon, 18 May 2026 18:48:00 +0900",
+            "link": "https://www.hankyung.com/article/202605171746i",
+            "snippet": "‘KODEX TDF2050액티브 적격’은 글로벌 주식과 채권 비중을 자동 조절하는 타깃데이트펀드(TDF)형 ETF다. 연금 계좌 투자 수요를 겨냥해 장기 투자와 안정적인 자산 증식에 초점을 맞췄다. 해외 투자 수요를 겨냥한..."
+          },
+          {
+            "title": "미래에셋운용, 운용자산 600조 시대",
+            "source": "파이낸셜뉴스",
+            "pubDate": "Mon, 18 May 2026 18:17:00 +0900",
+            "link": "http://www.fnnews.com/news/202605181815502072",
+            "snippet": "미래에셋자산운용의 해외 ETF 계열사인 '글로벌 X(Global X)'는 테마형, 인컴형 ETF 중심으로 외형을 키우며... 개인 투자자들의 ETF 투자 수요가 확대되면서 대표 지수형 상품과 반도체 테마 ETF로 자금 유입이..."
+          },
+          {
+            "title": "[증권 뉴스브리핑] 증권사 유동성 규제 개정 추진/작년 증권사 해외점포...",
+            "source": "asiatime.co.kr",
+            "pubDate": "Mon, 18 May 2026 17:50:00 +0900",
+            "link": "https://www.asiatime.co.kr/article/20260518500402",
+            "snippet": "◆ 한국투자증권은 지난달 출시한 '주식모으기' 서비스 이용자들의 적립식 정기투자 패턴을 분석한 결과, 국내 주식은 반도체 대형주, 해외주식은 지수 추종 상장지수펀드(ETF)에 자금이 집중된 것으로 나타났다고..."
+          },
+          {
+            "title": "적립식 투자 늘자 MTS도 진화… 한국투자증권, '한투 데이터랩' 출시 예...",
+            "source": "biztribune.co.kr",
+            "pubDate": "Mon, 18 May 2026 17:16:00 +0900",
+            "link": "http://www.biztribune.co.kr/news/articleView.html?idxno=353942",
+            "snippet": "해외 투자에서는 S&P500·나스닥100 등 미국 대표 지수를 추종하는 ETF 중심으로 자금이 몰렸다. '주식모으기'는 고객이 원하는 금액과 주기에 맞춰 국내외 주식과 ETF를 자동 매수할 수 있는 적립식 투자 서비스다. 시장..."
+          },
+          {
+            "title": "한투증권 '주식모으기' 투자, 국내는 반도체 대형주 집중",
+            "source": "enewstoday.co.kr",
+            "pubDate": "Mon, 18 May 2026 16:55:00 +0900",
+            "link": "http://www.enewstoday.co.kr/news/articleView.html?idxno=2430526",
+            "snippet": "한국금융지주 자회사인 한국투자증권이 '주식모으기' 서비스 이용자들의 적립식 정기투자 패턴을 분석한 결과, 국내주식은 반도체 대형주, 해외주식은 지수 추종 ETF에 자금이 집중된 것으로 나타났다...."
+          },
+          {
+            "title": "[증권 & Now] 하나증권, '푸투증권 VIP 고객' 초청 투자포럼 개최 등",
+            "source": "ebn.co.kr",
+            "pubDate": "Mon, 18 May 2026 16:54:00 +0900",
+            "link": "https://www.ebn.co.kr/news/articleView.html?idxno=1709228",
+            "snippet": "대형주, 해외주식은 지수 추종 상장지수펀드(ETF)에 자금이 집중된 것으로 나타났다고 18일 밝혔다. 한투증권에 따르면 서비스 이용자들의 매수 금액 비중이 가장 큰 종목은 반도체 대형주인 SK하이닉스(24%)와..."
+          },
+          {
+            "title": "[금융 브리핑] 미래에셋증권·DB증권·신한투자증권·한국투자증권",
+            "source": "niceeconomy.co.kr",
+            "pubDate": "Mon, 18 May 2026 16:20:00 +0900",
+            "link": "http://www.niceeconomy.co.kr/news/articleView.html?idxno=89857",
+            "snippet": "대형주, 해외주식은 지수 추종 ETF에 자금이 집중된 것으로 나타났다고 18일 밝혔다. 주식모으기는 국내외 주식과 상장지수펀드(ETF)를 고객이 원하는 금액과 주기에 맞춰 자동으로 투자할 수 있도록 한 서비스다...."
+          }
+        ],
+        "summary": "- 한국투자증권은 반도체 대형주와 미국 ETF를 선호한다고 분석했다.\n- 삼성운용 대표는 특정 ETF 5개를 추천했다.\n- 미래에셋운용은 운용자산 600조 시대를 맞이했다.",
+        "topicTags": [
+          "ai-semi-etf",
+          "us-equity"
+        ]
+      },
+      "연금저축펀드 월배당 포트폴리오 완성": {
+        "query": "월배당 ETF 커버드콜",
+        "strategyId": "income_20260518",
+        "category": "income",
+        "headlines": [
+          {
+            "title": "[더벨][배당 ETF 돋보기] 현대차·기아 등 고배당주 투자…위클리 콜옵...",
+            "source": "thebell.co.kr",
+            "pubDate": "Mon, 18 May 2026 14:58:00 +0900",
+            "link": "https://www.thebell.co.kr/free/content/ArticleView.asp?key=202605141032025520102817",
+            "snippet": "PLUS 고배당주위클리커버드콜 상장지수펀드(ETF)가 연 20% 수준 월배당을 유지하고 있다. 배당주 투자에 옵션 프리미엄 수익을 결합한 구조로 매달 안정적인 현금 흐름을 제공하는 모습이다. 다만 최근처럼 코스피가..."
+          },
+          {
+            "title": "[연금테크 따라잡기] 코스피 '팔천피' 도전…글로벌 증시 상승률 1위",
+            "source": "biz.sbs.co.kr",
+            "pubDate": "Mon, 18 May 2026 14:40:00 +0900",
+            "link": "https://biz.sbs.co.kr/article_hub/20000311025?division=NAVER",
+            "snippet": "5% 적용 - 연 1500만원 초과시 종합소득 합산 - 은퇴 이후 소득 없는 구간 견디기가 중요 - 인컴형 ETF 월 배당금 활용해서 현금 흐름 활용 - 커버드콜ㆍ배당 성장형 ETF 유용한 전략 - \"한 번에 받는 목돈 아닌 매달 나오는..."
+          },
+          {
+            "title": "[더밸류 브리핑] 오늘의 신한금융투자 소식…신한투자증권·신한자산운...",
+            "source": "thevaluenews.co.kr",
+            "pubDate": "Mon, 18 May 2026 14:00:00 +0900",
+            "link": "http://www.thevaluenews.co.kr/news/view.php?idx=198803",
+            "snippet": "200타겟위클리커버드콜 ETF’ 순자산 5000억원 돌파와 함께 ‘SOL 코스피200채권혼합50 ETF’ 신규 상장을... 자산배분 효과와 함께 월배당을 동시에 추구하는 투자자들에게 활용도가 높을 것”이라고 말했다."
+          },
+          {
+            "title": "한투운용, ACE 美반도체 커버드콜 ETF 1년 수익률 148% 1위…블로그 정보...",
+            "source": "thebigdata.co.kr",
+            "pubDate": "Mon, 18 May 2026 08:52:00 +0900",
+            "link": "http://www.thebigdata.co.kr/view.php?ud=202605180848014134c808fa9903_23",
+            "snippet": "데이터앤리서치 관계자는 \"한국투자신탁운용에 대한 관심도 상승은 AI·반도체 테마 ETF와 커버드콜 월배당 ETF가 함께 부각되는 흐름과 맞물려 있다\"며 \"특히 블로그를 중심으로 한 소비자 채널 정보량이 174..."
+          },
+          {
+            "title": "[ETF 머니플로우] 개미들, 코스피보다 AI·반도체 샀다",
+            "source": "shinailbo.co.kr",
+            "pubDate": "Sat, 16 May 2026 14:00:00 +0900",
+            "link": "https://www.shinailbo.co.kr/news/articleView.html?idxno=5021238",
+            "snippet": "5거래일간 월배당을 강조한 커버드콜 ETF가 순매수 상위권에 다수 포함된 점도 눈에 띈다. 8일부터 14일까지 개인 투자자들은 커버드콜 ETF를 총 6505억원어치를 순매수했다. 이는 KODEX 200 순매수 규모보다 2.7배..."
+          },
+          {
+            "title": "연금개미도 '바이 코리아'…세대별 '황금 포트폴리오'는 [투자톡]",
+            "source": "한국경제",
+            "pubDate": "Sat, 16 May 2026 09:39:00 +0900",
+            "link": "https://www.hankyung.com/article/2026051339506",
+            "snippet": "는 월배당을 지급하고 연 0.01%의 낮은 보수로 연금 투자에 적합한 한국판 'SCHD'로 알려진 ETF다. 남용수... 삼성자산운용은 국내 주식(커버드콜) 30%, 미국 주식(대표지수) 30%, 국내 초단기 채권형 40%로 구성할 것을..."
+          },
+          {
+            "title": "[ETF, 난리도 아니야②] \"TIGER냐 KODEX냐\"…브랜드 경쟁 '후끈'",
+            "source": "newsworks.co.kr",
+            "pubDate": "Sat, 16 May 2026 08:00:00 +0900",
+            "link": "https://www.newsworks.co.kr/news/articleView.html?idxno=840687",
+            "snippet": "반도체·AI·이차전지 같은 성장 산업은 물론 고배당·월배당·커버드콜 ETF까지 상품 종류도 다양해지는 분위기다. 특히 월급처럼 매달 분배금을 지급하는 월배당 ETF는 사회초년생 투자자들 사이에서 높은 관심을..."
+          },
+          {
+            "title": "40세 10억 모아 50세 은퇴 '비결'...\"배당주는 나 대신 돈 버는 직원\"",
+            "source": "머니투데이",
+            "pubDate": "Sat, 16 May 2026 07:00:00 +0900",
+            "link": "https://www.mt.co.kr/stock/2026/05/16/2026051512301033408",
+            "snippet": "배당주가 상승장에서의 매력이 떨어진다는 의견에 대해서는 \"최근 상장한 월 배당 ETF(상장지수펀드)는 상승을 어느 정도 따라가면서 월배당을 준다\"며 \"지수 커버드콜, 테마·지수 커버드콜, 테마·개별 커버드콜 등..."
+          }
+        ],
+        "summary": "- 현대차·기아 등 고배당주 투자 ETF가 주목받고 있다.\n- ACE 美반도체 커버드콜 ETF는 1년 수익률 148%를 기록했다.\n- 개인 투자자들은 코스피보다 AI·반도체 ETF에 관심을 보였다.",
+        "topicTags": [
+          "monthly-dividend",
+          "covered-call",
+          "retirement",
+          "ai-semi-etf"
+        ]
+      },
+      "KODEX 방산TOP10 속보 — 오늘 하락 6.02% · 거래량 1위": {
+        "query": "KODEX 방산TOP10 방산",
+        "strategyId": "breaking_20260518_1",
+        "category": "breaking",
+        "headlines": [
+          {
+            "title": "[주식마감] '세계 최초' 원자층성장(ALG) 장비 출하 소식에 주성엔지니...",
+            "source": "ggilbo.com",
+            "pubDate": "Mon, 18 May 2026 19:40:00 +0900",
+            "link": "https://www.ggilbo.com/news/articleView.html?idxno=1158938",
+            "snippet": "회사는 우주·항공기 특수 원소재 공급을 비롯해 민항공기·방산항공기 구조물 생산, 군용기 창정비(MRO)... 반도체TOP10, KODEX 200, KODEX 레버리지, 한화생명, 한온시스템, 진원생명과학, RISE..."
+          },
+          {
+            "title": "[위클리 ETF] 5月 2주차, ‘TIGER 미국우주테크’ 39.65%...‘팔천피’ 흔...",
+            "source": "thevaluenews.co.kr",
+            "pubDate": "Mon, 18 May 2026 14:14:00 +0900",
+            "link": "http://www.thevaluenews.co.kr/news/view.php?idx=198802",
+            "snippet": "이어 ‘SOL 미국우주항공TOP10’이 29.53%, ‘ACE 미국우주테크액티브’가 26.11%, ‘KODEX 미국우주항공’이 24.45% 상승하며 우주·항공 ETF가 나란히 상위권에 올랐다. 최근 미국 방산·우주 산업에 대한 투자심리가..."
+          },
+          {
+            "title": "[ETF 열전] 스페이스머니 몰린다…우주항공 ETF, AI 다음 주도주 부상",
+            "source": "newsworks.co.kr",
+            "pubDate": "Mon, 18 May 2026 10:00:00 +0900",
+            "link": "https://www.newsworks.co.kr/news/articleView.html?idxno=841041",
+            "snippet": "단순 테마 순환이 아니라 AI 인프라와 방산, 위성통신 산업까지 연결되는 새로운 성장축에 시장 자금이... 이어 ▲SOL 미국우주항공TOP10(29.53%) ▲ACE 미국우주테크액티브(26.11%) ▲KODEX 미국우주항공(24.45%) ▲1Q..."
+          },
+          {
+            "title": "“영업익 30% 달라” K조선 번진 성과급 요구…오히려 좋다는 월가",
+            "source": "매일경제",
+            "pubDate": "Mon, 18 May 2026 06:13:00 +0900",
+            "link": "https://www.mk.co.kr/article/12050554",
+            "snippet": "이외에 초대형 원유 운반선(VLCC)과 잠수함 등 방산 사업 3각 축으로 움직인다. 오는 2분기 매출성장률은 6.1... ‘KODEX 조선TOP10’에도 주간 기준으로 5월 첫째주까지 11주 연속 돈이 들어오고 있다. 시가총액은..."
+          },
+          {
+            "title": "스페이스X 타고 '훨훨'… 美우주ETF, 일주일새 두 자릿수 급등",
+            "source": "asiatoday.co.kr",
+            "pubDate": "Sun, 17 May 2026 17:44:00 +0900",
+            "link": "https://www.asiatoday.co.kr/kn/view.php?key=20260518010004608",
+            "snippet": "미국우주항공TOP10'(26.90%), 'ACE 미국우주테크액티브'(24.17%), 'KODEX 미국우주항공'(22.29%) 등이 뒤를 이었다.... 항공·방산 기업은 제외해 우주 테마 순도를 높였다. 향후 스페이스X가 상장될 경우 최대 25% 비중으로..."
+          },
+          {
+            "title": "자동차·반도체 ETF 강세…주간 수익률 상위권 포진[펀드와치]",
+            "source": "이데일리",
+            "pubDate": "Sun, 17 May 2026 09:27:00 +0900",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=01249686645449904",
+            "snippet": "이어 삼성자산운용의 ‘KODEX반도체레버리지상장지수’ ETF가 20.78% 상승하며 3위에 올랐다. 한국투자신탁운용의 ‘ACEK휴머노이드로봇산업TOP2+상장지수’ ETF는 19.57%, 미래에셋자산운용의 ‘TIGER반도체TOP10레버리..."
+          },
+          {
+            "title": "중동전 끝나면 방산주도 멈춘다?…시장선 \"아직 갈 길 남았다\"",
+            "source": "imaeil.com",
+            "pubDate": "Fri, 15 May 2026 10:18:00 +0900",
+            "link": "https://www.imaeil.com/page/view/2026051509591052576",
+            "snippet": "한화자산운용의 'PLUS K방산(-10.86%)'을 비롯해 ▲미래에셋자산운용 'TIGER K방산＆우주(-10.68%)' ▲삼성자산운용 'KODEX 방산TOP10(-10.46%)' ▲신한자산운용 'SOL K방산(-8.06%)' 등도 약세장을 맞았으며 레버리지 종목인 'KODEX..."
+          },
+          {
+            "title": "DB증권 “국내 AI 반도체 ETF, 주도주 집중 전략 유효…SK하이닉스 비중...",
+            "source": "etoday.co.kr",
+            "pubDate": "Fri, 15 May 2026 07:40:00 +0900",
+            "link": "https://www.etoday.co.kr/news/view/2584715",
+            "snippet": "ETF별로는 ACE AI반도체포커스, TIGER AI반도체핵심공정, KODEX AI반도체핵심장비 등이 주도주 집중형 상품으로... K-반도체TOP10과 BNK 온디바이스AI를 추천했으며, 낙폭 과대 회복 전략으로는 TIGER K방산&우주와 글로벌..."
+          }
+        ],
+        "summary": "- 우주항공 ETF, AI 다음 주도주 부상 기대감.\n- 미국 우주 ETF, 스페이스X 호재에 급등.\n- 중동전 이후 방산주 흐름에 대한 시장 관심.",
+        "topicTags": [
+          "defense-etf",
+          "ai-semi-etf",
+          "shipbuilding"
+        ]
+      },
+      "KODEX 차이나휴머노이드로봇 속보 — 오늘 상승 3.35% · 거래량 2위": {
+        "query": "KODEX 차이나휴머노이드로봇 기타",
+        "strategyId": "breaking_20260518_2",
+        "category": "breaking",
+        "headlines": [
+          {
+            "title": "2월 신규 ETF 6개…중국·휴머노이드·원자력 [ETF 리그테이블]",
+            "source": "smarttoday.co.kr",
+            "pubDate": "Wed, 04 Mar 2026 11:18:00 +0900",
+            "link": "https://www.smarttoday.co.kr/ko-kr/articles/104007",
+            "snippet": "2월 ETF 시장은 중국 시장을 겨냥한 테마형 상품과 더불어 휴머노이드, 소형모듈원전(SMR) 등 인류의 미래를 바꿀 첨단 기술 섹터가 주도했다. ● 이달의 창의성이 빛난 ETF는? 삼성자산운용의 ‘KODEX 차이나AI반도체TOP1..."
+          },
+          {
+            "title": "'휴머노이드로봇·반도체·금융채' ETF 4종, 오늘(26일) 코스피 상장",
+            "source": "newswell.co.kr",
+            "pubDate": "Thu, 26 Feb 2026 00:02:00 +0900",
+            "link": "http://www.newswell.co.kr/news/articleView.html?idxno=16259",
+            "snippet": "K휴머노이드테마TOP10 ▲KODEX 금융채1~2년PLUS액티브 ▲KODEX 차이나AI반도체TOP10 ▲RISE... 이상 기타 금융채에 주로 투자하는 액티브 상품이다. 낮은 위험에 비해 비교적 높은 수익을 기대할 수 있는 특성을 갖췄다...."
+          },
+          {
+            "title": "[증권소식] 고배당기업 기업가치제고 공시규정 확정/미래에셋, WM·투자...",
+            "source": "asiatime.co.kr",
+            "pubDate": "Wed, 25 Feb 2026 11:08:00 +0900",
+            "link": "https://www.asiatime.co.kr/article/20260225500130",
+            "snippet": "NH아문디자산운용의 'HANARO K휴머노이드테마TOP10'은 국내 로보틱스 및 인공지능(AI) 인프라와 관련된 국내... 이상 기타 금융채에 주로 투자하는 액티브 ETF다. 'KODEX 차이나AI반도체TOP10'은 반도체, 메모리 및 서버..."
+          },
+          {
+            "title": "휴머노이드 로봇 등 테마형 ETF 4종 26일 신규 상장",
+            "source": "news.tf.co.kr",
+            "pubDate": "Tue, 24 Feb 2026 16:58:00 +0900",
+            "link": "https://news.tf.co.kr/read/economy/2295729.htm",
+            "snippet": "불리는 휴머노이드 로봇을 테마로 한 상장지수펀드(ETF) 등 4종이 신규 상장한다. 24일 한국거래소는... 이상 기타 금융채에 투자하는 액티브 ETF, KODEX 차이나AI반도체TOP10은 반도체와 메모리 등 서버 부문에서..."
+          },
+          {
+            "title": "한국투자증권, 두 번째 IMA 7400억 유입…KB증권, 디지털 개인 연금 3조...",
+            "source": "sisaon.co.kr",
+            "pubDate": "Thu, 22 Jan 2026 17:36:00 +0900",
+            "link": "http://www.sisaon.co.kr/news/articleView.html?idxno=179822",
+            "snippet": "참가 신청 및 기타 자세한 사항은 유안타증권 금융센터평촌지점으로 문의하면 된다. ⓒ신한투자증권... 투자하는 'KODEX 차이나휴머노이드로봇(2806억원)' 등이다. ⓒKB자산운용 KB자산운용, 'RISE AI 인프라 3총사' 주목..."
+          },
+          {
+            "title": "[증권소식] 조각투자 거래소에 '거래소·넥스트레이드' 가닥/'넷플 협업...",
+            "source": "asiatime.co.kr",
+            "pubDate": "Wed, 07 Jan 2026 20:16:00 +0900",
+            "link": "https://www.asiatime.co.kr/article/20260107500373",
+            "snippet": "투자자에게는 ▲KODEX AI반도체를 추천했다. 또 올해는 '휴머노이드 로봇'이 산업 현장에 본격 투입되는... 한국투자신탁운용은 이러한 트렌드에 맞춰 ▲한국투자차이나빅테크와AI주도주목표전환..."
+          },
+          {
+            "title": "[주식마감기사] '中, 희토류 日수출 통제' 가능성에 유니온머티리얼 상...",
+            "source": "ggilbo.com",
+            "pubDate": "Wed, 07 Jan 2026 19:40:00 +0900",
+            "link": "https://www.ggilbo.com/news/articleView.html?idxno=1134535",
+            "snippet": "중국 관영 영자지 차이나데일리도 중국 정부가 특정 희토류 관련 제품의 일본 수출에 대해 수출 허가... 미국S&P500, KODEX AI반도체, TIGER 미국S&P500, 현대차, TIGER 코리아휴머노이드로봇산업다. 코스닥 시장 거래 상위종목..."
+          },
+          {
+            "title": "[증권소식] 올해 코스피 상승률 75.6%, G20·OECD 1위/올해 ETF 순자산액...",
+            "source": "asiatime.co.kr",
+            "pubDate": "Tue, 30 Dec 2025 23:28:00 +0900",
+            "link": "https://www.asiatime.co.kr/article/20251230500426",
+            "snippet": "투자자별로 보면 외국인과 개인은 각각 9조원, 19조7000억원을 순매도했고, 기관과 기타법인은 각각... 관련 ETF로는 ▲TIGER 차이나휴머노이드로봇 (▲TIGER 코리아휴머노이드로봇산업을 제시했다. 이어 '꾸준한 적립식..."
+          }
+        ],
+        "summary": "- 2월, 중국 및 휴머노이드 로봇 테마 ETF 신규 상장.\n- 휴머노이드 로봇, 반도체 등 테마형 ETF 4종 상장.\n- 올해 ETF 순자산액 증가, 코스피 상승률 기록.",
+        "topicTags": [
+          "ai-semi-etf",
+          "us-equity"
+        ]
+      },
+      "SOL 조선TOP3플러스레버리지 속보 — 오늘 하락 9.08% · 거래량 3위": {
+        "query": "SOL 조선TOP3플러스레버리지 조선",
+        "strategyId": "breaking_20260518_3",
+        "category": "breaking",
+        "headlines": [
+          {
+            "title": "[ETF 머니플로우] 개미들, 코스피보다 AI·반도체 샀다",
+            "source": "shinailbo.co.kr",
+            "pubDate": "Sat, 16 May 2026 14:00:00 +0900",
+            "link": "https://www.shinailbo.co.kr/news/articleView.html?idxno=5021238",
+            "snippet": "ETF(레버리지, 인버스 제외 기준)를 총 1조2786억원어치 순매수했다. 이는 같은 기간 KODEX 200 순매수... 이어 △SOL 조선TOP3플러스(114억원) △KIWOOM 미국AI테크하이베타(124억원) △TIGER코리아원자력(133억원)..."
+          },
+          {
+            "title": "증권사 돈잔치 시작…은행급 실적 나왔다",
+            "source": "서울경제",
+            "pubDate": "Fri, 15 May 2026 07:34:00 +0900",
+            "link": "https://www.sedaily.com/article/20044369?ref=naver",
+            "snippet": "신한자산운용의 ‘SOL AI반도체TOP2플러스’ 역시 순자산 2조 903억 원을 기록했으며, 상장 이후... 2배 레버리지 ETF’의 운용자산(AUM)은 53억 7778만 달러(약 7조 8995억 원)를 돌파해 세계 최대 단일종목 레버리지..."
+          },
+          {
+            "title": "[ETF 시황] 코스피 8000 눈앞에 순환매 확산…소비·엔터 ETF 강세",
+            "source": "뉴스핌",
+            "pubDate": "Thu, 14 May 2026 16:14:00 +0900",
+            "link": "https://www.newspim.com/news/view/20260514001121",
+            "snippet": "2026.05.1 4 yym58@newspim.com SOL 조선TOP3플러스레버리지는 전 거래일보다 6.52% 하락하며 가장 큰... 반면 희토류(-5.25%), 조선(-3.31%), 아메리카(-2.50%), 양자컴퓨터(-1.87%), 구리(-1.72%) 관련 ETF는 부진했다...."
+          },
+          {
+            "title": "[주식마감] 반도체株 또 불기둥... 미래반도체·한울반도체 나란히 '上'",
+            "source": "ggilbo.com",
+            "pubDate": "Mon, 11 May 2026 19:40:00 +0900",
+            "link": "https://www.ggilbo.com/news/articleView.html?idxno=1157393",
+            "snippet": "산업용 기계와 반도체, 조선, 플랜트, 에너지, 방산 등 다양한 산업군에 사용되는 스테인리스 소재를... 코스닥150, SOL AI반도체TOP2플러스, KODEX 200, KODEX 레버리지, 광전자, 계양전기, RISE 삼성전자SK하이닉스채권혼합50..."
+          },
+          {
+            "title": "ETF '500조 시대' 눈앞… 삼성·미래 '수성' 속 한투·KB·신한·타임폴리...",
+            "source": "pinpointnews.co.kr",
+            "pubDate": "Sun, 10 May 2026 22:10:00 +0900",
+            "link": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=451641",
+            "snippet": "증시 호황과 오는 22일 삼성전자·SK하이닉스 레버리지 상품 출시 등으로 자금 유입이 더욱 활발해져... 신한(SOL): 조선(SOL 조선TOP3플러스, +78.27%)과 반도체 소부장(SOL AI반도체소부장, +213.15%) 등 특정 섹터를..."
+          },
+          {
+            "title": "[ETF시황] 휴머노이드 로봇 ETF 급등…조선·방산 약세",
+            "source": "뉴스핌",
+            "pubDate": "Fri, 08 May 2026 17:33:00 +0900",
+            "link": "https://www.newspim.com/news/view/20260508001259",
+            "snippet": "조선 테마에서는 TIGER 200 중공업이 3.48% 내렸다. 수익률 하위권은 방산·조선 레버리지 계열이 휩쓸었다. PLUS K방산레버리지(-7.43%)가 낙폭이 가장 컸고 SOL 조선기자재(-7.30%), SOL 조선TOP3플러스레버..."
+          },
+          {
+            "title": "[상대강도과열 종목] 파두·심텍·서진시스템 폭풍 질주…반도체 장비주...",
+            "source": "pinpointnews.co.kr",
+            "pubDate": "Thu, 07 May 2026 16:32:00 +0900",
+            "link": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=451120",
+            "snippet": "SOL 조선TOP3플러스레버리지와 KoAct 글로벌양자컴퓨팅액티브, 미래에셋 2X 미국 자율주행대표기업 ETN, MIDAS 일본테크액티브 등이 상승 흐름을 나타냈다. AI·양자컴퓨팅·자율주행·조선 업황 개선 기대가 테마형 상품..."
+          },
+          {
+            "title": "‘반도체 쏠림’ 넘어선 ‘증시 잠식’… 삼전·하이닉스가 삼킨 코스피",
+            "source": "조선비즈",
+            "pubDate": "Thu, 07 May 2026 14:22:00 +0900",
+            "link": "https://biz.chosun.com/stock/stock_general/2026/05/07/TTQYKUGOGBBSXNQ6AGNEREGTTU/?utm_source=naver&utm_medium=original&utm_campaign=biz",
+            "snippet": "오는 22일에는 두 종목을 각각 2배로 추종하는 단일 종목 레버리지 ETF까지 등판을 예고했다. 상품 거래를... 신한자산운용은 ‘SOL AI반도체TOP2플러스’를 출시하며 SK하이닉스 노출도를 40%까지 높였다고 홍보했으나..."
+          }
+        ],
+        "summary": "- 개인 투자자는 AI·반도체 관련 ETF를 매수했습니다.\n- 휴머",
+        "topicTags": [
+          "ai-semi-etf",
+          "shipbuilding",
+          "defense-etf"
+        ]
+      }
+    }
+  }
+}
