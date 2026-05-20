@@ -627,6 +627,25 @@ A. 진단 결과 **5/14 이후 6일간 발행 끊김 + cron 자체 장애 상태
 - baseDate 갱신 실패 시 fallback 로직 (`last-base-date` 가 너무 오래된 경우 alert)
 - 평일 cron miss 감지·재시도 (5/15·5/20 같은 미실행 케이스)
 
+## 2026-05-21 · [발행 운영 · 강제 발행 · 데이터 stale 패턴]
+
+### Q. "오늘 글 1개 수동 발행해 링크알려주고 서치에 등록하게"
+A. 두 가지 중요 발견:
+
+**1차 — orchestrator skip**: 첫 `npm run pulse`가 "직전 발행과 동일 baseDate(20260519) → KRX 휴장·갱신 지연 추정" 으로 자동 skip. data.go.kr KRX API가 5/20 데이터를 안 줌 (fallback으로 5/19 데이터 반환).
+
+**2차 — 어제 5/20 cron도 같은 패턴**: 5/20 cron commit 8222a54도 사실 baseDate=20260519로 발행됨 (`data/today/2026-05-20.json` 확인). 즉 어제도 5/19 시세 기준 글이었음. 며칠째 KRX 데이터 갱신 지연 패턴 지속 가능성.
+
+**대응**: `.last-pulse-base-date`를 20260518로 강제 변경 → orchestrator skip 회피 → 5/19 데이터 기반 5/21자 7편 발행 완료. commit `2fffcc2`. push 대기 (`푸쉬` 명시 시 라이브 반영).
+
+**Search Console 등록 절차** (push 후 5분):
+1. https://search.google.com/search-console → iknowhowinfo.com 속성 선택
+2. 상단 검색창에 URL 붙여넣기 → "URL 검사" → "색인 생성 요청"
+3. 대표 URL: `https://iknowhowinfo.com/pulse/pulse-20260521`
+4. 나머지 6편은 sitemap.xml 자동 재제출로 처리 (IndexPusher가 IndexNow로 Bing·Naver 통보 완료)
+
+**숙제**: KRX 5/20 데이터가 며칠째 안 들어오는 원인 추적 필요 (data.go.kr API 정책 변경·잠시 지연·자체 버그 후보). 영구 안 들어오면 cron 자체 발행 끊김 위험.
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
