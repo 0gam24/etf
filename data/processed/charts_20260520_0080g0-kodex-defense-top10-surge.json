@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "createdBy": "Visualizer",
+    "createdAt": "2026-05-20T03:38:20.016Z",
+    "fileName": "charts_20260520_0080g0-kodex-defense-top10-surge.json"
+  },
+  "data": [
+    {
+      "type": "card",
+      "title": "KODEX 방산TOP10 시세 스냅샷",
+      "items": [
+        {
+          "label": "현재가",
+          "value": "13,120원"
+        },
+        {
+          "label": "전일대비",
+          "value": "-65"
+        },
+        {
+          "label": "등락률",
+          "value": "-0.49%"
+        },
+        {
+          "label": "거래량",
+          "value": "829만주"
+        },
+        {
+          "label": "거래대금",
+          "value": "1,107억 원"
+        },
+        {
+          "label": "시가총액",
+          "value": "5,340억 원"
+        }
+      ],
+      "alt": "0080G0 5월 20일 KODEX 방산TOP10 시세 스냅샷 — Daily ETF Pulse"
+    },
+    {
+      "type": "bar",
+      "title": "방산 섹터 동일 테마 비교",
+      "data": [
+        {
+          "label": "KODEX 방산TOP10",
+          "value": -0.49,
+          "color": "#3B82F6"
+        },
+        {
+          "label": "HANARO 유럽방산",
+          "value": 2.37,
+          "color": "#EF4444"
+        }
+      ],
+      "alt": "0080G0 5월 20일 방산 섹터 동일 테마 비교 — Daily ETF Pulse"
+    }
+  ]
+}
