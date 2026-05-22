@@ -1,6 +1,6 @@
 {
   "code": "0080Y0",
-  "updatedAt": "2026-05-21T10:46:48.171Z",
+  "updatedAt": "2026-05-22T10:20:48.871Z",
   "history": [
     {
       "date": "2026-03-30",
@@ -223,6 +223,12 @@
       "foreignNet": -66479,
       "institutionNet": 46455,
       "individualNet": 8444
+    },
+    {
+      "date": "2026-05-22",
+      "foreignNet": -2584,
+      "institutionNet": -1586,
+      "individualNet": 4812
     }
   ]
 }

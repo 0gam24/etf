@@ -1,6 +1,6 @@
 {
   "code": "449450",
-  "updatedAt": "2026-05-21T10:46:49.300Z",
+  "updatedAt": "2026-05-22T10:20:50.113Z",
   "history": [
     {
       "date": "2026-03-31",
@@ -217,6 +217,12 @@
       "foreignNet": -20042,
       "institutionNet": 53747,
       "individualNet": -34802
+    },
+    {
+      "date": "2026-05-22",
+      "foreignNet": 8789,
+      "institutionNet": 14760,
+      "individualNet": -24040
     }
   ]
 }

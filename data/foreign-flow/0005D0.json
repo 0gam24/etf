@@ -1,6 +1,6 @@
 {
   "code": "0005D0",
-  "updatedAt": "2026-05-21T10:46:48.740Z",
+  "updatedAt": "2026-05-22T10:20:49.493Z",
   "history": [
     {
       "date": "2026-03-30",
@@ -223,6 +223,12 @@
       "foreignNet": -34235,
       "institutionNet": -33241,
       "individualNet": 79732
+    },
+    {
+      "date": "2026-05-22",
+      "foreignNet": -7102,
+      "institutionNet": -69939,
+      "individualNet": 76993
     }
   ]
 }
