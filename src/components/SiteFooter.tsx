@@ -170,11 +170,33 @@ export default function SiteFooter() {
         </div>
       )}
 
+      {/* 정책 링크 — AdSense·공정위 형식 요건 충족 (모든 페이지 일관 노출) */}
       <div
         style={{
-          marginTop: 'var(--space-12)',
-          paddingTop: 'var(--space-6)',
+          maxWidth: '80rem',
+          margin: 'var(--space-12) auto 0',
+          padding: 'var(--space-6) var(--space-6) 0',
           borderTop: '1px solid var(--border-color)',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          gap: 'var(--space-4)',
+          fontSize: 'var(--fs-sm)',
+        }}
+      >
+        <Link href="/about" style={{ color: 'var(--text-secondary)' }}>편집팀 소개</Link>
+        <span style={{ color: 'var(--text-muted)' }} aria-hidden>·</span>
+        <Link href="/privacy" style={{ color: 'var(--text-secondary)' }}>개인정보처리방침</Link>
+        <span style={{ color: 'var(--text-muted)' }} aria-hidden>·</span>
+        <Link href="/disclaimer" style={{ color: 'var(--text-secondary)' }}>면책조항</Link>
+        <span style={{ color: 'var(--text-muted)' }} aria-hidden>·</span>
+        <Link href="/contact" style={{ color: 'var(--text-secondary)' }}>연락처</Link>
+      </div>
+
+      <div
+        style={{
+          marginTop: 'var(--space-4)',
+          paddingTop: 'var(--space-4)',
           textAlign: 'center',
           fontSize: 'var(--fs-xs)',
           color: 'var(--text-muted)',

@@ -66,6 +66,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   });
 
+  // 정책 페이지 3종 — AdSense·공정위 형식 요건 (모든 페이지 footer에 일관 노출)
+  const policyLastModified = new Date('2026-05-22');
+  ['privacy', 'disclaimer', 'contact'].forEach(slug => {
+    routes.push({
+      url: `${baseUrl}/${slug}`,
+      lastModified: policyLastModified,
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    });
+  });
+
   // 뉴스레터 구독 페이지 (재방문 채널)
   routes.push({
     url: `${baseUrl}/newsletter`,
