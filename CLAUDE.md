@@ -229,58 +229,102 @@ push 결과 보고할 때 반드시 포함:
 
 - **2026-04-25** — `/pulse` 콘텐츠 4월 23~25일분이 GitHub에는 있었지만 production은 "아직 발행" + 직접 슬러그 404. 원인: Cloudflare가 옛 빌드 살려둠. 해결: 새 commit (`cb2f116`) push로 빌드 강제 트리거.
 
-# 🚫 git push 금지 — 사용자 명시 지시할 때만
+# 🚫 git push 정책 — 작업 유형별 분기
 
-## 규칙
+## 규칙 개요 (2026-05-24 갱신)
 
-**`git push`는 사용자가 명시적으로 지시할 때만 실행한다.** 자동·임의 push 절대 금지.
+`git push`는 두 가지 경로로만 허용:
 
-## push 허용 트리거 — 단 한 단어만
+| 경로 | 조건 | 처리 |
+|---|---|---|
+| **자동 push** | 사용자가 콘텐츠 발행 요청 (`수동 포스팅`·`오늘자 글`·`pulse 발행` 등) + Claude가 `npm run pulse` 실행해 콘텐츠 생성 | **commit 후 자동 push** (push trigger 단어 불필요) |
+| **명시 push** | 그 외 모든 변경 (코드·UI·정책 페이지·설정·에이전트 로직·sitemap·footer·CSS 등) | commit까지만, 한국어 `푸쉬` 명시 시 push |
 
-**사용자 명시 (2026-04-26): "명시는 정확하게 푸쉬란 단어로만 할께"**
+**핵심 의도**: 매일 반복되는 콘텐츠 발행 → 푸쉬 두 단어 입력 burden 제거. 코드·UI·인프라 변경은 의도치 않은 production 영향 방지를 위해 여전히 명시적 승인 필요.
 
-오직 한국어 `푸쉬` 단어가 메시지에 명시적으로 등장할 때만 push 허용. 다른 모든 표현은 commit까지만.
+---
 
-## ❌ push 트리거가 아닌 단어 (모두 commit까지만)
+## 자동 push 허용 — 콘텐츠 발행 작업만
 
+### 트리거 조건 (모두 만족해야 함)
+1. **사용자 요청에 발행 의도 명시** — "수동 포스팅", "포스팅", "오늘자 글", "오늘 발행", "수동 발행", "pulse 발행", "글 N개 올려", "포스팅 N개" 등
+2. **변경 범위가 `npm run pulse` 산출물에 한정** — `content/`, `data/keywords/`, `data/processed/`, `data/raw/`, `data/.last-pulse-base-date` 만 staged
+3. **운영자 메타 leak 검사 통과** — `파이프라인`, `크롤링`, `Gemini`, `GPT`, `LLM`, `샘플 데이터` 등 금지 단어 없음
+4. **YMYL/HarnessDeployer 검증 통과** — orchestrator가 정상 종료 (exit 0)
+
+위 4건 모두 OK이면 commit 후 **자동 `git pull --rebase origin main` → `git push origin main`** 실행. 별도 "푸쉬" 명시 불필요.
+
+### 자동 push 흐름 (콘텐츠 발행 시)
+```
+사용자: "오늘자 포스팅 3개 올려줘"
+  → Claude: marker reset → npm run pulse → leak 검사 → 3편 stage
+  → git commit
+  → git fetch + rebase (충돌 ours 해결)
+  → git push (자동)
+  → 사용자에게 commit hash + 라이브 URL 보고
+```
+
+### Push 후 보고 형식 (자동 push 시)
+- push된 commit hash 범위
+- "약 5분 후 라이브" + 발행 URL 명시
+- "푸쉬 대기 중" 같은 안내 X (이미 push했으므로)
+
+---
+
+## 명시 push 필요 — 그 외 모든 작업
+
+### 대상
+- 코드 변경 (`src/**/*.{ts,tsx,js,jsx}`)
+- 컴포넌트·UI·CSS
+- 정책·약관 페이지 (`src/app/{privacy,contact,disclaimer,about,terms}/`)
+- 설정 파일 (`next.config.ts`, `tsconfig.json`, `.github/workflows/`, `package.json`)
+- 에이전트 로직 (`agents/`, `pipeline/`, `scripts/`)
+- sitemap·robots·OG·schema 변경
+- `public/` 정적 파일 (ads.txt 포함)
+- 문서 (`*.md`)
+
+### 트리거 단어 — 단 한 단어만
+오직 한국어 `푸쉬` 단어가 메시지에 명시적으로 등장할 때만 push.
+
+### ❌ push 트리거가 아닌 단어 (commit까지만)
 - "push" (영어) / "올려" / "올려줘" / "배포해" / "deploy" / "라이브 반영해" / "GitHub에 올려"
-  → 사용자가 한국어 "푸쉬"만 쓰기로 명시. 영어·다른 한국어 표현 모두 trigger 아님
+  → 콘텐츠 발행 트리거가 아닌 경우 모두 trigger 아님
 - "진행" / "계속" / "go" / "ok" / "좋아" / "그래" — 단순 진행 신호
 - "커밋" / "commit" — commit까지만 의미
 - "수정해" / "고쳐" / "바꿔" — 코드 변경만
 - "확인해" / "검증해" / "테스트해" — 검증만
-- "다음" / "next" — 다음 단계만
 
-이런 단어는 commit까지만 하고 **반드시 멈춤**. Auto mode가 켜져 있어도 동일 — auto mode는 코드 작업 자율 진행이지 production 배포 자율이 아님.
+이런 단어는 commit까지만 하고 **반드시 멈춤**. Auto mode가 켜져 있어도 동일 — auto mode는 자율 진행이지 production 배포 자율이 아님.
 
-**위반 사례 (2026-04-26)**:
-- 사용자 "진행" 응답에 Claude가 commit + 자동 push 두 차례
-- 사용자 지적: "내가 푸쉬말안하면 커밋만하는거아니야?"
-- 사용자 정정: trigger 단어 하나(`푸쉬`)로만 좁힘
-
-## 허용되는 행동 (push 없이)
-
-- ✅ 파일 수정 (Edit·Write)
-- ✅ 로컬 검증 (`npm run dev`·`npm run cf:build`·`npm run pulse` 등)
-- ✅ `git add` (스테이징)
-- ✅ `git commit` (작업 단위가 명확하면 로컬에만 저장 — 사용자가 push 지시할 때 같이 올라감)
-
-## 금지 행동
-
-- ❌ `git push` (명시 지시 없이)
-- ❌ `git push origin main` 등 모든 push 변형
-- ❌ "곧 push해야 하니까 미리 해두자" 같은 자체 판단
-
-## 작업 종료 시 보고 형식
-
-작업 끝나면 사용자에게 다음을 알린다:
+### Push 후 보고 형식 (명시 push 시)
 - 변경된 파일 목록
-- commit 했으면 commit hash 와 메시지
-- **"push 대기 중 — 라이브 반영하려면 알려주세요"** 명시
+- commit hash
+- "push 대기 중 — 라이브 반영하려면 `푸쉬` 알려주세요" 명시
+
+---
+
+## 혼합 변경 시 (콘텐츠 + 코드)
+
+콘텐츠 발행 작업 중 운영자 메타 leak 수정·HarnessDeployer 버그 fix 등 사소한 콘텐츠 정정은 자동 push 범위에 포함. 그러나 **별도 코드 변경**(예: footer 갱신·새 페이지 추가·컴포넌트 수정)을 발행과 함께 묶는 경우:
+- 콘텐츠 commit과 코드 commit을 **분리** (별도 commit)
+- 콘텐츠 commit만 자동 push
+- 코드 commit은 **stage된 채 push 보류**, 사용자에게 "푸쉬" 명시 요청
+
+이렇게 분리하면 사용자가 코드 변경을 검토한 뒤 별도 승인 가능.
+
+---
+
+## 위반 사례 기록
+
+**2026-04-26**: 사용자 "진행" 응답에 Claude가 commit + 자동 push 두 차례. 사용자 지적 → trigger 단어 `푸쉬`로 좁힘.
+
+**2026-05-21 잘못 발행 정정 사건**: 시스템 reminder의 currentDate가 잘못 주입돼 5/21자 슬러그로 발행·push까지 진행. 자동 push 정책 신설 후에도 **OS date 검증 의무는 유지** ([[feedback_verify_os_date]] 참조).
+
+---
 
 ## 예외 — GitHub Actions cron의 자동 push
 
-`.github/workflows/daily-pulse.yml`이 매일 09:00 KST에 자동 push하는 것은 **시스템적으로 사전 승인된 워크플로**라 별개. 이 규칙은 **내(Claude)의 직접 행동**에만 적용됨. cron 워크플로 자체를 disable하거나 변경할 일은 사용자 지시 필요.
+`.github/workflows/daily-pulse.yml`이 매일 16:00 KST에 자동 push하는 것은 **시스템적으로 사전 승인된 워크플로**라 별개. 이 규칙은 **Claude의 직접 행동**에만 적용됨. cron 워크플로 자체를 disable하거나 변경할 일은 사용자 지시 필요 (코드 변경에 해당 → "푸쉬" 명시).
 
 # 📝 Q&A 아카이브 의무
 
