@@ -746,6 +746,30 @@ commit `d88c1be`. 코드/문서 변경이라 "푸쉬" 명시 시 push.
 2. Claude: `npm run pulse` → 검증 → commit → 자동 push (2-track 정책에 따라)
 3. Cloudflare 5분 후 라이브
 
+## 2026-05-26 · [Push 정책 1-track 단일화 — 모든 변경 자동 push]
+
+### Q. "앞으로는 자동 푸쉬하는걸로 모두 변경해"
+A. 2-track 분기 폐지 → 1-track 통합. 모든 commit이 commit 직후 자동 push. "푸쉬" trigger 단어 불필요.
+
+| 시기 | 정책 |
+|---|---|
+| 2026-04-26 ~ 05-23 | "푸쉬" 명시 시에만 push (코드·콘텐츠 동일) |
+| 2026-05-24 ~ 05-25 | 2-track: 콘텐츠 자동 push / 코드는 "푸쉬" 명시 |
+| **2026-05-26 ~ 현재** | **1-track: 모든 변경 자동 push** |
+
+처리:
+- `CLAUDE.md` "git push 정책" 섹션 전면 재작성 — 1-track + 자동 push 표준 흐름 + 4가지 안전 검사 + 충돌 처리 가이드 + 위반 사례 히스토리
+- 메모리 `feedback_push_trigger.md` → `push-policy-auto-all` (1-track 반영)
+- `MEMORY.md` 인덱스
+
+**자동 push 직전 4가지 안전 검사 의무** (정책 단순화의 대가 = Claude 책임):
+1. OS date 검증 (날짜 표기 작업 시)
+2. 운영자 메타 leak 검사 (콘텐츠 변경 시)
+3. 비밀값 노출 검사 (.env·service account·API key staged 안 됨)
+4. destructive operation 차단 (--force·--no-verify·reset --hard 등 사용자 명시 승인 필수)
+
+이번 정책 변경 commit부터 즉시 적용 — commit + 자동 push (이전이라면 "푸쉬" 명시 대기였을 변경도 자동 처리).
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================

@@ -229,96 +229,75 @@ push 결과 보고할 때 반드시 포함:
 
 - **2026-04-25** — `/pulse` 콘텐츠 4월 23~25일분이 GitHub에는 있었지만 production은 "아직 발행" + 직접 슬러그 404. 원인: Cloudflare가 옛 빌드 살려둠. 해결: 새 commit (`cb2f116`) push로 빌드 강제 트리거.
 
-# 🚫 git push 정책 — 작업 유형별 분기
+# ✅ git push 정책 — 모든 변경 자동 push
 
-## 규칙 개요 (2026-05-24 갱신)
+## 규칙 (2026-05-26 갱신 · 1-track 단일화)
 
-`git push`는 두 가지 경로로만 허용:
+**모든 commit은 commit 직후 자동 push.** push trigger 단어("푸쉬" 등) 명시 불필요. 콘텐츠 발행·코드·UI·약관·설정·문서·에이전트·sitemap·`public/`·기타 모두 동일.
 
-| 경로 | 조건 | 처리 |
-|---|---|---|
-| **자동 push** | 사용자가 콘텐츠 발행 요청 (`수동 포스팅`·`오늘자 글`·`pulse 발행` 등) + Claude가 `npm run pulse` 실행해 콘텐츠 생성 | **commit 후 자동 push** (push trigger 단어 불필요) |
-| **명시 push** | 그 외 모든 변경 (코드·UI·정책 페이지·설정·에이전트 로직·sitemap·footer·CSS 등) | commit까지만, 한국어 `푸쉬` 명시 시 push |
-
-**핵심 의도**: 매일 반복되는 콘텐츠 발행 → 푸쉬 두 단어 입력 burden 제거. 코드·UI·인프라 변경은 의도치 않은 production 영향 방지를 위해 여전히 명시적 승인 필요.
+**핵심 의도**: 사용자 명시 (2026-05-26 "앞으로는 자동 푸쉬하는걸로 모두 변경해"). 매번 "푸쉬" 입력 burden 완전 제거. Claude의 모든 commit이 즉시 production에 반영됨.
 
 ---
 
-## 자동 push 허용 — 콘텐츠 발행 작업만
+## 자동 push 표준 흐름
 
-### 트리거 조건 (모두 만족해야 함)
-1. **사용자 요청에 발행 의도 명시** — "수동 포스팅", "포스팅", "오늘자 글", "오늘 발행", "수동 발행", "pulse 발행", "글 N개 올려", "포스팅 N개" 등
-2. **변경 범위가 `npm run pulse` 산출물에 한정** — `content/`, `data/keywords/`, `data/processed/`, `data/raw/`, `data/.last-pulse-base-date` 만 staged
-3. **운영자 메타 leak 검사 통과** — `파이프라인`, `크롤링`, `Gemini`, `GPT`, `LLM`, `샘플 데이터` 등 금지 단어 없음
-4. **YMYL/HarnessDeployer 검증 통과** — orchestrator가 정상 종료 (exit 0)
-
-위 4건 모두 OK이면 commit 후 **자동 `git pull --rebase origin main` → `git push origin main`** 실행. 별도 "푸쉬" 명시 불필요.
-
-### 자동 push 흐름 (콘텐츠 발행 시)
 ```
-사용자: "오늘자 포스팅 3개 올려줘"
-  → Claude: marker reset → npm run pulse → leak 검사 → 3편 stage
-  → git commit
-  → git fetch + rebase (충돌 ours 해결)
-  → git push (자동)
-  → 사용자에게 commit hash + 라이브 URL 보고
+1. 작업 완료 (파일 수정·콘텐츠 생성·등)
+2. git add <필요 파일>
+3. git commit -m "..."
+4. git fetch + git pull --rebase --autostash origin main
+   - conflict 발생 → 작업 맥락에 따라 자동 해결 (modify/delete는 의도 반영, 콘텐츠는 ours)
+5. git push origin main
+6. 사용자에게 보고:
+   - push된 commit hash 범위
+   - "약 5분 후 라이브" + 영향 URL
+   - "푸쉬 대기 중" 같은 안내 X
 ```
 
-### Push 후 보고 형식 (자동 push 시)
-- push된 commit hash 범위
-- "약 5분 후 라이브" + 발행 URL 명시
-- "푸쉬 대기 중" 같은 안내 X (이미 push했으므로)
+---
+
+## 자동 push 전 안전 검사 (4가지 의무)
+
+push 직전 다음 검사를 통과해야 함. 실패 시 push 보류 + 사용자에게 보고.
+
+1. **OS date 검증** ([[feedback_verify_os_date]]) — 발행·날짜 표기 작업 전 `date` 명령 1회 실행. 시스템 reminder의 currentDate만 신뢰 X.
+2. **운영자 메타 leak 검사** (콘텐츠 변경 시) — `파이프라인`·`크롤링`·`Gemini`·`GPT`·`LLM`·`샘플 데이터` 등 금지 단어 없음.
+3. **비밀값 노출 검사** — `.env*.local`·`*-service-account.json`·`*credentials*.json`·API 키·publisher secret 등이 staged에 포함되지 않음. `.gitignore` 자동 차단 외 추가 확인.
+4. **destructive operation 차단** — `--force`, `--no-verify`, `git reset --hard origin/main`, amend published commits 등 금지. 발생 시 무조건 사용자 승인 필요.
 
 ---
 
-## 명시 push 필요 — 그 외 모든 작업
+## ❌ 자동 push에서 제외되는 작업 (별도 사용자 승인 필수)
 
-### 대상
-- 코드 변경 (`src/**/*.{ts,tsx,js,jsx}`)
-- 컴포넌트·UI·CSS
-- 정책·약관 페이지 (`src/app/{privacy,contact,disclaimer,about,terms}/`)
-- 설정 파일 (`next.config.ts`, `tsconfig.json`, `.github/workflows/`, `package.json`)
-- 에이전트 로직 (`agents/`, `pipeline/`, `scripts/`)
-- sitemap·robots·OG·schema 변경
-- `public/` 정적 파일 (ads.txt 포함)
-- 문서 (`*.md`)
+다음은 자동 push 대상이 **아니며**, 사용자 명시 승인 후에만 진행:
 
-### 트리거 단어 — 단 한 단어만
-오직 한국어 `푸쉬` 단어가 메시지에 명시적으로 등장할 때만 push.
-
-### ❌ push 트리거가 아닌 단어 (commit까지만)
-- "push" (영어) / "올려" / "올려줘" / "배포해" / "deploy" / "라이브 반영해" / "GitHub에 올려"
-  → 콘텐츠 발행 트리거가 아닌 경우 모두 trigger 아님
-- "진행" / "계속" / "go" / "ok" / "좋아" / "그래" — 단순 진행 신호
-- "커밋" / "commit" — commit까지만 의미
-- "수정해" / "고쳐" / "바꿔" — 코드 변경만
-- "확인해" / "검증해" / "테스트해" — 검증만
-
-이런 단어는 commit까지만 하고 **반드시 멈춤**. Auto mode가 켜져 있어도 동일 — auto mode는 자율 진행이지 production 배포 자율이 아님.
-
-### Push 후 보고 형식 (명시 push 시)
-- 변경된 파일 목록
-- commit hash
-- "push 대기 중 — 라이브 반영하려면 `푸쉬` 알려주세요" 명시
+- `git push --force` / `git push -f` (force push)
+- `git push --no-verify` (hook skip)
+- `git push <branch> :main` (브랜치 삭제)
+- main 외 보호 브랜치 변경 (있다면)
+- `.env*.local` 같은 비밀 파일을 staged한 commit (정상 흐름이라면 .gitignore가 이미 차단하지만, 우회 시도 발견되면 즉시 중단)
 
 ---
 
-## 혼합 변경 시 (콘텐츠 + 코드)
+## 충돌 처리 가이드
 
-콘텐츠 발행 작업 중 운영자 메타 leak 수정·HarnessDeployer 버그 fix 등 사소한 콘텐츠 정정은 자동 push 범위에 포함. 그러나 **별도 코드 변경**(예: footer 갱신·새 페이지 추가·컴포넌트 수정)을 발행과 함께 묶는 경우:
-- 콘텐츠 commit과 코드 commit을 **분리** (별도 commit)
-- 콘텐츠 commit만 자동 push
-- 코드 commit은 **stage된 채 push 보류**, 사용자에게 "푸쉬" 명시 요청
+rebase 충돌 발생 시 작업 맥락별 자동 처리:
 
-이렇게 분리하면 사용자가 코드 변경을 검토한 뒤 별도 승인 가능.
+- **콘텐츠 발행 작업**: 콘텐츠 conflict는 ours(최신 발행분) 채택, `.last-pulse-base-date`도 ours
+- **잘못 발행 정정** (modify/delete): 의도가 delete면 `git rm` 확정, modify면 ours
+- **코드/문서 변경**: 충돌 발생 시 자동 처리 위험 → 사용자에게 보고 + 수동 해결 대기
+
+기본 명령: `git pull --rebase --autostash origin main`. autostash로 unstaged 변경 임시 보관.
 
 ---
 
-## 위반 사례 기록
+## 위반 사례 기록 (과거 학습 자료)
 
-**2026-04-26**: 사용자 "진행" 응답에 Claude가 commit + 자동 push 두 차례. 사용자 지적 → trigger 단어 `푸쉬`로 좁힘.
+**2026-04-26**: 사용자 "진행" 응답에 Claude가 commit + 자동 push 두 차례. 사용자 지적 → trigger 단어 `푸쉬`로 좁힘. (이 정책은 2026-05-26 사용자 결정으로 폐지.)
 
-**2026-05-21 잘못 발행 정정 사건**: 시스템 reminder의 currentDate가 잘못 주입돼 5/21자 슬러그로 발행·push까지 진행. 자동 push 정책 신설 후에도 **OS date 검증 의무는 유지** ([[feedback_verify_os_date]] 참조).
+**2026-05-21 잘못 발행 정정 사건**: 시스템 reminder의 currentDate가 잘못 주입돼 5/21자 슬러그로 발행·push까지 진행. **자동 push 정책에서도 OS date 검증 의무 유지** ([[feedback_verify_os_date]]).
+
+**2026-05-24 push 정책 2-track 신설** → **2026-05-26 1-track 단일화**: 처음에는 콘텐츠만 자동 push, 코드는 "푸쉬" 명시였으나, 사용자가 burden 완전 제거 결정. 이제 모든 변경 자동 push.
 
 ---
 
