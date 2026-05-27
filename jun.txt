@@ -721,6 +721,31 @@ A. 매일 반복되는 콘텐츠 발행에 "푸쉬" 두 단어 burden 제거 요
 
 **숙제**: 다음 발행 요청 때 자동 push 흐름 실전 검증. 혼합 변경 케이스(콘텐츠 + 코드)도 첫 발생 시 분리 commit 동작 확인.
 
+## 2026-05-26 · [자동 발행 cron 비활성화 — 완전 수동 전환]
+
+### Q. "포스팅은 자동 발행 하는 로직 모두 삭제해 매일 수동으로 내가 올릴꺼야"
+A. daily-pulse 자동 cron 비활성화 (옵션 A 선택 — daily-pulse.yml만, 메타 cron 4종 유지).
+
+처리:
+- `.github/workflows/daily-pulse.yml`의 `schedule: cron '0 7 * * 1-5'` 트리거 주석 처리
+- `workflow_dispatch` 유지 — GitHub Actions UI "Run workflow" 버튼으로 백업·긴급 수동 trigger 가능
+- 복원 필요 시 schedule 블록 주석 해제
+
+유지되는 메타 cron 4종 (콘텐츠 발행과 무관):
+- `weekly-etf-fetch.yml` — 주간 KRX 신규 ETF 흡수
+- `biweekly-guide-refresh.yml` — 격주 가이드 lastReviewed 갱신
+- `midnight-cache-purge.yml` — 자정 Cloudflare 캐시 purge
+- `monthly-seo-audit.yml` — 분기 SEO audit
+
+CLAUDE.md 갱신 — "예외 — GitHub Actions cron의 자동 push" 섹션을 비활성화 반영 + 유지 cron 4종 명시로 재작성.
+
+commit `d88c1be`. 코드/문서 변경이라 "푸쉬" 명시 시 push.
+
+**새 운영 흐름** (오늘부터):
+1. 사용자가 매일 직접 결정 (몇 편 발행할지, 카테고리 선택)
+2. Claude: `npm run pulse` → 검증 → commit → 자동 push (2-track 정책에 따라)
+3. Cloudflare 5분 후 라이브
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
