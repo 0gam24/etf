@@ -322,9 +322,17 @@ push 결과 보고할 때 반드시 포함:
 
 ---
 
-## 예외 — GitHub Actions cron의 자동 push
+## GitHub Actions cron 정책 (2026-05-26 갱신)
 
-`.github/workflows/daily-pulse.yml`이 매일 16:00 KST에 자동 push하는 것은 **시스템적으로 사전 승인된 워크플로**라 별개. 이 규칙은 **Claude의 직접 행동**에만 적용됨. cron 워크플로 자체를 disable하거나 변경할 일은 사용자 지시 필요 (코드 변경에 해당 → "푸쉬" 명시).
+**daily-pulse.yml schedule 비활성화** — 매일 수동 발행 전환 (사용자 정책 변경 2026-05-26 "매일 수동으로 내가 올릴꺼야"). workflow_dispatch는 유지 (GitHub UI에서 백업·긴급용 수동 trigger 가능).
+
+유지되는 메타 cron 4종 (콘텐츠 발행과 무관):
+- `weekly-etf-fetch.yml` — 주간 KRX 신규 ETF 흡수 (data/etf-slug-map.json 갱신)
+- `biweekly-guide-refresh.yml` — 격주 가이드 lastReviewed 자동 갱신 (freshness 신호)
+- `midnight-cache-purge.yml` — 자정 Cloudflare 캐시 purge
+- `monthly-seo-audit.yml` — 분기 SEO audit (Lighthouse 95+ 강제)
+
+이 4종은 자체 push 동작이 있다면 시스템적으로 사전 승인된 워크플로라 별개. Claude의 직접 행동 push 정책과 무관. 비활성화·변경 필요 시 사용자 지시 (코드 변경 → "푸쉬" 명시 필요).
 
 # 📝 Q&A 아카이브 의무
 

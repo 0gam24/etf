@@ -1,13 +1,12 @@
 name: Daily ETF Pulse
 
-# 평일 KST 16:00 = UTC 07:00 에 파이프라인 실행 (KRX 마감 후 당일 시세 확보).
-#   - 토·일 cron 제거: KRX 휴장이라 같은 데이터 → 새 글 생성 불가 → 무의미한 run 회피
-#   - 16:00 선택 이유: KRX 정규장 마감 15:30 + data.go.kr 갱신 지연 약 30분
-#   - 수동 트리거 (workflow_dispatch)는 항상 가능 — 긴급 발행·디버깅용
+# 자동 cron schedule 비활성화 (2026-05-26 사용자 정책 변경).
+#   - 매일 수동 발행 전환 — 로컬에서 `npm run pulse` 실행 후 commit·push
+#   - workflow_dispatch 유지: GitHub Actions UI "Run workflow" 버튼으로 수동 trigger 가능 (백업·긴급용)
+#   - 자동 cron 복원이 필요하면 아래 schedule 블록 주석 해제
 on:
-  schedule:
-    # 월~금 07:00 UTC = 16:00 KST
-    - cron: '0 7 * * 1-5'
+  # schedule:
+  #   - cron: '0 7 * * 1-5'  # 월~금 07:00 UTC = 16:00 KST (KRX 마감 후)
   workflow_dispatch:
 
 # 동시 실행 방지 (이전 run 진행 중이면 큐잉 후 직전 run 취소).
