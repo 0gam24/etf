@@ -780,7 +780,12 @@ A. 현황 진단: 14에이전트 파이프라인 + 1095종 ETF 사전 + 8필러 
   (2) GEO 인용 선점 — /llms.txt 발행 + 인라인 출처표기 + 엔티티(티커=종목명=운용사) 정규화 + freshness 날짜.
   (3) /compare 비교페이지 대량 생성(1095종 데이터로 'A vs B' 롱테일 흡수).
   (4) 매일 발행 SOP — 검색의도 매핑 + 데이터/뉴스 트렌드재킹 + 필러-클러스터 내부링크.
-1차 구현: src/app/llms.txt/route.ts 신규 발행(SSoT 직접 import → 신규 콘텐츠 자동 반영, 운영자 메타 0, KRX·ECOS·DART 출처 명시, AI 작성 투명 공시). tsc 타입체크 통과. AEO 범위·push 타이밍은 패널 결정 반영 후 진행.
+1차 구현·push 완료(commit 376c199, 4d6b975..376c199):
+  - src/app/llms.txt/route.ts: GEO 안내서. SSoT(guides·compare-pairs·personas·posts) 직접 import → 신규 콘텐츠 자동 반영. 운영자메타 0, KRX·ECOS·DART 출처 명시, AI 투명 공시. dev 200·text/markdown·런타임 leak 0 검증.
+  - src/components/AnswerBox.tsx: 글 상단 AEO 직답블록(summary 1문장 + keyStats dl). frontmatter 있을 때만 노출(graceful).
+  - [category]/[slug] 렌더러: AnswerBox + faq 가시 렌더 연결. ★이중 FAQPage 방지 가드(기존 글 schemas[] 인라인 FAQPage 있으면 skip) — 기존 글 FAQPage 정확히 1개 유지 검증.
+  - posts.ts: PostMeta 에 summary·keyStats·faqs frontmatter 파싱 추가(summary·keyStats 는 이미 있었음, faqs 신규).
+편집장 에이전트가 코드 실측으로 패널의 틀린 전제 3건 교정: (a)buildFaqSchema 이미 존재(신규 빌더 불필요), (b)posts.ts 가 summary·keyStats 이미 파싱, (c)77개 글이 schemas[]에 FAQPage 인라인 박제 중 → frontmatter faq[] 추가 시 이중 FAQPage 위험(가드로 해결). 패널이 주장한 "AiAgentDisclosure 20행 깨진 div"는 환각(div 0/0 균형) → 작업 폐기. cf:build 성공(동시빌드 충돌 ENOENT는 단일 순차빌드로 해소). 매일 발행 SOP 11단계 + 구현 큐 10개는 STRATEGY-GEO-AEO.md 로 문서화.
 
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
