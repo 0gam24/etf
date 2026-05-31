@@ -28,7 +28,7 @@
 |---|---|---|
 | **L1 GEO 진입점** | `/llms.txt` 발행, AI봇 인용 지도 제공 | ✅ 완료 (376c199) |
 | **L2 AEO 정답블록** | 모든 신규 글 상단 직답 + 핵심숫자 + 자연어 FAQ | ✅ 완료 — 인프라(376c199)·게이트/emit(460c41a)·LogicSpecialist 자동 생성(f33dd64). 매일 발행 자동 AEO 완비 |
-| **L3 롱테일 흡수** | `/compare` 확장 + `/etf` 정답블록(데이터 종목) | ⏳ /etf AEO 완료(8d2e677). /compare 확장 잔여 |
+| **L3 롱테일 흡수** | `/compare` 확장 + `/etf` 정답블록(데이터 종목) | ⏳ /etf AEO 완료(4cd7ee5). /compare 확장 잔여 |
 | **L4 매일 SOP** | 검색의도 매핑·트렌드재킹·클러스터 내부링크 상시화 | ✅ 게이트화 완료(YMYL·메타·IndexNow). SOP §3 운영 적용 |
 
 ---
@@ -91,7 +91,7 @@ faqs:
 | 8 | IndexNow 확장(카테고리·sitemap-news·llms.txt) + sitemap-news 48h | `agents/11`, `sitemap-news.xml` | ✅ 완료 — sitemap-news 는 이미 48h+publishedAt 규격 정상 |
 | 8b | LogicSpecialist 정답블록 자동 생성(deriveAnswerBlock) | `agents/3_logic_specialist.js` | ✅ 완료 (f33dd64, 단위+통합테스트) |
 | 9 | YMYL 정정 backfill(거래량 TOP 10~15편만, 본문 무변경) | `scripts/backfill-answer-blocks.js`(신규) | ☐ 예정 |
-| 10 | `/etf` 종목사전 AEO 정답블록(데이터 있는 종목만, minimal skip) | `src/app/etf/[ticker]/page.tsx` | ✅ 완료 (8d2e677) — 중복 정리 + AnswerBox JSX 연결 |
+| 10 | `/etf` 종목사전 AEO 정답블록(데이터 있는 종목만, minimal skip) | `src/app/etf/[ticker]/page.tsx` | ✅ 완료 (4cd7ee5) — AnswerBox import+answerData+JSX 실제 연결 |
 
 **doorway 방지(리스크 심판)**: `/etf` 질문화·직답은 시세·holdings **실데이터가 있는 종목만** 렌더. minimal 995종은 자동 생성 금지(빈 직답·N/A·추정 금지) — 구글 scaled-content 정책 위반 회피.
 
