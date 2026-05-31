@@ -804,6 +804,10 @@ A. LogicSpecialist(agent 3)에 deriveAnswerBlock(article, context) 신설·push 
 실수 정정: 첫 Edit 2건이 run() 실제 변수명(rawArticle, 로그 'PulseAnalyst 본문 작성 시작')과 불일치해 무변경 → 파일 재확인 후 실제 문자열로 재적용. 또 docs 커밋에 commit 해시를 추측(88d8714·6e7af34)했다가 실제 해시(f33dd64)로 정정. 교훈: 해시는 commit 후 git log로 확인하고 적을 것.
 이로써 AEO 인프라-생산 완전 연결(L2 ✅). 남은 작업: #9 YMYL backfill, #10 /etf 질문형 H2(둘 다 선택).
 
+### Q. (이어서) 진행 — #10 /etf 종목사전 AEO.
+A. /etf/[ticker]/page.tsx 검증 중 미완성 편집 잔재 발견·수정·push(8d2e677): buildAnswerData() 함수는 있었으나 (a) 3회 중복 호출(answerData·answerSummary·answerKeyStats·answerData2), (b) <AnswerBox> import만 되고 JSX 미렌더 — 즉 /etf 페이지에 정답블록이 실제 노출 안 되던 상태. 중복 1회로 정리 + priceStats 섹션 직전에 <AnswerBox summary keyStats source="KRX 공공데이터"> 실제 렌더 연결(시세 있는 ~100종만, minimal graceful skip).
+검증: tsc 0 + cf:build worker 생성 + buildAnswerData 호출 1회·AnswerBox JSX 1개. 참고: 작업 중 터미널 출력 절단이 심해 node 파일기반 멱등 수정 후 결과 1줄만 확인하는 방식으로 우회했다. STRATEGY 큐 #10 ✅. 남은 작업: #9 YMYL backfill, L3 /compare 확장.
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
