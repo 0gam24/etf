@@ -12,6 +12,8 @@ import {
 import { COMPARE_PAIRS, getComparePairBySlug } from '@/lib/etf-compare-pairs';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
+import AnswerBox from '@/components/AnswerBox';
+import FaqSection from '@/components/FaqSection';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
 import type { RawEtf } from '@/lib/surge';
 
@@ -83,6 +85,39 @@ export default async function ComparePairPage({ params }: PageProps) {
   const slugA = codeToSlug(p.codeA);
   const slugB = codeToSlug(p.codeB);
 
+  // AEO 정답블록 — 두 종목 시세 비교 직답 + 핵심수치. AI Overview·스니펫 인용용.
+  // 사실 서술·관찰형만(YMYL-safe). 시세 없으면 graceful 생략.
+  const fmtPct = (e: RawEtf | null) =>
+    e ? `${e.changeRate >= 0 ? '+' : ''}${e.changeRate.toFixed(2)}%` : '-';
+  const answerSummary = (etfA || etfB)
+    ? `${metaA.name}와 ${metaB.name}는 같은 비교군 ETF로, 오늘 등락률은 각각 ${fmtPct(etfA)}·${fmtPct(etfB)}입니다.`
+    : '';
+  const answerKeyStats = (etfA || etfB)
+    ? [
+        { label: metaA.name, value: etfA ? `${etfA.price.toLocaleString()}원` : '-', sub: `${fmtPct(etfA)} · 거래량 ${etfA ? (etfA.volume / 10000).toFixed(0) + '만주' : '-'}` },
+        { label: metaB.name, value: etfB ? `${etfB.price.toLocaleString()}원` : '-', sub: `${fmtPct(etfB)} · 거래량 ${etfB ? (etfB.volume / 10000).toFixed(0) + '만주' : '-'}` },
+      ]
+    : [];
+
+  // FAQ — "A vs B" 검색 의도 직답. buildFaqSchema 로 FAQPage JSON-LD 동시 발행.
+  const moreVolume = etfA && etfB
+    ? (etfA.volume >= etfB.volume ? metaA.name : metaB.name)
+    : null;
+  const compareFaqs = [
+    {
+      question: `${metaA.name}와 ${metaB.name}의 차이는 무엇인가요?`,
+      answer: `${p.context} 두 ETF는 비교군으로, 운용사·총보수·거래량·분배 정책에서 차이가 날 수 있어 매수 전 운용사 공식 PDP 확인이 필요합니다.`,
+    },
+    ...(moreVolume ? [{
+      question: `${metaA.name}와 ${metaB.name} 중 거래량이 많은 것은?`,
+      answer: `오늘 KRX 시세 기준 ${moreVolume}의 거래량이 더 많았습니다. 거래량이 큰 종목은 호가 스프레드·매매 편의성에서 유리한 경향이 있습니다.`,
+    }] : []),
+    {
+      question: `${metaA.name}와 ${metaB.name} 중 어떤 것을 골라야 하나요?`,
+      answer: `같은 지수를 추종한다면 장기 성과는 거의 동일하며, 총보수·분배 정책·운용사 선호로 결정합니다. 환헷지(H) 여부가 다르면 본인 환 시각에 따라 분리 매수도 가능합니다. 투자 책임은 본인에게 있습니다.`,
+    },
+  ];
+
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: '홈', href: '/' },
     { name: '비교', href: '/compare' },
@@ -106,6 +141,11 @@ export default async function ComparePairPage({ params }: PageProps) {
         </h1>
         <p className="compare-tagline">{p.context}</p>
       </header>
+
+      {/* AEO 정답블록 — 비교 직답 + 핵심수치 (시세 있을 때만) */}
+      {answerSummary && (
+        <AnswerBox summary={answerSummary} keyStats={answerKeyStats} source="KRX 공공데이터" />
+      )}
 
       {/* 시세 비교 표 */}
       <section className="compare-section">
@@ -216,6 +256,9 @@ export default async function ComparePairPage({ params }: PageProps) {
           </Link>
         </div>
       </section>
+
+      {/* AEO FAQ — "A vs B" 질문형 롱테일 흡수 + FAQPage JSON-LD */}
+      <FaqSection title="자주 묻는 질문" items={compareFaqs} />
 
       <RecommendBox position="bottom" />
 
