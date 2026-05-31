@@ -176,6 +176,12 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: 'ETF란',            slug: 'etf-basics' },
   { keyword: 'ETF 투자 방법',     slug: 'etf-basics' },
   { keyword: 'ETF 초보',         slug: 'etf-basics' },
+  // ─── etf-dividend (ETF 분배금·분배락일) ───
+  { keyword: '분배락일',          slug: 'etf-dividend' },
+  { keyword: '분배기준일',         slug: 'etf-dividend' },
+  { keyword: '배당기준일',         slug: 'etf-dividend' },
+  { keyword: 'ETF 분배금',        slug: 'etf-dividend' },
+  { keyword: 'ETF 배당일',        slug: 'etf-dividend' },
 ];
 
 /**
