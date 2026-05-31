@@ -787,6 +787,13 @@ A. 현황 진단: 14에이전트 파이프라인 + 1095종 ETF 사전 + 8필러 
   - posts.ts: PostMeta 에 summary·keyStats·faqs frontmatter 파싱 추가(summary·keyStats 는 이미 있었음, faqs 신규).
 편집장 에이전트가 코드 실측으로 패널의 틀린 전제 3건 교정: (a)buildFaqSchema 이미 존재(신규 빌더 불필요), (b)posts.ts 가 summary·keyStats 이미 파싱, (c)77개 글이 schemas[]에 FAQPage 인라인 박제 중 → frontmatter faq[] 추가 시 이중 FAQPage 위험(가드로 해결). 패널이 주장한 "AiAgentDisclosure 20행 깨진 div"는 환각(div 0/0 균형) → 작업 폐기. cf:build 성공(동시빌드 충돌 ENOENT는 단일 순차빌드로 해소). 매일 발행 SOP 11단계 + 구현 큐 10개는 STRATEGY-GEO-AEO.md 로 문서화.
 
+### Q. (이어서) 진행 — 파이프라인 게이트화 사이클.
+A. agent 8/11 발행 게이트 구현·push 완료(460c41a):
+  - agent 8 validateSeo: 정답블록(summary·keyStats·faqs) 게이트. 정답블록 운영자메타 노출=hard-fail(본문은 warning 차등), YMYL(수익보장·매수권유)=정답블록·본문 공통 hard-fail(FORBIDDEN_YMYL 신설), 수량부족=soft-warning(휴장·결측 발행마비 방지). 단위테스트 7/7.
+  - agent 8 saveAsMdx: summary·keyStats·faqs frontmatter emit(flow-mapping, gray-matter 라운드트립 검증 PARSE_OK).
+  - agent 11 IndexPusher: IndexNow 핑에 카테고리 인덱스 + /sitemap-news.xml + /llms.txt 추가.
+실측 교정 기록: (a) agent 8 은 FORBIDDEN_OPS_META 사용·validateSeo 는 {blockers,warnings} 반환(초기 node 삽입 스크립트가 anchor 불일치로 무변경 → 파일 안전, 이후 Edit 도구로 정밀 적용). (b) 두 번째 node 삽입 스크립트가 중첩 백틱 깨짐으로 syntax error 유발 → Edit 도구로 즉시 정정, node --check 통과 확인. (c) agent 9 는 본문 **Q1:** 패턴을 extractFaqs 로 파싱해 글당 FAQPage 1개만 생성 → 실제 이중 FAQPage 없음(큐 #5 보류). (d) sitemap-news.xml 은 이미 48h+publishedAt 규격 정상 → 무변경. 교훈: 복잡한 JS 문자열 삽입은 node 스크립트 대신 Edit 도구가 안전. 남은 작업: LogicSpecialist(agent 3) 정답블록 본문 생성, /compare·/etf 롱테일 확장(STRATEGY-GEO-AEO.md §4).
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================

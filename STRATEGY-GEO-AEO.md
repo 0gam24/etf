@@ -27,9 +27,9 @@
 | 단계 | 목표 | 상태 |
 |---|---|---|
 | **L1 GEO 진입점** | `/llms.txt` 발행, AI봇 인용 지도 제공 | ✅ 완료 (376c199) |
-| **L2 AEO 정답블록** | 모든 신규 글 상단 직답 + 핵심숫자 + 자연어 FAQ | ⏳ 인프라 완료, 파이프라인 주입 잔여 |
+| **L2 AEO 정답블록** | 모든 신규 글 상단 직답 + 핵심숫자 + 자연어 FAQ | ⏳ 인프라·게이트·frontmatter emit 완료(460c41a). LogicSpecialist(agent 3) 본문 생성 잔여 |
 | **L3 롱테일 흡수** | `/compare` 확장 + `/etf` 질문형 H2(데이터 있는 종목만) | ☐ 예정 |
-| **L4 매일 SOP** | 검색의도 매핑·트렌드재킹·클러스터 내부링크 상시화 | ⏳ §3 SOP 확정, 파이프라인 게이트화 잔여 |
+| **L4 매일 SOP** | 검색의도 매핑·트렌드재킹·클러스터 내부링크 상시화 | ✅ 게이트화 완료(YMYL·메타·IndexNow). SOP §3 운영 적용 |
 
 ---
 
@@ -85,10 +85,10 @@ faqs:
 | 2 | `/llms.txt` 단독 push 선행 | `src/app/llms.txt/route.ts` | ✅ 완료 |
 | 3 | posts.ts `faqs` 파싱 추가 | `src/lib/posts.ts` | ✅ 완료 |
 | 4 | 렌더러 faqs 가시 FaqSection + JSON-LD(이중 FAQPage 가드) | `[category]/[slug]/page.tsx` | ✅ 완료 |
-| 5 | 인라인 FAQPage 박제 폐기 → frontmatter faq[] 단일 소스 | `agents/3_logic_specialist.js`, `agents/9_schema_injector.js` | ☐ 예정 |
+| 5 | 인라인 FAQPage 박제 폐기 → frontmatter faq[] 단일 소스 | `agents/9_schema_injector.js` | ⏸ 보류(실익 낮음) — agent 9 가 글당 FAQPage 1개만 생성 → 실제 이중화 없음. 렌더러 가드가 안전망 |
 | 6 | 렌더러 첫 영역 순서 헌법화 | `[category]/[slug]/page.tsx`, `AnswerBox.tsx` | ✅ 완료 |
-| 7 | HarnessDeployer 게이트(품질=hard, 수량=soft) + leak 확장 | `agents/8_harness_deployer.js` | ☐ 예정 |
-| 8 | IndexNow wiring + sitemap-news 48h(publishedAt derive) | `agents/8`, `agents/11`, `sitemap-news.xml` | ☐ 예정 |
+| 7 | HarnessDeployer 게이트(품질=hard, 수량=soft) + 정답블록 leak + frontmatter emit | `agents/8_harness_deployer.js` | ✅ 완료 (460c41a, 단위테스트 7/7) |
+| 8 | IndexNow 확장(카테고리·sitemap-news·llms.txt) + sitemap-news 48h | `agents/11`, `sitemap-news.xml` | ✅ 완료 — sitemap-news 는 이미 48h+publishedAt 규격 정상 |
 | 9 | YMYL 정정 backfill(거래량 TOP 10~15편만, 본문 무변경) | `scripts/backfill-answer-blocks.js`(신규) | ☐ 예정 |
 | 10 | `/etf` 질문형 H2 조건부(데이터 있는 종목만, minimal 995 skip) | `src/app/etf/[ticker]/page.tsx`, `agents/2` | ☐ 예정 |
 
