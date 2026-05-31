@@ -20,6 +20,8 @@ import RecommendBox from '@/components/RecommendBox';
 import MainBackrefBox, { getBackrefUrlForCategory } from '@/components/MainBackrefBox';
 import LiveTickerChip from '@/components/LiveTickerChip';
 import PublishedVsLive from '@/components/PublishedVsLive';
+import AnswerBox from '@/components/AnswerBox';
+import FaqSection from '@/components/FaqSection';
 import type { ProductCategory } from '@/lib/products';
 import { AUTHORS } from '@/lib/authors';
 import { buildArticleSchema, buildPersonSchema, jsonLd } from '@/lib/schema';
@@ -265,6 +267,17 @@ export default async function PostPage({ params }: PageProps) {
             );
           })()}
 
+          {/* AEO 정답블록 — 직답 1문장 + 핵심 수치. AI Overview·피처드스니펫 인용용.
+              frontmatter summary/keyStats 가 있을 때만 노출 (기존 글 graceful). */}
+          <AnswerBox
+            summary={post.meta.summary}
+            keyStats={post.meta.keyStats}
+            asOf={krxBaseDate && krxBaseDate.length === 8
+              ? `${krxBaseDate.slice(0, 4)}-${krxBaseDate.slice(4, 6)}-${krxBaseDate.slice(6, 8)} KRX`
+              : undefined}
+            source="KRX 공공데이터"
+          />
+
           <RecommendBox position="top" category={postCategoryToProductCategory(category)} />
 
           {category === 'surge' && post.meta.tickers && post.meta.tickers[0] && (
@@ -287,6 +300,20 @@ export default async function PostPage({ params }: PageProps) {
           )}
 
           <MarkdownRenderer content={post.content} />
+
+          {/* AEO FAQ — frontmatter faq[]를 가시 아코디언 + FAQPage JSON-LD 단일 소스로 렌더.
+              ⚠️ 이중 FAQPage 방지: 기존 글은 schemas[]에 FAQPage를 인라인 박제 중이므로
+              (a) frontmatter faqs 가 있고 (b) schemas[]에 FAQPage 가 없을 때만 출력.
+              → 기존 77편(인라인 FAQPage) 무변경, 향후 글은 faq[] 단일 소스. */}
+          {(() => {
+            const faqs = post.meta.faqs;
+            if (!faqs || faqs.length === 0) return null;
+            const hasInlineFaqPage = (post.meta.schemas || []).some(
+              (s) => (s as { '@type'?: string })?.['@type'] === 'FAQPage',
+            );
+            if (hasInlineFaqPage) return null;
+            return <FaqSection title="자주 묻는 질문" items={faqs} />;
+          })()}
 
           {charts && charts.length > 0 && (
             <section style={{ marginTop: 'var(--space-12)' }}>

@@ -36,6 +36,8 @@ export async function GET() {
     <lastmod>${lastmod}</lastmod>
   </sitemap>
 </sitemapindex>`;
+  // 참고: /llms.txt 는 sitemap 스펙상 XML sitemap 에 넣는 자산이 아니라
+  //   robots.txt 에서 참조한다 (AI 봇 안내서). robots.ts 의 sitemap 배열 하단 주석 참고.
 
   return new Response(xml, {
     status: 200,

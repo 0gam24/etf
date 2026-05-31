@@ -55,6 +55,12 @@ export interface PostMeta {
   weekCode?: string;
   ticker?: string;
   sector?: string;
+  /** AEO 정답블록 — 직답 1문장 (≤55자 권장, 사실서술형). AI Overview·피처드스니펫 인용용. */
+  summary?: string;
+  /** AEO 정답블록 — 핵심 수치 3개 (현재가·등락률·거래량 등). dl 마크업으로 렌더. */
+  keyStats?: { label: string; value: string; sub?: string }[];
+  /** AEO FAQ — 자연어 질문/자기완결 답변. 인라인 FAQPage 가 없을 때만 가시 렌더 + JSON-LD. */
+  faqs?: { question: string; answer: string }[];
 }
 
 export interface Post {
@@ -185,6 +191,14 @@ function parsePostFile(filePath: string, category: string): Post {
       weekCode: data.weekCode,
       ticker: data.ticker,
       sector: data.sector,
+      summary: data.summary,
+      keyStats: Array.isArray(data.keyStats) ? data.keyStats : undefined,
+      faqs: Array.isArray(data.faqs)
+        ? data.faqs
+            .filter((f: unknown): f is { question: string; answer: string } =>
+              !!f && typeof (f as { question?: unknown }).question === 'string'
+                   && typeof (f as { answer?: unknown }).answer === 'string')
+        : undefined,
     },
     content,
     readingTime,
