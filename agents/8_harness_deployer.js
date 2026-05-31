@@ -73,6 +73,15 @@ const FORBIDDEN_OPS_META = [
   '샘플 데이터', 'placeholder', 'fallback', 'mock',
 ];
 
+// YMYL 금융 규정 — 수익 보장·매수 권유·단정 예측 표현. AI 인용·스니펫으로 증폭되면
+// 자본시장법·공정위 리스크가 커지므로 정답블록/본문 어디서든 hard-fail.
+// (YmylGuard(7) 와 중복 방어 — HarnessDeployer 는 최종 저장 직전 게이트)
+const FORBIDDEN_YMYL = [
+  '수익을 보장', '원금 보장', '무조건 수익', '무위험', '손실 없',
+  '이것만 사면', '꼭 사야', '지금 바로 매수', '무조건 매수', '반드시 매수',
+  '대박', '폭등 예상', '폭등 확실', '급등 확실', '급등 보장',
+];
+
 /**
  * 글 메타·본문에 SEO.md 규칙 위반이 있는지 검증.
  *   { blockers: string[], warnings: string[] } 반환.
@@ -162,6 +171,40 @@ function validateSeo(article) {
     }
   }
 
+  // 8. AEO 정답블록 게이트 (summary·keyStats·faqs)
+  //    정답블록은 AI Overview·스니펫에 그대로 인용되므로 본문보다 엄격하게 검증.
+  const answerBlockText = [
+    article.summary || '',
+    ...(Array.isArray(article.keyStats) ? article.keyStats.map(k => `${k.label || ''} ${k.value || ''} ${k.sub || ''}`) : []),
+    ...(Array.isArray(article.faqs) ? article.faqs.map(f => `${f.question || ''} ${f.answer || ''}`) : []),
+  ].join('\n');
+
+  // 8-1. 정답블록 운영자 메타 노출 = hard-fail (본문은 warning 이지만 정답블록은 인용 위험 큼)
+  for (const word of FORBIDDEN_OPS_META) {
+    if (answerBlockText.includes(word)) {
+      blockers.push(`정답블록에 운영자 메타 "${word.trim()}" 노출 — AI 인용 위험, 차단.`);
+    }
+  }
+
+  // 8-2. YMYL 위반 = hard-fail (정답블록·본문 공통)
+  const allText = `${answerBlockText}\n${String(article.content || '')}`;
+  for (const phrase of FORBIDDEN_YMYL) {
+    if (allText.includes(phrase)) {
+      blockers.push(`YMYL 위반 "${phrase}" — 수익 보장·매수 권유 표현 차단.`);
+    }
+  }
+
+  // 8-3. 수량 게이트 = soft-warning (휴장·결측 흔하므로 발행 마비 방지)
+  if (Array.isArray(article.keyStats) && article.keyStats.length > 0 && article.keyStats.length < 3) {
+    warnings.push(`AEO keyStats ${article.keyStats.length}개 — 3개 권장 (현재가·등락·거래량 등).`);
+  }
+  if (Array.isArray(article.faqs) && article.faqs.length > 0 && article.faqs.length < 2) {
+    warnings.push(`AEO faqs ${article.faqs.length}개 — 2개 이상 권장.`);
+  }
+  if (article.summary && String(article.summary).length > 80) {
+    warnings.push(`AEO summary ${String(article.summary).length}자 — 직답은 55자 내외 권장(스니펫 발췌).`);
+  }
+
   return { blockers, warnings };
 }
 
@@ -199,6 +242,20 @@ function saveAsMdx(article, chartData, adPlan, affiliateMatch, today) {
   const personas = inferPersonas(article);
   const personasYaml = personas.length > 0
     ? `personas:\n${personas.map(p => `  - "${p}"`).join('\n')}`
+    : '';
+
+  // AEO 정답블록 frontmatter (LogicSpecialist 가 article.summary/keyStats/faqs 생성 시 흘려보냄 — 없으면 빈 줄).
+  // flow-mapping 형식으로 emit → gray-matter 파싱 검증 완료. yamlEscape 로 따옴표 안전 처리.
+  const aeoSummaryLine = article.summary ? `summary: "${yamlEscape(article.summary)}"` : '';
+  const aeoKeyStatsYaml = (Array.isArray(article.keyStats) && article.keyStats.length > 0)
+    ? 'keyStats:\n' + article.keyStats.map(k =>
+        `  - { label: "${yamlEscape(k.label)}", value: "${yamlEscape(k.value)}"${k.sub ? `, sub: "${yamlEscape(k.sub)}"` : ''} }`
+      ).join('\n')
+    : '';
+  const aeoFaqsYaml = (Array.isArray(article.faqs) && article.faqs.length > 0)
+    ? 'faqs:\n' + article.faqs.map(f =>
+        `  - { question: "${yamlEscape(f.question)}", answer: "${yamlEscape(f.answer)}" }`
+      ).join('\n')
     : '';
 
   const frontmatter = `---
