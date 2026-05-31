@@ -156,6 +156,23 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
     : new Date().toISOString().slice(0, 10);
 
   // ── Schemas ──
+  // AEO 정답블록 — 시세 데이터 있는 종목만(doorway 방지: minimal 종목은 자동 생략).
+  const answerData = (hasPriceData && etf) ? (() => {
+    const dir = etf.changeRate > 0 ? '상승' : etf.changeRate < 0 ? '하락' : '보합';
+    const summary = `${displayName}은 ${formattedBaseDate} 기준 ${Math.abs(etf.changeRate).toFixed(2)}% ${dir}했습니다.`;
+    const ks = [
+      { label: '현재가', value: `${etf.price.toLocaleString()}원`, sub: `${etf.changeRate >= 0 ? '+' : ''}${etf.changeRate.toFixed(2)}%` },
+      { label: '거래량', value: `${etf.volume.toLocaleString()}주` },
+    ];
+    if (typeof etf.marketCap === 'number' && etf.marketCap > 0) {
+      ks.push({ label: '시가총액', value: `${Math.round(etf.marketCap / 1e8).toLocaleString()}억원` });
+    } else if (holdings && holdings.holdings[0]) {
+      const top = holdings.holdings[0];
+      ks.push({ label: '대표 구성', value: `${top.name}${typeof top.weight === 'number' ? ` ${top.weight.toFixed(1)}%` : ''}` });
+    }
+    return { summary, keyStats: ks };
+  })() : null;
+
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: '홈', href: '/' },
     { name: '종목 사전', href: '/etf' },
@@ -258,6 +275,11 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
           >금감원 투자자교육 ↗</a>
         </div>
       </header>
+
+      {/* AEO 정답블록 — AI Overview·스니펫 인용용 (시세 종목만) */}
+      {answerData && (
+        <AnswerBox summary={answerData.summary} keyStats={answerData.keyStats} asOf={`${formattedBaseDate} KRX`} source="KRX 공공데이터" />
+      )}
 
       {/* 시세 요약 — 시세 데이터가 있을 때만 */}
       {hasPriceData && etf && (
