@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-05-24T03:49:51.859Z",
-  "sourceBaseDate": "20260521",
-  "count": 1115,
+  "generatedAt": "2026-05-31T04:02:39.185Z",
+  "sourceBaseDate": "20260528",
+  "count": 1131,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -1117,7 +1117,23 @@
     "0192S0": "sol-kospi200bond-blend50",
     "0192T0": "sol-kosdaqtop10",
     "0192Z0": "tiger-total-bonda-plusactive",
-    "0193G0": "koact-kospiactive"
+    "0193G0": "koact-kospiactive",
+    "0192L0": "rise-skleverage",
+    "0192M0": "rise-leverage",
+    "0193K0": "plus-leverage",
+    "0193L0": "plus-inverse2x",
+    "0193T0": "kodex-skleverage",
+    "0193W0": "kodex-leverage-0193w0",
+    "0194M0": "ace-leverage-0194m0",
+    "0194N0": "kiwoom-leverage",
+    "0194R0": "kiwoom-skleverage",
+    "0194T0": "ace-skleverage",
+    "0195R0": "tiger-leverage-0195r0",
+    "0195S0": "tiger-skleverage",
+    "0197W0": "sol-skleverage",
+    "0197X0": "sol-skinverse2x",
+    "0198B0": "1q-leverage",
+    "0198D0": "1q-skleverage"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -3022,7 +3038,7 @@
     },
     "plus-aerospaceuam": {
       "code": "421320",
-      "name": "PLUS 우주항공&UAM"
+      "name": "PLUS 우주항공"
     },
     "vita-mzactive": {
       "code": "422260",
@@ -5579,6 +5595,70 @@
     "koact-kospiactive": {
       "code": "0193G0",
       "name": "KoAct 코스피액티브"
+    },
+    "rise-skleverage": {
+      "code": "0192L0",
+      "name": "RISE SK하이닉스단일종목레버리지"
+    },
+    "rise-leverage": {
+      "code": "0192M0",
+      "name": "RISE 삼성전자단일종목레버리지"
+    },
+    "plus-leverage": {
+      "code": "0193K0",
+      "name": "PLUS 삼성전자단일종목레버리지"
+    },
+    "plus-inverse2x": {
+      "code": "0193L0",
+      "name": "PLUS 삼성전자선물단일종목인버스2X"
+    },
+    "kodex-skleverage": {
+      "code": "0193T0",
+      "name": "KODEX SK하이닉스단일종목레버리지"
+    },
+    "kodex-leverage-0193w0": {
+      "code": "0193W0",
+      "name": "KODEX 삼성전자단일종목레버리지"
+    },
+    "ace-leverage-0194m0": {
+      "code": "0194M0",
+      "name": "ACE 삼성전자단일종목레버리지"
+    },
+    "kiwoom-leverage": {
+      "code": "0194N0",
+      "name": "KIWOOM 삼성전자선물단일종목레버리지"
+    },
+    "kiwoom-skleverage": {
+      "code": "0194R0",
+      "name": "KIWOOM SK하이닉스선물단일종목레버리지"
+    },
+    "ace-skleverage": {
+      "code": "0194T0",
+      "name": "ACE SK하이닉스단일종목레버리지"
+    },
+    "tiger-leverage-0195r0": {
+      "code": "0195R0",
+      "name": "TIGER 삼성전자단일종목레버리지"
+    },
+    "tiger-skleverage": {
+      "code": "0195S0",
+      "name": "TIGER SK하이닉스단일종목레버리지"
+    },
+    "sol-skleverage": {
+      "code": "0197W0",
+      "name": "SOL SK하이닉스단일종목레버리지"
+    },
+    "sol-skinverse2x": {
+      "code": "0197X0",
+      "name": "SOL SK하이닉스선물단일종목인버스2X"
+    },
+    "1q-leverage": {
+      "code": "0198B0",
+      "name": "1Q 삼성전자선물단일종목레버리지"
+    },
+    "1q-skleverage": {
+      "code": "0198D0",
+      "name": "1Q SK하이닉스선물단일종목레버리지"
     }
   }
 }

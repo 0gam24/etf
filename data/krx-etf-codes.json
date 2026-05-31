@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-05-24T03:49:51.690Z",
-  "baseDate": "20260521",
-  "count": 1115,
+  "fetchedAt": "2026-05-31T04:02:39.022Z",
+  "baseDate": "20260528",
+  "count": 1131,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -2381,7 +2381,7 @@
     "421320": {
       "shortcode": "421320",
       "issueCode": "KR7421320003",
-      "name": "PLUS 우주항공&UAM"
+      "name": "PLUS 우주항공"
     },
     "422260": {
       "shortcode": "422260",
@@ -5518,6 +5518,16 @@
       "issueCode": "KR70191W0005",
       "name": "HANARO 중기종합채권(A-이상)액티브"
     },
+    "0192L0": {
+      "shortcode": "0192L0",
+      "issueCode": "KR70192L0007",
+      "name": "RISE SK하이닉스단일종목레버리지"
+    },
+    "0192M0": {
+      "shortcode": "0192M0",
+      "issueCode": "KR70192M0006",
+      "name": "RISE 삼성전자단일종목레버리지"
+    },
     "0192S0": {
       "shortcode": "0192S0",
       "issueCode": "KR70192S0000",
@@ -5537,6 +5547,76 @@
       "shortcode": "0193G0",
       "issueCode": "KR70193G0003",
       "name": "KoAct 코스피액티브"
+    },
+    "0193K0": {
+      "shortcode": "0193K0",
+      "issueCode": "KR70193K0007",
+      "name": "PLUS 삼성전자단일종목레버리지"
+    },
+    "0193L0": {
+      "shortcode": "0193L0",
+      "issueCode": "KR70193L0006",
+      "name": "PLUS 삼성전자선물단일종목인버스2X"
+    },
+    "0193T0": {
+      "shortcode": "0193T0",
+      "issueCode": "KR70193T0008",
+      "name": "KODEX SK하이닉스단일종목레버리지"
+    },
+    "0193W0": {
+      "shortcode": "0193W0",
+      "issueCode": "KR70193W0003",
+      "name": "KODEX 삼성전자단일종목레버리지"
+    },
+    "0194M0": {
+      "shortcode": "0194M0",
+      "issueCode": "KR70194M0004",
+      "name": "ACE 삼성전자단일종목레버리지"
+    },
+    "0194N0": {
+      "shortcode": "0194N0",
+      "issueCode": "KR70194N0003",
+      "name": "KIWOOM 삼성전자선물단일종목레버리지"
+    },
+    "0194R0": {
+      "shortcode": "0194R0",
+      "issueCode": "KR70194R0009",
+      "name": "KIWOOM SK하이닉스선물단일종목레버리지"
+    },
+    "0194T0": {
+      "shortcode": "0194T0",
+      "issueCode": "KR70194T0007",
+      "name": "ACE SK하이닉스단일종목레버리지"
+    },
+    "0195R0": {
+      "shortcode": "0195R0",
+      "issueCode": "KR70195R0008",
+      "name": "TIGER 삼성전자단일종목레버리지"
+    },
+    "0195S0": {
+      "shortcode": "0195S0",
+      "issueCode": "KR70195S0007",
+      "name": "TIGER SK하이닉스단일종목레버리지"
+    },
+    "0197W0": {
+      "shortcode": "0197W0",
+      "issueCode": "KR70197W0009",
+      "name": "SOL SK하이닉스단일종목레버리지"
+    },
+    "0197X0": {
+      "shortcode": "0197X0",
+      "issueCode": "KR70197X0008",
+      "name": "SOL SK하이닉스선물단일종목인버스2X"
+    },
+    "0198B0": {
+      "shortcode": "0198B0",
+      "issueCode": "KR70198B0003",
+      "name": "1Q 삼성전자선물단일종목레버리지"
+    },
+    "0198D0": {
+      "shortcode": "0198D0",
+      "issueCode": "KR70198D0001",
+      "name": "1Q SK하이닉스선물단일종목레버리지"
     },
     "069500": {
       "shortcode": "069500",
@@ -6765,6 +6845,16 @@
       "issueCode": "KR70191W0005",
       "name": "HANARO 중기종합채권(A-이상)액티브"
     },
+    "KR70192L0007": {
+      "shortcode": "0192L0",
+      "issueCode": "KR70192L0007",
+      "name": "RISE SK하이닉스단일종목레버리지"
+    },
+    "KR70192M0006": {
+      "shortcode": "0192M0",
+      "issueCode": "KR70192M0006",
+      "name": "RISE 삼성전자단일종목레버리지"
+    },
     "KR70192S0000": {
       "shortcode": "0192S0",
       "issueCode": "KR70192S0000",
@@ -6784,6 +6874,76 @@
       "shortcode": "0193G0",
       "issueCode": "KR70193G0003",
       "name": "KoAct 코스피액티브"
+    },
+    "KR70193K0007": {
+      "shortcode": "0193K0",
+      "issueCode": "KR70193K0007",
+      "name": "PLUS 삼성전자단일종목레버리지"
+    },
+    "KR70193L0006": {
+      "shortcode": "0193L0",
+      "issueCode": "KR70193L0006",
+      "name": "PLUS 삼성전자선물단일종목인버스2X"
+    },
+    "KR70193T0008": {
+      "shortcode": "0193T0",
+      "issueCode": "KR70193T0008",
+      "name": "KODEX SK하이닉스단일종목레버리지"
+    },
+    "KR70193W0003": {
+      "shortcode": "0193W0",
+      "issueCode": "KR70193W0003",
+      "name": "KODEX 삼성전자단일종목레버리지"
+    },
+    "KR70194M0004": {
+      "shortcode": "0194M0",
+      "issueCode": "KR70194M0004",
+      "name": "ACE 삼성전자단일종목레버리지"
+    },
+    "KR70194N0003": {
+      "shortcode": "0194N0",
+      "issueCode": "KR70194N0003",
+      "name": "KIWOOM 삼성전자선물단일종목레버리지"
+    },
+    "KR70194R0009": {
+      "shortcode": "0194R0",
+      "issueCode": "KR70194R0009",
+      "name": "KIWOOM SK하이닉스선물단일종목레버리지"
+    },
+    "KR70194T0007": {
+      "shortcode": "0194T0",
+      "issueCode": "KR70194T0007",
+      "name": "ACE SK하이닉스단일종목레버리지"
+    },
+    "KR70195R0008": {
+      "shortcode": "0195R0",
+      "issueCode": "KR70195R0008",
+      "name": "TIGER 삼성전자단일종목레버리지"
+    },
+    "KR70195S0007": {
+      "shortcode": "0195S0",
+      "issueCode": "KR70195S0007",
+      "name": "TIGER SK하이닉스단일종목레버리지"
+    },
+    "KR70197W0009": {
+      "shortcode": "0197W0",
+      "issueCode": "KR70197W0009",
+      "name": "SOL SK하이닉스단일종목레버리지"
+    },
+    "KR70197X0008": {
+      "shortcode": "0197X0",
+      "issueCode": "KR70197X0008",
+      "name": "SOL SK하이닉스선물단일종목인버스2X"
+    },
+    "KR70198B0003": {
+      "shortcode": "0198B0",
+      "issueCode": "KR70198B0003",
+      "name": "1Q 삼성전자선물단일종목레버리지"
+    },
+    "KR70198D0001": {
+      "shortcode": "0198D0",
+      "issueCode": "KR70198D0001",
+      "name": "1Q SK하이닉스선물단일종목레버리지"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -9203,7 +9363,7 @@
     "KR7421320003": {
       "shortcode": "421320",
       "issueCode": "KR7421320003",
-      "name": "PLUS 우주항공&UAM"
+      "name": "PLUS 우주항공"
     },
     "KR7422260000": {
       "shortcode": "422260",
@@ -12343,6 +12503,16 @@
       "name": "HANARO 중기종합채권(A-이상)액티브"
     },
     {
+      "shortcode": "0192L0",
+      "issueCode": "KR70192L0007",
+      "name": "RISE SK하이닉스단일종목레버리지"
+    },
+    {
+      "shortcode": "0192M0",
+      "issueCode": "KR70192M0006",
+      "name": "RISE 삼성전자단일종목레버리지"
+    },
+    {
       "shortcode": "0192S0",
       "issueCode": "KR70192S0000",
       "name": "SOL 코스피200채권혼합50"
@@ -12361,6 +12531,76 @@
       "shortcode": "0193G0",
       "issueCode": "KR70193G0003",
       "name": "KoAct 코스피액티브"
+    },
+    {
+      "shortcode": "0193K0",
+      "issueCode": "KR70193K0007",
+      "name": "PLUS 삼성전자단일종목레버리지"
+    },
+    {
+      "shortcode": "0193L0",
+      "issueCode": "KR70193L0006",
+      "name": "PLUS 삼성전자선물단일종목인버스2X"
+    },
+    {
+      "shortcode": "0193T0",
+      "issueCode": "KR70193T0008",
+      "name": "KODEX SK하이닉스단일종목레버리지"
+    },
+    {
+      "shortcode": "0193W0",
+      "issueCode": "KR70193W0003",
+      "name": "KODEX 삼성전자단일종목레버리지"
+    },
+    {
+      "shortcode": "0194M0",
+      "issueCode": "KR70194M0004",
+      "name": "ACE 삼성전자단일종목레버리지"
+    },
+    {
+      "shortcode": "0194N0",
+      "issueCode": "KR70194N0003",
+      "name": "KIWOOM 삼성전자선물단일종목레버리지"
+    },
+    {
+      "shortcode": "0194R0",
+      "issueCode": "KR70194R0009",
+      "name": "KIWOOM SK하이닉스선물단일종목레버리지"
+    },
+    {
+      "shortcode": "0194T0",
+      "issueCode": "KR70194T0007",
+      "name": "ACE SK하이닉스단일종목레버리지"
+    },
+    {
+      "shortcode": "0195R0",
+      "issueCode": "KR70195R0008",
+      "name": "TIGER 삼성전자단일종목레버리지"
+    },
+    {
+      "shortcode": "0195S0",
+      "issueCode": "KR70195S0007",
+      "name": "TIGER SK하이닉스단일종목레버리지"
+    },
+    {
+      "shortcode": "0197W0",
+      "issueCode": "KR70197W0009",
+      "name": "SOL SK하이닉스단일종목레버리지"
+    },
+    {
+      "shortcode": "0197X0",
+      "issueCode": "KR70197X0008",
+      "name": "SOL SK하이닉스선물단일종목인버스2X"
+    },
+    {
+      "shortcode": "0198B0",
+      "issueCode": "KR70198B0003",
+      "name": "1Q 삼성전자선물단일종목레버리지"
+    },
+    {
+      "shortcode": "0198D0",
+      "issueCode": "KR70198D0001",
+      "name": "1Q SK하이닉스선물단일종목레버리지"
     },
     {
       "shortcode": "069500",
@@ -14780,7 +15020,7 @@
     {
       "shortcode": "421320",
       "issueCode": "KR7421320003",
-      "name": "PLUS 우주항공&UAM"
+      "name": "PLUS 우주항공"
     },
     {
       "shortcode": "422260",
