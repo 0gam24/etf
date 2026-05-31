@@ -825,6 +825,13 @@ A. /compare/[pair]/page.tsx 에 AEO 정답블록 추가·push 완료(8bb1c67):
 검증: Edit 후 grep 카운트(import2·data2·jsx2)·tsc 0·cf:build EXIT=0(Worker saved) 확인 후 commit, 해시는 git rev-parse 로 확정(8bb1c67). 프로덕션 라이브 확인: 시세 있는 종목쌍(kodex-defense-top10-vs-plus-k-defense)은 answerbox=true·faq=true·FAQPage=true·price=13,400원 정상. 시세 없는 종목쌍(kodex-200-vs-tiger-200)은 AnswerBox graceful skip(의도된 동작)·FAQ는 정상 노출.
 주의 기록: (1) 커밋 시 자동 분류기가 직전 사이클들의 검증누락 패턴 영향으로 1회 차단 → 모든 검증을 파일기반 재실행해 사실 확인 후 재커밋. (2) docs 커밋이 rebase 충돌로 부분만 반영돼 큐 #11·이 항목이 유실됨 → 별도 커밋으로 보완. STRATEGY 큐 #11 ✅, L3 ✅. 남은 작업: #9 YMYL backfill(선택), 비교페어 확장(선택).
 
+### Q. 오늘 포스팅 진행 — ETF 정보성 포스팅.
+A. OS date 검증(2026-05-31 일). npm run pulse 는 KRX 휴장(직전 거래일과 동일 데이터)으로 자동 skip → 일일 시황 중복 생성 안 됨. 사용자 의도(정보성 evergreen)에 맞춰 필러 가이드 4종 추가·push:
+  - etf-basics(ETF 투자 입문)·etf-tax(세금)·etf-fee(수수료/총보수)·etf-vs-fund(ETF vs 펀드 vs 주식). 각 5섹션 + HowTo 스키마 + 4문항 FAQ(FAQPage). guides.ts SSoT → sitemap·sitemap-images·guide 인덱스 자동 등록.
+  - 4b_internal_linker KEYWORD_GUIDE_MAP 에 15개 키워드 매핑 추가(ETF 세금·양도소득세·총보수·추적오차·ETF란 등) → 매일 발행 글이 신규 가이드로 자동 내부링크.
+  - sitemap-images 가이드 라벨 8종→주제 나열형 갱신.
+커밋: 4a14076(가이드)·70322c4(링커)·f0e69e6(라벨). 검증: tsc 0·cf:build EXIT=0(Worker saved)·4종 prerender HTML 생성·FAQPage/HowTo 스키마 포함·운영자메타 leak 0(자동 생성은 표준 AI 공시 허용 문구). 모두 사실·관찰형 서술(YMYL-safe). 가이드 8→12종.
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
