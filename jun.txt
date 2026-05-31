@@ -830,9 +830,9 @@ A. OS date 검증(2026-05-31 일). npm run pulse 는 KRX 휴장(직전 거래일
   - etf-basics(ETF 투자 입문)·etf-tax(세금)·etf-fee(수수료/총보수)·etf-vs-fund(ETF vs 펀드 vs 주식). 각 5섹션 + HowTo 스키마 + 4문항 FAQ(FAQPage). guides.ts SSoT → sitemap·sitemap-images·guide 인덱스 자동 등록.
   - 4b_internal_linker KEYWORD_GUIDE_MAP 에 15개 키워드 매핑 추가(ETF 세금·양도소득세·총보수·추적오차·ETF란 등) → 매일 발행 글이 신규 가이드로 자동 내부링크.
   - sitemap-images 가이드 라벨 8종→주제 나열형 갱신.
-커밋: 1616de6(가이드)·cb8f63e(링커)·9d51a4c(라벨). 검증: tsc 0·cf:build EXIT=0(Worker saved)·4종 prerender HTML 생성·FAQPage/HowTo 스키마 포함·운영자메타 leak 0(자동 생성은 표준 AI 공시 허용 문구). 모두 사실·관찰형 서술(YMYL-safe). 가이드 8→12종.
+커밋: 1616de6(가이드)·66a338f(링커)·9d51a4c(라벨). 검증: tsc 0·cf:build EXIT=0(Worker saved)·4종 prerender HTML 생성·FAQPage/HowTo 스키마 포함·운영자메타 leak 0(자동 생성은 표준 AI 공시 허용 문구). 모두 사실·관찰형 서술(YMYL-safe). 가이드 8→12종.
 
-### Q. (정정) 위 가이드 발행 커밋 해시 정정.A. 위 항목에 적은 해시(4a14076·70322c4·f0e69e6)는 commit 전 추측값이라 틀렸음 → 실제 해시로 정정: 가이드=1616de6, 라벨=9d51a4c, 링커=cb8f63e. 또 내부링커(4b) 변경이 첫 시도에서 앵커 불일치로 누락됐다가 cb8f63e 로 실제 반영(origin 트리 etf-tax 슬러그 확인). 교훈 재확인: 해시는 commit 후 git log 확인, Edit 후 git show origin 트리로 반영 검증.
+### Q. (정정) 위 가이드 발행 커밋 해시 정정.A. 위 항목에 적은 해시(4a14076·70322c4·f0e69e6)는 commit 전 추측값이라 틀렸음 → 실제 해시로 정정: 가이드=1616de6, 라벨=9d51a4c, 링커=66a338f. 또 내부링커(4b) 변경이 첫 시도에서 앵커 불일치로 누락됐다가 66a338f 로 실제 반영(origin 트리 etf-tax 슬러그 확인). 교훈 재확인: 해시는 commit 후 git log 확인, Edit 후 git show origin 트리로 반영 검증.
 
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
