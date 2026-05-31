@@ -9,7 +9,7 @@ import { buildBreadcrumbSchema, buildItemListSchema, jsonLd } from '@/lib/schema
 export const metadata: Metadata = {
   title: '가이드 — Daily ETF Pulse',
   description:
-    '월배당·커버드콜·방산·AI·은퇴·미국배당·환헤지·해외상장 8종의 ETF 가이드. 한 페이지에 정리된 비교와 계좌별 세후 수익률.',
+    'ETF 입문·세금·수수료·월배당·커버드콜·방산·AI·은퇴·미국배당·환헤지 등 ETF 가이드 모음. 한 페이지에 정리된 비교와 계좌별 세후 수익률.',
   alternates: { canonical: '/guide' },
   openGraph: {
     title: 'ETF 가이드 — 월배당·커버드콜·방산·AI·은퇴·미국배당·환헤지·해외상장',

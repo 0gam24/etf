@@ -159,6 +159,23 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: 'ISA',               slug: 'retirement' },
   { keyword: '비과세 한도',       slug: 'retirement' },
   { keyword: '4050',              slug: 'retirement' },
+  // ─── etf-tax (ETF 세금) ───
+  { keyword: 'ETF 세금',          slug: 'etf-tax' },
+  { keyword: '양도소득세',         slug: 'etf-tax' },
+  { keyword: '배당소득세',         slug: 'etf-tax' },
+  { keyword: '금융소득종합과세',    slug: 'etf-tax' },
+  // ─── etf-fee (ETF 수수료/비용) ───
+  { keyword: 'ETF 수수료',        slug: 'etf-fee' },
+  { keyword: '총보수',            slug: 'etf-fee' },
+  { keyword: '추적오차',          slug: 'etf-fee' },
+  { keyword: '괴리율',            slug: 'etf-fee' },
+  // ─── etf-vs-fund (ETF vs 펀드/주식) ───
+  { keyword: 'ETF vs 펀드',       slug: 'etf-vs-fund' },
+  { keyword: 'ETF와 펀드',        slug: 'etf-vs-fund' },
+  // ─── etf-basics (ETF 입문) ───
+  { keyword: 'ETF란',            slug: 'etf-basics' },
+  { keyword: 'ETF 투자 방법',     slug: 'etf-basics' },
+  { keyword: 'ETF 초보',         slug: 'etf-basics' },
 ];
 
 /**
