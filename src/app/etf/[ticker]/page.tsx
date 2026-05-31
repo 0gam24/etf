@@ -20,6 +20,7 @@ import { getAllPosts } from '@/lib/posts';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import HoldingsPanel from '@/components/HoldingsPanel';
 import RecommendBox from '@/components/RecommendBox';
+import AnswerBox from '@/components/AnswerBox';
 import MainBackrefBox, { getBackrefUrlForCategory } from '@/components/MainBackrefBox';
 import LiveEtfStats from '@/components/LiveEtfStats';
 import IntradayChart from '@/components/IntradayChart';
