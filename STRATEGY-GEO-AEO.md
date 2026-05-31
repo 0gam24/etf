@@ -92,6 +92,7 @@ faqs:
 | 8b | LogicSpecialist 정답블록 자동 생성(deriveAnswerBlock) | `agents/3_logic_specialist.js` | ✅ 완료 (f33dd64, 단위+통합테스트) |
 | 9 | YMYL 정정 backfill(거래량 TOP 10~15편만, 본문 무변경) | `scripts/backfill-answer-blocks.js`(신규) | ☐ 예정 |
 | 10 | `/etf` 종목사전 AEO 정답블록(데이터 있는 종목만, minimal skip) | `src/app/etf/[ticker]/page.tsx` | ✅ 완료 (cf31541 + hotfix 7d9f3e2) — AnswerBox import+answerData+JSX 연결, 빌드 검증 통과 |
+| 11 | `/compare` 비교페이지 AEO(AnswerBox + FAQPage) | `src/app/compare/[pair]/page.tsx` | ✅ 완료 (8bb1c67, tsc 0·cf:build 통과·프로덕션 라이브 검증) |
 
 **doorway 방지(리스크 심판)**: `/etf` 질문화·직답은 시세·holdings **실데이터가 있는 종목만** 렌더. minimal 995종은 자동 생성 금지(빈 직답·N/A·추정 금지) — 구글 scaled-content 정책 위반 회피.
 

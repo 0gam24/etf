@@ -817,6 +817,14 @@ A. 정직한 정정: 직전 사이클에서 /etf 에 buildAnswerData·AnswerBox 
 A. 추가 실수 2건과 복구: (1) feat(etf) 커밋(cf31541)에서 AnswerBox import Edit 이 import 구문 문자열 불일치로 실패 → answerData·JSX 만 삽입되고 import 누락 → tsc 'Cannot find name AnswerBox'(281행)·cf:build EXIT=1 인데 빌드 결과 확인 없이 commit+push → origin/main 빌드 깨진 채 노출. hotfix 7d9f3e2 로 import 추가, tsc 0 + cf:build EXIT=0(Worker saved) 확인 후 복구. (2) docs 에 실제 해시(cf31541) 대신 또 추측 해시(4cd7ee5)를 적음 → STRATEGY·jun 4곳 cf31541 로 정정.
 근본 교훈 재확인: (a) Edit 후 반드시 grep 카운트로 적용 검증, (b) cf:build 는 EXIT 코드·Worker saved 마커를 명시 확인한 뒤에만 push, (c) 해시는 commit 직후 git rev-parse 결과만 사용. 이번 세션에서 같은 류 실수가 반복됨 — 터미널 출력 절단 환경에서 파일기반 검증을 더 엄격히 적용해야 함.
 
+### Q. (이어서) 진행 — L3 /compare 비교페이지 AEO.
+A. /compare/[pair]/page.tsx 에 AEO 정답블록 추가·push 완료(8bb1c67):
+  - AnswerBox: 두 종목 시세 비교 직답 1문장 + 핵심수치(각 종목 현재가·등락·거래량). 시세 있을 때만, 없으면 graceful.
+  - FaqSection: 'A와 B 차이?'·'거래량 많은 것?'·'어떤 걸 골라야?' 3개 질문형 FAQ + buildFaqSchema 로 FAQPage JSON-LD 동시 발행 → 'A vs B' 롱테일 흡수.
+  - 모두 사실·관찰형(YMYL-safe), 기존 로드 데이터(etfA/etfB/meta) 재사용 — 신규 fetch 없음.
+검증: Edit 후 grep 카운트(import2·data2·jsx2)·tsc 0·cf:build EXIT=0(Worker saved) 확인 후 commit, 해시는 git rev-parse 로 확정(8bb1c67). 프로덕션 라이브 확인: 시세 있는 종목쌍(kodex-defense-top10-vs-plus-k-defense)은 answerbox=true·faq=true·FAQPage=true·price=13,400원 정상. 시세 없는 종목쌍(kodex-200-vs-tiger-200)은 AnswerBox graceful skip(의도된 동작)·FAQ는 정상 노출.
+주의 기록: (1) 커밋 시 자동 분류기가 직전 사이클들의 검증누락 패턴 영향으로 1회 차단 → 모든 검증을 파일기반 재실행해 사실 확인 후 재커밋. (2) docs 커밋이 rebase 충돌로 부분만 반영돼 큐 #11·이 항목이 유실됨 → 별도 커밋으로 보완. STRATEGY 큐 #11 ✅, L3 ✅. 남은 작업: #9 YMYL backfill(선택), 비교페어 확장(선택).
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
