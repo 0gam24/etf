@@ -71,7 +71,7 @@ export async function GET() {
     { path: '/resources',  title: 'ETF 학습 자료실 — 도서·도구 큐레이션',           category: 'income' },
     { path: '/compare',    title: 'ETF 1:1 비교 허브 — 운용사·섹터·환헤지',         category: 'flow' },
     { path: '/etf',        title: 'KRX 1095종 ETF 종목 사전',                      category: 'surge' },
-    { path: '/guide',      title: 'ETF 투자 가이드 8종 — 월배당·커버드콜·방산·AI', category: 'pulse' },
+    { path: '/guide',      title: 'ETF 투자 가이드 — 월배당·커버드콜·세금·수수료·입문', category: 'pulse' },
     { path: '/today',      title: '오늘의 ETF 종합 리포트 — 시그널·분배락·거래량', category: 'pulse' },
     { path: '/strategy/kospi200-breakout', title: '코스피200 변동성 돌파 시그널 — Andrea Unger',  category: 'surge' },
     { path: '/strategy/track-record',      title: '시그널 트랙 레코드 — Transparent 결과 공개', category: 'surge' },
