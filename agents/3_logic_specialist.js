@@ -946,6 +946,68 @@ function injectComparisonSection(article, strategy) {
   return { ...article, content: newContent, wordCount: newContent.length };
 }
 
+/**
+ * AEO 정답블록 derive — etf 데이터·본문에서 summary·keyStats·faqs 추출.
+ *   - HarnessDeployer(8) 게이트·렌더러(AnswerBox·FaqSection) 가 frontmatter 로 소비.
+ *   - 데이터 기반 결정적 derive (Gemini 프롬프트 무변경 → 재현성·안전성).
+ *   - 사실 서술·관찰형만 (YMYL 금지). 실데이터 없으면 graceful: 해당 필드 생략.
+ *   - faqs 는 본문 **Q1:** 패턴 파싱 — agent 9(SchemaInjector) extractFaqs 와 동일 규칙(단일 소스).
+ */
+function deriveAnswerBlock(article, context) {
+  const etfData = context?.etfData || {};
+  const pool = [
+    ...(etfData.byVolume || []),
+    ...(etfData.byGain || []),
+    ...(etfData.byLose || []),
+  ];
+  const focusTicker = (article.tickers && article.tickers[0]) || '';
+  const etf = pool.find(e => e.code === focusTicker) || (etfData.byVolume || [])[0] || {};
+  const name = etf.name || article.keyword || 'ETF';
+
+  // keyStats — 실데이터 있을 때만 (현재가·전일대비·거래량·대표 구성)
+  const keyStats = [];
+  if (typeof etf.price === 'number') {
+    keyStats.push({ label: '현재가', value: `${etf.price.toLocaleString()}원` });
+  }
+  if (typeof etf.changeRate === 'number') {
+    const sign = etf.changeRate > 0 ? '+' : '';
+    keyStats.push({ label: '전일대비', value: `${sign}${etf.changeRate.toFixed(2)}%` });
+  }
+  if (typeof etf.volume === 'number') {
+    keyStats.push({ label: '거래량', value: `${etf.volume.toLocaleString()}주` });
+  }
+  if (Array.isArray(etf.holdings) && etf.holdings[0] && etf.holdings[0].name) {
+    const top = etf.holdings[0];
+    const w = typeof top.weight === 'number' ? ` ${top.weight.toFixed(1)}%` : '';
+    keyStats.push({ label: '대표 구성', value: `${top.name}${w}` });
+  }
+
+  // summary — 사실 서술 1문장 (관찰형, 날짜 단정 회피 위해 "최근 거래일")
+  let summary = '';
+  if (typeof etf.changeRate === 'number') {
+    const dir = etf.changeRate > 0 ? '상승' : etf.changeRate < 0 ? '하락' : '보합';
+    const abs = Math.abs(etf.changeRate).toFixed(2);
+    summary = `${name}은 최근 거래일 ${abs}% ${dir}했습니다.`;
+  }
+
+  // faqs — 본문 Q&A 파싱 (agent 9 extractFaqs 동일 규칙)
+  const faqs = [];
+  const content = article.content || '';
+  const re = /\*\*Q\d+:\s*([^*]+?)\*\*\s*\n\s*([\s\S]*?)(?=\n\*\*Q\d+:|$)/g;
+  let m;
+  while ((m = re.exec(content)) !== null) {
+    const question = m[1].trim();
+    const answer = m[2].trim().split(/\n\n/)[0].replace(/^\*\*A\d+:\*\*\s*/, '').slice(0, 300);
+    if (question && answer) faqs.push({ question, answer });
+  }
+
+  const out = { ...article };
+  if (summary) out.summary = summary;
+  if (keyStats.length) out.keyStats = keyStats;
+  if (faqs.length) out.faqs = faqs;
+  return out;
+}
+
 // ───── run ─────
 async function run({ today, previousResults, rejectionFeedback }) {
   logger.log(AGENT_NAME, '🚀 PulseAnalyst 본문 작성 시작');
@@ -970,7 +1032,9 @@ async function run({ today, previousResults, rejectionFeedback }) {
     const rawArticle = await generateArticle(strategy, context, rejectionFeedback);
     // LSI 키워드 + 비교 가치 섹션 자동 삽입 (롱테일 검색 + E-E-A-T 차별화)
     const withLsi = injectLsiKeywords(rawArticle, strategy);
-    const article = injectComparisonSection(withLsi, strategy);
+    const withComparison = injectComparisonSection(withLsi, strategy);
+    // AEO 정답블록 derive (summary·keyStats·faqs) → frontmatter 로 흐름 (HarnessDeployer emit)
+    const article = deriveAnswerBlock(withComparison, context);
     articles.push(article);
     state.saveData(AGENT_NAME, 'processed', `article_${today}_${article.slug}.json`, article);
     logger.log(AGENT_NAME, `  📄 [${article.templateType}] ${article.wordCount}자 (${article.generatedBy || 'unknown'})`);
