@@ -838,8 +838,8 @@ A. OS date 검증(2026-05-31 일). npm run pulse 는 KRX 휴장(직전 거래일
 A. OS date 검증(2026-06-01 월). 자정 직후라 새 KRX 거래일 데이터 없음(최신 0531) → 일일 시황 파이프라인은 base-date 가드로 skip 대상. 사용자 의도(정보성 가이드 1편)에 맞춰 발행:
   - etf-dividend(ETF 분배금·분배락일 완전 가이드) 추가. 분배금 개념·배당기준일/분배락일/지급일 차이·T+2 매수 시점·분배락 가격하락 원리(손해 아님)·분배율 해석·세금. 5섹션 + HowTo + 4문항 FAQ(FAQPage). section 타입 'ETF 분배금 가이드' 추가. guides.ts SSoT → sitemap 자동 등록. 가이드 12→13종.
   - 4b_internal_linker 에 분배 키워드 5종(분배락일·분배기준일·배당기준일·ETF 분배금·ETF 배당일) 매핑. 월배당은 기존 monthly-dividend 유지.
-커밋: 가이드=3a438ba, 링커=9bf021f. 검증: tsc 0·cf:build EXIT=0(Worker saved)·prerender HTML(152KB) FAQPage 2·HowTo 2·Question 4·leak 0.
-실수 정정: (1) 링커 첫 Edit이 앵커 불일치로 누락 → 더 짧은 앵커로 재적용(9bf021f). (2) jun.txt node 스크립트가 멀티라인 문자열 syntax error로 실패 → Edit 도구로 직접 기록. (3) 첫 보고에 가이드 해시를 9356a36으로 추측했으나 실제는 3a438ba. 교훈(해시는 git rev-parse 확정·복잡한 문자열은 Edit 도구) 재확인.
+커밋: 가이드=3a438ba, 링커=4861e93. 검증: tsc 0·cf:build EXIT=0(Worker saved)·prerender HTML(152KB) FAQPage 2·HowTo 2·Question 4·leak 0.
+실수 정정: (1) 링커 첫 Edit이 앵커 불일치로 누락 → 더 짧은 앵커로 재적용(4861e93). (2) jun.txt node 스크립트가 멀티라인 문자열 syntax error로 실패 → Edit 도구로 직접 기록. (3) 첫 보고에 가이드 해시를 9356a36으로 추측했으나 실제는 3a438ba. 교훈(해시는 git rev-parse 확정·복잡한 문자열은 Edit 도구) 재확인.
 
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
