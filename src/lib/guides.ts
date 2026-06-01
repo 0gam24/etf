@@ -103,7 +103,7 @@ const monthlyDividend: GuideDef = {
     '국내에 상장된 주요 월배당 ETF의 분배 캘린더, 계좌별 세후 수익률, 안정성 등급, 목표 현금흐름 역산을 한 페이지에 정리한 가이드.',
   keywords: ['월배당 ETF', '월배당 ETF 추천', '월배당 ETF 종류', 'TIGER 월배당', 'KODEX 월배당', '커버드콜 월배당', '월 100만원 배당'],
   section: '월배당 가이드',
-  lastReviewed: '2026-05-15',
+  lastReviewed: '2026-06-01',
   howTo: {
     totalTime: 'PT15M',
     description: '월배당 ETF의 분배 캘린더·계좌별 세후 수익률·목표 현금흐름 역산을 6단계로 따라가는 가이드.',
@@ -212,7 +212,7 @@ const coveredCall: GuideDef = {
     'TIGER·KODEX·SOL·ACE 등 국내 운용사가 상장한 주요 커버드콜 ETF의 기초자산·옵션 매도 비율·분배율·안정성을 한 페이지에 비교한 가이드.',
   keywords: ['커버드콜 ETF', '커버드콜 ETF 비교', 'TIGER 커버드콜', 'KODEX 커버드콜', 'JEPI 한국판', '나스닥100 커버드콜', '미국S&P500 커버드콜'],
   section: '커버드콜 가이드',
-  lastReviewed: '2026-05-15',
+  lastReviewed: '2026-06-01',
   heroAffiliate: {
     leadIn: '커버드콜 전략 심화 학습에 적합한 책',
     productId: 'cpg-18789221', // 쉽고 편안하게 고수익 내는 퀀트&커버드 콜 전략
@@ -275,7 +275,7 @@ const defenseEtf: GuideDef = {
     'TIGER·KODEX·SOL 등 국내 운용사 방위산업 ETF의 구성종목 TOP·섹터 비중·최근 거래량 흐름을 정리한 비교 가이드.',
   keywords: ['방산 ETF', '방위산업 ETF', '한화에어로 ETF', 'LIG넥스원 ETF', 'KAI ETF', 'TIGER 방산', 'KODEX 방산', 'SOL 방산'],
   section: '테마 ETF 가이드',
-  lastReviewed: '2026-05-15',
+  lastReviewed: '2026-06-01',
   sections: [
     {
       heading: '왜 지금 방산 ETF인가',
@@ -326,7 +326,7 @@ const aiSemiEtf: GuideDef = {
     'AI·HBM·데이터센터 테마에 노출된 국내 상장 ETF의 구성종목·비중·최근 흐름을 한 페이지에 정리한 가이드.',
   keywords: ['AI ETF', 'AI 반도체 ETF', 'HBM ETF', '엔비디아 ETF', 'TIGER 반도체', 'KODEX 반도체', '데이터센터 ETF', 'AI 인프라 ETF'],
   section: '테마 ETF 가이드',
-  lastReviewed: '2026-05-15',
+  lastReviewed: '2026-06-01',
   sections: [
     {
       heading: 'AI 사이클에서 ETF로 노출하는 3가지 방법',
@@ -385,7 +385,7 @@ const retirement: GuideDef = {
     'IRP·ISA·연금저축의 세제 혜택을 비교하고, 월배당 ETF를 어디에 담아야 가장 효율적인지 정리한 은퇴 자산 설계 가이드.',
   keywords: ['IRP ETF', 'ISA 비과세 ETF', '연금저축 ETF', '은퇴 자산 ETF', '4050 은퇴 설계', '연금 ETF 추천', 'ISA 연금저축 차이'],
   section: '은퇴 자산 가이드',
-  lastReviewed: '2026-05-15',
+  lastReviewed: '2026-06-01',
   howTo: {
     totalTime: 'PT20M',
     description: 'IRP·ISA·연금저축의 한도와 세제 차이를 비교하고, 월배당·인덱스 ETF를 어떤 계좌에 담아야 가장 효율적인지 단계별로 정리한 가이드.',
@@ -479,7 +479,7 @@ const usDividend: GuideDef = {
     '미국 배당주 ETF의 기초자산(SCHD·NOBL·VYM 등 추종 지수), KODEX·ACE·TIGER 운용사별 차이, 환헷지 여부, 분배 캘린더, ISA·연금저축 매수 가이드를 정리한 가이드.',
   keywords: ['미국 배당주 ETF', '배당주 ETF 추천', 'SCHD 한국판', 'KODEX 미국배당다우존스', 'ACE 미국배당다우존스', '미국 배당귀족 ETF', '환헤지 배당 ETF'],
   section: '배당주 가이드',
-  lastReviewed: '2026-05-15',
+  lastReviewed: '2026-06-01',
   howTo: {
     totalTime: 'PT15M',
     description: '미국 배당주 ETF의 기초자산·운용사·환헷지·계좌별 세후 수익률을 4단계로 따라가는 가이드.',
@@ -563,7 +563,7 @@ const currencyHedge: GuideDef = {
     '한국 상장 해외 ETF의 환헤지(H) 표기·헤지 비용·NAV 변동 차이·시기별 적합 옵션을 정리한 가이드. KODEX·TIGER·ACE의 헤지/비헤지 페어 비교.',
   keywords: ['환헤지 ETF', '환헷지 H 차이', '미국 ETF 환헤지', '환율 ETF', 'KODEX 환헤지', 'TIGER 환헤지', '환헤지 비용'],
   section: '환헤지 가이드',
-  lastReviewed: '2026-05-15',
+  lastReviewed: '2026-06-01',
   howTo: {
     totalTime: 'PT12M',
     description: '환헤지(H) vs 비헷지 ETF의 NAV·분배·환율 영향을 4단계로 비교하는 가이드.',
@@ -640,7 +640,7 @@ const overseasEtf: GuideDef = {
     'SPY·QQQ·SCHD·VOO 같은 미국 상장 ETF를 한국 증권사로 직접 매수할 때 vs 한국 상장 미국 ETF(KODEX·TIGER 시리즈) 매수할 때의 세금·수수료·환전·계좌 활용 차이를 정리한 가이드.',
   keywords: ['해외 ETF', '미국 ETF 직구', 'SPY 한국', 'QQQ 한국', 'SCHD 직구', '해외 ETF 양도세', '해외 ETF 환전 수수료'],
   section: '해외상장 가이드',
-  lastReviewed: '2026-05-15',
+  lastReviewed: '2026-06-01',
   howTo: {
     totalTime: 'PT18M',
     description: '한국 상장 미국 ETF vs 해외 직구 ETF의 세금·수수료·환전·계좌 활용을 5단계로 비교.',
@@ -720,7 +720,7 @@ const etfBasics: GuideDef = {
     'ETF의 개념, 펀드·주식과의 차이, 계좌 개설부터 첫 매수까지의 절차, 초보자가 첫 종목을 고르는 기준과 흔한 실수를 한 페이지에 정리한 ETF 입문 가이드.',
   keywords: ['ETF란', 'ETF 투자 방법', 'ETF 초보', 'ETF 시작하는 법', 'ETF 추천 초보', 'ETF 사는 법', 'ETF 종류'],
   section: 'ETF 입문 가이드',
-  lastReviewed: '2026-05-31',
+  lastReviewed: '2026-06-01',
   howTo: {
     totalTime: 'PT15M',
     description: 'ETF의 개념 이해부터 계좌 개설·첫 매수·종목 선택까지 5단계로 따라가는 입문 가이드.',
@@ -800,7 +800,7 @@ const etfTax: GuideDef = {
     '국내 상장 ETF와 해외 상장 ETF의 매매차익·분배금 과세 방식, 배당소득세·양도소득세·금융소득종합과세, 계좌별(일반·ISA·연금) 절세 차이를 정리한 ETF 세금 가이드.',
   keywords: ['ETF 세금', 'ETF 양도소득세', 'ETF 배당소득세', '해외 ETF 세금', '국내 ETF 세금', 'ETF 금융소득종합과세', 'ETF 절세'],
   section: 'ETF 세금 가이드',
-  lastReviewed: '2026-05-31',
+  lastReviewed: '2026-06-01',
   howTo: {
     totalTime: 'PT12M',
     description: '국내·해외 ETF의 매매차익·분배금 과세와 계좌별 절세를 단계별로 점검하는 가이드.',
@@ -871,7 +871,7 @@ const etfFee: GuideDef = {
     'ETF 총보수의 구성, 표기된 보수 외에 빠지는 기타비용·매매중개수수료, 추적오차(괴리율)와 실부담비용(TER)까지, 같은 지수 ETF를 비용으로 비교하는 법을 정리한 가이드.',
   keywords: ['ETF 수수료', 'ETF 총보수', 'ETF 보수 비교', 'ETF 기타비용', 'ETF 추적오차', 'ETF TER', 'ETF 운용보수'],
   section: 'ETF 비용 가이드',
-  lastReviewed: '2026-05-31',
+  lastReviewed: '2026-06-01',
   howTo: {
     totalTime: 'PT10M',
     description: 'ETF의 총보수·기타비용·추적오차를 이해하고 같은 지수 ETF를 비용 기준으로 비교하는 가이드.',
@@ -940,7 +940,7 @@ const etfVsFund: GuideDef = {
     'ETF·일반 펀드·개별주식의 거래 방식, 비용, 분산 효과, 세금, 관리 난이도를 비교하고, 투자 성향과 목적에 따라 무엇이 적합한지 정리한 비교 가이드.',
   keywords: ['ETF vs 펀드', 'ETF vs 주식', 'ETF 펀드 차이', '펀드 ETF 비교', 'ETF 개별주식 차이', 'ETF 장단점'],
   section: 'ETF 비교 가이드',
-  lastReviewed: '2026-05-31',
+  lastReviewed: '2026-06-01',
   howTo: {
     totalTime: 'PT10M',
     description: 'ETF·펀드·개별주식을 거래·비용·분산·세금 기준으로 비교해 나에게 맞는 방식을 고르는 가이드.',
