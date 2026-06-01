@@ -13,6 +13,7 @@ import {
   getEtfsBySector,
   getEtfsByIssuer,
   getIssuerOfficialUrl,
+  shouldIndexEtf,
 } from '@/lib/data';
 import { getInvestmentPoints } from '@/lib/etf-investment-points';
 import { getIncomeRegistry } from '@/lib/income-server';
@@ -99,6 +100,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const ogImage = `/api/og?title=${encodeURIComponent(name)}&category=stock&tickers=${displayCode}`;
 
+  // thin content 가드 (SSoT: shouldIndexEtf) — 시세·구성종목·관련 분석글이 모두 없는
+  //   메타 전용 minimal 종목은 noindex. 관련 분석글이 붙은 인기 테마 종목은 고유 콘텐츠가
+  //   있으므로 색인 유지(13에이전트 심의 옵션 B). scaled-content/doorway 신호 차단.
+  const relatedPostCount = code
+    ? getAllPosts().filter(p =>
+        (p.meta.tickers || []).some(t => t.toUpperCase() === code.toUpperCase()),
+      ).length
+    : 0;
+  const indexable = shouldIndexEtf({
+    hasPrice: !!etf,
+    hasHoldings: holdingsForMeta.length > 0,
+    relatedPostCount,
+  });
+  const robots = indexable ? undefined : { index: false, follow: true };
+
   return {
     title,
     description,
@@ -111,6 +127,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `${displayCode} ETF`,
       sector || 'ETF',
     ],
+    ...(robots ? { robots } : {}),
     alternates: { canonical: canonicalPath },
     openGraph: { title, description, type: 'website', url: canonicalPath, images: [ogImage] },
     twitter: { card: 'summary_large_image', title, description, images: [ogImage] },
@@ -224,7 +241,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
               📅 {formattedBaseDate} 갱신
             </span>
           ) : (
-            <span className="etf-dict-status-pill">시세 갱신 예정</span>
+            <span className="etf-dict-status-pill">KRX 상장 종목</span>
           )}
         </div>
         {/* 1B. H1 — 코드 병기 + "분석 리포트" 키워드 */}

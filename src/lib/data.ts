@@ -94,6 +94,22 @@ export function getEtfHoldings(code: string): EtfHoldings | null {
   return getEtfHoldingsFromPortfolios(code);
 }
 
+/**
+ * /etf/{ticker} 색인 여부 단일 판정 (SSoT).
+ *   generateMetadata(robots)·본문 렌더·sitemap-etf.xml 세 곳이 동일 기준을 쓰도록 통일.
+ *   thin content(시세도 구성종목도 관련 분석글도 없는 메타 전용 페이지)는 색인 제외 →
+ *   scaled-content/doorway 신호 차단(애드센스 승인·사이트 품질 보호).
+ *   13에이전트 심의(2026-06-01) 만장일치 옵션 B: 시세 OR 구성종목 OR 관련글 ≥1 이면 색인.
+ *   순수 함수 — 순환참조 회피를 위해 호출자가 3개 신호를 boolean/개수로 전달.
+ */
+export function shouldIndexEtf(args: {
+  hasPrice: boolean;
+  hasHoldings: boolean;
+  relatedPostCount: number;
+}): boolean {
+  return args.hasPrice || args.hasHoldings || args.relatedPostCount > 0;
+}
+
 interface PortfolioEntry {
   type: string;
   issueCode?: string;

@@ -2,8 +2,11 @@ import {
   getLatestEtfData,
   getAllEtfSlugs,
   getKrxEtfMeta,
+  getEtfHoldings,
   slugToCode,
+  shouldIndexEtf,
 } from '@/lib/data';
+import { getAllPosts } from '@/lib/posts';
 
 /**
  * Daily ETF Pulse — /etf/{slug} 1095종 전용 sitemap.
@@ -39,6 +42,15 @@ export async function GET() {
     (etfData?.etfList || []).map((e: { code: string }) => e.code.toUpperCase()),
   );
 
+  // 티커별 관련 분석글 개수 (색인 판정용 — page.tsx와 동일 SSoT)
+  const postCountByTicker = new Map<string, number>();
+  for (const p of getAllPosts()) {
+    for (const t of p.meta.tickers || []) {
+      const u = t.toUpperCase();
+      postCountByTicker.set(u, (postCountByTicker.get(u) || 0) + 1);
+    }
+  }
+
   const slugs = getAllEtfSlugs();
   const entries: string[] = [];
 
@@ -48,9 +60,15 @@ export async function GET() {
     const meta = code ? getKrxEtfMeta(code) : null;
     const upperCode = code?.toUpperCase() || '';
     const hasPrice = priceCodes.has(upperCode);
+    const hasHoldings = code ? (getEtfHoldings(code)?.holdings?.length || 0) > 0 : false;
+    const relatedPostCount = postCountByTicker.get(upperCode) || 0;
 
-    // Priority + changefreq 분화
-    const priority = hasPrice ? '0.9' : '0.6';
+    // thin content 제외 (SSoT: shouldIndexEtf) — noindex 종목은 sitemap 에서도 제외
+    //   (noindex URL 을 sitemap 에 두면 GSC 'submitted but noindex' 경고). page.tsx 와 동일 기준.
+    if (!shouldIndexEtf({ hasPrice, hasHoldings, relatedPostCount })) continue;
+
+    // Priority + changefreq 분화 (시세 有 0.9 / 그 외 색인 종목 0.5)
+    const priority = hasPrice ? '0.9' : '0.5';
     const changefreq = hasPrice ? 'daily' : 'weekly';
 
     entries.push(`  <url>
