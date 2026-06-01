@@ -22,6 +22,12 @@ import { getAllPosts } from '@/lib/posts';
 
 const SITE = process.env.SITE_URL || 'https://iknowhowinfo.com';
 
+// ★ 빌드타임 정적 생성 강제 — Cloudflare Workers 런타임에선 fs.readdirSync(data/raw)가
+//   빈 배열을 반환해(번들 미포함) 런타임 생성 시 0건이 됨. 빌드 시점엔 data/ 가 정상 접근되므로
+//   force-static 으로 구워서 배포한다(sitemap.ts 가 정적으로 정상 동작하는 것과 동일 원리).
+//   콘텐츠는 매일 push→재빌드로 갱신됨.
+export const dynamic = 'force-static';
+
 function ymdToIso(ymd?: string): string | null {
   if (!ymd || ymd.length !== 8) return null;
   const iso = `${ymd.slice(0, 4)}-${ymd.slice(4, 6)}-${ymd.slice(6, 8)}T00:00:00+09:00`;
