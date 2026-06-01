@@ -841,6 +841,38 @@ A. OS date 검증(2026-06-01 월). 자정 직후라 새 KRX 거래일 데이터 
 커밋: 가이드=3a438ba, 링커=4861e93. 검증: tsc 0·cf:build EXIT=0(Worker saved)·prerender HTML(152KB) FAQPage 2·HowTo 2·Question 4·leak 0.
 실수 정정: (1) 링커 첫 Edit이 앵커 불일치로 누락 → 더 짧은 앵커로 재적용(4861e93). (2) jun.txt node 스크립트가 멀티라인 문자열 syntax error로 실패 → Edit 도구로 직접 기록. (3) 첫 보고에 가이드 해시를 9356a36으로 추측했으나 실제는 3a438ba. 교훈(해시는 git rev-parse 확정·복잡한 문자열은 Edit 도구) 재확인.
 
+## 2026-06-01 · [트래픽→애드센스 클릭 운영 전략 기획]
+
+### Q. GEO·AEO·SEO 포스팅으로 검색 노출→트래픽→애드센스 클릭이 목적. 지금은 트래픽 발생에 초점. 모든 에이전트 소환해 포스팅 운영 기획·계획 깊게.
+A. 13에이전트 패널 심의(Workflow wtkhp7rmg) + PolicyGuard 심판 + 편집장 합성 완료. OS date 2026-06-01 확인.
+현황 코드 실측(핵심):
+  - ★결정적 수익 갭 3중: (1)layout.tsx에 adsbygoogle 로더 없음(GA4만), (2)AdBanner.tsx 구현됐으나 어느 글에도 import 안 됨, (3)NEXT_PUBLIC_ADSENSE_PUB_ID 미설정(.env.local). → 트래픽 와도 애드센스 노출 0. ads.txt에는 pub-7830821732287404 기재(샘플 ID 아님 — 사용자 실제 계정 여부 확인 필요).
+  - 글 페이지(page.tsx)에 RecommendBox(쿠팡) 상·하 2개 이미 존재(L281·L370). → PolicyGuard 경고: 여기에 광고 3개 추가 시 5개 monetized 유닛 = 계정정지급 ad/content 비율.
+  - GA4 활성, Naver·Bing 인증 O, Google Search Console 미설정(최대 측정 공백).
+편집장 확정 — 10단계 구현 큐(의존성 순):
+  1)src/lib/ads-config.ts: 본문길이 게이트 adSlotCount(<800자→0·<1500→1·1500+→최대2, 3 아님) + isAdsEnabled()=실pubid&&production.
+  2)countBodyProse(): AnswerBox/keyStats/FAQ/affiliate 제외 실본문 문자수.
+  3)ArticleBody 래퍼: H2 경계 분할 후 광고 삽입(hero/AnswerBox/첫화면·FAQ인접 금지, CLS reserve). page.tsx MarkdownRenderer 교체.
+  4)layout.tsx 조건부 애드센스 로더(게이트 통과 시만).
+  5)995 minimal /etf noindex+priority0.3, 광고 0.
+  6)HarnessDeployer 게이트(광고밀도·면책·disclosure·AnswerBox 직답 lint·breaking 데이터 충족).
+  7)미커밋 thin 주말 breaking 폐기.
+  8)기존글 frontmatter 백필(per-post unique, summary=직답만/수치표는 본문=zero-click 방어, lastmod 실변경일).
+  9)compare 페어 주≤5쌍 human-reviewed 확장(50~80 일괄 자동생성 KILL=scaled-content).
+  10)RelatedPosts+3각 내부링크(관련도 미달 시 숨김).
+PolicyGuard 핵심 가드레일: [KILL]글당3슬롯일괄·placeholder pubid 로더출하·compare 대량자동생성·휴장 thin breaking·hero/FAQ인접 광고. [MODIFY]광고게이트 body-only·AnswerBox 직답만(zero-click 방어)·FAQ per-post고유·995 noindex·내부링크 관련도임계. ★sequencing: 애드센스 로더 사이트와이드 활성은 (a)995 noindex (b)광고게이트 live (c)짧은글 0~1광고 dev확인 후에만.
+콘텐츠 우선순위: evergreen 가이드/비교/리스트 60% > 일일시황 40%. 측정 전제=GSC 등록.
+미구현 — 사용자 확인 후 안전항목(GSC·noindex·AEO백필·내부링크·콘텐츠)부터 착수. 애드센스 실활성은 사용자 실제 승인 pub-id 확인 필요.
+
+### Q. (이어서) 자동광고 사용·계정 승인됨(2사이트 승인·2진행중)·이 사이트도 승인 요청 예정. 애드센스 도움말 9141298(자동최적화)·9261805(자동광고) 참고.
+A. ★방침 전환 — 자동광고 채택 → 수동 광고 삽입(AdBanner 글 삽입·ArticleBody 분할·ads-config 슬롯) 전부 폐기. 자동광고는 head 스니펫 1줄이면 구글이 위치·밀도·형식 자동 최적화(도움말 9261805 확인). 그 스니펫이 사이트 승인 심사의 전제이기도 함.
+구현·배포 완료(1주차 안전 인프라):
+  1) layout.tsx <head>에 adsbygoogle.js 자동광고 로더 추가(client=ca-pub-7830821732287404, ads.txt 공개값, 사용자 승인계정 확인). GA4 유지. → bbfab70.
+  2) thin ETF noindex(애드센스 승인 1순위 거부사유=low value/thin content 차단): noindex 종목심의 워크플로(wzopdda37) 4관점 만장일치 옵션 B. src/lib/data.ts shouldIndexEtf() SSoT 신설 — 시세 OR 구성종목 OR 관련글≥1 이면 색인. page.tsx generateMetadata(관련글 카운트 반영)·sitemap-etf.xml 동일 헬퍼로 통일. "시세 갱신 예정"→"KRX 상장 종목"(under-construction 신호 제거). 결과: 색인 107종/noindex 1024종. kodex-defense-top10(관련글有)색인·ace-defense-top10(메타만)noindex 검증. follow 유지로 승인 후 색인확대 가능. → dbfa1c8.
+실측 정정: 데이터 현황=시세 정확히 100종·holdings 9종뿐(1095 아님). 그래서 noindex가 1024종으로 큰 것. 패널 추정(995)과 차이.
+미해결(사용자 확인 대기): 미커밋 breaking 15편 중 주말(휴장) 9편=0523토·0524일·0531일이 "금일 거래량 1위" 단정하는 사실관계 오류(휴장인데 거래된 것처럼). thin이 아니라 부정확 콘텐츠라 E-E-A-T·애드센스에 더 나쁨. 개장일 6편(0520수·0522금·0528목)은 정상 후보. 파일 git 삭제는 콘텐츠 정책 결정이라 사용자 확인 필요.
+남은 1주차: GSC 등록(사용자 DNS TXT 필요)·AEO 백필·내부링크는 후속. 애드센스 로더 라이브라 사이트 승인요청 가능 상태.
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
