@@ -887,7 +887,25 @@ A. 애드센스 승인은 사람이 사이트 전반을 보고 noindex와 무관
 오늘 누적 커밋: bbfab70(자동광고 로더)·dbfa1c8(thin noindex SSoT)·a737fa9(0528 breaking 발행·휴장9폐기)·ff119b1(minimal 문구)·078a1e0(가이드 AEO 직답).
 남은 2주차(승인 신청 전): 내부링크(RelatedPosts)·트래픽 후보 글 AEO 백필. 사용자 직접: 이 사이트 애드센스 승인 신청·GSC 등록(DNS TXT). 애드센스 계정=승인됨(2사이트 승인·2진행). 자동광고 채택(도움말 9261805).
 
+## 2026-06-02 · [성장 우선순위 권고 — GrowthSequencer]
+
+### Q. 측정(GSC) 없이 콘텐츠/내부링크부터 늘릴까, 측정 계기판부터 깔고 데이터 기반으로 갈까? A~F 중 1순위 작업, 사용자에게 먼저 요청할 것(C승인/D GSC), 지금 하면 안 되는 것은?
+A. 핵심 권고:
+- (1) 에이전트 1순위 = B(기존 글 AEO 백필) + A보강(RelatedPosts 랭킹 개선) 조합. 근거: 82편 article 중 summary/faqs frontmatter 0편이라 AnswerBox/FaqSection이 한 편도 안 뜸(코드는 배포됐는데 데이터가 없어 사실상 미작동). RelatedPosts("함께 읽어보면 좋은 분석")는 이미 존재하나 same-category 앞 3개 단순 슬라이스라 ticker/sector 무관 → 랭킹만 개선하면 적은 작업으로 PV·관련성 상승. A의 "컴포넌트 신설"은 불필요(이미 있음).
+- (2) 사용자에게 먼저: D(GSC 등록) > C(애드센스 신청). GSC는 DNS TXT라 사용자만 가능 + 색인/노출 측정의 전제. 측정 없이 콘텐츠만 늘리면 효과 검증 불가. C 신청은 자동광고가 콘텐츠 충실도 비례 심사라, 82편 thin·AEO 결여 상태로 신청 시 scaled-content 거부 위험 → B 1차 백필 후 신청이 안전. 단 GSC는 즉시 병행 요청.
+- (3) 지금 하면 안 되는 것: F(/compare 페어 10→확장)·E(신규 evergreen 대량 발행)는 시기상조. 기존 자산(82편) 인덱스/측정도 안 된 상태에서 신규 면적만 넓히면 thin 비율↑·심사 리스크↑. 도메인 권위 낮은 신생 단계에선 기존 자산 품질화(AEO·내부링크)→측정(GSC)→승인(C)→확장(E/F) 순서.
+(주: 위 GrowthSequencer 블록은 워크플로 패널 에이전트가 직접 append한 것. 5관점 만장일치 편집장 결정을 아래 정식 기록으로 정리.)
+
+### Q. (06-02) GA4 사이트 전용 ID 교체 + 다음 액션 에이전트 심의 후 진행.
+A. ① GA4 측정 ID를 사이트 전용 G-P2ZYD31B29 로 교체(d067649, 기존 G-LRB1GBGQDN 공용→신규). 사용자가 iknowhowinfo.com 전용 GA4 속성 신설.
+② 다음 액션 우선순위 심의(workflow wh0tifz7k, 5관점+편집장): 측정과 무관하게 옳은 토대 작업부터. 구현·push 완료(cf79fb8):
+  - 관련글 랭킹 교체: getRelatedPosts() 헬퍼(posts.ts) — 티커교집합×100 > 섹터×10 > 카테고리×1, 동률 최신순. limit 3→4. 기존 "같은 카테고리 앞3개 slice" 대체. 세션 PV(자동광고 노출)·내부링크 관련성↑.
+  - AEO 직답 백필 3편(surge 0080g0·449450 + income 0531): summary+keyStats 추가. ★전 글 summary 0편이라 AnswerBox가 한 편도 안 뜨던 것 → 이제 렌더 확인. 인라인 FAQPage 있는 글이라 faqs 제외(이중 FAQPage 방지, FAQPage 1개 유지 검증).
+  - 정책페이지(privacy·contact·disclaimer·about) 푸터 접근성 점검: 4종 모두 존재·푸터 링크 확인(애드센스 심사 요건 충족).
+검증: tsc 0·cf:build EXIT=0·AnswerBox 직답 렌더·FAQPage 1개·gray-matter 파싱 OK.
+실측 정정: surge는 2편뿐(82편 대부분이 휘발성 pulse/breaking). 거의 모든 글에 인라인 FAQPage 이미 박제됨(summary만 0). 그래서 백필=summary+keyStats만, faqs는 인라인 없는 글 한정.
+★사용자 직접(편집장 권고 순서): D(GSC 등록·DNS TXT)를 지금 즉시(시간이 일하는 작업), C(이 사이트 애드센스 신청)는 토대작업 완료된 지금 시점에 가능하나 GSC 데이터 보며 판단 권고. 보류: E(신규 대량발행)·F(compare 확장)는 GSC 측정 후.
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
-
