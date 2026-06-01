@@ -8,7 +8,8 @@ import ScrollRevealProvider from "@/components/ScrollRevealProvider";
 import SiteLiveBar from "@/components/SiteLiveBar";
 
 // Google Analytics 4 — 사이트 트래픽·HelpfulFeedback·Threads UTM 추적
-const GA4_ID = 'G-LRB1GBGQDN';
+//   iknowhowinfo.com 전용 GA4 속성(2026-06 신설).
+const GA4_ID = 'G-P2ZYD31B29';
 
 // Google AdSense 자동 광고 — publisher ID (ads.txt에 공개된 값, 비밀 아님).
 //   자동 광고를 사용하므로 본문에 수동 광고 슬롯을 넣지 않는다(구글이 위치·밀도 자동 최적화).
