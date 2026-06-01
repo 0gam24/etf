@@ -906,6 +906,13 @@ A. ① GA4 측정 ID를 사이트 전용 G-P2ZYD31B29 로 교체(d067649, 기존
 실측 정정: surge는 2편뿐(82편 대부분이 휘발성 pulse/breaking). 거의 모든 글에 인라인 FAQPage 이미 박제됨(summary만 0). 그래서 백필=summary+keyStats만, faqs는 인라인 없는 글 한정.
 ★사용자 직접(편집장 권고 순서): D(GSC 등록·DNS TXT)를 지금 즉시(시간이 일하는 작업), C(이 사이트 애드센스 신청)는 토대작업 완료된 지금 시점에 가능하나 GSC 데이터 보며 판단 권고. 보류: E(신규 대량발행)·F(compare 확장)는 GSC 측정 후.
 
+### Q. (06-02) GSC 이미 등록됨(클릭 16회 발생 중). Sitemaps 화면 보니 sitemap.xml 54개만·sitemap-etf 확인.
+A. ★프로덕션 버그 발견·수정(9b08a5b): 라이브 sitemap-etf.xml이 0건(로컬 dev는 107건 정상)이던 것 수정.
+원인 진단: sitemap-etf.xml이 동적(ƒ) 라우트라 Cloudflare Workers 런타임에서 fs.readdirSync(data/raw)가 빈 배열 반환(번들에 data/raw 미포함) → getLatestEtfData() null → priceCodes 0 → 시세·holdings·관련글 매칭 전부 실패 → 모든 종목 thin 판정 → 0건. 반면 sitemap.xml은 Next.js가 정적(○)으로 자동 처리해 빌드타임 데이터로 정상(141건). /etf 글 페이지는 SSG라 빌드타임 데이터로 정상(그래서 시세 13,400원 떴던 것).
+해결: sitemap-etf.xml route.ts에 export const dynamic='force-static' 추가 → 빌드타임 생성(data/ 정상 접근). 빌드 로그 ○ 전환·정적 body 107 URL 확인. 라이브 220초 후 107건 채워짐 검증.
+주의: sitemap-news.xml은 "최근 2일 breaking만" 시의성 로직이라 force-static 부적합(빌드시점 고정되면 stale) → 건드리지 않음. 현재 0건은 최근 2일 breaking 없어서일 수 있음(정상 범위).
+사용자 액션: GSC Sitemaps 에서 sitemap-index.xml 제출 권장(메인+etf+images+news 4종 한번에 묶임). 기존 sitemap.xml(54→141 갱신)·nike.* 옛 항목은 무시/삭제 가능. GSC 이미 등록·클릭 16회 발생 중이라 측정 가동 상태 — E/F 확장을 데이터 기반으로 진행 가능.
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
