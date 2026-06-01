@@ -878,7 +878,14 @@ A. 사용자 결정대로 처리(a737fa9):
   - 폐기: 휴장일(0523토·0524일·0531일) breaking 9편 MDX + 동반 json 36개(article/charts/humanized/verified×9) 삭제. 미커밋이라 git에 안 들어감. ★pulse/flow/income은 휴장일에도 이미 커밋·발행돼 있어 손대지 않음(breaking만).
   - 발행: 실제 미커밋 개장일 breaking은 0528(목) 3편뿐(0520·0522는 이미 발행됨). KODEX 방산TOP10(+2.21%)·SOL 조선TOP3레버리지(+13.16%)·SOL 미국양자컴퓨팅TOP10(+5.43%). 본문 19~30KB·휴장신호0·leak0 검수 후 commit. data/processed 추적되므로 동반 json 12개 함께.
 실측 정정: 사용자가 "개장일 6편"이라 했으나 실제 미커밋 개장일 breaking은 0528 3편이 전부(나머지는 이미 발행). 15 미커밋=휴장9+개장(0528)3+...? 실제 git status 기준 0528 3편만 untracked였음.
-검증: cf:build EXIT=0(Worker saved)·0528 breaking 3편 번들 포함. push 후 5~7분 프로덕션 확인 예정.
+검증: cf:build EXIT=0(Worker saved)·0528 breaking 3편 번들 포함. push 후 100초만에 라이브(200×3) 확인. 자동광고 로더 홈 라이브 확인.
+
+### Q. 지금 승인 신청 vs 다음 단계 다 하고? → "2주차 핵심 끝낸 뒤 신청"(추천) 선택 후 "진행".
+A. 애드센스 승인은 사람이 사이트 전반을 보고 noindex와 무관하게 minimal 페이지에 접근 → thin/under-construction이 거부 1순위. 그래서 승인 직결 항목부터 진행:
+  1) minimal /etf 페이지 under-construction 문구 제거(ff119b1): "오늘 시세는 다음 갱신에 반영됩니다" 배너 → "{종목명}은 KRX 상장 ETF…공식자료는 KRX·운용사 공시" 완결형. ace-defense-top10 prerender 검증(신문구 노출·구문구 0).
+  2) 가이드 13종 AEO 직답 추가(078a1e0): GuideDef.answer optional 필드 + /guide/[slug] Hero 직후 AnswerBox. 13종 각 핵심질문 결론 1~2문장(고유, 중복0). zero-click 방어=결론만, 수치·방법은 본문. prerender 한줄요약 렌더 확인.
+오늘 누적 커밋: bbfab70(자동광고 로더)·dbfa1c8(thin noindex SSoT)·a737fa9(0528 breaking 발행·휴장9폐기)·ff119b1(minimal 문구)·078a1e0(가이드 AEO 직답).
+남은 2주차(승인 신청 전): 내부링크(RelatedPosts)·트래픽 후보 글 AEO 백필. 사용자 직접: 이 사이트 애드센스 승인 신청·GSC 등록(DNS TXT). 애드센스 계정=승인됨(2사이트 승인·2진행). 자동광고 채택(도움말 9261805).
 
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
