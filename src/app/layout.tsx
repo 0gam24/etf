@@ -10,6 +10,11 @@ import SiteLiveBar from "@/components/SiteLiveBar";
 // Google Analytics 4 — 사이트 트래픽·HelpfulFeedback·Threads UTM 추적
 const GA4_ID = 'G-LRB1GBGQDN';
 
+// Google AdSense 자동 광고 — publisher ID (ads.txt에 공개된 값, 비밀 아님).
+//   자동 광고를 사용하므로 본문에 수동 광고 슬롯을 넣지 않는다(구글이 위치·밀도 자동 최적화).
+//   이 스니펫 자체가 애드센스 사이트 소유권 확인·승인 심사의 전제.
+const ADSENSE_PUB_ID = 'ca-pub-7830821732287404';
+
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL || 'https://iknowhowinfo.com'),
   title: {
@@ -142,6 +147,14 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${GA4_ID}');`}
         </Script>
+        {/* Google AdSense 자동 광고 로더 — head에 1줄. 자동 광고가 위치·밀도를 최적화.
+            애드센스 사이트 승인 심사 + 소유권 확인의 전제이기도 함. */}
+        <Script
+          id="adsense-auto-ads"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_PUB_ID}`}
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+        />
       </head>
       <body>
         <script
