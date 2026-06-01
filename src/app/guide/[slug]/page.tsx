@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import { GUIDES, getGuideBySlug } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
+import AnswerBox from '@/components/AnswerBox';
 import GuideDataBlock from '@/components/GuideDataBlock';
 import AffiliateInline from '@/components/AffiliateInline';
 import RecommendBox from '@/components/RecommendBox';
@@ -130,6 +131,9 @@ export default async function GuidePage({ params }: PageProps) {
           최근 점검: {new Date(g.lastReviewed).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
         </div>
       </header>
+
+      {/* AEO 직답 — Hero 직후. 결론 1~2문장만(구체 수치·표는 본문). AI Overview·스니펫 인용용. */}
+      {g.answer && <AnswerBox summary={g.answer} source="Daily ETF Pulse 편집팀" />}
 
       {/* Hero 직후 RecommendBox top — 4카드 박스 (가이드 카테고리 매칭) */}
       <RecommendBox position="top" category={guideToProductCategory(g.slug)} />

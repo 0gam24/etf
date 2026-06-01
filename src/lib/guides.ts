@@ -63,6 +63,13 @@ export interface GuideDef {
   keywords: string[];
   /** 카테고리 라벨 (sitemap·breadcrumb용) */
   section: '월배당 가이드' | '커버드콜 가이드' | '테마 ETF 가이드' | '은퇴 자산 가이드' | '배당주 가이드' | '환헤지 가이드' | '해외상장 가이드' | 'ETF 입문 가이드' | 'ETF 세금 가이드' | 'ETF 비용 가이드' | 'ETF 비교 가이드' | 'ETF 분배금 가이드';
+  /**
+   * AEO 직답 — 가이드 핵심 질문에 대한 1~2문장 결론(직답).
+   *   Hero 직후 AnswerBox 로 렌더 → AI Overview·피처드 스니펫 인용 + 사용자 즉시 이해.
+   *   zero-click 방어: 결론만 제시, 구체 수치·방법·표는 본문 sections 에 둔다.
+   *   없으면 graceful 미노출(기존 가이드 호환). 가이드마다 고유 문장(중복 금지).
+   */
+  answer?: string;
   /** 본문 섹션 */
   sections: GuideSection[];
   /** 페이지 끝 FAQ */
@@ -102,6 +109,7 @@ const monthlyDividend: GuideDef = {
   description:
     '국내에 상장된 주요 월배당 ETF의 분배 캘린더, 계좌별 세후 수익률, 안정성 등급, 목표 현금흐름 역산을 한 페이지에 정리한 가이드.',
   keywords: ['월배당 ETF', '월배당 ETF 추천', '월배당 ETF 종류', 'TIGER 월배당', 'KODEX 월배당', '커버드콜 월배당', '월 100만원 배당'],
+  answer: '월배당 ETF는 분배금을 매월 지급하도록 설계된 ETF로, 대부분 커버드콜 전략으로 분배 재원을 만듭니다. 안정성 등급이 높은 종목을 중심으로 2~3종을 조합하면 매달 현금흐름을 만들 수 있으나, 높은 분배율만 보지 말고 기초자산 추이와 계좌별 세금을 함께 따져야 합니다.',
   section: '월배당 가이드',
   lastReviewed: '2026-06-01',
   howTo: {
@@ -211,6 +219,7 @@ const coveredCall: GuideDef = {
   description:
     'TIGER·KODEX·SOL·ACE 등 국내 운용사가 상장한 주요 커버드콜 ETF의 기초자산·옵션 매도 비율·분배율·안정성을 한 페이지에 비교한 가이드.',
   keywords: ['커버드콜 ETF', '커버드콜 ETF 비교', 'TIGER 커버드콜', 'KODEX 커버드콜', 'JEPI 한국판', '나스닥100 커버드콜', '미국S&P500 커버드콜'],
+  answer: '커버드콜 ETF는 기초자산을 보유하면서 콜옵션을 매도해 받은 프리미엄을 분배 재원으로 쓰는 ETF입니다. 횡보·약세장에서 프리미엄이 손실을 완충하지만 강세장에서는 시세 차익이 제한되므로, 기초자산·옵션 매도 비율·분배율을 함께 보고 골라야 합니다.',
   section: '커버드콜 가이드',
   lastReviewed: '2026-06-01',
   heroAffiliate: {
@@ -274,6 +283,7 @@ const defenseEtf: GuideDef = {
   description:
     'TIGER·KODEX·SOL 등 국내 운용사 방위산업 ETF의 구성종목 TOP·섹터 비중·최근 거래량 흐름을 정리한 비교 가이드.',
   keywords: ['방산 ETF', '방위산업 ETF', '한화에어로 ETF', 'LIG넥스원 ETF', 'KAI ETF', 'TIGER 방산', 'KODEX 방산', 'SOL 방산'],
+  answer: '국내 방산 ETF는 한화에어로스페이스·LIG넥스원·한국항공우주(KAI) 등 방위산업 대표주에 분산 투자하는 ETF입니다. 운용사마다 구성종목 TOP과 집중도가 다르므로, 개별 종목 비중과 거래량·총보수를 비교해 선택하는 것이 핵심입니다.',
   section: '테마 ETF 가이드',
   lastReviewed: '2026-06-01',
   sections: [
@@ -325,6 +335,7 @@ const aiSemiEtf: GuideDef = {
   description:
     'AI·HBM·데이터센터 테마에 노출된 국내 상장 ETF의 구성종목·비중·최근 흐름을 한 페이지에 정리한 가이드.',
   keywords: ['AI ETF', 'AI 반도체 ETF', 'HBM ETF', '엔비디아 ETF', 'TIGER 반도체', 'KODEX 반도체', '데이터센터 ETF', 'AI 인프라 ETF'],
+  answer: 'AI·반도체 ETF는 엔비디아 등 미국 빅테크, 국내 HBM·반도체 장비주, 데이터센터 인프라 등 노출 경로가 ETF마다 다릅니다. 같은 "AI ETF"라도 기초지수와 구성종목이 크게 다르므로, 무엇에 투자하는지(미국 직접 노출 vs 국내 반도체)를 먼저 확인해야 합니다.',
   section: '테마 ETF 가이드',
   lastReviewed: '2026-06-01',
   sections: [
@@ -384,6 +395,7 @@ const retirement: GuideDef = {
   description:
     'IRP·ISA·연금저축의 세제 혜택을 비교하고, 월배당 ETF를 어디에 담아야 가장 효율적인지 정리한 은퇴 자산 설계 가이드.',
   keywords: ['IRP ETF', 'ISA 비과세 ETF', '연금저축 ETF', '은퇴 자산 ETF', '4050 은퇴 설계', '연금 ETF 추천', 'ISA 연금저축 차이'],
+  answer: '은퇴 자산은 ISA(비과세·분리과세)·연금저축·IRP(세액공제+과세이연)의 세제 혜택을 조합해 운용하는 것이 핵심입니다. 계좌마다 한도·인출 조건·세금이 다르므로, 월배당 ETF를 어느 계좌에 담느냐에 따라 세후 수령액이 크게 달라집니다.',
   section: '은퇴 자산 가이드',
   lastReviewed: '2026-06-01',
   howTo: {
@@ -478,6 +490,7 @@ const usDividend: GuideDef = {
   description:
     '미국 배당주 ETF의 기초자산(SCHD·NOBL·VYM 등 추종 지수), KODEX·ACE·TIGER 운용사별 차이, 환헷지 여부, 분배 캘린더, ISA·연금저축 매수 가이드를 정리한 가이드.',
   keywords: ['미국 배당주 ETF', '배당주 ETF 추천', 'SCHD 한국판', 'KODEX 미국배당다우존스', 'ACE 미국배당다우존스', '미국 배당귀족 ETF', '환헤지 배당 ETF'],
+  answer: '국내 상장 미국 배당주 ETF는 SCHD(Dow Jones US Dividend 100) 등 미국 배당지수를 추종하며 KODEX·ACE·TIGER 등 운용사별로 환헤지 여부·총보수·분배 주기가 다릅니다. ISA·연금계좌에서 매수할 수 있다는 점이 미국 직구 대비 큰 장점입니다.',
   section: '배당주 가이드',
   lastReviewed: '2026-06-01',
   howTo: {
@@ -562,6 +575,7 @@ const currencyHedge: GuideDef = {
   description:
     '한국 상장 해외 ETF의 환헤지(H) 표기·헤지 비용·NAV 변동 차이·시기별 적합 옵션을 정리한 가이드. KODEX·TIGER·ACE의 헤지/비헤지 페어 비교.',
   keywords: ['환헤지 ETF', '환헷지 H 차이', '미국 ETF 환헤지', '환율 ETF', 'KODEX 환헤지', 'TIGER 환헤지', '환헤지 비용'],
+  answer: '종목명 끝의 (H)는 환헤지형으로, 환율 변동 영향을 제거하는 대신 헤지 비용이 듭니다. 비헤지형은 환율이 오르면 추가 수익, 내리면 손실이 발생합니다. 달러 강세를 예상하면 비헤지, 환 변동을 피하고 싶으면 (H)형이 적합합니다.',
   section: '환헤지 가이드',
   lastReviewed: '2026-06-01',
   howTo: {
@@ -639,6 +653,7 @@ const overseasEtf: GuideDef = {
   description:
     'SPY·QQQ·SCHD·VOO 같은 미국 상장 ETF를 한국 증권사로 직접 매수할 때 vs 한국 상장 미국 ETF(KODEX·TIGER 시리즈) 매수할 때의 세금·수수료·환전·계좌 활용 차이를 정리한 가이드.',
   keywords: ['해외 ETF', '미국 ETF 직구', 'SPY 한국', 'QQQ 한국', 'SCHD 직구', '해외 ETF 양도세', '해외 ETF 환전 수수료'],
+  answer: '미국 상장 ETF(SPY·QQQ·SCHD)를 직접 매수하면 매매차익은 양도소득세 22%(250만원 공제)로 분리과세되고, 국내 상장 미국 ETF(KODEX·TIGER)는 배당소득세 대상이지만 ISA·연금계좌 활용이 가능합니다. 투자 금액·계좌 전략·금융소득 규모에 따라 유리한 쪽이 달라집니다.',
   section: '해외상장 가이드',
   lastReviewed: '2026-06-01',
   howTo: {
@@ -719,6 +734,7 @@ const etfBasics: GuideDef = {
   description:
     'ETF의 개념, 펀드·주식과의 차이, 계좌 개설부터 첫 매수까지의 절차, 초보자가 첫 종목을 고르는 기준과 흔한 실수를 한 페이지에 정리한 ETF 입문 가이드.',
   keywords: ['ETF란', 'ETF 투자 방법', 'ETF 초보', 'ETF 시작하는 법', 'ETF 추천 초보', 'ETF 사는 법', 'ETF 종류'],
+  answer: 'ETF는 여러 종목을 한 바구니에 담아 주식처럼 거래소에 상장한 펀드로, 1주만 사도 수십~수백 개 종목에 분산 투자됩니다. 입문자는 증권계좌 개설 후 거래량이 크고 KOSPI200·S&P500 같은 대표 지수를 추종하는 ETF부터 소액으로 시작하는 것이 안전합니다(레버리지·인버스는 비권장).',
   section: 'ETF 입문 가이드',
   lastReviewed: '2026-06-01',
   howTo: {
@@ -799,6 +815,7 @@ const etfTax: GuideDef = {
   description:
     '국내 상장 ETF와 해외 상장 ETF의 매매차익·분배금 과세 방식, 배당소득세·양도소득세·금융소득종합과세, 계좌별(일반·ISA·연금) 절세 차이를 정리한 ETF 세금 가이드.',
   keywords: ['ETF 세금', 'ETF 양도소득세', 'ETF 배당소득세', '해외 ETF 세금', '국내 ETF 세금', 'ETF 금융소득종합과세', 'ETF 절세'],
+  answer: 'ETF 세금은 국내 주식형(매매차익 비과세)·국내 기타 ETF(배당소득세 15.4%)·해외 상장 ETF(양도소득세 22%, 250만원 공제·분리과세)로 나뉘고, 분배금은 공통 15.4% 과세됩니다. ISA·연금계좌를 쓰면 비과세 또는 과세 이연으로 세금을 크게 줄일 수 있습니다.',
   section: 'ETF 세금 가이드',
   lastReviewed: '2026-06-01',
   howTo: {
@@ -870,6 +887,7 @@ const etfFee: GuideDef = {
   description:
     'ETF 총보수의 구성, 표기된 보수 외에 빠지는 기타비용·매매중개수수료, 추적오차(괴리율)와 실부담비용(TER)까지, 같은 지수 ETF를 비용으로 비교하는 법을 정리한 가이드.',
   keywords: ['ETF 수수료', 'ETF 총보수', 'ETF 보수 비교', 'ETF 기타비용', 'ETF 추적오차', 'ETF TER', 'ETF 운용보수'],
+  answer: 'ETF 비용은 표기 총보수(연 0.05~0.5%)에 기타비용·매매중개수수료를 더한 실부담비용(TER)으로 봐야 정확합니다. 같은 지수 ETF라면 장기 성과 차이는 대부분 비용에서 나오므로, 총보수만이 아니라 추적오차·괴리율·거래량까지 함께 비교해야 합니다.',
   section: 'ETF 비용 가이드',
   lastReviewed: '2026-06-01',
   howTo: {
@@ -939,6 +957,7 @@ const etfVsFund: GuideDef = {
   description:
     'ETF·일반 펀드·개별주식의 거래 방식, 비용, 분산 효과, 세금, 관리 난이도를 비교하고, 투자 성향과 목적에 따라 무엇이 적합한지 정리한 비교 가이드.',
   keywords: ['ETF vs 펀드', 'ETF vs 주식', 'ETF 펀드 차이', '펀드 ETF 비교', 'ETF 개별주식 차이', 'ETF 장단점'],
+  answer: 'ETF는 주식처럼 실시간 매매되고 총보수가 낮으면서 여러 종목에 분산되는 점이 핵심 장점입니다. 즉시 매매·낮은 비용·분산을 동시에 원하면 ETF, 한 회사에 집중 투자하려면 개별주식, 한 번 가입해 적립식으로 두려면 일반 펀드가 맞습니다.',
   section: 'ETF 비교 가이드',
   lastReviewed: '2026-06-01',
   howTo: {
@@ -1009,6 +1028,7 @@ const etfDividend: GuideDef = {
   description:
     'ETF 분배금의 개념, 배당기준일·분배락일·지급일의 차이, 분배금을 받으려면 언제까지 매수해야 하는지, 분배율을 해석하는 법과 세금까지 정리한 ETF 분배금 가이드.',
   keywords: ['ETF 분배금', 'ETF 분배락일', 'ETF 배당일', 'ETF 배당 받는 법', '분배기준일', 'ETF 분배금 언제', 'ETF 분배율'],
+  answer: 'ETF 분배금을 받으려면 결제 기간(T+2) 때문에 분배락일 전날까지 매수해 보유해야 합니다. 분배락일에는 분배금만큼 가격이 자연스럽게 빠지는데 이는 손해가 아니라 현금으로 받은 것이며, 분배율이 높다고 무조건 좋은 것은 아니므로 기초자산·세금을 함께 봐야 합니다.',
   section: 'ETF 분배금 가이드',
   lastReviewed: '2026-06-01',
   howTo: {
