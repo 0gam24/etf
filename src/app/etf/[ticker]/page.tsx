@@ -382,8 +382,10 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
             </div>
           </div>
           <div className="etf-dict-status-banner" role="note">
-            <strong>오늘 시세는 다음 갱신에 반영됩니다.</strong>
-            {' '}본 사이트는 거래량 상위 100종의 일별 시세를 09:00에 갱신합니다. {displayName}의 분배 정보·구성종목은 운용사 공시 기준으로 아래에 정리되며, 시세는 다음 갱신 주기에 추가됩니다.
+            <strong>{displayName}</strong>은(는) 한국거래소(KRX)에 상장된 ETF입니다.
+            {issuerLabel ? ` ${issuerLabel.split(' ')[0]}이(가) 운용하며,` : ''}
+            {displaySector ? ` ${displaySector} 관련 종목으로 분류됩니다.` : ' 아래에서 같은 섹터·운용사의 ETF와 투자 포인트를 함께 확인할 수 있습니다.'}
+            {' '}실시간 시세·구성종목 데이터는 거래량 상위 종목을 우선 제공하며, 공식 시세는 KRX·운용사 공시에서 확인하실 수 있습니다(아래 공식 자료 링크).
           </div>
         </section>
       )}
