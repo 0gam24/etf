@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getPostBySlug, getAllPostSlugs, CATEGORY_NAMES, getAllPosts } from '@/lib/posts';
+import { getPostBySlug, getAllPostSlugs, CATEGORY_NAMES, getAllPosts, getRelatedPosts } from '@/lib/posts';
 import { getLatestEtfData, getKrxEtfMeta, codeToSlug } from '@/lib/data';
 import { computeMarketAvgVolume, type RawEtf } from '@/lib/surge';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
@@ -122,10 +122,14 @@ export default async function PostPage({ params }: PageProps) {
 
   const date = new Date(post.meta.date).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
 
-  // 관련 포스트 3개 (같은 카테고리)
-  const related = getAllPosts()
-    .filter(p => p.meta.category === category && p.meta.slug !== slug)
-    .slice(0, 3);
+  // 관련 포스트 — 티커 교집합 > 같은 섹터 > 같은 카테고리 관련도 순(최신 동률).
+  //   세션당 PV(자동광고 노출)·내부링크 관련성 강화. fallback: 같은 카테고리 최신.
+  let related = getRelatedPosts(post, 4);
+  if (related.length === 0) {
+    related = getAllPosts()
+      .filter(p => p.meta.category === category && p.meta.slug !== slug)
+      .slice(0, 4);
+  }
 
   const categoryShort = category.split('/')[0];
 

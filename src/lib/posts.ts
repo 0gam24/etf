@@ -136,6 +136,34 @@ export function findStockPostByTicker(ticker: string): Post | null {
 }
 
 /**
+ * 관련 글 추천 — 글 하단 "함께 읽어보면 좋은 분석" 동선용.
+ *   관련도 가중 정렬: ① 티커 교집합 수 → ② 같은 섹터 → ③ 같은 카테고리, 동률은 최신순.
+ *   세션당 페이지뷰(=자동광고 노출)·내부링크 관련성을 높인다.
+ *   기존 "같은 카테고리 앞 N개 slice" 의 naive 로직을 대체.
+ */
+export function getRelatedPosts(current: Post, limit = 4): Post[] {
+  const curTickers = new Set((current.meta.tickers || []).map(t => (t || '').toUpperCase()));
+  const curSector = (current.meta.sector || '').trim();
+  const curCat = current.meta.category;
+
+  const scored = getAllPosts()
+    .filter(p => p.meta.slug !== current.meta.slug || p.meta.category !== curCat)
+    .map(p => {
+      const tickerOverlap = (p.meta.tickers || [])
+        .filter(t => curTickers.has((t || '').toUpperCase())).length;
+      const sameSector = curSector && p.meta.sector === curSector ? 1 : 0;
+      const sameCat = p.meta.category === curCat ? 1 : 0;
+      // 가중치: 티커 교집합(×100) > 섹터(×10) > 카테고리(×1)
+      const score = tickerOverlap * 100 + sameSector * 10 + sameCat;
+      return { post: p, score, ts: new Date(p.meta.date).getTime() };
+    })
+    .filter(x => x.score > 0)
+    .sort((a, b) => (b.score - a.score) || (b.ts - a.ts));
+
+  return scored.slice(0, limit).map(x => x.post);
+}
+
+/**
  * 티커가 `meta.tickers[]`에 포함된 포스트를 카테고리 우선순위대로 탐색.
  *   - ETF 코드를 받아 "가장 깊이 다룬 글"을 찾는 용도.
  *   - 같은 카테고리 내에선 최신글 우선.
