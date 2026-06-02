@@ -24,6 +24,9 @@ export default function robots(): MetadataRoute.Robots {
         allow: COMMON_ALLOW,
         disallow: ALL_DISALLOW,
       },
+      // Google AdSense 크롤러 — 광고 게재·심사용. 와일드카드(*)로도 허용되나 명시해 누락 위험 0.
+      { userAgent: 'Mediapartners-Google', allow: ['/'], disallow: [] },
+      { userAgent: 'AdsBot-Google',        allow: ['/'], disallow: [] },
       // Naver 검색봇 — 한국 검색 60% 점유, 명시적으로 허용
       { userAgent: 'Yeti',           allow: COMMON_ALLOW, disallow: COMMON_DISALLOW },
       // Daum 검색봇

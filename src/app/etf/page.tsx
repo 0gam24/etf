@@ -117,7 +117,11 @@ export default function EtfIndexPage() {
     .sort((a, b) => (b.volume || 0) - (a.volume || 0))
     .slice(0, 20);
 
-  const sectorMap = groupBySector(rows);
+  // 섹터 그리드는 시세 있는 종목만 노출 — 메타만 있는 minimal 종목(noindex 1024종)을
+  //   색인되는 /etf 허브에서 대량 내부링크하면 애드센스 심사자에게 thin/bulk 인상을 줌.
+  //   전체 종목은 상단 검색(EtfIndexSearch)으로 여전히 접근 가능(사용자 의도 기반이라 무방).
+  const gridRows = rows.filter(r => typeof r.price === 'number');
+  const sectorMap = groupBySector(gridRows);
   const sectorEntries = sortedSectorEntries(sectorMap);
   const issuers = groupByIssuer(rows);
 
