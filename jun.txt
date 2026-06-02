@@ -913,6 +913,26 @@ A. ★프로덕션 버그 발견·수정(9b08a5b): 라이브 sitemap-etf.xml이 
 주의: sitemap-news.xml은 "최근 2일 breaking만" 시의성 로직이라 force-static 부적합(빌드시점 고정되면 stale) → 건드리지 않음. 현재 0건은 최근 2일 breaking 없어서일 수 있음(정상 범위).
 사용자 액션: GSC Sitemaps 에서 sitemap-index.xml 제출 권장(메인+etf+images+news 4종 한번에 묶임). 기존 sitemap.xml(54→141 갱신)·nike.* 옛 항목은 무시/삭제 가능. GSC 이미 등록·클릭 16회 발생 중이라 측정 가동 상태 — E/F 확장을 데이터 기반으로 진행 가능.
 
+## 2026-06-02 · [AdSense 승인·thin content]
+
+### Q. 애드센스 승인 신청 직전 thin/low-value content 관점 점검 — blocker / 권장 / GO·WAIT
+A. blocker 없음(승인 차단급 결함 X). 일일글 ~95편은 templated 골격이지만 본문은 날짜별로 실제 뉴스·시세·출처URL이 달라 substantively unique = scaled-content 비해당. noindex 1024종은 robots noindex,follow + sitemap-etf 제외까지 일관 처리돼 검색 색인 위험 차단됨.
+A. 단 1개 잔여 위험: /etf 인덱스(색인 페이지)의 섹터 그리드가 1095종 전부(=noindex 1024종 "시세 갱신 예정" 카드 포함)로 링크 → 애드센스 사람 심사자가 클릭 시 near-empty 템플릿 다수 인상. 검색엔 안 보여도 reviewer 눈엔 보임.
+A. 권장: (1) /etf 섹터 그리드를 시세 OR 구성종목 OR 관련글 있는 색인 종목만 노출(또는 minimal은 "더보기"로 접기), (2) breaking H2 템플릿 다양화·고정 보일러플레이트(함께 알면 좋은 개념 등) 축소로 dup 인상 완화, (3) 신규 사이트라 콘텐츠 두께 보강(가이드 13종 유지·확충).
+A. 판정: GO. 정책페이지·AI공시·면책·noindex 가드·E-E-A-T 모두 충족. 자동광고 라이브로 소유권 확인됨. /etf 인덱스 링크 정리는 신청과 병행/직후 처리 가능(차단급 아님).
+(위 A.다발은 워크플로 패널 에이전트가 직접 append. 아래가 정식 결정·실행 기록.)
+
+### Q. (06-02) 애드센스 승인 신청 직전 점검 — 모든 에이전트 심의 후 결정.
+A. 심의(workflow wxhbvlg71, 6에이전트): 패널 GO 2 / WAIT 2, 거부시뮬 medium-risk. 기술·정책 토대 만장일치 통과(자동광고·ads.txt·정책페이지4종·noindex·YMYL면책). 거부 위험 = 콘텐츠 반복성(breaking 0080g0 종목 쏠림·보일러플레이트)뿐. 사용자 선택="핵심 수정 후 신청".
+실측 정정: 가이드는 13종(1차 Explore 점검의 15종은 오류). robots.txt User-agent * 가 /를 Allow하므로 Mediapartners-Google 기본 허용(차단 없음, 단 명시 추가함). breaking 보일러플레이트는 "글자 그대로 동일"이 아니라 카테고리+섹터별로 다름(방산글=방산 키워드) — 완전 thin 아님. 50편 재생성은 효과 대비 위험 커서 보류, 발행 템플릿은 추후 개선.
+구현·push 완료(c69f855) — 코드로 즉시 가능한 4건:
+  1) /etf 인덱스 섹터 그리드를 시세 있는 종목만 노출(gridRows 필터). noindex 1024종 "시세 갱신 예정" 카드가 색인 hub에서 대량 내부링크되던 것 차단 → 라이브 2058건→0건. 전체 종목은 상단 검색(EtfIndexSearch) 유지.
+  2) /author 인덱스 신설 — 베어 /author 404→200 해소(E-E-A-T·네비). noindex,follow. AUTHOR_LIST 카드+about 연결.
+  3) ads.txt placeholder 안내 주석 제거(DIRECT pub-7830821732287404 라인만).
+  4) robots 에 Mediapartners-Google·AdsBot-Google Allow 명시.
+검증: tsc 0·cf:build EXIT=0·라이브 /author 200·/etf 시세갱신예정 0·robots Mediapartners 2건·ads.txt 주석 0.
+★사용자 액션: 이제 애드센스 신청 가능 상태(편집장: 핵심 수정 완료 시 GO). 신청 중 주의 — stock/weekly 미완성 4편 push 금지(/stock 내부링크 404 유발), 자동광고 스니펫·ads.txt·robots 건드리지 말 것, 안전 카테고리(pulse·breaking·flow·income·guide)만 발행 지속. 승인 후: EEA 대비 쿠키 CMP(AdSense GDPR 메시지) 추가.
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
