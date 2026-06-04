@@ -182,6 +182,11 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: '배당기준일',         slug: 'etf-dividend' },
   { keyword: 'ETF 분배금',        slug: 'etf-dividend' },
   { keyword: 'ETF 배당일',        slug: 'etf-dividend' },
+  // ─── etf-dca (ETF 적립식) ───
+  { keyword: 'ETF 적립식',        slug: 'etf-dca' },
+  { keyword: '적립식 투자',        slug: 'etf-dca' },
+  { keyword: '코스트 애버리징',     slug: 'etf-dca' },
+  { keyword: '분할매수',          slug: 'etf-dca' },
 ];
 
 /**
