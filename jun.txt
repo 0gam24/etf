@@ -947,6 +947,13 @@ A. OS date 2026-06-05(금) 검증. 0531까지 시세라 일일 시황은 보류,
 검증: tsc 0·cf:build EXIT=0·prerender FAQPage·HowTo·직답·leak 0·라이브 /guide/etf-rebalancing 200. YMYL-safe(수익 보장 아님 명시).
 ★링크: https://iknowhowinfo.com/guide/etf-rebalancing
 
+### Q. (06-05) 메인페이지 정보가 5월 28일에서 멈춤 — 오늘 날짜로 변경.
+A. 원인 진단: 최신 시세파일 etf_prices_20260531.json의 내부 baseDate가 20260528(5/31=일요일이라 마지막 거래일 데이터). 메인페이지 시세/스냅샷/Hero/DataFooter가 이 baseDate를 따라가 "5월 28일"에 멈춰 보임.
+해결: DataMiner(agent#1) 단독 실행으로 실제 KRX 공공데이터 재수집(기사 생성 없이 data/raw만). etf_prices_20260605(baseDate 20260604, 실제 100종)·economic_indicators_20260605(기준금리 2.5%·환율 1503.4·CPI 3.14% 실데이터)·pulse_image_20260605 저장. 6/5 종가는 API 미게시→마지막 거래일 6/4.
+getLatestEtfData/EcoData가 최신 파일 자동 선택 → 홈 시세부 6/4로 갱신. cf:build EXIT=0·홈 prerender baseDate 20260604·샘플/leak 0. push 949e136.
+※남은 "05월 28일 속보"는 HomeBreakingStrip의 실제 발행 속보 기사(content/breaking/breaking-20260528-*). 애드센스 심사 중 일일 속보/시황 기사 발행 보류 정책이라 5/28이 최신으로 남음(=콘텐츠, 시세와 별개). 사용자가 원하면 6월 속보/시황 기사 별도 발행 필요(심사 중 주의).
+실행법 메모: DataMiner 단독 = scripts에 require('dotenv')+require('agents/1_data_miner').run({today:'YYYYMMDD'}) 임시 cjs. 프로젝트 루트 기준 require 경로 필요(/tmp 두면 dotenv 모듈 못찾음).
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
