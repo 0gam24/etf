@@ -187,6 +187,10 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: '적립식 투자',        slug: 'etf-dca' },
   { keyword: '코스트 애버리징',     slug: 'etf-dca' },
   { keyword: '분할매수',          slug: 'etf-dca' },
+  // ─── etf-rebalancing (ETF 리밸런싱) ───
+  { keyword: '리밸런싱',          slug: 'etf-rebalancing' },
+  { keyword: '비중 조절',          slug: 'etf-rebalancing' },
+  { keyword: '자산배분',          slug: 'etf-rebalancing' },
 ];
 
 /**
