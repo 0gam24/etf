@@ -191,6 +191,10 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: '리밸런싱',          slug: 'etf-rebalancing' },
   { keyword: '비중 조절',          slug: 'etf-rebalancing' },
   { keyword: '자산배분',          slug: 'etf-rebalancing' },
+  // ─── etf-nav-tracking (ETF 괴리율·추적오차) ───
+  { keyword: '괴리율',            slug: 'etf-nav-tracking' },
+  { keyword: '추적오차',          slug: 'etf-nav-tracking' },
+  { keyword: '순자산가치',         slug: 'etf-nav-tracking' },
 ];
 
 /**
