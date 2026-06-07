@@ -960,6 +960,12 @@ A. OS date 2026-06-07(일) 검증. 휴장일+애드센스 심사 중 → evergre
 검증: tsc 0·cf:build EXIT=0·prerender FAQPage·HowTo·직답·leak 0·라이브 /guide/etf-nav-tracking 200. YMYL-safe(매수 권유 아님).
 ★링크: https://iknowhowinfo.com/guide/etf-nav-tracking
 
+### Q. (06-08) 오늘 포스팅 작성.
+A. OS date 2026-06-08(월) 검증. 애드센스 심사 중 → evergreen 안전 발행 지속. 정보성 가이드 1편.
+발행·push 완료(0045515): leveraged-inverse-etf(레버리지·인버스 ETF 완전 가이드) 추가 — 일간 추종 구조·음의 복리(변동성 끌림)·단기/헤지 한정 용도·배율/기초지수/비용/위험등급 확인·위험 점검 단계. 5섹션+AnswerBox 직답+HowTo+4 FAQ(FAQPage). 초고검색·위험교육(E-E-A-T 가점), 기존 16종 비충돌. section 타입 'ETF 레버리지 가이드' 추가. 4b_internal_linker 키워드 4종(레버리지 ETF·인버스 ETF·곱버스·음의 복리). 가이드 16→17종.
+검증: tsc 0·cf:build EXIT=0·prerender FAQPage·HowTo·직답·leak 0·라이브 /guide/leveraged-inverse-etf 200. YMYL-safe(수익 보장/매수 권유 아님·원금 손실 위험 명시).
+★링크: https://iknowhowinfo.com/guide/leveraged-inverse-etf
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
