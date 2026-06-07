@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-05-31T04:02:39.185Z",
-  "sourceBaseDate": "20260528",
-  "count": 1131,
+  "generatedAt": "2026-06-07T04:07:53.792Z",
+  "sourceBaseDate": "20260604",
+  "count": 1136,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -587,7 +587,6 @@
     "451670": "rise-30yleveragesynthetic",
     "452250": "ace-us30yfutures-leveragesynthetic-h",
     "452360": "sol-us-dividend-djonesh",
-    "452440": "vita-active",
     "453010": "plus-kofr",
     "453060": "hanaro-kofrrate-activesynthetic",
     "453080": "kiwoom-us-nasdaq100h",
@@ -1133,7 +1132,13 @@
     "0197W0": "sol-skleverage",
     "0197X0": "sol-skinverse2x",
     "0198B0": "1q-leverage",
-    "0198D0": "1q-skleverage"
+    "0198D0": "1q-skleverage",
+    "0191M0": "mighty-5aaaactive",
+    "0199C0": "ace-pluscovered-callactive",
+    "0203D0": "plus-200covered-callbond-blend",
+    "0203R0": "won-total-bonda-plusactive",
+    "0203S0": "won-bond-blend50",
+    "0204S0": "tiger-kosdaqactive"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -3472,10 +3477,6 @@
       "code": "452360",
       "name": "SOL 미국배당다우존스(H)"
     },
-    "vita-active": {
-      "code": "452440",
-      "name": "VITA 밸류알파액티브"
-    },
     "plus-kofr": {
       "code": "453010",
       "name": "PLUS KOFR금리"
@@ -5546,7 +5547,7 @@
     },
     "unicorn-kosdaqbiotechactive": {
       "code": "0184V0",
-      "name": "UNICORN 코스닥바이오액티브"
+      "name": "UNICORN K바이오액티브"
     },
     "rise-ai-0190c0": {
       "code": "0190C0",
@@ -5659,6 +5660,30 @@
     "1q-skleverage": {
       "code": "0198D0",
       "name": "1Q SK하이닉스선물단일종목레버리지"
+    },
+    "mighty-5aaaactive": {
+      "code": "0191M0",
+      "name": "마이티 5월만기자동연장특수채(AAA)액티브"
+    },
+    "ace-pluscovered-callactive": {
+      "code": "0199C0",
+      "name": "ACE 고배당주Plus커버드콜액티브"
+    },
+    "plus-200covered-callbond-blend": {
+      "code": "0203D0",
+      "name": "PLUS 200위클리커버드콜채권혼합"
+    },
+    "won-total-bonda-plusactive": {
+      "code": "0203R0",
+      "name": "WON 중단기종합채권(A-이상)액티브"
+    },
+    "won-bond-blend50": {
+      "code": "0203S0",
+      "name": "WON 삼성전자현대차채권혼합50"
+    },
+    "tiger-kosdaqactive": {
+      "code": "0204S0",
+      "name": "TIGER 코스닥액티브"
     }
   }
 }

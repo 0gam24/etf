@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-05-31T04:02:39.022Z",
-  "baseDate": "20260528",
-  "count": 1131,
+  "fetchedAt": "2026-06-07T04:07:53.630Z",
+  "baseDate": "20260604",
+  "count": 1136,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -2923,11 +2923,6 @@
       "issueCode": "KR7452360001",
       "name": "SOL 미국배당다우존스(H)"
     },
-    "452440": {
-      "shortcode": "452440",
-      "issueCode": "KR7452440001",
-      "name": "VITA 밸류알파액티브"
-    },
     "453010": {
       "shortcode": "453010",
       "issueCode": "KR7453010001",
@@ -5461,7 +5456,7 @@
     "0184V0": {
       "shortcode": "0184V0",
       "issueCode": "KR70184V0005",
-      "name": "UNICORN 코스닥바이오액티브"
+      "name": "UNICORN K바이오액티브"
     },
     "0185L0": {
       "shortcode": "0185L0",
@@ -5507,6 +5502,11 @@
       "shortcode": "0191B0",
       "issueCode": "KR70191B0000",
       "name": "MIDAS 코스닥액티브"
+    },
+    "0191M0": {
+      "shortcode": "0191M0",
+      "issueCode": "KR70191M0007",
+      "name": "마이티 5월만기자동연장특수채(AAA)액티브"
     },
     "0191S0": {
       "shortcode": "0191S0",
@@ -5617,6 +5617,31 @@
       "shortcode": "0198D0",
       "issueCode": "KR70198D0001",
       "name": "1Q SK하이닉스선물단일종목레버리지"
+    },
+    "0199C0": {
+      "shortcode": "0199C0",
+      "issueCode": "KR70199C0001",
+      "name": "ACE 고배당주Plus커버드콜액티브"
+    },
+    "0203D0": {
+      "shortcode": "0203D0",
+      "issueCode": "KR70203D0004",
+      "name": "PLUS 200위클리커버드콜채권혼합"
+    },
+    "0203R0": {
+      "shortcode": "0203R0",
+      "issueCode": "KR70203R0008",
+      "name": "WON 중단기종합채권(A-이상)액티브"
+    },
+    "0203S0": {
+      "shortcode": "0203S0",
+      "issueCode": "KR70203S0007",
+      "name": "WON 삼성전자현대차채권혼합50"
+    },
+    "0204S0": {
+      "shortcode": "0204S0",
+      "issueCode": "KR70204S0006",
+      "name": "TIGER 코스닥액티브"
     },
     "069500": {
       "shortcode": "069500",
@@ -6788,7 +6813,7 @@
     "KR70184V0005": {
       "shortcode": "0184V0",
       "issueCode": "KR70184V0005",
-      "name": "UNICORN 코스닥바이오액티브"
+      "name": "UNICORN K바이오액티브"
     },
     "KR70185L0006": {
       "shortcode": "0185L0",
@@ -6834,6 +6859,11 @@
       "shortcode": "0191B0",
       "issueCode": "KR70191B0000",
       "name": "MIDAS 코스닥액티브"
+    },
+    "KR70191M0007": {
+      "shortcode": "0191M0",
+      "issueCode": "KR70191M0007",
+      "name": "마이티 5월만기자동연장특수채(AAA)액티브"
     },
     "KR70191S0001": {
       "shortcode": "0191S0",
@@ -6944,6 +6974,31 @@
       "shortcode": "0198D0",
       "issueCode": "KR70198D0001",
       "name": "1Q SK하이닉스선물단일종목레버리지"
+    },
+    "KR70199C0001": {
+      "shortcode": "0199C0",
+      "issueCode": "KR70199C0001",
+      "name": "ACE 고배당주Plus커버드콜액티브"
+    },
+    "KR70203D0004": {
+      "shortcode": "0203D0",
+      "issueCode": "KR70203D0004",
+      "name": "PLUS 200위클리커버드콜채권혼합"
+    },
+    "KR70203R0008": {
+      "shortcode": "0203R0",
+      "issueCode": "KR70203R0008",
+      "name": "WON 중단기종합채권(A-이상)액티브"
+    },
+    "KR70203S0007": {
+      "shortcode": "0203S0",
+      "issueCode": "KR70203S0007",
+      "name": "WON 삼성전자현대차채권혼합50"
+    },
+    "KR70204S0006": {
+      "shortcode": "0204S0",
+      "issueCode": "KR70204S0006",
+      "name": "TIGER 코스닥액티브"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -9905,11 +9960,6 @@
       "issueCode": "KR7452360001",
       "name": "SOL 미국배당다우존스(H)"
     },
-    "KR7452440001": {
-      "shortcode": "452440",
-      "issueCode": "KR7452440001",
-      "name": "VITA 밸류알파액티브"
-    },
     "KR7453010001": {
       "shortcode": "453010",
       "issueCode": "KR7453010001",
@@ -12445,7 +12495,7 @@
     {
       "shortcode": "0184V0",
       "issueCode": "KR70184V0005",
-      "name": "UNICORN 코스닥바이오액티브"
+      "name": "UNICORN K바이오액티브"
     },
     {
       "shortcode": "0185L0",
@@ -12491,6 +12541,11 @@
       "shortcode": "0191B0",
       "issueCode": "KR70191B0000",
       "name": "MIDAS 코스닥액티브"
+    },
+    {
+      "shortcode": "0191M0",
+      "issueCode": "KR70191M0007",
+      "name": "마이티 5월만기자동연장특수채(AAA)액티브"
     },
     {
       "shortcode": "0191S0",
@@ -12601,6 +12656,31 @@
       "shortcode": "0198D0",
       "issueCode": "KR70198D0001",
       "name": "1Q SK하이닉스선물단일종목레버리지"
+    },
+    {
+      "shortcode": "0199C0",
+      "issueCode": "KR70199C0001",
+      "name": "ACE 고배당주Plus커버드콜액티브"
+    },
+    {
+      "shortcode": "0203D0",
+      "issueCode": "KR70203D0004",
+      "name": "PLUS 200위클리커버드콜채권혼합"
+    },
+    {
+      "shortcode": "0203R0",
+      "issueCode": "KR70203R0008",
+      "name": "WON 중단기종합채권(A-이상)액티브"
+    },
+    {
+      "shortcode": "0203S0",
+      "issueCode": "KR70203S0007",
+      "name": "WON 삼성전자현대차채권혼합50"
+    },
+    {
+      "shortcode": "0204S0",
+      "issueCode": "KR70204S0006",
+      "name": "TIGER 코스닥액티브"
     },
     {
       "shortcode": "069500",
@@ -15561,11 +15641,6 @@
       "shortcode": "452360",
       "issueCode": "KR7452360001",
       "name": "SOL 미국배당다우존스(H)"
-    },
-    {
-      "shortcode": "452440",
-      "issueCode": "KR7452440001",
-      "name": "VITA 밸류알파액티브"
     },
     {
       "shortcode": "453010",
