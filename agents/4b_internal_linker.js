@@ -195,6 +195,11 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: '괴리율',            slug: 'etf-nav-tracking' },
   { keyword: '추적오차',          slug: 'etf-nav-tracking' },
   { keyword: '순자산가치',         slug: 'etf-nav-tracking' },
+  // ─── leveraged-inverse-etf (레버리지·인버스) ───
+  { keyword: '레버리지 ETF',       slug: 'leveraged-inverse-etf' },
+  { keyword: '인버스 ETF',        slug: 'leveraged-inverse-etf' },
+  { keyword: '곱버스',            slug: 'leveraged-inverse-etf' },
+  { keyword: '음의 복리',          slug: 'leveraged-inverse-etf' },
 ];
 
 /**
