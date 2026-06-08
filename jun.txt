@@ -966,6 +966,13 @@ A. OS date 2026-06-08(월) 검증. 애드센스 심사 중 → evergreen 안전 
 검증: tsc 0·cf:build EXIT=0·prerender FAQPage·HowTo·직답·leak 0·라이브 /guide/leveraged-inverse-etf 200. YMYL-safe(수익 보장/매수 권유 아님·원금 손실 위험 명시).
 ★링크: https://iknowhowinfo.com/guide/leveraged-inverse-etf
 
+### Q. (06-09) 오늘 포스팅.
+A. OS date 2026-06-09(화) 검증(시스템 reminder는 직전 턴 6/8였으나 실제 6/9 — 검증 다행). 애드센스 심사 중 → evergreen 안전 발행. Ahrefs 키워드 도구 연결됐으나 keywords-explorer-overview는 현재 플랜 미지원(Insufficient plan)이라 편집 판단으로 선택.
+주제 선정 논리: 기존 17종이 전부 주식·배당·테마·메커니즘 중심 → 자산군 자체가 빠진 '채권'이 가장 강한 다음 기둥(고검색·리밸런싱/자산배분 연결·YMYL-safe).
+발행·push 완료(d1a53dd): bond-etf(채권 ETF 완전 가이드) — 개념·종류(국채/회사채/단기/장기)·금리vs가격 반대관계·듀레이션/분배금/세금·고르는 단계. 5섹션+AnswerBox 직답+HowTo+4 FAQ(FAQPage). section 타입 'ETF 채권 가이드' 추가. 4b_internal_linker 키워드 3종(채권 ETF·국채 ETF·듀레이션). 가이드 17→18종.
+검증: tsc 0·cf:build EXIT=0·prerender FAQPage·HowTo·직답·leak 0·라이브 /guide/bond-etf 200. YMYL-safe(원금 보장/매수 권유 아님).
+★링크: https://iknowhowinfo.com/guide/bond-etf
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
