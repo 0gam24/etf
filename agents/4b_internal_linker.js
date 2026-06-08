@@ -200,6 +200,10 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: '인버스 ETF',        slug: 'leveraged-inverse-etf' },
   { keyword: '곱버스',            slug: 'leveraged-inverse-etf' },
   { keyword: '음의 복리',          slug: 'leveraged-inverse-etf' },
+  // ─── bond-etf (채권 ETF) ───
+  { keyword: '채권 ETF',          slug: 'bond-etf' },
+  { keyword: '국채 ETF',          slug: 'bond-etf' },
+  { keyword: '듀레이션',          slug: 'bond-etf' },
 ];
 
 /**
