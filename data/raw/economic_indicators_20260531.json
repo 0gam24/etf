@@ -1,13 +1,13 @@
 {
   "_meta": {
     "createdBy": "DataMiner",
-    "createdAt": "2026-05-30T23:12:53.257Z",
+    "createdAt": "2026-05-31T05:09:15.650Z",
     "fileName": "economic_indicators_20260531.json"
   },
   "data": {
     "source": "BOK_ECOS",
     "isRealData": true,
-    "fetchedAt": "2026-05-30T23:12:53.257Z",
+    "fetchedAt": "2026-05-31T05:09:15.650Z",
     "indicators": {
       "baseRate": 2.5,
       "exchangeRate": 1499.8,

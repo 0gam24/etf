@@ -1,13 +1,13 @@
 {
   "_meta": {
     "createdBy": "DataMiner",
-    "createdAt": "2026-05-30T23:12:52.699Z",
+    "createdAt": "2026-05-31T05:09:15.060Z",
     "fileName": "etf_prices_20260531.json"
   },
   "data": {
     "source": "DATA_GO_KR",
     "isRealData": true,
-    "fetchedAt": "2026-05-30T23:12:52.698Z",
+    "fetchedAt": "2026-05-31T05:09:15.059Z",
     "baseDate": "20260528",
     "etfCount": 100,
     "etfList": [
