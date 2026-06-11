@@ -1010,6 +1010,11 @@ A. OS date 2026-06-11(목). 양방향 내부링크를 SSoT 맵 기반 자동 렌
 검증: tsc 0·cf:build EXIT=0·defense-etf 종목사전 6링크/etf-basics 미노출·kodex-defense-top10·kodex-200 관련가이드 4링크·1136 ETF prerender·라이브 양방향 6/4링크 확인. 운영자 메타 0.
 ※남은 후보: GSC/Ahrefs는 현재 플랜이 데이터 엔드포인트 차단(Insufficient plan) → 실측 키워드 기반 주제선정은 플랜 업그레이드/GSC 직접 연동 필요(사용자 결정).
 
+### Q. (06-11) Ahrefs 이 프로젝트에서 사용 안 하는 걸로 모두 변경해.
+A. 전수 grep 결과 프로젝트 코드·robots·package.json·스크립트 어디에도 Ahrefs 참조 0건(유일 언급=이 jun.txt 기록뿐). Ahrefs는 레포 일부가 아니라 세션 MCP 도구라 코드에서 제거할 대상 없음.
+조치: 앞으로 이 프로젝트에서 Ahrefs MCP(`mcp__claude_ai_Ahrefs__*`) 호출 금지를 작업 원칙으로 반영. 메모리 feedback_no_ahrefs.md 신설 + MEMORY.md 인덱스 추가 + feedback_posting_seo_loop.md의 분석 단계에서 Ahrefs 제거(편집 판단으로 주제 선정, 실측 필요 시 GSC 직접 연동 등 다른 경로를 사용자와 상의).
+※코드 변경/커밋 없음(레포에 Ahrefs 흔적 자체가 없어 push 불필요).
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
