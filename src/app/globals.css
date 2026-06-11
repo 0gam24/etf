@@ -6501,6 +6501,28 @@ a.scenario-card:hover .scenario-card-cta {
   margin: 0 auto;
   line-height: 1.6;
 }
+.guide-cluster {
+  margin: var(--space-9) 0 0;
+}
+.guide-cluster-head {
+  border-left: 3px solid var(--accent-gold);
+  padding-left: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+.guide-cluster-title {
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.35rem;
+  color: var(--text-primary);
+}
+.guide-cluster-desc {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 44rem;
+}
 .guide-index-list {
   list-style: none; padding: 0;
   display: grid;
@@ -6759,6 +6781,14 @@ a.scenario-card:hover .scenario-card-cta {
   border-color: var(--accent-gold);
   color: var(--accent-gold);
 }
+.guide-article-other-all {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  margin-top: var(--space-4);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+.guide-article-other-all:hover { text-decoration: underline; }
 
 /* ───────── Affiliate (쿠팡 파트너스) — 공정위 + 약관 준수 ───────── */
 

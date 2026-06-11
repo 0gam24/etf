@@ -208,6 +208,10 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: 'ISA 계좌',          slug: 'isa-account-etf' },
   { keyword: 'ISA',              slug: 'isa-account-etf' },
   { keyword: '개인종합자산관리계좌', slug: 'isa-account-etf' },
+  // ─── 비교(vs) 가이드 ───
+  { keyword: 'S&P500 vs 나스닥',   slug: 'sp500-vs-nasdaq' },
+  { keyword: '나스닥100',         slug: 'sp500-vs-nasdaq' },
+  { keyword: 'ISA vs 연금저축',    slug: 'isa-vs-pension' },
 ];
 
 /**

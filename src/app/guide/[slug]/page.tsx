@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { ArrowRight } from 'lucide-react';
-import { GUIDES, getGuideBySlug } from '@/lib/guides';
+import { GUIDES, getGuideBySlug, getRelatedGuides } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import AnswerBox from '@/components/AnswerBox';
@@ -64,6 +64,9 @@ export default async function GuidePage({ params }: PageProps) {
   const { slug } = await params;
   const g = getGuideBySlug(slug);
   if (!g) notFound();
+
+  // 같은 주제 클러스터의 관련 가이드 (hub-and-spoke 내부링크)
+  const relatedGuides = getRelatedGuides(slug, 4);
 
   const articleSchema = buildArticleSchema({
     type: 'Article',
@@ -163,10 +166,10 @@ export default async function GuidePage({ params }: PageProps) {
 
       <FaqSection title={`${g.section} — 자주 묻는 질문`} items={g.faq} />
 
-      <nav className="guide-article-other" aria-label="다른 가이드">
-        <h2>다른 가이드도 보기</h2>
+      <nav className="guide-article-other" aria-label="관련 가이드">
+        <h2>관련 가이드</h2>
         <ul>
-          {GUIDES.filter(o => o.slug !== g.slug).map(o => (
+          {relatedGuides.map(o => (
             <li key={o.slug}>
               <Link href={`/guide/${o.slug}`} prefetch={false}>
                 <span className="guide-article-other-title">{o.title}</span>
@@ -175,6 +178,9 @@ export default async function GuidePage({ params }: PageProps) {
             </li>
           ))}
         </ul>
+        <Link href="/guide" className="guide-article-other-all" prefetch={false}>
+          전체 ETF 가이드 보기 <ArrowRight size={14} strokeWidth={2.5} />
+        </Link>
       </nav>
 
       <RecommendBox position="bottom" category={guideToProductCategory(g.slug)} />
