@@ -973,6 +973,14 @@ A. OS date 2026-06-09(화) 검증(시스템 reminder는 직전 턴 6/8였으나 
 검증: tsc 0·cf:build EXIT=0·prerender FAQPage·HowTo·직답·leak 0·라이브 /guide/bond-etf 200. YMYL-safe(원금 보장/매수 권유 아님).
 ★링크: https://iknowhowinfo.com/guide/bond-etf
 
+### Q. (06-11) 오늘부터 포스팅은 트래픽 증가 목표로 SEO/AEO/GEO 기획을 분석·수정·보완·검토 반복하여 빠른 트래픽 만들도록 발행. 진행해.
+A. OS date 2026-06-11(목) 검증(reminder는 6/9 흔적이나 실제 6/11). 새 표준 발행 프로세스 확립 + 첫 적용편 발행.
+[프로세스] 1.분석(검색의도·경쟁도·CPC·클러스터로 주제 선정, head보다 결정/롱테일) 2.초안(AnswerBox 직답+숫자앵커, FAQ=실검색표현, HowTo, H2 롱테일, 최신 lastReviewed) 3.검토(서브에이전트 general-purpose로 AEO/GEO/SEO/YMYL/사실정확성 적대 검토 1회) 4.보완(우선순위 반영) 5.검증·발행. → 메모리 feedback_posting_seo_loop.md 저장.
+[데이터] GSC·Ahrefs MCP 연결됐으나 keywords-explorer·gsc·management-projects 모두 현재 플랜 미지원(Insufficient plan) → 편집 판단 사용.
+[발행물 55a1805] isa-account-etf(ISA 계좌 ETF 투자 완전 가이드, 19번째) — 고CPC 절세계좌 + AEO 정조준. 검토 반영: 고빈도 실행형 FAQ 3개 추가(한도/만드는 법/만기)로 FAQ 4→7, answer/description에 숫자앵커(9.9%·연2천/총1억·3년)+변경가능 캐비엇, H2 롱테일 직노출(ISA 계좌 한도/만드는 법/연금저축 차이), '전 금융회사 통틀어 1계좌' 정확성, 단점 FAQ 균형문장. section 'ISA 계좌 가이드' 추가, 내부링커 3종.
+검증: tsc 0·cf:build EXIT=0·prerender FAQPage·Q7·HowTo·직답·9.9% 앵커·leak 0·라이브 200. YMYL-safe(제도수치 캐비엇·가입/매수 권유 아님).
+★링크: https://iknowhowinfo.com/guide/isa-account-etf
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
