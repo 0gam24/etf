@@ -6790,6 +6790,50 @@ a.scenario-card:hover .scenario-card-cta {
 }
 .guide-article-other-all:hover { text-decoration: underline; }
 
+/* 한눈 비교 표 (비교 가이드) */
+.guide-compare-table-wrap {
+  margin: var(--space-6) 0;
+  overflow-x: auto;
+}
+.guide-compare-caption {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.6rem;
+  text-align: left;
+}
+.guide-compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
+.guide-compare-table th,
+.guide-compare-table td {
+  padding: 0.7rem 0.85rem;
+  border-bottom: 1px solid var(--border-color);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.5;
+}
+.guide-compare-table thead th {
+  background: var(--bg-elevated, rgba(255,255,255,0.04));
+  color: var(--text-primary);
+  font-weight: 800;
+}
+.guide-compare-table tbody th[scope='row'] {
+  color: var(--text-secondary);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.guide-compare-table tbody td { color: var(--text-secondary); }
+.guide-compare-table tr:last-child th,
+.guide-compare-table tr:last-child td { border-bottom: none; }
+
 /* ───────── Affiliate (쿠팡 파트너스) — 공정위 + 약관 준수 ───────── */
 
 /* AffiliateNotice — 공정위 표시 의무: 본문 텍스트와 동등 이상 가시성 */

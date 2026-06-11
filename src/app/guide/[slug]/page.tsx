@@ -138,6 +138,35 @@ export default async function GuidePage({ params }: PageProps) {
       {/* AEO 직답 — Hero 직후. 결론 1~2문장만(구체 수치·표는 본문). AI Overview·스니펫 인용용. */}
       {g.answer && <AnswerBox summary={g.answer} source="Daily ETF Pulse 편집팀" />}
 
+      {/* 한눈 비교 표 — 비교(vs) 가이드. "X vs Y" featured snippet(표) 후보 + 체류시간↑. */}
+      {g.comparisonTable && (
+        <figure className="guide-compare-table-wrap">
+          <figcaption className="guide-compare-caption">{g.comparisonTable.caption}</figcaption>
+          <table className="guide-compare-table">
+            <thead>
+              <tr>
+                {g.comparisonTable.columns.map((c, i) => (
+                  <th key={i} scope="col">{c}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {g.comparisonTable.rows.map((row, ri) => (
+                <tr key={ri}>
+                  {row.map((cell, ci) =>
+                    ci === 0 ? (
+                      <th key={ci} scope="row">{cell}</th>
+                    ) : (
+                      <td key={ci}>{cell}</td>
+                    ),
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </figure>
+      )}
+
       {/* Hero 직후 RecommendBox top — 4카드 박스 (가이드 카테고리 매칭) */}
       <RecommendBox position="top" category={guideToProductCategory(g.slug)} />
 

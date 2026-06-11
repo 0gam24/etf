@@ -212,6 +212,10 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: 'S&P500 vs 나스닥',   slug: 'sp500-vs-nasdaq' },
   { keyword: '나스닥100',         slug: 'sp500-vs-nasdaq' },
   { keyword: 'ISA vs 연금저축',    slug: 'isa-vs-pension' },
+  { keyword: 'KODEX vs TIGER',    slug: 'kodex-vs-tiger' },
+  { keyword: 'KODEX TIGER 차이',  slug: 'kodex-vs-tiger' },
+  { keyword: '양도소득세',        slug: 'domestic-vs-overseas-tax' },
+  { keyword: '환헤지 환노출',      slug: 'hedge-vs-unhedged' },
 ];
 
 /**
