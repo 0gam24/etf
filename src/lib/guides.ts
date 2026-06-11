@@ -2221,3 +2221,57 @@ export function getRelatedGuides(slug: string, limit = 4): GuideDef[] {
   }
   return related.slice(0, limit);
 }
+
+/**
+ * 가이드 ↔ ETF 종목사전(/etf/{slug}) 연결 SSoT.
+ *   - SECTOR_GUIDE_MAP: ETF 섹터 → 관련 가이드(ETF 페이지에서 가이드로). 미매칭/일반 종목은 기초 가이드로 폴백.
+ *   - GUIDE_SECTOR_MAP: 테마·자산군 가이드 → ETF 섹터(가이드 페이지에서 종목사전으로).
+ *   섹터 라벨은 DataMiner 분류값(방산·반도체·채권 등)과 일치. 신규 테마 가이드는 두 맵에 추가.
+ */
+const SECTOR_GUIDE_MAP: Record<string, string[]> = {
+  '방산': ['defense-etf'],
+  'AI·데이터': ['ai-semi-etf'],
+  '반도체': ['ai-semi-etf'],
+  '커버드콜·월배당': ['monthly-dividend', 'covered-call', 'us-dividend'],
+  '해외주식': ['overseas-etf', 'sp500-vs-nasdaq', 'currency-hedge'],
+  '채권': ['bond-etf'],
+};
+
+/** 어떤 ETF에나 유효한 기초 가이드 — 섹터 매칭 후 부족분 채움 */
+const FOUNDATIONAL_GUIDE_SLUGS = ['etf-basics', 'etf-fee', 'etf-tax', 'etf-nav-tracking'];
+
+const GUIDE_SECTOR_MAP: Record<string, string> = {
+  'defense-etf': '방산',
+  'ai-semi-etf': '반도체',
+  'monthly-dividend': '커버드콜·월배당',
+  'covered-call': '커버드콜·월배당',
+  'us-dividend': '커버드콜·월배당',
+  'bond-etf': '채권',
+  'overseas-etf': '해외주식',
+  'sp500-vs-nasdaq': '해외주식',
+  'currency-hedge': '해외주식',
+  'hedge-vs-unhedged': '해외주식',
+};
+
+/** ETF 섹터 → 관련 가이드(섹터 매칭 우선 + 기초 가이드 폴백). /etf/{slug} 페이지용. */
+export function getGuidesForSector(sector: string | undefined, limit = 4): GuideDef[] {
+  const slugs: string[] = [];
+  if (sector) {
+    for (const [key, gs] of Object.entries(SECTOR_GUIDE_MAP)) {
+      if (sector.includes(key) || key.includes(sector)) { slugs.push(...gs); break; }
+    }
+  }
+  for (const f of FOUNDATIONAL_GUIDE_SLUGS) if (!slugs.includes(f)) slugs.push(f);
+  const out: GuideDef[] = [];
+  for (const s of slugs) {
+    const g = GUIDES.find(x => x.slug === s);
+    if (g && !out.some(o => o.slug === g.slug)) out.push(g);
+    if (out.length >= limit) break;
+  }
+  return out.slice(0, limit);
+}
+
+/** 테마·자산군 가이드 → ETF 섹터. 가이드 페이지에서 종목사전 카드 노출용(없으면 undefined). */
+export function getSectorForGuide(slug: string): string | undefined {
+  return GUIDE_SECTOR_MAP[slug];
+}

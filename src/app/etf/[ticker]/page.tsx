@@ -18,6 +18,7 @@ import {
 import { getInvestmentPoints } from '@/lib/etf-investment-points';
 import { getIncomeRegistry } from '@/lib/income-server';
 import { getAllPosts } from '@/lib/posts';
+import { getGuidesForSector } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import HoldingsPanel from '@/components/HoldingsPanel';
 import RecommendBox from '@/components/RecommendBox';
@@ -548,6 +549,27 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
           </ul>
         </section>
       )}
+
+      {/* 8. 관련 ETF 가이드 — 종목사전 → 가이드 클러스터 연결(섹터 매칭 + 기초 가이드) */}
+      {(() => {
+        const sectorGuides = getGuidesForSector(displaySector, 4);
+        if (!sectorGuides.length) return null;
+        return (
+          <section className="etf-dict-section">
+            <h2 className="etf-dict-h2">8. {displayName} 관련 ETF 가이드</h2>
+            <ul className="etf-dict-related">
+              {sectorGuides.map(g => (
+                <li key={g.slug}>
+                  <Link href={`/guide/${g.slug}`} prefetch={false}>
+                    <span className="etf-dict-related-cat">가이드</span>
+                    <span className="etf-dict-related-title">{g.title}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        );
+      })()}
 
       {/* Phase 3B — 운용사 공식 외부 링크 (E-E-A-T 외부 권위 link out) */}
       {(() => {

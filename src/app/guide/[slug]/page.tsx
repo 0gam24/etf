@@ -2,7 +2,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { ArrowRight } from 'lucide-react';
-import { GUIDES, getGuideBySlug, getRelatedGuides } from '@/lib/guides';
+import { GUIDES, getGuideBySlug, getRelatedGuides, getSectorForGuide } from '@/lib/guides';
+import { getLatestEtfData, getEtfsBySector } from '@/lib/data';
+import type { RawEtf } from '@/lib/surge';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import AnswerBox from '@/components/AnswerBox';
@@ -67,6 +69,12 @@ export default async function GuidePage({ params }: PageProps) {
 
   // 같은 주제 클러스터의 관련 가이드 (hub-and-spoke 내부링크)
   const relatedGuides = getRelatedGuides(slug, 4);
+
+  // 테마·자산군 가이드 → 종목 사전(/etf/{slug}) 연결. 일반 가이드는 빈 배열.
+  const guideSector = getSectorForGuide(slug);
+  const guideSectorEtfs = guideSector
+    ? getEtfsBySector(guideSector, '', 6, (getLatestEtfData()?.etfList || []) as RawEtf[])
+    : [];
 
   const articleSchema = buildArticleSchema({
     type: 'Article',
@@ -192,6 +200,34 @@ export default async function GuidePage({ params }: PageProps) {
           </section>
         ))}
       </div>
+
+      {/* 주제 관련 ETF 종목 사전 — 가이드 → /etf/{slug} 연결(테마·자산군 가이드만) */}
+      {guideSectorEtfs.length > 0 && (
+        <section className="guide-article-section-block">
+          <h2 className="guide-article-h2">{guideSector} ETF 종목 사전</h2>
+          <p className="guide-article-p">
+            이 주제와 관련된 ETF의 시세·구성종목·분배 정보는 종목 사전에서 한 종목씩 확인할 수 있습니다.
+          </p>
+          <ul className="etf-dict-related-grid">
+            {guideSectorEtfs.map(r => (
+              <li key={r.shortcode}>
+                <Link href={`/etf/${r.slug}`} prefetch={false} className="etf-dict-related-card">
+                  <div className="etf-dict-related-card-head">
+                    <span className="etf-dict-related-card-code">{r.shortcode}</span>
+                    {r.issuer && <span className="etf-dict-related-card-issuer">{r.issuer}</span>}
+                  </div>
+                  <div className="etf-dict-related-card-name">{r.name}</div>
+                  {r.hasPrice && typeof r.changeRate === 'number' && (
+                    <div className={`etf-dict-related-card-change ${r.changeRate > 0 ? 'is-up' : r.changeRate < 0 ? 'is-down' : ''}`}>
+                      {r.changeRate >= 0 ? '+' : ''}{r.changeRate.toFixed(2)}%
+                    </div>
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <FaqSection title={`${g.section} — 자주 묻는 질문`} items={g.faq} />
 
