@@ -981,6 +981,16 @@ A. OS date 2026-06-11(목) 검증(reminder는 6/9 흔적이나 실제 6/11). 새
 검증: tsc 0·cf:build EXIT=0·prerender FAQPage·Q7·HowTo·직답·9.9% 앵커·leak 0·라이브 200. YMYL-safe(제도수치 캐비엇·가입/매수 권유 아님).
 ★링크: https://iknowhowinfo.com/guide/isa-account-etf
 
+### Q. (06-11) ① 19개 가이드 묶는 허브(필러) 페이지 + 상호 내부링크 강화 ② 검색량 큰 비교(vs) 가이드 추가(S&P500 vs 나스닥, ISA vs 연금저축). 이 방향으로 진행.
+A. OS date 2026-06-11(목) 재검증. 발행 프로세스(분석→초안→서브에이전트 검토→보완→검증) 적용. push 036c5bf.
+[① 허브] /guide 평면 리스트 → 6개 토픽 클러스터(기초/세금·계좌/배당/테마/해외/전략)로 개편. guides.ts에 GUIDE_CLUSTERS SSoT + getGuideClusters()/getRelatedGuides() 추가(미분류 slug는 '기타'로 자동 포함=누락방지). 낡은 메타 "8개" 갱신·count 동적화. globals.css에 .guide-cluster* 스타일.
+[① 상호링크] guide 상세 "전체 19개 무차별 나열" → 같은 클러스터 관련 가이드 4개 + "전체 ETF 가이드 보기" 허브 CTA(hub-and-spoke). 링크 희석 해소.
+[② 비교 가이드] sp500-vs-nasdaq(S&P500 vs 나스닥100), isa-vs-pension(ISA vs 연금저축·IRP). 개념 비교라 /compare(티커 데이터 비교)와 별개 GuideDef. 각 5섹션+직답+HowTo+FAQ(6~7).
+[검토 반영] 서브에이전트 적대 검토 후: (sp500) keywords의 'QQQ SPY 차이' 본문 0회 공회전 해소(QQQ/SPY 본문·FAQ 노출), H2에 비교 고유명사 주입, 수익률/QQQ-SPY FAQ 추가. (isavs) 연금 중도인출 '추징'→'세액공제받은 금액·운용수익에 기타소득세 부과' 사실 교정, 고빈도 FAQ 3개(세액공제 한도·ISA 비과세 한도·ISA→연금 전환), desc 120자+, H2에 ISA/연금 노출.
+- 4b_internal_linker 비교 키워드 3종. 가이드 19→21종. section 'ETF 비교 가이드'(sp500)·'ISA 계좌 가이드'(isavs) 재사용.
+검증: tsc 0·cf:build EXIT=0·허브 클러스터 6개 렌더·vs 2편 FAQPage·HowTo·직답·leak 0(추징 0)·관련가이드/허브CTA 렌더·sitemap GUIDES SSoT 자동등록·라이브 허브+2편 200.
+★링크: https://iknowhowinfo.com/guide (허브), /guide/sp500-vs-nasdaq, /guide/isa-vs-pension
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
