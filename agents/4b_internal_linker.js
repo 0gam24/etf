@@ -216,6 +216,10 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: 'KODEX TIGER 차이',  slug: 'kodex-vs-tiger' },
   { keyword: '양도소득세',        slug: 'domestic-vs-overseas-tax' },
   { keyword: '환헤지 환노출',      slug: 'hedge-vs-unhedged' },
+  // ─── how-to-buy-etf (ETF 사는 법) ───
+  { keyword: 'ETF 사는 법',        slug: 'how-to-buy-etf' },
+  { keyword: 'ETF 매매 방법',      slug: 'how-to-buy-etf' },
+  { keyword: 'ETF 주문',          slug: 'how-to-buy-etf' },
 ];
 
 /**
