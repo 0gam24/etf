@@ -204,6 +204,10 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: '채권 ETF',          slug: 'bond-etf' },
   { keyword: '국채 ETF',          slug: 'bond-etf' },
   { keyword: '듀레이션',          slug: 'bond-etf' },
+  // ─── isa-account-etf (ISA 계좌) ───
+  { keyword: 'ISA 계좌',          slug: 'isa-account-etf' },
+  { keyword: 'ISA',              slug: 'isa-account-etf' },
+  { keyword: '개인종합자산관리계좌', slug: 'isa-account-etf' },
 ];
 
 /**
