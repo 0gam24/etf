@@ -23,11 +23,17 @@ const KIS_BASE = 'https://openapi.koreainvestment.com:9443';
 const KIS_BASE_SANDBOX = 'https://openapivts.koreainvestment.com:29443'; // 모의투자
 
 function getMode(): 'production' | 'sandbox' | 'mock' {
+  // ⚠️ KIS(한국투자증권) 키 사용 불가(2026-06-11) → 전면 비활성(env 의존 없이 코드로 확정).
+  //    실시간 시세는 data.go.kr 일별(종가) 폴백으로 운영.
+  //    재발급 시 아래 return 'mock' 한 줄을 지우고 원 로직 주석을 해제하면 복구.
+  return 'mock';
+  /* 원 로직(재발급 시 복구):
   const m = process.env.KIS_MODE;
   if (m === 'sandbox') return 'sandbox';
   if (m === 'mock') return 'mock';
   if (!process.env.KIS_APP_KEY || !process.env.KIS_APP_SECRET) return 'mock';
   return 'production';
+  */
 }
 
 function getBaseUrl(): string {
