@@ -25,7 +25,6 @@ import RecommendBox from '@/components/RecommendBox';
 import AnswerBox from '@/components/AnswerBox';
 import MainBackrefBox, { getBackrefUrlForCategory } from '@/components/MainBackrefBox';
 import LiveEtfStats from '@/components/LiveEtfStats';
-import IntradayChart from '@/components/IntradayChart';
 import {
   buildBreadcrumbSchema,
   buildFinancialProductSchema,
@@ -351,8 +350,6 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
               }}
             />
           )}
-          {/* 일중 분봉 차트 — lazy fetch, 한투 API 가용 시만 노출 */}
-          {etf && <IntradayChart code={etf.code} prevClose={etf.price - etf.change} height={200} />}
         </section>
       )}
 

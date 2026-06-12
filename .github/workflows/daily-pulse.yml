@@ -90,11 +90,6 @@ jobs:
         # /today 페이지가 SSR. 영구 보관 (/today/YYYY-MM-DD 슬러그)
         run: npm run generate:today-report || true
 
-      - name: Accumulate foreign·institution flow (외국인·기관 매매동향 누적)
-        # 한투 inquire-investor → data/foreign-flow/{code}.json 60일 보관
-        # 권한 미부여 시 silent skip (cron 영향 X)
-        run: npm run accumulate:foreign-flow || true
-
       - name: Scout breaking queue (장중 trigger 점검 — log only)
         # VolumeSurgeAlert 등이 적재한 KV breaking:queue:* entries 를 read + GITHUB_STEP_SUMMARY append.
         # 현재는 log only — 실제 글 발행은 다음 phase 에서 별도 step.

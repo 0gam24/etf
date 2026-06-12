@@ -26,7 +26,6 @@
     "generate:signal": "node scripts/generate-breakout-signal.mjs",
     "evaluate:signal": "node scripts/evaluate-signals.mjs",
     "generate:today-report": "node scripts/generate-today-report.mjs",
-    "accumulate:foreign-flow": "node scripts/accumulate-foreign-flow.mjs",
     "send:push": "node scripts/send-push.mjs",
     "scout:breaking-queue": "node scripts/scout-breaking-queue.mjs",
     "env:sync": "node scripts/sync-env.mjs",

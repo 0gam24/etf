@@ -102,7 +102,6 @@ export const PERSONAS: Record<PersonaSlug, PersonaConfig> = {
     internalLinks: [
       { href: '/strategy/kospi200-breakout', label: '코스피200 변동성 돌파 시그널', description: '매일 시초가 기반 Long/Short Trigger 산출' },
       { href: '/strategy/track-record', label: '트랙 레코드', description: '시그널 결과 자동 검증 + 누적 통계' },
-      { href: '/admin/kis-stats', label: '한투 API 호출량 (운영자)', description: '시세 endpoint 사용 통계 — 시청자 무관' },
     ],
     mainSiteCategoryUrl: 'https://smartdatashop.kr/category/market/',
   },
