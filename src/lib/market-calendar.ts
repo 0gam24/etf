@@ -126,7 +126,7 @@ export function getMarketSnapshot(now: Date = new Date()): MarketSnapshot {
 export function marketStatusLabel(snap: MarketSnapshot): string {
   switch (snap.status) {
     case 'pre_open':  return `장 시작 전 · ${snap.kstDateStr.slice(5)}(${snap.weekday}) ${snap.kstTimeStr.slice(0, 5)}`;
-    case 'open':      return `장중 실시간 · ${snap.kstDateStr.slice(5)}(${snap.weekday}) ${snap.kstTimeStr}`;
+    case 'open':      return `장중 · ${snap.kstDateStr.slice(5)}(${snap.weekday}) ${snap.kstTimeStr}`;
     case 'closed':    return `오늘 종가 · ${snap.kstDateStr.slice(5)}(${snap.weekday}) 15:30 마감`;
     case 'holiday':   return `휴장 · 직전 거래일 ${snap.prevTradingDay.slice(5)}`;
   }

@@ -113,7 +113,7 @@ export default function HomeHeroV3({ latestPulse, topEtf, baseDate, baseline, he
                   </>
                 )}
                 <span className="home-hero-v3-dot" aria-hidden />
-                <span style={{ color: 'var(--accent-gold)', fontWeight: 600 }}>실시간 시세는 우측 →</span>
+                <span style={{ color: 'var(--accent-gold)', fontWeight: 600 }}>오늘의 시세는 우측 →</span>
               </span>
             )}
             {!baseDateInfo && latestPulse && (
@@ -147,7 +147,7 @@ export default function HomeHeroV3({ latestPulse, topEtf, baseDate, baseline, he
             <p className="home-hero-v3-sub">
               거래량 1위 종목의 <strong>급등 사유</strong>, 섹터별 <strong>자금 흐름</strong>,
               커버드콜·<strong>월배당 전략</strong>까지. 4050 세대의 은퇴 자산을 지키는
-              실시간 투자 의사결정 플랫폼.
+              데이터 기반 ETF 투자 의사결정 플랫폼.
             </p>
           )}
 

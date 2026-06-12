@@ -83,7 +83,7 @@ export default function LiveEtfStats({ initial, onLive }: Props) {
     return () => { cancelled = true; clearInterval(id); };
   }, [initial.code, marketStatus, onLive]);
 
-  if (liveSource === 'mock') return null;
+  if (liveSource !== 'kis') return null;
 
   const livePriceLabel = livePrice && livePrice !== initial.price
     ? ` · 실시간 ${livePrice.toLocaleString()}원${liveChangeRate !== null ? ` (${liveChangeRate > 0 ? '+' : ''}${liveChangeRate.toFixed(2)}%)` : ''}`

@@ -85,7 +85,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   // 1A. Title — "ETF" 키워드 + freshness 신호 강화 (60자 이내 유지)
   const title = etf
-    ? `${name} (${displayCode}) ETF | 구성종목·분배금·주가 실시간 갱신`
+    ? `${name} (${displayCode}) ETF | 구성종목·분배금·주가 매일 갱신`
     : `${name} (${displayCode}) ETF | 종목 정보·구성종목·분배금`;
 
   // 1D. Meta — 첫 100자에 키워드 3개 압축 (Naver snippet + Google CTR 최적화)
@@ -303,8 +303,8 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
       {/* 시세 요약 — 시세 데이터가 있을 때만 */}
       {hasPriceData && etf && (
         <section className="etf-dict-section">
-          {/* 1C. H2 번호 + "실시간 시세 및 수익률" 키워드 */}
-          <h2 className="etf-dict-h2">1. 실시간 시세 및 수익률 ({formattedBaseDate} 기준)</h2>
+          {/* 1C. H2 번호 + "시세 및 수익률" 키워드 (KRX 종가 기준) */}
+          <h2 className="etf-dict-h2">1. 시세 및 수익률 ({formattedBaseDate} 종가 기준)</h2>
           <div className="etf-dict-stats">
             <div className="etf-dict-stat">
               <div className="etf-dict-stat-label">현재가</div>
@@ -386,7 +386,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
             <strong>{displayName}</strong>은(는) 한국거래소(KRX)에 상장된 ETF입니다.
             {issuerLabel ? ` ${issuerLabel.split(' ')[0]}이(가) 운용하며,` : ''}
             {displaySector ? ` ${displaySector} 관련 종목으로 분류됩니다.` : ' 아래에서 같은 섹터·운용사의 ETF와 투자 포인트를 함께 확인할 수 있습니다.'}
-            {' '}실시간 시세·구성종목 데이터는 거래량 상위 종목을 우선 제공하며, 공식 시세는 KRX·운용사 공시에서 확인하실 수 있습니다(아래 공식 자료 링크).
+            {' '}시세·구성종목 데이터는 거래량 상위 종목을 우선 제공하며, 공식 시세는 KRX·운용사 공시에서 확인하실 수 있습니다(아래 공식 자료 링크).
           </div>
         </section>
       )}
@@ -405,7 +405,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
             asOfOverride={holdings.asOf}
           />
           <p className="etf-dict-note">
-            구성종목 비중은 운용사 공시 기준이며 실시간 변동될 수 있습니다.
+            구성종목 비중은 운용사 공시 기준이며 수시로 변동될 수 있습니다.
           </p>
         </section>
       )}

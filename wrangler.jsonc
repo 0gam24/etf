@@ -38,6 +38,11 @@
       "preview_id": "1529a66862df4ee9a437f3d8dfb75fe1"
     }
   ],
+  // KIS(한국투자증권) OpenAPI 키 사용 불가 → mock 강제(2026-06-11). 죽은 키 호출·거짓 LIVE 차단.
+  //   data.go.kr 일별(종가) 폴백으로 운영. 재발급 시 production 으로 변경하면 실시간 복구.
+  "vars": {
+    "KIS_MODE": "mock"
+  },
   "observability": {
     "enabled": true
   }

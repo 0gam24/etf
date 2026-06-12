@@ -83,7 +83,7 @@ export default function ToolLinkCard({ tool, title, description, icon = '🧮', 
 
 // 자매 도구 메타 — 페르소나 페이지·시나리오 라우터에서 재사용
 export const SISTER_TOOLS: Record<ToolSlug, { title: string; description: string; icon: string }> = {
-  portfolio:      { title: '실시간 포트폴리오 시뮬레이션', description: 'ETF 코드·수량·평단가 입력 시 실시간 손익 자동 계산', icon: '📊' },
+  portfolio:      { title: 'ETF 포트폴리오 손익 계산기', description: 'ETF 코드·수량·평단가 입력 시 종가 기준 손익 자동 계산', icon: '📊' },
   'tax-compare':  { title: '계좌별 세후 수익률 비교',     description: 'IRP·ISA·연금저축·일반계좌 세후 누적 시뮬',          icon: '💰' },
   'dividend-goal':{ title: '목표 월 현금흐름 → 필요 원금', description: '월 100만 분배 받으려면 원금 얼마? 종목 조합 추천',    icon: '🎯' },
   'budget-etf':   { title: '예산별 매수 가능 ETF',         description: '5만원/10만원/20만원으로 살 수 있는 ETF 필터',          icon: '💳' },

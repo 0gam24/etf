@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     default: "Daily ETF Pulse — 오늘 뜨는 ETF의 진짜 이유",
     template: "%s | Daily ETF Pulse",
   },
-  description: "거래량 1위 ETF의 급등 사유, 섹터별 자금 흐름, 월배당·커버드콜 전략까지. 매일 오전 9시 전 업데이트되는 실시간 ETF 투자 의사결정 플랫폼.",
+  description: "거래량 1위 ETF의 급등 사유, 섹터별 자금 흐름, 월배당·커버드콜 전략까지. 매일 오전 9시 전 업데이트되는 ETF 투자 의사결정 플랫폼.",
   keywords: ["ETF 추천", "거래량 ETF", "방위산업 ETF", "커버드콜", "월배당 ETF", "IRP ETF", "ISA 필수 종목", "자금 흐름"],
   authors: [{ name: "Daily ETF Pulse" }],
   alternates: {
@@ -95,7 +95,7 @@ const ORG_SCHEMA = {
     width: 600,
     height: 60,
   },
-  description: '거래량 1위 ETF의 급등 사유, 섹터별 자금 흐름, 월배당·커버드콜 전략까지. 매일 오전 9시 전 업데이트되는 실시간 ETF 투자 의사결정 플랫폼.',
+  description: '거래량 1위 ETF의 급등 사유, 섹터별 자금 흐름, 월배당·커버드콜 전략까지. 매일 오전 9시 전 업데이트되는 ETF 투자 의사결정 플랫폼.',
   inLanguage: 'ko-KR',
   // E-E-A-T 정책 페이지 (Google 권장)
   publishingPrinciples: `${SITE_URL}/about`,

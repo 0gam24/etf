@@ -121,7 +121,7 @@ export default function PublishedVsLive({ code, name, publishedPrice, publishedD
       </div>
       {name && (
         <div style={{ marginTop: '0.5rem', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-          종목: {name} ({code}) · 발행 시점의 가격은 분석의 기준이며, 현재 시세는 한투 OpenAPI 실시간 (분 단위).
+          종목: {name} ({code}) · 발행 시점의 가격은 분석의 기준이며, 현재 시세는 KRX 최근 거래일 기준입니다.
         </div>
       )}
       <style>{`

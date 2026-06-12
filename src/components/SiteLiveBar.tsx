@@ -69,7 +69,7 @@ export default function SiteLiveBar() {
             <span>직전 거래일 {snap.prevTradingDay.slice(5)}</span>
           )}
           {snap.status === 'open' && (
-            <span style={{ color: 'var(--accent-gold)' }}>한투 OpenAPI 30초 갱신</span>
+            <span style={{ color: 'var(--accent-gold)' }}>KRX 종가 기준</span>
           )}
         </div>
       </div>

@@ -70,6 +70,7 @@ export default function LiveHeroFeatured({ initial, baseline, heroDict }: Props)
   const [isGainer, setIsGainer] = useState<boolean>((initial.changeRate ?? 0) > 0);
   const [marketStatus, setMarketStatus] = useState<RealtimeResponse['marketStatus']>('closed');
   const [liveTs, setLiveTs] = useState<number | null>(null);
+  const [liveSource, setLiveSource] = useState<RealtimeResponse['source'] | ''>('');
 
   useEffect(() => {
     if (!baseline?.length) return;
@@ -84,6 +85,7 @@ export default function LiveHeroFeatured({ initial, baseline, heroDict }: Props)
         if (cancelled) return;
         setMarketStatus(data.marketStatus);
         setLiveTs(data.ts);
+        setLiveSource(data.source);
 
         const liveMap = new Map<string, RealtimeQuote>();
         for (const q of data.quotes) {
@@ -120,9 +122,9 @@ export default function LiveHeroFeatured({ initial, baseline, heroDict }: Props)
   const catalyst = dict.catalyst;
 
   const labelColor = isGainer ? '#EF4444' : 'var(--text-dim)';
-  const labelText = isGainer ? '오늘 상승 1위' : `오늘 거래량 1위 (라이브 약세)`;
+  const labelText = isGainer ? '오늘 상승 1위' : '오늘 거래량 1위';
 
-  const isLive = marketStatus === 'open' && liveTs;
+  const isLive = marketStatus === 'open' && liveTs && liveSource === 'kis';
   const hm = isLive && liveTs ? (() => {
     const kst = new Date(liveTs + 9 * 3600 * 1000);
     return `${String(kst.getUTCHours()).padStart(2, '0')}:${String(kst.getUTCMinutes()).padStart(2, '0')}:${String(kst.getUTCSeconds()).padStart(2, '0')}`;

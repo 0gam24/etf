@@ -42,10 +42,10 @@ export default function TickerStrip() {
 
   if (items.length === 0) {
     return (
-      <div className="ticker-strip" aria-label="실시간 ETF 티커">
-        <div className="ticker-strip-label">LIVE</div>
+      <div className="ticker-strip" aria-label="ETF 시세 티커">
+        <div className="ticker-strip-label">ETF</div>
         <div className="ticker-track">
-          <span className="ticker-item" style={{ color: 'var(--text-dim)' }}>실시간 ETF 데이터 로드 중…</span>
+          <span className="ticker-item" style={{ color: 'var(--text-dim)' }}>ETF 시세 불러오는 중…</span>
         </div>
       </div>
     );
@@ -55,9 +55,9 @@ export default function TickerStrip() {
   const doubled = [...items, ...items];
 
   return (
-    <div className="ticker-strip" aria-label="실시간 ETF 티커">
+    <div className="ticker-strip" aria-label="ETF 시세 티커">
       <div className="ticker-strip-label">
-        <span>LIVE</span>
+        <span>ETF</span>
       </div>
       <div className="ticker-track">
         {doubled.map((etf, idx) => {

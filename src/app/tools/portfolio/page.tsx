@@ -3,8 +3,8 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import PortfolioSim from './PortfolioSim';
 
 export const metadata: Metadata = {
-  title: 'ETF 포트폴리오 실시간 시뮬레이션 — Daily ETF Pulse',
-  description: 'ETF 코드와 보유수량 입력 시 실시간 한투 시세로 손익·등락률·시장 평균 대비 성과를 자동 계산. 본인 보유 자산을 한 페이지에 관리.',
+  title: 'ETF 포트폴리오 손익 계산기 — 종가 기준 시뮬레이션 — Daily ETF Pulse',
+  description: 'ETF 코드와 보유수량을 입력하면 KRX 종가 기준으로 손익·등락률·시장 평균 대비 성과를 자동 계산합니다. 본인 보유 ETF를 한 페이지에서 관리하세요. 입력값은 브라우저에만 저장됩니다.',
   alternates: { canonical: '/tools/portfolio' },
 };
 
@@ -22,10 +22,10 @@ export default function PortfolioPage() {
           TOOL · PORTFOLIO
         </div>
         <h1 style={{ fontSize: 'var(--fs-h1)', marginBottom: 'var(--space-3)' }}>
-          ETF 포트폴리오 실시간 시뮬레이션
+          ETF 포트폴리오 손익 계산기 (종가 기준)
         </h1>
         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-          ETF 코드와 보유수량을 입력하면 한투 OpenAPI 실시간 시세로 손익을 자동 계산합니다.
+          ETF 코드와 보유수량을 입력하면 KRX 종가 기준 시세로 손익을 자동 계산합니다.
           입력값은 브라우저(localStorage) 에만 저장 — 서버에 전송 안 됨.
         </p>
       </header>

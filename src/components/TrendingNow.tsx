@@ -82,7 +82,7 @@ export default function TrendingNow({ baseline }: Props) {
         <TrendingUp size={18} strokeWidth={2.5} color="var(--accent-gold)" aria-hidden />
         <h2 style={{ fontSize: 'var(--fs-h2)', fontWeight: 800 }}>지금 뜨는 종목 TOP 3</h2>
         <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>
-          {marketStatus === 'open' ? '장중 실시간 30초 갱신' : '최근 거래일 기준'}
+          최근 거래일 종가 기준
         </span>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 'var(--space-3)' }}>

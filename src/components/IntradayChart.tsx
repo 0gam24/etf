@@ -91,7 +91,7 @@ export default function IntradayChart({ code, prevClose, height = 200 }: Props) 
           🕒 일중 분봉 ({bars.length}개)
         </h3>
         <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
-          한투 OpenAPI · 분 단위
+          분 단위 시세
         </span>
       </div>
       <ResponsiveContainer width="100%" height={height}>

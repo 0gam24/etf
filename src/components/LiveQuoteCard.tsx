@@ -84,7 +84,7 @@ export default function LiveQuoteCard({
   const isUp = change > 0;
   const isDown = change < 0;
   const labelText = (() => {
-    if (liveSource === 'mock') return null;
+    if (liveSource !== 'kis') return null;
     if (marketStatus === 'open') {
       const kst = new Date((liveTs || Date.now()) + 9 * 3600 * 1000);
       const hh = String(kst.getUTCHours()).padStart(2, '0');

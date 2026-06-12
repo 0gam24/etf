@@ -168,7 +168,7 @@ export default function PortfolioSim() {
             <Stat label="수익률" value={`${totalPnL > 0 ? '+' : ''}${totalPnLPct.toFixed(2)}%`} accent={totalPnL > 0 ? 'red' : totalPnL < 0 ? 'blue' : 'gold'} />
           </div>
           <div style={{ marginTop: 'var(--space-3)', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            {loading ? '갱신 중…' : `${marketStatus === 'open' ? '장중 실시간' : '마감 기준'} · ${marketStatus === 'open' ? '30초' : '5분'} polling`}
+            {loading ? '불러오는 중…' : 'KRX 종가 기준'}
           </div>
         </section>
       )}

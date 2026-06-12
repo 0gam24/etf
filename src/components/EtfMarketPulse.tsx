@@ -167,7 +167,7 @@ export default function EtfMarketPulse() {
   }
 
   function liveLabel(): string {
-    if (liveSource === 'mock') return '';
+    if (liveSource !== 'kis') return '';
     if (marketStatus === 'open') {
       const kst = new Date((liveTs || Date.now()) + 9 * 3600 * 1000);
       const hh = String(kst.getUTCHours()).padStart(2, '0');
@@ -264,7 +264,7 @@ export default function EtfMarketPulse() {
           <div className="pulse-header-left">
             <div className="pulse-live-badge">
               <span className="pulse-live-dot"></span>
-              DAILY ETF PULSE · LIVE
+              DAILY ETF PULSE
             </div>
             <h2 className="pulse-title">
               지금 뜨는 ETF, <span className="text-shimmer">왜 오르는지까지</span>
