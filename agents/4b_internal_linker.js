@@ -220,6 +220,10 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: 'ETF 사는 법',        slug: 'how-to-buy-etf' },
   { keyword: 'ETF 매매 방법',      slug: 'how-to-buy-etf' },
   { keyword: 'ETF 주문',          slug: 'how-to-buy-etf' },
+  // ─── gold-etf (금 ETF) ───
+  { keyword: '금 ETF',            slug: 'gold-etf' },
+  { keyword: '금현물 ETF',         slug: 'gold-etf' },
+  { keyword: '안전자산',          slug: 'gold-etf' },
 ];
 
 /**
