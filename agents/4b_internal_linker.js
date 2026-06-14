@@ -224,6 +224,10 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: '금 ETF',            slug: 'gold-etf' },
   { keyword: '금현물 ETF',         slug: 'gold-etf' },
   { keyword: '안전자산',          slug: 'gold-etf' },
+  // ─── reit-etf (리츠 ETF) ───
+  { keyword: '리츠 ETF',          slug: 'reit-etf' },
+  { keyword: '리츠',              slug: 'reit-etf' },
+  { keyword: '부동산 ETF',         slug: 'reit-etf' },
 ];
 
 /**
