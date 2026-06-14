@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-06-07T04:07:53.792Z",
-  "sourceBaseDate": "20260604",
-  "count": 1136,
+  "generatedAt": "2026-06-14T04:16:55.383Z",
+  "sourceBaseDate": "20260611",
+  "count": 1137,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -765,7 +765,6 @@
     "482730": "tiger-us-sp500covered-call",
     "483020": "kiwoom-ai",
     "483030": "kiwoom-usbiotechtech",
-    "483240": "tiger-us-nasdaq100etf",
     "483280": "kodex-usaitechtop10covered-call",
     "483290": "kodex-us-dividend-djonescovered-call",
     "483320": "ace-active-483320",
@@ -844,7 +843,6 @@
     "495230": "koact-korea-valueupactive",
     "495330": "1q-korea-valueup",
     "495550": "sol-korea-valueuptr",
-    "495710": "bnk-26-06-aaaplusactive",
     "495750": "hanaro-korea-valueup",
     "495850": "kodex-korea-valueup",
     "495940": "rise-usaitechactive",
@@ -1138,7 +1136,10 @@
     "0203D0": "plus-200covered-callbond-blend",
     "0203R0": "won-total-bonda-plusactive",
     "0203S0": "won-bond-blend50",
-    "0204S0": "tiger-kosdaqactive"
+    "0204S0": "tiger-kosdaqactive",
+    "0189Z0": "daishin343-finance",
+    "0204D0": "kodex-top3plus",
+    "0206G0": "1q-bond-blend50"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -4189,10 +4190,6 @@
       "code": "483030",
       "name": "KIWOOM 미국블록버스터바이오테크의약품+"
     },
-    "tiger-us-nasdaq100etf": {
-      "code": "483240",
-      "name": "TIGER 미국나스닥100ETF선물"
-    },
     "kodex-usaitechtop10covered-call": {
       "code": "483280",
       "name": "KODEX 미국AI테크TOP10타겟커버드콜"
@@ -4504,10 +4501,6 @@
     "sol-korea-valueuptr": {
       "code": "495550",
       "name": "SOL 코리아밸류업TR"
-    },
-    "bnk-26-06-aaaplusactive": {
-      "code": "495710",
-      "name": "BNK 26-06 특수채(AAA이상)액티브"
     },
     "hanaro-korea-valueup": {
       "code": "495750",
@@ -5684,6 +5677,18 @@
     "tiger-kosdaqactive": {
       "code": "0204S0",
       "name": "TIGER 코스닥액티브"
+    },
+    "daishin343-finance": {
+      "code": "0189Z0",
+      "name": "DAISHIN343 금융&지주고배당"
+    },
+    "kodex-top3plus": {
+      "code": "0204D0",
+      "name": "KODEX 현대차로보틱스밸류체인TOP3플러스"
+    },
+    "1q-bond-blend50": {
+      "code": "0206G0",
+      "name": "1Q 현대차기아채권혼합50"
     }
   }
 }

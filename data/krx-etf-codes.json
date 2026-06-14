@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-06-07T04:07:53.630Z",
-  "baseDate": "20260604",
-  "count": 1136,
+  "fetchedAt": "2026-06-14T04:16:55.217Z",
+  "baseDate": "20260611",
+  "count": 1137,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -3813,11 +3813,6 @@
       "issueCode": "KR7483030003",
       "name": "KIWOOM 미국블록버스터바이오테크의약품+"
     },
-    "483240": {
-      "shortcode": "483240",
-      "issueCode": "KR7483240008",
-      "name": "TIGER 미국나스닥100ETF선물"
-    },
     "483280": {
       "shortcode": "483280",
       "issueCode": "KR7483280004",
@@ -4207,11 +4202,6 @@
       "shortcode": "495550",
       "issueCode": "KR7495550006",
       "name": "SOL 코리아밸류업TR"
-    },
-    "495710": {
-      "shortcode": "495710",
-      "issueCode": "KR7495710006",
-      "name": "BNK 26-06 특수채(AAA이상)액티브"
     },
     "495750": {
       "shortcode": "495750",
@@ -5478,6 +5468,11 @@
       "issueCode": "KR70189B0004",
       "name": "TIGER 은액티브"
     },
+    "0189Z0": {
+      "shortcode": "0189Z0",
+      "issueCode": "KR70189Z0006",
+      "name": "DAISHIN343 금융&지주고배당"
+    },
     "0190C0": {
       "shortcode": "0190C0",
       "issueCode": "KR70190C0000",
@@ -5638,10 +5633,20 @@
       "issueCode": "KR70203S0007",
       "name": "WON 삼성전자현대차채권혼합50"
     },
+    "0204D0": {
+      "shortcode": "0204D0",
+      "issueCode": "KR70204D0003",
+      "name": "KODEX 현대차로보틱스밸류체인TOP3플러스"
+    },
     "0204S0": {
       "shortcode": "0204S0",
       "issueCode": "KR70204S0006",
       "name": "TIGER 코스닥액티브"
+    },
+    "0206G0": {
+      "shortcode": "0206G0",
+      "issueCode": "KR70206G0008",
+      "name": "1Q 현대차기아채권혼합50"
     },
     "069500": {
       "shortcode": "069500",
@@ -6835,6 +6840,11 @@
       "issueCode": "KR70189B0004",
       "name": "TIGER 은액티브"
     },
+    "KR70189Z0006": {
+      "shortcode": "0189Z0",
+      "issueCode": "KR70189Z0006",
+      "name": "DAISHIN343 금융&지주고배당"
+    },
     "KR70190C0000": {
       "shortcode": "0190C0",
       "issueCode": "KR70190C0000",
@@ -6995,10 +7005,20 @@
       "issueCode": "KR70203S0007",
       "name": "WON 삼성전자현대차채권혼합50"
     },
+    "KR70204D0003": {
+      "shortcode": "0204D0",
+      "issueCode": "KR70204D0003",
+      "name": "KODEX 현대차로보틱스밸류체인TOP3플러스"
+    },
     "KR70204S0006": {
       "shortcode": "0204S0",
       "issueCode": "KR70204S0006",
       "name": "TIGER 코스닥액티브"
+    },
+    "KR70206G0008": {
+      "shortcode": "0206G0",
+      "issueCode": "KR70206G0008",
+      "name": "1Q 현대차기아채권혼합50"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -10850,11 +10870,6 @@
       "issueCode": "KR7483030003",
       "name": "KIWOOM 미국블록버스터바이오테크의약품+"
     },
-    "KR7483240008": {
-      "shortcode": "483240",
-      "issueCode": "KR7483240008",
-      "name": "TIGER 미국나스닥100ETF선물"
-    },
     "KR7483280004": {
       "shortcode": "483280",
       "issueCode": "KR7483280004",
@@ -11244,11 +11259,6 @@
       "shortcode": "495550",
       "issueCode": "KR7495550006",
       "name": "SOL 코리아밸류업TR"
-    },
-    "KR7495710006": {
-      "shortcode": "495710",
-      "issueCode": "KR7495710006",
-      "name": "BNK 26-06 특수채(AAA이상)액티브"
     },
     "KR7495750002": {
       "shortcode": "495750",
@@ -12518,6 +12528,11 @@
       "name": "TIGER 은액티브"
     },
     {
+      "shortcode": "0189Z0",
+      "issueCode": "KR70189Z0006",
+      "name": "DAISHIN343 금융&지주고배당"
+    },
+    {
       "shortcode": "0190C0",
       "issueCode": "KR70190C0000",
       "name": "RISE 현대차고정피지컬AI"
@@ -12678,9 +12693,19 @@
       "name": "WON 삼성전자현대차채권혼합50"
     },
     {
+      "shortcode": "0204D0",
+      "issueCode": "KR70204D0003",
+      "name": "KODEX 현대차로보틱스밸류체인TOP3플러스"
+    },
+    {
       "shortcode": "0204S0",
       "issueCode": "KR70204S0006",
       "name": "TIGER 코스닥액티브"
+    },
+    {
+      "shortcode": "0206G0",
+      "issueCode": "KR70206G0008",
+      "name": "1Q 현대차기아채권혼합50"
     },
     {
       "shortcode": "069500",
@@ -16533,11 +16558,6 @@
       "name": "KIWOOM 미국블록버스터바이오테크의약품+"
     },
     {
-      "shortcode": "483240",
-      "issueCode": "KR7483240008",
-      "name": "TIGER 미국나스닥100ETF선물"
-    },
-    {
       "shortcode": "483280",
       "issueCode": "KR7483280004",
       "name": "KODEX 미국AI테크TOP10타겟커버드콜"
@@ -16926,11 +16946,6 @@
       "shortcode": "495550",
       "issueCode": "KR7495550006",
       "name": "SOL 코리아밸류업TR"
-    },
-    {
-      "shortcode": "495710",
-      "issueCode": "KR7495710006",
-      "name": "BNK 26-06 특수채(AAA이상)액티브"
     },
     {
       "shortcode": "495750",
