@@ -228,6 +228,10 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: '리츠 ETF',          slug: 'reit-etf' },
   { keyword: '리츠',              slug: 'reit-etf' },
   { keyword: '부동산 ETF',         slug: 'reit-etf' },
+  // ─── battery-etf (2차전지 ETF) ───
+  { keyword: '2차전지 ETF',        slug: 'battery-etf' },
+  { keyword: '배터리 ETF',         slug: 'battery-etf' },
+  { keyword: '2차전지 소재',        slug: 'battery-etf' },
 ];
 
 /**
