@@ -9,33 +9,49 @@
 
 ## A. 구글 서치콘솔(GSC) — 우리가 이미 뜨는 키워드
 
-### A-1. 서비스 계정 만들기 (구글 클라우드, 1회)
-1. https://console.cloud.google.com 접속 → 상단에서 프로젝트 새로 만들기(아무 이름).
-2. 검색창에 **"Search Console API"** → **사용 설정(Enable)** 클릭.
-3. 왼쪽 메뉴 **API 및 서비스 → 사용자 인증 정보 → 사용자 인증 정보 만들기 → 서비스 계정**.
-   - 이름 아무거나(예: `gsc-reader`) → 만들고 완료.
-4. 만든 서비스 계정 클릭 → **키(KEYS) 탭 → 키 추가 → 새 키 만들기 → JSON** → 파일이 다운로드됨.
-5. 그 JSON 파일을 **프로젝트 루트에 `gsc-service-account.json` 이름으로 저장**.
-   (`*-service-account.json`은 .gitignore로 자동 차단되어 git에 안 올라갑니다.)
-6. JSON 안의 `client_email` 값(…@….iam.gserviceaccount.com)을 복사해 둡니다.
+> **권장: A-OAuth 방식** (내 구글 계정으로 로그인). 서비스 계정 이메일이 "사용자 추가"에서
+> 인식 안 될 때 이 방식을 쓰면 이메일 추가 단계가 아예 없습니다. (서비스 계정은 맨 아래 "대체"로)
 
-### A-2. 그 계정에 GSC 권한 주기 (1회)
-1. https://search.google.com/search-console → 속성 `iknowhowinfo.com` 선택.
-2. 왼쪽 아래 **설정 → 사용자 및 권한 → 사용자 추가**.
-3. 위에서 복사한 **서비스 계정 이메일**을 붙여넣고 권한 **"제한됨(읽기)"**으로 추가.
+### A-OAuth-1. OAuth 클라이언트 ID 만들기 (구글 클라우드, 1회)
+1. https://console.cloud.google.com → 프로젝트 새로 만들기(아무 이름).
+2. 검색창에 **"Search Console API"** → **사용 설정(Enable)**.
+3. **API 및 서비스 → OAuth 동의 화면** → User Type **외부** 선택 → 앱 이름·이메일만 입력해 저장.
+   - "테스트 사용자"에 **본인 구글 이메일(=GSC 주인 계정)**을 추가.
+4. **API 및 서비스 → 사용자 인증 정보 → 사용자 인증 정보 만들기 → OAuth 클라이언트 ID**.
+   - 애플리케이션 유형: **데스크톱 앱** 선택 → 만들기.
+5. 화면에 뜬 **클라이언트 ID**와 **클라이언트 보안 비밀**을 복사.
 
-### A-3. 환경변수 (.env.local)
+### A-OAuth-2. 환경변수 (.env.local)
 ```
 GSC_SITE_URL=sc-domain:iknowhowinfo.com   # 도메인 속성이면 sc-domain: 그대로. URL 속성이면 https://iknowhowinfo.com/
-GSC_SA_JSON=gsc-service-account.json
+GSC_OAUTH_CLIENT_ID=복사한_클라이언트_ID
+GSC_OAUTH_CLIENT_SECRET=복사한_보안비밀
 ```
 
-### A-4. 실행
+### A-OAuth-3. 1회 로그인 인증
+```
+npm run keywords:gsc-auth
+```
+1. 콘솔에 뜨는 **URL을 브라우저에서 열기**.
+2. **GSC 주인 구글 계정**으로 로그인 → "허용".
+   - "Google에서 확인하지 않은 앱" 경고가 나오면 → 고급 → (앱 이름)으로 이동 → 계속 (내 앱이라 안전).
+3. 끝나면 자동으로 `.env.local`에 **GSC_REFRESH_TOKEN**이 저장됩니다. (이메일 추가 불필요!)
+
+### A-OAuth-4. 실행
 ```
 npm run keywords:gsc
 ```
-→ "STRIKING DISTANCE(순위 5~20위)" 목록이 뜹니다 = **글만 보강하면 1페이지로 올릴 후보**.
+→ "STRIKING DISTANCE(순위 5~20위)" 목록 = **글만 보강하면 1페이지로 올릴 후보**.
    결과는 `data/keywords/gsc_{날짜}.json`에도 저장됩니다.
+
+---
+
+### (대체) 서비스 계정 방식 — 이메일 추가가 되는 경우에만
+1. 구글 클라우드 → 사용자 인증 정보 → **서비스 계정** 생성 → 키(JSON) 다운로드.
+2. JSON을 루트에 **`gsc-service-account.json`** 으로 저장(.gitignore 자동 차단).
+3. GSC → 설정 → 사용자 및 권한 → **그 서비스 계정 이메일을 "제한됨(읽기)"으로 추가**.
+   - ※ 이 단계에서 "이메일 인식 안 됨"이 나면 위 OAuth 방식을 쓰세요.
+4. `.env.local`에 `GSC_SA_JSON=gsc-service-account.json` → `npm run keywords:gsc`.
 
 ---
 

@@ -7,13 +7,12 @@
  *
  *   실행: npm run keywords:gsc
  *
- *   필요한 것(한 번만 세팅 — docs/KEYWORD-RESEARCH-SETUP.md 참고):
- *     - 구글 클라우드 서비스 계정 JSON 파일 (프로젝트 루트에 gsc-service-account.json)
- *       → .gitignore 로 자동 차단됨(*-service-account.json). 절대 commit 금지.
- *     - 그 서비스 계정 이메일을 GSC 속성에 "사용자 추가"
- *     - 환경변수(.env.local):
- *         GSC_SITE_URL=sc-domain:iknowhowinfo.com   (도메인 속성이면 sc-domain: 접두)
- *         GSC_SA_JSON=gsc-service-account.json        (파일 경로, 기본값 동일)
+ *   인증(둘 중 하나 — docs/KEYWORD-RESEARCH-SETUP.md 참고):
+ *     [권장] OAuth(내 구글 계정): npm run keywords:gsc-auth 로 1회 인증 → GSC_REFRESH_TOKEN 저장.
+ *            .env.local 에 GSC_OAUTH_CLIENT_ID / GSC_OAUTH_CLIENT_SECRET / GSC_REFRESH_TOKEN.
+ *            서비스 계정 "이메일 추가"가 안 될 때 이 방식 사용(내 계정이 이미 GSC 주인).
+ *     [대체] 서비스 계정 JSON(gsc-service-account.json) + 그 이메일을 GSC 사용자 추가.
+ *     공통: GSC_SITE_URL=sc-domain:iknowhowinfo.com (도메인 속성이면 sc-domain: 접두)
  *
  *   출력: data/keywords/gsc_{YYYYMMDD}.json + 콘솔에 상위 표.
  *
@@ -38,47 +37,59 @@ loadEnvLocal();
 
 const SITE_URL = process.env.GSC_SITE_URL || 'sc-domain:iknowhowinfo.com';
 const SA_PATH = path.join(ROOT, process.env.GSC_SA_JSON || 'gsc-service-account.json');
+const SCOPE = 'https://www.googleapis.com/auth/webmasters.readonly';
 
 function die(msg) {
   console.error('\n❌ ' + msg + '\n   → 설정 방법: docs/KEYWORD-RESEARCH-SETUP.md\n');
   process.exit(1);
 }
 
-if (!fs.existsSync(SA_PATH)) {
-  die(`서비스 계정 JSON 없음: ${SA_PATH}\n   구글 클라우드에서 받은 키 파일을 이 경로에 두세요(파일명 gsc-service-account.json 권장).`);
-}
-
-let sa;
-try {
-  sa = JSON.parse(fs.readFileSync(SA_PATH, 'utf8'));
-} catch {
-  die('서비스 계정 JSON 파싱 실패 — 올바른 키 파일인지 확인하세요.');
-}
-if (!sa.client_email || !sa.private_key) die('JSON에 client_email/private_key가 없습니다.');
-
 const b64url = (input) => Buffer.from(input).toString('base64url');
 
-async function getAccessToken() {
-  const now = Math.floor(Date.now() / 1000);
-  const header = b64url(JSON.stringify({ alg: 'RS256', typ: 'JWT' }));
-  const claim = b64url(JSON.stringify({
-    iss: sa.client_email,
-    scope: 'https://www.googleapis.com/auth/webmasters.readonly',
-    aud: 'https://oauth2.googleapis.com/token',
-    iat: now,
-    exp: now + 3600,
-  }));
-  const signingInput = `${header}.${claim}`;
-  const signature = crypto.createSign('RSA-SHA256').update(signingInput).sign(sa.private_key).toString('base64url');
-  const jwt = `${signingInput}.${signature}`;
-
+// 방법 1(권장): OAuth refresh token — 내 구글 계정. (gsc-auth.mjs 로 1회 발급)
+async function tokenFromOAuth() {
   const res = await fetch('https://oauth2.googleapis.com/token', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({ grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer', assertion: jwt }),
+    body: new URLSearchParams({
+      client_id: process.env.GSC_OAUTH_CLIENT_ID,
+      client_secret: process.env.GSC_OAUTH_CLIENT_SECRET,
+      refresh_token: process.env.GSC_REFRESH_TOKEN,
+      grant_type: 'refresh_token',
+    }),
+  });
+  if (!res.ok) die(`OAuth 토큰 갱신 실패(${res.status}). npm run keywords:gsc-auth 로 재인증하세요. ${(await res.text()).slice(0, 200)}`);
+  return (await res.json()).access_token;
+}
+
+// 방법 2(대체): 서비스 계정 JWT.
+async function tokenFromServiceAccount() {
+  let sa;
+  try { sa = JSON.parse(fs.readFileSync(SA_PATH, 'utf8')); }
+  catch { die('서비스 계정 JSON 파싱 실패 — 올바른 키 파일인지 확인하세요.'); }
+  if (!sa.client_email || !sa.private_key) die('JSON에 client_email/private_key가 없습니다.');
+  const now = Math.floor(Date.now() / 1000);
+  const header = b64url(JSON.stringify({ alg: 'RS256', typ: 'JWT' }));
+  const claim = b64url(JSON.stringify({
+    iss: sa.client_email, scope: SCOPE, aud: 'https://oauth2.googleapis.com/token', iat: now, exp: now + 3600,
+  }));
+  const signingInput = `${header}.${claim}`;
+  const signature = crypto.createSign('RSA-SHA256').update(signingInput).sign(sa.private_key).toString('base64url');
+  const res = await fetch('https://oauth2.googleapis.com/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer', assertion: `${signingInput}.${signature}` }),
   });
   if (!res.ok) die(`토큰 발급 실패(${res.status}). 서비스 계정/시간 설정 확인. ${(await res.text()).slice(0, 200)}`);
   return (await res.json()).access_token;
+}
+
+async function getAccessToken() {
+  if (process.env.GSC_REFRESH_TOKEN && process.env.GSC_OAUTH_CLIENT_ID && process.env.GSC_OAUTH_CLIENT_SECRET) {
+    return tokenFromOAuth();
+  }
+  if (fs.existsSync(SA_PATH)) return tokenFromServiceAccount();
+  die('인증 정보 없음.\n   [권장] npm run keywords:gsc-auth 로 OAuth 인증(내 구글 계정)\n   [대체] gsc-service-account.json 파일 + GSC 사용자 추가');
 }
 
 function ymd(d) {

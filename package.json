@@ -26,6 +26,7 @@
     "generate:signal": "node scripts/generate-breakout-signal.mjs",
     "evaluate:signal": "node scripts/evaluate-signals.mjs",
     "generate:today-report": "node scripts/generate-today-report.mjs",
+    "keywords:gsc-auth": "node scripts/gsc-auth.mjs",
     "keywords:gsc": "node scripts/fetch-gsc-keywords.mjs",
     "keywords:naver": "node scripts/fetch-naver-keywords.mjs",
     "send:push": "node scripts/send-push.mjs",
