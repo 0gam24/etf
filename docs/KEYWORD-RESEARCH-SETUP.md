@@ -55,37 +55,43 @@ npm run keywords:gsc
 
 ---
 
-## B. 네이버 검색광고 API — 한국 월간 검색량
+## B. 네이버 — 두 갈래 (둘은 다른 API)
 
-### B-1. API 키 발급 (1회)
-1. https://searchad.naver.com 접속 → (네이버 계정으로) 가입/로그인. *광고를 집행하지 않아도 API는 무료로 쓸 수 있습니다.*
-2. 오른쪽 위 **도구 → API 사용 관리**(또는 "API 키 관리") 메뉴.
-3. **네이버 검색광고 API 라이선스 발급** → 두 값을 받습니다:
-   - **액세스라이선스** (= API KEY)
-   - **비밀키** (= SECRET)
-4. 화면 우상단 **고객 ID(CUSTOMER ID, 숫자)** 를 확인합니다(계정 정보에 표시).
+네이버는 키 종류가 둘입니다. 헷갈리지 마세요.
 
-### B-2. 환경변수 (.env.local)
-```
-NAVER_AD_API_KEY=발급받은_액세스라이선스
-NAVER_AD_SECRET=발급받은_비밀키
-NAVER_AD_CUSTOMER_ID=고객ID숫자
-```
+| | B-1 데이터랩 트렌드(이미 연결됨) | B-2 검색광고 API(선택) |
+|---|---|---|
+| 키 | `NAVER_CLIENT_ID/SECRET` (오픈 API, 뉴스수집에 쓰던 것) | `NAVER_AD_*` (검색광고, HMAC) |
+| 주는 값 | **상대 인기도(0~100)·추세** | **절대 월간 검색수·경쟁정도** |
+| 명령 | `npm run keywords:naver-trend` | `npm run keywords:naver` |
 
-### B-3. 실행
-```
-npm run keywords:naver -- "ETF" "월배당 ETF" "금 ETF"
-```
-- 뒤에 씨앗 키워드를 적으면 그것 기준 연관 키워드의 **월간 검색수(PC/모바일)·경쟁정도**가 나옵니다.
-- 안 적으면 기본 ETF 씨앗으로 조회.
-- 결과는 `data/keywords/naver_{날짜}.json`에 저장.
+### B-1. 데이터랩 검색어 트렌드 (이미 연결된 키 사용 — 권장)
+- developers.naver.com → 내 애플리케이션 → **"사용 API"에 "데이터랩(검색어트렌드)" 추가(체크)**. (뉴스검색만 있으면 401)
+- 환경변수는 이미 있는 `NAVER_CLIENT_ID/SECRET` 그대로 사용(추가 입력 없음).
+- 실행:
+  ```
+  npm run keywords:naver-trend -- "월배당 ETF" "금 ETF" "인도 ETF"
+  ```
+  → 키워드 그룹 간 **상대 인기도와 상승/하락 추세**. 결과 `data/keywords/naver_trend_{날짜}.json`.
+- ※ 상대값이라 "절대 몇 회 검색"은 안 나옵니다(그건 B-2).
+
+### B-2. 검색광고 API — 절대 월간 검색량 (선택, 별도 발급)
+1. https://searchad.naver.com → 가입/로그인(광고 집행 안 해도 API 무료).
+2. **도구 → API 사용 관리** → 라이선스 발급: **액세스라이선스(API KEY)·비밀키(SECRET)**, 우상단 **고객 ID**.
+3. `.env.local`:
+   ```
+   NAVER_AD_API_KEY=발급받은_액세스라이선스
+   NAVER_AD_SECRET=발급받은_비밀키
+   NAVER_AD_CUSTOMER_ID=고객ID숫자
+   ```
+4. 실행: `npm run keywords:naver -- "ETF" "월배당 ETF"` → 연관 키워드 **월간 검색수(PC/모바일)·경쟁정도**. 결과 `data/keywords/naver_{날짜}.json`.
 
 ---
 
 ## C. 실제 사용 흐름 (주제 선정)
 1. `npm run keywords:gsc` → 우리가 이미 노출되는데 순위 애매한 키워드 확인.
-2. 그 키워드(또는 새 후보)를 씨앗으로 `npm run keywords:naver -- "후보1" "후보2"` → 네이버 검색량·경쟁 확인.
-3. **검색량 높고 경쟁 낮은 + 우리가 거의 1페이지인** 주제를 골라 가이드 작성.
+2. 후보를 `npm run keywords:naver-trend -- "후보1" "후보2"`(상대 인기도·추세) 또는 `npm run keywords:naver -- "후보1"`(절대 검색량)로 검증.
+3. **검색량/인기 높고 + 우리가 거의 1페이지인** 주제를 골라 가이드 작성.
 
 > Claude(여기)에게 "키워드 데이터로 오늘 주제 골라줘" 하면, 위 스크립트를 실행해 결과를 보고 골라 드립니다.
 
