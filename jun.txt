@@ -1054,6 +1054,13 @@ A. OS date 2026-06-15(월) 검증. 28번째 가이드 발행, 오늘 발행분 �
 검증: tsc 0·cf:build EXIT=0·FAQPage·Q5·HowTo·직답·표·leak 0·라이브 /guide/battery-etf 200. 가이드 27→28종.
 ★오늘 발행 링크: https://iknowhowinfo.com/guide/battery-etf
 
+### Q. (06-16) 오늘 포스팅 진행 후 오늘 포스팅 전체 링크 나열하는거 기억해. 오늘부터 포스팅은 5개.
+A. OS date 2026-06-16(화) 검증. 새 표준: 하루 5편 발행 + 발행 후 오늘 링크 전체 나열(메모리 feedback_posting_seo_loop 갱신·MEMORY.md 반영). 효율: 5편 작성→5개 서브에이전트 병렬 검토→보완→tsc 1회+build 1회→push 1회→5편 라이브 폴링.
+발행(589801e, rebase 후): 5편 — dollar-etf(달러 ETF)·commodity-etf(원자재 ETF)·etf-vs-stock(ETF vs 개별주식)·india-etf(인도 ETF)·tdf-etf(TDF). 각 5섹션+직답+HowTo+FAQ(5~6)+비교표. section 신규 2('ETF 달러/원자재 가이드'), 클러스터 4곳 배치, 내부링커 12키워드.
+검토 반영(5병렬): description 전부 120자+, 세금 정밀화(배당소득세 15.4%·종합과세 2천만원·기타ETF 분류), YMYL 캐비엇(안전자산/인플레헤지/성장기대=보장 아님·음의복리), 고빈도 FAQ 추가, H2 키워드.
+검증: tsc 0·cf:build EXIT=0·5편 FAQPage·HowTo·직답·표·leak 0·라이브 5/5 200. 가이드 28→33종.
+★오늘 발행 5편 링크: /guide/dollar-etf, /guide/commodity-etf, /guide/etf-vs-stock, /guide/india-etf, /guide/tdf-etf
+
 ================================================================================
   END — 새 질문 답변 시 위에 새 항목 append
 ================================================================================
