@@ -30,7 +30,12 @@ function loadEnvLocal() {
   if (!fs.existsSync(p)) return;
   for (const line of fs.readFileSync(p, 'utf8').split('\n')) {
     const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
-    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, '');
+    if (m && !process.env[m[1]]) {
+      let v = m[2].trim();
+      if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) v = v.slice(1, -1);
+      else v = v.replace(/\s+#.*$/, '').trim(); // 줄 끝 인라인 주석(# ...) 무시
+      process.env[m[1]] = v;
+    }
   }
 }
 loadEnvLocal();
@@ -96,6 +101,17 @@ function ymd(d) {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }
 
+// 속성 형식 후보 — 도메인(sc-domain:) / URL접두어(https://) 자동 시도
+function siteCandidates(cfg) {
+  const out = [cfg];
+  if (cfg.startsWith('sc-domain:')) {
+    out.push(`https://${cfg.slice('sc-domain:'.length)}/`);
+  } else if (cfg.startsWith('http')) {
+    try { out.push(`sc-domain:${new URL(cfg).host}`); } catch { /* skip */ }
+  }
+  return [...new Set(out)];
+}
+
 async function main() {
   console.log(`📡 GSC 키워드 수집 — ${SITE_URL}`);
   const token = await getAccessToken();
@@ -110,15 +126,22 @@ async function main() {
     dataState: 'all',
   };
 
-  const res = await fetch(
-    `https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(SITE_URL)}/searchAnalytics/query`,
-    { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body) },
-  );
-  if (!res.ok) die(`쿼리 실패(${res.status}). GSC_SITE_URL 형식(sc-domain: 또는 https://...)·사용자 권한 확인. ${(await res.text()).slice(0, 200)}`);
-
-  const rows = (await res.json()).rows || [];
+  // 두 형식 자동 시도 → 200 나오는 속성 사용
+  let rows = null, usedSite = null, lastErr = '';
+  for (const site of siteCandidates(SITE_URL.trim())) {
+    const res = await fetch(
+      `https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(site)}/searchAnalytics/query`,
+      { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body) },
+    );
+    if (res.ok) { rows = (await res.json()).rows || []; usedSite = site; break; }
+    lastErr = `${res.status} ${(await res.text()).slice(0, 160)}`;
+  }
+  if (usedSite === null) {
+    die(`쿼리 실패(${lastErr}).\n   확인: 이 구글 계정이 해당 GSC 속성의 소유자/사용자인지, Search Console API 사용설정 여부.`);
+  }
+  console.log(`   (속성: ${usedSite})`);
   if (!rows.length) {
-    console.log('⚠️ 데이터 0건 — 사이트가 아직 검색 노출이 적거나, 권한/속성 형식을 확인하세요.');
+    console.log('⚠️ 데이터 0건 — 사이트가 아직 검색 노출이 적을 수 있습니다(신규 사이트면 정상).');
   }
 
   const all = rows.map(r => ({

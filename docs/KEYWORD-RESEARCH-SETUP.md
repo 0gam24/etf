@@ -22,11 +22,15 @@
 5. 화면에 뜬 **클라이언트 ID**와 **클라이언트 보안 비밀**을 복사.
 
 ### A-OAuth-2. 환경변수 (.env.local)
+`.env.local`에 아래 3줄. **값만 넣고 설명(#)은 빼세요.**
 ```
-GSC_SITE_URL=sc-domain:iknowhowinfo.com   # 도메인 속성이면 sc-domain: 그대로. URL 속성이면 https://iknowhowinfo.com/
+GSC_SITE_URL=sc-domain:iknowhowinfo.com
 GSC_OAUTH_CLIENT_ID=복사한_클라이언트_ID
 GSC_OAUTH_CLIENT_SECRET=복사한_보안비밀
 ```
+- 서치콘솔 좌상단 속성이 **`iknowhowinfo.com`**(https 없이)로 보이면 = 도메인 속성 → 위 `sc-domain:` 그대로.
+- **`https://iknowhowinfo.com/`** 로 보이면 그 값을 `GSC_SITE_URL`에 넣으세요.
+- (스크립트가 두 형식을 자동으로 시도하므로 헷갈려도 대개 작동합니다.)
 
 ### A-OAuth-3. 1회 로그인 인증
 ```
