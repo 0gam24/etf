@@ -232,6 +232,23 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: '2차전지 ETF',        slug: 'battery-etf' },
   { keyword: '배터리 ETF',         slug: 'battery-etf' },
   { keyword: '2차전지 소재',        slug: 'battery-etf' },
+  // ─── dollar-etf (달러 ETF) ───
+  { keyword: '달러 ETF',          slug: 'dollar-etf' },
+  { keyword: '미국달러 ETF',       slug: 'dollar-etf' },
+  // ─── commodity-etf (원자재 ETF) ───
+  { keyword: '원자재 ETF',         slug: 'commodity-etf' },
+  { keyword: '원유 ETF',          slug: 'commodity-etf' },
+  { keyword: '롤오버',            slug: 'commodity-etf' },
+  // ─── etf-vs-stock (ETF vs 개별주식) ───
+  { keyword: 'ETF vs 개별주식',    slug: 'etf-vs-stock' },
+  { keyword: 'ETF 주식 차이',      slug: 'etf-vs-stock' },
+  // ─── india-etf (인도 ETF) ───
+  { keyword: '인도 ETF',          slug: 'india-etf' },
+  { keyword: '니프티50',          slug: 'india-etf' },
+  { keyword: '신흥국 ETF',         slug: 'india-etf' },
+  // ─── tdf-etf (TDF) ───
+  { keyword: 'TDF',              slug: 'tdf-etf' },
+  { keyword: '타깃데이트펀드',      slug: 'tdf-etf' },
 ];
 
 /**
