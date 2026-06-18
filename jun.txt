@@ -1074,3 +1074,9 @@ A. MARKET PULSE 이미지 미제공 → 사용자 "직접 모두 진행" 지시�
 - 메타 leak·비밀값 검사 통과, commit f64864f..4e02f18 push (누락됐던 stock·weekly 5월분도 동기화).
 - HarnessDeployer 경고: description 19~46자(권장 120~155 미달) + 일부 GEO 신호 누락 — 이미지 없는 샘플 모드 영향. 품질 caveat로 보고.
 - Cloudflare 빌드 ~5분 후 라이브, /pulse/pulse-20260610 등 7개 URL.
+
+### Q. (06-17~18) 데이터 기반 롱테일 5편 발행 (구글 GSC+네이버 트렌드 → 롱테일 정조준).
+A. 표준 갱신: 매일 GSC(keywords:gsc, 우리가 이미 5~20위 striking-distance)+네이버 트렌드(keywords:naver-trend) 확인 → head term 금지·롱테일 우선 → 5편 → 발행 후 오늘 링크 전체 나열. GSC OAuth 인증 완료(refresh token 저장), 네이버 데이터랩 연결 확인.
+발행(def5dc3, 가이드 33→38종): tr-etf(GSC 5.8위)·high-dividend-etf(8.5위)·etf-ticker-code(11~19위)·ai-power-etf(5.5위)·space-etf(9.1위). 각 5섹션+직답+HowTo+FAQ+비교표, 클러스터(배당/기초/테마), 내부링커 10키워드. YMYL-safe(15.4%·종합과세 캐비엇).
+검증: tsc 0·cf:build EXIT=0·5편 FAQPage·HowTo·직답·표·leak 0·라이브 5/5 200.
+★오늘 링크: /guide/tr-etf, /guide/high-dividend-etf, /guide/etf-ticker-code, /guide/ai-power-etf, /guide/space-etf
