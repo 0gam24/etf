@@ -249,6 +249,17 @@ const KEYWORD_GUIDE_MAP = [
   // ─── tdf-etf (TDF) ───
   { keyword: 'TDF',              slug: 'tdf-etf' },
   { keyword: '타깃데이트펀드',      slug: 'tdf-etf' },
+  // ─── 2026-06-17 롱테일 5편 ───
+  { keyword: 'TR ETF',            slug: 'tr-etf' },
+  { keyword: '토탈리턴',          slug: 'tr-etf' },
+  { keyword: '고배당 ETF',         slug: 'high-dividend-etf' },
+  { keyword: '고배당주 ETF',       slug: 'high-dividend-etf' },
+  { keyword: 'ETF 종목코드',       slug: 'etf-ticker-code' },
+  { keyword: '단축코드',          slug: 'etf-ticker-code' },
+  { keyword: 'AI 전력 인프라',     slug: 'ai-power-etf' },
+  { keyword: '데이터센터 ETF',     slug: 'ai-power-etf' },
+  { keyword: '우주테크 ETF',       slug: 'space-etf' },
+  { keyword: '우주산업 ETF',       slug: 'space-etf' },
 ];
 
 /**
