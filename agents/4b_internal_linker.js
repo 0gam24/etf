@@ -260,6 +260,15 @@ const KEYWORD_GUIDE_MAP = [
   { keyword: '데이터센터 ETF',     slug: 'ai-power-etf' },
   { keyword: '우주테크 ETF',       slug: 'space-etf' },
   { keyword: '우주산업 ETF',       slug: 'space-etf' },
+  // ─── 2026-06-19 롱테일 5편 ───
+  { keyword: '로봇 ETF',          slug: 'robot-etf' },
+  { keyword: '자동화 ETF',         slug: 'robot-etf' },
+  { keyword: '바이오 ETF',         slug: 'bio-etf' },
+  { keyword: '헬스케어 ETF',       slug: 'bio-etf' },
+  { keyword: '원자력 ETF',         slug: 'nuclear-etf' },
+  { keyword: '원전 ETF',          slug: 'nuclear-etf' },
+  { keyword: '액티브 ETF',         slug: 'active-etf' },
+  { keyword: 'ETF 상장폐지',       slug: 'etf-delisting' },
 ];
 
 /**
