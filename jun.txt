@@ -1080,3 +1080,8 @@ A. 표준 갱신: 매일 GSC(keywords:gsc, 우리가 이미 5~20위 striking-dis
 발행(def5dc3, 가이드 33→38종): tr-etf(GSC 5.8위)·high-dividend-etf(8.5위)·etf-ticker-code(11~19위)·ai-power-etf(5.5위)·space-etf(9.1위). 각 5섹션+직답+HowTo+FAQ+비교표, 클러스터(배당/기초/테마), 내부링커 10키워드. YMYL-safe(15.4%·종합과세 캐비엇).
 검증: tsc 0·cf:build EXIT=0·5편 FAQPage·HowTo·직답·표·leak 0·라이브 5/5 200.
 ★오늘 링크: /guide/tr-etf, /guide/high-dividend-etf, /guide/etf-ticker-code, /guide/ai-power-etf, /guide/space-etf
+
+### Q. (06-19) 오늘 포스팅 — 데이터 롱테일 5편 (발행 중 도구호출 깨짐 반복 → 한 번에 패치 방식으로 완료).
+A. OS 2026-06-19. GSC+네이버 트렌드 근거 5편: robot-etf(네이버19.5↑)·bio-etf(4.8↑)·nuclear-etf(원자력5.1)·active-etf(GSC 'S&P500액티브 차이' 8.7위)·etf-delisting(롱테일 정보성). 각 5섹션+직답+HowTo+FAQ+비교표, YMYL-safe(15.4%·종합과세 캐비엇). 가이드 38→43종. push 084aca7.
+교훈: 5편 발행 시 const 정의→배열등록→클러스터→링커→빌드→push 다단계인데, 도구호출 XML이 중간에 깨져 텍스트로 찍히고 미실행되는 사고 반복. 대응: 남은 편집은 idempotent 패치 .mjs 한 방으로 적용, 빌드·push는 단일 명령 체인으로. 검증: tsc0·build0·라이브 5/5 200.
+★오늘 링크: /guide/robot-etf, /guide/bio-etf, /guide/nuclear-etf, /guide/active-etf, /guide/etf-delisting
