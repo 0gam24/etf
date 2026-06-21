@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-06-14T04:16:55.383Z",
-  "sourceBaseDate": "20260611",
-  "count": 1137,
+  "generatedAt": "2026-06-21T04:23:55.419Z",
+  "sourceBaseDate": "20260618",
+  "count": 1140,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -1139,7 +1139,10 @@
     "0204S0": "tiger-kosdaqactive",
     "0189Z0": "daishin343-finance",
     "0204D0": "kodex-top3plus",
-    "0206G0": "1q-bond-blend50"
+    "0206G0": "1q-bond-blend50",
+    "0193M0": "bnk-27-12-aaaplusactive",
+    "0207G0": "sol-aerospace",
+    "0207Z0": "kiwoom-usdatainfrastructure"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -5689,6 +5692,18 @@
     "1q-bond-blend50": {
       "code": "0206G0",
       "name": "1Q 현대차기아채권혼합50"
+    },
+    "bnk-27-12-aaaplusactive": {
+      "code": "0193M0",
+      "name": "BNK 27-12 특수채(AAA이상)액티브"
+    },
+    "sol-aerospace": {
+      "code": "0207G0",
+      "name": "SOL 우주항공밸류체인"
+    },
+    "kiwoom-usdatainfrastructure": {
+      "code": "0207Z0",
+      "name": "KIWOOM 미국우주데이터센터인프라"
     }
   }
 }

@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-06-14T04:16:55.217Z",
-  "baseDate": "20260611",
-  "count": 1137,
+  "fetchedAt": "2026-06-21T04:23:55.250Z",
+  "baseDate": "20260618",
+  "count": 1140,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -5553,6 +5553,11 @@
       "issueCode": "KR70193L0006",
       "name": "PLUS 삼성전자선물단일종목인버스2X"
     },
+    "0193M0": {
+      "shortcode": "0193M0",
+      "issueCode": "KR70193M0005",
+      "name": "BNK 27-12 특수채(AAA이상)액티브"
+    },
     "0193T0": {
       "shortcode": "0193T0",
       "issueCode": "KR70193T0008",
@@ -5647,6 +5652,16 @@
       "shortcode": "0206G0",
       "issueCode": "KR70206G0008",
       "name": "1Q 현대차기아채권혼합50"
+    },
+    "0207G0": {
+      "shortcode": "0207G0",
+      "issueCode": "KR70207G0007",
+      "name": "SOL 우주항공밸류체인"
+    },
+    "0207Z0": {
+      "shortcode": "0207Z0",
+      "issueCode": "KR70207Z0004",
+      "name": "KIWOOM 미국우주데이터센터인프라"
     },
     "069500": {
       "shortcode": "069500",
@@ -6925,6 +6940,11 @@
       "issueCode": "KR70193L0006",
       "name": "PLUS 삼성전자선물단일종목인버스2X"
     },
+    "KR70193M0005": {
+      "shortcode": "0193M0",
+      "issueCode": "KR70193M0005",
+      "name": "BNK 27-12 특수채(AAA이상)액티브"
+    },
     "KR70193T0008": {
       "shortcode": "0193T0",
       "issueCode": "KR70193T0008",
@@ -7019,6 +7039,16 @@
       "shortcode": "0206G0",
       "issueCode": "KR70206G0008",
       "name": "1Q 현대차기아채권혼합50"
+    },
+    "KR70207G0007": {
+      "shortcode": "0207G0",
+      "issueCode": "KR70207G0007",
+      "name": "SOL 우주항공밸류체인"
+    },
+    "KR70207Z0004": {
+      "shortcode": "0207Z0",
+      "issueCode": "KR70207Z0004",
+      "name": "KIWOOM 미국우주데이터센터인프라"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -12613,6 +12643,11 @@
       "name": "PLUS 삼성전자선물단일종목인버스2X"
     },
     {
+      "shortcode": "0193M0",
+      "issueCode": "KR70193M0005",
+      "name": "BNK 27-12 특수채(AAA이상)액티브"
+    },
+    {
       "shortcode": "0193T0",
       "issueCode": "KR70193T0008",
       "name": "KODEX SK하이닉스단일종목레버리지"
@@ -12706,6 +12741,16 @@
       "shortcode": "0206G0",
       "issueCode": "KR70206G0008",
       "name": "1Q 현대차기아채권혼합50"
+    },
+    {
+      "shortcode": "0207G0",
+      "issueCode": "KR70207G0007",
+      "name": "SOL 우주항공밸류체인"
+    },
+    {
+      "shortcode": "0207Z0",
+      "issueCode": "KR70207Z0004",
+      "name": "KIWOOM 미국우주데이터센터인프라"
     },
     {
       "shortcode": "069500",
