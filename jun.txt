@@ -1085,3 +1085,15 @@ A. 표준 갱신: 매일 GSC(keywords:gsc, 우리가 이미 5~20위 striking-dis
 A. OS 2026-06-19. GSC+네이버 트렌드 근거 5편: robot-etf(네이버19.5↑)·bio-etf(4.8↑)·nuclear-etf(원자력5.1)·active-etf(GSC 'S&P500액티브 차이' 8.7위)·etf-delisting(롱테일 정보성). 각 5섹션+직답+HowTo+FAQ+비교표, YMYL-safe(15.4%·종합과세 캐비엇). 가이드 38→43종. push 084aca7.
 교훈: 5편 발행 시 const 정의→배열등록→클러스터→링커→빌드→push 다단계인데, 도구호출 XML이 중간에 깨져 텍스트로 찍히고 미실행되는 사고 반복. 대응: 남은 편집은 idempotent 패치 .mjs 한 방으로 적용, 빌드·push는 단일 명령 체인으로. 검증: tsc0·build0·라이브 5/5 200.
 ★오늘 링크: /guide/robot-etf, /guide/bio-etf, /guide/nuclear-etf, /guide/active-etf, /guide/etf-delisting
+
+### Q. (06-23) 오늘 포스팅 — 데이터 기반 롱테일 5편.
+A. OS 2026-06-23(화) 검증. 신선 데이터 수집(keywords:gsc→gsc_20260621 557쿼리·keywords:naver-trend→naver_trend_20260623). GSC striking-distance(순위 5~14위)+네이버 트렌드 근거로 기존 43종과 비중복 신규 토픽 5편 선정:
+- cd-rate-etf(CD금리·파킹형 단기자금 ETF) — 'cd금리액티브 분배금' 10.5위·'단기채권' 등 클러스터. 분배금 누적 구조·예금자보호 아님·세금.
+- quantum-computing-etf(양자컴퓨팅 ETF) — '미국양자컴퓨팅 etf 구성종목/코드/총보수' 4~10위. 순수양자 vs 빅테크·초기산업 고변동.
+- factor-etf(퀄리티·팩터 스마트베타 ETF) — 'kodex 퀄리티plus 총보수' 9.5위·'미국퀄리티배당' 7위·'모멘텀' 19위. 5대 팩터·초과수익 vs 부진구간.
+- bank-etf(은행·금융 고배당 ETF) — 'kodex/tiger 은행 etf 종목코드' 7~9위. 예대마진·밸류업·금리/PF/규제 위험.
+- bond-mixed-etf(채권혼합형 ETF) — '삼성전자sk하이닉스채권혼합50'·'애플채권혼합'·'미국테크top10채권혼합'. 지수/개별주 혼합·연금 안전자산.
+각 5섹션+직답+HowTo+FAQ(4~5)+비교표. section 재사용(ETF 채권/입문/테마/배당), 클러스터 3곳(테마·섹터/배당·인컴/전략·자산배분) 배치. us-dividend가 이미 '미국배당다우존스/SCHD' 점유 → SCHD 토픽 의도적 회피.
+검토 반영(5병렬 서브에이전트 적대적 검토): YMYL 세금 정밀화 — 비주식형 ETF 매매차익은 '매매차익과 과표기준가 상승분 중 작은 값' 기준 과세로 정정(cd-rate·bond-mixed 본문+FAQ). 예금자보호 한도 구체수치 제거(변동 규제). 채권혼합 연금 '무조건 100%' 단정 회피 문구 추가. bank 국내상장 vs 미국 직접상장 세금 구분 + 'KODEX·TIGER 은행 ETF 종목코드' FAQ 추가(GSC 타깃). quantum H2 '단점' 롱테일 노출. factor 전 항목 통과. 가이드 43→48종.
+검증: tsc 0·cf:build EXIT=0·5편 prerender FAQPage·HowTo·Article·BreadcrumbList·직답·leak 0·sitemap SSoT 자동등록. 라이브 5/5 200 확인 예정.
+★오늘 링크: /guide/cd-rate-etf, /guide/quantum-computing-etf, /guide/factor-etf, /guide/bank-etf, /guide/bond-mixed-etf
