@@ -1097,3 +1097,15 @@ A. OS 2026-06-23(화) 검증. 신선 데이터 수집(keywords:gsc→gsc_2026062
 검토 반영(5병렬 서브에이전트 적대적 검토): YMYL 세금 정밀화 — 비주식형 ETF 매매차익은 '매매차익과 과표기준가 상승분 중 작은 값' 기준 과세로 정정(cd-rate·bond-mixed 본문+FAQ). 예금자보호 한도 구체수치 제거(변동 규제). 채권혼합 연금 '무조건 100%' 단정 회피 문구 추가. bank 국내상장 vs 미국 직접상장 세금 구분 + 'KODEX·TIGER 은행 ETF 종목코드' FAQ 추가(GSC 타깃). quantum H2 '단점' 롱테일 노출. factor 전 항목 통과. 가이드 43→48종.
 검증: tsc 0·cf:build EXIT=0·5편 prerender FAQPage·HowTo·Article·BreadcrumbList·직답·leak 0·sitemap SSoT 자동등록. 라이브 5/5 200 확인 예정.
 ★오늘 링크: /guide/cd-rate-etf, /guide/quantum-computing-etf, /guide/factor-etf, /guide/bank-etf, /guide/bond-mixed-etf
+
+### Q. (06-24) 오늘 포스팅 — 데이터 기반 롱테일 5편.
+A. OS 2026-06-24(수) 검증. 신선 데이터 수집(keywords:gsc→gsc_20260622 546쿼리·keywords:naver-trend→naver_trend_20260624). GSC striking-distance+군집 빈도 근거, 기존 48종과 비중복 신규 토픽 5편:
+- us-treasury-etf(미국 국채 ETF) — '미국채10년선물 종목코드' 7.3위 등 국채 군집 15건. 만기별(초단기~30년)·금리·가격 역관계·환헤지(H)·장기채 변동성.
+- china-etf(중국 ETF) — 차이나/CSI300/항셍테크 12건. 본토(A주)·홍콩·테마 구분·정책 규제·미중 갈등.
+- trf-etf(TRF 자산배분 ETF) — 'trf3070/5050'·자산배분 4건. 고정비율·자동 리밸런싱·TDF와 차이.
+- value-up-etf(코리아 밸류업 ETF) — 밸류업/배당성장 3건 + 정책 테마. 저PBR·주주환원·정책 유도(강제 아님).
+- us-semiconductor-etf(미국 반도체 ETF) — '미국반도체 종목코드' 10.8위·'팹리스' 8위 등 21건(최다). 필라델피아반도체(SOX)·설계/제조/장비·ai-semi와 명시적 차별화(카니발 방지).
+각 5섹션+직답+HowTo+FAQ4+비교표. section 재사용(채권/해외상장/적립식/배당/테마), 클러스터 4곳 배치(전략·자산배분/해외·환율/배당·인컴/테마·섹터).
+검토 반영(5병렬 적대적): 세금 문구 정밀·가독 정정 — 비주식형 매매차익을 '실제 매매차익과 과표기준가 상승분 중 작은 값' 기준으로 통일(어제 cd-rate/bond-mixed 포함 site-wide). 중국 'H주' 오류 정정(항셍테크는 H주 아님→'홍콩 상장'). 미국국채 달러 약세 단정 완화('항상 그렇지는 않아'). 미국반도체 ADR 명확화·H2 '팹리스'·종목코드 확인법. 밸류업 개별상품 과세유형 확인 캐비엇. 가이드 48→53종.
+검증: tsc 0·cf:build EXIT=0·5편 prerender FAQPage·HowTo·Article·BreadcrumbList·직답·leak 0·sitemap SSoT 자동등록. 라이브 5/5 200 확인 예정.
+★오늘 링크: /guide/us-treasury-etf, /guide/china-etf, /guide/trf-etf, /guide/value-up-etf, /guide/us-semiconductor-etf
