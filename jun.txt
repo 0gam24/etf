@@ -1109,3 +1109,15 @@ A. OS 2026-06-24(수) 검증. 신선 데이터 수집(keywords:gsc→gsc_2026062
 검토 반영(5병렬 적대적): 세금 문구 정밀·가독 정정 — 비주식형 매매차익을 '실제 매매차익과 과표기준가 상승분 중 작은 값' 기준으로 통일(어제 cd-rate/bond-mixed 포함 site-wide). 중국 'H주' 오류 정정(항셍테크는 H주 아님→'홍콩 상장'). 미국국채 달러 약세 단정 완화('항상 그렇지는 않아'). 미국반도체 ADR 명확화·H2 '팹리스'·종목코드 확인법. 밸류업 개별상품 과세유형 확인 캐비엇. 가이드 48→53종.
 검증: tsc 0·cf:build EXIT=0·5편 prerender FAQPage·HowTo·Article·BreadcrumbList·직답·leak 0·sitemap SSoT 자동등록. 라이브 5/5 200 확인 예정.
 ★오늘 링크: /guide/us-treasury-etf, /guide/china-etf, /guide/trf-etf, /guide/value-up-etf, /guide/us-semiconductor-etf
+
+### Q. (06-25) 오늘 포스팅 25일자 — 데이터 기반 롱테일 5편.
+A. OS 2026-06-25(목) 검증. 신선 데이터 수집(keywords:gsc→gsc_20260623·keywords:naver-trend→naver_trend_20260625). GSC 군집 빈도 근거, 기존 53종과 비중복 신규 토픽 5편:
+- shipbuilding-etf(조선 ETF) — 조선/중공업/기자재 5건. HD현대중공업·한화오션·삼성중공업 빅3·기자재, 친환경 선박 슈퍼사이클·수주 사이클 위험.
+- japan-etf(일본 ETF) — 일본/TOPIX/일본반도체 5건. 닛케이225(주가가중) vs TOPIX(시총가중)·엔화 환헤지(H).
+- humanoid-robot-etf(휴머노이드 로봇 ETF) — 휴머노이드 3건. 인간형 로봇 특화·robot-etf와 명시적 차별화(카니발 방지)·초기산업 고변동.
+- dividend-growth-etf(배당성장 ETF) — 배당성장 2건. 배당귀족·복리, 고배당과 차이(현재수익률↓ vs 배당+주가 성장).
+- corporate-bond-etf(회사채 ETF) — '회사채 etf'(0119h0) 12위 등. 신용 스프레드·등급(AA/BBB/하이일드)·금리(듀레이션) 위험, bond/us-treasury와 차별화.
+각 5섹션+직답+HowTo+FAQ(4~5)+비교표. section 재사용(테마/해외상장/배당/채권), 클러스터 4곳 배치(테마·섹터/해외·환율/배당·인컴/전략·자산배분).
+검토 반영(5병렬 적대적): P0 차단 0건. 조선 '종목코드' FAQ 추가(GSC 의도 대응). 휴머노이드 FAQ '단점·위험' 롱테일. 배당성장 FAQ 세금 '중 작은 값' 정밀화. 회사채 H2 '우량회사채·하이일드' 노출. 세금은 비주식형 '실제 매매차익과 과표기준가 상승분 중 작은 값' 하우스 문구 일관 적용. 가이드 53→58종.
+검증: tsc 0·cf:build EXIT=0·5편 prerender FAQPage·HowTo·Article·BreadcrumbList·직답·leak 0·sitemap SSoT 자동등록. 라이브 5/5 200 확인 예정.
+★오늘 링크: /guide/shipbuilding-etf, /guide/japan-etf, /guide/humanoid-robot-etf, /guide/dividend-growth-etf, /guide/corporate-bond-etf
