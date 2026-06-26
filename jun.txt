@@ -1133,3 +1133,11 @@ A. OS 2026-06-26(금) 검증. 신선 데이터 수집(keywords:gsc→gsc_2026062
 검토 반영(5병렬 적대적): P0 차단 0건. 전기차·태양광 FAQ 세금 '중 작은 값' 정밀화. 위클리커버드콜 ROC 한국 과세현실 보강(미국식 비과세 ROC 미적용)+월간vs위클리 차별화 문장. 빅테크 'M7' 병기. 태양광 H2 '풍력' 노출. 가이드 58→63종.
 검증: tsc 0·cf:build EXIT=0·5편 prerender FAQPage·HowTo·Article·BreadcrumbList·직답·leak 0·sitemap SSoT 자동등록. 라이브 5/5 200 확인 예정.
 ★오늘 링크: /guide/weekly-covered-call-etf, /guide/us-bigtech-etf, /guide/ev-etf, /guide/copper-etf, /guide/solar-energy-etf
+
+### Q. (06-26 추가) 사용자 지정 10개 제목 — ISA·연금저축·증여 등 절세계좌 롱테일 전체 포스팅.
+A. 사용자가 직접 제목 10개 제시("각각 모두 포스팅"). 결정단계 고의도 롱테일(ISA 만기·연금이전·중도인출·일반vsISA세금·직투vsISA·자녀증여·단일종목레버리지·예수금·연금ETF매매·사회초년생포트). YMYL 세금 중심이라 기존 isa-account-etf/isa-vs-pension/retirement에서 사이트 표준 수치·캐비엇 톤 먼저 확인 후 일관 작성(비과세 200/400만·9.9%·연 2000만·총1억·3년·전환 10%/300만/별도·연금소득세 3.3~5.5%·기타소득세 16.5%·양도세 22%/250만·증여공제 미성년 2000만/성년 5000만).
+발행 10편: isa-to-pension-transfer·pension-fund-etf-trading·isa-maturity-etf·isa-vs-general-account-etf·isa-withdrawal-rules·young-investor-etf-portfolio·single-stock-leverage-etf·pension-fund-cash-drag·us-direct-vs-isa-etf·child-investment-gift-tax. 각 4섹션+직답+HowTo+FAQ(4~5)+비교표. section 재사용(ISA/은퇴/ETF세금/적립식/레버리지/비교), 클러스터(세금·절세 계좌 8 + 기초·입문 1 + 전략·자산배분 1).
+#7 단일종목레버리지: 사용자 제목의 "최근 코스피 폭락"을 특정 사건 단정 회피→"급락 같은 국면" 일반론으로 작성(날짜·폭락 사실 비단정). 음의 복리·50%하락=100%상승·일일추종 정확.
+검토 반영(10병렬 적대적, 웹 출처 교차검증): 전 편 P0 세법 정확성 통과. ISA연금이전 '일반이체≠전환 전용절차' 주의 추가. isa-maturity 60일 요건 캐비엇. 연금ETF매매 1500만 종합과세 한 줄. 직투vsISA '250만 이하라 직투 유리' 오도 논리 정정. 자녀증여 ETF평가 '상장주식과 다를 수 있음' 명확화+H2 '자녀 명의'. 사회초년생 적립식 하락 평가손 캐비엇. 가이드 63→73종.
+검증: tsc 0·cf:build EXIT=0·10편 prerender FAQPage·HowTo·Article·직답·leak 0·sitemap SSoT 자동등록. 라이브 10/10 200 확인 예정.
+★오늘 추가 링크: /guide/isa-to-pension-transfer, /guide/pension-fund-etf-trading, /guide/isa-maturity-etf, /guide/isa-vs-general-account-etf, /guide/isa-withdrawal-rules, /guide/young-investor-etf-portfolio, /guide/single-stock-leverage-etf, /guide/pension-fund-cash-drag, /guide/us-direct-vs-isa-etf, /guide/child-investment-gift-tax
