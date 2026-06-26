@@ -1141,3 +1141,16 @@ A. 사용자가 직접 제목 10개 제시("각각 모두 포스팅"). 결정단
 검토 반영(10병렬 적대적, 웹 출처 교차검증): 전 편 P0 세법 정확성 통과. ISA연금이전 '일반이체≠전환 전용절차' 주의 추가. isa-maturity 60일 요건 캐비엇. 연금ETF매매 1500만 종합과세 한 줄. 직투vsISA '250만 이하라 직투 유리' 오도 논리 정정. 자녀증여 ETF평가 '상장주식과 다를 수 있음' 명확화+H2 '자녀 명의'. 사회초년생 적립식 하락 평가손 캐비엇. 가이드 63→73종.
 검증: tsc 0·cf:build EXIT=0·10편 prerender FAQPage·HowTo·Article·직답·leak 0·sitemap SSoT 자동등록. 라이브 10/10 200 확인 예정.
 ★오늘 추가 링크: /guide/isa-to-pension-transfer, /guide/pension-fund-etf-trading, /guide/isa-maturity-etf, /guide/isa-vs-general-account-etf, /guide/isa-withdrawal-rules, /guide/young-investor-etf-portfolio, /guide/single-stock-leverage-etf, /guide/pension-fund-cash-drag, /guide/us-direct-vs-isa-etf, /guide/child-investment-gift-tax
+
+### Q. (06-27) 오늘 포스팅 — 데이터/커버리지 갭 기반 롱테일 5편.
+A. OS 2026-06-27(토) 검증. GSC(gsc_20260625)+네이버 트렌드. GSC 윈도가 신규 사이트라 테마 신호 얇아, 실수요+커버리지 갭 가중해 기존 73종 비중복 5편:
+- etf-distribution-date(ETF 분배락·분배기준일) — 월배당 핵심 의도. 분배기준일/분배락일/지급일·T+2 매수 타이밍.
+- europe-etf(유럽 ETF) — 해외 지역 공백(미·중·일·인도→유럽 추가). 유로스탁스50·명품·방산·환헤지.
+- construction-etf(건설 ETF) — 'kodex 건설 etf' 18위. 원전·전력·해외수주·부동산 PF 위험.
+- auto-etf(자동차 ETF) — 현대차·기아·부품·자율주행, ev-etf와 차별화(내연기관 포함 섹터 전반).
+- silver-etf(은 ETF) — 금속 클러스터 완성(금·구리·은). 안전자산+산업금속 이중성·금보다 변동 큼.
+각 4섹션+직답+HowTo+FAQ4+비교표. section 재사용(분배금/해외상장/테마/원자재), 클러스터 4곳.
+검토 반영(5병렬 적대적, 웹 교차검증): **분배락 P0 정정** — T+2 결제상 '분배기준일 1~2거래일 전' 오류→'2거래일 전(분배락일 전날)'로 4곳(answer·본문·표·FAQ) 수정(1거래일 전=분배락일은 너무 늦어 못 받음). 건설 종목코드 확인법, 은 면책 추가. 나머지 통과.
+빌드 사건: 이번 세션 누적(서브에이전트 ~55 + 다회 빌드)으로 Windows 메모리 고갈 → next build 정적생성 워커(11개) 0xC0000409 크래시. HEAD(73종)도 동일 크래시로 환경 문제 확인(내 콘텐츠 무관, tsc 통과). 임시 next.config experimental.cpus:2로 워커 축소→빌드 성공(1385/1385)→config 원복(미커밋). Cloudflare(Linux) 빌드는 메모리 충분해 영향 없음.
+검증: tsc 0·cf:build EXIT=0(cpus:2)·5편 prerender FAQPage·HowTo·Article·직답·leak 0·next.config 원복 확인·sitemap SSoT 자동등록. 가이드 73→78종. 라이브 5/5 200 확인 예정.
+★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/etf-distribution-date, https://iknowhowinfo.com/guide/europe-etf, https://iknowhowinfo.com/guide/construction-etf, https://iknowhowinfo.com/guide/auto-etf, https://iknowhowinfo.com/guide/silver-etf
