@@ -1121,3 +1121,15 @@ A. OS 2026-06-25(목) 검증. 신선 데이터 수집(keywords:gsc→gsc_2026062
 검토 반영(5병렬 적대적): P0 차단 0건. 조선 '종목코드' FAQ 추가(GSC 의도 대응). 휴머노이드 FAQ '단점·위험' 롱테일. 배당성장 FAQ 세금 '중 작은 값' 정밀화. 회사채 H2 '우량회사채·하이일드' 노출. 세금은 비주식형 '실제 매매차익과 과표기준가 상승분 중 작은 값' 하우스 문구 일관 적용. 가이드 53→58종.
 검증: tsc 0·cf:build EXIT=0·5편 prerender FAQPage·HowTo·Article·BreadcrumbList·직답·leak 0·sitemap SSoT 자동등록. 라이브 5/5 200 확인 예정.
 ★오늘 링크: /guide/shipbuilding-etf, /guide/japan-etf, /guide/humanoid-robot-etf, /guide/dividend-growth-etf, /guide/corporate-bond-etf
+
+### Q. (06-26) 오늘 포스팅 — 데이터 기반 롱테일 5편.
+A. OS 2026-06-26(금) 검증. 신선 데이터 수집(keywords:gsc→gsc_20260624·keywords:naver-trend→naver_trend_20260626). GSC 군집 빈도 근거, 기존 58종과 비중복 신규 토픽 5편:
+- weekly-covered-call-etf(위클리·타겟데일리 커버드콜 ETF) — 위클리/타겟데일리 커버드콜 군집 21건(최다). 매주·매일 옵션매도·높은 분배율 이면(상승제한·원금환원·총수익), covered-call과 차별화.
+- us-bigtech-etf(미국 빅테크 ETF) — 미국테크TOP/빅테크 13건. 매그니피센트7(M7)·소수종목 쏠림, ai-semi/us-semi와 차별화.
+- ev-etf(전기차 ETF) — 전기차/EV 4건. 완성차·밸류체인, battery(2차전지)와 차별화·수요둔화(캐즘) 위험.
+- copper-etf(구리 ETF) — 구리/자원 3건. 실물/선물/광산기업·전기화 수요·닥터코퍼 경기민감·롤오버.
+- solar-energy-etf(태양광·신재생에너지 ETF) — 태양광&ESS + 에너지 클러스터. 태양광·풍력·ESS·금리/정책/중국 공급과잉, ai-power와 차별화.
+각 5섹션+직답+HowTo+FAQ4+비교표. section 재사용(커버드콜/테마/원자재), 클러스터 3곳 배치(배당·인컴/테마·섹터/전략·자산배분).
+검토 반영(5병렬 적대적): P0 차단 0건. 전기차·태양광 FAQ 세금 '중 작은 값' 정밀화. 위클리커버드콜 ROC 한국 과세현실 보강(미국식 비과세 ROC 미적용)+월간vs위클리 차별화 문장. 빅테크 'M7' 병기. 태양광 H2 '풍력' 노출. 가이드 58→63종.
+검증: tsc 0·cf:build EXIT=0·5편 prerender FAQPage·HowTo·Article·BreadcrumbList·직답·leak 0·sitemap SSoT 자동등록. 라이브 5/5 200 확인 예정.
+★오늘 링크: /guide/weekly-covered-call-etf, /guide/us-bigtech-etf, /guide/ev-etf, /guide/copper-etf, /guide/solar-energy-etf
