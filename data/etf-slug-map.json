@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-06-21T04:23:55.419Z",
-  "sourceBaseDate": "20260618",
-  "count": 1140,
+  "generatedAt": "2026-06-28T04:00:48.832Z",
+  "sourceBaseDate": "20260625",
+  "count": 1142,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -290,7 +290,6 @@
     "300640": "rise-gaming",
     "300950": "kodex-gaming",
     "301400": "plus-kosdaq150",
-    "301410": "plus-kosdaq150futures-inverse",
     "302190": "tiger-302190",
     "302450": "rise-kospi",
     "304660": "kodex-us30yh",
@@ -479,7 +478,6 @@
     "419650": "plus-global-419650",
     "419890": "kiwoom-bondesgactive",
     "421320": "plus-aerospaceuam",
-    "422260": "vita-mzactive",
     "422420": "rise-batteryactive",
     "423160": "kodex-kofrrate-activesynthetic",
     "423170": "sol-globalaisemiconductoractive",
@@ -634,7 +632,6 @@
     "460270": "kiwoom-usdsofrrate-activesynthetic",
     "460660": "rise-us-sp",
     "460960": "ace-globaltop10-460960",
-    "461270": "ace-26-06-corporate-bondaa-plusactive",
     "461340": "hanaro-globalaiactive-461340",
     "461450": "kodex-kosdaqglobal",
     "461460": "plus-treasury-bond10year-active",
@@ -1142,7 +1139,12 @@
     "0206G0": "1q-bond-blend50",
     "0193M0": "bnk-27-12-aaaplusactive",
     "0207G0": "sol-aerospace",
-    "0207Z0": "kiwoom-usdatainfrastructure"
+    "0207Z0": "kiwoom-usdatainfrastructure",
+    "0208N0": "ibk-kospiactive",
+    "0209D0": "kodex-solid-state-batteryess-top2plus",
+    "0209Z0": "ace-aitop10",
+    "0210A0": "ace-ksemiconductortop2",
+    "0210E0": "plus-200covered-callactive"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -2293,10 +2295,6 @@
       "code": "301400",
       "name": "PLUS 코스닥150"
     },
-    "plus-kosdaq150futures-inverse": {
-      "code": "301410",
-      "name": "PLUS 코스닥150선물인버스"
-    },
     "tiger-302190": {
       "code": "302190",
       "name": "TIGER 중장기국채"
@@ -3049,10 +3047,6 @@
       "code": "421320",
       "name": "PLUS 우주항공"
     },
-    "vita-mzactive": {
-      "code": "422260",
-      "name": "VITA MZ소비액티브"
-    },
     "rise-batteryactive": {
       "code": "422420",
       "name": "RISE 2차전지액티브"
@@ -3668,10 +3662,6 @@
     "ace-globaltop10-460960": {
       "code": "460960",
       "name": "ACE 글로벌인컴TOP10"
-    },
-    "ace-26-06-corporate-bondaa-plusactive": {
-      "code": "461270",
-      "name": "ACE 26-06 회사채(AA-이상)액티브"
     },
     "hanaro-globalaiactive-461340": {
       "code": "461340",
@@ -5704,6 +5694,26 @@
     "kiwoom-usdatainfrastructure": {
       "code": "0207Z0",
       "name": "KIWOOM 미국우주데이터센터인프라"
+    },
+    "ibk-kospiactive": {
+      "code": "0208N0",
+      "name": "IBK 코스피액티브"
+    },
+    "kodex-solid-state-batteryess-top2plus": {
+      "code": "0209D0",
+      "name": "KODEX 전고체배터리ESS TOP2플러스"
+    },
+    "ace-aitop10": {
+      "code": "0209Z0",
+      "name": "ACE 코리아AI전력TOP10"
+    },
+    "ace-ksemiconductortop2": {
+      "code": "0210A0",
+      "name": "ACE K반도체TOP2+"
+    },
+    "plus-200covered-callactive": {
+      "code": "0210E0",
+      "name": "PLUS 200커버드콜액티브"
     }
   }
 }

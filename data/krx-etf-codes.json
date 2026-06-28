@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-06-21T04:23:55.250Z",
-  "baseDate": "20260618",
-  "count": 1140,
+  "fetchedAt": "2026-06-28T04:00:48.672Z",
+  "baseDate": "20260625",
+  "count": 1142,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -1438,11 +1438,6 @@
       "issueCode": "KR7301400008",
       "name": "PLUS 코스닥150"
     },
-    "301410": {
-      "shortcode": "301410",
-      "issueCode": "KR7301410007",
-      "name": "PLUS 코스닥150선물인버스"
-    },
     "302190": {
       "shortcode": "302190",
       "issueCode": "KR7302190004",
@@ -2383,11 +2378,6 @@
       "issueCode": "KR7421320003",
       "name": "PLUS 우주항공"
     },
-    "422260": {
-      "shortcode": "422260",
-      "issueCode": "KR7422260000",
-      "name": "VITA MZ소비액티브"
-    },
     "422420": {
       "shortcode": "422420",
       "issueCode": "KR7422420000",
@@ -3157,11 +3147,6 @@
       "shortcode": "460960",
       "issueCode": "KR7460960008",
       "name": "ACE 글로벌인컴TOP10"
-    },
-    "461270": {
-      "shortcode": "461270",
-      "issueCode": "KR7461270001",
-      "name": "ACE 26-06 회사채(AA-이상)액티브"
     },
     "461340": {
       "shortcode": "461340",
@@ -5663,6 +5648,31 @@
       "issueCode": "KR70207Z0004",
       "name": "KIWOOM 미국우주데이터센터인프라"
     },
+    "0208N0": {
+      "shortcode": "0208N0",
+      "issueCode": "KR70208N0007",
+      "name": "IBK 코스피액티브"
+    },
+    "0209D0": {
+      "shortcode": "0209D0",
+      "issueCode": "KR70209D0008",
+      "name": "KODEX 전고체배터리ESS TOP2플러스"
+    },
+    "0209Z0": {
+      "shortcode": "0209Z0",
+      "issueCode": "KR70209Z0002",
+      "name": "ACE 코리아AI전력TOP10"
+    },
+    "0210A0": {
+      "shortcode": "0210A0",
+      "issueCode": "KR70210A0008",
+      "name": "ACE K반도체TOP2+"
+    },
+    "0210E0": {
+      "shortcode": "0210E0",
+      "issueCode": "KR70210E0004",
+      "name": "PLUS 200커버드콜액티브"
+    },
     "069500": {
       "shortcode": "069500",
       "issueCode": "KR7069500007",
@@ -7049,6 +7059,31 @@
       "shortcode": "0207Z0",
       "issueCode": "KR70207Z0004",
       "name": "KIWOOM 미국우주데이터센터인프라"
+    },
+    "KR70208N0007": {
+      "shortcode": "0208N0",
+      "issueCode": "KR70208N0007",
+      "name": "IBK 코스피액티브"
+    },
+    "KR70209D0008": {
+      "shortcode": "0209D0",
+      "issueCode": "KR70209D0008",
+      "name": "KODEX 전고체배터리ESS TOP2플러스"
+    },
+    "KR70209Z0002": {
+      "shortcode": "0209Z0",
+      "issueCode": "KR70209Z0002",
+      "name": "ACE 코리아AI전력TOP10"
+    },
+    "KR70210A0008": {
+      "shortcode": "0210A0",
+      "issueCode": "KR70210A0008",
+      "name": "ACE K반도체TOP2+"
+    },
+    "KR70210E0004": {
+      "shortcode": "0210E0",
+      "issueCode": "KR70210E0004",
+      "name": "PLUS 200커버드콜액티브"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -8525,11 +8560,6 @@
       "issueCode": "KR7301400008",
       "name": "PLUS 코스닥150"
     },
-    "KR7301410007": {
-      "shortcode": "301410",
-      "issueCode": "KR7301410007",
-      "name": "PLUS 코스닥150선물인버스"
-    },
     "KR7302190004": {
       "shortcode": "302190",
       "issueCode": "KR7302190004",
@@ -9470,11 +9500,6 @@
       "issueCode": "KR7421320003",
       "name": "PLUS 우주항공"
     },
-    "KR7422260000": {
-      "shortcode": "422260",
-      "issueCode": "KR7422260000",
-      "name": "VITA MZ소비액티브"
-    },
     "KR7422420000": {
       "shortcode": "422420",
       "issueCode": "KR7422420000",
@@ -10244,11 +10269,6 @@
       "shortcode": "460960",
       "issueCode": "KR7460960008",
       "name": "ACE 글로벌인컴TOP10"
-    },
-    "KR7461270001": {
-      "shortcode": "461270",
-      "issueCode": "KR7461270001",
-      "name": "ACE 26-06 회사채(AA-이상)액티브"
     },
     "KR7461340002": {
       "shortcode": "461340",
@@ -12753,6 +12773,31 @@
       "name": "KIWOOM 미국우주데이터센터인프라"
     },
     {
+      "shortcode": "0208N0",
+      "issueCode": "KR70208N0007",
+      "name": "IBK 코스피액티브"
+    },
+    {
+      "shortcode": "0209D0",
+      "issueCode": "KR70209D0008",
+      "name": "KODEX 전고체배터리ESS TOP2플러스"
+    },
+    {
+      "shortcode": "0209Z0",
+      "issueCode": "KR70209Z0002",
+      "name": "ACE 코리아AI전력TOP10"
+    },
+    {
+      "shortcode": "0210A0",
+      "issueCode": "KR70210A0008",
+      "name": "ACE K반도체TOP2+"
+    },
+    {
+      "shortcode": "0210E0",
+      "issueCode": "KR70210E0004",
+      "name": "PLUS 200커버드콜액티브"
+    },
+    {
       "shortcode": "069500",
       "issueCode": "KR7069500007",
       "name": "KODEX 200"
@@ -14228,11 +14273,6 @@
       "name": "PLUS 코스닥150"
     },
     {
-      "shortcode": "301410",
-      "issueCode": "KR7301410007",
-      "name": "PLUS 코스닥150선물인버스"
-    },
-    {
       "shortcode": "302190",
       "issueCode": "KR7302190004",
       "name": "TIGER 중장기국채"
@@ -15173,11 +15213,6 @@
       "name": "PLUS 우주항공"
     },
     {
-      "shortcode": "422260",
-      "issueCode": "KR7422260000",
-      "name": "VITA MZ소비액티브"
-    },
-    {
       "shortcode": "422420",
       "issueCode": "KR7422420000",
       "name": "RISE 2차전지액티브"
@@ -15946,11 +15981,6 @@
       "shortcode": "460960",
       "issueCode": "KR7460960008",
       "name": "ACE 글로벌인컴TOP10"
-    },
-    {
-      "shortcode": "461270",
-      "issueCode": "KR7461270001",
-      "name": "ACE 26-06 회사채(AA-이상)액티브"
     },
     {
       "shortcode": "461340",
