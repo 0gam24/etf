@@ -1154,3 +1154,16 @@ A. OS 2026-06-27(토) 검증. GSC(gsc_20260625)+네이버 트렌드. GSC 윈도�
 빌드 사건: 이번 세션 누적(서브에이전트 ~55 + 다회 빌드)으로 Windows 메모리 고갈 → next build 정적생성 워커(11개) 0xC0000409 크래시. HEAD(73종)도 동일 크래시로 환경 문제 확인(내 콘텐츠 무관, tsc 통과). 임시 next.config experimental.cpus:2로 워커 축소→빌드 성공(1385/1385)→config 원복(미커밋). Cloudflare(Linux) 빌드는 메모리 충분해 영향 없음.
 검증: tsc 0·cf:build EXIT=0(cpus:2)·5편 prerender FAQPage·HowTo·Article·직답·leak 0·next.config 원복 확인·sitemap SSoT 자동등록. 가이드 73→78종. 라이브 5/5 200 확인 예정.
 ★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/etf-distribution-date, https://iknowhowinfo.com/guide/europe-etf, https://iknowhowinfo.com/guide/construction-etf, https://iknowhowinfo.com/guide/auto-etf, https://iknowhowinfo.com/guide/silver-etf
+
+### Q. (06-28) 오늘 포스팅 — 데이터/커버리지 갭 롱테일 5편.
+A. OS 2026-06-28(일) 검증. GSC(gsc_20260626) 윈도 얇아 실수요+커버리지 갭 가중, 기존 78종 비중복 5편:
+- rare-earth-etf(희토류·핵심광물 ETF) — 공급망·방산·EV·반도체 핫 테마, 중국 정제 집중·수출통제.
+- vietnam-etf(베트남 ETF) — 신흥국 해외 공백, VN30·차이나+1.
+- berkshire-etf(버크셔 ETF) — 워런버핏 포트폴리오(13F 시차·무배당·후계 리스크).
+- entertainment-etf(엔터·미디어 ETF) — K-콘텐츠·미디어, 소수 기획사 집중·아티스트 리스크.
+- us-reit-etf(미국 리츠 ETF) — GSC 리츠 5건, 데이터센터·물류·금리 민감, reit-etf와 지역 차별화.
+각 4섹션+직답+HowTo+FAQ4+비교표. section 재사용(테마/해외상장/리츠), 클러스터 3곳(테마·섹터/해외·환율/배당·인컴).
+검토 반영(5병렬 적대적, 웹 교차검증): 전 편 P0 사실 통과. 엔터 세금 '중 작은 값' 누락 정정(P0). 축약 세금문구 site-wide 정밀화(5곳→실제 매매차익과 과표기준가 상승분 중 작은 값). reit-etf 키워드에서 '미국 리츠 ETF' 제거(us-reit-etf와 카니발 방지). 가이드 78→83종.
+빌드: 새 세션이라 메모리 정상 → 기본 11워커로 빌드 성공(1390/1390, 42s). 어제 크래시는 세션 메모리 고갈 확인(cpus 우회 불필요).
+검증: tsc 0·cf:build EXIT=0·5편 prerender FAQPage·HowTo·Article·직답·leak 0·sitemap SSoT 자동등록. 라이브 5/5 200 확인 예정.
+★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/rare-earth-etf, https://iknowhowinfo.com/guide/vietnam-etf, https://iknowhowinfo.com/guide/berkshire-etf, https://iknowhowinfo.com/guide/entertainment-etf, https://iknowhowinfo.com/guide/us-reit-etf
