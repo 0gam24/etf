@@ -1180,3 +1180,13 @@ A. OS 2026-06-29(월) 검증. GSC(gsc_20260627) 윈도 얇아 실수요+커버�
 빌드: 새 세션 메모리 정상 → 기본 워커 빌드 성공.
 검증: tsc 0·cf:build EXIT=0·5편 prerender FAQPage·HowTo·Article·직답·leak 0·sitemap SSoT 자동등록. 라이브 5/5 200 확인 예정.
 ★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/ai-software-etf, https://iknowhowinfo.com/guide/oil-etf, https://iknowhowinfo.com/guide/game-etf, https://iknowhowinfo.com/guide/luxury-etf, https://iknowhowinfo.com/guide/infrastructure-etf
+
+## 2026-06-29 · [기능 신설]
+
+### Q. https://bupyeongn.kr/feeds/ 페이지를 분석해서 이 웹사이트도 적용하자.
+A. bupyeong /feeds = '구독·피드(RSS·Atom·JSON)' 허브 페이지(혜택노트). 구성: 전체 피드(rss/atom/json)+카테고리별 RSS+AI·검색 엔진 파일(llms.txt·sitemap-index·robots)+"어떻게 쓰나요" 안내+<head> rel=alternate. WebFetch 403→브라우저 UA curl로 분석.
+인벤토리: 우리는 이미 rss.xml·llms.txt·sitemap-index/news/images/etf·robots.ts·layout의 rel=alternate(rss) 보유. 빠진 건 /feeds 허브 페이지 자체.
+사용자 범위 선택(AskUserQuestion): "허브 페이지만(추천)" — 신규 피드 포맷(atom/json/카테고리 RSS) 없이 기존 자산 링크 허브만.
+구현: src/app/feeds/page.tsx 신설(about-* 스타일 재사용, BreadcrumbList·canonical·OG, 전체 피드/AI·검색엔진/사용법 3섹션) + sitemap.ts·sitemap-images에 /feeds 등록 + SiteFooter에 '구독·피드' 링크. title 템플릿 중복(%s | Daily ETF Pulse) 발견→접미사 제거.
+검증: tsc 0·cf:build EXIT=0·/feeds prerender(title·BreadcrumbList·canonical·rel=alternate·rss.xml/llms.txt 링크)·leak 0. push b8ee1c7..87cc6c7.
+★링크: https://iknowhowinfo.com/feeds
