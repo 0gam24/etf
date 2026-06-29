@@ -4,6 +4,9 @@ import { getAllFeedItems, renderRss, DEFAULT_CHANNEL } from '@/lib/feed';
  *   포함: 모든 분석 글(pulse·surge·flow·income·breaking) + /today 일별 리포트.
  *   Atom·JSON·카테고리별 RSS는 /atom.xml · /feed.json · /rss/{category}.xml.
  */
+// 빌드 시점 prerender — content/* 파일시스템 접근이 빌드에서만 가능(런타임 Worker엔 없음).
+export const dynamic = 'force-static';
+
 export async function GET() {
   const rssFeed = renderRss(getAllFeedItems(), {
     ...DEFAULT_CHANNEL,
