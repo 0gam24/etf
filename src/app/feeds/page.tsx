@@ -1,14 +1,19 @@
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { FEED_CATEGORIES } from '@/lib/feed';
 
 export const metadata: Metadata = {
-  title: '구독 · 피드 (RSS)',
+  title: '구독 · 피드 (RSS·Atom·JSON)',
   description:
-    'Daily ETF Pulse의 매일 새 분석을 RSS 피드로 구독하세요. AI 답변 엔진·검색 엔진용 llms.txt·사이트맵·robots 안내까지 한 페이지에 정리했습니다.',
+    'Daily ETF Pulse의 매일 새 분석을 RSS·Atom·JSON Feed로 구독하세요. 카테고리별 RSS와 AI 답변 엔진·검색 엔진용 llms.txt·사이트맵·robots 안내까지 한 페이지에 정리했습니다.',
   alternates: {
     canonical: '/feeds',
-    types: { 'application/rss+xml': '/rss.xml' },
+    types: {
+      'application/rss+xml': '/rss.xml',
+      'application/atom+xml': '/atom.xml',
+      'application/feed+json': '/feed.json',
+    },
   },
   openGraph: {
     title: '구독 · 피드 (RSS)',
@@ -29,7 +34,17 @@ const SUBSCRIBE_FEEDS: FeedLink[] = [
   {
     href: '/rss.xml',
     label: 'RSS 피드 (전체)',
-    desc: '오늘의 관전포인트·급등 분석·자금 흐름·월배당·속보와 일별 종합 리포트까지, 매일 발행되는 새 글이 모두 담깁니다.',
+    desc: '오늘의 관전포인트·급등 분석·자금 흐름·월배당·속보와 일별 종합 리포트까지, 매일 발행되는 새 글이 모두 담깁니다. 가장 널리 쓰이는 표준입니다.',
+  },
+  {
+    href: '/atom.xml',
+    label: 'Atom 피드 (전체)',
+    desc: 'RSS와 같은 콘텐츠를 Atom 1.0 형식으로 제공합니다. Atom을 선호하는 피드 리더에서 쓰세요.',
+  },
+  {
+    href: '/feed.json',
+    label: 'JSON Feed (전체)',
+    desc: 'RSS와 같은 콘텐츠를 JSON Feed 1.1 형식으로 제공합니다. JSON 기반 리더나 직접 파싱에 편리합니다.',
   },
 ];
 
@@ -71,9 +86,9 @@ export default function FeedsPage() {
 
       <header className="about-hero">
         <div className="about-eyebrow">FEEDS · 구독</div>
-        <h1 className="about-title">구독 · 피드 (RSS)</h1>
+        <h1 className="about-title">구독 · 피드 (RSS·Atom·JSON)</h1>
         <p className="about-tagline">
-          Daily ETF Pulse의 매일 새 분석을 RSS 피드로 받아보세요. 즐겨 쓰는 피드 리더에 주소만 등록하면 새 글이 자동으로 도착합니다. AI·검색 엔진이 사이트를 정확히 읽도록 돕는 공개 파일도 함께 정리했습니다.
+          Daily ETF Pulse의 매일 새 분석을 RSS·Atom·JSON Feed로 받아보세요. 즐겨 쓰는 피드 리더에 주소만 등록하면 새 글이 자동으로 도착합니다. 원하는 주제만 받는 카테고리별 RSS와, AI·검색 엔진이 사이트를 정확히 읽도록 돕는 공개 파일도 함께 정리했습니다.
         </p>
       </header>
 
@@ -85,6 +100,21 @@ export default function FeedsPage() {
               <a href={f.href} target="_blank" rel="noopener noreferrer"><strong>{f.label}</strong></a>
               {' — '}{f.desc}
               <span style={{ color: 'var(--text-muted)' }}> ({f.href})</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="about-section">
+        <h2 className="about-h2">카테고리별 RSS</h2>
+        <p className="about-desc">
+          원하는 주제만 골라 구독하세요. 해당 카테고리에 새 글이 올라올 때만 받아볼 수 있습니다.
+        </p>
+        <ul className="about-list">
+          {FEED_CATEGORIES.map(c => (
+            <li key={c.slug}>
+              <a href={`/rss/${c.slug}.xml`} target="_blank" rel="noopener noreferrer"><strong>{c.name}</strong></a>
+              <span style={{ color: 'var(--text-muted)' }}> (/rss/{c.slug}.xml)</span>
             </li>
           ))}
         </ul>

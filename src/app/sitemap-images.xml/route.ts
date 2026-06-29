@@ -68,7 +68,7 @@ export async function GET() {
   const STATIC_PAGES: Array<{ path: string; title: string; category?: string }> = [
     { path: '/about',      title: 'Daily ETF Pulse 편집팀 — 발행 원칙·데이터 출처',  category: 'pulse' },
     { path: '/newsletter', title: 'Daily ETF Pulse 뉴스레터 — 매일 아침 9시 갱신',  category: 'pulse' },
-    { path: '/feeds',      title: '구독 · 피드 (RSS) — Daily ETF Pulse',            category: 'pulse' },
+    { path: '/feeds',      title: '구독 · 피드 (RSS·Atom·JSON) — Daily ETF Pulse',   category: 'pulse' },
     { path: '/resources',  title: 'ETF 학습 자료실 — 도서·도구 큐레이션',           category: 'income' },
     { path: '/compare',    title: 'ETF 1:1 비교 허브 — 운용사·섹터·환헤지',         category: 'flow' },
     { path: '/etf',        title: 'KRX 1095종 ETF 종목 사전',                      category: 'surge' },

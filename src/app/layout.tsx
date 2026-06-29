@@ -29,6 +29,8 @@ export const metadata: Metadata = {
     canonical: '/',
     types: {
       'application/rss+xml': '/rss.xml',
+      'application/atom+xml': '/atom.xml',
+      'application/feed+json': '/feed.json',
     },
   },
   openGraph: {
