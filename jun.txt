@@ -1167,3 +1167,16 @@ A. OS 2026-06-28(일) 검증. GSC(gsc_20260626) 윈도 얇아 실수요+커버�
 빌드: 새 세션이라 메모리 정상 → 기본 11워커로 빌드 성공(1390/1390, 42s). 어제 크래시는 세션 메모리 고갈 확인(cpus 우회 불필요).
 검증: tsc 0·cf:build EXIT=0·5편 prerender FAQPage·HowTo·Article·직답·leak 0·sitemap SSoT 자동등록. 라이브 5/5 200 확인 예정.
 ★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/rare-earth-etf, https://iknowhowinfo.com/guide/vietnam-etf, https://iknowhowinfo.com/guide/berkshire-etf, https://iknowhowinfo.com/guide/entertainment-etf, https://iknowhowinfo.com/guide/us-reit-etf
+
+### Q. (06-29) 오늘 포스팅 — 데이터/커버리지 갭 롱테일 5편.
+A. OS 2026-06-29(월) 검증. GSC(gsc_20260627) 윈도 얇아 실수요+커버리지 갭 가중, 기존 83종 비중복 5편:
+- ai-software-etf(AI 소프트웨어 ETF) — ai-semi(하드웨어)·ai-power(전력)와 구분, AI 응용·SaaS·수익화 단계.
+- oil-etf(원유 ETF) — WTI 선물·에너지, 롤오버 비용(콘탱고)·레버리지 음의복리, commodity와 구분.
+- game-etf(게임 ETF) — 게임 개발·퍼블리셔·플랫폼, entertainment(K-pop·미디어)와 구분.
+- luxury-etf(명품 ETF) — LVMH·에르메스 럭셔리, 브랜드 파워·중국 소비 의존, europe와 연계.
+- infrastructure-etf(글로벌 인프라 ETF) — 교통·유틸리티·통신, 안정 인컴·금리 민감, ai-power·리츠와 구분.
+각 4섹션+직답+HowTo+FAQ4+비교표. section 재사용(테마/원자재), 클러스터 2곳(테마·섹터/전략·자산배분).
+검토 반영(5병렬 적대적, 웹 교차검증): 전 편 P0 사실 통과(콘탱고·금리 민감성·중국 소비·카니발 차별화·세금 모두 확인). 선택 제안만 있어 일관성 위해 미반영(게임 '국내 주식형' 표현 유지). 가이드 83→88종.
+빌드: 새 세션 메모리 정상 → 기본 워커 빌드 성공.
+검증: tsc 0·cf:build EXIT=0·5편 prerender FAQPage·HowTo·Article·직답·leak 0·sitemap SSoT 자동등록. 라이브 5/5 200 확인 예정.
+★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/ai-software-etf, https://iknowhowinfo.com/guide/oil-etf, https://iknowhowinfo.com/guide/game-etf, https://iknowhowinfo.com/guide/luxury-etf, https://iknowhowinfo.com/guide/infrastructure-etf
