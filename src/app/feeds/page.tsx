@@ -1,7 +1,18 @@
 import type { Metadata } from 'next';
+import type { CSSProperties } from 'react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
-import { FEED_CATEGORIES } from '@/lib/feed';
+import { FEED_CATEGORIES, SITE_URL } from '@/lib/feed';
+
+// 전체 URL 링크 스타일 — 클릭하면 피드로 연결, 주소가 그대로 보이고 복사하기 쉬움
+const feedUrlStyle: CSSProperties = {
+  display: 'inline-block',
+  marginTop: '0.35rem',
+  fontFamily: 'var(--font-mono, ui-monospace, monospace)',
+  fontSize: '0.9em',
+  color: 'var(--accent-gold, #b8860b)',
+  wordBreak: 'break-all',
+};
 
 export const metadata: Metadata = {
   title: '구독 · 피드 (RSS·Atom·JSON)',
@@ -97,9 +108,9 @@ export default function FeedsPage() {
         <ul className="about-list">
           {SUBSCRIBE_FEEDS.map(f => (
             <li key={f.href}>
-              <a href={f.href} target="_blank" rel="noopener noreferrer"><strong>{f.label}</strong></a>
-              {' — '}{f.desc}
-              <span style={{ color: 'var(--text-muted)' }}> ({f.href})</span>
+              <strong>{f.label}</strong>{' — '}{f.desc}
+              <br />
+              <a href={f.href} target="_blank" rel="noopener noreferrer" style={feedUrlStyle}>{`${SITE_URL}${f.href}`}</a>
             </li>
           ))}
         </ul>
@@ -113,8 +124,9 @@ export default function FeedsPage() {
         <ul className="about-list">
           {FEED_CATEGORIES.map(c => (
             <li key={c.slug}>
-              <a href={`/rss/${c.slug}.xml`} target="_blank" rel="noopener noreferrer"><strong>{c.name}</strong></a>
-              <span style={{ color: 'var(--text-muted)' }}> (/rss/{c.slug}.xml)</span>
+              <strong>{c.name}</strong>
+              <br />
+              <a href={`/rss/${c.slug}.xml`} target="_blank" rel="noopener noreferrer" style={feedUrlStyle}>{`${SITE_URL}/rss/${c.slug}.xml`}</a>
             </li>
           ))}
         </ul>
@@ -128,8 +140,9 @@ export default function FeedsPage() {
         <ul className="about-list">
           {AI_SEARCH_FILES.map(f => (
             <li key={f.href}>
-              <a href={f.href} target="_blank" rel="noopener noreferrer"><strong>{f.label}</strong></a>
-              {' — '}{f.desc}
+              <strong>{f.label}</strong>{' — '}{f.desc}
+              <br />
+              <a href={f.href} target="_blank" rel="noopener noreferrer" style={feedUrlStyle}>{`${SITE_URL}${f.href}`}</a>
             </li>
           ))}
         </ul>
