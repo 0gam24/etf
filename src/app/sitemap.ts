@@ -85,6 +85,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   });
 
+  // 구독 · 피드 허브 (RSS·AI/검색 엔진 파일 안내)
+  routes.push({
+    url: `${baseUrl}/feeds`,
+    lastModified: getSiteLastModified() || fallback,
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  });
+
   // 가이드 인덱스 — 가이드 5종 중 가장 최근 lastReviewed
   const guideMostRecent = GUIDES
     .map(g => new Date(g.lastReviewed).getTime())

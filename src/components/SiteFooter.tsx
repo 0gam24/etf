@@ -186,6 +186,8 @@ export default function SiteFooter() {
       >
         <Link href="/about" style={{ color: 'var(--text-secondary)' }}>편집팀 소개</Link>
         <span style={{ color: 'var(--text-muted)' }} aria-hidden>·</span>
+        <Link href="/feeds" style={{ color: 'var(--text-secondary)' }}>구독 · 피드</Link>
+        <span style={{ color: 'var(--text-muted)' }} aria-hidden>·</span>
         <Link href="/privacy" style={{ color: 'var(--text-secondary)' }}>개인정보처리방침</Link>
         <span style={{ color: 'var(--text-muted)' }} aria-hidden>·</span>
         <Link href="/disclaimer" style={{ color: 'var(--text-secondary)' }}>면책조항</Link>
