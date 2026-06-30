@@ -1181,6 +1181,17 @@ A. OS 2026-06-29(월) 검증. GSC(gsc_20260627) 윈도 얇아 실수요+커버�
 검증: tsc 0·cf:build EXIT=0·5편 prerender FAQPage·HowTo·Article·직답·leak 0·sitemap SSoT 자동등록. 라이브 5/5 200 확인 예정.
 ★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/ai-software-etf, https://iknowhowinfo.com/guide/oil-etf, https://iknowhowinfo.com/guide/game-etf, https://iknowhowinfo.com/guide/luxury-etf, https://iknowhowinfo.com/guide/infrastructure-etf
 
+### Q. (06-30) 오늘 포스팅 링크 배포 안 됐으면 배포까지.
+A. OS 2026-06-30(화) 검증. 작업트리에 미커밋·미배포 상태로 대기 중이던 롱테일 5편(기존 88종 비중복) 확인 → 검증 후 배포.
+- bitcoin-etf(비트코인 ETF) — 미국 현물·선물·블록체인 기업 구분, 초고변동·규제·국내 거래제약, YMYL 고위험 면책.
+- taiwan-etf(대만 ETF) — TSMC 집중 신흥국 해외 공백, 반도체 사이클·지정학, ai-semi와 구분.
+- cybersecurity-etf(사이버보안 ETF) — 클라우드·AI 시대 방어 테마, 구독매출·성장, defense와 구분.
+- beauty-etf(K-뷰티 ETF) — 화장품·뷰티 수출, 중국·면세 의존, entertainment·luxury와 연계.
+- agriculture-etf(농산물 ETF) — 옥수수·콩·밀 선물, 날씨·식량안보 변동성, oil·commodity와 구분.
+각 4섹션+직답+HowTo+FAQ+비교표. section 재사용(테마/해외상장/원자재), GSC 데이터 gsc_20260628 동반 커밋.
+검증: tsc 0·cf:build EXIT=0(정적 1410/1410·캐시 populate 성공)·leak 0(크롤링·모델명 등 운영메타 0)·비밀값 staged 0·sitemap·RSS SSoT(GUIDES) 자동등록. 가이드 88→93종. 라이브 5/5 200 push 후 확인 예정.
+★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/bitcoin-etf, https://iknowhowinfo.com/guide/taiwan-etf, https://iknowhowinfo.com/guide/cybersecurity-etf, https://iknowhowinfo.com/guide/beauty-etf, https://iknowhowinfo.com/guide/agriculture-etf
+
 ## 2026-06-29 · [기능 신설]
 
 ### Q. https://bupyeongn.kr/feeds/ 페이지를 분석해서 이 웹사이트도 적용하자.
