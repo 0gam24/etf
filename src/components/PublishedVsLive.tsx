@@ -35,6 +35,7 @@ interface RealtimeResponse {
 export default function PublishedVsLive({ code, name, publishedPrice, publishedDate }: Props) {
   const [livePrice, setLivePrice] = useState<number | null>(null);
   const [marketStatus, setMarketStatus] = useState<RealtimeResponse['marketStatus']>('closed');
+  const [liveSource, setLiveSource] = useState<RealtimeResponse['source']>('mock');
   const [hidden, setHidden] = useState(true); // 초기엔 숨김 (FOUC 회피)
 
   useEffect(() => {
@@ -50,6 +51,7 @@ export default function PublishedVsLive({ code, name, publishedPrice, publishedD
         if (q && q.price > 0) {
           setLivePrice(q.price);
           setMarketStatus(data.marketStatus);
+          setLiveSource(data.source);
           setHidden(false);
         }
       } catch { /* silent */ }
@@ -65,7 +67,10 @@ export default function PublishedVsLive({ code, name, publishedPrice, publishedD
   const down = diff < 0;
   const color = up ? '#EF4444' : down ? '#60A5FA' : 'var(--text-secondary)';
 
+  // KIS 실시간일 때만 '장중' 등 시점 라벨, 일별 종가 폴백이면 '최근 거래일 종가'로 정직 표기
+  const isLiveKis = liveSource === 'kis';
   const statusLabel =
+    !isLiveKis ? '최근 거래일 종가' :
     marketStatus === 'open' ? '장중' :
     marketStatus === 'closed' ? '오늘 종가' :
     marketStatus === 'pre_open' ? '장 시작 전' :
@@ -88,7 +93,7 @@ export default function PublishedVsLive({ code, name, publishedPrice, publishedD
         <span style={{ color: 'var(--accent-gold)', fontWeight: 800, fontSize: '0.75rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
           📊 발행 vs 현재
         </span>
-        {marketStatus === 'open' && (
+        {marketStatus === 'open' && isLiveKis && (
           <span style={{
             display: 'inline-flex',
             alignItems: 'center',

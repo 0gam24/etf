@@ -56,7 +56,8 @@ export default function VolumeSurgeAlert({ baselineList }: Props) {
         const data: RealtimeResponse = await res.json();
         if (cancelled) return;
         setMarketStatus(data.marketStatus);
-        if (data.marketStatus !== 'open') { setSurge(null); return; }
+        // 일별 종가 폴백(비실시간)에서는 거래량 급증·변동성 폭증 판정 안 함 (오탐·속보 오발 방지)
+        if (data.source !== 'kis' || data.marketStatus !== 'open') { setSurge(null); return; }
         // 우선순위: 변동성 폭증 (등락률 ≥ 3%) > 거래량 급증 (1.5×)
         let top: { code: string; name: string; ratio: number; changeRate: number; type: 'volume' | 'volatility' } | null = null;
         for (const q of data.quotes) {
