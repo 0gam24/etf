@@ -1201,3 +1201,19 @@ A. bupyeong /feeds = '구독·피드(RSS·Atom·JSON)' 허브 페이지(혜택�
 구현: src/app/feeds/page.tsx 신설(about-* 스타일 재사용, BreadcrumbList·canonical·OG, 전체 피드/AI·검색엔진/사용법 3섹션) + sitemap.ts·sitemap-images에 /feeds 등록 + SiteFooter에 '구독·피드' 링크. title 템플릿 중복(%s | Daily ETF Pulse) 발견→접미사 제거.
 검증: tsc 0·cf:build EXIT=0·/feeds prerender(title·BreadcrumbList·canonical·rel=alternate·rss.xml/llms.txt 링크)·leak 0. push b8ee1c7..87cc6c7.
 ★링크: https://iknowhowinfo.com/feeds
+
+## 2026-07-01 · [버그수정 — 막힌 API로 안 도는 프론트 찾기·복구]
+
+### Q. api가 막혀서 지금 프론트엔드가 동작 안 되는 부분 찾아 (+ 쉽게 설명해)
+A. 막힌 API = `/api/etf/realtime`(한투 KIS 실시간). 프로덕션은 KIS_APP_KEY 미설정 → mock(quotes=null) 반환. 의도된 상태(2026-06-11 KIS 중단→data.go.kr 일별 전환). 반면 `/api/etf`(data.go.kr 일별 종가)는 정상.
+realtime 소비처 14개 전수 감사 → 3등급 분류:
+- 🟢 영향 없음 12개: TickerStrip(원래 /api/etf)·HomeSnapshot·LiveHeroFeatured·TrendingNow·LiveHookContent·MarketPulseCondensed·EtfMarketPulse·LiveEtfStats·LiveQuoteCard·LiveQuoteTable·LiveTickerChip·HbsLiveChange — 전부 `liveMap.size===0 → return`으로 SSR 종가 유지 + LIVE 배지는 `source==='kis'` 가드. 종가로 정상 표시.
+- 🔴 실제 깨짐 1개: PortfolioSim(/tools/portfolio) — realtime 단독 호출·SSR 종가 폴백 없음 → 보유종목 현재가 '—', 평가금액 0원, 손익 공란. 도구 먹통.
+- 🟡 조용히 비활성 1개: PublishedVsLive(글 '발행 vs 현재' 박스) — `livePrice===null → return null`로 박스 자체가 안 뜸(기능 소실, UI는 안 깨짐).
+
+해결(사용자 "진행", Option 1 = 막힌 한 군데만 고침):
+- `/api/etf/realtime`가 KIS mock/0건/예외일 때 **일별 종가를 quotes에 채워 반환**(source='fallback'). 소스 1순위 같은 오리진 `/api/etf`(allETFs 100·최신) → 2순위 커밋 etf_prices 스냅샷(fs). 둘 다 실패만 null.
+- 회귀 차단(내 변경이 만든 부작용 선제 수정): ① VolumeSurgeAlert — `source!=='kis'`면 급증·변동성 판정 차단(폴백 종가로 오탐·속보 오발 방지) ② PublishedVsLive — 폴백이면 '최근 거래일 종가' 라벨 + LIVE 배지 숨김(거짓 '장중' 표기 방지). 나머지 12개는 이미 source 가드라 무해(종가==SSR).
+빌드 사건: 직전 빌드 TaskStop으로 죽이는 중 새 빌드가 `.next/lock` 레이스 → "Another next build process is already running" EXIT=1. lock은 OS 핸들락(distDir/lock). 죽은 프로세스 사라진 뒤 재빌드 성공(추가 조치 불필요).
+검증: tsc 0·cf:build EXIT=0. push 425cbbb..de0fc3f. 배포 후(~4.5분) 라이브 확인 — `/api/etf/realtime?codes=0080G0` → source:fallback, price=11370(0080G0 실종가), fallbackReason:"일별 종가(api-etf 20260629)"(최신 경로 사용·스냅샷 폴백 X). /tools/portfolio 200. leak 0(운영메타 단어 본문 X).
+★영향: 포트폴리오 계산기 시세·평가·손익 복구 + 모든 글 '발행 vs 최근 거래일 종가' 박스 부활. 컴포넌트 12개 무수정.
