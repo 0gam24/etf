@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { ArrowRight, CalendarDays, LayoutGrid } from 'lucide-react';
-import { GUIDES, type GuideDef } from '@/lib/guides';
+import { ArrowRight, CalendarDays, LayoutGrid, BookOpen } from 'lucide-react';
+import { GUIDES, getGuidePublishedAt, type GuideDef } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
 import { buildBreadcrumbSchema, buildItemListSchema, jsonLd } from '@/lib/schema';
@@ -31,30 +31,44 @@ function formatDateKo(iso: string): string {
   return `${y}년 ${m}월 ${d}일`;
 }
 
+interface DateGroup {
+  key: string;
+  label: string;
+  isFoundational: boolean;
+  guides: GuideDef[];
+}
+
 export default function GuideLatestPage() {
-  // 발행일(lastReviewed) 최신순 정렬 — 'YYYY-MM-DD'는 문자열 비교로도 시계열 정렬됨
-  const sorted = [...GUIDES].sort((a, b) => b.lastReviewed.localeCompare(a.lastReviewed));
+  // 발행일이 있는 가이드는 최신순, 초기 기반 가이드(발행일 미기록)는 맨 뒤로.
+  const dated = GUIDES.filter(g => getGuidePublishedAt(g.slug))
+    .sort((a, b) => getGuidePublishedAt(b.slug)!.localeCompare(getGuidePublishedAt(a.slug)!));
+  const foundational = GUIDES.filter(g => !getGuidePublishedAt(g.slug));
 
   // 날짜별 그룹 (정렬 순서 보존)
-  const groups: Array<{ date: string; guides: GuideDef[] }> = [];
+  const groups: DateGroup[] = [];
   const byDate = new Map<string, GuideDef[]>();
-  for (const g of sorted) {
-    let bucket = byDate.get(g.lastReviewed);
+  for (const g of dated) {
+    const d = getGuidePublishedAt(g.slug)!;
+    let bucket = byDate.get(d);
     if (!bucket) {
       bucket = [];
-      byDate.set(g.lastReviewed, bucket);
-      groups.push({ date: g.lastReviewed, guides: bucket });
+      byDate.set(d, bucket);
+      groups.push({ key: d, label: formatDateKo(d), isFoundational: false, guides: bucket });
     }
     bucket.push(g);
   }
+  if (foundational.length > 0) {
+    groups.push({ key: 'foundational', label: '기본 가이드', isFoundational: true, guides: foundational });
+  }
 
+  const orderedForSchema = [...dated, ...foundational];
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: '홈', href: '/' },
     { name: '가이드', href: '/guide' },
     { name: '최신 발행순', href: '/guide/latest' },
   ]);
   const itemListSchema = buildItemListSchema(
-    sorted.map(g => ({ url: `/guide/${g.slug}`, name: g.title })),
+    orderedForSchema.map(g => ({ url: `/guide/${g.slug}`, name: g.title })),
     `Daily ETF Pulse 가이드 ${GUIDES.length}종 — 최신 발행순`,
   );
 
@@ -79,7 +93,7 @@ export default function GuideLatestPage() {
           전체 ETF 가이드 {GUIDES.length}개, <span className="accent">최신 발행순으로</span>
         </h1>
         <p className="guide-index-sub">
-          새로 올라온 가이드부터 날짜별로 모아봤습니다. 어떤 주제가 언제 정리됐는지 한눈에 확인하고,
+          새로 올라온 가이드부터 발행일 날짜별로 모아봤습니다. 어떤 주제가 언제 정리됐는지 한눈에 확인하고,
           주제별로 찾고 싶다면 아래 버튼으로 주제별 보기로 이동하세요.
         </p>
         <Link href="/guide" prefetch={false} className="guide-index-cta" style={{ marginTop: '0.75rem' }}>
@@ -90,16 +104,22 @@ export default function GuideLatestPage() {
       <RecommendBox position="top" />
 
       {groups.map(group => (
-        <section key={group.date} className="guide-cluster">
+        <section key={group.key} className="guide-cluster">
           <div
             className="guide-cluster-head"
             style={{ display: 'flex', alignItems: 'baseline', gap: '0.6rem', flexWrap: 'wrap' }}
           >
             <h2 className="guide-cluster-title" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-              <CalendarDays size={16} strokeWidth={2.4} color="var(--accent-gold)" aria-hidden />
-              {formatDateKo(group.date)}
+              {group.isFoundational ? (
+                <BookOpen size={16} strokeWidth={2.4} color="var(--accent-gold)" aria-hidden />
+              ) : (
+                <CalendarDays size={16} strokeWidth={2.4} color="var(--accent-gold)" aria-hidden />
+              )}
+              {group.label}
             </h2>
-            <span className="guide-cluster-desc" style={{ margin: 0 }}>가이드 {group.guides.length}개</span>
+            <span className="guide-cluster-desc" style={{ margin: 0 }}>
+              {group.isFoundational ? 'ETF 입문·핵심 주제' : '가이드'} {group.guides.length}개
+            </span>
           </div>
           <ul className="guide-index-list">
             {group.guides.map(g => (

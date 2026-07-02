@@ -9174,6 +9174,129 @@ export const GUIDES: GuideDef[] = [
   carbonCreditEtf,
 ];
 
+/**
+ * 가이드 원(原)발행일 (YYYY-MM-DD).
+ *   lastReviewed 는 격주 freshness 크론이 일괄 갱신하므로 발행일 기준으로 쓸 수 없다.
+ *   '최신 발행순' 아카이브(/guide/latest)는 이 안정적 발행일로 정렬·날짜 그룹한다.
+ *   신규 일별 배치 발행 시 여기에 `'slug': 'YYYY-MM-DD'` 추가.
+ *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
+ */
+export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-07-03
+  'water-etf': '2026-07-03',
+  'fintech-etf': '2026-07-03',
+  'high-yield-bond-etf': '2026-07-03',
+  'saudi-etf': '2026-07-03',
+  'carbon-credit-etf': '2026-07-03',
+  // 2026-07-01
+  'world-etf': '2026-07-01',
+  'healthcare-etf': '2026-07-01',
+  'natural-gas-etf': '2026-07-01',
+  'brazil-etf': '2026-07-01',
+  'financial-income-tax': '2026-07-01',
+  // 2026-06-30
+  'bitcoin-etf': '2026-06-30',
+  'taiwan-etf': '2026-06-30',
+  'cybersecurity-etf': '2026-06-30',
+  'beauty-etf': '2026-06-30',
+  'agriculture-etf': '2026-06-30',
+  // 2026-06-29
+  'ai-software-etf': '2026-06-29',
+  'oil-etf': '2026-06-29',
+  'game-etf': '2026-06-29',
+  'luxury-etf': '2026-06-29',
+  'infrastructure-etf': '2026-06-29',
+  // 2026-06-28
+  'rare-earth-etf': '2026-06-28',
+  'vietnam-etf': '2026-06-28',
+  'berkshire-etf': '2026-06-28',
+  'entertainment-etf': '2026-06-28',
+  'us-reit-etf': '2026-06-28',
+  // 2026-06-27
+  'etf-distribution-date': '2026-06-27',
+  'europe-etf': '2026-06-27',
+  'construction-etf': '2026-06-27',
+  'auto-etf': '2026-06-27',
+  'silver-etf': '2026-06-27',
+  // 2026-06-26
+  'weekly-covered-call-etf': '2026-06-26',
+  'us-bigtech-etf': '2026-06-26',
+  'ev-etf': '2026-06-26',
+  'copper-etf': '2026-06-26',
+  'solar-energy-etf': '2026-06-26',
+  'isa-to-pension-transfer': '2026-06-26',
+  'pension-fund-etf-trading': '2026-06-26',
+  'isa-maturity-etf': '2026-06-26',
+  'isa-vs-general-account-etf': '2026-06-26',
+  'isa-withdrawal-rules': '2026-06-26',
+  'young-investor-etf-portfolio': '2026-06-26',
+  'single-stock-leverage-etf': '2026-06-26',
+  'pension-fund-cash-drag': '2026-06-26',
+  'us-direct-vs-isa-etf': '2026-06-26',
+  'child-investment-gift-tax': '2026-06-26',
+  // 2026-06-25
+  'shipbuilding-etf': '2026-06-25',
+  'japan-etf': '2026-06-25',
+  'humanoid-robot-etf': '2026-06-25',
+  'dividend-growth-etf': '2026-06-25',
+  'corporate-bond-etf': '2026-06-25',
+  // 2026-06-24
+  'us-treasury-etf': '2026-06-24',
+  'china-etf': '2026-06-24',
+  'trf-etf': '2026-06-24',
+  'value-up-etf': '2026-06-24',
+  'us-semiconductor-etf': '2026-06-24',
+  // 2026-06-23
+  'cd-rate-etf': '2026-06-23',
+  'quantum-computing-etf': '2026-06-23',
+  'factor-etf': '2026-06-23',
+  'bank-etf': '2026-06-23',
+  'bond-mixed-etf': '2026-06-23',
+  // 2026-06-19
+  'robot-etf': '2026-06-19',
+  'bio-etf': '2026-06-19',
+  'nuclear-etf': '2026-06-19',
+  'active-etf': '2026-06-19',
+  'etf-delisting': '2026-06-19',
+  // 2026-06-16
+  'dollar-etf': '2026-06-16',
+  'commodity-etf': '2026-06-16',
+  'etf-vs-stock': '2026-06-16',
+  'india-etf': '2026-06-16',
+  'tdf-etf': '2026-06-16',
+  // 2026-06-15
+  'battery-etf': '2026-06-15',
+  // 2026-06-11
+  'how-to-buy-etf': '2026-06-11',
+  'gold-etf': '2026-06-11',
+  'reit-etf': '2026-06-11',
+  // 2026-06-10
+  'tr-etf': '2026-06-10',
+  'high-dividend-etf': '2026-06-10',
+  'etf-ticker-code': '2026-06-10',
+  'ai-power-etf': '2026-06-10',
+  'space-etf': '2026-06-10',
+  // 2026-06-09
+  'bond-etf': '2026-06-09',
+  'isa-account-etf': '2026-06-09',
+  'sp500-vs-nasdaq': '2026-06-09',
+  'isa-vs-pension': '2026-06-09',
+  'kodex-vs-tiger': '2026-06-09',
+  'domestic-vs-overseas-tax': '2026-06-09',
+  'hedge-vs-unhedged': '2026-06-09',
+  // 2026-06-08
+  'leveraged-inverse-etf': '2026-06-08',
+  // 2026-06-07
+  'etf-nav-tracking': '2026-06-07',
+  // 2026-06-05
+  'etf-rebalancing': '2026-06-05',
+};
+
+/** 가이드 원발행일 조회 (없으면 undefined — 초기 기반 가이드). */
+export function getGuidePublishedAt(slug: string): string | undefined {
+  return GUIDE_PUBLISHED_AT[slug];
+}
+
 export function getGuideBySlug(slug: string): GuideDef | null {
   return GUIDES.find(g => g.slug === slug) || null;
 }
