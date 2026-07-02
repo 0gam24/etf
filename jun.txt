@@ -1241,3 +1241,14 @@ A. OS 2026-07-03(금) 검증. GSC(gsc_20260628, 신규 없음) 얇은 윈도→�
 검증: tsc 0·cf:build EXIT=0·SEO 필드(title≤60·desc 120~155[water 119→129·carbon 113→125 보정]·kw6·slug ASCII)·leak 0. push 73822b4..105c403(중간에 biweekly-guide-refresh 크론 73822b4 rebase 흡수).
 배포 사건: push 후 ~24분 지나도 신규 5건 404(cache-buster로도 404=라이브 워커에 라우트 부재). 원인 추정: 크론 커밋(73822b4)이 빌드 트리거 소비 → 내 105c403이 새 빌드 못 받음(CLAUDE.md '옛 빌드 살려둠'·webhook 큐 시나리오). 해결: jun.txt 기록 커밋을 새로 push해 빌드 강제 트리거(2026-04-25 cb2f116 선례 동일). 재배포 후 5/5 200 재확인 예정.
 ★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/water-etf, https://iknowhowinfo.com/guide/fintech-etf, https://iknowhowinfo.com/guide/high-yield-bond-etf, https://iknowhowinfo.com/guide/saudi-etf, https://iknowhowinfo.com/guide/carbon-credit-etf
+
+## 2026-07-03 · [기능 신설 — 가이드 최신 발행순 아카이브]
+
+### Q. 가이드에 최신 날짜별 전체 포스팅 볼 수 있게 만들어 줄래
+A. /guide 인덱스는 주제(클러스터)별이라 날짜순 전체보기가 없었음 → 신규 /guide/latest 아카이브 페이지 신설.
+설계: 전체 가이드를 발행일 최신순·날짜별 그룹으로. /guide 히어로에 '최신 발행순으로 전체 보기' 진입 링크 + sitemap·sitemap-images 등록 + BreadcrumbList·ItemList 스키마.
+★데이터 함정 발견: 처음엔 lastReviewed로 그룹핑 → 라이브에서 98종이 전부 '2026-07-01' 한 덩어리로 뭉침. 원인=격주 biweekly-guide-refresh 크론이 lastReviewed를 일괄 갱신(발행일 아님). → 날짜별 히스토리가 뭉개짐.
+해결: jun.txt 배치 기록을 파싱해 원발행일 맵 GUIDE_PUBLISHED_AT(89종, 06-05~07-03) 신설(guides.ts). 정렬·그룹을 이 안정적 발행일 기준으로 전환. 초기 기반 가이드 14종(monthly-dividend·covered-call·etf-basics 등, 일별 기록 이전)은 허위 날짜 대신 '기본 가이드' 그룹으로 맨 뒤 분리.
+검증: tsc 0·맵 무결성(103=89 매핑+14 기본, 오타 0)·cf:build EXIT=0·leak 0. 배포 후 19개 날짜 그룹(6/5~7/3, 최신순 7/3 top)+기본 가이드 라이브 200·/guide 진입링크·sitemap 확인. push a73aa60..3c50574.
+운영 메모: 앞으로 일별 배치 발행 시 GUIDE_PUBLISHED_AT에 slug:날짜 5줄 추가하면 /guide/latest 자동 반영(lastReviewed는 freshness용으로 유지).
+★링크: https://iknowhowinfo.com/guide/latest
