@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { ArrowRight, BookOpen } from 'lucide-react';
+import { ArrowRight, BookOpen, CalendarDays } from 'lucide-react';
 import { GUIDES, getGuideClusters } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
@@ -55,6 +55,9 @@ export default function GuideIndexPage() {
           ETF가 처음이라면 기초부터, 세금을 줄이려면 절세 계좌부터, 해외 지수가 고민이면 비교 가이드부터.
           아래 6개 주제 묶음에서 지금 필요한 가이드를 바로 찾아보세요.
         </p>
+        <Link href="/guide/latest" prefetch={false} className="guide-index-cta" style={{ marginTop: '0.75rem' }}>
+          <CalendarDays size={14} strokeWidth={2.5} aria-hidden /> 최신 발행순으로 전체 보기
+        </Link>
       </section>
 
       <RecommendBox position="top" />

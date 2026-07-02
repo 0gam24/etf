@@ -104,6 +104,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   });
 
+  // 가이드 전체 최신 발행순 아카이브 — 새 가이드 발행일에 갱신
+  routes.push({
+    url: `${baseUrl}/guide/latest`,
+    lastModified: guideMostRecent > 0 ? new Date(guideMostRecent) : fallback,
+    changeFrequency: 'daily',
+    priority: 0.7,
+  });
+
   // 가이드 5종
   GUIDES.forEach(g => {
     routes.push({
