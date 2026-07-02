@@ -1229,3 +1229,15 @@ A. OS 2026-07-01(수) 검증. GSC(gsc_20260628) 윈도 얇음(28일 397노출)�
 적대적 자기검토(YMYL 사실): 종합과세 2천만원·15.4% 분리과세·ETF 유형별 종합과세 포함여부·해외상장 양도세 분류·건보료(구체수치 없이 '최신 규정 확인' 헤지) 전부 확인. 미국 비중 과반·콘탱고·헤알·헬스케어vs바이오 사실 통과. 가이드 93→98종.
 검증: tsc 0·cf:build EXIT=0·SEO 필드(title≤60·desc 120~155[brazil 117→126 보정]·kw6·slug ASCII)·leak 0(크롤링·모델명 등 0)·sitemap SSoT 자동등록 5/5. push e063672..b1968f8. 배포 후 5/5 200 확인(초기 4건 캐시된 404→cache-buster로 200 확인 후 plain URL도 200 전환).
 ★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/world-etf, https://iknowhowinfo.com/guide/healthcare-etf, https://iknowhowinfo.com/guide/natural-gas-etf, https://iknowhowinfo.com/guide/brazil-etf, https://iknowhowinfo.com/guide/financial-income-tax
+
+### Q. (07-03) 오늘 포스팅 — 데이터/커버리지 갭 롱테일 5편.
+A. OS 2026-07-03(금) 검증. GSC(gsc_20260628, 신규 없음) 얇은 윈도→커버리지 갭 가중, 기존 98종 비중복 5편(섹션 균형: 테마2·채권1·해외상장1·원자재1):
+- water-etf(물 ETF) — 수도유틸리티·수처리·물장비, 기후·노후인프라 방어테마, 금리민감. infrastructure·reit 클러스터.
+- fintech-etf(핀테크 ETF) — 결제·디지털뱅킹·금융SW 성장주, 전통 은행(bank-etf)과 명시 구분, 금리·규제·경쟁 위험.
+- high-yield-bond-etf(하이일드 채권 ETF) — 투기등급 회사채·높은이자·부도/경기위험, 우량회사채(corporate-bond)·국채와 구분, 위기때 방어 X.
+- saudi-etf(사우디 ETF) — 아람코·유가·Vision2030·PIF, 리얄 달러페그(신흥국치고 환변동 작음, 헤알과 대비). oil·brazil 클러스터.
+- carbon-credit-etf(탄소배출권 ETF) — 유럽 배출권 선물, 정책연동·롤오버·정책되돌림 위험. commodity·natural-gas 클러스터.
+각 4섹션+직답+HowTo+FAQ4+비교표. 적대적 자기검토: 하이일드 주식동조·사우디 달러페그·탄소 EUA선물·핀테크 성장주 금리민감 전부 사실 확인. 가이드 98→103종.
+검증: tsc 0·cf:build EXIT=0·SEO 필드(title≤60·desc 120~155[water 119→129·carbon 113→125 보정]·kw6·slug ASCII)·leak 0. push 73822b4..105c403(중간에 biweekly-guide-refresh 크론 73822b4 rebase 흡수).
+배포 사건: push 후 ~24분 지나도 신규 5건 404(cache-buster로도 404=라이브 워커에 라우트 부재). 원인 추정: 크론 커밋(73822b4)이 빌드 트리거 소비 → 내 105c403이 새 빌드 못 받음(CLAUDE.md '옛 빌드 살려둠'·webhook 큐 시나리오). 해결: jun.txt 기록 커밋을 새로 push해 빌드 강제 트리거(2026-04-25 cb2f116 선례 동일). 재배포 후 5/5 200 재확인 예정.
+★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/water-etf, https://iknowhowinfo.com/guide/fintech-etf, https://iknowhowinfo.com/guide/high-yield-bond-etf, https://iknowhowinfo.com/guide/saudi-etf, https://iknowhowinfo.com/guide/carbon-credit-etf
