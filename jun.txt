@@ -1252,3 +1252,14 @@ A. /guide 인덱스는 주제(클러스터)별이라 날짜순 전체보기가 �
 검증: tsc 0·맵 무결성(103=89 매핑+14 기본, 오타 0)·cf:build EXIT=0·leak 0. 배포 후 19개 날짜 그룹(6/5~7/3, 최신순 7/3 top)+기본 가이드 라이브 200·/guide 진입링크·sitemap 확인. push a73aa60..3c50574.
 운영 메모: 앞으로 일별 배치 발행 시 GUIDE_PUBLISHED_AT에 slug:날짜 5줄 추가하면 /guide/latest 자동 반영(lastReviewed는 freshness용으로 유지).
 ★링크: https://iknowhowinfo.com/guide/latest
+
+### Q. (07-05) 오늘 포스팅 — 데이터/커버리지 갭 롱테일 5편.
+A. OS 2026-07-05(일) 검증. GSC(gsc_20260628, 신규 없음) 얇은 윈도→커버리지 갭 가중, 기존 103종 비중복 5편(섹션 균형: 테마2·원자재1·해외상장1·채권1):
+- consumer-staples-etf(필수소비재 ETF) — 식품·음료·생활용품 대형브랜드, 경기방어·안정배당·인플레 전가력, 저성장·금리 한계. luxury(경기소비재)·healthcare(방어) 클러스터.
+- cloud-etf(클라우드 ETF) — 데이터센터 인프라+SaaS 구독, 디지털전환·AI 동력, 금리·밸류에이션 위험. ai-software(AI 특화 응용)와 명시 구분, ai-power(데이터센터 전력) 연계.
+- platinum-etf(백금 ETF) — 귀금속+산업금속, 자동차 촉매·수소·보석 수요, 전기차 전환·남아공 공급집중·선물 롤오버. gold(안전자산)·silver와 명시 구분.
+- indonesia-etf(인도네시아 ETF) — 동남아 최대 인구·니켈(배터리) 자원, 내수 성장, 루피아 환율·원자재·정치 위험. vietnam·india 신흥국 클러스터.
+- tips-etf(물가연동국채 ETF) — 원금 물가연동 인플레 헤지, 일반국채와 구분, 실질금리 상승·디플레·환율 위험. us-treasury·bond·gold(헤지 비교) 클러스터.
+각 4섹션+직답+HowTo+FAQ4+비교표. 적대적 자기검토: TIPS 실질금리 상승 시 가격하락·기대인플레 초과 시 유리·디플레 불리, 백금 산업금속(전기차 촉매 수요 감소 위험), 인도네시아 니켈, 클라우드 vs ai-software 전부 사실 확인. 가이드 103→108종.
+검증: tsc 0·cf:build EXIT=0·SEO 필드(title≤60·desc 120~155[필수소비재 115→123·백금 114→125·tips 118→123 보정]·kw6·slug ASCII)·leak 0·맵 무결성(108=94 매핑+14 기본). GUIDE_PUBLISHED_AT에 5종 07-05 추가(→/guide/latest 자동 반영). push 0856c7c..fd815de.
+★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/consumer-staples-etf, https://iknowhowinfo.com/guide/cloud-etf, https://iknowhowinfo.com/guide/platinum-etf, https://iknowhowinfo.com/guide/indonesia-etf, https://iknowhowinfo.com/guide/tips-etf
