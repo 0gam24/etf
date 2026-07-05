@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-06-28T04:00:48.832Z",
-  "sourceBaseDate": "20260625",
-  "count": 1142,
+  "generatedAt": "2026-07-05T03:35:53.555Z",
+  "sourceBaseDate": "20260702",
+  "count": 1143,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -1144,7 +1144,8 @@
     "0209D0": "kodex-solid-state-batteryess-top2plus",
     "0209Z0": "ace-aitop10",
     "0210A0": "ace-ksemiconductortop2",
-    "0210E0": "plus-200covered-callactive"
+    "0210E0": "plus-200covered-callactive",
+    "0198A0": "kiwoom-kosdaq150covered-callactive"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -2161,7 +2162,7 @@
     },
     "kodex-200us-treasury-blend": {
       "code": "284430",
-      "name": "KODEX 200미국채혼합"
+      "name": "KODEX 200미국채혼합50"
     },
     "rise-200finance": {
       "code": "284980",
@@ -5714,6 +5715,10 @@
     "plus-200covered-callactive": {
       "code": "0210E0",
       "name": "PLUS 200커버드콜액티브"
+    },
+    "kiwoom-kosdaq150covered-callactive": {
+      "code": "0198A0",
+      "name": "KIWOOM 코스닥150커버드콜액티브"
     }
   }
 }

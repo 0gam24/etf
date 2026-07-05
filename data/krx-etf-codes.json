@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-06-28T04:00:48.672Z",
-  "baseDate": "20260625",
-  "count": 1142,
+  "fetchedAt": "2026-07-05T03:35:53.379Z",
+  "baseDate": "20260702",
+  "count": 1143,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -1271,7 +1271,7 @@
     "284430": {
       "shortcode": "284430",
       "issueCode": "KR7284430006",
-      "name": "KODEX 200미국채혼합"
+      "name": "KODEX 200미국채혼합50"
     },
     "284980": {
       "shortcode": "284980",
@@ -5593,6 +5593,11 @@
       "issueCode": "KR70197X0008",
       "name": "SOL SK하이닉스선물단일종목인버스2X"
     },
+    "0198A0": {
+      "shortcode": "0198A0",
+      "issueCode": "KR70198A0004",
+      "name": "KIWOOM 코스닥150커버드콜액티브"
+    },
     "0198B0": {
       "shortcode": "0198B0",
       "issueCode": "KR70198B0003",
@@ -7005,6 +7010,11 @@
       "issueCode": "KR70197X0008",
       "name": "SOL SK하이닉스선물단일종목인버스2X"
     },
+    "KR70198A0004": {
+      "shortcode": "0198A0",
+      "issueCode": "KR70198A0004",
+      "name": "KIWOOM 코스닥150커버드콜액티브"
+    },
     "KR70198B0003": {
       "shortcode": "0198B0",
       "issueCode": "KR70198B0003",
@@ -8393,7 +8403,7 @@
     "KR7284430006": {
       "shortcode": "284430",
       "issueCode": "KR7284430006",
-      "name": "KODEX 200미국채혼합"
+      "name": "KODEX 200미국채혼합50"
     },
     "KR7284980000": {
       "shortcode": "284980",
@@ -12718,6 +12728,11 @@
       "name": "SOL SK하이닉스선물단일종목인버스2X"
     },
     {
+      "shortcode": "0198A0",
+      "issueCode": "KR70198A0004",
+      "name": "KIWOOM 코스닥150커버드콜액티브"
+    },
+    {
       "shortcode": "0198B0",
       "issueCode": "KR70198B0003",
       "name": "1Q 삼성전자선물단일종목레버리지"
@@ -14105,7 +14120,7 @@
     {
       "shortcode": "284430",
       "issueCode": "KR7284430006",
-      "name": "KODEX 200미국채혼합"
+      "name": "KODEX 200미국채혼합50"
     },
     {
       "shortcode": "284980",
