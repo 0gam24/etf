@@ -61,6 +61,8 @@ export interface ArticleSchemaInput {
   keywords?: string[];
   /** 카테고리(섹션) 라벨 — 예: '오늘의 관전포인트' */
   section?: string;
+  /** 외부 근거 자료 URL — schema.org/citation (E-E-A-T·생성형 검색 인용 신호) */
+  citations?: string[];
 }
 
 export function buildArticleSchema(input: ArticleSchemaInput) {
@@ -101,6 +103,7 @@ export function buildArticleSchema(input: ArticleSchemaInput) {
     mainEntityOfPage: { '@type': 'WebPage', '@id': abs(input.url) },
     ...(input.keywords?.length ? { keywords: input.keywords.join(', ') } : {}),
     ...(input.section ? { articleSection: input.section } : {}),
+    ...(input.citations?.length ? { citation: input.citations } : {}),
     inLanguage: 'ko-KR',
   };
 }

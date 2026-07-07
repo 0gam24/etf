@@ -6635,6 +6635,57 @@ a.scenario-card:hover .scenario-card-cta {
   border-radius: 0.7rem;
 }
 
+/* AEO 핵심 포인트 — 직답(AnswerBox) 아래 bullet 요약 */
+.guide-key-points {
+  margin: 0 0 var(--space-8);
+  padding: var(--space-4) var(--space-5);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 0.7rem;
+}
+.guide-key-points-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin: 0 0 var(--space-3);
+}
+.guide-key-points ul {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.guide-key-points li {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  word-break: keep-all;
+}
+
+/* 참고 자료·출처 — 공적 기관·운용사 1차 출처 링크 */
+.guide-sources {
+  margin: var(--space-10) 0 0;
+}
+.guide-sources ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.guide-sources li a {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: keep-all;
+}
+.guide-sources li a:hover { color: var(--text-primary); }
+
 /* Guide data blocks */
 .guide-block-empty {
   padding: var(--space-5);

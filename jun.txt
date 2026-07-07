@@ -1263,3 +1263,13 @@ A. OS 2026-07-05(일) 검증. GSC(gsc_20260628, 신규 없음) 얇은 윈도→�
 각 4섹션+직답+HowTo+FAQ4+비교표. 적대적 자기검토: TIPS 실질금리 상승 시 가격하락·기대인플레 초과 시 유리·디플레 불리, 백금 산업금속(전기차 촉매 수요 감소 위험), 인도네시아 니켈, 클라우드 vs ai-software 전부 사실 확인. 가이드 103→108종.
 검증: tsc 0·cf:build EXIT=0·SEO 필드(title≤60·desc 120~155[필수소비재 115→123·백금 114→125·tips 118→123 보정]·kw6·slug ASCII)·leak 0·맵 무결성(108=94 매핑+14 기본). GUIDE_PUBLISHED_AT에 5종 07-05 추가(→/guide/latest 자동 반영). push 0856c7c..fd815de.
 ★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/consumer-staples-etf, https://iknowhowinfo.com/guide/cloud-etf, https://iknowhowinfo.com/guide/platinum-etf, https://iknowhowinfo.com/guide/indonesia-etf, https://iknowhowinfo.com/guide/tips-etf
+
+## 2026-07-07 · [콘텐츠 발행·SEO/AEO/GEO]
+
+### Q. 네이버 지식iN 최신 ETF 질문을 선정해서 SEO·AEO·GEO 최대 노출로 트래픽 받을 수 있게 기획·적용하고, 포스팅 구조도 검토해서 적용해줘.
+A. 로컬 curl로 네이버 지식iN "ETF" 최신순+연관검색어 9페이지를 수집(고유 질문 69건) → 실제 투자자가 반복적으로 묻는 5개 주제를 커버리지 갭·YMYL 안전성 기준으로 선정.
+- 선정 5편(기존 108종과 비중복 확인): ① us-covered-call-etf(QQQI·JEPI 미국 커버드콜, 원금반환 ROC·양도세22%·ISA불가) ② nasdaq100-etf-korea(QQQ 국내판 5종+환헤지3종, 직구 vs 국내 세금) ③ leverage-etf-requirements(기본예탁금 1000만·금융투자교육원 사전교육·2025 해외 확대) ④ irp-disadvantages(중도해지 기타소득세16.5%·부분인출불가·위험자산70%) ⑤ etf-broker-choice(수수료보다 절세계좌 지원 우선).
+- 구조 업그레이드(전 가이드 공통 적용): GuideDef에 keyPoints(AEO 리스트 스니펫)·sources(1차 출처 링크) 필드 신설, 페이지 템플릿에 '핵심 포인트'·'참고 자료·출처' 섹션 렌더, schema.ts buildArticleSchema에 citation 배열 추가(GEO 인용신호), datePublished를 GUIDE_PUBLISHED_AT 안정 발행일로 분리(dateModified=lastReviewed).
+- 적대적 사실검증(웹검색): 레버리지 예탁금 1000만·2025 해외확대(금융위), 금융투자교육원 kifin.or.kr 사전교육, IRP 900만 한도·16.5% 기타소득세, QQQI NEOS 나스닥100 커버드콜 분배율 13~14%·ROC — 전부 확인.
+- 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender 확인 · 렌더 HTML에 answer/key-points/sources/citation/FAQPage/HowTo 존재 확인 · leak 0 · title≤60 · desc 122~142 · slug ASCII · kw5~6. 가이드 108→113종. 클러스터 5곳에 각 배정, sitemap GUIDES 순회로 자동 반영.
+★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/us-covered-call-etf, https://iknowhowinfo.com/guide/nasdaq100-etf-korea, https://iknowhowinfo.com/guide/leverage-etf-requirements, https://iknowhowinfo.com/guide/irp-disadvantages, https://iknowhowinfo.com/guide/etf-broker-choice

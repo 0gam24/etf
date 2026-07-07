@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { ArrowRight } from 'lucide-react';
-import { GUIDES, getGuideBySlug, getRelatedGuides, getSectorForGuide } from '@/lib/guides';
+import { GUIDES, getGuideBySlug, getRelatedGuides, getSectorForGuide, getGuidePublishedAt } from '@/lib/guides';
 import { getLatestEtfData, getEtfsBySector } from '@/lib/data';
 import type { RawEtf } from '@/lib/surge';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -76,17 +76,21 @@ export default async function GuidePage({ params }: PageProps) {
     ? getEtfsBySector(guideSector, '', 6, (getLatestEtfData()?.etfList || []) as RawEtf[])
     : [];
 
+  // datePublished는 안정적 원발행일(불변) — lastReviewed는 격주 점검 크론이 갱신하므로 dateModified로.
+  const publishedAt = getGuidePublishedAt(slug) || g.lastReviewed;
   const articleSchema = buildArticleSchema({
     type: 'Article',
     headline: g.title,
     description: g.description,
     url: `/guide/${slug}`,
-    datePublished: `${g.lastReviewed}T09:00:00+09:00`,
+    datePublished: `${publishedAt}T09:00:00+09:00`,
+    dateModified: `${g.lastReviewed}T09:00:00+09:00`,
     author: {
       name: 'Daily ETF Pulse 편집팀',
     },
     keywords: g.keywords,
     section: g.section,
+    ...(g.sources?.length ? { citations: g.sources.map(s => s.url) } : {}),
   });
 
   // HowTo 스키마 (가이드가 단계형일 때만) — 보조 섹션은 자동 제외
@@ -145,6 +149,18 @@ export default async function GuidePage({ params }: PageProps) {
 
       {/* AEO 직답 — Hero 직후. 결론 1~2문장만(구체 수치·표는 본문). AI Overview·스니펫 인용용. */}
       {g.answer && <AnswerBox summary={g.answer} source="Daily ETF Pulse 편집팀" />}
+
+      {/* AEO 핵심 포인트 — 직답 아래 bullet. 리스트형 스니펫 + 생성형 검색 인용 단위. */}
+      {g.keyPoints && g.keyPoints.length > 0 && (
+        <section className="guide-key-points" aria-label="핵심 포인트">
+          <h2 className="guide-key-points-title">핵심 포인트</h2>
+          <ul>
+            {g.keyPoints.map((k, i) => (
+              <li key={i}>{k}</li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {/* 한눈 비교 표 — 비교(vs) 가이드. "X vs Y" featured snippet(표) 후보 + 체류시간↑. */}
       {g.comparisonTable && (
@@ -223,6 +239,22 @@ export default async function GuidePage({ params }: PageProps) {
                     </div>
                   )}
                 </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* 참고 자료 — 공적 기관·운용사 1차 출처 (E-E-A-T + citation 스키마와 본문 일치) */}
+      {g.sources && g.sources.length > 0 && (
+        <section className="guide-sources" aria-label="참고 자료">
+          <h2 className="guide-article-h2">참고 자료·출처</h2>
+          <ul>
+            {g.sources.map((s, i) => (
+              <li key={i}>
+                <a href={s.url} target="_blank" rel="noopener noreferrer">
+                  {s.label}
+                </a>
               </li>
             ))}
           </ul>
