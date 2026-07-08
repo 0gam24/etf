@@ -1283,3 +1283,13 @@ A. 네이버 지식iN "ETF" 최신순+연관검색어(초보·퇴직연금·배�
 - 구조: 전 편 answer 직답 + keyPoints 4 + sources 2(1차 출처) + comparisonTable/HowTo + 4섹션 + FAQ4. citation JSON-LD·datePublished 2026-07-08 렌더 확인.
 - 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender · 렌더 HTML에 answer/key-points/sources/citation/pubDate 전부 ✓ · leak 0 · title≤60(29~33) · desc 125~134 · slug ASCII · kw6. 클러스터 3곳 배정(세금·절세2, 해외·환율1, 기초·입문2), sitemap 자동 반영.
 ★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/pension-savings-vs-fund, https://iknowhowinfo.com/guide/sp500-all-in-risk, https://iknowhowinfo.com/guide/foreign-stock-settlement, https://iknowhowinfo.com/guide/default-option-pension, https://iknowhowinfo.com/guide/account-transfer-etf
+
+## 2026-07-09 · [콘텐츠 발행·SEO/AEO/GEO]
+
+### Q. 오늘 포스팅
+A. 네이버 지식iN "ETF" 최신순+연관검색어(세금·초보·분배금) 8페이지 신규 수집(고유 질문 69건, 07-09 최신) → 반복 등장하면서 기존 118종 미커버·YMYL 안전한 5개 선정·발행 (총 123종).
+- 선정 5편(신규 슬러그): ① gold-investment-methods(금 투자 방법 비교, KRX금현물 비과세 vs 금ETF/금통장 배당세15.4% vs 골드바 부가세10%) ② pension-withdrawal-tax(연금 수령 세금, 연금소득세 3.3~5.5%·사적연금 1,500만원[2024 상향] 초과 시 종합 vs 16.5% 분리 선택) ③ pension-health-insurance(ETF배당·연금과 건보료, 금융소득 1,000만·피부양자 합산 2,000만·사적연금/양도소득 제외) ④ jets-airline-etf(미국 항공 JETS + 국내 여행레저 우회) ⑤ overseas-capital-gains-netting(해외주식 손익통산, 해외끼리 통산·소액주주 국내상장주식은 과세대상 아니라 상계불가·250만 공제).
+- 적대적 사실검증(웹검색): KRX금현물 장내 비과세·실물인출 부가세10%, 사적연금 1,500만원(2024 상향)·종합vs분리 선택, 건보료 금융소득 1,000만 초과 전액 반영/피부양자 2,000만/사적연금·양도소득 제외, JETS U.S.Global(국내 순수항공 ETF 없음→TIGER여행레저), 손익통산 해외끼리 가능/소액주주 상장주식 과세대상 아님/250만 통합공제 — 전부 확인. (손익통산은 최근 개정으로 미묘 → "소액주주 대부분은 국내 상장손실과 상계불가" 프레임으로 정확 서술)
+- 구조: 전 편 answer + keyPoints 4 + sources 2 + comparisonTable/HowTo + 4섹션 + FAQ4. citation·datePublished 2026-07-09 렌더 확인.
+- 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender · answer/key-points/sources/citation/pubDate 전부 ✓ · leak 0 · title≤60(28~31) · desc 130~142 · slug ASCII · kw6. 클러스터 3곳 배정(전략·자산배분1, 세금·절세3, 테마1).
+★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/gold-investment-methods, https://iknowhowinfo.com/guide/pension-withdrawal-tax, https://iknowhowinfo.com/guide/pension-health-insurance, https://iknowhowinfo.com/guide/jets-airline-etf, https://iknowhowinfo.com/guide/overseas-capital-gains-netting
