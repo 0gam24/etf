@@ -1273,3 +1273,13 @@ A. 로컬 curl로 네이버 지식iN "ETF" 최신순+연관검색어 9페이지�
 - 적대적 사실검증(웹검색): 레버리지 예탁금 1000만·2025 해외확대(금융위), 금융투자교육원 kifin.or.kr 사전교육, IRP 900만 한도·16.5% 기타소득세, QQQI NEOS 나스닥100 커버드콜 분배율 13~14%·ROC — 전부 확인.
 - 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender 확인 · 렌더 HTML에 answer/key-points/sources/citation/FAQPage/HowTo 존재 확인 · leak 0 · title≤60 · desc 122~142 · slug ASCII · kw5~6. 가이드 108→113종. 클러스터 5곳에 각 배정, sitemap GUIDES 순회로 자동 반영.
 ★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/us-covered-call-etf, https://iknowhowinfo.com/guide/nasdaq100-etf-korea, https://iknowhowinfo.com/guide/leverage-etf-requirements, https://iknowhowinfo.com/guide/irp-disadvantages, https://iknowhowinfo.com/guide/etf-broker-choice
+
+## 2026-07-08 · [콘텐츠 발행·SEO/AEO/GEO]
+
+### Q. 오늘 포스팅
+A. 네이버 지식iN "ETF" 최신순+연관검색어(초보·퇴직연금·배당) 8페이지 신규 수집(고유 질문 63건, 07-08 최신 반영) → 반복 등장하면서 기존 113종 미커버·YMYL 안전한 5개 선정·발행 (총 118종).
+- 선정 5편(신규 슬러그·인접 가이드와 앵글 분리): ① pension-savings-vs-fund(연금저축보험 vs 연금저축펀드, ETF는 증권사 연금저축펀드만·계좌이전) ② sp500-all-in-risk(S&P500 몰빵/집중투자 위험, 지역·통화·기술주 쏠림·과거 -50%·적립식 분산) ③ foreign-stock-settlement(해외 결제일, 미국 T+1[2024.5.28~]·국내 T+2·달러 예수금 환전) ④ default-option-pension(퇴직연금 디폴트옵션=사전지정운용, 2023.7.12 시행·DC/IRP·원리금보장 vs 실적배당) ⑤ account-transfer-etf(증권사 갈아타기, 일반계좌 대체출고·연금 계약이전·ISA 현금화).
+- 적대적 사실검증(웹검색): 디폴트옵션 2022.7 도입·2023.7.12 시행·DC/IRP 대상(DB제외)·TDF/BF/SVF, 미국 결제 T+1(2024.5.28 변경)·국내 T+2, 연금저축펀드만 ETF 매매(보험은 공시이율), 계좌이전 세제혜택 유지·현금화 — 전부 확인.
+- 구조: 전 편 answer 직답 + keyPoints 4 + sources 2(1차 출처) + comparisonTable/HowTo + 4섹션 + FAQ4. citation JSON-LD·datePublished 2026-07-08 렌더 확인.
+- 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender · 렌더 HTML에 answer/key-points/sources/citation/pubDate 전부 ✓ · leak 0 · title≤60(29~33) · desc 125~134 · slug ASCII · kw6. 클러스터 3곳 배정(세금·절세2, 해외·환율1, 기초·입문2), sitemap 자동 반영.
+★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/pension-savings-vs-fund, https://iknowhowinfo.com/guide/sp500-all-in-risk, https://iknowhowinfo.com/guide/foreign-stock-settlement, https://iknowhowinfo.com/guide/default-option-pension, https://iknowhowinfo.com/guide/account-transfer-etf
