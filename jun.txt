@@ -1293,3 +1293,13 @@ A. 네이버 지식iN "ETF" 최신순+연관검색어(세금·초보·분배금)
 - 구조: 전 편 answer + keyPoints 4 + sources 2 + comparisonTable/HowTo + 4섹션 + FAQ4. citation·datePublished 2026-07-09 렌더 확인.
 - 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender · answer/key-points/sources/citation/pubDate 전부 ✓ · leak 0 · title≤60(28~31) · desc 130~142 · slug ASCII · kw6. 클러스터 3곳 배정(전략·자산배분1, 세금·절세3, 테마1).
 ★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/gold-investment-methods, https://iknowhowinfo.com/guide/pension-withdrawal-tax, https://iknowhowinfo.com/guide/pension-health-insurance, https://iknowhowinfo.com/guide/jets-airline-etf, https://iknowhowinfo.com/guide/overseas-capital-gains-netting
+
+## 2026-07-10 · [콘텐츠 발행·SEO/AEO/GEO]
+
+### Q. 오늘 포스팅
+A. 네이버 지식iN "ETF" 최신순+연관검색어(추천·적립식·미국주식) 7페이지 신규 수집(고유 질문 54건, 07-10 최신) → 반복 등장하면서 기존 123종 미커버·YMYL 안전한 5개 선정·발행 (총 128종).
+- 선정 5편(신규 슬러그): ① spy-voo-ivv(미국 S&P500 3대 ETF 비교, 총보수 VOO/IVV 0.03% vs SPY 0.0945%·유동성·장기적립 vs 단기매매) ② schd-etf(SCHD 슈드 완전정리, 다우존스 미국배당100·배당성장, 직구 양도세22% vs 한국판 4종 배당세15.4%·계좌 최적화) ③ tax-free-savings-account(비과세종합저축, 65세이상 기초연금수급자·장애인·5,000만원·이자배당 전액비과세·2026 대상축소) ④ pension-etf-auto-invest(연금계좌 ETF 자동적립, 자동이체≠자동매수·현금방치·IRP위험자산70%·세액공제900만) ⑤ minor-student-etf(미성년자·학생 ETF, 출생신고만으로 개설·법정대리인·증여 10년2,000만·ISA 15~19세 근로소득요건).
+- 적대적 사실검증(웹검색): SPY/VOO/IVV 보수·운용사·유동성, SCHD 2011 슈왑·다우존스 배당100·국내판 4종(ACE/SOL/TIGER/KODEX 미국배당다우존스)·월배당·15.4%, 비과세종합저축 2026 대상축소(기초연금수급자)·5,000만·일몰논의, 연금 자동매수·IRP70%, 미성년 계좌·증여 3개월내 신고·ISA 나이요건 — 전부 확인.
+- 구조: 전 편 answer + keyPoints 4 + sources 2 + comparisonTable(3편) + 4섹션 + FAQ4. citation·datePublished 2026-07-10 렌더 확인.
+- 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender · answer/key-points/sources/citation/pubDate 전부 ✓ · leak 0 · title≤60(27~40) · desc 120~147(연금적립 114→123 보정) · slug ASCII · kw6. 클러스터 4곳 배정(해외·환율1, 배당·인컴1, 세금·절세2, 기초·입문1).
+★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/spy-voo-ivv, https://iknowhowinfo.com/guide/schd-etf, https://iknowhowinfo.com/guide/tax-free-savings-account, https://iknowhowinfo.com/guide/pension-etf-auto-invest, https://iknowhowinfo.com/guide/minor-student-etf
