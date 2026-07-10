@@ -19,7 +19,7 @@ const ADSENSE_PUB_ID = 'ca-pub-7830821732287404';
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL || 'https://iknowhowinfo.com'),
   title: {
-    default: "Daily ETF Pulse — 오늘 뜨는 ETF의 진짜 이유",
+    default: "Daily ETF Pulse, 오늘 뜨는 ETF의 진짜 이유",
     template: "%s | Daily ETF Pulse",
   },
   description: "거래량 1위 ETF의 급등 사유, 섹터별 자금 흐름, 월배당·커버드콜 전략까지. 매일 오전 9시 전 업데이트되는 ETF 투자 의사결정 플랫폼.",
@@ -43,18 +43,18 @@ export const metadata: Metadata = {
       url: '/api/og',
       width: 1200,
       height: 630,
-      alt: 'Daily ETF Pulse — 오늘 뜨는 ETF의 진짜 이유',
+      alt: 'Daily ETF Pulse, 오늘 뜨는 ETF의 진짜 이유',
     }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Daily ETF Pulse — 오늘 뜨는 ETF의 진짜 이유',
+    title: 'Daily ETF Pulse, 오늘 뜨는 ETF의 진짜 이유',
     description: '거래량 1위 ETF의 급등 사유, 섹터별 자금 흐름, 월배당·커버드콜 전략. 매일 아침 9시 갱신.',
     images: [{
       url: '/api/og',
       width: 1200,
       height: 630,
-      alt: 'Daily ETF Pulse — 오늘 뜨는 ETF의 진짜 이유',
+      alt: 'Daily ETF Pulse, 오늘 뜨는 ETF의 진짜 이유',
     }],
   },
   robots: {
