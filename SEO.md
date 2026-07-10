@@ -19,10 +19,11 @@
 
 | 필드 | 규칙 | 예시 |
 |---|---|---|
-| `title` | **60자 이내**, 핵심 키워드 앞쪽 배치, 사이트명은 ` — Daily ETF Pulse` 접미사 | `KODEX 방산TOP10 — 현재가·구성종목·분배금` |
+| `title` | **60자 이내**, 핵심 키워드 앞쪽 배치. 사이트명 접미사는 layout `template`(`%s \| Daily ETF Pulse`, 파이프)가 자동 부여 | `KODEX 방산TOP10 현재가·구성종목·분배금` |
 | `description` | **120~155자**, 자연 문장, 핵심 키워드 1~2회 자연 노출 | `KODEX 방산TOP10(449450) ETF의 오늘 시세, 구성종목 TOP 10, 분배 정보를 한 페이지에…` |
 | `keywords` | **3~7개**, 가장 구체적인 롱테일 우선 | `["KODEX 방산TOP10", "방산 ETF", "449450 ETF", "방산주 ETF 추천"]` |
 
+- ⚠️ **긴 줄표(`—`, em dash) 사용 금지** — `title`·`description`·본문 등 시청자 가시 텍스트에 AI 티가 나는 `—`를 쓰지 않는다. 구분이 필요하면 쉼표·가운뎃점(`·`)·콜론으로. 자세한 규칙과 상투 문구 금지는 [CLAUDE.md](CLAUDE.md)의 "자연스러운 문체 · AI 티 제거" 참고. 새 콘텐츠부터 적용, 기존 발행분은 소급 수정 안 함.
 - 모든 페이지에 `alternates.canonical` 설정 (절대 또는 절대화 가능 경로).
 - OG·Twitter 메타에 동일 title·description + `/api/og` 동적 이미지 사용.
 
