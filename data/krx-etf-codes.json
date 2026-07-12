@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-07-05T03:35:53.379Z",
-  "baseDate": "20260702",
-  "count": 1143,
+  "fetchedAt": "2026-07-12T02:54:48.828Z",
+  "baseDate": "20260709",
+  "count": 1141,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -3823,11 +3823,6 @@
       "issueCode": "KR7483340006",
       "name": "ACE 구글밸류체인액티브"
     },
-    "483420": {
-      "shortcode": "483420",
-      "issueCode": "KR7483420006",
-      "name": "ACE 애플밸류체인액티브"
-    },
     "483570": {
       "shortcode": "483570",
       "issueCode": "KR7483570008",
@@ -4452,21 +4447,6 @@
       "shortcode": "0020H0",
       "issueCode": "KR70020H0001",
       "name": "KoAct 글로벌양자컴퓨팅액티브"
-    },
-    "0021C0": {
-      "shortcode": "0021C0",
-      "issueCode": "KR70021C0005",
-      "name": "ACE TDF장기자산배분액티브"
-    },
-    "0021D0": {
-      "shortcode": "0021D0",
-      "issueCode": "KR70021D0004",
-      "name": "ACE TDF2030액티브 적격"
-    },
-    "0021E0": {
-      "shortcode": "0021E0",
-      "issueCode": "KR70021E0003",
-      "name": "ACE TDF2050액티브 적격"
     },
     "0022T0": {
       "shortcode": "0022T0",
@@ -5678,6 +5658,16 @@
       "issueCode": "KR70210E0004",
       "name": "PLUS 200커버드콜액티브"
     },
+    "0216K0": {
+      "shortcode": "0216K0",
+      "issueCode": "KR70216K0000",
+      "name": "KIWOOM 미국우주테크TOP2채권혼합50"
+    },
+    "0216Z0": {
+      "shortcode": "0216Z0",
+      "issueCode": "KR70216Z0003",
+      "name": "ACE K방산TOP5+"
+    },
     "069500": {
       "shortcode": "069500",
       "issueCode": "KR7069500007",
@@ -5869,21 +5859,6 @@
       "shortcode": "0020H0",
       "issueCode": "KR70020H0001",
       "name": "KoAct 글로벌양자컴퓨팅액티브"
-    },
-    "KR70021C0005": {
-      "shortcode": "0021C0",
-      "issueCode": "KR70021C0005",
-      "name": "ACE TDF장기자산배분액티브"
-    },
-    "KR70021D0004": {
-      "shortcode": "0021D0",
-      "issueCode": "KR70021D0004",
-      "name": "ACE TDF2030액티브 적격"
-    },
-    "KR70021E0003": {
-      "shortcode": "0021E0",
-      "issueCode": "KR70021E0003",
-      "name": "ACE TDF2050액티브 적격"
     },
     "KR70022T0005": {
       "shortcode": "0022T0",
@@ -7094,6 +7069,16 @@
       "shortcode": "0210E0",
       "issueCode": "KR70210E0004",
       "name": "PLUS 200커버드콜액티브"
+    },
+    "KR70216K0000": {
+      "shortcode": "0216K0",
+      "issueCode": "KR70216K0000",
+      "name": "KIWOOM 미국우주테크TOP2채권혼합50"
+    },
+    "KR70216Z0003": {
+      "shortcode": "0216Z0",
+      "issueCode": "KR70216Z0003",
+      "name": "ACE K방산TOP5+"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -10955,11 +10940,6 @@
       "issueCode": "KR7483340006",
       "name": "ACE 구글밸류체인액티브"
     },
-    "KR7483420006": {
-      "shortcode": "483420",
-      "issueCode": "KR7483420006",
-      "name": "ACE 애플밸류체인액티브"
-    },
     "KR7483570008": {
       "shortcode": "483570",
       "issueCode": "KR7483570008",
@@ -11586,21 +11566,6 @@
       "shortcode": "0020H0",
       "issueCode": "KR70020H0001",
       "name": "KoAct 글로벌양자컴퓨팅액티브"
-    },
-    {
-      "shortcode": "0021C0",
-      "issueCode": "KR70021C0005",
-      "name": "ACE TDF장기자산배분액티브"
-    },
-    {
-      "shortcode": "0021D0",
-      "issueCode": "KR70021D0004",
-      "name": "ACE TDF2030액티브 적격"
-    },
-    {
-      "shortcode": "0021E0",
-      "issueCode": "KR70021E0003",
-      "name": "ACE TDF2050액티브 적격"
     },
     {
       "shortcode": "0022T0",
@@ -12811,6 +12776,16 @@
       "shortcode": "0210E0",
       "issueCode": "KR70210E0004",
       "name": "PLUS 200커버드콜액티브"
+    },
+    {
+      "shortcode": "0216K0",
+      "issueCode": "KR70216K0000",
+      "name": "KIWOOM 미국우주테크TOP2채권혼합50"
+    },
+    {
+      "shortcode": "0216Z0",
+      "issueCode": "KR70216Z0003",
+      "name": "ACE K방산TOP5+"
     },
     {
       "shortcode": "069500",
@@ -16671,11 +16646,6 @@
       "shortcode": "483340",
       "issueCode": "KR7483340006",
       "name": "ACE 구글밸류체인액티브"
-    },
-    {
-      "shortcode": "483420",
-      "issueCode": "KR7483420006",
-      "name": "ACE 애플밸류체인액티브"
     },
     {
       "shortcode": "483570",

@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-07-05T03:35:53.555Z",
-  "sourceBaseDate": "20260702",
-  "count": 1143,
+  "generatedAt": "2026-07-12T02:54:48.961Z",
+  "sourceBaseDate": "20260709",
+  "count": 1141,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -767,7 +767,6 @@
     "483320": "ace-active-483320",
     "483330": "ace-active-483330",
     "483340": "ace-active-483340",
-    "483420": "ace-active-483420",
     "483570": "kcgi-us-sp500-top10",
     "484790": "kodex-us30year-treasury-activeh",
     "484880": "sol-financeplus",
@@ -893,9 +892,6 @@
     "0018Z0": "rise-us",
     "0019K0": "time-us-nasdaq100bond-blend50active",
     "0020H0": "koact-globalactive",
-    "0021C0": "ace-tdfactive",
-    "0021D0": "ace-tdf2030active-qualified",
-    "0021E0": "ace-tdf2050active-qualified",
     "0022T0": "sol-covered-callactive",
     "0023A0": "sol-ustop10",
     "0023B0": "plus-ustop10",
@@ -1145,7 +1141,9 @@
     "0209Z0": "ace-aitop10",
     "0210A0": "ace-ksemiconductortop2",
     "0210E0": "plus-200covered-callactive",
-    "0198A0": "kiwoom-kosdaq150covered-callactive"
+    "0198A0": "kiwoom-kosdaq150covered-callactive",
+    "0216K0": "kiwoom-ustechtop2bond-blend50",
+    "0216Z0": "ace-kdefense-top5"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -4204,10 +4202,6 @@
       "code": "483340",
       "name": "ACE 구글밸류체인액티브"
     },
-    "ace-active-483420": {
-      "code": "483420",
-      "name": "ACE 애플밸류체인액티브"
-    },
     "kcgi-us-sp500-top10": {
       "code": "483570",
       "name": "KCGI 미국S&P500 TOP10"
@@ -4707,18 +4701,6 @@
     "koact-globalactive": {
       "code": "0020H0",
       "name": "KoAct 글로벌양자컴퓨팅액티브"
-    },
-    "ace-tdfactive": {
-      "code": "0021C0",
-      "name": "ACE TDF장기자산배분액티브"
-    },
-    "ace-tdf2030active-qualified": {
-      "code": "0021D0",
-      "name": "ACE TDF2030액티브 적격"
-    },
-    "ace-tdf2050active-qualified": {
-      "code": "0021E0",
-      "name": "ACE TDF2050액티브 적격"
     },
     "sol-covered-callactive": {
       "code": "0022T0",
@@ -5719,6 +5701,14 @@
     "kiwoom-kosdaq150covered-callactive": {
       "code": "0198A0",
       "name": "KIWOOM 코스닥150커버드콜액티브"
+    },
+    "kiwoom-ustechtop2bond-blend50": {
+      "code": "0216K0",
+      "name": "KIWOOM 미국우주테크TOP2채권혼합50"
+    },
+    "ace-kdefense-top5": {
+      "code": "0216Z0",
+      "name": "ACE K방산TOP5+"
     }
   }
 }
