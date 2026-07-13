@@ -1334,3 +1334,13 @@ A. 네이버 지식iN 직접 수집은 egress 정책상 kin.naver.com 403(CONNEC
 - 구조: 전 편 answer 직답 + keyPoints 4(수치 포함) + sources 2(1차 출처: KRX·KRX 정보데이터·금투협·국세청·금감원 파인) + comparisonTable(5편 전부) + 4섹션 + FAQ4. citation JSON-LD·datePublished 2026-07-13 렌더 확인.
 - 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender(.next/server/app/guide/*.html) · 렌더 HTML에 answer-box/guide-key-points/guide-sources/citation/2026-07-13 전부 ✓ · 신규 콘텐츠 em-dash(—)·en-dash(–) 0(페이지 내 잔여 —는 기존 클러스터 설명 등 공용 템플릿, 소급 미수정) · 금지 운영자메타(파이프라인·크롤링·에이전트·샘플데이터·자동발행 등) 0 · title 25~28(≤60) · desc 126~141(120~155) · slug ^[a-z0-9-]{1,80}$ · kw5. 클러스터 배정: ETF 기초·입문 1(kospi200-vs-kosdaq150), 전략·자산배분 2(target-maturity-bond-etf·futures-etf-roll-cost), 세금·절세 계좌 1(etf-holding-period-tax), 해외·환율 1(overseas-etf-currency-exchange). sitemap·RSS는 GUIDES SSoT 직접 참조로 자동 반영.
 ★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/kospi200-vs-kosdaq150, https://iknowhowinfo.com/guide/target-maturity-bond-etf, https://iknowhowinfo.com/guide/futures-etf-roll-cost, https://iknowhowinfo.com/guide/etf-holding-period-tax, https://iknowhowinfo.com/guide/overseas-etf-currency-exchange
+
+## 2026-07-14 · [콘텐츠 발행·수동 보완]
+
+### Q. 14일 포스팅이 안보이네 스케줄 자동 발행 안됬어??
+A. 진단: 스케줄 루틴은 정상 활성이고 07-14 03:33 KST에 실행됐으나(last_fired_at 확인) 커밋을 남기지 않음. 즉 오늘 클라우드 실행이 어느 단계에서 실패해 "실패 시 push 금지" 설계대로 발행 없이 중단. 07-11(0dddcf7)·07-12(74d28b9)·07-13(e4c44c2)은 정상 발행됨. 3일 연속 성공했으므로 파이프라인 자체는 정상 → 일시적 실패로 판단. 루틴은 계속 활성, 다음 07-15 03:32 KST.
+- 보완: 로컬에서 07-14분 5편 직접 발행 (143→148종). 지식iN 07-14/13 질문에서 세금 관련 반복 다수 → 미커버·YMYL 안전 5편 선정: ① domestic-equity-etf-tax(국내주식형 매매차익 비과세 vs 기타형 15.4%·과표기준가) ② etf-trading-cost(ETF 증권거래세 면제·위탁수수료·제비용·스프레드) ③ dca-order-type(적립식 지정가 vs 시장가·최유리, 수량 미달 이유) ④ sector-concentration-rebalancing(반도체 등 테마 편중 조절·목표비중·세금 줄이며 리밸런싱) ⑤ corporate-account-etf(법인 ETF, 법인세+배당 이중과세로 개인보다 반드시 유리하지 않음).
+- 사실검증(웹): 국내주식형 비과세·기타형 보유기간과세(매매차익과 과표증분 중 작은값 15.4%), ETF 신탁형펀드→증권거래세 면제, 지정가/시장가/최유리 체결, 법인세 과표2억이하 약9.9%+배당 이중과세 — 전부 확인.
+- 문체 규칙 적용: em-dash(—) 0건, 제목 쉼표/자연문, 상투구 "정리하면" 1건 발견→제거. keyPoints·sources·citation 구조.
+- 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender · answer/key-points/sources/citation/pubDate(07-14) 전부 ✓ · leak 0 · em-dash 0 · title≤60(27~31) · desc 126~146 · kw6. 클러스터 3곳 배정(세금2·기초1·전략2).
+★오늘 발행 링크(풀 URL): https://iknowhowinfo.com/guide/domestic-equity-etf-tax, https://iknowhowinfo.com/guide/etf-trading-cost, https://iknowhowinfo.com/guide/dca-order-type, https://iknowhowinfo.com/guide/sector-concentration-rebalancing, https://iknowhowinfo.com/guide/corporate-account-etf
