@@ -1344,3 +1344,14 @@ A. 진단: 스케줄 루틴은 정상 활성이고 07-14 03:33 KST에 실행됐�
 - 문체 규칙 적용: em-dash(—) 0건, 제목 쉼표/자연문, 상투구 "정리하면" 1건 발견→제거. keyPoints·sources·citation 구조.
 - 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender · answer/key-points/sources/citation/pubDate(07-14) 전부 ✓ · leak 0 · em-dash 0 · title≤60(27~31) · desc 126~146 · kw6. 클러스터 3곳 배정(세금2·기초1·전략2).
 ★오늘 발행 링크(풀 URL): https://iknowhowinfo.com/guide/domestic-equity-etf-tax, https://iknowhowinfo.com/guide/etf-trading-cost, https://iknowhowinfo.com/guide/dca-order-type, https://iknowhowinfo.com/guide/sector-concentration-rebalancing, https://iknowhowinfo.com/guide/corporate-account-etf
+
+## 2026-07-15 · [오늘 포스팅 · 가이드 5편 발행]
+
+### Q. 오늘 포스팅 (자율 스케줄 실행)
+A. 네이버 지식iN 직접 수집은 egress 정책상 kin.naver.com 403(CONNECT 차단)으로 불가 → 사전 안내된 "수집 얇음 → 커버리지 갭 판단" 폴백 적용. WebSearch로 최신 ETF 투자자 실질 질문 수요 확인 + 기존 148종 미커버·YMYL 안전 주제 5개 선정·발행 (총 153종). 5개 각도를 서로 다른 도메인(커버드콜 구조·상품 선택·배당 전략 비교·현금성 상품·투자 방식)으로 분리.
+- 선정 5편(신규 슬러그): ① covered-call-nav-erosion(커버드콜 ETF 원금 NAV 하락 원리, 분배 재원 3종·원금반환(ROC)·상승제한·총수익으로 평가·OTM/부분매도가 덜 녹음) ② same-index-etf-choice(같은 지수 ETF 고르는 4기준: 총보수·괴리율/추적오차·거래량·순자산, 소규모=상장폐지 위험) ③ dividend-growth-vs-high-dividend(배당성장 vs 고배당, SCHD 배당성장·현재배당률 낮으나 성장·고배당=현금흐름·목적별/은퇴전후 배분·세금) ④ parking-etf(파킹형 ETF, CD91일물 vs KOFR 1일물·일할 이자·예금자보호X·T+2 출금·파킹통장 비교) ⑤ lump-sum-vs-dca(거치식 vs 적립식, 역사적 거치식 우위 다수나 상승전제·적립식은 고점위험/심리 완충·절충 분할).
+- 적대적 사실검증(WebSearch): 커버드콜 NAV 하락(비대칭 손익·ROC·자산매각 분배·총수익 관점 — dividend-nomad/브런치/인베스트조선), 파킹형(KOFR 1일물 무위험지표·CD 91일물·일할 이자·T+2·예금자보호X·KOFR 공식 kofr.kr), 배당성장 vs 고배당(SCHD 10년+ 배당·연평균 배당성장률 두자릿수·목적별 배분 — 나무위키/카카오페이증권 리서치/키움) — 전부 확인.
+- 주제 교체 판단: 초안 후보 dividend-reinvestment-etf(분배금 재투자·TR ETF 복리)는 검증 중 "해외주식형 TR ETF 금지 시행령(7/1 시행)"로 상품 지형이 개정 국면임을 확인 → 루틴의 "최근 개정으로 미묘/불확실하면 제외·교체" 지침 및 전일(07-12 us-etf-dividend-withholding, TR) 선례 존중 위해 안정적 구조 주제 covered-call-nav-erosion로 확정, 나머지 4편은 시장 구조·타임리스 개념(세율·개정 비의존)으로 구성.
+- 구조: 전 편 answer 직답 + keyPoints 4(수치 포함) + sources 2~3(1차/권위: KRX·금감원·금투협·국세청·한국은행·KOFR 공식·Schwab) + comparisonTable(5편 전부) + 4섹션 + FAQ4. 문체: em-dash(—) 0(sources 라벨의 — 12건도 가운뎃점 ·로 교체), 상투구 변주, 면책 문구 5편 각기 다른 문장. citation JSON-LD·datePublished 2026-07-15 렌더 확인.
+- 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender(.next/server/app/guide/*.html) · 렌더 HTML에 answer-box/guide-key-points/guide-sources/citation/2026-07-15 전부 ✓ · 신규 콘텐츠 em-dash 0 · en-dash 0 · 금지 운영자메타(파이프라인·크롤링·에이전트·샘플데이터·자동발행 등) 0 · title 31~35(≤60) · desc 125~134(120~155) · slug ^[a-z0-9-]{1,80}$ · kw5. 클러스터 배정: ETF 기초·입문 1(same-index-etf-choice), 배당·인컴 2(covered-call-nav-erosion·dividend-growth-vs-high-dividend), 전략·자산배분 2(parking-etf·lump-sum-vs-dca). sitemap·RSS는 GUIDES SSoT 직접 참조로 자동 반영.
+★오늘 발행 링크(풀 URL): https://iknowhowinfo.com/guide/covered-call-nav-erosion, https://iknowhowinfo.com/guide/same-index-etf-choice, https://iknowhowinfo.com/guide/dividend-growth-vs-high-dividend, https://iknowhowinfo.com/guide/parking-etf, https://iknowhowinfo.com/guide/lump-sum-vs-dca
