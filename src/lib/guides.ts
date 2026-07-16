@@ -81,6 +81,13 @@ export interface GuideDef {
    *   본문 사실관계의 근거가 되는 1차 출처만. FAQ 직전 "참고 자료" 섹션으로 렌더.
    */
   sources?: { label: string; url: string }[];
+  /**
+   * 주제 출처 — 이 가이드의 주제가 도출된 네이버 지식iN 실제 질문 (내부 메타데이터, 미렌더).
+   *   주제 선정 규칙(CLAUDE.md "주제 선정 규칙"): 주제는 지식iN 질문 수요에서만 도출하며,
+   *   출처 질문(원문 요지 + 링크)을 추적 가능하게 저장한다. 같은 취지 질문이 여럿이면 대표 1~3개.
+   *   롱테일 확장 글도 파생 원본 질문을 저장한다.
+   */
+  sourceQuestions?: { summary: string; url: string }[];
   /** 본문 섹션 */
   sections: GuideSection[];
   /** 페이지 끝 FAQ */

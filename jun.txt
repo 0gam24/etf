@@ -1374,3 +1374,12 @@ A. 네이버 지식iN 수집은 프록시 allowlist 미포함(kin.naver.com 403 
 - 구조: 전 편 answer 직답 + keyPoints 4(수치 포함) + sources 2~3(1차/권위: 국세청·금감원 통합연금포털·고용노동부·KRX·금투협) + comparisonTable(1·3편) + 4섹션 + FAQ4. 문체: 신규 블록 em-dash(—) 0·en-dash 0, 상투구 변주, 면책 문구 5편 각기 다른 문장.
 - 검증: tsc EXIT=0 · cf:build EXIT=0 · 5편 prerender(.next/server/app/guide/*.html) · 렌더 HTML에 answer-box/guide-key-points/guide-sources/citation/2026-07-16 전부 ✓ · 신규 콘텐츠 em-dash 0 · 금지 운영자메타(파이프라인·크롤링·에이전트·샘플데이터·자동발행 등) 0 · title 28~31(≤60) · desc 122~131(120~155) · slug ^[a-z0-9-]{1,80}$ · kw5. (렌더 HTML의 em-dash는 전부 어필리에이트 카드 접미·템플릿 FAQ 헤딩·기존 발행글 제목 링크 등 사이트 chrome, 신규 콘텐츠 아님.) 클러스터: 세금·절세 1, ETF 기초·입문 2, 배당·인컴 1, 전략·자산배분 1. sitemap·RSS는 GUIDES SSoT 직접 참조로 자동 반영.
 ★오늘 발행 링크(풀 URL): https://iknowhowinfo.com/guide/pension-savings-vs-irp, https://iknowhowinfo.com/guide/etf-share-price-meaning, https://iknowhowinfo.com/guide/etf-portfolio-overlap, https://iknowhowinfo.com/guide/dividend-reinvestment, https://iknowhowinfo.com/guide/etf-order-timing
+
+## 2026-07-16 · [기획·주제 선정 규칙 변경]
+
+### Q. 주제 선정 규칙 신설: 주제 소스는 오직 네이버 지식iN 실제 질문(ETF·주식·코인·금융), 우선순위는 질문 수요(반복), 출처 질문 메타데이터 저장, 같은 주제도 롱테일로 확장 발행(완전 중복만 금지). 나머지 단계는 기존 유지.
+A. 4곳에 반영 완료.
+- CLAUDE.md에 "🎯 주제 선정 규칙" 섹션 신설: ① 지식iN 단일 소스(4분야 외 제외, KRX 내부 데이터는 주제 근거 금지·본문 근거만) ② 수요(반복) 우선순위, 수집분은 data/keywords/kin/kin-YYYYMMDD.json 저장(반복 측정+수집 실패 시 대체 소스) ③ GuideDef.sourceQuestions에 출처 질문(요지+링크) 저장 의무 ④ 기존 커버 주제도 롱테일 확장으로 발행(완전 중복만 금지). 기존의 "커버리지 갭(기존 가이드 미커버)" 기준은 폐지, 코인 주제 허용으로 전환(사실 서술·위험 고지 중심).
+- src/lib/guides.ts GuideDef에 sourceQuestions?: {summary,url}[] 필드 추가(내부 메타데이터, 미렌더). tsc 0.
+- 클라우드 루틴(trig_01FDFCvCyYy6QGZ3FnackHLc) 프롬프트의 [1.수집][2.선정] 단계를 새 규칙으로 교체, [4.작성]에 sourceQuestions 필수화, [8][9] 보고에 출처 질문 요지 포함. 다음 실행(07-17 03:32 KST)부터 적용.
+- 메모리(kin-demand-topic-selection) 저장. 로컬 "오늘 포스팅"도 동일 규칙 적용.
