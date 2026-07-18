@@ -1397,3 +1397,19 @@ A. 원인 규명 → 수정 → 발행까지 완료.
 - 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender · answer/keyPoints/sources/citation/발행일 전부 ✓ · leak 0 · **본문 em-dash 0건**(초안의 sources label 4건 검출 후 제거) · title 25~32자 · desc 122~137 · slug ASCII · kw6.
 - 별건 발견: 렌더 HTML의 em-dash는 전부 RecommendBox 상품카드 aria-label 템플릿("{상품명} — 자세히 보기") 유래. 콘텐츠 아닌 컴포넌트 이슈로 별도 보고.
 ★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/isa-to-pension-tax-credit, https://iknowhowinfo.com/guide/isa-foreign-etf-currency, https://iknowhowinfo.com/guide/pension-isa-priority-order, https://iknowhowinfo.com/guide/isa-sell-rebuy-limit, https://iknowhowinfo.com/guide/dividend-payment-date
+
+## 2026-07-19 · [콘텐츠 발행 · 지식iN 수요 기반 5편]
+
+### Q. (루틴) 오늘 포스팅 자율 발행
+A. 지식iN 코퍼스(data/keywords/kin/kin-20260718.json, 103건·4분야) 기반으로 5편 발행. 신규 지식iN 수집은 클라우드 IP 차단으로 실패(정상), 저장 코퍼스로 진행.
+- 수요 상위 클러스터: ISA/절세계좌(19+), 미국ETF·직투 절세(VOO/QQQ), 코인 세금·선물(23), 레버리지 ETF, 미국 단기채 파킹. 07-18 배치가 ISA전환·환전·우선순위·재매수·배당지급일을 이미 커버 → 겹치지 않는 롱테일 5개 선정.
+- 발행 5편:
+  ① voo-vs-domestic-sp500-tax — VOO 직투(양도세 22%·250만 공제·분리과세) vs 국내상장 S&P500(배당소득세 15.4%·금융소득종합과세 합산), 매매차익 833만 부근 세부담 역전. 출처: 미국 ETF 절세 방법(QQQ/VOO/JEPQ 국내상장만) docId=494339573, ISA에서 KODEX S&P500 손해인지 docId=494102222.
+  ② crypto-tax-2026 — 가상자산 과세 현행 미시행(2026 매매차익 비과세), 3차 유예 후 2027.1 시행 예정, 기타소득·250만 공제·22%·이월공제 없음, 비트코인 현물ETF는 해외주식(양도세). 출처: 코인 거래소 매매 세금·해외주식 250만 초과 docId=475553179, 비트코인 선물 세금 docId=470973486.
+  ③ leverage-etf-long-term-decay — 일일 재조정→일 단위 2배만 추종, 음의 복리(변동성 끌림). 지수 100→110→100 제자리여도 2배 상품 100→120→98.18(-1.8%). 단기 방향성 베팅용. 출처: ETF 레버리지 뜻(+1%→+2%) docId=494309232, 삼전·하이닉스 레버리지 등락률 하락·조기청산 docId=494355976.
+  ④ us-short-term-bond-etf — SGOV(만기 0~3개월 미국 초단기 국채·주가 $100 고정·월 달러이자 연 4~5%), 환헤지 없어 원화손익=환율, 직투 양도세 22% vs 국내상장 15.4%. 출처: 미국 단기채 환차익 구조·SGOV docId=494351995, KODEX CD금리액티브 파킹 docId=467898942.
+  ⑤ bitcoin-futures-vs-spot — 무기한 선물 펀딩비(8시간마다 롱↔숏, 상승쏠림 시 롱이 지급)→장기 롱 비용 누적, 청산 위험, 장기엔 현물·현물ETF가 단순. 출처: 바이낸스 3배 롱 장기·펀딩비 만류 docId=494252706, 펀딩비 뜻 docId=494350717.
+- 사실검증(WebSearch 적대적): 가상자산 2027.1 시행·22%·250만(국세청/한국세정), 해외직투 22% vs 국내상장 15.4%(KB/삼성자산운용), 레버리지 음의복리 계산(금감원/토스), SGOV 구조·세금(뉴스핌/브런치). 한도·시행일 등 불확실은 "개정 가능·시점 기준 확인" 명시.
+- 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender ✓(answer-box·guide-key-points·guide-sources·citation·2026-07-19 전부 존재) · 신규 블록 em-dash 0 · 운영자 메타 leak 0 · title 30~34자 · desc 129~149 · slug ASCII · kw6.
+- 등록: GUIDES 배열 5개, GUIDE_PUBLISHED_AT 2026-07-19 5줄, GUIDE_CLUSTERS(세금·절세 계좌 2 / 전략·자산배분 2 / 테마·섹터 1).
+★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/voo-vs-domestic-sp500-tax, https://iknowhowinfo.com/guide/crypto-tax-2026, https://iknowhowinfo.com/guide/leverage-etf-long-term-decay, https://iknowhowinfo.com/guide/us-short-term-bond-etf, https://iknowhowinfo.com/guide/bitcoin-futures-vs-spot
