@@ -1383,3 +1383,17 @@ A. 4곳에 반영 완료.
 - src/lib/guides.ts GuideDef에 sourceQuestions?: {summary,url}[] 필드 추가(내부 메타데이터, 미렌더). tsc 0.
 - 클라우드 루틴(trig_01FDFCvCyYy6QGZ3FnackHLc) 프롬프트의 [1.수집][2.선정] 단계를 새 규칙으로 교체, [4.작성]에 sourceQuestions 필수화, [8][9] 보고에 출처 질문 요지 포함. 다음 실행(07-17 03:32 KST)부터 적용.
 - 메모리(kin-demand-topic-selection) 저장. 로컬 "오늘 포스팅"도 동일 규칙 적용.
+
+## 2026-07-18 · [장애 복구 + 콘텐츠 발행]
+
+### Q. 새벽 자동 포스팅이 안되었어 원인 확인하고 오류 수정하고 오늘 포스팅해
+A. 원인 규명 → 수정 → 발행까지 완료.
+- 원인: 07-16에 신설한 주제 선정 규칙을 루틴 프롬프트에 넣으면서 "지식iN 수집 실패 + 저장분 없으면 발행 중단(내부 데이터 대체 금지)"이라는 하드 실패 조건을 넣었는데, ① 클라우드는 미국 IP라 지식iN 수집이 막히고 ② 대체 소스로 지정한 data/keywords/kin/ 폴더가 아예 없어(한 번도 저장된 적 없음) 루틴이 지시대로 발행을 중단. 크론·인증은 정상(last_fired_at 07-18 03:33 KST 확인). 07-17·07-18 2회 연속 미발행.
+- 수정 ①: 로컬(한국 IP)에서 지식iN 4분야(ETF·주식·비트코인·연금·배당·ISA) 12페이지 수집 → data/keywords/kin/kin-20260718.json 생성(103건, 4분야 필터 통과). 이제 클라우드가 수집에 실패해도 코퍼스로 주제 선정 가능.
+- 수정 ②: 루틴 프롬프트 [1]단계를 "저장 코퍼스 우선 로드(정상 경로) → 신규 수집은 추가 시도, 차단 시 1회 재시도 후 조용히 통과(실패 사유 아님) → 성공 시 코퍼스 갱신 → 코퍼스도 없고 수집도 전부 실패한 경우에만 실패 보고"로 교체. 보고 항목에 수집 성공/실패 여부와 사용 코퍼스 파일명 추가.
+- 발행 5편(질문 수요 기준, 반복 수요: 미국·해외ETF 31 / 증권사·계좌 27 / 코인 23 / 배당 21 / ISA 19 / 세금 19): ① isa-to-pension-tax-credit(ISA 만기 연금전환 추가공제 10%·최대 300만·60일) ② isa-foreign-etf-currency(ISA 해외ETF 환전 불필요·원화 분배금 vs 직투 달러) ③ pension-isa-priority-order(연금저축600→IRP300→ISA 순서) ④ isa-sell-rebuy-limit(계좌 내 매도·재매수는 한도 무관, 인출만 차감·복원불가) ⑤ dividend-payment-date(12월 기준일→3월 주총→3~4월 지급, ETF 분배금은 기준일+2영업일).
+- 전 편 sourceQuestions(출처 지식iN 질문 요지+URL) 저장 — 주제 선정 규칙 적용 첫 배치.
+- YMYL 판단: ISA 비과세 한도(200/400만 vs 500/1,000만 상향) 출처 상충 확인 → 한도 수치에 의존하는 주제는 제외하고 구조적 사실이 확실한 주제만 채택.
+- 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender · answer/keyPoints/sources/citation/발행일 전부 ✓ · leak 0 · **본문 em-dash 0건**(초안의 sources label 4건 검출 후 제거) · title 25~32자 · desc 122~137 · slug ASCII · kw6.
+- 별건 발견: 렌더 HTML의 em-dash는 전부 RecommendBox 상품카드 aria-label 템플릿("{상품명} — 자세히 보기") 유래. 콘텐츠 아닌 컴포넌트 이슈로 별도 보고.
+★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/isa-to-pension-tax-credit, https://iknowhowinfo.com/guide/isa-foreign-etf-currency, https://iknowhowinfo.com/guide/pension-isa-priority-order, https://iknowhowinfo.com/guide/isa-sell-rebuy-limit, https://iknowhowinfo.com/guide/dividend-payment-date
