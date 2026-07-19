@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-07-12T02:54:48.828Z",
-  "baseDate": "20260709",
-  "count": 1141,
+  "fetchedAt": "2026-07-19T02:52:07.555Z",
+  "baseDate": "20260715",
+  "count": 1147,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -5658,6 +5658,11 @@
       "issueCode": "KR70210E0004",
       "name": "PLUS 200커버드콜액티브"
     },
+    "0215T0": {
+      "shortcode": "0215T0",
+      "issueCode": "KR70215T0002",
+      "name": "HANARO 미국AI광통신TOP10"
+    },
     "0216K0": {
       "shortcode": "0216K0",
       "issueCode": "KR70216K0000",
@@ -5667,6 +5672,31 @@
       "shortcode": "0216Z0",
       "issueCode": "KR70216Z0003",
       "name": "ACE K방산TOP5+"
+    },
+    "0218J0": {
+      "shortcode": "0218J0",
+      "issueCode": "KR70218J0001",
+      "name": "RISE 미국우주&로봇TOP2미국채혼합50"
+    },
+    "0219B0": {
+      "shortcode": "0219B0",
+      "issueCode": "KR70219B0008",
+      "name": "KoAct 광통신&위성네트워크액티브"
+    },
+    "0219E0": {
+      "shortcode": "0219E0",
+      "issueCode": "KR70219E0005",
+      "name": "KODEX 200커버드콜액티브"
+    },
+    "0220A0": {
+      "shortcode": "0220A0",
+      "issueCode": "KR70220A0006",
+      "name": "KIWOOM 현대차그룹TOP3채권혼합50"
+    },
+    "0220B0": {
+      "shortcode": "0220B0",
+      "issueCode": "KR70220B0005",
+      "name": "DS 코스닥액티브"
     },
     "069500": {
       "shortcode": "069500",
@@ -7070,6 +7100,11 @@
       "issueCode": "KR70210E0004",
       "name": "PLUS 200커버드콜액티브"
     },
+    "KR70215T0002": {
+      "shortcode": "0215T0",
+      "issueCode": "KR70215T0002",
+      "name": "HANARO 미국AI광통신TOP10"
+    },
     "KR70216K0000": {
       "shortcode": "0216K0",
       "issueCode": "KR70216K0000",
@@ -7079,6 +7114,31 @@
       "shortcode": "0216Z0",
       "issueCode": "KR70216Z0003",
       "name": "ACE K방산TOP5+"
+    },
+    "KR70218J0001": {
+      "shortcode": "0218J0",
+      "issueCode": "KR70218J0001",
+      "name": "RISE 미국우주&로봇TOP2미국채혼합50"
+    },
+    "KR70219B0008": {
+      "shortcode": "0219B0",
+      "issueCode": "KR70219B0008",
+      "name": "KoAct 광통신&위성네트워크액티브"
+    },
+    "KR70219E0005": {
+      "shortcode": "0219E0",
+      "issueCode": "KR70219E0005",
+      "name": "KODEX 200커버드콜액티브"
+    },
+    "KR70220A0006": {
+      "shortcode": "0220A0",
+      "issueCode": "KR70220A0006",
+      "name": "KIWOOM 현대차그룹TOP3채권혼합50"
+    },
+    "KR70220B0005": {
+      "shortcode": "0220B0",
+      "issueCode": "KR70220B0005",
+      "name": "DS 코스닥액티브"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -12778,6 +12838,11 @@
       "name": "PLUS 200커버드콜액티브"
     },
     {
+      "shortcode": "0215T0",
+      "issueCode": "KR70215T0002",
+      "name": "HANARO 미국AI광통신TOP10"
+    },
+    {
       "shortcode": "0216K0",
       "issueCode": "KR70216K0000",
       "name": "KIWOOM 미국우주테크TOP2채권혼합50"
@@ -12786,6 +12851,31 @@
       "shortcode": "0216Z0",
       "issueCode": "KR70216Z0003",
       "name": "ACE K방산TOP5+"
+    },
+    {
+      "shortcode": "0218J0",
+      "issueCode": "KR70218J0001",
+      "name": "RISE 미국우주&로봇TOP2미국채혼합50"
+    },
+    {
+      "shortcode": "0219B0",
+      "issueCode": "KR70219B0008",
+      "name": "KoAct 광통신&위성네트워크액티브"
+    },
+    {
+      "shortcode": "0219E0",
+      "issueCode": "KR70219E0005",
+      "name": "KODEX 200커버드콜액티브"
+    },
+    {
+      "shortcode": "0220A0",
+      "issueCode": "KR70220A0006",
+      "name": "KIWOOM 현대차그룹TOP3채권혼합50"
+    },
+    {
+      "shortcode": "0220B0",
+      "issueCode": "KR70220B0005",
+      "name": "DS 코스닥액티브"
     },
     {
       "shortcode": "069500",
