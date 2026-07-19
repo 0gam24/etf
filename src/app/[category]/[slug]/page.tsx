@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: canonicalPath,
       publishedTime: post.meta.date,
       authors: [post.meta.author],
-      images: [ogImage],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: post.meta.title }],
     },
     twitter: {
       card: 'summary_large_image',

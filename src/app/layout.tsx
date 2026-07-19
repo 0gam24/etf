@@ -135,7 +135,7 @@ const WEBSITE_SCHEMA = {
   name: 'Daily ETF Pulse',
   url: SITE_URL,
   inLanguage: 'ko-KR',
-  publisher: { '@type': 'NewsMediaOrganization', name: 'Daily ETF Pulse', url: SITE_URL },
+  publisher: { '@type': 'NewsMediaOrganization', '@id': `${SITE_URL}/#organization`, name: 'Daily ETF Pulse', url: SITE_URL },
   potentialAction: {
     '@type': 'SearchAction',
     target: `${SITE_URL}/?q={search_term_string}`,

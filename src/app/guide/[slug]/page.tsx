@@ -43,6 +43,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const g = getGuideBySlug(slug);
   if (!g) return { title: '가이드를 찾을 수 없습니다' };
   const canonicalPath = `/guide/${slug}`;
+  // 가이드도 동적 OG 이미지 발급 — 소셜/메신저 미리보기 + 이미지 검색 인입
+  // (기존엔 가이드에만 og:image가 없어 매일 발행 주력 콘텐츠의 공유 미리보기가 비어 있었음)
+  const ogImage = `/api/og?title=${encodeURIComponent(g.title)}&category=guide`;
   return {
     title: g.title,
     description: g.description,
@@ -53,11 +56,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: g.description,
       type: 'article',
       url: canonicalPath,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: g.title }],
     },
     twitter: {
       card: 'summary_large_image',
       title: g.title,
       description: g.description,
+      images: [ogImage],
     },
   };
 }

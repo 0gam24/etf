@@ -33,7 +33,9 @@ export function buildBreadcrumbSchema(items: BreadcrumbItem[]) {
       '@type': 'ListItem',
       position: idx + 1,
       name: it.name,
-      item: abs(it.href),
+      // 마지막 항목(현재 페이지)은 item 생략 — Google 가이드 허용 규칙,
+      // 현재 URL이 canonical과 중복 명시되는 것을 피함 (D3 문서 규칙)
+      ...(idx < items.length - 1 ? { item: abs(it.href) } : {}),
     })),
   };
 }
@@ -87,6 +89,7 @@ export function buildArticleSchema(input: ArticleSchemaInput) {
     author,
     publisher: {
       '@type': 'NewsMediaOrganization', // Google E-E-A-T 신뢰 신호
+      '@id': `${SITE}/#organization`,   // RootLayout Organization과 동일 entity 상호참조
       name: SITE_NAME,
       url: SITE,
       logo: {
