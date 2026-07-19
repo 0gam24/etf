@@ -60,6 +60,10 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    // 일반 robots 메타에도 명시 — Naver Yeti 등 googleBot 전용 메타를 읽지 않는
+    // 크롤러의 이미지 대형 미리보기·스니펫 제한 해제 (googleBot 하위만으론 불충분)
+    'max-image-preview': 'large',
+    'max-snippet': -1,
     googleBot: {
       index: true,
       follow: true,
@@ -89,8 +93,16 @@ const SITE_URL = process.env.SITE_URL || 'https://iknowhowinfo.com';
 const ORG_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'NewsMediaOrganization',
+  // @id — 사이트 전역에서 동일 entity 참조용 anchor (Article publisher 등과 상호참조 가능)
+  '@id': `${SITE_URL}/#organization`,
   name: 'Daily ETF Pulse',
   url: SITE_URL,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    email: 'smartdatashop@gmail.com',
+    availableLanguage: ['Korean'],
+  },
   logo: {
     '@type': 'ImageObject',
     url: `${SITE_URL}/og-logo.png`,

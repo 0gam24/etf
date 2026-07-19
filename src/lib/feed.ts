@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { getAllPosts, getPostsByCategory, CATEGORY_NAMES, TOP_LEVEL_CATEGORIES } from '@/lib/posts';
+import { GUIDES, getGuidePublishedAt } from '@/lib/guides';
 
 /**
  * 구독 피드 공용 빌더 — RSS 2.0 · Atom 1.0 · JSON Feed 1.1 + 카테고리별 RSS.
@@ -24,6 +25,8 @@ export interface FeedItem {
   pubDate: Date;
   description: string;
   categoryName: string;
+  /** 대표 이미지 절대 URL — RSS <enclosure>로 노출 (네이버는 이미지 포함 RSS 우대) */
+  image?: string;
 }
 
 export function escapeXml(unsafe: string): string {
@@ -58,7 +61,12 @@ function loadTodayReports(): TodayReportSummary[] {
   }
 }
 
-/** 전체 피드 항목 — 모든 분석 글 + /today 일별 리포트 (최신순, 상위 100). */
+/** OG 동적 이미지 절대 URL (1200×630) — RSS enclosure·구독 리더 썸네일용 */
+function ogImageUrl(title: string, category: string): string {
+  return `${SITE_URL}/api/og?title=${encodeURIComponent(title)}&category=${encodeURIComponent(category)}`;
+}
+
+/** 전체 피드 항목 — 모든 분석 글 + 가이드 + /today 일별 리포트 (최신순, 상위 100). */
 export function getAllFeedItems(): FeedItem[] {
   const postItems: FeedItem[] = getAllPosts().map(post => ({
     title: post.meta.title,
@@ -66,7 +74,23 @@ export function getAllFeedItems(): FeedItem[] {
     pubDate: new Date(post.meta.date),
     description: post.meta.description,
     categoryName: post.categoryName,
+    image: ogImageUrl(post.meta.title, post.meta.category),
   }));
+
+  // 가이드 — 매일 발행되는 주력 콘텐츠. 발행일 기록이 있는 가이드만 포함.
+  // (기존엔 RSS에 가이드가 전혀 없어 일일 발행물이 구독·수집 채널에서 누락되던 공백 해소)
+  const guideItems: FeedItem[] = GUIDES.flatMap(g => {
+    const at = getGuidePublishedAt(g.slug);
+    if (!at) return [];
+    return [{
+      title: g.title,
+      url: `${SITE_URL}/guide/${g.slug}`,
+      pubDate: new Date(`${at}T09:00:00+09:00`),
+      description: g.description,
+      categoryName: g.section,
+      image: ogImageUrl(g.title, 'guide'),
+    }];
+  });
 
   const todayItems: FeedItem[] = loadTodayReports().map(r => ({
     title: `${r.date} 오늘의 ETF 종합 리포트 — 시그널·분배락·거래량 TOP`,
@@ -76,7 +100,7 @@ export function getAllFeedItems(): FeedItem[] {
     categoryName: 'TODAY · 일별 리포트',
   }));
 
-  return [...postItems, ...todayItems]
+  return [...postItems, ...guideItems, ...todayItems]
     .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime())
     .slice(0, 100);
 }
@@ -105,7 +129,8 @@ export function renderRss(items: FeedItem[], opts: ChannelOpts): string {
       <guid isPermaLink="true">${item.url}</guid>
       <pubDate>${item.pubDate.toUTCString()}</pubDate>
       <description>${escapeXml(item.description)}</description>
-      <category>${escapeXml(item.categoryName)}</category>
+      <category>${escapeXml(item.categoryName)}</category>${item.image ? `
+      <enclosure url="${escapeXml(item.image)}" type="image/png" length="0" />` : ''}
     </item>`).join('');
 
   return `<?xml version="1.0" encoding="UTF-8"?>

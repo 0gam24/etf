@@ -35,6 +35,18 @@ const nextConfig: NextConfig = {
   //   1. 한글 슬러그 → 영문 슬러그 (2026-04-26 마이그레이션)
   //   2. /etf/{code} → /etf/{slug} (2026-04-27 슬러그 마이그레이션 1095건)
   async redirects() {
+    // 0. 도메인 표준화 — www → non-www 301 (2026-07-19 실측: www가 200으로 그대로
+    //    서빙되어 도메인 중복 상태였음. canonical 태그만으론 링크 신호가 분산됨).
+    //    Cloudflare 대시보드 redirect rule이 더 앞단이지만, 코드 레벨에도 명시해 이중 방어.
+    const hostCanonical = [
+      {
+        source: '/:path*',
+        has: [{ type: 'host' as const, value: 'www.iknowhowinfo.com' }],
+        destination: 'https://iknowhowinfo.com/:path*',
+        permanent: true,
+      },
+    ];
+
     const legacy = [
       { source: '/flow/flow-20260423-조선', destination: '/flow/flow-20260423-shipbuilding', permanent: true },
       { source: '/flow/flow-20260424-조선', destination: '/flow/flow-20260424-shipbuilding', permanent: true },
@@ -54,7 +66,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       }));
 
-    return [...legacy, ...etfRedirects];
+    return [...hostCanonical, ...legacy, ...etfRedirects];
   },
 
   // ⚠️ Cloudflare Pages 배포 참고:

@@ -26,7 +26,6 @@ import AnswerBox from '@/components/AnswerBox';
 import MainBackrefBox, { getBackrefUrlForCategory } from '@/components/MainBackrefBox';
 import LiveEtfStats from '@/components/LiveEtfStats';
 import {
-  buildBreadcrumbSchema,
   buildFinancialProductSchema,
   buildDatasetSchema,
   jsonLd,
@@ -197,12 +196,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
     return { summary, keyStats: ks };
   })() : null;
 
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '종목 사전', href: '/etf' },
-    { name: `${displayName} (${displayCode})`, href: `/etf/${canonicalSlug}` },
-  ]);
-
+  // BreadcrumbList JSON-LD는 아래 <Breadcrumbs> 컴포넌트가 자체 발행 — 여기서 중복 발행 금지
   const financialProductSchema = buildFinancialProductSchema({
     name: displayName,
     code: displayCode,
@@ -227,8 +221,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
 
   return (
     <article className="etf-dict animate-fade-in">
-      {/* JSON-LD */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }} />
+      {/* JSON-LD (BreadcrumbList는 <Breadcrumbs>가 발행) */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(financialProductSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(datasetSchema) }} />
 

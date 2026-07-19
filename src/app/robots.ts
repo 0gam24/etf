@@ -12,6 +12,10 @@ import { MetadataRoute } from 'next';
 //   해결: 봇별 allow 에 '/api/og' 명시. Allow 가 더 구체적 prefix 라 Disallow 보다 우선.
 const COMMON_ALLOW: string[] = ['/', '/api/og'];
 const COMMON_DISALLOW: string[] = ['/api/'];
+// /_next/static/·/_next/image 는 페이지 렌더링에 필요한 CSS/JS/이미지 리소스 —
+// 차단하면 Googlebot 렌더링 품질 평가에 불리(구글 SEO 가이드 "CSS·JS 접근 가능해야").
+// 나머지 /_next/(data 등)만 차단 유지.
+const ALL_ALLOW: string[]       = [...COMMON_ALLOW, '/_next/static/', '/_next/image'];
 const ALL_DISALLOW: string[]    = ['/api/', '/_next/'];
 
 export default function robots(): MetadataRoute.Robots {
@@ -21,7 +25,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: COMMON_ALLOW,
+        allow: ALL_ALLOW,
         disallow: ALL_DISALLOW,
       },
       // Google AdSense 크롤러 — 광고 게재·심사용. 와일드카드(*)로도 허용되나 명시해 누락 위험 0.
@@ -42,6 +46,8 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Claude-Web',     allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Claude 검색 시 fetch
       { userAgent: 'Google-Extended',allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Gemini·Bard 학습
       { userAgent: 'CCBot',          allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Common Crawl
+      { userAgent: 'anthropic-ai',   allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Anthropic 학습 크롤러 (legacy UA)
+      { userAgent: 'Applebot-Extended', allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Apple Intelligence 학습
     ],
     // 두 개 sitemap 모두 명시 — index + main
     // (검색엔진은 둘 다 처리. index가 우선 권장이지만 main 단독 발견도 가능하게 둠.)
