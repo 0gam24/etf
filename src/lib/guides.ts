@@ -14819,6 +14819,426 @@ const bitcoinFuturesVsSpot: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-07-20 · 연금계좌에서 QQQ·VOO 직접 매수 불가 + 국내 상장 대체 */
+const pensionUsEtfAlternatives: GuideDef = {
+  slug: 'pension-us-etf-alternatives',
+  title: '연금저축·IRP에서 QQQ·VOO 못 사는 이유와 대체 ETF',
+  tagline: '연금계좌는 국내 상장 ETF만, 미국 지수는 KODEX·TIGER로 담는다',
+  description:
+    '연금저축·IRP에서는 QQQ, VOO 같은 미국 상장 ETF를 직접 살 수 없습니다. 왜 국내 상장 ETF만 담기는지, 나스닥100·S&P500을 대신할 국내 상장 미국지수 ETF와 위험자산 70% 한도, 세액공제까지 정리했습니다.',
+  keywords: ['연금저축 미국 ETF', 'IRP QQQ 매수', '연금계좌 해외 ETF', '국내 상장 미국 ETF', 'VOO 연금저축', 'IRP 위험자산 70%'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-07-20',
+  answer:
+    '연금저축펀드와 IRP는 국내에 상장된 상품만 담을 수 있어, 미국 시장에 상장된 QQQ나 VOO는 계좌에서 직접 매수할 수 없습니다. 대신 같은 지수를 따르는 국내 상장 ETF, 예를 들어 KODEX 미국S&P500이나 TIGER 미국나스닥100으로 사실상 같은 곳에 투자할 수 있습니다. 연금계좌에서는 세액공제와 과세이연 혜택도 함께 받습니다.',
+  keyPoints: [
+    '연금저축펀드·IRP는 국내 상장 상품만 편입할 수 있어 QQQ, VOO, SPY, SCHD 같은 미국 직상장 ETF는 계좌에서 매수 자체가 되지 않습니다.',
+    '대체재는 같은 지수를 추종하는 국내 상장 ETF입니다. S&P500은 KODEX·TIGER 미국S&P500, 나스닥100은 KODEX·TIGER 미국나스닥100 등으로 담습니다.',
+    'IRP와 DC형 퇴직연금은 주식형 ETF 같은 위험자산을 적립금의 최대 70%까지만 담을 수 있고, 나머지 30%는 안전자산으로 채워야 합니다.',
+    '연금저축·IRP 납입액은 연 최대 900만원까지 13.2~16.5% 세액공제 대상이며, 계좌 안 매매차익·분배금은 인출 전까지 과세가 미뤄집니다.',
+  ],
+  sources: [
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+    { label: '국세청 연금계좌 세액공제 안내', url: 'https://www.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA와 IRP, 연금저축에서는 국내 상장 미국 ETF만 가능하다고 들었는데 QQQ나 VOO, JEPQ 같은 미국 직상장 ETF는 왜 안 되는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494339573' },
+    { summary: '연금저축펀드에서 어떤 ETF를 담아야 할지 추천을 구하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=489444942' },
+    { summary: 'ISA 계좌로 나스닥·S&P500을 주문하려는데 매수가 안 된다는 문의', url: 'https://kin.naver.com/qna/detail.naver?docId=494341294' },
+  ],
+  sections: [
+    {
+      heading: '연금계좌엔 미국 상장 ETF를 못 담는다',
+      paragraphs: [
+        '연금저축펀드나 IRP를 열고 QQQ나 VOO를 검색하면 매수 버튼이 눌리지 않습니다. 오류가 아니라 원래 그렇게 설계돼 있습니다. 세제 혜택이 큰 연금계좌는 국내 증권시장에 상장된 상품만 담도록 제한돼 있어, 미국 뉴욕이나 나스닥에 상장된 ETF는 대상이 아닙니다.',
+        'ISA(중개형)도 마찬가지로 해외 시장에 상장된 ETF는 직접 매수가 되지 않습니다. 세 계좌 모두 국내 상장 상품이라는 울타리 안에서 운용해야 한다는 점이 공통점입니다.',
+        '그래서 "미국 지수에 투자하고 싶은데 연금계좌라 QQQ를 못 산다"는 상황은 막힌 게 아니라, 담는 그릇을 바꿔야 하는 문제입니다.',
+      ],
+    },
+    {
+      heading: '같은 지수, 국내 상장 ETF로 담기',
+      paragraphs: [
+        '해법은 간단합니다. 미국 지수를 그대로 따르는 국내 상장 ETF를 사면 됩니다. S&P500을 원하면 KODEX 미국S&P500이나 TIGER 미국S&P500을, 나스닥100을 원하면 KODEX 미국나스닥100이나 TIGER 미국나스닥100을 담습니다. 배당성장으로 알려진 SCHD 대신 국내에는 미국배당다우존스를 따르는 상품이 있습니다.',
+        '이들은 같은 지수를 추종하므로 수익률 흐름이 원본과 거의 같습니다. 다만 운용보수, 환헤지 여부, 분배금 지급 방식은 상품마다 다르니 이름 뒤에 붙는 표기와 총보수를 확인하는 편이 좋습니다.',
+        '원·달러 환전 없이 원화로 사고팔 수 있다는 점도 국내 상장 ETF의 장점입니다. 직투와 국내 상장의 세금 차이는 세금 가이드에서 별도로 다룹니다.',
+      ],
+    },
+    {
+      heading: '위험자산 70% 한도와 안전자산 30%',
+      paragraphs: [
+        'IRP와 DC형 퇴직연금에는 한 가지 규칙이 더 있습니다. 주식형 ETF처럼 변동성이 큰 위험자산은 적립금의 최대 70%까지만 담을 수 있고, 남은 30%는 채권·예금·현금성 같은 안전자산으로 채워야 합니다.',
+        '그래서 "IRP를 전부 미국 나스닥 ETF로 채우겠다"는 계획은 그대로는 실행되지 않습니다. 70%를 미국 지수 ETF로 두고, 30%는 채권형 ETF나 정기예금형으로 배분하는 식으로 짜야 합니다.',
+        '반면 연금저축펀드에는 이 70% 한도가 없어 주식형 비중을 더 높게 가져갈 수 있습니다. 레버리지·인버스 ETF는 연금계좌에서 담을 수 없다는 점도 함께 기억해 두면 좋습니다.',
+      ],
+    },
+    {
+      heading: '연금계좌의 진짜 혜택은 세금',
+      paragraphs: [
+        '연금계좌를 쓰는 이유는 결국 세금입니다. 연금저축과 IRP를 합쳐 연 900만원까지 낸 돈은 13.2%(총급여 5,500만원 초과)에서 16.5%(이하)까지 세액공제를 받습니다. 900만원을 채우면 최대 148만5천원을 연말정산에서 돌려받는 셈입니다.',
+        '계좌 안에서 ETF를 사고팔아 생긴 매매차익이나 분배금에는 그때그때 세금을 떼지 않고, 나중에 연금으로 받을 때 3.3~5.5% 저율로 과세합니다. 굴리는 동안 세금이 재투자되니 복리 효과가 커집니다.',
+        '정리하면, 연금계좌에서 미국 지수에 투자하는 길은 막혀 있지 않습니다. 국내 상장 대체 ETF로 담고 안전자산 비중만 맞추면 됩니다. 세율과 한도는 개정될 수 있으니 가입·납입 시점에 확인하시고, 투자 판단과 그 결과는 투자자 본인에게 달려 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '연금저축에서 QQQ를 정말 못 사나요?',
+      answer:
+        '네, 미국에 상장된 QQQ는 연금저축·IRP·ISA 어디서도 직접 매수할 수 없습니다. 같은 나스닥100 지수를 따르는 국내 상장 ETF(KODEX·TIGER 미국나스닥100 등)로 대신 담아야 합니다.',
+    },
+    {
+      question: '국내 상장 미국 ETF는 직투와 수익률이 같나요?',
+      answer:
+        '같은 지수를 추종하므로 흐름은 거의 같습니다. 다만 운용보수와 환헤지 여부, 분배금 방식에 따라 미세한 차이가 생길 수 있으니 상품별 표기를 확인하세요.',
+    },
+    {
+      question: 'IRP를 전부 주식형 ETF로 채울 수 있나요?',
+      answer:
+        '아닙니다. IRP와 DC형은 위험자산을 최대 70%까지만 담을 수 있어, 나머지 30%는 채권·예금 같은 안전자산으로 채워야 합니다. 연금저축펀드에는 이 한도가 없습니다.',
+    },
+    {
+      question: '연금계좌 세액공제 한도는 얼마인가요?',
+      answer:
+        '연금저축과 IRP를 합쳐 연 900만원까지 세액공제 대상이며, 소득에 따라 13.2%나 16.5%가 적용됩니다. 900만원을 다 채우면 최대 148만5천원을 환급받습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-20 · 금융소득 종합과세 + 건강보험 피부양자 */
+const financialIncomeHealthInsurance: GuideDef = {
+  slug: 'financial-income-health-insurance',
+  title: '금융소득 종합과세와 건강보험 피부양자, 배당의 함정',
+  tagline: '금융소득 2천만원이면 종합과세, 1천만원이면 피부양자 탈락 위험',
+  description:
+    'ETF 배당과 이자로 금융소득이 쌓이면 세금만 늘어나는 게 아닙니다. 연 2천만원을 넘으면 종합과세로, 1천만원을 넘으면 건강보험 피부양자에서 탈락해 보험료가 새로 붙습니다. 두 문턱과 ISA 활용법을 정리했습니다.',
+  keywords: ['금융소득 종합과세', '건강보험 피부양자 탈락', '금융소득 2000만원', '배당소득 건강보험료', 'ISA 절세', '피부양자 금융소득 1000만원'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-07-20',
+  answer:
+    '금융소득이 연 2천만원을 넘으면 초과분이 다른 소득과 합산되는 종합과세 대상이 되고, 연 1천만원을 넘으면 건강보험 피부양자 자격을 잃어 지역가입자 보험료가 새로 부과될 수 있습니다. ETF 분배금과 이자·배당이 이 문턱에 함께 쌓이므로, ISA의 비과세·분리과세 한도를 활용하면 두 부담을 함께 줄일 수 있습니다.',
+  keyPoints: [
+    '이자와 배당을 합친 금융소득이 연 2천만원을 넘으면, 초과분이 근로·사업소득 등과 합산돼 최고 49.5%까지 누진세율이 붙는 종합과세 대상이 됩니다.',
+    '건강보험 피부양자는 연 소득 2천만원 이하가 기준인데, 금융소득이 1천만원을 넘으면 그 금액 전액이 소득에 합산돼 피부양자에서 탈락할 수 있습니다.',
+    '피부양자에서 탈락하면 지역가입자로 바뀌어 소득·재산에 매기는 건강보험료가 새로 부과됩니다. 소득뿐 아니라 재산 과표 5억4천만원·9억원 기준도 함께 봅니다.',
+    'ISA 계좌는 순이익 200만원(서민형 400만원)까지 비과세하고 초과분도 9.9% 분리과세라, ISA 안의 이익은 종합과세·피부양자 판정 소득에 잡히지 않습니다.',
+  ],
+  sources: [
+    { label: '국민건강보험공단', url: 'https://www.nhis.or.kr' },
+    { label: '국세청 금융소득 종합과세 안내', url: 'https://www.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 계좌로 금융소득 종합과세와 건강보험료 부담을 줄일 수 있다는데 실제로 얼마나 도움이 되는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494333180' },
+    { summary: '보금자리론 소득 기준에 미국 배당 같은 금융소득도 다 포함되는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494353655' },
+  ],
+  sections: [
+    {
+      heading: '금융소득에 두 개의 문턱이 있다',
+      paragraphs: [
+        'ETF 분배금이나 예금 이자가 늘어 기뻐할 일만은 아닙니다. 금융소득이 일정 선을 넘으면 세금이 무거워지고, 그것과 별개로 건강보험에서도 불이익이 생깁니다. 이 둘은 기준선이 달라 따로 챙겨야 합니다.',
+        '첫 번째 문턱은 세금 쪽 2천만원입니다. 이자와 배당을 합친 금융소득이 연 2천만원을 넘으면 초과분이 종합과세로 넘어갑니다. 두 번째 문턱은 건강보험 쪽 1천만원입니다. 금융소득이 이 선을 넘으면 피부양자 자격이 흔들립니다.',
+        '월배당·커버드콜 ETF처럼 분배금이 꾸준한 상품을 많이 담을수록 두 문턱에 가까워집니다. 수익이 커질 때 이 선을 함께 계산하는 습관이 필요합니다.',
+      ],
+    },
+    {
+      heading: '2천만원 문턱, 종합과세',
+      paragraphs: [
+        '금융소득이 연 2천만원 이하면 15.4%로 원천징수되고 끝납니다. 하지만 2천만원을 넘으면 초과한 금액이 근로소득·사업소득 등과 합쳐져 누진세율로 다시 계산됩니다. 소득이 많은 사람일수록 합산 후 세율이 높아져, 최고 구간에서는 지방세 포함 49.5%까지 올라갑니다.',
+        '예를 들어 배당이 연 2,500만원이라면, 2천만원까지는 기존대로, 초과한 500만원은 다른 소득과 합산돼 본인의 종합소득세율로 과세됩니다. 다음 해 5월 종합소득세 신고에 반영해야 합니다.',
+        '즉 종합과세는 "무조건 세금 폭탄"이라기보다, 초과분이 본인의 소득 구간에 얹혀 세율이 달라지는 구조입니다. 본인 소득이 낮으면 부담이 작고, 높으면 커집니다.',
+      ],
+    },
+    {
+      heading: '1천만원 문턱, 피부양자 탈락',
+      paragraphs: [
+        '더 신경 쓰이는 쪽은 건강보험입니다. 직장 다니는 가족의 피부양자로 등록돼 보험료를 안 내던 사람도, 금융소득이 연 1천만원을 넘으면 그 금액 전체가 소득으로 잡혀 피부양자에서 빠질 수 있습니다. 1천만원 이하일 때는 금융소득을 소득 계산에서 빼 주지만, 넘는 순간 전액이 반영됩니다.',
+        '피부양자 자격은 연 소득 2천만원 이하가 기본 기준이고, 재산 과표가 5억4천만원을 넘으면서 소득이 1천만원을 넘거나, 과표가 9억원을 넘으면 탈락합니다. 소득과 재산을 함께 보는 구조입니다.',
+        '탈락하면 지역가입자로 전환돼 소득과 재산에 매긴 보험료가 새로 부과됩니다. 세금 몇 푼보다 매달 나가는 건강보험료가 더 아플 수 있어, 이 1천만원 선을 세금보다 먼저 보는 사람도 많습니다.',
+      ],
+    },
+    {
+      heading: 'ISA로 문턱을 낮추기',
+      paragraphs: [
+        '두 문턱을 함께 낮추는 현실적인 도구가 ISA입니다. ISA 안에서 난 이익은 순이익 200만원(서민형 400만원)까지 비과세되고, 초과분도 9.9%로 분리과세됩니다. 이 분리과세 소득은 금융소득 종합과세 대상에도, 건강보험 피부양자 판정 소득에도 들어가지 않습니다.',
+        '그래서 배당형 ETF를 일반계좌에 잔뜩 쌓아 두는 대신 ISA 한도를 먼저 채우면, 같은 수익을 내면서도 2천만원·1천만원 문턱에서 멀어질 수 있습니다. 연금계좌에서 받는 연금소득도 별도 기준으로 다뤄집니다.',
+        '숫자와 기준은 해마다 바뀔 수 있으니 신고 시점에 다시 확인하는 편이 안전합니다. 이 글은 제도 이해를 돕기 위한 정보이며, 개인별 세금·보험료는 상황에 따라 달라지므로 최종 판단은 본인 몫입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '금융소득 2천만원을 넘으면 무조건 세금이 크게 느나요?',
+      answer:
+        '초과분이 다른 소득과 합산돼 본인 세율로 과세되는 구조입니다. 소득이 낮으면 부담이 작고, 높은 구간이면 지방세 포함 최고 49.5%까지 올라갈 수 있습니다.',
+    },
+    {
+      question: '피부양자 탈락 기준은 소득 얼마인가요?',
+      answer:
+        '연 소득 2천만원 이하가 기본이며, 금융소득은 1천만원을 넘으면 전액이 소득에 합산됩니다. 재산 과표 5억4천만원·9억원 기준도 함께 적용됩니다.',
+    },
+    {
+      question: 'ISA 이익도 금융소득에 포함되나요?',
+      answer:
+        '아닙니다. ISA 안의 이익은 비과세·분리과세라 종합과세 대상 금융소득에도, 건강보험 피부양자 판정 소득에도 잡히지 않습니다.',
+    },
+    {
+      question: '배당형 ETF가 많으면 건강보험료가 오르나요?',
+      answer:
+        '분배금이 쌓여 금융소득 1천만원을 넘고 피부양자에서 탈락하면 지역가입자 보험료가 새로 부과될 수 있습니다. ISA 한도를 먼저 채우면 이 위험을 줄일 수 있습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-20 · 중국 반도체 ETF (본토 반도체 국내 상장 접근) */
+const chinaSemiconductorEtf: GuideDef = {
+  slug: 'china-semiconductor-etf',
+  title: '중국 반도체 ETF, 본토 반도체를 국내에서 담는 법',
+  tagline: 'SMIC·캠브리콘을 직접 못 사도 국내 상장 ETF 한 종목으로',
+  description:
+    '중국 본토 반도체 기업은 개인이 직접 사기 어렵지만, 국내 상장 ETF로 SMIC와 캠브리콘 같은 종목에 담을 수 있습니다. 순수 중국 반도체 ETF의 구성, 과창판 관련 상품과의 차이, 정책·변동성 위험을 정리했습니다.',
+  keywords: ['중국 반도체 ETF', 'TIGER 차이나반도체', '중국 반도체 투자', 'SMIC ETF', '차이나반도체FACTSET', '중국 과창판 ETF'],
+  section: '테마 ETF 가이드',
+  lastReviewed: '2026-07-20',
+  answer:
+    '중국 본토 반도체 기업은 외국 개인이 직접 매매하기 어렵지만, 국내 상장 ETF를 통하면 SMIC, 캠브리콘, 나우라 같은 중국 반도체 종목에 한 번에 투자할 수 있습니다. 국내에는 중국 반도체만 담은 ETF가 소수 있고, 과창판 지수를 따르는 관련 상품도 있습니다. 정책·수급에 따라 변동성이 큰 테마라 비중 조절이 중요합니다.',
+  keyPoints: [
+    '중국 본토(A주) 반도체 기업은 외국인 직접 투자에 제약이 있어, 국내 상장 ETF가 SMIC·캠브리콘·나우라 등에 접근하는 현실적인 통로입니다.',
+    '국내에는 중국 반도체 종목만 모은 순수 테마 ETF가 소수 상장돼 있고, 팹리스·장비·파운드리 기업이 두루 담깁니다.',
+    '중국 과학기술 기업을 담는 과창판(STAR50) 관련 ETF도 국내에 여럿 있으나, 반도체 외 업종이 섞여 있어 순수 반도체 테마와는 구성이 다릅니다.',
+    '중국 반도체는 자립화 정책·미중 갈등 같은 이슈로 단기 수익률이 크게 출렁입니다. 한 달 수익률이 30%를 넘나든 만큼 하락 변동성도 큽니다.',
+  ],
+  sources: [
+    { label: '한국거래소 정보데이터시스템', url: 'http://data.krx.co.kr' },
+    { label: '미래에셋자산운용 TIGER ETF', url: 'https://investments.miraeasset.com' },
+  ],
+  sourceQuestions: [
+    { summary: '중국 반도체가 계속 오르는데 직접 투자를 못 하니 TIGER 차이나반도체 ETF로 지금 매수해도 될지', url: 'https://kin.naver.com/qna/detail.naver?docId=493448566' },
+  ],
+  sections: [
+    {
+      heading: '본토 반도체, 왜 ETF로 담나',
+      paragraphs: [
+        '중국 반도체 종목이 오른다는 소식을 듣고 직접 사려다 보면 벽에 부딪힙니다. SMIC나 캠브리콘 같은 중국 본토(A주) 상장 기업은 외국인 개인이 증권사 계좌로 곧장 매매하기 어렵습니다. 외국인 투자에 제약이 걸려 있기 때문입니다.',
+        '그래서 개인이 중국 본토 반도체에 접근하는 현실적인 길이 국내 상장 ETF입니다. ETF가 여러 종목을 묶어 담아 주니, 원화로 한 종목만 사도 중국 반도체 기업 여럿에 분산 투자하는 효과가 납니다.',
+        '"타이거 차이나반도체 같은 ETF로 지금 사도 될까"라는 질문이 자주 나오는 이유도 여기 있습니다. 직접 못 사니 ETF를 찾게 되는 것입니다.',
+      ],
+    },
+    {
+      heading: '순수 중국 반도체 ETF의 구성',
+      paragraphs: [
+        '국내에는 중국 반도체 종목만 모은 순수 테마 ETF가 소수 상장돼 있습니다. 대표적으로 TIGER 차이나반도체FACTSET이 중국 반도체 기업에 집중합니다. 안에는 캠브리콘 같은 팹리스(설계), 나우라·AMEC 같은 장비 기업, 중국 최대 파운드리인 SMIC 등이 두루 들어갑니다.',
+        '즉 설계부터 장비, 위탁생산까지 반도체 밸류체인 여러 단계의 중국 기업을 한 바구니에 담는 구조입니다. 특정 한 종목에 몰지 않아 개별 기업 리스크는 분산됩니다.',
+        '다만 구성 종목과 비중은 지수 방식에 따라 다르고 주기적으로 바뀝니다. 상품을 고르기 전 운용사가 공개하는 구성 종목과 총보수를 확인하는 편이 좋습니다.',
+      ],
+    },
+    {
+      heading: '과창판 ETF와 무엇이 다른가',
+      paragraphs: [
+        '중국 기술주에 투자하는 ETF로 과창판(STAR50) 관련 상품도 국내에 여럿 있습니다. 과창판은 중국판 나스닥으로 불리는 시장으로, 반도체 기업도 포함하지만 바이오·소프트웨어·신에너지 등 다른 첨단 업종이 함께 섞여 있습니다.',
+        '따라서 "중국 반도체에 집중하고 싶다"면 과창판 ETF는 목적과 조금 어긋날 수 있습니다. 반도체 비중이 높긴 해도 순수 반도체 테마는 아니기 때문입니다. 반대로 중국 첨단산업 전반에 폭넓게 걸고 싶다면 과창판 쪽이 더 맞습니다.',
+        '이름이 비슷해 보여도 담는 업종이 다르므로, 상품 설명에서 어떤 지수를 추종하는지부터 확인하는 것이 순서입니다.',
+      ],
+    },
+    {
+      heading: '높은 수익률 뒤의 변동성',
+      paragraphs: [
+        '중국 반도체 ETF는 최근 국내 ETF 수익률 상위를 휩쓸 만큼 강한 흐름을 보였습니다. 한 달 수익률이 30%를 넘긴 상품이 나올 정도였습니다. 하지만 이렇게 빠르게 오르는 테마는 반대로 빠지는 폭도 큽니다.',
+        '중국 반도체는 자립화 정책, 미중 기술 갈등, 신규 기업 상장 같은 이슈에 민감하게 반응합니다. 정책 한마디에 급등락하는 성격이라, 오른 뒤 뒤늦게 들어가면 조정 구간을 그대로 맞을 수 있습니다.',
+        '그래서 이런 고변동 테마는 포트폴리오의 중심보다 일부 비중으로 두는 편이 일반적입니다. 이 글은 종목이나 매매를 권하는 것이 아니라 구조와 위험을 설명하는 정보이며, 투자 시점과 비중, 그 결과는 투자자 스스로 판단할 몫입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '중국 본토 반도체 기업을 직접 살 수는 없나요?',
+      answer:
+        '외국인 개인은 중국 본토(A주) 기업을 증권사 계좌로 직접 매매하기 어렵습니다. 국내 상장 중국 반도체 ETF가 SMIC·캠브리콘 같은 종목에 접근하는 현실적인 방법입니다.',
+    },
+    {
+      question: '중국 반도체 ETF는 어떤 기업을 담나요?',
+      answer:
+        '설계(팹리스), 장비, 파운드리 등 반도체 밸류체인 여러 단계의 중국 기업을 담습니다. 대표 상품에는 SMIC, 캠브리콘, 나우라 등이 들어갑니다.',
+    },
+    {
+      question: '과창판 ETF와 중국 반도체 ETF는 같나요?',
+      answer:
+        '다릅니다. 과창판(STAR50)은 반도체 외에 바이오·소프트웨어 등이 섞인 중국 기술주 전반 지수라, 반도체만 담은 순수 테마 ETF와 구성이 다릅니다.',
+    },
+    {
+      question: '지금 사도 괜찮을까요?',
+      answer:
+        '단기 급등 뒤에는 조정 위험이 큽니다. 중국 반도체는 정책·수급에 민감해 변동성이 크므로, 매수 시점과 비중은 본인의 위험 감내 수준에 맞춰 신중히 정하는 것이 좋습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-20 · 국내 상장 해외 ETF 손익통산 불가 */
+const overseasEtfLossOffset: GuideDef = {
+  slug: 'overseas-etf-loss-offset',
+  title: '국내 상장 해외 ETF, 손실 나도 세금 내는 이유',
+  tagline: '일반계좌는 종목 간 손익통산이 안 돼, 손해 봐도 세금이 붙는다',
+  description:
+    '국내 상장 해외 ETF는 일반계좌에서 서로 다른 종목의 이익과 손실을 상계하지 못해, 전체로 손해를 봐도 이익 난 종목엔 배당소득세 15.4%가 붙습니다. 직접투자·ISA와의 손익통산 차이와 계좌 선택 기준을 함께 정리했습니다.',
+  keywords: ['국내 상장 해외 ETF 세금', '손익통산', 'ETF 배당소득세', 'ISA 손익통산', '해외 ETF 절세', 'ETF 손실 세금'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-07-20',
+  answer:
+    '국내에 상장된 해외 ETF는 일반계좌에서 매매차익과 분배금 모두 배당소득세 15.4%가 붙고, 서로 다른 종목의 손익을 합산해 상계하는 손익통산이 되지 않습니다. 그래서 한 종목에서 손해를 봐도 이익 난 다른 종목에는 세금이 그대로 부과됩니다. 손익통산이 필요하면 ISA나 해외 직접투자 계좌가 유리합니다.',
+  keyPoints: [
+    '국내 상장 해외 ETF(기타 ETF)는 일반계좌에서 매매차익과 분배금 모두 배당소득세 15.4%로 과세되고, 종목별로 원천징수됩니다.',
+    '일반계좌에서는 A ETF의 손실로 B ETF의 이익을 깎아 세금을 줄이는 손익통산이 되지 않아, 전체로 손해여도 이익 종목엔 세금이 붙습니다.',
+    'ISA 계좌는 계좌 안 모든 상품의 순이익 기준으로 과세해 손익통산이 되고, 순이익 200만원(서민형 400만원)까지 비과세됩니다.',
+    '미국에 직접 상장된 ETF는 매매차익이 양도소득세 22%로 분류과세되며 연 250만원 공제와 종목 간 손익통산이 적용됩니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '국내 상장 해외 ETF를 다룰 때 손실까지 계산해 손익통산으로 세금을 아낄 수 있는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494355422' },
+    { summary: '미국 단기채 등 해외 ETF의 수익과 손실을 전부 더해 손익통산으로 세금을 계산하는 구조가 어떻게 되는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494351995' },
+  ],
+  sections: [
+    {
+      heading: '손해를 봤는데 왜 세금이 나올까',
+      paragraphs: [
+        '국내 상장 해외 ETF를 두 종목 담았다고 해 봅시다. 하나는 200만원 이익, 다른 하나는 300만원 손실이라 계좌 전체로는 100만원 손해입니다. 그런데도 이익 난 200만원에는 세금이 붙습니다. 손해를 봤는데 세금을 내는 이상한 상황이 실제로 벌어집니다.',
+        '이유는 계좌 유형에 있습니다. 일반계좌에서 국내 상장 해외 ETF는 종목끼리 손익을 합쳐 계산하지 않기 때문입니다. 이익 난 종목은 이익대로 과세하고, 손실 난 종목의 손해는 세금에서 빼 주지 않습니다.',
+        '"손실까지 계산해서 낮은 세율로 절세된다"고 들었다면, 그건 일반계좌가 아니라 ISA나 직접투자 이야기입니다. 계좌를 구분하지 않으면 오해가 생깁니다.',
+      ],
+    },
+    {
+      heading: '일반계좌엔 손익통산이 없다',
+      paragraphs: [
+        '국내 상장 해외 ETF는 세법상 이른바 기타 ETF로 분류돼, 매매차익과 분배금 모두 배당소득세 15.4%가 매겨집니다. 이 세금은 이익이 난 종목을 팔 때 증권사가 그 자리에서 떼어 갑니다.',
+        '문제는 이 원천징수가 종목별로 따로 일어난다는 점입니다. 서로 다른 ETF의 이익과 손실을 하나로 묶어 정산하는 손익통산이 일반계좌에는 없습니다. 그래서 다른 종목에서 아무리 크게 손해를 봐도, 이익 난 종목의 세금은 줄지 않습니다.',
+        '연말에 손실 종목을 팔아 이익과 상계하는 절세 기법도 국내 상장 해외 ETF의 일반계좌에서는 통하지 않습니다. 이 점을 모르면 "손해인데 세금까지"라는 이중 부담을 겪게 됩니다.',
+      ],
+    },
+    {
+      heading: 'ISA는 순이익으로 과세한다',
+      paragraphs: [
+        '같은 종목이라도 ISA 계좌 안에서 사고팔면 이야기가 달라집니다. ISA는 계좌 안 모든 상품에서 난 이익과 손실을 합친 순이익을 기준으로 세금을 매깁니다. 앞의 예처럼 계좌 전체가 100만원 손해라면 과세 대상이 아예 없습니다.',
+        '게다가 ISA는 순이익 200만원(서민형은 400만원)까지 비과세하고, 그 초과분도 9.9%로 분리과세합니다. 손익통산에 비과세 한도까지 더해지니, 여러 종목을 굴리며 이익과 손실이 뒤섞이는 사람에게 특히 유리합니다.',
+        '그래서 국내 상장 해외 ETF를 여러 종목 담아 적극적으로 매매할 계획이라면, 일반계좌보다 ISA를 먼저 채우는 편이 세금 면에서 합리적입니다.',
+      ],
+    },
+    {
+      heading: '직접투자의 양도세와 손익통산',
+      paragraphs: [
+        '미국 시장에 직접 상장된 ETF를 사는 직투는 또 다른 방식입니다. 매매차익은 배당소득이 아니라 해외주식 양도소득세 22%로 분류과세되고, 연 250만원까지 공제됩니다. 그리고 이 양도소득 안에서는 종목 간 손익통산이 됩니다.',
+        '즉 직투에서는 A 종목 이익과 B 종목 손실을 합쳐 순이익에만 22%를 매기고, 250만원을 공제한 뒤 남는 금액에 과세합니다. 손실이 반영되니 국내 상장 일반계좌 같은 억울함은 없습니다. 대신 환전과 매년 5월 신고가 필요합니다.',
+        '정리하면 손익통산 여부는 상품이 아니라 계좌가 가릅니다. 여러 종목을 굴린다면 ISA나 직투가, 단순 보유라면 일반계좌도 무방합니다. 세율과 한도는 개정될 수 있으니 매매 전 확인하시고, 최종 선택과 그 결과는 투자자에게 귀속됩니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '왜 손해를 봤는데 세금을 내나요?',
+      answer:
+        '일반계좌에서 국내 상장 해외 ETF는 종목 간 손익통산이 안 됩니다. 이익 난 종목은 그대로 15.4% 과세되고, 다른 종목의 손실은 세금에서 빼 주지 않아 전체로 손해여도 세금이 발생합니다.',
+    },
+    {
+      question: 'ISA에서는 손익통산이 되나요?',
+      answer:
+        '됩니다. ISA는 계좌 안 모든 상품의 순이익 기준으로 과세해 이익과 손실을 합쳐 계산하고, 순이익 200만원(서민형 400만원)까지 비과세합니다.',
+    },
+    {
+      question: '미국 직투는 세금이 어떻게 다른가요?',
+      answer:
+        '직투 매매차익은 양도소득세 22%로 분류과세되며 연 250만원 공제와 종목 간 손익통산이 적용됩니다. 대신 환전과 매년 5월 종합소득세 신고가 필요합니다.',
+    },
+    {
+      question: '연말 손절로 절세하는 방법이 통하나요?',
+      answer:
+        '국내 상장 해외 ETF의 일반계좌에서는 통하지 않습니다. 손실 종목을 팔아도 이익 종목의 세금이 줄지 않기 때문입니다. 이 기법은 ISA나 직투에서 의미가 있습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-20 · 미국 가치주 ETF vs 성장주 ETF */
+const usValueVsGrowthEtf: GuideDef = {
+  slug: 'us-value-vs-growth-etf',
+  title: '미국 가치주 ETF와 성장주 ETF, 무엇이 다른가',
+  tagline: '싸게 사는 가치주, 빠르게 크는 성장주, 국면마다 강한 쪽이 다르다',
+  description:
+    '미국 가치주 ETF와 성장주 ETF는 담는 기업 성격도, 강한 국면도 다릅니다. 저평가 가치주를 담는 IVE와 고성장 기업을 담는 IVW의 차이, 금리·경기 국면별 강점, 5년 안팎 목표 자금에 맞는 접근까지 정리했습니다.',
+  keywords: ['미국 가치주 ETF', '성장주 ETF', 'IVE IVW', '가치주 성장주 차이', 'S&P500 밸류', '미국 가치주 투자'],
+  section: '해외상장 가이드',
+  lastReviewed: '2026-07-20',
+  answer:
+    '가치주 ETF는 실제 가치보다 주가가 낮게 평가된 기업을, 성장주 ETF는 매출과 이익이 빠르게 크는 기업을 담습니다. 미국 대표 상품으로는 iShares의 IVE(가치)와 IVW(성장)가 있고, 총보수는 연 0.18% 수준입니다. 금리·경기 국면에 따라 강한 쪽이 달라지므로, 목표 시점이 정해진 자금이라면 한쪽에 몰지 말고 변동성을 함께 봐야 합니다.',
+  keyPoints: [
+    '가치주는 자산·이익 대비 주가가 낮게 평가된 기업, 성장주는 시장 평균보다 빠른 이익 성장이 기대되는 기업으로, 같은 지수도 가치·성장으로 나눠 담습니다.',
+    '미국 대표 상품은 iShares S&P500 Value(IVE)와 S&P500 Growth(IVW)로, 두 상품 모두 총보수가 연 0.18% 수준입니다.',
+    '금리가 오르고 경기 방어가 중요한 국면엔 가치주가, 저금리에 성장 기대가 큰 국면엔 성장주가 상대적으로 강한 경향이 있습니다.',
+    '5년 안팎에 써야 할 목표 자금이라면 성장주 집중은 변동성이 커, 지수 전체나 가치·성장 분산이 손실 위험을 줄이는 데 도움이 됩니다.',
+  ],
+  sources: [
+    { label: 'iShares by BlackRock', url: 'https://www.ishares.com' },
+    { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '5년 후 아파트 구입 자금을 모으는데 iShares S&P500 Value 같은 가치주 ETF를 매수해도 괜찮을지', url: 'https://kin.naver.com/qna/detail.naver?docId=475289127' },
+    { summary: '월배당 ETF와 성장주 ETF 중 어느 쪽이 더 오를지 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494173797' },
+  ],
+  sections: [
+    {
+      heading: '가치주와 성장주는 무엇이 다른가',
+      paragraphs: [
+        '같은 미국 주식이라도 성격에 따라 가치주와 성장주로 나뉩니다. 가치주는 기업이 가진 자산·이익·현금흐름에 비해 주가가 낮게 평가된 종목입니다. 지금 벌고 있는 것에 비해 값이 싼 회사라고 보면 됩니다. 금융·에너지·산업재에 이런 기업이 많습니다.',
+        '성장주는 반대입니다. 지금 이익 대비 주가는 비싸 보여도, 앞으로 매출과 이익이 시장 평균보다 훨씬 빠르게 커질 것으로 기대되는 종목입니다. 기술·플랫폼 기업이 대표적입니다.',
+        'ETF는 이 성격을 기준으로 종목을 갈라 담습니다. 그래서 같은 S&P500이라도 가치주만 뽑은 ETF와 성장주만 뽑은 ETF가 따로 존재합니다.',
+      ],
+    },
+    {
+      heading: '대표 상품 IVE와 IVW',
+      paragraphs: [
+        '미국에서 가장 널리 알려진 두 상품이 블랙록의 iShares S&P500 Value(IVE)와 iShares S&P500 Growth(IVW)입니다. 이름 그대로 IVE는 S&P500 중 가치 성격 종목을, IVW는 성장 성격 종목을 담습니다. 두 상품 모두 운용보수가 연 0.18% 수준으로 낮은 편입니다.',
+        '한국 투자자는 이 두 상품을 해외 직접투자로 살 수 있습니다. 국내 상장 ETF 중에는 순수 가치·성장으로 딱 나눈 상품이 아직 많지 않아, 가치·성장 구분 투자는 직투로 접근하는 경우가 많습니다.',
+        '가치·성장을 굳이 나누지 않고 S&P500 지수 전체를 담으면 두 성격이 자연스럽게 섞입니다. 국내 상장 미국S&P500 ETF가 그런 선택지입니다.',
+      ],
+    },
+    {
+      heading: '국면마다 강한 쪽이 바뀐다',
+      paragraphs: [
+        '가치주와 성장주는 어느 한쪽이 늘 이기지 않습니다. 시장 국면에 따라 번갈아 강해집니다. 대체로 금리가 오르고 경기 불확실성이 커져 방어가 중요한 국면에서는 가치주가 상대적으로 버텨 줍니다. 이미 이익을 내는 저평가 기업이라 충격에 덜 흔들리는 편입니다.',
+        '반대로 금리가 낮고 성장 기대가 부풀 때는 성장주가 앞서갑니다. 미래 이익을 크게 반영받는 구간이기 때문입니다. 최근 몇 년의 강세장은 성장주가 주도한 대표적인 예였습니다.',
+        '문제는 어느 국면이 올지 미리 맞히기 어렵다는 점입니다. 그래서 한쪽에 전부 거는 대신 둘을 섞거나 지수 전체를 담아 국면 변화를 견디는 방식이 흔히 쓰입니다.',
+      ],
+    },
+    {
+      heading: '목표 시점이 정해진 돈이라면',
+      paragraphs: [
+        '"5년 뒤 집 살 돈을 성장주 ETF로 굴려도 될까"라는 질문을 자주 봅니다. 여기서 핵심은 종목 성격보다 기간입니다. 성장주는 오를 때 크게 오르지만 빠질 때도 깊어, 써야 할 시점이 정해진 돈에는 변동성이 부담이 됩니다.',
+        '목표 시점이 5년 안팎으로 가깝다면, 성장주 한쪽에 몰기보다 지수 전체나 가치·성장 분산, 채권 혼합처럼 변동성을 낮추는 조합이 안전합니다. 하락장에서 목표 시점이 겹치면 손실을 회복할 시간이 없기 때문입니다.',
+        '가치냐 성장이냐는 취향이 아니라 투자 기간과 위험 감내 수준에 맞춰 정하는 문제입니다. 이 글은 판단을 돕는 정보이며 특정 상품 추천이 아니고, 투자의 결과는 투자자 본인에게 돌아갑니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '가치주와 성장주의 차이가 뭔가요?',
+      answer:
+        '가치주는 자산·이익 대비 주가가 낮게 평가된 기업이고, 성장주는 앞으로 이익이 시장 평균보다 빠르게 커질 것으로 기대되는 기업입니다. ETF는 이 성격으로 종목을 갈라 담습니다.',
+    },
+    {
+      question: '미국 가치주·성장주 대표 ETF는 무엇인가요?',
+      answer:
+        'iShares S&P500 Value(IVE)와 S&P500 Growth(IVW)가 대표적입니다. 두 상품 모두 총보수가 연 0.18% 수준이며, 한국에서는 해외 직접투자로 매수할 수 있습니다.',
+    },
+    {
+      question: '어느 쪽이 더 수익률이 좋나요?',
+      answer:
+        '국면에 따라 다릅니다. 금리 상승·방어 국면엔 가치주가, 저금리·성장 기대 국면엔 성장주가 상대적으로 강한 경향이 있어 어느 한쪽이 늘 앞서지는 않습니다.',
+    },
+    {
+      question: '5년 뒤 쓸 돈을 성장주 ETF에 넣어도 되나요?',
+      answer:
+        '성장주는 변동성이 커서 써야 할 시점이 정해진 돈에는 부담이 됩니다. 목표가 가깝다면 지수 전체나 가치·성장 분산, 채권 혼합처럼 변동성을 낮추는 조합이 더 안전합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
   pensionSavingsVsIrp,
   etfSharePriceMeaning,
@@ -14988,6 +15408,11 @@ export const GUIDES: GuideDef[] = [
   leverageEtfLongTermDecay,
   usShortTermBondEtf,
   bitcoinFuturesVsSpot,
+  pensionUsEtfAlternatives,
+  financialIncomeHealthInsurance,
+  chinaSemiconductorEtf,
+  overseasEtfLossOffset,
+  usValueVsGrowthEtf,
 ];
 
 /**
@@ -14998,6 +15423,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-07-20 · 지식iN 질문 수요 기반 (연금계좌 미국ETF·건보 피부양자·중국반도체·손익통산·가치성장)
+  'pension-us-etf-alternatives': '2026-07-20',
+  'financial-income-health-insurance': '2026-07-20',
+  'china-semiconductor-etf': '2026-07-20',
+  'overseas-etf-loss-offset': '2026-07-20',
+  'us-value-vs-growth-etf': '2026-07-20',
   // 2026-07-19 · 지식iN 질문 수요 기반 (미국 ETF 세금·코인·레버리지·단기채)
   'voo-vs-domestic-sp500-tax': '2026-07-19',
   'crypto-tax-2026': '2026-07-19',
@@ -15216,7 +15647,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset'],
   },
   {
     title: '배당·인컴',
@@ -15226,12 +15657,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '테마·섹터',
     description: '방산·조선·건설·자동차·AI·반도체·빅테크·소프트웨어·보안·로봇·전기차·신재생·희토류·게임·엔터·명품·뷰티·비트코인·인프라 등 특정 테마에 집중하는 섹터 ETF.',
-    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot'],
+    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf'],
   },
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf'],
   },
   {
     title: '전략·자산배분',

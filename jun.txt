@@ -1413,3 +1413,17 @@ A. 지식iN 코퍼스(data/keywords/kin/kin-20260718.json, 103건·4분야) 기�
 - 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender ✓(answer-box·guide-key-points·guide-sources·citation·2026-07-19 전부 존재) · 신규 블록 em-dash 0 · 운영자 메타 leak 0 · title 30~34자 · desc 129~149 · slug ASCII · kw6.
 - 등록: GUIDES 배열 5개, GUIDE_PUBLISHED_AT 2026-07-19 5줄, GUIDE_CLUSTERS(세금·절세 계좌 2 / 전략·자산배분 2 / 테마·섹터 1).
 ★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/voo-vs-domestic-sp500-tax, https://iknowhowinfo.com/guide/crypto-tax-2026, https://iknowhowinfo.com/guide/leverage-etf-long-term-decay, https://iknowhowinfo.com/guide/us-short-term-bond-etf, https://iknowhowinfo.com/guide/bitcoin-futures-vs-spot
+
+## 2026-07-20 · [일일 발행] 지식iN 질문 수요 기반 5편 (연금·건보·중국반도체·손익통산·가치성장)
+
+### Q. 오늘 포스팅 (자율 발행 루틴)
+A. 지식iN 코퍼스(kin-20260718.json, 103문항)에서 질문 수요 기준으로 롱테일 5편 선정·발행. 신규 지식iN 수집은 클라우드 IP 차단(HTTP 000, 1회 재시도 실패)으로 저장 코퍼스만 사용(정상 경로).
+  ① pension-us-etf-alternatives — 연금저축·IRP는 국내 상장 상품만 담겨 QQQ·VOO 직접 매수 불가→KODEX·TIGER 미국S&P500/나스닥100 대체, IRP 위험자산 70% 한도, 연 900만원 세액공제 13.2~16.5%. 출처: 미국 ETF 절세 ISA/IRP 국내상장만 docId=494339573, 연금저축펀드 ETF 추천 docId=489444942, ISA 나스닥 주문 안됨 docId=494341294.
+  ② financial-income-health-insurance — 금융소득 2천만원↑ 종합과세(최고 49.5%), 1천만원↑ 건보 피부양자 탈락(전액 소득 합산), 재산 과표 5.4억·9억 기준, ISA 분리과세로 두 문턱 제외. 출처: 금융소득 종합과세·건보료 줄이기 docId=494333180, 보금자리론 소득기준 미국배당 docId=494353655.
+  ③ china-semiconductor-etf — 중국 본토(A주) 반도체 외국인 직접투자 제약→국내 상장 ETF(TIGER 차이나반도체FACTSET: SMIC·캠브리콘·나우라), 과창판 STAR50과 구성 차이, 한달 30%+ 급등 뒤 변동성. 출처: 타이거 차이나반도체 지금 매수 docId=493448566.
+  ④ overseas-etf-loss-offset — 국내상장 해외ETF 일반계좌는 종목 간 손익통산 불가→손해 봐도 이익 종목 15.4% 과세, ISA는 순이익 과세+200/400만 비과세, 직투는 양도세 22%+250만 공제+손익통산. 출처: 국내상장 해외ETF 손익통산 절세 docId=494355422, 미국단기채 손익통산 docId=494351995.
+  ⑤ us-value-vs-growth-etf — 가치주(저평가)/성장주(고성장) 구분, iShares IVE·IVW 총보수 0.18%, 국내는 직투 접근, 금리·경기 국면별 강세 교대, 5년 목표 자금엔 성장주 집중 지양. 출처: 5년후 아파트 iShares S&P500 Value docId=475289127, 성장주 vs 월배당 docId=494173797.
+- 사실검증(WebSearch 적대적): 연금계좌 해외직상장 불가·국내대체(Threads/연금레터), 피부양자 소득 2천만·금융 1천만 초과 전액합산·재산 5.4억/9억(건보공단/한국경제), 국내상장 해외ETF 15.4% 손익통산 불가·ISA 순이익·직투 22% 250만(KB/삼성/토스), TIGER 차이나반도체FACTSET 구성·수익률(미래에셋/헤럴드), IVE/IVW 0.18%(smarttoday). 한도·기준 개정 가능은 "시점 확인" 명시.
+- 검증: tsc 0 · cf:build EXIT=0 · 5편 prerender ✓(answer-box·guide-key-points·guide-sources·citation·2026-07-20 전부 존재) · 신규 블록 em-dash 0 · 운영자 메타 leak 0 · title 28~34자 · desc 120~129 · slug ASCII · kw6.
+- 등록: GUIDES 배열 5개, GUIDE_PUBLISHED_AT 2026-07-20 5줄, GUIDE_CLUSTERS(세금·절세 계좌 3 / 테마·섹터 1 / 해외·환율 1).
+★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/pension-us-etf-alternatives, https://iknowhowinfo.com/guide/financial-income-health-insurance, https://iknowhowinfo.com/guide/china-semiconductor-etf, https://iknowhowinfo.com/guide/overseas-etf-loss-offset, https://iknowhowinfo.com/guide/us-value-vs-growth-etf
