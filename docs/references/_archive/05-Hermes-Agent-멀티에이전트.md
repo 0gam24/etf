@@ -82,7 +82,7 @@
 
 ---
 
-## 4. smartdatashop.kr 즉시 적용 항목
+## 4. 즉시 적용 항목
 
 ### 현재 상태
 - **6 에이전트 stub** 보유 (.github/workflows/ + scripts/agents/)
