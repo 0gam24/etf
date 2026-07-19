@@ -82,21 +82,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const displayCode = etf?.code || krxMeta?.shortcode || code || ticker;
   const sector = etf?.sector;
 
-  // 1A. Title — "ETF" 키워드 + freshness 신호 강화 (60자 이내 유지)
+  // 1A. Title — CTR 수술 (2026-07-19, GSC 실측 기반):
+  //   실제 유입 쿼리 문구를 그대로 반영 — "{ETF명} etf 구성종목"(6~10위 다수),
+  //   "{ETF명} {코드} 분배금 지급 주기", "{ETF명} etf 현재 가격".
+  //   "구성종목 TOP10"처럼 구체 숫자를 넣어 스니펫 클릭 동기 부여. (60자 이내 유지)
   const title = etf
-    ? `${name} (${displayCode}) ETF | 구성종목·분배금·주가 매일 갱신`
-    : `${name} (${displayCode}) ETF | 종목 정보·구성종목·분배금`;
+    ? `${name}(${displayCode}) ETF 구성종목 TOP10·분배금 지급주기·현재가`
+    : `${name}(${displayCode}) ETF 구성종목·분배금 지급주기 정리`;
 
-  // 1D. Meta — 첫 100자에 키워드 3개 압축 (Naver snippet + Google CTR 최적화)
-  // 한국 사용자는 검색결과 첫 100자만 봄 → 종목명·등락률·구성종목·섹터를 앞에 배치
+  // 1D. Meta — 첫 100자에 키워드 압축 (Naver snippet + Google CTR 최적화)
+  //   "종목코드"·"krx" 문구를 앞에 배치 — "krx: {코드}"·"{ETF명} 종목코드" 쿼리
+  //   (GSC 노출 1·4위)가 스니펫에서 정답을 즉시 확인하도록.
   const holdingsForMeta = code ? getEtfHoldings(code)?.holdings || [] : [];
   const topHoldingNames = holdingsForMeta.slice(0, 2).map(h => h.name).join('·');
   const sectorClause = sector ? ` ${sector}` : '';
   const trendIcon = etf ? (etf.changeRate > 0 ? '🔥' : etf.changeRate < 0 ? '📉' : '📊') : '📊';
 
   const description = etf
-    ? `${trendIcon} ${name}(${displayCode}) ETF${sectorClause} — ${etf.price.toLocaleString()}원 ${etf.changeRate >= 0 ? '+' : ''}${etf.changeRate.toFixed(2)}%.${topHoldingNames ? ` ${topHoldingNames} 등 TOP 10 구성.` : ''} 분배금·분배락일·투자 포인트·관련 분석을 한 페이지에.`
-    : `📊 ${name}(${displayCode}) ETF${sectorClause} — KRX 상장 종목.${topHoldingNames ? ` ${topHoldingNames} 등 TOP 10 구성.` : ''} 운용사·섹터·구성종목·관련 분석 정리.`;
+    ? `${trendIcon} ${name} 종목코드 ${displayCode}(KRX)${sectorClause} — 현재가 ${etf.price.toLocaleString()}원 ${etf.changeRate >= 0 ? '+' : ''}${etf.changeRate.toFixed(2)}%.${topHoldingNames ? ` 구성종목 TOP10: ${topHoldingNames} 등.` : ''} 분배금 지급주기·분배락일·투자 포인트를 한 페이지에, 매일 갱신.`
+    : `📊 ${name} 종목코드 ${displayCode}(KRX)${sectorClause} — KRX 상장 ETF.${topHoldingNames ? ` 구성종목 TOP10: ${topHoldingNames} 등.` : ''} 운용사·섹터·구성종목·관련 분석 정리.`;
 
   const ogImage = `/api/og?title=${encodeURIComponent(name)}&category=stock&tickers=${displayCode}`;
 
@@ -121,10 +125,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     keywords: [
       name,
       `${name} 주가`,
-      `${name} 분배금`,
+      `${name} 분배금 지급 주기`,
       `${name} 구성종목`,
+      `${name} 종목코드`,
       `${name} 시세`,
       `${displayCode} ETF`,
+      `krx ${displayCode}`,
       sector || 'ETF',
     ],
     ...(robots ? { robots } : {}),

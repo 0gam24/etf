@@ -159,6 +159,7 @@ data/raw/pulse_images/
 
 - 기존 발행 글(가이드 128편·`/etf` 사전 등)의 제목·본문은 **소급 수정 금지.** 제목을 바꾸면 구글이 새 글로 오인해 색인·순위에 손해.
 - **새로 쓰는 글부터** 이 규칙 적용.
+- **예외 — 데이터 기반 CTR 수술 (2026-07-19 사용자 승인)**: GSC 실측에서 "노출 있음 + 클릭 0"으로 확인된 페이지의 **meta title·description·keywords**는 검색어 문구에 맞춰 수정 허용 (URL 불변이므로 새 글 오인 없음, 스니펫만 재평가됨). 본문 소급 수정 금지는 유지. 수술 근거(GSC 쿼리)를 코드 주석에 남긴다. 1차 적용: `/etf/[ticker]` 템플릿.
 
 ## 검증 (새 콘텐츠 push 전 의무)
 
@@ -168,6 +169,17 @@ data/raw/pulse_images/
 grep -c $'—' <새 콘텐츠>
 ```
 - 운영자 메타 leak 검사와 함께 수행. 발견 시 쉼표·콜론·재구성으로 교체 후 push.
+
+## 색인 푸시 (가이드 발행 후 의무 · 2026-07-19 신설)
+
+가이드 발행 commit이 push되어 production 반영이 확인되면 **반드시 색인 푸시를 실행**한다:
+```bash
+npm run push:guides          # 가장 최근 발행일 묶음 → IndexNow(Bing·Naver) + Google Indexing
+npm run push:guides -- --dry # 대상 확인만
+```
+- 배경: IndexNow·Google Indexing 자동 푸시는 데일리 파이프라인(`npm run pulse`) 경로에만 연결되어 있어, 루틴이 guides.ts에 직접 추가하는 가이드는 색인 요청 없이 sitemap 크롤만 기다리는 공백이 있었다.
+- 키(`INDEXNOW_KEY`/`GOOGLE_INDEXING_KEY`) 미설정 채널은 자동 skip되므로 실행 자체는 항상 안전.
+- 발행일이 어제 이전 분까지 밀렸으면 `-- --days=N`으로 소급 푸시.
 
 # 🎯 주제 선정 규칙 · 지식iN 질문 수요 단일 소스 (2026-07-14 사용자 지시)
 

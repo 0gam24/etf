@@ -31,6 +31,7 @@
     "keywords:naver": "node scripts/fetch-naver-keywords.mjs",
     "keywords:naver-trend": "node scripts/fetch-naver-trend.mjs",
     "send:push": "node scripts/send-push.mjs",
+    "push:guides": "node scripts/push-new-guides.mjs",
     "scout:breaking-queue": "node scripts/scout-breaking-queue.mjs",
     "env:sync": "node scripts/sync-env.mjs",
     "env:sync:apply": "node scripts/sync-env.mjs --apply",
