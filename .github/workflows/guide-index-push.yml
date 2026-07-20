@@ -1,0 +1,60 @@
+name: Guide Index Push (IndexNow + Google)
+
+# 가이드 발행 후 색인 푸시 자동화.
+#   매일 새벽 클라우드 루틴이 src/lib/guides.ts에 5편을 커밋·push하면,
+#   그 push를 트리거로 이 워크플로가 npm run push:guides를 실행해
+#   IndexNow(Bing·Naver Yeti·Yandex) + Google Indexing에 색인 요청을 보낸다.
+#   (클라우드 루틴 환경엔 키가 없어 색인 푸시가 skip되던 공백을 메움 — 2026-07-21)
+#
+#   키는 GitHub Actions Secrets에서만 읽는다(코드·로그에 값 노출 없음).
+#   미설정 채널은 스크립트가 자동 skip하므로, 시크릿이 없어도 실행 자체는 안전.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/lib/guides.ts'
+  workflow_dispatch:
+    inputs:
+      days:
+        description: '소급 색인 (며칠 전까지). 비우면 최신 발행일만'
+        required: false
+        default: ''
+
+concurrency:
+  group: guide-index-push
+  cancel-in-progress: false
+
+jobs:
+  push-index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      TZ: Asia/Seoul
+      SITE_URL: https://iknowhowinfo.com
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+      GOOGLE_INDEXING_KEY: ${{ secrets.GOOGLE_INDEXING_KEY }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Push guides to search index
+        run: |
+          if [ -n "${{ github.event.inputs.days }}" ]; then
+            npm run push:guides -- --days=${{ github.event.inputs.days }}
+          else
+            npm run push:guides
+          fi
