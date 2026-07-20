@@ -1444,3 +1444,13 @@ A. 지식iN 코퍼스(data/keywords/kin/kin-20260718.json, 103문항·4분야)�
 - 등록: GUIDES 배열 5개, GUIDE_PUBLISHED_AT 2026-07-21 5줄, GUIDE_CLUSTERS(세금·절세 계좌 4 / 해외·환율 1).
 - 지식iN 신규 수집: 실패(클라우드 IP 차단 HTTP 000, 재시도 000) · 사용 코퍼스: kin-20260718.json.
 ★오늘 링크(풀 URL): https://iknowhowinfo.com/guide/pension-fund-etf-portfolio, https://iknowhowinfo.com/guide/isa-maturity-extend-vs-pension, https://iknowhowinfo.com/guide/us-etf-tax-saving-checklist, https://iknowhowinfo.com/guide/nasdaq100-sp500-long-term-dca, https://iknowhowinfo.com/guide/isa-us-index-etf
+
+## 2026-07-21 · [장애 진단 — 스케줄 07-21 "안 올라옴"]
+
+### Q. 스케줄 포스팅이 21일자가 안 올라옴 오류 수정해
+A. 진단 결과 발행 자체는 정상, 진짜 누락은 색인 푸시였음.
+- 확인: 루틴은 07-21 03:33 KST 정상 실행 → 커밋 00d3e9a(author Claude, 07-20 19:06 UTC)로 5편 발행(pension-fund-etf-portfolio·isa-maturity-extend-vs-pension·us-etf-tax-saving-checklist·nasdaq100-sp500-long-term-dca·isa-us-index-etf, 발행일 2026-07-21). production 5개 전부 200, 렌더 정상(answer-box·key-points·sources·발행일), /guide/latest·홈 블로그 피드에도 노출. 즉 사이트에는 올라와 있음.
+- 진짜 원인: 07-19 신설 규칙 "가이드 발행 후 npm run push:guides 색인 푸시 의무"가 있는데 루틴 프롬프트(07-18 작성)에 이 단계가 없어, 발행은 됐지만 IndexNow·Google 색인 요청이 누락 → 검색 반영이 지연돼 "안 올라온" 것처럼 보임.
+- 조치 ①: 로컬에서 npm run push:guides 실행 → IndexNow(Bing·Naver Yeti·Yandex) 통보 성공(200), sitemap ping 3/3. Google Indexing은 로컬 키 미설정으로 skip.
+- 조치 ②: 루틴 프롬프트에 [7.5. 색인 푸시] 단계 추가(push 성공 후 npm run push:guides, 밀린 날은 --days=N 소급), keywords 규칙 5~8개로 갱신, em dash 금지 대상에 sources label 명시. 다음 실행(07-22 03:32 KST)부터 적용.
+- 한계: 클라우드 루틴 환경엔 INDEXNOW_KEY/GOOGLE_INDEXING_KEY(.env.local·gitignore)가 없을 수 있어 색인 푸시가 cloud에서 skip될 수 있음 → 확실한 경로는 로컬 실행. 사용자 판단 필요(키를 cloud env에 등록 vs 로컬에서 매일 실행).
