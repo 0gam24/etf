@@ -15679,6 +15679,445 @@ const isaUsIndexEtf: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-07-22 · 연금저축·IRP 세액공제 900만원 배분 */
+const pensionIrpTaxCreditAllocation: GuideDef = {
+  slug: 'pension-irp-tax-credit-allocation',
+  title: '연금저축·IRP 세액공제 900만원, 어떻게 나눠 채울까',
+  tagline: '연금저축 600만원 먼저, 남는 300만원은 IRP로',
+  description:
+    '연금저축과 IRP는 합쳐 연 900만원까지 세액공제됩니다. 연금저축이 600만원 한도라 이를 먼저 채우고 남는 300만원 이상을 IRP로 채우는 순서가 기본입니다. 소득별 공제율과 최대 환급액, 배분 순서와 이월까지 정리했습니다.',
+  keywords: ['연금저축 IRP 세액공제', '연금저축 IRP 한도', '세액공제 900만원', 'IRP 세액공제율', '연금저축 600만원', '연말정산 연금'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-07-22',
+  answer:
+    '연금저축과 IRP를 합쳐 한 해 900만원까지 세액공제를 받습니다. 연금저축은 그 안에서 600만원까지만 인정되므로, 연금저축을 600만원 채운 뒤 남는 300만원을 IRP로 채우는 순서가 가장 흔합니다. 총급여 5,500만원 이하면 공제율 16.5%, 넘으면 13.2%가 적용됩니다.',
+  keyPoints: [
+    '연금저축과 IRP 세액공제 한도는 합산 연 900만원입니다. 이 가운데 연금저축으로 인정되는 몫은 최대 600만원이라, 남는 300만원은 IRP로 채워야 900만원을 다 씁니다.',
+    '공제율은 총급여 5,500만원(종합소득 4,500만원) 이하면 16.5%, 초과하면 13.2%가 적용됩니다.',
+    '900만원을 모두 채우면 5,500만원 이하 근로자는 최대 148만 5천원, 초과자는 118만 8천원을 돌려받습니다.',
+    '납입은 12월 31일까지 입금해야 그해 연말정산에 반영됩니다. 한도를 넘겨 넣은 초과분은 다음 해로 이월해 공제받을 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'IRP와 연금저축, 연금저축펀드를 어떻게 구분하고 활용하는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494287819' },
+    { summary: '연금저축부터 가입하는 게 맞는지 가입 순서를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494334592' },
+  ],
+  comparisonTable: {
+    caption: '연금저축과 IRP 세액공제 한도 비교',
+    columns: ['구분', '연금저축', 'IRP'],
+    rows: [
+      ['세액공제 한도(단독)', '최대 600만원', '최대 900만원'],
+      ['둘 합산 한도', '900만원', '900만원'],
+      ['중도인출', '상대적으로 자유', '법정 사유만 가능'],
+      ['위험자산 투자', '한도 없음', '최대 70%'],
+    ],
+  },
+  sections: [
+    {
+      heading: '900만원 한도는 어떻게 짜여 있나',
+      paragraphs: [
+        '연금저축과 IRP는 따로 계산하는 것이 아니라, 둘을 합쳐 한 해 900만원까지 세액공제를 받습니다. 이 900만원 안에서 연금저축으로 인정되는 금액은 최대 600만원으로 정해져 있습니다.',
+        '그래서 연금저축에만 900만원을 넣어도 공제는 600만원까지만 됩니다. 나머지 300만원어치 공제를 받으려면 그 몫을 IRP에 넣어야 합니다. 반대로 IRP는 단독으로 900만원까지 공제가 가능해, IRP 하나로 한도를 다 채우는 것도 됩니다.',
+        '정리하면 한도의 뼈대는 두 줄입니다. 합산 900만원, 그 안에서 연금저축은 600만원까지. 이 두 숫자만 기억하면 배분이 쉬워집니다.',
+      ],
+    },
+    {
+      heading: '연금저축 먼저, IRP로 마무리하는 이유',
+      paragraphs: [
+        '가장 흔한 순서는 연금저축을 600만원 채운 다음 IRP에 300만원을 더하는 방식입니다. 굳이 이 순서를 권하는 데는 이유가 있습니다.',
+        'IRP는 중도에 돈을 빼기가 까다롭습니다. 법에서 정한 사유가 아니면 부분 인출이 어렵고, 요건을 못 맞춰 해지하면 그동안 받은 공제를 세금으로 토해내야 합니다. 반면 연금저축은 상대적으로 인출이 자유로운 편이라, 급할 때 대응 여지가 큽니다.',
+        '또 IRP는 주식형 같은 위험자산을 70%까지만 담을 수 있는 규정이 있습니다. 공격적으로 굴리고 싶은 자금은 제한이 없는 연금저축에 두는 편이 운용 폭이 넓습니다. 그래서 유연성이 필요한 몫을 연금저축에 먼저 채우는 것입니다.',
+      ],
+    },
+    {
+      heading: '공제율과 실제로 돌려받는 금액',
+      paragraphs: [
+        '세액공제율은 소득에 따라 두 단계로 나뉩니다. 총급여 5,500만원(종합소득 4,500만원) 이하면 16.5%, 그보다 많으면 13.2%가 적용됩니다. 지방소득세까지 포함한 수치입니다.',
+        '900만원을 모두 채웠다고 하면, 5,500만원 이하 근로자는 900만원의 16.5%인 148만 5천원을 돌려받습니다. 소득이 더 높은 사람은 13.2%가 적용돼 118만 8천원입니다. 넣는 금액이 같아도 소득 구간에 따라 환급액이 30만원가량 벌어집니다.',
+        '이 공제는 이미 낸 세금을 깎아 돌려주는 방식이라, 낼 세금 자체가 적은 사람은 공제 한도를 다 못 쓸 수도 있습니다. 본인의 결정세액을 함께 확인하는 편이 좋습니다.',
+      ],
+    },
+    {
+      heading: '한도를 넘겨 넣었다면 이월로 살린다',
+      paragraphs: [
+        '올해 900만원을 초과해 넣었거나, 소득이 적어 공제를 다 못 받은 경우에도 그 돈이 사라지는 것은 아닙니다. 초과 납입분은 다음 해 이후로 이월해 세액공제를 신청할 수 있습니다.',
+        '예를 들어 여윳돈이 생겨 한 해에 많이 넣어 두고, 남는 공제분을 이듬해로 넘겨 나눠 받는 식으로 활용합니다. 이월 공제는 금융회사에 신청해 반영합니다.',
+        '세율과 한도는 세법 개정으로 달라질 수 있으니 납입 전에 최신 기준을 확인하시기 바랍니다. 이 글은 판단을 돕는 정보이며, 구체적인 절세 설계는 본인 상황에 맞춰 결정하실 일입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '연금저축에만 900만원 넣으면 다 공제되나요?',
+      answer:
+        '아닙니다. 연금저축으로 인정되는 세액공제는 600만원까지입니다. 900만원을 다 공제받으려면 남는 300만원을 IRP에 넣어야 합니다.',
+    },
+    {
+      question: 'IRP 하나로 900만원을 다 채워도 되나요?',
+      answer:
+        '됩니다. IRP는 단독으로 900만원까지 세액공제가 가능합니다. 다만 IRP는 중도인출이 까다롭고 위험자산이 70%로 제한된다는 점을 함께 보셔야 합니다.',
+    },
+    {
+      question: '공제율은 어떻게 정해지나요?',
+      answer:
+        '총급여 5,500만원(종합소득 4,500만원) 이하면 16.5%, 초과하면 13.2%가 적용됩니다. 900만원을 채우면 각각 최대 148만 5천원, 118만 8천원을 돌려받습니다.',
+    },
+    {
+      question: '12월에 몰아서 넣어도 공제되나요?',
+      answer:
+        '그해 12월 31일까지 실제로 입금하면 됩니다. 한도를 넘겨 넣은 초과분은 다음 해로 이월해 공제받을 수 있습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-22 · 미국 단기채 ETF 환차익의 실제 */
+const usShortTermBondFxGain: GuideDef = {
+  slug: 'us-short-term-bond-fx-gain',
+  title: '미국 단기채 ETF로 환차익 노리기, 진짜 될까',
+  tagline: 'SGOV 같은 달러 단기채, 환율은 양날의 칼',
+  description:
+    '미국 단기채 ETF는 달러 안전자산으로 인기지만 환차익만 노리는 전략에는 함정이 있습니다. 개인의 순수 환전 차익은 비과세라도 ETF 안에서 생긴 환차익은 과세되고, 환율은 반대로도 움직입니다. 세금과 환위험을 정리했습니다.',
+  keywords: ['미국 단기채 ETF', 'SGOV 환차익', '미국채 ETF 환율', '달러 ETF 세금', '환차익 비과세', '미국 단기채권 투자'],
+  section: 'ETF 채권 가이드',
+  lastReviewed: '2026-07-22',
+  answer:
+    '미국 단기채 ETF는 달러로 굴리는 자산이라 원달러 환율이 오르면 환차익이 함께 붙습니다. 다만 개인이 달러를 직접 환전해 얻는 환차익은 비과세지만, ETF 안에서 생기는 환차익은 매매차익이나 분배금으로 과세됩니다. 환율은 반대로 내릴 수도 있어 환차익을 확정 수익처럼 봐서는 안 됩니다.',
+  keyPoints: [
+    '미국 원본 단기채 ETF(SGOV 등)는 매도 차익에 양도소득세 22%(연 250만원 기본공제), 분배금에는 배당소득세 15.4%가 붙습니다.',
+    '국내 상장 환노출형 미국채 ETF는 매매차익과 분배금 모두 배당소득세 15.4%로 과세되며, 이 차익에는 환차익도 함께 포함됩니다.',
+    '개인이 달러를 직접 사고팔아 얻는 순수 환차익은 비과세지만, ETF를 거치면 이 비과세 혜택은 적용되지 않습니다.',
+    '원달러 환율은 오를 수도 내릴 수도 있어 환차익이 손실로 바뀔 수 있습니다. 환헤지형은 환변동을 줄이지만 헤지 비용이 수익을 깎습니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '한국거래소 정보데이터시스템', url: 'https://data.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '미국 단기채권으로 환차익을 낸다는 게 어떤 구조인지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494351995' },
+  ],
+  sections: [
+    {
+      heading: '달러 자산이라 환율이 수익에 섞인다',
+      paragraphs: [
+        '미국 단기채 ETF는 만기가 짧은 미국 국채를 담아 가격 변동이 아주 작은 상품입니다. SGOV처럼 3개월 이내 국채를 담는 종목이 대표적이라, 달러를 잠시 안전하게 굴리는 용도로 많이 쓰입니다.',
+        '그런데 이 상품은 달러로 표시됩니다. 원화를 가진 한국 투자자 입장에서는 채권 이자 수익 위에 원달러 환율 변동이 그대로 얹힙니다. 환율이 오르면 같은 달러 자산의 원화 가치가 커져 수익이 늘고, 환율이 내리면 반대로 줄어듭니다.',
+        '그래서 어떤 사람은 이자보다 환차익을 노리고 이 상품을 담기도 합니다. 하지만 그 전략을 세우기 전에 두 가지를 먼저 따져야 합니다. 하나는 세금, 다른 하나는 환율이 정말 오를지입니다.',
+      ],
+    },
+    {
+      heading: '환차익, ETF로는 비과세가 아니다',
+      paragraphs: [
+        '흔히 개인의 환차익은 세금이 없다고 알려져 있습니다. 맞는 말입니다. 달러를 직접 사서 환율이 오른 뒤 되팔아 남긴 순수 환차익에는 별도 세금이 붙지 않습니다.',
+        '문제는 ETF를 거치는 순간 이야기가 달라진다는 점입니다. 미국 원본 SGOV를 사면 매도 차익은 양도소득세 22%(연 250만원 공제) 대상이고, 여기에는 환율로 생긴 이익까지 포함됩니다. 달러로 받는 분배금에는 배당소득세 15.4%가 붙습니다.',
+        '국내 상장된 환노출형 미국채 ETF도 마찬가지입니다. 매매차익과 분배금 모두 배당소득세 15.4%로 과세되고, 그 차익 안에 환차익이 들어 있습니다. 즉 직접 환전으로 얻는 비과세 환차익을 ETF로는 그대로 누릴 수 없습니다.',
+      ],
+    },
+    {
+      heading: '환율은 확정된 수익이 아니다',
+      paragraphs: [
+        '환차익 전략의 더 큰 약점은 방향입니다. 환율이 오른다는 보장이 없습니다. 원달러 환율은 경기, 금리 차, 무역 흐름에 따라 오르내리며, 달러가 강할 때 사서 약해지면 이자를 벌고도 환손실로 전체가 마이너스가 될 수 있습니다.',
+        '환변동이 부담스럽다면 환헤지형을 고르는 방법이 있습니다. 환율 영향을 줄여 채권 이자에 집중하도록 설계된 상품입니다. 대신 헤지에는 비용이 들고, 그 비용만큼 수익률이 깎입니다. 환차익도 사라집니다.',
+        '결국 환노출형은 환차익 가능성과 환손실 위험을 함께 안는 선택, 환헤지형은 환변동을 지우는 대신 비용을 내는 선택입니다. 어느 쪽도 공짜가 아닙니다.',
+      ],
+    },
+    {
+      heading: '단기 달러 보관 용도로 볼 때',
+      paragraphs: [
+        '미국 단기채 ETF의 진짜 쓸모는 환투기가 아니라 달러 현금 보관에 가깝습니다. 해외주식을 사고팔며 남은 달러를 그냥 두는 대신, 이런 상품에 잠시 담아 짧은 이자를 받는 식입니다.',
+        '이때는 환율을 굳이 예측하지 않습니다. 이미 달러를 쓸 계획이 있어 달러로 들고 있는 것이라, 환율 방향과 무관하게 대기 자금을 굴리는 목적이기 때문입니다.',
+        '환차익을 주 수익원으로 삼는 투자는 환율 예측에 성패가 달려 있어 난이도가 높습니다. 세율과 환율 전망은 수시로 바뀌므로 확인 후 판단하시고, 투자 결과에 대한 책임은 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '개인 환차익은 비과세라는데 ETF는 왜 과세되나요?',
+      answer:
+        '달러를 직접 환전해 남긴 순수 환차익은 비과세가 맞습니다. 하지만 ETF의 매매차익·분배금은 환차익을 포함해 양도소득세나 배당소득세로 과세돼, ETF로는 비과세 혜택을 못 누립니다.',
+    },
+    {
+      question: 'SGOV 분배금에도 세금이 붙나요?',
+      answer:
+        '붙습니다. 미국 원본 SGOV의 달러 분배금은 국내에서 배당소득세 15.4%가 과세되고, 2천만원을 넘으면 금융소득종합과세 대상에 들어갑니다.',
+    },
+    {
+      question: '환헤지형이 더 안전한가요?',
+      answer:
+        '환변동 위험은 줄지만 헤지 비용이 수익을 깎고 환차익 기회도 없어집니다. 달러 방향을 예측하기 싫다면 환헤지형, 달러 강세에 걸겠다면 환노출형으로 성격이 갈립니다.',
+    },
+    {
+      question: '환율이 떨어지면 어떻게 되나요?',
+      answer:
+        '환노출형은 원화 환산 가치가 줄어 채권 이자를 벌고도 전체 수익이 마이너스가 될 수 있습니다. 환차익은 확정 수익이 아니라 방향에 걸린 변수라는 점을 감안해야 합니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-22 · 한국 비트코인 현물 ETF 도입 현황 */
+const koreaSpotBitcoinEtfStatus: GuideDef = {
+  slug: 'korea-spot-bitcoin-etf-status',
+  title: '한국 비트코인 현물 ETF, 지금 살 수 있을까',
+  tagline: '2026년 하반기 도입 추진, 지금은 국내 상장 없음',
+  description:
+    '국내에는 아직 비트코인 현물 ETF가 상장돼 있지 않고, 해외 상장 상품도 국내 증권사에서 새로 사기 어렵습니다. 정부가 2026년 하반기 자본시장법 개정으로 도입을 추진 중이라 언제 열릴지, 세금은 어떻게 되는지 정리했습니다.',
+  keywords: ['비트코인 현물 ETF', '한국 비트코인 ETF', '비트코인 ETF 세금', '비트코인 ETF 도입', '자본시장법 개정 ETF', '가상자산 ETF'],
+  section: '테마 ETF 가이드',
+  lastReviewed: '2026-07-22',
+  answer:
+    '2026년 7월 현재 국내에는 비트코인 현물 ETF가 상장돼 있지 않습니다. 해외에 상장된 상품도 자본시장법 문제로 국내 증권사에서 새로 사기 어렵습니다. 정부가 하반기에 자본시장법을 고쳐 국내 상장을 추진하고 있어, 지금은 도입을 앞둔 준비 단계로 보는 편이 정확합니다.',
+  keyPoints: [
+    '현행 자본시장법은 ETF 기초자산을 금융투자상품·통화 등으로 한정해, 비트코인 같은 디지털자산 기반 ETF의 국내 상장이 막혀 있습니다.',
+    '정부는 2026년 7월 14일 하반기 경제성장전략에서 비트코인 현물 ETF 도입을 위한 자본시장법 개정 지원을 밝혔습니다.',
+    '해외 상장 비트코인 현물 ETF도 국내 증권사 중개가 위법 소지가 있어, 2024년 미국 승인 직후부터 신규 매수가 중단된 상태입니다.',
+    '가상자산 양도 소득 과세는 2027년 1월 1일 시행 예정으로 연 250만원 공제 후 22%가 매겨지며, 2026년 말까지의 국내 개인 가상자산 양도 소득은 아직 과세 대상이 아닙니다.',
+  ],
+  sources: [
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '비트코인 현물 ETF가 나오면 알트코인 상승장이 오는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=461078410' },
+    { summary: '비트코인 ETF의 세금이 어떻게 되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=475553179' },
+  ],
+  sections: [
+    {
+      heading: '지금 국내에 상장된 비트코인 현물 ETF는 없다',
+      paragraphs: [
+        '결론부터 짚으면, 2026년 7월 현재 한국거래소에 상장된 비트코인 현물 ETF는 없습니다. 사고 싶어도 국내 증시에서 살 종목 자체가 존재하지 않습니다.',
+        '이유는 법에 있습니다. 현행 자본시장법은 ETF가 담을 수 있는 기초자산을 금융투자상품, 국내외 통화 등으로 한정합니다. 비트코인 같은 디지털자산은 이 목록에 들어 있지 않아, 이를 기초로 한 ETF는 애초에 만들 수가 없습니다.',
+        '그래서 국내 비트코인 투자는 지금까지 가상자산 거래소에서 코인을 직접 사고파는 방식으로만 이뤄져 왔습니다. 주식계좌에서 ETF로 담는 길은 아직 열려 있지 않습니다.',
+      ],
+    },
+    {
+      heading: '해외 상장 상품도 국내에선 새로 사기 어렵다',
+      paragraphs: [
+        '미국에는 2024년부터 비트코인 현물 ETF가 여럿 상장돼 활발히 거래됩니다. 그렇다면 해외주식처럼 이 상품을 사면 되지 않느냐는 생각이 자연스럽게 듭니다.',
+        '하지만 이 길도 막혀 있습니다. 금융당국은 국내 증권사가 해외 상장 비트코인 현물 ETF를 중개하는 행위가 자본시장법에 어긋날 소지가 있다고 봤고, 이에 국내 증권사들이 관련 상품의 신규 매수를 잇달아 중단했습니다.',
+        '즉 미국 승인과 별개로, 한국 투자자가 국내 증권사를 통해 해외 비트코인 현물 ETF를 새로 담기는 현재로선 쉽지 않습니다.',
+      ],
+    },
+    {
+      heading: '2026년 하반기, 법 개정으로 길이 열린다',
+      paragraphs: [
+        '분위기는 바뀌고 있습니다. 정부는 2026년 7월 14일 발표한 하반기 경제성장전략에서 비트코인 현물 ETF 도입을 위한 자본시장법 개정을 지원하겠다고 밝혔습니다.',
+        '핵심은 자본시장법의 기초자산 목록에 디지털자산을 추가하는 일입니다. 이 개정이 이뤄지면 국내 운용사가 비트코인 가격을 따르는 ETF를 국내 증시에 상장할 수 있게 되고, 투자자는 해외 상품을 거치지 않고 주식계좌에서 담을 수 있습니다.',
+        '다만 지금은 도입을 추진하는 단계입니다. 법 개정은 국회 논의를 거쳐야 하고, 상장 시점과 세부 규정은 정해지지 않았습니다. 언제 살 수 있을지는 개정 진행 상황에 달려 있습니다.',
+      ],
+    },
+    {
+      heading: '세금과 위험은 이렇게 본다',
+      paragraphs: [
+        '세금 이야기도 자주 나옵니다. 국내에서 개인이 가상자산을 팔아 얻는 양도 소득 과세는 2027년 1월 1일부터 시행될 예정입니다. 연 250만원까지 공제한 뒤 초과분에 22%가 매겨지는 구조로, 2026년 말까지의 양도 소득은 아직 과세 대상이 아닙니다.',
+        '국내 상장 비트코인 ETF가 실제로 나오면 세금은 코인 직접 거래가 아니라 ETF 과세 방식을 따르게 됩니다. 다만 어떤 세율로 다룰지는 법 개정과 함께 정해질 부분이라, 지금 단정하기는 이릅니다.',
+        '무엇보다 비트코인은 가격 변동이 매우 커 원금 전액 손실도 가능합니다. ETF라는 껍데기를 써도 기초자산이 비트코인이면 그 변동성을 그대로 받습니다. 도입 여부와 시기, 과세는 계속 바뀔 수 있으니 확정된 정보로 받아들이지 말고 흐름을 지켜보시기 바랍니다. 이 글은 정보 제공일 뿐 투자 권유가 아닙니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '지금 국내 증권사에서 비트코인 현물 ETF를 살 수 있나요?',
+      answer:
+        '없습니다. 국내에 상장된 비트코인 현물 ETF가 아직 없고, 현행 자본시장법상 디지털자산 기반 ETF는 국내 상장이 불가능합니다.',
+    },
+    {
+      question: '미국 IBIT 같은 해외 ETF는 살 수 있나요?',
+      answer:
+        '현재로선 어렵습니다. 국내 증권사의 해외 비트코인 현물 ETF 중개가 위법 소지가 있다고 판단돼 신규 매수가 중단된 상태입니다.',
+    },
+    {
+      question: '국내 상장은 언제 되나요?',
+      answer:
+        '정부가 2026년 하반기 자본시장법 개정을 추진하고 있지만, 국회 논의를 거쳐야 하고 상장 시점은 정해지지 않았습니다. 개정 진행에 따라 달라집니다.',
+    },
+    {
+      question: '비트코인 ETF 세금은 어떻게 되나요?',
+      answer:
+        '코인 직접 거래의 양도 소득 과세는 2027년 시행 예정(250만원 공제 후 22%)입니다. 국내 상장 ETF가 나오면 ETF 과세 방식을 따르며, 구체적 세율은 법 개정과 함께 정해집니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-22 · 개별주 배당 vs 배당 ETF */
+const individualDividendVsDividendEtf: GuideDef = {
+  slug: 'individual-dividend-vs-dividend-etf',
+  title: '개별주 배당 vs 배당 ETF, 어느 쪽이 편할까',
+  tagline: '종목마다 배당일 챙기기 vs ETF로 한 번에',
+  description:
+    '삼성전자·SK하이닉스처럼 개별 종목 배당을 일일이 챙기는 대신 배당 ETF 하나로 여러 기업 배당을 묶어 받는 방법이 있습니다. 배당일 관리, 분산, 세금과 총보수 면에서 무엇이 다른지, 각자 어떤 사람에게 맞는지 정리했습니다.',
+  keywords: ['개별주 배당 vs 배당 ETF', '배당 ETF 장점', '삼성전자 배당', '고배당 ETF', '배당주 ETF 차이', '배당 ETF 세금'],
+  section: '배당주 가이드',
+  lastReviewed: '2026-07-22',
+  answer:
+    '개별 종목 배당은 기업마다 배당 기준일과 지급 시기가 달라 일일이 챙겨야 하고 한 종목에 쏠릴 위험이 있습니다. 배당 ETF는 여러 배당주를 한 번에 담아 자연스럽게 분산되고 분배 일정도 종목이 관리해 주지만, 총보수가 붙고 개별 기업을 직접 고르는 재량은 줄어듭니다.',
+  keyPoints: [
+    '개별주는 기업마다 배당락일과 지급일이 제각각이라 종목이 늘수록 관리가 번거롭습니다. 배당 ETF는 수십 개 종목의 배당을 묶어 분배 일정을 대신 관리합니다.',
+    '개별주 배당과 국내 주식형 배당 ETF의 분배금은 모두 배당소득세 15.4%가 원천징수됩니다. 세율 자체는 같습니다.',
+    '한 종목에 몰면 그 기업 실적이 배당을 좌우하지만, 배당 ETF는 여러 기업과 업종에 분산돼 배당이 끊길 위험이 줄어듭니다.',
+    '배당 ETF에는 연 0.01~0.5%대의 총보수가 붙습니다. 개별주 직접 보유는 보수가 없지만 종목 선택과 관리는 온전히 본인 몫입니다.',
+  ],
+  sources: [
+    { label: '한국거래소 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '삼성전자 배당금이 얼마이고 언제 나오는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=492533781' },
+    { summary: 'SK하이닉스가 분기배당을 하는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=417779487' },
+  ],
+  comparisonTable: {
+    caption: '개별주 배당과 배당 ETF 비교',
+    columns: ['구분', '개별주 배당', '배당 ETF'],
+    rows: [
+      ['배당 일정', '종목마다 제각각', '한 상품이 통합 관리'],
+      ['분산', '직접 여러 종목 매수', '한 종목에 수십 개 분산'],
+      ['분배금 세금', '배당소득세 15.4%', '배당소득세 15.4%(국내 주식형)'],
+      ['비용', '보수 없음', '연 0.01~0.5%대 총보수'],
+    ],
+  },
+  sections: [
+    {
+      heading: '개별주 배당은 종목마다 일정이 다르다',
+      paragraphs: [
+        '삼성전자, SK하이닉스, 현대차, LG전자처럼 배당을 주는 종목은 많습니다. 문제는 기업마다 배당을 정하는 방식이 다르다는 점입니다. 어떤 회사는 분기마다, 어떤 회사는 한 해 한두 번 배당하고, 배당 기준일과 실제 입금일도 제각각입니다.',
+        '종목을 하나둘 보유할 때는 감당할 만하지만, 배당을 노려 여러 종목을 담기 시작하면 각 회사의 배당락일과 지급 일정을 따로 챙겨야 합니다. 배당을 받으려면 기준일 전에 보유하고 있어야 하는데, 이 날짜를 놓치면 그 분기 배당은 없습니다.',
+        '개별주 배당의 매력은 분명합니다. 원하는 기업을 골라 담고, 배당과 함께 주가 상승도 노릴 수 있습니다. 대신 그만큼 챙길 것이 늘어납니다.',
+      ],
+    },
+    {
+      heading: '배당 ETF는 묶어서 분산해 준다',
+      paragraphs: [
+        '배당 ETF는 배당을 많이 주는 여러 기업을 한 바구니에 담은 상품입니다. 이 ETF 하나를 사면 수십 개 배당주에 한꺼번에 투자하는 효과가 나고, 분배금은 ETF가 모아 정해진 시점에 지급합니다.',
+        '가장 큰 장점은 분산입니다. 한 기업이 실적 부진으로 배당을 줄여도, 나머지 종목이 받쳐 주면 전체 분배금 충격이 작습니다. 개별주 한 종목에 몰았을 때 그 회사가 배당을 끊으면 타격이 큰 것과 대비됩니다.',
+        '배당일 관리 부담도 사라집니다. 여러 종목의 배당을 ETF가 대신 챙겨 하나의 분배 일정으로 정리해 주기 때문입니다. 월배당형을 고르면 매달 분배가 들어오도록 설계된 상품도 있습니다.',
+      ],
+    },
+    {
+      heading: '세금은 같고, 총보수는 ETF에만 붙는다',
+      paragraphs: [
+        '세금을 걱정하는 분이 많은데, 배당 측면에서는 큰 차이가 없습니다. 개별주에서 받는 배당과 국내 주식형 배당 ETF의 분배금은 모두 배당소득세 15.4%가 원천징수됩니다. 세율이 동일합니다.',
+        '두 방식 모두 연 금융소득이 2천만원을 넘으면 금융소득종합과세 대상이 되는 점도 같습니다. 세금만 놓고 어느 쪽이 유리하다고 잘라 말하기는 어렵습니다.',
+        '차이는 비용에서 납니다. 배당 ETF는 운용 대가로 연 0.01~0.5%대의 총보수가 붙습니다. 개별주를 직접 들고 있으면 이런 보수가 없는 대신, 어떤 종목을 담을지 고르고 관리하는 수고는 본인이 집니다. 편의를 사느냐, 비용을 아끼느냐의 선택입니다.',
+      ],
+    },
+    {
+      heading: '누구에게 어느 쪽이 맞나',
+      paragraphs: [
+        '특정 기업을 잘 알고 그 회사의 배당과 성장에 확신이 있다면 개별주 직접 보유가 어울립니다. 종목 분석을 즐기고 배당일 관리가 부담스럽지 않은 사람에게 맞습니다.',
+        '반대로 여러 종목을 일일이 챙기기 번거롭거나, 한 기업에 몰리는 위험을 피하고 싶다면 배당 ETF가 편합니다. 적은 금액으로도 분산 효과를 얻고, 배당 일정은 상품에 맡길 수 있습니다.',
+        '두 방식을 섞어도 됩니다. 배당 ETF를 중심에 두고, 특별히 믿는 종목 한둘을 개별주로 더하는 식입니다. 배당은 기업 실적에 따라 줄거나 멈출 수 있고 주가 손실도 가능하니, 배당률만 보지 말고 기업과 상품의 체력을 함께 살피는 편이 안전합니다. 선택과 결과는 투자자 본인에게 달려 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '배당 ETF가 개별주보다 세금이 유리한가요?',
+      answer:
+        '국내 주식형이라면 세율은 같습니다. 개별주 배당과 국내 주식형 배당 ETF 분배금 모두 배당소득세 15.4%가 붙고, 연 2천만원 초과 시 종합과세 대상이 되는 점도 동일합니다.',
+    },
+    {
+      question: '배당 ETF는 배당을 언제 주나요?',
+      answer:
+        '상품마다 다릅니다. 분기 지급형이 많고, 매달 분배하도록 설계된 월배당형도 있습니다. 개별주처럼 기업별 일정을 따로 챙길 필요 없이 ETF가 정한 시점에 분배합니다.',
+    },
+    {
+      question: '삼성전자 한 종목만 사도 되지 않나요?',
+      answer:
+        '가능하지만 한 기업에 배당이 쏠립니다. 그 회사가 실적 부진으로 배당을 줄이면 타격이 큽니다. 배당 ETF는 여러 종목에 분산해 이 위험을 낮춥니다.',
+    },
+    {
+      question: '배당 ETF 총보수는 얼마나 되나요?',
+      answer:
+        '상품에 따라 연 0.01~0.5%대가 일반적입니다. 개별주 직접 보유는 이런 보수가 없지만, 종목 선택과 배당일 관리는 본인이 해야 합니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-22 · ISA ETF 분배금과 비과세 한도 */
+const isaEtfDistributionTax: GuideDef = {
+  slug: 'isa-etf-distribution-tax',
+  title: 'ISA에서 받은 ETF 분배금, 비과세 한도에 잡힐까',
+  tagline: '분배금은 계좌 현금으로, 순이익 200만원까지 비과세',
+  description:
+    'ISA에서 담은 ETF의 분배금은 계좌 안 현금으로 들어오고, 만기·해지 시점에 순이익 200만원(서민형 400만원)까지 비과세됩니다. 분배금이 어떻게 쌓이고 비과세 한도에 어떻게 합산되는지, 재투자는 어떻게 하는지 정리했습니다.',
+  keywords: ['ISA ETF 분배금', 'ISA 비과세 한도', 'ISA 분배금 세금', 'ISA 손익통산', 'ISA ETF 재투자', 'ISA 200만원 비과세'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-07-22',
+  answer:
+    'ISA에서 받은 ETF 분배금은 계좌 안 현금으로 쌓이고, 그 자체로 바로 세금을 떼지 않습니다. 분배금과 매매차익을 합친 계좌 순이익이 만기나 해지 시점에 정산되며, 200만원(서민형 400만원)까지 비과세되고 초과분은 9.9%로 분리과세됩니다.',
+  keyPoints: [
+    'ISA 안의 ETF 분배금은 받을 때마다 15.4%를 떼는 대신, 계좌 현금으로 쌓였다가 만기·해지 시점에 순손익으로 한 번에 정산됩니다.',
+    '분배금과 매매손익을 합친 계좌 순이익이 200만원(서민형·농어민형 400만원)까지 비과세되고, 넘는 부분은 9.9%로 분리과세됩니다.',
+    'ISA는 손익통산이 되므로, 어떤 ETF에서 난 손실이 다른 ETF의 분배금·차익과 상계돼 순이익만 과세 대상이 됩니다.',
+    '분배금은 자동 재투자되지 않습니다. 계좌에 쌓인 현금으로 ETF를 다시 매수하면, 비과세로 이연된 상태에서 복리로 굴릴 수 있습니다.',
+  ],
+  sources: [
+    { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 계좌가 무엇이고 어떻게 활용하는지 전반을 궁금해하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493747720' },
+    { summary: 'ISA 계좌에서 KODEX 같은 ETF를 어떻게 담아 활용하는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494102222' },
+  ],
+  sections: [
+    {
+      heading: '분배금은 받을 때 세금을 떼지 않는다',
+      paragraphs: [
+        '일반계좌에서 ETF 분배금을 받으면 그 자리에서 배당소득세 15.4%가 원천징수됩니다. 통장에 들어오는 순간 세금이 빠진 금액이 찍힙니다.',
+        'ISA는 방식이 다릅니다. 분배금은 세금을 떼지 않은 채 계좌 안 현금으로 쌓입니다. 받을 때마다 과세하는 것이 아니라, 계좌를 정리하는 시점까지 과세를 미뤄 두는 구조입니다.',
+        '그래서 ISA 안에서는 분배금이 온전히 남습니다. 이 돈으로 다시 투자하면 세금으로 빠져나갈 몫까지 굴릴 수 있어, 시간이 길수록 차이가 벌어집니다.',
+      ],
+    },
+    {
+      heading: '비과세 한도는 순이익 기준으로 잡힌다',
+      paragraphs: [
+        'ISA의 비과세 혜택은 분배금 하나만 따로 보지 않습니다. 계좌 안에서 생긴 모든 이익과 손실을 합친 순이익을 기준으로 계산합니다.',
+        '만기나 해지 시점에 분배금과 매매차익을 더하고 매매손실을 뺀 순이익이 나옵니다. 이 순이익이 일반형은 200만원, 서민형·농어민형은 400만원까지 비과세됩니다. 한도를 넘는 부분은 9.9%로 분리과세돼, 15.4% 원천징수보다 세율이 낮습니다.',
+        '즉 분배금이 비과세 한도에 잡히느냐는 질문의 답은, 분배금 단독이 아니라 계좌 전체 순이익 안에서 함께 계산된다는 것입니다.',
+      ],
+    },
+    {
+      heading: '손익통산이 분배금 세금을 줄인다',
+      paragraphs: [
+        'ISA의 강점 하나는 손익통산입니다. 계좌 안 여러 상품의 이익과 손실을 합쳐 순액만 과세하는 방식입니다.',
+        '예를 들어 한 ETF에서 분배금과 차익으로 300만원을 벌고 다른 ETF에서 100만원 손실이 났다면, 일반계좌는 번 300만원에 세금을 매기지만 ISA는 둘을 상계한 200만원만 봅니다. 손실이 이익을 깎아 주는 셈입니다.',
+        '분배금이 자주 나오는 ETF와 가격 변동이 큰 ETF를 함께 굴릴 때, 이 손익통산은 세 부담을 눈에 띄게 낮춥니다. 일반계좌에서는 누리기 어려운 이점입니다.',
+      ],
+    },
+    {
+      heading: '쌓인 분배금은 직접 재투자한다',
+      paragraphs: [
+        '한 가지 챙길 점은 분배금이 자동으로 재투자되지 않는다는 것입니다. ISA 계좌에 현금으로 남아 있을 뿐이라, 그대로 두면 이 돈은 놀고 있는 상태가 됩니다.',
+        '복리 효과를 살리려면 쌓인 분배금으로 ETF를 다시 사야 합니다. 세금이 이연된 상태에서 재매수하니, 분배금 전액을 굴릴 수 있어 일반계좌 재투자보다 유리합니다.',
+        'ISA는 3년 의무가입 기간이 있고 비과세 한도도 정해져 있습니다. 한도와 조건은 세법 개정으로 달라질 수 있으니 확인 후 활용하시고, 구체적인 운용은 본인의 자금 계획에 맞춰 정하실 문제입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA에서 ETF 분배금을 받을 때 바로 세금을 떼나요?',
+      answer:
+        '아닙니다. 분배금은 세금 없이 계좌 현금으로 쌓입니다. 만기나 해지 시점에 매매손익과 합산한 순이익으로 정산해, 200만원(서민형 400만원)까지 비과세됩니다.',
+    },
+    {
+      question: '분배금이 비과세 한도 200만원에 포함되나요?',
+      answer:
+        '분배금 단독이 아니라 계좌 전체 순이익에 합산됩니다. 분배금과 매매차익을 더하고 손실을 뺀 순이익이 200만원(서민형 400만원)까지 비과세됩니다.',
+    },
+    {
+      question: 'ISA에서 손실이 나면 분배금 세금이 줄어드나요?',
+      answer:
+        '줄어듭니다. ISA는 손익통산이 돼, 다른 상품의 손실이 분배금·차익과 상계됩니다. 순이익만 과세 대상이라 일반계좌보다 세 부담이 낮아집니다.',
+    },
+    {
+      question: 'ISA 분배금은 자동으로 재투자되나요?',
+      answer:
+        '자동 재투자되지 않고 계좌에 현금으로 남습니다. 복리로 굴리려면 쌓인 분배금으로 ETF를 직접 다시 매수해야 합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
   pensionSavingsVsIrp,
   etfSharePriceMeaning,
@@ -15858,6 +16297,11 @@ export const GUIDES: GuideDef[] = [
   usEtfTaxSavingChecklist,
   nasdaq100Sp500LongTermDca,
   isaUsIndexEtf,
+  pensionIrpTaxCreditAllocation,
+  usShortTermBondFxGain,
+  koreaSpotBitcoinEtfStatus,
+  individualDividendVsDividendEtf,
+  isaEtfDistributionTax,
 ];
 
 /**
@@ -15868,6 +16312,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-07-22 · 지식iN 질문 수요 기반 (연금저축IRP 한도배분·미국단기채 환차익·한국 비트코인 현물 ETF·개별주 배당 vs 배당ETF·ISA 분배금 비과세)
+  'pension-irp-tax-credit-allocation': '2026-07-22',
+  'us-short-term-bond-fx-gain': '2026-07-22',
+  'korea-spot-bitcoin-etf-status': '2026-07-22',
+  'individual-dividend-vs-dividend-etf': '2026-07-22',
+  'isa-etf-distribution-tax': '2026-07-22',
   // 2026-07-21 · 지식iN 질문 수요 기반 (연금저축펀드 포트폴리오·ISA 만기 선택·미국ETF 절세·나스닥 장기적립·ISA 미국지수)
   'pension-fund-etf-portfolio': '2026-07-21',
   'isa-maturity-extend-vs-pension': '2026-07-21',
@@ -16098,17 +16548,17 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'pension-irp-tax-credit-allocation', 'isa-etf-distribution-tax'],
   },
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'individual-dividend-vs-dividend-etf'],
   },
   {
     title: '테마·섹터',
     description: '방산·조선·건설·자동차·AI·반도체·빅테크·소프트웨어·보안·로봇·전기차·신재생·희토류·게임·엔터·명품·뷰티·비트코인·인프라 등 특정 테마에 집중하는 섹터 ETF.',
-    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf'],
+    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'korea-spot-bitcoin-etf-status'],
   },
   {
     title: '해외·환율',
@@ -16118,7 +16568,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '전략·자산배분',
     description: '적립식·리밸런싱·팩터·자산배분(TRF)·채권·미국국채·회사채·채권혼합·파킹·금·은·구리·원유·농산물·원자재·레버리지 — 포트폴리오를 굴리고 위험을 관리하는 전략.',
-    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf'],
+    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'us-short-term-bond-fx-gain'],
   },
 ];
 
