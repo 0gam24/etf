@@ -1484,7 +1484,10 @@ A. 진단 결과 발행 자체는 정상, 진짜 누락은 색인 푸시였음.
 - prerender: .next/server/app/guide/ 5개 .html 생성, 각 answer-box·guide-key-points·guide-sources·citation·발행일(2026-07-22) 포함 확인.
 
 ### 색인 푸시 결과
-(아래 push:guides 실행 결과로 갱신)
+- npm run push:guides 실행(EXIT 0): 대상 2026-07-22 가이드 5편 + 허브 3(/guide/latest·/guide·/) 정확히 인식.
+- IndexNow: skip (no-site-url) — 클라우드 env에 SITE_URL/INDEXNOW 설정 없음.
+- Google Indexing: skip (no-credentials) — 클라우드 env에 서비스계정 키 없음.
+- 한계 재확인(07-21 기록 연장): 클라우드 루틴 환경엔 색인 키·SITE_URL 미설정이라 두 채널 모두 skip. 실제 색인 통보는 로컬에서 npm run push:guides 재실행 필요(키는 .env.local·gitignore). sitemap 크롤 경로는 정상 동작하므로 발행 자체는 반영됨.
 
 ### 오늘 발행 링크
 - https://iknowhowinfo.com/guide/pension-irp-tax-credit-allocation
