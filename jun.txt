@@ -1481,7 +1481,7 @@ A. KST 2026-07-23. 저장 코퍼스 data/keywords/kin/kin-20260718.json(103개 �
 
 지식iN 신규 수집: 저장 코퍼스(kin-20260718.json)로 주제 선정 완료(정상 경로). 신규 수집분 없음.
 
-색인 푸시: (아래 실행 결과 참조)
+색인 푸시: npm run push:guides 실행 — 대상 5개 가이드 + 허브 3(/guide/latest·/guide·/) 정상 인식. IndexNow skip(no-site-url), Google Indexing skip(no-credentials). 클라우드 env에 SITE_URL·색인 키 미설정으로 양 채널 자동 skip(정상). production 반영은 PR #6 머지 후이므로, 머지 뒤 로컬/키 설정 환경에서 재실행 권장.
 
 배포 경로: 브랜치 정책상 claude/serene-hamilton-pfp3xp 브랜치로 push 후 draft PR 생성. production(main) 반영은 PR 머지 후.
 
