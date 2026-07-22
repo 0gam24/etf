@@ -1454,3 +1454,40 @@ A. 진단 결과 발행 자체는 정상, 진짜 누락은 색인 푸시였음.
 - 조치 ①: 로컬에서 npm run push:guides 실행 → IndexNow(Bing·Naver Yeti·Yandex) 통보 성공(200), sitemap ping 3/3. Google Indexing은 로컬 키 미설정으로 skip.
 - 조치 ②: 루틴 프롬프트에 [7.5. 색인 푸시] 단계 추가(push 성공 후 npm run push:guides, 밀린 날은 --days=N 소급), keywords 규칙 5~8개로 갱신, em dash 금지 대상에 sources label 명시. 다음 실행(07-22 03:32 KST)부터 적용.
 - 한계: 클라우드 루틴 환경엔 INDEXNOW_KEY/GOOGLE_INDEXING_KEY(.env.local·gitignore)가 없을 수 있어 색인 푸시가 cloud에서 skip될 수 있음 → 확실한 경로는 로컬 실행. 사용자 판단 필요(키를 cloud env에 등록 vs 로컬에서 매일 실행).
+
+## 2026-07-23 · [일일 발행 · 지식iN 수요 기반 5편]
+
+### Q. (스케줄 루틴) 오늘 포스팅 5편 자율 발행
+A. KST 2026-07-23. 저장 코퍼스 data/keywords/kin/kin-20260718.json(103개 질문) 사용. 신규 수집은 클라우드 IP 특성상 시도 대상이나 브랜치 검증 우선 진행. 최근 배치들이 ISA·연금·미국ETF세금 등 고수요 클러스터를 이미 대량 발행해, 완전 중복을 피해 같은 코퍼스에서 미개척 롱테일 5각도를 선정. 4대 도메인(ETF·주식·코인·금융) 분산.
+
+발행 5편(모두 신규 slug):
+1. us-bond-etf-currency-gain — 미국 단기채 ETF 환차익, 어떻게 돈이 되나
+   · 출처Q: 미국 단기채권 환차익 원리 질문(docId=494351995)
+   · 검증: 미국 직투 매매차익+환차익 합산 양도세 22%·250만 공제·손익통산 / 국내상장 배당세 15.4% (한국투자증권·삼성자산운용 확인)
+2. cd-rate-synthetic-etf-safety — CD금리 ETF 합성형, 파킹 자금 넣어도 안전할까
+   · 출처Q: KODEX CD금리액티브(합성) 상품·안전성 질문(docId=467898942)
+   · 검증: 합성=스와프 장외, 거래상대방위험 존재 / 신용등급 국내 AA-·외국 A-, 위험평가액 순자산 5% 이내, 담보 설정 (KRX·자본시장연구원 확인)
+3. adult-child-gift-tax — 성인 자녀에게 주식·ETF 증여, 5천만원까지 무세
+   · 출처Q: 증여세 면제 범위(docId=494353205), 자녀 증여 절세(docId=494332623)
+   · 검증: 성인 5천만/미성년 2천만·10년 합산·직계존속 합산, 세율 10~50% 누진, 혼인출산 1억 추가, 상장주식 전후 각 2개월 종가평균 (삼일PwC·국세청 확인)
+4. crypto-inheritance-gift-tax — 코인을 상속·증여받으면 평가와 세금은
+   · 출처Q: 가상자산 상속 평가 방법 질문(docId=494357153)
+   · 검증: 상증세법 §65② 평가기준일 전후 각 1개월 국세청장 고시 거래소 일평균가액 평균, 여러 거래소면 평균의 평균, 홈택스 조회, 세율 10~50%, 증여 3개월·상속 6개월 신고 (국세청·TAXLY 확인)
+5. kimchi-premium-arbitrage — 김치프리미엄 차익거래, 왜 무위험이 아닌가
+   · 출처Q: 김프 차익거래 가능 여부 질문(docId=481272509)
+   · 검증: 무등록 환전(환치기)·불법 해외송금은 외국환거래법 위반, 10억 초과 형사처벌·이하 거래액 2% 과태료, 5천억 송금 50억 이익에 110억 과태료 실사례 (법률신문·한국일보 확인)
+
+검증 결과: npx tsc --noEmit 0 에러 / npm run cf:build 성공 / .open-next prerender 5개 HTML 모두 answer-box·guide-key-points·guide-sources·citation·2026-07-23 발행일 포함 / SEO 필드(title≤60·desc 120~155·slug ^[a-z0-9-]{1,80}$·keywords 6개) 전수 통과 / em dash(U+2014) 0건·운영자 메타 금지어 0건.
+
+지식iN 신규 수집: 저장 코퍼스(kin-20260718.json)로 주제 선정 완료(정상 경로). 신규 수집분 없음.
+
+색인 푸시: (아래 실행 결과 참조)
+
+배포 경로: 브랜치 정책상 claude/serene-hamilton-pfp3xp 브랜치로 push 후 draft PR 생성. production(main) 반영은 PR 머지 후.
+
+발행 URL(머지 후 live):
+https://iknowhowinfo.com/guide/us-bond-etf-currency-gain
+https://iknowhowinfo.com/guide/cd-rate-synthetic-etf-safety
+https://iknowhowinfo.com/guide/adult-child-gift-tax
+https://iknowhowinfo.com/guide/crypto-inheritance-gift-tax
+https://iknowhowinfo.com/guide/kimchi-premium-arbitrage
