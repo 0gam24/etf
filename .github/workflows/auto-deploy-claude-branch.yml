@@ -1,0 +1,49 @@
+name: Auto-deploy claude branch to main
+
+# 목적: 데일리 발행 루틴이 claude/serene-hamilton-pfp3xp 브랜치로 push하면
+#       즉시 main으로 fast-forward 하여 Cloudflare 배포를 바로 트리거한다.
+#       (세션 브랜치 가드로 인해 발행이 feature 브랜치에 안착해도 자동 배포 보장)
+# 안전장치: --ff-only 만 사용. main 이 독립적으로 앞서 있으면 실패로 남기고
+#           강제 push 하지 않는다. 삭제만으로 언제든 되돌릴 수 있다.
+
+on:
+  push:
+    branches:
+      - claude/serene-hamilton-pfp3xp
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-deploy-main
+  cancel-in-progress: false
+
+jobs:
+  fast-forward-main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main (full history)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fast-forward main to pushed branch
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin "${GITHUB_REF_NAME}"
+          MAIN_SHA=$(git rev-parse HEAD)
+          BR_SHA=$(git rev-parse "origin/${GITHUB_REF_NAME}")
+          echo "main=$MAIN_SHA"
+          echo "branch(${GITHUB_REF_NAME})=$BR_SHA"
+          if [ "$MAIN_SHA" = "$BR_SHA" ]; then
+            echo "main already up to date. nothing to deploy."
+            exit 0
+          fi
+          # fast-forward only: main 이 브랜치의 조상일 때만 진행
+          git merge --ff-only "origin/${GITHUB_REF_NAME}"
+          git push origin HEAD:main
+          echo "main fast-forwarded to $BR_SHA -> Cloudflare 배포 트리거됨"
