@@ -1491,3 +1491,38 @@ https://iknowhowinfo.com/guide/cd-rate-synthetic-etf-safety
 https://iknowhowinfo.com/guide/adult-child-gift-tax
 https://iknowhowinfo.com/guide/crypto-inheritance-gift-tax
 https://iknowhowinfo.com/guide/kimchi-premium-arbitrage
+
+## 2026-07-24 · [일일 발행] 지식iN 질문 수요 기반 가이드 5편
+
+지식iN 신규 수집: 클라우드 IP 네이버 차단으로 실패(정상). 사용 코퍼스: data/keywords/kin/kin-20260718.json (103개 질문).
+
+발행 5편 (주제 · slug · 출처 질문 요지 · 검증 요약):
+
+1. 연금저축 세액공제 한도 초과 납입, 손해일까 이득일까 · pension-savings-excess-contribution
+   - 출처 질문: IRP/연금저축/연저펀 용어 혼동과 계좌 관계(docId=494287819), 연금저축부터 채운 뒤 활용법(docId=494334592), ISA와 연금저축 자금 배분(docId=493610254)
+   - 검증: 세액공제 900만(연금저축 단독 600만), 납입한도 1,800만, 공제율 13.2~16.5%, 최대 148.5만 환급, 초과분 과세이연·다음해 이월·무세금 인출 확인(국세청·통합연금포털)
+
+2. 생활비·교육비 증여세, 어디까지 비과세일까 · living-education-expense-gift-tax
+   - 출처 질문: 생활비·교육비로 쓰고 일부 주식계좌·ISA에 넣은 자금 출처(docId=494353205), 부모 생활비 카드 선지출 후 계좌이체(docId=494357335), 자녀 증여 절세 효과(docId=494332623)
+   - 검증: 상증세법 46조 사회통념상 생활비·교육비 비과세(실제 소비 전제), 저축·주식·부동산 전용 시 증여 과세, 증여재산공제 성년 5천/미성년 2천/배우자 6억, 세율 10~50% 확인
+
+3. 코인 선물 펀딩비란? 무기한 계약이 굴러가는 원리 · crypto-perpetual-funding-fee
+   - 출처 질문: 펀딩비 뜻과 플러스 시 롱 차감 구조(docId=494350717), 바이낸스 3배 롱 적립 장기투자 펀딩비 부담(docId=494252706)
+   - 검증: 무기한 선물 현물 괴리 조정 장치, 8시간 3회 정산, 플러스 시 롱→숏 지급, 참여자 간 정산(거래소 수익 아님), 위험 고지 포함
+
+4. 주택임대소득 분리과세 vs 종합과세, 뭐가 유리할까 · rental-income-separate-vs-comprehensive-tax
+   - 출처 질문: 임대소득 1,500만 + 국민연금·개인연금 병행 시 분리/종합 유불리(docId=494358312)
+   - 검증: 2천만 이하 선택(14% 분리 vs 6~45% 종합), 필요경비 50%(등록 60%), 기본공제 200만(등록 400만), 2천만 초과 종합과세 확정 확인
+
+5. 배당락이 뭔가요? 배당 직전 매수가 손해인 이유 · ex-dividend-price-drop
+   - 출처 질문: LG전자 배당 시기·주당 배당금(docId=249025143), SK하이닉스 분기배당 매수 타이밍(docId=417779487), 삼성전자 배당 권리 확보 시점(docId=386996037)
+   - 검증: 배당락일=기준일 직전 영업일, T+2 결제로 기준일 2영업일 전 매수, 배당락 시초가 배당금만큼 하락, 배당소득세 15.4% 확인(KRX·DART)
+
+검증 결과: npx tsc --noEmit 0 에러, npm run cf:build 성공, .next/server/app/guide/ 신규 5편 prerender(answer-box·guide-key-points·guide-sources·citation·2026-07-24 발행일 확인). 신규 콘텐츠 em dash 0·운영자 메타 금지어 0. SEO: title≤60·desc 120~155·keywords 6~7·slug ^[a-z0-9-]+$.
+
+★ 오늘 발행 링크(풀 URL)
+https://iknowhowinfo.com/guide/pension-savings-excess-contribution
+https://iknowhowinfo.com/guide/living-education-expense-gift-tax
+https://iknowhowinfo.com/guide/crypto-perpetual-funding-fee
+https://iknowhowinfo.com/guide/rental-income-separate-vs-comprehensive-tax
+https://iknowhowinfo.com/guide/ex-dividend-price-drop

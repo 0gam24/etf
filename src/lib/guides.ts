@@ -16145,6 +16145,459 @@ const kimchiPremiumArbitrage: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-07-24 · 연금저축 세액공제 한도 초과 납입 활용 */
+const pensionSavingsExcessContribution: GuideDef = {
+  slug: 'pension-savings-excess-contribution',
+  title: '연금저축 세액공제 한도 초과 납입, 손해일까 이득일까',
+  tagline: '세액공제는 900만원까지, 그래도 초과 납입이 아깝지 않은 이유',
+  description:
+    '연금저축과 IRP에 세액공제 한도인 900만원을 넘겨 넣으면 손해인지 궁금하다면, 초과분은 세액공제만 없을 뿐 계좌 안에서 수익이 과세이연되고 다음 해로 이월도 됩니다. 연 1,800만원 납입한도와 초과분 활용법을 정리했습니다.',
+  keywords: ['연금저축 세액공제 한도', '연금저축 초과 납입', '연금계좌 1800만원 한도', 'IRP 세액공제 900만원', '과세이연', '연금저축 납입한도'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-07-24',
+  answer:
+    '연금저축과 IRP를 합쳐 세액공제는 연 900만원까지만 되지만, 그 한도를 넘겨 넣은 돈이 사라지는 것은 아닙니다. 초과 납입분은 세액공제 혜택만 못 받을 뿐 계좌 안에서 운용수익이 과세이연되고, 다음 해 세액공제로 이월 신청할 수 있으며, 세액공제를 받지 않은 원금은 나중에 세금 없이 꺼낼 수 있어 자금 유연성이 오히려 큽니다.',
+  keyPoints: [
+    '연금저축과 IRP를 합한 연간 납입한도는 1,800만원이고, 이 중 세액공제가 되는 금액은 900만원(연금저축 단독은 600만원)까지입니다.',
+    '세액공제율은 총급여 5,500만원(종합소득 4,500만원) 이하면 16.5%, 초과면 13.2%로, 900만원을 채우면 최대 148만5천원을 돌려받습니다.',
+    '올해 900만원을 넘겨 넣은 초과 납입분은 다음 해 납입금으로 세액공제를 이월 신청할 수 있어, 소득이 오른 해에 몰아서 공제받는 것도 가능합니다.',
+    '세액공제를 받지 않은 초과 원금은 중도에 꺼내도 기타소득세 16.5%가 붙지 않아, 급하게 쓸 여윳돈으로도 활용됩니다.',
+  ],
+  sources: [
+    { label: '국세청 연금계좌 세액공제 안내', url: 'https://www.nts.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'IRP, 연금저축, 연저펀 용어가 헷갈리는데 연금저축 계좌에서 ETF를 매매할 수 있는지, 세 계좌의 관계가 무엇인지', url: 'https://kin.naver.com/qna/detail.naver?docId=494287819' },
+    { summary: '연금저축, IRP, ISA 중 어디부터 채워야 할지, 연금저축 세액공제 한도를 다 채운 뒤에는 어떻게 활용해야 하는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494334592' },
+    { summary: '이미 ISA에서 ETF를 적립 중인데 연금저축계좌를 어떻게 함께 활용해야 하는지, 자금 흐름 배분 방법', url: 'https://kin.naver.com/qna/detail.naver?docId=493610254' },
+  ],
+  comparisonTable: {
+    caption: '연금계좌 900만원 이내 납입 vs 초과 납입의 차이',
+    columns: ['구분', '세액공제 대상(900만원 이내)', '초과 납입분(900만원 초과)'],
+    rows: [
+      ['세액공제', '납입액의 13.2~16.5% 환급', '없음(다음 해 이월 가능)'],
+      ['운용수익 과세', '인출까지 과세이연', '인출까지 과세이연'],
+      ['중도인출 시 세금', '기타소득세 16.5%', '세금 없음(공제 안 받은 원금)'],
+      ['연간 납입한도', '연금저축·IRP 합산 1,800만원 안에서', '1,800만원 한도까지 가능'],
+    ],
+  },
+  sections: [
+    {
+      heading: '세액공제 한도와 납입한도는 다른 숫자다',
+      paragraphs: [
+        '연금저축을 이야기할 때 900만원과 1,800만원이 섞여 나와 헷갈리기 쉽습니다. 900만원은 세금을 돌려받을 수 있는 세액공제 한도이고, 1,800만원은 계좌에 넣을 수 있는 납입 한도입니다. 두 숫자는 목적이 다릅니다.',
+        '세액공제 한도 900만원은 연금저축과 IRP를 합한 기준입니다. 연금저축만으로는 600만원까지 공제되고, 나머지 300만원은 IRP로 채워야 900만원을 다 씁니다. IRP만 쓴다면 900만원 전액을 IRP로 채울 수 있습니다.',
+        '납입 한도 1,800만원 역시 두 계좌를 합친 금액입니다. 900만원을 넘겨 최대 1,800만원까지 넣을 수 있다는 뜻인데, 이 초과분에는 세금 환급이 따라오지 않습니다. 그래서 "넘게 넣으면 손해 아니냐"는 질문이 나옵니다.',
+      ],
+    },
+    {
+      heading: '초과 납입분이 사라지지 않는 이유',
+      paragraphs: [
+        '세액공제를 못 받는다고 그 돈이 없어지는 것은 아닙니다. 초과 납입분도 연금계좌 안에 그대로 쌓이고, 그 돈으로 산 ETF의 매매차익과 분배금에 붙는 세금이 인출 시점까지 미뤄집니다. 이 과세이연이 일반 계좌와 다른 점입니다.',
+        '일반 증권계좌에서 국내 상장 해외 ETF를 팔면 그때마다 배당소득세가 나가지만, 연금계좌 안에서는 굴리는 동안 세금이 빠지지 않아 복리로 더 오래 굴러갑니다. 초과분이라도 이 혜택은 똑같이 받습니다.',
+      ],
+    },
+    {
+      heading: '남은 카드 두 장: 이월과 무세금 인출',
+      paragraphs: [
+        '올해 한도를 넘겨 넣었다면 금융회사에 신청해 초과분을 다음 해 납입금으로 옮겨 세액공제를 받을 수 있습니다. 소득이 적어 올해 다 공제받기 어려운 해에 미리 넣어 두고, 소득이 오른 다음 해에 공제로 당겨 쓰는 식의 활용이 가능합니다.',
+        '또 하나, 세액공제를 받지 않은 원금은 연금 외로 꺼내도 기타소득세가 붙지 않습니다. 세액공제를 받은 돈과 운용수익을 중도에 빼면 16.5%가 부과되지만, 공제받지 않은 초과 원금은 급전이 필요할 때 먼저 인출할 수 있는 여윳돈이 됩니다.',
+      ],
+    },
+    {
+      heading: '한도를 다 채웠다면 다음 순서는',
+      paragraphs: [
+        '세액공제 900만원을 이미 채웠다면, 추가 자금은 초과 납입으로 과세이연을 노릴지 아니면 ISA 같은 다른 절세 계좌를 먼저 채울지 저울질할 수 있습니다. 중도 인출 유연성이 중요하면 ISA가, 노후 자금으로 오래 묻어 둘 돈이면 연금 초과 납입이 어울립니다.',
+        '숫자와 제도는 개인의 소득과 상황에 따라 유불리가 갈립니다. 본인 사례의 정확한 계산은 국세청 홈택스나 통합연금포털에서 확인하고, 큰 금액이라면 세무 상담을 함께 받아 결정하는 편이 안전합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '연금저축에 세액공제 한도인 900만원보다 많이 넣으면 손해인가요?',
+      answer:
+        '아니요. 초과분은 세액공제만 못 받을 뿐 계좌 안 운용수익이 과세이연되고, 다음 해 세액공제로 이월 신청도 됩니다. 세액공제를 받지 않은 원금은 세금 없이 꺼낼 수도 있습니다.',
+    },
+    {
+      question: '초과로 넣은 돈은 다음 해에 세액공제를 받을 수 있나요?',
+      answer:
+        '네. 금융회사에 납입금 전환(이월) 신청을 하면 올해 한도를 넘긴 초과분을 다음 해 세액공제 대상으로 옮길 수 있습니다.',
+    },
+    {
+      question: '연금저축과 IRP 납입한도는 각각 따로인가요?',
+      answer:
+        '아닙니다. 두 계좌를 합쳐 연 1,800만원이 납입 한도이고, 세액공제 한도 900만원도 두 계좌 합산 기준입니다.',
+    },
+    {
+      question: '세액공제 안 받은 원금을 중간에 빼도 세금이 없나요?',
+      answer:
+        '세액공제를 받지 않은 원금은 인출해도 기타소득세가 없습니다. 다만 세액공제를 받은 원금과 운용수익을 연금 외로 빼면 16.5%가 부과됩니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-24 · 생활비·교육비 증여세 비과세 범위 */
+const livingEducationExpenseGiftTax: GuideDef = {
+  slug: 'living-education-expense-gift-tax',
+  title: '생활비·교육비 증여세, 어디까지 비과세일까',
+  tagline: '부양 목적이면 비과세, 계좌로 남기면 증여로 본다',
+  description:
+    '부모가 준 생활비나 자녀 교육비에 증여세가 붙는지 헷갈린다면, 실제 생활·교육에 쓰는 돈은 비과세지만 그 돈을 저축이나 주식으로 남기면 증여로 봅니다. 상속세및증여세법 46조의 비과세 조건과 증여재산공제 한도를 사례로 정리했습니다.',
+  keywords: ['생활비 증여세', '교육비 증여세 비과세', '증여세 면제 한도', '자녀 증여재산공제', '가족 간 계좌이체 증여세', '증여세 비과세'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-07-24',
+  answer:
+    '사회통념상 인정되는 생활비와 교육비는 증여세가 붙지 않습니다. 다만 이 비과세는 그 돈을 실제로 생활이나 교육에 쓸 때만 적용되고, 받은 돈을 예금·주식·부동산으로 남기면 재산을 무상으로 넘긴 증여로 보아 과세될 수 있습니다. 목돈을 물려줄 때는 성년 자녀 기준 10년간 5,000만원까지인 증여재산공제를 쓰는 것이 안전합니다.',
+  keyPoints: [
+    '상속세및증여세법 제46조는 부양의무자 사이의 사회통념상 생활비·교육비를 비과세로 규정하지만, 실제 소비가 전제입니다.',
+    '생활비 명목으로 받은 돈을 예금이나 주식 매수, 부동산 취득에 쓰면 비과세가 아니라 증여로 보아 과세 대상이 됩니다.',
+    '목돈 증여는 증여재산공제로 처리하며, 성년 자녀는 10년간 5,000만원, 미성년 자녀는 2,000만원, 배우자는 6억원까지 세금이 없습니다.',
+    '공제 한도를 넘는 증여는 초과분에 10%(1억원 이하)부터 최고 50%까지 누진세율이 적용됩니다.',
+  ],
+  sources: [
+    { label: '국세청 증여세 비과세·공제 안내', url: 'https://www.nts.go.kr' },
+    { label: '국가법령정보센터 상속세 및 증여세법', url: 'https://www.law.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '증여세 면제 범위 안에서 생활비·교육비로 쓰고 주식계좌·ISA에 일부 넣었는데, 그 자금 출처가 증여로 문제되는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494353205' },
+    { summary: '부모님 생활비를 자녀 카드로 먼저 쓰고 매달 그만큼 계좌이체로 받는 방식이 증여에 해당하는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494357335' },
+    { summary: '자녀에게 증여할 때 세금을 얼마나 아낄 수 있는지, 증여재산공제로 어느 정도 절약되는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494332623' },
+  ],
+  comparisonTable: {
+    caption: '증여자와의 관계별 증여재산공제 한도(10년 합산)',
+    columns: ['관계', '공제 한도', '메모'],
+    rows: [
+      ['배우자', '6억원', '혼인 관계'],
+      ['성년 자녀', '5,000만원', '미성년은 2,000만원'],
+      ['부모·조부모', '5,000만원', '성인 자녀가 받을 때'],
+      ['기타 친족', '1,000만원', '6촌 이내 혈족 등'],
+    ],
+  },
+  sections: [
+    {
+      heading: '생활비·교육비는 원래 비과세다',
+      paragraphs: [
+        '부모가 자녀에게, 또는 자녀가 부모에게 건네는 생활비와 교육비는 증여세를 매기지 않습니다. 상속세및증여세법 제46조가 부양의무가 있는 가족 사이의 사회통념상 생활비·교육비를 비과세로 정하고 있기 때문입니다.',
+        '학원비, 대학 등록금, 병원비, 매달 드리는 용돈처럼 실제 살아가는 데 쓰이는 돈이 여기에 해당합니다. 부모가 부양 능력이 있고 받는 쪽이 피부양자라면 이런 지출은 세금 문제로 이어지지 않습니다.',
+      ],
+    },
+    {
+      heading: '문제는 남은 돈이 어디로 가느냐',
+      paragraphs: [
+        '비과세의 핵심 조건은 그 돈을 실제로 생활이나 교육에 썼는지입니다. 생활비라며 받은 돈을 쓰지 않고 예금에 넣거나 주식을 사고 부동산을 취득하면, 국세청은 이를 생활비가 아니라 재산을 무상으로 넘긴 증여로 봅니다.',
+        '지식iN에도 "생활비로 받아 일부는 쓰고 일부는 주식계좌·ISA에 넣었는데 괜찮냐"는 질문이 자주 올라옵니다. 소비한 부분은 문제없지만, 투자·저축으로 남긴 부분은 증여로 판정될 여지가 있다는 점을 기억해야 합니다.',
+      ],
+    },
+    {
+      heading: '목돈은 증여재산공제로 처리한다',
+      paragraphs: [
+        '자녀에게 목돈을 물려줄 계획이라면 생활비 비과세에 기대기보다 증여재산공제를 쓰는 편이 깔끔합니다. 성년 자녀는 10년 동안 합산 5,000만원, 미성년 자녀는 2,000만원, 배우자는 6억원까지 세금 없이 증여할 수 있습니다.',
+        '공제 한도를 넘으면 초과분에 세율이 붙습니다. 과세표준 1억원 이하는 10%, 구간이 올라갈수록 20%, 30%, 40%를 거쳐 30억원 초과분은 50%까지 누진됩니다. 미리 나눠 증여해 한도를 활용하는 이유가 여기에 있습니다.',
+      ],
+    },
+    {
+      heading: '가족 간 계좌이체, 이렇게 남기면 안전하다',
+      paragraphs: [
+        '가족끼리 돈을 주고받을 때는 이체 메모에 용도를 적어 두고, 병원비·등록금처럼 증빙이 남는 지출은 영수증을 보관해 두면 나중에 소명이 수월합니다. 생활비와 목돈 증여를 한 통장에서 섞지 않는 것도 방법입니다.',
+        '큰 금액을 증여할 때는 증여일이 속한 달의 말일부터 3개월 안에 신고해 두면 자금 출처가 명확해집니다. 세부 판단은 사안마다 달라, 애매하면 홈택스 상담이나 세무 전문가의 확인을 받는 것이 안전합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '매달 부모님께 드리는 용돈도 증여세 대상인가요?',
+      answer:
+        '부양 관계에서 사회통념상 생활비로 실제 쓰이면 비과세입니다. 다만 부모가 그 돈을 쓰지 않고 저축·투자로 남기면 증여로 볼 수 있습니다.',
+    },
+    {
+      question: '자녀 학원비나 대학 등록금을 대신 내주면 증여세가 붙나요?',
+      answer:
+        '통상적인 교육비는 비과세입니다. 부모가 부양 능력이 있고 자녀가 피부양자라면 문제되지 않습니다.',
+    },
+    {
+      question: '생활비로 받은 돈으로 주식을 사면 어떻게 되나요?',
+      answer:
+        '그 돈은 비과세 생활비가 아니라 재산 형성에 쓴 것으로 보아 증여세 과세 대상이 될 수 있습니다.',
+    },
+    {
+      question: '성년 자녀에게 5,000만원을 주면 세금이 없나요?',
+      answer:
+        '10년간 합산 5,000만원까지는 증여재산공제로 세금이 없습니다. 증여 후 3개월 안에 신고해 두면 자금 출처도 명확해집니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-24 · 코인 무기한 선물 펀딩비 개념 */
+const cryptoPerpetualFundingFee: GuideDef = {
+  slug: 'crypto-perpetual-funding-fee',
+  title: '코인 선물 펀딩비란? 무기한 계약이 굴러가는 원리',
+  tagline: '롱과 숏이 8시간마다 주고받는 수수료, 장기 보유의 숨은 비용',
+  description:
+    '코인 무기한 선물에서 펀딩비가 무슨 뜻인지 궁금하다면, 선물 가격을 현물에 붙여 두려고 롱과 숏이 8시간마다 주고받는 수수료입니다. 방향에 따라 누가 내는지, 3배 롱 장기 보유가 왜 불리한지 구조를 알기 쉽게 풀었습니다.',
+  keywords: ['코인 펀딩비', '무기한 선물 펀딩비', '비트코인 선물 펀딩비', '펀딩비 뜻', '코인 선물 수수료', '펀딩 레이트'],
+  section: 'ETF 레버리지 가이드',
+  lastReviewed: '2026-07-24',
+  answer:
+    '펀딩비는 만기가 없는 코인 무기한 선물 가격이 현물 시세에서 벗어나지 않도록, 롱과 숏 포지션이 일정 주기마다 서로 주고받는 수수료입니다. 선물이 현물보다 비싸 펀딩비가 플러스면 롱이 숏에게 지급하고, 반대면 숏이 롱에게 냅니다. 방향이 유지되는 한 이 비용이 계속 빠져나가기 때문에 레버리지 장기 보유에는 불리하게 작용합니다.',
+  keyPoints: [
+    '무기한 선물은 만기가 없어 현물과 가격이 벌어질 수 있는데, 펀딩비가 두 가격을 붙여 두는 조정 장치 역할을 합니다.',
+    '주요 거래소는 보통 8시간마다(하루 3번) 펀딩비를 정산하며, 요율은 시장 수급에 따라 수시로 바뀝니다.',
+    '펀딩비가 플러스면 롱이 숏에게, 마이너스면 숏이 롱에게 지급하므로 다수가 몰린 방향이 비용을 부담합니다.',
+    '3배 롱을 매달 적립하며 오래 들고 가면 펀딩비가 반복 차감돼, 같은 방향이라도 현물보다 수익이 깎일 수 있습니다.',
+  ],
+  sources: [
+    { label: '금융감독원 가상자산 투자 유의사항', url: 'https://www.fss.or.kr' },
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '코인에서 펀딩비가 무슨 뜻인지, 비트코인이 상승해 펀딩비가 플러스면 롱 포지션에서 돈이 빠져나가는 구조가 맞는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494350717' },
+    { summary: '바이낸스 선물로 비트코인 3배 롱을 매달 적립해 장기투자하려는데 펀딩비 때문에 말리는 이유가 무엇인지', url: 'https://kin.naver.com/qna/detail.naver?docId=494252706' },
+  ],
+  comparisonTable: {
+    caption: '펀딩비 방향에 따라 누가 내나',
+    columns: ['펀딩비 상태', '시장 상황', '지급 방향'],
+    rows: [
+      ['플러스(+)', '선물이 현물보다 비쌈, 롱 우세', '롱이 숏에게 지급'],
+      ['마이너스(-)', '선물이 현물보다 쌈, 숏 우세', '숏이 롱에게 지급'],
+      ['0에 가까움', '선물과 현물 가격이 근접', '거의 오가지 않음'],
+    ],
+  },
+  sections: [
+    {
+      heading: '무기한 선물엔 만기가 없다',
+      paragraphs: [
+        '일반 선물은 만기가 정해져 있어 그날이 오면 현물 가격으로 정산됩니다. 반면 코인 무기한 선물은 만기가 없어 포지션을 원하는 만큼 들고 갈 수 있습니다. 편리하지만 여기서 한 가지 문제가 생깁니다.',
+        '만기 정산이 없으니 선물 가격이 현물에서 저절로 멀어질 수 있습니다. 롱이 몰리면 선물이 현물보다 비싸지고, 숏이 몰리면 싸집니다. 이 벌어짐을 잡아 주는 장치가 바로 펀딩비입니다.',
+      ],
+    },
+    {
+      heading: '펀딩비가 가격을 현물에 붙인다',
+      paragraphs: [
+        '펀딩비는 선물 가격을 현물 쪽으로 끌어당기는 힘입니다. 선물이 현물보다 비싸면 롱 포지션이 숏에게 수수료를 주도록 해 롱의 부담을 늘리고, 그러면 과열된 롱이 식으면서 선물 가격이 현물에 가까워집니다.',
+        '반대로 선물이 현물보다 싸면 숏이 롱에게 냅니다. 이렇게 비싼 쪽이 비용을 무는 구조라, 시장 참여자들이 자연스럽게 균형을 맞추도록 유도합니다. 펀딩비는 거래소가 챙기는 돈이 아니라 참여자끼리 주고받는 돈입니다.',
+      ],
+    },
+    {
+      heading: '8시간마다 방향 따라 오가는 돈',
+      paragraphs: [
+        '대부분의 거래소는 하루 세 번, 8시간 간격으로 펀딩비를 정산합니다. 정산 시점에 포지션을 들고 있으면 그 순간의 요율로 돈이 오갑니다. 요율은 고정이 아니라 그때그때 수급에 따라 오르내립니다.',
+        '한 번의 요율은 작아 보여도, 상승장에서 롱이 계속 우세하면 펀딩비 플러스가 며칠씩 이어집니다. 이때 롱 포지션은 가만히 들고만 있어도 8시간마다 수수료가 빠져나갑니다.',
+      ],
+    },
+    {
+      heading: '적립식 3배 롱이 위험한 이유',
+      paragraphs: [
+        '매달 조금씩 넣어 3배 롱을 오래 굴리려는 계획이 자주 말리는 데는 이유가 있습니다. 방향이 맞아도 펀딩비가 반복해 차감되고, 급락이 오면 증거금이 모자라 강제 청산될 위험까지 겹칩니다. 청산은 손실 이상으로 원금을 날립니다.',
+        '장기 우상향을 노린다면 펀딩비도 청산 위험도 없는 현물이 훨씬 단순합니다. 무기한 선물 같은 파생상품은 원금 전액을 잃을 수 있는 고위험 거래라는 점을 분명히 알고 접근해야 합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '펀딩비는 거래소가 가져가나요?',
+      answer:
+        '아니요. 펀딩비는 거래소 수익이 아니라 롱과 숏 포지션 참여자끼리 주고받는 돈입니다. 거래소는 별도로 거래 수수료를 받습니다.',
+    },
+    {
+      question: '펀딩비는 얼마나 자주 내나요?',
+      answer:
+        '대부분의 거래소가 8시간마다, 하루 세 번 정산합니다. 포지션을 정산 시점에 들고 있으면 그 순간의 요율로 정산됩니다.',
+    },
+    {
+      question: '현물 비트코인에도 펀딩비가 있나요?',
+      answer:
+        '없습니다. 펀딩비는 무기한 선물 같은 파생상품에만 있는 개념이라, 현물을 사서 지갑에 두면 펀딩비 부담이 없습니다.',
+    },
+    {
+      question: '펀딩비 때문에 3배 롱 장기투자가 불리한가요?',
+      answer:
+        '방향이 맞아도 펀딩비가 반복 차감되고 급락 시 청산 위험까지 있어, 장기 우상향을 노린다면 레버리지보다 현물이 단순합니다. 파생 투자는 원금 손실 위험이 큽니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-24 · 주택임대소득 분리과세 vs 종합과세 */
+const rentalIncomeSeparateVsComprehensiveTax: GuideDef = {
+  slug: 'rental-income-separate-vs-comprehensive-tax',
+  title: '주택임대소득 분리과세 vs 종합과세, 뭐가 유리할까',
+  tagline: '연 2천만원 이하면 선택 가능, 14% 단일세율의 조건',
+  description:
+    '주택임대소득이 연 2천만원 이하라 분리과세와 종합과세 중 무엇이 유리한지 고민이라면, 다른 소득이 많을수록 14% 단일세율인 분리과세가 유리한 편입니다. 필요경비율과 기본공제, 등록임대 혜택까지 사례로 비교했습니다.',
+  keywords: ['주택임대소득 분리과세', '주택임대소득 종합과세', '임대소득 2000만원', '주택임대 14% 세율', '등록임대 필요경비', '임대소득세'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-07-24',
+  answer:
+    '주택임대 수입이 연 2천만원 이하면 분리과세와 종합과세 중에서 고를 수 있고, 2천만원을 넘으면 종합과세로만 신고합니다. 국민연금·근로소득처럼 합산될 다른 소득이 많아 세율 구간이 높아지는 사람은 14% 단일세율인 분리과세가 대체로 유리하고, 다른 소득이 거의 없다면 낮은 누진세율의 종합과세가 더 나을 수 있습니다.',
+  keyPoints: [
+    '주택임대 수입금액이 연 2천만원 이하면 분리과세(14%)와 종합과세(6~45%) 중 선택할 수 있고, 초과하면 종합과세만 가능합니다.',
+    '분리과세는 필요경비율 50%(임대사업 등록 시 60%)를 빼주고, 다른 종합소득이 2천만원 이하면 기본공제 200만원(등록 시 400만원)을 추가로 공제합니다.',
+    '연금·사업 등 합산 소득이 많아 누진 구간이 높은 사람은 14% 단일세율인 분리과세가 세 부담을 낮추는 경우가 많습니다.',
+    '임대소득 말고 다른 소득이 거의 없으면 6% 구간부터 시작하는 종합과세가 더 유리할 수 있어, 두 방식을 모두 계산해 보는 것이 안전합니다.',
+  ],
+  sources: [
+    { label: '국세청 주택임대소득 안내', url: 'https://www.nts.go.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '연간 임대소득이 1,500만원인데 국민연금·개인연금도 함께 받는 상황에서 분리과세와 종합과세 중 무엇이 유리한지', url: 'https://kin.naver.com/qna/detail.naver?docId=494358312' },
+  ],
+  comparisonTable: {
+    caption: '주택임대소득 분리과세 vs 종합과세 (연 2천만원 이하)',
+    columns: ['구분', '분리과세', '종합과세'],
+    rows: [
+      ['세율', '14% 단일', '6~45% 누진'],
+      ['다른 소득과 합산', '합산 안 함', '합산함'],
+      ['필요경비율', '50%(등록 60%)', '실제 경비 또는 추계'],
+      ['기본공제', '200만원(등록 400만원)', '별도 없음'],
+      ['유리한 경우', '다른 소득이 많을 때', '다른 소득이 적을 때'],
+    ],
+  },
+  sections: [
+    {
+      heading: '2천만원이 갈림길이다',
+      paragraphs: [
+        '주택임대소득은 연 수입금액 2천만원을 기준으로 신고 방식이 갈립니다. 2천만원 이하면 분리과세와 종합과세 중 유리한 쪽을 골라 신고할 수 있고, 2천만원을 넘으면 다른 소득과 합쳐 종합과세로만 신고합니다.',
+        '여기서 말하는 2천만원은 필요경비를 빼기 전, 실제로 받은 임대료 총액입니다. 매출 기준이라는 점을 헷갈리지 말아야 합니다.',
+      ],
+    },
+    {
+      heading: '분리과세는 14% 단일세율',
+      paragraphs: [
+        '분리과세를 고르면 임대소득에 다른 소득을 섞지 않고 14% 단일세율만 적용합니다. 먼저 수입금액에서 필요경비율 50%를 빼고, 임대소득 외 종합소득이 2천만원 이하면 기본공제 200만원까지 추가로 뺀 뒤 남은 금액에 14%를 매깁니다.',
+        '예를 들어 연 임대료가 1,500만원이면 경비 750만원과 기본공제 200만원을 빼 과세표준은 550만원, 세금은 여기에 14%를 적용해 계산합니다. 다른 소득과 합산되지 않으니 누진세율을 피할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '다른 소득이 많으면 분리과세',
+      paragraphs: [
+        '질문자처럼 국민연금과 개인연금을 함께 받는 경우를 보겠습니다. 종합과세를 고르면 임대소득이 연금소득 위에 얹혀 전체 과세표준이 올라가고, 그만큼 높은 누진 구간의 세율을 맞게 됩니다.',
+        '반대로 분리과세를 고르면 임대소득만 따로 14%로 끝나 다른 소득의 세율 구간을 끌어올리지 않습니다. 그래서 합산될 다른 소득이 많은 사람일수록 분리과세가 유리해지는 흐름이 자주 나타납니다.',
+      ],
+    },
+    {
+      heading: '등록임대의 추가 혜택',
+      paragraphs: [
+        '지자체와 세무서에 주택임대사업자로 등록하면 필요경비율이 60%로 오르고 기본공제도 400만원으로 늘어 세 부담이 더 줄어듭니다. 다만 의무 임대 기간과 임대료 인상 제한 같은 요건이 따라붙습니다.',
+        '어느 쪽이 유리한지는 본인의 다른 소득 규모에 따라 달라집니다. 실제 신고 전에 홈택스의 모의계산이나 세무 상담으로 두 방식의 세액을 비교해 결정하는 편이 안전합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '임대소득이 연 2천만원을 넘으면 어떻게 하나요?',
+      answer:
+        '2천만원을 넘으면 무조건 종합과세로 신고합니다. 분리과세는 수입금액이 2천만원 이하일 때만 선택할 수 있습니다.',
+    },
+    {
+      question: '분리과세가 항상 유리한가요?',
+      answer:
+        '아닙니다. 임대소득 외 다른 소득이 거의 없으면 6% 구간부터 적용되는 종합과세가 더 유리할 수 있어 둘 다 계산해 봐야 합니다.',
+    },
+    {
+      question: '주택임대사업자로 등록하면 무엇이 달라지나요?',
+      answer:
+        '필요경비율이 60%로 오르고 기본공제도 400만원으로 늘어 세 부담이 줄지만, 의무 임대 기간 같은 요건이 있습니다.',
+    },
+    {
+      question: '전세보증금에도 세금이 붙나요?',
+      answer:
+        '부부 합산 3주택 이상이면 일정 규모를 넘는 보증금에 간주임대료가 계산돼 과세될 수 있습니다. 2주택 이하 전세는 원칙적으로 과세 대상이 아닙니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-24 · 배당락과 배당 매수 타이밍 */
+const exDividendPriceDrop: GuideDef = {
+  slug: 'ex-dividend-price-drop',
+  title: '배당락이 뭔가요? 배당 직전 매수가 손해인 이유',
+  tagline: '배당받을 권리가 사라지는 날, 주가는 배당금만큼 내린다',
+  description:
+    '배당 직전에 주식을 사면 이득일 것 같지만, 배당락일에 주가가 배당금만큼 떨어져 사실상 남는 게 없습니다. 배당기준일과 배당락일의 차이, T+2 결제 때문에 언제까지 사야 배당을 받는지 실전 매수 타이밍으로 정리했습니다.',
+  keywords: ['배당락', '배당락일', '배당기준일', '배당 받는 법', '배당 매수 타이밍', 'T+2 결제', '배당락 주가하락'],
+  section: '배당주 가이드',
+  lastReviewed: '2026-07-24',
+  answer:
+    '배당락은 배당받을 권리가 사라지면서 그만큼 주가가 조정되는 것을 말합니다. 배당기준일 다음 거래일인 배당락일에는 시초가가 배당금만큼 낮게 시작하기 때문에, 배당만 노리고 기준일 직전에 사서 배당락 후 파는 전략은 대체로 남는 것이 없습니다. 배당을 받으려면 T+2 결제를 감안해 배당기준일 2영업일 전, 즉 배당락일 전날까지 매수를 마쳐야 합니다.',
+  keyPoints: [
+    '배당기준일에 주주명부에 올라야 배당을 받는데, 국내 주식은 T+2 결제라 배당락일 전날(기준일 2영업일 전)까지 사야 합니다.',
+    '배당락일에는 시초가가 직전 종가에서 배당금만큼 낮게 시작해, 배당받을 권리가 빠진 만큼 주가가 조정됩니다.',
+    '기준일 직전에 사서 배당만 받고 배당락 후 파는 방식은 주가 하락분과 배당소득세 15.4%까지 감안하면 실익이 거의 없습니다.',
+    '최근에는 배당액을 먼저 확정한 뒤 배당기준일을 정하는 기업이 늘어, 종목마다 기준일이 달라 공시를 확인해야 합니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'LG전자 주식을 보유 중인데 배당이 언제 되는지, 주당 배당금이 얼마인지', url: 'https://kin.naver.com/qna/detail.naver?docId=249025143' },
+    { summary: 'SK하이닉스 분기배당을 받으려면 매 분기 기준일 2영업일 전까지 매수해 보유해야 하는지', url: 'https://kin.naver.com/qna/detail.naver?docId=417779487' },
+    { summary: '삼성전자 배당을 받으려면 언제까지 주식을 보유해 권리를 확보해야 하는지', url: 'https://kin.naver.com/qna/detail.naver?docId=386996037' },
+  ],
+  comparisonTable: {
+    caption: '배당기준일과 배당락일, 무엇이 다른가',
+    columns: ['구분', '배당기준일', '배당락일'],
+    rows: [
+      ['정의', '배당받을 주주를 확정하는 날', '배당 권리가 사라지는 날'],
+      ['시점', '배당락일 다음 거래일', '배당기준일 직전 거래일'],
+      ['매수', '이 날 주주명부에 있어야 함', '이 날 사면 배당 못 받음'],
+      ['주가', '평소와 동일', '배당금만큼 낮게 시작'],
+    ],
+  },
+  sections: [
+    {
+      heading: '배당락이라는 하루',
+      paragraphs: [
+        '배당락은 배당받을 권리가 떨어져 나가는 날을 가리킵니다. 배당기준일 다음 거래일이 배당락일인데, 이날은 시초가가 전날 종가에서 배당금만큼 낮게 조정되어 시작합니다. 주당 1,000원을 배당하는 종목이면 시초가 기준가가 그만큼 내려가는 식입니다.',
+        '이 하락은 회사가 나빠져서가 아니라, 배당으로 나갈 몫이 주가에서 빠지는 이론적인 조정입니다. 그래서 배당락일 아침 주가가 툭 떨어져 보여도 놀랄 일은 아닙니다.',
+      ],
+    },
+    {
+      heading: '언제까지 사야 배당을 받나',
+      paragraphs: [
+        '배당을 받으려면 배당기준일에 주주명부에 이름이 올라 있어야 합니다. 그런데 국내 주식은 사고 나서 실제 소유권이 넘어오기까지 이틀이 걸리는 T+2 결제를 씁니다. 오늘 사면 이틀 뒤에 결제가 끝난다는 뜻입니다.',
+        '그래서 기준일 당일에 사면 이미 늦습니다. 결제가 기준일을 넘겨 끝나기 때문입니다. 배당기준일 2영업일 전, 곧 배당락일 전날까지 매수를 마쳐야 기준일에 주주로 등재되어 배당을 받습니다.',
+      ],
+    },
+    {
+      heading: '배당 먹고 나오기가 안 통하는 이유',
+      paragraphs: [
+        '"기준일 직전에 사서 배당만 챙기고 배당락 후 팔면 되지 않냐"는 생각이 흔합니다. 하지만 배당락일에 주가가 배당금만큼 내려서 출발하기 때문에, 받은 배당과 빠진 주가가 대체로 상쇄됩니다.',
+        '여기에 배당소득세 15.4%까지 떼입니다. 결국 배당만 노린 단타는 주가가 배당락 낙폭을 빠르게 회복하지 않는 한 손에 쥐는 것이 거의 없거나 오히려 마이너스가 되기 쉽습니다.',
+      ],
+    },
+    {
+      heading: '기준일이 종목마다 다르다',
+      paragraphs: [
+        '예전에는 12월 결산 기업 대부분이 연말을 기준일로 삼았지만, 최근에는 배당액을 먼저 확정한 뒤 배당기준일을 정하는 기업이 늘었습니다. 배당을 얼마 주는지 보고 나서 살지 결정할 수 있게 바뀐 것입니다.',
+        '분기배당을 하는 종목은 매 분기마다 기준일이 따로 있습니다. 그래서 특정 종목의 배당을 받으려면 해당 기업의 공시로 배당기준일을 직접 확인하고, 그 2영업일 전까지 매수해 두는 습관이 필요합니다. 투자 판단과 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '배당락일에 사면 배당을 못 받나요?',
+      answer:
+        '네. 배당락일에 매수하면 T+2 결제로 배당기준일에 주주명부에 오르지 못해 이번 배당은 받지 못합니다.',
+    },
+    {
+      question: '배당 직전에 사서 배당만 받고 팔면 이득 아닌가요?',
+      answer:
+        '배당락일에 주가가 배당금만큼 내리고 배당소득세 15.4%까지 떼여서, 단기로는 오히려 손해 보기 쉽습니다.',
+    },
+    {
+      question: '분기배당은 언제 사야 하나요?',
+      answer:
+        '분기배당도 각 분기 배당기준일이 따로 있어, 그 2영업일 전까지 매수해 보유해야 해당 분기 배당을 받습니다.',
+    },
+    {
+      question: '배당락으로 내린 주가는 다시 오르나요?',
+      answer:
+        '배당락은 이론상 조정일 뿐이라 이후 실적·수급에 따라 회복되기도 하지만, 반드시 채워진다는 보장은 없습니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
   pensionSavingsVsIrp,
   etfSharePriceMeaning,
@@ -16329,6 +16782,11 @@ export const GUIDES: GuideDef[] = [
   adultChildGiftTax,
   cryptoInheritanceGiftTax,
   kimchiPremiumArbitrage,
+  pensionSavingsExcessContribution,
+  livingEducationExpenseGiftTax,
+  cryptoPerpetualFundingFee,
+  rentalIncomeSeparateVsComprehensiveTax,
+  exDividendPriceDrop,
 ];
 
 /**
@@ -16339,6 +16797,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-07-24 · 지식iN 질문 수요 기반 (연금저축 초과 납입·생활비 교육비 증여·코인 펀딩비·주택임대소득 과세·배당락)
+  'pension-savings-excess-contribution': '2026-07-24',
+  'living-education-expense-gift-tax': '2026-07-24',
+  'crypto-perpetual-funding-fee': '2026-07-24',
+  'rental-income-separate-vs-comprehensive-tax': '2026-07-24',
+  'ex-dividend-price-drop': '2026-07-24',
   // 2026-07-23 · 지식iN 질문 수요 기반 (미국 단기채 환차익·CD금리 합성 안전성·성인자녀 증여·코인 상속증여·김치프리미엄)
   'us-bond-etf-currency-gain': '2026-07-23',
   'cd-rate-synthetic-etf-safety': '2026-07-23',
@@ -16575,17 +17039,17 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax'],
   },
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop'],
   },
   {
     title: '테마·섹터',
     description: '방산·조선·건설·자동차·AI·반도체·빅테크·소프트웨어·보안·로봇·전기차·신재생·희토류·게임·엔터·명품·뷰티·비트코인·인프라 등 특정 테마에 집중하는 섹터 ETF.',
-    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf'],
+    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee'],
   },
   {
     title: '해외·환율',
