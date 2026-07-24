@@ -1561,3 +1561,5 @@ https://iknowhowinfo.com/guide/overseas-dividend-loan-income
 https://iknowhowinfo.com/guide/us-etf-exchange-rate-timing-dca
 https://iknowhowinfo.com/guide/korea-spot-bitcoin-etf-status
 https://iknowhowinfo.com/guide/us-etf-dividend-double-tax
+
+색인 푸시 결과(npm run push:guides · 대상 2026-07-25 5편 + 허브 3): IndexNow skip(no-site-url), Google Indexing skip(no-credentials). 키 미설정 채널 자동 skip(정상).
