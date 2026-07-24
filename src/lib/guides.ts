@@ -16598,7 +16598,462 @@ const exDividendPriceDrop: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-07-25 · ISA에 국내주식형 ETF를 담을 때 절세 효과 */
+const isaDomesticEtfTaxBenefit: GuideDef = {
+  slug: 'isa-domestic-etf-tax-benefit',
+  title: 'ISA에 국내주식형 ETF 담아도 절세 효과가 있을까',
+  tagline: '매매차익은 원래 비과세, ISA 혜택이 갈리는 지점',
+  description:
+    '국내주식형 ETF는 매매차익이 계좌와 상관없이 비과세라, ISA에 담아도 매매차익에서 새로 아낄 세금이 없습니다. ISA의 진짜 절세 효과가 분배금과 국내상장 해외형 ETF에서 커지는 이유를 계좌별로 비교해 정리했습니다.',
+  keywords: ['ISA 국내주식형 ETF', 'ISA 절세 효과', '국내주식형 ETF 세금', 'ISA KODEX', 'ETF 매매차익 비과세', 'ISA 분배금 세금'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-07-25',
+  answer:
+    '국내 증시에 상장된 국내주식형 ETF는 매매차익이 계좌 종류와 무관하게 비과세여서, ISA에 담아도 매매차익에서 추가로 아낄 세금은 없습니다. ISA의 절세 효과는 분배금(배당소득)과, 매매차익에도 15.4%가 붙는 국내상장 해외주식형 ETF를 담을 때 비과세·저율로 낮춰 주며 커집니다.',
+  keyPoints: [
+    '국내주식형 ETF의 매매차익은 일반계좌에서도 비과세라, ISA에 담아도 매매차익 세금은 그대로 0원입니다.',
+    'ISA는 계좌 안의 이자·분배금을 합산해 순이익 200만원(서민형 400만원)까지 비과세하고, 초과분은 9.9%로 분리과세합니다.',
+    '국내상장 해외주식형 ETF는 매매차익에도 15.4%가 붙는데, ISA에서는 이 세금이 비과세·9.9%로 줄어 절세 폭이 큽니다.',
+    '분배금이 거의 없는 순수 국내주식형 ETF만 담는다면, ISA의 세제 혜택보다 3년 의무 유지·연 2천만원 납입한도 제약이 더 크게 느껴질 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 계좌에 KODEX 같은 국내 ETF를 담으면 어떤 절세 효과가 있는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494102222' },
+    { summary: 'ISA 계좌로 ETF를 투자할 때 세금이 어떻게 달라지는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494349881' },
+  ],
+  comparisonTable: {
+    caption: '계좌별 ETF 세금, 국내주식형 vs 국내상장 해외형',
+    columns: ['구분', '국내주식형 ETF', '국내상장 해외형 ETF'],
+    rows: [
+      ['매매차익(일반계좌)', '비과세', '15.4% 과세'],
+      ['매매차익(ISA)', '비과세(변화 없음)', '비과세·9.9%로 절감'],
+      ['분배금(일반계좌)', '15.4%', '15.4%'],
+      ['분배금(ISA)', '비과세·9.9%', '비과세·9.9%'],
+      ['ISA 절세 체감', '분배금에서만', '매매차익과 분배금 모두'],
+    ],
+  },
+  sections: [
+    {
+      heading: '국내주식형 ETF는 매매차익 세금이 원래 없다',
+      paragraphs: [
+        'KODEX 200이나 TIGER 200처럼 국내 주식만 담은 ETF는 매매차익에 세금이 붙지 않습니다. 일반 위탁계좌에서 사고팔아도 매매차익은 비과세라, 이 부분에서는 ISA가 따로 줄여 줄 세금 자체가 존재하지 않습니다.',
+        '그래서 "국내 ETF를 ISA에 넣으면 세금을 아낀다"는 기대는 매매차익만 놓고 보면 어긋납니다. 이미 0원인 세금을 0원으로 유지하는 것이라 달라질 게 없기 때문입니다.',
+      ],
+    },
+    {
+      heading: '그러면 ISA는 어디서 이득을 주나',
+      paragraphs: [
+        'ISA의 세제 혜택은 계좌 안에서 생긴 이자와 배당(ETF 분배금 포함)을 합산해 순이익 200만원, 서민형은 400만원까지 비과세하고 그 초과분을 9.9%로 분리과세하는 데 있습니다. 국내주식형 ETF라도 분배금이 나오면 이 비과세 한도를 채우는 데 쓰입니다.',
+        '즉 국내주식형 ETF에서 ISA가 주는 실익은 분배금 쪽입니다. 분배금이 큰 고배당·리츠 계열이라면 ISA 안에서 받는 편이 세금을 덜 냅니다.',
+      ],
+    },
+    {
+      heading: '국내상장 해외 ETF에서 진짜 차이가 벌어진다',
+      paragraphs: [
+        '같은 ETF라도 미국 S&P500이나 나스닥100을 담은 국내상장 해외주식형 ETF는 매매차익에도 배당소득세 15.4%가 붙습니다. 일반계좌에서는 이 세금을 그대로 내지만, ISA에 담으면 비과세 한도와 9.9% 분리과세가 적용돼 세 부담이 눈에 띄게 줄어듭니다.',
+        '결국 ISA의 절세 효과를 제대로 누리려면 매매차익이 과세되는 국내상장 해외형 ETF나 분배금이 큰 종목을 담는 조합이 유리합니다.',
+      ],
+    },
+    {
+      heading: '그래도 ISA가 손해는 아니다, 판단 기준',
+      paragraphs: [
+        '순수 국내주식형 ETF만 담을 계획이라면 매매차익 절세 효과는 없지만, 분배금 비과세와 손익통산이라는 장점은 남습니다. 반대로 3년 의무 유지 기간과 연 2천만원 납입한도가 부담이면 굳이 ISA를 고집할 이유는 줄어듭니다.',
+        '본인 포트폴리오가 매매차익 위주인지 분배금 위주인지, 국내형인지 해외형인지에 따라 답이 갈립니다. 계좌 선택은 세금만이 아니라 투자 기간과 자금 계획까지 함께 따져 정하는 것이 안전하며, 최종 판단과 책임은 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA에 KODEX 200 같은 국내 ETF를 담으면 세금을 아끼나요?',
+      answer:
+        '매매차익은 일반계좌에서도 비과세라 달라지지 않습니다. 다만 분배금은 ISA 비과세 한도와 9.9% 분리과세를 적용받아 줄어듭니다.',
+    },
+    {
+      question: '국내주식형과 국내상장 해외형은 뭐가 다른가요?',
+      answer:
+        '국내주식형은 매매차익이 비과세지만, 해외 주식이 담긴 국내상장 해외형은 매매차익에도 15.4%가 붙어 ISA의 절세 효과가 훨씬 큽니다.',
+    },
+    {
+      question: '분배금이 없는 ETF는 ISA에 넣을 이유가 없나요?',
+      answer:
+        '절세만 보면 이득이 작습니다. 하지만 손익통산이나 향후 해외형 편입 계획이 있다면 계좌를 미리 만들어 두는 의미는 있습니다.',
+    },
+    {
+      question: 'ISA 3년을 못 채우면 어떻게 되나요?',
+      answer:
+        '의무 기간을 못 채우고 해지하면 비과세·분리과세 혜택이 사라지고 일반 세율로 다시 과세됩니다. 자금 계획을 감안해 가입하는 편이 좋습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-25 · 미국 배당·ETF 분배금이 대출 소득 심사에 잡히나 */
+const overseasDividendLoanIncome: GuideDef = {
+  slug: 'overseas-dividend-loan-income',
+  title: '미국 배당·ETF 분배금, 대출 소득 심사에 잡히나',
+  tagline: '증빙소득이 먼저, 금융소득은 보조로 인정되는 구조',
+  description:
+    '보금자리론 같은 대출 심사에서 미국 배당과 ETF 분배금이 소득으로 인정되는지 궁금하다면, 근로·사업 같은 증빙소득이 먼저이고 금융소득은 보조적으로만 반영됩니다. DSR 한도와 인정 조건, 종합과세 문턱까지 함께 정리했습니다.',
+  keywords: ['배당소득 대출 소득 인정', '보금자리론 소득 심사', '미국 배당 대출', 'DSR 금융소득', 'ETF 분배금 소득 인정', '금융소득 종합과세'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-07-25',
+  answer:
+    '배당이나 ETF 분배금 같은 금융소득도 대출 심사에서 소득으로 인정될 수 있지만, 근로·사업 같은 증빙소득이 우선이고 금융소득은 보조적으로 반영됩니다. DSR은 연소득이 클수록 갚을 수 있는 원리금 한도가 커져 인정된 배당소득이 한도에 도움이 되지만, 변동성이 커 금융기관에 따라 인정 범위가 다릅니다.',
+  keyPoints: [
+    '보금자리론 같은 정책 대출은 근로·사업 증빙소득을 우선 보고, 부족할 때 인정소득·신고소득으로 배당 등 금융소득을 보조 반영합니다.',
+    'DSR은 연소득이 클수록 원리금 상환 한도가 커지므로, 소득으로 인정된 배당소득은 대출 한도에 플러스로 작용할 수 있습니다.',
+    '배당·이자 같은 금융소득은 변동성이 커서, 최근 1년 이상 지속 여부와 자료 형태에 따라 금융기관이 인정하지 않는 경우도 있습니다.',
+    '미국 ETF 분배금이든 국내 배당이든 연 2천만원을 넘으면 금융소득 종합과세 대상이 되어 세금과 건강보험료 부담이 함께 늘 수 있습니다.',
+  ],
+  sources: [
+    { label: '한국주택금융공사', url: 'https://www.hf.go.kr' },
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '보금자리론 소득 기준을 볼 때 미국 배당소득도 소득에 포함되는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494353655' },
+  ],
+  comparisonTable: {
+    caption: '소득 유형별 대출 심사 인정 정도',
+    columns: ['소득 유형', '증빙', '대출 심사 인정'],
+    rows: [
+      ['근로소득', '원천징수영수증 등', '가장 안정적으로 인정'],
+      ['사업소득', '종합소득세 신고분', '인정'],
+      ['배당·이자(금융소득)', '금융소득 과세자료', '보조적 인정, 기관 재량'],
+      ['임대소득', '임대차계약·신고분', '조건부 인정'],
+    ],
+  },
+  sections: [
+    {
+      heading: '대출 한도는 결국 소득이 좌우한다',
+      paragraphs: [
+        '주택담보대출을 받을 때 한도는 담보 가치와 함께 갚을 능력, 곧 소득으로 결정됩니다. DSR(총부채원리금상환비율)은 연소득 대비 매년 갚아야 할 원리금 비율을 따지기 때문에, 연소득이 크게 잡힐수록 빌릴 수 있는 금액도 늘어납니다.',
+        '그래서 미국 배당이나 ETF 분배금 같은 금융소득이 소득으로 인정되는지가 실제 한도에 영향을 줍니다.',
+      ],
+    },
+    {
+      heading: '증빙소득이 먼저, 금융소득은 보조',
+      paragraphs: [
+        '보금자리론을 포함한 대출 심사는 원천징수영수증·소득금액증명 같은 증빙소득을 가장 먼저 봅니다. 근로·사업소득이 충분하면 그것으로 심사가 끝나는 경우가 많습니다.',
+        '증빙소득이 부족할 때 건강보험료·국민연금 납부액으로 추정하는 인정소득이나, 신용카드·금융소득 자료로 추정하는 신고소득이 보조로 쓰입니다. 배당·이자소득은 이 신고소득 범주에서 다뤄집니다.',
+      ],
+    },
+    {
+      heading: '미국 배당이라고 다르게 취급되지는 않는다',
+      paragraphs: [
+        '미국 주식이나 ETF에서 받은 배당도 국내 배당소득과 마찬가지로 금융소득 과세자료에 잡힙니다. 원천징수와 종합소득 신고를 거쳐 국세청에 기록이 남기 때문에, 지속적으로 발생한 소득이라면 자료로 제출해 심사에 반영을 시도할 수 있습니다.',
+        '다만 금융소득은 해마다 금액이 출렁이기 쉬워, 금융기관은 1회성인지 꾸준한지 확인합니다. 최근 1년 넘게 이어진 소득이 아니면 인정하지 않거나 일부만 반영하는 경우가 있습니다.',
+      ],
+    },
+    {
+      heading: '종합과세·건보료까지 함께 본다',
+      paragraphs: [
+        '배당·이자를 합친 금융소득이 연 2천만원을 넘으면 다른 소득과 합산되는 금융소득 종합과세 대상이 됩니다. 대출 한도를 늘리려 배당을 키우다 보면 세금과 건강보험료 부담이 같이 늘 수 있어, 득실을 함께 따져야 합니다.',
+        '대출 한도에 금융소득을 반영할 수 있는지는 상품과 금융기관마다 기준이 달라, 신청 전 해당 은행이나 주택금융공사에 인정 여부를 직접 확인하는 편이 확실합니다. 이 글은 정보 제공을 위한 것으로 실제 심사 결과는 개별 조건에 따라 달라집니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '배당소득만으로 대출을 받을 수 있나요?',
+      answer:
+        '가능성은 있지만 금융소득은 보조 소득으로 취급돼 인정 폭이 제한적입니다. 근로·사업 증빙소득이 있으면 한도 산정이 훨씬 수월합니다.',
+    },
+    {
+      question: '미국 ETF 분배금도 소득 자료로 낼 수 있나요?',
+      answer:
+        '금융소득 과세자료에 기록되므로 제출은 가능합니다. 다만 최근 1년 이상 꾸준히 발생했는지에 따라 인정 여부가 갈립니다.',
+    },
+    {
+      question: 'DSR에서 배당소득이 많으면 한도가 늘어나나요?',
+      answer:
+        '소득으로 인정되면 연소득이 커져 원리금 상환 한도가 늘 수 있습니다. 하지만 변동성 탓에 전액 인정되지 않는 경우가 흔합니다.',
+    },
+    {
+      question: '배당을 늘리면 세금도 늘어나나요?',
+      answer:
+        '금융소득이 연 2천만원을 넘으면 종합과세 대상이 되고 건강보험료도 오를 수 있습니다. 대출 한도와 세 부담을 함께 계산해야 합니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-25 · 환율이 높을 때 미국 ETF 적립식 시작 */
+const usEtfExchangeRateTimingDca: GuideDef = {
+  slug: 'us-etf-exchange-rate-timing-dca',
+  title: '환율 높을 때 미국 ETF 적립식 시작해도 될까',
+  tagline: '시작 환율 하나보다, 나눠 사서 평균 내는 힘',
+  description:
+    '환율이 높으면 같은 원화로 담는 미국 ETF 수량이 줄어 망설여지지만, 적립식은 매달 나눠 사며 환율과 주가를 평균화해 시작 시점 하나에 결과가 크게 좌우되지 않습니다. 환헤지 선택과 장기 적립의 원칙을 함께 정리했습니다.',
+  keywords: ['미국 ETF 적립식', '환율 높을 때 미국 투자', '달러 환율 적립식', '환헤지 환노출 ETF', 'S&P500 적립식', '나스닥100 적립식'],
+  section: 'ETF 적립식 가이드',
+  lastReviewed: '2026-07-25',
+  answer:
+    '환율이 높으면 같은 원화로 살 수 있는 미국 ETF 수량이 줄어 부담스럽지만, 적립식은 매달 나눠 사며 환율과 주가를 함께 평균화하기 때문에 시작 시점의 환율 하나에 성과가 크게 좌우되지 않습니다. 10년 이상 이어갈 장기 적립이라면 환율 타이밍을 맞추려 미루기보다 꾸준히 분산 매수하는 편이 대체로 낫습니다.',
+  keyPoints: [
+    '환율이 오르면 같은 100만원으로 담는 미국 ETF 수량이 줄어, 원화 기준 매입 단가가 높아지는 것은 사실입니다.',
+    '적립식은 환율이 높을 때 적게, 낮을 때 많이 사는 효과가 생겨 평균 매입 환율을 자연스럽게 분산합니다.',
+    '국내상장 미국 ETF는 환노출(UH)이면 환율이 수익에 그대로 반영되고, 환헤지(H)형은 환율 영향을 줄이는 대신 헤지 비용이 듭니다.',
+    '10년 이상 장기 적립에서는 시작 시점의 환율보다 매수를 중단하지 않고 이어가는 것이 성과를 더 크게 좌우하는 경우가 많습니다.',
+  ],
+  sources: [
+    { label: '한국은행 경제통계시스템(ECOS)', url: 'https://ecos.bok.or.kr' },
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '나스닥100과 S&P500에 장기투자할 때 환율 변동이 수익에 어떤 영향을 주는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494346634' },
+    { summary: '지금 주식시장에 들어가도 괜찮을지, 진입 시점을 고민하는 상황', url: 'https://kin.naver.com/qna/detail.naver?docId=494351153' },
+  ],
+  comparisonTable: {
+    caption: '환율 국면별 적립식 영향',
+    columns: ['구분', '환율 높을 때 시작', '환율 낮을 때 시작'],
+    rows: [
+      ['초기 매입 수량', '적음', '많음'],
+      ['이후 환율 하락 시', '평가손 부담', '추가 이익'],
+      ['적립식 평균 효과', '고점 비중 축소', '저점 비중 확대'],
+      ['장기(10년+) 영향', '시작 시점 영향 희석', '시작 시점 영향 희석'],
+    ],
+  },
+  sections: [
+    {
+      heading: '환율이 높으면 손해 같다는 느낌',
+      paragraphs: [
+        '달러 환율이 높을 때 미국 ETF를 사면 같은 원화로 담을 수 있는 수량이 줄어듭니다. 환율 1,300원과 1,400원일 때 100만원으로 살 수 있는 달러 자산의 양이 다르니, 비싸게 사는 것 같은 부담이 드는 것은 당연합니다.',
+        '문제는 환율이 앞으로 오를지 내릴지 아무도 정확히 맞힐 수 없다는 점입니다. 지금이 고점이라 여겨 미뤘는데 더 오르는 일도 흔합니다.',
+      ],
+    },
+    {
+      heading: '적립식이 환율을 평균 낸다',
+      paragraphs: [
+        '적립식은 매달 정해진 금액을 나눠 사는 방식입니다. 환율이 높은 달에는 적은 수량을, 낮은 달에는 많은 수량을 담게 되어 매입 단가가 한쪽으로 쏠리지 않고 평균에 가까워집니다.',
+        '주가에 적용하는 분할 매수 원리가 환율에도 똑같이 작동하는 셈입니다. 시작하는 달의 환율이 조금 높아도, 이어지는 매수가 그 영향을 점점 희석합니다.',
+      ],
+    },
+    {
+      heading: '환헤지형을 골라야 할까',
+      paragraphs: [
+        '환율 변동이 정 부담스러우면 이름에 (H)가 붙은 환헤지형 ETF를 고를 수 있습니다. 환헤지형은 환율이 오르내려도 수익에 미치는 영향을 줄여 주지만, 헤지를 유지하는 비용이 들어 장기 수익률을 갉아먹을 수 있습니다.',
+        '반대로 환노출형은 원화가 약해지면(환율 상승) 환차익이 더해지고, 원화가 강해지면 손해가 됩니다. 장기 적립에서는 헤지 비용 부담 때문에 환노출형을 택하는 투자자가 많지만, 정답은 본인의 환율 전망과 감내 수준에 따라 다릅니다.',
+      ],
+    },
+    {
+      heading: '타이밍보다 지속이 중요하다',
+      paragraphs: [
+        '10년 넘게 이어갈 적립이라면 시작한 달의 환율이 전체 성과에서 차지하는 비중은 생각보다 작습니다. 오히려 시장이 흔들릴 때 매수를 멈추거나 중간에 그만두는 것이 더 큰 변수로 작용합니다.',
+        '환율 고점을 피하려 진입을 미루기보다, 감당할 수 있는 금액으로 꾸준히 사 모으는 편이 마음도 편하고 결과도 안정적인 경우가 많습니다. 투자 판단과 책임은 본인에게 있으니 목표 기간과 여유 자금을 먼저 정하는 것이 좋습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '환율이 지금 고점인데 기다렸다 사는 게 낫지 않나요?',
+      answer:
+        '환율 고점은 지나야 알 수 있어 예측이 어렵습니다. 적립식으로 나눠 사면 고점 부담을 평균으로 흡수할 수 있습니다.',
+    },
+    {
+      question: '환헤지형과 환노출형 중 뭐가 유리한가요?',
+      answer:
+        '환율 영향을 줄이려면 환헤지형, 헤지 비용을 아끼고 환차익 여지를 남기려면 환노출형입니다. 장기 적립은 비용 탓에 환노출형을 택하는 경우가 많습니다.',
+    },
+    {
+      question: '한 번에 목돈을 넣는 것과 적립식 중 뭐가 낫나요?',
+      answer:
+        '환율·주가 예측이 어렵다면 적립식이 심리적 부담과 고점 위험을 줄여 줍니다. 다만 장기 우상향 국면에서는 거치식이 더 나을 때도 있습니다.',
+    },
+    {
+      question: '환율이 내리면 미국 ETF는 손해인가요?',
+      answer:
+        '환노출형은 원화 강세 시 환차손이 생기지만, 기초자산인 미국 주가가 오르면 이를 상쇄하거나 넘어설 수 있습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-25 · 한국에서 비트코인 현물 ETF를 못 사는 이유 */
+const koreaSpotBitcoinEtfStatus: GuideDef = {
+  slug: 'korea-spot-bitcoin-etf-status',
+  title: '한국에서 비트코인 현물 ETF를 못 사는 이유',
+  tagline: '자본시장법 기초자산 규정과 하반기 개정 논의',
+  description:
+    '2026년 7월 현재 국내 증시에는 비트코인 현물 ETF가 없고 국내 증권사로 미국 현물 ETF 매수도 막혀 있습니다. 자본시장법이 가상자산을 기초자산에서 빼 둔 배경과 하반기 개정 논의, 그동안의 대안과 위험을 사실 위주로 정리했습니다.',
+  keywords: ['비트코인 현물 ETF 한국', '국내 비트코인 ETF', '자본시장법 가상자산', '비트코인 ETF 매수', '가상자산 ETF 규제', '비트코인 투자 방법'],
+  section: 'ETF 입문 가이드',
+  lastReviewed: '2026-07-25',
+  answer:
+    '2026년 7월 기준 국내 증시에는 비트코인 현물 ETF가 상장돼 있지 않고, 국내 증권사를 통한 미국 상장 현물 ETF 매수도 대부분 막혀 있습니다. 자본시장법이 ETF의 기초자산에 가상자산을 포함하지 않기 때문인데, 정부가 하반기 법 개정을 추진 중이라 향후 허용 여부가 논의되고 있습니다. 시행 시기는 아직 확정되지 않았습니다.',
+  keyPoints: [
+    '2026년 7월 기준 국내 증시에는 비트코인 현물 ETF가 상장돼 있지 않고, 국내 증권사에서 미국 상장 현물 ETF도 매수가 제한됩니다.',
+    '자본시장법상 ETF의 기초자산은 금융투자상품·통화 등으로 한정돼 있어, 가상자산은 현재 기초자산으로 인정되지 않습니다.',
+    '정부와 금융당국은 2026년 하반기 자본시장법 개정으로 가상자산을 기초자산에 포함하는 방안을 추진 중이나, 시행 시기와 상품 구조는 아직 확정되지 않았습니다.',
+    '지금 비트코인 노출을 원하면 국내 가상자산 거래소의 현물 매수나 블록체인·코인 관련 기업 ETF가 대안이지만, 가격 변동성이 매우 커 원금 손실 위험이 큽니다.',
+  ],
+  sources: [
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+    { label: '한국거래소(KRX)', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '비트코인 현물 ETF가 국내에 도입되면 알트코인 시장에도 영향이 오는지', url: 'https://kin.naver.com/qna/detail.naver?docId=461078410' },
+    { summary: '비트코인을 어떻게 구매하는지, 접근 방법을 묻는 상황', url: 'https://kin.naver.com/qna/detail.naver?docId=493359615' },
+  ],
+  comparisonTable: {
+    caption: '국내에서 비트코인에 투자하는 경로',
+    columns: ['방법', '국내 가능 여부', '특징'],
+    rows: [
+      ['국내 상장 비트코인 현물 ETF', '현재 불가', '자본시장법 개정 논의 중'],
+      ['국내 증권사로 미국 현물 ETF 매수', '대부분 제한', '매수 차단이 일반적'],
+      ['가상자산 거래소 현물 매수', '가능', '변동성·해킹 위험 유의'],
+      ['블록체인·코인기업 ETF', '가능', '비트코인과 가격 흐름이 다름'],
+    ],
+  },
+  sections: [
+    {
+      heading: '지금은 국내에서 살 수 없다',
+      paragraphs: [
+        '미국에는 비트코인 가격을 그대로 따라가는 현물 ETF가 여럿 상장돼 거래되지만, 2026년 7월 현재 한국 증시에는 같은 성격의 상품이 없습니다. 국내 증권사 계좌로 미국에 상장된 비트코인 현물 ETF를 사려 해도 대부분 매수가 막혀 있습니다.',
+        '그래서 "국내 계좌로 비트코인 ETF를 사고 싶다"는 요구는 현재로서는 정식으로 충족하기 어렵습니다.',
+      ],
+    },
+    {
+      heading: '자본시장법이 기초자산을 제한한다',
+      paragraphs: [
+        '막혀 있는 근본 이유는 법에 있습니다. 자본시장법은 ETF가 담을 수 있는 기초자산을 주식·채권 같은 금융투자상품과 통화 등으로 한정합니다. 비트코인 같은 가상자산은 이 목록에 들어 있지 않습니다.',
+        '기초자산으로 인정되지 않으니 국내 운용사가 비트코인 현물 ETF를 만들 수 없고, 국내 중개 창구로 해외 현물 ETF를 파는 것도 제약을 받습니다. 이는 특정 회사의 방침이 아니라 제도의 문제입니다.',
+      ],
+    },
+    {
+      heading: '하반기 개정이 논의되고 있다',
+      paragraphs: [
+        '금융당국과 정부는 2026년 하반기에 자본시장법을 고쳐 가상자산을 ETF 기초자산에 포함하는 방안을 추진하겠다고 밝혔습니다. 개정이 이뤄지면 국내 투자자도 증시에서 비트코인 가격을 따르는 ETF에 투자할 길이 열립니다.',
+        '다만 아직은 방향을 제시한 단계로, 구체적인 시행 시기와 상품 구조, 자산 보관 방식 등은 국회 논의를 거쳐 정해집니다. 확정된 일정이 아니므로 "곧 된다"고 단정하기는 이릅니다.',
+      ],
+    },
+    {
+      heading: '그동안의 대안과 위험',
+      paragraphs: [
+        '지금 비트코인에 노출을 원한다면 국내 가상자산 거래소에서 현물을 직접 사거나, 블록체인·코인 관련 기업에 투자하는 ETF를 활용하는 방법이 있습니다. 다만 거래소 현물은 24시간 급등락과 해킹·보관 위험이 있고, 관련 기업 ETF는 비트코인 가격과 흐름이 어긋날 수 있습니다.',
+        '비트코인은 가격 변동성이 매우 커 짧은 기간에도 큰 손실이 날 수 있는 고위험 자산입니다. 감당할 수 있는 범위에서만 접근하고, 규제와 세금 제도가 바뀌는 흐름을 함께 확인해야 합니다. 이 글은 정보 제공을 위한 것으로 특정 상품 매수를 권유하지 않습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '국내 증권사에서 미국 비트코인 현물 ETF를 살 수 있나요?',
+      answer:
+        '대부분 매수가 제한됩니다. 자본시장법상 가상자산이 ETF 기초자산으로 인정되지 않아 국내 중개 창구에서 거래가 막혀 있습니다.',
+    },
+    {
+      question: '언제쯤 국내 비트코인 현물 ETF가 나오나요?',
+      answer:
+        '정부가 2026년 하반기 법 개정을 추진 중이지만 시행 시기는 확정되지 않았습니다. 국회 논의 결과에 따라 달라질 수 있습니다.',
+    },
+    {
+      question: '지금 비트코인에 투자하려면 어떻게 하나요?',
+      answer:
+        '국내 가상자산 거래소에서 현물을 직접 사거나 블록체인·코인기업 ETF를 활용할 수 있습니다. 변동성이 매우 커 위험을 감안해야 합니다.',
+    },
+    {
+      question: '블록체인 ETF는 비트코인 ETF와 같은 건가요?',
+      answer:
+        '다릅니다. 블록체인·코인기업 ETF는 관련 기업 주식에 투자해 비트코인 가격과 흐름이 어긋날 수 있어 대체재로만 참고해야 합니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-25 · 미국 ETF 배당 15% 원천징수와 국내 이중과세 */
+const usEtfDividendDoubleTax: GuideDef = {
+  slug: 'us-etf-dividend-double-tax',
+  title: '미국 ETF 배당 15% 떼고, 한국서 또 세금 낼까',
+  tagline: '외국납부세액공제로 조정되는 이중과세의 실제',
+  description:
+    '미국 ETF 배당은 미국에서 15%가 먼저 원천징수되고, 한국 배당소득세율이 이보다 낮아 개인 직접 보유분은 외국납부세액공제로 조정돼 추가 세금이 거의 없습니다. 국내상장 미국 ETF 분배금과의 과세 차이까지 사례로 정리했습니다.',
+  keywords: ['미국 ETF 배당 세금', '미국 배당 원천징수 15%', '해외주식 배당 이중과세', '외국납부세액공제', '국내상장 미국 ETF 분배금', '미국 배당 종합과세'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-07-25',
+  answer:
+    '미국 ETF 배당은 한미 조세조약에 따라 미국에서 15%가 먼저 원천징수되고, 한국 배당소득세율(14%, 지방세 포함 15.4%)이 이보다 낮아 개인이 직접 받은 배당은 외국납부세액공제로 조정돼 사실상 추가 세금이 거의 없습니다. 반면 국내상장 미국 ETF의 분배금은 국내에서 15.4%가 원천징수되는 구조라 흐름이 다릅니다.',
+  keyPoints: [
+    '미국 상장 ETF의 배당은 한미 조세조약에 따라 미국에서 15%가 자동 원천징수된 뒤 계좌로 들어옵니다.',
+    '한국 배당소득세는 14%(지방소득세 포함 15.4%)로, 미국 원천징수 15%가 더 높아 직접 보유분은 외국납부세액공제로 추가 과세가 대체로 없습니다.',
+    '연 금융소득이 2천만원을 넘으면 종합과세 대상이 되어 다른 소득과 합산되고, 높은 세율 구간에서 추가 세금이 생길 수 있습니다.',
+    '국내상장 미국 ETF의 분배금은 미국 원천징수와 별개로 국내에서 15.4%가 원천징수되어, 직접 보유와 세금 흐름이 다릅니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '기획재정부 조세조약', url: 'https://www.moef.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '미국 ETF에 투자할 때 세금을 아끼는 방법과 배당 과세 구조가 궁금한 상황', url: 'https://kin.naver.com/qna/detail.naver?docId=494339573' },
+    { summary: '해외 주식·ETF 배당과 매매에 붙는 세금이 어떻게 매겨지는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494355422' },
+  ],
+  comparisonTable: {
+    caption: '미국 직접 보유 ETF vs 국내상장 미국 ETF 배당 과세',
+    columns: ['구분', '미국 직접 보유 ETF', '국내상장 미국 ETF'],
+    rows: [
+      ['배당 원천징수', '미국에서 15%', '국내에서 15.4%'],
+      ['이중과세 조정', '외국납부세액공제', '해당 없음(국내 과세)'],
+      ['금융소득 종합과세', '2천만원 초과 시 합산', '2천만원 초과 시 합산'],
+      ['신고 방식', '종합소득 신고 시 반영', '원천징수로 분리 종결'],
+    ],
+  },
+  sections: [
+    {
+      heading: '미국이 먼저 15%를 뗀다',
+      paragraphs: [
+        '미국에 상장된 ETF에서 배당이 나오면, 한국 투자자에게 지급되기 전에 미국이 15%를 원천징수합니다. 이는 한국과 미국이 맺은 조세조약에서 정한 배당 원천징수율로, 별도 신청 없이 자동으로 적용됩니다.',
+        '그래서 배당 통지서를 보면 명목 배당에서 15%가 빠진 금액이 계좌에 들어옵니다. 이 단계는 미국에 내는 세금입니다.',
+      ],
+    },
+    {
+      heading: '한국에서 또 떼지 않는 이유',
+      paragraphs: [
+        '한국의 배당소득세율은 14%이고 지방소득세를 더하면 15.4%입니다. 미국이 이미 15%를 떼 갔는데, 이 세율이 한국 세율(14%)보다 높습니다. 외국에서 낸 세금을 국내 세금에서 빼 주는 외국납부세액공제가 적용되어, 이미 낸 미국 세금이 한국 세금을 덮고도 남습니다.',
+        '결과적으로 개인이 미국 ETF를 직접 보유해 받은 배당은 한국에서 추가로 낼 배당소득세가 대체로 없습니다. 같은 소득에 두 나라가 이중으로 물리는 상황을 조세조약과 공제로 막아 둔 것입니다.',
+      ],
+    },
+    {
+      heading: '국내상장 미국 ETF는 흐름이 다르다',
+      paragraphs: [
+        '헷갈리기 쉬운 지점이 국내상장 미국 ETF입니다. TIGER 미국S&P500처럼 한국 증시에 상장된 미국 지수 ETF의 분배금은, 미국 원천징수와 별개로 국내에서 배당소득세 15.4%가 원천징수됩니다.',
+        '즉 직접 미국 주식을 사서 받는 배당과, 국내상장 미국 ETF에서 받는 분배금은 세금이 매겨지는 나라와 방식이 다릅니다. 어느 쪽으로 담느냐에 따라 신고 방식과 절세 계좌 활용법도 달라집니다.',
+      ],
+    },
+    {
+      heading: '2천만원을 넘으면 이야기가 달라진다',
+      paragraphs: [
+        '직접 보유든 국내상장이든, 한 해 배당·이자를 합친 금융소득이 2천만원을 넘으면 금융소득 종합과세 대상이 됩니다. 이때는 배당이 근로·사업 등 다른 소득과 합산되어 최고 세율 구간에서 세금이 더 붙을 수 있습니다.',
+        '따라서 배당 규모가 큰 투자자는 ISA·연금저축 같은 절세 계좌를 함께 쓰거나 지급 시기를 분산하는 방법을 고려합니다. 개인별 소득 상황에 따라 유불리가 갈리므로, 규모가 크다면 신고 전 세무 상담을 받는 편이 안전합니다. 이 글은 정보 제공용입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '미국 ETF 배당을 받으면 한국에서 또 세금을 내나요?',
+      answer:
+        '직접 보유분은 미국이 15%를 떼고, 한국 세율(15.4%)이 더 낮아 외국납부세액공제로 조정돼 추가 세금이 대체로 없습니다.',
+    },
+    {
+      question: '국내상장 미국 ETF도 미국에서 15%를 떼나요?',
+      answer:
+        '분배금은 국내에서 15.4%가 원천징수되는 구조로, 투자자가 직접 미국 세금을 신고하는 방식과는 다릅니다.',
+    },
+    {
+      question: '배당이 많으면 세금이 크게 늘 수 있나요?',
+      answer:
+        '연 금융소득이 2천만원을 넘으면 종합과세로 다른 소득과 합산돼 높은 세율이 적용될 수 있습니다. 규모가 크면 분산이 필요합니다.',
+    },
+    {
+      question: '외국납부세액공제는 자동으로 되나요?',
+      answer:
+        '종합과세로 신고할 때 반영합니다. 분리과세로 끝나는 경우가 많지만, 종합소득 신고 대상이면 공제를 챙겨야 이중과세를 피합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  isaDomesticEtfTaxBenefit,
+  overseasDividendLoanIncome,
+  usEtfExchangeRateTimingDca,
+  koreaSpotBitcoinEtfStatus,
+  usEtfDividendDoubleTax,
   pensionSavingsVsIrp,
   etfSharePriceMeaning,
   etfPortfolioOverlap,
@@ -16797,6 +17252,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-07-25 · 지식iN 질문 수요 기반 (ISA 국내주식형 ETF 절세·미국 배당 대출 소득·환율 적립식·비트코인 현물 ETF 규제·미국 ETF 배당 이중과세)
+  'isa-domestic-etf-tax-benefit': '2026-07-25',
+  'overseas-dividend-loan-income': '2026-07-25',
+  'us-etf-exchange-rate-timing-dca': '2026-07-25',
+  'korea-spot-bitcoin-etf-status': '2026-07-25',
+  'us-etf-dividend-double-tax': '2026-07-25',
   // 2026-07-24 · 지식iN 질문 수요 기반 (연금저축 초과 납입·생활비 교육비 증여·코인 펀딩비·주택임대소득 과세·배당락)
   'pension-savings-excess-contribution': '2026-07-24',
   'living-education-expense-gift-tax': '2026-07-24',
@@ -17039,7 +17500,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'isa-domestic-etf-tax-benefit', 'overseas-dividend-loan-income', 'us-etf-dividend-double-tax'],
   },
   {
     title: '배당·인컴',
@@ -17049,12 +17510,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '테마·섹터',
     description: '방산·조선·건설·자동차·AI·반도체·빅테크·소프트웨어·보안·로봇·전기차·신재생·희토류·게임·엔터·명품·뷰티·비트코인·인프라 등 특정 테마에 집중하는 섹터 ETF.',
-    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee'],
+    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'korea-spot-bitcoin-etf-status'],
   },
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'us-etf-exchange-rate-timing-dca'],
   },
   {
     title: '전략·자산배분',

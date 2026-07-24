@@ -1526,3 +1526,38 @@ https://iknowhowinfo.com/guide/living-education-expense-gift-tax
 https://iknowhowinfo.com/guide/crypto-perpetual-funding-fee
 https://iknowhowinfo.com/guide/rental-income-separate-vs-comprehensive-tax
 https://iknowhowinfo.com/guide/ex-dividend-price-drop
+
+## 2026-07-25 · [일일 발행 · 지식iN 질문 수요 기반]
+
+발행 5편 (주제 · slug · 출처 질문 요지 · 검증 요약):
+
+1. ISA에 국내주식형 ETF 담아도 절세 효과가 있을까 · isa-domestic-etf-tax-benefit
+   - 출처 질문: ISA 계좌에 KODEX 등 국내 ETF 담을 때 절세 효과(docId=494102222), ISA 계좌 투자 시 세금 변화(docId=494349881)
+   - 검증: 국내주식형 ETF 매매차익 계좌 무관 비과세(ISA 매매차익 추가 절세 없음), 분배금·국내상장 해외형 매매차익 15.4%는 ISA에서 순이익 200만(서민형 400만) 비과세·초과 9.9% 분리과세로 절감 확인(국세청·금투협)
+
+2. 미국 배당·ETF 분배금, 대출 소득 심사에 잡히나 · overseas-dividend-loan-income
+   - 출처 질문: 보금자리론 소득 기준에 미국 배당소득 포함 여부(docId=494353655)
+   - 검증: 증빙소득(근로·사업) 우선, 금융소득은 인정·신고소득으로 보조 반영(기관 재량·지속성 요구), DSR 연소득↑→한도↑, 금융소득 연 2천만 초과 시 종합과세·건보료 부담 확인(주택금융공사·금융위)
+
+3. 환율 높을 때 미국 ETF 적립식 시작해도 될까 · us-etf-exchange-rate-timing-dca
+   - 출처 질문: 나스닥100·S&P500 장기투자 시 환율 변동 영향(docId=494346634), 지금 진입 시점 고민(docId=494351153)
+   - 검증: 적립식이 환율·주가 평균화(고환율 소량·저환율 다량 매수), 환헤지(H) 비용 vs 환노출(UH) 환차손익 트레이드오프, 장기(10년+)는 시작 환율 영향 희석 확인(한국은행 ECOS·KRX)
+
+4. 한국에서 비트코인 현물 ETF를 못 사는 이유 · korea-spot-bitcoin-etf-status
+   - 출처 질문: 국내 비트코인 현물 ETF 도입 시 알트장 영향(docId=461078410), 비트코인 구매 방법(docId=493359615)
+   - 검증: 2026-07 기준 국내 상장 없음·국내 증권사 미국 현물 ETF 매수 제한, 자본시장법 기초자산에 가상자산 미포함, 정부 하반기 개정 추진(시행 미확정), 대안(거래소 현물·블록체인 ETF)·고위험 고지 확인(금융위·KRX)
+
+5. 미국 ETF 배당 15% 떼고, 한국서 또 세금 낼까 · us-etf-dividend-double-tax
+   - 출처 질문: 미국 ETF 절세 방법·배당 과세 구조(docId=494339573), 해외주식·ETF 배당·매매 세금(docId=494355422)
+   - 검증: 한미 조세조약 미국 원천징수 15%, 한국 배당소득세 14%(지방세 포함 15.4%)로 직접 보유분 외국납부세액공제 조정(추가 과세 대체로 없음), 국내상장 미국 ETF 분배금 국내 15.4% 원천징수, 금융소득 2천만 초과 시 종합과세 확인(국세청·기재부)
+
+검증 결과: npx tsc --noEmit 0 에러, npm run cf:build 성공, .next/server/app/guide/ 신규 5편 prerender(answer-box·guide-key-points·guide-sources·citation·2026-07-25 발행일 확인). 신규 콘텐츠 em dash 0·운영자 메타 금지어 0. SEO: title≤60·desc 120~155·keywords 6·slug ^[a-z0-9-]+$.
+
+지식iN 신규 수집: 클라우드 IP 네이버 차단으로 실패(응답 0바이트, 1회 재시도 포함), 저장 코퍼스 data/keywords/kin/kin-20260718.json(103개 질문)에서 주제 선정.
+
+★ 오늘 발행 링크(풀 URL)
+https://iknowhowinfo.com/guide/isa-domestic-etf-tax-benefit
+https://iknowhowinfo.com/guide/overseas-dividend-loan-income
+https://iknowhowinfo.com/guide/us-etf-exchange-rate-timing-dca
+https://iknowhowinfo.com/guide/korea-spot-bitcoin-etf-status
+https://iknowhowinfo.com/guide/us-etf-dividend-double-tax
