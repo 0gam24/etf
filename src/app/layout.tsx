@@ -6,6 +6,7 @@ import TickerStrip from "@/components/TickerStrip";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollRevealProvider from "@/components/ScrollRevealProvider";
 import SiteLiveBar from "@/components/SiteLiveBar";
+import NaverAnalytics from "@/components/NaverAnalytics";
 
 // Google Analytics 4 — 사이트 트래픽·HelpfulFeedback·Threads UTM 추적
 //   iknowhowinfo.com 전용 GA4 속성(2026-06 신설).
@@ -186,6 +187,8 @@ gtag('config', '${GA4_ID}');`}
         <main className="main">{children}</main>
         <SiteFooter />
         <ScrollRevealProvider />
+        {/* 네이버 애널리틱스 — SPA 페이지 이동까지 집계 (wcslog + 라우트 변경 추적) */}
+        <NaverAnalytics />
       </body>
     </html>
   );
