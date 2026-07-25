@@ -16598,6 +16598,457 @@ const exDividendPriceDrop: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-07-26 · ISA 계좌 투자 가능 상품 */
+const isaTradableProducts: GuideDef = {
+  slug: 'isa-tradable-products',
+  title: 'ISA 계좌 투자 가능 상품, 미국주식은 왜 안 되나',
+  tagline: '국내상장 ETF는 되고 해외주식 직접 매수는 막힌 이유',
+  description:
+    'ISA 계좌에서는 미국주식이나 해외에 상장된 ETF를 직접 살 수 없고, 국내상장 주식과 ETF, 국내상장 해외 ETF만 담을 수 있습니다. 중개형 ISA로 되는 상품과 안 되는 상품, 미국 지수에 투자하는 우회 방법을 정리했습니다.',
+  keywords: ['ISA 계좌 투자 상품', 'ISA 미국주식', '중개형 ISA', 'ISA 국내상장 해외ETF', 'ISA 해외주식 불가', 'ISA ETF 매수'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-07-26',
+  answer:
+    'ISA 중개형 계좌로는 국내에 상장된 주식과 ETF, ETN, 리츠, 펀드를 살 수 있고, 국내에 상장된 해외 ETF도 담을 수 있습니다. 다만 미국주식이나 미국에 상장된 ETF를 직접 사는 것은 안 됩니다. 미국 지수에 투자하려면 S&P500이나 나스닥100을 추종하는 국내상장 ETF를 담는 방식으로 접근해야 합니다.',
+  keyPoints: [
+    'ISA 중개형 계좌는 국내상장 주식, ETF, ETN, 리츠, 펀드와 국내에 상장된 해외 ETF까지 매매할 수 있습니다.',
+    '미국주식과 미국에 상장된 ETF(VOO, SCHD 등)는 ISA에서 직접 매수할 수 없어, 같은 지수를 담은 국내상장 ETF로 대신합니다.',
+    'ISA 납입 한도는 연 2천만원(최대 1억원)이고, 순이익 200만원(서민형 400만원)까지 비과세, 초과분은 9.9%로 분리과세합니다.',
+    '2026년 상반기 기준 ISA 투자자의 국내상장 해외 ETF 편입 비중이 27%까지 늘어, 우회 투자가 흔한 선택이 됐습니다.',
+  ],
+  sources: [
+    { label: '금융투자협회 ISA 안내', url: 'https://www.kofia.or.kr' },
+    { label: '금융감독원 금융소비자포털 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 계좌를 만들었는데 어떤 상품까지 살 수 있는지, 운용 방식이 헷갈린다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494349881' },
+    { summary: 'ISA 계좌에서 KODEX 같은 국내상장 ETF 외에 다른 것도 담을 수 있는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494102222' },
+    { summary: 'ISA 계좌가 무엇이고 어떻게 활용하는지 전반이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493747720' },
+  ],
+  comparisonTable: {
+    caption: 'ISA 중개형에서 되는 것과 안 되는 것',
+    columns: ['구분', '가능', '불가'],
+    rows: [
+      ['국내상장 주식', '가능', ''],
+      ['국내상장 ETF·ETN', '가능', ''],
+      ['국내상장 해외 ETF', '가능', ''],
+      ['미국주식 직접 매수', '', '불가'],
+      ['미국 상장 ETF 직접 매수', '', '불가'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'ISA는 국내 거래소 안에서만 담는다',
+      paragraphs: [
+        'ISA(개인종합자산관리계좌) 중개형은 한 계좌에서 여러 상품을 사고팔며 세금 혜택까지 받는 절세 계좌입니다. 다만 매매 범위는 국내 거래소에 상장된 상품으로 한정됩니다. 국내상장 주식, ETF, ETN, 리츠, 펀드가 여기에 들어갑니다.',
+        '중요한 점은 국내에 상장된 해외 ETF도 담을 수 있다는 것입니다. 예를 들어 S&P500이나 나스닥100을 추종하도록 국내 운용사가 상장한 ETF는 ISA 안에서 자유롭게 매매됩니다.',
+      ],
+    },
+    {
+      heading: '미국주식을 직접 못 사는 이유',
+      paragraphs: [
+        '"ISA로 애플이나 VOO를 직접 사고 싶다"는 분이 많지만, 미국 거래소에 상장된 주식과 ETF는 ISA에서 직접 매수할 수 없습니다. ISA의 매매 대상이 국내 상장 상품으로 묶여 있기 때문입니다.',
+        '그래서 미국주식을 직접 굴리려면 ISA가 아닌 일반 해외주식 계좌를 따로 써야 합니다. 대신 ISA 안에서는 같은 미국 지수를 담은 국내상장 ETF로 사실상 동일한 시장에 투자할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '우회 투자, 어떻게 하나',
+      paragraphs: [
+        '미국 시장에 노출을 얻고 싶다면 국내에 상장된 해외 ETF를 고르면 됩니다. TIGER, KODEX, ACE 같은 브랜드로 S&P500, 나스닥100, 미국배당다우존스를 추종하는 상품이 여러 개 상장돼 있습니다.',
+        '실제로 이 방식이 널리 쓰이고 있습니다. 2026년 상반기 기준 ISA 투자자의 국내상장 해외 ETF 편입 비중이 27% 수준까지 올라왔습니다. 세금 혜택을 살리면서 해외에 투자하려는 흐름이 뚜렷합니다.',
+      ],
+    },
+    {
+      heading: '한도와 세금도 함께 기억하자',
+      paragraphs: [
+        'ISA는 연 2천만원씩 최대 1억원까지 넣을 수 있습니다. 계좌를 3년 이상 유지하면 순이익 200만원(서민형·농어민형은 400만원)까지 세금을 물리지 않고, 그 초과분은 9.9%로 분리과세해 일반 계좌의 15.4%보다 유리합니다.',
+        '어떤 상품을 담을지 못지않게 어떤 계좌에서 담느냐가 세후 수익을 좌우합니다. 투자 판단과 최종 책임은 본인에게 있으니, 본인 소득과 목표에 맞춰 계좌 조합을 설계해 보세요.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA에서 미국 ETF를 정말 하나도 못 사나요?',
+      answer:
+        '미국 거래소에 상장된 ETF는 직접 못 삽니다. 다만 같은 지수를 추종하는 국내상장 해외 ETF는 담을 수 있어 사실상 미국 시장에 투자할 수 있습니다.',
+    },
+    {
+      question: 'ISA로 국내 개별주식도 살 수 있나요?',
+      answer:
+        '중개형 ISA라면 국내 거래소에 상장된 개별주식을 살 수 있습니다. 신탁형·일임형은 매매 방식이 달라 취급 상품이 제한됩니다.',
+    },
+    {
+      question: '레버리지나 인버스 ETF도 되나요?',
+      answer:
+        '국내상장 상품이라도 파생형 레버리지·인버스는 계좌 유형과 증권사 정책에 따라 제한될 수 있어, 가입한 증권사의 취급 목록을 확인해야 합니다.',
+    },
+    {
+      question: '미국주식을 직접 하고 싶으면 어떻게 하나요?',
+      answer:
+        'ISA로는 안 되므로 일반 해외주식 계좌를 따로 개설해야 합니다. 대신 이 경우 ISA의 비과세·분리과세 혜택은 적용되지 않습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-26 · 해외 코인 거래소 세금과 원화 출금 */
+const overseasCryptoExchangeTax: GuideDef = {
+  slug: 'overseas-crypto-exchange-tax',
+  title: '해외 코인 거래소 세금과 원화 출금, 뭘 조심하나',
+  tagline: '가상자산 과세 2027년 시행, 5억 넘으면 계좌도 신고',
+  description:
+    '바이낸스 같은 해외 거래소에서 코인으로 번 돈, 세금과 원화 출금은 어떻게 될까요. 가상자산 소득 과세는 2027년 시행 예정이고, 잔액이 5억원을 넘으면 해외금융계좌 신고 대상입니다. 출금 자금출처까지 짚었습니다.',
+  keywords: ['해외 코인 거래소 세금', '가상자산 과세 2027', '해외금융계좌 신고 코인', '비트코인 원화 출금', '코인 세금 신고', '트래블룰'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-07-26',
+  answer:
+    '해외 거래소에서 코인을 거래해도 지금 당장 양도차익에 매기는 세금은 없습니다. 가상자산 소득 과세는 2027년 1월 1일 이후 발생분부터 시행될 예정으로, 연 250만원을 뺀 소득에 22%(지방세 포함)가 매겨집니다. 다만 해외 거래소 잔액을 포함한 해외금융계좌 합계가 매월 말 어느 하루라도 5억원을 넘으면 이듬해 6월 신고 의무가 생깁니다.',
+  keyPoints: [
+    '가상자산 양도·대여 소득 과세는 2027년 1월 1일 이후 발생분부터 시행 예정이며, 연 250만원 공제 후 22%(지방세 포함)가 적용됩니다.',
+    '해외 거래소 계정을 포함한 해외금융계좌 잔액 합계가 매월 말 중 하루라도 5억원을 넘으면 다음 해 6월에 신고해야 하고, 미신고 과태료는 금액의 10%입니다.',
+    '해외 거래소에서 원화로 바로 출금되지 않아 보통 국내 거래소를 거치며, 이때 은행과 거래소가 자금 흐름과 출처를 확인합니다.',
+    '국내에서 코인을 보내거나 받을 때 100만원 이상이면 트래블룰에 따라 송·수신자 정보가 거래소 사이에서 공유됩니다.',
+  ],
+  sources: [
+    { label: '국세청 해외금융계좌 신고 안내', url: 'https://www.nts.go.kr' },
+    { label: '기획재정부', url: 'https://www.moef.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '바이낸스 등 해외 거래소 이용 시 수수료와 세금이 어떻게 되는지 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494357051' },
+    { summary: '해외 코인 거래소를 추천받고 싶은데 이용 시 유의점이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=456734411' },
+    { summary: '해외 거래소의 비트코인을 원화로 출금하는 방법이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494317428' },
+  ],
+  comparisonTable: {
+    caption: '해외 코인 거래, 지금과 2027년 이후',
+    columns: ['구분', '현재', '2027년 이후'],
+    rows: [
+      ['양도차익 과세', '없음', '연 250만원 초과분 22%'],
+      ['해외계좌 신고', '5억 초과 시 6월 신고', '동일'],
+      ['트래블룰', '100만원 이상 정보공유', '동일'],
+    ],
+  },
+  sections: [
+    {
+      heading: '지금은 차익에 세금이 없다',
+      paragraphs: [
+        '해외 거래소든 국내 거래소든, 코인을 사고팔아 남긴 차익에 지금 당장 매기는 소득세는 없습니다. 가상자산 소득에 대한 과세가 아직 시행되지 않았기 때문입니다. 그래서 지금까지의 매매 차익 자체는 신고 대상이 아닙니다.',
+        '이 과세는 2020년 법 개정으로 도입됐지만 시행이 여러 차례 미뤄졌습니다. 2022년, 2023년, 2025년으로 밀린 끝에 지금은 2027년 시행을 앞두고 있습니다. 시행 전까지의 거래는 과세되지 않는 것이 원칙입니다.',
+      ],
+    },
+    {
+      heading: '2027년부터 달라지는 것',
+      paragraphs: [
+        '2027년 1월 1일 이후 발생하는 코인 양도·대여 소득부터 세금이 붙습니다. 방식은 기타소득으로 분류해 연 250만원을 먼저 빼주고, 남은 금액에 20%를 매깁니다. 지방소득세까지 더하면 실효세율은 22%가 됩니다.',
+        '실제 신고와 납부는 소득이 생긴 다음 해 5월 종합소득세 기간에 이뤄집니다. 예를 들어 2027년에 번 코인 소득은 2028년 5월에 신고합니다. 해외 거래소에서 번 소득도 국내 거주자라면 이 대상에 들어갑니다.',
+      ],
+    },
+    {
+      heading: '5억 넘으면 계좌 자체를 신고',
+      paragraphs: [
+        '차익 과세와 별개로 이미 시행 중인 의무가 하나 있습니다. 해외금융계좌 신고입니다. 해외 은행·증권 계좌와 해외 가상자산 거래소 계정 잔액을 모두 합쳐, 그 해 매월 말일 중 어느 하루라도 5억원을 넘으면 신고 대상이 됩니다.',
+        '신고 기한은 다음 해 6월 한 달입니다. 홈택스나 손택스로 낼 수 있습니다. 기한을 놓치거나 적게 신고하면 미신고 금액의 10%가 과태료로 붙으니, 해외 거래소에 큰 금액을 두고 있다면 잔액 추이를 미리 챙겨야 합니다.',
+      ],
+    },
+    {
+      heading: '원화 출금과 자금출처',
+      paragraphs: [
+        '해외 거래소는 원화로 바로 출금되지 않는 경우가 대부분입니다. 그래서 코인을 국내 거래소로 옮긴 뒤 매도해 원화로 바꾸고 은행으로 출금하는 경로를 많이 씁니다. 이 과정에서 은행과 거래소가 자금 흐름과 출처를 확인할 수 있습니다.',
+        '또 국내에서 코인을 100만원 이상 보내거나 받을 때는 트래블룰에 따라 보내는 사람과 받는 사람 정보가 거래소 사이에서 공유됩니다. 큰 금액을 다룬다면 거래 내역을 스스로 정리해 두는 편이 나중에 설명하기 편합니다. 세부 적용은 상황마다 다르니 필요하면 세무 상담을 권합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '지금 코인으로 번 돈은 세금 내야 하나요?',
+      answer:
+        '가상자산 소득 과세가 아직 시행 전이라 현재 매매 차익 자체에는 소득세가 없습니다. 과세는 2027년 발생분부터 적용될 예정입니다.',
+    },
+    {
+      question: '해외 거래소만 쓰면 신고 안 해도 되나요?',
+      answer:
+        '아닙니다. 해외 거래소 계정 잔액을 포함한 해외금융계좌 합계가 5억원을 넘으면 다음 해 6월에 신고해야 합니다.',
+    },
+    {
+      question: '2027년 세율은 얼마인가요?',
+      answer:
+        '연 250만원을 공제한 뒤 20%, 지방소득세를 더하면 22%입니다. 다음 해 5월 종합소득세 때 신고·납부합니다.',
+    },
+    {
+      question: '원화로 출금하면 바로 세금이 떼이나요?',
+      answer:
+        '출금 자체에 원천징수가 되는 것은 아니지만 자금 흐름이 기록으로 남으므로, 과세가 시작되면 거래 내역과 출처가 근거가 됩니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-26 · 연금저축·IRP 세액공제 900만원 채우는 순서 */
+const pensionIrpTaxCreditOrder: GuideDef = {
+  slug: 'pension-irp-tax-credit-order',
+  title: '연금저축·IRP 세액공제 900만원 채우는 순서',
+  tagline: '연금저축 600만원 먼저, IRP로 300만원 더',
+  description:
+    '연금저축과 IRP를 함께 쓰면 세액공제 한도가 연 900만원까지 늘어납니다. 연금저축 600만원을 먼저 채우고 IRP로 300만원을 보태는 순서가 왜 유리한지, 소득별 공제율 16.5%와 13.2% 차이까지 계산으로 정리했습니다.',
+  keywords: ['연금저축 IRP 세액공제', '세액공제 900만원', '연금저축 600만원', 'IRP 300만원', '연금 세액공제율', '연금저축 납입 순서'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-07-26',
+  answer:
+    '연금저축과 IRP를 합치면 세액공제 한도가 연 900만원이고, 연금저축만으로는 최대 600만원까지 공제됩니다. 그래서 연금저축에 600만원을 먼저 넣어 한도를 채우고, 남는 300만원을 IRP에 넣어 900만원을 완성하는 순서가 일반적입니다. 총급여 5,500만원 이하면 16.5%, 초과하면 13.2%를 돌려받아 최대 148만5천원까지 세액공제가 가능합니다.',
+  keyPoints: [
+    '연금저축·IRP 합산 세액공제 한도는 연 900만원이고, 연금저축 단독으로는 600만원까지 공제됩니다.',
+    '총급여 5,500만원(종합소득 4,500만원) 이하는 16.5%, 초과 시 13.2%를 세액공제로 돌려받습니다.',
+    '900만원을 다 채우면 16.5% 기준 148만5천원, 13.2% 기준 118만8천원을 환급받습니다.',
+    '연금저축을 먼저 채우는 이유는 중도인출이 IRP보다 자유롭고 담을 수 있는 상품의 폭이 넓기 때문입니다.',
+  ],
+  sources: [
+    { label: '국세청 연금계좌 세액공제 안내', url: 'https://www.nts.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '연금저축부터 가입하는 게 맞는지, IRP와 어떻게 나눠야 하는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494334592' },
+    { summary: 'IRP와 연금저축, 연금저축펀드의 차이와 활용 방법이 헷갈린다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494287819' },
+    { summary: '증권사 연금저축계좌를 어떻게 활용하면 좋을지 조언을 구하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493610254' },
+  ],
+  comparisonTable: {
+    caption: '연금저축과 IRP, 900만원 배분',
+    columns: ['구분', '연금저축', 'IRP'],
+    rows: [
+      ['세액공제 한도', '최대 600만원', '합산 900만원까지'],
+      ['권장 납입', '먼저 600만원', '나머지 300만원'],
+      ['중도인출', '상대적으로 자유', '요건 엄격'],
+      ['투자 상품', '펀드·ETF 중심', '예금·펀드·ETF 등'],
+    ],
+  },
+  sections: [
+    {
+      heading: '한도는 합쳐서 900만원',
+      paragraphs: [
+        '연금저축과 IRP는 노후를 준비하면서 세금을 돌려받는 대표적인 절세 계좌입니다. 두 계좌를 합쳐 한 해 최대 900만원까지 낸 돈에 세액공제가 들어갑니다. 이 900만원은 두 계좌를 통틀어 계산하는 합산 한도입니다.',
+        '단, 연금저축 하나만으로는 최대 600만원까지만 공제됩니다. 나머지 300만원의 공제 여력은 IRP를 통해서만 채울 수 있습니다. 그래서 900만원을 다 쓰려면 두 계좌를 함께 굴리는 구조가 됩니다.',
+      ],
+    },
+    {
+      heading: '왜 연금저축부터 채우나',
+      paragraphs: [
+        '순서를 따지면 연금저축에 600만원을 먼저 넣어 한도를 채우고, 남은 300만원을 IRP에 넣는 방식이 무난합니다. 두 계좌의 공제율은 같지만 운용의 편의에서 차이가 나기 때문입니다.',
+        '연금저축은 중간에 급히 돈이 필요할 때 인출이 IRP보다 자유롭고, 담을 수 있는 펀드·ETF의 선택 폭도 넓은 편입니다. IRP는 안전자산 30% 의무 같은 규제가 있어 상대적으로 덜 유연합니다. 그래서 유연한 연금저축을 먼저 채우라는 조언이 나옵니다.',
+      ],
+    },
+    {
+      heading: '소득에 따라 돌려받는 비율이 다르다',
+      paragraphs: [
+        '세액공제율은 소득에 따라 갈립니다. 총급여 5,500만원(종합소득금액 4,500만원) 이하면 16.5%, 그보다 많으면 13.2%를 돌려받습니다. 지방소득세가 포함된 비율입니다.',
+        '900만원을 모두 채웠다고 하면, 16.5% 구간은 148만5천원, 13.2% 구간은 118만8천원을 환급받습니다. 매년 반복되는 혜택이라 장기로 쌓이면 차이가 꽤 커집니다.',
+      ],
+    },
+    {
+      heading: '세액공제만 보고 무리하지 말자',
+      paragraphs: [
+        '세액공제가 크다고 무리해서 한도를 다 채울 필요는 없습니다. 연금계좌는 원칙적으로 만 55세 이후 연금으로 받을 때 저율과세 혜택이 완성되는 구조라, 중간에 헐어 쓰면 그동안 받은 공제를 토해내야 할 수 있습니다.',
+        '당장의 생활 자금과 비상금을 확보한 뒤, 오래 묻어둘 수 있는 여윳돈으로 한도를 채워가는 편이 안전합니다. 본인의 소득과 지출을 먼저 점검하고 납입액을 정하는 것을 권합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'IRP만으로 900만원을 다 채워도 되나요?',
+      answer:
+        '가능합니다. IRP는 단독으로도 900만원까지 세액공제가 됩니다. 다만 인출 유연성은 연금저축이 나아 함께 쓰는 경우가 많습니다.',
+    },
+    {
+      question: '연금저축 600만원을 넘겨 넣으면 어떻게 되나요?',
+      answer:
+        '600만원을 넘는 연금저축 납입분은 세액공제가 되지 않습니다. 초과 공제 여력은 IRP로만 채울 수 있습니다.',
+    },
+    {
+      question: '소득이 높으면 공제율이 얼마인가요?',
+      answer:
+        '총급여 5,500만원 초과면 13.2%가 적용됩니다. 900만원을 다 채우면 118만8천원을 돌려받습니다.',
+    },
+    {
+      question: '중간에 해지하면 불이익이 있나요?',
+      answer:
+        '연금 외 사유로 중도 해지하면 그동안 공제받은 금액과 운용수익에 16.5% 기타소득세가 매겨져 혜택이 줄어듭니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-26 · 배우자 증여 6억 공제 절세 */
+const spouseGiftTaxExemption: GuideDef = {
+  slug: 'spouse-gift-tax-exemption',
+  title: '배우자 증여 6억까지 세금 0, 부부 증여 절세',
+  tagline: '10년간 6억 공제, 그런데 바로 팔면 이월과세',
+  description:
+    '배우자에게는 10년 합산 6억원까지 증여세 없이 재산을 넘길 수 있습니다. 취득가가 낮은 부동산이나 주식을 배우자에게 증여해 양도세를 줄이는 절세가 여기서 나오는데, 증여 후 10년 안에 팔면 이월과세로 그 효과가 사라질 수 있습니다.',
+  keywords: ['배우자 증여 6억', '부부 증여 한도', '증여재산공제', '이월과세 10년', '배우자 증여 절세', '증여세 면제'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-07-26',
+  answer:
+    '배우자에게는 10년 동안 합쳐서 6억원까지 증여해도 증여세가 붙지 않습니다. 취득가가 낮은 부동산이나 주식을 배우자에게 증여해 취득가를 높인 뒤 양도하면 양도차익이 줄어 양도세를 아낄 수 있습니다. 다만 증여받은 부동산을 10년(2022년 이전 증여분은 5년) 안에 팔면 이월과세로 원래 취득가가 적용돼 절세 효과가 사라집니다.',
+  keyPoints: [
+    '배우자 증여재산공제는 10년 합산 6억원으로, 이 안에서는 증여세가 부과되지 않습니다.',
+    '취득가가 낮은 자산을 배우자에게 증여해 취득가를 올린 뒤 양도하면 양도차익이 줄어 양도세를 낮출 수 있습니다.',
+    '증여 후 부동산은 10년(2022년 이전 증여분 5년) 안에 팔면 이월과세로 증여자의 원래 취득가가 적용됩니다.',
+    '이월과세는 적용한 세액과 적용 안 한 세액 중 큰 쪽으로 매기므로, 매도 시점을 10년 이후로 잡아야 효과가 유지됩니다.',
+  ],
+  sources: [
+    { label: '국세청 증여세 안내', url: 'https://www.nts.go.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '증여세 면제 범위 안에서 재산을 어떻게 넘겨야 세금을 아낄 수 있는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494353205' },
+    { summary: '자녀 등 가족에게 증여할 때 세금을 얼마나 아낄 수 있는지 방법을 찾는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494332623' },
+    { summary: '생활비 지원과 증여·상속의 경계, 세금이 어떻게 되는지 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494357335' },
+  ],
+  comparisonTable: {
+    caption: '배우자 증여 절세, 10년 전후 매도 차이',
+    columns: ['구분', '증여 후 10년 이내 매도', '증여 후 10년 이후 매도'],
+    rows: [
+      ['취득가 기준', '증여자의 원래 취득가', '증여 당시 평가액'],
+      ['양도차익', '거의 안 줄어듦', '크게 줄어듦'],
+      ['절세 효과', '사라짐(이월과세)', '유지'],
+    ],
+  },
+  sections: [
+    {
+      heading: '부부 사이엔 6억까지 비과세',
+      paragraphs: [
+        '가족 간 증여에는 일정 금액까지 세금을 매기지 않는 증여재산공제가 있습니다. 배우자 사이에서는 그 한도가 10년 합산 6억원으로, 가족 관계 중 가장 큽니다. 이 6억원 안에서 넘긴 재산에는 증여세가 붙지 않습니다.',
+        '10년 합산이라는 점이 중요합니다. 한 번에 6억을 넘기든 여러 번 나눠 넘기든, 최근 10년간 배우자에게 증여한 금액을 모두 더해 6억원까지가 비과세 범위입니다.',
+      ],
+    },
+    {
+      heading: '취득가를 높여 양도세를 줄인다',
+      paragraphs: [
+        '이 공제가 절세로 이어지는 대표적인 경우가 양도소득세입니다. 오래전 싸게 산 부동산이나 주식은 팔 때 차익이 커서 양도세도 큽니다. 그런데 이를 배우자에게 증여하면, 증여 시점의 시세가 배우자의 새 취득가가 됩니다.',
+        '취득가가 올라간 만큼 나중에 팔 때의 양도차익이 줄어듭니다. 6억원 안이라 증여세도 없으니, 결과적으로 양도세 부담을 낮추는 효과가 생깁니다.',
+      ],
+    },
+    {
+      heading: '10년을 못 채우면 도로아미타불',
+      paragraphs: [
+        '여기에 함정이 있습니다. 증여받은 자산을 일정 기간 안에 팔면 이월과세가 적용됩니다. 부동산은 증여 후 10년, 2022년 12월 31일 이전 증여분은 5년이 기준입니다. 이 기간 안에 팔면 취득가를 배우자가 원래 산 값으로 되돌려 양도세를 계산합니다.',
+        '이월과세가 걸리면 취득가를 높인 효과가 사라져 절세가 무위로 돌아갑니다. 게다가 이월과세를 적용한 세액과 적용하지 않은 세액 중 큰 쪽으로 매기기 때문에, 절세를 노린다면 매도 시점을 증여 후 10년 이후로 잡아야 합니다.',
+      ],
+    },
+    {
+      heading: '증여도 신고가 원칙',
+      paragraphs: [
+        '증여세가 0원이라도 신고는 해 두는 편이 안전합니다. 증여 사실과 평가액을 신고해 두어야 나중에 취득가를 증명할 근거가 남기 때문입니다. 신고 기한은 증여받은 달의 말일부터 3개월 이내입니다.',
+        '부동산은 시세 평가와 취득세 같은 부대비용도 함께 따져야 실익이 나옵니다. 개별 사정에 따라 결과가 달라지므로, 큰 자산을 옮기기 전에 세무 상담으로 계산해 보는 것을 권합니다. 최종 판단과 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '배우자에게 6억을 넘겨도 정말 세금이 없나요?',
+      answer:
+        '10년 합산 6억원까지는 증여세가 없습니다. 6억을 넘는 금액에는 초과분에 대해 증여세가 부과됩니다.',
+    },
+    {
+      question: '주식도 배우자 증여로 절세되나요?',
+      answer:
+        '됩니다. 취득가가 낮은 자산을 증여해 취득가를 높이면 양도차익이 줄지만, 자산 종류에 따라 이월과세 기간과 과세 방식이 달라 확인이 필요합니다.',
+    },
+    {
+      question: '이월과세 기간은 몇 년인가요?',
+      answer:
+        '부동산은 증여 후 10년입니다. 2022년 12월 31일 이전 증여분은 5년이 적용됩니다.',
+    },
+    {
+      question: '증여 신고를 안 하면 어떻게 되나요?',
+      answer:
+        '비과세라도 신고를 안 하면 나중에 취득가 증명이 어려워지고, 과세 대상인데 빠뜨리면 가산세가 붙을 수 있습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-26 · 초고분배 월배당 ETF 분배율 함정 */
+const highDistributionYieldTrap: GuideDef = {
+  slug: 'high-distribution-yield-trap',
+  title: '연 20% 월배당 ETF, 진짜 매달 20% 받나',
+  tagline: '분배율이 높다고 수익률이 높은 건 아니다',
+  description:
+    '월배당 ETF 중에는 연 분배율 15~20%를 내세우는 상품이 있습니다. 하지만 분배율은 미래 수익 보장이 아니고, 초고분배는 옵션 프리미엄과 원금성 재원으로 만들어져 기준가가 깎일 수 있습니다. 분배율의 함정을 짚었습니다.',
+  keywords: ['초고분배 월배당 ETF', '분배율 함정', '커버드콜 분배율', '월배당 20%', '분배율 수익률 차이', 'NAV 잠식'],
+  section: '커버드콜 가이드',
+  lastReviewed: '2026-07-26',
+  answer:
+    '연 분배율이 15~20%로 표시된 월배당 ETF라도 그 숫자가 곧 수익률은 아닙니다. 분배율은 최근 분배금을 기준가로 나눠 연 단위로 환산한 값일 뿐, 미래를 보장하지 않습니다. 특히 초고분배는 커버드콜 옵션 프리미엄에 더해 원금성 재원까지 분배로 돌리는 경우가 있어, 분배금을 받는 만큼 기준가(NAV)가 깎여 총수익은 표시된 분배율보다 낮아질 수 있습니다.',
+  keyPoints: [
+    '분배율은 최근 분배금을 기준가로 나눠 연 환산한 값으로, 앞으로도 그만큼 준다는 보장이 아닙니다.',
+    '연 15~20% 초고분배는 옵션 프리미엄만으로 부족하면 원금성 재원(자본 환급)까지 분배로 돌릴 수 있습니다.',
+    '분배금을 받은 만큼 기준가(NAV)가 낮아지므로, 분배율이 높아도 총수익률은 그보다 낮을 수 있습니다.',
+    '분배율 대신 분배금과 기준가 변동을 합친 총수익(토탈리턴)으로 상품을 비교해야 실체가 보입니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융투자협회 전자공시서비스', url: 'https://dis.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '월배당 20%짜리 ETF에 오래 넣으면 크게 불릴 수 있는지, 초고분배를 오해한 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494173797' },
+  ],
+  comparisonTable: {
+    caption: '분배율과 총수익률은 다르다',
+    columns: ['구분', '분배율', '총수익률'],
+    rows: [
+      ['계산', '분배금 / 기준가 (연 환산)', '분배금 + 기준가 변동'],
+      ['미래 보장', '없음', '없음'],
+      ['초고분배 해석', '높아 보임', '기준가 하락으로 낮아질 수 있음'],
+    ],
+  },
+  sections: [
+    {
+      heading: '분배율이라는 숫자의 정체',
+      paragraphs: [
+        '월배당 ETF를 고를 때 가장 먼저 눈에 들어오는 숫자가 분배율입니다. 흔히 최근에 준 분배금을 기준가로 나눈 뒤 연 단위로 환산해 표시합니다. 최근 한 달 분배금이 컸다면 그 숫자를 열두 배 해서 연 분배율이 높게 보이기도 합니다.',
+        '문제는 이 값이 과거 실적을 바탕으로 한 참고치일 뿐, 앞으로도 그만큼 준다는 약속이 아니라는 데 있습니다. 시장 상황에 따라 분배금은 늘기도 줄기도 합니다.',
+      ],
+    },
+    {
+      heading: '연 20%는 어디서 나오나',
+      paragraphs: [
+        '연 15~20%처럼 유난히 높은 분배율을 내세우는 상품은 대부분 커버드콜 전략을 씁니다. 기초자산을 들고 있으면서 콜옵션을 팔아 받은 프리미엄을 분배 재원으로 삼는 방식입니다.',
+        '강세장에서는 옵션을 팔아 시세 차익을 일부 포기하는 대신 프리미엄을 챙기고, 그것으로도 목표 분배를 못 채우면 일부 운용사는 원금성 재원까지 분배로 돌리기도 합니다. 겉으로 보이는 높은 분배율 안에 이런 구조가 섞여 있을 수 있습니다.',
+      ],
+    },
+    {
+      heading: '받은 만큼 기준가가 깎인다',
+      paragraphs: [
+        '분배금을 지급하면 그만큼 ETF의 순자산가치, 곧 기준가(NAV)가 내려갑니다. 통장에 분배금이 들어온 만큼 보유한 ETF의 몸값이 줄어드는 셈입니다. 분배가 곧 공짜 수익이 아니라는 뜻입니다.',
+        '특히 원금성 재원까지 끌어 쓰는 초고분배라면, 분배금을 받는 사이 기준가가 꾸준히 흘러내릴 수 있습니다. 이러면 매달 20%를 받는 것 같아도 평가손이 그만큼 쌓여 실제 손에 남는 것은 적어집니다.',
+      ],
+    },
+    {
+      heading: '총수익으로 봐야 진짜가 보인다',
+      paragraphs: [
+        '그래서 상품을 비교할 때는 분배율 하나만 보면 안 됩니다. 받은 분배금과 기준가 변동을 합친 총수익(토탈리턴)으로 따져야 실체가 드러납니다. 분배율이 높아도 기준가가 많이 빠졌다면 총수익은 낮을 수 있습니다.',
+        '높은 분배율은 매력적으로 보이지만, 그 재원이 어디서 오는지와 기초자산의 흐름을 함께 확인해야 합니다. 분배율만 좇다 원금을 갉아먹는 일이 없도록, 투자 전 상품 설명서를 꼼꼼히 살피는 습관이 필요합니다. 투자 판단과 책임은 본인 몫입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '분배율이 높으면 그만큼 수익이 나는 건가요?',
+      answer:
+        '아닙니다. 분배율은 분배금을 기준가로 나눈 값일 뿐, 기준가가 함께 내리면 총수익은 분배율보다 낮아질 수 있습니다.',
+    },
+    {
+      question: '연 20% 분배는 어떻게 만드나요?',
+      answer:
+        '대부분 커버드콜 옵션 프리미엄으로 재원을 만들고, 그것으로 부족하면 원금성 재원까지 분배로 돌리는 경우가 있습니다.',
+    },
+    {
+      question: '초고분배 ETF는 무조건 나쁜가요?',
+      answer:
+        '나쁘다기보다 구조를 알고 골라야 합니다. 매달 현금흐름이 목적이면 쓸모가 있지만, 총수익과 기준가 추이를 함께 봐야 합니다.',
+    },
+    {
+      question: '분배금에도 세금이 있나요?',
+      answer:
+        '국내상장 ETF 분배금은 배당소득세 15.4%가 원천징수됩니다. ISA나 연금계좌에서 받으면 세금을 줄일 수 있습니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
   pensionSavingsVsIrp,
   etfSharePriceMeaning,
@@ -16787,6 +17238,11 @@ export const GUIDES: GuideDef[] = [
   cryptoPerpetualFundingFee,
   rentalIncomeSeparateVsComprehensiveTax,
   exDividendPriceDrop,
+  isaTradableProducts,
+  overseasCryptoExchangeTax,
+  pensionIrpTaxCreditOrder,
+  spouseGiftTaxExemption,
+  highDistributionYieldTrap,
 ];
 
 /**
@@ -16797,6 +17253,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-07-26 · 지식iN 질문 수요 기반 (ISA 투자 가능 상품·해외 코인 거래소 세금·연금저축 IRP 세액공제 순서·배우자 증여 6억·초고분배 월배당 함정)
+  'isa-tradable-products': '2026-07-26',
+  'overseas-crypto-exchange-tax': '2026-07-26',
+  'pension-irp-tax-credit-order': '2026-07-26',
+  'spouse-gift-tax-exemption': '2026-07-26',
+  'high-distribution-yield-trap': '2026-07-26',
   // 2026-07-24 · 지식iN 질문 수요 기반 (연금저축 초과 납입·생활비 교육비 증여·코인 펀딩비·주택임대소득 과세·배당락)
   'pension-savings-excess-contribution': '2026-07-24',
   'living-education-expense-gift-tax': '2026-07-24',
@@ -17039,12 +17501,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'isa-tradable-products', 'overseas-crypto-exchange-tax', 'pension-irp-tax-credit-order', 'spouse-gift-tax-exemption'],
   },
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'high-distribution-yield-trap'],
   },
   {
     title: '테마·섹터',
