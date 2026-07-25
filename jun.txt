@@ -1555,7 +1555,7 @@ https://iknowhowinfo.com/guide/ex-dividend-price-drop
 
 검증 결과: npx tsc --noEmit 0 에러, npm run cf:build 성공(exit 0), .next/server/app/guide/ 신규 5편 prerender(answer-box·guide-key-points·guide-sources·citation·2026-07-26 발행일 확인). 신규 콘텐츠 em dash(U+2014)·en dash(U+2013) 0건·운영자 메타 금지어(파이프라인·크롤링·스크래핑·Gemini·GPT·LLM·에이전트·샘플 데이터·자동 발행) 0건. SEO: title≤60·desc 120~155·keywords 6개·slug ^[a-z0-9-]+$·sources label em dash 0.
 
-색인 푸시 결과: (push 후 npm run push:guides 실행 결과를 아래 이어서 기록)
+색인 푸시 결과: npm run push:guides 실행 완료(대상 2026-07-26 5편 + 허브 /guide/latest·/guide·/). IndexNow → skip(no-site-url), Google Indexing → skip(no-credentials). 클라우드 키 미설정으로 양 채널 자동 skip(정상, 실행 자체는 안전). sitemap/RSS 크롤로 색인 진행.
 
 ★ 오늘 발행 링크(풀 URL)
 https://iknowhowinfo.com/guide/isa-tradable-products
