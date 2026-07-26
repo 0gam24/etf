@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-07-19T02:52:07.725Z",
-  "sourceBaseDate": "20260715",
-  "count": 1147,
+  "generatedAt": "2026-07-26T02:55:11.461Z",
+  "sourceBaseDate": "20260723",
+  "count": 1150,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -482,7 +482,6 @@
     "423160": "kodex-kofrrate-activesynthetic",
     "423170": "sol-globalaisemiconductoractive",
     "423920": "tiger-ussemiconductorleveragesynthetic",
-    "424460": "hanaro-globalmscisynthetic",
     "426020": "time-us-sp500active",
     "426030": "time-us-nasdaq100active",
     "426150": "won-treasury-bondactive",
@@ -1149,7 +1148,11 @@
     "0219B0": "koact-active-0219b0",
     "0219E0": "kodex-200covered-callactive",
     "0220A0": "kiwoom-top3bond-blend50",
-    "0220B0": "ds-kosdaqactive"
+    "0220B0": "ds-kosdaqactive",
+    "0218K0": "bnk-0218k0",
+    "0221V0": "ibk-bondactive",
+    "0221Z0": "ace-kbiotechkosdaqactive",
+    "0223R0": "tiger-us-technyse100active"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -3067,10 +3070,6 @@
     "tiger-ussemiconductorleveragesynthetic": {
       "code": "423920",
       "name": "TIGER 미국필라델피아반도체레버리지(합성)"
-    },
-    "hanaro-globalmscisynthetic": {
-      "code": "424460",
-      "name": "HANARO 글로벌워터MSCI(합성)"
     },
     "time-us-sp500active": {
       "code": "426020",
@@ -5739,6 +5738,22 @@
     "ds-kosdaqactive": {
       "code": "0220B0",
       "name": "DS 코스닥액티브"
+    },
+    "bnk-0218k0": {
+      "code": "0218K0",
+      "name": "BNK 스마트카"
+    },
+    "ibk-bondactive": {
+      "code": "0221V0",
+      "name": "IBK 초단기채권액티브"
+    },
+    "ace-kbiotechkosdaqactive": {
+      "code": "0221Z0",
+      "name": "ACE K바이오코스닥액티브"
+    },
+    "tiger-us-technyse100active": {
+      "code": "0223R0",
+      "name": "TIGER 미국테크NYSE100액티브"
     }
   }
 }

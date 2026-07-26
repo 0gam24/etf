@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-07-19T02:52:07.555Z",
-  "baseDate": "20260715",
-  "count": 1147,
+  "fetchedAt": "2026-07-26T02:55:11.295Z",
+  "baseDate": "20260723",
+  "count": 1150,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -2397,11 +2397,6 @@
       "shortcode": "423920",
       "issueCode": "KR7423920008",
       "name": "TIGER 미국필라델피아반도체레버리지(합성)"
-    },
-    "424460": {
-      "shortcode": "424460",
-      "issueCode": "KR7424460004",
-      "name": "HANARO 글로벌워터MSCI(합성)"
     },
     "426020": {
       "shortcode": "426020",
@@ -5678,6 +5673,11 @@
       "issueCode": "KR70218J0001",
       "name": "RISE 미국우주&로봇TOP2미국채혼합50"
     },
+    "0218K0": {
+      "shortcode": "0218K0",
+      "issueCode": "KR70218K0008",
+      "name": "BNK 스마트카"
+    },
     "0219B0": {
       "shortcode": "0219B0",
       "issueCode": "KR70219B0008",
@@ -5697,6 +5697,21 @@
       "shortcode": "0220B0",
       "issueCode": "KR70220B0005",
       "name": "DS 코스닥액티브"
+    },
+    "0221V0": {
+      "shortcode": "0221V0",
+      "issueCode": "KR70221V0000",
+      "name": "IBK 초단기채권액티브"
+    },
+    "0221Z0": {
+      "shortcode": "0221Z0",
+      "issueCode": "KR70221Z0006",
+      "name": "ACE K바이오코스닥액티브"
+    },
+    "0223R0": {
+      "shortcode": "0223R0",
+      "issueCode": "KR70223R0004",
+      "name": "TIGER 미국테크NYSE100액티브"
     },
     "069500": {
       "shortcode": "069500",
@@ -7120,6 +7135,11 @@
       "issueCode": "KR70218J0001",
       "name": "RISE 미국우주&로봇TOP2미국채혼합50"
     },
+    "KR70218K0008": {
+      "shortcode": "0218K0",
+      "issueCode": "KR70218K0008",
+      "name": "BNK 스마트카"
+    },
     "KR70219B0008": {
       "shortcode": "0219B0",
       "issueCode": "KR70219B0008",
@@ -7139,6 +7159,21 @@
       "shortcode": "0220B0",
       "issueCode": "KR70220B0005",
       "name": "DS 코스닥액티브"
+    },
+    "KR70221V0000": {
+      "shortcode": "0221V0",
+      "issueCode": "KR70221V0000",
+      "name": "IBK 초단기채권액티브"
+    },
+    "KR70221Z0006": {
+      "shortcode": "0221Z0",
+      "issueCode": "KR70221Z0006",
+      "name": "ACE K바이오코스닥액티브"
+    },
+    "KR70223R0004": {
+      "shortcode": "0223R0",
+      "issueCode": "KR70223R0004",
+      "name": "TIGER 미국테크NYSE100액티브"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -9574,11 +9609,6 @@
       "shortcode": "423920",
       "issueCode": "KR7423920008",
       "name": "TIGER 미국필라델피아반도체레버리지(합성)"
-    },
-    "KR7424460004": {
-      "shortcode": "424460",
-      "issueCode": "KR7424460004",
-      "name": "HANARO 글로벌워터MSCI(합성)"
     },
     "KR7426020004": {
       "shortcode": "426020",
@@ -12858,6 +12888,11 @@
       "name": "RISE 미국우주&로봇TOP2미국채혼합50"
     },
     {
+      "shortcode": "0218K0",
+      "issueCode": "KR70218K0008",
+      "name": "BNK 스마트카"
+    },
+    {
       "shortcode": "0219B0",
       "issueCode": "KR70219B0008",
       "name": "KoAct 광통신&위성네트워크액티브"
@@ -12876,6 +12911,21 @@
       "shortcode": "0220B0",
       "issueCode": "KR70220B0005",
       "name": "DS 코스닥액티브"
+    },
+    {
+      "shortcode": "0221V0",
+      "issueCode": "KR70221V0000",
+      "name": "IBK 초단기채권액티브"
+    },
+    {
+      "shortcode": "0221Z0",
+      "issueCode": "KR70221Z0006",
+      "name": "ACE K바이오코스닥액티브"
+    },
+    {
+      "shortcode": "0223R0",
+      "issueCode": "KR70223R0004",
+      "name": "TIGER 미국테크NYSE100액티브"
     },
     {
       "shortcode": "069500",
@@ -15311,11 +15361,6 @@
       "shortcode": "423920",
       "issueCode": "KR7423920008",
       "name": "TIGER 미국필라델피아반도체레버리지(합성)"
-    },
-    {
-      "shortcode": "424460",
-      "issueCode": "KR7424460004",
-      "name": "HANARO 글로벌워터MSCI(합성)"
     },
     {
       "shortcode": "426020",
