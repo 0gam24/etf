@@ -1558,8 +1558,17 @@ https://iknowhowinfo.com/guide/ex-dividend-price-drop
 - SEO: title≤60·desc 120~155·slug ^[a-z0-9-]$·keywords 6개 전편 통과
 - npm run cf:build: 성공, .next/server/app/guide/ 신규 5개 HTML prerender (answer-box·guide-key-points·guide-sources·citation·2026-07-27 발행일 포함 확인)
 
-### 색인 푸시
-(하단 push:guides 실행 결과 기록)
+### 색인 푸시 (npm run push:guides)
+- 대상: 신규 가이드 5편 + 허브 3(/guide/latest·/guide·/)
+- IndexNow(Bing·Naver): skip (no-site-url · 키/사이트URL 미설정)
+- Google Indexing: skip (no-credentials · 키 미설정)
+- 두 채널 모두 키 미설정으로 자동 skip → 실행 자체는 정상 종료
+
+### 배포
+- push 대상 브랜치: claude/serene-hamilton-ghjbwe (세션 지정 브랜치)
+- auto-deploy-claude-branch.yml 트리거 브랜치를 ncr4pm→ghjbwe로 갱신(코드 커밋), 워크플로 run #3 success → main fast-forward(16ca61b) 완료 → Cloudflare 배포 트리거
+- 프로덕션 curl 검증: 클라우드 아웃바운드 프록시가 iknowhowinfo.com 직접 접근 차단(홈·기존 글 포함 000)으로 이 환경에선 확인 불가. 로컬 prerender 5종은 검증 완료.
+- 초안 PR: #9
 
 ### ★ 오늘 발행 링크
 https://iknowhowinfo.com/guide/pension-savings-insurance-vs-fund
