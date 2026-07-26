@@ -16598,6 +16598,451 @@ const exDividendPriceDrop: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-07-27 · 연금저축보험 vs 연금저축펀드 */
+const pensionSavingsInsuranceVsFund: GuideDef = {
+  slug: 'pension-savings-insurance-vs-fund',
+  title: '연금저축보험 vs 연금저축펀드, 뭐가 다르고 갈아탈 수 있나',
+  tagline: '원리금 보장 보험형과 ETF로 굴리는 실적형, 세제 혜택은 같다',
+  description:
+    '연금저축보험과 연금저축펀드가 뭐가 다른지 헷갈린다면, 원리금을 보장하는 보험형과 ETF·펀드로 굴리는 실적형의 차이입니다. 세액공제는 똑같이 받고 계좌이체로 세제 혜택을 지킨 채 갈아탈 수 있는 방법까지 정리했습니다.',
+  keywords: ['연금저축보험', '연금저축펀드', '연금저축 차이', '연금저축 계좌이체', '연금저축 전환', '세액공제 600만원'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-07-27',
+  answer:
+    '연금저축보험은 보험사가 공시이율로 원리금을 보장하며 사업비를 떼는 안정형이고, 연금저축펀드는 증권사에서 ETF·펀드를 직접 골라 굴리는 실적배당형입니다. 세액공제 한도(연 600만원, IRP 합산 900만원)는 둘 다 같으므로, 수익을 더 노린다면 펀드형이 유리합니다. 보험형에서 펀드형으로는 계좌이체 제도를 쓰면 세제 혜택을 잃지 않고 옮길 수 있습니다.',
+  keyPoints: [
+    '두 상품 모두 연 600만원까지 세액공제 대상이며, IRP를 합치면 연 900만원까지 공제받습니다.',
+    '연금저축보험은 공시이율로 원리금을 지키는 대신 사업비가 빠지고, 연금저축펀드는 ETF로 굴려 수익도 손실도 커질 수 있습니다.',
+    '연금저축은 중도 해지하면 그동안 받은 세액공제액과 운용수익에 16.5% 기타소득세가 붙어 손해가 큽니다.',
+    '보험형에서 펀드형으로 갈아탈 때는 해지가 아니라 금융사 간 계좌이체를 신청하면, 세액공제 혜택을 그대로 유지한 채 이전됩니다.',
+  ],
+  sources: [
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+    { label: '국세청 연금계좌 세액공제 안내', url: 'https://www.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '연금저축펀드에서 담을 만한 ETF를 추천해 달라는 질문, 연금저축을 어떤 방식으로 굴려야 하는지', url: 'https://kin.naver.com/qna/detail.naver?docId=489444942' },
+    { summary: '노후 준비로 연금저축부터 가입하는 게 맞는지, 어떤 유형을 골라야 하는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494334592' },
+    { summary: '미래에셋 연금저축계좌를 어떻게 활용하면 좋을지', url: 'https://kin.naver.com/qna/detail.naver?docId=493610254' },
+  ],
+  comparisonTable: {
+    caption: '연금저축보험 vs 연금저축펀드',
+    columns: ['구분', '연금저축보험', '연금저축펀드'],
+    rows: [
+      ['운용 방식', '공시이율 원리금 보장', 'ETF·펀드 실적배당'],
+      ['판매처', '보험사', '증권사'],
+      ['세액공제 한도', '연 600만원(IRP 합산 900만원)', '연 600만원(IRP 합산 900만원)'],
+      ['비용', '사업비 차감', '운용보수·매매수수료'],
+      ['원금 손실', '없음(보장)', '있을 수 있음'],
+    ],
+  },
+  sections: [
+    {
+      heading: '이름은 비슷해도 굴리는 방식이 다르다',
+      paragraphs: [
+        '연금저축은 크게 보험형과 펀드형으로 나뉩니다. 연금저축보험은 보험사가 공시이율을 적용해 원리금을 지켜 주는 대신, 매달 낸 돈에서 사업비를 먼저 떼고 남은 금액을 굴립니다. 안정적이지만 저금리 국면에서는 수익이 크게 붙기 어렵습니다.',
+        '연금저축펀드는 증권사 계좌에서 S&P500 ETF나 배당 ETF, 채권형 펀드 같은 상품을 직접 골라 담습니다. 잘 굴리면 보험형보다 높은 수익을 낼 수 있지만, 시장이 빠지면 원금이 줄 수도 있는 실적배당형이라는 점이 핵심 차이입니다.',
+      ],
+    },
+    {
+      heading: '세액공제 혜택은 두 상품이 똑같다',
+      paragraphs: [
+        '어느 쪽을 고르든 세제 혜택은 동일합니다. 연금저축은 연 600만원까지, IRP를 합치면 연 900만원까지 세액공제를 받습니다. 총급여 5,500만원(종합소득 4,500만원) 이하면 공제율 16.5%, 그 위면 13.2%가 적용됩니다.',
+        '즉 세금을 돌려받는 크기는 상품 종류가 아니라 납입액이 결정합니다. 그래서 같은 세액공제를 받는다면, 오래 묻어 둘 노후 자금은 수익 잠재력이 큰 펀드형을 고르는 사람이 많아졌습니다. 다만 손실을 견디기 어려운 성향이라면 보험형의 안정성이 맞을 수 있습니다.',
+      ],
+    },
+    {
+      heading: '갈아탈 때는 해지 말고 계좌이체',
+      paragraphs: [
+        '보험형에 넣다가 펀드형으로 옮기고 싶을 때, 기존 계좌를 해지하고 새로 가입하면 큰 손해를 봅니다. 연금저축을 중도 해지하면 그간 받은 세액공제액과 운용수익에 16.5% 기타소득세가 매겨지기 때문입니다.',
+        '대신 금융사 간 연금저축 계좌이체 제도를 이용하면 세제 혜택을 그대로 지킨 채 보험사에서 증권사로 자산을 옮길 수 있습니다. 옮길 증권사에서 연금저축펀드 계좌를 먼저 만든 뒤 이전 신청을 하면 되고, 보험형은 해지환급금 기준으로 넘어가 원금 손실이 생길 수 있으니 환급금을 미리 확인해야 합니다.',
+      ],
+    },
+    {
+      heading: '내 성향에 맞춰 고르기',
+      paragraphs: [
+        '두 상품은 우열이 아니라 성향의 문제입니다. 원금이 줄어드는 걸 견디기 힘들고 예금 같은 안정성을 원하면 보험형, 20~30년 장기로 굴리며 수익을 키우고 싶고 ETF를 직접 고를 의향이 있으면 펀드형이 어울립니다.',
+        '연금은 길게 가는 자산이라 한 번 정하면 오래 유지하는 편이 좋습니다. 가입 전 본인의 투자 성향과 은퇴까지 남은 기간을 따져 보고, 세부 조건은 각 금융사 상품 안내나 통합연금포털에서 확인하는 편이 안전합니다. 이 글은 정보 제공을 위한 것으로 특정 상품 가입을 권하는 내용이 아닙니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '연금저축보험과 펀드, 세액공제 한도가 다른가요?',
+      answer:
+        '같습니다. 둘 다 연 600만원까지, IRP를 합치면 연 900만원까지 세액공제 대상입니다. 공제 크기는 상품이 아니라 납입액이 정합니다.',
+    },
+    {
+      question: '보험형에서 펀드형으로 갈아탈 수 있나요?',
+      answer:
+        '가능합니다. 해지가 아니라 금융사 간 계좌이체를 신청하면 세제 혜택을 유지한 채 옮겨집니다. 다만 보험은 해지환급금 기준이라 원금이 줄 수 있습니다.',
+    },
+    {
+      question: '연금저축을 중간에 해지하면 어떻게 되나요?',
+      answer:
+        '그동안 받은 세액공제액과 운용수익에 16.5% 기타소득세가 부과돼 손해가 큽니다. 급전이 필요하면 해지보다 담보대출 등을 먼저 검토하는 편이 낫습니다.',
+    },
+    {
+      question: '연금저축펀드로 어떤 상품을 담나요?',
+      answer:
+        '국내외 지수 ETF, 배당 ETF, 채권형 펀드 등을 담을 수 있습니다. 다만 파생형·레버리지 같은 위험 상품은 연금계좌에서 제한되는 경우가 있습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-27 · ISA 납입한도와 이월 */
+const isaContributionLimitCarryover: GuideDef = {
+  slug: 'isa-contribution-limit-carryover',
+  title: 'ISA 납입한도 연 2천만원, 안 채우면 이월될까',
+  tagline: '못 채운 한도는 사라지지 않고 다음 해로 쌓인다',
+  description:
+    'ISA에 올해 2천만원을 다 못 넣으면 그 한도가 사라지는지 궁금하다면, 못 채운 미납분은 다음 해로 이월돼 계속 쌓입니다. 연 2천만원과 평생 총 1억원 한도가 해마다 어떻게 누적되는지, 이월 한도를 활용하는 법을 사례로 풀었습니다.',
+  keywords: ['ISA 납입한도', 'ISA 이월', 'ISA 2000만원', 'ISA 1억 한도', 'ISA 미납입 이월', 'ISA 납입 한도 누적'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-07-27',
+  answer:
+    'ISA는 연 2천만원, 총 1억원까지 납입할 수 있고, 올해 한도를 다 못 채워도 그 미납분은 사라지지 않고 다음 해로 이월돼 누적됩니다. 예를 들어 첫해에 한 푼도 넣지 않았다면 이듬해에 4천만원까지 넣을 수 있습니다. 다만 이월을 아무리 쌓아도 전체 납입 총액은 1억원을 넘길 수 없습니다.',
+  keyPoints: [
+    'ISA 납입한도는 연 2천만원, 가입 기간 전체를 통틀어 최대 1억원입니다.',
+    '올해 못 채운 한도는 소멸하지 않고 다음 해로 이월돼, 이듬해 납입 가능액이 그만큼 늘어납니다.',
+    '첫해 0원을 넣었다면 다음 해 4천만원(당해 2천만원 + 이월 2천만원)까지 한 번에 넣을 수 있습니다.',
+    '이월로 한도를 몰아 써도 누적 납입액 1억원 상한과 의무가입 3년 조건은 그대로 적용됩니다.',
+  ],
+  sources: [
+    { label: '금융위원회 ISA 안내', url: 'https://www.fsc.go.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 계좌 납입한도와 운용 방식이 어떻게 되는지 전반이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494349881' },
+    { summary: 'ISA 계좌를 처음 만들려는데 한도·혜택 등 전반이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493747720' },
+  ],
+  comparisonTable: {
+    caption: 'ISA 납입한도 이월 예시 (첫해 미납 시)',
+    columns: ['구분', '1년차', '2년차'],
+    rows: [
+      ['그해 기본 한도', '2천만원', '2천만원'],
+      ['전년 이월 한도', '없음', '2천만원'],
+      ['그해 최대 납입액', '2천만원', '4천만원'],
+      ['누적 한도(총 1억원)', '유지', '유지'],
+    ],
+  },
+  sections: [
+    {
+      heading: '연 2천만원, 총 1억원이 기본 골격',
+      paragraphs: [
+        'ISA(개인종합자산관리계좌)는 한 해에 최대 2천만원까지, 계좌를 유지하는 동안 통틀어 최대 1억원까지 넣을 수 있습니다. 이 두 숫자가 납입한도의 기본 골격입니다.',
+        '한도는 실제로 넣은 원금 기준입니다. 계좌 안에서 사고팔아 자산이 불어나는 것은 한도와 무관하고, 새로 입금하는 돈만 한도에서 차감됩니다.',
+      ],
+    },
+    {
+      heading: '못 채운 한도는 다음 해로 이월된다',
+      paragraphs: [
+        '많은 사람이 헷갈리는 지점이 여기입니다. 올해 2천만원을 다 못 넣었다고 그 한도가 사라지지는 않습니다. 못 채운 금액은 다음 해로 이월돼 이듬해 납입 가능액에 더해집니다.',
+        '예를 들어 가입 첫해에 한 푼도 넣지 못했다면, 다음 해에는 그해 기본 2천만원에 전년 이월분 2천만원을 더해 4천만원까지 한 번에 넣을 수 있습니다. 목돈이 생겼을 때 그동안 쌓인 이월 한도를 몰아서 활용하는 전략이 가능한 이유입니다.',
+      ],
+    },
+    {
+      heading: '이월해도 총 1억원 상한은 그대로',
+      paragraphs: [
+        '이월이 된다고 무제한으로 넣을 수 있는 것은 아닙니다. 매년 한도가 쌓여도 가입 기간 전체 누적 납입액은 1억원을 넘을 수 없습니다. 이월은 매년 2천만원씩 채우지 못한 사람에게 나중에 몰아 넣을 여지를 주는 장치일 뿐입니다.',
+        '또한 비과세 혜택을 받으려면 의무가입 기간 3년을 채워야 합니다. 한도를 언제 채우든 이 3년 조건과 1억원 상한은 함께 적용되니, 이월 한도만 보고 무리하게 계획을 세우지 않는 편이 좋습니다.',
+      ],
+    },
+    {
+      heading: '이월 한도, 이렇게 활용한다',
+      paragraphs: [
+        '소득이 일정치 않아 매년 2천만원을 꼬박 넣기 어려운 사람에게 이월은 특히 유용합니다. 여유가 없는 해에는 적게 넣고, 상여금이나 목돈이 들어온 해에 쌓인 한도를 한꺼번에 채우면 비과세 혜택을 놓치지 않습니다.',
+        '한도를 채우는 순서나 시점보다, 3년 의무가입과 총 1억원 안에서 본인 현금 흐름에 맞춰 유연하게 넣는 것이 중요합니다. 세부 조건은 가입한 금융사나 홈택스에서 본인 계좌의 남은 한도를 확인해 두면 계획을 세우기 쉽습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA에 올해 한도를 못 채우면 사라지나요?',
+      answer:
+        '사라지지 않습니다. 못 채운 미납분은 다음 해로 이월돼 이듬해 납입 가능액에 더해집니다. 여유가 생겼을 때 몰아 넣을 수 있습니다.',
+    },
+    {
+      question: '첫해에 안 넣으면 다음 해 얼마까지 넣나요?',
+      answer:
+        '첫해에 0원을 넣었다면 다음 해에는 그해 기본 2천만원에 이월 2천만원을 더해 최대 4천만원까지 한 번에 넣을 수 있습니다.',
+    },
+    {
+      question: '이월하면 총 1억원 넘게 넣을 수 있나요?',
+      answer:
+        '아닙니다. 매년 한도가 쌓여도 가입 기간 전체 누적 납입액은 1억원을 넘길 수 없습니다. 이월은 상한 안에서만 작동합니다.',
+    },
+    {
+      question: '납입한도에 운용 수익도 포함되나요?',
+      answer:
+        '포함되지 않습니다. 한도는 새로 넣는 원금 기준이라, 계좌 안에서 불어난 평가금액은 한도를 잡아먹지 않습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-27 · 배우자 증여공제 6억 절세 */
+const spouseGiftTaxExemption: GuideDef = {
+  slug: 'spouse-gift-tax-exemption',
+  title: '배우자 증여공제 6억, 주식·ETF 절세에 쓰는 법',
+  tagline: '10년간 6억 비과세로 취득가액을 높이는 원리, 이월과세 주의',
+  description:
+    '부부 사이 증여는 10년간 6억원까지 세금이 없습니다. 이 배우자 증여공제로 주식과 ETF의 취득가액을 높여 나중에 낼 양도세를 줄이는 원리와, 주식은 증여 후 1년 안에 팔면 걸리는 이월과세 함정까지 사례로 짚었습니다.',
+  keywords: ['배우자 증여공제', '부부간 증여 6억', '증여세 절세', '주식 증여 이월과세', '배우자 증여 취득가액', '증여재산공제'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-07-27',
+  answer:
+    '배우자에게 증여할 때는 10년간 합산 6억원까지 증여세가 공제됩니다. 이 공제를 이용해 양도세가 과세되는 주식이나 해외 ETF를 배우자에게 넘기면, 취득가액이 증여 시점 시가로 올라가 나중에 팔 때 차익과 양도세가 줄어듭니다. 다만 주식은 증여 후 1년 안에 팔면 이월과세로 증여자의 원래 취득가가 적용되니 보유 기간을 채워야 효과가 있습니다.',
+  keyPoints: [
+    '배우자 증여공제는 10년간 합산 6억원으로, 이 범위 안의 증여에는 증여세가 붙지 않습니다.',
+    '양도세 과세 대상 자산을 배우자에게 증여하면 취득가액이 증여 당시 시가로 재설정돼, 이후 매도 시 양도차익이 줄어듭니다.',
+    '주식은 증여 후 1년, 부동산은 10년 안에 팔면 이월과세가 적용돼 증여자의 원래 취득가로 양도세를 다시 계산합니다.',
+    '소액주주의 국내 상장주식 매매차익은 원래 비과세라, 이 절세는 주로 해외주식·ETF나 대주주·비상장주식에서 의미가 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 증여재산공제 안내', url: 'https://www.nts.go.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '자녀나 배우자에게 증여할 때 세금을 얼마나 아낄 수 있는지, 증여로 절세하는 방법이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494332623' },
+    { summary: '증여세 면제 범위가 어디까지인지, 얼마까지 세금 없이 증여할 수 있는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494353205' },
+  ],
+  comparisonTable: {
+    caption: '증여재산공제 한도 (10년 합산)',
+    columns: ['증여자', '공제 한도', '비고'],
+    rows: [
+      ['배우자', '6억원', '가장 큰 공제'],
+      ['성년 자녀·직계비속', '5천만원', '미성년은 2천만원'],
+      ['직계존속(부모 등)', '5천만원', '수증자 기준'],
+      ['기타 친족', '1천만원', '6촌 이내 등'],
+    ],
+  },
+  sections: [
+    {
+      heading: '부부 사이 6억까지 세금이 없다',
+      paragraphs: [
+        '증여세에는 관계별로 일정 금액까지 세금을 매기지 않는 증여재산공제가 있습니다. 배우자 사이는 그 한도가 가장 커서, 10년간 합산 6억원까지 증여해도 증여세가 나오지 않습니다.',
+        '주의할 점은 이 6억이 한 번이 아니라 10년 누적 기준이라는 것입니다. 같은 10년 안에 여러 번 나눠 증여해도 모두 더해 6억 초과 여부를 판단합니다. 자녀는 성년 5천만원, 미성년 2천만원으로 한도가 훨씬 작습니다.',
+      ],
+    },
+    {
+      heading: '취득가액을 높여 양도세를 줄인다',
+      paragraphs: [
+        '이 공제가 절세에 쓰이는 원리는 취득가액 재설정에 있습니다. 양도세가 과세되는 자산을 배우자에게 증여하면, 배우자 입장에서는 증여받은 시점의 시가가 새 취득가액이 됩니다.',
+        '예를 들어 1억에 산 해외 ETF가 5억이 됐다고 하겠습니다. 그냥 팔면 4억 차익에 양도세가 붙지만, 배우자에게 증여(6억 공제로 증여세 0)한 뒤 배우자가 5억 부근에서 팔면 차익이 거의 없어 양도세도 크게 줄어듭니다. 취득가액이 1억에서 5억으로 올라간 효과입니다.',
+      ],
+    },
+    {
+      heading: '이월과세 함정, 보유 기간을 채워야 한다',
+      paragraphs: [
+        '이 전략에는 분명한 함정이 있습니다. 증여받은 자산을 너무 빨리 팔면 이월과세가 적용됩니다. 주식은 증여 후 1년, 부동산은 10년 안에 양도하면 증여받은 가액이 아니라 원래 증여자가 산 취득가로 양도세를 다시 계산합니다.',
+        '즉 배우자에게 넘기자마자 팔면 취득가액을 올린 효과가 사라집니다. 주식·ETF라면 증여 후 최소 1년은 배우자 명의로 보유한 뒤 매도해야 절세 효과가 유지됩니다. 자금이 실제로 배우자에게 귀속되어야 하며, 되돌려 받으면 증여로 인정되지 않을 수 있습니다.',
+      ],
+    },
+    {
+      heading: '누구에게 실익이 있나',
+      paragraphs: [
+        '이 방법은 모든 주식에 통하지는 않습니다. 소액주주가 보유한 국내 상장주식의 매매차익은 원래 비과세라 취득가액을 올릴 이유가 없습니다. 실익이 큰 쪽은 양도세가 과세되는 해외주식·해외 ETF, 그리고 대주주나 비상장주식입니다.',
+        '증여 시점의 평가액 산정, 이월과세 기간, 자금 출처 소명 같은 요건이 얽혀 있어 실수하면 오히려 세금이 늘 수 있습니다. 금액이 크다면 실행 전에 세무 전문가와 상담해 계산을 맞추는 편이 안전합니다. 이 글은 정보 제공용이며 개별 절세 결과를 보장하지 않습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '배우자에게 얼마까지 세금 없이 증여하나요?',
+      answer:
+        '10년간 합산 6억원까지 증여세 없이 증여할 수 있습니다. 한 번이 아니라 10년 누적 기준이라 여러 번 나눠 줘도 모두 더해 판단합니다.',
+    },
+    {
+      question: '증여 후 바로 팔면 절세가 되나요?',
+      answer:
+        '안 됩니다. 주식은 증여 후 1년, 부동산은 10년 안에 팔면 이월과세로 증여자의 원래 취득가가 적용돼 절세 효과가 사라집니다.',
+    },
+    {
+      question: '국내 상장주식에도 이 절세가 통하나요?',
+      answer:
+        '소액주주의 국내 상장주식 매매차익은 원래 비과세라 실익이 없습니다. 주로 해외주식·ETF나 대주주·비상장주식에서 의미가 있습니다.',
+    },
+    {
+      question: '증여했다가 나중에 돌려받아도 되나요?',
+      answer:
+        '자금이 실제로 배우자에게 귀속돼야 증여로 인정됩니다. 형식만 갖추고 되돌려 받으면 부인될 수 있으니 실제 소유가 이전돼야 합니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-27 · 우선주 vs 보통주 배당 차이 */
+const preferredVsCommonStockDividend: GuideDef = {
+  slug: 'preferred-vs-common-stock-dividend',
+  title: '우선주와 보통주 배당 차이, 현대차 우선주로 보기',
+  tagline: '의결권을 내준 대신 배당을 우선·추가로, 시가배당률이 높은 이유',
+  description:
+    '우선주가 보통주보다 배당을 더 준다는 말이 맞는지 궁금하다면, 의결권을 포기한 대신 배당을 우선·추가로 받는 구조입니다. 현대차우·2우B·3우B의 추가 배당과, 주가가 낮아 시가배당률이 높아지는 이유를 예로 들어 정리했습니다.',
+  keywords: ['우선주 보통주 차이', '우선주 배당', '현대차 우선주', '시가배당률', '우선주 의결권', '2우B 3우B'],
+  section: '배당주 가이드',
+  lastReviewed: '2026-07-27',
+  answer:
+    '우선주는 주주총회 의결권이 없는 대신 배당을 보통주보다 먼저, 종종 조금 더 받는 주식입니다. 배당금 자체가 늘 큰 것은 아니지만, 우선주는 보통주보다 주가가 낮게 형성되는 경우가 많아 같은 배당이라도 시가배당률(주가 대비 배당)이 높게 나옵니다. 현대차처럼 우선주가 여러 종류인 종목은 종류마다 추가 배당 조건이 다릅니다.',
+  keyPoints: [
+    '우선주는 의결권이 없는 대신 배당을 보통주보다 우선 지급받고, 정관에 따라 보통주보다 조금 더 받기도 합니다.',
+    '우선주는 보통주보다 주가가 낮게 거래되는 경우가 많아, 같은 배당금이라도 시가배당률이 더 높게 나타납니다.',
+    '현대차 우선주는 현대차우·2우B·3우B 세 가지로, 보통주 대비 각각 약 1%·2%·1%의 추가 배당 조건을 둡니다.',
+    '우선주는 거래량이 적어 유동성 위험이 있고 주가 변동도 클 수 있어, 배당률만 보고 접근하면 안 됩니다.',
+  ],
+  sources: [
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+    { label: '금융감독원 전자공시 DART', url: 'https://dart.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '현대차 우선주 2,000주를 보유 중인데 배당금이 어떻게 지급되는지 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=492922693' },
+    { summary: '현대자동차 배당금이 어떻게 되는지, 우선주와 보통주 배당이 다른지', url: 'https://kin.naver.com/qna/detail.naver?docId=361498859' },
+  ],
+  comparisonTable: {
+    caption: '우선주 vs 보통주',
+    columns: ['구분', '보통주', '우선주'],
+    rows: [
+      ['의결권', '있음', '없음(원칙)'],
+      ['배당 순위', '후순위', '우선'],
+      ['배당 크기', '기준', '같거나 조금 더'],
+      ['주가', '대체로 높음', '대체로 낮음'],
+      ['시가배당률', '상대적으로 낮음', '상대적으로 높음'],
+    ],
+  },
+  sections: [
+    {
+      heading: '의결권을 내준 대신 배당을 먼저 받는다',
+      paragraphs: [
+        '보통주와 우선주의 가장 큰 차이는 의결권입니다. 보통주는 주주총회에서 의결권을 행사할 수 있지만, 우선주는 원칙적으로 의결권이 없습니다. 회사 경영에 참여할 권리를 내려놓은 셈입니다.',
+        '그 대가로 우선주는 배당을 보통주보다 먼저 받습니다. 정관에 따라 보통주 배당에 일정 비율을 더 얹어 주는 경우도 있습니다. 경영권에는 관심이 없고 배당 현금흐름만 원하는 투자자에게 맞는 구조입니다.',
+      ],
+    },
+    {
+      heading: '배당금이 아니라 시가배당률을 보라',
+      paragraphs: [
+        '흔히 우선주가 배당을 훨씬 많이 준다고 생각하지만, 주당 배당금 자체는 보통주와 같거나 소폭 높은 정도인 경우가 많습니다. 우선주의 배당 매력이 도드라지는 진짜 이유는 주가에 있습니다.',
+        '우선주는 의결권이 없고 거래량이 적어 보통주보다 낮은 가격에 거래되는 경향이 있습니다. 그래서 배당금이 비슷해도 주가가 낮으면 주가 대비 배당 비율, 즉 시가배당률이 더 높게 나옵니다. 배당 투자자가 우선주를 눈여겨보는 지점이 바로 이 시가배당률입니다.',
+      ],
+    },
+    {
+      heading: '현대차 우선주는 세 종류가 다르다',
+      paragraphs: [
+        '한 회사에 우선주가 여러 개인 경우도 있습니다. 현대차는 현대차우, 현대차2우B, 현대차3우B 세 종류의 우선주가 상장돼 있고, 배당 조건이 조금씩 다릅니다.',
+        '보통주 배당을 기준으로 현대차우와 3우B는 약 1%, 2우B는 약 2%를 더 얹어 주는 식입니다. 뒤에 붙은 B는 채권처럼 최저 배당을 보장하는 신형 우선주라는 표시로, 2우B·3우B가 여기에 해당합니다. 같은 회사 우선주라도 종류에 따라 배당과 성격이 다르니 종목 코드를 정확히 확인해야 합니다.',
+      ],
+    },
+    {
+      heading: '배당률만 보고 사면 안 되는 이유',
+      paragraphs: [
+        '시가배당률이 높다는 이유만으로 우선주를 담기 전에 따져야 할 위험이 있습니다. 우선주는 발행 물량이 적고 거래량도 적어, 팔고 싶을 때 원하는 가격에 팔기 어려운 유동성 위험이 있습니다. 주가 변동 폭이 보통주보다 클 때도 있습니다.',
+        '배당은 회사 실적과 배당 정책에 따라 언제든 바뀔 수 있어, 과거 배당률이 미래를 보장하지 않습니다. 배당 현금흐름이 목적이라면 시가배당률과 함께 유동성, 회사의 배당 지속성을 같이 보는 것이 좋습니다. 개별 종목 투자의 최종 판단과 책임은 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '우선주가 보통주보다 배당을 더 주나요?',
+      answer:
+        '주당 배당금은 같거나 소폭 높은 정도가 많습니다. 다만 우선주는 주가가 낮게 거래돼 시가배당률이 더 높게 나타나는 경우가 흔합니다.',
+    },
+    {
+      question: '우선주는 의결권이 정말 없나요?',
+      answer:
+        '원칙적으로 의결권이 없습니다. 다만 정해진 우선 배당을 받지 못하는 등 특정 조건에서는 예외적으로 의결권이 살아나기도 합니다.',
+    },
+    {
+      question: '현대차 우선주 세 종류는 뭐가 다른가요?',
+      answer:
+        '현대차우·2우B·3우B로, 보통주 대비 추가 배당이 각각 약 1%·2%·1%입니다. B가 붙은 종목은 최저 배당을 보장하는 신형 우선주입니다.',
+    },
+    {
+      question: '우선주 투자에서 조심할 점은 뭔가요?',
+      answer:
+        '거래량이 적어 유동성 위험이 있고 주가 변동이 클 수 있습니다. 배당도 실적에 따라 바뀌니 시가배당률만 보고 판단하면 안 됩니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-27 · 해외 코인 거래소 원화 출금·세금·리스크 */
+const overseasCryptoExchangeRisks: GuideDef = {
+  slug: 'overseas-crypto-exchange-risks',
+  title: '해외 코인 거래소 원화 출금과 세금, 조심할 점',
+  tagline: '원화 직접 출금이 안 되는 이유, 트래블룰과 과세까지',
+  description:
+    '해외 코인 거래소에서 원화로 바로 출금이 안 되는 이유부터, 국내 거래소를 거쳐야 하는 트래블룰 절차와 자산 동결 위험, 그리고 2027년 시행 예정인 가상자산 과세까지 무엇을 조심해야 하는지 위험 중심으로 짚었습니다.',
+  keywords: ['해외 코인 거래소', '코인 원화 출금', '트래블룰', '가상자산 과세 2027', '코인 세금', '코인 거래소 위험'],
+  section: 'ETF 레버리지 가이드',
+  lastReviewed: '2026-07-27',
+  answer:
+    '해외 코인 거래소는 원화를 직접 지원하지 않아 원화 출금이 안 됩니다. 자산을 현금화하려면 해외 거래소에서 코인을 국내 거래소로 전송한 뒤 국내에서 원화로 팔아야 하고, 100만원 이상 이동은 트래블룰에 따라 수취인 정보를 맞춰야 합니다. 여기에 자산 동결·사기 위험과 2027년 시행 예정인 가상자산 과세까지 함께 고려해야 합니다.',
+  keyPoints: [
+    '해외 거래소는 원화를 지원하지 않아, 원화로 찾으려면 국내 거래소로 코인을 옮겨 국내에서 매도해야 합니다.',
+    '100만원 이상을 거래소 간 이동할 때는 트래블룰에 따라 받는 거래소와 수취인 영문명을 정확히 입력해야 하며, 정보가 어긋나면 출금이 막힙니다.',
+    '전송 주소 오입력이나 정보 불일치로 자산이 동결될 수 있고, 정식 등록되지 않은 거래소는 출금 거부·사기 위험이 큽니다.',
+    '가상자산 소득 과세는 세 차례 유예를 거쳐 2027년 1월 시행 예정으로, 양도·대여 소득에서 연 250만원을 공제한 뒤 22%(지방세 포함)가 부과됩니다.',
+  ],
+  sources: [
+    { label: '금융정보분석원(FIU)', url: 'https://www.kofiu.go.kr' },
+    { label: '국세청 가상자산 과세 안내', url: 'https://www.nts.go.kr' },
+    { label: '금융감독원 가상자산 유의사항', url: 'https://www.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '해외 코인 거래소에 있는 자산을 원화로 출금하려면 어떻게 해야 하는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494317428' },
+    { summary: '해외 코인 거래소를 이용하려는데 어디를 써야 하고 무엇을 조심해야 하는지', url: 'https://kin.naver.com/qna/detail.naver?docId=456734411' },
+    { summary: '해외 비트코인 선물 거래소를 이용할 때 유의점이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=443985814' },
+  ],
+  sections: [
+    {
+      heading: '해외 거래소는 원화 출금이 안 된다',
+      paragraphs: [
+        '해외 코인 거래소를 쓰다 보면 벽에 부딪히는 지점이 출금입니다. 해외 거래소는 원화 입출금을 지원하지 않기 때문에, 잔고를 원화로 바로 찾을 수 없습니다.',
+        '현금화하려면 단계를 거쳐야 합니다. 해외 거래소에서 보유 코인을 국내 거래소(원화 마켓을 지원하는 곳)의 내 지갑 주소로 전송한 뒤, 국내 거래소에서 그 코인을 원화로 팔아 은행 계좌로 출금하는 흐름입니다. 중간에 코인을 전송하는 과정이 반드시 낍니다.',
+      ],
+    },
+    {
+      heading: '100만원 넘으면 트래블룰이 걸린다',
+      paragraphs: [
+        '거래소 사이로 코인을 옮길 때는 트래블룰을 알아야 합니다. 원화 환산 100만원 이상을 이동하는 경우, 보내는 사람과 받는 사람의 정보를 거래소끼리 주고받도록 한 규제입니다.',
+        '실무에서는 출금 화면에서 받는 거래소를 선택하고 수취인의 영문 이름을 입력해야 하며, 이 정보가 받는 쪽 계정과 정확히 일치해야 출금이 처리됩니다. 이름 철자나 거래소 지정이 어긋나면 출금이 막히거나 지연됩니다. 본인 명의 계정끼리 옮기는 것이 원칙입니다.',
+      ],
+    },
+    {
+      heading: '동결·사기 위험을 먼저 따진다',
+      paragraphs: [
+        '코인 전송은 되돌릴 수 없어, 주소를 한 글자라도 잘못 넣으면 자산을 통째로 잃을 수 있습니다. 트래블룰 정보가 맞지 않아 입금이 보류되거나 자산이 동결되는 사례도 있습니다.',
+        '더 큰 위험은 거래소 자체의 신뢰성입니다. 국내에 정식 신고되지 않은 거래소나 출처가 불분명한 플랫폼은 갑자기 출금을 막거나 원금을 돌려주지 않는 사기로 이어지기도 합니다. 지나치게 높은 수익을 약속하거나 리딩방을 통해 특정 거래소 가입을 유도하는 경우는 특히 경계해야 합니다.',
+      ],
+    },
+    {
+      heading: '2027년 예정된 코인 과세도 챙긴다',
+      paragraphs: [
+        '세금도 미리 알아 두는 편이 좋습니다. 가상자산 소득 과세는 2022년 시행 예정이었다가 세 차례 미뤄져, 현재는 2027년 1월 시행이 예정돼 있습니다. 시행되면 코인을 양도하거나 빌려줘 얻은 소득을 기타소득으로 보고, 연 250만원을 공제한 뒤 20%(지방소득세 포함 22%)를 매깁니다.',
+        '실제 신고·납부는 소득이 생긴 이듬해 5월 종합소득세 기간에 이뤄집니다. 시행 시점과 세부 기준은 이후 법 개정으로 또 바뀔 수 있으니 최신 공지를 확인하는 것이 안전합니다. 가상자산은 원금 전액을 잃을 수 있는 고위험 자산이라는 점을 전제로, 여유 자금 범위에서만 접근하기를 권합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '해외 거래소 코인을 원화로 바로 출금할 수 있나요?',
+      answer:
+        '없습니다. 해외 거래소는 원화를 지원하지 않아, 국내 거래소로 코인을 전송한 뒤 국내에서 원화로 팔아 출금해야 합니다.',
+    },
+    {
+      question: '트래블룰은 얼마부터 적용되나요?',
+      answer:
+        '원화 환산 100만원 이상을 거래소 간 이동할 때 적용됩니다. 받는 거래소와 수취인 영문명을 정확히 입력해야 출금이 처리됩니다.',
+    },
+    {
+      question: '코인 세금은 언제부터 내나요?',
+      answer:
+        '가상자산 소득 과세는 2027년 1월 시행 예정입니다. 연 250만원 공제 후 22%(지방세 포함)가 부과되고, 신고는 이듬해 5월에 합니다.',
+    },
+    {
+      question: '해외 거래소를 쓸 때 가장 조심할 점은요?',
+      answer:
+        '전송 주소 오입력과 정식 신고되지 않은 거래소의 사기 위험입니다. 높은 수익을 약속하며 가입을 유도하는 경우는 특히 경계해야 합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
   pensionSavingsVsIrp,
   etfSharePriceMeaning,
@@ -16787,6 +17232,11 @@ export const GUIDES: GuideDef[] = [
   cryptoPerpetualFundingFee,
   rentalIncomeSeparateVsComprehensiveTax,
   exDividendPriceDrop,
+  pensionSavingsInsuranceVsFund,
+  isaContributionLimitCarryover,
+  spouseGiftTaxExemption,
+  preferredVsCommonStockDividend,
+  overseasCryptoExchangeRisks,
 ];
 
 /**
@@ -16797,6 +17247,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-07-27 · 지식iN 질문 수요 기반 (연금저축보험vs펀드·ISA 납입한도 이월·배우자 증여공제 6억·우선주 배당·해외 코인거래소 위험)
+  'pension-savings-insurance-vs-fund': '2026-07-27',
+  'isa-contribution-limit-carryover': '2026-07-27',
+  'spouse-gift-tax-exemption': '2026-07-27',
+  'preferred-vs-common-stock-dividend': '2026-07-27',
+  'overseas-crypto-exchange-risks': '2026-07-27',
   // 2026-07-24 · 지식iN 질문 수요 기반 (연금저축 초과 납입·생활비 교육비 증여·코인 펀딩비·주택임대소득 과세·배당락)
   'pension-savings-excess-contribution': '2026-07-24',
   'living-education-expense-gift-tax': '2026-07-24',
@@ -17039,17 +17495,17 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption'],
   },
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend'],
   },
   {
     title: '테마·섹터',
     description: '방산·조선·건설·자동차·AI·반도체·빅테크·소프트웨어·보안·로봇·전기차·신재생·희토류·게임·엔터·명품·뷰티·비트코인·인프라 등 특정 테마에 집중하는 섹터 ETF.',
-    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee'],
+    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks'],
   },
   {
     title: '해외·환율',

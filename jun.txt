@@ -1526,3 +1526,44 @@ https://iknowhowinfo.com/guide/living-education-expense-gift-tax
 https://iknowhowinfo.com/guide/crypto-perpetual-funding-fee
 https://iknowhowinfo.com/guide/rental-income-separate-vs-comprehensive-tax
 https://iknowhowinfo.com/guide/ex-dividend-price-drop
+
+## 2026-07-27 · [가이드 발행 · 지식iN 질문 수요 기반]
+
+### 발행 5편 (오늘 KST 2026-07-27, 코퍼스: data/keywords/kin/kin-20260718.json)
+지식iN 신규 수집: 클라우드 IP 네이버 차단(HTTP 000)으로 실패 → 저장 코퍼스(kin-20260718.json, 103문항) 사용(정상 경로).
+
+1. 연금저축보험 vs 연금저축펀드 (pension-savings-insurance-vs-fund)
+   - 출처 질문: "연금저축펀드 ETF 추천 부탁드립니다"·"연금저축부터 가입하는 게 맞을까요?"·"미래에셋 연금저축계좌 활용방안"
+   - 검증: 세액공제 연 600만(IRP 합산 900만), 계좌이체 전환 세제유지, 중도해지 16.5% 기타소득세 (WebSearch 확인)
+
+2. ISA 납입한도 연 2천만원·이월 (isa-contribution-limit-carryover)
+   - 출처 질문: "isa계좌 질문입니다"·"ISA 계좌에 대해 궁금합니다"
+   - 검증: 연 2천만·총 1억 한도, 미납분 다음해 이월 누적, 의무가입 3년 (WebSearch 확인)
+
+3. 배우자 증여공제 6억 절세 (spouse-gift-tax-exemption)
+   - 출처 질문: "자녀에게 증여할 때 세금 얼마나 절약"·"증여세 면제 범위일때 질문"
+   - 검증: 10년 6억 공제, 취득가액 스텝업, 이월과세 주식 1년·부동산 10년, 소액주주 상장주식은 실익 없음 (WebSearch 확인)
+
+4. 우선주 vs 보통주 배당 차이 (preferred-vs-common-stock-dividend)
+   - 출처 질문: "현대차 우선주 2,000주 배당금 문의"·"현대자동차 배당금"
+   - 검증: 의결권 없음/배당 우선, 현대차우·2우B·3우B 추가배당 1%·2%·1%, 시가배당률 이유(주가 낮음) (WebSearch 확인)
+
+5. 해외 코인 거래소 원화 출금·세금·리스크 (overseas-crypto-exchange-risks)
+   - 출처 질문: "비트코인을 원화로 출금질문이요"·"해외코인거래소 추천"·"해외 비트코인 선물거래소 추천부탁드립니다"
+   - 검증: 원화 직접출금 불가(국내거래소 경유), 트래블룰 100만원 이상, 가상자산 과세 2027.1 시행예정(3차 유예)·250만 공제·22% (WebSearch 확인)
+
+### 검증 결과
+- npx tsc --noEmit: 0 에러
+- 신규 블록 em dash(U+2014): 0, en dash: 0, 운영자 메타 금지어: 0
+- SEO: title≤60·desc 120~155·slug ^[a-z0-9-]$·keywords 6개 전편 통과
+- npm run cf:build: 성공, .next/server/app/guide/ 신규 5개 HTML prerender (answer-box·guide-key-points·guide-sources·citation·2026-07-27 발행일 포함 확인)
+
+### 색인 푸시
+(하단 push:guides 실행 결과 기록)
+
+### ★ 오늘 발행 링크
+https://iknowhowinfo.com/guide/pension-savings-insurance-vs-fund
+https://iknowhowinfo.com/guide/isa-contribution-limit-carryover
+https://iknowhowinfo.com/guide/spouse-gift-tax-exemption
+https://iknowhowinfo.com/guide/preferred-vs-common-stock-dividend
+https://iknowhowinfo.com/guide/overseas-crypto-exchange-risks
