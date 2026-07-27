@@ -1605,11 +1605,15 @@ https://iknowhowinfo.com/guide/overseas-crypto-exchange-risks
 - npm run cf:build: 성공, .next/server/app/guide/ 신규 5개 HTML prerender (answer-box·guide-key-points·guide-sources·citation·2026-07-28 발행일 포함 확인)
 
 ### 색인 푸시 (npm run push:guides)
-- 결과는 push 직후 실행분에 기재
+- 대상: 2026-07-28 신규 가이드 5편 + 허브 3(/guide/latest·/guide·/)
+- IndexNow(Bing·Naver): skip (no-site-url · 사이트URL/키 미설정)
+- Google Indexing: skip (no-credentials · 키 미설정)
+- 두 채널 모두 키 미설정 자동 skip → 실행 정상 종료(exit 0)
 
 ### 배포
 - push 대상 브랜치: claude/serene-hamilton-zqzyxi (세션 지정 브랜치)
-- auto-deploy-claude-branch.yml 트리거 브랜치를 ghjbwe→zqzyxi로 갱신 → 워크플로가 main fast-forward → Cloudflare 배포 트리거
+- auto-deploy-claude-branch.yml 트리거 브랜치를 ghjbwe→zqzyxi로 갱신 → 워크플로가 main fast-forward(ffa9713→762ce18) 완료 확인 → Cloudflare 배포 트리거
+- 프로덕션 curl 검증: 클라우드 아웃바운드 프록시 제약으로 이 환경에선 확인 불가. 로컬 prerender 5종 검증 완료(answer-box·key-points·sources·citation·2026-07-28).
 
 ### ★ 오늘 발행 링크
 https://iknowhowinfo.com/guide/individual-stock-dividend-schedule
