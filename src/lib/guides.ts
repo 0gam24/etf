@@ -17043,6 +17043,465 @@ const overseasCryptoExchangeRisks: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-07-28 · 개별주 배당금 시기·확인법 (삼성전자·SK하이닉스 분기배당) */
+const individualStockDividendSchedule: GuideDef = {
+  slug: 'individual-stock-dividend-schedule',
+  title: '삼성전자 배당금 언제·얼마 받나, 분기배당 확인법',
+  tagline: '분기배당 기업은 연 4번, 기준일에 들고 있어야 받는다',
+  description:
+    '삼성전자 배당금이 언제 얼마나 들어오는지 궁금하다면 분기마다 나눠 지급됩니다. 2025년 기준 분기당 365원, 배당기준일과 실제 지급일 시점, 내가 받을 개별주 배당을 미리 확인하는 방법을 SK하이닉스 사례와 함께 한 페이지에 정리했습니다.',
+  keywords: ['삼성전자 배당금', '삼성전자 배당일', '분기배당', '배당기준일', '개별주 배당 확인', 'SK하이닉스 배당', '배당락일'],
+  section: '배당주 가이드',
+  lastReviewed: '2026-07-28',
+  answer:
+    '삼성전자처럼 분기배당을 하는 기업은 3·6·9·12월 말일을 배당기준일로 잡고, 그날 주식을 보유한 주주에게 1년에 네 번 배당금을 나눠 지급합니다. 삼성전자는 2025년 기준 보통주 분기당 365원 안팎을 지급했고, 실제 입금은 기준일에서 대략 한두 달 뒤에 이뤄집니다. 배당금은 기업 실적과 배당 정책에 따라 달라지니 확정 금액은 공시로 확인해야 합니다.',
+  keyPoints: [
+    '삼성전자는 분기배당 기업으로, 3·6·9·12월 말일을 배당기준일로 삼아 연 4회 배당금을 지급합니다.',
+    '2025년 삼성전자 보통주 분기 배당금은 약 365원 수준이었고, 4분기에는 특별배당이 더해져 금액이 커지기도 했습니다.',
+    '배당을 받으려면 배당기준일에 주식을 보유해야 하며, 기준일 직전 매수·직후 매도로도 그 분기 배당은 받을 수 있습니다.',
+    '실제 배당금 입금은 기준일에서 대략 45일에서 두 달 뒤에 이뤄지며, SK하이닉스 등 다른 분기배당 종목도 구조는 비슷합니다.',
+  ],
+  sources: [
+    { label: '금융감독원 전자공시 DART', url: 'https://dart.fss.or.kr' },
+    { label: '삼성전자 IR 주주환원 안내', url: 'https://www.samsung.com/sec/ir/' },
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '삼성전자 배당금이 얼마인지, 언제 지급되는지 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=492533781' },
+    { summary: 'LG전자 배당금이 언제 나오는지 지급 시기를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=249025143' },
+    { summary: 'SK하이닉스 배당금과 분기배당 여부가 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=475549589' },
+  ],
+  comparisonTable: {
+    caption: '삼성전자 분기배당 일정 얼개 (2025년 예시)',
+    columns: ['구분', '배당기준일', '지급 시점(대략)'],
+    rows: [
+      ['1분기', '3월 말일', '5월 중순'],
+      ['2분기', '6월 말일', '8월 중순'],
+      ['3분기', '9월 말일', '11월 중순'],
+      ['4분기(결산)', '12월 말일', '이듬해 4월'],
+    ],
+  },
+  sections: [
+    {
+      heading: '분기배당이란, 1년에 네 번 나눠 준다',
+      paragraphs: [
+        '배당금을 언제 받느냐는 그 기업이 배당을 얼마나 자주 하느냐에 달려 있습니다. 대부분의 국내 기업은 연말에 한 번 결산배당을 하지만, 삼성전자처럼 분기배당을 채택한 곳은 1년에 네 번 배당을 나눠 지급합니다.',
+        '삼성전자는 3월, 6월, 9월, 12월 말일을 배당기준일로 삼습니다. 이 네 시점에 주식을 들고 있으면 해당 분기 배당을 받을 자격이 생깁니다. 자주 나눠 받는 만큼 현금흐름이 매끄러워지는 것이 분기배당의 장점입니다.',
+      ],
+    },
+    {
+      heading: '삼성전자는 분기당 얼마를 줬나',
+      paragraphs: [
+        '금액이 궁금할 텐데, 삼성전자는 2025년 기준 보통주 한 주당 분기마다 365원 안팎을 지급했습니다. 100주를 들고 있었다면 한 분기에 세금 전 3만6천5백원, 1년이면 네 번을 합쳐 대략 그 네 배를 받는 셈입니다.',
+        '분기 정기 배당 외에 결산 시점에 특별배당이 더해지는 해도 있어 4분기 금액이 다른 분기보다 커질 수 있습니다. 다만 배당은 회사 실적과 배당 정책에 따라 매년 달라지므로, 과거 금액을 미래 수치로 단정하지 말고 그때그때 공시로 확인하는 편이 정확합니다.',
+      ],
+    },
+    {
+      heading: '언제 사서 언제까지 들고 있어야 받나',
+      paragraphs: [
+        '배당의 핵심은 배당기준일입니다. 그날 주주명부에 이름이 올라 있어야 배당을 받는데, 우리 증시는 매수 체결 뒤 이틀째에 결제가 되므로 기준일 이틀 전까지는 사 두어야 명부에 오릅니다.',
+        '기준일 다음 날은 배당받을 권리가 떨어져 나가는 배당락일입니다. 이론상 그만큼 주가가 조정되기도 합니다. 배당만 노려 기준일 직전에 사고 배당락 후 바로 파는 방법도 있지만, 배당락으로 주가가 빠지면 실익이 크지 않을 수 있다는 점은 감안해야 합니다.',
+      ],
+    },
+    {
+      heading: '내 배당금, 미리 확인하는 법',
+      paragraphs: [
+        '앞으로 받을 배당은 기업이 이사회에서 정해 공시합니다. 전자공시 시스템이나 증권사 앱의 종목 정보에서 배당 공시와 배당기준일, 주당 배당금을 확인할 수 있습니다. 확정 전이라면 과거 배당 이력으로 대략을 가늠하는 정도가 현실적입니다.',
+        '이미 지급된 배당은 증권사 앱의 거래내역이나 입출금 내역에서 배당금 항목으로 잡힙니다. 국내 주식 배당은 15.4%가 원천징수된 뒤 통장에 들어오니, 표시 금액과 실수령액이 다른 점도 알아 두면 좋습니다. 개별 종목 투자 판단과 결과는 투자자 본인의 몫입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '삼성전자 배당금은 1년에 몇 번 주나요?',
+      answer:
+        '분기배당이라 1년에 네 번 줍니다. 3·6·9·12월 말일을 배당기준일로 삼아 그때 보유한 주주에게 분기마다 배당금을 지급합니다.',
+    },
+    {
+      question: '삼성전자 분기 배당금은 얼마인가요?',
+      answer:
+        '2025년 기준 보통주 한 주당 분기 약 365원 수준이었습니다. 결산 때 특별배당이 붙는 해도 있어 4분기 금액은 더 커질 수 있고, 매년 달라집니다.',
+    },
+    {
+      question: '배당받으려면 언제까지 사야 하나요?',
+      answer:
+        '배당기준일에 주주명부에 올라 있어야 합니다. 결제까지 이틀이 걸리므로 기준일 이틀 전까지는 매수해 두어야 그 분기 배당을 받습니다.',
+    },
+    {
+      question: '배당금은 기준일에 바로 들어오나요?',
+      answer:
+        '아닙니다. 실제 입금은 배당기준일에서 대략 45일에서 두 달 뒤입니다. 국내 주식 배당은 15.4% 원천징수 후 계좌에 들어옵니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-28 · 국내 비트코인 ETF 도입 현황·세금 */
+const koreaBitcoinEtfStatusTax: GuideDef = {
+  slug: 'korea-bitcoin-etf-status-tax',
+  title: '국내 비트코인 ETF 언제 나오나, 세금은 어떻게',
+  tagline: '아직 상장 전, 도입 추진 단계와 코인 직접 과세를 나눠 본다',
+  description:
+    '국내에서 비트코인 현물 ETF를 살 수 있는지 궁금하다면 아직 상장 전이고 도입이 추진되는 단계입니다. 자본시장법 개정 현황과 예상 과세, 지금 코인을 직접 보유할 때 2027년부터 붙는 세금까지 실제 기준으로 하나씩 짚어 정리했습니다.',
+  keywords: ['비트코인 ETF', '비트코인 현물 ETF', '국내 비트코인 ETF', '코인 세금', '가상자산 과세 2027', '비트코인 ETF 세금'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-07-28',
+  answer:
+    '국내에는 아직 비트코인 현물 ETF가 상장돼 있지 않습니다. 자본시장법상 ETF의 기초자산에 가상자산이 빠져 있어 지금은 출시가 막혀 있고, 정부가 2026년 하반기 들어 법 개정으로 도입을 추진하는 단계입니다. 실제 상장까지는 시간이 더 걸리므로, 당장 비트코인에 투자하려면 코인을 직접 보유하는 방식이 현실적이며 이 경우 2027년부터 예정된 가상자산 과세를 따져야 합니다.',
+  keyPoints: [
+    '국내 비트코인 현물 ETF는 2026년 7월 현재 상장 전이며, 자본시장법상 기초자산에 가상자산이 없어 출시가 불가능한 상태입니다.',
+    '정부는 2026년 하반기 경제 전략에서 자본시장법 개정으로 비트코인 현물 ETF 도입을 추진하겠다고 밝혔지만, 실제 상장까지는 상당한 시간이 걸릴 전망입니다.',
+    '해외 상장 ETF는 일반적으로 매매차익에 양도소득세 22%(연 250만원 공제 후), 분배금에 배당소득세 15.4%가 적용됩니다.',
+    '코인을 직접 보유해 양도·대여로 얻은 소득은 2027년 1월 시행 예정인 과세에 따라 연 250만원 공제 후 22%(지방세 포함)가 부과될 예정입니다.',
+  ],
+  sources: [
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+    { label: '국세청 가상자산 과세 안내', url: 'https://www.nts.go.kr' },
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '비트코인 ETF에 붙는 세금이 어떻게 되는지 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=475553179' },
+    { summary: '비트코인 ETF가 도입되면 시장에 어떤 영향이 있는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=461078410' },
+    { summary: '비트코인 선물 거래에 붙는 세금이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=470973486' },
+  ],
+  comparisonTable: {
+    caption: '비트코인 투자 방식별 국내 과세 얼개',
+    columns: ['방식', '현재 국내 가능 여부', '세금 기준'],
+    rows: [
+      ['국내 비트코인 현물 ETF', '상장 전(도입 추진)', '상장 시 규정 확정 예정'],
+      ['해외 상장 ETF 일반', '종목·규정에 따라 제한', '양도세 22%·배당세 15.4%'],
+      ['코인 직접 보유', '신고 거래소서 가능', '2027년 과세 예정(250만 공제 후 22%)'],
+    ],
+  },
+  sections: [
+    {
+      heading: '국내엔 아직 비트코인 현물 ETF가 없다',
+      paragraphs: [
+        '결론부터 짚으면, 2026년 7월 현재 국내 증시에는 비트코인 현물 ETF가 상장돼 있지 않습니다. 미국에서는 이미 큰 규모로 거래되고 있어 국내에도 있을 법하지만, 우리 제도는 아직 문턱을 넘지 못했습니다.',
+        '이유는 자본시장법에 있습니다. ETF가 담을 수 있는 기초자산 범위에 주식·채권·통화 등은 있지만 비트코인 같은 가상자산은 빠져 있습니다. 법이 허용하지 않으니 운용사가 상품을 내놓을 수 없는 구조입니다.',
+      ],
+    },
+    {
+      heading: '도입은 추진 중, 다만 시간이 걸린다',
+      paragraphs: [
+        '분위기는 바뀌고 있습니다. 정부는 2026년 하반기 경제 전략을 발표하면서 자본시장법의 기초자산 범위에 가상자산을 넣어 비트코인 현물 ETF 도입을 뒷받침하겠다고 밝혔습니다. 법이 바뀌면 국내 상장의 길이 열립니다.',
+        '그렇다고 곧바로 살 수 있는 것은 아닙니다. 법 개정 자체에 시간이 필요하고, 지수 산정 기준이나 자산 보관 방식 같은 실무 과제도 남아 있습니다. 상장 시점과 세부 규정은 이후 확정되므로, 도입 소식만 보고 미리 움직이기보다 공식 발표를 확인하는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: 'ETF가 생기면 세금은 어떻게 될까',
+      paragraphs: [
+        '아직 국내 상품이 없으니 그 세금도 확정 전입니다. 다만 기존 ETF 과세 틀을 보면 방향은 가늠할 수 있습니다. 국내 상장 ETF는 매매차익과 분배금에 배당소득세 방식이 적용되는 경우가 많고, 해외 상장 ETF는 매매차익에 양도소득세 22%(연 250만원 공제 후), 분배금에 배당소득세 15.4%가 붙습니다.',
+        '비트코인 현물 ETF가 어느 틀에 들어갈지는 상장 때 규정으로 정해집니다. 지금 단계에서 "이렇게 과세된다"고 단정하기는 이르며, 상장이 가시화되면 그때 확정된 기준을 확인하는 것이 맞습니다.',
+      ],
+    },
+    {
+      heading: '지금 투자하려면 코인 직접 보유가 현실',
+      paragraphs: [
+        'ETF를 기다리는 대신 당장 비트코인에 투자하려면 신고된 거래소에서 코인을 직접 사는 방식이 현재로선 현실적입니다. 이 경우 세금은 ETF가 아니라 가상자산 과세 규정을 따릅니다.',
+        '가상자산 소득 과세는 여러 차례 미뤄져 2027년 1월 시행이 예정돼 있습니다. 시행되면 코인을 팔거나 빌려줘 얻은 소득에서 연 250만원을 공제한 뒤 22%(지방소득세 포함)를 매기고, 신고는 이듬해 5월에 합니다. 가상자산은 원금 전부를 잃을 수 있는 고위험 자산인 만큼, 세금 이전에 감당 가능한 범위인지부터 따지는 것이 우선입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '지금 국내에서 비트코인 현물 ETF를 살 수 있나요?',
+      answer:
+        '없습니다. 2026년 7월 현재 국내에는 비트코인 현물 ETF가 상장돼 있지 않습니다. 자본시장법상 기초자산에 가상자산이 빠져 있어 출시가 막혀 있습니다.',
+    },
+    {
+      question: '국내 비트코인 ETF는 언제 나오나요?',
+      answer:
+        '정부가 2026년 하반기에 자본시장법 개정으로 도입을 추진하겠다고 밝혔지만, 법 개정과 실무 과제가 남아 실제 상장까지는 시간이 더 걸릴 전망입니다.',
+    },
+    {
+      question: '코인을 직접 사면 세금은 언제부터 내나요?',
+      answer:
+        '가상자산 소득 과세는 2027년 1월 시행 예정입니다. 양도·대여 소득에서 연 250만원 공제 후 22%(지방세 포함)가 부과되고, 신고는 이듬해 5월에 합니다.',
+    },
+    {
+      question: '해외 비트코인 ETF는 세금이 어떻게 되나요?',
+      answer:
+        '해외 상장 ETF 일반 기준으로 매매차익은 양도세 22%(250만원 공제 후), 분배금은 배당세 15.4%가 적용됩니다. 다만 종목·규정에 따라 국내 매매가 제한될 수 있습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-28 · 연금저축보험을 펀드로 계약이전 */
+const pensionSavingsInsuranceToFundTransfer: GuideDef = {
+  slug: 'pension-savings-insurance-to-fund-transfer',
+  title: '연금저축보험을 펀드로, 해지 말고 계약이전하기',
+  tagline: '해지하면 세금 폭탄, 계약이전이면 혜택 그대로 이사',
+  description:
+    '연금저축보험 수익률이 낮아 펀드로 바꾸고 싶다면 해지가 아니라 계약이전으로 옮기면 그동안 받은 세액공제와 적립금이 그대로 유지됩니다. 증권사에서 신청하는 절차와, 보험 해지 수수료 등 옮기기 전에 확인할 점을 정리했습니다.',
+  keywords: ['연금저축 계약이전', '연금저축보험 펀드 전환', '연금저축 이전', '연금저축펀드 갈아타기', '세액공제 유지', '연금계좌 이체'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-07-28',
+  answer:
+    '연금저축보험을 연금저축펀드로 바꿀 때는 보험을 해지하는 것이 아니라 계약이전(계좌이체)을 신청하면 됩니다. 새로 개설한 증권사 연금저축계좌에서 이전을 신청하면 기존 보험의 적립금이 그대로 넘어오고, 그동안 받은 세액공제도 토해내지 않습니다. 해지가 아니라 계좌만 옮기는 것이라 세제 혜택이 유지되지만, 보험 상품 특성상 해지 수수료나 원금 손실이 생길 수 있어 이전 전에 확인해야 합니다.',
+  keyPoints: [
+    '연금저축은 보험에서 펀드로 해지 없이 계약이전이 가능하며, 이전은 해지가 아니라 계좌를 옮기는 절차입니다.',
+    '계약이전은 세액공제를 받은 적립금을 그대로 넘기기 때문에, 중도해지 시 물게 되는 16.5% 기타소득세를 피할 수 있습니다.',
+    '신청은 옮겨갈 증권사에서 연금저축계좌를 만든 뒤 이전을 접수하면 되고, 기존 보험 해지 절차는 자동으로 이어집니다.',
+    '연금저축보험은 초기 사업비와 해지공제 탓에 가입 초반 이전 시 적립금이 낸 돈보다 적을 수 있어, 예상 이전 금액을 미리 확인해야 합니다.',
+  ],
+  sources: [
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '찾기쉬운 생활법령정보 연금저축', url: 'https://www.easylaw.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'IRP·연금저축·연금저축펀드의 차이와 활용을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494287819' },
+    { summary: '연금저축계좌를 어떻게 활용하면 좋은지 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493610254' },
+    { summary: '연금저축펀드 운용과 상품 선택이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493466389' },
+  ],
+  comparisonTable: {
+    caption: '연금저축 해지 vs 계약이전',
+    columns: ['구분', '중도해지', '계약이전'],
+    rows: [
+      ['세액공제분 처리', '16.5% 기타소득세', '유지(과세 없음)'],
+      ['적립금', '해지환급금만 수령', '전액 그대로 이동'],
+      ['연금 자격', '소멸', '그대로 유지'],
+      ['운용 방식', '끝남', '펀드·ETF로 직접 운용'],
+    ],
+  },
+  sections: [
+    {
+      heading: '해지하면 손해, 이전이 답인 이유',
+      paragraphs: [
+        '연금저축보험 수익률이 답답해 펀드로 옮기고 싶을 때 가장 먼저 떠오르는 것이 해지입니다. 그런데 그냥 해지하면 손해가 큽니다. 그동안 세액공제로 돌려받은 금액과 운용수익에 16.5% 기타소득세가 매겨지기 때문입니다.',
+        '방법은 해지가 아니라 계약이전입니다. 연금저축은 같은 연금저축 안에서 보험, 펀드, 신탁끼리 계좌를 옮길 수 있게 돼 있습니다. 계좌를 이사하는 것이라 세제 혜택이 그대로 따라오고, 세금을 토해낼 일이 없습니다.',
+      ],
+    },
+    {
+      heading: '이전 신청은 어디서, 어떻게 하나',
+      paragraphs: [
+        '절차는 생각보다 단순합니다. 옮겨갈 증권사에서 연금저축계좌(연금저축펀드)를 먼저 개설한 뒤, 그 증권사에 기존 보험 계좌를 이곳으로 이전해 달라고 신청하면 됩니다. 요즘은 증권사 앱에서 이전 신청까지 되는 곳이 많습니다.',
+        '내가 보험사에 따로 해지를 요청할 필요는 없습니다. 받는 증권사가 보험사에 이전을 통보하면 해지와 자금 이동이 자동으로 진행됩니다. 이전이 끝나면 넘어온 적립금으로 국내외 지수 ETF나 채권형 펀드 등을 직접 골라 운용할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '옮기기 전에 꼭 확인할 것',
+      paragraphs: [
+        '좋은 점만 있는 것은 아닙니다. 연금저축보험은 가입 초기에 사업비를 많이 떼고 해지공제라는 것이 붙어 있어, 가입한 지 얼마 안 된 상태에서 이전하면 넘어오는 적립금이 그동안 낸 돈보다 적을 수 있습니다. 사실상 손실을 확정하고 옮기는 셈이 될 수 있습니다.',
+        '그래서 이전 전에 현재 해지환급금(이전 가능 금액)이 얼마인지 보험사에 확인하는 것이 먼저입니다. 납입 기간이 길어 사업비를 이미 대부분 떼인 계좌라면 이전 손실이 작고, 초반이라면 조금 더 기다렸다가 옮기는 것이 나을 수도 있습니다. 본인 계좌 상황에 맞춰 판단할 문제입니다.',
+      ],
+    },
+    {
+      heading: '이전한 뒤 무엇이 달라지나',
+      paragraphs: [
+        '보험에서 펀드로 옮기면 운용의 주도권이 나에게 넘어옵니다. 공시이율로 굴러가던 보험과 달리, 펀드 계좌에서는 어떤 상품을 담을지 직접 정하고 시장 상황에 맞춰 조정할 수 있습니다. 잘 굴리면 수익률을 높일 여지가 생기지만, 반대로 손실 위험도 스스로 지게 됩니다.',
+        '연금저축의 세액공제 한도나 연금 수령 시 저율과세 같은 혜택은 이전해도 그대로입니다. 계좌 형태만 바뀔 뿐 연금저축이라는 성격은 유지되니, 노후 자금이라는 목적에 맞게 위험을 관리하며 운용하는 것이 좋습니다. 이 글은 정보 제공용이며 구체적인 이전 손익은 계좌마다 다릅니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '연금저축보험을 펀드로 바꾸면 세금을 내나요?',
+      answer:
+        '계약이전으로 옮기면 세금이 없습니다. 해지가 아니라 계좌를 이동하는 것이라 세액공제받은 적립금을 그대로 넘겨 16.5% 기타소득세를 피할 수 있습니다.',
+    },
+    {
+      question: '이전 신청은 어디에 하나요?',
+      answer:
+        '옮겨갈 증권사에서 연금저축계좌를 만든 뒤 그 증권사에 이전을 신청하면 됩니다. 보험사에 따로 해지를 요청할 필요 없이 자동으로 처리됩니다.',
+    },
+    {
+      question: '옮기면 낸 돈을 다 가져오나요?',
+      answer:
+        '가입 초기라면 사업비와 해지공제 탓에 넘어오는 적립금이 낸 돈보다 적을 수 있습니다. 이전 전에 해지환급금을 보험사에 확인하는 것이 좋습니다.',
+    },
+    {
+      question: '이전하면 연금 혜택이 사라지나요?',
+      answer:
+        '아닙니다. 세액공제 한도와 연금 수령 시 저율과세 같은 혜택은 그대로 유지됩니다. 계좌 형태만 보험에서 펀드로 바뀔 뿐입니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-28 · 미국주식 배당소득세 원천징수 15% */
+const usStockDividendWithholdingTax: GuideDef = {
+  slug: 'us-stock-dividend-withholding-tax',
+  title: '미국주식 배당소득세 15%, 국내서 또 떼나요',
+  tagline: '한미조세협약 15%로 끝, 다만 금융소득 2천만 넘으면 종합과세',
+  description:
+    '미국주식이나 미국 ETF 배당에서 15%가 빠졌는데 한국에서 또 내는지 궁금하다면, 한미조세협약 15% 원천징수로 국내 추가 원천징수는 대개 없습니다. 금융소득 2천만원 초과 시 종합과세와 외국납부세액공제까지 정리했습니다.',
+  keywords: ['미국주식 배당소득세', '미국 배당 원천징수 15%', '한미조세협약', '금융소득종합과세', '해외주식 배당 세금', '외국납부세액공제'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-07-28',
+  answer:
+    '미국주식 배당은 미국에서 한미조세협약에 따라 15%가 원천징수되고, 이 세율이 국내 배당소득세율 14%보다 높아 국내에서 추가로 원천징수하지 않는 것이 일반적입니다. 즉 배당의 실효 세부담은 15% 선에서 끝나는 경우가 많습니다. 다만 한 해 금융소득(이자+배당)이 2천만원을 넘으면 종합과세 대상이 되어, 다른 소득과 합산해 신고하고 외국납부세액공제로 미국에 낸 세금을 조정하게 됩니다.',
+  keyPoints: [
+    '미국주식 배당은 한미조세협약에 따라 미국에서 15%가 원천징수되며, 국내 일반 배당소득세율은 14%(지방세 포함 15.4%)입니다.',
+    '미국 원천징수 15%가 국내 세율보다 높아, 배당이 2천만원 이하면 국내에서 추가로 떼지 않고 분리과세로 끝나는 것이 일반적입니다.',
+    '한 해 이자와 배당을 합친 금융소득이 2천만원을 넘으면 초과분이 종합과세되어 다른 소득과 합산해 누진세율로 신고합니다.',
+    '종합과세로 넘어가면 미국에 이미 낸 세금은 외국납부세액공제로 한도 안에서 빼주어, 같은 배당에 이중으로 과세되지 않도록 조정합니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '국세청 한미 조세조약 안내', url: 'https://www.nts.go.kr' },
+    { label: '기획재정부', url: 'https://www.moef.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '해외주식 배당 등 주식 관련 세금이 어떻게 매겨지는지 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494355422' },
+    { summary: '미국 배당소득이 다른 소득 기준에 포함되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494353655' },
+    { summary: '미국 ETF 투자 시 절세 방법이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494339573' },
+  ],
+  comparisonTable: {
+    caption: '미국주식 배당 세금 얼개',
+    columns: ['구분', '금융소득 2천만원 이하', '2천만원 초과'],
+    rows: [
+      ['미국 원천징수', '15%', '15%'],
+      ['국내 추가 원천징수', '없음(분리과세)', '해당분 종합과세'],
+      ['신고 방식', '별도 신고 불필요', '5월 종합소득세 신고'],
+      ['미국 납부세액', '그대로 종결', '외국납부세액공제로 조정'],
+    ],
+  },
+  sections: [
+    {
+      heading: '왜 배당에서 15%가 빠졌을까',
+      paragraphs: [
+        '미국주식이나 미국 ETF에서 배당을 받으면 통장에 들어오기 전에 15%가 먼저 빠져 있습니다. 이건 미국이 외국인 투자자에게 매기는 배당 원천징수세입니다.',
+        '원래 미국은 외국인 배당에 30%를 떼지만, 한국과 미국이 맺은 조세협약 덕분에 우리 투자자에게는 15%로 낮춰 적용합니다. 증권사가 배당을 지급할 때 이 15%를 자동으로 떼고 나머지를 넣어 주기 때문에, 투자자가 따로 할 일은 없습니다.',
+      ],
+    },
+    {
+      heading: '한국에서 또 떼지 않는 이유',
+      paragraphs: [
+        '가장 궁금한 지점이 여기입니다. 미국에서 이미 15%를 뗐는데 한국에서 또 15.4%를 떼면 이중으로 내는 것 아니냐는 걱정입니다. 결론은 대개 그렇지 않습니다.',
+        '국내 배당소득세율은 14%(지방소득세를 더하면 15.4%)인데, 미국이 뗀 15%가 이보다 높습니다. 이렇게 외국 원천징수세율이 국내 세율보다 높으면 국내에서 추가로 원천징수하지 않습니다. 그래서 배당 금액이 크지 않다면 미국에서 뗀 15%로 세금이 사실상 마무리됩니다.',
+      ],
+    },
+    {
+      heading: '금융소득 2천만원을 넘으면 달라진다',
+      paragraphs: [
+        '문턱은 금융소득 2천만원입니다. 한 해 동안 받은 이자와 배당을 모두 합쳐 2천만원을 넘으면, 넘는 부분은 분리과세로 끝나지 않고 종합과세 대상이 됩니다. 미국 배당도 이 합산에 들어갑니다.',
+        '종합과세가 되면 그 금융소득을 근로소득 같은 다른 소득과 합쳐 이듬해 5월에 종합소득세로 신고합니다. 소득이 커질수록 세율이 올라가는 누진 구조라, 고배당 포트폴리오를 크게 굴린다면 2천만원 선을 넘는지 미리 가늠해 두는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '이중과세는 외국납부세액공제로 조정',
+      paragraphs: [
+        '종합과세로 넘어가면 미국에 이미 낸 15%가 아까울 수 있는데, 이때 작동하는 장치가 외국납부세액공제입니다. 종합소득세를 계산할 때 미국에 납부한 세액을 한도 안에서 빼 주어, 같은 배당에 두 번 세금을 물지 않도록 맞춥니다.',
+        '실무에서는 증권사가 주는 외화 배당 내역과 원천징수 자료를 근거로 신고합니다. 환율 적용, 공제 한도 계산이 얽혀 있어 금액이 크면 홈택스 자료를 대조하거나 세무 도움을 받는 편이 안전합니다. 세부 적용은 개인 상황에 따라 달라지니 이 글은 참고용으로만 활용하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '미국 배당에서 뗀 15%, 한국에서 또 내나요?',
+      answer:
+        '대개 아닙니다. 미국 원천징수 15%가 국내 세율 14%보다 높아, 배당이 2천만원 이하면 국내에서 추가로 떼지 않고 분리과세로 끝납니다.',
+    },
+    {
+      question: '미국 배당 원천징수세율은 왜 15%인가요?',
+      answer:
+        '미국은 외국인 배당에 원래 30%를 매기지만, 한미조세협약에 따라 한국 투자자에게는 15%로 낮춰 적용합니다. 증권사가 자동으로 뗍니다.',
+    },
+    {
+      question: '금융소득이 얼마를 넘으면 종합과세되나요?',
+      answer:
+        '한 해 이자와 배당을 합친 금융소득이 2천만원을 넘으면 초과분이 종합과세됩니다. 미국 배당도 이 합산에 포함됩니다.',
+    },
+    {
+      question: '종합과세되면 미국에 낸 세금은 어떻게 되나요?',
+      answer:
+        '외국납부세액공제로 조정합니다. 종합소득세를 계산할 때 미국에 낸 세액을 한도 안에서 빼 주어 이중과세를 막습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-28 · 코인 투자 사기 신호 판별 */
+const cryptoInvestmentScamSigns: GuideDef = {
+  slug: 'crypto-investment-scam-signs',
+  title: '코인 리딩방·가짜 거래소 사기 신호 거르는 법',
+  tagline: '원금 보장, 미신고 거래소, 개인키 요구는 위험 신호',
+  description:
+    '코인 투자 권유가 사기인지 헷갈린다면 원금·고수익 보장, 미신고 거래소 유도, 개인키 요구는 대표적인 위험 신호입니다. FIU 신고 거래소 확인법과 리딩방·가짜 거래소 수법, 피해를 줄이는 대처 방법까지 사례로 정리했습니다.',
+  keywords: ['코인 사기', '가상자산 투자사기', '미신고 거래소', '코인 리딩방', 'FIU 신고 거래소', '가짜 거래소', '코인 사기 예방'],
+  section: 'ETF 레버리지 가이드',
+  lastReviewed: '2026-07-28',
+  answer:
+    '코인 투자에서 원금 보장이나 고수익을 확정적으로 약속하고, 처음 듣는 미신고 거래소 가입을 유도하며, 개인키나 신분증을 요구한다면 사기일 가능성이 큽니다. 거래 전에 그 업체가 금융정보분석원(FIU)에 신고된 사업자인지부터 확인하고, 신고 명단에 없다면 이용하지 않는 것이 안전합니다. 이미 자금을 넣었다면 즉시 인출을 시도하고 금융감독원 등에 신고하는 것이 피해를 줄이는 길입니다.',
+  keyPoints: [
+    '내국인 대상 영업은 FIU 신고 사업자만 합법이며, 신고 명단에 없는 거래소는 이용 시 피해를 봐도 구제받기 어렵습니다.',
+    '원금 보장, 확정 고수익, 비공개 정보, 글로벌 상장 예정 같은 문구는 금융당국이 꼽는 대표적인 투자사기 유인 표현입니다.',
+    '적발된 불법 업체의 평균 수수료는 1.5%에서 최대 10%로, 국내 주요 원화거래소 평균의 수십 배에 달한 사례가 보고됐습니다.',
+    '개인키·로그인 정보·신분증 사본을 요구하면 응하지 말고, 사기가 의심되면 곧바로 자산을 인출한 뒤 금융감독원에 신고해야 합니다.',
+  ],
+  sources: [
+    { label: '금융정보분석원(FIU)', url: 'https://www.kofiu.go.kr' },
+    { label: '금융감독원 불법금융신고센터', url: 'https://www.fss.or.kr' },
+    { label: '경찰청 사이버수사', url: 'https://ecrm.police.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '이용 중인 코인 거래처가 사기인지 판단이 서지 않는다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494353407' },
+    { summary: '특정 코인 업체가 사기 업체가 맞는지 피해 여부를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=421254953' },
+    { summary: '코인 리딩방을 통한 투자로 피해를 봤다며 도움을 구하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=452614257' },
+  ],
+  comparisonTable: {
+    caption: '정상 거래소 vs 사기 의심 업체',
+    columns: ['구분', '정상(신고) 거래소', '사기 의심 업체'],
+    rows: [
+      ['FIU 신고', '명단에 등록', '미신고·확인 불가'],
+      ['수익 표현', '변동·위험 고지', '원금·고수익 보장'],
+      ['가입 경로', '직접 검색·앱', 'SNS·리딩방 유도'],
+      ['요구 정보', '본인확인 절차', '개인키·신분증 별도 요구'],
+    ],
+  },
+  sections: [
+    {
+      heading: '먼저, 신고된 거래소인지 확인한다',
+      paragraphs: [
+        '코인 사기를 거르는 첫 단추는 업체가 합법인지 확인하는 것입니다. 국내에서 내국인을 상대로 가상자산 영업을 하려면 금융정보분석원, 곧 FIU에 신고한 사업자여야 합니다. 신고 명단에 없는 업체가 내국인을 대상으로 영업한다면 그 자체가 불법입니다.',
+        'FIU 홈페이지에서 신고된 가상자산사업자 명단을 누구나 조회할 수 있습니다. 처음 보는 거래소나 지인이 소개한 플랫폼이라면, 돈을 넣기 전에 이 명단부터 확인하는 습관이 필요합니다. 미신고 업체는 이용자 자산 보호 장치가 없어 피해를 봐도 되찾기 어렵습니다.',
+      ],
+    },
+    {
+      heading: '이런 말이 나오면 의심한다',
+      paragraphs: [
+        '사기에는 반복되는 말버릇이 있습니다. 원금을 보장한다, 매달 몇 퍼센트 수익을 확정으로 준다, 아직 공개되지 않은 정보다, 곧 대형 거래소에 상장된다 같은 표현입니다. 금융당국이 투자사기 유인 문구로 반복해서 지목하는 것들입니다.',
+        '투자에 확정 수익이란 없습니다. 위험을 알리지 않고 수익만 강조하거나, 이미 유명한 코인을 시세보다 싸게 준다며 접근하는 경우도 조심해야 합니다. 돈을 받은 뒤 이름만 같고 실체는 다른 가짜 코인을 보내는 수법도 보고됩니다.',
+      ],
+    },
+    {
+      heading: '리딩방과 가짜 거래소의 전형',
+      paragraphs: [
+        '요즘 사기는 SNS와 메신저로 파고듭니다. 낯선 사람이 친근하게 접근해 리딩방으로 이끈 뒤, 자기들이 지정한 거래소에 가입시키는 흐름이 흔합니다. 그 거래소는 화면상 수익이 불어나는 것처럼 보이지만, 막상 출금하려 하면 세금이나 수수료를 명목으로 추가 입금을 요구하며 돈을 묶어 둡니다.',
+        '불법 업체는 수수료도 비정상적입니다. 적발 사례를 보면 평균 수수료가 1.5%에서 많게는 10%로, 국내 주요 원화거래소 평균의 수십 배에 이른 경우가 있었습니다. 출금이 자꾸 막히거나 추가 입금을 계속 요구한다면 사기 신호로 봐야 합니다.',
+      ],
+    },
+    {
+      heading: '당했다면, 이렇게 대처한다',
+      paragraphs: [
+        '피해가 의심되면 시간이 관건입니다. 우선 남은 자산이 있으면 즉시 인출을 시도하고, 업체가 요구하는 개인키나 로그인 정보, 신분증 사본은 절대 넘기지 않아야 합니다. 이 정보들이 넘어가면 계정과 자산이 통째로 털릴 수 있습니다.',
+        '이후에는 금융감독원 불법금융신고센터나 경찰에 신고해 기록을 남기고, 거래 내역과 대화 내용을 증거로 보관합니다. 가상자산 거래는 되돌리기 어렵고 국경을 넘나들어 회수가 쉽지 않은 만큼, 무엇보다 넣기 전에 거르는 것이 가장 확실한 방어입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '거래소가 사기인지 어떻게 확인하나요?',
+      answer:
+        'FIU 홈페이지에서 신고된 가상자산사업자 명단을 조회하세요. 내국인 대상 영업은 신고 사업자만 합법이며, 명단에 없으면 이용하지 않는 것이 안전합니다.',
+    },
+    {
+      question: '어떤 문구가 사기 신호인가요?',
+      answer:
+        '원금 보장, 확정 고수익, 비공개 정보, 글로벌 상장 예정 같은 표현입니다. 위험은 알리지 않고 수익만 강조하면 일단 의심해야 합니다.',
+    },
+    {
+      question: '출금이 자꾸 막히는데 사기인가요?',
+      answer:
+        '출금할 때 세금·수수료 명목으로 추가 입금을 요구하며 돈을 묶어 두는 것은 가짜 거래소의 전형적 수법입니다. 응하지 말고 신고하세요.',
+    },
+    {
+      question: '이미 피해를 봤다면 어떻게 하나요?',
+      answer:
+        '남은 자산은 즉시 인출을 시도하고 개인키·신분증은 넘기지 마세요. 이후 금융감독원 불법금융신고센터나 경찰에 증거와 함께 신고해야 합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
   pensionSavingsVsIrp,
   etfSharePriceMeaning,
@@ -17237,6 +17696,11 @@ export const GUIDES: GuideDef[] = [
   spouseGiftTaxExemption,
   preferredVsCommonStockDividend,
   overseasCryptoExchangeRisks,
+  individualStockDividendSchedule,
+  koreaBitcoinEtfStatusTax,
+  pensionSavingsInsuranceToFundTransfer,
+  usStockDividendWithholdingTax,
+  cryptoInvestmentScamSigns,
 ];
 
 /**
@@ -17247,6 +17711,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-07-28 · 지식iN 질문 수요 기반 (삼성전자 분기배당 확인법·국내 비트코인 ETF 도입 현황과 세금·연금저축보험 계약이전·미국주식 배당 원천징수·코인 사기 신호)
+  'individual-stock-dividend-schedule': '2026-07-28',
+  'korea-bitcoin-etf-status-tax': '2026-07-28',
+  'pension-savings-insurance-to-fund-transfer': '2026-07-28',
+  'us-stock-dividend-withholding-tax': '2026-07-28',
+  'crypto-investment-scam-signs': '2026-07-28',
   // 2026-07-27 · 지식iN 질문 수요 기반 (연금저축보험vs펀드·ISA 납입한도 이월·배우자 증여공제 6억·우선주 배당·해외 코인거래소 위험)
   'pension-savings-insurance-vs-fund': '2026-07-27',
   'isa-contribution-limit-carryover': '2026-07-27',
@@ -17495,17 +17965,17 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax'],
   },
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule'],
   },
   {
     title: '테마·섹터',
     description: '방산·조선·건설·자동차·AI·반도체·빅테크·소프트웨어·보안·로봇·전기차·신재생·희토류·게임·엔터·명품·뷰티·비트코인·인프라 등 특정 테마에 집중하는 섹터 ETF.',
-    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks'],
+    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs'],
   },
   {
     title: '해외·환율',

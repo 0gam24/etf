@@ -1576,3 +1576,44 @@ https://iknowhowinfo.com/guide/isa-contribution-limit-carryover
 https://iknowhowinfo.com/guide/spouse-gift-tax-exemption
 https://iknowhowinfo.com/guide/preferred-vs-common-stock-dividend
 https://iknowhowinfo.com/guide/overseas-crypto-exchange-risks
+
+## 2026-07-28 · [가이드 발행] 지식iN 질문 수요 기반 5편
+
+지식iN 신규 수집: 실패(클라우드 IP 네이버 차단, HTTP 000 · 1회 재시도 후 정상 처리). 사용 코퍼스: data/keywords/kin/kin-20260718.json (103개 질문).
+
+발행 5편:
+1. 삼성전자 배당금 언제·얼마, 분기배당 확인법 (individual-stock-dividend-schedule)
+   - 출처 질문: "삼성전자 배당금 얼만가요"·"LG전자 배당 언제인가요"·"sk하이닉스 배당" (개별주 배당 시기 반복 수요 6건)
+   - 검증: 삼성전자 분기배당 연4회, 기준일 3·6·9·12월 말일, 2025 분기당 365원(4분기 특별배당), 지급 기준일+약45일~2개월 (WebSearch 확인)
+2. 국내 비트코인 ETF 도입 현황·세금 (korea-bitcoin-etf-status-tax)
+   - 출처 질문: "비트코인 etf 세금"·"비트코인 ETF 되면 알트장"·"비트코인 선물 거래 세금"
+   - 검증: 2026.7 현재 국내 현물 ETF 미상장(자본시장법 기초자산에 가상자산 없음), 2026 하반기 개정 추진(상장까진 시간), 코인 직접은 2027.1 과세예정 250만공제·22% (WebSearch 확인)
+3. 연금저축보험을 펀드로 계약이전 (pension-savings-insurance-to-fund-transfer)
+   - 출처 질문: "IRP, 연금저축, 연저펀 질문"·"미래에셋 연금저축계좌 활용방안"·"연금저축펀드"
+   - 검증: 해지 아닌 계약이전(계좌이체), 증권사 신청 시 세액공제·적립금 유지, 해지 시 16.5% 기타소득세, 보험 초기 사업비·해지공제로 이전액 손실 가능 (WebSearch 확인)
+4. 미국주식 배당소득세 15% 원천징수 (us-stock-dividend-withholding-tax)
+   - 출처 질문: "주식 세금에 대한 질문"·"보금자리론 소득 기준 미국배당 포함"·"미국 ETF 절세 방법"
+   - 검증: 한미조세협약 원천징수 15%(국내 14%보다 높아 추가 원천징수 통상 없음), 금융소득 2천만 초과 시 종합과세+외국납부세액공제 (WebSearch 확인)
+5. 코인 리딩방·가짜 거래소 사기 신호 (crypto-investment-scam-signs)
+   - 출처 질문: "코인 여기 사기일까요"·"하이비트 코인사기업체 맞죠"·"비트코인 리딩방 사기 도와주세요" (사기 관련 반복 수요 4건+)
+   - 검증: FIU 신고 사업자만 합법(미신고 불법), 원금·고수익 보장·글로벌 상장예정 유인 문구, 불법업체 수수료 1.5~10%(정상 수십배), 개인키·신분증 요구 거부·금감원 신고 (WebSearch 확인)
+
+### 검증 결과
+- npx tsc --noEmit: 0 에러
+- 신규 블록 em dash(U+2014): 0, en dash: 0, 운영자 메타 금지어: 0 (렌더 HTML의 em dash는 어필리에이트 카드 "상품명 — 자세히 보기" 공용 크롬으로 어제 발행분과 동일 baseline, 내 신규 텍스트 아님)
+- SEO: title≤60·desc 120~155·slug ^[a-z0-9-]{1,80}$·keywords 6~7개 전편 통과
+- npm run cf:build: 성공, .next/server/app/guide/ 신규 5개 HTML prerender (answer-box·guide-key-points·guide-sources·citation·2026-07-28 발행일 포함 확인)
+
+### 색인 푸시 (npm run push:guides)
+- 결과는 push 직후 실행분에 기재
+
+### 배포
+- push 대상 브랜치: claude/serene-hamilton-zqzyxi (세션 지정 브랜치)
+- auto-deploy-claude-branch.yml 트리거 브랜치를 ghjbwe→zqzyxi로 갱신 → 워크플로가 main fast-forward → Cloudflare 배포 트리거
+
+### ★ 오늘 발행 링크
+https://iknowhowinfo.com/guide/individual-stock-dividend-schedule
+https://iknowhowinfo.com/guide/korea-bitcoin-etf-status-tax
+https://iknowhowinfo.com/guide/pension-savings-insurance-to-fund-transfer
+https://iknowhowinfo.com/guide/us-stock-dividend-withholding-tax
+https://iknowhowinfo.com/guide/crypto-investment-scam-signs
