@@ -1650,3 +1650,8 @@ https://iknowhowinfo.com/guide/retirement-lump-sum-vs-annuity-tax
 https://iknowhowinfo.com/guide/short-term-fund-parking-comparison
 https://iknowhowinfo.com/guide/crypto-won-withdrawal-process-tax
 https://iknowhowinfo.com/guide/pension-savings-tax-refund
+
+### 발행 상태 (2026-07-29)
+- 브랜치: 세션 가드에 따라 claude/serene-hamilton-rbnaey에 push (main 직접 push 금지 준수). Draft PR #10 생성 (base: main).
+- 색인 푸시: --dry로 대상 5편+허브 확인. 실제 IndexNow/Google 요청은 PR 머지 후 guide-index-push.yml(main push 트리거)에서 자동 발송 예정 (production 라이브 전 404 요청 방지). 클라우드 로컬은 키 미설정으로 어차피 skip.
+- production(main) 반영 및 라이브 확인은 PR 머지 후.
