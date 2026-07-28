@@ -17502,6 +17502,465 @@ const cryptoInvestmentScamSigns: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-07-29 · 해외주식 양도소득세 신고 절차 */
+const overseasCapitalGainsFiling: GuideDef = {
+  slug: 'overseas-capital-gains-filing',
+  title: '해외주식 양도소득세 신고, 5월에 뭘 해야 하나',
+  tagline: '한 해 손익 합쳐 250만원 넘으면 다음 해 5월 신고, 세율 22%',
+  description:
+    '미국주식이나 해외 ETF로 수익을 냈다면 한 해 손익을 합쳐 250만원을 넘은 부분에 22%를 매기고, 이듬해 5월에 스스로 확정신고합니다. 신고 대상과 기한, 250만원 공제, 손익 합산 절세까지 절차대로 정리했습니다.',
+  keywords: ['해외주식 양도소득세', '해외주식 세금 신고', '양도소득세 250만원 공제', '해외 ETF 양도세', '해외주식 5월 신고', '양도세 22%'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-07-29',
+  answer:
+    '해외주식과 해외 상장 ETF의 매매차익은 양도소득으로 분류되어, 한 해 동안 판 종목의 이익과 손실을 합친 순이익에서 기본공제 250만원을 뺀 금액에 22%(양도세 20%에 지방소득세 2%)를 매깁니다. 증권사가 대신 떼 주지 않으므로, 순이익이 250만원을 넘으면 이듬해 5월에 홈택스로 직접 확정신고하고 세금을 납부해야 합니다. 이익 종목만 있는 것이 아니라 손실 종목까지 합산되니, 이익이 큰 해에는 평가손실 종목을 함께 정리하면 세금을 줄일 수 있습니다.',
+  keyPoints: [
+    '해외주식과 해외 ETF의 매매차익은 양도소득세 대상으로, 세율은 22%(양도세 20% + 지방소득세 2%)이며 과세표준 3억원 초과분은 27.5%가 적용됩니다.',
+    '한 해 손익을 모두 합친 순이익에서 연 250만원을 기본공제하므로, 순이익이 250만원 이하면 낼 세금이 없습니다.',
+    '국내주식과 달리 증권사가 원천징수하지 않아, 대상자는 이듬해 5월 1일부터 31일 사이에 홈택스로 직접 확정신고해야 합니다.',
+    '이익 종목과 손실 종목을 같은 해에 함께 매도하면 손익이 합산되어, 과세 대상 순이익과 세금을 줄일 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+    { label: '기획재정부', url: 'https://www.moef.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '해외주식 등 주식 매매에 세금이 어떻게 매겨지는지 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494355422' },
+    { summary: '미국 ETF 투자 시 절세 방법이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494339573' },
+    { summary: '미국 단기채 투자 손익을 어떻게 합산해 계산하는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494351995' },
+  ],
+  comparisonTable: {
+    caption: '국내주식 vs 해외주식 양도세 신고',
+    columns: ['구분', '국내주식(소액주주)', '해외주식·해외 ETF'],
+    rows: [
+      ['매매차익 과세', '비과세(소액주주)', '양도소득세 22%'],
+      ['기본공제', '해당 없음', '연 250만원'],
+      ['징수 방식', '증권사 원천징수', '본인 확정신고'],
+      ['신고 시기', '별도 없음', '이듬해 5월'],
+    ],
+  },
+  sections: [
+    {
+      heading: '해외주식 세금은 왜 직접 신고해야 하나',
+      paragraphs: [
+        '국내주식은 소액주주라면 매매차익에 세금이 없고 배당에만 세금이 붙습니다. 반면 미국주식이나 해외 상장 ETF는 팔아서 번 차익 자체가 양도소득세 대상입니다.',
+        '더 헷갈리는 지점은 신고 방식입니다. 국내주식 세금은 증권사가 알아서 떼 주지만, 해외주식 양도세는 투자자가 직접 계산해 신고하고 납부해야 합니다. 이 절차를 모른 채 지나치면 나중에 가산세가 붙을 수 있습니다.',
+      ],
+    },
+    {
+      heading: '250만원 공제와 손익 합산',
+      paragraphs: [
+        '과세 기준은 한 해, 즉 1월 1일부터 12월 31일까지 실현한 손익의 합계입니다. 이익 난 종목만 세는 것이 아니라 손실 난 종목까지 모두 더한 순이익이 기준이 됩니다.',
+        '그 순이익에서 연 250만원을 먼저 빼 줍니다. 가령 한 해 순이익이 400만원이면 250만원을 뺀 150만원에만 22%가 매겨져 세금은 33만원입니다. 순이익이 250만원을 넘지 않으면 낼 세금은 없습니다.',
+      ],
+    },
+    {
+      heading: '5월 확정신고, 무엇을 준비하나',
+      paragraphs: [
+        '신고는 이익을 실현한 다음 해 5월에 합니다. 세금이 나오는 사람은 물론이고, 손익 합산 사실을 증빙으로 남기려는 사람도 신고해 두면 안전합니다.',
+        '대부분 증권사가 양도세 신고 대행 서비스나 손익 내역서를 제공하므로, 이를 활용하면 홈택스 신고가 한결 수월합니다. 여러 증권사에 계좌가 흩어져 있으면 각 손익을 모아 합산해야 하니 자료를 미리 챙겨 두는 편이 좋습니다.',
+      ],
+    },
+    {
+      heading: '세금 줄이는 실전 팁',
+      paragraphs: [
+        '가장 널리 쓰이는 방법은 연말에 손실 종목을 함께 파는 것입니다. 이익이 크게 난 해라면, 평가손실 중인 종목을 같은 해에 매도해 손익을 합치면 과세 대상 순이익이 줄어듭니다.',
+        '기본공제 250만원을 해마다 나눠 쓰는 것도 방법입니다. 한 해에 이익을 몰아 실현하기보다 두 해로 나눠 실현하면 250만원 공제를 두 번 활용할 수 있습니다. 유불리는 개인 상황에 따라 갈리므로, 금액이 크다면 세무 상담을 곁들이길 권합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '해외주식으로 얼마를 벌면 세금을 내나요?',
+      answer:
+        '한 해 손익을 합친 순이익이 250만원을 넘으면 그 초과분에 22%가 매겨집니다. 250만원 이하면 낼 세금은 없지만, 신고해 두면 손익 증빙이 남습니다.',
+    },
+    {
+      question: '신고는 언제 하나요?',
+      answer:
+        '이익을 실현한 다음 해 5월 1일부터 31일 사이에 홈택스로 확정신고합니다. 이 기간에 신고와 납부를 함께 마쳐야 가산세를 피할 수 있습니다.',
+    },
+    {
+      question: '증권사가 대신 세금을 떼 주지 않나요?',
+      answer:
+        '국내주식과 달리 해외주식 양도세는 원천징수하지 않습니다. 손익 내역서는 증권사가 주지만, 신고와 납부는 투자자 본인의 몫입니다.',
+    },
+    {
+      question: '손실이 난 종목도 신고에 도움이 되나요?',
+      answer:
+        '됩니다. 같은 해 이익 종목과 손실 종목을 합산하므로, 손실 종목을 함께 팔면 과세 대상 순이익이 줄어 세금이 낮아집니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-29 · 퇴직연금 일시금 vs 연금 수령 세금 */
+const retirementLumpSumVsAnnuityTax: GuideDef = {
+  slug: 'retirement-lump-sum-vs-annuity-tax',
+  title: '퇴직연금 일시금 vs 연금 수령, 세금 얼마나 다를까',
+  tagline: '연금으로 나눠 받으면 퇴직소득세 30~40% 감면, 운용수익도 저율과세',
+  description:
+    '퇴직금을 IRP에서 한 번에 찾을지 연금으로 나눠 받을지 고민이라면, 연금 수령 시 퇴직소득세를 30~40% 감면받고 운용수익도 낮은 세율로 과세됩니다. 일시금과 연금 수령의 세금 차이와 연금수령한도까지 정리했습니다.',
+  keywords: ['퇴직연금 세금', 'IRP 연금 수령', '퇴직소득세 감면', '퇴직금 일시금 연금 비교', '연금수령한도', '퇴직연금 절세'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-07-29',
+  answer:
+    '퇴직급여를 IRP에서 일시금으로 찾으면 퇴직소득세를 한 번에 내지만, 연금 형태로 나눠 받으면 그 퇴직소득세를 깎아 줍니다. 수령 10년째까지는 원래 퇴직소득세의 70%만, 11년째부터는 60%만 매기므로 30~40%를 아끼는 셈입니다. 계좌를 굴려 생긴 운용수익도 연금으로 받으면 3.3~5.5%의 낮은 세율로 과세되지만, 일시금으로 찾으면 16.5%의 기타소득세가 붙습니다. 급하게 목돈이 필요한 경우가 아니라면 연금 수령이 세금 면에서 유리합니다.',
+  keyPoints: [
+    '퇴직급여를 연금으로 수령하면 수령 10년차까지 퇴직소득세의 70%, 11년차부터 60%만 과세되어 30~40%를 감면받습니다.',
+    '계좌 운용수익은 연금 수령 시 3.3~5.5% 저율로 분리과세되지만, 일시금으로 찾으면 16.5%의 기타소득세가 적용됩니다.',
+    '연금 수령에는 매년 정해진 연금수령한도가 있고, 이 한도를 넘겨 인출하면 초과분은 감면 혜택을 받지 못합니다.',
+    '퇴직금을 IRP나 연금저축으로 옮긴 뒤 연금이 아닌 일시금으로 빼면 퇴직소득세 감면은 적용되지 않습니다.',
+  ],
+  sources: [
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+    { label: '기획재정부', url: 'https://www.moef.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'IRP와 연금저축 운용, 연금 수령 방식이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494287819' },
+    { summary: '연금을 어떤 방식과 금액으로 받을 수 있는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494356231' },
+    { summary: '연금을 일시금으로 받는 것에 대한 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494293040' },
+  ],
+  comparisonTable: {
+    caption: '퇴직연금 일시금 vs 연금 수령',
+    columns: ['구분', '일시금 수령', '연금 수령'],
+    rows: [
+      ['퇴직소득세', '전액 한 번에', '30~40% 감면'],
+      ['운용수익 세금', '기타소득세 16.5%', '연금소득세 3.3~5.5%'],
+      ['수령 방식', '한 번에 전액', '매년 한도 내 분할'],
+      ['적합한 경우', '급한 목돈 필요', '노후 생활비 분산'],
+    ],
+  },
+  sections: [
+    {
+      heading: '퇴직금, 어떻게 받느냐로 세금이 갈린다',
+      paragraphs: [
+        '회사를 그만두면 퇴직급여가 대개 IRP 계좌로 들어옵니다. 이 돈을 한 번에 찾을지, 55세 이후 연금으로 나눠 받을지에 따라 최종 세금이 크게 달라집니다.',
+        '요점은 나라가 노후를 위해 오래 나눠 쓰는 쪽에 세금 혜택을 준다는 데 있습니다. 연금으로 천천히 받을수록 퇴직소득세를 깎아 주는 구조라, 당장 목돈이 급하지 않다면 수령 방식을 신중히 고르는 편이 이득입니다.',
+      ],
+    },
+    {
+      heading: '연금으로 받으면 퇴직소득세 30~40% 감면',
+      paragraphs: [
+        '일시금으로 찾으면 산출된 퇴직소득세를 그대로 냅니다. 그런데 같은 돈을 연금으로 나눠 받으면, 수령 10년째까지는 그 퇴직소득세의 70%만, 11년째부터는 60%만 매깁니다.',
+        '결과적으로 연금 수령 기간이 길수록 30%에서 최대 40%까지 세금을 아낍니다. 오래 나눠 받을수록 감면 폭이 커지니, 수령 기간을 10년 넘게 잡으면 혜택을 더 챙길 수 있습니다.',
+      ],
+    },
+    {
+      heading: '운용수익 세금도 연금이 유리',
+      paragraphs: [
+        '퇴직금 원금뿐 아니라 IRP 계좌 안에서 ETF 등을 굴려 생긴 운용수익에도 차이가 납니다. 이 수익을 연금으로 받으면 3.3~5.5%의 낮은 연금소득세로 끝납니다.',
+        '반대로 계좌를 깨서 일시금으로 빼면 운용수익 부분에 16.5%의 기타소득세가 붙습니다. 세율만 놓고 보면 세 배 넘게 차이가 나므로, 계좌를 오래 굴려 수익이 쌓였을수록 연금 수령의 이점이 커집니다.',
+      ],
+    },
+    {
+      heading: '연금수령한도를 넘기면 혜택이 준다',
+      paragraphs: [
+        '주의할 점은 연금 수령에도 한 해에 꺼낼 수 있는 상한, 곧 연금수령한도가 있다는 것입니다. 이 한도 안에서 받아야 감면과 저율과세가 온전히 적용됩니다.',
+        '한도를 넘겨 급히 많이 빼면 초과분은 감면 대상에서 빠지고, 사실상 일시금과 비슷한 세금을 물 수 있습니다. 목돈이 필요하면 한도와 세금을 먼저 따져 보는 것이 좋습니다. 개인별 퇴직소득세는 근속연수와 금액에 따라 달라지니 통합연금포털이나 세무 상담으로 확인하는 것을 권합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '퇴직금을 연금으로 받으면 세금이 얼마나 줄어드나요?',
+      answer:
+        '연금 수령 10년째까지는 퇴직소득세의 70%, 11년째부터는 60%만 과세됩니다. 오래 나눠 받을수록 30%에서 최대 40%까지 감면됩니다.',
+    },
+    {
+      question: '언제부터 연금으로 받을 수 있나요?',
+      answer:
+        '보통 만 55세 이후, 가입 5년 이상 같은 요건을 채워야 연금 수령이 가능합니다. 그 전에 찾으면 감면 혜택 없이 세금을 더 낼 수 있습니다.',
+    },
+    {
+      question: 'IRP 운용수익 세금은 수령 방식에 따라 어떻게 다른가요?',
+      answer:
+        '연금으로 받으면 3.3~5.5%의 연금소득세로 끝나지만, 일시금으로 찾으면 16.5%의 기타소득세가 붙습니다.',
+    },
+    {
+      question: '연금수령한도를 넘겨 빼면 어떻게 되나요?',
+      answer:
+        '한도를 넘긴 초과분은 퇴직소득세 감면이나 저율과세 대상에서 빠집니다. 급한 목돈은 한도와 세금을 먼저 확인하고 인출하세요.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-29 · 단기자금 CD금리 ETF vs 파킹통장 vs CMA */
+const shortTermFundParkingComparison: GuideDef = {
+  slug: 'short-term-fund-parking-comparison',
+  title: '단기 여유자금 어디에? CD금리 ETF vs 파킹통장 vs CMA',
+  tagline: '언제든 빼는 돈이라면 수익·세금·예금자보호를 나란히 비교',
+  description:
+    '몇 달 안에 쓸 목돈을 어디에 둘지 고민이라면 CD금리 ETF, 파킹통장, CMA는 수익 방식과 세금, 예금자보호가 저마다 다릅니다. 하루만 맡겨도 이자가 붙는지, 매매차익에 세금이 어떻게 붙는지 세 가지를 나란히 비교했습니다.',
+  keywords: ['CD금리 ETF', '파킹통장 비교', 'CMA 파킹', '단기자금 운용', '파킹형 ETF', '현금성 자산'],
+  section: 'ETF 채권 가이드',
+  lastReviewed: '2026-07-29',
+  answer:
+    'CD금리 ETF는 은행 양도성예금증서(CD) 금리를 따라 하루치 이자가 주가에 쌓이는 상품으로, 만기가 없어 언제든 팔 수 있고 매매차익에 배당소득세 15.4%가 붙습니다. 파킹통장은 은행 예금이라 이자에 15.4%가 붙지만 예금자보호 대상이고, CMA는 증권사가 하루 단위로 굴려 주는 계좌로 대부분 예금자보호가 되지 않습니다. 셋 다 하루만 맡겨도 수익이 붙는다는 공통점이 있으나, 예금자보호 여부와 절세계좌 활용 가능성에서 갈립니다.',
+  keyPoints: [
+    'CD금리 ETF는 CD 91일물 금리를 따라 매일 이자가 주가에 반영되며, 매도 시 과표 증가분에 배당소득세 15.4%가 과세됩니다.',
+    '파킹통장은 은행 예금으로 1인당 5천만원까지 예금자보호를 받지만, CD금리 ETF와 RP·발행어음형 CMA는 예금자보호 대상이 아닙니다.',
+    '세 상품 모두 하루만 맡겨도 이자가 붙어 수시로 넣고 뺄 수 있고, 수익에 붙는 세율은 15.4%로 같습니다.',
+    'CD금리 ETF는 ISA나 연금계좌 같은 절세계좌 안에도 담을 수 있어, 과세이연이나 저율과세 효과를 함께 노릴 수 있습니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX)', url: 'https://www.krx.co.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '예금보험공사', url: 'https://www.kdic.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'KODEX CD금리 ETF가 어떤 상품이고 어떻게 거래되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=467898942' },
+    { summary: '손실이 두려워 여유자금을 안전하게 굴리고 싶다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=492536115' },
+  ],
+  comparisonTable: {
+    caption: '단기 자금 3종 비교',
+    columns: ['구분', 'CD금리 ETF', '파킹통장', 'CMA(RP·발행어음)'],
+    rows: [
+      ['수익 방식', 'CD금리 매일 반영', '예금 이자', '하루 단위 운용'],
+      ['세금', '매매차익 15.4%', '이자 15.4%', '수익 15.4%'],
+      ['예금자보호', '없음', '5천만원까지', '없음(종금형만 보호)'],
+      ['절세계좌', '담기 가능', '불가', '불가'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'CD금리 ETF는 어떻게 이자가 붙나',
+      paragraphs: [
+        '단기 여유자금을 그냥 통장에 두기는 아깝고, 정기예금에 묶자니 급할 때 빼기 불편합니다. 이럴 때 자주 비교되는 것이 CD금리 ETF, 파킹통장, CMA입니다.',
+        'CD금리 ETF는 은행이 발행하는 양도성예금증서(CD)의 하루치 금리만큼 주가가 매일 조금씩 오르도록 설계된 상품입니다. 분배금을 따로 주지 않고 이자가 주가에 녹아들어, 팔 때 그 차익을 손에 쥡니다. 만기가 없어 필요할 때 언제든 매도할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '파킹통장과 CMA는 무엇이 다른가',
+      paragraphs: [
+        '파킹통장은 은행이나 저축은행이 내놓는 수시입출금 예금입니다. 하루만 넣어도 약정 금리로 이자가 붙고, 예금이라 1인당 5천만원까지 예금자보호를 받는다는 점이 큰 장점입니다.',
+        'CMA는 증권사 계좌로, 맡긴 돈을 국공채나 어음에 하루 단위로 굴려 수익을 돌려줍니다. RP형이나 발행어음형이 흔한데 이들은 예금자보호 대상이 아닙니다. 대신 파킹통장보다 금리가 조금 높은 경우가 있습니다.',
+      ],
+    },
+    {
+      heading: '세금과 예금자보호로 갈린다',
+      paragraphs: [
+        '수익에 붙는 세율은 셋 다 15.4%로 같습니다. 파킹통장 이자는 이자소득, CD금리 ETF 매매차익과 CMA 수익은 배당소득으로 분류만 다를 뿐 세율은 동일합니다.',
+        '뚜렷하게 갈리는 곳은 예금자보호입니다. 파킹통장만 원금이 5천만원까지 보호되고, CD금리 ETF와 RP·발행어음형 CMA는 보호되지 않습니다. 다만 CD금리 ETF는 초우량 단기물로 운용돼 가격 변동이 매우 작은 편입니다.',
+      ],
+    },
+    {
+      heading: '절세계좌까지 생각한다면',
+      paragraphs: [
+        'CD금리 ETF만의 강점은 절세계좌 안에 담을 수 있다는 것입니다. ISA나 연금저축 계좌의 대기자금을 CD금리 ETF로 굴리면, 계좌가 주는 비과세나 과세이연 혜택을 함께 누릴 수 있습니다.',
+        '반대로 원금 보전이 최우선이고 금액이 크지 않다면 예금자보호가 되는 파킹통장이 마음 편합니다. 돈을 쓸 시점과 원금 보호 우선순위를 따져 고르면 됩니다. 금리와 조건은 상품마다 다르니 가입 전 최신 정보를 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'CD금리 ETF도 하루만 맡겨도 이자가 붙나요?',
+      answer:
+        '네. CD 하루치 금리만큼 주가가 매일 오르도록 설계돼, 며칠만 보유해도 그만큼 차익이 쌓입니다. 만기가 없어 언제든 팔 수 있습니다.',
+    },
+    {
+      question: '셋 중 예금자보호가 되는 건 무엇인가요?',
+      answer:
+        '파킹통장만 1인당 5천만원까지 보호됩니다. CD금리 ETF와 RP·발행어음형 CMA는 예금자보호 대상이 아닙니다.',
+    },
+    {
+      question: '세금은 어디가 더 유리한가요?',
+      answer:
+        '세율은 세 상품 모두 15.4%로 같습니다. 다만 CD금리 ETF는 ISA·연금 같은 절세계좌에 담아 세금을 미루거나 줄일 수 있습니다.',
+    },
+    {
+      question: '급하게 돈을 빼야 할 때 문제가 없나요?',
+      answer:
+        'CD금리 ETF는 장중 매도, 파킹통장과 CMA는 수시 출금이 가능합니다. 다만 ETF는 거래시간에만 팔 수 있고 매도 후 결제일이 있다는 점을 감안하세요.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-29 · 코인 원화 출금 절차와 트래블룰·세금 */
+const cryptoWonWithdrawalProcessTax: GuideDef = {
+  slug: 'crypto-won-withdrawal-process-tax',
+  title: '코인 원화로 출금하는 법과 세금, 트래블룰 정리',
+  tagline: '100만원 넘으면 받는 사람 정보 확인, 양도차익 과세는 2027년 예정',
+  description:
+    '거래소에서 코인을 팔아 원화로 빼는 절차가 궁금하다면 본인 명의 은행 실명계좌 연결이 먼저이고, 100만원 이상 이전에는 트래블룰로 송수신 정보를 확인합니다. 원화 출금 단계와 지연되는 이유, 아직 시행 전인 코인 세금까지 정리했습니다.',
+  keywords: ['코인 원화 출금', '가상자산 트래블룰', '비트코인 출금 방법', '코인 세금 2027', '거래소 실명계좌', '가상자산 과세'],
+  section: 'ETF 레버리지 가이드',
+  lastReviewed: '2026-07-29',
+  answer:
+    '코인을 원화로 빼려면 먼저 거래소에서 코인을 팔아 원화로 바꾼 뒤, 거래소와 연결된 본인 명의 은행 실명계좌로 출금을 신청합니다. 100만원어치 이상을 다른 거래소나 지갑으로 이전할 때는 트래블룰에 따라 받는 사람 정보를 입력해야 하고, 첫 원화 출금이나 큰 금액은 자금세탁 방지 절차로 지연될 수 있습니다. 코인 매매차익에 대한 세금은 지금은 없으며, 소득세법상 2027년 1월부터 기타소득으로 과세할 예정입니다.',
+  keyPoints: [
+    '원화 출금은 거래소와 연결된 본인 명의 은행 실명계좌로만 가능하며, 타인 명의 계좌로는 출금할 수 없습니다.',
+    '100만원 이상 가상자산을 이전할 때는 트래블룰에 따라 송신인과 수신인 정보를 확인하며, 국내에서 2022년 3월부터 시행 중입니다.',
+    '코인 매매차익 과세는 아직 시행 전으로, 현행 소득세법은 2027년 1월 1일부터 기타소득으로 과세하도록 정하고 있습니다.',
+    '과세가 시행되면 연 250만원을 넘는 소득에 22%(지방소득세 포함)가 매겨지며, 시행 시점은 그동안 여러 차례 미뤄진 바 있습니다.',
+  ],
+  sources: [
+    { label: '금융정보분석원(FIU)', url: 'https://www.kofiu.go.kr' },
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+    { label: '기획재정부', url: 'https://www.moef.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '비트코인을 원화로 출금하는 방법이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494317428' },
+    { summary: '비트코인을 사고파는 방법이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493359615' },
+    { summary: '비트코인 관련 세금이 어떻게 되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=475553179' },
+  ],
+  comparisonTable: {
+    caption: '코인 이전·출금 시 확인 사항',
+    columns: ['상황', '적용 규칙', '핵심 포인트'],
+    rows: [
+      ['원화 출금', '실명계좌 확인', '본인 명의 은행계좌만 가능'],
+      ['100만원 이상 이전', '트래블룰', '받는 사람 정보 입력 필수'],
+      ['첫 출금·큰 금액', '자금세탁 방지', '수 시간에서 며칠 지연 가능'],
+      ['매매차익 세금', '2027년 예정', '현재는 시행 전'],
+    ],
+  },
+  sections: [
+    {
+      heading: '원화 출금은 어떤 순서로 하나',
+      paragraphs: [
+        '가진 코인을 현금으로 만들려면 두 단계를 거칩니다. 먼저 거래소에서 코인을 팔아 원화로 바꾸고, 그 원화를 거래소에 연결된 은행 계좌로 출금 신청합니다.',
+        '이때 출금 계좌는 반드시 본인 명의의 실명 확인 계좌여야 합니다. 국내 거래소는 하나의 제휴 은행 계좌만 연결되므로, 가입할 때 등록한 계좌로만 원화를 뺄 수 있습니다. 타인 명의 계좌로는 출금이 되지 않습니다.',
+      ],
+    },
+    {
+      heading: '100만원 넘으면 트래블룰이 적용된다',
+      paragraphs: [
+        '코인을 다른 거래소나 개인 지갑으로 보낼 때는 트래블룰이라는 규칙이 걸립니다. 100만원어치 이상을 이전하면 보내는 쪽과 받는 쪽의 정보를 거래소가 확인하도록 한 제도로, 자금세탁을 막기 위한 국제 기준을 국내에 적용한 것입니다.',
+        '실무에서는 받는 사람 이름과 거래소를 정확히 입력해야 하고, 상대 거래소의 계정 정보와 일치해야 전송됩니다. 정보가 틀리면 이전이 막히니, 주소만 맞으면 되던 예전과 달리 수신인 확인을 꼼꼼히 해야 합니다.',
+      ],
+    },
+    {
+      heading: '출금이 지연되는 이유',
+      paragraphs: [
+        '첫 원화 출금이거나 금액이 크면 곧바로 처리되지 않고 지연될 수 있습니다. 거래소가 자금세탁 방지 차원에서 일정 시간 출금을 보류하거나 추가 본인확인을 요구하기 때문입니다.',
+        '신규 가입 직후 입금한 자금은 일정 기간 출금이 제한되기도 합니다. 급하게 현금이 필요한 상황이라면 이런 대기 시간을 미리 감안해 두는 편이 안전합니다. 세금이나 수수료 명목으로 추가 입금을 요구하는 곳은 정상 거래소가 아니므로 응하지 마세요.',
+      ],
+    },
+    {
+      heading: '코인 세금은 언제부터 내나',
+      paragraphs: [
+        '자주 나오는 궁금증이 매매차익 세금입니다. 지금 시점에서는 코인을 팔아 이익이 나도 그 차익에 붙는 세금이 아직 없습니다. 과세를 도입하는 법 조항은 마련돼 있지만 시행이 여러 차례 미뤄져 왔습니다.',
+        '현행 소득세법은 2027년 1월 1일부터 코인 소득을 기타소득으로 보고, 연 250만원을 넘는 부분에 22%(지방소득세 포함)를 매기도록 정하고 있습니다. 다만 이 시점도 과거처럼 다시 조정될 여지가 거론되므로, 실제 신고 시기에는 그때 확정된 규정을 확인해야 합니다. 이 글은 정보 제공 목적이며 투자 판단과 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '코인을 아무 은행 계좌로나 출금할 수 있나요?',
+      answer:
+        '아닙니다. 거래소에 연결된 본인 명의의 실명 확인 계좌로만 원화를 뺄 수 있습니다. 타인 명의 계좌로는 출금되지 않습니다.',
+    },
+    {
+      question: '트래블룰은 얼마부터 적용되나요?',
+      answer:
+        '100만원어치 이상 가상자산을 이전할 때 적용됩니다. 이때 받는 사람 이름과 거래소 정보를 정확히 입력해야 전송이 됩니다.',
+    },
+    {
+      question: '지금 코인을 팔아 이익이 나면 세금을 내나요?',
+      answer:
+        '현재는 매매차익에 붙는 세금이 없습니다. 소득세법상 과세는 2027년 1월부터 시행될 예정이나, 시점이 다시 조정될 수 있습니다.',
+    },
+    {
+      question: '출금이 몇 시간째 안 되는데 정상인가요?',
+      answer:
+        '첫 출금이나 큰 금액은 자금세탁 방지 절차로 지연될 수 있습니다. 다만 세금·수수료 명목으로 추가 입금을 요구한다면 사기를 의심해야 합니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-29 · 연금저축 세액공제 환급액과 시기 */
+const pensionSavingsTaxRefund: GuideDef = {
+  slug: 'pension-savings-tax-refund',
+  title: '연금저축 세액공제 환급, 얼마를 언제 돌려받나',
+  tagline: '600만원 채우면 최대 99만원, 연말정산이나 5월 신고로 환급',
+  description:
+    '연금저축에 넣으면 세금을 돌려준다는데 얼마를 언제 받는지 궁금하다면, 연 600만원까지 넣은 금액의 13.2%나 16.5%를 세액공제로 돌려받습니다. 소득별 공제율과 IRP 합산 900만원 한도, 환급 시기를 예시와 함께 정리했습니다.',
+  keywords: ['연금저축 세액공제', '연금저축 환급액', '세액공제율 16.5%', '연금저축 한도 600만원', 'IRP 세액공제', '연말정산 연금'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-07-29',
+  answer:
+    '연금저축에 넣은 돈은 연 600만원까지 세액공제 대상이 되어, 총급여 5500만원 이하이면 넣은 금액의 16.5%, 초과하면 13.2%를 세금에서 돌려받습니다. 600만원을 꽉 채우면 각각 99만원 또는 79만2천원을 환급받는 셈입니다. IRP를 더하면 합산 900만원까지 공제받아 최대 148만5천원까지 늘어납니다. 직장인은 이듬해 2월 연말정산에서, 개인사업자나 정산에서 빠진 사람은 5월 종합소득세 신고 때 돌려받습니다.',
+  keyPoints: [
+    '연금저축은 연 600만원까지 세액공제되며, 총급여 5500만원(종합소득 4500만원) 이하는 16.5%, 초과 시 13.2%가 적용됩니다.',
+    '600만원을 채우면 공제율에 따라 99만원 또는 79만2천원을 돌려받고, IRP를 합쳐 900만원까지 넣으면 최대 148만5천원까지 환급됩니다.',
+    '직장인은 이듬해 2월 연말정산에서, 종합소득세 신고 대상자는 5월 신고 때 환급 세액을 정산받습니다.',
+    '세액공제는 이미 낸 세금 한도 안에서 돌려주므로, 낸 세금이 적으면 계산된 공제액을 다 받지 못할 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '연금저축부터 가입하는 게 맞는지 우선순위를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494334592' },
+    { summary: '연금저축계좌를 어떻게 활용하면 좋을지 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493610254' },
+    { summary: '연금저축펀드 운용과 활용이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493466389' },
+  ],
+  comparisonTable: {
+    caption: '소득별 연금저축 세액공제 환급액(600만원 납입 기준)',
+    columns: ['구분', '총급여 5500만원 이하', '5500만원 초과'],
+    rows: [
+      ['공제율', '16.5%', '13.2%'],
+      ['연금저축 600만원', '99만원', '79만2천원'],
+      ['IRP 합산 900만원', '148만5천원', '118만8천원'],
+      ['환급 시기', '연말정산·5월', '연말정산·5월'],
+    ],
+  },
+  sections: [
+    {
+      heading: '연금저축이 세금을 돌려주는 원리',
+      paragraphs: [
+        '연금저축은 노후 자금을 모으라고 나라가 세금 혜택을 붙인 계좌입니다. 한 해 넣은 돈의 일정 비율을 이듬해에 세금에서 빼 주는데, 이 돌려받는 금액이 세액공제입니다.',
+        '한도는 연금저축 단독으로 연 600만원입니다. 여기에 넣은 만큼 정해진 비율을 곱한 금액을 환급받습니다. 소득공제가 아니라 세액공제라, 소득 크기와 상관없이 정해진 비율이 그대로 적용된다는 점이 특징입니다.',
+      ],
+    },
+    {
+      heading: '내 공제율은 16.5%일까 13.2%일까',
+      paragraphs: [
+        '돌려받는 비율은 소득에 따라 둘로 나뉩니다. 총급여 5500만원, 종합소득 기준으로는 4500만원 이하이면 16.5%, 이를 넘으면 13.2%가 적용됩니다.',
+        '숫자로 보면 차이가 뚜렷합니다. 연금저축에 600만원을 채웠을 때 16.5% 구간은 99만원을, 13.2% 구간은 79만2천원을 돌려받습니다. 소득이 적은 사회초년생일수록 환급 비율이 높다는 점이 유리하게 작용합니다.',
+      ],
+    },
+    {
+      heading: 'IRP를 더하면 900만원까지',
+      paragraphs: [
+        '연금저축만으로는 600만원이 상한이지만, 개인형 퇴직연금(IRP)을 함께 쓰면 합산 900만원까지 공제받을 수 있습니다. 연금저축에 600만원을 먼저 채우고 나머지 300만원을 IRP에 넣는 조합이 흔히 쓰입니다.',
+        '900만원을 꽉 채우면 16.5% 구간은 148만5천원, 13.2% 구간은 118만8천원을 돌려받습니다. 한 해 세금을 백만원 넘게 줄이는 셈이라, 노후 준비와 절세를 함께 노리는 사람에게 매력적입니다.',
+      ],
+    },
+    {
+      heading: '언제, 어떻게 돌려받나',
+      paragraphs: [
+        '직장인은 이듬해 2월 연말정산 때 자동으로 반영됩니다. 연금저축·IRP 납입확인서가 금융회사에서 국세청으로 넘어가므로, 자료가 잘 잡혔는지만 확인하면 됩니다.',
+        '개인사업자나 연말정산에서 빠진 소득이 있는 사람은 5월 종합소득세 신고 때 공제받습니다. 다만 세액공제는 이미 낸 세금 한도 안에서 돌려주는 구조라, 낼 세금이 적으면 계산된 금액을 다 못 받을 수 있습니다. 본인 세액을 미리 가늠해 납입액을 정하면 낭비를 줄일 수 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '연금저축에 얼마까지 넣으면 세액공제를 다 받나요?',
+      answer:
+        '연금저축 단독으로는 연 600만원까지입니다. IRP를 더하면 합산 900만원까지 공제 한도가 늘어납니다.',
+    },
+    {
+      question: '600만원 넣으면 얼마를 돌려받나요?',
+      answer:
+        '총급여 5500만원 이하면 16.5%인 99만원, 초과하면 13.2%인 79만2천원을 환급받습니다. 소득이 낮을수록 비율이 높습니다.',
+    },
+    {
+      question: '환급은 언제 받나요?',
+      answer:
+        '직장인은 이듬해 2월 연말정산에서, 개인사업자 등은 5월 종합소득세 신고 때 정산받습니다.',
+    },
+    {
+      question: '세금을 적게 내면 공제를 다 못 받나요?',
+      answer:
+        '그럴 수 있습니다. 세액공제는 낸 세금 한도 안에서 돌려주므로, 결정세액이 공제액보다 적으면 남는 금액은 환급되지 않습니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
   pensionSavingsVsIrp,
   etfSharePriceMeaning,
@@ -17701,6 +18160,11 @@ export const GUIDES: GuideDef[] = [
   pensionSavingsInsuranceToFundTransfer,
   usStockDividendWithholdingTax,
   cryptoInvestmentScamSigns,
+  overseasCapitalGainsFiling,
+  retirementLumpSumVsAnnuityTax,
+  shortTermFundParkingComparison,
+  cryptoWonWithdrawalProcessTax,
+  pensionSavingsTaxRefund,
 ];
 
 /**
@@ -17711,6 +18175,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-07-29 · 지식iN 질문 수요 기반 (해외주식 양도세 5월 신고·퇴직연금 일시금vs연금 수령 세금·단기자금 CD금리ETF/파킹통장/CMA·코인 원화 출금 트래블룰·연금저축 세액공제 환급)
+  'overseas-capital-gains-filing': '2026-07-29',
+  'retirement-lump-sum-vs-annuity-tax': '2026-07-29',
+  'short-term-fund-parking-comparison': '2026-07-29',
+  'crypto-won-withdrawal-process-tax': '2026-07-29',
+  'pension-savings-tax-refund': '2026-07-29',
   // 2026-07-28 · 지식iN 질문 수요 기반 (삼성전자 분기배당 확인법·국내 비트코인 ETF 도입 현황과 세금·연금저축보험 계약이전·미국주식 배당 원천징수·코인 사기 신호)
   'individual-stock-dividend-schedule': '2026-07-28',
   'korea-bitcoin-etf-status-tax': '2026-07-28',
@@ -17965,7 +18435,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'overseas-capital-gains-filing', 'retirement-lump-sum-vs-annuity-tax', 'pension-savings-tax-refund'],
   },
   {
     title: '배당·인컴',
@@ -17975,7 +18445,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '테마·섹터',
     description: '방산·조선·건설·자동차·AI·반도체·빅테크·소프트웨어·보안·로봇·전기차·신재생·희토류·게임·엔터·명품·뷰티·비트코인·인프라 등 특정 테마에 집중하는 섹터 ETF.',
-    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs'],
+    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'crypto-won-withdrawal-process-tax'],
   },
   {
     title: '해외·환율',
@@ -17985,7 +18455,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '전략·자산배분',
     description: '적립식·리밸런싱·팩터·자산배분(TRF)·채권·미국국채·회사채·채권혼합·파킹·금·은·구리·원유·농산물·원자재·레버리지 — 포트폴리오를 굴리고 위험을 관리하는 전략.',
-    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf'],
+    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'short-term-fund-parking-comparison'],
   },
 ];
 

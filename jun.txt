@@ -1621,3 +1621,37 @@ https://iknowhowinfo.com/guide/korea-bitcoin-etf-status-tax
 https://iknowhowinfo.com/guide/pension-savings-insurance-to-fund-transfer
 https://iknowhowinfo.com/guide/us-stock-dividend-withholding-tax
 https://iknowhowinfo.com/guide/crypto-investment-scam-signs
+
+## 2026-07-29 · [가이드 발행] 지식iN 질문 수요 기반 5편
+
+지식iN 코퍼스(data/keywords/kin/kin-20260718.json, 103문항) 수요 분석 → 세금·연금·단기자금·코인 클러스터에서 롱테일 5편 신규 발행. 신규 수집은 클라우드 IP 네이버 차단으로 실패(정상), 저장 코퍼스로 주제 선정.
+
+1. 해외주식 양도소득세 신고, 5월에 뭘 해야 하나 (overseas-capital-gains-filing)
+   - 출처 질문: 해외주식 세금 궁금(494355422)·미국 ETF 절세(494339573)·미국 단기채 손익 계산(494351995)
+   - 검증: 250만원 기본공제·22%(20%+2%)·과표 3억 초과 27.5%·이듬해 5월 확정신고 (국세청 확인)
+2. 퇴직연금 일시금 vs 연금 수령, 세금 얼마나 다를까 (retirement-lump-sum-vs-annuity-tax)
+   - 출처 질문: IRP·연금저축 운용(494287819)·연금 수령금(494356231)·연금 일시금(494293040)
+   - 검증: 연금수령 시 퇴직소득세 70%(10년 이하)/60%(초과)=30~40% 감면·운용수익 연금 3.3~5.5% vs 일시금 16.5% (삼일PwC·KB 확인)
+3. 단기 여유자금 어디에? CD금리 ETF vs 파킹통장 vs CMA (short-term-fund-parking-comparison)
+   - 출처 질문: KODEX CD금리 ETF(467898942)·안전하게 돈 굴리기(492536115)
+   - 검증: 세율 15.4% 동일·파킹통장만 5천만원 예금자보호·CD금리 ETF/RP·발행어음 CMA 비보호·CD ETF 절세계좌 편입 가능 (예보·금감원 확인)
+4. 코인 원화로 출금하는 법과 세금, 트래블룰 정리 (crypto-won-withdrawal-process-tax)
+   - 출처 질문: 비트코인 원화 출금(494317428)·구매방법(493359615)·코인 세금(475553179)
+   - 검증: 본인 실명계좌만 출금·트래블룰 100만원 이상(2022.3 시행)·매매차익 과세 2027.1.1 예정(현재 시행 전, 3차 유예) (FIU·국세청 확인)
+5. 연금저축 세액공제 환급, 얼마를 언제 돌려받나 (pension-savings-tax-refund)
+   - 출처 질문: 연금저축 우선 가입(494334592)·연금저축계좌 활용(493610254)·연금저축펀드(493466389)
+   - 검증: 연 600만원 한도·16.5%(총급여 5500만 이하)/13.2%·IRP 합산 900만원 최대 148.5만원 환급·연말정산 2월/종소세 5월 (국세청 확인)
+
+검증: npx tsc --noEmit 0 에러 / cf:build 성공 / .next/server/app/guide/ 신규 5개 .html prerender(answer-box·guide-key-points·guide-sources·citation·2026-07-29 포함) 확인. em dash 0·금지어 0·title≤60·desc 120~155·keywords 6·slug 신규.
+
+★ 오늘 발행 링크(풀 URL)
+https://iknowhowinfo.com/guide/overseas-capital-gains-filing
+https://iknowhowinfo.com/guide/retirement-lump-sum-vs-annuity-tax
+https://iknowhowinfo.com/guide/short-term-fund-parking-comparison
+https://iknowhowinfo.com/guide/crypto-won-withdrawal-process-tax
+https://iknowhowinfo.com/guide/pension-savings-tax-refund
+
+### 발행 상태 (2026-07-29)
+- 브랜치: 세션 가드에 따라 claude/serene-hamilton-rbnaey에 push (main 직접 push 금지 준수). Draft PR #10 생성 (base: main).
+- 색인 푸시: --dry로 대상 5편+허브 확인. 실제 IndexNow/Google 요청은 PR 머지 후 guide-index-push.yml(main push 트리거)에서 자동 발송 예정 (production 라이브 전 404 요청 방지). 클라우드 로컬은 키 미설정으로 어차피 skip.
+- production(main) 반영 및 라이브 확인은 PR 머지 후.
