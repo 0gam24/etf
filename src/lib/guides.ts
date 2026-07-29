@@ -17502,6 +17502,456 @@ const cryptoInvestmentScamSigns: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-07-30 · 국내 주식 배당소득세 15.4%·실수령액 */
+const domesticDividendIncomeTax: GuideDef = {
+  slug: 'domestic-dividend-income-tax',
+  title: '국내 주식 배당금 세금 15.4%, 실수령액 계산법',
+  tagline: '배당금은 15.4% 떼고 들어온다, 2000만원 넘으면 종합과세',
+  description:
+    '삼성전자나 현대차 배당금이 통장에 얼마나 들어오는지 궁금하다면 국내 주식 배당은 15.4%를 떼고 지급됩니다. 원천징수 세율, 금융소득이 연 2000만원을 넘을 때 붙는 종합과세, 세후 실수령액을 계산하는 방법을 배당 예시와 함께 한 페이지에 정리했습니다.',
+  keywords: ['배당소득세', '배당금 세금', '배당소득세 15.4%', '금융소득종합과세', '배당 실수령액', '국내 주식 배당', '원천징수'],
+  section: '배당주 가이드',
+  lastReviewed: '2026-07-30',
+  answer:
+    '국내 상장 주식의 배당금은 15.4%(소득세 14%에 지방소득세 1.4%)가 원천징수된 뒤 통장에 들어옵니다. 회사가 발표한 주당 배당금에 보유 주식 수를 곱한 세전 금액에서 그 15.4%를 뺀 것이 실제 수령액입니다. 다만 한 해 이자와 배당을 합한 금융소득이 2000만원을 넘으면 초과분은 다른 소득과 합산해 더 높은 세율로 과세됩니다.',
+  keyPoints: [
+    '국내 상장 주식·펀드의 배당금은 별도 신고 없이 15.4%(소득세 14%에 지방소득세 1.4%)가 원천징수돼 세후 금액만 통장에 들어옵니다.',
+    '주당 365원인 배당을 100주 받으면 세전 3만6천5백원, 여기서 15.4%인 약 5천6백원을 뗀 3만9백원 안팎이 실수령액입니다.',
+    '한 해 이자와 배당을 합한 금융소득이 2000만원 이하면 15.4% 분리과세로 끝나, 소액 투자자 대부분은 추가 신고가 필요 없습니다.',
+    '금융소득이 연 2000만원을 넘으면 초과분이 종합과세 대상이 돼 6.6%에서 49.5%의 누진세율로 다른 소득과 합산 과세됩니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '금융감독원 전자공시 DART', url: 'https://dart.fss.or.kr' },
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '삼성전자 배당금을 실제로 얼마나 받는지 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=386996037' },
+    { summary: '현대자동차 배당금 규모가 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=361498859' },
+    { summary: 'LG전자 배당금이 언제 얼마 들어오는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=249025143' },
+  ],
+  comparisonTable: {
+    caption: '금융소득 규모별 배당 과세 얼개',
+    columns: ['금융소득(연간)', '과세 방식', '세율'],
+    rows: [
+      ['2000만원 이하', '원천징수 분리과세', '15.4%'],
+      ['2000만원 초과분', '종합과세 합산', '6.6~49.5% 누진'],
+      ['해외 상장 주식 배당', '원천징수 후 합산 가능', '현지·국내 기준 상이'],
+    ],
+  },
+  sections: [
+    {
+      heading: '배당금은 왜 발표 금액보다 적게 들어오나',
+      paragraphs: [
+        '배당금을 받아 보면 회사가 공시한 주당 배당금에 보유 수량을 곱한 금액보다 실제 입금액이 조금 적습니다. 국내 상장 주식의 배당은 지급 단계에서 세금을 먼저 떼고 나머지만 통장에 넣어 주기 때문입니다.',
+        '떼는 세율은 15.4%입니다. 소득세 14%에 그 10%인 지방소득세 1.4%가 더해진 값입니다. 증권사가 지급 시점에 알아서 원천징수하므로, 보통은 투자자가 따로 신고할 일 없이 세후 금액을 받게 됩니다.',
+      ],
+    },
+    {
+      heading: '실수령액 계산, 주당 배당금에서 15.4%를 뗀다',
+      paragraphs: [
+        '계산은 어렵지 않습니다. 주당 배당금에 보유 주식 수를 곱해 세전 배당을 구하고, 거기에 0.846(1에서 0.154를 뺀 값)을 곱하면 세후 실수령액이 나옵니다.',
+        '예를 들어 주당 365원을 100주 받는다면 세전은 3만6천5백원, 여기에 15.4%인 약 5천6백원을 빼면 3만9백원 안팎이 손에 들어옵니다. 배당금이 클수록 떼이는 절대 금액도 커지므로, 세전 표시 금액을 그대로 수령액으로 생각하지 않는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '금융소득 2000만원, 종합과세 갈림길',
+      paragraphs: [
+        '15.4% 분리과세로 끝나는 것은 한 해 금융소득이 일정 규모 이하일 때입니다. 이자와 배당을 합한 금융소득이 연 2000만원을 넘으면, 넘는 부분은 근로소득이나 사업소득 같은 다른 소득과 합쳐 종합소득세로 다시 계산합니다.',
+        '이때는 6.6%에서 49.5%에 이르는 누진세율이 적용돼, 소득이 많은 사람일수록 배당에 붙는 실효세율이 15.4%보다 높아질 수 있습니다. 큰 금액을 배당으로 받는다면 연간 금융소득 합계를 미리 가늠해 두는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '세금 줄이려면 계좌부터 본다',
+      paragraphs: [
+        '같은 배당이라도 어떤 계좌에서 받느냐에 따라 세후 금액이 달라집니다. ISA 계좌나 연금저축 계좌 안에서 받는 분배·배당은 과세를 미루거나 낮은 세율로 정산할 여지가 있어, 일반 계좌보다 유리한 경우가 많습니다.',
+        '세부 요건과 한도는 계좌 종류마다 다르고 개정도 잦으니, 확정 세액은 국세청 안내나 증권사 상담으로 확인하는 것이 정확합니다. 배당 투자 판단과 세금 신고 책임은 결국 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '국내 주식 배당금 세금은 몇 퍼센트인가요?',
+      answer:
+        '15.4%입니다. 소득세 14%에 지방소득세 1.4%가 더해진 값으로, 지급 시점에 원천징수돼 세후 금액만 통장에 들어옵니다.',
+    },
+    {
+      question: '배당 실수령액은 어떻게 계산하나요?',
+      answer:
+        '주당 배당금에 보유 수량을 곱한 세전 금액에 0.846을 곱하면 됩니다. 세전에서 15.4%를 뺀 나머지가 실제 받는 금액입니다.',
+    },
+    {
+      question: '배당도 따로 세금 신고를 해야 하나요?',
+      answer:
+        '금융소득이 연 2000만원 이하면 원천징수로 끝나 추가 신고가 없습니다. 2000만원을 넘으면 초과분을 종합소득에 합산해 신고해야 합니다.',
+    },
+    {
+      question: '금융소득 2000만원은 배당만 기준인가요?',
+      answer:
+        '아닙니다. 예금·채권 이자와 배당을 합한 금융소득 전체가 기준입니다. 둘을 더해 2000만원을 넘으면 종합과세 대상이 됩니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-30 · 비트코인 원화 구매·출금 방법 */
+const bitcoinKrwBuyWithdrawal: GuideDef = {
+  slug: 'bitcoin-krw-buy-withdrawal',
+  title: '비트코인 원화로 사고 출금하는 법, 초보 순서',
+  tagline: '실명계좌 연결부터 원화 출금까지, 트래블룰 100만원 기준',
+  description:
+    '비트코인을 원화로 사고 다시 현금으로 출금하는 방법이 궁금하다면 국내 신고 거래소에서 실명계좌를 연결하는 것부터 시작합니다. 계좌 개설과 매수·매도, 원화 출금 절차, 100만원 이상 코인 출금에 적용되는 트래블룰까지 초보 눈높이로 정리했습니다.',
+  keywords: ['비트코인 원화 출금', '비트코인 구매방법', '코인 원화 출금', '가상자산 거래소 입금', '트래블룰 100만원', '비트코인 초보', '코인 실명계좌'],
+  section: '테마 ETF 가이드',
+  lastReviewed: '2026-07-30',
+  howTo: {
+    totalTime: 'PT20M',
+    description: '국내 거래소 가입부터 원화 입금·매수·매도·원화 출금까지 비트코인 현금화를 단계로 따라가는 방법.',
+  },
+  answer:
+    '비트코인을 원화로 사려면 먼저 국내 신고된 가상자산 거래소에 가입하고, 그 거래소와 제휴된 은행의 실명 확인 입출금 계좌를 연결해야 합니다. 이 계좌로 원화를 입금해 비트코인을 매수하고, 팔아서 생긴 원화를 다시 계좌로 출금하면 현금화됩니다. 코인 자체를 다른 지갑으로 보낼 때 100만원 이상이면 트래블룰이 적용돼 보내는 사람과 받는 사람 정보가 확인됩니다.',
+  keyPoints: [
+    '국내에서 비트코인을 원화로 거래하려면 신고된 거래소 가입 후 제휴 은행의 실명 확인 입출금 계좌를 연결해야 하며, 계좌 없이는 원화 입출금이 불가능합니다.',
+    '원화 출금은 코인을 팔아 원화로 바꾼 뒤 연결된 본인 명의 계좌로 이체하는 방식이며, 첫 원화 입금 후 72시간 동안은 코인 출금이 막히는 지연 규정이 있습니다.',
+    '코인을 외부 지갑이나 다른 거래소로 보낼 때 원화 환산 100만원 이상이면 트래블룰이 적용돼, 연동된 거래소나 등록된 본인 지갑으로만 출금됩니다.',
+    '가상자산은 가격 변동이 매우 크고 원금 전부를 잃을 수 있는 고위험 자산이므로, 출금·거래 방법과 별개로 감당 가능한 금액만 다뤄야 합니다.',
+  ],
+  sources: [
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '디지털자산거래소 공동협의체 DAXA', url: 'https://www.daxa.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '비트코인을 원화로 어떻게 출금하는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494317428' },
+    { summary: '비트코인을 처음 사는 구매 방법이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493359615' },
+  ],
+  sections: [
+    {
+      heading: '거래소 가입과 실명계좌 연결',
+      paragraphs: [
+        '국내에서 비트코인을 원화로 거래하는 첫 단계는 신고된 가상자산 거래소에 가입하는 것입니다. 본인 명의 휴대폰으로 실명 인증을 마치고, 그 거래소와 제휴된 은행에서 실명 확인 입출금 계좌를 개설해 연결합니다.',
+        '이 실명계좌가 없으면 원화를 넣거나 뺄 수 없습니다. 계좌 개설과 연결에는 은행 앱 인증 등 절차가 있어 하루 이틀이 걸릴 수 있으니, 급하게 사기보다 계좌부터 미리 준비해 두는 편이 매끄럽습니다.',
+      ],
+    },
+    {
+      heading: '원화 입금하고 비트코인 매수하기',
+      paragraphs: [
+        '계좌 연결이 끝나면 연결된 은행 계좌에서 거래소 원화 지갑으로 돈을 옮깁니다. 입금이 반영되면 거래소 화면에서 비트코인을 원하는 금액만큼 삽니다. 시장가로 바로 사거나, 원하는 가격을 지정해 지정가로 걸어 둘 수도 있습니다.',
+        '처음이라면 소액으로 한 번 매수해 화면과 체결 과정을 익히는 것을 권합니다. 비트코인은 하루에도 가격이 크게 오르내리니, 한 번에 큰돈을 넣기보다 흐름을 보며 나눠 접근하는 편이 심리적으로도 안정적입니다.',
+      ],
+    },
+    {
+      heading: '팔아서 원화로 출금하는 순서',
+      paragraphs: [
+        '현금이 필요하면 보유한 비트코인을 원화로 매도합니다. 매도가 체결되면 거래소 원화 지갑에 원화가 잡히고, 이 원화를 연결된 본인 은행 계좌로 출금 신청하면 실제 돈이 통장으로 들어옵니다.',
+        '주의할 점은 첫 원화 입금 뒤 일정 시간 코인 출금이 제한되는 지연 규정입니다. 보이스피싱 방지를 위해 첫 원화 입금 후 72시간 동안 코인 외부 출금이 막히는 경우가 있으니, 급한 이체 계획이 있다면 이 시차를 감안해야 합니다.',
+      ],
+    },
+    {
+      heading: '코인 출금과 트래블룰 100만원 기준',
+      paragraphs: [
+        '원화 출금과 달리, 비트코인 자체를 다른 지갑이나 거래소로 보내는 것은 코인 출금입니다. 이때 원화 환산 100만원 이상이면 트래블룰이 적용됩니다. 보내는 쪽과 받는 쪽의 신원 정보가 함께 전달돼야 하므로, 아무 주소로나 보낼 수 있는 것이 아닙니다.',
+        '100만원 이상 코인 출금은 트래블룰이 연동된 거래소나, 본인 확인이 끝난 등록 지갑 주소로만 가능합니다. 잘못된 주소로 보내면 되돌릴 수 없으니 주소를 반드시 확인하고, 자금세탁방지 규정에 따라 절차가 강화된 점을 이해하고 이용하는 것이 안전합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '비트코인을 원화로 사려면 무엇부터 하나요?',
+      answer:
+        '신고된 국내 거래소에 가입하고 제휴 은행의 실명 확인 입출금 계좌를 연결하는 것이 먼저입니다. 이 계좌로 원화를 넣어야 매수가 가능합니다.',
+    },
+    {
+      question: '코인을 팔면 바로 통장으로 출금되나요?',
+      answer:
+        '매도로 원화 지갑에 잡힌 돈을 연결된 본인 계좌로 출금 신청하면 됩니다. 다만 첫 원화 입금 후 72시간은 코인 외부 출금이 제한될 수 있습니다.',
+    },
+    {
+      question: '트래블룰 100만원은 무슨 뜻인가요?',
+      answer:
+        '코인을 외부로 보낼 때 원화 환산 100만원 이상이면 보내는 사람과 받는 사람 정보를 함께 확인하는 규정입니다. 연동 거래소나 등록 지갑으로만 출금됩니다.',
+    },
+    {
+      question: '비트코인 거래에 세금은 없나요?',
+      answer:
+        '가상자산 소득 과세는 2027년 1월 시행이 예정돼 있습니다. 시행되면 양도·대여 소득에서 연 250만원 공제 후 22%(지방세 포함)가 부과될 예정입니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-30 · 코인 거래소 수수료 구조 */
+const cryptoExchangeFeeStructure: GuideDef = {
+  slug: 'crypto-exchange-fee-structure',
+  title: '코인 거래소 수수료 구조, 메이커·테이커·펀딩비',
+  tagline: '거래 수수료만이 아니다, 출금·스프레드·펀딩비까지',
+  description:
+    '바이낸스나 국내 거래소에서 코인을 사고팔 때 붙는 수수료가 궁금하다면 거래 수수료 외에도 출금 수수료와 보이지 않는 스프레드가 있습니다. 메이커와 테이커 차이, 선물의 펀딩비, 원화 거래 수수료 수준까지 코인 비용 구조를 한 번에 정리했습니다.',
+  keywords: ['코인 거래소 수수료', '메이커 테이커', '바이낸스 수수료', '코인 출금 수수료', '펀딩비', '가상자산 수수료', '업비트 수수료'],
+  section: '테마 ETF 가이드',
+  lastReviewed: '2026-07-30',
+  answer:
+    '코인 거래 비용은 크게 매매할 때 붙는 거래 수수료, 코인을 외부로 보낼 때 내는 출금 수수료, 매수와 매도 호가 차이인 스프레드로 나뉩니다. 거래 수수료는 호가를 올려 유동성을 공급하는 메이커가 낮고, 시장가로 체결하는 테이커가 높습니다. 국내 원화 거래는 대략 0.05% 안팎, 해외 현물은 0.1% 수준이며 선물에는 별도로 포지션 유지 비용인 펀딩비가 붙습니다.',
+  keyPoints: [
+    '코인 매매 수수료는 지정가로 호가를 대는 메이커가 낮고, 시장가로 즉시 체결하는 테이커가 높은 메이커·테이커 구조가 기본입니다.',
+    '국내 원화 거래소의 거래 수수료는 대체로 0.05% 안팎, 바이낸스 같은 해외 현물은 0.1% 수준이며 자체 코인으로 낼 경우 25%가량 할인되기도 합니다.',
+    '코인을 외부 지갑으로 보낼 때는 거래 수수료와 별개로 네트워크 출금 수수료가 코인 단위로 부과되며, 코인 종류와 혼잡도에 따라 금액이 달라집니다.',
+    '선물·무기한 계약에는 매매 수수료 외에 롱과 숏 사이에 주고받는 펀딩비가 보통 8시간마다 정산돼, 오래 들고 있으면 누적 비용이 커집니다.',
+  ],
+  sources: [
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '디지털자산거래소 공동협의체 DAXA', url: 'https://www.daxa.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '바이낸스 거래 수수료가 얼마인지 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494357051' },
+    { summary: '코인 선물에서 펀딩비가 무슨 뜻인지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494350717' },
+  ],
+  comparisonTable: {
+    caption: '코인 거래에서 붙는 비용 종류',
+    columns: ['비용 종류', '언제 발생', '대략 수준'],
+    rows: [
+      ['거래 수수료(메이커)', '지정가 매매 체결', '낮음(예: 0.05~0.1%)'],
+      ['거래 수수료(테이커)', '시장가 매매 체결', '메이커보다 높음'],
+      ['출금 수수료', '코인 외부 전송', '코인별 고정량'],
+      ['펀딩비', '선물 포지션 유지', '8시간마다 정산'],
+    ],
+  },
+  sections: [
+    {
+      heading: '거래 수수료, 메이커와 테이커가 다르다',
+      paragraphs: [
+        '코인을 사고팔 때 가장 먼저 붙는 것이 거래 수수료입니다. 여기서 알아 둘 개념이 메이커와 테이커입니다. 메이커는 원하는 가격에 지정가 주문을 걸어 호가창에 유동성을 공급하는 쪽이고, 테이커는 시장가로 이미 걸려 있는 호가를 바로 잡아채 체결하는 쪽입니다.',
+        '거래소는 유동성을 공급하는 메이커에게 낮은 수수료를, 유동성을 소비하는 테이커에게 상대적으로 높은 수수료를 매기는 경우가 많습니다. 급하게 시장가로 체결하면 편하지만 그만큼 수수료가 조금 더 나갈 수 있다는 뜻입니다.',
+      ],
+    },
+    {
+      heading: '국내와 해외 거래소 수수료 수준',
+      paragraphs: [
+        '수수료율은 거래소마다 다릅니다. 국내 원화 거래소의 거래 수수료는 대체로 0.05% 안팎으로 알려져 있고, 바이낸스 같은 해외 현물 거래소는 기본 0.1% 수준을 씁니다.',
+        '해외 거래소는 자체 코인으로 수수료를 내면 25%가량 깎아 주는 할인도 있습니다. 다만 국내에 신고되지 않은 해외 거래소는 원화 입출금이나 이용자 보호 측면에서 제약과 위험이 있으니, 수수료가 낮다는 이유만으로 선택하기보다 안전성을 함께 따지는 것이 중요합니다.',
+      ],
+    },
+    {
+      heading: '보이지 않는 비용, 출금 수수료와 스프레드',
+      paragraphs: [
+        '거래 수수료만 비용이 아닙니다. 코인을 다른 지갑이나 거래소로 보낼 때는 네트워크 출금 수수료가 따로 붙습니다. 이 수수료는 코인 단위로 고정 부과되는 경우가 많고, 네트워크가 붐비면 더 오르기도 합니다.',
+        '또 하나 놓치기 쉬운 것이 스프레드입니다. 사려는 가격과 팔려는 가격 사이에는 늘 차이가 있어, 사자마자 팔면 이 차이만큼 손해가 납니다. 거래가 한산한 코인일수록 스프레드가 벌어져, 표시된 수수료율보다 실제 부담이 커질 수 있습니다.',
+      ],
+    },
+    {
+      heading: '선물의 펀딩비, 오래 들수록 쌓인다',
+      paragraphs: [
+        '선물이나 무기한 계약을 거래하면 매매 수수료 외에 펀딩비라는 비용이 추가됩니다. 펀딩비는 무기한 계약 가격을 실제 가격에 붙들어 두기 위해 롱과 숏 포지션 사이에 주고받는 금액으로, 보통 8시간마다 정산됩니다.',
+        '방향이 몰리면 불리한 쪽이 유리한 쪽에 펀딩비를 냅니다. 하루 세 번 정산되니 포지션을 며칠씩 들고 있으면 이 비용이 쌓여 수익을 갉아먹을 수 있습니다. 선물은 손실도 원금을 넘어설 수 있는 고위험 거래라, 수수료 이전에 위험을 먼저 이해해야 합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '메이커와 테이커 수수료는 왜 다른가요?',
+      answer:
+        '메이커는 지정가로 호가창에 유동성을 공급하고, 테이커는 시장가로 그 유동성을 소비합니다. 유동성을 공급하는 메이커에게 더 낮은 수수료를 매기는 구조입니다.',
+    },
+    {
+      question: '국내 코인 거래소 수수료는 얼마인가요?',
+      answer:
+        '국내 원화 거래소의 거래 수수료는 대체로 0.05% 안팎으로 알려져 있습니다. 거래소와 이벤트에 따라 달라지니 이용 전 공지된 요율을 확인하세요.',
+    },
+    {
+      question: '펀딩비는 무엇인가요?',
+      answer:
+        '선물·무기한 계약에서 계약 가격을 실제 가격에 맞추기 위해 롱과 숏 사이에 주고받는 비용입니다. 보통 8시간마다 정산돼 장기 보유 시 누적됩니다.',
+    },
+    {
+      question: '수수료 말고 또 드는 비용이 있나요?',
+      answer:
+        '코인을 외부로 보낼 때 내는 네트워크 출금 수수료와, 매수·매도 호가 차이인 스프레드가 있습니다. 거래가 한산할수록 스프레드 부담이 커집니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-30 · 주식 리딩방 사기 신호·대처 */
+const stockLeadingRoomScam: GuideDef = {
+  slug: 'stock-leading-room-scam',
+  title: '주식 리딩방 사기 신호와 대처, 유사투자자문 구분',
+  tagline: '무료방에서 유료 VIP로, 1대1 유료 상담은 불법 신호',
+  description:
+    '주식 리딩방이 사기인지 헷갈린다면 몇 가지 신호로 가려낼 수 있습니다. 무료방에서 유료 VIP 결제로 유도하거나 확정 수익을 약속하는 곳은 위험하고, 1대1 유료 투자 상담은 유사투자자문업자에게 허용되지 않습니다. 피해를 줄이는 확인 절차와 신고처를 정리했습니다.',
+  keywords: ['주식 리딩방 사기', '유사투자자문', '리딩방 신고', '투자 사기 신호', '금융감독원 1332', '주식 사기 대처', '리딩방 불법'],
+  section: 'ETF 입문 가이드',
+  lastReviewed: '2026-07-30',
+  answer:
+    '리딩방이 사기인지 가리는 확실한 신호는 확정 수익 보장, 무료방에서 고액 유료 VIP 결제로의 유도, 그리고 1대1 개별 종목 상담입니다. 개별 투자 자문은 금융위원회에 등록한 투자자문업자만 할 수 있어, 신고만 되어 있는 유사투자자문업자가 유료 1대1 상담을 하면 불법입니다. 의심되면 금융소비자 정보포털에서 운영 주체를 확인하고 금융감독원에 신고하는 것이 안전합니다.',
+  keyPoints: [
+    '리딩방의 대표적 위험 신호는 원금 보장이나 확정 수익 약속, 무료 채팅방에서 고액 유료 VIP방으로의 결제 유도, 특정 종목을 콕 집어주는 1대1 상담입니다.',
+    '개별 종목을 1대1로 자문하는 행위는 금융위원회에 등록한 투자자문업자만 가능하며, 신고만 한 유사투자자문업자가 유료 개별 상담을 하면 자본시장법 위반입니다.',
+    '가입 전 금융소비자 정보포털 파인의 유사투자자문업자 신고 현황에서 운영 주체가 실제로 신고된 곳인지, 제재 이력이 있는지 확인할 수 있습니다.',
+    '피해가 발생하면 금융감독원 불법사금융 신고센터(국번 없이 1332)와 유사투자자문 피해신고, 수사기관 고소를 함께 진행하는 것이 회수 가능성을 높입니다.',
+  ],
+  sources: [
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '특정 주식 리딩 업체 후기를 물으며 신뢰해도 되는지 궁금해하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494354246' },
+    { summary: '리딩방 사기를 당해 도움을 요청하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=452614257' },
+    { summary: '투자 관련 앱이 사기인지 확인해 달라는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=408816711' },
+  ],
+  comparisonTable: {
+    caption: '정식 투자자문과 유사투자자문·리딩방 구분',
+    columns: ['구분', '정식 투자자문업자', '유사투자자문업자'],
+    rows: [
+      ['등록·신고', '금융위 등록', '금융위 신고만'],
+      ['1대1 개별 상담', '가능', '불가(하면 불법)'],
+      ['제공 방식', '계약 기반 자문', '불특정 다수 유료 정보'],
+    ],
+  },
+  sections: [
+    {
+      heading: '리딩방이 뜨는 구조, 무료방에서 유료로',
+      paragraphs: [
+        '리딩방은 카카오톡 오픈채팅이나 텔레그램에서 전문가를 자처하는 사람이 매수·매도 시점과 종목을 실시간으로 알려주는 채팅방입니다. 대개 무료방으로 사람을 모은 뒤, 더 좋은 정보를 준다며 고액 유료 VIP방이나 별도 결제로 유도합니다.',
+        '초반에는 몇 종목이 오르는 모습을 보여 주며 신뢰를 쌓습니다. 하지만 오른 종목만 강조하고 손실은 지운 채 성과를 부풀리는 경우가 많아, 화려한 수익 인증만 보고 판단하면 위험합니다.',
+      ],
+    },
+    {
+      heading: '불법을 가르는 선, 1대1 유료 상담',
+      paragraphs: [
+        '핵심은 자격입니다. 특정인에게 개별 종목을 1대1로 자문하는 행위는 금융위원회에 정식 등록한 투자자문업자만 할 수 있습니다. 신고만 되어 있는 유사투자자문업자는 불특정 다수에게 정보를 파는 것까지만 허용됩니다.',
+        '그래서 유사투자자문업자가 돈을 받고 1대1 개별 상담을 하면 그 자체가 자본시장법 위반입니다. 확정 수익을 약속하거나 원금을 보장한다는 말도 제도권에서는 할 수 없는 표현이니, 이런 문구가 보이면 일단 의심하는 것이 맞습니다.',
+      ],
+    },
+    {
+      heading: '가입 전 확인하는 법, 파인 신고 현황',
+      paragraphs: [
+        '돈을 넣기 전에 운영 주체를 확인하는 습관이 피해를 크게 줄입니다. 금융소비자 정보포털 파인의 유사투자자문업자 신고 현황에서 업체가 실제로 신고된 곳인지, 과거 제재나 민원 이력이 있는지 조회할 수 있습니다.',
+        '신고조차 되어 있지 않은 업체라면 제도권 밖에서 활동하는 것이므로 더욱 조심해야 합니다. 공식 명칭, 대표자, 사업자 정보를 밝히지 않고 계좌 이체만 재촉하는 곳도 위험 신호로 봐야 합니다.',
+      ],
+    },
+    {
+      heading: '이미 당했다면, 신고와 대처 순서',
+      paragraphs: [
+        '피해를 입었다면 먼저 대화 내용, 송금 내역, 결제 화면 등 증거를 캡처해 확보합니다. 그다음 금융감독원 불법사금융 신고센터(국번 없이 1332)와 유사투자자문 피해신고 창구에 알리고, 사기죄나 자본시장법 위반으로 수사기관에 고소를 검토합니다.',
+        '돈을 돌려받을 수 있는지는 상대의 자산과 사안에 따라 달라 장담하기 어렵습니다. 그래도 신고와 증거 확보가 빠를수록 대응 여지가 커지니, 부끄러워 미루지 말고 서둘러 움직이는 것이 좋습니다. 투자 정보의 최종 판단과 책임은 본인에게 있다는 점도 기억해야 합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '주식 리딩방은 다 불법인가요?',
+      answer:
+        '리딩방 자체가 모두 불법은 아닙니다. 다만 신고만 한 유사투자자문업자가 돈을 받고 1대1 개별 종목 상담을 하거나 확정 수익을 약속하면 불법입니다.',
+    },
+    {
+      question: '리딩방이 사기인지 어떻게 구분하나요?',
+      answer:
+        '원금 보장·확정 수익 약속, 무료방에서 고액 유료 VIP로의 결제 유도, 1대1 개별 종목 상담이 대표적 위험 신호입니다. 하나라도 보이면 의심하세요.',
+    },
+    {
+      question: '가입 전 업체를 확인할 방법이 있나요?',
+      answer:
+        '금융소비자 정보포털 파인의 유사투자자문업자 신고 현황에서 신고 여부와 제재 이력을 조회할 수 있습니다. 신고조차 없는 곳은 더 조심해야 합니다.',
+    },
+    {
+      question: '이미 피해를 봤다면 어디에 신고하나요?',
+      answer:
+        '증거를 확보한 뒤 금융감독원 불법사금융 신고센터(국번 없이 1332)와 유사투자자문 피해신고에 알리고, 수사기관 고소를 함께 검토하세요.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-30 · S&P500·나스닥100 겹침 */
+const sp500Nasdaq100Overlap: GuideDef = {
+  slug: 'sp500-nasdaq-overlap',
+  title: 'S&P500과 나스닥100 겹침, 둘 다 사야 할까',
+  tagline: '나스닥100 종목 대부분이 S&P500에 이미 들어 있다',
+  description:
+    'S&P500과 나스닥100 ETF를 둘 다 사면 분산이 되는지 궁금하다면 실제로는 상당 부분이 겹칩니다. 나스닥100 종목 대다수가 S&P500에도 포함돼 애플·엔비디아 같은 대형 기술주에 집중되는 구조입니다. 겹침의 실제 크기와 함께 담을 때 유의점을 정리했습니다.',
+  keywords: ['S&P500 나스닥100 겹침', '나스닥100 S&P500 중복', '지수 ETF 분산', 'S&P500 나스닥 차이', '미국 지수 투자', '나스닥100 편입종목', 'ETF 중복'],
+  section: '해외상장 가이드',
+  lastReviewed: '2026-07-30',
+  answer:
+    'S&P500과 나스닥100은 종목이 크게 겹칩니다. 나스닥100의 100개 종목 가운데 대략 85개 안팎이 S&P500에도 들어 있어, 두 지수를 함께 담아도 애플, 마이크로소프트, 엔비디아 같은 대형 기술주에 이중으로 투자되는 셈입니다. 분산 효과는 생각보다 작고 기술주 집중도가 오히려 커질 수 있으니, 둘을 섞기보다 한쪽을 고르거나 성격이 다른 자산을 더하는 편이 분산에 가깝습니다.',
+  keyPoints: [
+    '나스닥100 편입 100종목 가운데 약 85종목이 S&P500에도 포함돼, 두 지수는 구성 종목의 상당 부분이 겹칩니다.',
+    '시가총액 기준으로 보면 두 지수의 겹치는 비중이 대략 40~50%에 이르러, 함께 담으면 같은 대형주에 중복 투자됩니다.',
+    '애플·엔비디아·마이크로소프트 등 상위 소수 대형 기술주가 두 지수 모두에서 큰 비중을 차지해, 이들 주가에 성과가 좌우됩니다.',
+    '나스닥100은 금융주를 빼고 기술주 비중이 더 높아, S&P500보다 변동성이 크고 특정 섹터로 쏠리는 경향이 강합니다.',
+  ],
+  sources: [
+    { label: 'S&P Dow Jones Indices', url: 'https://www.spglobal.com/spdji' },
+    { label: 'Nasdaq', url: 'https://www.nasdaq.com' },
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '나스닥100과 S&P500에 장기투자할 때를 비교해 궁금해하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494346634' },
+    { summary: 'S&P500과 VOO의 관계를 묻는 미국 지수 투자 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494129410' },
+    { summary: '어떤 ETF를 담아야 할지 추천을 구하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=475289127' },
+  ],
+  comparisonTable: {
+    caption: 'S&P500과 나스닥100 한눈 비교',
+    columns: ['구분', 'S&P500', '나스닥100'],
+    rows: [
+      ['종목 수', '약 500종목', '약 100종목'],
+      ['금융주 포함', '포함', '제외'],
+      ['서로 겹치는 종목', '나스닥100 상당수 포함', '약 85종목이 S&P500에도'],
+      ['성격', '미국 대형주 전반', '기술·성장주 집중'],
+    ],
+  },
+  sections: [
+    {
+      heading: '두 지수는 얼마나 겹치나',
+      paragraphs: [
+        'S&P500은 미국을 대표하는 대형주 약 500종목을 담고, 나스닥100은 나스닥 시장에서 금융주를 뺀 시가총액 상위 100종목을 담습니다. 이름이 다르니 서로 다른 곳에 투자하는 것 같지만, 실제로는 겹치는 부분이 상당히 큽니다.',
+        '나스닥100에 있는 100종목 중 대략 85종목 안팎이 S&P500에도 포함돼 있습니다. 애플, 마이크로소프트, 엔비디아, 아마존 같은 대형 기술주가 양쪽 모두에 들어가 있어, 두 지수를 함께 사면 같은 회사를 두 번 담는 결과가 됩니다.',
+      ],
+    },
+    {
+      heading: '겹침의 크기, 종목 수와 시총으로 보기',
+      paragraphs: [
+        '겹침은 종목 수뿐 아니라 비중으로도 봐야 합니다. 시가총액 기준으로 두 지수가 겹치는 비중은 대략 40%에서 50% 사이로 알려져 있습니다. 두 상품에 나눠 넣은 돈의 절반 가까이가 사실상 같은 대형주로 향한다는 뜻입니다.',
+        '특히 상위 소수 종목의 힘이 큽니다. 시가총액 상위 대형 기술주 몇 곳이 두 지수 모두에서 큰 비중을 차지해, 이들의 주가가 오르내리면 두 상품이 비슷하게 움직입니다. 서로 다른 지수를 샀다고 해서 위험이 그만큼 나뉘는 것은 아닙니다.',
+      ],
+    },
+    {
+      heading: '둘 다 담으면 분산이 될까',
+      paragraphs: [
+        '분산의 목적은 서로 다르게 움직이는 자산을 섞어 위험을 낮추는 데 있습니다. 그런데 S&P500과 나스닥100은 겹침이 커서 함께 담아도 분산 효과가 생각보다 작습니다. 오히려 기술주 비중만 더 높아져 특정 섹터 쏠림이 심해질 수 있습니다.',
+        '나스닥100은 금융주를 빼고 성장·기술주에 집중돼 있어 S&P500보다 변동성이 큰 편입니다. 두 지수를 같이 사는 것은 미국 대형 기술주에 더 무겁게 베팅하는 선택에 가깝지, 안전하게 나눠 담는 것과는 다릅니다.',
+      ],
+    },
+    {
+      heading: '나눠 담고 싶다면 무엇을 더하나',
+      paragraphs: [
+        '분산을 원한다면 성격이 겹치는 두 지수를 섞기보다, 한쪽을 고른 뒤 결이 다른 자산을 더하는 편이 낫습니다. 미국 대형주와 상관관계가 낮은 채권, 다른 나라 주식, 금 같은 자산을 조합하면 위험이 실제로 나뉩니다.',
+        '미국 대형주 하나에 집중하고 싶다면 폭넓은 S&P500 한쪽이 무난하고, 기술·성장주 색을 더 원하면 나스닥100을 고르는 식으로 목적을 정하는 것이 좋습니다. 어떤 조합이든 최종 판단과 결과는 투자자 본인의 몫입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'S&P500과 나스닥100은 얼마나 겹치나요?',
+      answer:
+        '나스닥100의 100종목 중 약 85종목이 S&P500에도 포함됩니다. 시가총액 기준으로도 대략 40~50%가 겹쳐, 함께 담으면 중복 투자가 큽니다.',
+    },
+    {
+      question: '두 지수를 다 사면 분산이 되나요?',
+      answer:
+        '겹침이 커서 분산 효과는 작습니다. 오히려 대형 기술주 비중이 높아져 섹터 쏠림이 심해질 수 있어, 위험을 나누는 효과는 제한적입니다.',
+    },
+    {
+      question: '나스닥100과 S&P500은 무엇이 다른가요?',
+      answer:
+        'S&P500은 금융주를 포함한 대형주 약 500종목, 나스닥100은 금융주를 뺀 상위 100종목입니다. 나스닥100이 기술주 비중이 높고 변동성도 큰 편입니다.',
+    },
+    {
+      question: '둘 중 하나만 고른다면요?',
+      answer:
+        '폭넓은 미국 대형주 노출을 원하면 S&P500, 기술·성장주 비중을 더 원하면 나스닥100이 무난합니다. 목적에 맞게 하나를 정하는 편이 깔끔합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
   pensionSavingsVsIrp,
   etfSharePriceMeaning,
@@ -17701,6 +18151,11 @@ export const GUIDES: GuideDef[] = [
   pensionSavingsInsuranceToFundTransfer,
   usStockDividendWithholdingTax,
   cryptoInvestmentScamSigns,
+  domesticDividendIncomeTax,
+  bitcoinKrwBuyWithdrawal,
+  cryptoExchangeFeeStructure,
+  stockLeadingRoomScam,
+  sp500Nasdaq100Overlap,
 ];
 
 /**
@@ -17711,6 +18166,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-07-30 · 지식iN 질문 수요 기반 (국내 배당소득세 15.4% 실수령액·비트코인 원화 구매출금·코인 거래소 수수료 구조·주식 리딩방 사기 신호·S&P500 나스닥100 겹침)
+  'domestic-dividend-income-tax': '2026-07-30',
+  'bitcoin-krw-buy-withdrawal': '2026-07-30',
+  'crypto-exchange-fee-structure': '2026-07-30',
+  'stock-leading-room-scam': '2026-07-30',
+  'sp500-nasdaq-overlap': '2026-07-30',
   // 2026-07-28 · 지식iN 질문 수요 기반 (삼성전자 분기배당 확인법·국내 비트코인 ETF 도입 현황과 세금·연금저축보험 계약이전·미국주식 배당 원천징수·코인 사기 신호)
   'individual-stock-dividend-schedule': '2026-07-28',
   'korea-bitcoin-etf-status-tax': '2026-07-28',
@@ -17960,7 +18421,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam'],
   },
   {
     title: '세금·절세 계좌',
@@ -17970,17 +18431,17 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax'],
   },
   {
     title: '테마·섹터',
     description: '방산·조선·건설·자동차·AI·반도체·빅테크·소프트웨어·보안·로봇·전기차·신재생·희토류·게임·엔터·명품·뷰티·비트코인·인프라 등 특정 테마에 집중하는 섹터 ETF.',
-    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs'],
+    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'bitcoin-krw-buy-withdrawal', 'crypto-exchange-fee-structure'],
   },
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap'],
   },
   {
     title: '전략·자산배분',
