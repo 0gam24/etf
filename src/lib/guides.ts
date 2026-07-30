@@ -17952,7 +17952,430 @@ const sp500Nasdaq100Overlap: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-07-30 · 미국주식 원화 매수(통합증거금) 안 될 때 */
+const usStockKrwExchangeSetup: GuideDef = {
+  slug: 'us-stock-krw-exchange-setup',
+  title: '미국주식 원화로 바로 매수, 통합증거금과 환전 정리',
+  tagline: '환전 안 하고 원화로 미국주식 사는 법, 매수 안 될 때 점검 순서',
+  description:
+    '미국주식을 사려는데 매수 버튼이 눌리지 않거나 예수금은 있는데 주문이 막힐 때가 있습니다. 원화로 바로 사는 통합증거금 방식과 미리 달러로 바꾸는 환전주문의 차이, 매수가 안 될 때 확인할 계좌 설정을 한 번에 정리했습니다.',
+  keywords: ['미국주식 원화매수', '통합증거금', '해외주식 환전', '원화주문', '미국주식 매수 안됨', '해외주식 거래신청', '달러 환전'],
+  section: 'ETF 매매 가이드',
+  lastReviewed: '2026-07-30',
+  answer:
+    '요즘 대부분의 증권사는 통합증거금 서비스로 미리 환전하지 않아도 원화 예수금으로 미국주식을 바로 매수할 수 있습니다. 이 경우 주문 체결 뒤 결제일에 필요한 만큼만 증권사가 자동으로 달러로 바꿔 줍니다. 매수가 안 된다면 해외주식 거래 신청·약관 동의가 안 됐거나, 원화 예수금이 부족하거나, 원화주문 설정이 꺼져 있는 경우가 대부분입니다.',
+  keyPoints: [
+    '통합증거금은 별도 환전 없이 원화(KRW)와 외화 예수금을 매수 증거금으로 쓰고, 체결 후 결제일에 필요한 금액만 자동 환전하는 방식입니다.',
+    '증거금 사용 순서는 보통 해당 시장 주문통화 다음 원화(KRW), 그다음 보유 외화 순서라, 달러가 없어도 원화만으로 주문이 들어갑니다.',
+    '매수가 막히는 흔한 이유는 해외주식 거래 신청·위험고지 동의 미완료, 원화 예수금 부족, 종목의 거래 가능 시간대가 아닌 경우입니다.',
+    '국내주식과 해외주식을 동시에 원화로 매수하면 원화가 국내 결제에 먼저 쓰여 해외분 자동환전이 막힐 수 있어, 이때는 직접 환전이 필요합니다.',
+  ],
+  sources: [
+    { label: '금융투자협회 투자자 안내', url: 'https://www.kofia.or.kr' },
+    { label: '한국예탁결제원', url: 'https://www.ksd.or.kr' },
+    { label: '금융감독원 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'NH투자증권에서 미국주식 매수가 안 된다는 질문, 원화 대용·환전 여부 점검', url: 'https://kin.naver.com/qna/detail.naver?docId=494355613' },
+    { summary: '미래에셋 해외주식 수수료·주문 관련 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494304010' },
+  ],
+  comparisonTable: {
+    caption: '원화주문(통합증거금)과 환전주문 비교',
+    columns: ['구분', '원화주문(통합증거금)', '환전주문'],
+    rows: [
+      ['환전 시점', '체결 후 결제일 자동환전', '주문 전 직접 환전'],
+      ['필요 준비', '원화 예수금', '미리 바꿔 둔 달러'],
+      ['환율 확정', '결제일 환율', '환전한 시점 환율'],
+    ],
+  },
+  sections: [
+    {
+      heading: '원화로 미국주식을 바로 사는 통합증거금',
+      paragraphs: [
+        '예전에는 미국주식을 사려면 먼저 원화를 달러로 바꾸는 환전을 해야 했습니다. 지금은 통합증거금 서비스를 켜 두면 이 과정을 건너뛸 수 있습니다. 통화 종류와 상관없이 계좌에 있는 원화와 외화 예수금을 매수 증거금으로 인정해, 환전 없이 바로 주문을 넣게 해 주는 방식입니다.',
+        '주문이 체결되면 증권사가 결제일에 맞춰 필요한 만큼만 원화를 달러로 자동 환전합니다. 투자자 입장에서는 원화만 들고 있어도 미국주식을 살 수 있어 편리합니다. 다만 실제 적용 환율은 주문 시점이 아니라 자동환전이 이뤄지는 결제일 기준이라, 환율이 하루 이틀 사이 움직이면 최종 매수 단가에 반영됩니다.',
+      ],
+    },
+    {
+      heading: '매수가 안 될 때 먼저 볼 세 가지',
+      paragraphs: [
+        '예수금이 있는데도 매수 버튼이 눌리지 않는다면 계좌 설정부터 봅니다. 첫째, 해외주식 거래 신청과 위험고지 동의가 끝났는지 확인합니다. 국내주식 계좌만 열려 있고 해외주식 거래 신청이 안 돼 있으면 주문 자체가 막힙니다.',
+        '둘째, 원화 예수금이 매수 금액과 수수료를 감당할 만큼 있는지 봅니다. 셋째, 지금이 그 종목을 거래할 수 있는 시간대인지 확인합니다. 정규장과 주간거래 가능 시간, 예약주문 가능 여부는 종목과 증권사마다 다릅니다. 이 세 가지가 맞는데도 계속 막히면 증권사 고객센터로 계좌 상태를 문의하는 편이 빠릅니다.',
+      ],
+    },
+    {
+      heading: '원화가 국내 결제에 먼저 쓰이는 함정',
+      paragraphs: [
+        '통합증거금을 쓸 때 주의할 상황이 하나 있습니다. 같은 날 국내주식도 원화로 매수하고 미국주식도 원화로 매수하면, 원화가 국내주식 결제에 먼저 쓰일 수 있습니다. 이렇게 되면 해외 매수분에 대한 자동환전이 증거금 부족으로 이뤄지지 않을 수 있습니다.',
+        '이럴 때는 결제일 전에 직접 환전으로 달러를 확보해 두면 안전합니다. 국내와 해외 주문을 같은 날 크게 섞을 계획이라면, 원화가 어느 결제에 먼저 배정되는지 미리 계산해 두는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '환전주문과 원화주문, 무엇이 나을까',
+      paragraphs: [
+        '환율이 유리하다고 판단해 미리 달러를 확보하고 싶으면 환전주문이 맞습니다. 원하는 시점 환율로 달러를 사 두었다가 그 달러로 매수하는 방식이라, 환율 확정 시점을 스스로 정할 수 있습니다.',
+        '반대로 환율을 굳이 신경 쓰지 않고 편하게 사려면 원화주문이 낫습니다. 어느 쪽이든 환율 변동과 환전 수수료가 최종 수익에 영향을 주므로, 자주 매매한다면 증권사별 환전 우대율과 통합증거금 조건을 한 번 비교해 보는 것을 권합니다. 투자 판단과 그 결과는 투자자 본인의 몫입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '환전 안 하고 원화로 미국주식을 살 수 있나요?',
+      answer:
+        '통합증거금 서비스를 켜 두면 가능합니다. 원화 예수금으로 주문하고, 체결 뒤 결제일에 증권사가 필요한 만큼 자동으로 달러로 바꿔 줍니다.',
+    },
+    {
+      question: '예수금이 있는데 매수가 안 됩니다. 왜 그런가요?',
+      answer:
+        '해외주식 거래 신청·위험고지 동의가 안 됐거나, 원화 예수금이 수수료까지 감당할 만큼 부족하거나, 지금이 그 종목의 거래 가능 시간이 아닌 경우가 많습니다.',
+    },
+    {
+      question: '원화주문은 환율이 언제 정해지나요?',
+      answer:
+        '주문 시점이 아니라 자동환전이 이뤄지는 결제일 환율로 정해집니다. 그래서 체결가와 별개로 환율에 따라 최종 매수 단가가 조금 달라질 수 있습니다.',
+    },
+    {
+      question: '국내주식이랑 같이 사면 문제가 생기나요?',
+      answer:
+        '같은 날 둘 다 원화로 매수하면 원화가 국내 결제에 먼저 쓰여 해외분 자동환전이 막힐 수 있습니다. 이때는 결제일 전에 직접 환전으로 달러를 확보해 두면 됩니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-30 · SK하이닉스 분기배당 확인법 */
+const skHynixQuarterlyDividend: GuideDef = {
+  slug: 'sk-hynix-quarterly-dividend',
+  title: 'SK하이닉스 분기배당 확인법, 기준일과 배당금 보는 법',
+  tagline: '분기마다 나오는 배당, 언제 얼마 받는지 스스로 확인하기',
+  description:
+    'SK하이닉스는 분기마다 배당을 지급합니다. 최근 분기 배당금 수준, 배당을 받으려면 언제까지 주식을 보유해야 하는 기준일 개념, 지급 시기와 실수령액을 스스로 확인하는 방법을 반도체 대형주 배당 사례로 정리했습니다.',
+  keywords: ['SK하이닉스 배당', 'SK하이닉스 분기배당', 'SK하이닉스 배당금', '반도체주 배당', '분기배당 기준일', '배당 지급일', 'SK하이닉스 배당 확인'],
+  section: '배당주 가이드',
+  lastReviewed: '2026-07-30',
+  answer:
+    'SK하이닉스는 2022년부터 분기배당을 도입해 3개월마다 배당을 지급하며, 최근에는 분기당 주당 375원 수준을 지급했습니다. 배당을 받으려면 회사가 정한 배당기준일까지 주식을 보유해야 하고, 배당금은 보통 기준일로부터 한 달 안팎에 통장에 들어옵니다. 정확한 금액과 일정은 매 분기 회사 공시로 확정되므로 발표 내용을 확인하는 것이 정확합니다.',
+  keyPoints: [
+    'SK하이닉스는 2022년 분기배당을 도입했고, 최근 분기 배당금은 주당 375원 수준으로 연 환산 시 1500원 안팎입니다.',
+    '분기배당 기준일은 대체로 3월·5월·8월·11월 말일 부근이며, 이 기준일까지 주식을 보유한 주주에게 배당 권리가 생깁니다.',
+    '배당금은 배당기준일로부터 약 한 달 안에 지급되며, 국내 주식 배당이므로 15.4%가 원천징수된 세후 금액이 입금됩니다.',
+    '분기배당과 별개로 연간 실적을 반영한 결산배당이 추가될 수 있어, 한 해 총배당은 분기배당 합계보다 커질 수 있습니다.',
+  ],
+  sources: [
+    { label: '금융감독원 전자공시 DART', url: 'https://dart.fss.or.kr' },
+    { label: 'SK하이닉스 IR', url: 'https://www.skhynix.com/ir' },
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'SK하이닉스가 분기배당을 하는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=417779487' },
+    { summary: 'SK하이닉스 배당금 관련 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=475549589' },
+  ],
+  sections: [
+    {
+      heading: 'SK하이닉스는 분기마다 배당을 준다',
+      paragraphs: [
+        'SK하이닉스는 2022년부터 분기배당 제도를 도입했습니다. 한 해에 한 번만 배당하던 방식에서 벗어나 3개월 단위로 배당을 나눠 지급하는 구조입니다. 배당을 받는 주주 입장에서는 현금이 들어오는 시점이 분산돼 자금 계획을 세우기 수월해집니다.',
+        '분기 배당금은 실적과 주주환원 정책에 따라 조정됩니다. 최근에는 분기당 주당 375원 수준을 지급했는데, 이 값은 회사가 결정하는 것이라 매 분기 같다는 보장은 없습니다. 그래서 정확한 배당은 그때그때 발표되는 공시로 확인하는 것이 원칙입니다.',
+      ],
+    },
+    {
+      heading: '배당 받으려면 기준일까지 보유해야 한다',
+      paragraphs: [
+        '배당을 받으려면 회사가 정한 배당기준일에 주주명부에 이름이 올라 있어야 합니다. 주식은 매수 뒤 이틀째에 결제가 끝나 주주로 확정되므로, 기준일 당일에 사서는 그 분기 배당을 받기 어렵습니다. 기준일 이전 결제가 완료되도록 여유 있게 매수해 두는 것이 안전합니다.',
+        'SK하이닉스의 분기 배당기준일은 대체로 분기 말일 부근에 잡힙니다. 다만 정확한 날짜는 분기마다 공시로 공지되므로, 배당을 노린다면 회사 공시나 증권사 배당 일정에서 그 분기 기준일을 반드시 확인해야 합니다.',
+      ],
+    },
+    {
+      heading: '언제 얼마가 들어오나, 세금까지 계산',
+      paragraphs: [
+        '배당금은 배당기준일로부터 대략 한 달 안에 지급됩니다. 예를 들어 5월 말 기준일이면 6월 중 통장에 들어오는 식입니다. 지급되는 금액은 세전 배당금 그대로가 아니라 15.4%(소득세 14%에 지방소득세 1.4%)를 뗀 세후 금액입니다.',
+        '주당 375원을 100주 보유했다면 세전 3만7천5백원, 여기서 15.4%인 약 5천8백원을 뺀 3만1천7백원 안팎이 실제 입금액입니다. 배당을 여러 종목에서 크게 받아 한 해 금융소득이 2000만원을 넘으면 초과분은 종합과세 대상이 되므로, 규모가 크다면 연간 금융소득 합계를 함께 챙기는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '분기배당 말고 결산배당도 있다',
+      paragraphs: [
+        '분기배당이 전부가 아닙니다. 회사가 한 해 실적을 결산하면서 별도의 결산배당을 얹는 경우가 있습니다. 이 결산배당은 분기배당과 따로 계산돼, 연간 총배당은 분기배당 네 번의 합계보다 커질 수 있습니다.',
+        '따라서 한 해 동안 받을 배당을 가늠하려면 분기배당 흐름과 결산배당 가능성을 함께 봐야 합니다. 배당은 회사 실적과 정책에 따라 늘거나 줄 수 있고 확정된 미래 수익이 아니므로, 과거 배당을 그대로 앞으로도 받는다고 단정하지 않는 것이 좋습니다. 투자 판단과 결과는 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'SK하이닉스는 분기배당을 하나요?',
+      answer:
+        '네. 2022년부터 분기배당을 도입해 3개월마다 배당을 지급합니다. 최근에는 분기당 주당 375원 수준을 지급했습니다.',
+    },
+    {
+      question: '배당을 받으려면 언제까지 주식을 사야 하나요?',
+      answer:
+        '회사가 정한 배당기준일에 주주로 확정돼 있어야 합니다. 매수 뒤 이틀째에 결제가 끝나므로, 기준일 이전에 여유를 두고 사 두어야 그 분기 배당을 받습니다.',
+    },
+    {
+      question: '배당금은 언제 들어오나요?',
+      answer:
+        '보통 배당기준일로부터 한 달 안팎에 지급됩니다. 국내 주식 배당이라 15.4%가 원천징수된 세후 금액이 통장에 들어옵니다.',
+    },
+    {
+      question: '분기배당 금액은 항상 같은가요?',
+      answer:
+        '아닙니다. 실적과 주주환원 정책에 따라 조정됩니다. 정확한 금액은 매 분기 공시로 확정되니 발표 내용을 확인하는 것이 정확합니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-30 · 증여세 신고 방법과 기한 */
+const giftTaxFilingProcess: GuideDef = {
+  slug: 'gift-tax-filing-process',
+  title: '증여세 신고 방법과 기한, 3개월 안에 셀프로 끝내기',
+  tagline: '증여받은 달 말일부터 3개월, 신고세액공제 3% 챙기는 법',
+  description:
+    '자녀나 배우자에게 재산을 증여했다면 신고 기한을 놓치지 않는 것이 중요합니다. 증여받은 날이 속하는 달의 말일부터 3개월이라는 기한 계산, 홈택스 셀프 신고 흐름, 기한 내 신고 시 받는 3% 공제와 놓쳤을 때의 가산세를 정리했습니다.',
+  keywords: ['증여세 신고', '증여세 신고기한', '증여세 신고방법', '신고세액공제', '증여세 가산세', '홈택스 증여세', '증여 신고 3개월'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-07-30',
+  answer:
+    '증여세는 증여받은 날이 속하는 달의 말일부터 3개월 안에 신고해야 합니다. 예를 들어 3월 15일에 증여받았다면 3월 말일 기준 3개월 뒤인 6월 30일이 기한입니다. 기한 안에 신고하면 낼 세금의 3%를 신고세액공제로 깎아 주고, 기한을 넘기면 무신고가산세 20%와 납부지연가산세가 더 붙습니다. 공제 한도 안이라 낼 세금이 없어도 신고해 두면 자금 출처가 정리됩니다.',
+  keyPoints: [
+    '증여세 신고 기한은 증여받은 날이 속하는 달의 말일부터 3개월 이내로, 3월 15일 증여면 6월 30일까지입니다.',
+    '기한 안에 신고하면 산출세액의 3%를 신고세액공제로 감면받아, 같은 세액이라도 늦게 내는 것보다 유리합니다.',
+    '기한을 넘기면 무신고가산세 20%에 더해 하루당 본세의 0.022%씩 납부지연가산세가 붙어 부담이 빠르게 커집니다.',
+    '증여재산공제 한도 안이라 낼 세금이 0원이어도, 신고해 두면 나중에 자금 출처를 소명할 때 근거가 됩니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '국세청 증여세 안내', url: 'https://www.nts.go.kr' },
+    { label: '찾기쉬운 생활법령정보', url: 'https://www.easylaw.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '자녀에게 증여할 때 세금을 얼마나 아낄 수 있는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494332623' },
+    { summary: '증여세 면제 범위 안일 때 신고가 필요한지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494353205' },
+  ],
+  howTo: {
+    totalTime: 'PT30M',
+    description: '증여받은 날 기준 3개월 안에 홈택스로 증여세를 셀프 신고하는 순서',
+  },
+  sections: [
+    {
+      heading: '신고 기한은 증여받은 달 말일부터 3개월',
+      paragraphs: [
+        '증여세에서 가장 먼저 챙길 것은 기한입니다. 기준은 증여받은 날이 속하는 달의 말일이고, 여기서 3개월을 더한 날까지가 신고 기한입니다. 증여일 자체가 아니라 그 달 말일부터 센다는 점이 헷갈리기 쉬운 부분입니다.',
+        '예를 들어 3월 15일에 증여를 받았다면 기산일은 3월 31일이고, 3개월 뒤인 6월 30일이 신고 기한이 됩니다. 만약 이 마지막 날이 토요일이나 공휴일이면 그다음 영업일까지 신고·납부하면 됩니다.',
+      ],
+    },
+    {
+      heading: '홈택스로 셀프 신고하는 순서',
+      paragraphs: [
+        '증여세는 세무서 방문 없이 홈택스에서 직접 신고할 수 있습니다. 홈택스에 로그인해 세금신고 메뉴에서 증여세 신고를 선택하고, 증여자와 수증자 정보, 증여재산의 종류와 평가액을 입력합니다.',
+        '이어서 증여재산공제를 적용해 과세표준을 구하고, 세율을 곱해 산출세액을 계산합니다. 기한 안에 신고하면 이 산출세액에서 3%를 공제해 줍니다. 마지막으로 신고서를 제출하고 납부서를 받아 세금을 내면 절차가 끝납니다. 현금 증여라면 계좌이체 내역, 부동산이라면 감정·기준시가 자료 등 근거 서류를 함께 갖춰 두면 좋습니다.',
+      ],
+    },
+    {
+      heading: '기한을 넘기면 붙는 가산세',
+      paragraphs: [
+        '기한을 지키는 것이 왜 중요한지는 가산세에서 드러납니다. 기한 안에 신고하지 않으면 원래 낼 세금에 더해 무신고가산세가 20% 붙습니다. 여기에 납부까지 늦어지면 하루마다 본세의 0.022%씩 납부지연가산세가 쌓입니다.',
+        '반대로 기한 안에 신고하면 신고세액공제 3%를 받아 세 부담을 줄일 수 있습니다. 같은 금액을 증여받아도 제때 신고하느냐 아니냐에 따라 실제 내는 세금이 달라지는 셈이라, 기한 관리만 잘해도 손해를 막을 수 있습니다.',
+      ],
+    },
+    {
+      heading: '낼 세금이 없어도 신고가 유리한 이유',
+      paragraphs: [
+        '증여재산공제 한도 안이면 낼 세금이 0원일 수 있습니다. 성인 자녀는 10년 합산 5천만원, 배우자는 6억원까지 공제되는 식입니다. 세금이 없다고 신고를 건너뛰기 쉽지만, 신고해 두는 편이 안전합니다.',
+        '나중에 자녀가 그 돈으로 주택이나 주식을 살 때 자금 출처를 소명해야 할 수 있는데, 증여 신고 기록이 있으면 그 근거가 됩니다. 신고를 해 두지 않으면 출처가 불분명한 자금으로 보여 오히려 세무상 불리해질 수 있습니다. 구체적인 공제 한도와 세율은 개정될 수 있으니, 확정 신고 전 국세청 안내로 최신 기준을 확인하기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '증여세는 언제까지 신고해야 하나요?',
+      answer:
+        '증여받은 날이 속하는 달의 말일부터 3개월 이내입니다. 3월 15일에 받았다면 3월 말일 기준 3개월 뒤인 6월 30일까지 신고하면 됩니다.',
+    },
+    {
+      question: '기한 안에 신고하면 어떤 혜택이 있나요?',
+      answer:
+        '산출세액의 3%를 신고세액공제로 깎아 줍니다. 같은 세액이라도 기한을 지키면 그만큼 덜 내는 셈입니다.',
+    },
+    {
+      question: '신고를 늦게 하면 얼마나 불이익이 있나요?',
+      answer:
+        '무신고가산세 20%가 붙고, 납부까지 늦으면 하루당 본세의 0.022%씩 납부지연가산세가 추가됩니다. 늦을수록 부담이 커집니다.',
+    },
+    {
+      question: '낼 세금이 없어도 신고해야 하나요?',
+      answer:
+        '의무는 아니지만 신고해 두는 편이 안전합니다. 나중에 자금 출처를 소명할 때 증여 신고 기록이 근거가 되어 세무상 유리합니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-30 · 코인 레버리지 장기투자의 위험 */
+const cryptoLeverageLongTermRisk: GuideDef = {
+  slug: 'crypto-leverage-long-term-risk',
+  title: '코인 레버리지 장기투자가 위험한 이유, 청산과 자금조달비',
+  tagline: '레버리지로 오래 들고 가면 왜 원금이 녹는가',
+  description:
+    '비트코인 레버리지로 장기 투자하겠다는 생각은 구조를 알면 위험합니다. 가격이 조금만 반대로 가도 강제 청산되는 원리, 포지션을 오래 유지할수록 빠져나가는 자금조달비, 등락을 반복할 때 원금이 줄어드는 감가 효과를 사실 중심으로 정리했습니다.',
+  keywords: ['코인 레버리지', '비트코인 레버리지 장기투자', '레버리지 청산', '자금조달비', '펀딩비', '레버리지 위험', '코인 선물'],
+  section: 'ETF 레버리지 가이드',
+  lastReviewed: '2026-07-30',
+  answer:
+    '코인 레버리지 상품은 짧은 매매를 전제로 설계돼 있어 장기 보유에는 구조적으로 불리합니다. 배율이 높을수록 가격이 조금만 반대로 움직여도 증거금이 바닥나 강제 청산되고, 포지션을 오래 끌면 자금조달비가 계속 빠져나갑니다. 가격이 오르내림을 반복하면 복리 손실로 원금이 서서히 줄어, 기초자산이 제자리로 돌아와도 손실이 남을 수 있습니다.',
+  keyPoints: [
+    '레버리지 배율이 높을수록 청산 가격이 진입가에 가까워져, 10배면 기초자산이 약 10%만 반대로 가도 증거금이 소진돼 강제 청산됩니다.',
+    '선물·무기한 상품은 포지션을 유지하는 동안 자금조달비(펀딩비)가 주기적으로 빠져나가, 오래 들고 갈수록 비용이 누적됩니다.',
+    '가격이 등락을 반복하면 매일 재조정되는 구조 탓에 복리 손실이 쌓여, 기초자산이 제자리로 와도 레버리지 잔고는 줄어 있을 수 있습니다.',
+    '레버리지는 확정 수익을 보장하지 않으며 원금 전액 손실도 가능한 고위험 수단이라, 장기 보유 목적에는 맞지 않습니다.',
+  ],
+  sources: [
+    { label: '금융감독원 파인', url: 'https://fine.fss.or.kr' },
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+    { label: '한국은행 경제교육', url: 'https://www.bok.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '비트코인 레버리지로 장기투자해도 되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494252706' },
+    { summary: '코인 펀딩비가 무슨 뜻인지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494350717' },
+  ],
+  sections: [
+    {
+      heading: '레버리지는 배율만큼 청산도 빨라진다',
+      paragraphs: [
+        '레버리지는 적은 증거금으로 큰 금액을 굴리는 방식입니다. 10배 레버리지라면 100만원으로 1천만원어치 포지션을 잡는 식입니다. 수익이 날 때는 배율만큼 커지지만, 손실도 똑같이 배율만큼 커진다는 점이 핵심입니다.',
+        '문제는 청산입니다. 손실이 증거금을 넘어서면 거래소가 포지션을 강제로 정리하는데, 배율이 높을수록 이 청산선이 진입가에 바짝 붙습니다. 10배 레버리지에서는 기초자산이 약 10%만 반대로 움직여도 증거금이 바닥나 청산될 수 있습니다. 코인은 하루에 10% 넘게 흔들리는 일이 드물지 않아, 장기는커녕 며칠을 못 버티고 청산되는 경우가 많습니다.',
+      ],
+    },
+    {
+      heading: '오래 들고 갈수록 빠져나가는 자금조달비',
+      paragraphs: [
+        '무기한 선물 같은 상품에는 자금조달비라고 부르는 비용이 있습니다. 흔히 펀딩비라고 하며, 정해진 주기마다 롱과 숏 사이에 주고받는 수수료입니다. 시장이 한쪽으로 쏠려 있으면 그 방향의 포지션을 든 사람이 반대편에 이 비용을 계속 지불하게 됩니다.',
+        '이 비용은 하루에 몇 번씩 정산되기도 해서, 포지션을 오래 유지할수록 누적 부담이 커집니다. 가격이 제자리에 있어도 자금조달비만으로 잔고가 조금씩 깎이는 셈이라, 장기 보유 전략과는 방향이 맞지 않습니다.',
+      ],
+    },
+    {
+      heading: '등락을 반복하면 원금이 녹는 감가',
+      paragraphs: [
+        '레버리지 상품은 대체로 손익을 매일 다시 계산해 배율을 유지합니다. 이 재조정 구조 때문에 가격이 오르내림을 반복하면 복리 손실이 쌓입니다. 예를 들어 하루 오르고 다음 날 같은 비율로 내리기를 반복하면, 기초자산은 제자리로 돌아와도 레버리지 잔고는 원금보다 줄어 있습니다.',
+        '이 현상은 변동성이 클수록 심해집니다. 코인처럼 등락이 격렬한 자산에 레버리지를 걸고 오래 두면, 방향을 맞혔더라도 이 감가 때문에 기대만큼 수익이 나지 않거나 손실이 날 수 있습니다.',
+      ],
+    },
+    {
+      heading: '장기라면 레버리지 없이 보는 편이 낫다',
+      paragraphs: [
+        '레버리지는 짧게 방향을 노리는 도구이지 오래 묻어 두는 수단이 아닙니다. 청산 위험, 자금조달비, 변동성 감가가 겹쳐 시간이 갈수록 불리하게 작동하기 때문입니다.',
+        '코인을 장기로 보겠다면 레버리지 없이 현물을 들고 가는 편이 이 세 가지 위험에서 자유롭습니다. 레버리지는 확정 수익을 보장하지 않고 원금을 전부 잃을 수도 있는 고위험 수단이라는 점을 분명히 인식해야 합니다. 어떤 방식이든 투자 판단과 그 결과는 투자자 본인의 책임입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '비트코인 레버리지로 장기투자해도 되나요?',
+      answer:
+        '구조적으로 맞지 않습니다. 청산 위험, 자금조달비 누적, 변동성 감가가 겹쳐 오래 들고 갈수록 불리합니다. 장기라면 레버리지 없는 현물이 낫습니다.',
+    },
+    {
+      question: '10배 레버리지는 얼마나 위험한가요?',
+      answer:
+        '기초자산이 약 10%만 반대로 움직여도 증거금이 소진돼 강제 청산될 수 있습니다. 코인은 하루 변동이 커서 며칠을 못 버티고 청산되는 일이 흔합니다.',
+    },
+    {
+      question: '자금조달비(펀딩비)는 무엇인가요?',
+      answer:
+        '무기한 선물에서 정해진 주기마다 롱과 숏 사이에 주고받는 수수료입니다. 포지션을 오래 유지할수록 누적돼 잔고를 갉아먹습니다.',
+    },
+    {
+      question: '가격이 제자리로 오면 원금도 회복되나요?',
+      answer:
+        '레버리지는 매일 재조정되는 구조라 등락을 반복하면 복리 손실이 쌓입니다. 그래서 기초자산이 제자리로 와도 잔고는 원금보다 줄어 있을 수 있습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-07-30 · ISA 계좌 매수 주문이 안 될 때 */
+const isaOrderNotWorking: GuideDef = {
+  slug: 'isa-order-not-working',
+  title: 'ISA 계좌 매수 주문이 안 될 때 점검할 것들',
+  tagline: '예수금은 있는데 왜 주문이 막힐까, 흔한 원인 정리',
+  description:
+    'ISA 계좌에서 ETF를 사려는데 주문이 들어가지 않을 때가 있습니다. 해외 상장 종목은 담을 수 없는 ISA의 매매 범위, 신규 계좌 거래 신청과 약관 동의, 예수금과 거래 시간 같은 흔한 원인을 순서대로 점검하는 법을 정리했습니다.',
+  keywords: ['ISA 계좌 주문', 'ISA 매수 안됨', 'ISA 계좌 매매', 'ISA ETF', 'ISA 거래 신청', 'ISA 주문 오류', 'ISA 계좌 예수금'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-07-30',
+  answer:
+    'ISA 계좌에서 주문이 막히는 가장 흔한 이유는 사려는 종목이 ISA에서 매매할 수 없는 대상인 경우입니다. ISA는 국내 상장 ETF·펀드·주식 등만 담을 수 있어 미국 상장 종목은 직접 매수되지 않습니다. 그 밖에 신규 계좌의 거래 신청·약관 동의 미완료, 예수금 부족, 거래 가능 시간이 아닌 경우가 주문을 막습니다.',
+  keyPoints: [
+    'ISA는 국내 상장 ETF·펀드·주식 등만 매매할 수 있어, 미국에 상장된 ETF나 종목은 계좌에서 직접 매수되지 않습니다.',
+    '새로 연 ISA는 투자중개형 거래 신청과 위험고지 동의가 끝나야 주문이 들어가며, 이 절차가 빠지면 매수가 막힙니다.',
+    '예수금이 매수 금액과 수수료를 감당할 만큼 있는지, 지금이 그 종목의 정규 거래 시간인지도 함께 확인해야 합니다.',
+    'ISA 유형이 신탁형이면 직접 종목 주문이 아니라 편입 지시 방식이라, 중개형과 매매 방법 자체가 다릅니다.',
+  ],
+  sources: [
+    { label: '금융투자협회 ISA 안내', url: 'https://www.kofia.or.kr' },
+    { label: '금융감독원 파인', url: 'https://fine.fss.or.kr' },
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 계좌에서 주문이 되지 않는다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494341294' },
+    { summary: 'ISA 계좌에서 KODEX 등 매매 관련 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494102222' },
+  ],
+  sections: [
+    {
+      heading: 'ISA에서 살 수 없는 종목부터 확인',
+      paragraphs: [
+        'ISA 계좌에서 주문이 안 될 때 가장 먼저 봐야 할 것은 사려는 종목이 ISA에서 매매 가능한 대상인지입니다. ISA는 국내에 상장된 ETF와 펀드, 국내 주식, 리츠, 예금 등 정해진 범위의 상품만 담을 수 있습니다.',
+        '그래서 미국에 상장된 ETF나 해외 개별 종목은 ISA 계좌에서 직접 매수되지 않습니다. 미국 S&P500이나 나스닥100에 투자하고 싶다면, 같은 지수를 추종하는 국내 상장 ETF를 골라야 ISA 안에서 매매할 수 있습니다. 검색해도 종목이 안 뜨거나 주문이 막힌다면 이 범위 문제일 때가 많습니다.',
+      ],
+    },
+    {
+      heading: '신규 계좌라면 거래 신청과 동의부터',
+      paragraphs: [
+        '계좌를 새로 열었다면 개설만으로 끝이 아닙니다. 투자중개형 ISA는 종목을 직접 매매하기 전에 거래 신청과 투자 위험고지, 약관 동의 같은 절차를 마쳐야 주문이 들어갑니다. 이 단계가 빠져 있으면 예수금이 있어도 매수 버튼이 눌리지 않습니다.',
+        '증권사 앱에서 ISA 계좌의 거래 신청 상태를 확인하고, 안 돼 있으면 먼저 신청과 동의를 끝내면 됩니다. 여기까지 마쳐야 국내 상장 ETF나 주식을 실제로 주문할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '예수금과 거래 시간도 흔한 원인',
+      paragraphs: [
+        '종목과 계좌 설정이 문제없는데도 막힌다면 예수금과 시간을 봅니다. ISA에 입금은 했지만 매수 금액과 수수료를 합한 것보다 예수금이 적으면 주문이 거절됩니다. 납입 한도와는 별개로, 실제 계좌에 들어와 있는 현금이 충분한지 확인해야 합니다.',
+        '거래 시간도 챙깁니다. 국내 상장 ETF는 정규장 시간에 매매되고, 장 시작 전이나 마감 후에는 예약주문만 가능하거나 아예 주문이 막힐 수 있습니다. 지금이 정규 거래 시간인지, 예약주문 대상인지 확인해 보는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '신탁형과 중개형은 매매 방법이 다르다',
+      paragraphs: [
+        'ISA에는 유형이 여러 가지인데, 직접 종목을 사고파는 것은 투자중개형입니다. 신탁형 ISA는 투자자가 편입할 상품을 지시하면 신탁 방식으로 운용되는 구조라, 중개형처럼 실시간으로 종목을 매매하는 화면과 다릅니다.',
+        '내 계좌가 어떤 유형인지 모르면 매매가 안 되는 이유를 찾기 어렵습니다. 직접 ETF를 매매하려면 중개형인지부터 확인하고, 유형이 맞지 않으면 신규 개설이나 전환을 검토해야 합니다. 계좌 유형과 요건은 증권사·상품마다 다르므로, 정확한 내용은 가입한 증권사 안내로 확인하는 것이 좋습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA 계좌에서 미국 ETF를 살 수 있나요?',
+      answer:
+        '미국에 상장된 ETF는 직접 매수되지 않습니다. ISA는 국내 상장 ETF·펀드·주식만 담을 수 있어, 같은 지수의 국내 상장 ETF를 골라야 합니다.',
+    },
+    {
+      question: '예수금이 있는데도 주문이 안 됩니다.',
+      answer:
+        '신규 계좌라면 거래 신청·약관 동의가 안 됐을 수 있습니다. 종목이 ISA 매매 대상인지, 지금이 정규 거래 시간인지도 함께 확인해 보세요.',
+    },
+    {
+      question: '납입 한도가 남았는데 왜 매수가 막히나요?',
+      answer:
+        '납입 한도와 예수금은 다릅니다. 한도가 남아도 실제 계좌에 들어온 현금이 매수액과 수수료보다 적으면 주문이 거절됩니다.',
+    },
+    {
+      question: '신탁형 ISA도 종목을 직접 사나요?',
+      answer:
+        '아닙니다. 직접 매매는 투자중개형에서 합니다. 신탁형은 편입 상품을 지시하는 방식이라, 실시간 종목 매매를 원하면 중개형인지 확인해야 합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  usStockKrwExchangeSetup,
+  skHynixQuarterlyDividend,
+  giftTaxFilingProcess,
+  cryptoLeverageLongTermRisk,
+  isaOrderNotWorking,
   pensionSavingsVsIrp,
   etfSharePriceMeaning,
   etfPortfolioOverlap,
@@ -18166,6 +18589,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-07-30 (2차) · 지식iN 질문 수요 기반 (미국주식 원화 매수 통합증거금·SK하이닉스 분기배당 확인법·증여세 신고 방법과 기한·코인 레버리지 장기투자 위험·ISA 계좌 매수 주문 오류)
+  'us-stock-krw-exchange-setup': '2026-07-30',
+  'sk-hynix-quarterly-dividend': '2026-07-30',
+  'gift-tax-filing-process': '2026-07-30',
+  'crypto-leverage-long-term-risk': '2026-07-30',
+  'isa-order-not-working': '2026-07-30',
   // 2026-07-30 · 지식iN 질문 수요 기반 (국내 배당소득세 15.4% 실수령액·비트코인 원화 구매출금·코인 거래소 수수료 구조·주식 리딩방 사기 신호·S&P500 나스닥100 겹침)
   'domestic-dividend-income-tax': '2026-07-30',
   'bitcoin-krw-buy-withdrawal': '2026-07-30',
@@ -18426,22 +18855,22 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'gift-tax-filing-process', 'isa-order-not-working'],
   },
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'sk-hynix-quarterly-dividend'],
   },
   {
     title: '테마·섹터',
     description: '방산·조선·건설·자동차·AI·반도체·빅테크·소프트웨어·보안·로봇·전기차·신재생·희토류·게임·엔터·명품·뷰티·비트코인·인프라 등 특정 테마에 집중하는 섹터 ETF.',
-    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'bitcoin-krw-buy-withdrawal', 'crypto-exchange-fee-structure'],
+    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'bitcoin-krw-buy-withdrawal', 'crypto-exchange-fee-structure', 'crypto-leverage-long-term-risk'],
   },
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-exchange-setup'],
   },
   {
     title: '전략·자산배분',
