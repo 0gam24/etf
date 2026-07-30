@@ -1662,3 +1662,34 @@ https://iknowhowinfo.com/guide/bitcoin-krw-buy-withdrawal
 https://iknowhowinfo.com/guide/crypto-exchange-fee-structure
 https://iknowhowinfo.com/guide/stock-leading-room-scam
 https://iknowhowinfo.com/guide/sp500-nasdaq-overlap
+
+## 2026-07-30 (2차) · [일일 발행 · 지식iN 질문 수요]
+
+오늘 두 번째 묶음으로 가이드 5편을 발행했다. 주제는 네이버 지식iN 실제 질문 코퍼스(data/keywords/kin/kin-20260718.json, 103문항)의 반복 수요에서만 도출했다. 신규 수집은 클라우드 IP 특성상 시도했으나 별도 신규 파일 생성 없이 저장 코퍼스로 선정(정상 경로).
+
+발행 5편과 출처 질문 요지:
+1. 미국주식 원화로 바로 매수, 통합증거금과 환전 정리 (us-stock-krw-exchange-setup)
+   - 출처: "NH투자증권 미국주식 매수 안 됨, 원화 대용·환전 여부" / "미래에셋 해외주식 수수료 질문"
+2. SK하이닉스 분기배당 확인법, 기준일과 배당금 보는 법 (sk-hynix-quarterly-dividend)
+   - 출처: "SK하이닉스 분기배당 하나요" / "SK하이닉스 배당 문의" (반복 수요)
+3. 증여세 신고 방법과 기한, 3개월 안에 셀프로 끝내기 (gift-tax-filing-process)
+   - 출처: "자녀 증여 세금 절약 방법" / "증여세 면제 범위일 때 신고 필요 여부"
+4. 코인 레버리지 장기투자가 위험한 이유, 청산과 자금조달비 (crypto-leverage-long-term-risk)
+   - 출처: "비트코인 레버리지 장기투자" / "코인 펀딩비 무슨 뜻"
+5. ISA 계좌 매수 주문이 안 될 때 점검할 것들 (isa-order-not-working)
+   - 출처: "ISA 계좌 주문이 안돼요" / "ISA 계좌와 KODEX 매매"
+
+사실 검증(적대적, WebSearch):
+- 가상자산 과세: 2027-01-01 시행 예정, 기타소득 연 250만원 공제 후 20%(지방세 포함 22%). 선물·파생 구체 과세기준은 아직 미확정 → 이 불확실성 때문에 '코인 선물 세금' 주제는 제외하고 '코인 레버리지 위험'(사실·위험 고지 중심)으로 교체.
+- 증여세 신고기한: 증여받은 날이 속하는 달 말일부터 3개월. 신고세액공제 3%, 무신고가산세 20%, 납부지연 0.022%/일. 확인.
+- SK하이닉스: 2022년 분기배당 도입, 최근 분기 375원(연 1500원 안팎), 5·8·11월 지급, 2025 결산배당 1875원 별도. 확인.
+- 통합증거금: 원화 예수금으로 미국주식 매수, 결제일 자동환전. 확인.
+
+검증 결과: npx tsc --noEmit 에러 0 / 새 블록 em dash 0 / 금지어 0 / title≤60·desc120~155·keywords 7개·slug 규칙 통과 / npm run cf:build 성공 / .next/server/app/guide 신규 5개 prerender(answer-box·guide-key-points·guide-sources·citation·발행일 포함) 확인.
+
+★ 오늘 발행 링크(풀 URL)
+https://iknowhowinfo.com/guide/us-stock-krw-exchange-setup
+https://iknowhowinfo.com/guide/sk-hynix-quarterly-dividend
+https://iknowhowinfo.com/guide/gift-tax-filing-process
+https://iknowhowinfo.com/guide/crypto-leverage-long-term-risk
+https://iknowhowinfo.com/guide/isa-order-not-working
