@@ -1662,3 +1662,48 @@ https://iknowhowinfo.com/guide/bitcoin-krw-buy-withdrawal
 https://iknowhowinfo.com/guide/crypto-exchange-fee-structure
 https://iknowhowinfo.com/guide/stock-leading-room-scam
 https://iknowhowinfo.com/guide/sp500-nasdaq-overlap
+
+## 2026-07-31 · [일일 발행 · 지식iN 질문 수요 기반]
+
+지식iN 질문 수요 코퍼스 기반 롱테일 가이드 5편 발행.
+
+1. ISA 중개형·신탁형·일임형 차이, ETF엔 뭐가 맞나 (isa-broker-vs-trust-type)
+   - 출처: ISA 계좌 전반 문의(494349881), ISA 종류·활용 문의(493747720), ISA에서 KODEX ETF 담기(494102222)
+   - 검증: 중개형(직접매매)·신탁형(지정)·일임형(위임)은 운용방식 차이일 뿐 세제 동일. 비과세 일반형 200만/서민형 400만, 납입 연 2천만·총 1억(현행). 4천만/2억 상향은 미확정 개편안 (WebSearch 확인)
+
+2. 미국주식 원화로 사기, 통합증거금과 환전 차이 (us-stock-krw-integrated-margin)
+   - 출처: NH투자증권 미국 ETF 매수 안됨·원화 환전 문의(494355613), 미국 단기채 환차익·환전 문의(494351995)
+   - 검증: 통합증거금=원화 예수금으로 주문, 익영업일 오전 실시간 환율 자동환전(가환전→정산), 환전증거금 약 5% 추가 징수 (WebSearch 확인)
+
+3. 배당·이자 늘면 건강보험 피부양자 탈락되나 (financial-income-dependent-eligibility)
+   - 출처: 금융소득 종합과세·건보료 절감 문의(494333180), 주식·ETF 배당 세금 문의(494355422)
+   - 검증: 피부양자 연소득 2천만 초과 시 탈락, 금융소득은 연 1천만 초과 시 전액 합산, 재산 5.4~9억이면 소득기준 1천만, 9억 초과 소득무관 탈락 (WebSearch 확인)
+
+4. 비트코인 레버리지 장기투자가 위험한 이유 (crypto-leverage-long-term-risk)
+   - 출처: 비트코인 레버리지 장기투자 문의(494252706), 레버리지 개념 문의(494309232)
+   - 검증: 선물 청산(배수 높을수록 청산가 근접), 레버리지 토큰 일일 리밸런싱→변동성 끌림, 가상자산 과세 2027 시행 예정 250만 초과분 22% (WebSearch 확인). 위험 고지 중심 서술
+
+5. SGOV로 달러 파킹, 미국 초단기 국채 ETF 세금 (sgov-dollar-parking-etf)
+   - 출처: 미국 단기채권 환차익 문의(494351995), 미국 ETF 절세 방법 문의(494339573)
+   - 검증: SGOV 만기 0~3개월 미국국채, 연 4~5% 분배, 국내투자자 매매차익 양도세 22%(250만 공제)·분배금 배당세 15.4%, 환차익은 매매차익 포함 과세 (WebSearch 확인)
+
+### 지식iN 수집
+- 신규 수집: 실패(클라우드 IP 네이버 차단, curl HTTP 000/exit 56) → 정상 처리
+- 사용 코퍼스: data/keywords/kin/kin-20260718.json (103문항)
+
+### 검증 결과
+- npx tsc --noEmit: 0 에러 (npm ci 후)
+- 신규 블록 em dash(U+2014): 0, en dash(U+2013): 0, 운영자 메타 금지어(파이프라인·크롤링·스크래핑·Gemini·GPT·LLM·에이전트·샘플데이터·자동발행): 0
+- SEO: title≤60·desc 120~155·slug ^[a-z0-9-]{1,80}$·keywords 6개 전편 통과
+- npm run cf:build: 성공, .next/server/app/guide/ 신규 5개 HTML prerender (answer-box·guide-key-points·guide-sources·citation·2026-07-31 발행일 포함 확인)
+
+### 배포
+- push 대상 브랜치: claude/serene-hamilton-bpuiuq (세션 지정 브랜치)
+- auto-deploy-claude-branch.yml 트리거 브랜치를 oa69bw→bpuiuq로 갱신 → 워크플로가 main fast-forward 후 Cloudflare 배포 트리거
+
+### ★ 오늘 발행 링크
+https://iknowhowinfo.com/guide/isa-broker-vs-trust-type
+https://iknowhowinfo.com/guide/us-stock-krw-integrated-margin
+https://iknowhowinfo.com/guide/financial-income-dependent-eligibility
+https://iknowhowinfo.com/guide/crypto-leverage-long-term-risk
+https://iknowhowinfo.com/guide/sgov-dollar-parking-etf

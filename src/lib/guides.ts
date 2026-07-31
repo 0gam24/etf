@@ -17952,6 +17952,456 @@ const sp500Nasdaq100Overlap: GuideDef = {
   ],
 };
 
+const isaBrokerVsTrustType: GuideDef = {
+  slug: 'isa-broker-vs-trust-type',
+  title: 'ISA 중개형·신탁형·일임형 차이, ETF엔 뭐가 맞나',
+  tagline: '직접 사고팔 거면 중개형, 맡길 거면 신탁형이나 일임형',
+  description:
+    'ISA는 중개형·신탁형·일임형으로 나뉩니다. ETF를 직접 골라 매매하려면 증권사 중개형, 예금·펀드를 지정해 맡기면 신탁형, 전문가에게 운용을 위임하면 일임형입니다. 유형이 달라도 비과세와 납입 한도는 같아 운용 방식만 보고 고르면 됩니다.',
+  keywords: ['ISA 중개형 신탁형 차이', 'ISA 일임형', 'ISA 계좌 종류', 'ISA ETF 투자', 'ISA 중개형 개설', 'ISA 운용 방식'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-07-31',
+  answer:
+    'ISA 세 유형은 절세 혜택이 아니라 돈을 굴리는 방식의 차이입니다. ETF나 주식을 직접 매매하려면 증권사에서 여는 중개형, 예금이나 펀드를 골라 맡기면 신탁형, 전문가에게 포트폴리오 운용을 위임하면 일임형입니다. 비과세 한도(일반형 200만원, 서민형 400만원)와 납입 한도(연 2천만원, 최대 1억원)는 세 유형 모두 똑같이 적용됩니다.',
+  keyPoints: [
+    '중개형은 ETF·주식·리츠를 투자자가 직접 골라 매매하는 유형으로, 증권사에서만 개설되고 가입자가 가장 많습니다.',
+    '신탁형은 예금·펀드 등 상품을 투자자가 지정해 금융사가 그대로 담는 방식이라 주식·ETF 직접 매매는 되지 않습니다.',
+    '일임형은 전문가에게 운용을 맡기는 유형으로, 별도 수수료가 붙는 대신 직접 종목을 고를 필요가 없습니다.',
+    '비과세 한도 일반형 200만원·서민형 400만원, 납입 한도 연 2천만원·최대 1억원은 세 유형에서 동일하게 적용됩니다.',
+  ],
+  sources: [
+    { label: '금융위원회 ISA 정책자료', url: 'https://www.fsc.go.kr' },
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+    { label: '국세청 세금정보', url: 'https://www.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 계좌가 무엇이고 어떻게 활용하는지 전반을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494349881' },
+    { summary: 'ISA 계좌에 대해 궁금해하며 종류와 활용을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493747720' },
+    { summary: 'ISA 계좌에서 KODEX 같은 ETF를 담는 방법을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494102222' },
+  ],
+  comparisonTable: {
+    caption: 'ISA 세 유형 한눈 비교',
+    columns: ['구분', '중개형', '신탁형', '일임형'],
+    rows: [
+      ['운용 주체', '투자자 직접', '투자자 지정', '전문가 위임'],
+      ['ETF·주식 직접 매매', '가능', '불가', '불가'],
+      ['개설 창구', '증권사', '은행·증권사', '증권사·은행'],
+      ['별도 운용 수수료', '없음', '낮음', '있음'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'ISA 세 유형은 무엇이 다른가',
+      paragraphs: [
+        'ISA를 열려고 보면 중개형·신탁형·일임형이라는 세 가지 유형이 나옵니다. 이름만 보면 세금 혜택이 다를 것 같지만, 셋의 차이는 오직 계좌 안의 돈을 누가 어떻게 굴리느냐에 있습니다. 절세 혜택은 유형과 무관하게 똑같습니다.',
+        '중개형은 투자자가 직접 종목을 사고파는 방식, 신탁형은 담을 상품을 투자자가 지정하면 금융사가 그대로 넣어주는 방식, 일임형은 전문가에게 포트폴리오 운용을 통째로 맡기는 방식입니다. 본인이 어디까지 직접 하고 싶은지에 따라 고르면 됩니다.',
+      ],
+    },
+    {
+      heading: '중개형이 ETF 투자에 인기인 이유',
+      paragraphs: [
+        'ETF를 직접 골라 담고 싶다면 중개형이 맞습니다. 증권사에서 개설하며, 국내 상장 ETF와 리츠, 국내 주식을 계좌 안에서 자유롭게 매매할 수 있습니다. 매매 때마다 세금을 떼지 않고 계좌를 해지할 때 손익을 통산해 정산하므로, 활발히 사고파는 사람일수록 유리한 구조입니다.',
+        '가입자 수가 가장 많은 유형도 중개형입니다. 다만 미국에 상장된 ETF는 담을 수 없고 국내 상장 상품만 가능하니, S&P500이나 나스닥100에 투자하려면 국내 운용사가 상장한 지수 ETF를 고르면 됩니다.',
+      ],
+    },
+    {
+      heading: '신탁형과 일임형은 언제 고르나',
+      paragraphs: [
+        '신탁형은 예금·펀드처럼 담을 상품을 투자자가 콕 집어 지시하면 금융사가 그대로 운용합니다. 주식이나 ETF를 직접 매매하지는 못하지만, 예금 위주로 안전하게 굴리려는 사람에게 어울립니다. 은행과 증권사 모두에서 열 수 있습니다.',
+        '일임형은 돈을 맡기면 전문가나 로보 시스템이 알아서 포트폴리오를 짜고 조정해 줍니다. 종목을 고를 시간이나 자신이 없을 때 편리하지만, 운용을 맡기는 대가로 별도 수수료가 붙습니다. 수수료가 장기 수익에 미치는 영향을 함께 따져 보는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '어떤 유형이든 같은 것, 혜택과 한도',
+      paragraphs: [
+        '세 유형 모두 비과세 한도는 일반형 200만원, 서민형 400만원이고, 그 위 초과분은 9.9% 저율 분리과세를 받습니다. 납입 한도도 연 2천만원, 최대 1억원으로 동일합니다. 참고로 납입·비과세 한도를 늘리는 개편안이 논의되고 있으나 아직 확정 전이라 현행 기준으로 계획하는 편이 안전합니다.',
+        '결국 선택의 기준은 세제가 아니라 손이 얼마나 가느냐입니다. ETF를 직접 담고 싶으면 중개형, 지정한 상품만 굴리면 신탁형, 맡기고 싶으면 일임형입니다. 이 글은 정보 제공을 위한 것이며, 가입 전 본인의 소득·투자 성향에 맞는지 스스로 확인하시길 권합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '중개형과 신탁형 중 뭐가 나을까요?',
+      answer:
+        'ETF나 주식을 직접 골라 사고팔고 싶다면 중개형이 맞습니다. 예금·펀드 위주로 안전하게 담고 싶다면 신탁형이 어울립니다. 세금 혜택은 두 유형이 같습니다.',
+    },
+    {
+      question: 'ISA 유형에 따라 세금 혜택이 다른가요?',
+      answer:
+        '아닙니다. 비과세 한도(일반형 200만원, 서민형 400만원)와 초과분 9.9% 분리과세, 납입 한도(연 2천만원, 최대 1억원)는 세 유형이 모두 동일합니다.',
+    },
+    {
+      question: '신탁형에서 ETF를 살 수 있나요?',
+      answer:
+        '신탁형은 주식·ETF를 직접 매매할 수 없습니다. 펀드 같은 지정 상품으로 간접 투자만 가능하니, ETF를 직접 담으려면 중개형을 선택해야 합니다.',
+    },
+    {
+      question: '나중에 유형을 바꿀 수 있나요?',
+      answer:
+        '유형 변경은 대체로 기존 계좌를 해지하고 새로 여는 방식이라, 비과세 한도와 의무 가입 기간 승계에 불이익이 없는지 미리 확인하는 것이 좋습니다.',
+    },
+  ],
+};
+
+const usStockKrwIntegratedMargin: GuideDef = {
+  slug: 'us-stock-krw-integrated-margin',
+  title: '미국주식 원화로 사기, 통합증거금과 환전 차이',
+  tagline: '환전 버튼을 누르지 않아도 원화로 미국 ETF가 사진다',
+  description:
+    'NH·삼성 같은 증권사의 통합증거금을 쓰면 달러로 환전하지 않고 원화만으로 미국주식과 ETF를 살 수 있습니다. 주문은 원화로 나가고 다음 영업일 오전에 자동으로 달러 환전됩니다. 원화주문과 미리 환전의 차이, 매수가 안 될 때 점검할 부분을 정리했습니다.',
+  keywords: ['미국주식 원화주문', '통합증거금', '미국 ETF 환전', '해외주식 원화 매수', '자동환전', '미국주식 매수 안됨'],
+  section: 'ETF 매매 가이드',
+  lastReviewed: '2026-07-31',
+  answer:
+    '통합증거금은 원화를 달러로 미리 바꾸지 않고도 원화 예수금으로 미국주식과 ETF를 주문할 수 있게 해주는 서비스입니다. 주문 시점에는 최근 환율로 임시 환전(가환전)되고, 보통 다음 영업일 오전에 실제 환율로 자동 환전돼 정산됩니다. 매수가 막힌다면 원화 주문 설정이 꺼져 있거나 해외거래 신청·환전 신청이 안 된 경우가 많습니다.',
+  keyPoints: [
+    '통합증거금을 켜면 원화 예수금만으로 미국 ETF를 주문할 수 있어, 주문 전에 따로 환전하는 단계를 건너뛸 수 있습니다.',
+    '원화 주문분은 보통 다음 영업일 오전에 그날 실시간 환율로 자동 환전되므로, 체결 시점이 아니라 환전일 환율이 적용됩니다.',
+    '증권사는 환율 변동에 대비해 환전 금액의 약 5%를 환전증거금으로 더 잡아두어, 주문가능금액이 예수금보다 적게 보일 수 있습니다.',
+    '매수가 안 되면 해외주식 거래 신청, 원화 주문(통합증거금) 설정, 원화 대용 지정 여부를 먼저 확인하는 것이 빠릅니다.',
+  ],
+  sources: [
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '한국은행 경제통계시스템', url: 'https://ecos.bok.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'NH투자증권에서 미국주식·ETF 매수가 안 돼 원화 환전 문제를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494355613' },
+    { summary: '미국 단기채 ETF의 환차익과 달러 환전 과정을 궁금해하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494351995' },
+  ],
+  comparisonTable: {
+    caption: '원화 주문과 미리 환전 비교',
+    columns: ['구분', '원화 주문(통합증거금)', '미리 환전 후 주문'],
+    rows: [
+      ['환전 시점', '주문 다음 영업일 자동', '주문 전 투자자가 직접'],
+      ['적용 환율', '환전일 실시간 환율', '환전 당시 고시 환율'],
+      ['달러 예수금 필요', '없음', '있음'],
+      ['편의성', '원화만 있으면 바로 주문', '환전 절차를 먼저 거침'],
+    ],
+  },
+  sections: [
+    {
+      heading: '통합증거금이란, 원화로 미국 ETF 사기',
+      paragraphs: [
+        '예전에는 미국주식이나 ETF를 사려면 먼저 원화를 달러로 환전한 뒤 주문해야 했습니다. 통합증거금은 이 순서를 뒤집어, 원화 예수금 상태에서 바로 미국 종목을 주문할 수 있게 해 줍니다. 부족한 달러는 증권사가 대신 처리하고 나중에 정산합니다.',
+        '2018년 한 증권사가 처음 도입한 뒤 지금은 대부분의 국내 증권사가 같은 서비스를 제공합니다. 원화와 달러 예수금을 합쳐 주문가능금액으로 잡아주기 때문에, 환전 타이밍을 고민하지 않고도 원하는 종목을 곧바로 담을 수 있다는 점이 편리합니다.',
+      ],
+    },
+    {
+      heading: '가환전과 자동환전, 언제 어떤 환율이 적용되나',
+      paragraphs: [
+        '원화로 미국주식을 주문하면 주문 시점에는 최근 기준환율로 임시 환전이 잡힙니다. 이를 가환전이라 부릅니다. 실제 환전은 보통 다음 국내 영업일 오전에 그날의 실시간 환율로 이뤄지며, 이때 최종 환전 금액이 확정됩니다.',
+        '즉 적용 환율은 체결한 순간이 아니라 자동 환전이 처리되는 날의 환율입니다. 이 시차 때문에 증권사는 환율이 불리하게 움직일 경우에 대비해 환전 금액의 약 5%를 환전증거금으로 더 확보합니다. 그래서 원화 예수금이 있어도 주문가능금액이 조금 작게 표시될 수 있습니다.',
+      ],
+    },
+    {
+      heading: '매수가 안 될 때 점검할 것',
+      paragraphs: [
+        '원화가 계좌에 있는데도 미국 ETF 매수가 안 된다면, 대개 설정 문제입니다. 먼저 해외주식 거래 신청이 되어 있는지 확인하세요. 신청하지 않으면 잔고가 있어도 주문 자체가 막힙니다.',
+        '다음으로 원화 주문(통합증거금) 기능이 켜져 있는지, 원화를 대용으로 지정했는지 살펴봅니다. 증권사에 따라 통합증거금을 별도로 신청하거나 환전 신청을 해 두어야 원화로 주문이 나가는 경우가 있습니다. 앱의 해외주식 설정 메뉴에서 대부분 바로 켤 수 있습니다.',
+      ],
+    },
+    {
+      heading: '원화 주문과 미리 환전, 뭐가 유리할까',
+      paragraphs: [
+        '원화 주문은 환율을 신경 쓰지 않고 바로 담을 수 있어 편합니다. 반면 환율 흐름을 보며 유리한 시점에 미리 환전해 두면, 원할 때 달러 예수금으로 곧바로 체결할 수 있고 환전일 환율에 끌려가지 않습니다. 어느 쪽이든 환전 수수료는 발생합니다.',
+        '자주 사고팔거나 환율 타이밍을 직접 잡고 싶다면 미리 환전이, 가끔 원화로 편하게 담고 싶다면 통합증거금이 어울립니다. 환율은 예측이 어려운 만큼, 방식 선택과 그 결과는 투자자 본인의 판단에 달려 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '원화만 있어도 미국 ETF를 살 수 있나요?',
+      answer:
+        '통합증거금(원화 주문)을 켜면 달러로 미리 환전하지 않아도 원화 예수금으로 미국 ETF와 주식을 주문할 수 있습니다. 부족한 달러는 다음 영업일 자동 환전으로 채워집니다.',
+    },
+    {
+      question: '환율은 언제 기준으로 적용되나요?',
+      answer:
+        '주문 시점에는 최근 환율로 임시 환전되고, 실제로는 다음 국내 영업일 오전 실시간 환율로 자동 환전됩니다. 체결 순간이 아니라 환전일 환율이 최종 적용됩니다.',
+    },
+    {
+      question: '통합증거금은 따로 신청해야 하나요?',
+      answer:
+        '증권사에 따라 다릅니다. 해외주식 거래 신청과 원화 주문 설정을 켜야 원화로 주문이 나가는 경우가 많으니, 앱의 해외주식 설정 메뉴를 먼저 확인하세요.',
+    },
+    {
+      question: '미리 환전하는 게 더 나을까요?',
+      answer:
+        '환율 흐름을 보며 유리한 때 환전해 두면 환전일 환율에 끌려가지 않습니다. 다만 편의성은 원화 주문이 낫습니다. 매매 빈도와 환율 관점에 맞춰 고르면 됩니다.',
+    },
+  ],
+};
+
+const financialIncomeDependentEligibility: GuideDef = {
+  slug: 'financial-income-dependent-eligibility',
+  title: '배당·이자 늘면 건강보험 피부양자 탈락되나',
+  tagline: '연 소득 2천만원, 금융소득 1천만원이 갈림길',
+  description:
+    'ETF 분배금과 예금 이자가 늘면 건강보험 피부양자 자격을 잃을 수 있습니다. 연간 소득 합계가 2천만원을 넘으면 자격이 사라지고, 금융소득은 연 1천만원을 넘는 순간 전액이 소득에 합산됩니다. 탈락 기준과 지역가입자 전환 시 부담을 정리했습니다.',
+  keywords: ['피부양자 소득 기준', '건강보험 피부양자 탈락', '금융소득 1000만원', '배당 건강보험료', '피부양자 자격', '금융소득 종합과세 건보료'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-07-31',
+  answer:
+    '건강보험 피부양자는 연간 소득 합계가 2천만원을 넘으면 자격을 잃고 지역가입자로 바뀝니다. 배당·이자 같은 금융소득은 연 1천만원 이하일 때는 소득으로 잡히지 않지만, 1천만원을 한 번이라도 넘으면 전액이 소득에 합산됩니다. 재산이 많으면 소득 기준이 1천만원으로 더 낮아지니 분배금 규모를 미리 가늠해 두는 편이 안전합니다.',
+  keyPoints: [
+    '피부양자 소득 요건은 근로·사업·연금·이자·배당을 모두 더한 연 소득이 2천만원 이하여야 하며, 1원만 넘어도 자격이 사라집니다.',
+    '이자·배당을 합한 금융소득은 연 1천만원까지는 소득에 반영되지 않지만, 1천만원을 초과하면 초과분만이 아니라 전액이 소득으로 잡힙니다.',
+    '재산세 과세표준이 5억4천만원을 넘고 9억원 이하면 소득 기준이 연 1천만원으로 강화되고, 9억원을 넘으면 소득과 무관하게 자격을 잃습니다.',
+    '피부양자에서 지역가입자로 바뀌면 소득·재산에 따라 매달 건강보험료가 새로 부과되므로, 분배금이 커지기 전에 계좌와 수령 방식을 점검하는 것이 좋습니다.',
+  ],
+  sources: [
+    { label: '국민건강보험공단', url: 'https://www.nhis.or.kr' },
+    { label: '보건복지부', url: 'https://www.mohw.go.kr' },
+    { label: '국세청 세금정보', url: 'https://www.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '금융소득 종합과세와 건강보험료 부담을 줄이는 방법을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494333180' },
+    { summary: '주식·ETF 배당에 붙는 세금 전반을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494355422' },
+  ],
+  comparisonTable: {
+    caption: '금융소득 구간별 피부양자 영향',
+    columns: ['연 금융소득', '건강보험 소득 반영', '피부양자 영향'],
+    rows: [
+      ['1천만원 이하', '반영 안 됨', '유지 가능'],
+      ['1천만원 초과', '전액 합산', '다른 소득과 합쳐 2천만원 넘으면 탈락'],
+      ['2천만원 초과', '종합과세 대상', '단독으로도 탈락'],
+    ],
+  },
+  sections: [
+    {
+      heading: '피부양자 자격, 소득이 얼마면 잃나',
+      paragraphs: [
+        '직장에 다니는 가족 밑에 피부양자로 올라 있으면 건강보험료를 따로 내지 않습니다. 이 자격은 소득과 재산 조건을 모두 충족해야 유지되는데, 소득 쪽 핵심 기준이 연간 소득 합계 2천만원입니다. 근로·사업·연금·이자·배당을 전부 더해 2천만원을 넘으면 자격을 잃습니다.',
+        '문제는 이 기준이 초과분만 따지는 게 아니라는 점입니다. 합계가 2천만원을 1원이라도 넘으면 그 순간 피부양자에서 빠지고 지역가입자로 전환됩니다. ETF 분배금이나 예금 이자가 늘어 다른 소득과 합쳐 이 선을 넘지 않는지 미리 확인해 둘 필요가 있습니다.',
+      ],
+    },
+    {
+      heading: '금융소득 1천만원의 벽',
+      paragraphs: [
+        '이자와 배당을 합한 금융소득에는 별도의 문턱이 하나 더 있습니다. 연 1천만원까지는 피부양자 소득 판정에 아예 반영되지 않습니다. 하지만 1천만원을 넘는 순간, 넘은 부분만이 아니라 금융소득 전액이 소득으로 잡힙니다.',
+        '예를 들어 금융소득이 999만원이면 소득이 없는 것으로 보지만, 1천1만원이 되면 1천1만원 전부가 소득에 더해집니다. 여기에 연금이나 근로소득이 얹히면 2천만원 선을 넘기기 쉬워지므로, 배당형 ETF를 크게 담고 있다면 이 구간을 특히 조심해야 합니다.',
+      ],
+    },
+    {
+      heading: '재산이 많으면 기준이 더 빡빡',
+      paragraphs: [
+        '소득만 기준이 되는 것은 아닙니다. 재산세 과세표준이 5억4천만원을 넘고 9억원 이하인 경우에는 소득 기준이 연 1천만원으로 낮아집니다. 소득이 조금만 있어도 자격을 잃을 수 있다는 뜻입니다.',
+        '재산세 과세표준이 9억원을 넘으면 소득이 아예 없어도 피부양자가 될 수 없습니다. 집이나 자산이 많은 분일수록 배당·이자 소득이 자격에 미치는 영향이 커지므로, 본인의 재산 구간부터 확인하는 것이 순서입니다.',
+      ],
+    },
+    {
+      heading: '분배금 늘기 전에 할 수 있는 것',
+      paragraphs: [
+        '분배금과 이자가 커지기 전이라면 계좌 구조를 손볼 여지가 있습니다. ISA는 일정 한도까지 비과세와 손익통산이 되고, 연금저축·IRP는 인출 전까지 과세가 미뤄지며 건강보험 소득 판정에서도 유리하게 작용할 수 있습니다. 같은 돈이라도 어느 계좌에서 받느냐가 소득 합계에 영향을 줍니다.',
+        '다만 계좌마다 조건과 제약이 달라 일률적으로 유리하다고 말하기는 어렵습니다. 이 글은 정보 제공을 위한 것이며, 실제 자격과 보험료는 개인의 소득·재산에 따라 달라지므로 건강보험공단이나 전문가에게 본인 상황을 확인하시길 권합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ETF 분배금도 피부양자 소득에 들어가나요?',
+      answer:
+        '분배금은 배당소득으로 금융소득에 포함됩니다. 이자와 합해 연 1천만원을 넘으면 전액이 소득으로 잡히고, 다른 소득과 합쳐 2천만원을 넘으면 자격을 잃습니다.',
+    },
+    {
+      question: '금융소득이 얼마를 넘으면 문제가 되나요?',
+      answer:
+        '금융소득은 연 1천만원까지는 반영되지 않지만, 1천만원을 초과하면 전액이 소득에 합산됩니다. 이 합계가 2천만원을 넘으면 피부양자에서 지역가입자로 바뀝니다.',
+    },
+    {
+      question: '피부양자에서 떨어지면 보험료가 얼마나 늘까요?',
+      answer:
+        '지역가입자가 되면 소득과 재산을 기준으로 매달 보험료가 새로 부과됩니다. 금액은 개인의 소득·재산 규모에 따라 크게 달라지므로 공단 모의계산으로 확인하는 것이 정확합니다.',
+    },
+    {
+      question: '소득을 낮게 관리하는 방법이 있나요?',
+      answer:
+        'ISA 비과세나 연금계좌 과세이연을 활용해 소득 시기를 분산하는 방법이 거론됩니다. 다만 계좌별 제약이 있어 본인 상황에 맞는지 따져봐야 합니다.',
+    },
+  ],
+};
+
+const cryptoLeverageLongTermRisk: GuideDef = {
+  slug: 'crypto-leverage-long-term-risk',
+  title: '비트코인 레버리지 장기투자가 위험한 이유',
+  tagline: '변동성이 클수록 레버리지는 원금을 갉아먹는다',
+  description:
+    '비트코인 레버리지 상품을 오래 들고 가면 수익이 나기 어렵습니다. 선물은 급락 시 청산될 수 있고, 레버리지 토큰은 가격이 오르내리기만 해도 변동성 끌림으로 원금이 줄어듭니다. 장기투자에 레버리지가 불리한 구조와 확인할 위험을 정리했습니다.',
+  keywords: ['비트코인 레버리지 장기투자', '레버리지 토큰 위험', '코인 선물 청산', '변동성 끌림', '비트코인 레버리지 위험', '가상자산 과세'],
+  section: 'ETF 레버리지 가이드',
+  lastReviewed: '2026-07-31',
+  answer:
+    '비트코인 레버리지 상품은 짧은 매매용으로 설계돼 장기 보유에 불리합니다. 선물은 가격이 크게 빠지면 증거금이 부족해 청산될 수 있고, 레버리지 토큰이나 배수 상품은 매일 배수를 맞추는 과정에서 가격이 위아래로 흔들리기만 해도 원금이 서서히 줄어드는 변동성 끌림이 생깁니다. 방향을 맞혀도 오래 들고 있으면 손실이 날 수 있어 위험을 분명히 알고 접근해야 합니다.',
+  keyPoints: [
+    '비트코인 선물은 레버리지가 높을수록 청산 가격이 진입가에 가까워져, 짧은 급락에도 증거금이 사라지며 강제 청산될 수 있습니다.',
+    '2배·3배 레버리지 토큰은 매일 배수를 다시 맞추는 구조라, 가격이 제자리로 돌아와도 오르내림이 반복되면 원금이 줄어드는 변동성 끌림이 나타납니다.',
+    '레버리지는 방향과 크기를 모두 맞혀야 이익이 나므로, 장기 우상향을 노린다면 배수 없는 현물 보유가 구조적으로 더 단순합니다.',
+    '국내 가상자산 소득 과세는 2027년 시행 예정으로, 시행 후에는 연 250만원을 넘는 양도·대여 소득에 22%가 매겨질 예정입니다.',
+  ],
+  sources: [
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '한국은행', url: 'https://www.bok.or.kr' },
+    { label: '기획재정부', url: 'https://www.moef.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '비트코인 레버리지로 장기투자를 해도 되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494252706' },
+    { summary: '레버리지가 무엇인지 개념을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494309232' },
+  ],
+  comparisonTable: {
+    caption: '현물과 레버리지 장기 보유 비교',
+    columns: ['구분', '현물 보유', '레버리지(선물·토큰)'],
+    rows: [
+      ['청산 위험', '없음', '급락 시 청산 가능'],
+      ['변동성 끌림', '없음', '오래 보유 시 원금 잠식'],
+      ['보유 기간 적합성', '장기 가능', '단기 위주'],
+      ['수익 조건', '오르면 이익', '방향과 크기 모두 맞혀야'],
+    ],
+  },
+  sections: [
+    {
+      heading: '레버리지가 뭐길래 위험한가',
+      paragraphs: [
+        '레버리지는 빌린 돈을 얹어 실제 투자금보다 큰 금액으로 베팅하는 방식입니다. 2배 레버리지라면 비트코인이 10% 오를 때 20%를 벌지만, 10% 내리면 20%를 잃습니다. 이익과 손실이 똑같이 확대되니, 방향을 맞히면 크게 벌지만 틀리면 그만큼 빠르게 원금이 깎입니다.',
+        '문제는 비트코인처럼 하루에도 수 %씩 오르내리는 자산에 레버리지를 걸면 손실 쪽 위험이 훨씬 실감 난다는 점입니다. 잠깐의 급락에도 계좌가 크게 흔들리기 때문에, 짧게 대응할 수 있는 사람이 아니면 감당하기 어렵습니다.',
+      ],
+    },
+    {
+      heading: '선물의 청산, 한 번의 급락으로',
+      paragraphs: [
+        '비트코인 선물은 증거금을 담보로 잡고 큰 포지션을 잡습니다. 가격이 불리하게 움직여 손실이 증거금 수준에 닿으면 거래소가 포지션을 강제로 정리하는데, 이것이 청산입니다. 청산되면 남은 증거금 대부분을 잃습니다.',
+        '레버리지가 높을수록 청산 가격이 진입 가격에 바짝 붙습니다. 예컨대 배수가 크면 몇 %만 빠져도 청산될 수 있어, 장기적으로 우상향한다고 믿더라도 그 사이의 급락 한 번에 자리를 잃을 수 있습니다. 오래 버티려는 목적과 청산 구조는 애초에 잘 맞지 않습니다.',
+      ],
+    },
+    {
+      heading: '레버리지 토큰과 변동성 끌림',
+      paragraphs: [
+        '선물이 부담스러워 2배·3배 레버리지 토큰을 대신 고르는 경우도 있습니다. 이 상품은 매일 목표 배수를 다시 맞추기 위해 포지션을 조정하는데, 이 과정에서 변동성 끌림이라는 손실이 쌓입니다. 가격이 올랐다 내렸다만 반복해도 원금이 조금씩 줄어드는 현상입니다.',
+        '기초 자산이 며칠 뒤 제자리로 돌아와도 레버리지 토큰은 그만큼 회복되지 못하고 아래에 남아 있곤 합니다. 방향성 없이 흔들리는 장에서 오래 들고 있을수록 이 끌림이 누적되므로, 장기 보유 수단으로는 적합하지 않습니다.',
+      ],
+    },
+    {
+      heading: '오래 들고 갈 생각이라면',
+      paragraphs: [
+        '장기 우상향에 걸고 싶다면 배수를 얹지 않은 현물 보유가 구조적으로 단순합니다. 청산도 없고 변동성 끌림도 없어, 시간이 지나 가격이 오르면 그대로 반영됩니다. 레버리지는 어디까지나 짧은 시야의 매매 도구라는 점을 기억하는 것이 좋습니다.',
+        '참고로 국내 가상자산 소득 과세는 2027년 시행이 예정돼 있어, 시행 후에는 연 250만원을 넘는 양도·대여 소득에 22%가 부과될 예정입니다. 이 글은 특정 상품의 매수를 권하는 것이 아니라 위험을 알리기 위한 정보이며, 투자 손익은 전적으로 본인 책임임을 유념하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '비트코인 레버리지를 장기 보유해도 되나요?',
+      answer:
+        '구조상 불리합니다. 선물은 급락 시 청산될 수 있고, 레버리지 토큰은 변동성 끌림으로 오래 보유할수록 원금이 줄어듭니다. 장기라면 현물이 더 단순합니다.',
+    },
+    {
+      question: '변동성 끌림이 무엇인가요?',
+      answer:
+        '레버리지 토큰이 매일 배수를 다시 맞추는 과정에서 생기는 손실입니다. 가격이 오르내리기만 반복해도 원금이 서서히 줄어, 기초 자산이 제자리여도 회복이 더딥니다.',
+    },
+    {
+      question: '선물은 얼마나 떨어지면 청산되나요?',
+      answer:
+        '레버리지 배수에 따라 다릅니다. 배수가 높을수록 청산 가격이 진입가에 가까워, 몇 %의 급락에도 강제 청산될 수 있습니다. 높은 배수일수록 위험이 큽니다.',
+    },
+    {
+      question: '코인 세금은 언제부터 내나요?',
+      answer:
+        '국내 가상자산 소득 과세는 2027년 시행이 예정돼 있습니다. 시행되면 연 250만원을 넘는 양도·대여 소득에 22%가 매겨질 예정입니다.',
+    },
+  ],
+};
+
+const sgovDollarParkingEtf: GuideDef = {
+  slug: 'sgov-dollar-parking-etf',
+  title: 'SGOV로 달러 파킹, 미국 초단기 국채 ETF 세금',
+  tagline: '변동성 거의 없이 달러 예수금을 굴리는 초단기 국채',
+  description:
+    'SGOV는 만기 3개월 안쪽 미국 국채에 담는 초단기 국채 ETF로, 변동성이 거의 없어 달러 파킹처에 자주 쓰입니다. 국내 투자자에게는 매매차익이 양도소득세 22%, 분배금이 배당소득세 15.4%로 나뉘어 과세됩니다. 수익 구조와 환차익 세금까지 정리했습니다.',
+  keywords: ['SGOV', '미국 초단기 국채 ETF', '달러 파킹', 'SGOV 세금', '미국 국채 ETF 환차익', '달러 예수금 운용'],
+  section: 'ETF 채권 가이드',
+  lastReviewed: '2026-07-31',
+  answer:
+    'SGOV는 만기 0~3개월 미국 국채만 담는 미국 상장 ETF로, 가격이 거의 움직이지 않으면서 매달 분배금을 주기 때문에 달러 예수금을 잠시 굴리는 파킹 용도로 많이 쓰입니다. 국내 투자자는 매매로 생긴 차익에 양도소득세 22%(연 250만원 공제), 분배금에 배당소득세 15.4%가 붙고, 환차익은 매매차익에 포함돼 함께 과세됩니다.',
+  keyPoints: [
+    'SGOV는 만기 3개월 이내 미국 국채에 투자해 가격 변동이 매우 작고, 최근 기준 연 4~5%대 분배금을 매달 지급하는 초단기 국채 ETF입니다.',
+    '미국 상장 ETF라서 매매차익은 양도소득세 22%로 과세되며, 연 250만원까지는 공제되고 이를 넘는 금액에만 세금이 매겨집니다.',
+    '분배금은 국내에서 배당소득으로 15.4%가 원천징수되고, 다른 금융소득과 합쳐 연 2천만원을 넘으면 종합과세 대상이 됩니다.',
+    '달러로 사고파는 자산이라 환율이 오르면 환차익이 매매차익에 더해져 과세되고, 반대로 환율이 내리면 분배 수익을 환손실이 깎을 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 세금정보', url: 'https://www.nts.go.kr' },
+    { label: '한국예탁결제원', url: 'https://www.ksd.or.kr' },
+    { label: '미국 증권거래위원회', url: 'https://www.sec.gov' },
+  ],
+  sourceQuestions: [
+    { summary: '미국 단기채권으로 환차익을 내는 방식을 궁금해하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494351995' },
+    { summary: '미국 ETF 절세 방법을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494339573' },
+  ],
+  comparisonTable: {
+    caption: '미국 상장 SGOV와 국내 파킹형 ETF 세금 비교',
+    columns: ['구분', 'SGOV(미국 상장)', '국내 상장 파킹형 ETF'],
+    rows: [
+      ['매매차익 과세', '양도소득세 22%', '배당소득세 15.4%'],
+      ['연 250만원 공제', '적용', '없음'],
+      ['거래 통화', '달러', '원화'],
+      ['환차익', '매매차익에 포함 과세', '없음(원화 자산)'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'SGOV는 어떤 ETF인가',
+      paragraphs: [
+        'SGOV는 만기 0~3개월짜리 미국 국채, 즉 초단기 국채에만 투자하는 미국 상장 ETF입니다. 만기가 워낙 짧다 보니 금리가 움직여도 가격이 거의 흔들리지 않습니다. 그래서 주식처럼 오르내리는 상품이 아니라, 달러를 잠시 안전하게 세워 두는 파킹 용도로 자주 쓰입니다.',
+        '변동성이 낮은 대신 시세 차익을 크게 기대하는 상품은 아닙니다. 수익은 대부분 매달 지급되는 분배금에서 나오며, 최근 기준으로 연 4~5%대 수준입니다. 달러를 들고 있는데 마땅히 굴릴 곳이 없을 때 대기 자금을 넣어 두는 선택지로 이해하면 됩니다.',
+      ],
+    },
+    {
+      heading: '수익은 어디서 나오나',
+      paragraphs: [
+        'SGOV의 수익 구조는 단순합니다. 초단기 국채에서 나오는 이자가 분배금으로 매달 투자자에게 지급되고, 가격 자체는 거의 일정하게 유지됩니다. 분배 직후 가격이 소폭 내렸다가 다시 이자가 쌓이며 회복되는 흐름이 반복됩니다.',
+        '가격이 크게 오르길 기대하는 상품이 아니므로, 시세 차익보다 매달 들어오는 분배금이 핵심입니다. 달러 기준으로는 원금 변동이 작아 안정적으로 보이지만, 원화로 환산하면 뒤에서 설명할 환율 변수가 수익률을 바꿀 수 있습니다.',
+      ],
+    },
+    {
+      heading: '국내 투자자의 세금, 양도세와 배당세',
+      paragraphs: [
+        'SGOV는 미국에 상장된 ETF라서 국내 상장 ETF와 세금 체계가 다릅니다. 사고팔아 생긴 매매차익에는 양도소득세 22%가 붙습니다. 대신 연 250만원까지는 공제되므로, 이 금액을 넘는 차익에 대해서만 세금을 내면 됩니다.',
+        '매달 받는 분배금은 배당소득으로 보아 국내에서 15.4%가 원천징수됩니다. 이 분배금이 다른 이자·배당과 합쳐 연 2천만원을 넘으면 금융소득 종합과세 대상이 되고, 건강보험 피부양자 자격에도 영향을 줄 수 있으니 규모가 커지면 함께 살펴야 합니다.',
+      ],
+    },
+    {
+      heading: '환율이 수익을 바꾼다',
+      paragraphs: [
+        'SGOV는 달러로 사고 달러로 분배금을 받는 자산입니다. 그래서 원화로 환산한 수익에는 환율이 그대로 반영됩니다. 살 때보다 환율이 오르면 환차익이 생기고, 이 환차익은 매매차익에 포함돼 양도소득세로 함께 과세됩니다.',
+        '반대로 환율이 내리면 국채 이자로 번 분배 수익을 환손실이 깎아 먹을 수 있습니다. 달러 가치가 떨어지는 구간에서는 안정적인 상품이라도 원화 기준 성과가 나빠질 수 있다는 뜻입니다. 이 글은 정보 제공을 위한 것이며, 환율과 세금은 개인 상황에 따라 달라지므로 최종 판단은 본인이 하셔야 합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'SGOV는 원금이 보장되나요?',
+      answer:
+        '초단기 국채라 가격 변동이 매우 작지만 원금이 보장되는 예금은 아닙니다. 달러 자산이라 환율이 내리면 원화 기준 수익이 줄어들 수 있는 점도 함께 고려해야 합니다.',
+    },
+    {
+      question: '매매차익 세금은 얼마인가요?',
+      answer:
+        '미국 상장 ETF라 매매차익에 양도소득세 22%가 붙습니다. 다만 연 250만원까지는 공제되므로, 이를 넘는 차익에 대해서만 세금을 계산해 이듬해 신고합니다.',
+    },
+    {
+      question: '분배금에도 세금이 붙나요?',
+      answer:
+        '분배금은 배당소득으로 15.4%가 원천징수됩니다. 다른 금융소득과 합쳐 연 2천만원을 넘으면 종합과세 대상이 되어 세 부담이 더 커질 수 있습니다.',
+    },
+    {
+      question: '환차익도 세금을 내나요?',
+      answer:
+        '환차익은 별도로 떼지 않고 매매차익에 포함해 양도소득세로 과세합니다. 살 때보다 환율이 오른 만큼 차익이 늘어 세금 계산에 함께 반영됩니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
   pensionSavingsVsIrp,
   etfSharePriceMeaning,
@@ -18156,6 +18606,11 @@ export const GUIDES: GuideDef[] = [
   cryptoExchangeFeeStructure,
   stockLeadingRoomScam,
   sp500Nasdaq100Overlap,
+  isaBrokerVsTrustType,
+  usStockKrwIntegratedMargin,
+  financialIncomeDependentEligibility,
+  cryptoLeverageLongTermRisk,
+  sgovDollarParkingEtf,
 ];
 
 /**
@@ -18166,6 +18621,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-07-31 · 지식iN 질문 수요 기반 (ISA 중개형·신탁형·일임형 차이·미국주식 원화주문 통합증거금·배당 이자로 건보 피부양자 탈락 기준·비트코인 레버리지 장기투자 위험·SGOV 달러 파킹 세금)
+  'isa-broker-vs-trust-type': '2026-07-31',
+  'us-stock-krw-integrated-margin': '2026-07-31',
+  'financial-income-dependent-eligibility': '2026-07-31',
+  'crypto-leverage-long-term-risk': '2026-07-31',
+  'sgov-dollar-parking-etf': '2026-07-31',
   // 2026-07-30 · 지식iN 질문 수요 기반 (국내 배당소득세 15.4% 실수령액·비트코인 원화 구매출금·코인 거래소 수수료 구조·주식 리딩방 사기 신호·S&P500 나스닥100 겹침)
   'domestic-dividend-income-tax': '2026-07-30',
   'bitcoin-krw-buy-withdrawal': '2026-07-30',
@@ -18426,7 +18887,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility'],
   },
   {
     title: '배당·인컴',
@@ -18436,17 +18897,17 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '테마·섹터',
     description: '방산·조선·건설·자동차·AI·반도체·빅테크·소프트웨어·보안·로봇·전기차·신재생·희토류·게임·엔터·명품·뷰티·비트코인·인프라 등 특정 테마에 집중하는 섹터 ETF.',
-    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'bitcoin-krw-buy-withdrawal', 'crypto-exchange-fee-structure'],
+    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'bitcoin-krw-buy-withdrawal', 'crypto-exchange-fee-structure', 'crypto-leverage-long-term-risk'],
   },
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin'],
   },
   {
     title: '전략·자산배분',
     description: '적립식·리밸런싱·팩터·자산배분(TRF)·채권·미국국채·회사채·채권혼합·파킹·금·은·구리·원유·농산물·원자재·레버리지 — 포트폴리오를 굴리고 위험을 관리하는 전략.',
-    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf'],
+    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf'],
   },
 ];
 
