@@ -18402,6 +18402,450 @@ const sgovDollarParkingEtf: GuideDef = {
   ],
 };
 
+const isaRestrictedProducts: GuideDef = {
+  slug: 'isa-restricted-products',
+  title: 'ISA 계좌에서 못 사는 상품, 해외주식과 레버리지 ETF',
+  tagline: '국내 상장 ETF는 담기지만 해외 직상장과 곱버스는 담을 수 없다',
+  description:
+    'ISA 계좌에는 국내 상장 ETF와 펀드, 리츠, 예금은 담을 수 있지만 미국 등 해외에 직접 상장된 주식과 ETF, 레버리지·인버스 ETF는 편입할 수 없습니다. 담기는 상품과 안 되는 상품, 절세가 되는 조합까지 한 페이지에 정리했습니다.',
+  keywords: ['ISA 편입 제한', 'ISA 해외주식', 'ISA 레버리지 ETF', 'ISA 담을 수 있는 상품', 'ISA 국내상장 ETF', 'ISA 계좌 매수 안됨'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-08-02',
+  answer:
+    'ISA 계좌는 국내 금융회사에 상장되거나 설정된 상품만 담을 수 있어, 국내 상장 ETF와 펀드, 리츠, 상장주식, 예금은 편입되지만 미국처럼 해외에 직접 상장된 주식과 ETF는 살 수 없습니다. 레버리지·인버스 ETF도 편입이 제한되며, 국내 주식형 ETF는 담을 수는 있어도 원래 매매차익이 비과세라 절세 효과는 크지 않습니다.',
+  keyPoints: [
+    'ISA는 국내 상장 ETF, 펀드, 리츠, 상장주식, 예금, 파생결합증권을 담을 수 있지만 미국 등 해외 직상장 주식과 ETF는 편입할 수 없습니다.',
+    '레버리지·인버스 ETF는 ISA 계좌 편입이 제한되므로, 곱버스 상품에 넣으려면 일반 위탁계좌를 써야 합니다.',
+    '국내 주식형 ETF는 담을 수는 있으나 매매차익이 원래 비과세라 한도만 차지하고 절세 효과는 크지 않습니다.',
+    'ISA의 세제 혜택은 순이익 200만원, 서민·농어민형은 400만원까지 비과세하고 초과분은 9.9% 분리과세라, 국내 상장 해외형 ETF나 배당 상품을 담을 때 특히 유리합니다.',
+  ],
+  sources: [
+    { label: '금융위원회 ISA 제도 안내', url: 'https://www.fsc.go.kr' },
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+    { label: '국세청 세금정보', url: 'https://www.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 계좌에서 주문이 안 되는 이유를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494341294' },
+    { summary: 'ISA 계좌에 KODEX ETF를 담아도 되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494102222' },
+    { summary: 'ISA 계좌 활용을 전반적으로 궁금해하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494349881' },
+  ],
+  comparisonTable: {
+    caption: 'ISA 계좌 편입 가능 상품과 불가 상품',
+    columns: ['구분', '편입 가능', '편입 불가'],
+    rows: [
+      ['국내 상장 ETF', '가능', ''],
+      ['펀드·리츠·예금', '가능', ''],
+      ['해외 직상장 주식·ETF', '', '불가'],
+      ['레버리지·인버스 ETF', '', '제한'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'ISA에 담을 수 있는 상품',
+      paragraphs: [
+        'ISA는 여러 상품을 한 계좌에서 굴리며 세금 혜택을 받는 절세 계좌입니다. 담을 수 있는 대상은 국내 금융회사에 상장되거나 설정된 상품으로 한정됩니다. 국내 증시에 상장된 ETF, 공모펀드, 리츠, 개별 상장주식, 예금성 상품, ELS 같은 파생결합증권이 여기에 해당합니다.',
+        '핵심은 국내에서 사고팔 수 있는 상품이라는 점입니다. 미국 S&P500이나 나스닥100에 투자하고 싶다면 해당 지수를 추종하는 국내 상장 ETF를 고르면 되고, 이런 상품은 ISA 안에서 문제없이 매수됩니다.',
+      ],
+    },
+    {
+      heading: '해외 직상장 주식과 ETF는 왜 안 되나',
+      paragraphs: [
+        '애플이나 VOO처럼 미국 시장에 직접 상장된 주식과 ETF는 ISA 계좌에서 살 수 없습니다. ISA가 국내 상장 상품을 담도록 설계된 계좌이기 때문입니다. 미국 주식을 직접 사려면 별도의 해외주식 위탁계좌가 필요합니다.',
+        '해외에 관심이 있다면 같은 지수를 추종하는 국내 상장 해외형 ETF가 대안입니다. 일반 계좌라면 이런 ETF의 매매차익과 분배금에 배당소득세 15.4%가 붙지만, ISA 안에서는 비과세 한도와 저율 분리과세가 적용돼 세 부담이 줄어듭니다.',
+      ],
+    },
+    {
+      heading: '레버리지와 인버스는 편입 제한',
+      paragraphs: [
+        '2배로 움직이는 레버리지 ETF나 지수 하락에 베팅하는 인버스 ETF, 이른바 곱버스 상품은 ISA 계좌에 편입할 수 없습니다. 변동성이 큰 상품을 절세 계좌에서 걸러내려는 취지입니다.',
+        '이런 상품을 꼭 매매하려면 일반 위탁계좌를 이용해야 합니다. 다만 레버리지·인버스는 오래 보유할수록 변동성에 따른 손실이 쌓이는 구조라, 절세 계좌 편입 여부를 떠나 장기 보유 용도로는 신중할 필요가 있습니다.',
+      ],
+    },
+    {
+      heading: '무엇을 담아야 절세가 되나',
+      paragraphs: [
+        'ISA의 세제 혜택은 계좌 안에서 낸 순이익 가운데 200만원, 서민형·농어민형은 400만원까지 비과세하고 그 이상은 9.9%로 분리과세하는 구조입니다. 그래서 원래 세금이 붙는 상품을 담을수록 혜택이 커집니다.',
+        '국내 주식형 ETF는 매매차익이 본래 비과세라 ISA에 담아도 얻는 게 적습니다. 반대로 국내 상장 해외형 ETF, 배당주, 리츠처럼 배당소득세가 매겨지는 상품을 담으면 비과세와 저율 분리과세 효과를 제대로 누릴 수 있습니다. 계좌별 과세는 개인 상황에 따라 달라지니, 편입 전 본인 소득과 목적을 함께 따져 보시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA 계좌에서 미국 주식을 직접 살 수 있나요?',
+      answer:
+        '살 수 없습니다. ISA는 국내 상장 상품만 담기므로 애플 같은 미국 직상장 주식이나 VOO 같은 해외 상장 ETF는 별도의 해외주식 위탁계좌에서 매수해야 합니다.',
+    },
+    {
+      question: '레버리지나 인버스 ETF도 담을 수 있나요?',
+      answer:
+        '레버리지·인버스 ETF는 ISA 편입이 제한됩니다. 이런 상품을 매매하려면 일반 위탁계좌를 이용해야 하며, 장기 보유에는 구조상 불리한 점도 함께 고려하는 것이 좋습니다.',
+    },
+    {
+      question: '국내 주식형 ETF를 ISA에 담으면 손해인가요?',
+      answer:
+        '손해는 아니지만 실익이 적습니다. 국내 주식형 ETF는 매매차익이 원래 비과세라, ISA 한도만 차지하고 절세 효과는 크지 않습니다. 배당이나 해외형 상품을 담는 편이 유리합니다.',
+    },
+    {
+      question: '미국 지수에 투자하고 싶으면 어떻게 하나요?',
+      answer:
+        'S&P500이나 나스닥100을 추종하는 국내 상장 해외형 ETF를 ISA에 담으면 됩니다. 일반 계좌보다 비과세 한도와 9.9% 분리과세 덕분에 세 부담을 줄일 수 있습니다.',
+    },
+  ],
+};
+
+const foreignStockFeeFxSpread: GuideDef = {
+  slug: 'foreign-stock-fee-fx-spread',
+  title: '해외주식 수수료와 환전 스프레드, 실제로 얼마 나가나',
+  tagline: '수수료 0%라도 환전 비용이 조용히 수익을 갉아먹는다',
+  description:
+    '해외주식 위탁수수료는 증권사에 따라 0.07%에서 0.25% 수준이지만, 진짜 비용은 환전 스프레드에 숨어 있습니다. 매수·매도 수수료, 환전 우대율, 미국 매도 시 붙는 SEC 수수료까지 합쳐 실제로 얼마가 빠지는지 예시로 계산했습니다.',
+  keywords: ['해외주식 수수료', '미국주식 수수료', '환전 스프레드', '환전 우대율', '해외주식 거래 비용', '증권사 수수료 비교'],
+  section: '해외상장 가이드',
+  lastReviewed: '2026-08-02',
+  answer:
+    '해외주식 거래에서 눈에 보이는 위탁수수료는 증권사별로 0.07%에서 0.25% 정도지만, 실제 비용은 원화를 달러로 바꾸는 환전 스프레드에 더 크게 숨어 있습니다. 위탁수수료가 0%인 이벤트라도 환전 스프레드와 미국 매도 시 붙는 SEC 수수료는 별도로 나가므로, 총비용은 이 항목을 모두 더해 따져야 합니다.',
+  keyPoints: [
+    '해외주식 온라인 위탁수수료는 증권사에 따라 대략 0.07%에서 0.25% 수준이며, 같은 금액을 사고팔면 이 수수료는 매수와 매도에서 두 번 부과됩니다.',
+    '환전 스프레드는 기준 환율과 실제 적용 환율의 차이로, 우대가 없으면 편도 약 0.1% 안팎이 들고 사고팔 때 왕복으로 발생합니다.',
+    '환전 우대는 정규 거래시간에 높고 그 외 시간대에 낮게 적용되는 경우가 많아, 우대율에 따라 체감 환전 비용이 크게 달라집니다.',
+    '미국 주식과 ETF는 매도 시 SEC 수수료가 약 0.00278% 붙어, 위탁수수료 0.07%에 환전 약 0.1%와 SEC를 더하면 실제 왕복 비용이 0.2%를 넘길 수 있습니다.',
+  ],
+  sources: [
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+    { label: '한국예탁결제원', url: 'https://www.ksd.or.kr' },
+    { label: '미국 증권거래위원회', url: 'https://www.sec.gov' },
+  ],
+  sourceQuestions: [
+    { summary: '미래에셋에서 해외주식 수수료가 얼마인지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494304010' },
+    { summary: '원화만 있는데 미국 ETF 매수가 안 돼 환전을 물어보는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494355613' },
+  ],
+  comparisonTable: {
+    caption: '해외주식 매매에 붙는 비용 구성',
+    columns: ['비용 항목', '대략 수준', '발생 시점'],
+    rows: [
+      ['위탁수수료', '0.07%~0.25%', '매수·매도 각각'],
+      ['환전 스프레드', '편도 약 0.1%', '원화·달러 환전 시'],
+      ['SEC 수수료', '약 0.00278%', '미국 매도 시'],
+      ['환전 우대율', '시간대별 상이', '환전 시 차감'],
+    ],
+  },
+  sections: [
+    {
+      heading: '눈에 보이는 위탁수수료',
+      paragraphs: [
+        '해외주식을 사고팔 때 가장 먼저 눈에 띄는 비용은 위탁수수료입니다. 온라인 기준으로 증권사마다 다르지만 대략 0.07%에서 0.25% 사이에 분포합니다. 신규 고객에게는 한동안 무료로 해 주는 이벤트도 흔합니다.',
+        '주의할 점은 이 수수료가 매수 때 한 번, 매도 때 또 한 번 붙는다는 것입니다. 1천만원어치를 사서 되판다면 왕복으로 계산해야 하고, 최소 수수료가 있는 증권사라면 소액 거래에서 요율보다 더 나가는 경우도 있습니다.',
+      ],
+    },
+    {
+      heading: '진짜 비용은 환전 스프레드',
+      paragraphs: [
+        '미국 주식은 달러로 사고파니 원화를 달러로 바꾸는 환전 과정이 반드시 끼어듭니다. 이때 증권사가 제시하는 환율은 기준 환율보다 살짝 비싸게 사고 싸게 파는 구조인데, 이 차이를 환전 스프레드라고 부릅니다.',
+        '우대가 없으면 편도로 약 0.1% 안팎이 들고, 사고팔며 두 번 환전하면 그만큼 왕복으로 빠집니다. 위탁수수료가 0%인 이벤트라도 이 환전 비용은 그대로 남기 때문에, 무료라는 말만 보고 총비용을 낮게 잡으면 안 됩니다.',
+      ],
+    },
+    {
+      heading: '환전 우대율과 시간대',
+      paragraphs: [
+        '환전 스프레드는 우대율로 상당 부분 줄일 수 있습니다. 많은 증권사가 정규 거래시간에는 높은 우대율을, 그 외 시간대에는 낮은 우대율을 적용합니다. 같은 금액을 바꿔도 언제 환전하느냐에 따라 체감 비용이 달라집니다.',
+        '원화주문 서비스로 달러 없이 바로 매수하는 경우에도 안에서 환전이 일어나므로 스프레드는 발생합니다. 우대율 조건과 적용 시간대를 미리 확인해 두면 같은 거래라도 새는 돈을 줄일 수 있습니다.',
+      ],
+    },
+    {
+      heading: '총비용 예시로 계산하기',
+      paragraphs: [
+        '숫자로 묶어 보면 감이 잡힙니다. 위탁수수료 0.07%에 편도 환전 약 0.1%, 여기에 미국 매도 시 붙는 SEC 수수료 약 0.00278%를 더하면, 한 번의 거래에서 대략 0.24% 안팎이 비용으로 나갑니다. 1천만원을 사고팔면 2만4천원가량입니다.',
+        '요율이 높은 증권사나 우대율이 낮은 시간대라면 이 비용은 더 커집니다. 장기 적립식이라면 매매 횟수를 줄이는 것만으로도 비용을 아낄 수 있으니, 수수료 요율뿐 아니라 환전 조건까지 함께 비교해 계좌를 고르는 편이 좋습니다. 실제 요율은 증권사와 시점에 따라 달라지므로 거래 전 최신 안내를 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '해외주식 수수료가 0%면 정말 공짜인가요?',
+      answer:
+        '아닙니다. 위탁수수료가 0%라도 환전 스프레드와 미국 매도 시 붙는 SEC 수수료는 따로 나갑니다. 무료 이벤트를 볼 때는 환전 조건을 함께 확인해야 실제 비용을 알 수 있습니다.',
+    },
+    {
+      question: '환전 스프레드는 얼마나 되나요?',
+      answer:
+        '우대가 없으면 편도로 약 0.1% 안팎이 흔하고, 사고팔며 두 번 환전하면 왕복으로 발생합니다. 우대율과 환전 시간대에 따라 이 폭은 크게 줄어들 수 있습니다.',
+    },
+    {
+      question: 'SEC 수수료는 무엇인가요?',
+      answer:
+        '미국 주식과 ETF를 팔 때 미국 규제기관에 내는 소액 수수료로 약 0.00278% 수준입니다. 금액은 작지만 매도할 때마다 붙는 비용이라 총비용 계산에 넣어야 합니다.',
+    },
+    {
+      question: '비용을 줄이려면 무엇을 봐야 하나요?',
+      answer:
+        '위탁수수료 요율과 최소 수수료, 환전 우대율과 적용 시간대를 함께 비교하세요. 매매를 자주 하지 않는 것만으로도 왕복 비용을 아낄 수 있습니다.',
+    },
+  ],
+};
+
+const overseasCryptoFuturesTax: GuideDef = {
+  slug: 'overseas-crypto-futures-tax',
+  title: '해외 코인 선물 거래 세금, 2027년부터 어떻게 되나',
+  tagline: '지금은 과세 유예, 시행 뒤엔 기타소득으로 신고 대상',
+  description:
+    '해외 거래소의 코인 선물 거래로 얻은 소득은 현재 과세가 유예돼 있지만, 현행법상 2027년부터 연 250만원을 넘는 가상자산 소득에 기타소득세 22%가 매겨질 예정입니다. 손익통산 여부와 해외 거래소 정보 공유까지 위험 중심으로 짚었습니다.',
+  keywords: ['코인 선물 세금', '해외 코인 거래소 세금', '가상자산 과세 2027', '비트코인 선물 세금', '코인 기타소득세', '코인 손익통산'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-02',
+  answer:
+    '해외 거래소에서 한 코인 선물 거래 소득은 현재 과세가 유예된 상태지만, 현행법상 2027년 1월 시행이 예정돼 그 이후에는 연 250만원을 넘는 가상자산 양도·대여 소득이 기타소득으로 분류돼 22%가 부과될 예정입니다. 손익통산과 이월공제가 막혀 있고, 2027년부터는 해외 거래소 거래 내역도 국세청에 공유될 예정이라 신고 의무를 가볍게 볼 수 없습니다.',
+  keyPoints: [
+    '가상자산 소득 과세는 현재 유예 중이며, 현행법상 2027년 1월 1일 시행이 예정돼 그때부터 신고 의무가 생깁니다.',
+    '시행 후에는 연 250만원을 넘는 양도·대여 소득이 기타소득으로 분류돼 세율 22%(지방세 포함)가 매겨질 예정입니다.',
+    '가상자산 소득은 손익통산과 이월공제가 원천적으로 막혀 있어, 다른 손실로 이익을 상계하거나 손실을 다음 해로 넘길 수 없습니다.',
+    '2027년부터 해외 거래소에 보관된 국내 거주자의 거래 내역이 국세청에 공유될 예정이라, 해외 거래소를 썼다는 이유로 신고 대상에서 빠지지 않습니다.',
+  ],
+  sources: [
+    { label: '국세청 가상자산 과세 안내', url: 'https://www.nts.go.kr' },
+    { label: '기획재정부', url: 'https://www.moef.go.kr' },
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '비트코인 선물 거래에 세금이 어떻게 붙는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=470973486' },
+    { summary: '해외 비트코인 선물거래소를 찾는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=443985814' },
+  ],
+  comparisonTable: {
+    caption: '가상자산 소득 과세, 시행 전과 후',
+    columns: ['구분', '현재(유예)', '2027년 시행 후(예정)'],
+    rows: [
+      ['과세 여부', '유예', '연 250만원 초과분 과세'],
+      ['소득 구분', '해당 없음', '기타소득'],
+      ['세율', '없음', '22%(지방세 포함)'],
+      ['손익통산·이월', '해당 없음', '불가'],
+    ],
+  },
+  sections: [
+    {
+      heading: '지금은 과세가 유예돼 있다',
+      paragraphs: [
+        '가상자산 소득 과세는 2020년에 법으로 정해졌지만 시행이 두 차례 미뤄지면서, 지금은 코인 매매차익이나 선물 거래 소득에 세금이 붙지 않는 유예 상태입니다. 그래서 당장은 신고할 세금이 없다고 이해하면 됩니다.',
+        '다만 유예는 영구 면제가 아니라 시행 시점을 늦춘 것입니다. 현행법상 시행일은 2027년 1월 1일로 잡혀 있어, 지금 거래한 기록이라도 앞으로의 세금 판단에 영향을 줄 수 있는 만큼 거래 내역을 정리해 두는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '2027년 시행되면 어떻게 바뀌나',
+      paragraphs: [
+        '시행 후에는 한 해 동안의 가상자산 양도·대여 소득을 합쳐 250만원을 넘는 부분에 세금이 매겨집니다. 이 소득은 기타소득으로 분류되며 세율은 지방세를 포함해 22%입니다. 선물처럼 파생 형태의 손익도 가상자산 소득 범위에서 다뤄질 것으로 예상됩니다.',
+        '시행 전에 보유하던 코인은 2026년 말일의 시가와 실제 취득가 중 큰 금액을 취득가액으로 보는 방식이 적용될 예정입니다. 세부 신고 방식은 시행에 맞춰 구체화될 부분이 남아 있으니, 시행 시점의 국세청 안내를 확인하는 것이 정확합니다.',
+      ],
+    },
+    {
+      heading: '손익통산이 안 된다는 뜻',
+      paragraphs: [
+        '주식 양도세와 달리 가상자산 소득은 손익통산과 이월공제가 원천적으로 막혀 있습니다. 어떤 코인에서 이익이 나고 다른 코인에서 손실이 났더라도, 손실로 이익을 깎아 세금을 줄이는 계산이 되지 않는다는 의미입니다.',
+        '손실이 큰 해라도 그 손실을 다음 해로 넘겨 미래의 이익과 상계할 수 없습니다. 특히 선물은 방향과 크기를 모두 맞혀야 하고 급락 한 번에 청산될 수 있어 손실이 커지기 쉬운데, 그 손실이 세금 계산에서 구제되지 않는다는 점을 알아 둘 필요가 있습니다.',
+      ],
+    },
+    {
+      heading: '해외 거래소도 국세청이 본다',
+      paragraphs: [
+        '해외 거래소를 쓰면 국세청이 모를 것이라는 생각은 위험합니다. 2027년부터는 국가 간 정보 공유 체계가 본격 가동돼, 해외 거래소에 보관된 국내 거주자의 자산과 거래 내역이 국세청에 매년 전달될 예정입니다. 해외 거래소를 이용했다는 이유로 신고 대상에서 빠지기 어렵다는 뜻입니다.',
+        '이 글은 특정 상품이나 거래를 권하는 것이 아니라 세금과 위험을 알리기 위한 정보입니다. 선물 거래 자체가 원금을 크게 잃을 수 있는 고위험 거래인 만큼, 세금 문제와 별개로 감당 가능한 범위를 넘지 않도록 주의하시고 최종 판단과 신고 책임은 본인에게 있음을 유념하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '지금 코인 선물로 번 돈에 세금을 내야 하나요?',
+      answer:
+        '현재는 과세가 유예돼 세금이 붙지 않습니다. 다만 현행법상 2027년 1월 시행이 예정돼 있어, 시행 후 발생한 소득부터 신고 대상이 됩니다.',
+    },
+    {
+      question: '세금은 얼마나 매겨지나요?',
+      answer:
+        '시행되면 연 250만원을 넘는 가상자산 양도·대여 소득이 기타소득으로 분류돼 22%(지방세 포함)가 부과될 예정입니다. 250만원까지는 공제됩니다.',
+    },
+    {
+      question: '손실이 나면 세금을 줄일 수 있나요?',
+      answer:
+        '가상자산 소득은 손익통산과 이월공제가 막혀 있어, 손실로 이익을 상계하거나 손실을 다음 해로 넘길 수 없습니다. 선물의 큰 손실도 세금 계산에서 구제되지 않습니다.',
+    },
+    {
+      question: '해외 거래소를 쓰면 신고하지 않아도 되나요?',
+      answer:
+        '그렇지 않습니다. 2027년부터 해외 거래소 거래 내역이 국세청에 공유될 예정이라, 해외 거래소를 이용했다는 이유로 신고 의무에서 벗어나기 어렵습니다.',
+    },
+  ],
+};
+
+const pensionIrpCombinedTaxCredit: GuideDef = {
+  slug: 'pension-irp-combined-tax-credit',
+  title: '연금저축과 IRP 세액공제, 합쳐 900만원 채우는 법',
+  tagline: '연금저축 600만원에 IRP를 더해 한도 900만원까지',
+  description:
+    '연금저축은 연 600만원까지 세액공제되고, IRP를 함께 쓰면 합산 한도가 900만원으로 늘어납니다. 총급여 5,500만원 이하는 16.5%, 초과 시 13.2%가 적용돼 900만원을 채우면 최대 148만원을 돌려받는 구조를 예시로 정리했습니다.',
+  keywords: ['연금저축 세액공제', 'IRP 세액공제 한도', '연금저축 IRP 900만원', '세액공제율 16.5%', '연말정산 연금', '연금계좌 절세'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-02',
+  answer:
+    '연금저축은 한 해 납입액 가운데 600만원까지 세액공제를 받고, 여기에 IRP를 더하면 두 계좌를 합쳐 900만원까지 공제 한도가 늘어납니다. 세액공제율은 총급여 5,500만원, 종합소득 4,500만원 이하면 16.5%, 넘으면 13.2%가 적용돼, 900만원을 채우면 약 118만원에서 148만원을 연말정산이나 종합소득세에서 돌려받습니다.',
+  keyPoints: [
+    '연금저축은 연 600만원, IRP를 더하면 합산 900만원까지 세액공제를 받을 수 있어, 보통 연금저축 600만원을 먼저 채우고 남는 여력을 IRP로 채웁니다.',
+    '세액공제율은 총급여 5,500만원 이하면 16.5%, 초과하면 13.2%가 적용됩니다.',
+    '900만원을 모두 채우면 16.5% 적용 시 약 148만5천원, 13.2% 적용 시 약 118만8천원을 환급받습니다.',
+    'IRP만으로도 900만원 한도를 다 쓸 수 있지만, 연금저축은 중도인출이 상대적으로 자유로워 두 계좌의 성격을 나눠 활용하는 편이 유리합니다.',
+  ],
+  sources: [
+    { label: '국세청 연금계좌 세액공제 안내', url: 'https://www.nts.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+    { label: '기획재정부', url: 'https://www.moef.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'IRP와 연금저축, 연금저축펀드의 차이를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494287819' },
+    { summary: '연금저축부터 가입하는 게 맞는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494334592' },
+  ],
+  comparisonTable: {
+    caption: '연금저축과 IRP 세액공제 한도',
+    columns: ['구분', '연금저축', 'IRP 합산'],
+    rows: [
+      ['세액공제 한도', '600만원', '900만원'],
+      ['공제율(5,500만 이하)', '16.5%', '16.5%'],
+      ['공제율(5,500만 초과)', '13.2%', '13.2%'],
+      ['중도인출', '상대적으로 자유', '제한적'],
+    ],
+  },
+  sections: [
+    {
+      heading: '두 계좌의 한도를 합치면 900만원',
+      paragraphs: [
+        '연금저축과 IRP는 노후 자금을 굴리며 세금을 돌려받는 대표적인 절세 계좌입니다. 연금저축은 한 해 납입액 가운데 600만원까지 세액공제를 받고, 여기에 IRP를 더하면 두 계좌를 합쳐 최대 900만원까지 한도가 늘어납니다.',
+        '가장 많이 쓰는 방식은 연금저축으로 600만원을 먼저 채우고, 남는 300만원을 IRP로 채워 합계 900만원을 맞추는 것입니다. IRP 하나로 900만원을 다 넣어도 되지만, 계좌 성격을 나눠 쓰면 뒤에서 설명할 인출 편의에서 차이가 납니다.',
+      ],
+    },
+    {
+      heading: '내 공제율은 얼마인가',
+      paragraphs: [
+        '돌려받는 비율은 소득에 따라 두 단계로 나뉩니다. 총급여 5,500만원, 종합소득으로는 4,500만원 이하면 16.5%가 적용되고, 이 기준을 넘으면 13.2%가 적용됩니다. 소득이 낮을수록 같은 금액을 넣어도 더 많이 돌려받는 구조입니다.',
+        '연말정산 때 미리 낸 세금에서 이 금액만큼 깎아 주거나, 낼 세금이 그보다 적으면 남는 만큼을 환급으로 돌려줍니다. 급여 소득자는 연말정산에서, 사업소득자는 종합소득세 신고에서 이 공제를 받습니다.',
+      ],
+    },
+    {
+      heading: '900만원 채우면 얼마 돌려받나',
+      paragraphs: [
+        '한도인 900만원을 모두 채웠다고 가정하면, 공제율 16.5%가 적용되는 사람은 약 148만5천원을, 13.2%가 적용되는 사람은 약 118만8천원을 돌려받습니다. 넣은 돈이 사라지는 게 아니라 노후 자금으로 쌓이면서 세금까지 아끼는 셈입니다.',
+        '한 해에 900만원이 부담스럽다면 넣을 수 있는 만큼만 넣어도 됩니다. 공제는 넣은 금액에 비례하므로, 예컨대 연금저축 300만원만 채워도 그만큼의 세액공제를 받습니다. 무리하지 않는 선에서 한도를 활용하는 것이 핵심입니다.',
+      ],
+    },
+    {
+      heading: '연금저축과 IRP, 어떻게 나눠 쓰나',
+      paragraphs: [
+        '두 계좌는 세액공제 한도를 공유하지만 성격이 조금 다릅니다. 연금저축은 급한 사정이 있을 때 중도인출이 상대적으로 자유롭고, IRP는 인출 요건이 더 엄격합니다. 그래서 유연성이 필요하면 연금저축 비중을 먼저 채우는 방식이 흔합니다.',
+        '다만 세액공제를 받은 원금을 중간에 빼면 기타소득세가 물리므로, 어느 계좌든 노후까지 유지한다는 전제로 접근하는 것이 유리합니다. 세제와 한도는 개인 소득과 상황에 따라 달라지니, 가입 전 본인 조건을 확인해 판단하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '연금저축과 IRP를 둘 다 넣으면 공제가 두 배인가요?',
+      answer:
+        '아닙니다. 두 계좌는 세액공제 한도를 공유해 합쳐 900만원까지입니다. 연금저축 600만원을 채우고 남는 300만원을 IRP로 채우는 식으로 합계 900만원을 맞춥니다.',
+    },
+    {
+      question: '세액공제율은 어떻게 정해지나요?',
+      answer:
+        '총급여 5,500만원, 종합소득 4,500만원 이하면 16.5%, 이를 넘으면 13.2%가 적용됩니다. 소득이 낮을수록 같은 납입액에서 더 많은 금액을 돌려받습니다.',
+    },
+    {
+      question: '900만원을 채우면 얼마를 환급받나요?',
+      answer:
+        '16.5%가 적용되면 약 148만5천원, 13.2%가 적용되면 약 118만8천원입니다. 넣은 금액에 비례하므로 한도를 다 채우지 않아도 넣은 만큼 공제받습니다.',
+    },
+    {
+      question: 'IRP 하나로 900만원을 다 넣어도 되나요?',
+      answer:
+        '가능합니다. IRP만으로 900만원 한도를 채울 수 있습니다. 다만 중도인출이 더 자유로운 연금저축을 일부 섞으면 급한 사정이 생겼을 때 유연하게 대응할 수 있습니다.',
+    },
+  ],
+};
+
+const usStockCapitalGainsTaxFiling: GuideDef = {
+  slug: 'us-stock-capital-gains-tax-filing',
+  title: '해외주식 양도소득세 신고, 5월에 이렇게 한다',
+  tagline: '작년에 판 미국 주식, 250만원 넘게 벌었다면 5월 신고',
+  description:
+    '해외주식은 한 해 동안 판 차익에서 250만원을 뺀 금액에 22%가 매겨지고, 이 양도소득세는 이듬해 5월에 스스로 신고·납부합니다. 신고 대상과 기한, 같은 해 손실을 더해 세금을 줄이는 손익통산까지 순서대로 정리했습니다.',
+  keywords: ['해외주식 양도소득세', '미국주식 양도세 신고', '양도세 250만원 공제', '해외주식 세금 5월', '양도소득세 22%', '해외주식 손익통산'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-02',
+  answer:
+    '해외주식과 해외 상장 ETF의 매매차익은 양도소득으로 보아, 한 해 동안 실현한 이익에서 기본공제 250만원을 뺀 금액에 22%(지방소득세 포함)가 매겨집니다. 이 세금은 원천징수되지 않고 투자자가 직접 신고하는 방식이라, 전년 1월부터 12월까지의 손익을 합쳐 이듬해 5월에 확정신고하고 납부해야 합니다.',
+  keyPoints: [
+    '해외주식 양도차익은 연 250만원까지 기본공제되고, 이를 넘는 금액에 22%, 즉 양도세 20%에 지방소득세 2%를 더한 세율이 매겨집니다.',
+    '세금은 원천징수되지 않아, 전년에 판 손익을 합산해 이듬해 5월 1일부터 말일까지 스스로 신고하고 납부합니다.',
+    '같은 해에 판 해외주식끼리는 손익통산이 되므로, 이익 난 종목과 손실 난 종목을 같은 해에 함께 정리하면 과세 대상 차익을 줄일 수 있습니다.',
+    '해외주식 양도소득은 금융소득 종합과세와 분리돼 별도로 과세되므로, 배당·이자 소득과 합산되지 않습니다.',
+  ],
+  sources: [
+    { label: '국세청 양도소득세 안내', url: 'https://www.nts.go.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '기획재정부', url: 'https://www.moef.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '국내 상장 해외 ETF의 세금 처리와 손익 계산을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494355422' },
+    { summary: '미국 ETF 절세 방법을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494339573' },
+  ],
+  howTo: {
+    totalTime: 'PT30M',
+    description: '해외주식 양도소득세를 5월에 신고하고 납부하는 순서',
+  },
+  sections: [
+    {
+      heading: '내가 신고 대상인지 확인하기',
+      paragraphs: [
+        '먼저 신고할 필요가 있는지부터 봅니다. 기준은 한 해 동안 실현한 해외주식 양도차익이 기본공제 250만원을 넘느냐입니다. 사고팔아 남긴 순이익이 250만원 이하라면 낼 세금이 없습니다.',
+        '여기서 말하는 이익은 실제로 판 종목의 차익입니다. 아직 팔지 않고 들고 있는 종목의 평가이익은 대상이 아닙니다. 배당으로 받은 돈은 양도소득이 아니라 배당소득이라 이 신고와 별개로 다뤄집니다.',
+      ],
+    },
+    {
+      heading: '전년 손익을 합산하기',
+      paragraphs: [
+        '신고 대상이라면 지난해 1월 1일부터 12월 31일까지 판 종목의 손익을 모두 더합니다. 이때 같은 해에 판 해외주식끼리는 이익과 손실을 서로 상계하는 손익통산이 됩니다. 이익 난 종목만이 아니라 손실 난 종목까지 함께 반영해 순이익을 계산하는 것입니다.',
+        '그래서 이익이 크게 난 해에 손실 난 종목이 있다면, 그 종목을 같은 해에 정리해 순이익을 줄이면 세금도 줄어듭니다. 매매 내역은 증권사에서 연간 거래 자료로 확인할 수 있으니 종목별로 빠짐없이 챙기는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '5월에 홈택스로 신고하기',
+      paragraphs: [
+        '해외주식 양도세는 원천징수되지 않고 투자자가 직접 신고합니다. 신고 기간은 이익이 난 다음 해 5월 1일부터 말일까지이며, 국세청 홈택스에서 양도소득세 확정신고로 접수합니다. 증권사가 대행 서비스를 제공하는 경우도 있어 활용하면 편합니다.',
+        '기한을 놓치면 가산세가 붙을 수 있으니 5월을 넘기지 않는 것이 중요합니다. 참고로 신고 마지막 날이 휴일이면 그다음 영업일까지 신고와 납부가 가능합니다.',
+      ],
+    },
+    {
+      heading: '세액 계산과 납부, 그리고 주의점',
+      paragraphs: [
+        '세액은 순이익에서 250만원을 뺀 금액에 22%를 곱해 구합니다. 예를 들어 한 해 순이익이 500만원이면 250만원을 뺀 250만원에 22%를 적용해 55만원가량이 됩니다. 계산한 세액은 신고와 함께 납부합니다.',
+        '해외주식 양도소득은 금융소득 종합과세와 분리돼 별도로 과세되므로 배당·이자와 합산되지 않습니다. 다만 환율에 따라 원화로 환산한 취득가와 양도가가 달라져 세액이 바뀔 수 있고, 개인 상황마다 계산이 다르므로 규모가 크면 세무 전문가의 확인을 받는 것이 안전합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '해외주식으로 얼마를 벌면 신고해야 하나요?',
+      answer:
+        '한 해 실현한 양도차익이 기본공제 250만원을 넘으면 신고 대상입니다. 250만원 이하라면 낼 세금이 없고, 아직 팔지 않은 평가이익은 대상이 아닙니다.',
+    },
+    {
+      question: '신고는 언제 하나요?',
+      answer:
+        '이익이 난 다음 해 5월 1일부터 말일까지 국세청 홈택스에서 양도소득세 확정신고로 접수하고 납부합니다. 마지막 날이 휴일이면 다음 영업일까지 가능합니다.',
+    },
+    {
+      question: '손실 난 종목이 있으면 세금이 줄어드나요?',
+      answer:
+        '같은 해에 판 해외주식끼리는 손익통산이 되므로, 손실 난 종목을 같은 해에 정리하면 순이익이 줄어 세금도 줄어듭니다. 종목별 손익을 모두 합산해 계산합니다.',
+    },
+    {
+      question: '양도세가 금융소득 종합과세에 합산되나요?',
+      answer:
+        '합산되지 않습니다. 해외주식 양도소득은 종합과세와 분리돼 별도로 과세되므로, 배당·이자 소득과 더해지지 않고 22% 세율로 따로 신고합니다.',
+    },
+  ],
+};
 export const GUIDES: GuideDef[] = [
   pensionSavingsVsIrp,
   etfSharePriceMeaning,
@@ -18611,6 +19055,11 @@ export const GUIDES: GuideDef[] = [
   financialIncomeDependentEligibility,
   cryptoLeverageLongTermRisk,
   sgovDollarParkingEtf,
+  isaRestrictedProducts,
+  foreignStockFeeFxSpread,
+  overseasCryptoFuturesTax,
+  pensionIrpCombinedTaxCredit,
+  usStockCapitalGainsTaxFiling,
 ];
 
 /**
@@ -18621,6 +19070,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-02 · 지식iN 질문 수요 기반 (ISA 편입 제한 상품·해외주식 수수료와 환전 스프레드·해외 코인 선물 세금·연금저축 IRP 세액공제 합산·해외주식 양도세 5월 신고)
+  'isa-restricted-products': '2026-08-02',
+  'foreign-stock-fee-fx-spread': '2026-08-02',
+  'overseas-crypto-futures-tax': '2026-08-02',
+  'pension-irp-combined-tax-credit': '2026-08-02',
+  'us-stock-capital-gains-tax-filing': '2026-08-02',
   // 2026-07-31 · 지식iN 질문 수요 기반 (ISA 중개형·신탁형·일임형 차이·미국주식 원화주문 통합증거금·배당 이자로 건보 피부양자 탈락 기준·비트코인 레버리지 장기투자 위험·SGOV 달러 파킹 세금)
   'isa-broker-vs-trust-type': '2026-07-31',
   'us-stock-krw-integrated-margin': '2026-07-31',
@@ -18887,7 +19342,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing'],
   },
   {
     title: '배당·인컴',
@@ -18897,12 +19352,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '테마·섹터',
     description: '방산·조선·건설·자동차·AI·반도체·빅테크·소프트웨어·보안·로봇·전기차·신재생·희토류·게임·엔터·명품·뷰티·비트코인·인프라 등 특정 테마에 집중하는 섹터 ETF.',
-    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'bitcoin-krw-buy-withdrawal', 'crypto-exchange-fee-structure', 'crypto-leverage-long-term-risk'],
+    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'bitcoin-krw-buy-withdrawal', 'crypto-exchange-fee-structure', 'crypto-leverage-long-term-risk', 'overseas-crypto-futures-tax'],
   },
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread'],
   },
   {
     title: '전략·자산배분',
