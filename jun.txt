@@ -1751,3 +1751,10 @@ https://iknowhowinfo.com/guide/foreign-stock-fee-fx-spread
 https://iknowhowinfo.com/guide/overseas-crypto-futures-tax
 https://iknowhowinfo.com/guide/pension-irp-combined-tax-credit
 https://iknowhowinfo.com/guide/us-stock-capital-gains-tax-filing
+
+### 색인 푸시 실제 결과 (npm run push:guides, 2026-08-02)
+- 대상: 신규 가이드 5편 + 허브 3(/guide/latest, /guide, /) 확인
+- IndexNow: skip (no-site-url · 이 세션에 SITE_URL/INDEXNOW_KEY 미설정)
+- Google Indexing: skip (no-credentials · GOOGLE_INDEXING_KEY 미설정)
+- 두 채널 모두 키/환경 미설정으로 자동 skip(정상). 실제 색인 요청은 키가 구성된 프로덕션·CI 환경 경로에서 발송됨.
+- 참고: 이 클라우드 세션은 네트워크 정책상 iknowhowinfo.com 직접 curl 불가(기존 발행 페이지도 code=000) → 프로덕션 curl 검증은 수행 불가. 대신 로컬 cf:build prerender + main fast-forward(afd32bb) 확인으로 배포 트리거 보장.
