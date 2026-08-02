@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-07-26T02:55:11.461Z",
-  "sourceBaseDate": "20260723",
-  "count": 1150,
+  "generatedAt": "2026-08-02T02:54:23.434Z",
+  "sourceBaseDate": "20260730",
+  "count": 1155,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -1152,7 +1152,12 @@
     "0218K0": "bnk-0218k0",
     "0221V0": "ibk-bondactive",
     "0221Z0": "ace-kbiotechkosdaqactive",
-    "0223R0": "tiger-us-technyse100active"
+    "0223R0": "tiger-us-technyse100active",
+    "0214M0": "midas-biotechhealthcareactive",
+    "0222D0": "koact-active-0222d0",
+    "0223A0": "rise-kosdaqcovered-callactive",
+    "0224D0": "kiwoom-uscpusemiconductortop4",
+    "0224X0": "1q-us-treasury-blend50"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -5754,6 +5759,26 @@
     "tiger-us-technyse100active": {
       "code": "0223R0",
       "name": "TIGER 미국테크NYSE100액티브"
+    },
+    "midas-biotechhealthcareactive": {
+      "code": "0214M0",
+      "name": "MIDAS 바이오헬스케어액티브"
+    },
+    "koact-active-0222d0": {
+      "code": "0222D0",
+      "name": "KoAct 고배당액티브"
+    },
+    "rise-kosdaqcovered-callactive": {
+      "code": "0223A0",
+      "name": "RISE 코스닥커버드콜액티브"
+    },
+    "kiwoom-uscpusemiconductortop4": {
+      "code": "0224D0",
+      "name": "KIWOOM 미국CPU반도체TOP4+"
+    },
+    "1q-us-treasury-blend50": {
+      "code": "0224X0",
+      "name": "1Q 엔비디아알파벳미국채혼합50"
     }
   }
 }
