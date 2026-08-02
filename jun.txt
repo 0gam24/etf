@@ -1758,3 +1758,39 @@ https://iknowhowinfo.com/guide/us-stock-capital-gains-tax-filing
 - Google Indexing: skip (no-credentials · GOOGLE_INDEXING_KEY 미설정)
 - 두 채널 모두 키/환경 미설정으로 자동 skip(정상). 실제 색인 요청은 키가 구성된 프로덕션·CI 환경 경로에서 발송됨.
 - 참고: 이 클라우드 세션은 네트워크 정책상 iknowhowinfo.com 직접 curl 불가(기존 발행 페이지도 code=000) → 프로덕션 curl 검증은 수행 불가. 대신 로컬 cf:build prerender + main fast-forward(afd32bb) 확인으로 배포 트리거 보장.
+
+## 2026-08-03 · [데일리 가이드 발행 · 지식iN 수요]
+
+### 발행 5편 (지식iN 질문 수요 기반 롱테일)
+1. 국내 상장 미국 S&P500 ETF 비교, 어떤 걸 고를까 (domestic-sp500-etf-comparison)
+   - 출처 질문: "S&P500을 국내 ETF로 살지 미국 직투 VOO로 살지"(docId=494129410), "나스닥100 vs S&P500 장기투자"(494346634), "초보 ETF 추천"(475289127)
+   - 검증: 명목 총보수 ACE 0.0047%<KODEX 0.0062%<TIGER 0.0068%, 실질비용 ~0.1%, TIGER 순자산 16조대 (WebSearch 대조). 기존 voo-vs-domestic-sp500-tax(세금)·spy-voo-ivv와 각도 구분(운용사·보수·규모 비교).
+2. CD금리 ETF vs 파킹통장, 여유자금 어디 둘까 (cd-rate-etf-vs-parking)
+   - 출처 질문: "KODEX CD금리액티브(합성)이 어떤 상품인지"(467898942)
+   - 검증: KODEX CD금리액티브 CD91일물 매일 누적·총보수 0.02%(WebSearch), 예금자보호 1억(2025-09-01 상향 확인). 기존 cd-rate-synthetic-etf-safety(안전성)와 각도 구분(파킹통장 비교).
+3. 예적금만 하면 될까, 물가와 투자의 필요성 (saving-vs-investing-inflation)
+   - 출처 질문: "꼭 주식·돈을 굴려야만 하나"(492536115), "지금 투자해도 괜찮나"(494351153)
+   - 검증: 실질금리=예금금리-물가, 연2% 물가시 구매력 35년 반감(70의 법칙), 예금자보호 1억. 투자 강요 아닌 정보·균형 프레임.
+4. 투자에서 포모(FOMO)란, 뇌동매매를 부르는 심리 (investing-fomo-meaning)
+   - 출처 질문: "포모가 온다 무슨말"(466630811), "지금 들어가도 되나"(494351153)
+   - 검증: FOMO=Fear Of Missing Out, 고점 추격·뇌동매매 위험 서술. 투기 조장 아닌 위험 고지 중심.
+5. 주식 주문 종류, 시장가 지정가 예약주문 총정리 (stock-order-types-guide)
+   - 출처 질문: "목표가 도달 알림"(494355533), "ISA 주문 안됨"(494341294), "NH 매수 안됨"(494355613)
+   - 검증: 시장가·지정가·조건부지정가·최유리지정가·예약주문 정의(WebSearch 대조). 미체결 점검 순서 포함.
+
+### 검증
+- tsc --noEmit: 에러 0 / npm run cf:build: 성공, .next/server/app/guide 에 신규 5개 .html prerender 확인(answer-box·guide-key-points·guide-sources·citation·2026-08-03 발행일 모두 포함)
+- 문체: 신규 블록 em dash(U+2014)/en dash(U+2013) 0건, 운영자 메타 금지어 0건
+- SEO: title 23~32자(≤60), description 120~137자(120~155), slug ^[a-z0-9-]+ 통과, keywords 각 7개(5~8), 신규 slug 5건 기존 213 slug와 무충돌
+- 지식iN 신규 수집: 클라우드 IP 차단(HTTP 000, 1회 재시도)으로 실패 → 정상. 저장 코퍼스 data/keywords/kin/kin-20260718.json(질문 103건) 사용.
+
+### 배포
+- push 대상 브랜치: claude/serene-hamilton-cow2dj (세션 지정 브랜치)
+- auto-deploy-claude-branch.yml 트리거 브랜치 pa7h28→cow2dj 갱신 → 워크플로가 main fast-forward(ff-only) 후 Cloudflare 배포 트리거 (기존 세션과 동일 메커니즘)
+
+### ★ 오늘 발행 링크
+https://iknowhowinfo.com/guide/domestic-sp500-etf-comparison
+https://iknowhowinfo.com/guide/cd-rate-etf-vs-parking
+https://iknowhowinfo.com/guide/saving-vs-investing-inflation
+https://iknowhowinfo.com/guide/investing-fomo-meaning
+https://iknowhowinfo.com/guide/stock-order-types-guide

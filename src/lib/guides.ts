@@ -18846,6 +18846,444 @@ const usStockCapitalGainsTaxFiling: GuideDef = {
     },
   ],
 };
+
+/** Q&A · 2026-08-03 · 국내 상장 미국 S&P500 ETF 운용사별 비교 */
+const domesticSp500EtfComparison: GuideDef = {
+  slug: 'domestic-sp500-etf-comparison',
+  title: '국내 상장 미국 S&P500 ETF 비교, 어떤 걸 고를까',
+  tagline: 'KODEX·TIGER·ACE·SOL, 같은 지수인데 무엇으로 갈리나',
+  description:
+    '국내 증시에 상장된 미국 S&P500 ETF는 KODEX, TIGER, ACE, SOL 등 여러 운용사가 같은 지수를 추종합니다. 명목 총보수와 실질 비용, 환헤지 여부, 순자산 규모를 기준으로 초보자가 한 종목을 고르는 방법을 정리했습니다.',
+  keywords: ['국내 상장 S&P500 ETF', 'KODEX 미국S&P500', 'TIGER 미국S&P500', 'ACE 미국S&P500', 'S&P500 ETF 총보수', 'S&P500 ETF 추천', '미국 S&P500 ETF 비교'],
+  section: 'ETF 비교 가이드',
+  lastReviewed: '2026-08-03',
+  answer:
+    '국내 상장 미국 S&P500 ETF는 KODEX, TIGER, ACE, SOL 등이 모두 같은 S&P500 지수를 따라가므로 수익률 자체는 거의 같습니다. 선택을 가르는 것은 명목 총보수와 기타비용을 합한 실질 보수, 환헤지 여부, 순자산 규모입니다. 오래 적립할 계획이라면 보수가 낮고 규모가 큰 종목을 코어로 두는 편이 무난합니다.',
+  keyPoints: [
+    '국내 상장 미국 S&P500 ETF의 명목 총보수는 2026년 상반기 기준 ACE가 연 0.0047%로 가장 낮고 KODEX 0.0062%, TIGER 0.0068% 순으로, 세 종목 모두 연 0.01%에 못 미칩니다.',
+    '명목 총보수는 낮아도 기타비용까지 더한 실질 부담은 대체로 연 0.1% 안팎이라, 운용사별 실제 차이가 장기 수익률에 미치는 영향은 아주 작습니다.',
+    '순자산 규모는 TIGER 미국S&P500이 약 16조원대로 가장 커서 유동성과 괴리율 관리 측면에서 유리하고, 규모가 큰 종목일수록 사고팔 때 체결이 매끄럽습니다.',
+    '종목 이름 끝에 (H)가 붙으면 환헤지형으로 환율 변동을 줄이는 대신 헤지 비용이 들고, (H)가 없으면 환노출형이라 원달러 환율이 수익에 그대로 반영됩니다.',
+  ],
+  sources: [
+    { label: '한국거래소 KRX 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융투자협회 전자공시서비스', url: 'https://dis.kofia.or.kr' },
+    { label: '삼성자산운용 KODEX', url: 'https://www.samsungfund.com' },
+  ],
+  sourceQuestions: [
+    { summary: 'S&P500 지수를 국내 ETF로 살지 미국 직투 VOO로 살지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494129410' },
+    { summary: '나스닥100과 S&P500 중 장기투자에 어느 쪽이 나은지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494346634' },
+    { summary: '초보자에게 맞는 ETF를 추천해 달라는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=475289127' },
+  ],
+  comparisonTable: {
+    caption: '국내 상장 주요 미국 S&P500 ETF 비교 (2026년 상반기 기준)',
+    columns: ['구분', 'KODEX 미국S&P500', 'TIGER 미국S&P500', 'ACE 미국S&P500'],
+    rows: [
+      ['추종 지수', 'S&P500', 'S&P500', 'S&P500'],
+      ['명목 총보수(연)', '약 0.0062%', '약 0.0068%', '약 0.0047%'],
+      ['순자산 규모', '큰 편', '가장 큼', '중간'],
+      ['환율 처리', '환노출(H형 별도)', '환노출(H형 별도)', '환노출'],
+    ],
+  },
+  sections: [
+    {
+      heading: '같은 S&P500인데 왜 종목이 여럿일까',
+      paragraphs: [
+        '미국 S&P500 지수 하나를 두고 국내 운용사들이 저마다 ETF를 상장해 두었습니다. KODEX(삼성), TIGER(미래에셋), ACE(한국투자), SOL(신한) 앞머리는 운용사 브랜드일 뿐, 담는 종목은 모두 S&P500 편입 기업으로 사실상 같습니다.',
+        '그래서 어느 것을 사든 지수 흐름은 거의 똑같이 따라갑니다. 결국 투자자가 실제로 비교해야 할 것은 지수가 아니라, 보유하는 동안 빠져나가는 비용과 환율 처리 방식, 그리고 종목의 덩치입니다.',
+      ],
+    },
+    {
+      heading: '명목 총보수와 실질 비용은 다르다',
+      paragraphs: [
+        '운용사들이 광고하는 것은 명목 총보수입니다. 2026년 상반기 기준으로 ACE가 연 0.0047%, KODEX가 0.0062%, TIGER가 0.0068% 수준으로 모두 극단적으로 낮은 편입니다. 숫자만 보면 ACE가 앞서지만 차이는 0.001%대에 불과합니다.',
+        '중요한 것은 명목 총보수에 잡히지 않는 기타비용입니다. 지수 사용료, 매매중개 비용 등을 더한 실질 부담은 세 종목 모두 대체로 연 0.1% 안팎으로 수렴합니다. 총보수 소수점 경쟁에 매몰되기보다, 운용사 최신 공시로 실질 비용을 확인하는 편이 정확합니다.',
+      ],
+    },
+    {
+      heading: '순자산 규모와 환헤지 여부 확인하기',
+      paragraphs: [
+        '규모도 무시할 수 없습니다. TIGER 미국S&P500은 순자산이 약 16조원대로 국내 미국 지수 ETF 가운데 가장 큽니다. 규모가 크면 하루 거래가 활발해 원하는 가격에 체결하기 쉽고, 시장 가격이 순자산가치에서 벗어나는 괴리도 관리가 수월합니다.',
+        '이름 끝의 (H) 표시도 봐야 합니다. (H)가 붙은 환헤지형은 원달러 환율 변동을 상쇄해 지수 움직임만 담으려 하지만 헤지 비용이 듭니다. (H)가 없는 환노출형은 환율이 오르면 수익이 커지고 내리면 줄어듭니다. 환율 방향을 예측하기 어렵다면 환노출형을 기본으로 두는 투자자가 많습니다.',
+      ],
+    },
+    {
+      heading: '초보자의 선택 기준 정리',
+      paragraphs: [
+        '오래 적립할 생각이라면 보수가 낮으면서 규모가 큰 종목을 코어로 삼는 것이 무난합니다. 명목 총보수 0.001%대 차이는 장기 수익률을 거의 가르지 못하므로, 유동성과 안정적인 운용을 주는 규모를 더 중요하게 볼 수 있습니다.',
+        '세금은 계좌에 따라 갈립니다. 국내 상장 해외 ETF의 매매차익은 배당소득세 대상이고, ISA나 연금계좌를 활용하면 과세를 미루거나 낮출 여지가 있습니다. 구체적인 세액과 계좌 조건은 국세청 안내나 증권사 상담으로 확인하고, 최종 투자 판단과 책임은 본인에게 있다는 점을 기억하세요.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '국내 상장 S&P500 ETF는 어느 운용사가 가장 좋나요?',
+      answer:
+        '지수가 같아 수익률은 거의 동일합니다. 명목 총보수는 ACE가 가장 낮고 규모는 TIGER가 가장 크니, 비용을 볼지 유동성을 볼지에 따라 선택하면 됩니다. 최신 수치는 운용사 공시로 확인하세요.',
+    },
+    {
+      question: '이름 뒤에 붙은 (H)는 무슨 뜻인가요?',
+      answer:
+        '환헤지형이라는 표시입니다. 원달러 환율 변동을 줄여 지수 움직임만 담으려는 대신 헤지 비용이 듭니다. (H)가 없으면 환노출형으로 환율이 수익에 그대로 반영됩니다.',
+    },
+    {
+      question: '국내 상장 S&P500 ETF와 미국 직투 VOO는 어떻게 다른가요?',
+      answer:
+        '담는 지수는 같지만 과세 방식이 다릅니다. 국내 상장 ETF는 배당소득세 대상이고 원화로 거래되며, 미국 직투는 양도소득세 대상입니다. 세율과 손익통산 조건이 달라 계좌 상황에 맞춰 골라야 합니다.',
+    },
+    {
+      question: '총보수가 0.001% 낮은 종목을 꼭 골라야 하나요?',
+      answer:
+        '장기적으로도 그 차이가 수익률에 미치는 영향은 아주 작습니다. 명목 총보수 소수점보다 실질 비용, 순자산 규모, 환율 처리 방식을 함께 보고 판단하는 편이 실속 있습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-08-03 · CD금리 ETF vs 파킹통장 단기 여유자금 비교 */
+const cdRateEtfVsParking: GuideDef = {
+  slug: 'cd-rate-etf-vs-parking',
+  title: 'CD금리 ETF vs 파킹통장, 여유자금 어디 둘까',
+  tagline: 'KODEX CD금리액티브 같은 금리형 ETF와 파킹통장 비교',
+  description:
+    '단기 여유자금을 어디에 둘지 고민된다면 CD금리 ETF와 파킹통장이 대표 후보입니다. CD 91일물 금리를 매일 쌓는 금리형 ETF의 구조와 총보수, 예금자보호 여부, 매매 편의성과 세금까지 파킹통장과 나란히 비교해 골라 쓰는 법을 정리했습니다.',
+  keywords: ['CD금리 ETF', 'KODEX CD금리액티브', '파킹통장 대체', '금리형 ETF', 'CD 91일물 금리', '단기자금 ETF', 'CD금리 ETF 세금'],
+  section: 'ETF 채권 가이드',
+  lastReviewed: '2026-08-03',
+  answer:
+    'CD금리 ETF는 양도성예금증서(CD) 91일물 금리를 매일 순자산에 쌓아 주는 금리형 ETF로, 파킹통장처럼 짧게 돈을 넣어 두는 용도로 씁니다. 파킹통장은 예금자보호가 되지만 CD금리 ETF는 보호 대상이 아니고 증시에서 사고팝니다. 금리와 편의성, 세금과 보호 여부를 함께 보고 고르는 것이 좋습니다.',
+  keyPoints: [
+    'KODEX CD금리액티브(합성) 같은 CD금리 ETF는 CD 91일물 금리를 매일 누적해 순자산가치가 조금씩 오르는 구조라, 하루만 보유해도 그날치 이자를 받는 효과가 있습니다.',
+    'CD금리 ETF의 총보수는 대략 연 0.02% 수준으로 낮지만, 사고팔 때 증권사 위탁수수료가 붙고 분배·매매차익에는 배당소득세 15.4%가 적용됩니다.',
+    '파킹통장은 예금자보호법상 1인당 원리금 1억원까지 보호되는 반면, CD금리 ETF는 예금자보호 대상이 아니며 시장 가격도 소폭 변동할 수 있습니다.',
+    'CD금리 ETF는 증시 개장 시간에만 사고팔 수 있고 파킹통장은 24시간 입출금이 가능해, 자금을 즉시 빼 써야 하는 상황에서는 파킹통장이 편합니다.',
+  ],
+  sources: [
+    { label: '예금보험공사', url: 'https://www.kdic.or.kr' },
+    { label: '한국거래소 KRX 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '삼성자산운용 KODEX', url: 'https://www.samsungfund.com' },
+  ],
+  sourceQuestions: [
+    { summary: 'KODEX CD금리액티브(합성)가 어떤 상품인지 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=467898942' },
+  ],
+  comparisonTable: {
+    caption: 'CD금리 ETF와 파킹통장 한눈 비교',
+    columns: ['구분', 'CD금리 ETF', '파킹통장'],
+    rows: [
+      ['이자 방식', 'CD 91일물 금리 매일 누적', '약정 금리 일할 지급'],
+      ['예금자보호', '없음', '1인당 1억원까지'],
+      ['세금', '배당소득세 15.4%', '이자소득세 15.4%'],
+      ['입출금', '개장 시간 매매', '24시간 자유'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'CD금리 ETF는 어떻게 이자를 주나',
+      paragraphs: [
+        'CD금리 ETF는 은행이 발행하는 양도성예금증서(CD)의 91일물 금리를 기초로 삼는 금리형 상품입니다. 대표 종목인 KODEX CD금리액티브(합성)는 이 CD 91일물 금리를 매일 순자산가치에 누적하는 방식으로 설계돼 있습니다.',
+        '덕분에 하루만 보유해도 그날 하루치 금리가 가격에 반영됩니다. 주가처럼 크게 오르내리지 않고 계단을 오르듯 완만하게 우상향하는 흐름이라, 잠깐 쉬어 가는 돈을 담아 두는 파킹 용도로 활용됩니다.',
+      ],
+    },
+    {
+      heading: '비용과 세금, 얼마나 떼이나',
+      paragraphs: [
+        '총보수는 연 0.02% 안팎으로 매우 낮은 편입니다. 다만 ETF이므로 사고팔 때 증권사 위탁수수료가 붙고, 받은 분배금이나 매매로 생긴 이익에는 배당소득세 15.4%가 적용됩니다.',
+        '파킹통장 역시 받은 이자에 이자소득세 15.4%가 붙으니 세율 자체는 비슷합니다. 짧게 자주 넣었다 빼는 자금이라면 매매수수료가 쌓일 수 있어, 거래 빈도까지 감안해 실질 수익을 따져 보는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '예금자보호와 안전성 차이',
+      paragraphs: [
+        '가장 큰 차이는 보호 장치입니다. 파킹통장은 예금이라 예금자보호법에 따라 금융회사별로 1인당 원리금 1억원까지 보호됩니다. 2025년 9월부터 한도가 5000만원에서 1억원으로 올랐습니다.',
+        '반면 CD금리 ETF는 예금이 아니라 투자상품이라 예금자보호 대상이 아닙니다. 기초가 되는 CD 금리 특성상 원금 손실 위험은 낮은 편이지만, 시장에서 거래되는 만큼 가격이 소폭 움직일 수 있다는 점은 알고 접근해야 합니다.',
+      ],
+    },
+    {
+      heading: '내 자금 성격에 맞춰 고르기',
+      paragraphs: [
+        '언제든 즉시 빼 써야 하는 비상금이라면 24시간 입출금이 되는 파킹통장이 편합니다. 증권계좌 안에서 다른 ETF·주식과 함께 굴리며 며칠에서 몇 주 단위로 대기시키는 자금이라면 CD금리 ETF가 손이 덜 갑니다.',
+        '두 상품은 대체재라기보다 쓰임이 조금 다른 도구에 가깝습니다. 금리 수준은 시기마다 바뀌니 가입·매수 시점의 파킹통장 금리와 CD 금리를 비교하고, 보호 여부와 세금까지 종합해 판단하세요. 투자 결정과 그 결과는 본인 몫입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'CD금리 ETF도 예금자보호가 되나요?',
+      answer:
+        '되지 않습니다. CD금리 ETF는 예금이 아니라 투자상품이라 예금자보호 대상이 아닙니다. 예금자보호는 파킹통장 같은 예금에 1인당 1억원까지 적용됩니다.',
+    },
+    {
+      question: 'CD금리 ETF는 하루만 넣어도 이자가 붙나요?',
+      answer:
+        'CD 91일물 금리를 매일 순자산에 누적하는 구조라 하루만 보유해도 그날치 금리가 가격에 반영됩니다. 다만 매수·매도 수수료를 감안하면 너무 잦은 거래는 실익이 줄 수 있습니다.',
+    },
+    {
+      question: 'CD금리 ETF 수익에는 세금이 얼마나 붙나요?',
+      answer:
+        '분배금과 매매차익에 배당소득세 15.4%가 적용됩니다. 파킹통장 이자에 붙는 이자소득세 15.4%와 세율은 같습니다.',
+    },
+    {
+      question: '파킹통장 대신 CD금리 ETF만 써도 되나요?',
+      answer:
+        '즉시 출금이 필요한 비상금은 파킹통장이, 증권계좌 안에서 며칠 이상 대기시키는 자금은 CD금리 ETF가 편합니다. 보호 여부와 입출금 편의가 다르니 자금 성격에 맞춰 나누는 편이 좋습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-08-03 · 예적금만 vs 투자, 인플레이션과 투자 필요성 */
+const savingVsInvestingInflation: GuideDef = {
+  slug: 'saving-vs-investing-inflation',
+  title: '예적금만 하면 될까, 물가와 투자의 필요성',
+  tagline: '꼭 투자해야 하나 고민된다면 인플레이션부터 본다',
+  description:
+    '예적금만으로 돈을 지켜도 되는지 고민된다면 물가상승률과 예금금리를 나란히 봐야 합니다. 인플레이션이 현금의 실질 가치를 어떻게 갉아먹는지, 투자가 왜 대안으로 거론되는지, 무리를 피하는 원칙까지 차분히 정리했습니다.',
+  keywords: ['예적금 vs 투자', '인플레이션 현금 가치', '투자 필요성', '실질금리', '물가상승률 예금금리', '재테크 시작', '투자 초보'],
+  section: 'ETF 입문 가이드',
+  lastReviewed: '2026-08-03',
+  answer:
+    '예적금은 원금이 지켜지는 안전한 수단이지만, 물가상승률이 예금금리보다 높으면 시간이 지날수록 돈의 실질 구매력은 줄어듭니다. 그래서 물가를 웃도는 수익을 노리는 투자가 대안으로 거론됩니다. 다만 투자는 원금 손실 위험이 있으므로, 비상금은 예적금에 두고 여윳돈만 나눠 접근하는 균형이 중요합니다.',
+  keyPoints: [
+    '실질금리는 예금금리에서 물가상승률을 뺀 값으로, 이 값이 마이너스면 예금에 넣어 둔 돈의 구매력이 해마다 줄어드는 셈입니다.',
+    '연 2% 물가가 이어지면 현금의 구매력은 약 35년 뒤 절반 수준으로 낮아지므로, 투자 기간이 길수록 물가 방어가 중요해집니다.',
+    '예적금은 예금자보호로 1인당 1억원까지 원금이 지켜지는 대신 기대수익이 낮고, 주식·ETF는 기대수익이 높은 대신 원금 손실 가능성이 있어 성격이 정반대입니다.',
+    '최소 3개월에서 6개월치 생활비는 예적금 같은 안전자산에 비상금으로 두고, 남는 여윳돈부터 분산해 투자하는 것이 일반적인 원칙입니다.',
+  ],
+  sources: [
+    { label: '한국은행 경제통계시스템 ECOS', url: 'https://ecos.bok.or.kr' },
+    { label: '통계청 국가통계포털 KOSIS', url: 'https://kosis.kr' },
+    { label: '금융감독원 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '꼭 주식이나 투자로 돈을 굴려야만 하는지 고민하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=492536115' },
+    { summary: '지금 주식시장에 투자해도 괜찮은지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494351153' },
+  ],
+  sections: [
+    {
+      heading: '예금은 원금을 지키지만 가치를 지키진 않는다',
+      paragraphs: [
+        '예적금의 가장 큰 장점은 원금 보전입니다. 넣은 돈이 줄어들 걱정이 없고 예금자보호까지 받으니 마음이 편합니다. 그런데 숫자로 찍힌 원금이 그대로여도, 그 돈으로 살 수 있는 물건의 양은 시간이 지나면서 달라집니다.',
+        '이때 등장하는 개념이 실질 구매력입니다. 물가가 오르면 같은 100만원으로 살 수 있는 것이 줄어듭니다. 통장 잔액은 지켜져도 실제 살 수 있는 능력은 조용히 깎이는 것이 예금의 숨은 약점입니다.',
+      ],
+    },
+    {
+      heading: '실질금리가 마이너스라는 말의 뜻',
+      paragraphs: [
+        '핵심 지표는 실질금리입니다. 예금금리에서 물가상승률을 뺀 값인데, 예금금리가 연 3%라도 물가가 3.5% 오르면 실질금리는 마이너스 0.5%가 됩니다. 이자를 받고도 구매력 기준으로는 손해를 보는 상황입니다.',
+        '물가는 복리로 쌓입니다. 연 2% 상승이 이어지면 현금의 구매력은 대략 35년이면 절반으로 내려앉습니다. 짧게 보면 티가 안 나도 노후처럼 긴 시간을 두고 보면 물가를 못 따라가는 자산은 실질 가치가 크게 줄어듭니다.',
+      ],
+    },
+    {
+      heading: '투자가 대안으로 거론되는 이유',
+      paragraphs: [
+        '물가를 웃도는 기대수익을 노릴 수 있어 투자가 대안으로 언급됩니다. 주식이나 ETF는 장기적으로 물가 이상의 성장을 담을 여지가 있지만, 대신 값이 오르내리고 원금을 잃을 수도 있다는 위험이 따릅니다.',
+        '그러니 예금과 투자는 우열이 아니라 역할이 다른 도구입니다. 안전하게 지켜야 할 돈은 예금에, 시간을 두고 불리고 싶은 돈은 투자에 배분하는 식으로 나누면 각각의 장점을 취할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '무리하지 않고 시작하는 순서',
+      paragraphs: [
+        '투자를 시작하더라도 순서가 있습니다. 먼저 갑작스러운 지출에 대비할 3개월에서 6개월치 생활비를 예적금 같은 안전자산에 비상금으로 확보합니다. 이 안전판이 있어야 시장이 흔들려도 투자 자산을 급하게 팔지 않게 됩니다.',
+        '그다음 남는 여윳돈부터 조금씩, 여러 시점에 나눠 투자하는 것이 부담이 적습니다. 한 번에 큰돈을 넣기보다 감당 가능한 범위에서 시작하세요. 이 글은 정보 제공이 목적이며, 어떤 자산에 얼마를 넣을지에 대한 판단과 책임은 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '예적금만 해도 괜찮지 않나요?',
+      answer:
+        '원금을 지키는 목적이라면 예적금이 안전합니다. 다만 물가상승률이 예금금리보다 높으면 시간이 지날수록 구매력이 줄어들 수 있어, 일부는 물가를 웃도는 자산에 나눠 두는 방법도 함께 고려됩니다.',
+    },
+    {
+      question: '실질금리가 마이너스라는 게 무슨 뜻인가요?',
+      answer:
+        '예금금리에서 물가상승률을 뺀 값이 0보다 작다는 뜻입니다. 이자를 받아도 물가가 더 빨리 올라, 구매력 기준으로는 오히려 손해를 보는 상태를 말합니다.',
+    },
+    {
+      question: '투자를 하면 돈을 잃을 수도 있나요?',
+      answer:
+        '그렇습니다. 주식·ETF는 기대수익이 높은 대신 값이 변동하고 원금 손실 위험이 있습니다. 그래서 비상금은 안전자산에 두고 여윳돈만 분산해 접근하는 것이 원칙입니다.',
+    },
+    {
+      question: '투자는 얼마부터 시작하는 게 좋나요?',
+      answer:
+        '정해진 금액은 없습니다. 비상금을 먼저 확보한 뒤 남는 여윳돈에서 감당 가능한 만큼, 여러 시점에 나눠 시작하는 편이 부담이 적습니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-08-03 · 투자 포모(FOMO)의 뜻과 뇌동매매 */
+const investingFomoMeaning: GuideDef = {
+  slug: 'investing-fomo-meaning',
+  title: '투자에서 포모(FOMO)란, 뇌동매매를 부르는 심리',
+  tagline: '남들 다 벌 때 나만 소외될까 하는 불안의 정체',
+  description:
+    '주식이나 코인이 급등할 때 나만 뒤처질까 조급해지는 마음을 포모(FOMO)라고 합니다. 포모가 왜 생기고 어떤 뇌동매매로 이어지는지, 고점 추격 매수의 위험과 조급함을 다스리는 현실적인 방법을 초보 눈높이로 차분히 풀었습니다.',
+  keywords: ['포모 뜻', 'FOMO 투자', '뇌동매매', '고점 추격매수', '투자 심리', '추격매수 위험', 'FOMO 극복'],
+  section: 'ETF 입문 가이드',
+  lastReviewed: '2026-08-03',
+  answer:
+    "포모(FOMO)는 'Fear Of Missing Out', 나만 좋은 기회를 놓칠까 두려워하는 심리를 뜻합니다. 주가나 코인이 급등할 때 남들은 버는데 나만 소외된다는 불안에, 충분한 판단 없이 고점에서 따라 사는 뇌동매매로 이어지기 쉽습니다. 급등의 이유와 감당 가능한 금액을 먼저 확인하는 습관이 포모를 누그러뜨립니다.",
+  keyPoints: [
+    '포모는 급등장에서 가장 강해지며, 이미 많이 오른 자산을 고점에서 추격 매수하게 만들어 손실 위험을 키웁니다.',
+    '사회관계망서비스에서 수익 인증을 반복해 접하면 자신만 뒤처진다는 착각이 커져, 근거 없이 조급하게 매매하기 쉽습니다.',
+    '포모에 휩쓸린 매매는 오른 이유를 설명하지 못하는 뇌동매매인 경우가 많아, 매수 근거를 스스로 대지 못하면 일단 멈추는 편이 안전합니다.',
+    '미리 정한 투자 원칙과 분할 매수, 감당 가능한 금액 한도를 지키는 것이 포모로 인한 충동 매매를 줄이는 현실적인 방법입니다.',
+  ],
+  sources: [
+    { label: '금융감독원 파인', url: 'https://fine.fss.or.kr' },
+    { label: '금융감독원 e-금융교육센터', url: 'https://www.fss.or.kr/edu' },
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: "'포모가 온다'는 말이 무슨 뜻인지 묻는 질문", url: 'https://kin.naver.com/qna/detail.naver?docId=466630811' },
+    { summary: '지금 시장에 들어가도 괜찮은지 조급함 섞어 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494351153' },
+  ],
+  sections: [
+    {
+      heading: '포모(FOMO)라는 말의 뜻',
+      paragraphs: [
+        "포모는 영어 'Fear Of Missing Out'의 앞 글자를 딴 말로, 좋은 기회를 나만 놓칠까 두려워하는 심리를 가리킵니다. 투자에서는 주가나 코인이 빠르게 오를 때, 남들은 다 버는 것 같은데 나만 그 흐름에서 빠져 있다는 불안으로 나타납니다.",
+        '이 감정 자체는 자연스럽습니다. 문제는 이 불안이 판단을 앞질러 매매 버튼을 누르게 만들 때입니다. 오른 이유를 따져 보기도 전에 일단 사고 보는 순간, 포모는 투자 심리에서 위험 신호로 바뀝니다.',
+      ],
+    },
+    {
+      heading: '포모가 뇌동매매로 이어지는 과정',
+      paragraphs: [
+        '뇌동매매는 자기 판단 없이 분위기나 남의 움직임에 휩쓸려 매매하는 것을 말합니다. 포모는 이 뇌동매매의 대표적인 방아쇠입니다. 급등 소식과 수익 인증을 반복해 접하다 보면, 지금 안 사면 영영 기회가 없을 것 같은 조바심이 커집니다.',
+        '그렇게 고점 부근에서 서둘러 올라타면, 열기가 식은 뒤 가격이 되돌아올 때 가장 비싸게 산 사람이 됩니다. 특히 변동성이 큰 자산일수록 급등 뒤 급락도 빠르기 때문에, 추격 매수의 손실 폭이 커지기 쉽습니다.',
+      ],
+    },
+    {
+      heading: '조급함이 커지는 환경을 이해하기',
+      paragraphs: [
+        '요즘은 포모가 자라기 좋은 환경입니다. 사회관계망서비스와 커뮤니티에는 성공한 매매 이야기가 넘치고, 손실 경험은 잘 공유되지 않습니다. 그래서 화면 속 세상은 실제보다 더 많은 사람이 더 크게 버는 것처럼 보입니다.',
+        '이 편향을 알면 감정에 거리를 둘 수 있습니다. 눈에 보이는 수익 인증은 전체가 아니라 일부라는 점, 오른 자산이 계속 오른다는 보장은 없다는 점을 떠올리면, 나만 소외됐다는 착각의 힘이 조금 약해집니다.',
+      ],
+    },
+    {
+      heading: '포모를 다스리는 현실적인 방법',
+      paragraphs: [
+        '가장 단순한 방어책은 규칙을 미리 정해 두는 것입니다. 어떤 조건에서 사고팔지, 한 자산에 얼마까지 넣을지를 평온할 때 정해 두면, 급등장에서도 즉흥적인 결정을 줄일 수 있습니다. 한 번에 몰아넣기보다 여러 시점에 나눠 사는 분할 매수도 조급함을 눅여 줍니다.',
+        '스스로에게 오른 이유를 설명해 보는 것도 좋은 점검입니다. 근거를 대지 못하고 남들이 사니까라는 답만 나온다면, 그 매수는 포모일 가능성이 큽니다. 감당 가능한 금액만 다루는 원칙까지 지키면 충동에 휘둘릴 여지가 줄어듭니다. 이 글은 정보 제공이 목적이며 특정 매매를 권하지 않습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '포모(FOMO)가 정확히 무슨 뜻인가요?',
+      answer:
+        "'Fear Of Missing Out'의 약자로, 좋은 기회를 나만 놓칠까 두려워하는 심리입니다. 투자에서는 급등장에서 남들은 버는데 나만 소외된다는 불안으로 나타납니다.",
+    },
+    {
+      question: '포모가 왜 위험한가요?',
+      answer:
+        '충분한 판단 없이 고점에서 추격 매수하게 만들기 때문입니다. 열기가 식어 가격이 되돌아오면 가장 비싸게 산 사람이 될 수 있어, 특히 변동성이 큰 자산에서 손실이 커지기 쉽습니다.',
+    },
+    {
+      question: '뇌동매매와 포모는 어떻게 다른가요?',
+      answer:
+        '뇌동매매는 자기 판단 없이 분위기에 휩쓸려 매매하는 행동이고, 포모는 그 행동을 부르는 심리입니다. 포모라는 불안이 뇌동매매라는 결과로 이어지는 관계입니다.',
+    },
+    {
+      question: '포모를 줄이려면 어떻게 해야 하나요?',
+      answer:
+        '매매 규칙과 금액 한도를 미리 정하고 분할 매수를 활용하세요. 오른 이유를 스스로 설명하지 못하면 일단 멈추고, 감당 가능한 금액만 다루는 원칙을 지키는 것이 도움이 됩니다.',
+    },
+  ],
+};
+
+/** Q&A · 2026-08-03 · 주식 주문 종류 총정리 (시장가·지정가·예약주문) */
+const stockOrderTypesGuide: GuideDef = {
+  slug: 'stock-order-types-guide',
+  title: '주식 주문 종류, 시장가 지정가 예약주문 총정리',
+  tagline: '매수가 안 될 때 먼저 확인하는 주문 방식 차이',
+  description:
+    '주식을 사고팔 때 시장가와 지정가는 무엇이 다른지, 조건부지정가와 예약주문은 언제 쓰는지 헷갈린다면 이 글로 정리하세요. 원하는 가격에 걸어 두는 법과 매수가 체결되지 않을 때 점검할 지점까지 초보 눈높이로 설명합니다.',
+  keywords: ['주식 주문 종류', '시장가 지정가 차이', '조건부지정가', '예약주문', '최유리지정가', '주식 매수 안됨', '지정가 주문 방법'],
+  section: 'ETF 매매 가이드',
+  lastReviewed: '2026-08-03',
+  answer:
+    '시장가 주문은 가격을 지정하지 않고 지금 시장 가격에 바로 체결하는 방식이고, 지정가 주문은 원하는 가격을 정해 그 가격이 와야 체결됩니다. 정한 가격에 장중 체결이 안 되면 종가로 처리하는 조건부지정가, 장 시작 전에 미리 걸어 두는 예약주문도 있습니다. 상황에 맞게 골라 쓰는 것이 핵심입니다.',
+  keyPoints: [
+    '시장가 주문은 체결 속도가 가장 빠르지만 호가 공백이 크면 예상보다 비싸게 사거나 싸게 팔릴 수 있어, 거래량이 적은 종목에서는 주의가 필요합니다.',
+    '지정가 주문은 원하는 가격을 정확히 지정하는 대신, 그 가격에 맞는 상대 주문이 없으면 체결되지 않고 미체결로 남습니다.',
+    '조건부지정가는 지정가로 걸어 두었다가 장 마감까지 체결되지 않으면 종가로 자동 체결되고, 예약주문은 장 시작 전에 미리 등록해 개장 후 접수되는 방식입니다.',
+    '매수가 체결되지 않을 때는 지정가가 현재가와 동떨어졌는지, 예수금이나 원화 환전이 부족한지, 거래 시간이 맞는지를 차례로 점검하면 원인을 찾기 쉽습니다.',
+  ],
+  sources: [
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+    { label: '금융감독원 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '주가가 정한 가격에 오면 알림을 받고 싶다는, 지정가·예약주문과 맞닿은 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494355533' },
+    { summary: 'ISA 계좌에서 주문이 되지 않는다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494341294' },
+    { summary: 'NH투자증권에서 매수가 되지 않는다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494355613' },
+  ],
+  comparisonTable: {
+    caption: '주식 주문 종류별 특징 한눈 비교',
+    columns: ['주문 종류', '가격 지정', '체결 방식'],
+    rows: [
+      ['시장가', '없음', '즉시 현재가로 체결'],
+      ['지정가', '있음', '지정 가격에 상대 주문 있을 때 체결'],
+      ['조건부지정가', '있음', '장중 미체결 시 종가로 체결'],
+      ['최유리지정가', '없음', '가장 유리한 상대 호가로 체결'],
+      ['예약주문', '선택', '장 시작 전 등록해 개장 후 접수'],
+    ],
+  },
+  sections: [
+    {
+      heading: '시장가와 지정가, 가장 기본이 되는 두 가지',
+      paragraphs: [
+        '주문의 뼈대는 시장가와 지정가입니다. 시장가는 가격을 정하지 않고 지금 시장에 나온 가격에 바로 체결하는 방식입니다. 빨리 사거나 팔아야 할 때 유용하지만, 사려는 물량이 몰린 호가가 얇으면 생각보다 높은 가격에 체결될 수 있습니다.',
+        '지정가는 반대로 가격을 콕 집어 주문합니다. 만원에 사겠다고 걸어 두면 그 가격에 팔려는 상대가 나타나야 체결됩니다. 원하는 값에 살 수 있는 대신, 가격이 오지 않으면 계속 미체결로 남는다는 점이 차이입니다.',
+      ],
+    },
+    {
+      heading: '조건부지정가와 최유리지정가',
+      paragraphs: [
+        '조건부지정가는 두 방식을 절충한 형태입니다. 장중에는 내가 정한 지정가로 대기하다가, 그날 장이 끝날 때까지 체결되지 않으면 종가로 자동 체결됩니다. 원하는 가격을 노리면서도 그날 안에 꼭 사고 싶을 때 쓰입니다.',
+        '최유리지정가는 가격을 직접 적지 않고 수량만 정하는 주문입니다. 주문을 내는 순간 시장에 나와 있는 가장 유리한 상대 호가에 맞춰 가격이 자동으로 정해집니다. 시장가보다는 통제되면서 지정가보다는 체결 확률을 높이려 할 때 활용합니다.',
+      ],
+    },
+    {
+      heading: '예약주문, 장 열리기 전에 걸어 두기',
+      paragraphs: [
+        '예약주문은 거래 시간이 아닐 때 미리 주문을 등록해 두는 기능입니다. 밤이나 새벽에 다음 날 살 종목과 가격을 걸어 두면, 장이 열린 뒤 정해진 조건으로 주문이 접수됩니다. 낮에 화면을 볼 수 없는 사람에게 편리합니다.',
+        "'주가가 정한 값에 오면 알려 달라'는 알림 기능과는 다릅니다. 알림은 도달 사실을 알려 줄 뿐 자동으로 사 주지는 않습니다. 특정 가격에 실제로 사고 싶다면 지정가나 예약주문으로 걸어 두어야 원하는 조건에서 체결됩니다.",
+      ],
+    },
+    {
+      heading: '매수가 안 될 때 점검 순서',
+      paragraphs: [
+        '주문을 넣었는데 체결이 안 된다면 몇 가지를 차례로 봅니다. 먼저 지정가가 현재가와 너무 동떨어져 있지 않은지 확인합니다. 현재가보다 한참 낮게 사겠다고 걸면 그 가격이 올 때까지 체결되지 않습니다.',
+        '다음은 계좌 상태입니다. 예수금이 모자라거나, 해외주식이라면 원화 환전이나 거래 신청이 되어 있지 않으면 주문이 막힙니다. 거래 시간이 아닌 경우, 정규장 밖 주문이 대기 상태로만 잡히기도 합니다. 이 순서로 짚으면 원인을 대부분 찾을 수 있고, 세부 절차는 이용 중인 증권사 안내로 확인하는 것이 정확합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '시장가와 지정가 중 무엇을 써야 하나요?',
+      answer:
+        '빨리 체결하는 게 중요하면 시장가, 원하는 가격을 지키고 싶으면 지정가입니다. 거래량이 적은 종목은 시장가로 사면 예상보다 비싸게 체결될 수 있어 지정가가 안전할 때가 많습니다.',
+    },
+    {
+      question: '조건부지정가는 언제 쓰나요?',
+      answer:
+        '원하는 가격을 노리면서도 그날 안에 꼭 매매하고 싶을 때 씁니다. 장중에는 지정가로 대기하다가 마감까지 체결되지 않으면 종가로 자동 체결됩니다.',
+    },
+    {
+      question: '예약주문과 가격 알림은 같은 건가요?',
+      answer:
+        '다릅니다. 예약주문은 장 시작 전 주문을 걸어 두어 개장 후 실제로 접수되고, 가격 알림은 정한 값에 도달했음을 알려 줄 뿐 자동으로 사 주지는 않습니다.',
+    },
+    {
+      question: '매수 주문이 계속 체결되지 않으면 무엇을 봐야 하나요?',
+      answer:
+        '지정가가 현재가와 동떨어졌는지, 예수금이나 원화 환전이 부족한지, 거래 시간이 맞는지를 차례로 확인하세요. 대부분 이 세 가지에서 원인이 나옵니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
   pensionSavingsVsIrp,
   etfSharePriceMeaning,
@@ -19060,6 +19498,11 @@ export const GUIDES: GuideDef[] = [
   overseasCryptoFuturesTax,
   pensionIrpCombinedTaxCredit,
   usStockCapitalGainsTaxFiling,
+  domesticSp500EtfComparison,
+  cdRateEtfVsParking,
+  savingVsInvestingInflation,
+  investingFomoMeaning,
+  stockOrderTypesGuide,
 ];
 
 /**
@@ -19070,6 +19513,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-03 · 지식iN 질문 수요 기반 (국내 상장 S&P500 ETF 운용사 비교·CD금리 ETF vs 파킹통장·예적금 vs 투자와 인플레이션·투자 포모 심리·주식 주문 종류)
+  'domestic-sp500-etf-comparison': '2026-08-03',
+  'cd-rate-etf-vs-parking': '2026-08-03',
+  'saving-vs-investing-inflation': '2026-08-03',
+  'investing-fomo-meaning': '2026-08-03',
+  'stock-order-types-guide': '2026-08-03',
   // 2026-08-02 · 지식iN 질문 수요 기반 (ISA 편입 제한 상품·해외주식 수수료와 환전 스프레드·해외 코인 선물 세금·연금저축 IRP 세액공제 합산·해외주식 양도세 5월 신고)
   'isa-restricted-products': '2026-08-02',
   'foreign-stock-fee-fx-spread': '2026-08-02',
@@ -19337,7 +19786,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide'],
   },
   {
     title: '세금·절세 계좌',
@@ -19357,12 +19806,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison'],
   },
   {
     title: '전략·자산배분',
     description: '적립식·리밸런싱·팩터·자산배분(TRF)·채권·미국국채·회사채·채권혼합·파킹·금·은·구리·원유·농산물·원자재·레버리지 — 포트폴리오를 굴리고 위험을 관리하는 전략.',
-    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf'],
+    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking'],
   },
 ];
 
