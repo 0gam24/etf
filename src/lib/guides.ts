@@ -19284,7 +19284,456 @@ const stockOrderTypesGuide: GuideDef = {
   ],
 };
 
+/** 지식iN 질문 수요 기반 (2026-08-04) */
+const stockMarketVolatilityCauses: GuideDef = {
+  slug: 'stock-market-volatility-causes',
+  title: '주가가 크게 출렁이는 이유, 변동성 초보 가이드',
+  tagline: '지수가 롤러코스터를 타는 건 수급, 금리, 심리가 겹치기 때문',
+  description:
+    '국내 증시가 하루에도 크게 오르내려 롤러코스터 같다면, 수급과 금리, 환율, 대외 뉴스, 투자 심리가 한꺼번에 얽히기 때문입니다. 지수가 출렁이는 대표 원인과 초보 투자자가 흔들리지 않고 대응하는 법을 차분히 정리했습니다.',
+  keywords: ['주가 변동성', '주식시장 롤러코스터', '지수 급등락 이유', '증시 변동성 원인', '주가 출렁임', '초보 주식 대응'],
+  section: 'ETF 입문 가이드',
+  lastReviewed: '2026-08-04',
+  answer:
+    '주가지수가 하루에도 크게 오르내리는 것은 매수와 매도 물량의 불균형에 금리, 환율, 대외 뉴스, 투자 심리가 동시에 작용하기 때문입니다. 변동성 자체는 시장의 정상적인 특성이라, 여러 종목에 나눠 담고 긴 호흡으로 접근하면 단기 등락에 덜 흔들릴 수 있습니다.',
+  keyPoints: [
+    '지수가 하루에 크게 움직이는 출발점은 수급 불균형입니다. 팔려는 물량과 사려는 물량이 한쪽으로 쏠리면 코스피가 하루에 2% 안팎으로 움직이는 날도 드물지 않습니다.',
+    '금리와 환율이 방향을 흔듭니다. 미국이 기준금리를 움직이거나 원달러 환율이 1,300원대에서 크게 튀면 위험자산 선호가 바뀌어 증시 전체가 출렁입니다.',
+    '대외 변수는 시차를 두고 옮겨 옵니다. 밤사이 미국 증시가 급락하면 다음 날 국내 지수가 갭을 두고 낮게 시작하는 식으로 파급됩니다.',
+    '심리와 프로그램 매매가 낙폭을 키웁니다. 한 종목에 자산을 몰아넣기보다 3~5종에 나누고 매수 시점을 여러 번으로 쪼개면 변동성 충격을 줄일 수 있습니다.',
+  ],
+  sources: [
+    { label: '한국은행 경제통계시스템', url: 'https://ecos.bok.or.kr' },
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+    { label: '금융감독원 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '국내 주식시장이 롤러코스터처럼 오르내리는 이유가 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494337097' },
+    { summary: '지금 주식시장에 투자해도 괜찮은지 시장 상황을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494351153' },
+  ],
+  sections: [
+    {
+      heading: '수급, 사려는 힘과 팔려는 힘의 줄다리기',
+      paragraphs: [
+        '주가는 결국 그 시점에 사겠다는 사람과 팔겠다는 사람이 만나는 지점에서 정해집니다. 좋은 소식에 사자가 몰리면 값이 뛰고, 불안에 팔자가 쏟아지면 값이 밀립니다. 이 균형이 하루에도 수없이 바뀌기 때문에 지수는 계속 움직입니다.',
+        '거래가 특정 종목이나 업종에 쏠리는 날은 흔들림이 더 큽니다. 기관과 외국인, 개인의 매매 방향이 엇갈리면 같은 종목이 오전과 오후에 전혀 다른 그림을 그리기도 합니다. 이런 쏠림은 지수 전체의 변동성으로 이어집니다.',
+      ],
+    },
+    {
+      heading: '금리와 환율이라는 큰 물결',
+      paragraphs: [
+        '금리는 돈의 값입니다. 금리가 오르면 예금이나 채권의 매력이 커져 주식에서 자금이 빠질 수 있고, 반대로 금리 인하 기대가 커지면 위험을 감수한 투자가 늘어납니다. 특히 미국 중앙은행의 결정은 전 세계 증시에 영향을 줍니다.',
+        '환율도 무시할 수 없습니다. 원달러 환율이 크게 오르면 외국인 투자자 입장에서 국내 주식의 셈법이 달라져 매도로 돌아설 수 있습니다. 수출 기업과 내수 기업이 환율에 반대로 반응하기도 해서, 업종별로 등락이 갈리는 날도 생깁니다.',
+      ],
+    },
+    {
+      heading: '밤사이 들어오는 대외 뉴스와 심리',
+      paragraphs: [
+        '국내 시장은 세계 증시와 이어져 있습니다. 미국이나 중국 증시가 크게 움직이거나 지정학 이슈가 터지면, 다음 날 개장과 동시에 그 여파가 반영됩니다. 전날 종가와 크게 벌어져 시작하는 갭 현상이 대표적입니다.',
+        '여기에 사람의 심리가 얹힙니다. 공포가 퍼지면 팔고 보자는 심리가, 과열되면 뒤늦게라도 사자는 심리가 낙폭과 상승폭을 키웁니다. 일정 조건에서 자동으로 주문이 나가는 매매까지 겹치면 짧은 시간에 출렁임이 증폭되기도 합니다.',
+      ],
+    },
+    {
+      heading: '변동성 앞에서 초보가 지킬 것',
+      paragraphs: [
+        '변동성은 없애야 할 오류가 아니라 시장의 기본 성질입니다. 오늘 크게 빠졌다고 시장이 망가진 것도, 크게 올랐다고 계속 오를 것도 아닙니다. 하루하루의 등락에 일희일비하면 잦은 매매로 비용만 늘기 쉽습니다.',
+        '초보일수록 자산을 여러 종목과 자산군에 나누고, 한 번에 몰아넣기보다 나눠 사는 방식이 마음을 지키는 데 도움이 됩니다. 투자는 정보 제공 목적의 이 글이 아니라 본인의 판단과 책임으로 하는 것이며, 감당할 수 있는 범위 안에서 시작하는 것이 안전합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '주가가 하루에 크게 오르내리면 뭔가 잘못된 건가요?',
+      answer:
+        '대부분은 정상적인 변동성입니다. 수급, 금리, 환율, 대외 뉴스가 겹치면 지수는 하루에도 크게 움직입니다. 특정 종목이 이유 없이 급변한다면 공시나 뉴스를 확인해 보는 정도면 충분합니다.',
+    },
+    {
+      question: '변동성이 클 때는 매매를 쉬는 게 나을까요?',
+      answer:
+        '정답은 없지만, 흔들림이 클 때 급하게 사고파는 것은 손실과 비용을 키우기 쉽습니다. 미리 정한 원칙대로 나눠 사고 나눠 파는 편이 감정적 매매보다 안정적입니다.',
+    },
+    {
+      question: '초보는 변동성에 어떻게 대비하나요?',
+      answer:
+        '한 종목에 몰아넣지 않고 여러 종목과 자산에 분산하며, 매수 시점을 여러 번으로 나누는 방법이 기본입니다. 감당 가능한 금액으로 시작하는 것도 중요합니다.',
+    },
+    {
+      question: '지수가 급락하면 바로 팔아야 하나요?',
+      answer:
+        '급락 자체가 매도 신호는 아닙니다. 공포에 팔면 반등을 놓치는 경우가 많습니다. 보유 이유가 그대로라면 계획을 지키되, 감당 범위를 넘었다면 비중을 조절하는 선택은 본인 몫입니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-04) */
+const nationalPensionLumpSum: GuideDef = {
+  slug: 'national-pension-lump-sum',
+  title: '국민연금 반환일시금, 10년 못 채우면 돌려받는 법',
+  tagline: '가입기간 10년 미만으로 60세가 되면 낸 보험료에 이자까지',
+  description:
+    '국민연금을 10년 채우지 못하고 60세가 되면 낸 보험료를 이자까지 더해 한 번에 돌려받는 반환일시금을 받습니다. 지급 조건과 이자, 임의계속가입으로 연금으로 바꾸는 선택지까지 실제 궁금증 순서로 정리했습니다.',
+  keywords: ['국민연금 반환일시금', '국민연금 일시금', '국민연금 환급금', '가입기간 10년 미만', '임의계속가입', '반환일시금 신청'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-04',
+  answer:
+    '국민연금 반환일시금은 가입기간이 10년(120개월) 미만인 사람이 60세가 되었을 때, 그동안 낸 보험료에 이자를 더해 한 번에 돌려받는 급여입니다. 대신 임의계속가입으로 10년을 채우면 평생 받는 노령연금으로 바꿀 수 있어, 어느 쪽이 유리한지 따져 보는 것이 좋습니다.',
+  keyPoints: [
+    '반환일시금은 가입기간 10년(120개월) 미만인 사람이 60세에 도달했을 때 받습니다. 사망, 국적상실, 국외이주로 자격을 잃은 경우에도 지급됩니다.',
+    '돌려받는 돈에는 그동안 낸 보험료에 더해 정기예금 수준의 이자가 가산됩니다. 낸 금액을 그대로가 아니라 이자를 붙여 돌려주는 구조입니다.',
+    '임의계속가입을 신청하면 최대 65세까지 보험료를 더 내 가입기간 10년을 채울 수 있고, 그러면 매달 받는 노령연금으로 전환됩니다.',
+    '반환일시금을 받으면 그동안의 가입이력이 사라집니다. 이후 다시 가입해 반납금을 내면 기간을 되살릴 수 있으니, 수령 전에 연금 전환과 비교해 보는 편이 안전합니다.',
+  ],
+  sources: [
+    { label: '국민연금공단', url: 'https://www.nps.or.kr' },
+    { label: '보건복지부', url: 'https://www.mohw.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '국민연금을 일시금으로 받는 방법과 조건을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494293040' },
+    { summary: '국민연금 환급금을 어떻게 신청하는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494231223' },
+    { summary: '연금 수령 방식과 금액에 대해 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494356231' },
+  ],
+  comparisonTable: {
+    caption: '반환일시금과 연금 전환(임의계속가입) 선택 비교',
+    columns: ['구분', '반환일시금', '임의계속가입 후 연금'],
+    rows: [
+      ['수령 방식', '한 번에 목돈', '매달 평생 지급'],
+      ['조건', '10년 미만 + 60세 등', '65세까지 보험료 추가 납부'],
+      ['가입이력', '소멸(반납 시 복원 가능)', '유지'],
+      ['유리한 경우', '건강·자금 사정상 목돈이 급할 때', '오래 받아 총액을 늘리고 싶을 때'],
+    ],
+  },
+  sections: [
+    {
+      heading: '반환일시금은 어떤 돈인가',
+      paragraphs: [
+        '국민연금은 원래 매달 나눠 받는 노령연금이 기본입니다. 그런데 가입기간이 10년에 못 미치면 매달 받는 연금 자격이 생기지 않습니다. 이때 그동안 낸 보험료를 그냥 돌려주는 것이 반환일시금입니다.',
+        '지급 사유는 정해져 있습니다. 가입기간 10년 미만인 사람이 60세가 되었을 때가 가장 흔한 경우이고, 그 밖에 가입자가 사망했는데 유족연금 대상이 아니거나, 국적을 잃거나 외국으로 이주해 더는 가입을 이어 갈 수 없을 때도 해당합니다.',
+      ],
+    },
+    {
+      heading: '얼마를 어떻게 돌려받나',
+      paragraphs: [
+        '반환일시금은 본인이 낸 보험료를 기준으로 하되, 여기에 이자가 붙습니다. 이자는 3년 만기 정기예금 이자율을 준용해 계산하므로, 낸 돈보다 다소 늘어난 금액을 받게 됩니다. 정확한 액수는 가입 기간과 낸 보험료에 따라 달라집니다.',
+        '신청은 국민연금공단을 통해 하며, 신분증과 본인 명의 계좌 등 기본 서류가 필요합니다. 지급 사유가 발생했다고 자동으로 나오는 것은 아니어서, 조건을 갖췄다면 직접 청구해야 받을 수 있습니다.',
+      ],
+    },
+    {
+      heading: '연금으로 바꾸는 선택지, 임의계속가입',
+      paragraphs: [
+        '10년에 조금 못 미친다면 반환일시금 대신 임의계속가입을 고려할 수 있습니다. 60세가 넘어도 최대 65세까지 보험료를 더 내 부족한 기간을 채우는 제도입니다. 10년을 채우면 반환일시금이 아니라 매달 받는 노령연금으로 전환됩니다.',
+        '어느 쪽이 나은지는 건강 상태와 자금 사정에 달려 있습니다. 목돈이 당장 필요하면 일시금이, 오래 나눠 받아 총 수령액을 늘리고 싶으면 연금 전환이 유리할 수 있습니다. 두 경우의 예상 금액을 공단에서 확인한 뒤 결정하는 것이 확실합니다.',
+      ],
+    },
+    {
+      heading: '수령 전에 짚어 둘 점',
+      paragraphs: [
+        '반환일시금을 받으면 그때까지 쌓은 가입이력이 사라집니다. 나중에 다시 국민연금에 가입하면서 예전에 받은 일시금에 이자를 더해 반납하면 그 기간을 되살릴 수 있지만, 반납 부담이 생깁니다. 그래서 수령은 신중히 판단할 부분입니다.',
+        '이 글은 제도의 큰 틀을 이해하기 위한 참고 자료입니다. 개인별 예상 수령액이나 세부 요건은 상황마다 달라질 수 있으니, 청구 전에 국민연금공단의 안내로 본인 조건을 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '국민연금을 10년 못 채우면 낸 돈은 사라지나요?',
+      answer:
+        '사라지지 않습니다. 가입기간 10년 미만으로 60세가 되면 낸 보험료에 이자를 더한 반환일시금으로 돌려받습니다. 다만 연금 형태가 아니라 한 번에 목돈으로 받는 방식입니다.',
+    },
+    {
+      question: '반환일시금에도 이자가 붙나요?',
+      answer:
+        '붙습니다. 3년 만기 정기예금 이자율을 준용해 이자를 가산하므로, 낸 보험료보다 다소 늘어난 금액을 받습니다. 실제 액수는 가입 기간과 납부액에 따라 달라집니다.',
+    },
+    {
+      question: '연금으로 받는 게 나을까요, 일시금이 나을까요?',
+      answer:
+        '자금 사정과 건강에 따라 다릅니다. 목돈이 급하면 일시금이, 오래 나눠 받아 총액을 늘리고 싶으면 임의계속가입으로 10년을 채워 연금으로 받는 편이 유리할 수 있습니다.',
+    },
+    {
+      question: '반환일시금은 자동으로 지급되나요?',
+      answer:
+        '아닙니다. 조건을 갖췄더라도 본인이 국민연금공단에 청구해야 지급됩니다. 신분증과 본인 계좌 등 기본 서류를 준비해 신청하면 됩니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-04) */
+const isaDividendTaxBenefit: GuideDef = {
+  slug: 'isa-dividend-tax-benefit',
+  title: 'ISA 배당소득 비과세 한도, 200만 400만 절세 정리',
+  tagline: '배당·이자 순이익 200만원, 서민형 400만원까지 세금 0',
+  description:
+    'ISA 계좌는 배당과 이자 순이익을 일반형 200만원, 서민형 400만원까지 비과세하고 넘는 금액은 9.9%로 분리과세합니다. 일반 계좌 15.4%와 무엇이 다른지, 배당 상품에 왜 유리한지 한 페이지에 정리했습니다.',
+  keywords: ['ISA 비과세 한도', 'ISA 배당소득 절세', 'ISA 200만원 400만원', 'ISA 분리과세', 'ISA 세제혜택', '서민형 ISA'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-08-04',
+  answer:
+    'ISA 계좌는 계좌 안에서 생긴 이자와 배당 등 순이익을 일반형 200만원, 서민형 400만원까지 비과세하고, 이 한도를 넘는 금액은 9.9%로 분리과세합니다. 일반 계좌라면 15.4%가 떼이는 배당소득세를 크게 줄일 수 있어, 배당과 이자 중심 상품을 담을 때 특히 유리합니다.',
+  keyPoints: [
+    '비과세 한도는 일반형 200만원, 서민형·농어민형 400만원입니다. 한도를 넘는 순이익은 9.9%로 분리과세돼, 일반 계좌 배당소득세 15.4%보다 세율이 낮습니다.',
+    'ISA는 계좌 안 손익을 통산합니다. 이익 종목과 손실 종목을 합산한 뒤 순이익에만 과세하므로, 손실이 이익을 상쇄해 세 부담이 줄어듭니다.',
+    '의무가입기간은 3년이고, 납입한도는 연 2,000만원, 총 1억원입니다. 이 기간을 채우고 해지할 때 비과세와 분리과세 혜택이 확정됩니다.',
+    '국내 상장 국내주식형 ETF의 매매차익은 원래 비과세라, ISA의 절세 효과는 배당과 이자, 해외·채권형 상품의 수익에서 더 크게 나타납니다.',
+  ],
+  sources: [
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 계좌의 혜택과 활용 방법 전반이 궁금하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494349881' },
+    { summary: 'ISA 계좌에 대해 세제 혜택 등을 폭넓게 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493747720' },
+    { summary: '금융소득 종합과세와 건강보험료 부담을 줄이는 방법을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494333180' },
+  ],
+  comparisonTable: {
+    caption: '배당·이자 수익에 대한 ISA와 일반 계좌 과세 비교',
+    columns: ['구분', 'ISA 계좌', '일반 계좌'],
+    rows: [
+      ['비과세', '일반형 200만원, 서민형 400만원', '없음'],
+      ['초과분 세율', '9.9% 분리과세', '15.4% 원천징수'],
+      ['손익 통산', '계좌 내 통산 후 과세', '이익에만 과세'],
+      ['조건', '의무가입 3년', '제한 없음'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'ISA 비과세 한도, 무엇을 얼마나 깎아 주나',
+      paragraphs: [
+        'ISA는 하나의 계좌 안에서 여러 상품을 굴리고, 만기에 그 순이익을 한꺼번에 정산하는 절세 계좌입니다. 이때 순이익 가운데 일반형은 200만원, 총급여 5,000만원 이하 등 요건을 갖춘 서민형은 400만원까지 세금을 매기지 않습니다.',
+        '이 한도를 넘는 금액에는 9.9%의 세율로 분리과세가 적용됩니다. 일반 계좌에서 배당이나 이자를 받으면 15.4%가 원천징수되는 것과 비교하면 세율이 낮고, 종합과세 대상에서도 분리돼 부담이 줄어듭니다.',
+      ],
+    },
+    {
+      heading: '손익 통산이 만드는 절세',
+      paragraphs: [
+        'ISA의 또 다른 장점은 계좌 안 손익을 합쳐서 계산한다는 점입니다. 예를 들어 한 상품에서 300만원 이익이 나고 다른 상품에서 100만원 손실이 났다면, 순이익은 200만원으로 잡힙니다. 이익과 손실을 상계한 뒤 남은 금액에만 세금을 따집니다.',
+        '일반 계좌에서는 이익이 난 배당·이자에 각각 세금이 붙고 손실은 따로 반영되지 않습니다. 손익을 함께 계산해 주는 ISA의 구조는 여러 상품을 굴릴수록 유리하게 작용합니다.',
+      ],
+    },
+    {
+      heading: '어떤 자산을 담을 때 이점이 큰가',
+      paragraphs: [
+        '국내 상장 국내주식형 ETF의 매매차익은 계좌와 무관하게 원래 비과세입니다. 그래서 이런 상품만 담으면 ISA의 절세 효과가 크게 느껴지지 않습니다. ISA의 힘은 세금이 붙는 소득에서 나옵니다.',
+        '매달 분배금을 주는 배당·인컴 상품, 이자를 주는 채권형, 세금이 붙는 해외형 상품에서 비과세와 9.9% 분리과세의 이점이 두드러집니다. 배당을 자주 받는 전략일수록 ISA 안에 두는 편이 세후 수익을 지키는 데 도움이 됩니다.',
+      ],
+    },
+    {
+      heading: '가입 전 확인할 조건',
+      paragraphs: [
+        'ISA는 의무가입기간이 3년이고, 납입은 연 2,000만원, 통산 1억원까지 가능합니다. 3년을 채우기 전에 해지하면 그동안 받은 세제 혜택이 사라질 수 있으니, 자금 사용 시점을 고려해 가입하는 것이 좋습니다.',
+        '비과세 한도와 세율은 제도 변화에 따라 조정될 수 있습니다. 이 글은 현재 적용되는 기준으로 정리한 참고 자료이므로, 가입이나 해지 전에 금융회사와 홈택스에서 최신 한도를 다시 확인하시길 권합니다. 세금 문제는 본인 상황에 따라 달라질 수 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA 배당소득 비과세 한도는 얼마인가요?',
+      answer:
+        '일반형은 순이익 200만원, 서민형과 농어민형은 400만원까지 비과세입니다. 이 한도를 넘는 금액에는 9.9% 분리과세가 적용돼, 일반 계좌 배당소득세 15.4%보다 낮습니다.',
+    },
+    {
+      question: 'ISA 안에서 손실이 나면 세금은 어떻게 되나요?',
+      answer:
+        '이익과 손실을 합산해 순이익에만 과세합니다. 한 상품의 손실이 다른 상품의 이익을 상쇄하므로, 여러 상품을 굴릴 때 세 부담을 줄이는 데 도움이 됩니다.',
+    },
+    {
+      question: '국내주식형 ETF도 ISA에 넣으면 세금 이득이 큰가요?',
+      answer:
+        '국내 상장 국내주식형 ETF의 매매차익은 원래 비과세라 ISA로 얻는 추가 이득이 작습니다. 절세 효과는 배당·이자·해외형처럼 세금이 붙는 소득에서 더 크게 나타납니다.',
+    },
+    {
+      question: 'ISA 세제 혜택을 받으려면 얼마나 유지해야 하나요?',
+      answer:
+        '의무가입기간 3년을 채워야 비과세와 9.9% 분리과세 혜택이 확정됩니다. 3년 전에 해지하면 혜택이 사라질 수 있으니 자금 사용 시점을 고려해 가입하세요.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-04) */
+const adjustedStockPriceChart: GuideDef = {
+  slug: 'adjusted-stock-price-chart',
+  title: '주식 차트가 갑자기 뚝 떨어져 보이는 이유',
+  tagline: '액면분할·배당락·권리락에 수정주가까지, 착시의 정체',
+  description:
+    '차트가 급락한 듯 보이는데 뉴스가 없다면 액면분할, 배당락, 권리락으로 기준 가격이 조정된 착시일 수 있습니다. 수정주가가 무엇이고 왜 과거 차트가 달라 보이는지, 실제 급락과 구분하는 법을 정리했습니다.',
+  keywords: ['수정주가', '주식 차트 급락 이유', '액면분할 차트', '배당락 차트', '권리락', '차트 이상하게 뜨는 이유'],
+  section: 'ETF 매매 가이드',
+  lastReviewed: '2026-08-04',
+  answer:
+    '차트가 갑자기 큰 폭으로 떨어져 보이는 것은 실제 급락이 아니라 액면분할, 배당락, 권리락 같은 이벤트로 기준 가격이 조정되기 때문인 경우가 많습니다. 증권사가 과거 주가를 이 조정에 맞춰 다시 계산한 수정주가로 보여 주기도 해서, 손실이 난 것처럼 착시가 생깁니다.',
+  keyPoints: [
+    '액면분할은 1주를 여러 주로 쪼개 단가를 낮추는 것입니다. 1주를 5주로 나누면 가격은 5분의 1이 되지만 보유 가치는 그대로라, 차트만 급락처럼 보입니다.',
+    '배당락은 배당받을 권리가 사라지는 날 기준가가 배당금만큼 내려가는 현상입니다. 실제 손실이 아니라 배당을 받은 만큼 주가에서 빠지는 정상적인 조정입니다.',
+    '권리락은 유상·무상증자로 주식 수가 늘 때 기준가를 낮춰 조정하는 것입니다. 늘어난 주식 수를 반영한 것이라 총 가치는 유지됩니다.',
+    '증권사는 이런 이벤트를 반영한 수정주가로 과거 차트를 다시 그리기도 합니다. 원주가로 보면 계단처럼 뚝 떨어진 구간이, 수정주가로 보면 매끄럽게 이어집니다.',
+  ],
+  sources: [
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+    { label: '금융감독원 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '주식 차트가 자꾸 이상하게 뜬다며 원인을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494354827' },
+    { summary: '레버리지 종목의 등락률이 계속 하락하는 것처럼 보인다는, 차트 착시와 맞닿은 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494355976' },
+  ],
+  comparisonTable: {
+    caption: '차트가 급락처럼 보이는 이벤트별 원인',
+    columns: ['이벤트', '가격 조정 이유', '보유 가치'],
+    rows: [
+      ['액면분할', '1주를 여러 주로 쪼개 단가 하락', '변화 없음'],
+      ['배당락', '배당금만큼 기준가 하락', '배당으로 상쇄'],
+      ['권리락', '증자로 주식 수 증가 반영', '총액 유지'],
+      ['수정주가 표시', '과거 주가를 조정치로 재계산', '실제 손익과 무관'],
+    ],
+  },
+  sections: [
+    {
+      heading: '급락처럼 보이지만 급락이 아닌 경우',
+      paragraphs: [
+        '차트가 어느 날 계단처럼 뚝 떨어졌는데 이렇다 할 악재 뉴스가 없다면, 실제 하락이 아니라 가격 조정 이벤트를 의심해 볼 수 있습니다. 주가는 기업 가치가 그대로여도 일정한 사건이 있으면 기준 가격을 다시 맞추기 때문입니다.',
+        '대표적인 것이 액면분할, 배당락, 권리락입니다. 이 셋은 모두 보유한 자산의 실제 가치를 줄이지 않으면서 한 주당 표시 가격만 바꿉니다. 그래서 화면상으로는 급락처럼 보여도 계좌의 평가액은 크게 다르지 않습니다.',
+      ],
+    },
+    {
+      heading: '액면분할, 한 주를 잘게 나누다',
+      paragraphs: [
+        '액면분할은 주가가 너무 높아 거래가 부담스러울 때 1주를 여러 주로 쪼개는 것입니다. 1주를 5주로 나누면 10만원짜리 주식이 2만원이 되고, 대신 보유 주식 수가 5배로 늘어납니다. 가격표만 바뀌었을 뿐 총 가치는 같습니다.',
+        '분할 시점에 차트를 원주가로 보면 그날 하루에 값이 폭락한 것처럼 나타납니다. 하지만 이는 착시입니다. 늘어난 주식 수를 함께 보면 자산은 그대로라는 것을 알 수 있습니다.',
+      ],
+    },
+    {
+      heading: '배당락과 권리락, 권리가 빠지는 날',
+      paragraphs: [
+        '배당락은 배당받을 권리가 사라지는 날 주가가 배당금만큼 내려가는 현상입니다. 배당 직전까지 주식을 들고 있던 사람은 배당을 받고, 대신 그만큼 주가에서 빠지므로 실질 손실은 아닙니다. 배당을 현금으로 옮겨 받은 셈입니다.',
+        '권리락은 유상증자나 무상증자로 주식 수가 늘어날 때 기준가를 낮추는 조정입니다. 전체 주식 수가 많아진 만큼 한 주당 가격을 내려 균형을 맞추는 것이라, 이 역시 보유 총액에는 큰 변화가 없습니다.',
+      ],
+    },
+    {
+      heading: '수정주가와 원주가, 어떤 차트를 볼까',
+      paragraphs: [
+        '증권사 앱은 이런 이벤트를 반영한 수정주가로 과거 차트를 보정해 보여 주는 경우가 많습니다. 수정주가로 보면 분할이나 배당락 구간이 매끄럽게 이어져 장기 흐름을 파악하기 쉽습니다. 반면 원주가로 보면 그 시점에 계단이 생깁니다.',
+        '내 차트가 유독 이상하게 보인다면 설정에서 수정주가와 원주가 표시를 바꿔 보세요. 실제 급락과 조정에 따른 착시를 구분하려면, 같은 날 거래량과 공시를 함께 확인하는 것이 가장 확실합니다. 판단이 서지 않으면 이용 중인 증권사 안내로 확인하는 편이 정확합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '차트가 갑자기 반토막처럼 보이는데 손해를 본 건가요?',
+      answer:
+        '대개는 아닙니다. 액면분할이나 배당락, 권리락으로 기준 가격이 조정되면 차트만 급락처럼 보일 뿐 보유 가치는 유지됩니다. 늘어난 주식 수나 받은 배당을 함께 보면 자산은 그대로입니다.',
+    },
+    {
+      question: '수정주가와 원주가는 뭐가 다른가요?',
+      answer:
+        '원주가는 그날그날 실제 거래된 가격이고, 수정주가는 분할·배당락 등을 반영해 과거 값을 다시 계산한 가격입니다. 수정주가로 보면 장기 흐름이 매끄럽게 이어집니다.',
+    },
+    {
+      question: '실제 급락과 조정에 따른 착시를 어떻게 구분하나요?',
+      answer:
+        '같은 날 거래량과 공시를 확인하면 됩니다. 액면분할·증자·배당 공시가 있었다면 조정에 따른 착시일 가능성이 큽니다. 뚜렷한 이벤트 없이 거래량이 급증했다면 실제 하락일 수 있습니다.',
+    },
+    {
+      question: '차트 설정을 어떻게 바꾸면 되나요?',
+      answer:
+        '대부분 증권사 앱의 차트 설정에서 수정주가와 원주가 표시를 선택할 수 있습니다. 장기 흐름을 볼 때는 수정주가가 편하고, 실제 체결가를 볼 때는 원주가가 도움이 됩니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-04) */
+const marketCircuitBreakerVi: GuideDef = {
+  slug: 'market-circuit-breaker-vi',
+  title: '주식 거래가 갑자기 멈추는 이유, 서킷브레이커와 VI',
+  tagline: '급등락을 식히는 안전장치, 서킷브레이커·사이드카·VI 정리',
+  description:
+    '지수나 종목이 급하게 오르내리면 거래를 잠시 멈추는 안전장치가 작동합니다. 시장 전체를 세우는 서킷브레이커, 프로그램매매를 늦추는 사이드카, 종목별 변동성완화장치까지 발동 기준을 쉽게 정리했습니다.',
+  keywords: ['서킷브레이커', '사이드카', '변동성완화장치', '주식 거래정지', '서킷브레이커 발동 기준', '주식 매매 정지'],
+  section: 'ETF 매매 가이드',
+  lastReviewed: '2026-08-04',
+  answer:
+    '주가가 짧은 시간에 급하게 오르내리면 거래를 잠시 멈추는 안전장치가 작동합니다. 지수가 크게 급락하면 서킷브레이커가 시장 전체를, 개별 종목이 급변하면 변동성완화장치(VI)가 그 종목을 멈춰 세워 단일가 매매로 진정시킵니다. 과열을 식혀 투자자를 보호하려는 장치입니다.',
+  keyPoints: [
+    '서킷브레이커는 지수가 전일 대비 8%, 15%, 20% 하락할 때 3단계로 발동합니다. 1·2단계는 20분간 거래를 멈추고, 3단계는 당일 장을 즉시 종료합니다.',
+    '사이드카는 선물 가격이 기준 대비 코스피 5%, 코스닥 6% 이상 변동한 상태가 1분간 이어질 때 발동해, 프로그램 매매 호가 효력을 5분간 정지합니다.',
+    '변동성완화장치(VI)는 개별 종목이 짧은 시간에 급변할 때 발동합니다. 정적 VI는 기준가 대비 10% 안팎 벗어나면 2분간 단일가 매매로 진정시킵니다.',
+    '이런 장치는 시장을 멈추려는 것이 아니라 과열을 식히기 위한 것입니다. 발동돼도 정해진 시간이 지나면 단일가 매매를 거쳐 거래가 정상 재개됩니다.',
+  ],
+  sources: [
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+    { label: '찾기 쉬운 생활법령정보', url: 'https://www.easylaw.go.kr' },
+    { label: '금융감독원 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '국내 주식시장이 롤러코스터처럼 급등락하는 이유가 궁금하다는, 거래 정지 장치와 맞닿은 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494337097' },
+    { summary: '주식 화면과 차트가 이상하게 보인다며 원인을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494354827' },
+  ],
+  comparisonTable: {
+    caption: '서킷브레이커, 사이드카, VI 발동 기준 비교',
+    columns: ['장치', '대상', '발동 기준과 조치'],
+    rows: [
+      ['서킷브레이커', '시장 전체 지수', '8·15·20% 하락, 20분 정지(3단계는 종료)'],
+      ['사이드카', '프로그램 매매', '선물 5·6% 변동 1분 지속, 5분 정지'],
+      ['정적 VI', '개별 종목', '기준가 10% 안팎 이탈, 2분 단일가'],
+    ],
+  },
+  sections: [
+    {
+      heading: '거래를 멈추는 안전장치가 있는 이유',
+      paragraphs: [
+        '주가가 짧은 시간에 급하게 빠지거나 튀면 공포와 과열이 서로를 키워 낙폭이나 상승폭이 커집니다. 이때 잠깐 거래를 멈춰 숨을 고르게 하면, 투자자가 정보를 다시 확인하고 냉정하게 판단할 시간을 벌 수 있습니다.',
+        '이런 목적으로 시장에는 여러 안전장치가 마련돼 있습니다. 시장 전체를 대상으로 하는 서킷브레이커와 사이드카, 개별 종목을 대상으로 하는 변동성완화장치가 대표적입니다. 각각 발동 조건과 멈추는 대상이 다릅니다.',
+      ],
+    },
+    {
+      heading: '서킷브레이커, 시장 전체를 멈추다',
+      paragraphs: [
+        '서킷브레이커는 지수가 크게 급락할 때 시장 전체의 거래를 멈추는 가장 강력한 장치입니다. 1단계는 지수가 전일 대비 8% 이상 떨어진 상태가 1분간 지속되면 발동해 20분간 거래를 중단하고, 이후 단일가로 재개합니다.',
+        '2단계는 15% 이상 하락하고 1단계보다 더 빠질 때, 3단계는 20% 이상 하락할 때 발동합니다. 3단계에 이르면 그날 주식시장은 즉시 완전히 종료됩니다. 그만큼 심각한 급락 상황에서만 작동하는 장치입니다.',
+      ],
+    },
+    {
+      heading: '사이드카와 변동성완화장치',
+      paragraphs: [
+        '사이드카는 선물시장의 급변이 현물시장으로 번지는 것을 늦추는 장치입니다. 선물 가격이 기준 대비 코스피는 5%, 코스닥은 6% 이상 변동한 상태가 1분간 이어지면, 프로그램 매매 호가의 효력을 5분간 멈춥니다. 서킷브레이커보다 약한 단계의 제동입니다.',
+        '변동성완화장치, 곧 VI는 개별 종목이 짧은 시간에 급변할 때 그 종목만 멈춰 세웁니다. 당일 기준가에서 10% 안팎 벗어나는 정적 VI와 직전 체결가 대비 급변에 반응하는 동적 VI가 있으며, 발동되면 2분간 단일가 매매로 가격을 진정시킵니다.',
+      ],
+    },
+    {
+      heading: '발동되면 투자자는 어떻게 하나',
+      paragraphs: [
+        '거래가 멈추면 당황하기 쉽지만, 이 장치들은 시장을 보호하기 위한 정상적인 절차입니다. 정해진 시간이 지나면 여러 주문을 모아 하나의 가격으로 체결하는 단일가 매매를 거쳐 거래가 다시 열립니다. 내 주문이 사라지는 것은 아닙니다.',
+        '멈춘 사이 급하게 대응하기보다, 왜 급변했는지 뉴스와 공시를 확인하며 기다리는 편이 안전합니다. 이 글은 제도 이해를 돕는 참고용이며, 실제 매매 판단과 책임은 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '서킷브레이커는 언제 발동되나요?',
+      answer:
+        '지수가 전일 대비 8%, 15%, 20% 하락할 때 3단계로 발동합니다. 1·2단계는 20분간 거래를 멈추고 단일가로 재개하며, 3단계에 이르면 그날 장이 즉시 종료됩니다.',
+    },
+    {
+      question: '사이드카와 서킷브레이커는 어떻게 다른가요?',
+      answer:
+        '사이드카는 선물 급변 시 프로그램 매매 호가를 5분간 멈추는 약한 제동이고, 서킷브레이커는 지수 급락 시 시장 전체 거래를 20분 이상 멈추는 더 강한 장치입니다.',
+    },
+    {
+      question: 'VI가 걸리면 그 종목은 어떻게 되나요?',
+      answer:
+        '변동성완화장치가 발동되면 해당 종목은 2분간 단일가 매매로 전환됩니다. 여러 주문을 모아 하나의 가격으로 체결해 급변을 진정시킨 뒤, 다시 정상 거래로 돌아갑니다.',
+    },
+    {
+      question: '거래가 멈추면 내 주문은 어떻게 되나요?',
+      answer:
+        '주문이 사라지지 않습니다. 정지가 풀리면 단일가 매매를 거쳐 체결이 이뤄집니다. 멈춘 동안에는 급하게 움직이기보다 급변 원인을 확인하며 기다리는 편이 안전합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  stockMarketVolatilityCauses,
+  nationalPensionLumpSum,
+  isaDividendTaxBenefit,
+  adjustedStockPriceChart,
+  marketCircuitBreakerVi,
   pensionSavingsVsIrp,
   etfSharePriceMeaning,
   etfPortfolioOverlap,
@@ -19513,6 +19962,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-04 · 지식iN 질문 수요 기반 (주가 변동성 원인·국민연금 반환일시금·ISA 배당 비과세 한도·차트 급락 착시(수정주가)·서킷브레이커와 VI)
+  'stock-market-volatility-causes': '2026-08-04',
+  'national-pension-lump-sum': '2026-08-04',
+  'isa-dividend-tax-benefit': '2026-08-04',
+  'adjusted-stock-price-chart': '2026-08-04',
+  'market-circuit-breaker-vi': '2026-08-04',
   // 2026-08-03 · 지식iN 질문 수요 기반 (국내 상장 S&P500 ETF 운용사 비교·CD금리 ETF vs 파킹통장·예적금 vs 투자와 인플레이션·투자 포모 심리·주식 주문 종류)
   'domestic-sp500-etf-comparison': '2026-08-03',
   'cd-rate-etf-vs-parking': '2026-08-03',
@@ -19786,12 +20241,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi'],
   },
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit'],
   },
   {
     title: '배당·인컴',

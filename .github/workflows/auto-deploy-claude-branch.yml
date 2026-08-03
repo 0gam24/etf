@@ -1,6 +1,6 @@
 name: Auto-deploy claude branch to main
 
-# 목적: 데일리 발행 루틴이 claude/serene-hamilton-cow2dj 브랜치로 push하면
+# 목적: 데일리 발행 루틴이 claude/serene-hamilton-caoi66 브랜치로 push하면
 #       즉시 main으로 fast-forward 하여 Cloudflare 배포를 바로 트리거한다.
 #       (세션 브랜치 가드로 인해 발행이 feature 브랜치에 안착해도 자동 배포 보장)
 # 안전장치: --ff-only 만 사용. main 이 독립적으로 앞서 있으면 실패로 남기고
@@ -9,7 +9,7 @@ name: Auto-deploy claude branch to main
 on:
   push:
     branches:
-      - claude/serene-hamilton-cow2dj
+      - claude/serene-hamilton-caoi66
 
 permissions:
   contents: write

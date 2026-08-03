@@ -1794,3 +1794,39 @@ https://iknowhowinfo.com/guide/cd-rate-etf-vs-parking
 https://iknowhowinfo.com/guide/saving-vs-investing-inflation
 https://iknowhowinfo.com/guide/investing-fomo-meaning
 https://iknowhowinfo.com/guide/stock-order-types-guide
+
+## 2026-08-04 · [데일리 가이드 발행 · 지식iN 수요]
+
+### 발행 5편 (지식iN 질문 수요 기반 롱테일)
+1. 주가가 크게 출렁이는 이유, 변동성 초보 가이드 (stock-market-volatility-causes)
+   - 출처 질문: "국내주식시장 롤러코스터 타는 이유"(docId=494337097), "지금 투자해도 괜찮나"(494351153)
+   - 검증: 수급·금리·환율·대외뉴스·심리 복합 요인, 코스피 일중 ±2% 흔한 편, 분산·분할매수 대응. 시장 예측·투기 조장 배제, 정보·교육 프레임. 기존 saving-vs-investing-inflation과 각도 구분(변동성 원인 자체).
+2. 국민연금 반환일시금, 10년 못 채우면 돌려받는 법 (national-pension-lump-sum)
+   - 출처 질문: "국민연금 일시금"(494293040), "국민연금 환급금 신청법"(494231223), "연금수령금"(494356231)
+   - 검증(WebSearch): 가입기간 10년(120개월) 미만+60세 도달(또는 사망·국적상실·국외이주) 지급, 3년만기 정기예금 이자율 가산, 임의계속가입 65세까지로 연금 전환 가능. 국민연금공단·보건복지부 대조.
+3. ISA 배당소득 비과세 한도, 200만 400만 절세 정리 (isa-dividend-tax-benefit)
+   - 출처 질문: "ISA 계좌 혜택·활용"(494349881), "ISA 계좌 궁금"(493747720), "금융소득 종합과세 건보료"(494333180)
+   - 검증(WebSearch): 일반형 200만·서민형 400만 비과세, 초과분 9.9% 분리과세(일반계좌 15.4% 대비), 손익통산, 의무 3년·연2000만/총1억. 금융위·국세청 대조. 한도 변동 가능성 명시(최신 확인 권고).
+4. 주식 차트가 갑자기 뚝 떨어져 보이는 이유 (adjusted-stock-price-chart)
+   - 출처 질문: "차트 이상하게 뜨는 거"(494354827), "레버리지 등락률 계속 하락"(494355976)
+   - 검증: 액면분할·배당락·권리락 기준가 조정, 수정주가 vs 원주가 착시. 기존 etf-share-price-meaning(ETF 액면분할)과 각도 구분(개별주 차트 착시·수정주가).
+5. 주식 거래가 갑자기 멈추는 이유, 서킷브레이커와 VI (market-circuit-breaker-vi)
+   - 출처 질문: "롤러코스터 이유"(494337097), "차트 이상하게"(494354827)
+   - 검증(WebSearch): 서킷브레이커 3단계 8/15/20% 하락·20분 정지(3단계 당일종료), 사이드카 선물 5/6% 1분지속·5분 정지, 정적 VI 기준가 ±10%·2분 단일가. KRX·easylaw 대조.
+
+### 검증
+- tsc --noEmit: 에러 0 / npm run cf:build: 성공, .next/server/app/guide 에 신규 5개 .html prerender 확인(answer-box·guide-key-points·guide-sources·citation·2026-08-04 발행일 모두 포함)
+- 문체: 신규 블록 em dash(U+2014)/en dash(U+2013) 0건, 운영자 메타 금지어 0건, sources label em dash 0건
+- SEO: title 22~30자(≤60), description 121~124자(120~155), slug ^[a-z0-9-]+ 통과, keywords 각 6개(5~8), 신규 slug 5건 기존 218 slug와 무충돌
+- 지식iN 신규 수집: 클라우드 IP 차단(응답 길이 0, 1회 재시도)으로 실패 → 정상. 저장 코퍼스 data/keywords/kin/kin-20260718.json(질문 103건) 사용.
+
+### 배포
+- push 대상 브랜치: claude/serene-hamilton-caoi66 (세션 지정 브랜치)
+- auto-deploy-claude-branch.yml 트리거 브랜치 cow2dj→caoi66 갱신 → 워크플로가 main fast-forward(ff-only) 후 Cloudflare 배포 트리거 (기존 세션과 동일 메커니즘)
+
+### ★ 오늘 발행 링크
+https://iknowhowinfo.com/guide/stock-market-volatility-causes
+https://iknowhowinfo.com/guide/national-pension-lump-sum
+https://iknowhowinfo.com/guide/isa-dividend-tax-benefit
+https://iknowhowinfo.com/guide/adjusted-stock-price-chart
+https://iknowhowinfo.com/guide/market-circuit-breaker-vi
