@@ -19728,7 +19728,450 @@ const marketCircuitBreakerVi: GuideDef = {
   ],
 };
 
+/** 지식iN 질문 수요 기반 (2026-08-05) */
+const cdRateEtfInterestAccrual: GuideDef = {
+  slug: 'cd-rate-etf-interest-accrual',
+  title: 'CD금리 ETF 이자, 분배금 없이 주가에 매일 쌓이는 원리',
+  tagline: 'CD 91일물 금리를 하루치씩 나눠 가격으로 반영하는 파킹형 ETF',
+  description:
+    'KODEX CD금리액티브 같은 파킹형 ETF는 분배금을 따로 주지 않고, CD 91일물 금리를 하루치씩 계산해 주가에 더하는 방식으로 이자를 쌓습니다. 이자가 어떻게 붙고 팔 때 어떻게 받는지, 세금과 파킹통장과의 차이를 한 페이지에 정리했습니다.',
+  keywords: ['CD금리 ETF', 'CD금리 ETF 이자', 'KODEX CD금리액티브', '파킹형 ETF', 'CD금리 ETF 매도', 'CD금리 ETF 세금'],
+  section: 'ETF 채권 가이드',
+  lastReviewed: '2026-08-05',
+  answer:
+    'CD금리 ETF는 분배금을 따로 지급하지 않고, CD 91일물 금리를 하루 단위로 계산해 주가에 조금씩 더하는 방식으로 이자를 쌓습니다. 그래서 하루만 보유해도 그날치 이자가 붙고, 이자는 나중에 팔 때 오른 가격에 녹아 한 번에 돌아옵니다. 금리가 변해도 원금이 깎이는 채권형과 달리 가격이 내려가는 일이 드물어 여유자금 파킹에 자주 쓰입니다.',
+  keyPoints: [
+    'CD 91일물 금리를 연 365일로 나눠 하루치씩 주가에 반영합니다. CD금리가 연 3.5%라면 하루에 약 0.0096%씩 가격이 오르는 식으로 이자가 붙습니다.',
+    '분배금을 지급하지 않아 배당락이 없고, 이자는 매도 시점의 오른 주가에 담겨 한 번에 회수됩니다. 하루만 담았다 팔아도 그날치 이자가 남습니다.',
+    '채권형과 달리 금리가 올라도 가격이 거의 흔들리지 않습니다. 만기 없이 초단기 금리를 따라가 원금 손실 위험이 낮아, 짧게 굴리는 여유자금 파킹에 쓰입니다.',
+    '국내 상장 CD금리 ETF의 매매차익은 배당소득세 15.4% 과세 대상입니다. 실현이익과 과세표준 증가분 중 작은 값에 매기며, ISA나 연금계좌에 담으면 세 부담을 줄일 수 있습니다.',
+  ],
+  sources: [
+    { label: '한국거래소 ETF', url: 'https://www.krx.co.kr' },
+    { label: '삼성자산운용 KODEX', url: 'https://www.samsungfund.com' },
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'KODEX CD금리액티브(합성)가 어떤 ETF이고 이자가 어떻게 붙는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=467898942' },
+  ],
+  comparisonTable: {
+    caption: '이자를 받는 방식 비교, CD금리 ETF와 분배형 채권 ETF',
+    columns: ['구분', 'CD금리 ETF', '분배형 채권 ETF'],
+    rows: [
+      ['이자 반영', '주가에 매일 누적', '분배금으로 지급'],
+      ['배당락', '없음', '분배 때 발생'],
+      ['수령 시점', '매도 시 가격에 반영', '정해진 분배 지급일'],
+      ['금리 상승 영향', '가격 거의 유지', '채권가격 하락 가능'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'CD금리 ETF가 이자를 쌓는 방식',
+      paragraphs: [
+        'CD금리 ETF는 은행이 자금을 조달할 때 쓰는 양도성예금증서(CD)의 91일물 금리를 따라갑니다. 이 금리를 연 365일로 나눈 하루치를 매일 기준가격에 더하는 구조라, 통장 잔고에 이자가 붙듯 주가가 조금씩 우상향합니다.',
+        '예를 들어 CD 91일물 금리가 연 3.5%라면, 하루에 약 0.0096%(3.5%÷365)만큼 가격이 오릅니다. 금액이 작아 보여도 매일 쌓이고 복리로 굴러가기 때문에, 며칠에서 몇 주 단위로 짧게 맡겨도 그 기간만큼의 이자가 남습니다.',
+      ],
+    },
+    {
+      heading: '하루만 담아도 이자가 붙는 이유',
+      paragraphs: [
+        '이 ETF의 가장 큰 특징은 분배금을 따로 주지 않는다는 점입니다. 이자를 현금으로 나눠 주는 대신 그날치 이자를 매일 가격에 반영하므로, 배당을 받으려고 특정 날짜까지 보유할 필요가 없습니다.',
+        '그래서 월요일에 사서 목요일에 팔아도 3일치 이자가 가격에 반영돼 있습니다. 급하게 쓸 수도 있는 돈을 잠깐 넣어 두기에 편한 구조이고, 파킹통장처럼 하루 단위로 이자가 붙는다는 점이 여유자금 관리에 잘 맞습니다.',
+      ],
+    },
+    {
+      heading: '팔 때 이자를 어떻게 돌려받나',
+      paragraphs: [
+        '이자는 분배금이 아니라 오른 가격으로 돌아옵니다. 매수가보다 높아진 가격에 팔면, 그 차액이 그동안 쌓인 이자에 해당합니다. 분배금 계좌를 따로 챙길 필요 없이 매도 한 번으로 원금과 이자를 함께 회수하는 셈입니다.',
+        '금리 방향이 바뀌어도 초단기 금리를 따라가는 상품이라 가격이 급락하는 일은 드뭅니다. 다만 합성형은 증권사와의 계약(스와프)으로 지수를 따라가므로, 이 구조와 보수 수준을 상품 설명서에서 확인해 두는 편이 좋습니다.',
+      ],
+    },
+    {
+      heading: '세금과 활용, 어디에 담을까',
+      paragraphs: [
+        '국내 상장 CD금리 ETF의 매매차익은 국내주식형이 아니라서 배당소득세 15.4%가 매겨집니다. 실제로 실현한 이익과 보유기간 과세표준 증가분 가운데 작은 금액을 기준으로 세금을 떼는 방식입니다.',
+        '세금이 붙는 소득인 만큼, 여유가 있다면 ISA나 연금계좌 안에서 굴리면 비과세나 저율과세, 과세이연의 이점을 살릴 수 있습니다. 다만 세부 과세 방식과 한도는 상품과 계좌에 따라 다르니, 매수 전 운용사 설명서와 홈택스 기준을 다시 확인해 보시길 권합니다. 이 글은 참고용 정리입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'CD금리 ETF는 분배금을 주나요?',
+      answer:
+        '대부분 분배금을 지급하지 않습니다. CD 91일물 금리를 하루치씩 계산해 주가에 더하는 방식이라, 이자는 나중에 팔 때 오른 가격으로 한 번에 회수됩니다.',
+    },
+    {
+      question: '하루만 사고팔아도 이자가 붙나요?',
+      answer:
+        '네. 매일 그날치 이자가 가격에 반영되므로 하루만 보유해도 하루치 이자가 남습니다. 배당을 받으려 특정 날짜까지 기다릴 필요가 없습니다.',
+    },
+    {
+      question: '금리가 오르면 CD금리 ETF 가격이 떨어지나요?',
+      answer:
+        '일반 채권 ETF는 금리가 오르면 채권가격이 내려 손실이 날 수 있지만, CD금리 ETF는 초단기 금리를 따라가 가격이 거의 흔들리지 않습니다. 원금 손실 위험이 낮은 편입니다.',
+    },
+    {
+      question: 'CD금리 ETF 매매차익에도 세금이 있나요?',
+      answer:
+        '국내 상장 CD금리 ETF의 매매차익은 배당소득세 15.4% 대상입니다. ISA나 연금계좌에 담으면 세 부담을 줄일 수 있으니, 계좌별 과세 방식을 확인해 보세요.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-05) */
+const isaPensionSameEtfOverlap: GuideDef = {
+  slug: 'isa-pension-same-etf-overlap',
+  title: 'ISA와 연금저축에 같은 S&P500 ETF, 중복해도 될까',
+  tagline: '두 계좌에 같은 지수를 담아도 되지만, 역할을 나누면 더 유리',
+  description:
+    'ISA에서 이미 S&P500 ETF를 사고 있는데 연금저축펀드에도 같은 걸 담아도 되는지 헷갈린다면, 결론은 중복해도 문제없지만 계좌 성격이 달라 역할을 나누는 편이 낫습니다. 세제와 인출 조건 차이로 무엇을 어디에 둘지 정리했습니다.',
+  keywords: ['ISA 연금저축 중복', 'ISA 연금저축 S&P500', '연금저축펀드 ETF', 'ISA 연금 자금 배분', '절세계좌 포트폴리오', 'ISA 연금저축 차이'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-05',
+  answer:
+    'ISA와 연금저축펀드에 같은 S&P500 ETF를 담아도 제도상 아무 문제가 없습니다. 다만 두 계좌는 세제 혜택과 돈을 찾는 조건이 서로 달라, 똑같이 복사하기보다 역할을 나누는 편이 낫습니다. 만 55세 전에 쓸 수 있는 돈은 ISA에, 노후까지 묻어 둘 돈은 세액공제가 되는 연금저축에 두는 식으로 나누면 세금과 유동성을 함께 챙길 수 있습니다.',
+  keyPoints: [
+    '두 계좌에 같은 ETF를 중복 보유해도 규정 위반이 아닙니다. 연금저축은 납입액의 최대 600만원까지 세액공제(총급여 5,500만원 이하 16.5%, 초과 13.2%)를 주는 반면, ISA에는 세액공제가 없습니다.',
+    'ISA는 의무가입 3년 뒤 자유롭게 찾을 수 있지만, 연금저축은 만 55세 이후 연금으로 받아야 저율과세가 적용됩니다. 중간에 헐면 세액공제받은 금액에 16.5% 기타소득세가 붙습니다.',
+    '연금저축펀드에서는 레버리지, 인버스, 파생형 ETF를 담을 수 없습니다. 노후 자금 계좌라 S&P500 같은 폭넓은 지수형이 이 계좌의 성격에 맞습니다.',
+    '순서를 정한다면 연금저축 600만원을 먼저 채워 세액공제를 확보하고, ISA는 3년 안에 쓸 수 있는 자금이나 배당 상품 위주로 운용하는 조합이 자주 쓰입니다.',
+  ],
+  sources: [
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA에서 매달 S&P500을 사는데 연금저축펀드도 같은 방식으로 가져가야 할지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=489444942' },
+    { summary: 'ISA계좌에서 이미 ETF를 운용 중인데 미래에셋 연금저축계좌를 어떻게 활용할지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493610254' },
+    { summary: '연금저축, IRP, ISA 중 어디부터 시작하는 게 효율적인지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494334592' },
+  ],
+  comparisonTable: {
+    caption: 'ISA와 연금저축, 같은 ETF라도 계좌 성격 비교',
+    columns: ['구분', 'ISA', '연금저축펀드'],
+    rows: [
+      ['세액공제', '없음', '연 최대 600만원'],
+      ['인출', '의무 3년 후 자유', '만 55세 이후 연금'],
+      ['중도 해지', '혜택만 사라짐', '기타소득세 16.5%'],
+      ['담을 수 있는 ETF', '레버리지 포함 폭넓음', '지수형 위주, 파생 제외'],
+    ],
+  },
+  sections: [
+    {
+      heading: '같은 ETF를 두 계좌에 담아도 될까',
+      paragraphs: [
+        '결론부터 보면, ISA와 연금저축펀드에 같은 S&P500 ETF를 함께 담는 것은 제도상 전혀 문제가 없습니다. 계좌마다 별도로 매매되고 세금도 따로 계산되므로, 한쪽에 있다고 다른 쪽에서 못 사는 일은 없습니다.',
+        '다만 "담을 수 있느냐"와 "그게 유리하냐"는 다른 질문입니다. 두 계좌는 세금 혜택과 돈을 찾는 조건이 크게 다르기 때문에, 똑같은 비중으로 복사하기보다 각 계좌의 장점에 맞춰 역할을 나누는 편이 결과가 낫습니다.',
+      ],
+    },
+    {
+      heading: '세액공제가 갈리는 지점',
+      paragraphs: [
+        '가장 큰 차이는 세액공제입니다. 연금저축은 한 해 납입액 가운데 최대 600만원까지 세액공제를 해 줍니다. 총급여 5,500만원 이하면 16.5%, 넘으면 13.2%를 돌려받으니 600만원을 채우면 79만2천원에서 99만원을 환급받는 셈입니다.',
+        'ISA에는 이런 세액공제가 없습니다. 대신 계좌 안 순이익을 200만원(서민형 400만원)까지 비과세하고 넘는 금액은 9.9%로 분리과세합니다. 그래서 당장 세금을 돌려받는 효과는 연금저축이 크고, ISA는 굴리는 동안의 절세에 강점이 있습니다.',
+      ],
+    },
+    {
+      heading: '언제 찾을 수 있는가, 유동성 차이',
+      paragraphs: [
+        'ISA는 의무가입기간 3년을 채우면 자유롭게 해지해 쓸 수 있습니다. 반면 연금저축은 만 55세 이후 연금 형태로 받을 때 3.3~5.5%의 낮은 세율이 적용되는 노후 전용 계좌입니다.',
+        '연금저축을 만 55세 전에 중도 해지하면 그동안 세액공제받은 원금과 수익에 16.5% 기타소득세가 붙어, 받았던 혜택이 사라질 수 있습니다. 그래서 가까운 시일에 쓸 돈은 ISA에, 오래 묻어 둘 노후 자금은 연금저축에 두는 배분이 안전합니다.',
+      ],
+    },
+    {
+      heading: '역할을 나누는 실전 배분',
+      paragraphs: [
+        '자금을 나눈다면 연금저축의 세액공제 한도 600만원을 먼저 채워 당장의 환급을 확보하고, 여기에는 S&P500이나 나스닥100 같은 장기 지수형을 코어로 담는 방법이 흔합니다. 노후까지 묻어 두는 돈이라 폭넓은 지수가 잘 맞습니다.',
+        'ISA에는 3년 안에 쓸 수 있는 여유자금이나 배당, 채권형처럼 굴리는 동안 세금이 붙는 상품을 넣어 비과세 한도를 활용하는 식입니다. 결국 같은 지수를 중복해도 되지만, 두 계좌의 강점을 겹치지 않게 배치하는 것이 핵심입니다. 세제와 한도는 바뀔 수 있으니 가입 전 최신 기준을 확인하세요. 투자 판단과 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA와 연금저축에 같은 ETF를 담으면 불이익이 있나요?',
+      answer:
+        '없습니다. 계좌마다 따로 매매되고 세금도 별도로 계산돼 규정 위반이 아닙니다. 다만 계좌 성격이 달라 역할을 나눠 담는 편이 세금과 유동성 면에서 유리합니다.',
+    },
+    {
+      question: '어느 계좌부터 채우는 게 좋나요?',
+      answer:
+        '세액공제가 있는 연금저축 600만원을 먼저 채워 환급을 확보하고, ISA는 3년 안에 쓸 자금이나 배당 상품 위주로 운용하는 조합이 자주 쓰입니다.',
+    },
+    {
+      question: '연금저축펀드에도 S&P500 ETF를 담을 수 있나요?',
+      answer:
+        '네. S&P500 같은 지수형 ETF는 담을 수 있습니다. 다만 레버리지, 인버스, 파생형 ETF는 연금저축펀드에서 매수가 제한됩니다.',
+    },
+    {
+      question: '연금저축을 중간에 해지하면 어떻게 되나요?',
+      answer:
+        '만 55세 전에 중도 해지하면 세액공제받은 원금과 수익에 16.5% 기타소득세가 부과됩니다. 받았던 세제 혜택이 사라질 수 있어 급전이 필요한 돈은 ISA에 두는 편이 낫습니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-05) */
+const overseasEtfDividendCurrency: GuideDef = {
+  slug: 'overseas-etf-dividend-currency',
+  title: '해외 ETF 직투는 달러 배당, 국내 상장은 원화 배당',
+  tagline: '같은 S&P500이라도 배당이 들어오는 통화와 환전 부담이 다르다',
+  description:
+    'VOO를 직접 사면 배당이 달러로 들어오고, ISA나 연금저축에서 국내 상장 S&P500 ETF를 담으면 배당이 원화로 들어옵니다. 왜 통화가 달라지는지, 환전 비용과 재투자 편의, 원천징수까지 실제 수령액에 영향을 주는 차이를 정리했습니다.',
+  keywords: ['해외 ETF 배당 통화', 'VOO 달러 배당', '국내 상장 S&P500 배당', 'ETF 배당 원화', '해외 ETF 원천징수', '연금저축 S&P500 배당'],
+  section: '해외상장 가이드',
+  lastReviewed: '2026-08-05',
+  answer:
+    '미국에 상장된 VOO를 직접 사면 분배금이 달러로 들어오고, 국내 상장 S&P500 ETF를 ISA나 연금저축에서 담으면 운용사가 달러를 원화로 바꿔 원화로 지급합니다. 같은 지수라도 배당이 오는 통화가 다르고, 직투는 달러를 원화로 쓰려면 환전 비용이 들어갑니다. 급하게 원화로 써야 하는 돈이라면 국내 상장 쪽이 손이 덜 갑니다.',
+  keyPoints: [
+    '미국 상장 ETF(VOO 등)의 배당은 미국에서 15%를 원천징수한 뒤 달러로 지급됩니다. 연 배당 100달러라면 약 85달러가 달러로 들어옵니다.',
+    '국내 상장 S&P500 ETF는 운용사가 받은 달러 배당을 환율을 반영해 원화로 바꿔 지급하고, 국내 기준 배당소득세 15.4%가 적용됩니다.',
+    '직투 배당은 달러라 원화로 쓰려면 환전 스프레드가 붙습니다. 국내 상장은 원화로 바로 들어와 환전 없이 쓰거나 재투자하기 편합니다.',
+    'ISA나 연금저축에서는 국내 상장 해외 ETF만 담을 수 있어, 이 계좌를 쓰면 배당은 자연히 원화로 받게 됩니다. 직투는 일반 위탁계좌에서만 가능합니다.',
+  ],
+  sources: [
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '한국거래소', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '직투로 VOO를 사면 배당이 달러로, ISA나 연금저축펀드로 S&P500을 사면 원화로 나오는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494129410' },
+  ],
+  comparisonTable: {
+    caption: '배당 통화와 처리 방식, 미국 직투와 국내 상장 S&P500 ETF',
+    columns: ['구분', '미국 직투(VOO 등)', '국내 상장 S&P500 ETF'],
+    rows: [
+      ['배당 통화', '달러', '원화'],
+      ['원천징수', '미국 15%', '국내 15.4%'],
+      ['환전', '원화로 쓰려면 필요', '환전 없이 수령'],
+      ['가능 계좌', '일반 위탁계좌', 'ISA·연금·일반 모두'],
+    ],
+  },
+  sections: [
+    {
+      heading: '왜 배당 통화가 달라지나',
+      paragraphs: [
+        '두 상품 모두 실제로는 달러 자산(미국 S&P500 종목)을 담고 있어 배당의 원천은 달러입니다. 차이는 그 달러가 내 손에 오기까지의 경로입니다.',
+        '미국에 상장된 VOO를 직접 사면 미국 증권계좌로 달러 배당이 그대로 들어옵니다. 반면 국내 상장 S&P500 ETF는 운용사가 달러 배당을 대신 받아 환율을 반영해 원화로 바꾼 뒤, 분배금을 원화로 지급합니다. 그래서 투자자에게는 원화로 들어옵니다.',
+      ],
+    },
+    {
+      heading: '원천징수와 실제 수령액',
+      paragraphs: [
+        '미국 상장 ETF의 배당은 미국 세법에 따라 15%가 먼저 원천징수됩니다. 연 100달러 배당이라면 약 85달러가 달러로 입금되는 구조입니다. 국내에서 종합과세 대상이 되면 외국납부세액공제로 이 15%를 반영해 이중과세를 조정합니다.',
+        '국내 상장 해외 ETF는 분배금에 국내 배당소득세 15.4%가 적용됩니다. 겉으로는 원화로 깔끔하게 들어오지만, 펀드 안에서 굴러가는 세금과 보수가 가격에 녹아 있다는 점은 함께 알아 두는 편이 좋습니다.',
+      ],
+    },
+    {
+      heading: '환전 부담과 재투자 편의',
+      paragraphs: [
+        '직투로 받은 달러 배당은 그대로 미국 주식을 더 사기에는 편하지만, 원화로 생활비처럼 쓰려면 환전을 거쳐야 합니다. 이때 살 때와 팔 때 환율 차이(스프레드)만큼 비용이 발생합니다.',
+        '국내 상장 ETF의 원화 배당은 별도 환전 없이 바로 쓰거나 다른 원화 상품에 재투자할 수 있습니다. 자주 배당을 받아 원화로 굴리는 전략이라면 환전 손이 덜 가는 국내 상장 쪽이 편합니다. 반대로 달러 자산을 계속 달러로 모아 가려는 사람에게는 직투가 맞습니다.',
+      ],
+    },
+    {
+      heading: '계좌 선택으로 갈리는 통화',
+      paragraphs: [
+        '통화 선택은 결국 어떤 계좌를 쓰느냐와 이어집니다. ISA와 연금저축에서는 미국에 직접 상장된 종목을 담을 수 없고 국내 상장 ETF만 가능하므로, 이 계좌를 활용하면 배당은 자연스럽게 원화로 받게 됩니다.',
+        '달러 배당을 그대로 받고 싶다면 일반 위탁계좌에서 미국 상장 ETF를 직접 매수해야 합니다. 어느 쪽이 낫다기보다, 원화가 필요한지 달러를 모으고 싶은지에 따라 선택이 달라집니다. 환율과 세율은 수시로 바뀌니 매수 전 최신 기준을 확인하고, 투자 결정과 책임은 본인 몫이라는 점을 염두에 두세요.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'VOO 배당은 달러로 들어오나요?',
+      answer:
+        '네. 미국 상장 ETF인 VOO의 배당은 미국에서 15%를 원천징수한 뒤 달러로 지급됩니다. 원화로 쓰려면 환전을 거쳐야 합니다.',
+    },
+    {
+      question: '국내 상장 S&P500 ETF 배당은 왜 원화인가요?',
+      answer:
+        '운용사가 달러로 받은 배당을 환율을 반영해 원화로 바꿔 지급하기 때문입니다. 투자자는 환전 절차 없이 원화 분배금을 받습니다.',
+    },
+    {
+      question: 'ISA나 연금저축에서 VOO를 직접 살 수 있나요?',
+      answer:
+        '없습니다. 이 계좌에서는 미국에 직접 상장된 종목을 담을 수 없고 국내 상장 해외 ETF만 매수할 수 있습니다. 그래서 배당은 원화로 들어옵니다.',
+    },
+    {
+      question: '배당 통화가 세금에 영향을 주나요?',
+      answer:
+        '통화 자체보다 상장지가 세금을 가릅니다. 미국 직투는 미국 15% 원천징수, 국내 상장은 국내 배당소득세 15.4%가 적용되며, 계좌 종류에 따라 절세 여지가 달라집니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-05) */
+const bitcoinDominanceAltcoin: GuideDef = {
+  slug: 'bitcoin-dominance-altcoin',
+  title: '비트코인 도미넌스란, 현물 ETF 자금이 쏠리는 이유',
+  tagline: '전체 코인 시장에서 비트코인이 차지하는 비중, 무엇을 말해 주나',
+  description:
+    '비트코인 현물 ETF로 들어온 돈이 비트코인에 먼저 몰린다는 말의 배경에는 비트코인 도미넌스라는 지표가 있습니다. 도미넌스가 무엇이고 왜 오르내리는지, 알트코인과 어떤 관계인지 예측이 아닌 구조로 정리하고 위험도 함께 짚었습니다.',
+  keywords: ['비트코인 도미넌스', '비트코인 현물 ETF', '알트코인', '코인 시가총액 비중', '비트코인 자금 쏠림', '알트코인 위험'],
+  section: '테마 ETF 가이드',
+  lastReviewed: '2026-08-05',
+  answer:
+    '비트코인 도미넌스는 전체 가상자산 시가총액에서 비트코인이 차지하는 비중을 뜻합니다. 현물 ETF로 들어온 기관 자금은 규제와 상품 구조상 비트코인에 먼저 배분되는 경우가 많아 도미넌스를 끌어올리는 요인이 됩니다. 도미넌스가 높아지면 상대적으로 알트코인 비중이 낮아지지만, 이것이 특정 코인의 상승이나 하락을 보장하지는 않습니다.',
+  keyPoints: [
+    '비트코인 도미넌스는 비트코인 시가총액을 전체 가상자산 시가총액으로 나눈 값입니다. 예를 들어 전체가 100이고 비트코인이 55라면 도미넌스는 55%입니다.',
+    '현물 ETF는 대부분 비트코인을 기초자산으로 삼아, 유입된 자금이 알트코인보다 비트코인에 먼저 배분되는 경향이 있습니다. 이 흐름이 도미넌스를 밀어 올릴 수 있습니다.',
+    '도미넌스가 오르면 전체 시장에서 알트코인이 차지하는 몫은 상대적으로 줄어듭니다. 다만 이는 비중의 변화일 뿐, 개별 코인의 가격 방향을 예측해 주지 않습니다.',
+    '알트코인은 비트코인보다 변동성이 크고 유동성이 낮아 손실 위험이 큽니다. 과거의 자금 순환 패턴이 미래에 반복된다는 보장은 없습니다.',
+  ],
+  sources: [
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+    { label: '금융감독원 전자공시', url: 'https://dart.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '비트코인 ETF로 자금이 비트코인에 쏠리면 알트코인 시즌이 올 수 있는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=461078410' },
+  ],
+  sections: [
+    {
+      heading: '비트코인 도미넌스가 뜻하는 것',
+      paragraphs: [
+        '비트코인 도미넌스는 전체 가상자산 시가총액 중 비트코인이 차지하는 비중을 백분율로 나타낸 지표입니다. 비트코인 시가총액을 전체 코인 시가총액으로 나눠 계산합니다.',
+        '전체 시장이 100이고 그중 비트코인이 55라면 도미넌스는 55%입니다. 이 숫자가 오르면 시장의 관심과 돈이 비트코인 쪽으로 더 모여 있다는 의미이고, 내리면 상대적으로 알트코인 쪽 비중이 커졌다는 뜻으로 읽힙니다.',
+      ],
+    },
+    {
+      heading: '현물 ETF 자금이 비트코인에 먼저 가는 구조',
+      paragraphs: [
+        '현물 ETF는 실제 코인을 담아 그 가격을 따라가도록 만든 상품인데, 지금 제도권에서 승인돼 거래되는 상품은 대부분 비트코인을 기초자산으로 합니다. 그래서 ETF로 유입된 자금은 자연히 비트코인 매수로 이어지는 경우가 많습니다.',
+        '기관 투자자는 규제와 내부 기준상 검증된 상품 위주로 접근하는 경향이 있어, 알트코인보다 비트코인에 먼저 배분하는 흐름이 나타나곤 합니다. 이런 자금이 꾸준히 들어오면 비트코인 도미넌스를 밀어 올리는 요인이 될 수 있습니다.',
+      ],
+    },
+    {
+      heading: '도미넌스와 알트코인의 관계',
+      paragraphs: [
+        '자금이 비트코인에 집중돼 도미넌스가 높아지면, 전체 시장에서 알트코인이 차지하는 몫은 상대적으로 줄어듭니다. 반대로 도미넌스가 내려가는 국면에서는 알트코인으로 관심이 옮겨 갔다고 해석하는 경우가 많습니다.',
+        '다만 이것은 어디까지나 비중의 변화를 보여 주는 지표입니다. 도미넌스가 오르내린다고 해서 특정 알트코인이 반드시 오르거나 내린다는 뜻은 아닙니다. 지표는 시장의 자금 분포를 읽는 참고 자료일 뿐, 가격을 예측하는 도구가 아닙니다.',
+      ],
+    },
+    {
+      heading: '알아 둬야 할 위험',
+      paragraphs: [
+        '알트코인은 비트코인보다 발행 주체와 사용처가 제각각이고, 시가총액과 유동성이 작아 가격이 훨씬 크게 출렁입니다. 짧은 시간에 큰 손실이 날 수 있고, 상장 폐지나 프로젝트 중단 위험도 상대적으로 높습니다.',
+        '과거에 비트코인 상승 뒤 알트코인이 따라 오르는 흐름이 있었다고 해서, 그 패턴이 이번에도 반복된다는 보장은 없습니다. 가상자산은 원금 손실 가능성이 큰 자산이므로, 이 글은 시장 구조를 이해하기 위한 참고 자료로만 봐 주시고, 투자 여부와 그 결과에 대한 책임은 전적으로 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '비트코인 도미넌스는 어떻게 계산하나요?',
+      answer:
+        '비트코인 시가총액을 전체 가상자산 시가총액으로 나눈 값입니다. 전체가 100이고 비트코인이 55라면 도미넌스는 55%로, 시장 내 비트코인 비중을 보여 줍니다.',
+    },
+    {
+      question: '현물 ETF 자금은 왜 비트코인에 몰리나요?',
+      answer:
+        '지금 승인돼 거래되는 현물 ETF는 대부분 비트코인을 기초자산으로 삼기 때문입니다. 유입 자금이 비트코인 매수로 이어져 도미넌스를 끌어올리는 요인이 됩니다.',
+    },
+    {
+      question: '도미넌스가 높아지면 알트코인은 떨어지나요?',
+      answer:
+        '도미넌스가 오르면 전체에서 알트코인 비중이 상대적으로 줄지만, 이는 비중의 변화일 뿐 개별 코인 가격의 방향을 예측해 주지는 않습니다.',
+    },
+    {
+      question: '알트코인 투자는 비트코인보다 위험한가요?',
+      answer:
+        '일반적으로 그렇습니다. 알트코인은 시가총액과 유동성이 작아 변동성이 크고, 상장 폐지나 프로젝트 중단 위험도 높은 편입니다. 원금 손실 가능성을 충분히 감안해야 합니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-05) */
+const pensionMonthlyContributionAmount: GuideDef = {
+  slug: 'pension-monthly-contribution-amount',
+  title: '연금저축 IRP 매달 얼마 넣어야 세액공제 최대일까',
+  tagline: '한 해 900만원, 월 75만원이면 공제 한도를 꽉 채운다',
+  description:
+    '연금저축과 IRP에 매달 얼마를 넣어야 세액공제를 다 받는지 헷갈린다면, 한 해 900만원이 공제 한도라 월 75만원이면 꽉 채웁니다. 연금저축 600만원과 IRP 300만원 배분, 12월 몰아넣기 가능 여부, 환급액까지 정리했습니다.',
+  keywords: ['연금저축 월 납입액', 'IRP 월 얼마', '연금저축 세액공제 한도', '연금 900만원', '연금저축 IRP 배분', '연금 세액공제 환급'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-05',
+  answer:
+    '연금저축과 IRP를 합쳐 한 해 900만원까지 세액공제를 받을 수 있어, 매달 75만원씩 넣으면 한도를 정확히 채웁니다. 연금저축은 그중 최대 600만원(월 50만원)까지 공제되고, 나머지 300만원은 IRP로 채우면 됩니다. 꼭 매달 나눠 넣을 필요는 없고 12월에 한 번에 넣어도 그해 공제를 받습니다.',
+  keyPoints: [
+    '세액공제 한도는 연금저축과 IRP를 합쳐 연 900만원입니다. 12개월로 나누면 월 75만원이면 한도를 꽉 채웁니다.',
+    '연금저축은 단독으로는 최대 600만원(월 50만원)까지 공제됩니다. 900만원을 다 채우려면 연금저축 600만원에 IRP 300만원을 더하는 조합이 많이 쓰입니다.',
+    '공제율은 총급여 5,500만원(종합소득 4,500만원) 이하가 16.5%, 초과 시 13.2%입니다. 900만원을 채우면 최대 148만5천원을 환급받습니다.',
+    '매달 자동이체로 나눠 넣든 12월에 한 번에 넣든, 그해 안에 납입하면 세액공제 대상입니다. 다만 나눠 넣으면 적립식 효과로 매수 시점이 분산됩니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '연금저축, IRP, ISA 중 무엇부터 시작해야 효율적인지, 연금저축 세액공제가 큰지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494334592' },
+    { summary: 'ISA에 이어 연금저축펀드에 매달 얼마씩 넣어 노후를 준비할지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=489444942' },
+  ],
+  comparisonTable: {
+    caption: '세액공제 한도를 채우는 월 납입액 예시',
+    columns: ['목표', '연금저축', 'IRP 추가', '월 합계'],
+    rows: [
+      ['공제 600만원', '600만원', '0원', '월 50만원'],
+      ['공제 900만원', '600만원', '300만원', '월 75만원'],
+      ['환급(16.5%)', '99만원', '49만5천원', '최대 148만5천원'],
+    ],
+  },
+  sections: [
+    {
+      heading: '세액공제 한도가 곧 목표 금액',
+      paragraphs: [
+        '매달 얼마를 넣을지는 세액공제 한도에서 거꾸로 계산하면 간단합니다. 연금저축과 IRP를 합친 세액공제 한도는 한 해 900만원입니다. 이 900만원을 12개월로 나누면 월 75만원이 나옵니다.',
+        '즉 매달 75만원씩 자동이체하면 1년에 900만원을 채워 공제 한도를 정확히 소진합니다. 900만원을 넘겨 넣어도 초과분은 공제 대상이 아니므로, 세액공제만 노린다면 900만원이 넣을 금액의 상한선이 됩니다.',
+      ],
+    },
+    {
+      heading: '연금저축 600만원, IRP 300만원으로 나누는 이유',
+      paragraphs: [
+        '900만원을 어떻게 나눌지도 정해져 있습니다. 연금저축은 단독으로는 최대 600만원까지만 공제되고, IRP를 더하면 합산 900만원까지 늘어납니다. 그래서 연금저축에 600만원(월 50만원), IRP에 300만원(월 25만원)을 넣는 조합이 가장 널리 쓰입니다.',
+        'IRP만으로도 900만원 전액을 채울 수 있지만, IRP는 위험자산 투자 한도가 70%로 묶여 있어 상품 선택의 폭이 좁습니다. 그래서 상품을 자유롭게 고르고 싶은 부분은 연금저축에 두고, 나머지를 IRP로 채우는 방식이 편리합니다.',
+      ],
+    },
+    {
+      heading: '얼마를 돌려받나',
+      paragraphs: [
+        '공제율은 소득에 따라 갈립니다. 총급여 5,500만원(종합소득 4,500만원) 이하면 16.5%, 넘으면 13.2%가 적용됩니다. 900만원을 다 채운 경우 16.5% 구간이면 148만5천원, 13.2% 구간이면 118만8천원을 연말정산에서 돌려받습니다.',
+        '600만원만 채우면 16.5% 기준 99만원입니다. 여윳돈이 빠듯하다면 연금저축 600만원부터 채워 공제 효율이 가장 높은 구간을 먼저 잡고, 여력이 생기면 IRP로 900만원까지 늘리는 순서가 무난합니다.',
+      ],
+    },
+    {
+      heading: '매달 나눠? 12월에 몰아서?',
+      paragraphs: [
+        '납입 시점은 자유롭습니다. 매달 자동이체로 나눠 넣든, 여유가 생긴 12월에 한꺼번에 넣든, 그해 12월 31일까지 납입하면 모두 그해 세액공제 대상이 됩니다. 급여 흐름이 불규칙하다면 보너스가 나오는 달에 몰아넣어도 됩니다.',
+        '다만 매달 나눠 넣으면 매수 시점이 분산돼 특정 시점 고점에 몰아 사는 위험을 줄이는 효과가 있습니다. 세액공제 금액 자체는 같으니, 현금 흐름과 투자 취향에 맞춰 고르면 됩니다. 세액공제 한도와 공제율은 세법 개정으로 달라질 수 있어, 납입 전 홈택스에서 최신 기준을 확인하시길 권합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '연금저축과 IRP에 매달 얼마를 넣어야 하나요?',
+      answer:
+        '세액공제 한도가 합산 연 900만원이라, 매달 75만원씩 넣으면 한도를 꽉 채웁니다. 연금저축 월 50만원과 IRP 월 25만원으로 나누는 조합이 흔합니다.',
+    },
+    {
+      question: '연금저축만으로 900만원을 다 공제받을 수 있나요?',
+      answer:
+        '아니요. 연금저축 단독 공제 한도는 600만원입니다. 900만원을 다 채우려면 IRP에 300만원을 더하거나 IRP만으로 900만원을 넣어야 합니다.',
+    },
+    {
+      question: '12월에 한 번에 넣어도 세액공제가 되나요?',
+      answer:
+        '됩니다. 그해 12월 31일까지 납입하면 매달 나눠 넣든 한 번에 넣든 모두 그해 공제 대상입니다. 다만 나눠 넣으면 매수 시점이 분산되는 효과가 있습니다.',
+    },
+    {
+      question: '900만원을 채우면 얼마를 돌려받나요?',
+      answer:
+        '총급여 5,500만원 이하면 16.5%가 적용돼 148만5천원, 초과하면 13.2%로 118만8천원을 환급받습니다. 600만원만 채우면 16.5% 기준 99만원입니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  cdRateEtfInterestAccrual,
+  isaPensionSameEtfOverlap,
+  overseasEtfDividendCurrency,
+  bitcoinDominanceAltcoin,
+  pensionMonthlyContributionAmount,
   stockMarketVolatilityCauses,
   nationalPensionLumpSum,
   isaDividendTaxBenefit,
@@ -19962,6 +20405,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-05 · 지식iN 질문 수요 기반 (CD금리 ETF 이자 누적 원리·ISA와 연금저축 같은 ETF 중복·해외 ETF 직투 달러 배당 vs 국내 원화 배당·비트코인 도미넌스·연금저축 IRP 월 납입액)
+  'cd-rate-etf-interest-accrual': '2026-08-05',
+  'isa-pension-same-etf-overlap': '2026-08-05',
+  'overseas-etf-dividend-currency': '2026-08-05',
+  'bitcoin-dominance-altcoin': '2026-08-05',
+  'pension-monthly-contribution-amount': '2026-08-05',
   // 2026-08-04 · 지식iN 질문 수요 기반 (주가 변동성 원인·국민연금 반환일시금·ISA 배당 비과세 한도·차트 급락 착시(수정주가)·서킷브레이커와 VI)
   'stock-market-volatility-causes': '2026-08-04',
   'national-pension-lump-sum': '2026-08-04',
@@ -20246,7 +20695,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount'],
   },
   {
     title: '배당·인컴',
@@ -20256,17 +20705,17 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '테마·섹터',
     description: '방산·조선·건설·자동차·AI·반도체·빅테크·소프트웨어·보안·로봇·전기차·신재생·희토류·게임·엔터·명품·뷰티·비트코인·인프라 등 특정 테마에 집중하는 섹터 ETF.',
-    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'bitcoin-krw-buy-withdrawal', 'crypto-exchange-fee-structure', 'crypto-leverage-long-term-risk', 'overseas-crypto-futures-tax'],
+    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'bitcoin-krw-buy-withdrawal', 'crypto-exchange-fee-structure', 'crypto-leverage-long-term-risk', 'overseas-crypto-futures-tax', 'bitcoin-dominance-altcoin'],
   },
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency'],
   },
   {
     title: '전략·자산배분',
     description: '적립식·리밸런싱·팩터·자산배분(TRF)·채권·미국국채·회사채·채권혼합·파킹·금·은·구리·원유·농산물·원자재·레버리지 — 포트폴리오를 굴리고 위험을 관리하는 전략.',
-    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking'],
+    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual'],
   },
 ];
 
