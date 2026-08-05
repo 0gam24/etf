@@ -1909,3 +1909,5 @@ https://iknowhowinfo.com/guide/loss-aversion-spare-money
 https://iknowhowinfo.com/guide/short-horizon-money-etf-risk
 https://iknowhowinfo.com/guide/us-etf-order-fails-checklist
 https://iknowhowinfo.com/guide/all-time-high-etf-entry
+
+색인 푸시 (npm run push:guides · 대상 5편 + 허브 /guide/latest·/guide·/): IndexNow skip(no-site-url·키 미설정), Google Indexing skip(no-credentials). 클라우드 환경 키 미설정으로 양 채널 자동 skip(안전). 이 발행은 feature 브랜치(PR #13)라 production 반영은 main 병합 후이며, 실제 색인 요청은 병합 후 키가 설정된 환경에서 수행됨.
