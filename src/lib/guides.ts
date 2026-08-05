@@ -19284,6 +19284,420 @@ const stockOrderTypesGuide: GuideDef = {
   ],
 };
 
+/** 지식iN 질문 수요 기반 (2026-08-06) · 고분배율 착시 */
+const highDistributionYieldMyth: GuideDef = {
+  slug: 'high-distribution-yield-myth',
+  title: '분배율 20% ETF, 20년 뒤 정말 대박 날까',
+  tagline: '높은 분배율이 곧 높은 총수익은 아니라는 이야기',
+  description:
+    '월배당 ETF의 분배율이 20%라고 20년 뒤 자산이 몇 배로 불어나는 건 아닙니다. 높은 분배율에 숨은 원금 반환 성격과 분배락, 커버드콜의 상승 제한, 분배금에 붙는 세금까지 따져 총수익 관점에서 고분배율의 착시를 초보 눈높이로 풀었습니다.',
+  keywords: ['분배율 착시', '월배당 ETF 분배율', '고분배율 ETF', '커버드콜 분배금', 'ETF 분배락', 'ETF 총수익', '분배율 20%'],
+  section: 'ETF 분배금 가이드',
+  lastReviewed: '2026-08-06',
+  answer:
+    '분배율이 20%라고 해서 매년 자산이 20%씩 불어나는 것은 아닙니다. 분배금 일부는 원금을 돌려받는 성격일 수 있고, 분배할 때 기준가가 그만큼 내려가며(분배락), 커버드콜형은 상승장 수익이 제한되고 분배금에는 세금도 붙습니다. 판단 기준은 분배율 하나가 아니라 가격 변화와 분배를 합친 총수익입니다.',
+  keyPoints: [
+    '높은 분배율이 곧 높은 수익은 아닙니다. 분배금을 준 만큼 기준가가 내려가는 분배락이 함께 일어나기 때문에, 분배율과 가격 하락을 합친 총수익으로 봐야 실제 성과를 알 수 있습니다.',
+    '국내 상장 커버드콜 ETF의 분배금 중 배당 재원에는 배당소득세 15.4%가 붙습니다. 세금으로 새는 금액은 재투자되지 못해 장기 복리를 갉아먹는 요인입니다.',
+    '커버드콜은 옵션을 팔아 분배 재원을 만드는 대신 기초자산이 크게 오를 때 그 상승분을 상당 부분 포기합니다. 강세장이 길수록 지수 추종형보다 뒤처질 수 있습니다.',
+    '분배율 20%를 20년 복리로 단순 계산하면 큰 수가 나오지만, 원금 반환 성격과 분배락, 세금을 반영하면 실제 자산 증가는 그 숫자와 크게 벌어집니다.',
+  ],
+  sources: [
+    { label: '금융감독원 파인', url: 'https://fine.fss.or.kr' },
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '월배당 20%짜리 ETF면 20년쯤 지나면 대박 나는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494173797' },
+  ],
+  sections: [
+    {
+      heading: '분배율 20%가 뜻하는 것과 뜻하지 않는 것',
+      paragraphs: [
+        '분배율은 최근 지급한 분배금을 현재 가격으로 나눈 비율입니다. 분배율 20%라면 지금 가격 기준으로 1년 치 분배금이 원금의 20% 정도라는 뜻이지, 자산이 매년 20%씩 커진다는 약속이 아닙니다. 둘은 전혀 다른 이야기입니다.',
+        '분배금은 하늘에서 떨어지는 돈이 아니라 ETF가 보유한 자산에서 빠져나가는 돈입니다. 그래서 분배금을 지급하면 그만큼 ETF의 기준가가 내려갑니다. 이 하락을 분배락이라고 부릅니다. 통장에 현금이 들어온 만큼 보유 자산의 평가액이 줄어드는 구조라, 받은 분배금과 줄어든 평가액을 함께 봐야 손익이 제대로 보입니다.',
+      ],
+    },
+    {
+      heading: '높은 분배율의 재원은 어디서 오나',
+      paragraphs: [
+        '분배율이 아주 높은 ETF는 대개 커버드콜 전략을 씁니다. 기초자산을 들고 있으면서 콜옵션을 팔아 받은 프리미엄을 분배 재원으로 나눠 주는 방식입니다. 옵션 프리미엄 덕분에 분배금은 두둑해지지만, 그 대가로 기초자산이 크게 오를 때 얻을 수 있었던 상승분을 상당 부분 넘겨주게 됩니다.',
+        '경우에 따라 분배금이 실제로 번 수익을 넘어서면, 원금의 일부를 헐어 돌려주는 성격을 띠기도 합니다. 이때는 분배율이 높아 보여도 자산이 조금씩 줄어드는 셈이라, 숫자만 보고 안심하기 어렵습니다.',
+      ],
+    },
+    {
+      heading: '세금이 장기 복리를 갉아먹는다',
+      paragraphs: [
+        '국내 상장 커버드콜 ETF의 분배금 가운데 주식 배당에서 나온 부분에는 배당소득세 15.4%가 붙습니다. 옵션 프리미엄에서 나온 부분은 과세가 다르게 적용되지만, 배당 재원 비중이 커지는 시기에는 세금 부담이 늘어날 수 있습니다.',
+        '세금으로 빠져나간 돈은 다시 굴러가지 못합니다. 20년처럼 긴 시간을 놓고 보면, 매년 분배 때마다 떼이는 세금이 재투자 기회를 잃게 만들어 복리 효과를 눈에 띄게 줄입니다. 분배금을 자동 재투자한다고 해도, 세후 금액만 재투자된다는 점은 그대로입니다.',
+      ],
+    },
+    {
+      heading: '총수익 관점으로 갈아끼우기',
+      paragraphs: [
+        '월배당 ETF를 볼 때는 분배율 대신 총수익을 기준으로 삼는 편이 정확합니다. 총수익은 가격이 오르내린 폭에 받은 분배금을 더한 값입니다. 분배율이 낮아도 가격이 꾸준히 오르는 ETF가, 분배율은 높지만 가격이 야금야금 흘러내리는 ETF보다 나은 결과를 낼 수 있습니다.',
+        '오래 묻어 두며 자산을 불리는 것이 목표라면 분배율 숫자에 끌리기보다 기초자산의 성격과 세금까지 함께 따져 보세요. 이 글은 특정 상품을 권하는 것이 아니라 판단 기준을 넓히기 위한 정보이며, 투자 결정과 책임은 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '분배율이 높으면 그만큼 수익도 높은 건가요?',
+      answer:
+        '아닙니다. 분배금을 준 만큼 기준가가 내려가는 분배락이 함께 일어나기 때문에, 분배율만 보면 안 되고 가격 변화와 분배를 합친 총수익으로 판단해야 실제 성과가 보입니다.',
+    },
+    {
+      question: '분배율 20% ETF를 20년 들고 있으면 자산이 몇 배가 되나요?',
+      answer:
+        '단순 복리로 계산하면 큰 수가 나오지만 현실과 다릅니다. 분배금의 원금 반환 성격, 분배락, 세금을 반영하면 실제 자산 증가는 그 계산값보다 훨씬 작아지는 경우가 많습니다.',
+    },
+    {
+      question: '커버드콜 ETF는 왜 분배금이 많은가요?',
+      answer:
+        '기초자산을 들고 콜옵션을 팔아 받은 프리미엄을 분배 재원으로 쓰기 때문입니다. 대신 기초자산이 크게 오를 때 그 상승분을 상당 부분 포기하게 되어 강세장에서 지수 추종형보다 뒤처질 수 있습니다.',
+    },
+    {
+      question: '분배금에도 세금이 붙나요?',
+      answer:
+        '국내 상장 커버드콜 ETF의 분배금 중 배당 재원에는 배당소득세 15.4%가 붙습니다. 세금으로 빠진 돈은 재투자되지 못해 오래 볼수록 복리 효과를 줄이는 요인이 됩니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-06) · 투자 손실 심리와 여유자금 */
+const lossAversionSpareMoney: GuideDef = {
+  slug: 'loss-aversion-spare-money',
+  title: '투자 손실이 무서워 잠 못 드는 사람을 위한 원칙',
+  tagline: '문제는 종목이 아니라 감당 범위를 벗어난 돈일 때가 많다',
+  description:
+    '투자만 하면 손실이 무서워 잠을 설친다면, 원인은 종목이 아니라 감당 범위를 벗어난 돈일 때가 많습니다. 여유자금 원칙과 감당 가능한 금액 정하기, 빚투와 곧 쓸 돈을 피해야 하는 이유를 초보 눈높이로 차분히 정리했습니다.',
+  keywords: ['투자 손실 심리', '손실 회피', '여유자금 투자', '빚투 위험', '투자 스트레스', '감당 가능한 금액', '투자 심리 관리'],
+  section: 'ETF 입문 가이드',
+  lastReviewed: '2026-08-06',
+  answer:
+    '투자 손실에 유독 불안이 크다면 대개 돈의 성격이 문제입니다. 사람은 같은 크기의 이익보다 손실을 더 크게 느끼는 경향이 있어, 곧 써야 할 돈이나 빌린 돈으로 투자하면 조금만 흔들려도 견디기 어렵습니다. 감당 가능한 여유자금만 투자에 쓰는 것이 불안을 줄이는 출발점입니다.',
+  keyPoints: [
+    '사람은 같은 금액이라도 이익의 기쁨보다 손실의 고통을 더 크게 느낍니다. 이 손실 회피 성향 탓에 계좌가 조금만 빠져도 실제보다 크게 불안해지기 쉽습니다.',
+    '불안의 크기는 대개 돈의 성격에서 옵니다. 몇 달 뒤 쓸 전세금이나 빌린 돈으로 투자하면 작은 하락에도 심리가 무너져 손실을 확정하는 매매로 이어지기 쉽습니다.',
+    '먼저 비상금 3개월에서 6개월 치 생활비를 따로 떼어 두고, 그 밖의 여유자금만 투자에 쓰는 순서를 지키면 급락장에서도 버틸 여력이 생깁니다.',
+    '한 번에 몰아넣기보다 여러 시점에 나눠 사고, 여러 자산에 분산하면 하루하루 등락에 덜 흔들립니다. 감당 가능한 금액 한도를 미리 정해 두는 것도 도움이 됩니다.',
+  ],
+  sources: [
+    { label: '금융감독원 e-금융교육센터', url: 'https://www.fss.or.kr/edu' },
+    { label: '금융감독원 파인', url: 'https://fine.fss.or.kr' },
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '펀드나 ETF에서 손실 나는 걸 못 견디고 계속 불안하다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=492536115' },
+    { summary: '빚을 내거나 곧 쓸 전세금으로 주식을 하면 심리가 흔들린다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494356197' },
+  ],
+  sections: [
+    {
+      heading: '손실이 유난히 아픈 데는 이유가 있다',
+      paragraphs: [
+        '심리학에서는 사람이 같은 크기의 이익보다 손실을 더 크게 느낀다고 봅니다. 10만원을 벌었을 때의 기쁨보다 10만원을 잃었을 때의 고통이 더 강하게 다가온다는 것입니다. 이런 손실 회피 성향은 누구에게나 있는 자연스러운 마음이라, 계좌가 조금만 빨개져도 실제 손실 규모보다 훨씬 크게 불안해지기 쉽습니다.',
+        '그래서 손실이 무섭다는 감정 자체를 이상하게 여길 필요는 없습니다. 중요한 것은 그 불안이 판단을 지배해 바닥에서 팔아 버리는 식의 성급한 매매로 이어지지 않게 하는 일입니다.',
+      ],
+    },
+    {
+      heading: '불안의 진짜 원인은 돈의 성격',
+      paragraphs: [
+        '같은 하락이라도 어떤 돈으로 투자했느냐에 따라 견디는 힘이 완전히 달라집니다. 몇 달 뒤 반드시 써야 할 전세금이나 이자를 갚아야 하는 빌린 돈으로 투자하면, 작은 하락에도 마음이 흔들립니다. 시간이 없으니 회복을 기다릴 여유가 없고, 손실이 곧 현실의 위기로 이어지기 때문입니다.',
+        '반대로 당장 쓸 일이 없는 여유자금이라면 같은 하락도 훨씬 담담하게 지나갈 수 있습니다. 시간이 내 편이 되어 주기 때문입니다. 잠을 설칠 만큼 불안하다면, 종목을 바꾸기 전에 지금 투자한 돈이 정말 여유자금인지부터 돌아보는 편이 낫습니다.',
+      ],
+    },
+    {
+      heading: '여유자금 원칙 세우기',
+      paragraphs: [
+        '가장 먼저 할 일은 비상금을 떼어 두는 것입니다. 갑작스러운 지출이나 소득 공백에 대비해 3개월에서 6개월 치 생활비를 예금처럼 안전한 곳에 두고 시작합니다. 이 안전판이 있으면 시장이 크게 빠져도 투자한 돈을 억지로 팔아 메울 일이 줄어듭니다.',
+        '그다음, 정해진 기간에 꼭 써야 할 돈은 투자에서 제외합니다. 결혼 자금, 전세 보증금, 학비처럼 시점이 정해진 돈은 변동성이 큰 자산과 어울리지 않습니다. 남는 여유자금 안에서만 투자하면 손실이 나도 생활이 흔들리지 않아 심리적 여유가 생깁니다.',
+      ],
+    },
+    {
+      heading: '흔들림을 줄이는 실전 습관',
+      paragraphs: [
+        '여유자금을 정했다면, 그 안에서도 위험을 나누는 습관이 도움이 됩니다. 한 종목이나 한 자산에 몰아넣기보다 여러 곳에 분산하고, 한 번에 다 사기보다 여러 시점에 걸쳐 나눠 사면 특정 시점의 급락 충격이 줄어듭니다. 감당 가능한 최대 금액을 미리 정해 두는 것도 충동을 막는 장치가 됩니다.',
+        '그래도 계좌를 볼 때마다 불안이 가시지 않는다면, 확인하는 빈도를 줄이고 투자 비중 자체를 낮추는 것도 방법입니다. 투자는 오래 이어 가는 일이라, 마음이 편한 수준을 찾는 것이 수익률만큼 중요합니다. 이 글은 정보 제공이 목적이며 특정 상품이나 매매를 권하지 않습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '투자 손실이 유독 무섭게 느껴지는 게 정상인가요?',
+      answer:
+        '자연스러운 반응입니다. 사람은 같은 금액이라도 이익보다 손실을 더 크게 느끼는 손실 회피 성향이 있어, 계좌가 조금만 빠져도 실제보다 크게 불안해지기 쉽습니다.',
+    },
+    {
+      question: '불안을 줄이려면 무엇부터 바꿔야 하나요?',
+      answer:
+        '종목보다 돈의 성격을 먼저 보세요. 곧 써야 할 돈이나 빌린 돈이 아니라 당장 쓸 일이 없는 여유자금으로 투자하면 같은 하락도 훨씬 담담하게 견딜 수 있습니다.',
+    },
+    {
+      question: '비상금은 얼마나 두는 게 좋나요?',
+      answer:
+        '보통 3개월에서 6개월 치 생활비를 안전한 예금에 따로 두라고 권합니다. 이 안전판이 있으면 시장이 크게 빠져도 투자한 돈을 억지로 팔아 메울 일이 줄어듭니다.',
+    },
+    {
+      question: '빚을 내서 투자하면 왜 위험한가요?',
+      answer:
+        '갚아야 할 시점과 이자가 정해져 있어 회복을 기다릴 여유가 없기 때문입니다. 작은 하락에도 심리가 무너져 바닥에서 손실을 확정하는 매매로 이어지기 쉽습니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-06) · 목표 시점과 투자 위험 */
+const shortHorizonMoneyEtfRisk: GuideDef = {
+  slug: 'short-horizon-money-etf-risk',
+  title: '5년 안에 쓸 목돈, 주식형 ETF에 넣어도 될까',
+  tagline: '돈을 쓸 시점이 가까울수록 변동성은 위험이 된다',
+  description:
+    '5년 뒤 아파트 살 돈이나 전세금처럼 곧 써야 할 목돈을 주식형 ETF에 넣어도 될지 고민된다면, 돈을 쓸 시점과 투자 위험의 관계부터 봐야 합니다. 시간이 짧을수록 변동성 큰 자산을 피해야 하는 이유를 목표 시점 기준으로 정리했습니다.',
+  keywords: ['목표 시점 투자', '단기 자금 ETF', '주식형 ETF 위험', '투자 기간 자산배분', '전세금 투자', '목돈 투자', '5년 투자'],
+  section: 'ETF 적립식 가이드',
+  lastReviewed: '2026-08-06',
+  answer:
+    '돈을 언제 쓸지가 그 돈을 어디에 둘지를 결정합니다. 5년 안에 반드시 써야 할 목돈이라면 주식형 ETF처럼 변동성이 큰 자산은 부담이 큽니다. 하필 쓸 시점에 시장이 빠져 있으면 손실을 확정하고 팔아야 할 수 있기 때문입니다. 기간이 짧을수록 안정적인 자산의 비중을 높이는 편이 안전합니다.',
+  keyPoints: [
+    '투자 위험은 자산의 성격뿐 아니라 돈을 쓸 시점까지 함께 봐야 합니다. 같은 주식형 ETF라도 20년 뒤에 쓸 돈과 3년 뒤에 쓸 돈은 감당해야 할 위험이 전혀 다릅니다.',
+    '주가지수는 1년 안에도 20~30% 넘게 빠지는 구간이 있었습니다. 쓸 시점이 하필 그때와 겹치면 회복을 기다릴 시간이 없어 손실을 확정하게 됩니다.',
+    '2~3년 안에 쓸 돈은 예금, 파킹형, 초단기 채권처럼 원금 변동이 작은 곳이 어울립니다. 목표 시점이 멀수록 주식형 비중을 조금씩 높이는 접근이 일반적입니다.',
+    '쓸 시점이 다가올수록 위험자산 비중을 단계적으로 줄여 두면, 목표 시기에 시장이 출렁여도 계획한 금액을 지킬 가능성이 커집니다.',
+  ],
+  sources: [
+    { label: '금융감독원 파인', url: 'https://fine.fss.or.kr' },
+    { label: '금융감독원 e-금융교육센터', url: 'https://www.fss.or.kr/edu' },
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '5년 후 아파트 구입 목적으로 모으는 자금을 가치주 ETF에 두어도 되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=475289127' },
+    { summary: '서울에 집을 마련하려 주식과 펀드로 목돈을 모으는 방법을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494357532' },
+  ],
+  sections: [
+    {
+      heading: '위험은 자산이 아니라 시점이 정한다',
+      paragraphs: [
+        '주식형 ETF가 위험한지 아닌지는 그 자체만으로는 답하기 어렵습니다. 같은 ETF라도 20년 뒤 은퇴 자금으로 굴리는 것과, 3년 뒤 계약할 전세금으로 굴리는 것은 완전히 다른 이야기이기 때문입니다. 핵심 변수는 돈을 언제 쓰느냐, 즉 투자 기간입니다.',
+        '시간이 길면 중간에 시장이 크게 빠져도 회복을 기다릴 여유가 있습니다. 하지만 쓸 날짜가 정해져 있고 가까우면, 하필 그 시점에 시장이 내려가 있을 때 손실을 감수하고 팔아야 하는 상황에 몰릴 수 있습니다.',
+      ],
+    },
+    {
+      heading: '주식형 자산의 단기 변동성',
+      paragraphs: [
+        '주가지수는 길게 보면 우상향해 온 흐름이 있지만, 그 과정은 결코 매끄럽지 않았습니다. 과거 여러 국면에서 1년 안에 지수가 20%에서 30% 넘게 빠진 구간이 있었고, 회복에는 수개월에서 수년이 걸리기도 했습니다.',
+        '5년이라는 기간은 애매합니다. 회복할 시간이 있을 수도 있지만, 하필 쓰기 직전에 급락이 겹치면 계획한 금액을 채우지 못할 위험이 남습니다. 곧 써야 할 목돈일수록 이 시나리오를 무겁게 봐야 합니다.',
+      ],
+    },
+    {
+      heading: '시점별로 그릇을 나누기',
+      paragraphs: [
+        '자금은 쓸 시점에 따라 그릇을 나누는 것이 기본입니다. 2년에서 3년 안에 쓸 돈은 원금이 크게 흔들리지 않는 예금, 파킹형 상품, 초단기 채권형처럼 안정적인 곳에 두는 편이 안전합니다. 수익률이 낮더라도 필요할 때 계획한 금액이 그대로 있어야 하기 때문입니다.',
+        '반대로 10년, 20년처럼 시점이 먼 돈이라면 주식형 비중을 높여 장기 성장을 노려볼 수 있습니다. 같은 사람이라도 목적별로 여러 그릇을 두고, 각 그릇의 시점에 맞춰 자산을 배분하는 접근이 현실적입니다.',
+      ],
+    },
+    {
+      heading: '쓸 날이 다가올 때의 조정',
+      paragraphs: [
+        '먼 미래에 쓸 돈으로 주식형 ETF를 모아 왔더라도, 쓸 시점이 다가오면 위험자산 비중을 단계적으로 줄여 안정적인 자산으로 옮겨 두는 것이 안전합니다. 목표 시기 직전에 시장이 크게 빠져 애써 모은 돈이 줄어드는 상황을 피하기 위해서입니다.',
+        '예를 들어 목표가 5년 앞이라면, 남은 기간이 줄어들수록 예금이나 채권형 비중을 조금씩 늘려 가는 식입니다. 구체적인 배분은 개인의 사정과 위험 감내 수준에 따라 다르므로, 이 글은 판단의 틀을 제시할 뿐 특정 상품이나 매매를 권하지 않습니다. 투자 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '5년 뒤 쓸 돈을 주식형 ETF에 넣어도 되나요?',
+      answer:
+        '부담이 큽니다. 쓸 시점에 시장이 빠져 있으면 손실을 확정하고 팔아야 할 수 있습니다. 곧 써야 할 목돈일수록 안정적인 자산 비중을 높이는 편이 안전합니다.',
+    },
+    {
+      question: '투자 기간이 왜 그렇게 중요한가요?',
+      answer:
+        '시간이 길면 시장이 빠져도 회복을 기다릴 수 있지만, 쓸 날짜가 정해져 있고 가까우면 그 여유가 없기 때문입니다. 같은 자산도 기간에 따라 위험이 완전히 달라집니다.',
+    },
+    {
+      question: '2~3년 안에 쓸 돈은 어디에 두는 게 좋나요?',
+      answer:
+        '예금, 파킹형 상품, 초단기 채권형처럼 원금 변동이 작은 곳이 어울립니다. 수익률이 낮더라도 필요한 시점에 계획한 금액이 그대로 남아 있는 것이 더 중요하기 때문입니다.',
+    },
+    {
+      question: '멀리 있는 목표라면 주식형 비중을 높여도 되나요?',
+      answer:
+        '10년, 20년처럼 시점이 멀면 회복할 시간이 넉넉해 주식형 비중을 높여 장기 성장을 노려볼 수 있습니다. 다만 쓸 시점이 가까워지면 위험자산 비중을 단계적으로 줄이는 것이 안전합니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-06) · 미국 ETF 매수 오류 점검 */
+const usEtfOrderFailsChecklist: GuideDef = {
+  slug: 'us-etf-order-fails-checklist',
+  title: '미국 ETF 매수가 안 될 때 점검할 5가지',
+  tagline: '환전, 거래 시간, 예수금부터 차례로 짚어 보기',
+  description:
+    '미국 ETF를 사려는데 매수 버튼이 먹히지 않는다면 환전, 거래 시간, 예수금, 주문 방식, 계좌 종류를 차례로 점검해 보세요. 미국 장 개장 시간과 원화 증거금까지, 매수가 막히는 다섯 가지 원인을 초보 눈높이로 하나씩 짚었습니다.',
+  keywords: ['미국 ETF 매수 안됨', '해외주식 주문 오류', '미국 주식 환전', '원화 증거금', '미국 장 시간', 'ISA 미국 ETF', '해외주식 매수 실패'],
+  section: 'ETF 매매 가이드',
+  lastReviewed: '2026-08-06',
+  answer:
+    '미국 ETF 매수가 안 될 때는 원인이 대개 다섯 가지입니다. 달러 환전이나 원화 증거금 설정이 안 됐거나, 미국 장이 열리지 않은 시간이거나, 예수금이 부족하거나, 지정가가 현재가와 동떨어졌거나, ISA처럼 편입이 제한된 계좌일 수 있습니다. 이 순서로 짚으면 원인을 대부분 찾습니다.',
+  keyPoints: [
+    '가장 흔한 원인은 환전입니다. 미국 ETF는 달러로 사기 때문에 원화만 있으면 매수가 막힙니다. 달러로 환전하거나 원화로 바로 주문되는 통합증거금 설정이 되어 있어야 합니다.',
+    '미국 정규장은 한국 시간으로 서머타임 때 밤 10시 30분부터 새벽 5시, 그 외 기간은 밤 11시 30분부터 새벽 6시입니다. 이 시간이 아니면 주문이 대기로만 잡힐 수 있습니다.',
+    '예수금 부족과 지정가 설정도 확인해야 합니다. 잔고가 모자라거나 현재가와 크게 벌어진 지정가로 걸면 체결되지 않고 미체결로 남습니다.',
+    'ISA나 연금 계좌에서는 미국에 직접 상장된 ETF를 살 수 없고 국내 상장 상품만 담깁니다. 계좌 종류에 따라 편입 가능한 상품이 다른 점도 원인이 됩니다.',
+  ],
+  sources: [
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+    { label: '금융감독원 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'NH투자증권에서 미국 주식이나 ETF 매수가 되지 않는다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494355613' },
+    { summary: 'ISA 계좌로 나스닥과 S&P500 주문이 되지 않는다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494341294' },
+  ],
+  comparisonTable: {
+    caption: '미국 ETF 매수 실패 원인과 점검 지점',
+    columns: ['점검 항목', '증상', '확인할 것'],
+    rows: [
+      ['환전·증거금', '주문 자체가 막힘', '달러 환전 또는 원화 통합증거금 설정'],
+      ['거래 시간', '주문이 대기로만 잡힘', '미국 정규장 시간대인지 확인'],
+      ['예수금', '수량 입력이 안 됨', '달러 잔고가 매수 금액 이상인지'],
+      ['지정가', '미체결로 남음', '지정가가 현재가와 가까운지'],
+      ['계좌 종류', '종목 검색이 안 됨', 'ISA·연금은 국내 상장만 가능'],
+    ],
+  },
+  sections: [
+    {
+      heading: '환전과 원화 증거금부터 확인',
+      paragraphs: [
+        '미국 ETF는 달러로 거래하는 상품입니다. 계좌에 원화만 들어 있으면 아무리 눌러도 매수가 되지 않습니다. 가장 먼저 볼 것은 달러 환전 여부입니다. 필요한 만큼 원화를 달러로 바꿨는지 확인하세요.',
+        '요즘은 원화를 그대로 두고 주문하면 자동으로 환전해 체결해 주는 원화 통합증거금 서비스를 제공하는 증권사도 있습니다. 이 기능을 쓰려면 계좌에서 해당 설정을 켜 두어야 합니다. 설정이 안 되어 있으면 원화 잔고가 있어도 주문이 막힐 수 있습니다.',
+      ],
+    },
+    {
+      heading: '지금이 미국 장이 열린 시간인가',
+      paragraphs: [
+        '미국 증시는 우리와 시차가 있어 밤에 열립니다. 정규장은 한국 시간으로 서머타임이 적용되는 3월 둘째 주부터 11월 첫째 주까지는 밤 10시 30분부터 다음 날 새벽 5시까지, 그 밖의 기간에는 밤 11시 30분부터 새벽 6시까지입니다.',
+        '낮에 주문을 넣으면 정규장이 열릴 때까지 접수만 되고 체결은 되지 않습니다. 프리마켓이나 애프터마켓 거래를 지원하는 증권사도 있지만 별도 신청이 필요한 경우가 많습니다. 매수가 안 될 때는 지금이 거래 가능한 시간인지부터 확인하는 것이 빠릅니다.',
+      ],
+    },
+    {
+      heading: '예수금과 지정가 점검',
+      paragraphs: [
+        '거래 시간이 맞는데도 체결이 안 된다면 계좌 잔고와 주문 가격을 봅니다. 매수하려는 금액보다 달러 예수금이 적으면 주문이 들어가지 않습니다. 환전은 했지만 수수료나 환율 변동으로 잔고가 살짝 모자란 경우도 있으니 여유 있게 확인하세요.',
+        '지정가로 주문했다면 그 가격이 현재가와 얼마나 떨어져 있는지도 봅니다. 현재가보다 한참 낮게 걸어 두면 그 값이 올 때까지 미체결로 남습니다. 빠른 체결이 목적이라면 현재가에 가깝게 지정가를 조정하거나 시장가를 활용하는 방법이 있습니다.',
+      ],
+    },
+    {
+      heading: '계좌 종류가 원인일 때',
+      paragraphs: [
+        'ISA나 연금저축, 개인형퇴직연금 같은 절세 계좌에서는 미국에 직접 상장된 ETF를 담을 수 없습니다. 이들 계좌에서는 국내 시장에 상장된 상품만 매수할 수 있어, 같은 지수를 따르더라도 국내 상장 ETF로 골라야 합니다. 나스닥이나 S&P500을 담고 싶다면 이런 계좌에서는 국내 상장 버전을 찾으면 됩니다.',
+        '일반 위탁계좌라면 해외주식 거래 신청이 되어 있는지도 확인합니다. 계좌를 만들었더라도 해외 거래 약정을 별도로 하지 않으면 미국 종목이 검색되지 않거나 주문이 막힐 수 있습니다. 세부 절차는 이용 중인 증권사 안내로 확인하는 것이 정확합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '미국 ETF 매수가 안 되는 가장 흔한 이유는 무엇인가요?',
+      answer:
+        '환전입니다. 미국 ETF는 달러로 사기 때문에 원화만 있으면 주문이 막힙니다. 달러로 환전했거나 원화 통합증거금 설정이 되어 있어야 매수할 수 있습니다.',
+    },
+    {
+      question: '미국 장은 한국 시간으로 언제 열리나요?',
+      answer:
+        '정규장은 서머타임 기간에 밤 10시 30분부터 새벽 5시, 그 외 기간에 밤 11시 30분부터 새벽 6시입니다. 이 시간이 아니면 주문은 접수만 되고 체결되지 않습니다.',
+    },
+    {
+      question: 'ISA 계좌로 미국 나스닥이나 S&P500을 살 수 있나요?',
+      answer:
+        '미국에 직접 상장된 ETF는 담을 수 없습니다. ISA에서는 국내 시장에 상장된 상품만 매수할 수 있어, 같은 지수를 따르는 국내 상장 ETF로 골라야 합니다.',
+    },
+    {
+      question: '거래 시간도 맞는데 주문이 체결되지 않아요.',
+      answer:
+        '달러 예수금이 매수 금액보다 부족하지 않은지, 지정가가 현재가와 너무 동떨어지지 않았는지 확인하세요. 두 가지에서 원인이 나오는 경우가 많습니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-06) · 신고가 진입 공포 */
+const allTimeHighEtfEntry: GuideDef = {
+  slug: 'all-time-high-etf-entry',
+  title: '지수가 사상 최고가일 때 ETF 지금 사도 될까',
+  tagline: '신고가가 곧 상투를 뜻하는 것은 아니다',
+  description:
+    '지수가 사상 최고가를 찍을 때 지금 ETF를 사면 상투 아닐까 두렵다면, 신고가가 곧 매도 신호는 아니라는 점부터 짚어야 합니다. 우상향해 온 자산에서 신고가가 잦은 이유와 고점 공포를 다루는 분할 매수 접근을 정리했습니다.',
+  keywords: ['신고가 매수', '지수 최고가 투자', '고점 매수 공포', 'ETF 진입 시점', 'S&P500 신고가', '분할 매수', '고점 두려움'],
+  section: 'ETF 입문 가이드',
+  lastReviewed: '2026-08-06',
+  answer:
+    '지수가 사상 최고가라고 해서 그 자체가 매도 신호는 아닙니다. 길게 우상향해 온 지수는 원래 신고가를 자주 갱신하며, 최고가는 흔한 통과점이었습니다. 다만 고점에서 목돈을 한 번에 넣는 것은 부담이 크므로, 여러 시점에 나눠 사는 분할 매수로 진입 시점 위험을 줄이는 접근이 현실적입니다.',
+  keyPoints: [
+    '장기 우상향해 온 대표 지수는 역사적으로 신고가를 수없이 갱신해 왔습니다. 최고가는 특별한 경고가 아니라 상승 추세에서 자연스럽게 지나가는 지점인 경우가 많았습니다.',
+    '신고가에서 샀다고 반드시 손해로 이어지지는 않았습니다. 다만 단기적으로는 조정이 겹칠 수 있어, 목돈을 한 번에 넣으면 진입 직후 하락에 크게 흔들릴 수 있습니다.',
+    '진입 시점 위험을 줄이는 대표적 방법은 분할 매수입니다. 목돈을 여러 달에 걸쳐 나눠 사면 평균 매입 단가가 특정 시점에 쏠리지 않아 고점 매수 부담이 줄어듭니다.',
+    '중요한 것은 최고가라는 숫자보다 투자 기간과 감당 범위입니다. 오래 묻어 둘 여유자금이라면 시점을 완벽히 맞추려 애쓰기보다 꾸준히 모으는 편이 대체로 마음이 편합니다.',
+  ],
+  sources: [
+    { label: '금융감독원 파인', url: 'https://fine.fss.or.kr' },
+    { label: '금융감독원 e-금융교육센터', url: 'https://www.fss.or.kr/edu' },
+    { label: '한국거래소 KRX', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '지금 시장에 투자해도 괜찮은지, 지수 추종 ETF 진입을 고민한다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494351153' },
+  ],
+  sections: [
+    {
+      heading: '신고가가 자주 나오는 건 이상한 일이 아니다',
+      paragraphs: [
+        '지수가 사상 최고가를 찍었다는 소식을 들으면, 이제 내려갈 일만 남은 것 아니냐는 두려움이 들기 쉽습니다. 하지만 길게 우상향해 온 대표 지수의 역사를 보면 신고가는 놀랄 만큼 자주 나왔습니다. 상승 추세가 이어지는 동안에는 최고가를 계속 갈아치우는 것이 오히려 자연스러운 모습이었습니다.',
+        '신고가라는 말은 지금 가격이 과거 어느 때보다 높다는 사실을 알려 줄 뿐, 앞으로 오를지 내릴지를 예언하지는 않습니다. 최고가를 곧 상투로 여기면, 정작 긴 상승 구간을 놓치는 실수로 이어질 수 있습니다.',
+      ],
+    },
+    {
+      heading: '고점 공포의 정체',
+      paragraphs: [
+        '고점에서 사기가 두려운 마음은 자연스럽습니다. 비싸게 산 직후 가격이 빠지면 손해를 크게 느끼기 때문입니다. 문제는 이 두려움이 지나쳐 아예 시장에 발을 들이지 못하게 만들 때입니다. 오르는 내내 기다리다가 결국 더 높은 가격에 뒤늦게 들어가거나, 영영 들어가지 못하기도 합니다.',
+        '반대로 두려움을 무시하고 목돈을 한 번에 최고가에 몰아넣는 것도 부담이 큽니다. 하필 진입 직후 조정이 오면 심리가 흔들려 바닥에서 팔아 버리기 쉽습니다. 두 극단 모두 피하는 지점을 찾는 것이 관건입니다.',
+      ],
+    },
+    {
+      heading: '분할 매수로 시점 위험 낮추기',
+      paragraphs: [
+        '진입 시점의 위험을 줄이는 가장 흔한 방법은 분할 매수입니다. 가진 목돈을 한 번에 넣지 않고 여러 달에 걸쳐 나눠 사면, 매입 단가가 특정 하루에 쏠리지 않고 평균으로 흩어집니다. 최고가 근처에서 일부를 사더라도, 이후 가격이 오르내리는 동안 나눠 사면서 평균 단가가 조정됩니다.',
+        '이 방식은 언제가 고점이고 저점인지 맞히려는 시도를 내려놓게 해 줍니다. 시점을 완벽히 예측하는 것은 사실상 불가능하기 때문에, 예측 대신 시간을 분산하는 쪽이 마음 편한 선택이 되는 경우가 많습니다.',
+      ],
+    },
+    {
+      heading: '숫자보다 기간과 여유자금',
+      paragraphs: [
+        '결국 더 중요한 질문은 지금이 최고가냐가 아니라, 이 돈을 얼마나 오래 둘 수 있느냐입니다. 10년 넘게 묻어 둘 여유자금이라면 지금의 최고가 여부는 긴 흐름 속 한 점에 불과할 수 있습니다. 반대로 곧 써야 할 돈이라면 최고가든 아니든 주식형 자산 자체가 부담입니다.',
+        '고점 공포에 휘둘리기보다, 감당 가능한 여유자금 안에서 오래 이어 갈 계획을 세우는 편이 낫습니다. 이 글은 정보 제공이 목적이며 특정 시점의 매매나 상품을 권하지 않습니다. 투자 판단과 책임은 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '지수가 사상 최고가인데 지금 사면 상투 아닌가요?',
+      answer:
+        '최고가 자체가 매도 신호는 아닙니다. 길게 우상향해 온 지수는 원래 신고가를 자주 갱신해 왔고, 최고가는 상승 추세에서 흔히 지나가는 지점인 경우가 많았습니다.',
+    },
+    {
+      question: '신고가에 사면 손해를 보나요?',
+      answer:
+        '반드시 그렇지는 않습니다. 다만 단기적으로 조정이 겹칠 수 있어, 목돈을 한 번에 넣으면 진입 직후 하락에 크게 흔들릴 수 있습니다. 나눠 사는 편이 부담이 적습니다.',
+    },
+    {
+      question: '고점이 두려울 때는 어떻게 하나요?',
+      answer:
+        '목돈을 여러 달에 걸쳐 나눠 사는 분할 매수가 대표적입니다. 매입 단가가 특정 시점에 쏠리지 않아, 언제가 고점인지 맞히려는 부담 없이 진입 위험을 줄일 수 있습니다.',
+    },
+    {
+      question: '진입 시점을 정확히 맞히는 게 가능한가요?',
+      answer:
+        '사실상 어렵습니다. 그래서 시점을 예측하려 애쓰기보다 시간을 나누고, 오래 둘 여유자금으로 꾸준히 모으는 접근이 마음도 편하고 현실적인 경우가 많습니다.',
+    },
+  ],
+};
+
 /** 지식iN 질문 수요 기반 (2026-08-04) */
 const stockMarketVolatilityCauses: GuideDef = {
   slug: 'stock-market-volatility-causes',
@@ -20167,6 +20581,11 @@ const pensionMonthlyContributionAmount: GuideDef = {
 };
 
 export const GUIDES: GuideDef[] = [
+  highDistributionYieldMyth,
+  lossAversionSpareMoney,
+  shortHorizonMoneyEtfRisk,
+  usEtfOrderFailsChecklist,
+  allTimeHighEtfEntry,
   cdRateEtfInterestAccrual,
   isaPensionSameEtfOverlap,
   overseasEtfDividendCurrency,
@@ -20405,6 +20824,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-06 · 지식iN 질문 수요 기반 (분배율 20% ETF 20년 복리 착시·투자 손실 심리와 여유자금 원칙·5년 내 목돈 주식형 ETF 위험·미국 ETF 매수 안 될 때 점검·지수 신고가 진입 공포)
+  'high-distribution-yield-myth': '2026-08-06',
+  'loss-aversion-spare-money': '2026-08-06',
+  'short-horizon-money-etf-risk': '2026-08-06',
+  'us-etf-order-fails-checklist': '2026-08-06',
+  'all-time-high-etf-entry': '2026-08-06',
   // 2026-08-05 · 지식iN 질문 수요 기반 (CD금리 ETF 이자 누적 원리·ISA와 연금저축 같은 ETF 중복·해외 ETF 직투 달러 배당 vs 국내 원화 배당·비트코인 도미넌스·연금저축 IRP 월 납입액)
   'cd-rate-etf-interest-accrual': '2026-08-05',
   'isa-pension-same-etf-overlap': '2026-08-05',
@@ -20690,7 +21115,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'loss-aversion-spare-money', 'us-etf-order-fails-checklist', 'all-time-high-etf-entry'],
   },
   {
     title: '세금·절세 계좌',
@@ -20700,7 +21125,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'high-distribution-yield-myth'],
   },
   {
     title: '테마·섹터',
@@ -20715,7 +21140,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '전략·자산배분',
     description: '적립식·리밸런싱·팩터·자산배분(TRF)·채권·미국국채·회사채·채권혼합·파킹·금·은·구리·원유·농산물·원자재·레버리지 — 포트폴리오를 굴리고 위험을 관리하는 전략.',
-    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual'],
+    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual', 'short-horizon-money-etf-risk'],
   },
 ];
 
