@@ -1872,3 +1872,33 @@ https://iknowhowinfo.com/guide/isa-pension-same-etf-overlap
 https://iknowhowinfo.com/guide/overseas-etf-dividend-currency
 https://iknowhowinfo.com/guide/bitcoin-dominance-altcoin
 https://iknowhowinfo.com/guide/pension-monthly-contribution-amount
+
+## 2026-08-06 · [가이드 발행 5편 · 지식iN 질문 수요 기반]
+
+지식iN 신규 수집: 실패(클라우드 IP 네이버 차단, HTTP 000 · 1회 재시도 후 스킵 · 정상). 사용 코퍼스: data/keywords/kin/kin-20260718.json (질문 103건). 기존 가이드 228편으로 코퍼스가 매우 포화 상태라, 완전 중복을 피해 아직 없는 롱테일 각도만 신규 발행.
+
+발행 5편(주제 · slug · 출처 지식iN 질문 요지):
+1. ETF·주식 매수 주문이 체결 안 되는 이유 7가지 · stock-order-rejected-reasons
+   - 출처: "증권사 앱에서 매수가 안 된다"(docId=494355613), "ISA 계좌 주문이 안 된다"(docId=494341294)
+   - 검증: 단일가(동시호가) 시간대(08:30~09:00·15:20~15:30), VI 약 2분 단일가 전환, 정리매매 30분 단일가·가격제한폭 없음, 예수금=잔고-미체결-수수료. KRX 규정 대조.
+2. 배당기준일이 바뀌었다, 이제 배당 보고 사는 법(선배당 후투자) · dividend-record-date-reform
+   - 출처: "종목 배당 언제 받나"(docId=249025143), "분기배당 방식"(docId=417779487), "삼성전자 배당금"(docId=386996037)
+   - 검증: 2023.1 금융위 배당절차 개선(배당액 확정 후 기준일 지정 가능, 상법 유권해석). WebSearch로 2026 시행·배당기업 증가 확인.
+3. 은퇴자 배당 ETF로 월 생활비 만들기, 필요 원금 역산 · retiree-dividend-etf-monthly-income
+   - 출처: "연금저축펀드 ETF 추천"(docId=489444942), "IRP·연금저축 노후"(docId=494287819)
+   - 검증: 필요원금=목표연수령÷분배율(4%→월200만=6억), 배당세 15.4%, 금융소득 2000만 종합과세·건보 영향. 커버드콜 NAV 훼손 고지.
+4. 코인 선물 강제청산이란, 청산가는 어떻게 정해지나 · crypto-liquidation-explained
+   - 출처: "비트코인 레버리지 장기투자"(docId=494252706), "해외 코인 선물거래소"(docId=443985814)
+   - 검증: 유지증거금<개시증거금, 레버리지↑→청산가 진입가에 근접(10배≈10%), 격리=배정증거금·교차=계좌전체. 원금 전액 손실 위험 고지.
+5. 미국 ETF 배당 자동재투자(DRIP), 국내 계좌에서 되나 · us-etf-drip-korea
+   - 출처: "연금저축펀드 ETF로 노후 굴리기"(docId=489444942), "미래에셋 연금저축 활용"(docId=493610254)
+   - 검증: 국내 증권사 미국 직투 DRIP 지원 제한적, 국내상장 TR ETF 내부 자동재투자(분배 시점 과세 이연), 적립식 자동매수 대안. WebSearch로 증권사 지원 현황 확인.
+
+검증: tsc --noEmit 0 에러 · npm run cf:build 성공 · 신규 5개 .html prerender(answer-box·guide-key-points·guide-sources·citation·2026-08-06 포함) · 새 블록 em dash 0 · 금지어 0 · title≤60·desc 120~155·keywords 6개·slug ^[a-z0-9-]$.
+
+★ 오늘 발행 링크(풀 URL)
+https://iknowhowinfo.com/guide/stock-order-rejected-reasons
+https://iknowhowinfo.com/guide/dividend-record-date-reform
+https://iknowhowinfo.com/guide/retiree-dividend-etf-monthly-income
+https://iknowhowinfo.com/guide/crypto-liquidation-explained
+https://iknowhowinfo.com/guide/us-etf-drip-korea

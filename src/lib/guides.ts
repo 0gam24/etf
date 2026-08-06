@@ -20166,7 +20166,452 @@ const pensionMonthlyContributionAmount: GuideDef = {
   ],
 };
 
+/** 지식iN 질문 수요 기반 (2026-08-06) */
+const stockOrderRejectedReasons: GuideDef = {
+  slug: 'stock-order-rejected-reasons',
+  title: 'ETF·주식 매수 주문이 체결 안 되는 이유 7가지',
+  tagline: '주문을 넣었는데 안 사졌다면, 예수금·단일가·VI부터 확인하세요',
+  description:
+    '분명 주문을 넣었는데 매수가 안 되거나 체결이 밀릴 때가 있습니다. 예수금 부족, 거래정지·정리매매, 장 시작·마감 단일가, VI 발동, 호가 단위, 정규장 밖 주문까지 체결이 막히는 대표 원인 일곱 가지를 하나씩 짚었습니다.',
+  keywords: ['ETF 매수 안됨', '주식 주문 체결 안됨', '매수 주문 거부', '예수금 부족', '거래정지 정리매매', 'VI 단일가 주문'],
+  section: 'ETF 매매 가이드',
+  lastReviewed: '2026-08-06',
+  answer:
+    '매수 주문이 안 되는 이유는 대부분 정해져 있습니다. 예수금이나 증거금이 모자라거나, 종목이 거래정지·정리매매 상태이거나, 장 시작·마감의 단일가(동시호가) 시간이거나, 급변동으로 VI가 걸렸거나, 호가 단위나 가격을 잘못 넣은 경우입니다. 이 항목들을 차례로 확인하면 원인을 대부분 찾을 수 있습니다.',
+  keyPoints: [
+    '주문 가능 금액은 예수금에서 이미 걸어 둔 미체결 주문과 수수료를 뺀 값입니다. 잔고가 있어도 미수·증거금 조건 때문에 매수 가능 수량이 0으로 나올 수 있습니다.',
+    '장 시작 전 08:30부터 09:00, 마감 15:20부터 15:30은 단일가(동시호가) 시간이라 주문은 접수되지만 즉시 체결되지 않고 시가·종가가 정해질 때 한꺼번에 체결됩니다.',
+    '주가가 짧은 시간에 급등락하면 변동성완화장치(VI)가 약 2분간 발동해 단일가로 전환되고, 그동안 일반 지정가 주문은 바로 체결되지 않습니다.',
+    '상장폐지 전 정리매매 기간에는 가격제한폭 없이 30분 단위 단일가로만 거래되고, 거래정지 종목은 아예 주문이 거부됩니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX)', url: 'https://www.krx.co.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '증권사 앱에서 매수 주문이 되지 않는 이유를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494355613' },
+    { summary: 'ISA 계좌에서 주문이 실행되지 않는다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494341294' },
+  ],
+  comparisonTable: {
+    caption: '체결이 막히는 상황과 확인법',
+    columns: ['상황', '증상', '확인·대처'],
+    rows: [
+      ['예수금·증거금 부족', '매수 수량 0, 주문 거부', '예수금·미체결 주문·미수 여부 확인'],
+      ['단일가 시간', '접수되나 즉시 미체결', '09:00·15:30 단일가 체결 대기'],
+      ['VI 발동', '약 2분간 단일가 전환', '발동 해제 후 재주문'],
+      ['거래정지·정리매매', '주문 거부 또는 30분 단일가', '공시로 사유 확인'],
+    ],
+  },
+  sections: [
+    {
+      heading: '첫 번째 이유: 주문 가능한 돈이 모자란다',
+      paragraphs: [
+        '가장 흔한 원인은 매수에 쓸 수 있는 돈이 부족한 경우입니다. 계좌 잔고가 아니라 주문 가능 금액이 기준인데, 이는 예수금에서 이미 걸어 둔 미체결 주문 금액과 예상 수수료를 뺀 값입니다. 다른 종목에 지정가 주문을 걸어 두면 그만큼 매수 여력이 묶입니다.',
+        '해외 ETF나 미국 주식은 환전 방식과 통합증거금 설정에 따라 원화가 있어도 즉시 매수가 안 될 수 있습니다. 신용·미수 조건이 걸린 계좌는 증거금률에 따라 매수 가능 수량이 0으로 표시되기도 합니다. 잔고가 있는데 안 사진다면 주문 가능 금액과 증거금 설정부터 확인해 보세요.',
+      ],
+    },
+    {
+      heading: '장 시작과 마감엔 바로 안 사진다: 단일가 시간',
+      paragraphs: [
+        '주문은 접수됐는데 체결만 안 되는 경우도 많습니다. 장 시작 전 08:30부터 09:00, 마감 직전 15:20부터 15:30은 단일가매매(동시호가) 시간입니다. 이 구간에는 주문을 계속 받되 즉시 체결하지 않고, 시가나 종가가 결정되는 순간에 모아서 한꺼번에 체결합니다.',
+        '그래서 이 시간에 주문을 넣고 왜 안 사지냐고 생각하기 쉽지만, 실제로는 정상 접수된 상태로 체결을 기다리는 것입니다. 급하게 사고팔 필요가 없다면 단일가 시간을 지나 정규장에서 거래하는 편이 체결 상황을 확인하기 쉽습니다.',
+      ],
+    },
+    {
+      heading: 'VI가 걸리면 2분간 멈춘다',
+      paragraphs: [
+        '특정 종목의 가격이 짧은 시간에 크게 움직이면 변동성완화장치(VI)가 발동합니다. VI가 걸리면 해당 종목은 약 2분간 단일가매매로 전환되고, 이 동안에는 일반 지정가 주문이 즉시 체결되지 않습니다.',
+        'VI는 급등락으로부터 투자자를 보호하려는 안전장치입니다. 발동 중에는 호가창이 평소와 다르게 보이므로, 잠시 기다렸다가 발동이 풀린 뒤 다시 주문하면 됩니다. 거래량이 적은 ETF나 테마주에서 특히 자주 나타납니다.',
+      ],
+    },
+    {
+      heading: '아예 거래가 막힌 종목: 거래정지·정리매매·호가 단위',
+      paragraphs: [
+        '종목 자체가 거래정지 상태면 주문이 거부됩니다. 관리종목 지정, 불성실공시, 상장폐지 심사 같은 사유로 거래가 멈추면 사고팔 수 없습니다. 상장폐지가 확정돼 정리매매에 들어간 종목은 가격제한폭 없이 30분 단위 단일가로만 거래돼 체결 방식이 평소와 다릅니다.',
+        '가격을 잘못 넣어 거부되는 경우도 있습니다. 주가대별로 정해진 호가 단위에 맞지 않거나, 상한가·하한가를 벗어난 가격은 주문이 반려됩니다. 정규장(09:00부터 15:30) 밖에 넣은 주문은 시간외 단일가나 예약주문으로 처리된다는 점도 알아 두면 좋습니다. 여기서 설명한 규칙은 제도 변경으로 달라질 수 있으니, 헷갈릴 때는 거래소나 증권사 공지에서 최신 기준을 확인하시길 권합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '잔고가 있는데 왜 매수 수량이 0으로 나오나요?',
+      answer:
+        '주문 가능 금액은 예수금에서 미체결 주문과 수수료를 뺀 값이라, 다른 주문에 돈이 묶여 있거나 증거금·미수 조건이 걸리면 잔고가 있어도 매수 가능 수량이 0이 될 수 있습니다.',
+    },
+    {
+      question: '주문은 됐는데 체결이 안 됩니다. 왜 그런가요?',
+      answer:
+        '장 시작 전과 마감 직전 단일가(동시호가) 시간이면 주문은 접수되지만 시가·종가 결정 때 한꺼번에 체결됩니다. 지정가가 시장가와 동떨어져 있어도 체결이 밀립니다.',
+    },
+    {
+      question: 'VI가 걸리면 얼마나 기다려야 하나요?',
+      answer:
+        '변동성완화장치(VI)는 약 2분간 단일가로 전환됩니다. 이 시간이 지나 발동이 해제되면 다시 정상 거래되므로, 잠시 기다렸다가 재주문하면 됩니다.',
+    },
+    {
+      question: '거래정지된 종목은 언제 다시 살 수 있나요?',
+      answer:
+        '거래정지는 지정 사유가 해소돼 거래소가 재개를 결정해야 풀립니다. 상장폐지로 이어지면 정리매매 기간에만 거래되므로, 공시로 사유와 일정을 확인해야 합니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-06) */
+const dividendRecordDateReform: GuideDef = {
+  slug: 'dividend-record-date-reform',
+  title: '배당기준일이 바뀌었다, 이제 배당 보고 사는 법',
+  tagline: '예전엔 깜깜이 배당, 이제는 배당액을 확인하고 살 수 있다',
+  description:
+    '예전에는 배당받을 주주를 12월 말에 먼저 정하고 배당액은 이듬해 봄에 발표해, 얼마 받을지 모르고 사야 했습니다. 2023년 배당절차 개선으로 배당액을 먼저 확정한 뒤 기준일을 정하는 회사가 늘어, 이제 배당을 보고 투자할 수 있습니다.',
+  keywords: ['배당기준일', '선배당 후투자', '배당절차 개선', '배당기준일 변경', '결산배당 기준일', '배당 보고 투자'],
+  section: '배당주 가이드',
+  lastReviewed: '2026-08-06',
+  answer:
+    '과거에는 배당기준일이 대부분 12월 말이라 배당액을 모른 채 연말에 주식을 사야 했습니다. 2023년 정부의 배당절차 개선으로, 회사가 주주총회에서 배당액을 먼저 확정한 뒤 배당기준일을 그 이후로 정할 수 있게 됐습니다. 이런 회사는 확정된 배당을 확인하고 매수 시점을 정할 수 있습니다.',
+  keyPoints: [
+    '기존에는 결산배당 기준일이 12월 31일에 몰려 있어, 배당액이 발표되는 이듬해 3월경보다 석 달 먼저 주주가 확정됐습니다. 얼마 받을지 모르고 사는 깜깜이 배당이라는 지적이 있었습니다.',
+    '2023년 1월 정부는 배당액을 먼저 정하고 배당기준일을 나중에 두도록 상법 유권해석과 관련 제도를 정비했습니다. 배당 결정과 기준일의 순서를 바꾼 것이 핵심입니다.',
+    '바뀐 방식을 택한 회사는 3월에서 4월 주주총회에서 배당을 확정하고 배당기준일을 그 뒤로 지정합니다. 투자자는 확정된 배당을 확인한 다음 기준일 전에 매수하면 배당을 받습니다.',
+    '모든 회사가 한꺼번에 바꾸는 것은 아닙니다. 회사마다 정관 변경 여부가 달라, 종목별로 배당기준일을 각자 공시로 확인해야 합니다.',
+  ],
+  sources: [
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+    { label: '금융감독원 전자공시(DART)', url: 'https://dart.fss.or.kr' },
+    { label: '한국거래소(KRX)', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '특정 종목의 배당을 언제 받을 수 있는지 시점을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=249025143' },
+    { summary: '분기배당의 지급 방식과 기준을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=417779487' },
+    { summary: '삼성전자 배당금을 언제 얼마나 받는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=386996037' },
+  ],
+  comparisonTable: {
+    caption: '배당절차 개선 전후 비교',
+    columns: ['구분', '과거 방식', '개선된 방식'],
+    rows: [
+      ['주주 확정(기준일)', '대체로 12월 말', '배당액 확정 후(예: 4월)'],
+      ['배당액 발표', '이듬해 3월경', '주주총회에서 먼저 확정'],
+      ['투자자 입장', '금액 모르고 매수', '확정 배당 보고 매수'],
+    ],
+  },
+  sections: [
+    {
+      heading: '깜깜이 배당이라 불린 이유',
+      paragraphs: [
+        '우리나라 상장사 상당수는 12월 결산 법인입니다. 예전에는 결산배당을 받을 주주를 정하는 배당기준일이 대부분 12월 31일이었습니다. 그런데 배당을 얼마 줄지는 이듬해 3월 정기주주총회에서 정해졌습니다.',
+        '순서가 뒤집혀 있던 셈입니다. 배당받을 사람은 연말에 먼저 확정되는데 정작 배당액은 석 달 뒤에 나오니, 투자자는 얼마를 받을지 모른 채 연말에 주식을 들고 있어야 했습니다. 이런 구조를 두고 깜깜이 배당이라는 지적이 오래 이어졌습니다.',
+      ],
+    },
+    {
+      heading: '무엇이 바뀌었나: 배당액 먼저, 기준일 나중',
+      paragraphs: [
+        '2023년 1월 정부는 글로벌 기준에 맞춰 배당절차를 개선하겠다고 발표했습니다. 핵심은 배당액을 먼저 확정하고 배당기준일을 그 이후로 정할 수 있게 순서를 바꾼 것입니다. 상법상 배당 결정일과 기준일을 분리할 수 있도록 유권해석과 제도를 정비했습니다.',
+        '이에 따라 회사는 정관을 고쳐, 주주총회나 이사회에서 배당액을 먼저 정한 다음 배당기준일을 나중 시점으로 지정할 수 있게 됐습니다. 분기배당도 기준일을 이사회 결의 이후로 설정할 수 있는 길이 열렸습니다.',
+      ],
+    },
+    {
+      heading: '이제 배당을 보고 투자하는 순서',
+      paragraphs: [
+        '바뀐 방식을 택한 회사라면 흐름이 이렇습니다. 먼저 3월에서 4월 사이 주주총회에서 주당 배당금이 확정됩니다. 그다음 회사가 배당기준일을 공시하고, 그 기준일까지 주식을 보유한 주주가 배당을 받습니다.',
+        '투자자 입장에서는 확정된 배당액을 확인한 뒤에 살지 말지를 정할 수 있습니다. 예상 배당수익률을 계산해 보고 기준일 전 영업일까지 매수하면 이번 배당 대상에 포함됩니다. 얼마 받을지 모르고 연말에 미리 담아야 했던 부담이 줄어든 것이 가장 큰 변화입니다.',
+      ],
+    },
+    {
+      heading: '주의할 점: 회사마다 다르다',
+      paragraphs: [
+        '주의할 부분은 모든 상장사가 이 방식으로 바꾼 것은 아니라는 점입니다. 정관 변경과 이사회 결정을 거쳐야 하므로 회사마다 적용 여부와 시점이 제각각입니다. 여전히 12월 말을 기준일로 두는 종목도 남아 있습니다.',
+        '따라서 특정 종목의 배당을 노린다면 그 회사가 어떤 방식을 쓰는지, 올해 배당기준일이 언제인지를 전자공시에서 직접 확인해야 합니다. 배당제도와 세법은 바뀔 수 있으니 투자 판단은 최신 공시를 근거로 하시고, 배당 투자의 결과에 대한 책임은 본인에게 있다는 점도 기억해 두시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '배당기준일이 바뀌면 무엇이 좋아지나요?',
+      answer:
+        '배당액을 먼저 확정하고 기준일을 나중에 두므로, 투자자가 확정된 배당을 확인한 다음 살지 정할 수 있습니다. 얼마 받을지 모르고 연말에 미리 사야 했던 부담이 줄어듭니다.',
+    },
+    {
+      question: '이제 모든 회사가 배당을 보고 살 수 있나요?',
+      answer:
+        '아닙니다. 정관 변경과 이사회 결정을 거친 회사만 해당합니다. 여전히 12월 말을 기준일로 두는 종목도 있어, 회사별로 배당기준일을 공시에서 확인해야 합니다.',
+    },
+    {
+      question: '개선된 방식에서는 언제까지 사야 배당을 받나요?',
+      answer:
+        '회사가 공시한 배당기준일까지 주식을 보유하면 됩니다. 결제일을 감안해 기준일 전 영업일까지 매수해야 주주로 확정되니, 종목별 기준일과 결제일을 함께 확인하세요.',
+    },
+    {
+      question: '배당기준일은 어디서 확인하나요?',
+      answer:
+        '금융감독원 전자공시(DART)와 증권사 앱의 종목 공시에서 회사가 정한 배당기준일을 확인할 수 있습니다. 배당 결의 공시에 기준일과 지급 예정일이 함께 안내됩니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-06) */
+const retireeDividendEtfMonthlyIncome: GuideDef = {
+  slug: 'retiree-dividend-etf-monthly-income',
+  title: '은퇴자 배당 ETF로 월 생활비 만들기, 필요 원금 역산',
+  tagline: '월 200만원 분배금을 목표로, 얼마를 어떤 ETF에 넣어야 할까',
+  description:
+    '은퇴 후 분배금으로 생활비를 충당하려면 목표 현금흐름에서 필요한 원금을 거꾸로 계산하면 됩니다. 분배율 4% 기준 월 200만원을 만들려면 얼마가 필요한지, 세금과 건강보험료까지 감안해 배당 ETF로 월 생활비를 설계하는 법을 정리했습니다.',
+  keywords: ['은퇴 배당 ETF', '배당으로 생활비', '월 배당 목표 원금', '은퇴자 ETF 포트폴리오', '분배금 생활비 계산', '노후 현금흐름'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-06',
+  answer:
+    '은퇴 생활비를 분배금으로 충당하려면 목표 월 수령액을 연 분배율로 나눠 필요한 원금을 역산합니다. 세전 분배율 4%로 월 200만원(연 2,400만원)을 받으려면 약 6억원이 필요합니다. 다만 분배율이 높다고 좋은 것은 아니며, 원금 훼손과 세금·건강보험료를 함께 따져야 실제 손에 쥐는 금액이 나옵니다.',
+  keyPoints: [
+    '필요 원금은 목표 연 수령액을 분배율로 나눠 구합니다. 분배율 4%로 연 2,400만원(월 200만원)을 받으려면 약 6억원, 분배율 6%면 약 4억원이 필요합니다.',
+    '분배율이 높은 커버드콜형 ETF는 분배금이 많은 대신 기초자산 상승을 놓치거나 원금(NAV)이 서서히 줄 수 있어, 실제 총수익을 분배율만으로 판단할 수 없습니다.',
+    '일반계좌 분배금에는 배당소득세 15.4%가 붙습니다. 세후로 월 200만원을 받으려면 세전 목표를 약 18% 더 높게 잡아야 같은 금액이 남습니다.',
+    '연 금융소득이 2,000만원을 넘으면 종합과세 대상이 되고, 건강보험 피부양자 자격이나 지역가입 보험료에도 영향을 줄 수 있어 수령 규모를 미리 설계해야 합니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '한국거래소(KRX)', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '노후를 위해 연금저축펀드에서 어떤 ETF를 담을지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=489444942' },
+    { summary: 'IRP·연금저축으로 노후 자금을 어떻게 굴릴지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494287819' },
+  ],
+  comparisonTable: {
+    caption: '월 목표 분배금별 필요 원금(세전, 분배율 가정)',
+    columns: ['월 목표', '연 수령', '분배율 4%', '분배율 6%'],
+    rows: [
+      ['100만원', '1,200만원', '약 3억원', '약 2억원'],
+      ['200만원', '2,400만원', '약 6억원', '약 4억원'],
+      ['300만원', '3,600만원', '약 9억원', '약 6억원'],
+    ],
+  },
+  sections: [
+    {
+      heading: '목표 현금흐름에서 원금을 거꾸로 계산한다',
+      paragraphs: [
+        '은퇴 자산 설계는 얼마가 필요한가보다 매달 얼마가 들어오게 할까에서 시작하는 편이 실감이 납니다. 계산은 간단합니다. 목표로 하는 연간 수령액을 연 분배율로 나누면 필요한 투자 원금이 나옵니다.',
+        '예를 들어 세전 분배율 4%를 가정하고 월 200만원, 즉 연 2,400만원을 받으려면 약 6억원이 필요합니다. 분배율을 6%로 잡으면 약 4억원으로 줄어듭니다. 다만 여기서 쓰는 분배율은 미래에 확정된 값이 아니라 가정일 뿐이라, 실제 분배는 시장 상황에 따라 달라진다는 점을 전제로 봐야 합니다.',
+      ],
+    },
+    {
+      heading: '분배율이 높다고 좋은 게 아니다',
+      paragraphs: [
+        '분배율이 높은 상품일수록 매력적으로 보이지만, 높은 분배가 어디서 나오는지를 봐야 합니다. 월배당 ETF의 상당수는 커버드콜 전략으로 옵션 프리미엄을 분배 재원으로 씁니다. 이 구조는 강세장에서 주가 상승분을 충분히 누리지 못하고, 경우에 따라 원금에 해당하는 순자산(NAV)이 조금씩 줄기도 합니다.',
+        '그래서 분배금만 보고 종목을 고르면 매달 현금은 들어오지만 자산 총액이 서서히 깎이는 상황이 생길 수 있습니다. 분배율과 함께 기초자산의 추이, 총수익(분배금에 시세 변동을 더한 값)을 같이 살펴야 은퇴 자산이 오래갑니다.',
+      ],
+    },
+    {
+      heading: '세금과 건강보험료를 빼고 계산해야 실전',
+      paragraphs: [
+        '표에 적은 필요 원금은 세전 기준입니다. 일반계좌에서 받는 분배금에는 배당소득세 15.4%가 원천징수되므로, 세후로 월 200만원을 손에 쥐려면 세전 목표를 약 18% 높게 잡아야 합니다. ISA나 연금계좌를 활용하면 세 부담을 줄일 수 있어, 어느 계좌에서 받을지가 실수령액을 크게 좌우합니다.',
+        '한 가지 더 챙길 부분은 건강보험료입니다. 연 금융소득이 2,000만원을 넘으면 종합과세 대상이 되고, 피부양자였던 은퇴자가 지역가입자로 바뀌거나 보험료가 오를 수 있습니다. 분배금 규모를 설계할 때 세금과 건보료를 함께 계산에 넣는 것이 현실적입니다.',
+      ],
+    },
+    {
+      heading: '한 종목 몰빵보다 분산과 지급월 조합',
+      paragraphs: [
+        '생활비를 한 종목에 의존하면 그 상품의 분배가 줄거나 기초자산이 흔들릴 때 그대로 타격을 받습니다. 성격이 다른 배당 ETF를 두세 개로 나누고, 지급월이 겹치지 않게 조합하면 매달 현금흐름이 한결 매끄러워집니다.',
+        '국민연금이나 개인연금 같은 다른 현금흐름과 합쳐 부족한 금액만 배당으로 메우는 접근도 유효합니다. 여기 적은 원금과 분배율은 이해를 돕기 위한 가정치이며 수익을 보장하지 않습니다. 실제 은퇴 설계는 본인의 자산과 지출, 최신 세제를 바탕으로 하시고 투자 결과에 대한 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '배당으로 월 200만원을 받으려면 얼마가 필요한가요?',
+      answer:
+        '세전 분배율 4%를 가정하면 연 2,400만원을 받기 위해 약 6억원이 필요합니다. 분배율을 6%로 잡으면 약 4억원으로 줄지만, 세금과 원금 훼손을 감안하면 실제로는 더 여유 있게 잡는 것이 안전합니다.',
+    },
+    {
+      question: '분배율이 높은 ETF를 고르면 되지 않나요?',
+      answer:
+        '분배율만 높다고 유리하지 않습니다. 커버드콜형은 분배가 많은 대신 상승을 놓치거나 원금이 줄 수 있어, 분배율과 함께 기초자산 추이와 총수익을 봐야 자산이 오래갑니다.',
+    },
+    {
+      question: '분배금에도 세금이 붙나요?',
+      answer:
+        '일반계좌 분배금에는 배당소득세 15.4%가 원천징수됩니다. 세후 목표를 채우려면 세전 금액을 더 높게 잡아야 하며, ISA·연금계좌를 쓰면 세 부담을 줄일 수 있습니다.',
+    },
+    {
+      question: '배당이 많으면 건강보험료가 오르나요?',
+      answer:
+        '연 금융소득이 2,000만원을 넘으면 종합과세 대상이 되고, 피부양자 자격 상실이나 지역가입 보험료 상승으로 이어질 수 있습니다. 수령 규모를 미리 설계하는 것이 좋습니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-06) */
+const cryptoLiquidationExplained: GuideDef = {
+  slug: 'crypto-liquidation-explained',
+  title: '코인 선물 강제청산이란, 청산가는 어떻게 정해지나',
+  tagline: '레버리지가 높을수록 청산가가 진입가에 가까워지는 이유',
+  description:
+    '코인 선물에서 손실이 커져 증거금이 유지 수준 아래로 내려가면 포지션이 강제로 청산됩니다. 청산가가 어떻게 정해지는지, 레버리지와 격리·교차 방식이 청산에 어떤 영향을 주는지 구조로 정리하고, 원금 전액을 잃을 수 있는 위험도 함께 짚었습니다.',
+  keywords: ['코인 강제청산', '선물 청산가', '유지증거금', '격리 교차 마진', '레버리지 청산', '무기한 선물 위험'],
+  section: '테마 ETF 가이드',
+  lastReviewed: '2026-08-06',
+  answer:
+    '강제청산은 선물 포지션의 손실이 커져 증거금이 거래소가 정한 유지증거금 아래로 내려갈 때, 거래소가 포지션을 강제로 반대매매하는 것입니다. 레버리지가 높을수록 청산가가 진입가에 가까워져 작은 반대 움직임에도 청산됩니다. 격리 마진은 넣은 증거금까지, 교차 마진은 계좌 잔고 전체까지 위험에 노출됩니다.',
+  keyPoints: [
+    '청산은 증거금 비율이 유지증거금 아래로 떨어질 때 발생합니다. 유지증거금은 포지션을 유지하는 데 필요한 최소 담보로, 진입 때 필요한 개시증거금보다 낮게 설정됩니다.',
+    '레버리지가 높을수록 청산가가 진입가에 가까워집니다. 예를 들어 10배 레버리지 롱 포지션은 대략 10% 안팎만 반대로 움직여도 청산될 수 있습니다.',
+    '격리(Isolated) 마진은 해당 포지션에 넣은 증거금까지만 잃지만, 교차(Cross) 마진은 손실이 커지면 계좌 전체 잔고까지 청산 위험에 노출됩니다.',
+    '청산 시에는 청산 수수료가 더 붙고, 급락장에서는 청산이 연쇄로 이어져 가격이 더 크게 흔들리기도 합니다. 원금 전액 손실이 가능한 고위험 거래입니다.',
+  ],
+  sources: [
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '비트코인을 레버리지로 장기 투자해도 되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494252706' },
+    { summary: '해외 코인 선물 거래를 어떻게 하는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=443985814' },
+  ],
+  sections: [
+    {
+      heading: '강제청산이 일어나는 순간',
+      paragraphs: [
+        '코인 선물은 증거금(담보)을 걸고 그보다 큰 금액의 포지션을 잡는 거래입니다. 가격이 예상과 반대로 움직여 평가손실이 쌓이면 증거금이 줄어듭니다. 이 증거금이 거래소가 정한 유지증거금 밑으로 내려가면, 거래소는 추가 손실을 막기 위해 포지션을 강제로 반대매매합니다. 이것이 강제청산입니다.',
+        '유지증거금은 포지션을 계속 유지하는 데 필요한 최소한의 담보입니다. 진입할 때 필요한 개시증거금보다 낮게 설정돼 있어서, 그 사이 구간에서는 버티지만 유지 수준을 깨는 순간 청산 절차가 시작됩니다.',
+      ],
+    },
+    {
+      heading: '레버리지가 높을수록 청산가가 가까워진다',
+      paragraphs: [
+        '청산가는 진입가와 레버리지, 유지증거금 비율로 정해집니다. 핵심은 레버리지가 높을수록 청산가가 진입가에 바짝 붙는다는 점입니다. 담보 대비 포지션이 클수록 작은 가격 변동만으로 증거금이 바닥나기 때문입니다.',
+        '거칠게 말하면 10배 레버리지로 롱을 잡으면 가격이 대략 10% 안팎 하락하는 것만으로도 청산될 수 있습니다. 20배면 5% 안팎, 50배면 2% 안팎으로 청산 구간이 더 좁아집니다. 높은 배율은 수익도 크게 키우지만, 그만큼 청산 위험도 같은 비율로 커집니다.',
+      ],
+    },
+    {
+      heading: '격리 마진과 교차 마진의 차이',
+      paragraphs: [
+        '증거금을 어떻게 묶느냐에 따라 청산 시 잃는 범위가 달라집니다. 격리(Isolated) 마진은 특정 포지션에만 정해진 증거금을 배정하는 방식입니다. 그 포지션이 청산되면 배정한 증거금까지만 잃고 계좌의 나머지 자산은 지켜집니다.',
+        '교차(Cross) 마진은 계좌 안의 자산 전체를 공동 담보로 씁니다. 손실을 계좌 잔고로 버티는 대신, 크게 밀리면 계좌 전체 잔고까지 청산 위험에 노출됩니다. 한 번의 큰 변동으로 계좌가 통째로 비는 일도 이 방식에서 나옵니다.',
+      ],
+    },
+    {
+      heading: '알아 둬야 할 위험',
+      paragraphs: [
+        '청산은 손실 확정으로 끝나지 않습니다. 청산 과정에는 별도의 청산 수수료가 붙고, 시장이 급락할 때는 여러 포지션이 동시에 청산되며 가격을 더 밀어내는 연쇄 청산이 나타나기도 합니다. 이때는 예상한 청산가보다 더 불리한 값에 체결되기도 합니다.',
+        '무기한 선물은 방향뿐 아니라 펀딩비, 청산 구조까지 겹쳐 원금 전액을 잃을 수 있는 고위험 거래입니다. 이 글은 청산이 어떻게 작동하는지 구조를 이해하기 위한 참고 자료이며, 특정 거래를 권하는 내용이 아닙니다. 가상자산 파생거래는 손실 위험이 매우 크므로, 투자 여부와 그 결과에 대한 책임은 전적으로 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '강제청산은 정확히 언제 일어나나요?',
+      answer:
+        '평가손실로 증거금이 거래소가 정한 유지증거금 아래로 내려가는 순간 시작됩니다. 유지증거금은 포지션을 유지하는 최소 담보로, 진입 때의 개시증거금보다 낮게 설정됩니다.',
+    },
+    {
+      question: '레버리지를 높이면 왜 더 빨리 청산되나요?',
+      answer:
+        '담보 대비 포지션이 커져 작은 가격 변동에도 증거금이 빠르게 소진되기 때문입니다. 10배면 약 10%, 20배면 약 5% 안팎만 반대로 움직여도 청산 구간에 닿을 수 있습니다.',
+    },
+    {
+      question: '격리와 교차 중 어느 쪽이 위험한가요?',
+      answer:
+        '격리는 해당 포지션 증거금까지만 잃지만, 교차는 계좌 전체 잔고가 담보라 크게 밀리면 잔고 전부가 청산 위험에 놓입니다. 잃을 범위를 제한하려면 격리가 상대적으로 방어적입니다.',
+    },
+    {
+      question: '청산되면 손실은 증거금까지만인가요?',
+      answer:
+        '격리 마진은 대체로 배정한 증거금까지지만, 교차 마진은 계좌 잔고 전체가 대상입니다. 청산 수수료와 연쇄 청산에 따른 불리한 체결까지 겹칠 수 있어 원금 전액 손실이 가능합니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-06) */
+const usEtfDripKorea: GuideDef = {
+  slug: 'us-etf-drip-korea',
+  title: '미국 ETF 배당 자동재투자, 국내 계좌에서 되나',
+  tagline: '미국 직투 DRIP은 제한적, 국내 상장 TR ETF가 대안',
+  description:
+    '미국에서는 배당을 자동으로 같은 종목에 재투자하는 DRIP이 흔하지만, 국내 증권사의 미국 직투 계좌에서는 지원이 제한적입니다. 국내 계좌에서 분배금을 자동으로 재투자하려면 어떤 방법이 있는지, TR ETF와 적립식 자동매수 대안을 함께 정리했습니다.',
+  keywords: ['미국 ETF DRIP', '배당 자동재투자', 'TR ETF', '분배금 재투자', '국내 증권사 DRIP', 'ETF 자동적립'],
+  section: '해외상장 가이드',
+  lastReviewed: '2026-08-06',
+  answer:
+    'DRIP은 배당을 현금으로 받지 않고 같은 종목을 자동 매수해 복리로 굴리는 방식입니다. 미국 현지 증권사에서는 일반적이지만, 국내 증권사의 미국 직투 계좌에서는 지원이 제한적입니다. 국내 계좌에서 자동 재투자를 원한다면 분배금을 내부에서 재투자하는 TR형 ETF나 적립식 자동매수 서비스를 대안으로 쓸 수 있습니다.',
+  keyPoints: [
+    'DRIP(배당 재투자)은 받은 배당으로 같은 종목을 자동으로 더 사서 복리 효과를 노리는 방식입니다. 배당을 쓰지 않고 계속 굴릴수록 장기 수익률 차이가 벌어집니다.',
+    '국내 증권사의 미국 주식·ETF 직투 계좌에서는 DRIP을 지원하지 않는 곳이 많고, 지원해도 대상 종목이 한정적입니다. 이용 전 증권사별 지원 여부를 직접 확인해야 합니다.',
+    '국내 상장 ETF 중 이름에 TR(토탈리턴)이 붙은 종목은 분배금을 지급하지 않고 내부에서 자동 재투자합니다. 분배 시점의 세금 없이 재투자되는 효과가 있습니다.',
+    '분배금을 직접 받아 다시 사는 방법도 있습니다. 이때는 배당소득세 15.4%가 먼저 빠지며, 적립식 자동매수를 걸어 두면 손이 덜 갑니다.',
+  ],
+  sources: [
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '한국거래소(KRX)', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '노후를 위해 연금저축펀드에서 어떤 ETF를 담아 굴릴지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=489444942' },
+    { summary: '연금저축계좌를 어떻게 활용해 자산을 불릴지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493610254' },
+  ],
+  comparisonTable: {
+    caption: '국내 계좌에서 분배금을 다시 굴리는 방법',
+    columns: ['방법', '자동 여부', '분배 시점 세금'],
+    rows: [
+      ['미국 직투 DRIP', '증권사·종목 한정', '배당소득세 부과'],
+      ['국내 상장 TR ETF', '내부 자동 재투자', '분배 없어 미부과'],
+      ['분배금 직접 재매수', '수동 또는 자동매수', '배당소득세 부과'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'DRIP이란 무엇인가',
+      paragraphs: [
+        'DRIP은 Dividend Reinvestment Plan의 약자로, 받은 배당을 현금으로 빼지 않고 같은 종목을 자동으로 더 사들이는 방식입니다. 배당이 다시 원금에 더해져 굴러가므로 시간이 갈수록 복리 효과가 커집니다. 소수점 매수를 지원하면 배당금 전액이 남김없이 재투자됩니다.',
+        '장기 적립 투자자에게 DRIP은 매력적입니다. 배당을 받을 때마다 직접 재매수하는 번거로움이 없고, 배당을 쓰지 않고 계속 재투자할수록 최종 자산 차이가 벌어지기 때문입니다.',
+      ],
+    },
+    {
+      heading: '국내 계좌에서 미국 ETF DRIP은 왜 제한적인가',
+      paragraphs: [
+        '문제는 국내 증권사의 미국 주식·ETF 직투 계좌에서 DRIP을 온전히 쓰기가 어렵다는 점입니다. 자동 재투자 자체를 지원하지 않는 증권사가 많고, 지원하더라도 일부 종목에 한정되는 경우가 흔합니다. 소수점 매수나 배당 자동 재매수 기능도 증권사마다 제공 범위가 다릅니다.',
+        '그래서 미국 현지 계좌에서는 당연하게 쓰이는 DRIP이 국내 직투 환경에서는 그대로 적용되지 않을 수 있습니다. 이용 중인 증권사가 해당 종목에 자동 재투자를 지원하는지 먼저 확인하는 것이 순서입니다.',
+      ],
+    },
+    {
+      heading: '대안 1: 이름에 TR이 붙은 국내 상장 ETF',
+      paragraphs: [
+        '국내 계좌에서 자동 재투자에 가장 가까운 선택지는 TR(토탈리턴) 유형의 국내 상장 ETF입니다. TR ETF는 배당(분배금)을 투자자에게 지급하지 않고 펀드 안에서 자동으로 재투자합니다. 나스닥100이나 S&P500 같은 미국 지수를 담은 TR형 상품도 있습니다.',
+        'TR 구조의 또 다른 장점은 세금입니다. 분배금을 지급하지 않으니 그 시점에 배당소득세가 빠지지 않고, 과세가 매도 시점으로 미뤄지는 효과가 있습니다. 다만 상품마다 보수와 과세 방식이 다르므로 매수 전 상품설명서를 확인하는 편이 좋습니다.',
+      ],
+    },
+    {
+      heading: '대안 2: 분배금 직접 재매수와 자동적립',
+      paragraphs: [
+        '분배금을 그대로 받은 뒤 직접 같은 ETF를 다시 사는 방법도 있습니다. 완전 자동은 아니지만, 여러 증권사가 제공하는 적립식 자동매수를 걸어 두면 정해진 주기에 알아서 매수돼 손이 덜 갑니다. 배당이 들어오는 시점에 맞춰 매수 일정을 잡으면 재투자와 비슷하게 굴릴 수 있습니다.',
+        '이 방식은 분배금을 받을 때 배당소득세 15.4%가 먼저 빠진다는 점을 감안해야 합니다. 증권사별 서비스 명칭과 지원 종목, 수수료는 계속 바뀌므로 최신 안내를 확인하시고, 상품 선택과 투자 결과에 대한 책임은 본인에게 있다는 점을 기억해 두시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '국내 증권사에서 미국 ETF 배당을 자동재투자할 수 있나요?',
+      answer:
+        '지원하는 곳이 제한적입니다. 자동 재투자를 아예 제공하지 않거나 일부 종목에만 되는 경우가 많으므로, 이용 중인 증권사의 지원 여부와 대상 종목을 먼저 확인해야 합니다.',
+    },
+    {
+      question: 'TR ETF는 배당을 어떻게 처리하나요?',
+      answer:
+        'TR(토탈리턴) ETF는 분배금을 지급하지 않고 펀드 안에서 자동으로 재투자합니다. 분배 시점에 배당소득세가 빠지지 않아 과세가 매도 시점으로 미뤄지는 효과가 있습니다.',
+    },
+    {
+      question: '분배금을 직접 다시 사면 세금은 어떻게 되나요?',
+      answer:
+        '분배금을 받을 때 배당소득세 15.4%가 원천징수된 뒤 남은 금액으로 재매수하게 됩니다. TR ETF와 달리 분배 시점에 세금이 먼저 빠진다는 차이가 있습니다.',
+    },
+    {
+      question: '자동으로 재투자하려면 무엇을 쓰면 되나요?',
+      answer:
+        '국내 상장 TR ETF를 담으면 내부에서 자동 재투자됩니다. 개별 종목을 굴린다면 증권사의 적립식 자동매수를 걸어 배당 시점에 맞춰 재매수하는 방법이 있습니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  stockOrderRejectedReasons,
+  dividendRecordDateReform,
+  retireeDividendEtfMonthlyIncome,
+  cryptoLiquidationExplained,
+  usEtfDripKorea,
   cdRateEtfInterestAccrual,
   isaPensionSameEtfOverlap,
   overseasEtfDividendCurrency,
@@ -20405,6 +20850,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-06 · 지식iN 질문 수요 기반 (매수 주문 체결 안 되는 이유·배당기준일 개편 선배당 후투자·은퇴자 배당 ETF 월 생활비 역산·코인 선물 강제청산 원리·미국 ETF 배당 자동재투자 DRIP 국내)
+  'stock-order-rejected-reasons': '2026-08-06',
+  'dividend-record-date-reform': '2026-08-06',
+  'retiree-dividend-etf-monthly-income': '2026-08-06',
+  'crypto-liquidation-explained': '2026-08-06',
+  'us-etf-drip-korea': '2026-08-06',
   // 2026-08-05 · 지식iN 질문 수요 기반 (CD금리 ETF 이자 누적 원리·ISA와 연금저축 같은 ETF 중복·해외 ETF 직투 달러 배당 vs 국내 원화 배당·비트코인 도미넌스·연금저축 IRP 월 납입액)
   'cd-rate-etf-interest-accrual': '2026-08-05',
   'isa-pension-same-etf-overlap': '2026-08-05',
@@ -20690,7 +21141,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons'],
   },
   {
     title: '세금·절세 계좌',
@@ -20700,17 +21151,17 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income'],
   },
   {
     title: '테마·섹터',
     description: '방산·조선·건설·자동차·AI·반도체·빅테크·소프트웨어·보안·로봇·전기차·신재생·희토류·게임·엔터·명품·뷰티·비트코인·인프라 등 특정 테마에 집중하는 섹터 ETF.',
-    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'bitcoin-krw-buy-withdrawal', 'crypto-exchange-fee-structure', 'crypto-leverage-long-term-risk', 'overseas-crypto-futures-tax', 'bitcoin-dominance-altcoin'],
+    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'bitcoin-krw-buy-withdrawal', 'crypto-exchange-fee-structure', 'crypto-leverage-long-term-risk', 'overseas-crypto-futures-tax', 'bitcoin-dominance-altcoin', 'crypto-liquidation-explained'],
   },
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea'],
   },
   {
     title: '전략·자산배분',
