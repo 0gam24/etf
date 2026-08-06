@@ -1902,3 +1902,5 @@ https://iknowhowinfo.com/guide/dividend-record-date-reform
 https://iknowhowinfo.com/guide/retiree-dividend-etf-monthly-income
 https://iknowhowinfo.com/guide/crypto-liquidation-explained
 https://iknowhowinfo.com/guide/us-etf-drip-korea
+
+색인 푸시(npm run push:guides, 대상 2026-08-06 5편 + 허브 3): IndexNow skip(no-site-url), Google Indexing skip(no-credentials). 키 미설정 채널 자동 skip으로 실행 자체는 정상. sitemap/RSS는 GUIDES·GUIDE_PUBLISHED_AT SSoT 직접 import라 자동 반영.
