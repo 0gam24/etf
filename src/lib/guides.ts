@@ -20606,7 +20606,456 @@ const usEtfDripKorea: GuideDef = {
   ],
 };
 
+const sp500IndexVsVoo: GuideDef = {
+  slug: 'sp500-index-vs-voo',
+  title: 'S&P500 지수와 VOO 차이, 지수는 어떻게 사나',
+  tagline: '지수는 직접 못 사고, 그 지수를 담은 ETF로 투자한다',
+  description:
+    'S&P500은 미국 대표 500개 기업을 묶은 지수이고, VOO는 그 지수를 그대로 담아 사고팔 수 있게 만든 ETF입니다. 지수 자체는 살 수 없고 VOO나 국내 상장 S&P500 ETF로 투자하는 구조를 초보 눈높이로 정리했습니다.',
+  keywords: ['S&P500 지수', 'VOO', 'VOO ETF', 'S&P500 ETF 차이', '지수와 ETF 차이', '미국 S&P500 투자'],
+  section: '해외상장 가이드',
+  lastReviewed: '2026-08-07',
+  answer:
+    'S&P500은 미국 대형주 500종목의 성과를 지수 하나로 나타낸 것이고, VOO는 그 지수를 그대로 복제하도록 만든 상장지수펀드(ETF)입니다. 지수 숫자 자체를 살 수는 없고, VOO나 국내 상장 S&P500 ETF를 사면 그 지수에 투자하는 효과를 얻습니다.',
+  keyPoints: [
+    'S&P500은 미국 증시 대표 500개 기업을 시가총액 기준으로 묶은 지수입니다. 지수는 시장 상태를 보여주는 숫자일 뿐, 그 자체를 매수할 수는 없습니다.',
+    'VOO는 뱅가드가 S&P500을 그대로 추종하도록 만든 미국 상장 ETF로, 총보수가 연 0.03% 수준으로 매우 낮습니다. VOO 1주를 사면 500개 기업에 나눠 담는 효과가 있습니다.',
+    '국내 투자자는 VOO를 해외주식 계좌로 직접 사거나, 국내 상장 S&P500 ETF(원화로 매매)로 같은 지수에 투자할 수 있습니다. 두 방식은 세금과 환전에서 차이가 납니다.',
+    'VOO 직투 매매차익은 해외주식 양도소득세 22%(연 250만원 공제) 대상이고, 국내 상장 S&P500 ETF 매매차익은 배당소득세 15.4%로 과세됩니다. 어디서 사느냐에 따라 세금이 달라집니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX)', url: 'https://www.krx.co.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'S&P500과 VOO가 무엇이 다른지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494129410' },
+    { summary: '나스닥100과 S&P500 지수에 장기투자할 때를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494346634' },
+  ],
+  comparisonTable: {
+    caption: 'S&P500 지수와 이를 담는 대표 방식',
+    columns: ['구분', '무엇인가', '살 수 있나'],
+    rows: [
+      ['S&P500 지수', '500개 기업 성과를 나타내는 숫자', '직접 매수 불가'],
+      ['VOO(미국 상장 ETF)', '지수를 복제한 펀드, 달러로 매매', '해외주식 계좌로 매수'],
+      ['국내 상장 S&P500 ETF', '지수를 복제한 펀드, 원화로 매매', '국내 계좌로 매수'],
+    ],
+  },
+  sections: [
+    {
+      heading: '지수와 ETF는 무엇이 다른가',
+      paragraphs: [
+        'S&P500은 미국을 대표하는 500개 상장기업의 주가를 시가총액 비중으로 묶어 하나의 숫자로 보여주는 지수입니다. 뉴스에서 "S&P500이 몇 % 올랐다"고 할 때 그 숫자가 바로 지수이고, 시장 전체의 온도를 재는 지표라고 보면 됩니다.',
+        '지수 자체는 상품이 아니라 계산된 값이라 직접 살 수 없습니다. 그래서 운용사가 그 지수를 그대로 따라가도록 실제 500개 종목을 담아 만든 펀드가 필요한데, 이것을 거래소에 상장해 주식처럼 사고팔게 한 것이 ETF입니다. VOO가 대표적인 예입니다.',
+      ],
+    },
+    {
+      heading: 'VOO는 어떤 ETF인가',
+      paragraphs: [
+        'VOO는 뱅가드가 운용하는 미국 상장 ETF로, S&P500 지수를 그대로 추종합니다. VOO 한 주를 사면 애플, 마이크로소프트, 엔비디아 같은 500개 기업에 비중대로 나눠 투자하는 효과가 생깁니다. 총보수가 연 0.03% 안팎으로 낮아 장기 투자자에게 부담이 적은 편입니다.',
+        '같은 S&P500을 담는 미국 상장 ETF로 SPY, IVV도 있습니다. 셋 다 같은 지수를 따라가지만 보수와 거래량에서 미세한 차이가 있어, 이 부분은 개별 상품을 비교해 고르면 됩니다.',
+      ],
+    },
+    {
+      heading: '국내에서 S&P500에 투자하는 두 갈래',
+      paragraphs: [
+        '국내 투자자가 S&P500에 투자하는 길은 크게 둘입니다. 하나는 해외주식 계좌를 열어 VOO를 달러로 직접 사는 방법이고, 다른 하나는 국내 거래소에 상장된 S&P500 ETF를 원화로 사는 방법입니다. 국내 상장 상품은 이름에 S&P500이 들어가고 원화로 편하게 매매할 수 있습니다.',
+        '어느 쪽이든 담는 지수는 같지만 환전 절차와 세금이 다릅니다. VOO 직투는 달러 환전이 필요하고 환율 변동을 함께 안게 되며, 국내 상장 ETF는 원화로 사되 상품 안에서 환 위험을 어떻게 처리하는지(환헤지 여부)를 확인해야 합니다.',
+      ],
+    },
+    {
+      heading: '세금은 어디서 사느냐에 따라 갈린다',
+      paragraphs: [
+        'VOO를 해외주식 계좌로 직접 사면 매도 차익은 해외주식 양도소득세 대상입니다. 연 250만원을 공제한 뒤 나머지에 22%(양도세 20%에 지방소득세 포함) 세율이 붙고, 다음 해 5월에 스스로 신고합니다. 국내 상장 S&P500 ETF의 매매차익은 배당소득세 15.4%로 원천징수되는 구조라 과세 방식 자체가 다릅니다.',
+        '어느 방식이 유리한지는 투자 금액과 다른 소득 상황에 따라 달라집니다. 세금과 환율까지 감안해 본인에게 맞는 방식을 고르시고, 투자 판단과 결과에 대한 책임은 본인에게 있다는 점을 기억해 두시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'S&P500 지수를 직접 살 수는 없나요?',
+      answer:
+        '지수는 계산된 숫자라 그 자체를 매수할 수 없습니다. S&P500에 투자하려면 지수를 복제한 VOO 같은 미국 상장 ETF나 국내 상장 S&P500 ETF를 사야 합니다.',
+    },
+    {
+      question: 'VOO와 국내 상장 S&P500 ETF 중 뭐가 나은가요?',
+      answer:
+        '담는 지수는 같습니다. VOO는 달러 환전이 필요하고 양도소득세가, 국내 상장 ETF는 원화로 매매하고 배당소득세가 적용돼 과세와 환전에서 갈립니다. 투자 금액과 소득 상황에 맞춰 고르면 됩니다.',
+    },
+    {
+      question: 'VOO 총보수는 얼마인가요?',
+      answer:
+        'VOO의 총보수는 연 0.03% 안팎으로 매우 낮은 편입니다. 다만 미국 직투 시에는 환전 비용과 양도세 신고를 함께 고려해야 합니다.',
+    },
+    {
+      question: 'VOO, SPY, IVV는 어떻게 다른가요?',
+      answer:
+        '셋 다 S&P500 지수를 따라가는 미국 상장 ETF입니다. 추종 지수는 같고 총보수와 거래량에서 미세한 차이가 있어, 세부 비교 후 고르면 됩니다.',
+    },
+  ],
+};
+
+const usBitcoinEtfKoreaTax: GuideDef = {
+  slug: 'us-bitcoin-etf-korea-tax',
+  title: '미국 비트코인 현물 ETF, 국내 직투 세금은',
+  tagline: 'IBIT 직투는 해외주식 양도세, 코인 직접 보유와 세금이 다르다',
+  description:
+    '미국 상장 비트코인 현물 ETF(IBIT 등)를 국내 해외주식 계좌로 사면 매매차익에 양도소득세 22%가 붙고 연 250만원까지 공제됩니다. 코인을 직접 사는 것, 2027년 가상자산 과세와 무엇이 다른지 세금 관점에서 정리했습니다.',
+  keywords: ['미국 비트코인 ETF 세금', 'IBIT 세금', '비트코인 ETF 양도소득세', '국내 비트코인 ETF', '가상자산 과세 2027', '해외 ETF 양도세'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-07',
+  answer:
+    '미국에 상장된 비트코인 현물 ETF(IBIT 등)를 국내 증권사 해외주식 계좌로 매수하면, 매매차익은 해외주식과 똑같이 양도소득세 22%가 적용되고 연 250만원까지 기본공제됩니다. 코인을 거래소에서 직접 사고파는 것과는 과세 방식과 시행 시점이 다릅니다.',
+  keyPoints: [
+    '미국 상장 비트코인 현물 ETF는 국내 해외주식 계좌로 매매할 수 있고, 매매차익은 해외주식 양도소득세 22%(기본세율 20%에 지방소득세 2% 포함) 대상입니다. 연 250만원까지는 공제돼 세금이 없습니다.',
+    'IBIT 같은 현물 ETF는 배당(분배금)을 지급하지 않아 배당소득세는 대체로 발생하지 않습니다. 이익을 실현하는 시점의 양도세만 신경 쓰면 됩니다.',
+    '거래소에서 코인을 직접 사고판 소득은 2027년 1월 1일부터 과세되며, 연 250만원 공제 후 22% 세율의 기타소득으로 분류됩니다. ETF 직투와 시행 시점, 소득 구분이 다릅니다.',
+    '국내 거래소에 상장된 비트코인 현물 ETF는 아직 허용되지 않았고, 국내에서는 해외 비트코인 선물이나 블록체인 기업 ETF 정도만 거래됩니다. 현물 노출은 미국 상장 ETF 직투로 얻는 구조입니다.',
+  ],
+  sources: [
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+    { label: '기획재정부', url: 'https://www.moef.go.kr' },
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '비트코인 ETF의 세금을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=475553179' },
+    { summary: '비트코인 ETF가 나오면 시장이 어떻게 될지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=461078410' },
+  ],
+  comparisonTable: {
+    caption: '비트코인에 투자하는 방식별 과세',
+    columns: ['방식', '과세 방식', '기본공제와 시행'],
+    rows: [
+      ['미국 비트코인 현물 ETF 직투', '해외주식 양도소득세 22%', '연 250만원 공제, 현재 적용'],
+      ['코인 거래소 직접 매매', '기타소득 22%', '연 250만원 공제, 2027년 시행'],
+      ['국내 상장 비트코인 선물 ETF', '배당소득세 15.4% 등', '보유기간 과세 적용'],
+    ],
+  },
+  sections: [
+    {
+      heading: '미국 비트코인 현물 ETF를 국내에서 살 수 있나',
+      paragraphs: [
+        '미국에는 IBIT(블랙록), FBTC(피델리티)처럼 비트코인 현물을 담아 가격을 따라가는 ETF가 여럿 상장돼 있습니다. 국내 투자자도 증권사 해외주식 계좌를 열면 이런 미국 상장 ETF를 달러로 직접 매매할 수 있습니다. 코인 거래소에 가입하지 않고도 증권 계좌에서 비트코인 가격에 투자하는 셈입니다.',
+        '반면 국내 거래소에 상장된 비트코인 현물 ETF는 아직 허용되지 않았습니다. 그래서 국내에서 현물 가격에 노출되려면 미국 상장 ETF를 직투하는 방식이 일반적이고, 국내에는 해외 비트코인 선물이나 블록체인 관련 기업에 투자하는 ETF 정도가 거래되고 있습니다.',
+      ],
+    },
+    {
+      heading: '직투 매매차익은 해외주식 양도세',
+      paragraphs: [
+        '미국 비트코인 현물 ETF를 해외주식 계좌로 사고팔아 얻은 이익은 해외주식과 동일하게 양도소득세로 과세됩니다. 한 해 동안의 매매 손익을 합산해 연 250만원을 공제한 뒤, 남은 이익에 22%(양도세 20%에 지방소득세 더한 값) 세율이 붙습니다.',
+        '신고는 이익이 난 다음 해 5월 종합소득세 신고 기간에 스스로 합니다. 여러 해외 종목의 손익을 합쳐 계산하므로, 손실 난 종목이 있으면 이익과 상계해 과세 대상을 줄일 수 있습니다.',
+      ],
+    },
+    {
+      heading: '코인을 직접 사는 것과 무엇이 다른가',
+      paragraphs: [
+        '거래소에서 비트코인을 직접 사고파는 소득은 성격이 다릅니다. 2027년 1월 1일부터 가상자산 양도·대여 소득이 과세되며, 연 250만원을 공제한 뒤 22% 세율의 기타소득으로 분류됩니다. 첫 신고·납부는 2028년 5월에 이뤄집니다.',
+        '공제 금액과 세율 숫자는 비슷해 보이지만, ETF 직투는 해외주식 양도소득으로 지금도 과세되고 코인 직접 매매는 2027년부터 기타소득으로 과세된다는 점이 다릅니다. 자신이 어느 방식으로 투자하는지에 따라 적용 규정을 확인해야 합니다.',
+      ],
+    },
+    {
+      heading: '투자 전 짚어둘 점',
+      paragraphs: [
+        '비트코인은 가격 변동이 큰 자산이라 ETF로 담아도 원금 손실 위험이 그대로 따라옵니다. 세금 구조가 편하다는 이유만으로 비중을 키우기보다, 감당할 수 있는 범위에서 접근하는 편이 안전합니다.',
+        '세법과 국내 상장 허용 여부는 계속 바뀔 수 있으니 매매 전 최신 규정을 확인하시고, 투자 판단과 그 결과에 대한 책임은 본인에게 있다는 점을 잊지 마시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '미국 비트코인 ETF 수익에는 세금이 얼마나 붙나요?',
+      answer:
+        '해외주식 계좌로 매매한 차익이므로 양도소득세 대상입니다. 연 250만원을 공제한 뒤 나머지에 22% 세율이 적용되고, 다음 해 5월에 스스로 신고합니다.',
+    },
+    {
+      question: 'IBIT 같은 현물 ETF도 배당세가 있나요?',
+      answer:
+        '비트코인 현물을 담는 ETF는 분배금을 지급하지 않는 것이 일반적이라 배당소득세는 대체로 발생하지 않습니다. 이익 실현 시점의 양도세만 고려하면 됩니다.',
+    },
+    {
+      question: '코인을 직접 사는 것과 세금이 같나요?',
+      answer:
+        '공제와 세율 숫자는 비슷하지만 구분이 다릅니다. ETF 직투는 지금도 해외주식 양도소득으로 과세되고, 코인 직접 매매 소득은 2027년부터 기타소득으로 과세됩니다.',
+    },
+    {
+      question: '국내 상장 비트코인 현물 ETF는 언제 나오나요?',
+      answer:
+        '국내 거래소 상장 비트코인 현물 ETF는 아직 허용되지 않았습니다. 도입 여부와 시점은 정해지지 않았으니, 현재는 미국 상장 ETF 직투나 국내 선물형 상품으로 접근하는 상황입니다.',
+    },
+  ],
+};
+
+const pensionAccountTermsExplained: GuideDef = {
+  slug: 'pension-account-terms-explained',
+  title: '연금저축·연금저축펀드·IRP 용어 차이 정리',
+  tagline: '연저펀은 연금저축펀드, 헷갈리는 연금 계좌 이름 한번에',
+  description:
+    '연금저축, 연금저축펀드(연저펀), 연금저축보험, IRP는 이름이 비슷해 자주 헷갈립니다. 각각 무엇을 담을 수 있고 세액공제 한도는 어떻게 되는지, ETF 투자가 되는 계좌는 어느 것인지 초보 눈높이로 구분해 정리했습니다.',
+  keywords: ['연금저축펀드', '연저펀', '연금저축 IRP 차이', '연금저축보험', '연금 계좌 종류', 'IRP 세액공제'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-07',
+  answer:
+    '연금저축은 세액공제를 받는 노후 대비 계좌의 큰 이름이고, 그 안에서 펀드·ETF로 굴리는 형태가 연금저축펀드(연저펀), 보험사 상품으로 굴리는 형태가 연금저축보험입니다. IRP는 이와 별도로 개설하는 퇴직연금 계좌로, 둘을 합쳐 연 900만원까지 세액공제를 채울 수 있습니다.',
+  keyPoints: [
+    '연금저축은 세액공제를 받는 노후 대비 계좌를 통칭하는 이름입니다. 어디서 굴리느냐에 따라 연금저축펀드와 연금저축보험으로 갈립니다.',
+    '연금저축펀드(줄여서 연저펀)는 증권사에서 여는 계좌로, 그 안에서 ETF와 펀드를 직접 골라 매매할 수 있습니다. ETF로 굴리려면 이 계좌가 필요합니다.',
+    '연금저축의 세액공제 한도는 연 600만원이고, IRP를 추가로 열어 300만원을 더 넣으면 합산 900만원까지 공제받을 수 있습니다. 총급여 5,500만원 이하는 공제율 16.5%가 적용됩니다.',
+    'IRP는 연금저축과 별개의 퇴직연금 계좌로, 주식형 ETF 같은 위험자산에 최대 70%까지만 담을 수 있는 제한이 있습니다. 연금저축펀드에는 이런 위험자산 비중 제한이 없습니다.',
+  ],
+  sources: [
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'IRP, 연금저축, 연저펀의 차이를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494287819' },
+    { summary: '연금저축부터 가입하는 게 맞을지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494334592' },
+    { summary: '연금저축펀드가 무엇인지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493466389' },
+  ],
+  comparisonTable: {
+    caption: '헷갈리는 연금 계좌 이름 비교',
+    columns: ['계좌', '굴리는 방식', '세액공제 한도'],
+    rows: [
+      ['연금저축펀드(연저펀)', '증권사, ETF·펀드 직접 매매', '연 600만원'],
+      ['연금저축보험', '보험사, 공시이율 상품', '연 600만원'],
+      ['IRP', '증권사·은행, 위험자산 70% 한도', '추가 300만원, 합산 900만원'],
+    ],
+  },
+  sections: [
+    {
+      heading: '연금저축은 하나의 큰 이름',
+      paragraphs: [
+        '연금저축은 특정 상품 이름이 아니라, 세액공제를 받으며 노후 자금을 모으는 계좌를 통칭하는 큰 범주입니다. 이 안에서 무엇으로 굴리느냐에 따라 연금저축펀드와 연금저축보험으로 나뉩니다. 이름이 길고 비슷해 헷갈릴 뿐, 뿌리는 같은 제도입니다.',
+        '흔히 "연저펀"이라고 줄여 부르는 것이 바로 연금저축펀드입니다. 증권사에서 개설하고 그 안에서 ETF와 펀드를 직접 골라 담을 수 있어, 스스로 종목을 운용하고 싶은 사람에게 맞습니다.',
+      ],
+    },
+    {
+      heading: '연금저축펀드와 연금저축보험의 차이',
+      paragraphs: [
+        '연금저축펀드는 증권사 계좌로, 국내 상장 ETF나 펀드를 직접 사고팔며 수익률을 스스로 관리합니다. 시장이 오르면 더 벌 수 있지만 손실 위험도 본인이 집니다. ETF로 노후 자금을 굴리려는 사람은 이 계좌를 엽니다.',
+        '연금저축보험은 보험사 상품으로, 공시이율에 따라 비교적 안정적으로 쌓이지만 ETF를 직접 고르지는 못합니다. 안정성을 중시하면 보험, 직접 운용과 성장성을 원하면 펀드 쪽이 맞습니다. 보험에서 펀드로 옮기고 싶다면 해지 대신 계약이전 제도를 쓰면 됩니다.',
+      ],
+    },
+    {
+      heading: 'IRP는 무엇이 다른가',
+      paragraphs: [
+        'IRP는 개인형 퇴직연금 계좌로, 연금저축과는 별개로 개설합니다. 여기서도 ETF와 펀드를 담을 수 있지만, 주식형 ETF처럼 위험이 큰 자산은 전체의 70%까지만 담을 수 있는 규정이 있습니다. 나머지는 채권형이나 예금형 같은 안전자산으로 채워야 합니다.',
+        '연금저축펀드에는 이런 위험자산 비중 제한이 없어 주식형 ETF를 더 자유롭게 담을 수 있습니다. 두 계좌의 성격 차이를 알면, 공격적으로 굴릴 자금과 안정적으로 둘 자금을 나눠 배치하기 쉬워집니다.',
+      ],
+    },
+    {
+      heading: '세액공제는 합쳐서 채운다',
+      paragraphs: [
+        '세액공제 한도는 연금저축이 연 600만원, IRP를 더하면 합산 900만원입니다. 흔히 연금저축에 600만원을 먼저 채우고 IRP에 300만원을 넣어 900만원을 맞춥니다. 총급여 5,500만원 이하는 공제율 16.5%, 초과 구간은 13.2%가 적용돼 900만원을 채우면 상당한 금액을 돌려받을 수 있습니다.',
+        '다만 연금 계좌는 중도에 해지하면 그동안 받은 세제 혜택을 다시 토해내는 불이익이 있습니다. 오래 묻어둘 수 있는 자금으로 시작하시고, 상품 선택과 투자 결과에 대한 책임은 본인에게 있다는 점을 염두에 두시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '연저펀이 연금저축펀드와 같은 건가요?',
+      answer:
+        '네, 연저펀은 연금저축펀드를 줄여 부르는 말입니다. 증권사에서 여는 계좌로 그 안에서 ETF와 펀드를 직접 골라 매매할 수 있습니다.',
+    },
+    {
+      question: '연금저축과 IRP는 둘 다 만들어야 하나요?',
+      answer:
+        '세액공제를 최대로 채우려면 둘 다 활용하는 것이 유리합니다. 연금저축 600만원에 IRP 300만원을 더해 합산 900만원까지 공제받을 수 있습니다.',
+    },
+    {
+      question: 'IRP에서는 왜 주식형 ETF를 다 못 담나요?',
+      answer:
+        'IRP는 퇴직연금 계좌라 위험자산을 전체의 70%까지만 담도록 규정돼 있습니다. 나머지는 채권형이나 예금형 같은 안전자산으로 채워야 합니다. 연금저축펀드에는 이 제한이 없습니다.',
+    },
+    {
+      question: '연금저축보험을 펀드로 바꿀 수 있나요?',
+      answer:
+        '해지하지 않고 계약이전 제도로 연금저축펀드로 옮길 수 있습니다. 해지하면 세제 혜택을 반납할 수 있으므로, 계약이전으로 처리하는 편이 유리합니다.',
+    },
+  ],
+};
+
+const usStockBuyNotWorking: GuideDef = {
+  slug: 'us-stock-buy-not-working',
+  title: '미국 ETF 매수가 안 될 때, 환전부터 확인',
+  tagline: '원화만 있으면 미국 주식·ETF는 안 사진다, 원인별 해결',
+  description:
+    '미국 S&P500 ETF를 사려는데 주문이 안 되는 대부분의 원인은 환전이나 원화주문 신청이 안 된 것입니다. 원화 대용 설정, 미국 장 운영시간, 예약주문까지 매수가 막히는 이유를 원인별로 짚고 해결 순서를 정리했습니다.',
+  keywords: ['미국 ETF 매수 안됨', '미국주식 환전', '해외주식 매수 안될때', '원화주문', '미국 장 시간', '해외주식 예약주문'],
+  section: 'ETF 매매 가이드',
+  lastReviewed: '2026-08-07',
+  answer:
+    '미국 주식이나 ETF 매수가 안 되는 가장 흔한 이유는 계좌에 원화만 있고 달러 환전 또는 원화주문 신청이 안 된 경우입니다. 여기에 미국 장 운영시간이 아니거나 예약주문을 걸지 않은 것도 원인이 됩니다. 순서대로 확인하면 대부분 해결됩니다.',
+  keyPoints: [
+    '가장 흔한 원인은 환전입니다. 계좌에 원화(KRW)만 있으면 달러로 환전하거나 원화주문 서비스를 신청해야 미국 종목을 살 수 있습니다.',
+    '증권사마다 원화로 바로 주문하는 통합증거금·원화주문 기능이 있는데, 사전 신청이 안 돼 있으면 주문이 거부됩니다. 앱에서 해외주식 거래 신청 여부를 먼저 확인하세요.',
+    '미국 정규장은 한국시간 밤입니다. 서머타임 기간은 22:30~05:00, 겨울철은 23:30~06:00이며, 이 시간이 아니면 예약주문으로만 접수되고 즉시 체결되지 않습니다.',
+    '일부 미국 ETF는 국내 판매 규정상 매매가 제한될 수 있습니다. 주문이 계속 막히면 종목 자체가 거래 가능 대상인지 증권사에 확인하는 것이 빠릅니다.',
+  ],
+  sources: [
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '증권사에서 미국 주식 매수가 안 된다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494355613' },
+    { summary: 'ISA 계좌에서 주문이 안 된다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494341294' },
+  ],
+  comparisonTable: {
+    caption: '미국 ETF 매수가 막히는 원인과 해결',
+    columns: ['막히는 원인', '확인·해결'],
+    rows: [
+      ['원화만 보유, 환전 안 됨', '달러 환전 또는 원화주문 신청'],
+      ['해외주식 거래 미신청', '증권사 앱에서 해외거래 신청'],
+      ['미국 장 시간 아님', '예약주문으로 접수'],
+      ['거래 제한 종목', '증권사에 거래 가능 여부 확인'],
+    ],
+  },
+  sections: [
+    {
+      heading: '십중팔구는 환전 문제',
+      paragraphs: [
+        '미국 S&P500 ETF를 사려는데 주문 버튼이 안 눌리거나 거부되는 가장 흔한 이유는 계좌에 원화만 들어 있고 매수에 쓸 달러가 없기 때문입니다. 미국 종목은 달러로 결제되므로, 원화를 달러로 환전하거나 증권사가 제공하는 원화주문 기능을 켜야 매수가 가능합니다.',
+        '환전은 대부분 증권사 앱의 환전 메뉴에서 바로 할 수 있습니다. 환전 없이 원화로 바로 사고 싶다면, 원화 잔고를 자동으로 달러로 잡아주는 원화주문이나 통합증거금 서비스를 신청하면 됩니다.',
+      ],
+    },
+    {
+      heading: '해외주식 거래 자체가 신청됐는지',
+      paragraphs: [
+        '계좌를 만들었다고 곧바로 해외주식을 살 수 있는 것은 아닙니다. 증권사마다 해외주식 거래를 별도로 신청해야 하고, 원화주문이나 통합증거금 같은 기능도 사전 동의가 필요합니다. 이 신청이 빠져 있으면 주문 화면에서 종목을 찾아도 매수가 거부됩니다.',
+        '앱의 해외주식 메뉴나 계좌 설정에서 해외거래 신청 여부와 원화주문 설정 상태를 확인해 보세요. 신청만 하면 대부분 즉시 또는 짧은 처리 시간 뒤에 매수가 열립니다.',
+      ],
+    },
+    {
+      heading: '지금이 미국 장 시간인지',
+      paragraphs: [
+        '미국 정규장은 한국시간으로 한밤중입니다. 서머타임이 적용되는 봄부터 가을까지는 밤 22:30부터 새벽 05:00, 겨울철에는 23:30부터 06:00에 열립니다. 이 시간이 아니면 실시간 체결이 안 되고, 미리 주문을 걸어두는 예약주문으로만 접수됩니다.',
+        '주문이 "접수"로만 뜨고 체결되지 않는다면 장 시간이 아닐 가능성이 큽니다. 예약주문을 걸어두면 장이 열릴 때 조건에 맞춰 자동으로 주문이 들어갑니다.',
+      ],
+    },
+    {
+      heading: '그래도 안 되면 종목과 잔고를 점검',
+      paragraphs: [
+        '환전과 신청, 장 시간을 모두 확인했는데도 특정 ETF만 매수가 막힌다면, 그 종목이 국내에서 거래 가능한 대상인지 살펴야 합니다. 일부 미국 ETF는 국내 판매 규정에 따라 매매가 제한되거나 매도만 되는 경우가 있습니다.',
+        '주문 가능 금액이 환전 수수료나 최소 매수 단위 때문에 부족한 경우도 있습니다. 원인이 잡히지 않으면 증권사 고객센터에 종목 코드와 함께 문의하는 것이 가장 빠릅니다. 계좌 설정과 매매 결과에 대한 책임은 본인에게 있으니 신청 상태를 꼼꼼히 확인해 두시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '원화만 있는데 미국 ETF를 살 수 있나요?',
+      answer:
+        '원화를 달러로 환전하거나, 원화 잔고로 바로 주문되는 원화주문·통합증거금 서비스를 신청하면 살 수 있습니다. 아무 설정 없이 원화만으로는 매수가 거부되는 경우가 많습니다.',
+    },
+    {
+      question: '주문이 접수만 되고 체결이 안 돼요.',
+      answer:
+        '미국 장 시간이 아닐 가능성이 큽니다. 미국 정규장은 한국시간 밤(서머타임 22:30~05:00, 겨울 23:30~06:00)이며, 그 밖의 시간에는 예약주문으로 접수된 뒤 장이 열릴 때 처리됩니다.',
+    },
+    {
+      question: '해외주식 거래를 따로 신청해야 하나요?',
+      answer:
+        '네, 계좌 개설과 별개로 해외주식 거래와 원화주문 기능을 신청해야 합니다. 이 신청이 빠져 있으면 종목을 찾아도 매수가 되지 않습니다. 앱 설정에서 신청 상태를 확인하세요.',
+    },
+    {
+      question: '특정 ETF만 매수가 안 됩니다.',
+      answer:
+        '그 종목이 국내에서 거래 가능한 대상인지 확인해야 합니다. 일부 미국 ETF는 판매 규정상 매매가 제한되거나 매도만 되기도 합니다. 증권사에 종목 코드로 문의하면 확실합니다.',
+    },
+  ],
+};
+
+const isaDomesticEquityEtfBenefit: GuideDef = {
+  slug: 'isa-domestic-equity-etf-benefit',
+  title: 'ISA에 국내주식형 ETF, 세금 이점 있을까',
+  tagline: '국내주식형은 원래 비과세, ISA 이점은 배당과 기타형에서',
+  description:
+    '국내 상장 국내주식형 ETF는 일반계좌에서도 매매차익이 비과세라, ISA에 담아도 매매차익 절세 효과는 크지 않습니다. 대신 분배금과 국내 상장 해외·기타형 ETF에서 ISA의 비과세·분리과세 이점이 살아납니다. 어떤 ETF를 담아야 유리한지 정리했습니다.',
+  keywords: ['ISA 국내주식형 ETF', 'ISA 절세', '국내주식형 ETF 비과세', 'ISA 배당 비과세', 'ISA ETF 종류', 'KODEX ISA'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-08-07',
+  answer:
+    '국내 상장 국내주식형 ETF는 원래 매매차익이 비과세라, ISA에 담아도 매매차익에서 얻는 추가 절세 효과는 크지 않습니다. ISA의 비과세·분리과세 이점은 분배금이 나오는 ETF나 국내 상장 해외·기타형 ETF처럼 원래 세금을 떼는 자산에서 뚜렷하게 살아납니다.',
+  keyPoints: [
+    '국내 상장 국내주식형 ETF는 일반계좌에서도 매매차익에 세금이 없습니다. 이미 비과세라 ISA에 담아도 매매차익 절세라는 관점에서는 추가 이득이 크지 않습니다.',
+    '다만 국내주식형 ETF의 분배금에는 배당소득세 15.4%가 붙습니다. ISA 안에서는 이 분배금이 연 200만원(서민형 400만원)까지 비과세되고 초과분은 9.9%로 분리과세됩니다.',
+    '국내 상장 해외 ETF나 기타형 ETF는 매매차익도 배당소득세 15.4% 과세 대상이라, ISA에 담으면 비과세·분리과세 혜택이 크게 작동합니다. ISA는 이런 종목에서 진가를 발휘합니다.',
+    'ISA는 3년 이상 유지해야 비과세 혜택이 확정됩니다. 국내주식형만 담을 계획이라면 굳이 ISA가 아니어도 되고, 배당·해외형을 섞을수록 ISA 활용도가 올라갑니다.',
+  ],
+  sources: [
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 계좌에 KODEX ETF를 담는 것을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494102222' },
+    { summary: 'ISA 계좌 운용을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494349881' },
+    { summary: 'ISA 계좌에서 매도 후 재매수를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494083236' },
+  ],
+  comparisonTable: {
+    caption: 'ETF 유형별 세금과 ISA 이점',
+    columns: ['ETF 유형', '일반계좌 세금', 'ISA에 담을 때'],
+    rows: [
+      ['국내 상장 국내주식형 ETF', '매매차익 비과세, 분배금 15.4%', '분배금 절세, 매매차익 이점은 작음'],
+      ['국내 상장 해외·기타형 ETF', '매매차익·분배금 15.4%', '매매차익까지 비과세·분리과세로 큰 이점'],
+      ['배당 많은 ETF', '분배금 15.4% 원천징수', '비과세 한도로 분배금 절세 큼'],
+    ],
+  },
+  sections: [
+    {
+      heading: '국내주식형 ETF는 원래 매매차익이 비과세',
+      paragraphs: [
+        '국내 거래소에 상장된 국내주식형 ETF, 예를 들어 코스피200을 따라가는 ETF는 일반계좌에서 사고팔아도 매매차익에 세금이 붙지 않습니다. 국내 주식을 직접 사고팔 때 양도세가 없는 것과 같은 원리입니다. 그래서 이 매매차익은 이미 비과세 상태입니다.',
+        '여기서 흔한 오해가 생깁니다. "ISA에 담으면 세금을 아낀다"는 말을 국내주식형 ETF에 그대로 적용하면, 이미 비과세인 매매차익에는 추가로 아낄 세금이 없어 체감 이점이 작습니다.',
+      ],
+    },
+    {
+      heading: 'ISA의 진짜 이점이 나오는 곳',
+      paragraphs: [
+        '국내주식형 ETF라도 분배금에는 배당소득세 15.4%가 붙습니다. ISA 안에서는 이 분배금이 연 200만원, 서민형은 400만원까지 비과세되고, 넘는 부분은 9.9%로 분리과세됩니다. 배당이 꾸준히 나오는 ETF일수록 ISA의 이점이 커집니다.',
+        '이점이 가장 크게 살아나는 것은 국내 상장 해외 ETF나 기타형 ETF입니다. 이들은 매매차익도 배당소득세 15.4% 과세 대상이라, 일반계좌라면 이익마다 세금을 떼입니다. ISA에 담으면 이 매매차익까지 비과세와 분리과세 혜택 안으로 들어와 세금을 크게 줄일 수 있습니다.',
+      ],
+    },
+    {
+      heading: '그럼 ISA에 무엇을 담아야 하나',
+      paragraphs: [
+        '세금만 놓고 보면, ISA에는 원래 세금을 떼는 자산을 담을수록 효율이 높습니다. 국내 상장 해외 지수 ETF, 배당이 많은 ETF, 기타형 ETF가 대표적입니다. 반대로 국내주식형 ETF만 담으면 매매차익 절세라는 ISA의 큰 장점을 거의 활용하지 못합니다.',
+        '물론 분배금 절세와 계좌 관리 편의를 위해 국내주식형을 섞는 것 자체가 손해는 아닙니다. 다만 ISA의 한도는 한정돼 있으니, 세금 이점이 큰 자산부터 담고 국내주식형은 우선순위를 낮추는 편이 합리적입니다.',
+      ],
+    },
+    {
+      heading: '3년 유지 조건도 함께 보기',
+      paragraphs: [
+        'ISA의 비과세·분리과세 혜택은 계좌를 3년 이상 유지하고 해지할 때 확정됩니다. 짧게 굴리고 뺄 자금이라면 혜택을 온전히 누리기 어렵습니다. 국내주식형 ETF는 어차피 매매차익이 비과세라 일반계좌에서 굴려도 세금 차이가 거의 없습니다.',
+        '결국 배당과 해외·기타형 ETF를 섞어 오래 굴릴수록 ISA가 제값을 합니다. 자신의 투자 기간과 담을 종목 구성을 먼저 그려보고 계좌를 정하시고, 세율과 한도는 개정될 수 있으니 최신 기준을 확인하시기 바랍니다. 투자 결과에 대한 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA에 국내주식형 ETF를 담으면 세금을 아끼나요?',
+      answer:
+        '국내주식형 ETF는 일반계좌에서도 매매차익이 비과세라, ISA에 담아도 매매차익에서 추가로 아낄 세금은 거의 없습니다. 분배금 절세 효과 정도가 남습니다.',
+    },
+    {
+      question: '그럼 ISA에는 어떤 ETF가 유리한가요?',
+      answer:
+        '매매차익과 분배금에 원래 세금이 붙는 국내 상장 해외 ETF, 기타형 ETF, 배당 많은 ETF가 유리합니다. 이런 종목은 ISA의 비과세·분리과세 혜택이 크게 작동합니다.',
+    },
+    {
+      question: 'ISA의 배당 비과세 한도는 얼마인가요?',
+      answer:
+        '일반형은 순이익 기준 연 200만원, 서민형·농어민형은 400만원까지 비과세되고, 이를 넘는 부분은 9.9%로 분리과세됩니다. 배당이 많은 ETF일수록 이 한도의 가치가 큽니다.',
+    },
+    {
+      question: '국내주식형만 담을 거면 ISA가 필요 없나요?',
+      answer:
+        '세금만 보면 매매차익이 이미 비과세라 일반계좌와 큰 차이가 없습니다. 분배금 절세와 계좌 관리 편의를 원한다면 담아도 되지만, 배당·해외형을 섞을수록 ISA 활용도가 올라갑니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  sp500IndexVsVoo,
+  usBitcoinEtfKoreaTax,
+  pensionAccountTermsExplained,
+  usStockBuyNotWorking,
+  isaDomesticEquityEtfBenefit,
   stockOrderRejectedReasons,
   dividendRecordDateReform,
   retireeDividendEtfMonthlyIncome,
@@ -20850,6 +21299,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-07 · 지식iN 질문 수요 기반 (S&P500 지수와 VOO 차이·미국 비트코인 현물 ETF 국내 직투 세금·연금저축 연저펀 IRP 용어 정리·미국 ETF 매수 안 될 때 환전·ISA 국내주식형 ETF 세금 이점)
+  'sp500-index-vs-voo': '2026-08-07',
+  'us-bitcoin-etf-korea-tax': '2026-08-07',
+  'pension-account-terms-explained': '2026-08-07',
+  'us-stock-buy-not-working': '2026-08-07',
+  'isa-domestic-equity-etf-benefit': '2026-08-07',
   // 2026-08-06 · 지식iN 질문 수요 기반 (매수 주문 체결 안 되는 이유·배당기준일 개편 선배당 후투자·은퇴자 배당 ETF 월 생활비 역산·코인 선물 강제청산 원리·미국 ETF 배당 자동재투자 DRIP 국내)
   'stock-order-rejected-reasons': '2026-08-06',
   'dividend-record-date-reform': '2026-08-06',
@@ -21146,7 +21601,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'us-bitcoin-etf-korea-tax', 'pension-account-terms-explained', 'isa-domestic-equity-etf-benefit'],
   },
   {
     title: '배당·인컴',
@@ -21161,7 +21616,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea', 'sp500-index-vs-voo', 'us-stock-buy-not-working'],
   },
   {
     title: '전략·자산배분',

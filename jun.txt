@@ -1904,3 +1904,33 @@ https://iknowhowinfo.com/guide/crypto-liquidation-explained
 https://iknowhowinfo.com/guide/us-etf-drip-korea
 
 색인 푸시(npm run push:guides, 대상 2026-08-06 5편 + 허브 3): IndexNow skip(no-site-url), Google Indexing skip(no-credentials). 키 미설정 채널 자동 skip으로 실행 자체는 정상. sitemap/RSS는 GUIDES·GUIDE_PUBLISHED_AT SSoT 직접 import라 자동 반영.
+
+## 2026-08-07 · [가이드 발행] 지식iN 질문 수요 기반 5편
+
+지식iN 신규 수집: 클라우드 IP 네이버 차단(HTTP 000)으로 실패, 1회 재시도 후 조용히 넘어감(정상). 사용 코퍼스: data/keywords/kin/kin-20260718.json (103개 질문).
+
+발행 5편 (주제 · slug · 출처 질문 요지):
+1. S&P500 지수와 VOO 차이, 지수는 어떻게 사나 · sp500-index-vs-voo
+   - 출처: "Sp500과 voo"(docId=494129410), "나스닥100과 S&P500 지수 장기투자"(docId=494346634)
+   - 검증: VOO 뱅가드 S&P500 추종 총보수 0.03%, 직투 매매차익 해외주식 양도세 22%(250만 공제), 국내 상장은 배당소득세 15.4%. WebSearch 확인.
+2. 미국 비트코인 현물 ETF, 국내 직투 세금은 · us-bitcoin-etf-korea-tax
+   - 출처: "비트코인 etf 세금"(docId=475553179), "비트코인 ETF 되면 알트장"(docId=461078410)
+   - 검증: IBIT 국내 해외주식 계좌 매수 시 양도세 22%(250만 공제), 배당 없음. 코인 직접보유 2027-01-01 과세(기타소득 250만 공제 22%, 첫 신고 2028-05). 국내 상장 현물 BTC ETF 미허용. WebSearch 확인.
+3. 연금저축·연금저축펀드·IRP 용어 차이 정리 · pension-account-terms-explained
+   - 출처: "IRP, 연금저축, 연저펀 질문"(docId=494287819), "연금저축부터 가입"(docId=494334592), "연금저축펀드"(docId=493466389)
+   - 검증: 연금저축 세액공제 600만, IRP 추가 300만, 합산 900만, 총급여 5,500만↓ 공제율 16.5%. IRP 위험자산 70% 한도. WebSearch 확인.
+4. 미국 ETF 매수가 안 될 때, 환전부터 확인 · us-stock-buy-not-working
+   - 출처: "Nh투자증권 매수안됨"(docId=494355613), "Isa계좌 주문이 안돼요"(docId=494341294)
+   - 검증: 미국 정규장 KST 서머타임 22:30~05:00 / 겨울 23:30~06:00, 원화주문·통합증거금 사전신청 필요. 사실 확인.
+5. ISA에 국내주식형 ETF, 세금 이점 있을까 · isa-domestic-equity-etf-benefit
+   - 출처: "ISA 계좌와 KODEX"(docId=494102222), "isa계좌 질문"(docId=494349881), "ISA 매도 후 재매수"(docId=494083236)
+   - 검증: 국내주식형 ETF 매매차익 비과세(일반계좌도), 분배금 15.4%. ISA 비과세 200만/서민형 400만, 초과 9.9% 분리과세, 3년 유지. WebSearch 확인.
+
+검증 결과: npx tsc --noEmit 에러 0, npm run cf:build 성공, 5개 .html prerender 확인(answer-box·guide-key-points·guide-sources·citation·2026-08-07 발행일 모두 포함). 신규 블록 em dash 0건, 금지어 0건, title≤60·desc 120~155·slug 패턴·keywords 6개 모두 통과.
+
+★ 오늘 발행 링크(풀 URL):
+https://iknowhowinfo.com/guide/sp500-index-vs-voo
+https://iknowhowinfo.com/guide/us-bitcoin-etf-korea-tax
+https://iknowhowinfo.com/guide/pension-account-terms-explained
+https://iknowhowinfo.com/guide/us-stock-buy-not-working
+https://iknowhowinfo.com/guide/isa-domestic-equity-etf-benefit
