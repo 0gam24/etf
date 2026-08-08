@@ -1904,3 +1904,35 @@ https://iknowhowinfo.com/guide/crypto-liquidation-explained
 https://iknowhowinfo.com/guide/us-etf-drip-korea
 
 색인 푸시(npm run push:guides, 대상 2026-08-06 5편 + 허브 3): IndexNow skip(no-site-url), Google Indexing skip(no-credentials). 키 미설정 채널 자동 skip으로 실행 자체는 정상. sitemap/RSS는 GUIDES·GUIDE_PUBLISHED_AT SSoT 직접 import라 자동 반영.
+
+## 2026-08-08 · [오늘 포스팅 · 지식iN 수요 기반 가이드 5편 발행]
+
+지식iN 질문 코퍼스(data/keywords/kin/kin-20260718.json, 103문항) 기반으로 5편 선정·발행. 신규 수집은 클라우드 IP 차단(http_code=000)으로 실패, 저장 코퍼스 사용(정상 경로).
+
+발행 5편 (제목 · slug · 출처 질문 요지):
+1. 연금저축펀드 ETF, 초보는 무엇부터 담아야 할까 · pension-fund-etf-selection
+   - 출처: "연금저축펀드 ETF 추천"(docId 489444942), "연금저축펀드"(493466389), "연금저축부터 가입"(494334592)
+   - 검증: 연금저축펀드 위험자산 100% 가능(IRP는 70%), 레버리지·인버스 편입 불가, 국내상장 ETF만, 세액공제 600만(IRP합산 900만)·율 16.5%/13.2%·최대 약 148만. (금감원 통합연금포털·홈택스)
+2. ISA 계좌에 담으면 절세 효과 큰 ETF 고르기 · isa-etf-selection-tax-efficiency
+   - 출처: "ISA 계좌와 KODEX"(494102222), "ISA 계좌 궁금"(493747720), "isa계좌 질문"(494349881)
+   - 검증: 국내상장 해외지수 ETF 일반계좌 15.4% vs ISA 손익통산+초과분 9.9% 저율분리과세, 국내주식형 ETF 매매차익 원래 비과세라 ISA 이점 작음. ISA 비과세 한도 2026 상향은 국회 통과 변수로 불확실 → 확정 수치 미기재, 손익통산·9.9% 메커니즘 중심으로 안전 작성.
+3. 나스닥100 vs S&P500, 하나만 고른다면 · nasdaq100-vs-sp500-which-to-pick
+   - 출처: "나스닥100·S&P500 장기투자"(494346634), "SP500과 voo"(494129410)
+   - 검증: S&P500 전 섹터 500종목 분산 vs 나스닥100 기술·성장 100종목 집중, 국내상장 15.4%/미국직투 250만공제 후 22%. (KRX·홈택스)
+4. 미국주식 양도세 250만원 공제로 세금 줄이는 법 · us-stock-capital-gains-basic-deduction
+   - 출처: "미국 ETF 절세 방법"(494339573), "주식 세금 질문"(494355422)
+   - 검증: 해외주식 양도차익 250만 기본공제 후 22%, 공제 매년 갱신(분할매도), 해외주식끼리 손익통산(국내주식과 불통산), 다음해 5월 신고(2026년 귀속 6/1). (홈택스·국세청)
+5. 분기배당 4번 다 받는 매수 타이밍 · quarterly-dividend-timing
+   - 출처: "sk하이닉스 분기배당"(417779487), "sk하이닉스 배당"(475549589), "LG전자 배당 언제"(249025143)
+   - 검증: T+2 결제 → 기준일 2영업일 전(배당부 마지막날)까지 매수, 배당락일(기준일 1영업일 전) 이후 매수시 못 받음, 삼성전자 3·6·9·12월 말 연 4회. (KRX·DART)
+
+검증: npx tsc --noEmit 0 에러 · 신규 블록 em dash 0 · 금지어 0 · title≤60·desc 120~155·keywords 6개·slug 규격 통과 · npm run cf:build 성공 · .next/server/app/guide/ 신규 5편 prerender(각 answer-box·guide-key-points·guide-sources·citation·2026-08-08 확인).
+
+브랜치 정책: 하네스 지정 브랜치(claude/serene-hamilton-01mkbh)에 커밋·푸시 후 드래프트 PR. (main 직접 푸시 대신 지정 브랜치 준수)
+
+★ 오늘 발행 링크(풀 URL):
+https://iknowhowinfo.com/guide/pension-fund-etf-selection
+https://iknowhowinfo.com/guide/isa-etf-selection-tax-efficiency
+https://iknowhowinfo.com/guide/nasdaq100-vs-sp500-which-to-pick
+https://iknowhowinfo.com/guide/us-stock-capital-gains-basic-deduction
+https://iknowhowinfo.com/guide/quarterly-dividend-timing

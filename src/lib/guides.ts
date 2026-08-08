@@ -20606,7 +20606,463 @@ const usEtfDripKorea: GuideDef = {
   ],
 };
 
+/** 지식iN 질문 수요 기반 (2026-08-08) */
+const pensionFundEtfSelection: GuideDef = {
+  slug: 'pension-fund-etf-selection',
+  title: '연금저축펀드 ETF, 초보는 무엇부터 담아야 할까',
+  tagline: '세액공제만 받고 방치한 계좌, 지수형 코어 한두 개로 시작하기',
+  description:
+    '연금저축펀드로 노후 자금을 굴릴 때 어떤 ETF부터 담을지 막막하다면, 넓게 분산된 지수형 코어를 중심으로 비용과 분산을 따지는 기준을 정리했습니다. 위험자산 100% 운용이 되는 대신 레버리지와 인버스는 담을 수 없다는 점까지 짚었습니다.',
+  keywords: ['연금저축펀드 ETF', '연금저축 ETF 추천', '연금저축펀드 ETF 고르는 법', '연금저축 ETF 초보', '연금저축 지수형 ETF', '연금저축펀드 위험자산'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-08',
+  answer:
+    '연금저축펀드 초보라면 특정 테마보다 넓게 분산된 지수형 ETF를 코어로 두고 시작하는 편이 무난합니다. 국내외 대표 지수를 담은 ETF에 비용이 낮은 상품을 골라 한두 개로 뼈대를 만든 뒤, 채권형이나 배당형을 조금씩 더하는 순서가 관리하기 쉽습니다.',
+  keyPoints: [
+    '연금저축펀드는 IRP와 달리 위험자산 비율 제한이 없어, 납입금 전액을 주식형 ETF로 운용할 수 있습니다. IRP는 위험자산이 70%로 제한되고 30%는 안전자산에 둬야 합니다.',
+    '노후 자금 취지에 맞지 않는 레버리지와 인버스 ETF는 연금저축펀드에 담을 수 없습니다. 국내 상장 ETF만 편입되므로 미국에 직접 상장된 ETF는 넣지 못합니다.',
+    '세액공제 한도는 연금저축 연 600만원이고, IRP와 합치면 연 900만원까지입니다. 총급여 5,500만원 이하는 16.5%, 초과 시 13.2%가 적용돼 900만원을 채우면 최대 약 148만원을 돌려받습니다.',
+    '같은 지수를 따르는 ETF라도 총보수와 기초지수 추종 정확도가 다릅니다. 장기 계좌일수록 비용 차이가 복리로 벌어지므로, 보수가 낮고 규모가 큰 상품을 코어로 두는 편이 유리합니다.',
+  ],
+  sources: [
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '연금저축펀드에서 어떤 ETF를 담을지 추천을 구하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=489444942' },
+    { summary: '연금저축펀드 운용 방법을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493466389' },
+    { summary: '연금저축부터 시작하는 게 맞는지 순서를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494334592' },
+  ],
+  comparisonTable: {
+    caption: '연금저축펀드와 IRP의 운용 규칙 차이',
+    columns: ['구분', '연금저축펀드', 'IRP'],
+    rows: [
+      ['위험자산 한도', '제한 없음(전액 가능)', '70%까지'],
+      ['안전자산 의무', '없음', '30% 이상'],
+      ['가입 자격', '누구나', '소득 있는 사람'],
+      ['레버리지·인버스', '편입 불가', '편입 불가'],
+    ],
+  },
+  sections: [
+    {
+      heading: '코어부터 세운다: 넓게 분산된 지수형 한두 개',
+      paragraphs: [
+        '연금저축펀드를 열어 세액공제만 받고 예수금으로 방치하는 경우가 의외로 많습니다. 계좌 안에서 실제로 운용을 해야 장기 수익이 쌓이는데, 초보라면 특정 테마나 개별 섹터부터 고르기보다 넓게 분산된 지수형 ETF를 코어로 두는 편이 마음이 편합니다.',
+        '대표 지수를 통째로 담는 ETF는 한 종목만 사도 수백 개 기업에 나눠 투자하는 효과가 있습니다. 국내 대표 지수와 미국 대표 지수를 각각 하나씩, 이렇게 한두 개로 뼈대를 만든 다음 여유가 생기면 채권형이나 배당형을 조금씩 더하는 순서를 권합니다.',
+      ],
+    },
+    {
+      heading: '연금저축펀드에서 살 수 있는 ETF와 없는 ETF',
+      paragraphs: [
+        '연금계좌는 노후 자금이라는 목적이 뚜렷해서 담을 수 있는 상품에 규칙이 있습니다. 장기투자에 부적합한 레버리지와 인버스 ETF는 연금저축펀드에 편입할 수 없습니다. 미국 증시에 직접 상장된 ETF도 연금계좌에서는 매수가 안 되고, 국내 증시에 상장된 ETF로만 미국 지수에 투자할 수 있습니다.',
+        '대신 연금저축펀드는 위험자산 비율 제한이 없다는 장점이 있습니다. IRP가 위험자산을 70%까지만 담고 나머지 30%를 원리금보장이나 채권형에 둬야 하는 것과 달리, 연금저축펀드는 원하면 주식형 ETF로 전액을 채울 수 있습니다. 공격적으로 굴리고 싶은 자금은 연금저축펀드에 두는 식으로 두 계좌의 성격을 나누기도 합니다.',
+      ],
+    },
+    {
+      heading: '같은 지수라도 비용과 추종력을 비교한다',
+      paragraphs: [
+        '같은 지수를 따라가는 ETF가 여러 운용사에서 나와 있습니다. 겉보기엔 비슷해도 총보수(운용 비용)와 기초지수를 얼마나 정확히 따라가는지가 상품마다 다릅니다. 연금은 수십 년을 굴리는 계좌라 매년 빠지는 보수 차이가 복리로 크게 벌어집니다.',
+        '고를 때는 총보수가 낮은지, 순자산 규모가 충분히 큰지, 거래량이 받쳐 사고팔기 편한지를 함께 봅니다. 분배금을 알아서 재투자하는 TR형은 계좌 안에서 손을 덜 대도 되어 장기 적립에 잘 맞습니다. 어떤 상품이 본인에게 맞는지는 목표 수익과 감내할 수 있는 변동에 따라 달라집니다.',
+      ],
+    },
+    {
+      heading: '적립식으로 꾸준히, 리밸런싱은 가볍게',
+      paragraphs: [
+        '코어를 정했다면 매달 일정액을 자동으로 매수해 시점을 분산하는 적립식이 초보에게 잘 맞습니다. 한 번에 큰 금액을 넣기보다 나눠 담으면 고점에 몰아서 사는 위험을 줄일 수 있습니다.',
+        '주식형과 채권형을 함께 담았다면 1년에 한두 번 비중이 크게 틀어진 부분만 조정하는 정도로 충분합니다. 자주 사고팔수록 판단이 흔들리기 쉽습니다. 여기서 다룬 내용은 상품 이해를 돕기 위한 일반 정보이며 특정 종목 추천이 아닙니다. 세제와 편입 규정은 바뀔 수 있으니 최신 기준을 확인하시고, 투자 판단과 그 결과는 본인의 몫이라는 점을 염두에 두시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '연금저축펀드 초보는 어떤 ETF부터 담는 게 좋나요?',
+      answer:
+        '특정 테마보다 넓게 분산된 지수형 ETF를 코어로 두고 시작하는 편이 무난합니다. 국내와 미국 대표 지수 ETF를 하나씩 담아 뼈대를 만든 뒤 채권형이나 배당형을 조금씩 더하면 관리가 쉽습니다.',
+    },
+    {
+      question: '연금저축펀드에서 레버리지 ETF도 살 수 있나요?',
+      answer:
+        '살 수 없습니다. 노후 자금 취지에 맞지 않는 레버리지와 인버스 ETF는 연금저축펀드 편입 대상에서 제외됩니다. 미국에 직접 상장된 ETF도 연금계좌에서는 매수할 수 없습니다.',
+    },
+    {
+      question: '연금저축펀드와 IRP는 담을 수 있는 자산이 어떻게 다른가요?',
+      answer:
+        '연금저축펀드는 위험자산 비율 제한이 없어 주식형 ETF로 전액을 채울 수 있습니다. IRP는 위험자산을 70%까지만 담고 최소 30%를 안전자산에 둬야 한다는 규칙이 있습니다.',
+    },
+    {
+      question: '세액공제는 얼마까지 받을 수 있나요?',
+      answer:
+        '연금저축은 연 600만원, IRP와 합치면 연 900만원까지 세액공제 대상입니다. 총급여 5,500만원 이하는 16.5%, 초과 시 13.2%가 적용돼 900만원을 채우면 최대 약 148만원을 돌려받습니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-08) */
+const isaEtfSelectionTaxEfficiency: GuideDef = {
+  slug: 'isa-etf-selection-tax-efficiency',
+  title: 'ISA 계좌에 담으면 절세 효과 큰 ETF 고르기',
+  tagline: '아무거나 담지 말고, ISA에서 세금이 크게 줄어드는 유형부터',
+  description:
+    '같은 ETF라도 ISA 계좌에서 세금이 크게 줄어드는 유형이 따로 있습니다. 일반계좌라면 15.4%가 붙는 국내 상장 해외지수 ETF와 분배금이 큰 상품이 ISA의 손익통산과 저율 분리과세 혜택을 가장 크게 받습니다. 무엇을 담아야 이득인지 기준을 정리했습니다.',
+  keywords: ['ISA ETF 추천', 'ISA 절세 ETF', 'ISA 국내상장 해외ETF', 'ISA 손익통산', 'ISA 저율과세', 'ISA ETF 고르는 법'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-08-08',
+  answer:
+    'ISA에서 절세 효과가 큰 ETF는 일반계좌에서 세금을 많이 떼는 유형입니다. 국내 상장 해외지수 ETF의 매매차익과 분배금은 일반계좌에서 15.4%가 과세되지만, ISA에서는 손익을 합산하고 비과세 한도를 넘는 부분만 9.9%로 분리과세돼 부담이 줄어듭니다.',
+  keyPoints: [
+    '국내 주식형 ETF의 매매차익은 일반계좌에서도 원래 비과세라, ISA에 담아도 절세 이득이 크지 않습니다. ISA의 이점은 세금을 많이 떼는 상품에서 커집니다.',
+    '국내 상장 해외지수 ETF는 매매차익과 분배금에 일반계좌 기준 15.4%가 붙습니다. ISA에서는 계좌 안 손익을 합산한 뒤 비과세 한도 초과분만 9.9%로 저율 분리과세됩니다.',
+    'ISA의 손익통산은 이익 종목과 손실 종목을 합쳐 순이익에만 과세하는 구조라, 여러 종목을 굴릴수록 유리합니다. 일반계좌에서는 종목별 손실을 이익과 합쳐 주지 않습니다.',
+    '분배금이 큰 배당형이나 커버드콜 ETF는 배당소득세 부담이 큰 만큼 ISA 안에서 받을 때 절세 폭이 커집니다. 다만 상품마다 원금 흐름이 다르니 분배율만 보고 고르지는 않는 편이 좋습니다.',
+  ],
+  sources: [
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 계좌에 KODEX 등 어떤 ETF를 담을지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494102222' },
+    { summary: 'ISA 계좌 활용 방법 전반을 궁금해하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493747720' },
+    { summary: 'ISA 계좌의 세금과 운용을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494349881' },
+  ],
+  comparisonTable: {
+    caption: 'ETF 유형별 ISA 절세 효과',
+    columns: ['ETF 유형', '일반계좌 과세', 'ISA 절세 효과'],
+    rows: [
+      ['국내 주식형', '매매차익 비과세', '작음'],
+      ['국내 상장 해외지수', '15.4% 과세', '큼'],
+      ['배당·커버드콜형', '분배금 15.4%', '큼'],
+      ['채권형', '매매·이자 15.4%', '큼'],
+    ],
+  },
+  sections: [
+    {
+      heading: '왜 같은 ETF라도 ISA 효과가 다를까',
+      paragraphs: [
+        'ISA는 계좌 안에서 생긴 이익 중 일정 한도까지 세금을 매기지 않고, 한도를 넘는 부분만 낮은 세율로 떼는 절세 계좌입니다. 그런데 아무 ETF나 담는다고 이득이 같지 않습니다. 원래 세금을 많이 떼는 상품일수록 ISA에서 줄여 주는 폭이 크기 때문입니다.',
+        '핵심은 이 상품을 일반계좌에서 사면 세금이 얼마나 붙는가입니다. 일반계좌에서 세금이 거의 없는 상품은 ISA에 담아도 아낄 게 별로 없고, 반대로 일반계좌에서 15.4%씩 떼이는 상품은 ISA 안에서 상당한 세금을 아낄 수 있습니다.',
+      ],
+    },
+    {
+      heading: '절세 폭이 큰 유형: 국내 상장 해외지수 ETF',
+      paragraphs: [
+        'ISA 효과가 가장 뚜렷한 유형은 국내 증시에 상장된 해외지수 ETF입니다. 미국이나 다른 나라 지수를 따라가는 이런 ETF는 매매차익과 분배금 모두에 일반계좌 기준 15.4%가 붙습니다. ISA에 담으면 계좌 안 손익을 합산한 뒤 비과세 한도를 넘는 금액만 9.9%로 분리과세돼 세 부담이 눈에 띄게 줄어듭니다.',
+        '반대로 코스피200 같은 국내 주식형 ETF의 매매차익은 일반계좌에서도 원래 비과세입니다. 이런 상품은 ISA에 넣어도 아낄 세금이 크지 않으니, 한정된 ISA 납입 한도는 세금을 많이 떼는 상품에 우선 배정하는 편이 알뜰합니다.',
+      ],
+    },
+    {
+      heading: '손익통산이라는 숨은 무기',
+      paragraphs: [
+        'ISA의 또 다른 강점은 손익통산입니다. 계좌 안에서 어떤 종목은 이익, 어떤 종목은 손실이 났다면 이를 합쳐 순이익에만 세금을 매깁니다. 일반계좌에서는 손실 난 종목을 이익 난 종목과 합쳐 세금을 깎아 주지 않기 때문에, 여러 종목을 굴릴수록 ISA의 이 구조가 유리하게 작동합니다.',
+        '그래서 분배금이 큰 배당형이나 커버드콜 ETF, 채권형처럼 이자와 분배가 꾸준히 나오는 상품을 ISA 안에서 받으면 절세 효과가 커집니다. 다만 분배율이 높다고 무조건 좋은 상품은 아니며, 기초자산의 흐름과 원금 변화를 함께 봐야 한다는 점은 계좌와 무관하게 같습니다.',
+      ],
+    },
+    {
+      heading: '한도와 제도는 바뀔 수 있으니 최신 기준 확인',
+      paragraphs: [
+        'ISA의 비과세 한도와 납입 한도는 제도 개편으로 조정될 수 있는 부분입니다. 상향 논의가 이어지고 있어, 실제 적용되는 한도는 가입한 금융회사 공지나 국세청 안내에서 최신 기준을 확인하는 것이 정확합니다. 이 글에서 강조한 손익통산과 저율 분리과세라는 기본 구조는 그대로 유지됩니다.',
+        '정리하자면 ISA에는 일반계좌에서 세금을 많이 떼는 유형을 우선 담는 것이 요령입니다. 여기 담긴 내용은 일반적인 정보 제공이 목적이며 특정 상품을 권하는 것이 아닙니다. 세법은 개정될 수 있으니 최신 규정을 확인하시고, 투자에 따른 손익의 책임은 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA에는 어떤 ETF를 담아야 절세 효과가 크나요?',
+      answer:
+        '일반계좌에서 세금을 많이 떼는 유형이 유리합니다. 국내 상장 해외지수 ETF와 분배금이 큰 배당형, 채권형은 일반계좌에서 15.4%가 붙지만 ISA에서는 손익통산 후 9.9%로 저율 분리과세됩니다.',
+    },
+    {
+      question: '국내 주식형 ETF를 ISA에 담으면 손해인가요?',
+      answer:
+        '손해는 아니지만 절세 이득이 작습니다. 국내 주식형 ETF의 매매차익은 일반계좌에서도 원래 비과세라, 한정된 ISA 한도는 세금을 많이 떼는 상품에 먼저 배정하는 편이 효율적입니다.',
+    },
+    {
+      question: 'ISA의 손익통산은 무엇인가요?',
+      answer:
+        '계좌 안 이익 종목과 손실 종목을 합쳐 순이익에만 세금을 매기는 구조입니다. 일반계좌는 손실을 이익과 합쳐 주지 않으므로, 여러 종목을 굴릴수록 ISA가 유리합니다.',
+    },
+    {
+      question: 'ISA 비과세 한도는 지금 얼마인가요?',
+      answer:
+        '비과세 한도와 납입 한도는 제도 개편으로 조정될 수 있어 상향 논의가 이어지고 있습니다. 실제 적용 한도는 가입한 금융회사 공지나 국세청 안내에서 최신 기준을 확인하는 것이 정확합니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-08) */
+const nasdaq100VsSp500WhichToPick: GuideDef = {
+  slug: 'nasdaq100-vs-sp500-which-to-pick',
+  title: '나스닥100 vs S&P500, 하나만 고른다면',
+  tagline: '기술주 집중이냐 전체 분산이냐, 장기투자 관점으로 갈라 보기',
+  description:
+    '나스닥100과 S&P500 중 하나만 장기로 담는다면 무엇을 고를지, 지수 구성과 변동성, 세금까지 나눠 비교했습니다. 기술주에 집중된 나스닥100과 전 섹터에 넓게 분산된 S&P500의 성격 차이를 알면 본인 성향에 맞는 쪽을 정하기 쉬워집니다.',
+  keywords: ['나스닥100 S&P500 비교', '나스닥100 vs S&P500', '미국지수 ETF 선택', 'S&P500 장기투자', '나스닥100 장기투자', '미국 ETF 세금'],
+  section: '해외상장 가이드',
+  lastReviewed: '2026-08-08',
+  answer:
+    '두 지수 모두 미국 대표 우량주에 투자하지만 성격이 다릅니다. S&P500은 전 섹터에 걸친 대형주 약 500종목으로 넓게 분산돼 변동이 상대적으로 완만하고, 나스닥100은 기술주 중심 100종목이라 상승과 하락 모두 폭이 큽니다. 분산과 안정을 원하면 S&P500, 성장 집중을 감수하면 나스닥100이 어울립니다.',
+  keyPoints: [
+    'S&P500은 미국 대표 대형주 약 500종목을 전 섹터에 걸쳐 담아 특정 업종 쏠림이 작습니다. 나스닥100은 나스닥 상장 비금융 100종목으로, 기술과 성장주 비중이 매우 높습니다.',
+    '나스닥100은 기술주 집중 탓에 강세장에서 더 크게 오르는 대신 조정기에는 낙폭도 큽니다. 변동을 견디기 어렵다면 S&P500의 넓은 분산이 심리적으로 버티기 수월합니다.',
+    '국내 상장 미국지수 ETF는 매매차익과 분배금에 15.4% 배당소득세가 붙고, ISA나 연금계좌를 쓰면 세 부담을 줄일 수 있습니다.',
+    '미국에 직접 상장된 ETF를 사면 양도차익에서 연 250만원을 공제한 뒤 22%가 과세되고 다음 해 5월에 신고합니다. 투자 규모와 계좌에 따라 국내 상장분과 직접 투자 중 유리한 쪽이 갈립니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX)', url: 'https://www.krx.co.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '나스닥100과 S&P500에 장기투자할 때 어느 쪽이 나은지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494346634' },
+    { summary: 'S&P500 지수와 관련 상품의 차이를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494129410' },
+  ],
+  comparisonTable: {
+    caption: '나스닥100과 S&P500 한눈 비교',
+    columns: ['구분', '나스닥100', 'S&P500'],
+    rows: [
+      ['종목 수', '약 100종목', '약 500종목'],
+      ['성격', '기술·성장 집중', '전 섹터 분산'],
+      ['변동성', '상대적으로 큼', '상대적으로 완만'],
+      ['어울리는 투자자', '성장 집중 감수', '분산·안정 선호'],
+    ],
+  },
+  sections: [
+    {
+      heading: '두 지수는 담는 종목의 성격이 다르다',
+      paragraphs: [
+        '나스닥100과 S&P500은 둘 다 미국 우량주에 투자하는 대표 지수지만 담는 방식이 다릅니다. S&P500은 미국 증시의 대형주 약 500종목을 기술, 금융, 헬스케어, 소비재 등 여러 업종에 걸쳐 담습니다. 미국 경제 전반을 넓게 사는 느낌에 가깝습니다.',
+        '나스닥100은 나스닥에 상장된 기업 중 금융을 뺀 시가총액 상위 100종목으로 구성됩니다. 그러다 보니 대형 기술기업과 성장주 비중이 매우 높습니다. 같은 미국 대형주라도 한쪽은 넓게 펼치고, 한쪽은 성장 업종에 무게를 싣는다는 차이가 큽니다.',
+      ],
+    },
+    {
+      heading: '변동성: 더 오르는 만큼 더 빠진다',
+      paragraphs: [
+        '성격 차이는 등락 폭으로 이어집니다. 나스닥100은 기술주에 집중된 만큼 강세장에서 S&P500보다 더 가파르게 오르는 경향이 있습니다. 대신 금리가 오르거나 성장주가 흔들리는 조정기에는 낙폭도 더 큽니다.',
+        'S&P500은 여러 업종에 분산돼 있어 한 업종이 부진해도 다른 업종이 받쳐 주며 변동이 상대적으로 완만합니다. 오래 들고 갈 계좌일수록 큰 하락을 견디는 심리가 중요한데, 이 점에서 넓은 분산은 버티기에 유리합니다. 어느 쪽이 정답이라기보다 감당할 수 있는 변동의 크기가 선택을 가릅니다.',
+      ],
+    },
+    {
+      heading: '세금은 어느 계좌에서 사느냐로 갈린다',
+      paragraphs: [
+        '두 지수를 담는 방법은 크게 두 가지입니다. 국내 증시에 상장된 미국지수 ETF를 사거나, 미국에 직접 상장된 ETF를 사는 것입니다. 국내 상장 상품은 매매차익과 분배금에 15.4% 배당소득세가 붙고, ISA나 연금계좌에 담으면 세 부담을 낮출 수 있습니다.',
+        '미국에 직접 상장된 ETF는 양도차익에서 연 250만원을 뺀 금액에 22%가 매겨지고, 매도한 다음 해 5월에 신고합니다. 차익이 크지 않다면 250만원 공제 덕분에 직접 투자가 유리할 수 있고, 분배금 위주이거나 절세 계좌를 활용한다면 국내 상장분이 편할 수 있습니다. 투자 규모와 목적에 따라 유불리가 달라집니다.',
+      ],
+    },
+    {
+      heading: '그래서 하나만 고른다면',
+      paragraphs: [
+        '넓은 분산과 상대적으로 완만한 흐름을 원한다면 S&P500이, 기술 성장에 무게를 싣고 큰 변동을 감수할 수 있다면 나스닥100이 어울립니다. 사실 둘의 구성 종목은 상당 부분 겹치기 때문에, 굳이 하나만 골라야 하는 상황이 아니라면 두 지수를 함께 담아 성향을 절충하는 방법도 있습니다.',
+        '과거에 어느 지수가 더 올랐는지가 미래 수익을 보장하지는 않습니다. 여기 정리한 비교는 상품 이해를 돕기 위한 일반 정보이며, 특정 지수나 종목을 추천하는 것이 아닙니다. 투자 판단은 본인의 목표와 위험 성향에 맞춰 내리시고, 그 결과에 대한 책임 또한 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '나스닥100과 S&P500 중 초보에게는 무엇이 나은가요?',
+      answer:
+        '넓게 분산돼 변동이 상대적으로 완만한 S&P500이 큰 하락을 견디기에 수월해 초보가 접근하기 편합니다. 성장주 집중과 큰 변동을 감수할 수 있다면 나스닥100도 선택지가 됩니다.',
+    },
+    {
+      question: '두 지수는 얼마나 겹치나요?',
+      answer:
+        'S&P500이 대형 기술주를 상당 부분 포함하고 있어 나스닥100의 주요 종목과 겹치는 부분이 큽니다. 다만 S&P500은 금융과 전통 산업까지 담아 분산 범위가 더 넓습니다.',
+    },
+    {
+      question: '국내 상장 ETF와 미국 직접 상장 ETF는 세금이 어떻게 다른가요?',
+      answer:
+        '국내 상장 미국지수 ETF는 매매차익과 분배금에 15.4%가 붙고, 미국 직접 상장 ETF는 연 250만원 공제 후 22%를 다음 해 5월에 신고합니다. 규모와 계좌 활용에 따라 유리한 쪽이 갈립니다.',
+    },
+    {
+      question: '둘 다 담아도 되나요?',
+      answer:
+        '가능합니다. 구성 종목이 겹치는 점을 감안해 비중을 조절하면 성장 집중과 분산 안정 사이에서 절충할 수 있습니다. 본인의 위험 성향에 맞춰 비율을 정하면 됩니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-08) */
+const usStockCapitalGainsBasicDeduction: GuideDef = {
+  slug: 'us-stock-capital-gains-basic-deduction',
+  title: '미국주식 양도세 250만원 공제로 세금 줄이는 법',
+  tagline: '매년 주어지는 기본공제와 손익통산을 놓치지 않는 매도 요령',
+  description:
+    '해외주식과 미국 ETF 양도차익에는 연 250만원 기본공제 후 22%가 붙습니다. 매년 다시 주어지는 이 공제와 해외주식끼리의 손익통산을 활용해 세금을 줄이는 연말 매도 요령, 그리고 다음 해 5월 신고까지 실전 순서로 정리했습니다.',
+  keywords: ['해외주식 양도세', '미국주식 양도세 250만원', '해외주식 손익통산', '양도세 절세 매도', '해외주식 양도소득세 신고', '미국 ETF 양도세'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-08',
+  answer:
+    '해외주식과 미국 ETF의 양도차익은 연 250만원을 공제한 뒤 남는 금액에 22%가 매겨집니다. 이 기본공제는 매년 다시 주어지므로, 이익을 한 해에 몰지 않고 나눠 실현하거나 손실 종목을 같은 해에 함께 정리해 순이익을 줄이면 세금을 아낄 수 있습니다.',
+  keyPoints: [
+    '해외주식 양도소득은 연 250만원 기본공제 후 남는 금액에 22%(지방소득세 포함)가 과세됩니다. 예를 들어 차익 1,000만원이면 250만원을 뺀 750만원에 22%, 약 165만원이 세금입니다.',
+    '기본공제 250만원은 해마다 새로 주어집니다. 큰 차익을 한 해에 몰아 실현하기보다 두 해에 나눠 팔면 공제를 두 번 받아 과세 대상 금액을 줄일 수 있습니다.',
+    '해외주식끼리는 손익통산이 됩니다. 이익 난 종목만 팔지 말고 손실 난 종목을 같은 해에 함께 정리하면 순이익이 줄어 세금이 낮아집니다. 국내주식 손익과는 합산되지 않습니다.',
+    '양도세는 매도한 다음 해 5월에 신고하고 납부합니다. 2026년 귀속분은 5월 31일이 일요일이라 6월 1일까지 신고하면 됩니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '미국 ETF 투자에서 세금을 줄이는 방법을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494339573' },
+    { summary: '주식 투자에서 발생하는 세금 전반을 궁금해하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494355422' },
+  ],
+  comparisonTable: {
+    caption: '기본공제 활용 여부에 따른 세금 차이(예시)',
+    columns: ['상황', '과세 대상', '세금(22%)'],
+    rows: [
+      ['한 해에 500만원 실현', '250만원', '약 55만원'],
+      ['두 해에 250만원씩', '0원', '0원'],
+      ['이익 500만·손실 200만', '50만원', '약 11만원'],
+    ],
+  },
+  sections: [
+    {
+      heading: '해외주식 양도세의 기본 구조',
+      paragraphs: [
+        '미국주식이나 미국에 상장된 ETF를 팔아 이익이 나면 양도소득세를 냅니다. 계산은 간단합니다. 한 해 동안의 양도차익을 모두 더한 뒤 기본공제 250만원을 빼고, 남는 금액에 22%(양도소득세 20%에 지방소득세 2%를 더한 값)를 곱합니다.',
+        '예를 들어 한 해 차익이 1,000만원이라면 250만원을 뺀 750만원이 과세 대상이 되고, 여기에 22%를 적용해 약 165만원이 세금입니다. 반대로 차익이 250만원 이하라면 공제로 전부 상쇄돼 낼 세금이 없습니다. 이 250만원 공제가 절세의 출발점입니다.',
+      ],
+    },
+    {
+      heading: '매년 다시 주어지는 250만원을 나눠 쓴다',
+      paragraphs: [
+        '기본공제 250만원의 핵심은 해마다 새로 생긴다는 점입니다. 그래서 크게 오른 종목을 한 해에 통째로 팔기보다, 연말과 연초로 나눠 두 해에 걸쳐 실현하면 공제를 두 번 받을 수 있습니다. 500만원 차익을 한 해에 다 팔면 250만원이 과세되지만, 250만원씩 두 해에 나눠 팔면 매년 공제 안에 들어와 세금이 0이 됩니다.',
+        '장기 보유 종목을 정리할 계획이라면 12월과 1월에 걸쳐 나눠 매도하는 방식이 대표적입니다. 다만 세금을 아끼려다 원하는 매도 시점을 놓치면 시세 변동으로 오히려 손해를 볼 수 있으니, 절세는 어디까지나 투자 판단 다음에 얹는 요소로 두는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '손실 종목을 함께 정리하는 손익통산',
+      paragraphs: [
+        '또 하나의 방법은 손익통산입니다. 해외주식끼리는 이익과 손실을 합쳐 순이익에만 과세합니다. 이익이 크게 난 종목을 파는 해에, 계속 물려 있던 손실 종목을 같은 해에 함께 정리하면 순이익이 줄어 세금이 낮아집니다.',
+        '예를 들어 한 종목에서 500만원 이익, 다른 종목에서 200만원 손실이 났다면 순이익 300만원에서 다시 250만원을 공제해 50만원에만 과세됩니다. 주의할 점은 해외주식 손실은 국내주식 이익과 합산되지 않는다는 것입니다. 손익통산은 해외주식이라는 같은 범주 안에서만 작동합니다.',
+      ],
+    },
+    {
+      heading: '신고는 다음 해 5월, 미루지 않기',
+      paragraphs: [
+        '해외주식 양도세는 매도한 다음 해 5월에 스스로 신고하고 납부하는 세금입니다. 회사가 대신 떼 주지 않으므로 직접 챙겨야 합니다. 2026년에 판 분에 대한 신고는 원칙적으로 다음 해 5월 31일까지인데, 그날이 일요일이면 다음 영업일까지 기한이 밀립니다.',
+        '증권사들이 신고를 대행해 주는 서비스를 제공하기도 하니, 여러 계좌로 나눠 거래했다면 활용하면 편합니다. 기한을 넘기면 가산세가 붙으므로 미리 준비하는 것이 좋습니다. 세법과 세율은 바뀔 수 있으니 신고 전 최신 기준을 확인하시고, 구체적인 세금 계산은 세무 전문가나 국세청 안내를 참고하시기 바랍니다. 투자와 절세의 최종 판단과 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '미국주식으로 얼마를 벌면 세금을 내나요?',
+      answer:
+        '한 해 양도차익이 250만원을 넘으면 초과분에 22%가 과세됩니다. 250만원 이하면 기본공제로 상쇄돼 낼 세금이 없습니다. 차익이 크다면 두 해에 나눠 실현해 공제를 두 번 받는 방법이 있습니다.',
+    },
+    {
+      question: '기본공제 250만원은 매년 받을 수 있나요?',
+      answer:
+        '네, 해마다 새로 주어집니다. 그래서 큰 차익을 한 해에 몰아 팔기보다 연말과 연초로 나눠 두 해에 실현하면 공제를 두 번 적용받아 과세 대상 금액을 줄일 수 있습니다.',
+    },
+    {
+      question: '손실 난 종목도 세금 계산에 도움이 되나요?',
+      answer:
+        '됩니다. 해외주식끼리는 손익통산이 되어, 이익 난 종목을 파는 해에 손실 종목을 함께 정리하면 순이익이 줄어 세금이 낮아집니다. 다만 국내주식 손익과는 합산되지 않습니다.',
+    },
+    {
+      question: '양도세 신고는 언제 하나요?',
+      answer:
+        '매도한 다음 해 5월에 직접 신고하고 납부합니다. 회사가 대신 떼 주지 않으므로 스스로 챙겨야 하며, 기한을 넘기면 가산세가 붙습니다. 증권사 대행 서비스를 이용할 수도 있습니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-08) */
+const quarterlyDividendTiming: GuideDef = {
+  slug: 'quarterly-dividend-timing',
+  title: '분기배당 4번 다 받는 매수 타이밍',
+  tagline: '기준일 이틀 전까지, 배당락일 지나 사면 이번 분기는 없다',
+  description:
+    '삼성전자처럼 분기배당을 주는 종목의 배당을 한 해 네 번 다 받으려면 각 분기 기준일 전에 주주로 올라 있어야 합니다. 결제가 이틀 걸리는 구조 탓에 언제까지 사야 하는지, 배당락은 무엇인지, 지급일과 매수 마감을 실전 순서로 정리했습니다.',
+  keywords: ['분기배당', '배당기준일 매수', '배당락일', '분기배당 종목', '배당 받는 법', '삼성전자 분기배당'],
+  section: '배당주 가이드',
+  lastReviewed: '2026-08-08',
+  answer:
+    '분기배당을 받으려면 각 분기의 배당기준일에 주주명부에 올라 있어야 합니다. 주식 결제가 이틀 걸리므로 기준일 2영업일 전까지 매수를 끝내야 하고, 그다음 날인 배당락일 이후에 사면 이번 분기 배당은 받지 못합니다. 네 번 다 받으려면 각 분기 기준일마다 이 조건을 맞춰야 합니다.',
+  keyPoints: [
+    '분기배당은 3·6·9월 말과 결산기인 12월 말을 기준일로 두는 종목이 많습니다. 삼성전자가 대표적으로 연 4회 분기배당을 운영합니다.',
+    '주식은 매수 체결 뒤 실제 결제까지 2영업일이 걸립니다. 그래서 배당기준일 2영업일 전 장 마감까지 사야 주주명부에 올라 배당을 받습니다.',
+    '배당락일은 기준일 하루 전 영업일입니다. 이날부터 사면 이번 분기 배당 대상이 아니며, 배당락일에는 지급 예정 배당만큼 주가가 조정되는 경향이 있습니다.',
+    '배당금은 기준일에 주주로 확정되면 대개 두 달가량 뒤에 증권계좌로 자동 입금됩니다. 별도 신청은 필요 없습니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX)', url: 'https://www.krx.co.kr' },
+    { label: '금융감독원 전자공시(DART)', url: 'https://dart.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'SK하이닉스의 분기배당 여부와 방식을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=417779487' },
+    { summary: 'SK하이닉스 배당을 언제 받는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=475549589' },
+    { summary: 'LG전자 배당을 언제 받을 수 있는지 시점을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=249025143' },
+  ],
+  comparisonTable: {
+    caption: '분기배당 매수 시점 정리(기준일이 6월 30일인 경우 예시)',
+    columns: ['날짜', '의미', '배당 여부'],
+    rows: [
+      ['기준일 2영업일 전', '배당부 마지막 매수일', '이날까지 사면 받음'],
+      ['배당락일(기준일 1영업일 전)', '권리 사라지는 날', '이날 사면 못 받음'],
+      ['배당기준일', '주주명부 확정', '이미 보유해야 함'],
+    ],
+  },
+  sections: [
+    {
+      heading: '분기배당은 1년에 네 번 기준일을 넘겨야 한다',
+      paragraphs: [
+        '분기배당은 이름 그대로 배당을 1년에 네 번 나눠 주는 방식입니다. 삼성전자가 대표적으로, 3월 말, 6월 말, 9월 말, 그리고 결산기인 12월 말을 배당기준일로 삼아 분기마다 배당합니다. 네 번을 모두 받으려면 각 분기 기준일마다 주주로 올라 있어야 합니다.',
+        '한 번만 사서 계속 들고 있으면 자연히 네 번 다 받습니다. 문제는 사고파는 타이밍을 재는 경우입니다. 배당만 받고 곧 팔 생각이라면 언제까지 사야 이번 분기 배당 대상이 되는지를 정확히 알아야 합니다.',
+      ],
+    },
+    {
+      heading: '결제가 이틀 걸린다: 기준일 2영업일 전까지 매수',
+      paragraphs: [
+        '헷갈리기 쉬운 부분이 여기입니다. 주식은 매수가 체결돼도 실제 결제, 즉 주주명부에 이름이 올라가는 데까지 2영업일이 걸립니다. 그래서 배당기준일 당일에 사면 이미 늦습니다. 기준일로부터 2영업일 전, 즉 배당부로 거래되는 마지막 날 장 마감 전까지 매수를 끝내야 합니다.',
+        '예를 들어 배당기준일이 6월 30일이고 그 사이 휴장일이 없다면, 늦어도 6월 26일 장 마감 전까지는 사 둬야 이번 분기 배당을 받습니다. 중간에 공휴일이 끼면 날짜가 더 앞당겨지므로, 분기 말에는 증권사 공지나 종목 공시에서 정확한 배당부 마지막 날을 확인하는 것이 안전합니다.',
+      ],
+    },
+    {
+      heading: '배당락일에 사면 이번 분기는 없다',
+      paragraphs: [
+        '배당부 마지막 매수일 다음 영업일이 배당락일입니다. 배당락일부터 산 사람은 결제가 기준일을 넘겨 이번 분기 배당을 받지 못합니다. 배당받을 권리가 떨어져 나간다는 뜻에서 배당락이라 부릅니다.',
+        '배당락일에는 지급될 배당금만큼 주가가 낮게 시작하는 경향이 있습니다. 배당을 받는 사람은 그만큼 현금을 받으니 이론상 손익이 비슷해집니다. 그래서 배당락 직전에 급히 사서 배당만 챙기고 판다고 반드시 이득이 되는 것은 아니며, 배당소득세와 주가 조정을 함께 따져야 합니다.',
+      ],
+    },
+    {
+      heading: '배당금은 언제 들어오나',
+      paragraphs: [
+        '기준일에 주주로 확정되면 배당금은 대개 두 달가량 뒤에 거래 중인 증권계좌로 자동 입금됩니다. 예컨대 6월 말 기준 분기배당은 8월 중에 지급되는 식입니다. 별도로 신청할 필요는 없습니다.',
+        '한 가지 유의할 점은 배당기준일과 지급 일정이 회사마다 다를 수 있고, 최근에는 배당액을 먼저 정한 뒤 기준일을 잡는 회사도 늘고 있다는 것입니다. 노리는 종목이 있다면 전자공시에서 올해 배당기준일과 지급 예정일을 직접 확인하시길 권합니다. 배당 제도와 세금은 바뀔 수 있고, 배당 투자의 결과에 대한 책임은 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '분기배당을 받으려면 언제까지 사야 하나요?',
+      answer:
+        '배당기준일 2영업일 전 장 마감까지 매수해야 합니다. 결제가 이틀 걸려 기준일 당일에 사면 늦습니다. 그다음 날인 배당락일부터 사면 이번 분기 배당은 받지 못합니다.',
+    },
+    {
+      question: '배당락일이 정확히 무슨 날인가요?',
+      answer:
+        '배당부로 살 수 있는 마지막 날의 다음 영업일로, 기준일 하루 전 영업일입니다. 이날부터 산 주식은 이번 분기 배당 대상이 아니며, 배당금만큼 주가가 낮게 시작하는 경향이 있습니다.',
+    },
+    {
+      question: '분기배당은 1년에 몇 번, 언제 기준일인가요?',
+      answer:
+        '연 4회이며 3·6·9월 말과 결산기인 12월 말을 기준일로 두는 종목이 많습니다. 네 번을 모두 받으려면 각 분기 기준일 2영업일 전까지 주식을 보유하고 있어야 합니다.',
+    },
+    {
+      question: '배당금은 언제 계좌로 들어오나요?',
+      answer:
+        '기준일에 주주로 확정되면 대체로 두 달가량 뒤에 증권계좌로 자동 입금됩니다. 별도 신청은 필요 없으며, 정확한 지급 예정일은 회사 공시에서 확인할 수 있습니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  pensionFundEtfSelection,
+  isaEtfSelectionTaxEfficiency,
+  nasdaq100VsSp500WhichToPick,
+  usStockCapitalGainsBasicDeduction,
+  quarterlyDividendTiming,
   stockOrderRejectedReasons,
   dividendRecordDateReform,
   retireeDividendEtfMonthlyIncome,
@@ -20850,6 +21306,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-08 · 지식iN 질문 수요 기반 (연금저축펀드 초보 ETF 고르는 기준·ISA 절세 효과 큰 ETF 유형·나스닥100 vs S&P500 선택·미국주식 양도세 250만원 공제 활용·분기배당 4번 다 받는 매수 타이밍)
+  'pension-fund-etf-selection': '2026-08-08',
+  'isa-etf-selection-tax-efficiency': '2026-08-08',
+  'nasdaq100-vs-sp500-which-to-pick': '2026-08-08',
+  'us-stock-capital-gains-basic-deduction': '2026-08-08',
+  'quarterly-dividend-timing': '2026-08-08',
   // 2026-08-06 · 지식iN 질문 수요 기반 (매수 주문 체결 안 되는 이유·배당기준일 개편 선배당 후투자·은퇴자 배당 ETF 월 생활비 역산·코인 선물 강제청산 원리·미국 ETF 배당 자동재투자 DRIP 국내)
   'stock-order-rejected-reasons': '2026-08-06',
   'dividend-record-date-reform': '2026-08-06',
@@ -21146,12 +21608,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'pension-fund-etf-selection', 'isa-etf-selection-tax-efficiency', 'us-stock-capital-gains-basic-deduction'],
   },
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income', 'quarterly-dividend-timing'],
   },
   {
     title: '테마·섹터',
@@ -21161,7 +21623,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea', 'nasdaq100-vs-sp500-which-to-pick'],
   },
   {
     title: '전략·자산배분',
