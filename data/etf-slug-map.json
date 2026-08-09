@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-02T02:54:23.434Z",
-  "sourceBaseDate": "20260730",
-  "count": 1155,
+  "generatedAt": "2026-08-09T01:50:14.615Z",
+  "sourceBaseDate": "20260806",
+  "count": 1160,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -1157,7 +1157,12 @@
     "0222D0": "koact-active-0222d0",
     "0223A0": "rise-kosdaqcovered-callactive",
     "0224D0": "kiwoom-uscpusemiconductortop4",
-    "0224X0": "1q-us-treasury-blend50"
+    "0224X0": "1q-us-treasury-blend50",
+    "0219Z0": "hanaro-us-sp500active",
+    "0222F0": "mighty-aidata",
+    "0225V0": "kodex-uscpusemiconductortop10",
+    "0226A0": "plus-skbond-blend50",
+    "0226G0": "won-ai-top2plusactive"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -5779,6 +5784,26 @@
     "1q-us-treasury-blend50": {
       "code": "0224X0",
       "name": "1Q 엔비디아알파벳미국채혼합50"
+    },
+    "hanaro-us-sp500active": {
+      "code": "0219Z0",
+      "name": "HANARO 미국S&P500액티브"
+    },
+    "mighty-aidata": {
+      "code": "0222F0",
+      "name": "마이티 AI데이터센터밸류체인"
+    },
+    "kodex-uscpusemiconductortop10": {
+      "code": "0225V0",
+      "name": "KODEX 미국CPU반도체TOP10"
+    },
+    "plus-skbond-blend50": {
+      "code": "0226A0",
+      "name": "PLUS SK하이닉스샌디스크채권혼합50"
+    },
+    "won-ai-top2plusactive": {
+      "code": "0226G0",
+      "name": "WON 피지컬AI TOP2플러스액티브"
     }
   }
 }

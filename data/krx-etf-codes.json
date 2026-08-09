@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-08-02T02:54:23.265Z",
-  "baseDate": "20260730",
-  "count": 1155,
+  "fetchedAt": "2026-08-09T01:50:14.424Z",
+  "baseDate": "20260806",
+  "count": 1160,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -5693,6 +5693,11 @@
       "issueCode": "KR70219E0005",
       "name": "KODEX 200커버드콜액티브"
     },
+    "0219Z0": {
+      "shortcode": "0219Z0",
+      "issueCode": "KR70219Z0000",
+      "name": "HANARO 미국S&P500액티브"
+    },
     "0220A0": {
       "shortcode": "0220A0",
       "issueCode": "KR70220A0006",
@@ -5718,6 +5723,11 @@
       "issueCode": "KR70222D0001",
       "name": "KoAct 고배당액티브"
     },
+    "0222F0": {
+      "shortcode": "0222F0",
+      "issueCode": "KR70222F0009",
+      "name": "마이티 AI데이터센터밸류체인"
+    },
     "0223A0": {
       "shortcode": "0223A0",
       "issueCode": "KR70223A0003",
@@ -5737,6 +5747,21 @@
       "shortcode": "0224X0",
       "issueCode": "KR70224X0005",
       "name": "1Q 엔비디아알파벳미국채혼합50"
+    },
+    "0225V0": {
+      "shortcode": "0225V0",
+      "issueCode": "KR70225V0006",
+      "name": "KODEX 미국CPU반도체TOP10"
+    },
+    "0226A0": {
+      "shortcode": "0226A0",
+      "issueCode": "KR70226A0000",
+      "name": "PLUS SK하이닉스샌디스크채권혼합50"
+    },
+    "0226G0": {
+      "shortcode": "0226G0",
+      "issueCode": "KR70226G0004",
+      "name": "WON 피지컬AI TOP2플러스액티브"
     },
     "069500": {
       "shortcode": "069500",
@@ -7180,6 +7205,11 @@
       "issueCode": "KR70219E0005",
       "name": "KODEX 200커버드콜액티브"
     },
+    "KR70219Z0000": {
+      "shortcode": "0219Z0",
+      "issueCode": "KR70219Z0000",
+      "name": "HANARO 미국S&P500액티브"
+    },
     "KR70220A0006": {
       "shortcode": "0220A0",
       "issueCode": "KR70220A0006",
@@ -7205,6 +7235,11 @@
       "issueCode": "KR70222D0001",
       "name": "KoAct 고배당액티브"
     },
+    "KR70222F0009": {
+      "shortcode": "0222F0",
+      "issueCode": "KR70222F0009",
+      "name": "마이티 AI데이터센터밸류체인"
+    },
     "KR70223A0003": {
       "shortcode": "0223A0",
       "issueCode": "KR70223A0003",
@@ -7224,6 +7259,21 @@
       "shortcode": "0224X0",
       "issueCode": "KR70224X0005",
       "name": "1Q 엔비디아알파벳미국채혼합50"
+    },
+    "KR70225V0006": {
+      "shortcode": "0225V0",
+      "issueCode": "KR70225V0006",
+      "name": "KODEX 미국CPU반도체TOP10"
+    },
+    "KR70226A0000": {
+      "shortcode": "0226A0",
+      "issueCode": "KR70226A0000",
+      "name": "PLUS SK하이닉스샌디스크채권혼합50"
+    },
+    "KR70226G0004": {
+      "shortcode": "0226G0",
+      "issueCode": "KR70226G0004",
+      "name": "WON 피지컬AI TOP2플러스액티브"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -12958,6 +13008,11 @@
       "name": "KODEX 200커버드콜액티브"
     },
     {
+      "shortcode": "0219Z0",
+      "issueCode": "KR70219Z0000",
+      "name": "HANARO 미국S&P500액티브"
+    },
+    {
       "shortcode": "0220A0",
       "issueCode": "KR70220A0006",
       "name": "KIWOOM 현대차그룹TOP3채권혼합50"
@@ -12983,6 +13038,11 @@
       "name": "KoAct 고배당액티브"
     },
     {
+      "shortcode": "0222F0",
+      "issueCode": "KR70222F0009",
+      "name": "마이티 AI데이터센터밸류체인"
+    },
+    {
       "shortcode": "0223A0",
       "issueCode": "KR70223A0003",
       "name": "RISE 코스닥커버드콜액티브"
@@ -13001,6 +13061,21 @@
       "shortcode": "0224X0",
       "issueCode": "KR70224X0005",
       "name": "1Q 엔비디아알파벳미국채혼합50"
+    },
+    {
+      "shortcode": "0225V0",
+      "issueCode": "KR70225V0006",
+      "name": "KODEX 미국CPU반도체TOP10"
+    },
+    {
+      "shortcode": "0226A0",
+      "issueCode": "KR70226A0000",
+      "name": "PLUS SK하이닉스샌디스크채권혼합50"
+    },
+    {
+      "shortcode": "0226G0",
+      "issueCode": "KR70226G0004",
+      "name": "WON 피지컬AI TOP2플러스액티브"
     },
     {
       "shortcode": "069500",
