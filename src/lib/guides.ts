@@ -20606,7 +20606,459 @@ const usEtfDripKorea: GuideDef = {
   ],
 };
 
+/** 지식iN 질문 수요 기반 (2026-08-09) */
+const usDividendIncomeLoanProof: GuideDef = {
+  slug: 'us-dividend-income-loan-proof',
+  title: '미국 배당소득, 보금자리론 소득 심사에 잡히나',
+  tagline: '증빙되는 배당은 소득으로 잡히지만, 반영 방식은 상품마다 다릅니다',
+  description:
+    '미국 주식·ETF에서 받은 배당소득이 보금자리론 같은 정책 대출의 소득 심사에 포함되는지 궁금하다면, 소득금액증명원으로 증빙되는 배당은 종합소득에 잡혀 소득 산정에 반영될 수 있습니다. 증빙소득과 인정소득의 차이, 배당이 대출 한도와 건강보험료에 주는 영향을 정리했습니다.',
+  keywords: ['미국 배당소득 대출', '보금자리론 소득기준', '배당소득 소득증빙', '금융소득 대출 심사', '배당소득 종합소득', '주택담보대출 소득'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-09',
+  answer:
+    '소득금액증명원 등으로 증빙되는 배당소득은 종합소득에 포함되므로, 보금자리론 같은 대출의 소득 심사에서 소득으로 잡힐 수 있습니다. 다만 보금자리론은 증빙소득을 원칙으로 하고 입증이 어려울 때만 국민연금·건강보험료 기반 인정소득을 쓰는데, 배당의 반영 방식은 심사 기준에 따라 달라지므로 한국주택금융공사 안내로 확인하는 편이 정확합니다.',
+  keyPoints: [
+    '보금자리론은 근로·사업·연금·기타소득을 소득금액증명원으로 입증하는 증빙소득이 원칙이며, 입증이 어려우면 국민연금·건강보험료로 추정한 인정소득을 예외로 적용합니다.',
+    '배당·이자 같은 금융소득은 연 2,000만원을 넘으면 종합과세 대상이 되어 종합소득에 합산되고, 이때 소득금액증명원에 잡혀 대출 소득 산정에 반영될 수 있습니다.',
+    '소득 산정은 최근 2개년을 비교해 차이가 20% 이하면 최근년도 소득을, 20%를 넘으면 2개년 평균을 적용하는 방식이 기본입니다.',
+    '배당이 소득으로 잡히면 대출 한도에는 도움이 될 수 있으나, 동시에 건강보험료나 종합과세 부담이 커질 수 있어 두 방향을 함께 따져야 합니다.',
+  ],
+  sources: [
+    { label: '한국주택금융공사', url: 'https://www.hf.go.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '국민건강보험공단', url: 'https://www.nhis.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '보금자리론 소득 기준에 미국 배당소득이 포함되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494353655' },
+  ],
+  comparisonTable: {
+    caption: '보금자리론 소득 산정 방식',
+    columns: ['구분', '증빙소득', '인정소득'],
+    rows: [
+      ['근거', '소득금액증명원 등 객관 자료', '국민연금·건강보험료 납부내역'],
+      ['적용', '원칙', '증빙이 어려울 때 예외'],
+      ['배당소득', '종합소득에 잡히면 반영', '추정치라 배당 직접 반영 아님'],
+    ],
+  },
+  sections: [
+    {
+      heading: '대출 소득 심사는 증빙소득이 먼저다',
+      paragraphs: [
+        '보금자리론처럼 한국주택금융공사가 취급하는 정책 주택담보대출은 소득을 확인해 대출 한도를 정합니다. 이때 기본은 증빙소득입니다. 소득금액증명원 같은 객관적인 자료로 입증되는 근로·사업·연금·기타소득을 합산한 종합소득이 증빙소득입니다.',
+        '증빙이 어려운 경우에만 인정소득을 예외로 씁니다. 인정소득은 국민연금이나 건강보험료 납부내역을 근거로 소득을 추정하는 방식입니다. 즉 소득을 서류로 보여줄 수 있으면 증빙소득으로, 그러기 어려우면 국민연금·건보료를 통해 추정하는 순서라고 이해하면 됩니다.',
+      ],
+    },
+    {
+      heading: '배당소득은 언제 소득으로 잡히나',
+      paragraphs: [
+        '핵심은 미국 주식·ETF에서 받은 배당이 소득금액증명원에 잡히느냐입니다. 배당·이자 같은 금융소득은 연간 합계가 2,000만원 이하이면 대체로 원천징수로 과세가 끝나 종합소득에 합산되지 않습니다. 반면 2,000만원을 넘으면 금융소득 종합과세 대상이 되어 종합소득에 포함되고, 이 경우 소득금액증명원에 반영될 수 있습니다.',
+        '따라서 배당 규모가 크지 않다면 대출 소득 심사에서 배당이 소득으로 잡히지 않는 경우가 많고, 배당이 커서 종합과세로 넘어가면 종합소득의 일부로 소득 산정에 반영될 여지가 생깁니다. 다만 어떤 소득을 어떻게 인정할지는 상품과 심사 기준에 따라 다르므로, 실제 적용은 공사 안내로 확인해야 합니다.',
+      ],
+    },
+    {
+      heading: '소득으로 잡히면 득일까 실일까',
+      paragraphs: [
+        '배당이 소득으로 인정되면 대출 한도 측면에서는 유리하게 작용할 수 있습니다. 소득이 많을수록 상환 능력을 높게 보기 때문입니다. 소득 산정은 최근 2개년을 비교해 차이가 20% 이하면 최근년도 소득을, 20%를 넘으면 2개년 평균을 적용하는 방식이 기본입니다.',
+        '반대편도 봐야 합니다. 금융소득이 2,000만원을 넘어 종합과세로 넘어가면 세 부담이 늘고, 건강보험 피부양자 자격이나 지역가입 보험료에도 영향을 줄 수 있습니다. 대출 한도에 도움이 되더라도 세금·건보료라는 비용이 함께 붙을 수 있으니, 배당 규모를 키우기 전에 양쪽을 같이 계산해 보는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '헷갈릴 땐 기준부터 확인',
+      paragraphs: [
+        '보금자리론은 부부합산 소득요건 등 상품별 기준이 있고, 신혼부부나 다자녀 가구는 한도가 완화되기도 합니다. 이런 기준과 소득 인정 방식은 정책에 따라 바뀔 수 있어, 신청 전 최신 요건을 직접 확인하는 것이 안전합니다.',
+        '정리하자면 증빙 가능한 배당소득은 종합소득에 잡히면 대출 소득으로 반영될 수 있고, 소액 배당은 대체로 잡히지 않습니다. 여기 설명은 일반적인 원칙이며 개별 심사 결과와 다를 수 있으니, 대출과 세금 판단의 최종 책임은 본인에게 있다는 점을 감안해 한국주택금융공사와 세무 전문가의 안내를 함께 참고하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '미국 배당소득도 보금자리론 소득에 포함되나요?',
+      answer:
+        '소득금액증명원에 잡히는 배당은 종합소득에 포함되어 소득으로 반영될 수 있습니다. 다만 배당·이자 합계가 연 2,000만원 이하로 원천징수만 되면 종합소득에 합산되지 않는 경우가 많습니다.',
+    },
+    {
+      question: '배당이 소득으로 잡히면 대출에 유리한가요?',
+      answer:
+        '소득이 늘면 상환 능력을 높게 보므로 한도에는 도움이 될 수 있습니다. 대신 종합과세와 건강보험료 부담이 함께 커질 수 있어, 한도 이득과 세금·보험료 비용을 같이 따져야 합니다.',
+    },
+    {
+      question: '증빙소득과 인정소득은 무엇이 다른가요?',
+      answer:
+        '증빙소득은 소득금액증명원 등 객관 자료로 입증되는 소득이고, 인정소득은 증빙이 어려울 때 국민연금·건강보험료 납부내역으로 추정한 소득입니다. 보금자리론은 증빙소득을 원칙으로 합니다.',
+    },
+    {
+      question: '정확한 소득 인정 기준은 어디서 확인하나요?',
+      answer:
+        '상품과 심사 방식에 따라 소득 인정 범위가 달라지므로 한국주택금융공사 홈페이지의 보금자리론 업무처리기준과 상담을 통해 확인하는 것이 정확합니다. 세무는 홈택스나 세무 전문가에게 확인하세요.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-09) */
+const pensionAccountTermsExplained: GuideDef = {
+  slug: 'pension-account-terms-explained',
+  title: '연금저축·연저펀·연금저축보험·IRP 이름 정리',
+  tagline: '비슷해 보이는 연금 계좌 이름, 무엇이 어떻게 다른지부터',
+  description:
+    '연금저축, 연저펀, 연금저축펀드, 연금저축보험, IRP까지 이름이 비슷해 헷갈리는 연금 계좌를 하나씩 구분했습니다. 연저펀은 연금저축펀드의 줄임말이고, 세액공제는 연금저축 600만원에 IRP를 더하면 900만원까지 늘어납니다. 계좌별 성격과 세제 혜택을 표로 정리했습니다.',
+  keywords: ['연금저축', '연저펀', '연금저축펀드', '연금저축보험', 'IRP 차이', '연금 세액공제 한도'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-09',
+  answer:
+    '연금저축은 개인이 노후 자금을 모으는 세제 혜택 계좌로, 운용 방식에 따라 펀드형인 연금저축펀드와 보험형인 연금저축보험으로 나뉩니다. 연저펀은 연금저축펀드의 줄임말입니다. IRP는 퇴직연금 계좌로 연금저축과 별개이며, 세액공제는 연금저축 연 600만원에 IRP를 합쳐 최대 900만원까지 받을 수 있습니다.',
+  keyPoints: [
+    '연금저축은 세제적격 개인연금 계좌로, 증권사의 연금저축펀드(연저펀)와 보험사의 연금저축보험으로 나뉩니다. 연저펀은 ETF·펀드를 직접 골라 담을 수 있습니다.',
+    '세액공제 한도는 연금저축이 연 600만원이고, IRP를 더하면 합산 900만원까지 늘어납니다. 총급여 5,500만원 이하는 16.5%, 초과는 13.2% 공제율이 적용됩니다.',
+    '900만원을 16.5%로 공제받으면 연 148만 5,000원을 돌려받습니다. 공제 대상은 본인이 낸 납입액 기준입니다.',
+    'IRP는 퇴직연금 계좌라 위험자산 투자 비중이 최대 70%로 제한되지만, 연금저축펀드는 이런 위험자산 한도 규제가 없다는 차이가 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'IRP, 연금저축, 연저펀의 차이를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494287819' },
+  ],
+  comparisonTable: {
+    caption: '연금 계좌 이름 한눈 정리',
+    columns: ['구분', '연금저축펀드(연저펀)', '연금저축보험', 'IRP'],
+    rows: [
+      ['가입처', '증권사', '보험사', '증권·은행·보험'],
+      ['운용', 'ETF·펀드 직접 선택', '공시이율·보험 상품', 'ETF·펀드 등, 위험자산 70% 한도'],
+      ['세액공제', '연금저축 한도 600만원', '연금저축 한도 600만원', '연금저축과 합산 900만원'],
+    ],
+  },
+  sections: [
+    {
+      heading: '연금저축이라는 큰 우산',
+      paragraphs: [
+        '가장 먼저 정리할 것은 연금저축이 특정 상품 하나가 아니라 세제 혜택을 받는 개인연금 계좌를 통틀어 부르는 이름이라는 점입니다. 이 계좌에 돈을 넣으면 세액공제를 받고, 55세 이후 연금으로 나눠 받을 때 낮은 세율이 적용됩니다.',
+        '연금저축은 운용 방식에 따라 두 갈래로 나뉩니다. 증권사에서 만들어 ETF나 펀드를 직접 고르는 연금저축펀드, 그리고 보험사에서 공시이율 등으로 굴리는 연금저축보험입니다. 흔히 쓰는 연저펀은 이 연금저축펀드를 줄여 부르는 말입니다.',
+      ],
+    },
+    {
+      heading: 'IRP는 연금저축과 다른 계좌',
+      paragraphs: [
+        'IRP는 개인형 퇴직연금으로, 이름에 연금이 들어가 헷갈리지만 연금저축과는 별개의 계좌입니다. 원래 퇴직금을 받아 굴리는 그릇이지만 개인이 추가로 돈을 넣어 세액공제를 받는 용도로도 씁니다.',
+        '두 계좌의 큰 차이는 투자 제한입니다. IRP는 퇴직연금이라 주식형처럼 위험이 큰 자산에 넣을 수 있는 비중이 최대 70%로 묶여 있습니다. 반면 연금저축펀드에는 이런 위험자산 한도 규제가 없어 상품 선택이 좀 더 자유롭습니다.',
+      ],
+    },
+    {
+      heading: '세액공제는 합쳐서 900만원',
+      paragraphs: [
+        '연금 계좌를 챙기는 가장 큰 이유가 세액공제입니다. 연금저축은 연 납입액 중 600만원까지 세액공제 대상이 되고, 여기에 IRP를 더하면 합산 900만원까지 한도가 늘어납니다. 연금저축 없이 IRP만으로도 900만원 한도를 채울 수 있습니다.',
+        '공제율은 소득에 따라 다릅니다. 총급여 5,500만원 이하이거나 종합소득 4,500만원 이하이면 16.5%, 그 위는 13.2%가 적용됩니다. 900만원을 16.5%로 공제받으면 연 148만 5,000원을 환급받는 셈입니다. 넣을 수 있는 여력이 된다면 두 계좌를 조합해 900만원 한도를 채우는 방식이 효율적입니다.',
+      ],
+    },
+    {
+      heading: '내게 맞는 조합 고르기',
+      paragraphs: [
+        '이름만 익히면 선택은 어렵지 않습니다. ETF를 직접 골라 굴리고 싶다면 연금저축펀드가 맞고, 원금 안정성을 중시하며 알아서 관리되길 원하면 연금저축보험이 편합니다. 퇴직금까지 한 계좌에서 운용하려면 IRP를 함께 활용합니다.',
+        '한 가지 유의할 점은 이 계좌들이 55세 이후 연금 수령을 전제로 세제 혜택을 준다는 것입니다. 중간에 해지하면 그동안 받은 공제 혜택을 토해내는 기타소득세가 붙을 수 있습니다. 세제와 한도는 개정될 수 있으니 가입 전 최신 기준을 확인하시고, 노후 자금 배분은 본인 상황에 맞춰 결정하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '연저펀이 정확히 무슨 뜻인가요?',
+      answer:
+        '연저펀은 연금저축펀드의 줄임말입니다. 증권사에서 만드는 연금저축 계좌로, ETF나 펀드를 직접 골라 담아 노후 자금을 굴리는 세제 혜택 상품입니다.',
+    },
+    {
+      question: '연금저축과 IRP는 같은 건가요?',
+      answer:
+        '아닙니다. 연금저축은 개인연금 계좌, IRP는 퇴직연금 계좌로 별개입니다. IRP는 위험자산 비중이 최대 70%로 제한되고, 세액공제는 두 계좌를 합쳐 900만원까지 받을 수 있습니다.',
+    },
+    {
+      question: '세액공제는 얼마까지 받나요?',
+      answer:
+        '연금저축은 연 600만원, IRP를 더하면 합산 900만원까지입니다. 공제율은 총급여 5,500만원 이하면 16.5%, 초과면 13.2%가 적용되어 900만원 납입 시 최대 148만 5,000원을 돌려받습니다.',
+    },
+    {
+      question: '연금저축펀드와 연금저축보험 중 무엇이 나은가요?',
+      answer:
+        'ETF를 직접 고르며 수익을 노린다면 펀드형, 원금 안정과 자동 관리를 원하면 보험형이 맞습니다. 정답은 없고 투자 성향과 관리 부담을 기준으로 고르면 됩니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-09) */
+const isaMandatoryHoldingPeriod: GuideDef = {
+  slug: 'isa-mandatory-holding-period',
+  title: 'ISA 3년 의무가입기간, 미리 깨면 어떤 불이익',
+  tagline: '3년만 채우면 비과세는 유지, 그전에 깨면 혜택이 사라진다',
+  description:
+    'ISA 계좌는 의무가입기간이 3년입니다. 3년을 채우기 전에 중도해지하면 비과세와 손익통산 혜택이 사라지고 일반 세율로 다시 과세됩니다. 반대로 3년만 지나면 언제 해지해도 혜택은 유지됩니다. 의무기간의 의미와 만기 설정, 중도해지 불이익을 정리했습니다.',
+  keywords: ['ISA 의무가입기간', 'ISA 중도해지', 'ISA 3년', 'ISA 비과세 한도', 'ISA 만기 설정', 'ISA 해지 불이익'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-08-09',
+  answer:
+    'ISA는 의무가입기간이 3년이라, 이 기간을 채우기 전에 중도해지하면 그동안 받은 비과세와 손익통산 혜택이 취소되고 이익에 일반 배당소득세 15.4%가 다시 매겨집니다. 3년만 지나면 그 뒤 언제 해지해도 비과세와 저율 분리과세 혜택은 그대로 유지되므로, 만기는 3년 이상으로 넉넉히 잡아 두는 편이 유리합니다.',
+  keyPoints: [
+    'ISA 의무가입기간은 3년입니다. 만기는 3년부터 그 이상 원하는 기간으로 자유롭게 정할 수 있고, 만기 전이라도 3년을 채웠으면 해지해도 혜택이 유지됩니다.',
+    '비과세 한도는 일반형 200만원, 서민형·농어민형 400만원입니다. 이 한도를 넘는 순이익에는 9.9% 분리과세가 적용되어 일반 15.4%보다 낮습니다.',
+    '3년을 채우기 전에 중도해지하면 비과세와 손익통산이 취소되고, 발생한 이익 전체에 일반 배당소득세 15.4%가 부과됩니다.',
+    '납입 원금 범위 안에서는 중도인출을 해도 계좌가 해지되지 않아, 급전이 필요하면 해지 대신 원금 인출을 먼저 검토할 수 있습니다.',
+  ],
+  sources: [
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 계좌를 연장할지 연금저축으로 옮길지 고민하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493760173' },
+    { summary: 'ISA 계좌의 구조와 활용을 폭넓게 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493747720' },
+  ],
+  comparisonTable: {
+    caption: '3년 전후 해지 시 세제 혜택',
+    columns: ['구분', '3년 전 중도해지', '3년 경과 후 해지'],
+    rows: [
+      ['비과세', '취소', '유지(일반 200만·서민 400만)'],
+      ['초과 이익', '일반 15.4% 과세', '9.9% 분리과세'],
+      ['손익통산', '취소', '유지'],
+    ],
+  },
+  sections: [
+    {
+      heading: '의무가입기간 3년이 뜻하는 것',
+      paragraphs: [
+        'ISA는 개인종합자산관리계좌로, 한 계좌 안에서 예금·펀드·ETF·국내주식 등을 담아 굴리고 세제 혜택을 받는 절세 계좌입니다. 이 혜택을 받는 대신 3년이라는 의무가입기간을 채워야 한다는 조건이 붙습니다.',
+        '의무가입기간은 최소한 이만큼은 유지해야 세제 혜택을 인정한다는 약속입니다. 만기 자체는 3년부터 그 이상으로 자유롭게 정할 수 있고, 3년만 지나면 그 뒤에는 언제 해지하든 비과세와 저율과세 혜택이 그대로 유지됩니다.',
+      ],
+    },
+    {
+      heading: '3년을 채우면 받는 혜택',
+      paragraphs: [
+        'ISA의 핵심 혜택은 두 가지입니다. 첫째는 비과세로, 계좌 안에서 난 순이익 중 일반형은 200만원, 서민형과 농어민형은 400만원까지 세금을 물리지 않습니다. 둘째는 손익통산으로, 이익 난 상품과 손실 난 상품을 합산해 순이익에만 과세합니다.',
+        '비과세 한도를 넘는 이익에는 9.9%의 분리과세가 적용됩니다. 일반 계좌의 배당소득세 15.4%보다 낮은 세율이고, 금융소득 종합과세에도 합산되지 않아 세 부담을 줄이는 데 유리합니다. 이런 혜택은 3년 의무기간을 채운 계좌에 주어집니다.',
+      ],
+    },
+    {
+      heading: '3년 전에 깨면 생기는 일',
+      paragraphs: [
+        '의무가입기간 3년을 채우기 전에 계좌를 중도해지하면 그동안 쌓아 온 세제 혜택이 사라집니다. 비과세와 손익통산이 취소되고, 계좌에서 난 이익 전체에 일반 배당소득세 15.4%가 다시 매겨집니다. 절세하려고 만든 계좌가 일반 계좌와 같아지는 셈입니다.',
+        '다만 계좌를 통째로 해지하지 않고 그동안 넣은 납입 원금 범위 안에서 돈을 빼는 중도인출은 가능합니다. 원금 인출은 계좌를 유지한 채 이뤄지므로 혜택이 사라지지 않습니다. 급하게 돈이 필요할 때 무조건 해지하기보다 원금 인출을 먼저 확인해 보는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '만기와 재예치, 어떻게 정할까',
+      paragraphs: [
+        '만기를 짧게 3년으로 잡았다가 혜택이 아까워 다시 넣는 경우가 많습니다. 그래서 처음부터 만기를 넉넉히 길게 설정하거나, 만기 도래 시 재설정·연장으로 계좌를 이어 가는 방법이 자주 쓰입니다. 만기 후에는 계좌를 해지해 연금저축으로 옮기며 추가 세액공제를 노리는 선택지도 있습니다.',
+        '요약하면 3년은 반드시 지켜야 할 최소선이고, 그 뒤로는 유연하게 굴릴 수 있습니다. 다만 ISA 제도와 한도는 개정될 수 있으니 가입·해지 전 최신 기준을 확인하시고, 투자와 세금 판단의 책임은 본인에게 있다는 점을 염두에 두시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA는 3년이 지나면 무조건 해지해야 하나요?',
+      answer:
+        '아닙니다. 3년은 최소 유지 기간일 뿐이고 만기는 더 길게 정할 수 있습니다. 3년만 채우면 그 뒤 언제 해지하든 비과세와 저율과세 혜택이 유지됩니다.',
+    },
+    {
+      question: '3년 전에 중도해지하면 어떻게 되나요?',
+      answer:
+        '비과세와 손익통산 혜택이 취소되고, 계좌에서 난 이익 전체에 일반 배당소득세 15.4%가 다시 부과됩니다. 절세 효과가 사라져 일반 계좌와 같아집니다.',
+    },
+    {
+      question: '급전이 필요하면 반드시 해지해야 하나요?',
+      answer:
+        '그렇지 않습니다. 그동안 넣은 납입 원금 범위 안에서는 계좌를 유지한 채 중도인출을 할 수 있습니다. 해지 전에 원금 인출이 가능한지 먼저 확인하는 것이 좋습니다.',
+    },
+    {
+      question: 'ISA 비과세 한도는 얼마인가요?',
+      answer:
+        '일반형은 순이익 200만원, 서민형과 농어민형은 400만원까지 비과세입니다. 한도를 넘는 이익에는 9.9% 분리과세가 적용되어 일반 15.4%보다 낮습니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-09) */
+const basicOldAgePensionGuide: GuideDef = {
+  slug: 'basic-old-age-pension-guide',
+  title: '기초연금 수급 자격과 금액, 국민연금과 다른 점',
+  tagline: '65세 이상 소득 하위 70%에 매달 지급되는 노후 지원금',
+  description:
+    '기초연금은 65세 이상 어르신 중 소득 하위 70%에게 매달 지급되는 노후 지원금으로, 국민연금과는 별개입니다. 2026년 단독가구 선정기준액은 월 247만원, 최대 지급액은 월 34만 9,700원입니다. 수급 자격과 소득인정액, 국민연금과의 차이를 정리했습니다.',
+  keywords: ['기초연금', '기초연금 수급자격', '기초연금 선정기준액', '노인연금', '기초연금 2026', '소득인정액'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-09',
+  answer:
+    '기초연금은 65세 이상 어르신 가운데 소득인정액이 선정기준액 이하인 소득 하위 약 70%에게 국가가 매달 지급하는 노후 지원금입니다. 2026년 선정기준액은 단독가구 월 247만원, 부부가구 월 395만 2,000원이며, 단독가구 최대 지급액은 월 34만 9,700원입니다. 본인이 낸 보험료로 받는 국민연금과 달리 세금으로 지급됩니다.',
+  keyPoints: [
+    '기초연금은 65세 이상이면서 소득인정액이 선정기준액 이하인 소득 하위 70%가 대상입니다. 2026년 선정기준액은 단독가구 월 247만원, 부부가구 월 395만 2,000원입니다.',
+    '2026년 단독가구 최대 지급액은 월 34만 9,700원으로, 2025년 34만 2,510원보다 7,190원 올랐습니다. 부부가 함께 받으면 각자 금액에서 일부가 감액됩니다.',
+    '소득인정액은 근로·연금 등 소득과 재산을 소득으로 환산한 금액을 합산해 계산하며, 이 값이 선정기준액 이하여야 받습니다.',
+    '기초연금은 세금으로 지급되는 복지제도라, 본인이 낸 보험료를 바탕으로 받는 국민연금과는 재원과 성격이 다릅니다. 두 연금은 함께 받을 수 있습니다.',
+  ],
+  sources: [
+    { label: '보건복지부', url: 'https://www.mohw.go.kr' },
+    { label: '복지로', url: 'https://www.bokjiro.go.kr' },
+    { label: '국민연금공단', url: 'https://www.nps.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '기초연금이 언제 어떻게 지급되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494342044' },
+    { summary: '앞으로 노인연금이 인상되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494357097' },
+    { summary: '기초연금을 특정 월에 받을 수 있는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494353775' },
+  ],
+  comparisonTable: {
+    caption: '2026년 기초연금 기준',
+    columns: ['구분', '단독가구', '부부가구'],
+    rows: [
+      ['선정기준액(소득인정액 한도)', '월 247만원', '월 395만 2,000원'],
+      ['최대 지급액', '월 34만 9,700원', '부부 각각 일부 감액'],
+      ['대상', '65세 이상 소득 하위 70%', '65세 이상 소득 하위 70%'],
+    ],
+  },
+  sections: [
+    {
+      heading: '기초연금은 누구에게 주나',
+      paragraphs: [
+        '기초연금은 나이가 들어 소득이 줄어든 어르신의 생활을 돕기 위해 국가가 매달 지급하는 노후 지원금입니다. 대상은 만 65세 이상이면서 소득인정액이 정부가 정한 선정기준액 이하인 분들로, 전체 65세 이상 인구 중 소득 하위 약 70%가 받도록 설계돼 있습니다.',
+        '2026년 선정기준액은 단독가구 월 247만원, 부부가구 월 395만 2,000원입니다. 2025년보다 단독가구 기준 19만원 올랐습니다. 내 소득인정액이 이 금액 이하인지가 수급 여부를 가르는 기준입니다.',
+      ],
+    },
+    {
+      heading: '소득인정액이 무엇인가',
+      paragraphs: [
+        '수급 여부를 판단하는 소득인정액은 단순한 월급이 아닙니다. 근로소득과 연금소득 같은 실제 소득에, 집이나 예금 같은 재산을 일정 방식으로 소득으로 환산한 금액을 더해 계산합니다. 부채는 빼 줍니다.',
+        '그래서 집이 있거나 국민연금을 받아도 소득인정액이 선정기준액 이하이면 기초연금을 받을 수 있습니다. 반대로 소득과 재산이 많으면 65세가 넘어도 대상에서 빠집니다. 정확한 소득인정액은 복지로나 주민센터에서 모의계산으로 확인하는 것이 가장 확실합니다.',
+      ],
+    },
+    {
+      heading: '얼마를 언제 받나',
+      paragraphs: [
+        '2026년 단독가구 기준 최대 지급액은 월 34만 9,700원입니다. 2025년의 34만 2,510원에서 7,190원 오른 금액입니다. 부부가 함께 받는 경우에는 각자 받는 금액에서 일부가 감액되는 부부 감액이 적용됩니다.',
+        '모두가 최대 금액을 받는 것은 아닙니다. 소득인정액 수준이나 국민연금 수령액 등에 따라 지급액이 조정될 수 있습니다. 지급은 매달 정해진 날짜에 이뤄지며, 신청한 달부터 받게 되므로 자격이 된다면 미루지 말고 신청하는 편이 좋습니다.',
+      ],
+    },
+    {
+      heading: '국민연금과는 어떻게 다른가',
+      paragraphs: [
+        '이름이 비슷해 헷갈리지만 기초연금과 국민연금은 성격이 다릅니다. 국민연금은 일하는 동안 본인이 낸 보험료를 바탕으로 나중에 돌려받는 사회보험입니다. 반면 기초연금은 보험료 납부와 무관하게 세금으로 지급되는 복지제도입니다.',
+        '두 연금은 함께 받을 수 있습니다. 다만 국민연금 수령액이 일정 수준을 넘으면 기초연금이 일부 조정되는 연계 감액이 있을 수 있습니다. 금액과 기준은 매년 물가 등을 반영해 바뀌므로, 신청 전 보건복지부와 복지로의 최신 안내로 본인 자격과 금액을 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '기초연금은 누구나 받을 수 있나요?',
+      answer:
+        '만 65세 이상이면서 소득인정액이 선정기준액 이하인 소득 하위 70%가 대상입니다. 2026년 선정기준액은 단독가구 월 247만원, 부부가구 월 395만 2,000원입니다.',
+    },
+    {
+      question: '2026년 기초연금은 얼마인가요?',
+      answer:
+        '단독가구 기준 최대 지급액이 월 34만 9,700원으로, 2025년 34만 2,510원보다 올랐습니다. 부부가 함께 받으면 각자 금액에서 일부가 감액됩니다.',
+    },
+    {
+      question: '국민연금을 받아도 기초연금을 받나요?',
+      answer:
+        '받을 수 있습니다. 다만 국민연금 수령액이 일정 수준을 넘으면 기초연금이 일부 조정되는 연계 감액이 적용될 수 있습니다. 소득인정액 기준을 충족하는지가 먼저입니다.',
+    },
+    {
+      question: '집이 있으면 기초연금을 못 받나요?',
+      answer:
+        '집이 있어도 재산을 소득으로 환산한 소득인정액이 선정기준액 이하이면 받을 수 있습니다. 정확한 판정은 복지로 모의계산이나 주민센터 상담으로 확인하는 것이 좋습니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-09) */
+const inheritanceTaxPropertyPayment: GuideDef = {
+  slug: 'inheritance-tax-property-payment',
+  title: '상속세를 부동산으로 내는 물납, 언제 되나',
+  tagline: '현금이 부족할 때 부동산·유가증권으로 세금을 내는 예외 제도',
+  description:
+    '상속세를 현금 대신 부동산이나 유가증권으로 낼 수 있는 물납은 예외 제도입니다. 납부세액이 2,000만원을 넘고, 상속재산 중 부동산과 유가증권이 절반을 넘으며, 현금 납부가 어려운 세 요건을 모두 채워야 신청할 수 있습니다. 물납 요건과 한도, 주의할 점을 정리했습니다.',
+  keywords: ['상속세 물납', '부동산 상속세', '상속세 현금 부족', '상속세 납부 방법', '유가증권 물납', '물납 요건'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-09',
+  answer:
+    '상속세 물납은 세금을 현금 대신 부동산이나 유가증권으로 내는 제도로, 요건을 모두 갖춘 경우에만 허용되는 예외입니다. 상속세 납부세액이 2,000만원을 넘고, 상속재산 중 부동산과 유가증권 가액이 절반을 넘으며, 납부세액이 상속재산 중 금융재산보다 커서 현금 납부가 어려워야 합니다. 세무서 승인을 받아야 하고 물납 가능 재산도 정해져 있습니다.',
+  keyPoints: [
+    '물납은 세 요건을 모두 충족해야 합니다. 납부세액이 2,000만원을 초과하고, 상속재산 중 부동산과 유가증권 가액이 2분의 1을 초과하며, 납부세액이 상속재산 중 금융재산 가액보다 커야 합니다.',
+    '물납 한도는 납부세액에 부동산·유가증권 비율을 곱한 금액과, 납부세액에서 금융재산 등을 뺀 금액 중 더 적은 쪽을 넘을 수 없습니다.',
+    '물납은 세무서장의 허가를 받아야 하며, 신고·납부기한 내에 신청해야 합니다. 상속세 신고기한은 상속개시일이 속한 달의 말일부터 6개월입니다.',
+    '지상권·전세권·저당권이 설정된 부동산이나 관리·처분이 어려운 재산은 물납 대상에서 제외되어, 신청해도 받아들여지지 않을 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '찾기쉬운 생활법령정보', url: 'https://www.easylaw.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '상속세를 현금 대신 부동산으로 낼 수 있는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494358806' },
+  ],
+  comparisonTable: {
+    caption: '상속세 물납 3대 요건',
+    columns: ['요건', '기준'],
+    rows: [
+      ['납부세액', '2,000만원 초과'],
+      ['재산 구성', '부동산·유가증권이 상속재산의 1/2 초과'],
+      ['현금 부족', '납부세액이 금융재산 가액보다 큼'],
+    ],
+  },
+  sections: [
+    {
+      heading: '물납은 현금 납부의 예외',
+      paragraphs: [
+        '상속세는 원칙적으로 현금으로 냅니다. 그런데 물려받은 재산 대부분이 부동산이라 당장 낼 현금이 없는 경우가 생깁니다. 이런 사정을 감안해 세금을 부동산이나 유가증권 같은 재산 자체로 내도록 허용하는 것이 물납 제도입니다.',
+        '다만 물납은 누구나 원한다고 되는 것이 아니라, 정해진 요건을 모두 갖춘 경우에만 세무서장의 허가를 받아 쓰는 예외입니다. 국가가 세금 대신 받은 부동산을 나중에 처분해야 하므로, 받을 만한 재산인지와 현금 납부가 정말 어려운지를 함께 따집니다.',
+      ],
+    },
+    {
+      heading: '세 가지 요건을 모두 채워야',
+      paragraphs: [
+        '물납이 인정되려면 세 요건을 동시에 만족해야 합니다. 첫째, 상속세 납부세액이 2,000만원을 넘어야 합니다. 둘째, 상속받은 재산 중 부동산과 유가증권 가액의 합이 전체의 2분의 1을 넘어야 합니다. 셋째, 납부세액이 상속재산 중 금융재산 가액보다 커서 현금으로 내기 어려워야 합니다.',
+        '쉽게 말해 세금은 큰데 손에 쥔 현금이나 예금 같은 금융재산으로는 감당이 안 되고, 재산 대부분이 부동산·유가증권인 상황이라야 물납이 열립니다. 예금으로 낼 수 있을 만큼 금융재산이 넉넉하면 물납은 허용되지 않습니다.',
+      ],
+    },
+    {
+      heading: '얼마까지, 무엇으로 낼 수 있나',
+      paragraphs: [
+        '물납으로 낼 수 있는 금액에도 한도가 있습니다. 납부세액에 상속재산 중 부동산·유가증권이 차지하는 비율을 곱한 금액과, 납부세액에서 금융재산 등을 뺀 금액 가운데 더 적은 쪽을 넘을 수 없습니다. 세금 전액을 부동산으로 대신하는 것이 아니라 정해진 범위까지만 가능한 구조입니다.',
+        '낼 수 있는 재산도 제한됩니다. 국내에 있는 부동산과 국공채·상장 유가증권 등이 대상이지만, 지상권이나 전세권, 저당권이 설정돼 있거나 토지와 건물 소유자가 다른 부동산처럼 관리와 처분이 어려운 재산은 제외됩니다. 팔기 곤란한 재산으로는 세금을 대신할 수 없다는 뜻입니다.',
+      ],
+    },
+    {
+      heading: '신청 전 챙길 점',
+      paragraphs: [
+        '물납은 상속세 신고·납부기한 안에 신청해 세무서장의 허가를 받아야 합니다. 상속세 신고기한은 상속이 시작된 날이 속한 달의 말일부터 6개월입니다. 이 기간을 놓치면 절차가 복잡해지므로 일정 관리가 중요합니다.',
+        '물납이 늘 유리한 것도 아닙니다. 물납에 쓰는 부동산은 시가가 아니라 정해진 평가액으로 매기기 때문에, 직접 팔아 현금으로 내는 편이 나을 때도 있습니다. 요건과 평가 기준, 절차는 세법 개정으로 달라질 수 있으니 실제 신청 전에는 국세청 안내와 세무 전문가 상담으로 본인 상황에 맞는지 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '상속세를 부동산으로 낼 수 있나요?',
+      answer:
+        '가능합니다. 다만 납부세액 2,000만원 초과, 부동산·유가증권이 상속재산의 절반 초과, 현금 납부가 어려운 세 요건을 모두 채우고 세무서장의 허가를 받아야 하는 예외 제도입니다.',
+    },
+    {
+      question: '물납은 세금 전액을 부동산으로 내는 건가요?',
+      answer:
+        '아닙니다. 물납 한도가 있어, 부동산·유가증권 비율로 계산한 금액과 금융재산을 뺀 금액 중 적은 쪽까지만 가능합니다. 나머지는 현금으로 내야 합니다.',
+    },
+    {
+      question: '어떤 부동산이든 물납할 수 있나요?',
+      answer:
+        '그렇지 않습니다. 지상권·전세권·저당권이 설정됐거나 토지와 건물 소유자가 다른 부동산처럼 관리·처분이 어려운 재산은 제외됩니다. 국내 소재의 처분 가능한 부동산이 대상입니다.',
+    },
+    {
+      question: '물납은 언제까지 신청하나요?',
+      answer:
+        '상속세 신고·납부기한 안에 신청해야 합니다. 신고기한은 상속개시일이 속한 달의 말일부터 6개월이며, 기한 내에 세무서장의 허가를 받아야 합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  usDividendIncomeLoanProof,
+  pensionAccountTermsExplained,
+  isaMandatoryHoldingPeriod,
+  basicOldAgePensionGuide,
+  inheritanceTaxPropertyPayment,
   stockOrderRejectedReasons,
   dividendRecordDateReform,
   retireeDividendEtfMonthlyIncome,
@@ -20850,6 +21302,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-09 · 지식iN 질문 수요 기반 (미국 배당소득 대출 소득 심사 포함 여부·연금저축 연저펀 연금저축보험 IRP 이름 정리·ISA 3년 의무가입기간 중도해지 불이익·기초연금 수급 자격과 금액·상속세 부동산 물납 요건)
+  'us-dividend-income-loan-proof': '2026-08-09',
+  'pension-account-terms-explained': '2026-08-09',
+  'isa-mandatory-holding-period': '2026-08-09',
+  'basic-old-age-pension-guide': '2026-08-09',
+  'inheritance-tax-property-payment': '2026-08-09',
   // 2026-08-06 · 지식iN 질문 수요 기반 (매수 주문 체결 안 되는 이유·배당기준일 개편 선배당 후투자·은퇴자 배당 ETF 월 생활비 역산·코인 선물 강제청산 원리·미국 ETF 배당 자동재투자 DRIP 국내)
   'stock-order-rejected-reasons': '2026-08-06',
   'dividend-record-date-reform': '2026-08-06',
@@ -21146,7 +21604,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'us-dividend-income-loan-proof', 'pension-account-terms-explained', 'isa-mandatory-holding-period', 'basic-old-age-pension-guide', 'inheritance-tax-property-payment'],
   },
   {
     title: '배당·인컴',
