@@ -1904,3 +1904,30 @@ https://iknowhowinfo.com/guide/crypto-liquidation-explained
 https://iknowhowinfo.com/guide/us-etf-drip-korea
 
 색인 푸시(npm run push:guides, 대상 2026-08-06 5편 + 허브 3): IndexNow skip(no-site-url), Google Indexing skip(no-credentials). 키 미설정 채널 자동 skip으로 실행 자체는 정상. sitemap/RSS는 GUIDES·GUIDE_PUBLISHED_AT SSoT 직접 import라 자동 반영.
+
+## 2026-08-10 · [가이드 발행 · 지식iN 질문 수요 기반 5편]
+
+지식iN 신규 수집: 클라우드 IP 네이버 차단(HTTP 000)으로 실패, 1회 재시도도 실패(정상). 저장 코퍼스 data/keywords/kin/kin-20260718.json(103문항)로 주제 선정.
+
+발행 5편(모두 기존 슬러그와 중복 없는 신규 롱테일, 사실 검증 완료):
+1. market-timing-when-to-invest — 주식·ETF 지금 사도 될까, 타이밍보다 중요한 것
+   출처 질문: 지금 투자해도 괜찮은지(docId=494351153), 계속 오르는데 지금 매수해도 되는지(docId=493448566)
+2. beginner-asset-allocation — 초보 자산배분, 주식과 채권 비중 어떻게 정할까
+   출처 질문: 나스닥100·S&P500 장기투자 배분(docId=494346634), 5년 뒤 목돈 적립(docId=475289127)
+3. investing-loss-anxiety — 투자 손실이 불안해 못 견딜 때, 변동성 다루는 법
+   출처 질문: 손실 못 견디고 불안해 투자가 어렵다는 질문(docId=492536115)
+4. dca-goal-savings-calculation — 적립식으로 목돈 만들기, 월 얼마씩 얼마나 모을까
+   출처 질문: 5년 뒤 아파트 자금 적립(docId=475289127), 매달 정액 연금저축·ISA 적립(docId=489444942)
+5. crypto-account-security — 코인 계정과 자산 지키기, 해킹·피싱 막는 기본
+   출처 질문: 계정 해킹 대처(docId=494358250), 코인 거래처 안전·사기 여부(docId=494353407)
+
+사실 검증: 가상자산이용자보호법 2024-07-19 시행(예치금 분리보관·콜드월렛 80% 이상·해킹 대비 보험/준비금) WebSearch 적대 검증 통과(금융위·법령정보센터). 적립액 계산은 연금현가식 근사치, 수익률은 가정치로 명시(확정수익 보장 표현 없음). 자산배분 100-나이 규칙은 규칙 아닌 예시로 표기.
+
+검증: tsc --noEmit 0 에러. 새 블록 em dash 0, 금지어(파이프라인·크롤링·스크래핑·Gemini·GPT·LLM·에이전트·샘플데이터·자동발행) 0. title≤60·desc 120~155·slug ^[a-z0-9-]{1,80}$·keywords 6개. cf:build 성공, .next/server/app/guide 신규 5개 .html prerender 확인(answer-box·guide-key-points·guide-sources·citation·2026-08-10 포함).
+
+풀 URL:
+https://iknowhowinfo.com/guide/market-timing-when-to-invest
+https://iknowhowinfo.com/guide/beginner-asset-allocation
+https://iknowhowinfo.com/guide/investing-loss-anxiety
+https://iknowhowinfo.com/guide/dca-goal-savings-calculation
+https://iknowhowinfo.com/guide/crypto-account-security
