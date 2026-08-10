@@ -20606,7 +20606,461 @@ const usEtfDripKorea: GuideDef = {
   ],
 };
 
+/** 지식iN 질문 수요 기반 (2026-08-10) */
+const marketTimingWhenToInvest: GuideDef = {
+  slug: 'market-timing-when-to-invest',
+  title: '주식·ETF 지금 사도 될까, 타이밍보다 중요한 것',
+  tagline: '고점 같아 망설여질 때, 시장을 맞히는 대신 나눠서 담는 법',
+  description:
+    '지수가 오를 때도 내릴 때도 지금 들어가도 되냐는 고민이 반복됩니다. 저점과 고점을 미리 맞히기 어려운 이유, 한 번에 넣기 부담될 때 분할과 적립으로 진입하는 방법, 목적과 기간부터 정하는 순서를 초보 눈높이로 정리했습니다.',
+  keywords: ['지금 주식 사도 되나', 'ETF 매수 타이밍', '마켓타이밍', '분할매수', '적립식 투자', '고점 매수 불안'],
+  section: 'ETF 매매 가이드',
+  lastReviewed: '2026-08-10',
+  answer:
+    '시장의 저점과 고점을 미리 맞히는 것은 전문가에게도 어렵습니다. 그래서 지금이 바닥인지 꼭대기인지를 판단해 한 번에 사고파는 대신, 투자 목적과 기간을 먼저 정하고 자금을 여러 번에 나눠 담는 분할과 적립 방식이 현실적인 대안으로 꼽힙니다. 타이밍을 맞히려 애쓰기보다 꾸준함을 택하는 접근입니다.',
+  keyPoints: [
+    '증시가 언제 오르고 내릴지는 아무도 확정적으로 알 수 없습니다. 크게 오른 날 상당수가 큰 하락 직후에 몰려 있어, 급락이 무서워 빠져 있으면 반등의 핵심 며칠을 놓치기 쉽습니다.',
+    '목돈을 한 번에 넣기 부담스럽다면 3회에서 12회로 나눠 매수하는 분할매수로 평균 단가를 다듬을 수 있습니다. 대신 상승장이 이어지면 한 번에 넣는 것보다 수익이 줄 수 있습니다.',
+    '매달 같은 금액을 넣는 적립식은 쌀 때 더 많이, 비쌀 때 덜 사게 돼 진입 시점 고민을 줄여 줍니다. 자동이체로 걸어 두면 감정에 흔들리지 않고 이어 가기 쉽습니다.',
+    '1년 안에 쓸 돈은 예금이나 파킹형에 두고, 5년 이상 묻어 둘 수 있는 돈만 지수 ETF 같은 위험자산에 넣는 식으로 기간부터 나누는 것이 타이밍 고민보다 앞섭니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX)', url: 'https://www.krx.co.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '지금 주식시장에 투자해도 괜찮은지 진입 시점을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494351153' },
+    { summary: '계속 오르는 종목을 지금 매수해도 되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493448566' },
+  ],
+  comparisonTable: {
+    caption: '한 번에 vs 분할 vs 적립, 진입 방식 비교',
+    columns: ['방식', '장점', '유의점'],
+    rows: [
+      ['한 번에(거치식)', '상승장에서 수익 극대화', '직후 하락 시 부담 큼'],
+      ['나눠서(분할매수)', '평균 단가 완화', '상승장이면 수익 감소'],
+      ['매달(적립식)', '시점 고민을 줄임', '큰 하락 뒤 반등엔 상대적 불리'],
+    ],
+  },
+  sections: [
+    {
+      heading: '지금이 고점일까 저점일까, 왜 맞히기 어려운가',
+      paragraphs: [
+        '지금 사도 되냐는 질문의 밑바닥에는 지금이 고점이면 어쩌지 하는 두려움이 있습니다. 문제는 고점과 저점은 지나고 나서야 보인다는 점입니다. 시장은 경제 지표, 금리, 심리가 뒤섞여 움직여, 다음 달 방향을 꾸준히 맞히는 것은 사실상 불가능에 가깝습니다.',
+        '오히려 큰 하락이 무서워 시장을 떠나 있으면, 반등의 큰 폭이 하락 직후 며칠에 몰려 있는 특성 탓에 회복의 핵심 구간을 통째로 놓치기 쉽습니다. 그래서 타이밍을 완벽히 잡으려는 시도 자체가 성과를 갉아먹는 경우가 많습니다.',
+      ],
+    },
+    {
+      heading: '한 번에 넣기 부담될 때: 분할매수',
+      paragraphs: [
+        '수중에 목돈이 있는데 지금 다 넣기가 불안하다면, 여러 번에 나눠 사는 분할매수가 심리적 부담을 덜어 줍니다. 예를 들어 3개월에서 12개월에 걸쳐 정해진 회차로 나눠 담으면, 매수 가격이 평균으로 다듬어져 고점에 몰빵하는 위험이 줄어듭니다.',
+        '다만 분할이 항상 유리한 것은 아닙니다. 시장이 계속 오르기만 한다면 처음에 한 번에 넣은 쪽이 더 벌게 됩니다. 분할매수는 최고 수익을 노리는 방법이 아니라, 잘못된 시점에 전부를 걸 위험을 낮추는 방어적 선택에 가깝습니다.',
+      ],
+    },
+    {
+      heading: '진입 시점 고민을 줄이는 적립식',
+      paragraphs: [
+        '매달 정해진 금액을 꾸준히 넣는 적립식은 아예 시점 고민을 자동으로 분산시킵니다. 가격이 쌀 때는 같은 돈으로 더 많은 수량을, 비쌀 때는 더 적은 수량을 사게 돼 평균 매입 단가가 완만해집니다.',
+        '증권사 자동이체나 자동매수를 걸어 두면, 시장이 흔들릴 때마다 살까 말까 고민하는 감정 소모가 크게 줄어듭니다. 노후나 5년 뒤 목돈처럼 오래 이어질 목표라면, 매달 같은 리듬으로 담는 방식이 초보에게 특히 잘 맞습니다.',
+      ],
+    },
+    {
+      heading: '타이밍보다 먼저: 목적과 기간을 정한다',
+      paragraphs: [
+        '가장 앞서야 할 일은 사실 타이밍이 아니라 이 돈을 언제 쓸지 정하는 것입니다. 1년 안에 써야 할 돈이라면 지수 ETF 같은 위험자산은 하락기에 손실을 확정할 위험이 커, 예금이나 파킹형에 두는 편이 안전합니다.',
+        '반대로 5년, 10년 이상 묻어 둘 수 있는 돈이라면 지금이 고점인지 아닌지는 장기 성과에 큰 변수가 되지 못합니다. 기간부터 나눠 두면 지금 사도 되냐는 질문의 답이 한결 또렷해집니다. 여기 담은 방법은 특정 상품 추천이 아니며, 투자 판단과 결과에 대한 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '지금이 고점 같은데 기다렸다 사는 게 낫지 않나요?',
+      answer:
+        '고점과 저점은 지나야 확인됩니다. 기다리다 반등을 놓치는 경우가 많아, 한 번에 넣기 부담되면 여러 번에 나눠 담는 분할매수나 매달 적립하는 방식이 현실적입니다.',
+    },
+    {
+      question: '분할매수는 몇 번에 나눠 사는 게 좋나요?',
+      answer:
+        '정답은 없지만 3회에서 12회 사이로 나누는 경우가 많습니다. 회차가 많을수록 평균 단가는 완만해지지만, 시장이 계속 오르면 한 번에 넣은 것보다 수익이 줄 수 있습니다.',
+    },
+    {
+      question: '적립식과 거치식 중 무엇이 더 유리한가요?',
+      answer:
+        '역사적으로는 오래 오른 구간이 많아 거치식이 앞선 사례가 많았지만, 하락 직후 부담과 심리적 안정까지 보면 적립식이 나은 순간도 있습니다. 목돈 여부와 위험 감내 수준으로 고르면 됩니다.',
+    },
+    {
+      question: '단기에 쓸 돈도 ETF로 굴려도 될까요?',
+      answer:
+        '1년 안에 쓸 돈은 하락기에 손실을 확정해 팔아야 할 수 있어 위험자산에 넣기 부담스럽습니다. 단기 자금은 예금이나 파킹형에 두고, 장기 자금만 지수 ETF 같은 상품에 두는 편이 안전합니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-10) */
+const beginnerAssetAllocation: GuideDef = {
+  slug: 'beginner-asset-allocation',
+  title: '초보 자산배분, 주식과 채권 비중 어떻게 정할까',
+  tagline: '한 바구니에 몰지 않기, 나이와 기간으로 비중을 잡는 기본',
+  description:
+    '무엇을 살지보다 어디에 얼마씩 나눌지가 장기 성과를 좌우합니다. 주식과 채권, 현금성 자산의 역할과 상관관계, 나이와 투자기간으로 위험자산 비중을 잡는 방법, 시간이 지나면 비중을 되돌리는 리밸런싱까지 초보 눈높이로 정리했습니다.',
+  keywords: ['자산배분', '주식 채권 비중', '포트폴리오 비중', '위험자산 비중', '분산투자', '초보 자산배분'],
+  section: 'ETF 입문 가이드',
+  lastReviewed: '2026-08-10',
+  answer:
+    '자산배분은 주식처럼 변동이 큰 위험자산과 채권이나 현금처럼 안정적인 자산에 돈을 얼마씩 나눠 담을지 정하는 일입니다. 정답이 하나로 정해져 있지는 않지만, 감내할 수 있는 손실 폭과 돈을 쓸 시점을 기준으로 비중을 잡는 것이 출발점입니다. 오래 묻어 둘 수 있을수록 위험자산 비중을 높게 가져가는 경우가 많습니다.',
+  keyPoints: [
+    '주식은 기대수익이 높은 대신 한 해에 20% 넘게 빠지기도 합니다. 채권과 현금은 수익이 낮지만 변동이 작아, 둘을 섞으면 전체 흔들림을 줄일 수 있습니다.',
+    '흔히 인용되는 참고 기준으로 100에서 나이를 뺀 값을 주식 비중(%)으로 삼는 방식이 있습니다. 40세면 주식 60에 안전자산 40 정도인데, 규칙이 아니라 감을 잡는 예시입니다.',
+    '주식과 채권은 서로 다르게 움직이는 경우가 많아, 한쪽이 빠질 때 다른 쪽이 완충 역할을 하기도 합니다. 다만 항상 반대로 가는 것은 아니라는 점은 염두에 둬야 합니다.',
+    '시간이 지나 비중이 처음 계획에서 5%에서 10%포인트 이상 틀어지면, 오른 자산을 덜고 내린 자산을 채워 원래 비율로 되돌리는 리밸런싱으로 위험을 관리합니다.',
+  ],
+  sources: [
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+    { label: '한국거래소(KRX)', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '나스닥100과 S&P500에 장기투자할 때 자산 배분과 세금을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494346634' },
+    { summary: '5년 뒤 목돈 마련을 위해 어떤 ETF에 적립할지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=475289127' },
+  ],
+  comparisonTable: {
+    caption: '자산군의 성격 한눈에 보기',
+    columns: ['자산군', '기대수익', '변동성', '역할'],
+    rows: [
+      ['주식(지수 ETF)', '높음', '큼', '장기 성장'],
+      ['채권', '중간', '중간', '완충과 이자'],
+      ['현금성(예금·파킹)', '낮음', '작음', '안정과 대기'],
+    ],
+  },
+  sections: [
+    {
+      heading: '자산배분이 종목 고르기보다 먼저인 이유',
+      paragraphs: [
+        '초보일수록 어떤 종목을 살까에 마음이 쏠리지만, 장기 성과를 크게 가르는 것은 개별 종목보다 어디에 얼마씩 나눠 담았는가입니다. 한 자산에 전부를 몰면 그 자산이 흔들릴 때 계좌 전체가 함께 흔들립니다.',
+        '자산배분은 성격이 다른 자산을 섞어 위험을 분산하는 일입니다. 크게 오르는 자산이 하나 있으면 좋겠지만, 그 자산이 크게 빠질 수도 있다는 점까지 감안해 미리 비중을 정해 두는 것이 마음 편한 투자의 토대가 됩니다.',
+      ],
+    },
+    {
+      heading: '위험자산과 안전자산, 무엇을 얼마나',
+      paragraphs: [
+        '자산은 크게 위험자산과 안전자산으로 나눌 수 있습니다. 주식과 지수 ETF는 기대수익이 높지만 변동이 크고, 채권과 현금성 자산은 수익이 낮은 대신 흔들림이 작습니다. 이 둘을 섞는 비율이 곧 내 포트폴리오의 위험 수준을 결정합니다.',
+        '주식 100%는 상승장에서 수익이 크지만 하락기에 계좌가 크게 출렁입니다. 채권과 현금을 일부 섞으면 오르는 폭은 줄어도 내리는 폭도 함께 줄어, 오래 버틸 수 있는 형태가 됩니다. 핵심은 내가 감당할 수 있는 하락 폭에 맞춰 비중을 잡는 것입니다.',
+      ],
+    },
+    {
+      heading: '나이와 기간으로 비중 잡기',
+      paragraphs: [
+        '비중을 정할 때 자주 등장하는 참고 기준이 100에서 나이를 뺀 값을 주식 비중으로 삼는 방식입니다. 30세라면 주식 70에 안전자산 30, 60세라면 주식 40에 안전자산 60 식입니다. 나이가 들수록 위험을 줄인다는 취지인데, 어디까지나 출발점을 잡는 눈금일 뿐 규칙은 아닙니다.',
+        '더 중요한 것은 돈을 언제 쓸지입니다. 20년 뒤 노후 자금이라면 하락을 견딜 시간이 넉넉해 주식 비중을 높게 가져갈 수 있고, 3년 뒤 쓸 돈이라면 위험자산을 낮추고 안전자산을 늘리는 편이 안전합니다. 나이와 기간, 그리고 본인의 성향을 함께 보고 정하면 됩니다.',
+      ],
+    },
+    {
+      heading: '한 번 정하고 끝이 아니다: 리밸런싱',
+      paragraphs: [
+        '비중을 정해 담아도 시간이 지나면 오른 자산의 비중이 커지고 내린 자산은 작아져, 처음 계획과 달라집니다. 주식 60으로 시작했는데 상승장 뒤 75가 됐다면, 내 계좌는 원래 의도보다 위험해진 상태입니다.',
+        '이때 오른 자산을 조금 덜어 내린 자산을 채워 원래 비율로 되돌리는 것이 리밸런싱입니다. 비중이 5%에서 10%포인트 이상 틀어졌을 때나 1년에 한 번처럼 주기를 정해 조정하면 위험이 한쪽으로 쏠리는 것을 막을 수 있습니다. 여기 담은 비중 예시는 이해를 돕기 위한 것이며, 실제 배분은 본인의 상황과 위험 성향에 맞춰 정하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '자산배분이 왜 종목 선택보다 중요한가요?',
+      answer:
+        '어떤 종목을 골랐는지보다 위험자산과 안전자산에 얼마씩 나눴는지가 계좌의 흔들림과 장기 성과를 더 크게 좌우하기 때문입니다. 한 자산에 몰면 그 자산이 빠질 때 전체가 함께 무너집니다.',
+    },
+    {
+      question: '주식과 채권 비중은 어떻게 정하나요?',
+      answer:
+        '감당할 수 있는 하락 폭과 돈을 쓸 시점을 기준으로 잡습니다. 참고로 100에서 나이를 뺀 값을 주식 비중으로 삼는 예시가 있지만, 규칙이 아니라 출발점을 잡는 눈금 정도로 보면 됩니다.',
+    },
+    {
+      question: '채권을 섞으면 수익이 줄지 않나요?',
+      answer:
+        '오르는 폭은 줄어들 수 있습니다. 대신 내리는 폭도 함께 줄어 하락기에 버티기 쉬워집니다. 자산배분은 최고 수익이 아니라 오래 버틸 수 있는 형태를 만드는 데 목적이 있습니다.',
+    },
+    {
+      question: '리밸런싱은 얼마나 자주 하나요?',
+      answer:
+        '1년에 한 번처럼 주기를 정하거나, 비중이 계획에서 5%에서 10%포인트 이상 벗어났을 때 조정하는 방식이 흔합니다. 너무 잦으면 수수료와 세금이 늘 수 있어 적당한 간격이 좋습니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-10) */
+const investingLossAnxiety: GuideDef = {
+  slug: 'investing-loss-anxiety',
+  title: '투자 손실이 불안해 못 견딜 때, 변동성 다루는 법',
+  tagline: '평가손이 무서워 잠 못 드는 이유와 마음을 지키는 원칙',
+  description:
+    '펀드나 ETF에서 조금만 손실이 나도 불안해 일상이 흔들린다면, 문제는 종목이 아니라 감당 범위를 넘는 위험일 수 있습니다. 손실이 두려운 심리의 정체, 흔들리는 폭을 줄이는 비중 조절, 확인 빈도와 계좌 구조로 불안을 다스리는 법을 정리했습니다.',
+  keywords: ['투자 손실 불안', '변동성 견디기', '위험 감내', '투자 심리', '평가손 스트레스', '손실 공포'],
+  section: 'ETF 입문 가이드',
+  lastReviewed: '2026-08-10',
+  answer:
+    '투자에서 평가손이 불안해 견디기 힘들다면, 대개 감당할 수 있는 수준보다 위험을 크게 지고 있다는 신호입니다. 사람의 뇌는 같은 크기의 이익보다 손실을 더 크게 느끼도록 돼 있어 불안은 자연스럽습니다. 종목을 바꾸기보다 위험자산 비중을 줄이고, 계좌를 덜 자주 확인하는 것만으로도 심리적 부담이 줄어듭니다.',
+  keyPoints: [
+    '행동경제학에서는 사람이 같은 금액이라도 이익의 기쁨보다 손실의 고통을 약 두 배로 크게 느낀다고 봅니다. 손실 앞에서 불안한 것은 의지가 약해서가 아닙니다.',
+    '주식형 자산은 한 해 20% 이상 빠지는 구간이 드물지 않습니다. 이 변동을 못 견딘다면 위험자산 비중을 낮추고 채권이나 현금 비중을 늘려 흔들림 자체를 줄이는 편이 낫습니다.',
+    '계좌를 하루에도 몇 번씩 확인할수록 짧은 등락에 사고파는 뇌동매매로 이어지기 쉽습니다. 확인 주기를 주 1회나 월 1회로 늘리면 조급함이 눈에 띄게 줄어듭니다.',
+    '1년 안에 꼭 써야 할 돈을 주식형에 넣으면 하락기에 손실을 확정해 팔아야 할 수 있습니다. 단기 자금과 장기 자금을 계좌부터 나누면 불안의 상당 부분이 사라집니다.',
+  ],
+  sources: [
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '펀드나 ETF의 손실을 견디지 못해 불안해 투자가 어렵다는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=492536115' },
+  ],
+  comparisonTable: {
+    caption: '불안의 원인과 대응',
+    columns: ['불안의 원인', '대응'],
+    rows: [
+      ['감당 넘는 위험자산 비중', '채권과 현금 비중을 늘려 변동 축소'],
+      ['수시로 계좌 확인', '확인 주기를 주 1회나 월 1회로'],
+      ['단기 쓸 돈을 투자', '단기 자금은 예금이나 파킹으로 분리'],
+      ['손실을 실패로 여김', '변동은 과정임을 이해하고 기간을 길게'],
+    ],
+  },
+  sections: [
+    {
+      heading: '손실이 유독 무섭게 느껴지는 이유',
+      paragraphs: [
+        '평가손이 조금만 나도 마음이 무너진다면, 스스로를 탓하기 전에 그것이 인간의 자연스러운 반응임을 알아 둘 필요가 있습니다. 행동경제학 연구들은 사람이 같은 금액의 이익에서 얻는 기쁨보다 손실에서 느끼는 고통을 대략 두 배로 크게 받아들인다고 설명합니다.',
+        '즉 100만원을 벌었을 때의 기쁨보다 100만원을 잃었을 때의 괴로움이 더 크게 다가옵니다. 손실 앞에서 불안하고 팔고 싶어지는 충동은 의지가 약해서가 아니라 뇌가 원래 그렇게 작동하기 때문입니다. 이 사실을 인정하는 것만으로도 감정에 덜 휘둘리게 됩니다.',
+      ],
+    },
+    {
+      heading: '흔들림을 줄이는 첫걸음: 비중 조절',
+      paragraphs: [
+        '불안이 감당하기 어려운 수준이라면, 그건 대개 위험자산을 너무 많이 담았다는 신호입니다. 주식형 자산은 한 해에 20% 이상 빠지는 일이 드물지 않은데, 이 폭을 견디기 힘들다면 애초에 비중이 나에게 과했던 것입니다.',
+        '해법은 종목을 갈아타는 것이 아니라 위험자산 비중 자체를 낮추는 것입니다. 주식 비중을 줄이고 채권이나 현금성 자산을 늘리면 계좌가 흔들리는 폭이 함께 줄어듭니다. 밤에 잠이 오는 수준까지 위험을 낮추는 것이, 오래 투자를 이어 가는 가장 확실한 방법입니다.',
+      ],
+    },
+    {
+      heading: '자주 볼수록 불안하다: 확인 빈도와 자동이체',
+      paragraphs: [
+        '계좌를 자주 들여다볼수록 짧은 등락 하나하나가 크게 느껴집니다. 하루에도 몇 번씩 확인하면 사소한 하락에도 팔고 싶어지고, 이런 뇌동매매는 대개 나쁜 시점의 매매로 이어집니다. 확인 주기를 주 1회나 월 1회로 늘리기만 해도 조급함이 눈에 띄게 가라앉습니다.',
+        '매달 정해진 금액을 자동이체로 넣는 적립식도 마음을 지키는 데 도움이 됩니다. 살까 말까를 매번 결정하지 않아도 되니, 시장이 흔들려도 계획대로 이어 가기 쉽습니다. 결정의 횟수를 줄이는 것이 불안을 줄이는 실전 기술입니다.',
+      ],
+    },
+    {
+      heading: '단기 돈과 장기 돈을 나눈다',
+      paragraphs: [
+        '불안의 큰 뿌리 중 하나는 곧 써야 할 돈을 위험자산에 넣어 둔 경우입니다. 1년 안에 전세금이나 학비로 쓸 돈이 주식형에 들어가 있으면, 하락기에 손실을 확정하고 팔아야 할 수 있어 불안할 수밖에 없습니다.',
+        '그래서 단기 자금과 장기 자금을 계좌부터 갈라 두는 것이 좋습니다. 1년 안에 쓸 돈은 예금이나 파킹형에, 5년 이상 묻어 둘 돈만 지수 ETF 같은 위험자산에 두면 마음이 한결 놓입니다. 여기 담은 내용은 일반적인 참고이며 개인의 상황과 성향에 따라 다를 수 있으니, 투자 판단과 그 결과는 본인의 몫이라는 점도 기억해 두시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '손실이 무서운 건 제가 투자에 안 맞는 걸까요?',
+      answer:
+        '그렇지 않습니다. 사람은 이익보다 손실을 약 두 배 크게 느끼도록 돼 있어 불안은 자연스러운 반응입니다. 성향에 맞게 위험 수준을 낮추면 대부분 견딜 만해집니다.',
+    },
+    {
+      question: '불안할 때 종목을 바꾸면 나아지나요?',
+      answer:
+        '종목을 갈아타기보다 위험자산 비중을 낮추는 것이 근본적인 해법입니다. 무엇을 담았든 비중이 과하면 하락기에 불안하고, 비중을 줄이면 흔들림 자체가 작아집니다.',
+    },
+    {
+      question: '계좌를 자주 보면 왜 안 좋나요?',
+      answer:
+        '자주 볼수록 짧은 등락이 크게 느껴져 사소한 하락에도 팔고 싶어집니다. 이런 잦은 매매는 대개 나쁜 시점에 이뤄집니다. 확인 주기를 주 1회나 월 1회로 늘리면 조급함이 줄어듭니다.',
+    },
+    {
+      question: '단기 자금도 투자하면 안 되나요?',
+      answer:
+        '1년 안에 쓸 돈은 하락기에 손실을 확정해 팔아야 할 수 있어 위험자산에 넣기 부담스럽습니다. 단기 자금은 예금이나 파킹형에 두고, 오래 둘 수 있는 돈만 투자에 배정하는 편이 안전합니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-10) */
+const dcaGoalSavingsCalculation: GuideDef = {
+  slug: 'dca-goal-savings-calculation',
+  title: '적립식으로 목돈 만들기, 월 얼마씩 얼마나 모을까',
+  tagline: '목표 금액에서 거꾸로, 매달 넣을 돈과 기간을 계산하는 법',
+  description:
+    '5년 뒤 목돈처럼 목표가 정해져 있다면, 매달 얼마를 얼마 동안 넣어야 하는지 거꾸로 계산할 수 있습니다. 적립 원금과 수익의 관계, 수익률 가정에 따른 도달 기간, 목표 시점이 가까울수록 안전하게 담는 원칙을 예시와 함께 정리했습니다.',
+  keywords: ['적립식 목돈', '월 적립액 계산', '목표 금액 역산', '적립식 투자', '목돈 만들기', '적립 수익률'],
+  section: 'ETF 적립식 가이드',
+  lastReviewed: '2026-08-10',
+  answer:
+    '목돈 계획은 목표 금액과 기간을 먼저 정하고 매달 넣을 금액을 거꾸로 구하는 방식이 편합니다. 가령 5년간 6천만원을 모으려면 수익을 빼고도 매달 100만원이 필요하고, 수익이 더해지면 부담이 줄어듭니다. 다만 미래 수익률은 가정일 뿐 보장되지 않으므로, 목표 시점이 가까울수록 안전하게 잡는 것이 좋습니다.',
+  keyPoints: [
+    '수익을 0으로 놓고 계산하면 계획의 바닥이 보입니다. 5년(60개월) 동안 6천만원을 모으려면 매달 100만원, 3천만원이면 매달 50만원이 원금만으로 필요합니다.',
+    '연 4% 수익을 가정하면 같은 6천만원을 5년에 모으는 데 필요한 월 적립액은 약 90만원 안팎으로 줄어듭니다. 수익률이 높고 기간이 길수록 복리로 부담이 더 내려갑니다.',
+    '기간이 길수록 복리 효과가 커집니다. 매달 50만원을 연 5% 가정으로 20년 넣으면 원금 1억2천만원에 수익이 더해져 2억원을 넘길 수 있습니다. 어디까지나 가정치입니다.',
+    '목표 시점이 1년에서 2년으로 가까우면 하락기에 원금이 흔들릴 수 있어, 위험자산 비중을 낮추고 예금이나 파킹형 비중을 높여 목표 금액을 지키는 편이 안전합니다.',
+  ],
+  sources: [
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '5년 뒤 아파트 구입 자금을 위해 매달 ETF에 적립하는 계획을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=475289127' },
+    { summary: '매달 일정액을 연금저축과 ISA에 적립하려는 계획을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=489444942' },
+  ],
+  comparisonTable: {
+    caption: '수익률 가정별 필요 월 적립액(5년 목표, 근사치)',
+    columns: ['수익률 가정', '5년 6천만원', '5년 3천만원'],
+    rows: [
+      ['0%(원금만)', '월 약 100만원', '월 약 50만원'],
+      ['연 4%', '월 약 90만원', '월 약 45만원'],
+      ['연 7%', '월 약 84만원', '월 약 42만원'],
+    ],
+  },
+  sections: [
+    {
+      heading: '목표 금액에서 거꾸로 계산한다',
+      paragraphs: [
+        '적립식 목돈 계획은 매달 얼마씩 넣을까가 아니라 언제까지 얼마를 모을까에서 시작하면 훨씬 또렷해집니다. 목표 금액과 기간을 정하면, 매달 필요한 금액이 거꾸로 나옵니다.',
+        '가장 보수적인 계산은 수익을 0으로 놓는 것입니다. 5년, 즉 60개월 동안 6천만원을 모으려면 매달 100만원이 원금만으로 필요합니다. 3천만원이 목표라면 매달 50만원입니다. 이 값이 계획의 바닥이고, 실제로는 여기에 투자 수익이 더해져 부담이 줄어드는 구조입니다.',
+      ],
+    },
+    {
+      heading: '수익률 가정이 부담을 낮춘다',
+      paragraphs: [
+        '투자로 수익이 나면 같은 목표를 더 적은 적립액으로 이룰 수 있습니다. 연 4% 수익을 가정하면 5년에 6천만원을 모으는 데 필요한 월 적립액은 약 90만원 안팎으로 내려갑니다. 연 7%를 가정하면 약 84만원 수준입니다.',
+        '다만 이 수익률은 미래에 확정된 값이 아니라 가정일 뿐입니다. 실제 시장은 오르내리며, 계획한 수익률에 못 미칠 수도 넘어설 수도 있습니다. 그래서 수익을 지나치게 낙관해 적립액을 낮게 잡기보다, 원금 기준에 가깝게 여유 있게 잡아 두는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '시간이 길수록 커지는 복리',
+      paragraphs: [
+        '적립식의 힘은 시간이 길어질수록 뚜렷해집니다. 매달 넣은 돈에 수익이 붙고, 그 수익에 다시 수익이 붙는 복리가 쌓이기 때문입니다. 예를 들어 매달 50만원을 연 5% 수익 가정으로 20년 넣으면, 원금 1억2천만원에 수익이 더해져 2억원을 넘길 수 있습니다.',
+        '같은 월 적립액이라도 10년보다 20년, 20년보다 30년일 때 불어나는 폭이 훨씬 커집니다. 그래서 목돈 계획은 일찍 시작할수록 매달 부담이 가벼워집니다. 위 숫자는 이해를 돕기 위한 가정치이며, 실제 결과는 수익률에 따라 달라진다는 점을 전제로 봐야 합니다.',
+      ],
+    },
+    {
+      heading: '목표가 가까우면 안전하게',
+      paragraphs: [
+        '한 가지 놓치기 쉬운 부분이 목표 시점입니다. 목표가 10년, 20년처럼 멀면 하락기를 견딜 시간이 있어 지수 ETF 같은 위험자산 비중을 높게 가져갈 수 있습니다. 반대로 1년, 2년 뒤에 꼭 써야 할 돈이라면 이야기가 다릅니다.',
+        '목표 시점이 코앞인데 위험자산에 몰아 두면, 마침 하락기와 겹쳐 모아 둔 목돈이 줄어든 채로 써야 할 수 있습니다. 그래서 목표가 가까워질수록 위험자산을 조금씩 덜고 예금이나 파킹형 비중을 높여 금액을 지키는 것이 좋습니다. 여기 담은 계산과 수익률은 예시일 뿐 특정 상품 추천이 아니며, 투자 결과에 대한 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '5년에 6천만원을 모으려면 매달 얼마를 넣어야 하나요?',
+      answer:
+        '수익을 0으로 보면 매달 100만원이 필요합니다. 연 4% 수익을 가정하면 약 90만원, 연 7%면 약 84만원 안팎으로 줄어듭니다. 수익률은 가정이라 보수적으로 잡는 편이 안전합니다.',
+    },
+    {
+      question: '수익률은 얼마로 가정하는 게 적당한가요?',
+      answer:
+        '정해진 값은 없습니다. 미래 수익은 보장되지 않으므로, 낙관적인 수치로 적립액을 낮추기보다 원금 기준에 가깝게 여유 있게 잡아 두는 편이 목표를 지키는 데 유리합니다.',
+    },
+    {
+      question: '왜 일찍 시작하라고 하나요?',
+      answer:
+        '복리는 시간이 길수록 크게 불어나기 때문입니다. 같은 월 적립액이라도 기간이 길면 수익에 수익이 붙어, 나중에 시작할 때보다 매달 부담이 가벼워집니다.',
+    },
+    {
+      question: '목표가 1년 앞인데도 ETF로 모아도 되나요?',
+      answer:
+        '가까운 목표 자금은 하락기와 겹치면 줄어든 채로 써야 할 수 있어 위험합니다. 목표가 가까울수록 위험자산을 줄이고 예금이나 파킹형 비중을 높여 금액을 지키는 편이 안전합니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-10) */
+const cryptoAccountSecurity: GuideDef = {
+  slug: 'crypto-account-security',
+  title: '코인 계정과 자산 지키기, 해킹·피싱 막는 기본',
+  tagline: '거래소 해킹부터 사칭 링크까지, 내 코인을 잃지 않는 습관',
+  description:
+    '코인은 한번 빠져나가면 되돌리기 어려워 계정 보안이 곧 자산 보안입니다. 거래소 2차 인증과 출금 화이트리스트, 사칭 사이트와 메신저 피싱을 가리는 법, 2024년 시행된 이용자 보호법이 무엇을 지켜 주는지까지 정리했습니다.',
+  keywords: ['코인 계정 보안', '거래소 해킹', '2차 인증', '출금 화이트리스트', '코인 피싱', '가상자산 이용자 보호법'],
+  section: '테마 ETF 가이드',
+  lastReviewed: '2026-08-10',
+  answer:
+    '가상자산은 거래가 취소되지 않아, 계정이 뚫리거나 지갑 정보가 새면 자산을 되찾기 매우 어렵습니다. 그래서 거래소 2차 인증(OTP)과 출금 주소 화이트리스트를 켜고, 사칭 사이트와 메신저 링크를 가려내는 습관이 가장 기본이 됩니다. 2024년 7월 시행된 가상자산이용자보호법은 예치금 분리보관과 콜드월렛 보관 의무 등으로 최소한의 안전장치를 더했습니다.',
+  keyPoints: [
+    '문자나 앱 기반 2차 인증(OTP)을 켜면 비밀번호가 새어도 로그인이 한 단계 더 막힙니다. SMS보다 인증 앱이나 하드웨어 보안키가 가로채기에 더 강한 편입니다.',
+    '출금 화이트리스트를 설정하면 미리 등록한 주소로만 출금돼, 계정이 뚫려도 낯선 지갑으로 자산이 빠져나가는 것을 막을 수 있습니다.',
+    '가짜 거래소 사이트나 에어드랍을 미끼로 지갑을 연결하게 유도하는 피싱이 많습니다. 주소창 도메인을 한 글자까지 확인하고, 개인 키(시드 구문)는 어디에도 입력하지 않아야 합니다.',
+    '2024년 7월 19일 시행된 가상자산이용자보호법은 사업자에게 이용자 예치금 분리보관, 가상자산의 80% 이상 콜드월렛 보관, 해킹과 전산장애에 대비한 보험이나 준비금 적립을 의무화했습니다.',
+  ],
+  sources: [
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+    { label: '한국인터넷진흥원(KISA)', url: 'https://www.kisa.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '계정이 해킹돼 비활성화됐다며 대처를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494358250' },
+    { summary: '이용 중인 코인 거래처가 안전한지 사기인지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494353407' },
+  ],
+  comparisonTable: {
+    caption: '보안 위협과 대응 한눈에 보기',
+    columns: ['위협', '대응'],
+    rows: [
+      ['계정 탈취(로그인)', '2차 인증(OTP)과 강한 비밀번호'],
+      ['출금 탈취', '출금 주소 화이트리스트 설정'],
+      ['사칭 사이트·피싱', '도메인 확인, 개인 키 미입력'],
+      ['거래소 사고', '이용자 보호법상 분리보관·콜드월렛'],
+    ],
+  },
+  sections: [
+    {
+      heading: '왜 코인은 계정 보안이 곧 자산 보안인가',
+      paragraphs: [
+        '은행 이체는 잘못되면 되돌릴 여지가 있지만, 가상자산 전송은 한번 이뤄지면 취소가 되지 않습니다. 누군가 내 계정에 로그인해 자산을 낯선 지갑으로 옮겨 버리면, 그 자산을 되찾기가 사실상 매우 어렵습니다.',
+        '그래서 코인 투자에서는 무엇을 사느냐 못지않게 어떻게 지키느냐가 중요합니다. 큰 수익을 노리다가도 계정 하나가 뚫리면 자산 전부를 잃을 수 있기 때문에, 기본 보안 습관을 갖추는 것이 투자의 출발점이 됩니다.',
+      ],
+    },
+    {
+      heading: '거래소에서 켜 둘 두 가지: 2차 인증과 화이트리스트',
+      paragraphs: [
+        '가장 먼저 켜야 할 것은 2차 인증(OTP)입니다. 비밀번호에 더해 인증 앱이나 보안키로 한 단계를 더 두면, 비밀번호가 새더라도 로그인이 막힙니다. 문자(SMS) 방식보다 인증 앱이나 하드웨어 보안키가 가로채기에 더 강한 편이라 권장됩니다.',
+        '다음은 출금 주소 화이트리스트입니다. 미리 등록해 둔 지갑 주소로만 출금이 되도록 잠가 두면, 설령 계정이 뚫려도 공격자가 낯선 주소로 자산을 빼내지 못합니다. 이 두 가지만 켜 둬도 계정 탈취로 인한 피해를 크게 줄일 수 있습니다.',
+      ],
+    },
+    {
+      heading: '가장 흔한 함정: 사칭 사이트와 피싱',
+      paragraphs: [
+        '해킹은 거창한 기술보다 사용자를 속이는 방식으로 더 자주 일어납니다. 진짜 거래소와 똑같이 생긴 가짜 사이트로 로그인을 유도하거나, 에어드랍이나 이벤트를 미끼로 지갑을 연결하게 만드는 피싱이 대표적입니다.',
+        '방어법은 단순합니다. 링크를 눌러 들어가기보다 주소를 직접 입력하고, 주소창 도메인을 한 글자까지 확인하는 습관을 들이는 것입니다. 무엇보다 지갑의 개인 키나 복구용 시드 구문은 어떤 사이트나 상담원에게도 입력하거나 알려 주지 않아야 합니다. 정상적인 거래소나 지갑은 이를 요구하지 않습니다.',
+      ],
+    },
+    {
+      heading: '이용자 보호법이 보장하는 최소 안전장치',
+      paragraphs: [
+        '개인의 보안 습관 위에, 제도 차원의 안전장치도 마련돼 있습니다. 2024년 7월 19일 시행된 가상자산이용자보호법은 거래소에 이용자 예치금을 회사 자산과 분리해 은행에 맡기도록 하고, 이용자 가상자산의 80% 이상을 인터넷과 분리된 콜드월렛에 보관하도록 의무화했습니다.',
+        '또한 해킹이나 전산장애 같은 사고에 대비해 보험에 가입하거나 준비금을 쌓도록 했습니다. 다만 이런 제도는 최소한의 보호일 뿐, 개인 계정이 피싱으로 뚫리는 것까지 막아 주지는 않습니다. 이 글은 일반적인 보안 정보를 정리한 것으로 특정 거래소나 상품을 권하지 않으며, 투자와 자산 관리의 책임은 본인에게 있다는 점을 함께 기억해 두시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '2차 인증은 문자와 앱 중 무엇이 나은가요?',
+      answer:
+        '문자(SMS)보다 인증 앱이나 하드웨어 보안키가 더 안전한 편입니다. 문자는 번호 도용 등으로 가로채일 수 있어, 가능하면 앱 기반 OTP나 보안키를 쓰는 것이 권장됩니다.',
+    },
+    {
+      question: '출금 화이트리스트는 꼭 설정해야 하나요?',
+      answer:
+        '설정을 권합니다. 등록한 주소로만 출금이 되도록 잠가 두면 계정이 뚫려도 낯선 지갑으로 자산이 빠져나가는 것을 막을 수 있어, 피해를 크게 줄이는 안전장치가 됩니다.',
+    },
+    {
+      question: '개인 키나 시드 구문을 물어보면 어떻게 하나요?',
+      answer:
+        '어떤 경우에도 입력하거나 알려 주지 마세요. 정상적인 거래소나 지갑은 이를 요구하지 않습니다. 개인 키나 시드 구문을 묻는 사이트, 메신저, 상담원은 사칭이나 피싱으로 봐야 합니다.',
+    },
+    {
+      question: '이용자 보호법이 있으면 손실도 보상되나요?',
+      answer:
+        '아닙니다. 이 법은 예치금 분리보관과 콜드월렛 보관, 사고 대비 보험 등 최소한의 안전장치를 규정할 뿐, 시세 하락이나 개인 계정이 피싱으로 뚫린 손실까지 보상해 주지는 않습니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  marketTimingWhenToInvest,
+  beginnerAssetAllocation,
+  investingLossAnxiety,
+  dcaGoalSavingsCalculation,
+  cryptoAccountSecurity,
   stockOrderRejectedReasons,
   dividendRecordDateReform,
   retireeDividendEtfMonthlyIncome,
@@ -20850,6 +21304,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-10 · 지식iN 질문 수요 기반 (지금 사도 되나 마켓타이밍·초보 자산배분 주식채권 비중·투자 손실 불안 변동성·적립식 목돈 목표 역산·코인 계정 보안 해킹 피싱)
+  'market-timing-when-to-invest': '2026-08-10',
+  'beginner-asset-allocation': '2026-08-10',
+  'investing-loss-anxiety': '2026-08-10',
+  'dca-goal-savings-calculation': '2026-08-10',
+  'crypto-account-security': '2026-08-10',
   // 2026-08-06 · 지식iN 질문 수요 기반 (매수 주문 체결 안 되는 이유·배당기준일 개편 선배당 후투자·은퇴자 배당 ETF 월 생활비 역산·코인 선물 강제청산 원리·미국 ETF 배당 자동재투자 DRIP 국내)
   'stock-order-rejected-reasons': '2026-08-06',
   'dividend-record-date-reform': '2026-08-06',
@@ -21141,7 +21601,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-loss-anxiety'],
   },
   {
     title: '세금·절세 계좌',
@@ -21156,7 +21616,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '테마·섹터',
     description: '방산·조선·건설·자동차·AI·반도체·빅테크·소프트웨어·보안·로봇·전기차·신재생·희토류·게임·엔터·명품·뷰티·비트코인·인프라 등 특정 테마에 집중하는 섹터 ETF.',
-    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'bitcoin-krw-buy-withdrawal', 'crypto-exchange-fee-structure', 'crypto-leverage-long-term-risk', 'overseas-crypto-futures-tax', 'bitcoin-dominance-altcoin', 'crypto-liquidation-explained'],
+    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'bitcoin-krw-buy-withdrawal', 'crypto-exchange-fee-structure', 'crypto-leverage-long-term-risk', 'overseas-crypto-futures-tax', 'bitcoin-dominance-altcoin', 'crypto-liquidation-explained', 'crypto-account-security'],
   },
   {
     title: '해외·환율',
@@ -21166,7 +21626,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '전략·자산배분',
     description: '적립식·리밸런싱·팩터·자산배분(TRF)·채권·미국국채·회사채·채권혼합·파킹·금·은·구리·원유·농산물·원자재·레버리지 — 포트폴리오를 굴리고 위험을 관리하는 전략.',
-    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual'],
+    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual', 'market-timing-when-to-invest', 'beginner-asset-allocation', 'dca-goal-savings-calculation'],
   },
 ];
 
