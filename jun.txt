@@ -2095,3 +2095,36 @@ padDescription() 헬퍼 신설: 목표(120~155자)까지만 채우고 이미 충
 
 최종 상태(색인 480쪽): 제목 60자 초과 0 · 중복 제목/설명 0 · H2 없는 페이지 0
 · 설명 평균 131자 · H1 규격 위반 0 · 죽은 내부링크 0
+
+## 2026-08-11 · [가이드 발행] 지식iN 질문 수요 기반 5편
+
+코퍼스: data/keywords/kin/kin-20260718.json (103건). 신규 지식iN 수집은 클라우드 IP 차단으로 실패(HTTP 000, 1회 재시도 후 저장 코퍼스 사용 · 정상 경로). 반복 수요 상위 클러스터(ISA·연금계좌 / 미국·해외ETF 세금 / 배당 현금흐름 / 환율)를 기존 발행분과 겹치지 않는 세부 상황·대상별 롱테일로 확장.
+
+발행 5편 (제목 · slug · 출처 질문 요지):
+1. 은퇴 5년 앞둔 연금저축펀드 ETF, 안정형으로 바꾸는 법 · pension-fund-etf-near-retirement
+   - 출처: IRP·연금저축·연저펀 차이/활용(docId 494287819), 연금저축부터 가입이 맞나(494334592), 연금저축펀드 ETF 추천(489444942)
+2. 사회초년생 첫 ETF, 월 30만원 ISA 적립으로 시작하기 · first-etf-monthly-30-isa
+   - 출처: 꼭 돈을 굴려야 하나 초보 시작(492536115), 초보 ETF 추천(475289127), ISA 계좌 시작 기본(494349881)
+3. 국내 상장 미국 ETF 분배금, 세금 떼고 얼마 받나 · domestic-us-etf-distribution-tax-calc
+   - 출처: 미국 ETF 절세 방법(494339573), 주식·ETF 세금 기본(494355422), 나스닥100·S&P500 장기투자 세금(494346634)
+4. ISA 만기 목돈으로 월배당 현금흐름 만드는 법 · isa-maturity-monthly-dividend-income
+   - 출처: ISA 연장 vs 연금저축(493760173), ISA에서 KODEX 담기(494102222)
+5. 미국 지수 ETF 환헤지 vs 환노출, 장기 적립이면 · us-etf-hedged-vs-unhedged-dca
+   - 출처: 나스닥100·S&P500 장기투자 환율 변수(494346634), S&P500과 VOO 환전·환율(494129410)
+
+사실 검증(WebSearch 적대적):
+- 국내 상장 해외 ETF 분배금·매매차익 = 배당소득세 15.4%, 매매차익은 실제차익과 과표기준가 증가분 중 작은 값 과세, 금융소득 2,000만원 초과 종합과세 (확인).
+- 연금저축 세액공제 600만원 / IRP 합산 900만원, 총급여 5,500만원 이하 16.5%·초과 13.2%, 연금계좌 파생 위험평가액 40% 초과(레버리지·인버스) 매수 불가 (확인).
+- 가상자산 소득 과세 2027년 시행이나 2030년 유예 법안 등 정치적 불확실 → 비트코인 ETF vs 직접보유 세금 비교 주제는 rule[3](미묘·상충 시 제외)에 따라 채택 안 함, 사실 안정적인 환헤지 롱테일로 교체.
+
+검증: tsc --noEmit 0 err. 신규 5편 본문 금지어(파이프라인·크롤링·스크래핑·Gemini·GPT·LLM·에이전트·샘플 데이터·자동 발행) 0, em dash 0(신규 텍스트 기준). title≤60·desc 120~155·keywords 6개·slug 규격 전부 통과. npm run cf:build 성공, .next 프리렌더 5편 각각 answer-box·guide-key-points·guide-sources·citation·발행일(2026-08-11) 포함 확인.
+
+색인 푸시: (아래 실행 결과 참조)
+발행 URL:
+https://iknowhowinfo.com/guide/pension-fund-etf-near-retirement
+https://iknowhowinfo.com/guide/first-etf-monthly-30-isa
+https://iknowhowinfo.com/guide/domestic-us-etf-distribution-tax-calc
+https://iknowhowinfo.com/guide/isa-maturity-monthly-dividend-income
+https://iknowhowinfo.com/guide/us-etf-hedged-vs-unhedged-dca
+
+색인 푸시 결과: 브랜치 정책상 변경분을 지정 브랜치(claude/serene-hamilton-og6zxs)에 push하고 draft PR #18(→main) 생성. production 반영은 병합 후이므로, 아직 라이브가 아닌 URL을 인덱서에 보내 404 크롤 낭비를 피하기 위해 `npm run push:guides -- --dry`로 대상만 확정(5편 + /guide/latest·/guide·/ 허브). 실제 IndexNow·Google Indexing 제출은 병합·배포 후 수행 예정. 커밋: bd9a230.
