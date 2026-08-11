@@ -2126,3 +2126,5 @@ https://iknowhowinfo.com/guide/first-etf-monthly-30-isa
 https://iknowhowinfo.com/guide/domestic-us-etf-distribution-tax-calc
 https://iknowhowinfo.com/guide/isa-maturity-monthly-dividend-income
 https://iknowhowinfo.com/guide/us-etf-hedged-vs-unhedged-dca
+
+색인 푸시 결과: 브랜치 정책상 변경분을 지정 브랜치(claude/serene-hamilton-og6zxs)에 push하고 draft PR #18(→main) 생성. production 반영은 병합 후이므로, 아직 라이브가 아닌 URL을 인덱서에 보내 404 크롤 낭비를 피하기 위해 `npm run push:guides -- --dry`로 대상만 확정(5편 + /guide/latest·/guide·/ 허브). 실제 IndexNow·Google Indexing 제출은 병합·배포 후 수행 예정. 커밋: bd9a230.
