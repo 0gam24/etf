@@ -272,6 +272,14 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
     keywords: [displayName, displayCode, 'ETF', '시세', '구성종목', '분배금', displaySector || ''],
   });
 
+  // H2 섹션 번호 — 실제로 렌더되는 섹션에만 순번을 매긴다.
+  //   기존에는 1~8을 하드코딩해, 구성종목(2)·분배(3)처럼 데이터가 없어 빠지는 섹션이 있으면
+  //   화면에 "1, 4, 5, 6, 8"처럼 번호가 건너뛰어 미완성 문서처럼 보였다.
+  //   실측 결과 1,160종 전부(100%)가 번호 불연속 상태였다. (2026-08-11 온페이지 감사)
+  //   JSX는 소스 순서대로 평가되므로, 렌더되는 h2에서만 호출하면 항상 1,2,3…이 된다.
+  let sectionNo = 0;
+  const no = () => ++sectionNo;
+
   return (
     <article className="etf-dict animate-fade-in">
       {/* JSON-LD (BreadcrumbList는 <Breadcrumbs>가 발행) */}
@@ -355,7 +363,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
       {hasPriceData && etf && (
         <section className="etf-dict-section">
           {/* 1C. H2 번호 + "시세 및 수익률" 키워드 (KRX 종가 기준) */}
-          <h2 className="etf-dict-h2">1. 시세 및 수익률 ({formattedBaseDate} 종가 기준)</h2>
+          <h2 className="etf-dict-h2">{no()}. 시세 및 수익률 ({formattedBaseDate} 종가 기준)</h2>
           <div className="etf-dict-stats">
             <div className="etf-dict-stat">
               <div className="etf-dict-stat-label">현재가</div>
@@ -408,7 +416,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
       {/* 시세 미수집 안내 — minimal 모드: 종목 메타 확장 */}
       {!hasPriceData && (
         <section className="etf-dict-section">
-          <h2 className="etf-dict-h2">1. {displayName} 종목 정보</h2>
+          <h2 className="etf-dict-h2">{no()}. {displayName} 종목 정보</h2>
           <div className="etf-dict-stats">
             <div className="etf-dict-stat">
               <div className="etf-dict-stat-label">단축코드</div>
@@ -446,7 +454,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
       {/* 구성종목 */}
       {holdings && holdings.holdings.length > 0 && (
         <section className="etf-dict-section">
-          <h2 className="etf-dict-h2">2. 주요 구성 종목 (Top {Math.min(10, holdings.holdings.length)})</h2>
+          <h2 className="etf-dict-h2">{no()}. 주요 구성 종목 (Top {Math.min(10, holdings.holdings.length)})</h2>
           <HoldingsPanel
             code={displayCode}
             variant="detail"
@@ -462,7 +470,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
       {/* 분배 정보 (income ETF인 경우) */}
       {incomeEntry && (
         <section className="etf-dict-section">
-          <h2 className="etf-dict-h2">3. 분배금·분배락일 정보</h2>
+          <h2 className="etf-dict-h2">{no()}. 분배금·분배락일 정보</h2>
           <div className="etf-dict-stats">
             <div className="etf-dict-stat">
               <div className="etf-dict-stat-label">연 분배율</div>
@@ -504,7 +512,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
         const points = getInvestmentPoints(displaySector);
         return (
           <section className="etf-dict-section etf-dict-points">
-            <h2 className="etf-dict-h2">4. {displaySector || '투자'} 투자 포인트</h2>
+            <h2 className="etf-dict-h2">{no()}. {displaySector ? `${displaySector} 투자 포인트` : '투자 포인트'}</h2>
             <p className="etf-dict-points-summary">{points.summary}</p>
             <div className="etf-dict-points-grid">
               {points.points.map((p, i) => (
@@ -527,7 +535,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
         if (sectorEtfs.length === 0) return null;
         return (
           <section className="etf-dict-section">
-            <h2 className="etf-dict-h2">5. {displaySector} 다른 ETF</h2>
+            <h2 className="etf-dict-h2">{no()}. {displaySector} 다른 ETF</h2>
             <ul className="etf-dict-related-grid">
               {sectorEtfs.map(r => (
                 <li key={r.shortcode}>
@@ -557,7 +565,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
         if (issuerEtfs.length === 0) return null;
         return (
           <section className="etf-dict-section">
-            <h2 className="etf-dict-h2">6. {issuerCode} 다른 ETF</h2>
+            <h2 className="etf-dict-h2">{no()}. {issuerCode} 다른 ETF</h2>
             <ul className="etf-dict-related-grid">
               {issuerEtfs.map(r => (
                 <li key={r.shortcode}>
@@ -582,7 +590,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
       {/* 7. 관련 분석 글 */}
       {relatedPosts.length > 0 && (
         <section className="etf-dict-section">
-          <h2 className="etf-dict-h2">7. {displayName} 관련 분석 ({relatedPosts.length}편)</h2>
+          <h2 className="etf-dict-h2">{no()}. {displayName} 관련 분석 ({relatedPosts.length}편)</h2>
           <ul className="etf-dict-related">
             {relatedPosts.map(p => (
               <li key={p.meta.slug}>
@@ -605,7 +613,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
         if (!sectorGuides.length) return null;
         return (
           <section className="etf-dict-section">
-            <h2 className="etf-dict-h2">8. {displayName} 관련 ETF 가이드</h2>
+            <h2 className="etf-dict-h2">{no()}. {displayName} 관련 ETF 가이드</h2>
             <ul className="etf-dict-related">
               {sectorGuides.map(g => (
                 <li key={g.slug}>
