@@ -2004,3 +2004,34 @@ prerender HTML 1,547개 전수 측정. 종합 82/100. 앞선 메타 수술은 pr
 측정 방법: .next/server/app 1,547개 HTML 파싱(HTML 엔티티 디코드 후 길이 측정),
 내부 링크 그래프 42,798개 구축해 inbound 0 페이지·미존재 타겟 추출, next.config redirects와
 content/ 실파일 대조로 301 vs 진짜 404 분류.
+
+### Q. (이어서) 순서대로 모두 진행
+A. 감사에서 제안한 5건을 순서대로 처리하고 prerender HTML 1,548개로 재측정. commit 789669e·8e737a3.
+
+1) 죽은 내부 링크 22건 → 0
+   - GuideDataBlock.tsx:186이 테마 ETF를 /stock/{code}로 링크했으나 /stock 글은 2편(0005D0·0053L0)뿐.
+     codeToSlug로 /etf/{slug}(1,161종 전부 존재)에 연결하도록 변경. /guide/ai-semi-etf 8건·defense-etf 2건 해소.
+   - 내부 링커가 MDX 본문에 심은 /breaking 상호링크 11건이 원문 삭제로 dangling → 같은 종목·인접
+     날짜의 실제 글로 재연결하고 앵커 텍스트도 대상 제목으로 교체(단순 삭제 대신 링크 가치 보존).
+   - /weekly 인덱스 라우트 신설.
+2) 중복 메타 제목 23편·설명 29편 → 0 / 0
+   중복인 글에만 기준일 부여, 같은 날 겹치면 종목명(12자 이하)·코드로 2차 구분.
+   본문·H1·URL 불변 → 발행분 소급 수정 금지 규칙 준수.
+3) /weekly 인덱스 신설 + sitemap.ts·sitemap-images 등록 (production 200 확인).
+4) 고아 페이지 10 → 0. 푸터에 "테마 · 계좌" 열 신설(/theme 4·/account 3·/tools/tax-compare) + /today·/weekly.
+5) 제목 60자 초과 71 → 0 (최대 60자). 글 제목은 한 글자도 안 바꾸고 layout template이 붙이는
+   브랜드 18자를 title.absolute로 회수(articleTitle 헬퍼). /compare는 꼬리 축약 병행.
+덤: 코드 URL(/etf/{code})로 301을 거치던 내부 링크 14건을 최종 슬러그로 직결(서버 컴포넌트만).
+
+■ 작업 중 스스로 잡은 오류 2건 (기록 목적)
+- dead-link 스크립트 1차 버전이 /guide/*를 전부 dead로 오판(161건). 가이드는 MDX가 아니라
+  guides.ts 데이터라 content 스캔만으로는 존재 확인이 안 됐다. dry-run으로 발견 →
+  prerender HTML 페이지 집합을 정본으로 교체해 11건으로 정확히 좁힘. dry-run 없이 --apply
+  했으면 멀쩡한 가이드 링크 161개를 지울 뻔했다.
+- 링크 정규식이 중첩 대괄호를 놓쳐(앵커가 "[[05월 24일 속보] ..." 형태) 죽은 링크를 0건으로
+  보고. 중첩 1단계 허용 패턴으로 교정.
+- 기준일이 하루 밀리는 버그(슬러그 20260511인데 제목 2026-05-10). date가 UTC 타임스탬프라
+  발생. toReportYmd() 신설해 pulseDate 우선 + KST(+9) 보정으로 정정(commit 8e737a3).
+
+남은 항목(미처리, 사용자 판단 필요): /etf 1,056종 noindex(구성종목 데이터 확보가 유일한 해법),
+사이트 전체 이미지 15개, /guide·/guide/latest 링크 250개·페이지 570KB, 설명 120자 미만 171개.
