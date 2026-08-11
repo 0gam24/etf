@@ -22,7 +22,7 @@ import { buildPageMetadata } from '@/lib/site-meta';
 export const metadata: Metadata = buildPageMetadata({
   title: '오늘의 ETF 속보·거래량 TOP',
   description:
-    '거래량 TOP 3 ETF의 당일 뉴스 기반 심층 속보. 오늘 어떤 뉴스가 수급을 움직였는지, 구성종목·섹터 연결·4050 투자자 행동까지.',
+    '오늘 거래량 상위 3개 ETF가 왜 움직였는지 당일 뉴스와 함께 정리했습니다. 어떤 소식이 수급을 밀었는지, 구성종목과 섹터는 어떻게 연결되는지, 매수 전 확인할 점까지 담았습니다.',
   url: '/breaking',
 });
 

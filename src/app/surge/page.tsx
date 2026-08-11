@@ -21,7 +21,7 @@ import { buildPageMetadata } from '@/lib/site-meta';
 export const metadata: Metadata = buildPageMetadata({
   title: '급등 테마 분석',
   description:
-    '오늘 거래량·등락률 1위 ETF의 도화선과 위험 신호 · 테마 트래커로 자금이 몰리는 섹터를 한눈에. "이 ETF 사도 되나"에 답하는 의사결정 도구.',
+    '오늘 거래량·등락률 1위 ETF가 왜 움직였는지, 무엇이 위험 신호인지 정리했습니다. 테마 트래커로 자금이 몰리는 섹터를 확인하고, 같은 테마의 다른 종목까지 한 페이지에서 비교해 보세요.',
   url: '/surge',
 });
 

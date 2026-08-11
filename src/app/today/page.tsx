@@ -19,7 +19,7 @@ function loadLatest() {
 
 export const metadata: Metadata = buildPageMetadata({
   title: '오늘의 ETF 종합 리포트',
-  description: '오늘 거래량 TOP·상승/하락·시그널·분배락일 임박 ETF를 한 페이지에. 매일 평일 오후 4시 갱신.',
+  description: '오늘 거래량 상위 종목과 상승·하락 상위 ETF, 분배락일이 임박한 종목을 한 페이지에 모았습니다. 장 마감 뒤 확정된 KRX 종가 기준으로 매일 평일 오후 4시에 갱신합니다.',
   url: '/today',
 });
 

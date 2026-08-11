@@ -5,7 +5,7 @@ import { buildPageMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = buildPageMetadata({
   title: '계좌별 세후 수익률 비교: IRP·ISA·연금저축·일반계좌',
-  description: '동일 ETF 종목·금액 기준 IRP·ISA·연금저축·일반계좌의 세후 수익률을 시뮬레이션. 5·10·20년 누적 비교.',
+  description: '같은 ETF를 같은 금액만큼 담았을 때 IRP·ISA·연금저축·일반계좌 중 어디가 유리한지 계산해 봅니다. 5년·10년·20년 누적 기준으로 세후 수익률 차이를 한눈에 비교할 수 있습니다.',
   url: '/tools/tax-compare',
 });
 
@@ -34,7 +34,8 @@ export default function TaxComparePage() {
       <TaxCompareClient />
 
       <section style={{ marginTop: 'var(--space-6)', padding: 'var(--space-5)', background: 'var(--bg-card)', borderRadius: 'var(--radius)' }}>
-        <h3 style={{ fontSize: 'var(--fs-h3)', marginBottom: 'var(--space-3)' }}>계좌 유형 요약</h3>
+        {/* h1 다음이 h3로 건너뛰던 구조 → h2로 교정 */}
+        <h2 style={{ fontSize: 'var(--fs-h3)', marginBottom: 'var(--space-3)' }}>계좌 유형별 과세 방식 요약</h2>
         <ul style={{ color: 'var(--text-secondary)', lineHeight: 1.8 }}>
           <li><strong>IRP</strong>: 분배금 + 매매차익 과세 이연. 인출 시 연금소득세 3.3~5.5% (55세 이후 10년 이상 분할). 한도 1,800만원/년</li>
           <li><strong>ISA</strong>: 비과세 한도 200만원 (서민형 400만원). 초과분은 9.9% 분리과세. 5년 의무 유지</li>
@@ -44,7 +45,7 @@ export default function TaxComparePage() {
       </section>
 
       <section style={{ marginTop: 'var(--space-5)', padding: 'var(--space-5)', background: 'rgba(239,68,68,0.05)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: 'var(--radius)' }}>
-        <h3 style={{ fontSize: 'var(--fs-h3)', marginBottom: 'var(--space-2)', color: 'var(--red-400)' }}>⚠️ 참고</h3>
+        <h2 style={{ fontSize: 'var(--fs-h3)', marginBottom: 'var(--space-2)', color: 'var(--red-400)' }}>계산 결과를 볼 때 참고할 점</h2>
         <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.7 }}>
           본 시뮬레이션은 단순화 모델입니다. 실제 세금은 종목 유형 (국내·해외·테마)·인출 시점·기타 소득 결합에 따라 다릅니다. 정확한 세무 상담은 세무사·국세청 안내 참조.
         </p>

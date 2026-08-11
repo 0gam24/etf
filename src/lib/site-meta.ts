@@ -117,6 +117,25 @@ export function articleTitle(input: {
   return base.length + BRAND_SUFFIX_LEN > 60 ? { absolute: base } : base;
 }
 
+/**
+ * 메타 설명을 목표 길이(120~155자)까지 채운다.
+ *
+ *   2026-08-11 온페이지 감사: 색인 대상 480쪽 중 170쪽이 120자 미만이었다.
+ *   특히 /pulse는 평균 49자로 스니펫에 주어진 자리의 3분의 1도 쓰지 못하고 있었다.
+ *   보강 문구는 앞에서부터 순서대로, 155자를 넘지 않는 선에서만 붙인다.
+ *   이미 120자를 넘으면 아무것도 붙이지 않는다(불필요한 늘리기 방지).
+ */
+export function padDescription(base: string, clauses: (string | undefined)[], min = 120, max = 155): string {
+  let out = (base || '').trim();
+  for (const c of clauses) {
+    if (!c) continue;
+    if (out.length >= min) break;
+    const next = out ? `${out} ${c.trim()}` : c.trim();
+    if (next.length <= max) out = next;
+  }
+  return out;
+}
+
 /** 설명이 다른 글과 겹칠 때만 기준일을 덧붙여 구분 */
 export function articleDescription(input: {
   description: string;

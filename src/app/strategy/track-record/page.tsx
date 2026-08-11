@@ -32,7 +32,7 @@ function loadTrack(): TrackRecord | null {
 
 export const metadata: Metadata = buildPageMetadata({
   title: '시그널 트랙 레코드',
-  description: 'Unger 변동성 돌파 시그널의 실제 결과를 매일 기록·공개합니다. 성공과 실패를 모두 그대로 공개합니다.',
+  description: '변동성 돌파 시그널이 실제로 어떤 결과를 냈는지 다음 거래일 시세로 검증해 매일 기록합니다. 승률과 누적 손익, 성공한 날과 실패한 날을 가리지 않고 그대로 공개합니다. 가상 매매 기준입니다.',
   url: '/strategy/track-record',
 });
 
@@ -89,6 +89,8 @@ export default function TrackRecordPage() {
 
       {/* 요약 카드 */}
       <section style={{ marginBottom: 'var(--space-6)' }}>
+        {/* 결과가 0건이면 아래 "최근 결과" h2가 렌더되지 않아 페이지에 h2가 하나도 없었다. */}
+        <h2 style={{ fontSize: 'var(--fs-h2)', marginBottom: 'var(--space-4)' }}>시그널 성적 요약</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 'var(--space-3)' }}>
           <Card label="총 진입 시그널" value={triggered.length.toString()} />
           <Card label="승률" value={`${winRate.toFixed(1)}%`} accent={winRate >= 50 ? 'green' : 'red'} />
@@ -118,7 +120,7 @@ export default function TrackRecordPage() {
       )}
 
       <section style={{ marginTop: 'var(--space-8)', padding: 'var(--space-5)', background: 'rgba(239,68,68,0.05)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: 'var(--radius)' }}>
-        <h3 style={{ fontSize: 'var(--fs-h3)', marginBottom: 'var(--space-2)', color: 'var(--red-400)' }}>⚠️ Paper Trading 면책</h3>
+        <h2 style={{ fontSize: 'var(--fs-h3)', marginBottom: 'var(--space-2)', color: 'var(--red-400)' }}>가상 매매 결과라는 점을 꼭 확인하세요</h2>
         <ul style={{ color: 'var(--text-secondary)', lineHeight: 1.7, fontSize: '0.9rem' }}>
           <li>본 결과는 <strong>가상 매매 시뮬레이션</strong>입니다. 실제 자금 매매 X.</li>
           <li>슬리피지·수수료·세금 미반영 — 실 매매 시 손익이 더 작아질 수 있음.</li>

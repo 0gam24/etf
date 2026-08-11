@@ -19,7 +19,7 @@ import { buildPageMetadata } from '@/lib/site-meta';
 export const metadata: Metadata = buildPageMetadata({
   title: '월배당 ETF·커버드콜 ETF 분배 캘린더',
   description:
-    '커버드콜·월배당 ETF 분배 캘린더 · 계좌별 세후 수익률 비교 · 월 목표 현금흐름 역산. 4050·은퇴자를 위한 현금흐름 설계 도구.',
+    '월배당·커버드콜 ETF의 연간 분배 캘린더와 분배 안정성 등급을 정리했습니다. 계좌별 세후 수익률을 비교하고, 월 목표 금액에서 필요한 투자금을 거꾸로 계산해 볼 수 있습니다.',
   url: '/income',
 });
 

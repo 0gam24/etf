@@ -16,7 +16,7 @@ import AnswerBox from '@/components/AnswerBox';
 import FaqSection from '@/components/FaqSection';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
 import type { RawEtf } from '@/lib/surge';
-import { SITE_NAME, SITE_LOCALE, ogImageUrl } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, ogImageUrl , padDescription } from '@/lib/site-meta';
 
 /**
  * /compare/{pair} — 1:1 ETF 비교 페이지
@@ -45,7 +45,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // 두 ETF 정식명이 모두 들어가 제목이 길어진다. 꼬리를 짧게 두고, 그래도 60자를 넘으면
   // title.absolute로 layout template(' | Daily ETF Pulse' 18자)을 끊어 자리를 확보한다.
   const title = `${metaA.name} vs ${metaB.name} 비교: 시세·구성종목·보수`;
-  const description = `${metaA.name}(${metaA.shortcode})와 ${metaB.name}(${metaB.shortcode})의 시세·구성종목·운용보수·환헷지·분배 정책 1:1 비교. ${p.context}`;
+  const description = padDescription(
+    `${metaA.name}(${metaA.shortcode})와 ${metaB.name}(${metaB.shortcode})의 시세·구성종목·운용보수·환헷지·분배 정책 1:1 비교. ${p.context}`,
+    ['어느 쪽을 담을지 고르는 기준까지 함께 정리했습니다.'],
+  );
   const canonicalPath = `/compare/${p.slug}`;
   const ogImage = ogImageUrl({
     title: `${metaA.name} vs ${metaB.name}`,

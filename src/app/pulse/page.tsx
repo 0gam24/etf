@@ -21,7 +21,7 @@ import { buildPageMetadata } from '@/lib/site-meta';
 export const metadata: Metadata = buildPageMetadata({
   title: '오늘의 관전포인트',
   description:
-    '매일 오전 9시 전, 오늘 시장을 움직일 ETF 핵심 포인트 · 어제 대비 변화 · 이번 주 반복 등장 종목을 한눈에.',
+    '매일 오전 9시 전, 오늘 시장을 움직일 ETF 핵심 포인트를 정리합니다. 어제와 무엇이 달라졌는지, 이번 주 반복해서 올라온 종목은 무엇인지, 거래량 상위 종목의 움직임까지 한눈에 확인하세요.',
   url: '/pulse',
 });
 

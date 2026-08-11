@@ -24,7 +24,7 @@ import { buildPageMetadata } from '@/lib/site-meta';
 export const metadata: Metadata = buildPageMetadata({
   title: 'ETF 섹터 자금 흐름 리포트',
   description:
-    '오늘 섹터별 자금 유입·유출과 대장 ETF · 가장 뜨거운/차가운 섹터 · 분석 글이 있는 테마는 즉시 연결. 중장기 포지셔닝을 위한 큰 그림.',
+    '오늘 어느 섹터로 돈이 들어오고 어디서 빠져나갔는지 정리했습니다. 가장 뜨거운 섹터와 차가운 섹터, 각 섹터의 대장 ETF, 이번 주 추세까지 확인해 중장기 포지션을 잡아 보세요.',
   url: '/flow',
 });
 

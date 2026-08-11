@@ -18,7 +18,7 @@ import { buildPageMetadata } from '@/lib/site-meta';
 export const metadata: Metadata = buildPageMetadata({
   title: '주간 ETF 펄스 리포트',
   description:
-    '한 주 동안 거래량과 자금이 어디로 움직였는지 주 단위로 정리한 ETF 리포트. 섹터별 자금 흐름과 반복 등장 종목을 주차별로 모아 확인할 수 있습니다.',
+    '한 주 동안 거래량과 자금이 어디로 움직였는지 주 단위로 정리한 ETF 리포트입니다. 섹터별 자금 흐름과 반복해서 등장한 종목을 주차별로 모아, 하루 단위로는 잘 안 보이는 흐름을 확인할 수 있습니다.',
   url: '/weekly',
   keywords: ['주간 ETF 리포트', 'ETF 주간 자금 흐름', 'ETF 주차별 정리', '주간 시장 리포트'],
 });

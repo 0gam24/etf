@@ -7,7 +7,7 @@ import { buildPageMetadata } from '@/lib/site-meta';
 export const metadata: Metadata = buildPageMetadata({
   title: '뉴스레터: 일일 ETF 요약 받기',
   description:
-    '매일 아침 9시 발행되는 거래량 TOP 3·섹터 자금 흐름·월배당 분배 캘린더를 한 통의 이메일로. 출근 전 5분 ETF 브리핑.',
+    '매일 아침 9시, 거래량 상위 3종목과 섹터 자금 흐름, 월배당 분배 캘린더를 한 통의 이메일로 보내드립니다. 출근 전 5분이면 그날 시장에서 무슨 일이 있었는지 파악할 수 있습니다.',
   url: '/newsletter',
 });
 

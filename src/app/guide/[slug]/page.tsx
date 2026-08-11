@@ -13,7 +13,7 @@ import AffiliateInline from '@/components/AffiliateInline';
 import RecommendBox from '@/components/RecommendBox';
 import type { ProductCategory } from '@/lib/products';
 import { buildArticleSchema, buildHowToSchema, jsonLd } from '@/lib/schema';
-import { SITE_NAME, SITE_LOCALE, articleTitle } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, articleTitle , padDescription } from '@/lib/site-meta';
 
 /** 가이드 슬러그 → 추천 자료 매칭 카테고리 */
 function guideToProductCategory(slug: string): ProductCategory | undefined {
@@ -47,16 +47,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // 가이드도 동적 OG 이미지 발급 — 소셜/메신저 미리보기 + 이미지 검색 인입
   // (기존엔 가이드에만 og:image가 없어 매일 발행 주력 콘텐츠의 공유 미리보기가 비어 있었음)
   const ogImage = `/api/og?title=${encodeURIComponent(g.title)}&category=guide`;
+  // 설명이 120자에 못 미치는 가이드 35편은 태그라인·첫 핵심 포인트로 채운다.
+  // 가이드가 이미 갖고 있는 문장만 쓰므로 새로 지어내지 않는다. (2026-08-11 온페이지 감사)
+  const description = padDescription(g.description, [g.tagline, g.keyPoints?.[0]]);
   return {
     // 제목이 길면 layout template이 붙이는 브랜드 18자를 끊어 잘림을 막는다.
     // 가이드 제목 자체는 그대로 둔다(발행분 소급 수정 금지).
     title: articleTitle({ title: g.title }),
-    description: g.description,
+    description,
     keywords: g.keywords,
     alternates: { canonical: canonicalPath },
     openGraph: { siteName: SITE_NAME, locale: SITE_LOCALE,
       title: g.title,
-      description: g.description,
+      description,
       type: 'article',
       url: canonicalPath,
       images: [{ url: ogImage, width: 1200, height: 630, alt: g.title }],
@@ -64,7 +67,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     twitter: {
       card: 'summary_large_image',
       title: g.title,
-      description: g.description,
+      description,
       images: [ogImage],
     },
   };

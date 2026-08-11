@@ -25,7 +25,7 @@ import FaqSection from '@/components/FaqSection';
 import type { ProductCategory } from '@/lib/products';
 import { AUTHORS } from '@/lib/authors';
 import { buildArticleSchema, buildPersonSchema, jsonLd } from '@/lib/schema';
-import { SITE_NAME, SITE_LOCALE, articleTitle, articleDescription, toReportYmd } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, articleTitle, articleDescription, toReportYmd, padDescription } from '@/lib/site-meta';
 
 /** 글 카테고리 → 추천 자료 매칭 */
 function postCategoryToProductCategory(category: string): ProductCategory | undefined {
@@ -91,7 +91,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ? shortDiscriminator(post.meta.tickers?.[0] || '')
     : undefined;
   const metaTitle = articleTitle({ title: post.meta.title, date: reportDate, isDuplicate: titleDup, discriminator });
-  const metaDesc = articleDescription({ description: post.meta.description, date: reportDate, isDuplicate: descDup, discriminator: descDiscriminator });
+  const baseDesc = articleDescription({ description: post.meta.description, date: reportDate, isDuplicate: descDup, discriminator: descDiscriminator });
+
+  // 설명이 짧으면(감사 실측: /pulse 평균 49자) 다룬 종목명과 카테고리별 안내를 덧붙여
+  // 120~155자에 맞춘다. 종목명은 롱테일 검색 매칭 면적도 함께 넓힌다.
+  const coveredNames = (post.meta.tickers || [])
+    .slice(0, 2).map(t => getKrxEtfMeta(t)?.name).filter(Boolean).join('·');
+  const CATEGORY_CLAUSE: Record<string, string> = {
+    pulse:    '거래량 상위 종목의 움직임과 섹터 흐름, 어제 대비 달라진 점을 함께 정리했습니다.',
+    flow:     '섹터별 자금 유입과 유출, 각 섹터 대장 종목의 움직임을 함께 정리했습니다.',
+    income:   '분배 주기와 분배락일, 계좌별 세후 수익률까지 함께 확인할 수 있습니다.',
+    breaking: '구성종목과 섹터 연결, 매수 전 확인할 점을 함께 정리했습니다.',
+    surge:    '급등 배경과 위험 신호, 같은 테마의 다른 종목까지 함께 정리했습니다.',
+  };
+  const metaDesc = padDescription(baseDesc, [
+    coveredNames ? `다룬 종목은 ${coveredNames}입니다.` : undefined,
+    CATEGORY_CLAUSE[category],
+    'KRX 공공데이터 기준입니다.',
+  ]);
   const ogTitle = typeof metaTitle === 'string' ? metaTitle : (metaTitle as { absolute: string }).absolute;
 
   return {

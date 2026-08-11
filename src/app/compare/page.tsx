@@ -9,7 +9,7 @@ import { buildPageMetadata } from '@/lib/site-meta';
 export const metadata: Metadata = buildPageMetadata({
   title: 'ETF 1:1 비교: KODEX vs TIGER · SCHD 한국판',
   description:
-    '같은 지수·같은 섹터의 ETF 1:1 비교 페이지. KODEX 200 vs TIGER 200, KODEX 미국배당다우존스 vs ACE 미국배당다우존스 등 10쌍 핵심 비교.',
+    '같은 지수를 따라가는 ETF끼리 무엇이 다른지 1:1로 비교했습니다. KODEX 200 vs TIGER 200, 미국배당다우존스 운용사별 비교 등 자주 검색되는 조합의 시세·구성종목·보수 차이를 정리했습니다.',
   url: '/compare',
 });
 
@@ -51,6 +51,8 @@ export default function CompareIndexPage() {
       </header>
 
       <section className="compare-index-section">
+        {/* H1 다음 단계 헤딩이 없어 h1 → (없음) 구조였다. 검색 의도 키워드를 담아 H2 추가. */}
+        <h2 className="compare-index-h2">자주 비교되는 ETF {COMPARE_PAIRS.length}쌍</h2>
         <ul className="compare-index-list">
           {COMPARE_PAIRS.map(p => {
             const a = getKrxEtfMeta(p.codeA);

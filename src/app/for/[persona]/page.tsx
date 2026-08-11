@@ -8,7 +8,7 @@ import MainBackrefBox from '@/components/MainBackrefBox';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
 import { PERSONAS, ALL_PERSONAS, type PersonaSlug } from '@/lib/personas-config';
 import { getAllPosts } from '@/lib/posts';
-import { buildPageMetadata } from '@/lib/site-meta';
+import { buildPageMetadata , padDescription } from '@/lib/site-meta';
 
 interface PageProps {
   params: Promise<{ persona: string }>;
@@ -24,7 +24,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!p) return { title: '페르소나를 찾을 수 없습니다' };
   return buildPageMetadata({
     title: p.hero.title,
-    description: p.hero.subtitle,
+    // 페르소나 소개문만으로는 평균 51자라 스니펫 자리를 못 채운다(2026-08-11 감사).
+    description: padDescription(p.hero.subtitle, [
+      '상황에 맞는 ETF와 계좌 조합, 확인할 지표를 한 페이지에 모았습니다.',
+      'KRX 공공데이터 기준으로 매일 갱신합니다.',
+    ]),
     url: `/for/${persona}`,
   });
 }
