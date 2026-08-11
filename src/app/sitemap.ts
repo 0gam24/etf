@@ -180,6 +180,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
+  // ── /weekly 주간 리포트 인덱스 (2026-08-11 신설) ────────────────────
+  // 개별 글(/weekly/{slug})은 위 포스트 루프에서 이미 등록된다. 인덱스만 추가.
+  routes.push({
+    url: `${baseUrl}/weekly`,
+    lastModified: getCategoryLastModified('weekly') || fallback,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  });
+
   // ── /today 종합 리포트 (Phase 4) ──────────────────────────────────
   // /today (latest) + /today/{YYYY-MM-DD} 영구 보관 일별 리포트들
   routes.push({

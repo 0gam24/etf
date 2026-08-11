@@ -1958,3 +1958,49 @@ title에는 브랜드명을 넣지 않는다(layout template이 자동 부착). 
 template 중복 부착을 끊어 18자를 되찾음.
 
 검증: npx tsc --noEmit 0 에러, npm run build 성공, 1489개 prerender HTML 전수 측정.
+
+## 2026-08-11 · [전체 SEO 감사 · 스킬 총동원]
+
+### Q. 이 웹사이트 SEO 전체 감사해 모든 스킬 동원
+A. SEO 스킬 4종(seo-audit·technical-seo·internal-linking·ai-visibility) 프레임워크로
+prerender HTML 1,547개 전수 측정. 종합 82/100. 앞선 메타 수술은 production 반영 확인.
+
+■ 통과 (손댈 필요 없음)
+- robots.txt: 네이버 Yeti·Daumoa + AI봇 9종 명시 허용, /api/og 예외 처리까지 정확
+- sitemap-etf.xml이 shouldIndexEtf SSoT로 noindex 종목을 정확히 제외 (sitemap/noindex 충돌 0건)
+- JSON-LD 1,544/1,547(99.8%), 24종 스키마. FinancialProduct 1,162·Dataset 1,219·FAQPage 323·HowTo 115
+- H1: 0개인 페이지 0건, 2개 이상인 페이지 0건 (1,547개 전수)
+- img alt 누락 0건, viewport 100%, lang=ko 100%
+- llms.txt·robots.txt·sitemap-etf.xml production 200 응답
+
+■ 치명 (검색 손실 직결)
+1. 내부 링크 404 22건
+   - /stock/{코드} 10건: GuideDataBlock.tsx:186이 테마 ETF를 /stock/{code}로 링크하는데
+     /stock 페이지는 content/stock에 2개(0005D0·0053L0)뿐. /guide/ai-semi-etf 8건,
+     /guide/defense-etf 2건이 죽은 링크. 올바른 대상은 /etf/{slug}(1,161종 전부 존재).
+   - /breaking/... 11건: 원문 MDX가 삭제됐는데 상호 링크만 남음
+   - /weekly 1건: home-feed.ts:137이 /weekly로 링크하나 인덱스 라우트가 없음(/weekly/[slug]만 존재)
+2. 중복 메타
+   - 제목 중복 6그룹 23페이지 (/income 18, /flow 5). 예: "퇴직연금 DC형 커버드콜 비중 전략" x6
+   - 설명 중복 9그룹 29페이지
+   같은 제목·설명이 여러 URL에 걸리면 구글이 하나만 남기고 나머지를 색인에서 제외한다.
+
+■ 높음
+3. /etf 1,161종 중 1,056종(91%)이 noindex. thin-content 가드(shouldIndexEtf)의 의도된 동작이며
+   sitemap도 일관되게 제외하고 있어 기술적 결함은 아니다. 다만 "종목 사전 1000+종"의 실제
+   검색 유입 면적은 105종뿐이라는 뜻. 구성종목 데이터 확보가 색인 확대의 유일한 열쇠.
+4. 제목 60자 초과 71개(색인 대상 480 중 14.8%) - 본문 글 카테고리에 집중
+5. 설명 120자 미만 170개(35.4%)
+6. 301 리다이렉트를 가리키는 내부 링크 16건 (/etf/{소문자코드} → /etf/{slug}). 404는 아니나
+   크롤 예산 낭비. /today·/stock·홈에서 발생.
+7. 고아 페이지 10개(색인 대상 기준 2.1%): /theme/ai·defense·semi·shipbuilding,
+   /account/irp·isa·pension, /today, /tools/tax-compare
+
+■ 중간
+8. /guide 250링크·564KB, /guide/latest 249링크·640KB. 링크 100개 초과 + 페이지 과중
+9. 사이트 전체 이미지 15개뿐. 이미지 검색 유입 면적이 사실상 없음
+10. client component 36/126
+
+측정 방법: .next/server/app 1,547개 HTML 파싱(HTML 엔티티 디코드 후 길이 측정),
+내부 링크 그래프 42,798개 구축해 inbound 0 페이지·미존재 타겟 추출, next.config redirects와
+content/ 실파일 대조로 301 vs 진짜 404 분류.

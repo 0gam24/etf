@@ -13,7 +13,7 @@ import AffiliateInline from '@/components/AffiliateInline';
 import RecommendBox from '@/components/RecommendBox';
 import type { ProductCategory } from '@/lib/products';
 import { buildArticleSchema, buildHowToSchema, jsonLd } from '@/lib/schema';
-import { SITE_NAME, SITE_LOCALE } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, articleTitle } from '@/lib/site-meta';
 
 /** 가이드 슬러그 → 추천 자료 매칭 카테고리 */
 function guideToProductCategory(slug: string): ProductCategory | undefined {
@@ -48,7 +48,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // (기존엔 가이드에만 og:image가 없어 매일 발행 주력 콘텐츠의 공유 미리보기가 비어 있었음)
   const ogImage = `/api/og?title=${encodeURIComponent(g.title)}&category=guide`;
   return {
-    title: g.title,
+    // 제목이 길면 layout template이 붙이는 브랜드 18자를 끊어 잘림을 막는다.
+    // 가이드 제목 자체는 그대로 둔다(발행분 소급 수정 금지).
+    title: articleTitle({ title: g.title }),
     description: g.description,
     keywords: g.keywords,
     alternates: { canonical: canonicalPath },

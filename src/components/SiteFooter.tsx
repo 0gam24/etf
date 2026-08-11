@@ -58,6 +58,26 @@ export default function SiteFooter() {
             <Link href="/surge" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>급등 테마 분석</Link>
             <Link href="/flow" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>자금 흐름 리포트</Link>
             <Link href="/income" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>월배당·커버드콜</Link>
+            <Link href="/today" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>오늘의 종합 리포트</Link>
+            <Link href="/weekly" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>주간 펄스 리포트</Link>
+          </div>
+        </div>
+
+        {/* 테마·계좌·도구 진입점 — 이 페이지들은 어디서도 링크되지 않아 고아 상태였다.
+            (2026-08-11 SEO 감사: /theme/* 4개·/account/* 3개·/today·/tools/tax-compare) */}
+        <div>
+          <h4 style={{ color: 'var(--text-primary)', fontSize: 'var(--fs-sm)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 'var(--space-4)' }}>
+            테마 · 계좌
+          </h4>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+            <Link href="/theme/defense" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>방산 테마 ETF</Link>
+            <Link href="/theme/semi" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>반도체 테마 ETF</Link>
+            <Link href="/theme/ai" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>AI 테마 ETF</Link>
+            <Link href="/theme/shipbuilding" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>조선 테마 ETF</Link>
+            <Link href="/account/irp" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>IRP ETF 가이드</Link>
+            <Link href="/account/isa" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>ISA ETF 가이드</Link>
+            <Link href="/account/pension" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>연금저축 ETF 가이드</Link>
+            <Link href="/tools/tax-compare" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>계좌별 세후 수익률 비교</Link>
           </div>
         </div>
 

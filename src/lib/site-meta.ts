@@ -73,6 +73,51 @@ export function buildTwitter(input: OgInput): NonNullable<Metadata['twitter']> {
   };
 }
 
+/** layout template(' | Daily ETF Pulse')이 자동으로 덧붙는 글자 수 */
+const BRAND_SUFFIX_LEN = ' | Daily ETF Pulse'.length;
+
+/**
+ * 글 제목을 메타 title로 변환 (2026-08-11 SEO 감사 후속)
+ *
+ *   ① 중복 해소 — 같은 제목이 여러 날짜에 걸쳐 발행된 글이 있다(/income 18편·/flow 5편).
+ *      제목·설명이 같으면 구글이 하나만 남기고 나머지를 색인에서 제외하므로, 중복일 때만
+ *      기준일을 덧붙여 구분한다. 본문·H1·URL은 건드리지 않는다(발행분 소급 수정 금지 규칙).
+ *   ② 60자 초과 시 브랜드 접미사 회수 — template이 붙이는 18자를 title.absolute로 끊는다.
+ *      글 제목 자체는 한 글자도 바꾸지 않으면서 잘림만 줄인다.
+ */
+export function articleTitle(input: {
+  title: string;
+  date?: string;
+  isDuplicate?: boolean;
+  /** 같은 날짜에도 같은 제목이 겹칠 때 쓰는 2차 구분자 (보통 종목명) */
+  discriminator?: string;
+}): Metadata['title'] {
+  let base = input.title;
+  if (input.isDuplicate && input.date) {
+    const d = new Date(input.date);
+    if (!Number.isNaN(d.getTime())) {
+      const ymd = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      base = input.discriminator ? `${base} (${ymd} · ${input.discriminator})` : `${base} (${ymd} 기준)`;
+    }
+  }
+  return base.length + BRAND_SUFFIX_LEN > 60 ? { absolute: base } : base;
+}
+
+/** 설명이 다른 글과 겹칠 때만 기준일을 덧붙여 구분 */
+export function articleDescription(input: {
+  description: string;
+  date?: string;
+  isDuplicate?: boolean;
+  discriminator?: string;
+}): string {
+  if (!input.isDuplicate || !input.date) return input.description;
+  const d = new Date(input.date);
+  if (Number.isNaN(d.getTime())) return input.description;
+  const ymd = `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`;
+  const lead = input.discriminator ? `${ymd} ${input.discriminator} 기준.` : `${ymd} 기준.`;
+  return `${lead} ${input.description}`;
+}
+
 /**
  * 페이지 메타데이터 한 번에 생성 — title·description·canonical·og·twitter 일괄.
  *

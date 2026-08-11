@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { getIncomeRegistry } from '@/lib/income-server';
 import { buildMonthlyMatrix, GRADE_META, type IncomeEtf } from '@/lib/income';
-import { getLatestEtfData } from '@/lib/data';
+import { getLatestEtfData, codeToSlug } from '@/lib/data';
 import { getPostsByCategory } from '@/lib/posts';
 import IncomeTaxCompare from './IncomeTaxCompare';
 import IncomeCalendar from './IncomeCalendar';
@@ -183,7 +183,9 @@ function ThemeEtfList({ etfs }: {
         const isUp = e.changeRate >= 0;
         return (
           <li key={e.code} className="guide-theme-row">
-            <Link href={`/stock/${e.code}`} prefetch={false}>
+            {/* /stock/{code}는 편집 글(content/stock)이 있는 2종에만 존재해 나머지는 전부 404였다.
+                종목 사전 /etf/{slug}는 1161종 전부 존재하므로 그쪽으로 연결한다. (2026-08-11 SEO 감사) */}
+            <Link href={`/etf/${codeToSlug(e.code)}`} prefetch={false}>
               <div className="guide-theme-name">
                 <strong>{e.name}</strong>
                 <span className="guide-theme-code">{e.code}</span>

@@ -75,6 +75,7 @@ export async function GET() {
     { path: '/guide',      title: 'ETF 투자 가이드 — 월배당·커버드콜·세금·수수료·입문', category: 'pulse' },
     { path: '/guide/latest', title: '전체 ETF 가이드 — 최신 발행순 모아보기',           category: 'pulse' },
     { path: '/today',      title: '오늘의 ETF 종합 리포트 — 시그널·분배락·거래량', category: 'pulse' },
+    { path: '/weekly',     title: '주간 ETF 펄스 리포트 · 주차별 자금 흐름',        category: 'flow' },
     { path: '/strategy/kospi200-breakout', title: '코스피200 변동성 돌파 시그널 — Andrea Unger',  category: 'surge' },
     { path: '/strategy/track-record',      title: '시그널 트랙 레코드 — Transparent 결과 공개', category: 'surge' },
     { path: '/tools/portfolio',  title: 'ETF 포트폴리오 실시간 시뮬레이션',                category: 'pulse' },

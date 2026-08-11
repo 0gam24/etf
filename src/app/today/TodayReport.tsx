@@ -1,4 +1,7 @@
 import Link from 'next/link';
+// 코드 URL(/etf/0080g0)은 next.config에서 슬러그 URL로 301된다. 내부 링크는 최종 주소로
+// 직접 걸어 리다이렉트 한 단계를 없앤다. (2026-08-11 SEO 감사)
+import { codeToSlug } from '@/lib/data';
 
 interface MarketEtf {
   code: string;
@@ -180,7 +183,7 @@ function TableEtf({ list, showVolume }: { list: MarketEtf[]; showVolume?: boolea
         return (
           <li key={e.code} style={{ ...cardStyle, display: 'grid', gridTemplateColumns: 'auto 1fr auto auto', gap: '0.6rem', alignItems: 'center' }}>
             <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontFamily: 'monospace', width: '4rem' }}>{e.code}</span>
-            <Link href={`/etf/${e.code.toLowerCase()}`} prefetch={false} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontWeight: 600 }}>{e.name}</Link>
+            <Link href={`/etf/${codeToSlug(e.code)}`} prefetch={false} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontWeight: 600 }}>{e.name}</Link>
             <span style={{ fontVariantNumeric: 'tabular-nums', color: 'var(--text-secondary)' }}>{e.price?.toLocaleString()}원</span>
             <span style={{ fontVariantNumeric: 'tabular-nums', fontWeight: 700, color: up ? '#EF4444' : down ? '#60A5FA' : 'var(--text-secondary)' }}>
               {up ? '▲' : down ? '▼' : '–'} {Math.abs(e.changeRate).toFixed(2)}%

@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import type { IncomeEtf } from '@/lib/income';
+// 코드 URL은 301 대상이라 최종 슬러그로 직접 연결한다. (2026-08-11 SEO 감사)
+import { codeToSlug } from '@/lib/data';
 
 interface Props {
   etfs: IncomeEtf[];
@@ -66,7 +68,7 @@ export default function ExDividendAlert({ etfs, windowDays = 5 }: Props) {
             borderRadius: 'var(--radius-sm)',
             border: '1px solid var(--border-color)',
           }}>
-            <Link href={`/etf/${etf.code.toLowerCase()}`} prefetch={false} style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', color: 'var(--text-primary)' }}>
+            <Link href={`/etf/${codeToSlug(etf.code)}`} prefetch={false} style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', color: 'var(--text-primary)' }}>
               <span style={{
                 padding: '0.2rem 0.5rem',
                 background: daysLeft <= 1 ? 'var(--red-400)' : 'var(--emerald-400)',

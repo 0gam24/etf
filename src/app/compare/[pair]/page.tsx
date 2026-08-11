@@ -42,7 +42,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const metaB = getKrxEtfMeta(p.codeB);
   if (!metaA || !metaB) return { title: '비교 페이지를 찾을 수 없습니다' };
 
-  const title = `${metaA.name} vs ${metaB.name} 비교: 시세·구성종목·운용사 차이`;
+  // 두 ETF 정식명이 모두 들어가 제목이 길어진다. 꼬리를 짧게 두고, 그래도 60자를 넘으면
+  // title.absolute로 layout template(' | Daily ETF Pulse' 18자)을 끊어 자리를 확보한다.
+  const title = `${metaA.name} vs ${metaB.name} 비교: 시세·구성종목·보수`;
   const description = `${metaA.name}(${metaA.shortcode})와 ${metaB.name}(${metaB.shortcode})의 시세·구성종목·운용보수·환헷지·분배 정책 1:1 비교. ${p.context}`;
   const canonicalPath = `/compare/${p.slug}`;
   const ogImage = ogImageUrl({
@@ -52,7 +54,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
 
   return {
-    title,
+    title: title.length + 18 > 60 ? { absolute: title } : title,
     description,
     keywords: [
       `${metaA.name} vs ${metaB.name}`,
