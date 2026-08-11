@@ -11,6 +11,7 @@ import HomeLatestFeed from '@/components/HomeLatestFeed';
 import HomeCategoryShelves from '@/components/HomeCategoryShelves';
 import DataFooter from '@/components/DataFooter';
 import RecommendBox from '@/components/RecommendBox';
+import { buildOg, buildTwitter } from '@/lib/site-meta';
 
 // 메인 페이지 ISR — 5분마다 SSR 재생성, 그 사이 stale-while-revalidate.
 // 자정 / 장중 데이터 갱신이 ~5분 내 메인 반영. Cloudflare 1년 캐시 문제 해소.
@@ -21,23 +22,19 @@ export const revalidate = 300;
  *   블로그형 리뉴얼: "매일 발행"을 title·description에 명시해
  *   검색결과에서 살아있는 발행 매체임을 신호.
  */
+const HOME_TITLE = 'Daily ETF Pulse, 매일 발행하는 ETF 분석·투자 가이드';
+const HOME_DESC =
+  'ETF 투자 가이드와 시장 분석을 매일 발행합니다. 월배당·커버드콜·ISA·연금저축 절세 전략, 급등 테마와 자금 흐름, KRX 전체 ETF 종목 사전까지 한곳에서 확인하세요.';
+
 export const metadata: Metadata = {
-  title: { absolute: 'Daily ETF Pulse — 매일 발행하는 ETF 분석·투자 가이드' },
-  description:
-    'ETF 투자 가이드와 시장 분석을 매일 발행합니다. 월배당·커버드콜·ISA·연금저축 절세 전략, 급등 테마와 자금 흐름, KRX 전체 ETF 종목 사전까지 한곳에서 확인하세요.',
+  // absolute — layout의 template('%s | Daily ETF Pulse')을 무시하고 이 제목 그대로 사용
+  title: { absolute: HOME_TITLE },
+  description: HOME_DESC,
   alternates: { canonical: '/' },
-  openGraph: {
-    title: 'Daily ETF Pulse — 매일 발행하는 ETF 분석·투자 가이드',
-    description:
-      'ETF 투자 가이드와 시장 분석을 매일 발행. 월배당·커버드콜·절세 전략부터 급등 테마·자금 흐름까지.',
-    type: 'website',
-    url: '/',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Daily ETF Pulse — 매일 발행하는 ETF 분석·투자 가이드',
-    description: 'ETF 투자 가이드와 시장 분석을 매일 발행합니다.',
-  },
+  // buildOg 경유 — 직접 openGraph를 쓰면 layout의 og(이미지·siteName·locale)가 통째로
+  // 교체돼 홈의 og:image가 사라진다 (2026-08-11 감사에서 실제 누락 확인).
+  openGraph: buildOg({ title: HOME_TITLE, description: HOME_DESC, url: '/' }),
+  twitter: buildTwitter({ title: HOME_TITLE, description: HOME_DESC, url: '/' }),
 };
 
 export default async function HomePage() {
@@ -100,7 +97,7 @@ export default async function HomePage() {
       {/* 페이지 H1 — 홈의 검색 신호 (시각적으로는 작게, 의미상 최상위) */}
       <div className="home-bundle" style={{ paddingBottom: 0 }}>
         <h1 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-dim)', margin: 0 }}>
-          매일 발행하는 ETF 분석과 투자 가이드 — Daily ETF Pulse
+          매일 발행하는 ETF 분석과 투자 가이드 · Daily ETF Pulse
         </h1>
       </div>
 

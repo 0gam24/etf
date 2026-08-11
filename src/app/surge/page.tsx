@@ -16,12 +16,14 @@ import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 import RecommendBox from '@/components/RecommendBox';
 import SurgeRecentList from '@/components/SurgeRecentList';
+import { buildPageMetadata } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
-  title: '급등 테마 분석 — Daily ETF Pulse',
+export const metadata: Metadata = buildPageMetadata({
+  title: '급등 테마 분석',
   description:
     '오늘 거래량·등락률 1위 ETF의 도화선과 위험 신호 · 테마 트래커로 자금이 몰리는 섹터를 한눈에. "이 ETF 사도 되나"에 답하는 의사결정 도구.',
-};
+  url: '/surge',
+});
 
 const RECENT_LIMIT = 8;
 

@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import TaxCompareClient from './TaxCompareClient';
+import { buildPageMetadata } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
-  title: '계좌별 세후 수익률 비교 — IRP·ISA·연금저축·일반계좌',
+export const metadata: Metadata = buildPageMetadata({
+  title: '계좌별 세후 수익률 비교: IRP·ISA·연금저축·일반계좌',
   description: '동일 ETF 종목·금액 기준 IRP·ISA·연금저축·일반계좌의 세후 수익률을 시뮬레이션. 5·10·20년 누적 비교.',
-  alternates: { canonical: '/tools/tax-compare' },
-};
+  url: '/tools/tax-compare',
+});
 
 export default function TaxComparePage() {
   return (

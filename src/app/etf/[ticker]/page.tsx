@@ -31,6 +31,7 @@ import {
   jsonLd,
 } from '@/lib/schema';
 import type { RawEtf } from '@/lib/surge';
+import { buildOg, buildTwitter } from '@/lib/site-meta';
 
 /**
  * 종목 사전 페이지 — /etf/[ticker]
@@ -82,24 +83,73 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const sector = etf?.sector;
 
   // 1A. Title — CTR 수술 (2026-07-19, GSC 실측 기반):
-  //   실제 유입 쿼리 문구를 그대로 반영 — "{ETF명} etf 구성종목"(6~10위 다수),
+  //   실제 유입 쿼리 문구를 반영 — "{ETF명} etf 구성종목"(6~10위 다수),
   //   "{ETF명} {코드} 분배금 지급 주기", "{ETF명} etf 현재 가격".
-  //   "구성종목 TOP10"처럼 구체 숫자를 넣어 스니펫 클릭 동기 부여. (60자 이내 유지)
-  const title = etf
-    ? `${name}(${displayCode}) ETF 구성종목 TOP10·분배금 지급주기·현재가`
-    : `${name}(${displayCode}) ETF 구성종목·분배금 지급주기 정리`;
+  //
+  //   2026-08-11 길이 수술: 이전 꼬리("구성종목 TOP10·분배금 지급주기·현재가" 36자)에
+  //   layout template(" | Daily ETF Pulse" 18자)이 더해져 고정 54자를 잡아먹었다.
+  //   prerender HTML 실측 결과 1147종 중 782종(68.2%)이 60자 초과, 시세 있는 97종은 100% 초과
+  //   (평균 71자)라 구글이 뒷부분을 잘라 정작 CTR용으로 넣은 "현재가"가 노출되지 않았다.
+  //   → 꼬리를 짧게 줄이고 title.absolute로 template 중복 부착을 끊는다.
+  //     핵심 키워드(구성종목·분배금·ETF명·코드)는 앞쪽에 그대로 유지.
+  const rawTitle = etf
+    ? `${name}(${displayCode}) ETF 구성종목·분배금·현재가`
+    : `${name}(${displayCode}) ETF 구성종목·분배금 정리`;
+  // 아주 긴 ETF명(최대 30자)은 이름만으로도 한계를 넘으므로 꼬리를 한 번 더 축약
+  const title = rawTitle.length > 60
+    ? `${name}(${displayCode}) ETF 구성종목·분배금`
+    : rawTitle;
 
   // 1D. Meta — 첫 100자에 키워드 압축 (Naver snippet + Google CTR 최적화)
   //   "종목코드"·"krx" 문구를 앞에 배치 — "krx: {코드}"·"{ETF명} 종목코드" 쿼리
   //   (GSC 노출 1·4위)가 스니펫에서 정답을 즉시 확인하도록.
+  //   2026-08-11 수술 3건 (prerender HTML 실측 기반):
+  //     ① 긴 줄표(—) 제거 — 시청자 가시 텍스트 금지 규칙(CLAUDE.md "AI 티 제거"). 1147종 전부 위반이었다.
+  //     ② 선두 이모지 제거 — 구글이 스니펫에서 이모지를 자주 제거해 첫 글자가 낭비됐다.
+  //     ③ 길이 보강 — 평균 75자로 목표(120~155자)에 한참 못 미쳐 스니펫 공간을 버리고 있었다.
+  //        구성종목을 3개로 늘려 롱테일("라인메탈 ETF" 류) 매칭 면적도 함께 확대.
   const holdingsForMeta = code ? getEtfHoldings(code)?.holdings || [] : [];
-  const topHoldingNames = holdingsForMeta.slice(0, 2).map(h => h.name).join('·');
-  const sectorClause = sector ? ` ${sector}` : '';
-  const trendIcon = etf ? (etf.changeRate > 0 ? '🔥' : etf.changeRate < 0 ? '📉' : '📊') : '📊';
+  const sectorClause = sector ? ` ${sector} 섹터` : '';
+  // 구성종목 데이터가 없는 종목(1147종 중 다수)은 넣을 재료가 적어 설명이 107자에서 멈춘다.
+  // 운용사를 문장에 넣어 "{운용사} ETF" 검색도 함께 받고 목표 길이를 채운다.
+  const issuerForMeta = extractIssuerLabel(name);
+  const issuerClause = issuerForMeta ? ` 운용사는 ${issuerForMeta}입니다.` : '';
 
-  const description = etf
-    ? `${trendIcon} ${name} 종목코드 ${displayCode}(KRX)${sectorClause} — 현재가 ${etf.price.toLocaleString()}원 ${etf.changeRate >= 0 ? '+' : ''}${etf.changeRate.toFixed(2)}%.${topHoldingNames ? ` 구성종목 TOP10: ${topHoldingNames} 등.` : ''} 분배금 지급주기·분배락일·투자 포인트를 한 페이지에, 매일 갱신.`
-    : `📊 ${name} 종목코드 ${displayCode}(KRX)${sectorClause} — KRX 상장 ETF.${topHoldingNames ? ` 구성종목 TOP10: ${topHoldingNames} 등.` : ''} 운용사·섹터·구성종목·관련 분석 정리.`;
+  // 구성종목 이름 길이가 종목마다 크게 달라(해외 ETF는 영문 사명이 길다) 고정 개수로는
+  // 120~155자 목표를 못 맞춘다. 목표 상한에 들어가는 만큼만 이름을 채운다.
+  //   구성종목 이름은 롱테일 검색("라인메탈 ETF" 류)을 직접 물어오므로 꼬리 문구보다 우선한다.
+  //   구성종목이 있으면 짧은 꼬리를, 없으면 긴 꼬리를 써서 어느 쪽이든 120~155자에 안착시킨다.
+  const DESC_MAX = 155;
+  const head = etf
+    ? `${name} 종목코드 ${displayCode}(KRX)${sectorClause}. 현재가 ${etf.price.toLocaleString()}원, 전일대비 ${etf.changeRate >= 0 ? '+' : ''}${etf.changeRate.toFixed(2)}%.`
+    : `${name} 종목코드 ${displayCode}(KRX)${sectorClause}에 상장된 ETF입니다.`;
+  const shortTail = etf
+    ? ' 분배금 지급주기·분배락일·투자 포인트를 정리했습니다.'
+    : ' 운용사·섹터·구성종목 비중과 관련 분석을 정리했습니다.';
+  const longTail = etf
+    ? ' 분배금 지급주기와 분배락일, 운용사·섹터 정보, 관련 분석까지 한 페이지에 정리했습니다. KRX 공공데이터 기준 매일 갱신.'
+    : ' 운용사와 섹터, 구성종목 비중, 분배금 지급주기, 같은 테마의 다른 ETF와 관련 분석 글까지 정리한 ETF 종목 사전입니다.';
+  // 구성종목이 없어 짧아지는 경우에만 덧붙이는 보강 문구
+  const padTail = etf
+    ? ' 매수 전 확인할 기본 정보를 한자리에 모았습니다.'
+    : ' 매수 전 확인할 기본 정보를 한자리에 모아 매일 점검합니다.';
+
+  // 구성종목을 최대 4개까지 넣되, 짧은 꼬리 기준으로 155자를 넘지 않는 범위에서 최대한 채운다.
+  let holdingsClause = '';
+  for (let n = 4; n >= 1; n--) {
+    const names = holdingsForMeta.slice(0, n).map(h => h.name).join('·');
+    if (!names) continue;
+    const candidate = ` 주요 구성종목은 ${names} 등 TOP 10입니다.`;
+    if (head.length + candidate.length + shortTail.length <= DESC_MAX) { holdingsClause = candidate; break; }
+  }
+  // 꼬리는 남는 자리에 맞춰 긴 버전을 우선 시도 (짧으면 스니펫 공간을 버리게 된다)
+  const tail = head.length + holdingsClause.length + longTail.length <= DESC_MAX ? longTail : shortTail;
+  let description = head + holdingsClause + tail;
+  // 아직 목표(120자)에 못 미치면 운용사 문구 → 보강 문구 순으로 채운다.
+  for (const pad of [issuerClause, padTail]) {
+    if (description.length >= 120 || !pad) continue;
+    if (description.length + pad.length <= DESC_MAX) description += pad;
+  }
 
   const ogImage = `/api/og?title=${encodeURIComponent(name)}&category=stock&tickers=${displayCode}`;
 
@@ -119,7 +169,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const robots = indexable ? undefined : { index: false, follow: true };
 
   return {
-    title,
+    // absolute — layout template(' | Daily ETF Pulse')이 덧붙는 것을 끊는다.
+    //   브랜드 18자를 되찾아 ETF명·구성종목 키워드가 잘리지 않게 한다.
+    title: { absolute: title },
     description,
     keywords: [
       name,
@@ -134,8 +186,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ],
     ...(robots ? { robots } : {}),
     alternates: { canonical: canonicalPath },
-    openGraph: { title, description, type: 'website', url: canonicalPath, images: [{ url: ogImage, width: 1200, height: 630, alt: `${name} ETF` }] },
-    twitter: { card: 'summary_large_image', title, description, images: [ogImage] },
+    // buildOg 경유 — siteName·locale이 빠지지 않게 한다.
+    openGraph: buildOg({ title, description, url: canonicalPath, image: ogImage }),
+    twitter: buildTwitter({ title, description, url: canonicalPath, image: ogImage }),
   };
 }
 

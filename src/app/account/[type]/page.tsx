@@ -2,6 +2,7 @@ import { getPostsByCategory, CATEGORY_NAMES, ACCOUNT_CATEGORIES } from '@/lib/po
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import RecommendBox from '@/components/RecommendBox';
+import { buildPageMetadata } from '@/lib/site-meta';
 
 interface PageProps {
   params: Promise<{ type: string }>;
@@ -20,22 +21,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!name) return { title: '계좌 가이드를 찾을 수 없습니다' };
   const canonicalPath = `/account/${type}`;
   const desc = ACCOUNT_META[type]?.desc || `${name} 활용 ETF 전략과 세후 수익률 가이드.`;
-  return {
-    title: `${name} ETF 가이드 — Daily ETF Pulse`,
+  // 브랜드명은 layout template이 자동으로 붙인다. og는 buildOg 경유로
+  // siteName·locale·image 손실을 막는다.
+  return buildPageMetadata({
+    title: `${name} ETF 가이드`,
     description: desc,
-    alternates: { canonical: canonicalPath },
-    openGraph: {
-      title: `${name} ETF 가이드 — Daily ETF Pulse`,
-      description: desc,
-      type: 'website',
-      url: canonicalPath,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${name} ETF 가이드`,
-      description: desc,
-    },
-  };
+    url: canonicalPath,
+  });
 }
 
 export async function generateStaticParams() {

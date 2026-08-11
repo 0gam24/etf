@@ -8,6 +8,7 @@ import MainBackrefBox from '@/components/MainBackrefBox';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
 import { PERSONAS, ALL_PERSONAS, type PersonaSlug } from '@/lib/personas-config';
 import { getAllPosts } from '@/lib/posts';
+import { buildPageMetadata } from '@/lib/site-meta';
 
 interface PageProps {
   params: Promise<{ persona: string }>;
@@ -21,11 +22,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { persona } = await params;
   const p = PERSONAS[persona as PersonaSlug];
   if (!p) return { title: '페르소나를 찾을 수 없습니다' };
-  return {
-    title: `${p.hero.title} | Daily ETF Pulse`,
+  return buildPageMetadata({
+    title: p.hero.title,
     description: p.hero.subtitle,
-    alternates: { canonical: `/for/${persona}` },
-  };
+    url: `/for/${persona}`,
+  });
 }
 
 export default async function PersonaPage({ params }: PageProps) {

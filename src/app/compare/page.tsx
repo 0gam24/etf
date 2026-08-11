@@ -4,13 +4,14 @@ import { COMPARE_PAIRS } from '@/lib/etf-compare-pairs';
 import { getKrxEtfMeta } from '@/lib/data';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { buildBreadcrumbSchema, buildItemListSchema, jsonLd } from '@/lib/schema';
+import { buildPageMetadata } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
-  title: 'ETF 1:1 비교 — KODEX vs TIGER · SCHD 한국판 비교 | Daily ETF Pulse',
+export const metadata: Metadata = buildPageMetadata({
+  title: 'ETF 1:1 비교: KODEX vs TIGER · SCHD 한국판',
   description:
     '같은 지수·같은 섹터의 ETF 1:1 비교 페이지. KODEX 200 vs TIGER 200, KODEX 미국배당다우존스 vs ACE 미국배당다우존스 등 10쌍 핵심 비교.',
-  alternates: { canonical: '/compare' },
-};
+  url: '/compare',
+});
 
 export default function CompareIndexPage() {
   const breadcrumbSchema = buildBreadcrumbSchema([

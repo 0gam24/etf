@@ -16,6 +16,7 @@ import AnswerBox from '@/components/AnswerBox';
 import FaqSection from '@/components/FaqSection';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
 import type { RawEtf } from '@/lib/surge';
+import { SITE_NAME, SITE_LOCALE, ogImageUrl } from '@/lib/site-meta';
 
 /**
  * /compare/{pair} — 1:1 ETF 비교 페이지
@@ -41,9 +42,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const metaB = getKrxEtfMeta(p.codeB);
   if (!metaA || !metaB) return { title: '비교 페이지를 찾을 수 없습니다' };
 
-  const title = `${metaA.name} vs ${metaB.name} 비교 — 시세·구성종목·운용사 차이`;
+  const title = `${metaA.name} vs ${metaB.name} 비교: 시세·구성종목·운용사 차이`;
   const description = `${metaA.name}(${metaA.shortcode})와 ${metaB.name}(${metaB.shortcode})의 시세·구성종목·운용보수·환헷지·분배 정책 1:1 비교. ${p.context}`;
   const canonicalPath = `/compare/${p.slug}`;
+  const ogImage = ogImageUrl({
+    title: `${metaA.name} vs ${metaB.name}`,
+    category: 'compare',
+    tickers: `${metaA.shortcode},${metaB.shortcode}`,
+  });
 
   return {
     title,
@@ -56,8 +62,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       p.searchIntent,
     ],
     alternates: { canonical: canonicalPath },
-    openGraph: { title, description, type: 'website', url: canonicalPath },
-    twitter: { card: 'summary_large_image', title, description },
+    openGraph: {
+      siteName: SITE_NAME,
+      locale: SITE_LOCALE,
+      title,
+      description,
+      type: 'website',
+      url: canonicalPath,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+    },
+    twitter: { card: 'summary_large_image', title, description, images: [ogImage] },
   };
 }
 

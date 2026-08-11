@@ -7,6 +7,7 @@ import ReadingProgress from '@/components/ReadingProgress';
 import ShareRow from '@/components/ShareRow';
 import Toc from '@/components/Toc';
 import RecommendBox from '@/components/RecommendBox';
+import { SITE_NAME, SITE_LOCALE } from '@/lib/site-meta';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: post.meta.title,
     description: post.meta.description,
     alternates: { canonical: canonicalPath },
-    openGraph: {
+    openGraph: { siteName: SITE_NAME, locale: SITE_LOCALE,
       title: post.meta.title,
       description: post.meta.description,
       type: 'article',

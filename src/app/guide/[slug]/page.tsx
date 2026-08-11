@@ -13,6 +13,7 @@ import AffiliateInline from '@/components/AffiliateInline';
 import RecommendBox from '@/components/RecommendBox';
 import type { ProductCategory } from '@/lib/products';
 import { buildArticleSchema, buildHowToSchema, jsonLd } from '@/lib/schema';
+import { SITE_NAME, SITE_LOCALE } from '@/lib/site-meta';
 
 /** 가이드 슬러그 → 추천 자료 매칭 카테고리 */
 function guideToProductCategory(slug: string): ProductCategory | undefined {
@@ -51,7 +52,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: g.description,
     keywords: g.keywords,
     alternates: { canonical: canonicalPath },
-    openGraph: {
+    openGraph: { siteName: SITE_NAME, locale: SITE_LOCALE,
       title: g.title,
       description: g.description,
       type: 'article',

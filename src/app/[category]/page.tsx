@@ -2,6 +2,7 @@ import { getPostsByCategory, CATEGORY_NAMES, TOP_LEVEL_CATEGORIES } from '@/lib/
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { Zap, TrendingUp, Waves, Coins } from 'lucide-react';
+import { buildPageMetadata } from '@/lib/site-meta';
 
 interface PageProps {
   params: Promise<{ category: string }>;
@@ -37,22 +38,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const meta = CATEGORY_META[category];
   const canonicalPath = `/${category}`;
   const description = meta?.desc || `${name} 관련 최신 분석을 한눈에 확인하세요.`;
-  return {
-    title: `${name} — Daily ETF Pulse`,
+  return buildPageMetadata({
+    title: name,
     description,
-    alternates: { canonical: canonicalPath },
-    openGraph: {
-      title: `${name} — Daily ETF Pulse`,
-      description,
-      type: 'website',
-      url: canonicalPath,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${name} — Daily ETF Pulse`,
-      description,
-    },
-  };
+    url: canonicalPath,
+  });
 }
 
 export async function generateStaticParams() {

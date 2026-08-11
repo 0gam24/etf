@@ -16,12 +16,14 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 import RecommendBox from '@/components/RecommendBox';
+import { buildPageMetadata } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
-  title: '오늘의 관전포인트 — Daily ETF Pulse',
+export const metadata: Metadata = buildPageMetadata({
+  title: '오늘의 관전포인트',
   description:
     '매일 오전 9시 전, 오늘 시장을 움직일 ETF 핵심 포인트 · 어제 대비 변화 · 이번 주 반복 등장 종목을 한눈에.',
-};
+  url: '/pulse',
+});
 
 const RECENT_LIST_LIMIT = 8;
 const RECURRING_WINDOW_DAYS = 7;

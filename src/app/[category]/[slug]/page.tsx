@@ -25,6 +25,7 @@ import FaqSection from '@/components/FaqSection';
 import type { ProductCategory } from '@/lib/products';
 import { AUTHORS } from '@/lib/authors';
 import { buildArticleSchema, buildPersonSchema, jsonLd } from '@/lib/schema';
+import { SITE_NAME, SITE_LOCALE } from '@/lib/site-meta';
 
 /** 글 카테고리 → 추천 자료 매칭 */
 function postCategoryToProductCategory(category: string): ProductCategory | undefined {
@@ -63,7 +64,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     keywords: post.meta.keywords,
     authors: [{ name: post.meta.author }],
     alternates: { canonical: canonicalPath },
-    openGraph: {
+    openGraph: { siteName: SITE_NAME, locale: SITE_LOCALE,
       title: post.meta.title,
       description: post.meta.description,
       type: 'article',

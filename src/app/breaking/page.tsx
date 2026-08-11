@@ -17,12 +17,14 @@ import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 import { pickLatestTradeDayBreaking, tradeDateOf } from '@/lib/breaking';
 import RecommendBox from '@/components/RecommendBox';
 import FreshnessPill from '@/components/FreshnessPill';
+import { buildPageMetadata } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
-  title: 'ETF 속보 — Daily ETF Pulse',
+export const metadata: Metadata = buildPageMetadata({
+  title: '오늘의 ETF 속보·거래량 TOP',
   description:
     '거래량 TOP 3 ETF의 당일 뉴스 기반 심층 속보. 오늘 어떤 뉴스가 수급을 움직였는지, 구성종목·섹터 연결·4050 투자자 행동까지.',
-};
+  url: '/breaking',
+});
 
 const TODAYS_LIMIT = 3;
 

@@ -14,12 +14,14 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 import RecommendBox from '@/components/RecommendBox';
+import { buildPageMetadata } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
-  title: '월배당·커버드콜 — Daily ETF Pulse',
+export const metadata: Metadata = buildPageMetadata({
+  title: '월배당 ETF·커버드콜 ETF 분배 캘린더',
   description:
     '커버드콜·월배당 ETF 분배 캘린더 · 계좌별 세후 수익률 비교 · 월 목표 현금흐름 역산. 4050·은퇴자를 위한 현금흐름 설계 도구.',
-};
+  url: '/income',
+});
 
 export default function IncomeLandingPage() {
   const registry = getIncomeRegistry();

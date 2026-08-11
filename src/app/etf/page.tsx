@@ -12,13 +12,14 @@ import {
 } from '@/lib/data';
 import { buildBreadcrumbSchema, buildItemListSchema, jsonLd } from '@/lib/schema';
 import EtfIndexSearch from '@/components/EtfIndexSearch';
+import { buildPageMetadata } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
-  title: '종목 사전 — KRX 상장 ETF 1000+종 한 페이지 정리 | Daily ETF Pulse',
+export const metadata: Metadata = buildPageMetadata({
+  title: 'ETF 종목 사전: KRX 상장 1000+종 정리',
   description:
     '한국거래소(KRX) 상장 ETF 1000+종을 거래량·섹터·운용사로 정리한 종목 사전. KODEX·TIGER·SOL·ACE·PLUS 등 운용사별, 방산·반도체·커버드콜·월배당 섹터별 빠른 검색.',
-  alternates: { canonical: '/etf' },
-};
+  url: '/etf',
+});
 
 interface EtfRow {
   shortcode: string;

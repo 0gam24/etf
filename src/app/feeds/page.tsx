@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
 import { FEED_CATEGORIES, SITE_URL } from '@/lib/feed';
+import { buildOg } from '@/lib/site-meta';
 
 // 전체 URL 링크 스타일 — 클릭하면 피드로 연결, 주소가 그대로 보이고 복사하기 쉬움
 const feedUrlStyle: CSSProperties = {
@@ -26,12 +27,11 @@ export const metadata: Metadata = {
       'application/feed+json': '/feed.json',
     },
   },
-  openGraph: {
+  openGraph: buildOg({
     title: '구독 · 피드 (RSS)',
     description: 'Daily ETF Pulse의 매일 새 분석을 RSS로 구독하고, AI·검색 엔진용 파일을 한 곳에서 확인하세요.',
-    url: 'https://iknowhowinfo.com/feeds',
-    type: 'website',
-  },
+    url: '/feeds',
+  }),
 };
 
 interface FeedLink {

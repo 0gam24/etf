@@ -1904,3 +1904,57 @@ https://iknowhowinfo.com/guide/crypto-liquidation-explained
 https://iknowhowinfo.com/guide/us-etf-drip-korea
 
 색인 푸시(npm run push:guides, 대상 2026-08-06 5편 + 허브 3): IndexNow skip(no-site-url), Google Indexing skip(no-credentials). 키 미설정 채널 자동 skip으로 실행 자체는 정상. sitemap/RSS는 GUIDES·GUIDE_PUBLISHED_AT SSoT 직접 import라 자동 반영.
+## 2026-08-11 · [SEO 감사]
+
+### Q. 내 웹사이트 SEO 감사해 (/seo-check)
+A. 36개 page 라우트 + guides.ts 188편 + /etf 1147종 템플릿 전수 검사. 종합 74/100.
+
+기반은 매우 탄탄: JSON-LD 22/36 라우트(Organization·WebSite·Article·HowTo·FinancialProduct·Dataset,
+jsonLd() escape 헬퍼 사용), robots.ts(Yeti·Daumoa·AI봇 15종 명시 + /api/og allow),
+sitemap 4종, 슬러그 188/188 ASCII kebab 준수, keywords 188/188 5~8개 준수,
+가이드 description 84%(157/188)가 120~155 목표 구간, H1 중복 0건, img alt 누락 0건.
+
+발견된 문제 4건 (우선순위순):
+1. [치명] title 템플릿 브랜드 중복 — layout.tsx가 template '%s | Daily ETF Pulse'를 적용하는데
+   17개 라우트가 title 문자열에 브랜드를 또 하드코딩. 결과: "오늘의 관전포인트 — Daily ETF Pulse
+   | Daily ETF Pulse". /compare 77자·/etf 70자·/tools/portfolio 66자로 60자 초과.
+   해결: 17개 title에서 브랜드 접미사 제거(템플릿이 자동 부여) 또는 title:{absolute:...} 사용.
+2. [대규모] /etf/[ticker] title 1145/1147(99.8%)이 60자 초과(평균 70자, 최대 84자).
+   원인: 고정 꼬리 '(코드) ETF 구성종목 TOP10·분배금 지급주기·현재가'(36자) + 템플릿(18자) = 54자를
+   ETF명(평균 15.7자) 앞에 붙임. 구글이 뒷부분을 잘라 '현재가' 키워드가 대부분 소실.
+   해결: 꼬리를 '구성종목·분배금' 수준으로 축약 + title:{absolute}로 템플릿 중복 제거.
+3. [중] 카테고리 허브 5종(/pulse·/surge·/flow·/income·/breaking) canonical 누락.
+   H1은 Hero 컴포넌트에 존재해 정상(오탐 아님을 확인함).
+4. [중] openGraph 누락 19개 라우트(/about·/etf·/for/[persona]·/compare 등) — 소셜 공유 미리보기 빈칸.
+
+프로젝트 규칙 위반 1건: /etf/[ticker] description 템플릿이 em dash(—) 사용 + 이모지 선두.
+CLAUDE.md '긴 줄표 금지'는 신규 텍스트 대상이고 meta 수술은 허용 범위라 정정 대상.
+반면 기존 가이드 title 127건의 em dash는 '발행분 소급 수정 금지' 규칙에 따라 손대지 않음.
+
+### Q. (이어서) 바로 고쳐
+A. 감사에서 나온 문제를 전부 수정하고 prerender HTML 1489개로 실측 검증 완료.
+
+수정 전 → 수정 후 (모두 .next/server/app/*.html 실측):
+- title 브랜드 중복: 20개 라우트 → 0개 (1489 페이지 전수 확인)
+- og:image 누락: 15개 페이지 → 0개
+- og:site_name / og:locale 누락: 17개 라우트 → 0개
+- canonical 누락: 5개 → 0개
+- /etf title 60자 초과: 782/1147(68.2%) → 0 (최대 54자)
+- /etf description 120~155자 적중: 9/1147(0.8%) → 1147/1147(100%)
+- /etf description 긴 줄표·선두 이모지: 각 1147건 → 0건
+
+감사 중 발견한 추가 결함 2건 (최초 보고에 없던 것):
+1. Next.js는 metadata를 얕게 병합해, 자식이 openGraph를 정의하면 부모 layout의 openGraph가
+   통째로 교체된다(공식 문서 "Overwriting fields" 확인). 그 결과 openGraph를 직접 정의한
+   17개 라우트에서 og:site_name·og:locale이 전부 사라졌고, **홈페이지를 포함한 10개는
+   og:image까지 누락**돼 카톡·페북 공유 시 빈 카드였다. index.html에서 직접 확인.
+2. 최초 보고에서 /etf title 초과율을 99.8%로 추정했으나 실측은 68.2%였다. 추정이 1147종
+   전부 긴 변형(시세 있는 형식)을 쓴다고 가정했으나 실제로는 1050종이 짧은 변형이었다.
+   이후 수치는 전부 prerender HTML 실측 기준으로 교체.
+
+해결 방식: src/lib/site-meta.ts 신설. buildOg()/buildTwitter()/buildPageMetadata()가
+siteName·locale·image·url을 항상 실어 보내 부모 og 교체로 인한 손실을 구조적으로 차단.
+title에는 브랜드명을 넣지 않는다(layout template이 자동 부착). /etf는 title.absolute로
+template 중복 부착을 끊어 18자를 되찾음.
+
+검증: npx tsc --noEmit 0 에러, npm run build 성공, 1489개 prerender HTML 전수 측정.

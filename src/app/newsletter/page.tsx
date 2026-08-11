@@ -2,13 +2,14 @@ import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { buildPageMetadata } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
-  title: '뉴스레터 — 일일 ETF 요약 받기 | Daily ETF Pulse',
+export const metadata: Metadata = buildPageMetadata({
+  title: '뉴스레터: 일일 ETF 요약 받기',
   description:
     '매일 아침 9시 발행되는 거래량 TOP 3·섹터 자금 흐름·월배당 분배 캘린더를 한 통의 이메일로. 출근 전 5분 ETF 브리핑.',
-  alternates: { canonical: '/newsletter' },
-};
+  url: '/newsletter',
+});
 
 export default function NewsletterPage() {
   const breadcrumbSchema = buildBreadcrumbSchema([

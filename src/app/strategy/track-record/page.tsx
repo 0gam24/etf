@@ -3,6 +3,7 @@ import path from 'node:path';
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FreshnessPill from '@/components/FreshnessPill';
+import { buildPageMetadata } from '@/lib/site-meta';
 
 interface Outcome {
   code: string;
@@ -29,11 +30,11 @@ function loadTrack(): TrackRecord | null {
   }
 }
 
-export const metadata: Metadata = {
-  title: '시그널 트랙 레코드 — Daily ETF Pulse',
-  description: 'Unger 변동성 돌파 시그널의 실제 결과를 매일 자동 기록·공개. 성공·실패 모두 transparent 노출.',
-  alternates: { canonical: '/strategy/track-record' },
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: '시그널 트랙 레코드',
+  description: 'Unger 변동성 돌파 시그널의 실제 결과를 매일 기록·공개합니다. 성공과 실패를 모두 그대로 공개합니다.',
+  url: '/strategy/track-record',
+});
 
 export default function TrackRecordPage() {
   const record = loadTrack();

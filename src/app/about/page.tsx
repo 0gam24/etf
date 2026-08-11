@@ -2,13 +2,15 @@ import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { PUBLISHER } from '@/lib/authors';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { buildPageMetadata } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
-  title: '편집팀 소개 — Daily ETF Pulse',
+// title에 브랜드명을 넣지 않는다 — layout의 template이 '| Daily ETF Pulse'를 자동으로 붙인다.
+export const metadata: Metadata = buildPageMetadata({
+  title: '편집팀 소개',
   description:
     'Daily ETF Pulse의 발행·검수 책임, 데이터 출처(KRX·한국은행 ECOS·DART), 분석 방법론, 정정 정책을 한 페이지에 정리합니다.',
-  alternates: { canonical: '/about' },
-};
+  url: '/about',
+});
 
 export default function AboutPage() {
   const breadcrumb = buildBreadcrumbSchema([

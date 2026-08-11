@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
 import FreshnessPill from '@/components/FreshnessPill';
+import { buildPageMetadata } from '@/lib/site-meta';
 
 interface BreakoutSignal {
   code: string;
@@ -44,11 +45,11 @@ function loadLatest(): SignalFile | null {
   }
 }
 
-export const metadata: Metadata = {
-  title: '코스피200 변동성 breakout 시그널 — Daily ETF Pulse',
+export const metadata: Metadata = buildPageMetadata({
+  title: '코스피200 변동성 breakout 시그널',
   description: 'Andrea Unger 변동성 돌파 공식을 KOSPI200 4종(KODEX 200·인버스·레버리지)에 매일 적용한 시그널. 정보 제공 목적이며 매매 권유 아님.',
-  alternates: { canonical: '/strategy/kospi200-breakout' },
-};
+  url: '/strategy/kospi200-breakout',
+});
 
 export default function Kospi200BreakoutPage() {
   const data = loadLatest();

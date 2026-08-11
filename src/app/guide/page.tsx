@@ -5,18 +5,18 @@ import { GUIDES, getGuideClusters } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
 import { buildBreadcrumbSchema, buildItemListSchema, jsonLd } from '@/lib/schema';
+import { buildOg } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
-  title: 'ETF 가이드 모음 — 입문·세금·배당·해외·전략 한 곳에',
+  title: 'ETF 가이드 모음: 입문·세금·배당·해외·전략 한 곳에',
   description:
-    'ETF 입문·비용·세금·ISA 절세계좌·월배당·커버드콜·미국배당·해외지수·채권·적립식·리밸런싱까지 — 주제별로 묶은 ETF 가이드 허브. 검색 한 번이면 그 주제의 답이 한 자리에 정리됩니다.',
+    'ETF 입문·비용·세금·ISA 절세계좌·월배당·커버드콜·미국배당·해외지수·채권·적립식·리밸런싱까지, 주제별로 묶은 ETF 가이드 허브. 검색 한 번이면 그 주제의 답이 한 자리에 정리됩니다.',
   alternates: { canonical: '/guide' },
-  openGraph: {
-    title: 'ETF 가이드 모음 — 입문·세금·배당·해외·전략',
+  openGraph: buildOg({
+    title: 'ETF 가이드 모음: 입문·세금·배당·해외·전략',
     description: '주제별로 묶은 ETF 가이드 허브. 입문부터 절세계좌·해외지수·자산배분 전략까지 한 곳에.',
-    type: 'website',
     url: '/guide',
-  },
+  }),
   twitter: {
     card: 'summary_large_image',
     title: 'ETF 가이드 모음',

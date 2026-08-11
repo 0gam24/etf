@@ -1,6 +1,7 @@
 import { getPostsByCategory, CATEGORY_NAMES, THEME_CATEGORIES } from '@/lib/posts';
 import RecommendBox from '@/components/RecommendBox';
 import type { ProductCategory } from '@/lib/products';
+import { buildPageMetadata } from '@/lib/site-meta';
 
 function themeToProductCategory(theme: string): ProductCategory | undefined {
   const map: Record<string, ProductCategory> = {
@@ -32,22 +33,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!name) return { title: '테마를 찾을 수 없습니다' };
   const canonicalPath = `/theme/${theme}`;
   const desc = THEME_META[theme]?.desc || `${name} 테마 ETF의 종목별 비교와 최신 분석.`;
-  return {
-    title: `${name} 테마 ETF — Daily ETF Pulse`,
+  return buildPageMetadata({
+    title: `${name} 테마 ETF`,
     description: desc,
-    alternates: { canonical: canonicalPath },
-    openGraph: {
-      title: `${name} 테마 ETF — Daily ETF Pulse`,
-      description: desc,
-      type: 'website',
-      url: canonicalPath,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${name} 테마 ETF`,
-      description: desc,
-    },
-  };
+    url: canonicalPath,
+  });
 }
 
 export async function generateStaticParams() {

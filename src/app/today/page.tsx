@@ -5,6 +5,7 @@ import TodayReport from './TodayReport';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FreshnessPill from '@/components/FreshnessPill';
+import { buildPageMetadata } from '@/lib/site-meta';
 
 function loadLatest() {
   try {
@@ -16,11 +17,11 @@ function loadLatest() {
   }
 }
 
-export const metadata: Metadata = {
-  title: '오늘의 ETF 종합 리포트 — Daily ETF Pulse',
-  description: '오늘 거래량 TOP·상승/하락·시그널·분배락일 임박 ETF를 한 페이지에. 매일 평일 KST 16:00 자동 발행.',
-  alternates: { canonical: '/today' },
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: '오늘의 ETF 종합 리포트',
+  description: '오늘 거래량 TOP·상승/하락·시그널·분배락일 임박 ETF를 한 페이지에. 매일 평일 오후 4시 갱신.',
+  url: '/today',
+});
 
 export default function TodayPage() {
   const report = loadLatest();

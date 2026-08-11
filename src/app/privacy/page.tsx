@@ -2,15 +2,16 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { buildPageMetadata } from '@/lib/site-meta';
 
 const LAST_UPDATED = '2026-05-22';
 
-export const metadata: Metadata = {
-  title: '개인정보처리방침 — Daily ETF Pulse',
+export const metadata: Metadata = buildPageMetadata({
+  title: '개인정보처리방침',
   description:
     'Daily ETF Pulse(iknowhowinfo.com)의 개인정보 수집·이용·보유 정책, 쿠키 사용(Google AdSense·DoubleClick 포함), 제3자 광고 게재, 이용자 권리 및 행사 방법을 안내합니다.',
-  alternates: { canonical: '/privacy' },
-};
+  url: '/privacy',
+});
 
 export default function PrivacyPage() {
   const breadcrumb = buildBreadcrumbSchema([

@@ -19,12 +19,14 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 import RecommendBox from '@/components/RecommendBox';
+import { buildPageMetadata } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
-  title: '자금 흐름 리포트 — Daily ETF Pulse',
+export const metadata: Metadata = buildPageMetadata({
+  title: 'ETF 섹터 자금 흐름 리포트',
   description:
     '오늘 섹터별 자금 유입·유출과 대장 ETF · 가장 뜨거운/차가운 섹터 · 분석 글이 있는 테마는 즉시 연결. 중장기 포지셔닝을 위한 큰 그림.',
-};
+  url: '/flow',
+});
 
 export default function FlowLandingPage() {
   const posts = getPostsByCategory('flow');

@@ -5,6 +5,7 @@ import { AUTHORS, PUBLISHER, AI_DISCLOSURE } from '@/lib/authors';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
 import { buildPersonSchema, jsonLd } from '@/lib/schema';
+import { SITE_NAME, SITE_LOCALE, ogImageUrl } from '@/lib/site-meta';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -19,14 +20,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const a = AUTHORS[id];
   if (!a) return { title: '분석 모델 정보를 찾을 수 없습니다' };
   const canonicalPath = `/author/${id}`;
-  const title = `${a.title} | Daily ETF Pulse 분석 모델 정보`;
+  // 브랜드명은 layout template이 붙인다. 여기에 또 넣으면 두 번 노출된다.
+  const title = `${a.title} 분석 모델 정보`;
   const description = a.modelDescription;
+  const ogImage = ogImageUrl({ title: a.title, category: 'author' });
   return {
     title,
     description,
     alternates: { canonical: canonicalPath },
-    openGraph: { title, description, type: 'profile', url: canonicalPath },
-    twitter: { card: 'summary', title, description },
+    openGraph: {
+      siteName: SITE_NAME,
+      locale: SITE_LOCALE,
+      title,
+      description,
+      type: 'profile',
+      url: canonicalPath,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+    },
+    twitter: { card: 'summary', title, description, images: [ogImage] },
     // 인물 페르소나 노출 회피 — 사용자 가시 사이트에서 제외하되 schema entity 신호는 유지.
     robots: { index: false, follow: true },
   };

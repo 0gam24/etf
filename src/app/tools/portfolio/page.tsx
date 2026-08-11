@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import PortfolioSim from './PortfolioSim';
+import { buildPageMetadata } from '@/lib/site-meta';
 
-export const metadata: Metadata = {
-  title: 'ETF 포트폴리오 손익 계산기 — 종가 기준 시뮬레이션 — Daily ETF Pulse',
+export const metadata: Metadata = buildPageMetadata({
+  title: 'ETF 포트폴리오 손익 계산기',
   description: 'ETF 코드와 보유수량을 입력하면 KRX 종가 기준으로 손익·등락률·시장 평균 대비 성과를 자동 계산합니다. 본인 보유 ETF를 한 페이지에서 관리하세요. 입력값은 브라우저에만 저장됩니다.',
-  alternates: { canonical: '/tools/portfolio' },
-};
+  url: '/tools/portfolio',
+});
 
 export default function PortfolioPage() {
   return (

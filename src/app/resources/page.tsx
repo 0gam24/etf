@@ -5,18 +5,18 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductCard from '@/components/ProductCard';
 import AffiliateNotice from '@/components/AffiliateNotice';
 import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { buildOg } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
-  title: '추천 자료실 — ETF 도서·학습 도구',
+  title: '추천 자료실: ETF 도서·학습 도구',
   description:
     '시청자의 고민(월 OO만원 받기·은퇴 30년 자산·ETF 입문·커버드콜 구조·가계부·투자 심리)에 가장 가까운 책 한 권을 골라보세요. 본 사이트의 데이터와 짝지어 두면 좋은 큐레이션.',
   alternates: { canonical: '/resources' },
-  openGraph: {
-    title: '추천 자료실 — ETF 도서·학습 도구',
+  openGraph: buildOg({
+    title: '추천 자료실: ETF 도서·학습 도구',
     description: '당신의 고민에 가장 가까운 책 한 권 골라보세요.',
-    type: 'website',
     url: '/resources',
-  },
+  }),
   twitter: {
     card: 'summary_large_image',
     title: '추천 자료실',
@@ -35,7 +35,7 @@ export default function ResourcesPage() {
   const collectionSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: '추천 자료실 — ETF 도서·학습 도구',
+    name: '추천 자료실: ETF 도서·학습 도구',
     description: '시청자 고민 6가지로 묶은 ETF 학습 자료 큐레이션.',
     url: 'https://iknowhowinfo.com/resources',
     inLanguage: 'ko-KR',

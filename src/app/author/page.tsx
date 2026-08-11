@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { AUTHOR_LIST, PUBLISHER } from '@/lib/authors';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { buildPageMetadata } from '@/lib/site-meta';
 
 /**
  * /author — 분석 모델(저자) 인덱스.
@@ -9,10 +10,12 @@ import Breadcrumbs from '@/components/Breadcrumbs';
  *   인물 페르소나는 검색 노출하지 않으므로 noindex(follow) — 개별 페이지 정책과 일관.
  */
 export const metadata: Metadata = {
-  title: '분석 모델 — Daily ETF Pulse',
-  description:
-    'Daily ETF Pulse의 데이터 기반 AI 분석 모델 소개. KRX 공공데이터·한국은행 ECOS·DART 공시를 입력으로 분석하며, 발행·검수 책임은 편집팀에 있습니다.',
-  alternates: { canonical: '/author' },
+  ...buildPageMetadata({
+    title: '분석 모델',
+    description:
+      'Daily ETF Pulse의 데이터 기반 AI 분석 모델 소개. KRX 공공데이터·한국은행 ECOS·DART 공시를 입력으로 분석하며, 발행·검수 책임은 편집팀에 있습니다.',
+    url: '/author',
+  }),
   robots: { index: false, follow: true },
 };
 
