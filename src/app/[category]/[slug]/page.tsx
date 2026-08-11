@@ -25,7 +25,7 @@ import FaqSection from '@/components/FaqSection';
 import type { ProductCategory } from '@/lib/products';
 import { AUTHORS } from '@/lib/authors';
 import { buildArticleSchema, buildPersonSchema, jsonLd } from '@/lib/schema';
-import { SITE_NAME, SITE_LOCALE, articleTitle, articleDescription } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, articleTitle, articleDescription, toReportYmd } from '@/lib/site-meta';
 
 /** 글 카테고리 → 추천 자료 매칭 */
 function postCategoryToProductCategory(category: string): ProductCategory | undefined {
@@ -73,21 +73,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   //   (2026-08-11 감사: 제목 6그룹 23편·설명 9그룹 29편 중복, /income·/flow 집중)
   //   중복인 글에만 기준일을 붙여 구분한다. 본문·H1·URL은 그대로 둔다.
   const all = getAllPosts();
-  const ymdOf = (iso: string) => new Date(iso).toISOString().slice(0, 10);
+  // 기준일은 pulseDate(발행 대상일) 우선. date는 UTC 타임스탬프라 KST 기준 하루 밀린다.
+  const reportDateOf = (p: { meta: { pulseDate?: string; date: string } }) =>
+    toReportYmd(p.meta.pulseDate) || toReportYmd(p.meta.date) || '';
+  const ymdOf = (p: { meta: { pulseDate?: string; date: string } }) => reportDateOf(p);
+  const reportDate = reportDateOf(post);
   const sameTitle = all.filter(p => p.meta.title === post.meta.title);
   const titleDup = sameTitle.length > 1;
   // 같은 날짜에 같은 제목이 또 겹치면(종목만 다른 경우) 날짜만으로는 구분이 안 된다.
-  const sameTitleSameDay = sameTitle.filter(p => ymdOf(p.meta.date) === ymdOf(post.meta.date));
+  const sameTitleSameDay = sameTitle.filter(p => ymdOf(p) === reportDate);
   const discriminator = sameTitleSameDay.length > 1
     ? shortDiscriminator(post.meta.tickers?.[0] || '')
     : undefined;
   const sameDesc = all.filter(p => p.meta.description === post.meta.description);
   const descDup = sameDesc.length > 1;
-  const descDiscriminator = sameDesc.filter(p => ymdOf(p.meta.date) === ymdOf(post.meta.date)).length > 1
+  const descDiscriminator = sameDesc.filter(p => ymdOf(p) === reportDate).length > 1
     ? shortDiscriminator(post.meta.tickers?.[0] || '')
     : undefined;
-  const metaTitle = articleTitle({ title: post.meta.title, date: post.meta.date, isDuplicate: titleDup, discriminator });
-  const metaDesc = articleDescription({ description: post.meta.description, date: post.meta.date, isDuplicate: descDup, discriminator: descDiscriminator });
+  const metaTitle = articleTitle({ title: post.meta.title, date: reportDate, isDuplicate: titleDup, discriminator });
+  const metaDesc = articleDescription({ description: post.meta.description, date: reportDate, isDuplicate: descDup, discriminator: descDiscriminator });
   const ogTitle = typeof metaTitle === 'string' ? metaTitle : (metaTitle as { absolute: string }).absolute;
 
   return {

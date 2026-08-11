@@ -77,6 +77,23 @@ export function buildTwitter(input: OgInput): NonNullable<Metadata['twitter']> {
 const BRAND_SUFFIX_LEN = ' | Daily ETF Pulse'.length;
 
 /**
+ * 발행 기준일을 'YYYY-MM-DD'로 정규화.
+ *
+ *   글의 date는 UTC 발행 타임스탬프라(예: 2026-05-10T23:20Z) 그대로 쓰면 KST 기준
+ *   하루 전으로 표기된다(슬러그는 20260511인데 제목엔 2026-05-10). 검색결과에 잘못된
+ *   날짜가 노출되므로 KST(+9)로 옮겨 계산한다. 이미 'YYYY-MM-DD'면 그대로 쓴다.
+ */
+export function toReportYmd(input?: string): string | undefined {
+  if (!input) return undefined;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(input)) return input;
+  if (/^\d{8}$/.test(input)) return `${input.slice(0, 4)}-${input.slice(4, 6)}-${input.slice(6, 8)}`;
+  const d = new Date(input);
+  if (Number.isNaN(d.getTime())) return undefined;
+  const kst = new Date(d.getTime() + 9 * 60 * 60 * 1000);
+  return kst.toISOString().slice(0, 10);
+}
+
+/**
  * 글 제목을 메타 title로 변환 (2026-08-11 SEO 감사 후속)
  *
  *   ① 중복 해소 — 같은 제목이 여러 날짜에 걸쳐 발행된 글이 있다(/income 18편·/flow 5편).
@@ -93,12 +110,9 @@ export function articleTitle(input: {
   discriminator?: string;
 }): Metadata['title'] {
   let base = input.title;
-  if (input.isDuplicate && input.date) {
-    const d = new Date(input.date);
-    if (!Number.isNaN(d.getTime())) {
-      const ymd = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-      base = input.discriminator ? `${base} (${ymd} · ${input.discriminator})` : `${base} (${ymd} 기준)`;
-    }
+  const ymd = input.isDuplicate ? toReportYmd(input.date) : undefined;
+  if (ymd) {
+    base = input.discriminator ? `${base} (${ymd} · ${input.discriminator})` : `${base} (${ymd} 기준)`;
   }
   return base.length + BRAND_SUFFIX_LEN > 60 ? { absolute: base } : base;
 }
@@ -110,11 +124,12 @@ export function articleDescription(input: {
   isDuplicate?: boolean;
   discriminator?: string;
 }): string {
-  if (!input.isDuplicate || !input.date) return input.description;
-  const d = new Date(input.date);
-  if (Number.isNaN(d.getTime())) return input.description;
-  const ymd = `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`;
-  const lead = input.discriminator ? `${ymd} ${input.discriminator} 기준.` : `${ymd} 기준.`;
+  if (!input.isDuplicate) return input.description;
+  const ymd = toReportYmd(input.date);
+  if (!ymd) return input.description;
+  const [y, m, d] = ymd.split('-');
+  const label = `${y}년 ${Number(m)}월 ${Number(d)}일`;
+  const lead = input.discriminator ? `${label} ${input.discriminator} 기준.` : `${label} 기준.`;
   return `${lead} ${input.description}`;
 }
 
