@@ -20606,7 +20606,462 @@ const usEtfDripKorea: GuideDef = {
   ],
 };
 
+/**
+ * 신규 배치 2026-08-11 · 지식iN 질문 수요 기반 5편 (주제 선정 규칙 적용).
+ *   코퍼스 data/keywords/kin/kin-20260718.json(103건)에서 반복 수요 상위 클러스터를
+ *   기존 발행분과 겹치지 않는 세부 상황·대상별 롱테일로 확장.
+ *   반복 수요 상위: ISA·연금계좌 / 미국·해외ETF 세금 / 배당 현금흐름 / 환율.
+ *   각 편에 sourceQuestions(출처 질문) 저장.
+ */
+
+/** Q&A 1 · 은퇴 임박 시기 연금저축펀드 ETF 안정형 재편 */
+const pensionFundEtfNearRetirement: GuideDef = {
+  slug: 'pension-fund-etf-near-retirement',
+  title: '은퇴 5년 앞둔 연금저축펀드 ETF, 안정형으로 바꾸는 법',
+  tagline: '주식 비중을 줄이고 채권·TDF로 옮길 때 챙길 세 가지',
+  description:
+    '은퇴가 5년 안으로 다가온 시기에 연금저축펀드 ETF를 안정형으로 재편하는 방법을 정리했습니다. 세액공제 한도 유지, 주식 비중 축소와 채권·인컴·TDF 확대, 연금계좌에서 담을 수 없는 레버리지 상품, 55세 인출 시점의 세금까지 실제 질문 순서로 짚습니다.',
+  keywords: ['은퇴 연금저축펀드', '연금저축 ETF 안정형', '은퇴 앞둔 ETF 배분', '연금계좌 채권 ETF', 'TDF ETF', '연금저축 리밸런싱'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-11',
+  answer:
+    '은퇴가 가까워지면 연금저축펀드 안에서 주식형 ETF 비중을 서서히 줄이고 채권형·인컴형 ETF나 TDF 비중을 늘려 변동성을 낮추는 접근이 일반적입니다. 세액공제 한도(연금저축 600만원, IRP 합산 900만원)는 그대로 활용하되, 연금계좌에서는 레버리지·인버스 ETF를 담을 수 없고 만 55세 이후 연금으로 나눠 받아야 저율 과세가 적용된다는 점을 함께 따져야 합니다.',
+  keyPoints: [
+    '연금저축 세액공제 한도는 연 600만원, IRP를 합치면 900만원이며 총급여 5,500만원 이하는 16.5%, 초과는 13.2%가 적용됩니다.',
+    '은퇴가 5년 안쪽이면 주식형 ETF 비중을 단계적으로 낮추고 채권형·배당형·TDF 비중을 높여 하락기 손실 폭을 줄이는 방식이 널리 쓰입니다.',
+    '연금계좌에서는 파생 위험평가액이 자산의 40%를 넘는 레버리지·인버스 ETF를 담을 수 없어 안정형 재편 후보에서 자동 제외됩니다.',
+    '연금 수령액이 연 1,500만원 이하이면 3.3~5.5% 저율 연금소득세로 분리과세돼, 목돈을 한 번에 찾을 때보다 세 부담이 낮습니다.',
+  ],
+  sources: [
+    { label: '국세청 연금계좌 세액공제 안내', url: 'https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=7875' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'IRP·연금저축·연금저축펀드의 차이와 은퇴 대비 활용 순서를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494287819' },
+    { summary: '연금저축부터 가입하는 게 맞는지, 어떤 상품을 담아야 하는지 고민하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494334592' },
+    { summary: '연금저축펀드 안에서 담을 ETF 추천을 부탁하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=489444942' },
+  ],
+  sections: [
+    {
+      heading: '은퇴가 가까워질 때 연금저축펀드에서 먼저 볼 것',
+      paragraphs: [
+        '연금저축펀드는 은퇴 자금을 굴리는 계좌인 만큼, 은퇴가 다가올수록 "더 벌기"보다 "지키기"로 무게 중심이 옮겨갑니다. 적립기에는 주식형 ETF 비중을 높여 성장을 노렸다면, 은퇴가 5년 안쪽으로 들어오면 큰 하락을 견딜 시간이 줄어들기 때문입니다.',
+        '먼저 현재 계좌 안에 담긴 ETF가 어느 정도 위험을 지고 있는지 확인합니다. 미국·국내 지수형이나 성장 테마형에 쏠려 있다면, 은퇴 직전 하락장을 만났을 때 회복을 기다릴 여유가 부족할 수 있습니다.',
+        '세액공제 혜택 자체는 은퇴가 가까워도 그대로 유효합니다. 연금저축 연 600만원, IRP를 합쳐 900만원 한도는 소득이 있는 동안 계속 채울 수 있으니, 재편은 "한도를 버리는 일"이 아니라 "같은 한도 안에서 담는 종목을 바꾸는 일"입니다.',
+      ],
+    },
+    {
+      heading: '주식 비중 축소와 채권·인컴·TDF 확대',
+      paragraphs: [
+        '안정형으로 옮기는 가장 흔한 방법은 주식형 ETF 비중을 낮추고 그 자리를 채권형 ETF로 채우는 것입니다. 국고채·회사채 등 만기와 신용등급이 다른 채권 ETF를 섞으면 금리 변동에 대한 민감도를 조절할 수 있습니다.',
+        'TDF(타깃데이트펀드)형 ETF를 활용하는 방법도 있습니다. 목표 은퇴 시점이 다가올수록 주식 비중을 자동으로 줄여 주는 구조라, 매번 직접 비중을 손보기 부담스러운 경우에 편합니다. TDF의 원리는 TDF ETF 가이드에서 더 자세히 볼 수 있습니다.',
+        '분배금이 꾸준한 배당형·인컴형 ETF를 일부 담아 현금흐름을 미리 만들어 두는 것도 한 방법입니다. 다만 분배율이 높다고 무조건 좋은 것은 아니며, 기초자산이 꾸준한지 함께 봐야 합니다. 한 번에 다 바꾸기보다 몇 달에 걸쳐 나눠 옮기면 특정 시점의 가격에 휘둘리는 위험을 줄일 수 있습니다.',
+      ],
+    },
+    {
+      heading: '연금계좌에서 담을 수 없는 ETF와 갈아탈 때 주의',
+      paragraphs: [
+        '연금저축·IRP 같은 연금계좌에는 담을 수 없는 ETF가 있습니다. 파생상품 매매에 따른 위험평가액이 자산총액의 40%를 넘는 상품, 즉 레버리지·인버스 ETF가 대표적입니다. 변동성을 낮추려는 은퇴기 재편과는 방향이 반대라 후보에 들지도 않습니다.',
+        '해외 증시에 직접 상장된 종목(미국의 VOO·QQQ 등)도 연금계좌에서는 직접 매매할 수 없습니다. 같은 지수를 국내 상장 ETF로 담는 것은 가능하니, 지수 노출은 유지하면서 계좌 규칙에 맞는 상품으로 바꾸면 됩니다. 자세한 대체 방법은 연금계좌 미국 ETF 대체 가이드를 참고하세요.',
+        '기존 ETF를 팔고 다른 ETF로 갈아탈 때 연금계좌 안에서의 매매차익은 인출 전까지 과세가 미뤄집니다. 다만 잦은 매매는 비용을 늘리니, 목표 비중을 정한 뒤 큰 틀에서 조정하는 편이 낫습니다.',
+      ],
+    },
+    {
+      heading: '인출 시점의 세금, 55세와 연 1,500만원',
+      paragraphs: [
+        '연금계좌의 세제 혜택은 받을 때 완성됩니다. 만 55세 이후 연금 형태로 나눠 받으면 나이에 따라 3.3~5.5%의 낮은 연금소득세로 분리과세됩니다. 적립기에 세액공제로 돌려받고, 수령기에도 낮은 세율을 적용받는 구조입니다.',
+        '한 해에 받는 연금액이 커지면 셈법이 달라집니다. 사적연금 수령액이 연 1,500만원을 넘으면 종합과세하거나 16.5% 분리과세 중 선택하게 되므로, 수령 기간을 늘려 해마다 받는 금액을 낮추면 세 부담을 줄일 수 있습니다. 수령 단계 과세는 연금 수령 세금 가이드에서 더 다룹니다.',
+        '55세가 되기 전에 목돈으로 깨면 그동안 받은 세제 혜택이 기타소득세 16.5%로 회수될 수 있습니다. 그래서 안정형 재편은 "언제, 얼마씩 받을지"까지 함께 그려 두는 것이 좋습니다. 세법과 한도는 개정될 수 있으니 실행 전 국세청과 금융기관의 최신 기준을 확인하고, 최종 판단과 책임은 투자자 본인의 몫이라는 점을 기억하세요.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '은퇴 몇 년 전부터 안정형으로 바꾸는 게 좋나요?',
+      answer:
+        '정해진 정답은 없지만 은퇴가 5년 안쪽으로 들어오면 주식형 비중을 단계적으로 줄이는 경우가 많습니다. 큰 하락을 만나도 회복을 기다릴 시간이 줄기 때문입니다. 한 번에 바꾸기보다 몇 년에 걸쳐 서서히 조정하면 특정 시점 가격에 휘둘리는 위험이 작아집니다.',
+    },
+    {
+      question: '연금저축펀드에서 채권 ETF만 담아도 되나요?',
+      answer:
+        '가능합니다. 다만 채권도 금리가 오르면 가격이 내릴 수 있어 완전히 무위험은 아닙니다. 만기와 신용등급이 다른 채권 ETF를 섞고, 필요하면 배당형·TDF를 일부 곁들여 위험을 분산하는 편이 안정적입니다.',
+    },
+    {
+      question: '연금계좌에서 레버리지 ETF를 왜 못 담나요?',
+      answer:
+        '연금계좌는 파생상품 위험평가액이 자산총액의 40%를 넘는 상품을 담을 수 없도록 정해져 있습니다. 레버리지·인버스 ETF가 여기에 해당해 매수가 제한됩니다. 노후 자금의 변동성을 키우지 않으려는 취지입니다.',
+    },
+    {
+      question: '연금을 한 번에 찾으면 세금이 많이 나오나요?',
+      answer:
+        '만 55세 이후 연금으로 나눠 받으면 3.3~5.5% 저율 연금소득세가 적용되지만, 55세 전에 목돈으로 해지하면 받은 세제 혜택이 기타소득세 16.5%로 회수될 수 있습니다. 연 수령액이 1,500만원을 넘으면 과세 방식이 달라지니 수령 기간을 나누는 편이 유리합니다.',
+    },
+  ],
+};
+
+/** Q&A 2 · 사회초년생 소액 ETF, 중개형 ISA로 시작하기 */
+const firstEtfMonthly30Isa: GuideDef = {
+  slug: 'first-etf-monthly-30-isa',
+  title: '사회초년생 첫 ETF, 월 30만원 ISA 적립으로 시작하기',
+  tagline: '계좌 개설부터 자동이체까지, 소액으로 시작하는 순서',
+  description:
+    '사회초년생이 월 30만원 같은 소액으로 ETF 투자를 시작할 때, 왜 중개형 ISA부터 여는 게 유리한지 순서대로 정리했습니다. 계좌 개설, 국내 상장 ETF 고르기, 자동이체 적립, 비과세 한도와 3년 의무 기간까지 실제 질문을 따라 짚습니다.',
+  keywords: ['사회초년생 ETF', '월 30만원 ETF', 'ISA 소액 적립', 'ETF 시작 방법', '중개형 ISA', '적립식 ETF 초보'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-08-11',
+  answer:
+    '소액으로 ETF를 처음 시작한다면 중개형 ISA를 먼저 열고 그 안에서 국내 상장 ETF를 적립식으로 사 모으는 방법이 무난합니다. ISA는 계좌 안 순이익을 비과세 한도(일반형 200만원)까지 세금 없이, 초과분은 9.9%로 저율 분리과세해 소액 투자자도 절세 효과를 누릴 수 있고, 월 30만원씩 자동이체를 걸면 매수 시점을 고민하지 않고 꾸준히 모을 수 있습니다.',
+  keyPoints: [
+    'ISA 납입 한도는 연 2,000만원이라 월 30만원(연 360만원) 적립은 한도에 여유가 크고, 못 채운 한도는 다음 해로 이월됩니다.',
+    '중개형 ISA에서는 국내 상장 ETF를 직접 매매할 수 있어, 소액 적립식 투자와 궁합이 좋습니다.',
+    'ISA 계좌 순이익은 일반형 200만원, 서민형 400만원까지 비과세이고 초과분은 9.9%로 분리과세돼 일반 계좌보다 세 부담이 낮습니다.',
+    'ISA는 세제 혜택을 받으려면 3년 의무 가입 기간이 있어, 3년 안에 꼭 써야 할 돈은 넣지 않는 것이 안전합니다.',
+  ],
+  sources: [
+    { label: '금융투자협회 ISA 다모아', url: 'https://isa.kofia.or.kr' },
+    { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '꼭 주식이나 투자로 돈을 굴려야 하는지, 초보가 무엇부터 시작할지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=492536115' },
+    { summary: '초보 투자자가 어떤 ETF부터 사면 좋을지 추천을 구하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=475289127' },
+    { summary: 'ISA 계좌를 어떻게 시작하고 활용하는지 기본을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494349881' },
+  ],
+  sections: [
+    {
+      heading: '왜 첫 계좌로 중개형 ISA를 권하나',
+      paragraphs: [
+        '월급을 받기 시작하면 "투자를 해야 하나"라는 고민이 따라옵니다. 물가가 오르는 동안 현금만 쥐고 있으면 실질 가치가 조금씩 줄기 때문에, 여윳돈 일부를 분산된 자산에 꾸준히 넣는 것은 합리적인 선택입니다. 다만 처음부터 개별 종목을 고르기는 부담스러우니, 여러 종목에 한 번에 분산되는 ETF가 출발점으로 적당합니다.',
+        '계좌를 고를 때 사회초년생에게 유리한 카드가 중개형 ISA입니다. 일반 위탁계좌에서 그대로 투자하면 이익에 세금이 그대로 붙지만, ISA는 계좌 안에서 난 순이익을 일정 한도까지 비과세하고 초과분도 낮은 세율로 분리과세합니다. 세금이 적을수록 소액 투자자의 복리 효과가 커집니다.',
+        '중개형이어야 국내 상장 ETF를 직접 사고팔 수 있습니다. ISA에는 신탁형·일임형도 있지만, ETF를 스스로 골라 담으려면 중개형이 맞습니다. 세 가지 유형 차이는 ISA 중개형·신탁형·일임형 가이드에서 확인할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '월 30만원이면 한도는 넉넉하다',
+      paragraphs: [
+        'ISA 납입 한도는 연 2,000만원입니다. 월 30만원이면 한 해 360만원이라 한도의 5분의 1도 채우지 않으니, 소액으로 시작해도 한도가 부족할 걱정은 없습니다. 그해 다 넣지 못한 한도는 다음 해로 이월되므로, 나중에 여윳돈이 생기면 더 채울 수도 있습니다.',
+        '세제 혜택의 핵심은 두 가지입니다. 계좌 안 순이익(이익에서 손실을 뺀 값)이 일반형 200만원, 서민형 400만원까지는 비과세이고, 그 한도를 넘는 이익은 9.9%로 분리과세됩니다. 일반 계좌라면 이자·배당에 15.4%가 붙는 것과 비교하면 차이가 분명합니다.',
+        '한 사람이 가진 ISA는 전 금융회사를 통틀어 한 계좌뿐입니다. 그래서 수수료와 담을 수 있는 상품을 비교해 증권사를 신중히 고르는 게 좋습니다. 계좌별 비과세 한도 계산은 ISA 배당소득 비과세 한도 가이드에서 더 자세히 다룹니다.',
+      ],
+    },
+    {
+      heading: '무엇을 담고, 어떻게 자동이체를 거나',
+      paragraphs: [
+        '처음이라면 특정 테마나 개별 종목보다 폭넓게 분산된 지수형 ETF가 무난합니다. 국내 시장 전체나 미국 대표 지수를 추종하는 국내 상장 ETF가 대표적입니다. 한 종목에 몰기보다 두세 개로 나눠 담으면 특정 자산이 흔들릴 때 충격이 덜합니다.',
+        '핵심 습관은 자동이체 적립입니다. 증권사 앱에서 적립식 자동매수를 걸어 두면, 매달 정해진 날 정해진 금액으로 ETF를 사 줍니다. 값이 쌀 때 더 많은 수량을, 비쌀 때 더 적은 수량을 사게 되어 평균 매입 단가가 다듬어집니다. 이 원리는 적립식 투자 가이드에서 더 볼 수 있습니다.',
+        '금액은 생활에 무리가 없는 선에서 정합니다. 월 30만원은 예시일 뿐이고, 비상금을 따로 확보한 뒤 남는 여윳돈으로 시작하는 것이 순서입니다. 값이 흔들려도 자동이체를 유지하는 것이 소액 투자의 힘입니다.',
+      ],
+    },
+    {
+      heading: '3년 의무 기간과 시작 전 점검',
+      paragraphs: [
+        'ISA는 세제 혜택을 받으려면 통상 3년의 의무 가입 기간을 채워야 합니다. 그전에 해지하면 그동안 받은 혜택이 사라질 수 있어, 3년 안에 반드시 써야 하는 결혼·전세 자금 같은 돈은 ISA에 넣지 않는 편이 안전합니다.',
+        '급하게 쓸 일이 생길 때를 대비해, ISA는 원금 범위 안에서 중도인출이 되는지 미리 확인해 두면 좋습니다. 인출 규칙은 상품마다 조건이 다르니 가입 전 안내를 읽어보세요. 중도인출 원리는 ISA 중도인출 규칙 가이드에서 다룹니다.',
+        '정리하는 대신 한 가지만 기억하면 됩니다. 소액이라도 절세되는 계좌에서, 분산된 ETF를, 자동이체로 꾸준히. 이 글은 정보 제공을 위한 것이며 특정 상품 가입을 권하는 것이 아니고, 투자에 따른 손익은 본인에게 돌아갑니다. 한도·세율 같은 제도는 바뀔 수 있으니 시작 전 최신 기준을 확인하세요.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '월 30만원처럼 적은 돈으로도 ETF를 시작할 수 있나요?',
+      answer:
+        '가능합니다. ETF는 한 주 단위로 살 수 있고 적립식 자동매수를 걸면 매달 정해진 금액만큼 사 줍니다. 중요한 것은 금액의 크기보다 꾸준함이며, 비상금을 확보한 뒤 남는 여윳돈으로 시작하는 순서가 안전합니다.',
+    },
+    {
+      question: '왜 일반 계좌 대신 ISA로 시작하나요?',
+      answer:
+        'ISA는 계좌 안 순이익을 일반형 200만원, 서민형 400만원까지 비과세하고 초과분도 9.9%로 저율 분리과세합니다. 일반 계좌의 이자·배당 15.4% 과세와 비교하면 소액 투자자도 세금을 아껴 복리 효과를 키울 수 있습니다.',
+    },
+    {
+      question: '사회초년생은 어떤 ETF부터 담는 게 좋나요?',
+      answer:
+        '처음에는 특정 테마나 개별 종목보다 시장 전체나 대표 지수를 추종하는 분산형 ETF가 무난합니다. 한 종목에 몰지 않고 두세 개로 나눠 담으면 변동에 덜 흔들립니다. 본 답변은 정보 제공 목적이며 특정 종목 추천이 아닙니다.',
+    },
+    {
+      question: 'ISA는 3년을 못 채우면 어떻게 되나요?',
+      answer:
+        '3년 의무 가입 기간을 채우기 전에 해지하면 그동안 받은 세제 혜택이 사라질 수 있습니다. 그래서 3년 안에 꼭 써야 할 자금은 넣지 않는 것이 좋고, 급전이 필요할 때를 대비해 원금 범위 중도인출 조건을 미리 확인해 두면 도움이 됩니다.',
+    },
+  ],
+};
+
+/** Q&A 3 · 국내 상장 미국 ETF 분배금 세금과 실수령 계산 */
+const domesticUsEtfDistributionTaxCalc: GuideDef = {
+  slug: 'domestic-us-etf-distribution-tax-calc',
+  title: '국내 상장 미국 ETF 분배금, 세금 떼고 얼마 받나',
+  tagline: '배당소득세 15.4%와 금융소득 2천만원 선을 계산으로',
+  description:
+    '국내 상장 미국 ETF의 분배금에 붙는 배당소득세 15.4%가 어떻게 계산되는지, 실수령액은 얼마인지 예시로 정리했습니다. 매매차익 과세 방식, 금융소득 2천만원 종합과세 기준, 미국 직투와의 세금 차이까지 실제 질문 순서로 짚습니다.',
+  keywords: ['국내 상장 미국 ETF 세금', '분배금 배당소득세', 'ETF 분배금 실수령', '금융소득 종합과세', '미국 ETF 절세', '과표기준가'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-11',
+  answer:
+    '국내 상장 미국 ETF의 분배금은 배당소득으로 보아 15.4%(소득세 14%에 지방소득세 1.4% 포함)가 원천징수됩니다. 예를 들어 분배금이 10만원이면 15,400원을 떼고 84,600원이 통장에 들어옵니다. 매매차익도 배당소득으로 과세하며, 이렇게 생긴 연간 금융소득이 2,000만원을 넘으면 종합과세 대상이 되어 세율이 더 올라갈 수 있습니다.',
+  keyPoints: [
+    '국내 상장 미국 ETF 분배금은 배당소득세 15.4%가 원천징수돼, 10만원을 받으면 15,400원을 떼고 84,600원이 입금됩니다.',
+    '매매차익은 실제 차익과 과표기준가 증가분 중 더 작은 금액에 15.4%가 과세돼, 두 값 중 낮은 쪽 기준으로 세금이 매겨집니다.',
+    '분배금과 매매차익을 합친 연간 금융소득이 2,000만원을 넘으면 초과분이 종합과세되어 최고 세율 구간까지 올라갈 수 있습니다.',
+    'ISA나 연금계좌에서 담으면 같은 분배금이라도 비과세 한도·저율 분리과세·과세 이연으로 세 부담을 줄일 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 금융소득 종합과세 안내', url: 'https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=7869' },
+    { label: '한국거래소 ETF 세제 안내', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '미국 ETF에 투자할 때 세금을 아끼는 방법과 계좌 선택을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494339573' },
+    { summary: '주식·ETF 투자에서 세금이 어떻게 매겨지는지 기본을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494355422' },
+    { summary: '나스닥100과 S&P500에 장기투자할 때 미국 관련 세금을 걱정하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494346634' },
+  ],
+  sections: [
+    {
+      heading: '분배금에 붙는 배당소득세 15.4%',
+      paragraphs: [
+        '국내 증시에 상장된 미국 지수 ETF는 미국 종목을 담고 있어도 과세 방식은 "국내 상장 해외 ETF" 규칙을 따릅니다. 여기서 나오는 분배금(운용 과정에서 쌓인 배당 등을 투자자에게 나눠 주는 돈)은 세법상 배당소득입니다.',
+        '배당소득에는 15.4%가 붙습니다. 소득세 14%에 지방소득세 1.4%를 더한 값이고, 분배금을 지급할 때 증권사가 미리 떼어(원천징수) 남은 금액을 넣어 줍니다. 계산은 단순합니다. 분배금 10만원이면 15,400원을 떼고 84,600원이, 분배금 50만원이면 77,000원을 떼고 423,000원이 입금됩니다.',
+        '즉 통장에 찍히는 금액은 이미 세금을 뺀 실수령액입니다. 분배율을 볼 때도 세전 숫자라는 점을 감안해야 실제 손에 쥐는 현금흐름을 정확히 가늠할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '매매차익은 어떻게 과세되나',
+      paragraphs: [
+        '국내 상장 해외 ETF는 팔아서 남긴 차익도 배당소득으로 과세합니다. 여기에 한 가지 장치가 있습니다. 실제로 번 매매차익과 "과표기준가 증가분" 중 더 작은 금액에만 15.4%를 매깁니다. 과표기준가는 세금 계산의 기준이 되는 값으로, 매수 시점과 매도 시점의 이 값 차이가 과세 대상 상한이 됩니다.',
+        '예를 들어 실제 차익이 100만원인데 과표기준가 증가분이 80만원이라면, 둘 중 작은 80만원에 15.4%인 123,200원이 세금입니다. 반대로 과표기준가 증가분이 더 크면 실제 차익을 기준으로 매깁니다. 투자자에게 불리하지 않게 낮은 쪽을 택하는 구조입니다.',
+        '국내 주식형 ETF는 매매차익이 비과세인 것과 달리, 해외 지수를 담는 ETF는 이렇게 매매차익에도 세금이 붙습니다. 유형별 과세 차이는 국내주식형·기타형 ETF 세금 가이드에서 더 정리했습니다.',
+      ],
+    },
+    {
+      heading: '금융소득 2천만원 선을 넘으면',
+      paragraphs: [
+        '분배금과 매매차익을 합친 배당·이자 소득이 한 해 2,000만원을 넘으면 금융소득 종합과세 대상이 됩니다. 2,000만원까지는 15.4% 분리과세로 끝나지만, 초과분은 다른 소득과 합산해 누진세율을 적용받아 세율이 더 높아질 수 있습니다.',
+        '소액 투자자라면 대개 이 선에 닿지 않아 15.4%로 정리되지만, 분배금이 큰 고배당 ETF를 많이 담았거나 자산 규모가 크다면 미리 계산해 볼 필요가 있습니다. 종합과세 기준과 대응은 금융소득종합과세 가이드에서 다룹니다.',
+        '금융소득이 커지면 세금뿐 아니라 건강보험료에도 영향을 줄 수 있습니다. 피부양자 자격과의 관계는 금융소득과 건강보험 가이드를 함께 참고하세요.',
+      ],
+    },
+    {
+      heading: '절세하려면 계좌부터, 직투와의 차이',
+      paragraphs: [
+        '같은 미국 지수 ETF라도 어느 계좌에 담느냐로 세금이 달라집니다. ISA에서 담으면 계좌 안 순이익을 비과세 한도까지 세금 없이, 초과분은 9.9%로 낮게 분리과세합니다. 연금저축·IRP에 담으면 과세가 인출 시점까지 미뤄지고 낮은 연금소득세를 적용받습니다.',
+        '미국 증시에 직접 상장된 ETF(예: VOO)를 직투로 사면 과세 방식이 또 다릅니다. 매매차익은 양도소득세(연 250만원 기본공제 후 22%)로, 분배금은 배당소득세로 나뉘어 계산됩니다. 국내 상장 미국 ETF와 직투의 세금 비교는 미국 직투 vs ISA 국내 상장 미국 ETF 가이드에서 자세히 볼 수 있습니다.',
+        '어느 쪽이 유리한지는 투자 금액, 보유 기간, 다른 소득 상황에 따라 달라집니다. 세법과 한도는 개정될 수 있으니 실제 매매 전 국세청과 증권사의 최신 안내로 확인하고, 판단과 책임은 투자자 본인에게 있다는 점을 잊지 마세요.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '국내 상장 미국 ETF 분배금에서 세금은 얼마나 떼나요?',
+      answer:
+        '배당소득세 15.4%(소득세 14%에 지방소득세 1.4% 포함)가 원천징수됩니다. 분배금 10만원이면 15,400원을 떼고 84,600원이, 50만원이면 77,000원을 떼고 423,000원이 통장에 들어옵니다. 통장에 찍히는 금액은 이미 세금을 뺀 실수령액입니다.',
+    },
+    {
+      question: '매매차익에도 세금이 붙나요?',
+      answer:
+        '네. 국내 상장 해외 ETF는 매매차익도 배당소득으로 15.4% 과세합니다. 단 실제 매매차익과 과표기준가 증가분 중 더 작은 금액에만 매겨, 투자자에게 불리하지 않게 낮은 쪽을 기준으로 계산합니다.',
+    },
+    {
+      question: '금융소득이 얼마를 넘으면 세금이 더 나오나요?',
+      answer:
+        '분배금과 매매차익을 합친 연간 금융소득이 2,000만원을 넘으면 초과분이 종합과세 대상이 됩니다. 2,000만원까지는 15.4%로 끝나지만, 초과분은 다른 소득과 합산해 누진세율이 적용돼 세율이 올라갈 수 있습니다.',
+    },
+    {
+      question: '세금을 줄이려면 어떻게 담아야 하나요?',
+      answer:
+        'ISA에 담으면 순이익을 비과세 한도까지 세금 없이, 초과분은 9.9%로 낮게 분리과세합니다. 연금저축·IRP는 과세가 인출까지 미뤄집니다. 같은 ETF라도 계좌 선택으로 세 부담이 달라지니 투자 목적에 맞춰 계좌를 나눠 쓰는 것이 일반적입니다.',
+    },
+  ],
+};
+
+/** Q&A 4 · ISA 만기 목돈으로 월배당 현금흐름 만들기 */
+const isaMaturityMonthlyDividendIncome: GuideDef = {
+  slug: 'isa-maturity-monthly-dividend-income',
+  title: 'ISA 만기 목돈으로 월배당 현금흐름 만드는 법',
+  tagline: '3년 모은 돈을 다달이 들어오는 분배금으로 바꾸기',
+  description:
+    'ISA 3년 만기로 모은 목돈을 월배당 ETF에 옮겨 다달이 현금흐름을 만드는 방법을 정리했습니다. 만기 자금의 세 갈래 선택, 손익 통산과 저율 분리과세, 월배당 ETF를 담을 때 분배율만 보지 말아야 하는 이유까지 실제 질문 순서로 짚습니다.',
+  keywords: ['ISA 만기 월배당', 'ISA 목돈 활용', '월배당 ETF 현금흐름', 'ISA 만기 자금', 'ISA 분배금', 'ISA 재투자'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-08-11',
+  answer:
+    'ISA 3년 만기로 모은 목돈은 다시 ISA로 굴리거나, 연금계좌로 옮기거나, 월배당 ETF 중심으로 재배치해 현금흐름을 만들 수 있습니다. 월배당을 노린다면 만기 자금으로 국내 상장 월배당·배당형 ETF를 담아 매달 분배금을 받는 방식이 있는데, 분배율이 높다고 다 좋은 것은 아니며 기초자산이 꾸준한지와 계좌별 세금을 함께 따져야 합니다.',
+  keyPoints: [
+    'ISA는 계좌 안 순이익을 일반형 200만원, 서민형 400만원까지 비과세하고 초과분은 9.9%로 분리과세해, 만기까지 손익을 통산한 절세 목돈이 만들어집니다.',
+    'ISA 만기 자금은 재가입·연금 전환·현금흐름 재배치 세 갈래이며, 월배당을 원하면 분배형 ETF 중심으로 재구성합니다.',
+    '월배당 ETF의 분배금은 대개 배당소득세 15.4%가 붙으므로, 세전 분배율이 아니라 세후 실수령 기준으로 목표 현금흐름을 역산해야 합니다.',
+    '높은 분배율만 좇으면 기초자산 가치가 깎일 수 있어, 안정성 등급과 분배 재원 구조를 함께 확인하는 것이 안전합니다.',
+  ],
+  sources: [
+    { label: '금융투자협회 ISA 다모아', url: 'https://isa.kofia.or.kr' },
+    { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 계좌를 연장할지 연금저축으로 옮길지 만기 앞두고 고민하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493760173' },
+    { summary: 'ISA 계좌에서 KODEX 같은 국내 상장 ETF를 어떻게 담고 굴릴지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494102222' },
+  ],
+  comparisonTable: {
+    caption: 'ISA 만기 목돈, 어디로 보내느냐에 따른 성격',
+    columns: ['선택', '무엇을 얻나', '유동성'],
+    rows: [
+      ['월배당 ETF로 재배치', '다달이 분배금 현금흐름', '언제든 매도 가능'],
+      ['연금계좌로 전환', '추가 세액공제(전환 10%)', '55세까지 묶임'],
+      ['ISA 재가입·연장', '계속 절세하며 운용', '3년 후 인출 자유'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'ISA 만기 목돈, 세 갈래 길',
+      paragraphs: [
+        'ISA는 3년 의무 기간을 채우면 만기를 맞고, 그동안 손익을 통산해 세금을 아낀 목돈이 손에 들어옵니다. 이 돈을 어떻게 쓰느냐에 따라 세 갈래가 있습니다. 다시 ISA로 굴려 계속 절세하기, 연금계좌로 옮겨 추가 세액공제를 받기, 그리고 월배당 ETF 중심으로 재배치해 현금흐름을 만들기입니다.',
+        '이 글이 다루는 것은 세 번째입니다. 목돈을 그대로 두기보다 매달 분배금이 들어오도록 배치하면, 생활비를 보태거나 재투자 재원을 만드는 데 쓸 수 있습니다. 은퇴가 가깝거나 안정적인 현금흐름을 원할 때 특히 어울립니다.',
+        '만기 자금을 연금계좌로 옮기는 선택은 추가 세액공제라는 별도 혜택이 있어 함께 저울질할 만합니다. 그 셈법은 ISA 만기 자금 연금 전환 가이드에서 자세히 다룹니다. 여기서는 현금흐름 만들기에 집중합니다.',
+      ],
+    },
+    {
+      heading: '왜 만기 자금이 현금흐름에 유리한가',
+      paragraphs: [
+        'ISA로 3년을 굴리면 그 안에서 난 이익과 손실을 합산(통산)해 비과세 한도까지는 세금 없이, 넘는 부분도 9.9%로 낮게 정리한 상태의 목돈이 됩니다. 일반 계좌에서 굴린 돈보다 세금을 덜 떼인 만큼 더 큰 종잣돈으로 현금흐름을 시작할 수 있습니다.',
+        '이 목돈으로 월배당·배당형 ETF를 담으면 매달 또는 분기마다 분배금이 들어옵니다. 여러 종목의 분배 일정을 겹치도록 짜면 다달이 현금이 들어오는 구조를 만들 수 있습니다. 월배당 설계의 기본은 월배당 ETF 완전 가이드에서 볼 수 있습니다.',
+        '주의할 점은 만기 후 일반계좌로 옮겨 담으면 그 뒤로 발생하는 분배금·매매차익에는 일반 과세가 적용된다는 것입니다. 계속 절세하며 현금흐름을 원한다면 ISA를 다시 열어 그 안에서 분배형 ETF를 담는 방법도 있습니다.',
+      ],
+    },
+    {
+      heading: '분배율만 보면 안 되는 이유',
+      paragraphs: [
+        '월배당 ETF를 고를 때 가장 흔한 실수가 분배율 숫자만 비교하는 것입니다. 분배율이 높은 상품 중에는 커버드콜 같은 전략으로 분배 재원을 만드는 경우가 많은데, 상승장에서 수익이 제한되거나 기초자산 가치가 서서히 깎이며 분배가 유지되는 구조도 있습니다.',
+        '그래서 세전 분배율보다 "기초자산이 꾸준한가", "분배 재원이 어디서 오는가"를 함께 봐야 합니다. 높은 분배율에 끌려 원금 가치가 줄어드는 상품에 몰리면, 다달이 받는 현금 뒤에서 자산이 얇아질 수 있습니다. 커버드콜의 구조적 특징은 커버드콜 ETF 분배와 기초자산 가이드에서 다룹니다.',
+        '분배금에는 대체로 배당소득세 15.4%가 붙습니다. 목표 현금흐름을 세울 때는 세전 분배금이 아니라 세금을 뺀 실수령액으로 역산해야 계획이 어긋나지 않습니다. 두세 종목으로 분산하고 안정성 등급을 함께 보면 한쪽에 쏠리는 위험을 줄일 수 있습니다.',
+      ],
+    },
+    {
+      heading: '실전 배치 순서와 점검',
+      paragraphs: [
+        '먼저 목표를 정합니다. 매달 얼마의 현금흐름이 필요한지 정하고, 세후 분배금 기준으로 필요한 투자 원금을 역산합니다. 예를 들어 세후 월 20만원을 원한다면 연 240만원이 필요하고, 세전 분배율을 감안해 담을 금액을 가늠합니다.',
+        '다음으로 분배 일정이 서로 다른 ETF를 골라 매달 현금이 들어오게 짭니다. 한 종목에 몰지 않고 성격이 다른 두세 개로 나누되, 각 상품의 기초자산과 분배 재원을 확인합니다. 만기 자금을 한 번에 다 넣기보다 몇 차례 나눠 담으면 특정 시점 가격에 휘둘리는 위험이 작아집니다.',
+        '마지막으로 계좌 성격을 정리합니다. 계속 절세하려면 ISA 재가입, 노후 자금이면 연금 전환, 자유로운 인출이 필요하면 일반계좌를 섞어 씁니다. 이 글은 정보 제공을 위한 것이며 특정 상품 매수를 권하지 않고, 투자 손익과 최종 판단은 본인의 몫입니다. 세율·한도는 바뀔 수 있으니 실행 전 최신 기준을 확인하세요.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA 만기 자금으로 월배당을 받으려면 어떻게 하나요?',
+      answer:
+        '만기로 받은 목돈으로 분배 일정이 서로 다른 국내 상장 월배당·배당형 ETF를 나눠 담으면 다달이 분배금이 들어오는 구조를 만들 수 있습니다. 계속 절세하려면 ISA를 다시 열어 그 안에서 담는 방법도 있습니다.',
+    },
+    {
+      question: '분배율이 높은 ETF일수록 좋은 건가요?',
+      answer:
+        '꼭 그렇지 않습니다. 높은 분배율 뒤에 기초자산 가치가 깎이는 구조가 있을 수 있습니다. 세전 분배율보다 기초자산이 꾸준한지, 분배 재원이 어디서 나오는지, 안정성 등급이 어떤지를 함께 봐야 다달이 받는 현금 뒤에서 원금이 얇아지는 것을 피할 수 있습니다.',
+    },
+    {
+      question: '만기 자금을 일반계좌로 옮기면 세금이 달라지나요?',
+      answer:
+        '네. ISA를 벗어나 일반계좌에서 담으면 그 뒤 발생하는 분배금·매매차익에는 일반 과세가 적용됩니다. 분배금에는 대체로 배당소득세 15.4%가 붙으니, 계속 절세하며 현금흐름을 원하면 ISA 재가입을 고려할 수 있습니다.',
+    },
+    {
+      question: '월배당과 연금 전환 중 무엇이 나은가요?',
+      answer:
+        '돈의 쓰임에 달렸습니다. 지금 현금흐름이 필요하면 월배당 재배치가, 노후까지 둘 여유가 있고 올해 공제받을 소득이 있으면 연금 전환이 유리할 수 있습니다. 연금계좌는 55세 전 인출 시 불이익이 있어, 언제 쓸 돈인지부터 정하는 것이 순서입니다.',
+    },
+  ],
+};
+
+/** Q&A 5 · 미국 지수 ETF 환헤지 vs 환노출, 장기 적립 관점 */
+const usEtfHedgedVsUnhedgedDca: GuideDef = {
+  slug: 'us-etf-hedged-vs-unhedged-dca',
+  title: '미국 지수 ETF 환헤지 vs 환노출, 장기 적립이면',
+  tagline: '매달 사 모을 때 (H)를 붙이는 게 나을까',
+  description:
+    'S&P500·나스닥100 같은 미국 지수 ETF를 장기 적립식으로 모을 때 환헤지형과 환노출형 중 무엇을 고를지 정리했습니다. 환헤지 비용, 환율이 수익에 반영되는 방식, 달러 분산 효과, 적립식에서의 판단 기준까지 실제 질문 순서로 짚습니다.',
+  keywords: ['미국 ETF 환헤지', '환헤지 환노출 차이', 'S&P500 환헤지', '적립식 환헤지', '환노출 ETF 장기투자', '(H) ETF 선택'],
+  section: '환헤지 가이드',
+  lastReviewed: '2026-08-11',
+  answer:
+    '미국 지수 ETF를 장기 적립식으로 모을 때는 환노출형(환헤지를 하지 않는 형)을 고르는 경우가 많습니다. 환노출형은 원/달러 환율 변동이 수익에 그대로 반영돼 달러 자산에 분산하는 효과가 있고, 환헤지에 드는 비용이 없기 때문입니다. 환헤지형(이름에 H가 붙는 형)은 환율 영향을 줄이는 대신 헤지 비용이 들어, 환율 방향을 예측하기보다 장기 분산을 원한다면 환노출형이 무난합니다.',
+  keyPoints: [
+    '이름에 (H)가 붙으면 환헤지형, 없으면 환노출형이며, 환헤지에는 통상 연 단위 비용이 들어 장기 보유 시 수익률을 갉아먹을 수 있습니다.',
+    '환노출형은 원/달러 환율이 오르면 수익에 더해지고 내리면 깎여, 미국 자산과 달러에 동시에 분산하는 효과가 있습니다.',
+    '적립식은 매달 다른 환율에 나눠 사 평균 환율이 다듬어지므로, 환율 타이밍을 맞추려 환헤지에 기댈 필요가 상대적으로 적습니다.',
+    '환헤지형은 환율이 내릴 것으로 볼 때 유리할 수 있으나 방향 예측은 어렵고 비용이 들어, 단기·특정 목적이 아니면 장기 적립엔 환노출형이 흔한 선택입니다.',
+  ],
+  sources: [
+    { label: '한국은행 경제통계시스템(ECOS) 환율', url: 'https://ecos.bok.or.kr' },
+    { label: '금융투자협회 전자공시서비스', url: 'https://dis.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '나스닥100과 S&P500에 장기투자할 때 환율·미국 관련 변수를 걱정하는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494346634' },
+    { summary: 'S&P500과 VOO 중 무엇을 어떻게 담을지, 환전·환율을 함께 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494129410' },
+  ],
+  comparisonTable: {
+    caption: '환헤지형 vs 환노출형, 장기 적립 관점',
+    columns: ['구분', '환헤지형 (H)', '환노출형'],
+    rows: [
+      ['환율 영향', '줄이려 함', '수익에 그대로 반영'],
+      ['추가 비용', '헤지 비용 발생', '별도 헤지 비용 없음'],
+      ['달러 분산', '약함', '달러에 함께 분산'],
+      ['이런 분께', '환율 하락을 볼 때', '장기 적립·분산 우선'],
+    ],
+  },
+  sections: [
+    {
+      heading: '환헤지형과 환노출형, 무엇이 다른가',
+      paragraphs: [
+        '같은 미국 지수를 담는 ETF라도 환율을 다루는 방식에 따라 두 갈래로 나뉩니다. 이름 끝에 (H)가 붙으면 환헤지형으로 원/달러 환율 변동의 영향을 줄이려 설계된 상품이고, (H)가 없으면 환노출형으로 환율이 수익에 그대로 반영됩니다.',
+        '환노출형에서는 미국 주가가 오르지 않아도 원/달러 환율이 오르면 원화 기준 수익이 더해지고, 반대로 환율이 내리면 수익이 깎입니다. 미국 자산과 달러라는 두 가지에 동시에 노출되는 셈입니다.',
+        '환헤지형은 이 환율 출렁임을 줄여 주가 흐름만 따라가도록 만듭니다. 대신 환헤지에는 비용이 들어갑니다. 두 방식의 기본 개념은 환헤지 vs 환노출 ETF 가이드에서 더 자세히 볼 수 있습니다.',
+      ],
+    },
+    {
+      heading: '환헤지 비용이 장기 수익을 갉는다',
+      paragraphs: [
+        '환헤지는 공짜가 아닙니다. 두 나라의 금리 차이 등으로 헤지를 유지하는 데 비용이 들고, 이 비용은 오래 보유할수록 누적됩니다. 몇 년에 걸쳐 적립하고 장기 보유하는 전략이라면 이 비용이 수익률을 조금씩 깎아내릴 수 있습니다.',
+        '반면 환노출형은 별도의 헤지 비용이 없습니다. 환율이 어디로 갈지는 아무도 정확히 모르지만, 장기 적립에서 굳이 비용을 들여 환율 영향을 없앨 이유가 크지 않다는 판단이 환노출형 선호로 이어집니다.',
+        '물론 환율이 내릴 것이라는 뚜렷한 근거가 있다면 그 구간에서는 환헤지형이 유리할 수 있습니다. 다만 환율 방향을 꾸준히 맞히기는 어렵기 때문에, 예측에 기대기보다 비용과 분산 효과를 기준으로 고르는 편이 마음이 편합니다.',
+      ],
+    },
+    {
+      heading: '적립식이라 환율 타이밍이 덜 중요하다',
+      paragraphs: [
+        '적립식 투자에는 환율에 대한 방어가 이미 어느 정도 녹아 있습니다. 매달 정해진 금액으로 나눠 사면 그때그때 다른 환율에 매수하게 되고, 시간이 지나면 매입 환율이 평균으로 다듬어집니다. 한 번에 목돈을 넣을 때보다 특정 환율에 크게 휘둘리지 않습니다.',
+        '그래서 매달 사 모으는 장기 투자자에게는 환헤지의 필요성이 상대적으로 줄어듭니다. 환율이 높을 때는 적은 수량을, 낮을 때는 많은 수량을 사게 되어 평균 매입 단가가 정리되는 적립식 원리와 결이 같습니다. 적립식의 기본은 적립식 투자 가이드를 참고하세요.',
+        '달러 자산을 일부 갖는다는 관점에서도 환노출형이 어울립니다. 원화 자산에 치우친 포트폴리오에 환노출형 미국 ETF를 더하면 통화까지 분산하는 효과가 생깁니다.',
+      ],
+    },
+    {
+      heading: '언제 환헤지형이 어울리나',
+      paragraphs: [
+        '환노출형이 장기 적립에 무난하다고 해서 환헤지형이 늘 불리한 것은 아닙니다. 목표 시점이 정해져 있고 그 무렵 원/달러 환율이 내려 손실을 볼 위험을 줄이고 싶다면, 또는 환율 출렁임 자체가 부담스러워 주가 흐름만 담고 싶다면 환헤지형이 맞을 수 있습니다.',
+        '단기에 쓸 목적이거나 환율 변동을 견디기 어려운 성향이라면 환헤지형으로 마음의 부담을 더는 선택도 합리적입니다. 결국 정답은 환율 예측이 아니라 본인의 투자 기간과 성향에 달려 있습니다.',
+        '같은 지수·같은 환헤지 조건이라면 총보수가 낮고 거래가 활발한 상품이 대체로 편합니다. 상품을 고르는 기준은 같은 지수 ETF 고르기 가이드에서 볼 수 있습니다. 이 글은 정보 제공 목적이며 특정 상품 추천이 아니고, 환율과 주가 모두 변동하므로 투자 결과의 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '장기 적립이면 환헤지형과 환노출형 중 뭐가 나은가요?',
+      answer:
+        '오래 나눠 사 모으는 전략이라면 환노출형을 고르는 경우가 많습니다. 환헤지 비용이 없고, 매달 다른 환율에 나눠 사 평균 환율이 다듬어지며, 달러에 함께 분산되기 때문입니다. 다만 환율 하락 위험을 특히 줄이고 싶다면 환헤지형도 선택지가 됩니다.',
+    },
+    {
+      question: '이름 뒤에 붙은 (H)는 무슨 뜻인가요?',
+      answer:
+        '(H)는 환헤지(Hedge)형이라는 표시로, 원/달러 환율 변동의 영향을 줄이도록 설계된 상품입니다. (H)가 없으면 환노출형으로 환율이 수익에 그대로 반영됩니다. 헤지에는 비용이 들어 장기 보유 시 수익률에 영향을 줄 수 있습니다.',
+    },
+    {
+      question: '환헤지를 하면 손해를 안 보나요?',
+      answer:
+        '아닙니다. 환헤지는 환율 변동의 영향을 줄일 뿐 주가 하락 위험까지 없애 주지는 않습니다. 또 헤지 비용이 들고, 환율이 오르는 구간에서는 오히려 환노출형이 얻는 이익을 놓칠 수 있습니다. 방향 예측보다 비용과 성향으로 판단하는 편이 낫습니다.',
+    },
+    {
+      question: '환노출형은 환율이 내리면 어떻게 되나요?',
+      answer:
+        '환노출형은 원/달러 환율이 내리면 원화 기준 수익이 그만큼 깎입니다. 반대로 환율이 오르면 수익이 더해집니다. 적립식으로 오래 모으면 매입 환율이 평균으로 다듬어져 특정 시점 환율에 크게 휘둘리는 위험이 줄어듭니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  pensionFundEtfNearRetirement,
+  firstEtfMonthly30Isa,
+  domesticUsEtfDistributionTaxCalc,
+  isaMaturityMonthlyDividendIncome,
+  usEtfHedgedVsUnhedgedDca,
   stockOrderRejectedReasons,
   dividendRecordDateReform,
   retireeDividendEtfMonthlyIncome,
@@ -20850,6 +21305,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-11 · 지식iN 질문 수요 기반 (은퇴 임박 연금저축펀드 안정형 재편·사회초년생 월 30만원 ISA 시작·국내 상장 미국 ETF 분배금 세금 계산·ISA 만기 목돈 월배당 현금흐름·미국 지수 ETF 환헤지 vs 환노출 장기적립)
+  'pension-fund-etf-near-retirement': '2026-08-11',
+  'first-etf-monthly-30-isa': '2026-08-11',
+  'domestic-us-etf-distribution-tax-calc': '2026-08-11',
+  'isa-maturity-monthly-dividend-income': '2026-08-11',
+  'us-etf-hedged-vs-unhedged-dca': '2026-08-11',
   // 2026-08-06 · 지식iN 질문 수요 기반 (매수 주문 체결 안 되는 이유·배당기준일 개편 선배당 후투자·은퇴자 배당 ETF 월 생활비 역산·코인 선물 강제청산 원리·미국 ETF 배당 자동재투자 DRIP 국내)
   'stock-order-rejected-reasons': '2026-08-06',
   'dividend-record-date-reform': '2026-08-06',
@@ -21141,12 +21602,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'first-etf-monthly-30-isa'],
   },
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'pension-fund-etf-near-retirement', 'domestic-us-etf-distribution-tax-calc', 'isa-maturity-monthly-dividend-income'],
   },
   {
     title: '배당·인컴',
@@ -21161,7 +21622,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea', 'us-etf-hedged-vs-unhedged-dca'],
   },
   {
     title: '전략·자산배분',
