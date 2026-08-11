@@ -9,7 +9,7 @@ import type { RawEtf } from '@/lib/surge';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import RecommendBox from '@/components/RecommendBox';
-import { buildBreadcrumbSchema, buildItemListSchema, jsonLd } from '@/lib/schema';
+import { buildItemListSchema, jsonLd } from '@/lib/schema';
 import { buildPageMetadata } from '@/lib/site-meta';
 
 /**
@@ -106,18 +106,12 @@ export default async function AccountPage({ params }: PageProps) {
   const etfList = (getLatestEtfData()?.etfList || []) as RawEtf[];
   const incomeEtfs = getEtfsBySector('커버드콜·월배당', '', 8, etfList);
 
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '가이드', href: '/guide' },
-    { name, href: `/account/${type}` },
-  ]);
   const itemListSchema = guides.length
     ? buildItemListSchema(guides.map(g => ({ url: `/guide/${g!.slug}`, name: g!.title })), `${name} 관련 가이드 ${guides.length}편`)
     : null;
 
   return (
     <div className="animate-fade-in">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }} />
       {itemListSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(itemListSchema) }} />
       )}

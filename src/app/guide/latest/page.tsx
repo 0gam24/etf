@@ -4,7 +4,7 @@ import { ArrowRight, CalendarDays, LayoutGrid, BookOpen } from 'lucide-react';
 import { GUIDES, getGuidePublishedAt, type GuideDef } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
-import { buildBreadcrumbSchema, buildItemListSchema, jsonLd } from '@/lib/schema';
+import { buildItemListSchema, jsonLd } from '@/lib/schema';
 import { buildOg } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
@@ -62,11 +62,6 @@ export default function GuideLatestPage() {
   }
 
   const orderedForSchema = [...dated, ...foundational];
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '가이드', href: '/guide' },
-    { name: '최신 발행순', href: '/guide/latest' },
-  ]);
   const itemListSchema = buildItemListSchema(
     orderedForSchema.map(g => ({ url: `/guide/${g.slug}`, name: g.title })),
     `Daily ETF Pulse 가이드 ${GUIDES.length}종 — 최신 발행순`,
@@ -74,7 +69,6 @@ export default function GuideLatestPage() {
 
   return (
     <div className="guide-index animate-fade-in">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(itemListSchema) }} />
 
       <Breadcrumbs

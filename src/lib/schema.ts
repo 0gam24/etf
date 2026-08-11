@@ -7,6 +7,15 @@
 
 const SITE = process.env.SITE_URL || 'https://iknowhowinfo.com';
 const SITE_NAME = 'Daily ETF Pulse';
+
+/**
+ * Dataset의 외부 publisher 이름 → 공식 URL.
+ *   시세 원천은 공공데이터포털(data.go.kr) ETF 시세 API다(src/app/api/etf/route.ts).
+ *   여기에 없는 이름은 자사 URL로 폴백한다.
+ */
+const PUBLISHER_URLS: Record<string, string> = {
+  '한국거래소(KRX) 공공데이터 포털': 'https://www.data.go.kr',
+};
 const ORG_LOGO = `${SITE}/og-logo.png`;
 
 // smartdatashop network 자매 backref — 메인 사이트(1차 출처 데이터 저널) parentOrganization.
@@ -222,10 +231,14 @@ export function buildDatasetSchema(input: DatasetSchemaInput) {
     isAccessibleForFree: true,
     ...(input.keywords?.length ? { keywords: input.keywords.join(', ') } : {}),
     ...(input.license ? { license: input.license } : {}),
+    // 외부 출처를 publisher로 넘길 때도 url을 붙여 entity가 해석되게 한다.
+    //   기존에는 custom publisher일 때 url을 빼서, /etf 1,160쪽의 publisher Organization이
+    //   name만 있는 상태였다(2026-08-11 스키마 감사). 출처를 실제로 확인 가능하게 만드는
+    //   신호라 E-E-A-T에도 유리하다.
     publisher: {
       '@type': 'Organization',
       name: input.publisher || SITE_NAME,
-      ...(input.publisher ? {} : { url: SITE }),
+      url: input.publisher ? (PUBLISHER_URLS[input.publisher] || SITE) : SITE,
     },
     creator: {
       '@type': 'Organization',

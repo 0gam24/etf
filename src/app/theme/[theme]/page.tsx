@@ -10,7 +10,7 @@ import type { RawEtf } from '@/lib/surge';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import RecommendBox from '@/components/RecommendBox';
-import { buildBreadcrumbSchema, buildItemListSchema, jsonLd } from '@/lib/schema';
+import { buildItemListSchema, jsonLd } from '@/lib/schema';
 import type { ProductCategory } from '@/lib/products';
 import { buildPageMetadata } from '@/lib/site-meta';
 
@@ -126,18 +126,12 @@ export default async function ThemePage({ params }: PageProps) {
   const points = getInvestmentPoints(sector);
   const guides = getGuidesForSector(sector, 4);
 
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '테마 ETF', href: '/etf' },
-    { name, href: `/theme/${theme}` },
-  ]);
   const itemListSchema = sectorEtfs.length
     ? buildItemListSchema(sectorEtfs.map(e => ({ url: `/etf/${e.slug}`, name: e.name })), `${name} 테마 ETF ${sectorEtfs.length}종`)
     : null;
 
   return (
     <div className="animate-fade-in">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }} />
       {itemListSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(itemListSchema) }} />
       )}

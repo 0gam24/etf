@@ -4,7 +4,7 @@ import { ArrowRight, BookOpen, CalendarDays } from 'lucide-react';
 import { GUIDES, getGuideClusters } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
-import { buildBreadcrumbSchema, buildItemListSchema, jsonLd } from '@/lib/schema';
+import { buildItemListSchema, jsonLd } from '@/lib/schema';
 import { buildOg } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
@@ -28,10 +28,6 @@ export default function GuideIndexPage() {
   const clusters = getGuideClusters();
 
   // Google Carousel rich result + Breadcrumb 스키마
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '가이드', href: '/guide' },
-  ]);
   const itemListSchema = buildItemListSchema(
     GUIDES.map(g => ({ url: `/guide/${g.slug}`, name: g.title })),
     `Daily ETF Pulse 가이드 ${GUIDES.length}종`,
@@ -39,7 +35,6 @@ export default function GuideIndexPage() {
 
   return (
     <div className="guide-index animate-fade-in">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(itemListSchema) }} />
 
       <Breadcrumbs items={[{ name: '홈', href: '/' }, { name: '가이드', href: '/guide' }]} />

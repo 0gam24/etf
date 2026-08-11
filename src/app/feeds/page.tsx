@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import type { CSSProperties } from 'react';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { jsonLd } from '@/lib/schema';
 import { FEED_CATEGORIES, SITE_URL } from '@/lib/feed';
 import { buildOg } from '@/lib/site-meta';
 
@@ -84,15 +84,9 @@ const AI_SEARCH_FILES: FeedLink[] = [
 ];
 
 export default function FeedsPage() {
-  const breadcrumb = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '구독 · 피드', href: '/feeds' },
-  ]);
 
   return (
     <article className="about-page animate-fade-in">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumb) }} />
-
       <Breadcrumbs items={[{ name: '홈', href: '/' }, { name: '구독 · 피드', href: '/feeds' }]} />
 
       <header className="about-hero">

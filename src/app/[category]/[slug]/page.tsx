@@ -44,6 +44,14 @@ interface PageProps {
 }
 
 /**
+ * 페이지가 직접 발행하는 스키마 종류.
+ *   frontmatter(post.meta.schemas)에 같은 종류가 들어 있으면 중복이므로 걸러낸다.
+ *   Article/NewsArticle은 이 페이지가 이미지까지 포함해 발행하고,
+ *   BreadcrumbList는 <Breadcrumbs> 컴포넌트가 발행한다.
+ */
+const PAGE_OWNED_SCHEMA_TYPES = new Set(['Article', 'NewsArticle', 'BlogPosting', 'BreadcrumbList']);
+
+/**
  * 같은 날·같은 제목 글을 구분하는 짧은 꼬리표.
  *   ETF 정식명은 최대 30자라 그대로 붙이면 제목이 78자까지 늘어난다.
  *   이름이 짧을 때만 이름을, 길면 종목코드를 쓴다.
@@ -255,9 +263,17 @@ export default async function PostPage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: jsonLd(personSchema) }}
         />
       )}
-      {post.meta.schemas?.map((s, i) => (
-        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
-      ))}
+      {/* MDX frontmatter에 발행 시점 스키마가 함께 저장돼 있는데, 이 페이지가 이미
+          더 완전한 버전(이미지 포함 Article/NewsArticle, Breadcrumbs 컴포넌트의 BreadcrumbList)을
+          내보내고 있어 같은 종류가 두 번 실렸다. 실측: 94쪽에 Article 계열 2개, 130쪽에
+          BreadcrumbList 2개. 같은 콘텐츠에 상충하는 선언이 겹치면 구글이 어느 쪽을 쓸지
+          불확실해지므로, 페이지가 이미 발행하는 종류는 frontmatter 쪽에서 걸러낸다.
+          (2026-08-11 스키마 감사) */}
+      {post.meta.schemas
+        ?.filter(s => !PAGE_OWNED_SCHEMA_TYPES.has((s as { '@type'?: string })?.['@type'] || ''))
+        .map((s, i) => (
+          <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+        ))}
 
       <Breadcrumbs
         items={[

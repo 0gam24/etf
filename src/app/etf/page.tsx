@@ -10,7 +10,7 @@ import {
   extractIssuerLabel,
   codeToSlug,
 } from '@/lib/data';
-import { buildBreadcrumbSchema, buildItemListSchema, jsonLd } from '@/lib/schema';
+import { buildItemListSchema, jsonLd } from '@/lib/schema';
 import EtfIndexSearch from '@/components/EtfIndexSearch';
 import { buildPageMetadata } from '@/lib/site-meta';
 
@@ -133,10 +133,6 @@ export default function EtfIndexPage() {
     ? `${baseDate.slice(0, 4)}-${baseDate.slice(4, 6)}-${baseDate.slice(6, 8)}`
     : '';
 
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '종목 사전', href: '/etf' },
-  ]);
 
   // Google Carousel rich result — 거래량 TOP 20 ItemList
   const itemListSchema = buildItemListSchema(
@@ -149,7 +145,6 @@ export default function EtfIndexPage() {
 
   return (
     <article className="etf-index animate-fade-in">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(itemListSchema) }} />
 
       <Breadcrumbs items={[

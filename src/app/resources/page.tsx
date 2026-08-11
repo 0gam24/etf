@@ -4,7 +4,7 @@ import { getProductsGroupedByNeed, NEED_QUESTION, NEED_CAPTION } from '@/lib/pro
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductCard from '@/components/ProductCard';
 import AffiliateNotice from '@/components/AffiliateNotice';
-import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { jsonLd } from '@/lib/schema';
 import { buildOg } from '@/lib/site-meta';
 
 export const metadata: Metadata = {
@@ -28,10 +28,6 @@ export default function ResourcesPage() {
   const groups = getProductsGroupedByNeed();
 
   // 스키마: BreadcrumbList + CollectionPage (자료실 큐레이션 표현)
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '추천 자료실', href: '/resources' },
-  ]);
   const collectionSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -52,7 +48,6 @@ export default function ResourcesPage() {
 
   return (
     <div className="resources-page animate-fade-in">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(collectionSchema) }} />
 
       <Breadcrumbs items={[{ name: '홈', href: '/' }, { name: '추천 자료실', href: '/resources' }]} />

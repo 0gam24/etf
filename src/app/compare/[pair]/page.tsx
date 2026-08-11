@@ -14,7 +14,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
 import AnswerBox from '@/components/AnswerBox';
 import FaqSection from '@/components/FaqSection';
-import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { jsonLd } from '@/lib/schema';
 import type { RawEtf } from '@/lib/surge';
 import { SITE_NAME, SITE_LOCALE, ogImageUrl , padDescription } from '@/lib/site-meta';
 
@@ -137,16 +137,9 @@ export default async function ComparePairPage({ params }: PageProps) {
     },
   ];
 
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '비교', href: '/compare' },
-    { name: `${metaA.name} vs ${metaB.name}`, href: `/compare/${p.slug}` },
-  ]);
 
   return (
     <article className="compare-page animate-fade-in">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }} />
-
       <Breadcrumbs items={[
         { name: '홈', href: '/' },
         { name: '비교', href: '/compare' },

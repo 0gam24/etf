@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { PUBLISHER } from '@/lib/authors';
-import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { jsonLd } from '@/lib/schema';
 import { buildPageMetadata } from '@/lib/site-meta';
 
 // title에 브랜드명을 넣지 않는다 — layout의 template이 '| Daily ETF Pulse'를 자동으로 붙인다.
@@ -13,10 +13,6 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function AboutPage() {
-  const breadcrumb = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '편집팀 소개', href: '/about' },
-  ]);
 
   // 사이트 운영 Organization schema (E-E-A-T 강화)
   const orgSchema = {
@@ -34,7 +30,6 @@ export default function AboutPage() {
 
   return (
     <article className="about-page animate-fade-in">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumb) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(orgSchema) }} />
 
       <Breadcrumbs items={[{ name: '홈', href: '/' }, { name: '편집팀 소개', href: '/about' }]} />

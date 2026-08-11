@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { jsonLd } from '@/lib/schema';
 import { buildPageMetadata } from '@/lib/site-meta';
 
 const CONTACT_EMAIL = 'smartdatashop@gmail.com';
@@ -14,10 +14,6 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function ContactPage() {
-  const breadcrumb = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '연락처', href: '/contact' },
-  ]);
 
   // ContactPoint schema for E-E-A-T
   const contactSchema = {
@@ -42,7 +38,6 @@ export default function ContactPage() {
 
   return (
     <article className="about-page animate-fade-in">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumb) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(contactSchema) }} />
 
       <Breadcrumbs items={[{ name: '홈', href: '/' }, { name: '연락처', href: '/contact' }]} />

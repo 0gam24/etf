@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { Metadata } from 'next';
 import TodayReport from './TodayReport';
-import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { jsonLd } from '@/lib/schema';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FreshnessPill from '@/components/FreshnessPill';
 import { buildPageMetadata } from '@/lib/site-meta';
@@ -25,14 +25,9 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function TodayPage() {
   const report = loadLatest();
-  const breadcrumb = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '오늘의 리포트', href: '/today' },
-  ]);
 
   return (
     <article style={{ maxWidth: '64rem', margin: '0 auto', padding: 'var(--space-8) var(--space-6)' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumb) }} />
       <Breadcrumbs items={[
         { name: '홈', href: '/' },
         { name: '오늘의 리포트', href: '/today' },

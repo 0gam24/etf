@@ -4,7 +4,7 @@ import { CalendarRange, ArrowRight } from 'lucide-react';
 import { getPostsByCategory, CATEGORY_NAMES } from '@/lib/posts';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
-import { buildBreadcrumbSchema, buildItemListSchema, jsonLd } from '@/lib/schema';
+import { buildItemListSchema, jsonLd } from '@/lib/schema';
 import { buildPageMetadata } from '@/lib/site-meta';
 
 /**
@@ -32,10 +32,6 @@ function formatWeekLabel(slug: string): string {
 export default function WeeklyIndexPage() {
   const posts = getPostsByCategory('weekly');
 
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: CATEGORY_NAMES.weekly, href: '/weekly' },
-  ]);
   const itemListSchema = buildItemListSchema(
     posts.map(p => ({ url: `/weekly/${p.meta.slug}`, name: p.meta.title })),
     `주간 ETF 펄스 리포트 ${posts.length}편`,
@@ -43,7 +39,6 @@ export default function WeeklyIndexPage() {
 
   return (
     <div className="pulse-landing animate-fade-in">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(itemListSchema) }} />
 
       <Breadcrumbs

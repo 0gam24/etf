@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { jsonLd } from '@/lib/schema';
 import { buildPageMetadata } from '@/lib/site-meta';
 
 const LAST_UPDATED = '2026-05-22';
@@ -14,15 +14,9 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function DisclaimerPage() {
-  const breadcrumb = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '면책조항', href: '/disclaimer' },
-  ]);
 
   return (
     <article className="about-page animate-fade-in">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumb) }} />
-
       <Breadcrumbs items={[{ name: '홈', href: '/' }, { name: '면책조항', href: '/disclaimer' }]} />
 
       <header className="about-hero">

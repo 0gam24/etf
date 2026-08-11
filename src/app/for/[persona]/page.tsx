@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ToolLinkCard, { SISTER_TOOLS } from '@/components/ToolLinkCard';
 import MainBackrefBox from '@/components/MainBackrefBox';
-import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { jsonLd } from '@/lib/schema';
 import { PERSONAS, ALL_PERSONAS, type PersonaSlug } from '@/lib/personas-config';
 import { getAllPosts } from '@/lib/posts';
 import { buildPageMetadata , padDescription } from '@/lib/site-meta';
@@ -38,11 +38,6 @@ export default async function PersonaPage({ params }: PageProps) {
   const config = PERSONAS[persona as PersonaSlug];
   if (!config) notFound();
 
-  const breadcrumb = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '페르소나별', href: '/for/retiree' },
-    { name: config.displayName, href: `/for/${persona}` },
-  ]);
 
   // 관련 글 추천: frontmatter personas 매칭 우선, 없으면 카테고리 우선순위 fallback
   const allPosts = getAllPosts();
@@ -59,7 +54,6 @@ export default async function PersonaPage({ params }: PageProps) {
 
   return (
     <article style={{ maxWidth: '64rem', margin: '0 auto', padding: 'var(--space-8) var(--space-6)' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumb) }} />
       <Breadcrumbs items={[
         { name: '홈', href: '/' },
         { name: config.displayName, href: `/for/${persona}` },

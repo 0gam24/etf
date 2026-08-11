@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import NewsletterSignup from '@/components/NewsletterSignup';
-import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { jsonLd } from '@/lib/schema';
 import { buildPageMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = buildPageMetadata({
@@ -12,15 +12,9 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function NewsletterPage() {
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '뉴스레터', href: '/newsletter' },
-  ]);
 
   return (
     <article className="newsletter-page animate-fade-in">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }} />
-
       <Breadcrumbs items={[{ name: '홈', href: '/' }, { name: '뉴스레터', href: '/newsletter' }]} />
 
       <header className="newsletter-page-hero">

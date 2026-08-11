@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { COMPARE_PAIRS } from '@/lib/etf-compare-pairs';
 import { getKrxEtfMeta } from '@/lib/data';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import { buildBreadcrumbSchema, buildItemListSchema, jsonLd } from '@/lib/schema';
+import { buildItemListSchema, jsonLd } from '@/lib/schema';
 import { buildPageMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = buildPageMetadata({
@@ -14,10 +14,6 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function CompareIndexPage() {
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '비교', href: '/compare' },
-  ]);
   const itemListSchema = buildItemListSchema(
     COMPARE_PAIRS.map(p => {
       const a = getKrxEtfMeta(p.codeA);
@@ -32,7 +28,6 @@ export default function CompareIndexPage() {
 
   return (
     <article className="compare-index animate-fade-in">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(itemListSchema) }} />
 
       <Breadcrumbs items={[

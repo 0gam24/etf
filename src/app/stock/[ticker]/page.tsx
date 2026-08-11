@@ -21,6 +21,9 @@ interface PageProps {
   params: Promise<{ ticker: string }>;
 }
 
+/** 페이지가 직접 발행하는 스키마 종류 — frontmatter 중복분을 걸러내는 기준 */
+const PAGE_OWNED_SCHEMA_TYPES = new Set(['Article', 'NewsArticle', 'BlogPosting', 'BreadcrumbList']);
+
 export async function generateStaticParams() {
   return getPostsByCategory('stock').map(p => ({ ticker: p.meta.slug }));
 }
@@ -120,9 +123,13 @@ export default async function StockMasterPage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: jsonLd(productSchema) }}
         />
       )}
-      {post.meta.schemas?.map((s, i) => (
-        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
-      ))}
+      {/* 이 페이지가 이미 Article·BreadcrumbList를 발행하므로 frontmatter의 같은 종류는 제외.
+          (2026-08-11 스키마 감사: 한 페이지에 Article 계열 2개가 실리던 문제) */}
+      {post.meta.schemas
+        ?.filter(s => !PAGE_OWNED_SCHEMA_TYPES.has((s as { '@type'?: string })?.['@type'] || ''))
+        .map((s, i) => (
+          <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+        ))}
       <Breadcrumbs
         items={[
           { name: '홈', href: '/' },

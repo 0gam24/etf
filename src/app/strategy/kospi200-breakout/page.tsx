@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import { buildBreadcrumbSchema, jsonLd } from '@/lib/schema';
+import { jsonLd } from '@/lib/schema';
 import FreshnessPill from '@/components/FreshnessPill';
 import { buildPageMetadata } from '@/lib/site-meta';
 
@@ -53,16 +53,9 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function Kospi200BreakoutPage() {
   const data = loadLatest();
-  const breadcrumb = buildBreadcrumbSchema([
-    { name: '홈', href: '/' },
-    { name: '시그널', href: '/strategy/kospi200-breakout' },
-    { name: '코스피200 변동성 돌파', href: '/strategy/kospi200-breakout' },
-  ]);
 
   return (
     <article style={{ maxWidth: '64rem', margin: '0 auto', padding: 'var(--space-8) var(--space-6)' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumb) }} />
-
       <Breadcrumbs items={[
         { name: '홈', href: '/' },
         { name: '시그널', href: '/strategy/kospi200-breakout' },
