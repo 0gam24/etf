@@ -80,7 +80,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonicalPath = `/etf/${resolved.canonicalSlug}`;
   const name = etf?.name || krxMeta?.name || ticker;
   const displayCode = etf?.code || krxMeta?.shortcode || code || ticker;
-  const sector = etf?.sector;
+  // 수집기의 '기타'는 분류 실패를 뜻하므로 메타에서도 섹터 없음으로 취급한다.
+  const sector = etf?.sector && etf.sector !== '기타' ? etf.sector : undefined;
 
   // 1A. Title — CTR 수술 (2026-07-19, GSC 실측 기반):
   //   실제 유입 쿼리 문구를 반영 — "{ETF명} etf 구성종목"(6~10위 다수),
@@ -216,7 +217,11 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
   const displayName = etf?.name || krxMeta?.name || ticker;
   const displayCode = etf?.code || krxMeta?.shortcode || ticker;
   // 시세에 sector 있으면 우선, 없으면 이름 기반 분류
-  const displaySector = etf?.sector || classifyEtfSector(displayName) || undefined;
+  const rawSector = etf?.sector || classifyEtfSector(displayName) || undefined;
+  // 수집기는 분류가 안 되면 '기타'를 넣는다. 화면·키워드에서는 섹터가 없는 것과 같게 다룬다.
+  //   1,160종 전량 수집 이후 523종이 '기타'로 들어와 "기타 투자 포인트" 같은 어색한 제목이
+  //   생겼다. 섹터 pill·키워드에도 아무 값어치가 없다. (2026-08-12)
+  const displaySector = rawSector && rawSector !== '기타' ? rawSector : undefined;
   const issuerLabel = extractIssuerLabel(displayName);
 
   const holdings = getEtfHoldings(displayCode);

@@ -57,7 +57,14 @@ async function fetchETFData() {
 
     for (let i = 1; i <= 5; i++) {
       const targetDate = getBusinessDate(i);
-      const url = `https://apis.data.go.kr/1160100/service/GetSecuritiesProductInfoService/getETFPriceInfo?serviceKey=${apiKey}&resultType=json&numOfRows=100&basDt=${targetDate}`;
+      // numOfRows: 100 → 1500 (2026-08-12)
+      //   KRX 상장 ETF는 1,160종인데 100종만 받아오고 있었다. 그 결과 나머지 1,060종은
+      //   시세가 없어 shouldIndexEtf(시세 OR 구성종목 OR 관련글)를 통과하지 못했고,
+      //   1,009개 페이지가 noindex 상태로 검색에서 완전히 빠져 있었다(GSC 실측).
+      //   같은 엔드포인트를 scripts/fetch-etf-codes.mjs가 이미 numOfRows=1500으로 호출해
+      //   1,160종을 정상 수신하고 있으므로 상한은 문제가 아니었다.
+      //   요청 횟수는 그대로고 응답 크기만 커지므로 API 할당량 영향 없음.
+      const url = `https://apis.data.go.kr/1160100/service/GetSecuritiesProductInfoService/getETFPriceInfo?serviceKey=${apiKey}&resultType=json&numOfRows=1500&basDt=${targetDate}`;
       logger.log(AGENT_NAME, `   📡 ${targetDate} ETF 시세 요청 (시도 ${i})`);
 
       const response = await fetch(url);

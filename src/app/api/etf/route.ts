@@ -45,7 +45,10 @@ export async function GET() {
 
     for (let i = 1; i <= 5; i++) {
       const targetDate = getBusinessDate(i);
-      const url = `https://apis.data.go.kr/1160100/service/GetSecuritiesProductInfoService/getETFPriceInfo?serviceKey=${apiKey}&resultType=json&numOfRows=100&basDt=${targetDate}`;
+      // numOfRows: 100 → 1500 (2026-08-12) — 상장 ETF 1,160종 전량 수신.
+      //   API의 totalCount가 1160인데 100만 받고 있어, 이 라우트를 쓰는 위젯들도
+      //   상위 100종 밖의 종목은 시세를 표시하지 못했다.
+      const url = `https://apis.data.go.kr/1160100/service/GetSecuritiesProductInfoService/getETFPriceInfo?serviceKey=${apiKey}&resultType=json&numOfRows=1500&basDt=${targetDate}`;
 
       const response = await fetch(url, { 
         next: { revalidate: 1800 } // Next.js 캐시: 30분
