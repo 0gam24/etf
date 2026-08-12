@@ -2095,3 +2095,57 @@ padDescription() 헬퍼 신설: 목표(120~155자)까지만 채우고 이미 충
 
 최종 상태(색인 480쪽): 제목 60자 초과 0 · 중복 제목/설명 0 · H2 없는 페이지 0
 · 설명 평균 131자 · H1 규격 위반 0 · 죽은 내부링크 0
+
+## 2026-08-12 · [SEO 스킬 전수 감사]
+
+### Q. SEO 관련 스킬을 하나씩 사용하며 SEO 모두 감사해
+A. SEO 스킬 10종을 순차 적용. 신규 결함 6건 발견·수정(4768870, 2219e0e), 3개 영역은 통과.
+
+■ schema-markup — 결함 3건 발견·수정 (commit 4768870)
+JSON-LD 8,130블록 전수 파싱(파싱 실패 0, 상대 URL 0).
+1. 한 페이지에 Article 계열 노드 2개 (94쪽)
+   페이지가 만든 Article/NewsArticle(이미지 O)과 MDX frontmatter 저장분(이미지 X)이 동시 노출.
+   Article+Article 55쪽, NewsArticle+Article 39쪽. 같은 글에 상충 선언이 겹치면 구글이
+   어느 쪽을 쓸지 불확실해지고 이미지 없는 쪽이 선택되면 리치결과를 잃는다.
+   → PAGE_OWNED_SCHEMA_TYPES로 frontmatter 중복분 필터.
+2. 중복 BreadcrumbList (130쪽). <Breadcrumbs> 컴포넌트가 이미 발행하는데 18개 페이지가
+   자체로 또 발행(오늘 내가 만든 /weekly·/theme·/account 포함). → 컴포넌트를 단일 소스로.
+3. Dataset publisher Organization에 url 없음 (1,160쪽). 외부 출처를 넘기면 url을 빼도록
+   되어 있었다. → PUBLISHER_URLS 매핑 추가(data.go.kr).
+
+■ keyword-clustering — 결함 3건 발견·수정 (commit 2219e0e)
+색인 480쪽 meta keywords 전수.
+4. 루트 layout의 keywords가 43쪽에 상속. /privacy·/contact까지 "월배당 ETF·IRP ETF"를
+   선언해 43쪽이 같은 8개 키워드로 서로 잠식. 네이버는 meta keywords를 참고하므로 실영향.
+   → layout에서 제거 + 허브·정책 27곳에 자기 키워드 지정. "월배당 etf" 52쪽→20쪽.
+5. /etf 키워드 9개(규칙 3~7 초과, 104쪽) + 폴백이 '기타'(26쪽, 악기와 혼동되는 무가치 키워드).
+   → 7개로 축소, 섹터 없으면 폴백 없이 6개. 범위 밖 104쪽→0쪽.
+6. ★ /compare 10쌍 중 2쌍이 404로 렌더 중이었다.
+   codeA/codeB가 KRX에 없는 코드(0040D0·0019B0 소멸, 0026S0은 슬러그와 무관한 1Q 미국S&P500).
+   제목은 사이트 기본값, H1·스키마 없음. 그런데 sitemap은 무조건 제출 →
+   "제출된 URL을 찾을 수 없음(404)" 발생 중.
+   → 실제 코드로 교체(379810/133690, 458730/489250) + sitemap·generateStaticParams에
+     "두 코드가 KRX에 존재하는 페어만" 통과시키는 가드 추가(재발 방지).
+
+■ broken-links — 통과
+쿠팡 제휴 링크 31,623개 전부 rel="nofollow sponsored noopener noreferrer" + target="_blank".
+※ 중간에 "광고 표시 없는 링크 2,447개"로 잘못 판단했다가 정정. 그건 제휴가 아니라
+  금감원·KRX·운용사 등 공식 출처 링크였고, 이런 건 nofollow를 붙이지 않는 게 맞다.
+외부 링크 상태코드 확인분은 전부 200(DART·운용사·뉴스).
+
+■ content-translation — 해당 없음(정상)
+한국어 단일 사이트. html lang="ko" 1,547쪽 전부, 스키마 inLanguage ko-KR.
+다국어 라우트가 없으므로 hreflang 부재가 맞다. 조치 불필요.
+
+■ content-strategy — 조치 필요(콘텐츠 판단 영역이라 미실행)
+가이드 233편 구조 요소 보유율:
+  answer 100% · faq 100% · comparisonTable 77% · keyPoints 54% · howTo 49% · sourceQuestions 32%
+  ▶ sources(1차 출처) 54%, **108편에 출처 없음**
+  없는 쪽에 초기 핵심 가이드가 몰려 있다(monthly-dividend·covered-call·defense-etf·
+  ai-semi-etf·retirement 등). 금융(YMYL) 주제라 1차 출처 표기는 E-E-A-T 직결.
+  출처는 실제 기관 문서를 골라 넣어야 하므로 임의 생성하지 않고 남겨둠. 사용자 판단 필요.
+섹션 편중: 테마 37 · 은퇴 26 · 세금 25 vs 월배당 1 · 괴리율 1 · 달러 1.
+
+■ marketing:seo-audit — 미실행
+경쟁사 비교·검색량 데이터가 필요한데 Ahrefs MCP가 인증되지 않아 실측 불가.
+추정으로 채우면 감사가 아니라 창작이 되므로 실행하지 않음.
