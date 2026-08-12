@@ -7,6 +7,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: '계좌별 세후 수익률 비교: IRP·ISA·연금저축·일반계좌',
   description: '같은 ETF를 같은 금액만큼 담았을 때 IRP·ISA·연금저축·일반계좌 중 어디가 유리한지 계산해 봅니다. 5년·10년·20년 누적 기준으로 세후 수익률 차이를 한눈에 비교할 수 있습니다.',
   url: '/tools/tax-compare',
+  keywords: ['계좌별 세후 수익률', 'IRP ISA 비교', '연금저축 세금 비교', 'ETF 절세 계좌'],
 });
 
 export default function TaxComparePage() {

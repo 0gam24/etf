@@ -11,6 +11,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     'Daily ETF Pulse 편집팀 연락처. 데이터 오류 제보·일반 문의·제휴·광고 문의를 이메일로 보내주시면 영업일 기준 1~3일 내 답변드립니다.',
   url: '/contact',
+  keywords: ['Daily ETF Pulse 문의', '데이터 오류 제보', '제휴 문의'],
 });
 
 export default function ContactPage() {

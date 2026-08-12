@@ -49,6 +49,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: '코스피200 변동성 breakout 시그널',
   description: 'Andrea Unger 변동성 돌파 공식을 KOSPI200 4종(KODEX 200·인버스·레버리지)에 매일 적용한 시그널. 정보 제공 목적이며 매매 권유 아님.',
   url: '/strategy/kospi200-breakout',
+  keywords: ['코스피200 시그널', '변동성 돌파 전략', 'KODEX 200 시그널', 'ETF 매매 시그널'],
 });
 
 export default function Kospi200BreakoutPage() {

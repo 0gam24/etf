@@ -9,6 +9,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     '매일 아침 9시, 거래량 상위 3종목과 섹터 자금 흐름, 월배당 분배 캘린더를 한 통의 이메일로 보내드립니다. 출근 전 5분이면 그날 시장에서 무슨 일이 있었는지 파악할 수 있습니다.',
   url: '/newsletter',
+  keywords: ['ETF 뉴스레터', 'ETF 메일 구독', '매일 ETF 브리핑', 'ETF 소식 받기'],
 });
 
 export default function NewsletterPage() {

@@ -11,6 +11,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     '같은 지수를 따라가는 ETF끼리 무엇이 다른지 1:1로 비교했습니다. KODEX 200 vs TIGER 200, 미국배당다우존스 운용사별 비교 등 자주 검색되는 조합의 시세·구성종목·보수 차이를 정리했습니다.',
   url: '/compare',
+  keywords: ['ETF 비교', 'KODEX vs TIGER', 'ETF 1:1 비교', '같은 지수 ETF 비교', 'ETF 총보수 비교'],
 });
 
 export default function CompareIndexPage() {

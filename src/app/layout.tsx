@@ -24,7 +24,12 @@ export const metadata: Metadata = {
     template: "%s | Daily ETF Pulse",
   },
   description: "거래량 1위 ETF의 급등 사유, 섹터별 자금 흐름, 월배당·커버드콜 전략까지. 매일 오전 9시 전 업데이트되는 ETF 투자 의사결정 플랫폼.",
-  keywords: ["ETF 추천", "거래량 ETF", "방위산업 ETF", "커버드콜", "월배당 ETF", "IRP ETF", "ISA 필수 종목", "자금 흐름"],
+  // ⚠️ 여기에 keywords를 두지 않는다.
+  //   Next.js는 자식이 keywords를 정의하지 않으면 layout 값을 그대로 물려준다. 그 결과
+  //   /privacy·/contact·/disclaimer 같은 페이지까지 "월배당 ETF·IRP ETF·커버드콜"을
+  //   선언하고 있었고, 43쪽이 동일한 8개 키워드를 공유해 서로 잠식하는 상태였다.
+  //   (2026-08-12 키워드 감사). 네이버는 meta keywords를 참고하므로 페이지별로
+  //   자기 주제에 맞는 키워드를 직접 지정한다.
   authors: [{ name: "Daily ETF Pulse" }],
   alternates: {
     canonical: '/',

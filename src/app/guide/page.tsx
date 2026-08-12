@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: 'ETF 가이드 모음: 입문·세금·배당·해외·전략 한 곳에',
   description:
     'ETF 입문·비용·세금·ISA 절세계좌·월배당·커버드콜·미국배당·해외지수·채권·적립식·리밸런싱까지, 주제별로 묶은 ETF 가이드 허브. 검색 한 번이면 그 주제의 답이 한 자리에 정리됩니다.',
+  keywords: ['ETF 가이드', 'ETF 투자 방법', 'ETF 입문', 'ETF 세금', 'ETF 고르는 법'],
   alternates: { canonical: '/guide' },
   openGraph: buildOg({
     title: 'ETF 가이드 모음: 입문·세금·배당·해외·전략',

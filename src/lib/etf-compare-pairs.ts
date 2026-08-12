@@ -65,14 +65,17 @@ export const COMPARE_PAIRS: ComparePair[] = [
   // 합성 vs 일반 (구조 차이)
   {
     slug: 'kodex-us-nasdaq100-vs-tiger-us-nasdaq100',
-    codeA: '0026S0', codeB: '0040D0',
+    // 2026-08-12 정정: 기존 0026S0은 '1Q 미국S&P500'(슬러그와 무관), 0040D0은 KRX에 없는 코드라
+    // 이 페이지가 404로 렌더되고 있었다. 슬러그와 일치하는 실제 코드로 교체.
+    codeA: '379810', codeB: '133690',
     context: 'KODEX vs TIGER 미국 나스닥100. 운용보수·합성 여부·환헷지 옵션.',
     searchIntent: '미국 나스닥100 ETF 비교',
   },
   // 월배당 vs 분기배당 (분배 주기)
   {
     slug: 'tiger-us-dividend-monthly-vs-kodex-us-dividend-djones',
-    codeA: '0019B0', codeB: '489250',
+    // 2026-08-12 정정: 0019B0은 KRX에 없는 코드였다. TIGER 미국배당다우존스(458730)로 교체.
+    codeA: '458730', codeB: '489250',
     context: '미국 배당 ETF 월배당 vs 분기배당. 분배 주기·세후 수익률 비교.',
     searchIntent: '미국 배당 월배당 vs 분기',
   },

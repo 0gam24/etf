@@ -19,6 +19,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     '한국거래소(KRX) 상장 ETF 1000+종을 거래량·섹터·운용사로 정리한 종목 사전. KODEX·TIGER·SOL·ACE·PLUS 등 운용사별, 방산·반도체·커버드콜·월배당 섹터별 빠른 검색.',
   url: '/etf',
+  keywords: ['ETF 종목 사전', 'KRX 상장 ETF', 'ETF 종목코드 조회', '운용사별 ETF', 'ETF 전체 목록'],
 });
 
 interface EtfRow {

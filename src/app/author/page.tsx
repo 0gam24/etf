@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     description:
       'Daily ETF Pulse의 데이터 기반 AI 분석 모델 소개. KRX 공공데이터·한국은행 ECOS·DART 공시를 입력으로 분석하며, 발행·검수 책임은 편집팀에 있습니다.',
     url: '/author',
+    keywords: ['ETF 분석 모델', '데이터 분석 방법론', '분석 에이전트 소개'],
   }),
   robots: { index: false, follow: true },
 };

@@ -26,6 +26,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     '오늘 어느 섹터로 돈이 들어오고 어디서 빠져나갔는지 정리했습니다. 가장 뜨거운 섹터와 차가운 섹터, 각 섹터의 대장 ETF, 이번 주 추세까지 확인해 중장기 포지션을 잡아 보세요.',
   url: '/flow',
+  keywords: ['ETF 섹터 자금 흐름', 'ETF 자금 유입', '섹터 로테이션', 'ETF 수급 분석', '섹터별 대장 ETF'],
 });
 
 export default function FlowLandingPage() {

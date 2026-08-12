@@ -11,6 +11,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     'Daily ETF Pulse는 정보 제공 목적의 사이트이며, 투자 권유·자문이 아닙니다. 데이터 출처, 분석 한계, 광고·제휴 링크 고지, 손익 책임 범위를 명확히 안내합니다.',
   url: '/disclaimer',
+  keywords: ['투자 정보 면책', '투자 책임 고지', 'ETF 정보 이용 안내'],
 });
 
 export default function DisclaimerPage() {

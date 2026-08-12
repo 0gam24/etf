@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: '전체 ETF 가이드: 최신 발행순 모아보기',
   description:
     'Daily ETF Pulse의 모든 ETF 가이드를 발행일 기준 최신순으로 한 곳에 모았습니다. 월배당·커버드콜·세금·해외지수·테마·채권까지, 새로 올라온 가이드부터 날짜별로 바로 확인하세요.',
+  keywords: ['ETF 가이드 최신', '새 ETF 가이드', 'ETF 가이드 목록', 'ETF 정보 모음'],
   alternates: { canonical: '/guide/latest' },
   openGraph: buildOg({
     title: '전체 ETF 가이드: 최신 발행순',

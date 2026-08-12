@@ -9,7 +9,7 @@ import {
 } from '@/lib/posts';
 import { GUIDES } from '@/lib/guides';
 import { getProductsRegistry } from '@/lib/products';
-import { getLatestEtfData } from '@/lib/data';
+import { getLatestEtfData, getKrxEtfMeta } from '@/lib/data';
 import { COMPARE_PAIRS } from '@/lib/etf-compare-pairs';
 import { ALL_PERSONAS } from '@/lib/personas-config';
 
@@ -160,7 +160,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'weekly',
     priority: 0.75,
   });
-  COMPARE_PAIRS.forEach(p => {
+  // 두 코드가 모두 KRX에 존재하는 페어만 제출한다.
+  //   KRX 코드가 바뀌거나 상장폐지되면 비교 페이지가 404로 렌더되는데, 기존에는 sitemap이
+  //   무조건 전 페어를 제출해 "제출된 URL을 찾을 수 없음(404)" 오류를 만들었다.
+  //   (2026-08-12 감사에서 10쌍 중 2쌍이 이 상태였음)
+  COMPARE_PAIRS.filter(p => getKrxEtfMeta(p.codeA) && getKrxEtfMeta(p.codeB)).forEach(p => {
     routes.push({
       url: `${baseUrl}/compare/${p.slug}`,
       lastModified: etfLastModified,

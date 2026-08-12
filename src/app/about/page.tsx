@@ -10,6 +10,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     'Daily ETF Pulse의 발행·검수 책임, 데이터 출처(KRX·한국은행 ECOS·DART), 분석 방법론, 정정 정책을 한 페이지에 정리합니다.',
   url: '/about',
+  keywords: ['Daily ETF Pulse 소개', 'ETF 정보 출처', '데이터 출처 공개', '발행 원칙'],
 });
 
 export default function AboutPage() {

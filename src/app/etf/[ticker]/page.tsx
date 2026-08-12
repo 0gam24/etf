@@ -173,16 +173,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     //   브랜드 18자를 되찾아 ETF명·구성종목 키워드가 잘리지 않게 한다.
     title: { absolute: title },
     description,
+    // 2026-08-12 키워드 정리:
+    //   ① 9개 → 7개. SEO.md 규칙(3~7개)을 넘어 104쪽이 위반 상태였다.
+    //      "{이름} 시세"는 "{이름} 주가"와 사실상 같은 의도라 중복 제거.
+    //   ② 섹터 폴백이 '기타'였다. 검색어로 아무 가치가 없고 한국어에서 악기 '기타'와도
+    //      겹쳐 오히려 잘못된 매칭을 부른다(26쪽). 섹터가 없거나 '기타'면 아예 뺀다.
     keywords: [
       name,
       `${name} 주가`,
       `${name} 분배금 지급 주기`,
       `${name} 구성종목`,
       `${name} 종목코드`,
-      `${name} 시세`,
       `${displayCode} ETF`,
-      `krx ${displayCode}`,
-      sector || 'ETF',
+      //   섹터가 없으면 공통 폴백을 넣지 않고 그냥 6개로 둔다(3~7 규칙 내).
+      //   폴백을 쓰면 34쪽이 같은 키워드를 공유해 또 다른 중복이 된다.
+      ...(sector && sector !== '기타' ? [`${sector} ETF`] : []),
     ],
     ...(robots ? { robots } : {}),
     alternates: { canonical: canonicalPath },

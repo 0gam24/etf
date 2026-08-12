@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: '추천 자료실: ETF 도서·학습 도구',
   description:
     '시청자의 고민(월 OO만원 받기·은퇴 30년 자산·ETF 입문·커버드콜 구조·가계부·투자 심리)에 가장 가까운 책 한 권을 골라보세요. 본 사이트의 데이터와 짝지어 두면 좋은 큐레이션.',
+  keywords: ['ETF 책 추천', 'ETF 입문서', '투자 도서 추천', 'ETF 공부 자료'],
   alternates: { canonical: '/resources' },
   openGraph: buildOg({
     title: '추천 자료실: ETF 도서·학습 도구',

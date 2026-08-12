@@ -34,6 +34,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: '시그널 트랙 레코드',
   description: '변동성 돌파 시그널이 실제로 어떤 결과를 냈는지 다음 거래일 시세로 검증해 매일 기록합니다. 승률과 누적 손익, 성공한 날과 실패한 날을 가리지 않고 그대로 공개합니다. 가상 매매 기준입니다.',
   url: '/strategy/track-record',
+  keywords: ['시그널 성과 공개', '투자 전략 검증', '시그널 승률', '가상 매매 결과'],
 });
 
 export default function TrackRecordPage() {

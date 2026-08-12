@@ -30,7 +30,10 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return COMPARE_PAIRS.map(p => ({ pair: p.slug }));
+  // KRX 코드가 해석되지 않는 페어는 404로 렌더되므로 prerender 대상에서 제외한다.
+  return COMPARE_PAIRS
+    .filter(p => getKrxEtfMeta(p.codeA) && getKrxEtfMeta(p.codeB))
+    .map(p => ({ pair: p.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

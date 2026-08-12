@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   title: '구독 · 피드 (RSS·Atom·JSON)',
   description:
     'Daily ETF Pulse의 매일 새 분석을 RSS·Atom·JSON Feed로 구독하세요. 카테고리별 RSS와 AI 답변 엔진·검색 엔진용 llms.txt·사이트맵·robots 안내까지 한 페이지에 정리했습니다.',
+  keywords: ['ETF RSS', 'ETF 피드 구독', 'ETF 소식 RSS', '투자 정보 RSS'],
   alternates: {
     canonical: '/feeds',
     types: {

@@ -7,6 +7,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: 'ETF 포트폴리오 손익 계산기',
   description: 'ETF 코드와 보유수량을 입력하면 KRX 종가 기준으로 손익·등락률·시장 평균 대비 성과를 자동 계산합니다. 본인 보유 ETF를 한 페이지에서 관리하세요. 입력값은 브라우저에만 저장됩니다.',
   url: '/tools/portfolio',
+  keywords: ['ETF 손익 계산기', 'ETF 포트폴리오 관리', 'ETF 수익률 계산', '보유 ETF 평가'],
 });
 
 export default function PortfolioPage() {

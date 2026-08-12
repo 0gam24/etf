@@ -21,6 +21,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     '월배당·커버드콜 ETF의 연간 분배 캘린더와 분배 안정성 등급을 정리했습니다. 계좌별 세후 수익률을 비교하고, 월 목표 금액에서 필요한 투자금을 거꾸로 계산해 볼 수 있습니다.',
   url: '/income',
+  keywords: ['월배당 ETF', '커버드콜 ETF', 'ETF 분배금 캘린더', '월배당 ETF 추천', '분배락일', 'ETF 분배 안정성'],
 });
 
 export default function IncomeLandingPage() {
