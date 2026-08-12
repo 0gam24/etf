@@ -2467,3 +2467,15 @@ kin-20260718.json 보조. 신규 수집 시도(curl kin.naver.com)는 클라우�
 검증 결과: validate:guides ERROR 0 · tsc --noEmit 0 · cf:build 성공 ·
   prerender 5편 answer-box/guide-key-points/guide-sources/citation/2026-08-12 모두 포함 ·
   신규 블록 em dash 0 · 금지어(파이프라인·크롤링·Gemini·GPT·LLM·에이전트 등) 0.
+
+색인 푸시(npm run push:guides): 대상 2026-08-12 가이드 10편 + 허브 3.
+  IndexNow: skip(no-site-url) · Google Indexing: skip(no-urls) — 클라우드 체크아웃에 SITE_URL/키 미설정 +
+  신규 5편이 아직 production 미배포(PR 브랜치 claude/serene-hamilton-kiywmw)라 배포 확인 단계에서 graceful skip.
+  스크립트 내장 가드가 200 응답 URL만 통보하므로 404 통보 없음. PR 머지·배포 후 재실행 시 실제 통보됨.
+
+★ 오늘 발행 링크(풀 URL):
+  https://iknowhowinfo.com/guide/overseas-etf-intraday-nav-gap
+  https://iknowhowinfo.com/guide/etf-delisting-refund
+  https://iknowhowinfo.com/guide/etf-expense-how-deducted
+  https://iknowhowinfo.com/guide/reit-etf-vs-reit-fund
+  https://iknowhowinfo.com/guide/pension-risky-asset-70-limit
