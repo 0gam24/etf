@@ -2234,3 +2234,54 @@ IndexNow 200 (Bing·Naver Yeti·Yandex) · sitemap ping 3/3 갱신
 ■ 참고: 중단됐던 워크플로
 organic-traffic-recovery (wf_0ed34ad9-c51) 는 이전 세션 종료로 중단됨.
 resumeFromRunId로 재개 가능. 6개 축(네이버·종목사전·수요갭·경쟁사·기술·EEAT) 진단 예정이었음.
+
+## 2026-08-12 · [에이전트 진단 결과 실행 — 즉시 항목 7건]
+
+### Q. 모두 진행
+A. 워크플로(19 에이전트·6축·검증통과 8·기각 4) 결과 중 "즉시" 7건 전부 처리.
+commit 09ff540(정리) → 배포 확인 → f3e2855(통보). 순서 준수: 통보를 먼저 하면 정리 전
+상태가 수집된다.
+
+■ 처리 내역
+1. /etf 제목 정직성 — 1,160쪽 전부가 "구성종목·분배금"을 약속했으나 실측상 구성종목 14쪽,
+   분배금 10쪽뿐이었다. 보유 데이터로 분기 → 불일치 0쪽 확인.
+2. og:image SVG → PNG — /api/og가 image/svg+xml 응답이라 네이버 썸네일이 생성되지 않았다.
+   (네이버 노출 6.8만·클릭 68=0.1%의 구조적 원인 중 하나)
+   sharp로 빌드 시점 생성(public/og/*.png 9종). 런타임 wasm 의존 회피.
+   RSS enclosure가 SVG를 type="image/png"로 잘못 선언하던 것도 함께 정정.
+   실측: og:image PNG 1,552쪽 / SVG 0쪽. 프로덕션 Content-Type: image/png 확인.
+3. 가이드 238편 바이라인·AI 공시 추가 — SEO.md §10 자체 위반 상태였다(일별 글엔 있고
+   가이드엔 import조차 없었음). schema.ts가 "편집팀"을 url·@id 없는 Person으로 발행하던 것을
+   Organization(@id /#organization)으로 정정.
+4. lastReviewed 자동 조작 중단 — refresher가 조건 없이 전체를 오늘로 치환(208편이 8/1 동일).
+   화면·schema dateModified 양쪽에 쓰여 허위 최신성 주장 상태였다. 크론 비활성화 +
+   표기를 발행일로 변경 + dateModified를 발행일과 일치.
+5. 기술 3건 — public/_headers 신설(정적 자산이 max-age=0이었다 → immutable, 프로덕션 확인),
+   홈 revalidate 제거(읽기전용 캐시와 충돌해 홈만 STALE·s-maxage=2였다),
+   SiteLiveBar 인터벌 분기(주석과 달리 분기 없이 1초 setInterval이 전 페이지에서 상시 실행).
+6. 색인 통보 — 네이버 전용 IndexNow 엔드포인트 추가(기존엔 api.indexnow.org 한 곳뿐이고
+   "네이버에도 전파된다"는 가정만 있었다). scripts/push-etf-pages.mjs로 1,160쪽 일괄 제출.
+   결과: IndexNow 200 · 네이버 1,160건 전부 성공 · sitemap ping 3/3.
+7. 지식iN 수집기 신설 — scripts/fetch-kin-questions.mjs. 108콜로 2,708건 수집(신규 2,694).
+
+■ ★ 내가 앞서 사장님께 잘못 보고한 것 (정정)
+"주제 재료 고갈, 신규 수집 불가"는 사실이 아니었다.
+`npm run keywords:naver`가 NAVER_AD_API_KEY(광고 API) 부재로 실패한 것을 보고
+지식iN 수집 전체가 막힌 것으로 오판했다. 실제 지식iN은 네이버 검색 API
+(NAVER_CLIENT_ID/SECRET)를 쓰고 그 키는 이미 .env.local에 있었다.
+기존 코퍼스가 103건이던 원인은 API 차단이 아니라 씨앗 설계(범용어 소수 + 1페이지)였다.
+씨앗 36개 x 3페이지로 2,708건 확보 = 하루 5편 기준 500일치 이상.
+교훈: 스크립트 실패 메시지의 키 이름을 확인하지 않고 상위 결론으로 비약하지 말 것.
+
+■ 에이전트 제안 중 기각된 것 (재제안 방지)
+- "1,160쪽 78% 유사 → 네이버 필터" : 인과 불성립(필터면 노출이 줄어야 하는데 증거가 노출 6.8만).
+  재측정 시 5-gram 중앙값 30.4%, 0.8 이상 0건.
+- "데이터랩 앵커 정규화로 주제 점수화" : 0 판정이 4개 중 3개 오류, 실행 시점별 43% 변동.
+- "/rank/{metric} 신설" : 근거가 라이브와 불일치(이미 정렬·필터·ItemList 존재).
+- "경쟁사가 크롤러에 빈 껍데기" : 구글은 JS 실행하며 경쟁사도 정상 색인됨.
+
+■ 남은 것 (단기·중기)
+단기: 자체 이미지 1장 정책 · 폰트 셀프호스팅(2MB CDN) · dividend-registry 종목코드 5건 재대조
+     · KODEX 240종 구성종목 수집기 · /etf 허브 분할 · 제휴 블록 위치 정리
+중기: 운용사별 구성종목 확대(도달 상한 914종, RISE는 robots.txt 차단으로 제외)
+     · 구성종목 없어도 서는 대체 섹션 · 분배 데이터 확보 · /author noindex 정책 결정
