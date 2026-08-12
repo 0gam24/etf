@@ -10,10 +10,11 @@ import FaqSection from '@/components/FaqSection';
 import AnswerBox from '@/components/AnswerBox';
 import GuideDataBlock from '@/components/GuideDataBlock';
 import AffiliateInline from '@/components/AffiliateInline';
+import AiAgentDisclosure from '@/components/AiAgentDisclosure';
 import RecommendBox from '@/components/RecommendBox';
 import type { ProductCategory } from '@/lib/products';
 import { buildArticleSchema, buildHowToSchema, jsonLd } from '@/lib/schema';
-import { SITE_NAME, SITE_LOCALE, articleTitle , padDescription } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, articleTitle , padDescription, ogImageUrl } from '@/lib/site-meta';
 
 /** 가이드 슬러그 → 추천 자료 매칭 카테고리 */
 function guideToProductCategory(slug: string): ProductCategory | undefined {
@@ -46,7 +47,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonicalPath = `/guide/${slug}`;
   // 가이드도 동적 OG 이미지 발급 — 소셜/메신저 미리보기 + 이미지 검색 인입
   // (기존엔 가이드에만 og:image가 없어 매일 발행 주력 콘텐츠의 공유 미리보기가 비어 있었음)
-  const ogImage = `/api/og?title=${encodeURIComponent(g.title)}&category=guide`;
+  const ogImage = ogImageUrl({ category: 'guide' });
   // 설명이 120자에 못 미치는 가이드 35편은 태그라인·첫 핵심 포인트로 채운다.
   // 가이드가 이미 갖고 있는 문장만 쓰므로 새로 지어내지 않는다. (2026-08-11 온페이지 감사)
   const description = padDescription(g.description, [g.tagline, g.keyPoints?.[0]]);
@@ -95,7 +96,10 @@ export default async function GuidePage({ params }: PageProps) {
     description: g.description,
     url: `/guide/${slug}`,
     datePublished: `${publishedAt}T09:00:00+09:00`,
-    dateModified: `${g.lastReviewed}T09:00:00+09:00`,
+    // dateModified에 lastReviewed를 쓰지 않는다. 그 값은 격주 크론이 내용 점검 없이
+    // 일괄로 오늘 날짜를 덮어쓴 결과라 실제 수정일이 아니었다(208편이 같은 날짜).
+    // 크론은 중단했고, 실제 수정 이력을 추적하기 전까지는 발행일과 같게 둔다. (2026-08-12)
+    dateModified: `${publishedAt}T09:00:00+09:00`,
     author: {
       name: 'Daily ETF Pulse 편집팀',
     },
@@ -153,8 +157,13 @@ export default async function GuidePage({ params }: PageProps) {
         <div className="guide-article-section">{g.section}</div>
         <h1 className="guide-article-title">{g.title}</h1>
         <p className="guide-article-tagline">{g.tagline}</p>
+        {/* 바이라인 — 가이드 238편에 발행 주체 표기가 아예 없었다(SEO.md §10 위반).
+            일별 글에는 있는데 가이드에만 빠져 있었고, 가이드가 사이트 최대 색인 자산이다. */}
         <div className="guide-article-meta">
-          최근 점검: {new Date(g.lastReviewed).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
+          <span>발행: Daily ETF Pulse 편집팀</span>
+          <span aria-hidden> · </span>
+          <span>발행일: {new Date(publishedAt).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          <AiAgentDisclosure variant="compact" />
         </div>
       </header>
 
@@ -290,6 +299,9 @@ export default async function GuidePage({ params }: PageProps) {
           전체 ETF 가이드 보기 <ArrowRight size={14} strokeWidth={2.5} />
         </Link>
       </nav>
+
+      {/* 본문 하단 공시 — 무엇을 근거로 쓰고 누가 발행을 책임지는지. 일별 글과 동일 정책 적용. */}
+      <AiAgentDisclosure variant="inline" />
 
       <RecommendBox position="bottom" category={guideToProductCategory(g.slug)} />
     </article>

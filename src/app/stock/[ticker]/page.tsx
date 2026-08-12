@@ -15,7 +15,7 @@ import {
   buildFinancialProductSchema,
   jsonLd,
 } from '@/lib/schema';
-import { SITE_NAME, SITE_LOCALE, articleTitle, padDescription } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, articleTitle, padDescription, ogImageUrl } from '@/lib/site-meta';
 
 interface PageProps {
   params: Promise<{ ticker: string }>;
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getPostBySlug('stock', ticker);
   if (!post) return { title: '종목 가이드를 찾을 수 없습니다' };
   const canonicalPath = `/stock/${encodeURI(ticker)}`;
-  const ogImage = `/api/og?category=stock&title=${encodeURIComponent(post.meta.title)}&tickers=${post.meta.ticker || ticker}`;
+  const ogImage = ogImageUrl({ category: 'stock' });
   // 원 설명이 50자 남짓이라 스니펫 자리를 못 채웠다. (2026-08-11 온페이지 감사)
   const description = padDescription(post.meta.description, [
     '구성종목과 분배 정보, 같은 테마의 다른 ETF까지 한 페이지에 정리했습니다.',
@@ -65,7 +65,7 @@ export default async function StockMasterPage({ params }: PageProps) {
   const post = getPostBySlug('stock', ticker);
   if (!post) notFound();
 
-  const ogImage = `/api/og?category=stock&title=${encodeURIComponent(post.meta.title)}&tickers=${post.meta.ticker || ticker}`;
+  const ogImage = ogImageUrl({ category: 'stock' });
   const authorMeta = post.meta.authorId ? AUTHORS[post.meta.authorId] : null;
 
   const articleSchema = buildArticleSchema({

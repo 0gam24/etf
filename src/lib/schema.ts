@@ -78,6 +78,10 @@ export interface ArticleSchemaInput {
 
 export function buildArticleSchema(input: ArticleSchemaInput) {
   const type = input.type || 'Article';
+  // authorId가 없으면 개인이 아니라 발행 조직이 저자다.
+  //   기존에는 "Daily ETF Pulse 편집팀"이라는 팀 이름을 Person 타입으로, 게다가 url·@id 없이
+  //   발행했다(가이드 238편 전부). 아무 데도 가리키지 않는 엔티티라 신뢰 신호로 작동하지 못했다.
+  //   조직 저자는 사이트 전역 Organization(@id)과 연결해 해석 가능하게 만든다. (2026-08-12)
   const author = input.author.authorId
     ? {
         '@type': 'Person',
@@ -85,14 +89,20 @@ export function buildArticleSchema(input: ArticleSchemaInput) {
         ...(input.author.title ? { jobTitle: input.author.title } : {}),
         url: abs(`/author/${input.author.authorId}`),
       }
-    : { '@type': 'Person', name: input.author.name };
+    : {
+        '@type': 'Organization',
+        '@id': `${SITE}/#organization`,
+        name: input.author.name,
+        url: abs('/about'),
+      };
 
   return {
     '@context': 'https://schema.org',
     '@type': type,
     headline: input.headline.slice(0, 110), // Google 권장 110자
     description: input.description,
-    image: (input.images || [`${SITE}/api/og`]).map(abs),
+    // 기본 이미지도 PNG로 (스키마 image는 SVG를 권장하지 않는다)
+    image: (input.images || [`${SITE}/og/default.png`]).map(abs),
     datePublished: input.datePublished,
     dateModified: input.dateModified || input.datePublished,
     author,

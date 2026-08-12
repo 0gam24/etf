@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import RecommendBox from '@/components/RecommendBox';
 import type { ProductCategory } from '@/lib/products';
-import { SITE_NAME, SITE_LOCALE } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, ogImageUrl } from '@/lib/site-meta';
 
 function themeToProductCategory(theme: string): ProductCategory | undefined {
   const map: Record<string, ProductCategory> = {
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getPostBySlug(`theme/${theme}`, slug);
   if (!post) return { title: '포스팅을 찾을 수 없습니다' };
   const canonicalPath = `/theme/${theme}/${encodeURI(slug)}`;
-  const ogImage = `/api/og?title=${encodeURIComponent(post.meta.title)}&category=theme`;
+  const ogImage = ogImageUrl({ category: 'stock' });
   return {
     title: post.meta.title,
     description: post.meta.description,

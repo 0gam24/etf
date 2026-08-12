@@ -16,16 +16,21 @@ export default function SiteLiveBar() {
   const [snap, setSnap] = useState<MarketSnapshot | null>(null);
 
   useEffect(() => {
+    // 주석은 "장중 1초, 그 외 60초"였지만 실제로는 분기 없이 1초 하나뿐이었다.
+    // 이 컴포넌트는 layout에서 전 페이지에 마운트되므로, 장이 닫힌 시간에도
+    // 1,160개 종목 페이지·238편 가이드 전부에서 초당 setState가 계속 돌았다.
+    // 상태에 맞춰 주기를 나눈다. (2026-08-12)
+    let timer: ReturnType<typeof setTimeout>;
+
     function tick() {
-      setSnap(getMarketSnapshot());
-    }
-    tick();
-    // 장중이면 1초, 그 외 60초
-    const interval = setInterval(() => {
       const s = getMarketSnapshot();
       setSnap(s);
-    }, 1000); // 1초 — 장중 LIVE 느낌. 다른 상태는 visible 변동 적어 영향 X
-    return () => clearInterval(interval);
+      // 장중에만 초 단위 갱신이 의미가 있다(시계 표시). 그 외에는 1분이면 충분하다.
+      timer = setTimeout(tick, s.status === 'open' ? 1000 : 60000);
+    }
+    tick();
+
+    return () => clearTimeout(timer);
   }, []);
 
   if (!snap) return null;

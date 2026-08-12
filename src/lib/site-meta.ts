@@ -20,14 +20,25 @@ export const SITE_URL = process.env.SITE_URL || 'https://iknowhowinfo.com';
 export const SITE_NAME = 'Daily ETF Pulse';
 export const SITE_LOCALE = 'ko_KR';
 
-/** 동적 OG 이미지 경로 (1200x630) */
+/**
+ * OG 이미지 경로 (1200x630 PNG)
+ *
+ *   2026-08-12 변경: 기존에는 /api/og 라우트를 썼는데 그 라우트가
+ *   Content-Type: image/svg+xml 로 응답한다(Cloudflare Workers에서 wasm 렌더가
+ *   실패해 SVG 직접 생성으로 전환한 흔적). 네이버는 SVG 썸네일을 지원하지 않아
+ *   노출 6.8만 대비 클릭 68회(0.1%)라는 결과로 이어졌다.
+ *   런타임 PNG 생성은 다시 wasm이 필요하므로, scripts/generate-og-images.mjs 로
+ *   빌드 이전에 구워둔 정적 PNG(public/og/*.png)를 쓴다.
+ *
+ *   제목별 개별 이미지는 후속 과제. 지금은 카테고리 단위로 매칭한다.
+ */
+const OG_CATEGORIES = new Set([
+  'pulse', 'surge', 'flow', 'income', 'breaking', 'guide', 'stock', 'compare',
+]);
+
 export function ogImageUrl(opts: { title?: string; category?: string; tickers?: string } = {}): string {
-  const q = new URLSearchParams();
-  if (opts.title) q.set('title', opts.title);
-  if (opts.category) q.set('category', opts.category);
-  if (opts.tickers) q.set('tickers', opts.tickers);
-  const s = q.toString();
-  return s ? `/api/og?${s}` : '/api/og';
+  const c = opts.category && OG_CATEGORIES.has(opts.category) ? opts.category : 'default';
+  return `/og/${c}.png`;
 }
 
 type OgInput = {

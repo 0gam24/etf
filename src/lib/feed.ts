@@ -61,9 +61,20 @@ function loadTodayReports(): TodayReportSummary[] {
   }
 }
 
-/** OG 동적 이미지 절대 URL (1200×630) — RSS enclosure·구독 리더 썸네일용 */
+/**
+ * OG 이미지 절대 URL (1200×630 PNG) — RSS enclosure·구독 리더 썸네일용
+ *
+ *   2026-08-12: 기존에는 /api/og(SVG 응답)를 가리키면서 enclosure type은 image/png로
+ *   선언하고 있었다. 선언과 실제가 어긋나 리더·수집기가 썸네일을 못 만들었다.
+ *   빌드 시점에 구운 정적 PNG(public/og/*.png)로 교체해 둘을 일치시킨다.
+ */
+const FEED_OG_CATEGORIES = new Set([
+  'pulse', 'surge', 'flow', 'income', 'breaking', 'guide', 'stock', 'compare',
+]);
+
 function ogImageUrl(title: string, category: string): string {
-  return `${SITE_URL}/api/og?title=${encodeURIComponent(title)}&category=${encodeURIComponent(category)}`;
+  const c = FEED_OG_CATEGORIES.has(category) ? category : 'default';
+  return `${SITE_URL}/og/${c}.png`;
 }
 
 /** 전체 피드 항목 — 모든 분석 글 + 가이드 + /today 일별 리포트 (최신순, 상위 100). */

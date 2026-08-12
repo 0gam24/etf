@@ -1,12 +1,18 @@
-name: Biweekly Guide Refresh (lastReviewed → today)
+name: Guide Refresh (수동 전용 — 자동 스케줄 중단됨)
 
-# 매월 1일·15일 KST 09:00 = UTC 00:00 자동 실행.
-# 8 가이드의 lastReviewed 필드를 오늘 날짜로 갱신 → Google freshness 신호 + 사용자 신뢰.
-# 변경 없으면 skip (no commit). 변경 있으면 자동 commit + push → Cloudflare 자동 배포.
+# ⚠️ 2026-08-12 자동 스케줄 비활성화.
+#
+#   이 워크플로는 agents/14_guide_refresher.js를 돌려 guides.ts의 lastReviewed를
+#   오늘 날짜로 바꾼다. 그런데 그 스크립트에는 "실질 변경이 있을 때만 갱신"하는 로직이 없고,
+#   정규식으로 모든 lastReviewed를 조건 없이 치환한다(같은 파일 7행 docstring은 content hash
+#   비교를 한다고 적혀 있으나 구현이 없다).
+#
+#   결과: 실제로 아무것도 점검하지 않았는데 가이드 208편이 '2026-08-01'로 동일하게 찍혀 있었다.
+#   이 값은 화면의 날짜 표기와 Article schema의 dateModified 양쪽에 쓰이므로,
+#   검색엔진과 독자 모두에게 사실이 아닌 최신성을 주장하는 상태였다.
+#
+#   실제 내용 점검 절차가 붙기 전까지 자동 실행하지 않는다. 필요하면 수동 실행.
 on:
-  schedule:
-    # 매월 1일, 15일 UTC 00:00 = KST 09:00
-    - cron: '0 0 1,15 * *'
   workflow_dispatch:
 
 concurrency:

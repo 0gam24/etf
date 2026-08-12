@@ -34,9 +34,18 @@ function escapeXml(s: string): string {
   });
 }
 
+/**
+ * 이미지 사이트맵에 넣을 OG 이미지 URL.
+ *   2026-08-12: /api/og는 SVG로 응답한다. 구글 이미지 검색은 SVG를 색인하지 않으므로
+ *   이미지 사이트맵에 SVG를 올려봐야 실효가 없었다. 정적 PNG로 교체.
+ */
+const OG_CATEGORIES = new Set([
+  'pulse', 'surge', 'flow', 'income', 'breaking', 'guide', 'stock', 'compare',
+]);
+
 function ogImageUrl(params: Record<string, string>): string {
-  const qs = new URLSearchParams(params);
-  return `${SITE}/api/og?${qs.toString()}`;
+  const c = params.category && OG_CATEGORIES.has(params.category) ? params.category : 'default';
+  return `${SITE}/og/${c}.png`;
 }
 
 export async function GET() {

@@ -31,7 +31,7 @@ import {
   jsonLd,
 } from '@/lib/schema';
 import type { RawEtf } from '@/lib/surge';
-import { buildOg, buildTwitter } from '@/lib/site-meta';
+import { buildOg, buildTwitter, ogImageUrl } from '@/lib/site-meta';
 
 /**
  * 종목 사전 페이지 — /etf/[ticker]
@@ -83,6 +83,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // 수집기의 '기타'는 분류 실패를 뜻하므로 메타에서도 섹터 없음으로 취급한다.
   const sector = etf?.sector && etf.sector !== '기타' ? etf.sector : undefined;
 
+  // 제목·설명이 "실제로 이 페이지에 있는 것"만 약속하도록, 데이터 보유 여부를 먼저 확정한다.
+  const holdingsForMeta = code ? getEtfHoldings(code)?.holdings || [] : [];
+
   // 1A. Title — CTR 수술 (2026-07-19, GSC 실측 기반):
   //   실제 유입 쿼리 문구를 반영 — "{ETF명} etf 구성종목"(6~10위 다수),
   //   "{ETF명} {코드} 분배금 지급 주기", "{ETF명} etf 현재 가격".
@@ -92,13 +95,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   //   prerender HTML 실측 결과 1147종 중 782종(68.2%)이 60자 초과, 시세 있는 97종은 100% 초과
   //   (평균 71자)라 구글이 뒷부분을 잘라 정작 CTR용으로 넣은 "현재가"가 노출되지 않았다.
   //   → 꼬리를 짧게 줄이고 title.absolute로 template 중복 부착을 끊는다.
-  //     핵심 키워드(구성종목·분배금·ETF명·코드)는 앞쪽에 그대로 유지.
-  const rawTitle = etf
-    ? `${name}(${displayCode}) ETF 구성종목·분배금·현재가`
-    : `${name}(${displayCode}) ETF 구성종목·분배금 정리`;
+  //
+  //   2026-08-12 정직성 수술: 제목이 조건 없이 "구성종목·분배금"을 약속했는데
+  //   prerender 실측상 구성종목 섹션이 실제로 렌더되는 페이지는 14쪽, 분배금은 10쪽뿐이었다.
+  //   나머지 1,146쪽은 제목이 없는 것을 약속하는 상태라 클릭 후 이탈을 부르고,
+  //   대량 페이지에서 반복되면 doorway 신호로 읽힐 수 있다.
+  //   → 실제 보유한 데이터로만 제목을 만든다.
+  const hasHoldingsData = holdingsForMeta.length > 0;
+  const hasIncomeData = !!(code && getIncomeRegistry()?.etfs.some(e => e.code === code));
+  const titleTail = hasHoldingsData && hasIncomeData ? '구성종목·분배금·현재가'
+    : hasHoldingsData ? '구성종목·현재가·거래량'
+    : hasIncomeData ? '분배금·현재가·거래량'
+    : etf ? '현재가·거래량·투자 포인트'
+    : '종목코드·운용사·투자 포인트';
+  const rawTitle = `${name}(${displayCode}) ETF ${titleTail}`;
   // 아주 긴 ETF명(최대 30자)은 이름만으로도 한계를 넘으므로 꼬리를 한 번 더 축약
+  const titleTailShort = hasHoldingsData ? '구성종목·현재가' : hasIncomeData ? '분배금·현재가' : '현재가·거래량';
   const title = rawTitle.length > 60
-    ? `${name}(${displayCode}) ETF 구성종목·분배금`
+    ? `${name}(${displayCode}) ETF ${titleTailShort}`
     : rawTitle;
 
   // 1D. Meta — 첫 100자에 키워드 압축 (Naver snippet + Google CTR 최적화)
@@ -109,7 +123,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   //     ② 선두 이모지 제거 — 구글이 스니펫에서 이모지를 자주 제거해 첫 글자가 낭비됐다.
   //     ③ 길이 보강 — 평균 75자로 목표(120~155자)에 한참 못 미쳐 스니펫 공간을 버리고 있었다.
   //        구성종목을 3개로 늘려 롱테일("라인메탈 ETF" 류) 매칭 면적도 함께 확대.
-  const holdingsForMeta = code ? getEtfHoldings(code)?.holdings || [] : [];
   const sectorClause = sector ? ` ${sector} 섹터` : '';
   // 구성종목 데이터가 없는 종목(1147종 중 다수)은 넣을 재료가 적어 설명이 107자에서 멈춘다.
   // 운용사를 문장에 넣어 "{운용사} ETF" 검색도 함께 받고 목표 길이를 채운다.
@@ -124,12 +137,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const head = etf
     ? `${name} 종목코드 ${displayCode}(KRX)${sectorClause}. 현재가 ${etf.price.toLocaleString()}원, 전일대비 ${etf.changeRate >= 0 ? '+' : ''}${etf.changeRate.toFixed(2)}%.`
     : `${name} 종목코드 ${displayCode}(KRX)${sectorClause}에 상장된 ETF입니다.`;
-  const shortTail = etf
+  // 꼬리도 실제 보유 데이터에 맞춘다. 분배 정보는 10종에만 있는데 전 종목이 약속하고 있었다.
+  const shortTail = hasIncomeData
     ? ' 분배금 지급주기·분배락일·투자 포인트를 정리했습니다.'
-    : ' 운용사·섹터·구성종목 비중과 관련 분석을 정리했습니다.';
-  const longTail = etf
+    : ' 거래량·시가총액과 섹터 투자 포인트를 정리했습니다.';
+  const longTail = hasIncomeData
     ? ' 분배금 지급주기와 분배락일, 운용사·섹터 정보, 관련 분석까지 한 페이지에 정리했습니다. KRX 공공데이터 기준 매일 갱신.'
-    : ' 운용사와 섹터, 구성종목 비중, 분배금 지급주기, 같은 테마의 다른 ETF와 관련 분석 글까지 정리한 ETF 종목 사전입니다.';
+    : ' 거래량과 시가총액, 운용사·섹터 정보, 같은 섹터의 다른 ETF와 관련 분석까지 한 페이지에 정리했습니다. KRX 공공데이터 기준 매일 갱신.';
   // 구성종목이 없어 짧아지는 경우에만 덧붙이는 보강 문구
   const padTail = etf
     ? ' 매수 전 확인할 기본 정보를 한자리에 모았습니다.'
@@ -152,7 +166,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     if (description.length + pad.length <= DESC_MAX) description += pad;
   }
 
-  const ogImage = `/api/og?title=${encodeURIComponent(name)}&category=stock&tickers=${displayCode}`;
+  const ogImage = ogImageUrl({ category: 'stock' });
 
   // thin content 가드 (SSoT: shouldIndexEtf) — 시세·구성종목·관련 분석글이 모두 없는
   //   메타 전용 minimal 종목은 noindex. 관련 분석글이 붙은 인기 테마 종목은 고유 콘텐츠가

@@ -2,7 +2,7 @@ import { getPostBySlug, getAllPostSlugs, CATEGORY_NAMES } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import RecommendBox from '@/components/RecommendBox';
-import { SITE_NAME, SITE_LOCALE } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, ogImageUrl } from '@/lib/site-meta';
 
 interface PageProps {
   params: Promise<{ type: string; slug: string }>;
@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getPostBySlug(`account/${type}`, slug);
   if (!post) return { title: '포스팅을 찾을 수 없습니다' };
   const canonicalPath = `/account/${type}/${encodeURI(slug)}`;
-  const ogImage = `/api/og?title=${encodeURIComponent(post.meta.title)}&category=account`;
+  const ogImage = ogImageUrl({ category: 'guide' });
   return {
     title: post.meta.title,
     description: post.meta.description,

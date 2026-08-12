@@ -25,7 +25,7 @@ import FaqSection from '@/components/FaqSection';
 import type { ProductCategory } from '@/lib/products';
 import { AUTHORS } from '@/lib/authors';
 import { buildArticleSchema, buildPersonSchema, jsonLd } from '@/lib/schema';
-import { SITE_NAME, SITE_LOCALE, articleTitle, articleDescription, toReportYmd, padDescription } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, articleTitle, articleDescription, toReportYmd, padDescription, ogImageUrl } from '@/lib/site-meta';
 
 /** 글 카테고리 → 추천 자료 매칭 */
 function postCategoryToProductCategory(category: string): ProductCategory | undefined {
@@ -75,7 +75,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (post.meta.tickers?.length) ogParams.set('tickers', post.meta.tickers.slice(0, 3).join(','));
 
   const canonicalPath = `/${category}/${encodeURI(slug)}`;
-  const ogImage = `/api/og?${ogParams.toString()}`;
+  const ogImage = ogImageUrl({ category });
 
   // 같은 제목·설명이 여러 날짜 글에 걸리면 구글이 하나만 남기고 나머지를 색인에서 뺀다.
   //   (2026-08-11 감사: 제목 6그룹 23편·설명 9그룹 29편 중복, /income·/flow 집중)
@@ -208,7 +208,7 @@ export default async function PostPage({ params }: PageProps) {
     date: new Date(post.meta.date).toLocaleDateString('ko-KR'),
   });
   if (post.meta.tickers?.length) ogParams.set('tickers', post.meta.tickers.slice(0, 3).join(','));
-  const ogImage = `/api/og?${ogParams.toString()}`;
+  const ogImage = ogImageUrl({ category });
   const authorMeta = post.meta.authorId ? AUTHORS[post.meta.authorId] : null;
 
   // dateModified — 글 자체는 발행일 그대로지만, 시세 데이터는 매 영업일 cron 갱신.

@@ -1,0 +1,26 @@
+# Cloudflare Pages/Workers 정적 자산 헤더
+#
+#   2026-08-12 신설. 프로덕션 실측에서 /_next/static/* 이
+#   `public, max-age=0, must-revalidate` 로 서빙되고 있었다(CF-Cache-Status: HIT).
+#   Next.js 기본값은 immutable 1년인데, OpenNext + Workers Static Assets 경로라
+#   Next의 헤더 계층을 우회해 기본값이 적용되지 않았다.
+#   이 파일도 next.config.ts headers()도 없어 아무도 지정하지 않은 상태였다.
+#
+#   /_next/static 아래 파일명은 콘텐츠 해시라 내용이 바뀌면 이름이 바뀐다.
+#   따라서 무기한 캐시해도 무효화 위험이 없다. 페이지당 11개(CSS 1 + JS 10)의
+#   불필요한 조건부 요청이 사라진다.
+
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# 빌드 시점에 구운 OG 이미지 — 내용이 바뀌면 배포로 교체되므로 하루 캐시 + SWR
+/og/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# 파비콘·아이콘류
+/favicon.ico
+  Cache-Control: public, max-age=604800
+/icon.svg
+  Cache-Control: public, max-age=604800
+/apple-icon.png
+  Cache-Control: public, max-age=604800

@@ -7,7 +7,7 @@ import ReadingProgress from '@/components/ReadingProgress';
 import ShareRow from '@/components/ShareRow';
 import Toc from '@/components/Toc';
 import RecommendBox from '@/components/RecommendBox';
-import { SITE_NAME, SITE_LOCALE, articleTitle, padDescription } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, articleTitle, padDescription, ogImageUrl } from '@/lib/site-meta';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getPostBySlug('weekly', slug);
   if (!post) return { title: '주간 리포트를 찾을 수 없습니다' };
   const canonicalPath = `/weekly/${encodeURI(slug)}`;
-  const ogImage = `/api/og?category=weekly&title=${encodeURIComponent(post.meta.title)}&date=${encodeURIComponent(new Date(post.meta.date).toLocaleDateString('ko-KR'))}`;
+  const ogImage = ogImageUrl({ category: 'flow' });
   // 원 설명이 30자 남짓이라 스니펫 자리를 거의 못 썼다. (2026-08-11 온페이지 감사)
   const description = padDescription(post.meta.description, [
     '한 주 동안 어느 섹터로 자금이 움직였는지, 거래량 상위 종목이 어떻게 바뀌었는지 정리했습니다.',

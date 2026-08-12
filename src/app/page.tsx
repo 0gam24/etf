@@ -13,9 +13,16 @@ import DataFooter from '@/components/DataFooter';
 import RecommendBox from '@/components/RecommendBox';
 import { buildOg, buildTwitter } from '@/lib/site-meta';
 
-// 메인 페이지 ISR — 5분마다 SSR 재생성, 그 사이 stale-while-revalidate.
-// 자정 / 장중 데이터 갱신이 ~5분 내 메인 반영. Cloudflare 1년 캐시 문제 해소.
-export const revalidate = 300;
+// ⚠️ `export const revalidate`를 두지 않는다. (2026-08-12)
+//
+//   open-next.config.ts는 staticAssetsIncrementalCache를 쓴다. 런타임에 캐시를 쓸 수 없는
+//   읽기 전용 백엔드라, ISR 재검증이 새 항목을 저장하지 못하고 영원히 끝나지 않는다.
+//   프로덕션 실측에서 홈만 `s-maxage=2` + `x-nextjs-cache: STALE`이었고
+//   /guide·/etf/*는 `s-maxage=31536000` + HIT였다. 즉 홈만 매 요청 재검증에 걸려
+//   sitemap priority 1.0인 최상위 크롤 진입점의 TTFB가 가장 느렸다.
+//
+//   콘텐츠는 매 push마다 재빌드되므로 ISR 없이도 갱신에 문제가 없다.
+//   장중 실시간 수치는 클라이언트 컴포넌트가 따로 가져온다.
 
 /**
  * 홈 전용 메타데이터 — layout 기본값에 의존하지 않는다.
