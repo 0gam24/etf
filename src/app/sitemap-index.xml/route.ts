@@ -1,5 +1,6 @@
 import { getSiteLastModified, getAllPosts } from '@/lib/posts';
 import { getLatestEtfData } from '@/lib/data';
+import { GUIDE_PUBLISHED_AT } from '@/lib/guides';
 
 /**
  * Daily ETF Pulse — Sitemap index.
@@ -15,6 +16,12 @@ import { getLatestEtfData } from '@/lib/data';
 
 const SITE = process.env.SITE_URL || 'https://iknowhowinfo.com';
 
+// ★ 빌드타임 정적 생성 강제 — Cloudflare Workers 런타임에선 data/ 를 읽지 못해
+//   getAllPosts()·getLatestEtfData()가 빈 값을 돌려주고, 갱신일이 전부 "지금"으로 떨어진다.
+//   실제로 자식 넷이 모두 요청 시각(밀리초까지 동일)으로 나가고 있었다.
+//   sitemap-etf.xml·rss.xml이 같은 이유로 이미 이 설정을 쓴다. (2026-08-12)
+export const dynamic = 'force-static';
+
 export async function GET() {
   /**
    * 갱신일은 자식 sitemap마다 따로 계산한다.
@@ -24,7 +31,14 @@ export async function GET() {
    *   같이 움직인다. 검색엔진은 이런 갱신일을 신뢰하지 않게 되고, 그러면
    *   재수집 우선순위가 내려간다. 각자 실제로 바뀐 시점을 쓴다. (2026-08-12)
    */
-  const contentLastmod = (getSiteLastModified() || new Date()).toISOString();
+  //   sitemap.xml에는 일별 글과 가이드가 함께 들어간다. 글만 보면 일별 발행이 멈춘
+  //   6월이 최신으로 잡혀서, 8월에 가이드를 발행해도 "6월 이후 안 바뀜"이라고 신고하게 된다.
+  //   그러면 검색엔진이 다시 가져가지 않는다. 둘 중 나중 것을 쓴다.
+  const latestPost = getSiteLastModified()?.getTime() ?? 0;
+  const latestGuide = Object.values(GUIDE_PUBLISHED_AT)
+    .map(d => new Date(`${d}T09:00:00+09:00`).getTime())
+    .reduce((a, b) => Math.max(a, b), 0);
+  const contentLastmod = new Date(Math.max(latestPost, latestGuide) || Date.now()).toISOString();
 
   // 종목 사전은 KRX 시세 기준일이 곧 갱신일이다 (YYYYMMDD → ISO)
   const baseDate = getLatestEtfData()?.baseDate;

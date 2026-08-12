@@ -7,7 +7,7 @@ import {
   getCategoryLastModified,
   getSiteLastModified,
 } from '@/lib/posts';
-import { GUIDES } from '@/lib/guides';
+import { GUIDES, getGuidePublishedAt } from '@/lib/guides';
 import { getProductsRegistry } from '@/lib/products';
 import { getLatestEtfData, getKrxEtfMeta } from '@/lib/data';
 import { COMPARE_PAIRS } from '@/lib/etf-compare-pairs';
@@ -93,9 +93,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   });
 
-  // 가이드 인덱스 — 가이드 5종 중 가장 최근 lastReviewed
+  /**
+   * 가이드 갱신일.
+   *
+   *   lastReviewed를 그대로 쓰지 않는다. 격주 점검 크론이 내용을 확인하지 않고
+   *   208편에 같은 날짜를 일괄로 써넣은 값이라, 4월에 쓰고 그대로인 글까지
+   *   "8월 1일에 갱신됨"이라고 신고하게 된다. 검색엔진은 이런 갱신일을 신뢰하지
+   *   않게 되고, 그러면 진짜로 바뀐 페이지의 재수집도 함께 늦어진다.
+   *   (SEO.md §5 "lastmod는 콘텐츠 실제 갱신일에서 derive")
+   *   크론은 중단시켰고, 발행일이 남아 있으면 그쪽을 쓴다. (2026-08-12)
+   */
+  const guideLastModified = (slug: string, lastReviewed: string) =>
+    new Date(getGuidePublishedAt(slug) || lastReviewed);
+
+  // 가이드 인덱스 — 가장 최근에 발행된 가이드 기준
   const guideMostRecent = GUIDES
-    .map(g => new Date(g.lastReviewed).getTime())
+    .map(g => guideLastModified(g.slug, g.lastReviewed).getTime())
     .reduce((a, b) => Math.max(a, b), 0);
   routes.push({
     url: `${baseUrl}/guide`,
@@ -116,7 +129,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   GUIDES.forEach(g => {
     routes.push({
       url: `${baseUrl}/guide/${g.slug}`,
-      lastModified: new Date(g.lastReviewed),
+      lastModified: guideLastModified(g.slug, g.lastReviewed),
       changeFrequency: 'weekly',
       priority: 0.85,
     });
