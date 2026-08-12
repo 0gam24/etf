@@ -38,7 +38,8 @@
     "audit:seo": "node scripts/audit-seo.mjs",
     "validate:schema": "node scripts/validate-schema.mjs",
     "keywords:kin": "node scripts/fetch-kin-questions.mjs",
-    "generate:og": "node scripts/generate-og-images.mjs"
+    "generate:og": "node scripts/generate-og-images.mjs",
+    "push:etf": "node scripts/push-etf-pages.mjs"
   },
   "dependencies": {
     "@vercel/og": "^0.11.1",

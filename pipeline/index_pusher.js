@@ -29,7 +29,14 @@ async function submitIndexNow(urls, key) {
     urlList: urls,
   };
 
-  try {
+  // 2026-08-12: 기존에는 api.indexnow.org 한 곳에만 POST하고 "네이버에도 전파된다"고
+  //   가정만 하고 있었다. 네이버는 자체 엔드포인트를 따로 운영하며 실측상 200으로 응답한다.
+  //   네이버가 성장축(30일 노출 6.8만, 전월 대비 +357%)인데 정작 직접 통보 경로만
+  //   비어 있었으므로 두 곳에 모두 제출한다. 한쪽이 실패해도 다른 쪽은 유지한다.
+  const keyLocation = body.keyLocation;
+  const naverBase = 'https://searchadvisor.naver.com/indexnow';
+
+  const submitGeneric = async () => {
     const res = await fetch('https://api.indexnow.org/IndexNow', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
@@ -37,6 +44,30 @@ async function submitIndexNow(urls, key) {
     });
     // 200 OK, 202 Accepted 모두 성공. 422는 key 파일 없음 등
     return { ok: res.status >= 200 && res.status < 300, status: res.status };
+  };
+
+  // 네이버 엔드포인트는 URL 1건씩 GET 방식. 과다 요청을 피해 순차 제출하고 간격을 둔다.
+  const submitNaver = async () => {
+    let ok = 0, fail = 0;
+    for (const u of urls) {
+      try {
+        const q = `${naverBase}?url=${encodeURIComponent(u)}&key=${encodeURIComponent(key)}&keyLocation=${encodeURIComponent(keyLocation)}`;
+        const r = await fetch(q, { method: 'GET' });
+        if (r.status >= 200 && r.status < 300) ok++; else fail++;
+      } catch { fail++; }
+      await new Promise(r => setTimeout(r, 150));
+    }
+    return { ok: fail === 0, submitted: ok, failed: fail };
+  };
+
+  try {
+    const generic = await submitGeneric();
+    const naver = await submitNaver();
+    return {
+      ok: generic.ok || naver.ok,
+      status: generic.status,
+      naver,
+    };
   } catch (err) {
     return { ok: false, reason: err.message };
   }
@@ -115,4 +146,4 @@ async function submitAll(paths, opts = {}) {
   };
 }
 
-module.exports = { submitAll, submitIndexNow, ensureKeyFile };
+module.exports = { submitAll, submitIndexNow, ensureKeyFile, pingNaverSitemap };
