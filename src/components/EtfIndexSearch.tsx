@@ -161,7 +161,7 @@ export default function EtfIndexSearch({ rows, sectors, issuers }: Props) {
       )}
       {filtered.length > 60 && (
         <p className="etf-search-more">
-          상위 60종 표시 — 검색 결과 좁히려면 필터를 추가하세요.
+          상위 60종 표시. 검색 결과를 좁히려면 필터를 추가하세요.
         </p>
       )}
     </section>

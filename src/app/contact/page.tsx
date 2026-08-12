@@ -70,22 +70,22 @@ export default function ContactPage() {
         <h2 className="about-h2">문의 가능 영역</h2>
         <ul className="about-list">
           <li>
-            <strong>데이터 오류 제보</strong> — ETF 시세, 구성 종목, 분배금 정보, 차트 등의 부정확한
+            <strong>데이터 오류 제보</strong>: ETF 시세, 구성 종목, 분배금 정보, 차트 등의 부정확한
             데이터를 발견하셨다면 페이지 URL과 함께 알려주세요. 검증 후 빠르게 정정합니다.
           </li>
           <li>
-            <strong>콘텐츠 정정 요청</strong> — 글 본문의 사실관계 오류·오탈자·인용 누락은 신속히 반영합니다.
+            <strong>콘텐츠 정정 요청</strong>: 글 본문의 사실관계 오류·오탈자·인용 누락은 신속히 반영합니다.
           </li>
           <li>
-            <strong>제휴·광고 문의</strong> — ETF·금융 서비스 운용사, 핀테크, 자산관리 전문가와의 협업
+            <strong>제휴·광고 문의</strong>: ETF·금융 서비스 운용사, 핀테크, 자산관리 전문가와의 협업
             제안을 받습니다. 제휴 가능 범위는 사이트의 공정성 원칙(편집권 분리)에 어긋나지 않는 범위에
             한합니다.
           </li>
           <li>
-            <strong>저작권·인용 문의</strong> — 본 사이트 콘텐츠 인용·재배포 관련 문의.
+            <strong>저작권·인용 문의</strong>: 본 사이트 콘텐츠 인용·재배포 관련 문의.
           </li>
           <li>
-            <strong>일반 의견</strong> — 사이트 개선 제안·기능 요청·콘텐츠 주제 추천.
+            <strong>일반 의견</strong>: 사이트 개선 제안·기능 요청·콘텐츠 주제 추천.
           </li>
         </ul>
       </section>

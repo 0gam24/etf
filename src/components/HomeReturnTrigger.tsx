@@ -25,7 +25,7 @@ export default function HomeReturnTrigger({ diff, hasYesterday, todayPulseHref }
           <CalendarClock size={14} strokeWidth={2.6} aria-hidden /> TOMORROW · 내일도 봐야 할 이유
         </div>
         <h2 className="home-return-trigger-title">
-          어제는 보였고, 오늘은 빠졌다 — <span className="accent">흐름의 변곡점</span>
+          어제는 보였고, 오늘은 빠졌다. <span className="accent">흐름의 변곡점</span>
         </h2>
         <p className="home-return-trigger-sub">
           관심 종목이 어디서 새로 들어오고, 어디서 떠났는지 매일 비교합니다.

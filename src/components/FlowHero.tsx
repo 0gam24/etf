@@ -34,7 +34,7 @@ export default function FlowHero({ hottest, coldest, totalEtfs, baseDate, latest
           <FreshnessPill isoDate={latestPost?.meta.date} />
         </div>
         <h1 className="flow-hero-title">
-          오늘의 ETF 섹터 자금 흐름 — <span className="flow-hero-accent">어디로</span> 돈이 몰리고 빠지나
+          오늘의 ETF 섹터 자금 흐름, <span className="flow-hero-accent">어디로</span> 돈이 몰리고 빠지나
         </h1>
         <p className="flow-hero-tagline">{tagline}</p>
 

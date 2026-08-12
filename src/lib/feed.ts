@@ -11,7 +11,7 @@ import { GUIDES, getGuidePublishedAt } from '@/lib/guides';
 
 export const SITE_URL = process.env.SITE_URL || 'https://iknowhowinfo.com';
 export const SITE_NAME = 'Daily ETF Pulse';
-const SITE_DESC = '오늘 뜨는 ETF의 진짜 이유 — 급등 테마·자금 흐름·월배당 전략을 매일 오전 9시 전에.';
+const SITE_DESC = '오늘 뜨는 ETF의 진짜 이유. 급등 테마·자금 흐름·월배당 전략을 매일 오전 9시 전에.';
 
 // 카테고리별 RSS 노출 대상 (메인 일별 카테고리)
 export const FEED_CATEGORIES = TOP_LEVEL_CATEGORIES.map(slug => ({
@@ -104,7 +104,7 @@ export function getAllFeedItems(): FeedItem[] {
   });
 
   const todayItems: FeedItem[] = loadTodayReports().map(r => ({
-    title: `${r.date} 오늘의 ETF 종합 리포트 — 시그널·분배락·거래량 TOP`,
+    title: `${r.date} 오늘의 ETF 종합 리포트: 시그널·분배락·거래량 TOP`,
     url: `${SITE_URL}${r.url}`,
     pubDate: r.pubDate,
     description: `${r.date} KRX 마감 기준 거래량 TOP·상승/하락·시그널 도달 ETF·분배락일 임박·어제 시그널 결과를 한 페이지에.`,

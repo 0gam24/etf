@@ -16,7 +16,7 @@ export default function IncomeTaxCompare({ etfs, basePrincipal = 100000000 }: Pr
       <div className="pulse-section-head">
         <h2 className="pulse-section-title">계좌별 세후 수익 비교</h2>
         <p className="pulse-section-hint">
-          {basePrincipal.toLocaleString()}원 투자 · 연 분배금 기준 — 같은 ETF라도 계좌만 바꿔도 세후가 달라집니다
+          {basePrincipal.toLocaleString()}원 투자 · 연 분배금 기준. 같은 ETF라도 계좌만 바꿔도 세후가 달라집니다
         </p>
       </div>
       <div className="income-tax-grid">

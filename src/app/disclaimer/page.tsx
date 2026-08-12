@@ -55,10 +55,10 @@ export default function DisclaimerPage() {
           사이트는 다음 공식 데이터 출처를 기반으로 콘텐츠를 작성합니다.
         </p>
         <ul className="about-list">
-          <li>한국거래소(KRX) 공공데이터 포털 — ETF 시세, 구성 종목, 거래량</li>
-          <li>한국은행 ECOS — 기준금리, 환율, 경제 지표</li>
-          <li>금융감독원 DART — 운용사 공시</li>
-          <li>각 자산운용사 공식 공시 — 분배금, 운용 보수</li>
+          <li>한국거래소(KRX) 공공데이터 포털 : ETF 시세, 구성 종목, 거래량</li>
+          <li>한국은행 ECOS : 기준금리, 환율, 경제 지표</li>
+          <li>금융감독원 DART : 운용사 공시</li>
+          <li>각 자산운용사 공식 공시 : 분배금, 운용 보수</li>
         </ul>
         <p className="about-desc" style={{ marginTop: '1rem' }}>
           데이터 정확성·완전성을 위해 최선을 다하지만, 다음과 같은 사유로 일시적 오차가 발생할 수 있습니다.
@@ -81,18 +81,18 @@ export default function DisclaimerPage() {
         <h2 className="about-h2">3. 분석의 한계</h2>
         <ul className="about-list">
           <li>
-            <strong>과거 데이터 기반</strong> — 모든 시세·수익률·차트는 과거 데이터이며, 미래 수익을 보장하지 않습니다.
+            <strong>과거 데이터 기반</strong>: 모든 시세·수익률·차트는 과거 데이터이며, 미래 수익을 보장하지 않습니다.
           </li>
           <li>
-            <strong>시뮬레이션 가정</strong> — 월배당 시뮬레이션·연환산 수익률 등은 일정 가정(분배율 유지·세율
+            <strong>시뮬레이션 가정</strong>: 월배당 시뮬레이션·연환산 수익률 등은 일정 가정(분배율 유지·세율
             등)에 기반하며, 실제 결과와 차이가 있을 수 있습니다.
           </li>
           <li>
-            <strong>시장 변동성</strong> — ETF·주식 시장은 거시 환경·정책·기업 실적 등 다양한 요인으로 급변할 수
+            <strong>시장 변동성</strong>: ETF·주식 시장은 거시 환경·정책·기업 실적 등 다양한 요인으로 급변할 수
             있습니다.
           </li>
           <li>
-            <strong>자동 분석</strong> — 본문은 데이터 기반 자동 분석으로 작성되며, 모든 글 하단에 작성 방식이
+            <strong>자동 분석</strong>: 본문은 데이터 기반 자동 분석으로 작성되며, 모든 글 하단에 작성 방식이
             투명하게 공개됩니다.
           </li>
         </ul>
@@ -114,16 +114,16 @@ export default function DisclaimerPage() {
         </p>
         <ul className="about-list">
           <li>
-            <strong>Google AdSense</strong> — 페이지 내 디스플레이 광고. 광고 내용·게재 위치는 Google이
+            <strong>Google AdSense</strong>: 페이지 내 디스플레이 광고. 광고 내용·게재 위치는 Google이
             이용자 관심사에 맞게 자동 선정합니다.
           </li>
           <li>
-            <strong>쿠팡 파트너스</strong> — 일부 자료 페이지(/resources, /guide 등)의 책·도구 추천 링크.
+            <strong>쿠팡 파트너스</strong>: 일부 자료 페이지(/resources, /guide 등)의 책·도구 추천 링크.
             이용자가 링크를 통해 구매 시 사이트에 일정 수수료가 발생합니다. 해당 페이지에는 별도 고지
             문구가 노출됩니다.
           </li>
           <li>
-            <strong>금융 제휴</strong> — 일부 콘텐츠에 운용사·증권사 제휴 카드가 포함될 수 있으며, 이 경우
+            <strong>금융 제휴</strong>: 일부 콘텐츠에 운용사·증권사 제휴 카드가 포함될 수 있으며, 이 경우
             카드 상단에 제휴 사실이 표시됩니다.
           </li>
         </ul>

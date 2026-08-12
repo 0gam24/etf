@@ -70,7 +70,7 @@ export default function RecommendBox({ position, category, limit }: Props) {
           target="_blank"
           rel="nofollow sponsored noopener noreferrer"
           className="recommend-box-card"
-          aria-label={`${p.title} — 자세히 보기 (새 탭)`}
+          aria-label={`${p.title} 자세히 보기 (새 탭)`}
           tabIndex={dupIndex > 0 ? -1 : undefined}
         >
           {inner}

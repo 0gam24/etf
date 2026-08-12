@@ -73,7 +73,7 @@ export default function Kospi200BreakoutPage() {
           코스피200 변동성 돌파 시그널
         </h1>
         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-          Andrea Unger 의 변동성 돌파 공식 (시초가 ± 0.5×ATR_5) 을 KOSPI200 4종에 매일 적용. 추세 필터 (20일 SMA) + 변동성 필터 (ATR/Open ≥ 0.8%) 통과 시 진입 가능 시그널 emit. 매매 권유 X — 본인 판단·책임.
+          Andrea Unger 의 변동성 돌파 공식 (시초가 ± 0.5×ATR_5)을 KOSPI200 4종에 매일 적용. 추세 필터 (20일 SMA) + 변동성 필터 (ATR/Open ≥ 0.8%) 통과 시 진입 가능 시그널 emit. 매매 권유 X, 본인 판단·책임.
         </p>
       </header>
 
@@ -92,7 +92,7 @@ export default function Kospi200BreakoutPage() {
             <h3 style={{ fontSize: 'var(--fs-h3)', marginBottom: 'var(--space-3)' }}>공식 파라미터</h3>
             <ul style={{ color: 'var(--text-secondary)', lineHeight: 1.8 }}>
               <li><strong>N (ATR look-back)</strong>: {data.params.N}일</li>
-              <li><strong>K_TRIGGER (진입 배수)</strong>: {data.params.K_TRIGGER} — Long {data.params.K_TRIGGER}×ATR 위 / Short {data.params.K_TRIGGER}×ATR 아래</li>
+              <li><strong>K_TRIGGER (진입 배수)</strong>: {data.params.K_TRIGGER}, Long {data.params.K_TRIGGER}×ATR 위 / Short {data.params.K_TRIGGER}×ATR 아래</li>
               <li><strong>K_STOP (손절 배수)</strong>: {data.params.K_STOP}</li>
               <li><strong>K_TARGET (익절 배수)</strong>: {data.params.K_TARGET}</li>
               <li><strong>VOL_MIN (최소 변동성)</strong>: {(data.params.VOL_MIN * 100).toFixed(1)}%</li>
@@ -104,7 +104,7 @@ export default function Kospi200BreakoutPage() {
           <p style={{ color: 'var(--text-dim)' }}>
             오늘의 시그널 데이터를 준비 중입니다. 매 영업일 16:00 KST cron 이 시그널을 생성합니다.
             <br />
-            <small>OHLC 시계열 축적 후 첫 시그널 발행 — 약 3주 소요</small>
+            <small>OHLC 시계열 축적 후 첫 시그널 발행까지 약 3주 소요</small>
           </p>
         </section>
       )}
@@ -113,7 +113,7 @@ export default function Kospi200BreakoutPage() {
         <h3 style={{ fontSize: 'var(--fs-h3)', marginBottom: 'var(--space-3)', color: 'var(--red-400)' }}>⚠️ 면책 조항</h3>
         <ul style={{ color: 'var(--text-secondary)', lineHeight: 1.7, fontSize: '0.9rem' }}>
           <li>본 시그널은 <strong>기술적 분석 정보 제공</strong>이며 매수·매도 권유가 아닙니다.</li>
-          <li>변동성 돌파 공식은 과거 데이터 기반 — 미래 성과 보장 없음.</li>
+          <li>변동성 돌파 공식은 과거 데이터 기반 : 미래 성과 보장 없음.</li>
           <li>실 매매 결정과 손익의 책임은 투자자 본인에게 있습니다.</li>
           <li>실제 매매 시 슬리피지·수수료·세금 고려 필수.</li>
           <li>본 사이트는 자동 매매 기능을 제공하지 않습니다.</li>

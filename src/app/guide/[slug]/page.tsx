@@ -283,7 +283,7 @@ export default async function GuidePage({ params }: PageProps) {
         </section>
       )}
 
-      <FaqSection title={`${g.section} — 자주 묻는 질문`} items={g.faq} />
+      <FaqSection title={`${g.section} 자주 묻는 질문`} items={g.faq} />
 
       <nav className="guide-article-other" aria-label="관련 가이드">
         <h2>관련 가이드</h2>

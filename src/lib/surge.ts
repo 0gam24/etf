@@ -50,9 +50,9 @@ export function computeRiskLabels(
   const cr = etf.changeRate ?? 0;
 
   if (cr >= 10) {
-    labels.push({ text: '갭상승 추정', severity: 'critical', hint: '단기 수급 쏠림 — 추격 주의' });
+    labels.push({ text: '갭상승 추정', severity: 'critical', hint: '단기 수급 쏠림, 추격 주의' });
   } else if (cr >= 5) {
-    labels.push({ text: '단기 과열', severity: 'warning', hint: '5%+ 강한 상승 — 분할 진입 권장' });
+    labels.push({ text: '단기 과열', severity: 'warning', hint: '5%+ 강한 상승, 분할 진입 권장' });
   } else if (cr >= 3) {
     labels.push({ text: '강한 모멘텀', severity: 'momentum', hint: '의미 있는 상승 추세' });
   } else if (cr >= 0) {
@@ -60,7 +60,7 @@ export function computeRiskLabels(
   } else if (cr >= -3) {
     labels.push({ text: '조정 진행', severity: 'neutral', hint: '단기 차익실현 매물' });
   } else {
-    labels.push({ text: '약세 전환', severity: 'neutral', hint: '추세 약화 — 관망 권장' });
+    labels.push({ text: '약세 전환', severity: 'neutral', hint: '추세 약화, 관망 권장' });
   }
 
   if (marketAvgVolume && marketAvgVolume > 0 && etf.volume / marketAvgVolume >= 5) {

@@ -12,7 +12,7 @@ export default function FlowSectorLeaders({ sectors }: Props) {
     <section className="flow-leaders">
       <div className="pulse-section-head">
         <h2 className="pulse-section-title">섹터별 대장 ETF</h2>
-        <p className="pulse-section-hint">각 섹터에서 거래량이 가장 큰 종목 — 자금이 가장 먼저 들고 빠지는 길목</p>
+        <p className="pulse-section-hint">각 섹터에서 거래량이 가장 큰 종목, 자금이 가장 먼저 들고 빠지는 길목</p>
       </div>
 
       <div className="flow-leaders-wrap">

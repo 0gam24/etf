@@ -66,7 +66,7 @@ export default function BreakingLandingPage() {
             <FreshnessPill isoDate={todayPosts[0]?.meta.date} />
           </div>
           <h1 className="breaking-hero-title">
-            오늘의 ETF 속보 — <span className="breaking-hero-accent">거래량 TOP 3 ETF가 왜 움직였나</span>
+            오늘의 ETF 속보, <span className="breaking-hero-accent">거래량 TOP 3 ETF가 왜 움직였나</span>
           </h1>
           <p className="breaking-hero-sub">
             오늘 가장 많이 거래된 ETF 3종의 등락 원인·관련 뉴스·구성종목을 한 편에 정리한 ETF 속보.

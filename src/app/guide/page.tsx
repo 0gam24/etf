@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'ETF 가이드 모음',
-    description: '입문·세금·배당·해외·전략 — 주제별로 묶은 ETF 가이드 허브.',
+    description: '입문·세금·배당·해외·전략까지, 주제별로 묶은 ETF 가이드 허브.',
   },
 };
 

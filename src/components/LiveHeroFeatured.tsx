@@ -184,7 +184,7 @@ export default function LiveHeroFeatured({ initial, baseline, heroDict }: Props)
             </span>
             <span className="home-hero-v3-catalyst-text">{catalyst.title}</span>
             {catalyst.source && (
-              <span className="home-hero-v3-catalyst-source">— {catalyst.source}</span>
+              <span className="home-hero-v3-catalyst-source">· {catalyst.source}</span>
             )}
           </Link>
         ) : (
@@ -194,7 +194,7 @@ export default function LiveHeroFeatured({ initial, baseline, heroDict }: Props)
             </span>
             <span className="home-hero-v3-catalyst-text">{catalyst.title}</span>
             {catalyst.source && (
-              <span className="home-hero-v3-catalyst-source">— {catalyst.source}</span>
+              <span className="home-hero-v3-catalyst-source">· {catalyst.source}</span>
             )}
           </div>
         )

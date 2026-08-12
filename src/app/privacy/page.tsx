@@ -36,9 +36,9 @@ export default function PrivacyPage() {
         <h2 className="about-h2">1. 수집하는 정보</h2>
         <p className="about-desc">사이트는 다음 정보를 자동으로 수집합니다.</p>
         <ul className="about-list">
-          <li><strong>접속 로그</strong> — IP 주소, 브라우저 종류·버전, 운영체제, 접속 시각, 방문한 페이지 URL, 리퍼러(referrer)</li>
-          <li><strong>쿠키(Cookie)</strong> — 세션 유지·환경 설정·통계 분석·광고 게재 목적 (자세한 내용은 아래 4항 참조)</li>
-          <li><strong>이용자가 직접 제공한 정보</strong> — 문의 이메일 발송 시 회신 주소·문의 내용</li>
+          <li><strong>접속 로그</strong>: IP 주소, 브라우저 종류·버전, 운영체제, 접속 시각, 방문한 페이지 URL, 리퍼러(referrer)</li>
+          <li><strong>쿠키(Cookie)</strong>: 세션 유지·환경 설정·통계 분석·광고 게재 목적 (자세한 내용은 아래 4항 참조)</li>
+          <li><strong>이용자가 직접 제공한 정보</strong>: 문의 이메일 발송 시 회신 주소·문의 내용</li>
         </ul>
         <p className="about-desc" style={{ marginTop: '1rem' }}>
           사이트는 회원가입·로그인 기능을 운영하지 않으며, 별도 데이터베이스에 개인 식별 정보를 저장하지 않습니다.
@@ -72,11 +72,11 @@ export default function PrivacyPage() {
         </p>
         <ul className="about-list">
           <li>
-            <strong>Google AdSense·DoubleClick(DART) 쿠키</strong> — Google 및 그 파트너사가 이용자의
+            <strong>Google AdSense·DoubleClick(DART) 쿠키</strong>: Google 및 그 파트너사가 이용자의
             방문 이력을 기반으로 관심사에 맞춘 광고를 게재하는 데 사용됩니다.
           </li>
           <li>
-            <strong>Google Analytics 쿠키</strong> — 방문자 수·페이지 체류 시간·기기 종류 등 통계 분석에
+            <strong>Google Analytics 쿠키</strong>: 방문자 수·페이지 체류 시간·기기 종류 등 통계 분석에
             사용됩니다. 개인 식별 정보는 수집하지 않습니다.
           </li>
         </ul>
@@ -117,9 +117,9 @@ export default function PrivacyPage() {
           쿠키·접속 정보가 자동 수집·처리될 수 있습니다.
         </p>
         <ul className="about-list">
-          <li><strong>Google AdSense, Google Analytics</strong> — Google LLC (미국)</li>
-          <li><strong>Cloudflare Pages</strong> — 호스팅·CDN, Cloudflare Inc. (미국)</li>
-          <li><strong>쿠팡 파트너스</strong> — 일부 페이지의 제휴 링크 클릭 시 쿠팡 측 추적 쿠키 발생 가능</li>
+          <li><strong>Google AdSense, Google Analytics</strong>: Google LLC (미국)</li>
+          <li><strong>Cloudflare Pages</strong>: 호스팅·CDN, Cloudflare Inc. (미국)</li>
+          <li><strong>쿠팡 파트너스</strong>: 일부 페이지의 제휴 링크 클릭 시 쿠팡 측 추적 쿠키 발생 가능</li>
         </ul>
       </section>
 

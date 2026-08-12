@@ -65,7 +65,7 @@ export default function GuideLatestPage() {
   const orderedForSchema = [...dated, ...foundational];
   const itemListSchema = buildItemListSchema(
     orderedForSchema.map(g => ({ url: `/guide/${g.slug}`, name: g.title })),
-    `Daily ETF Pulse 가이드 ${GUIDES.length}종 — 최신 발행순`,
+    `Daily ETF Pulse 가이드 ${GUIDES.length}종, 최신 발행순`,
   );
 
   return (

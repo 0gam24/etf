@@ -147,7 +147,7 @@ export function computeBreakoutSignal(
 
   const trendKo = trend === 'up' ? '상승' : trend === 'down' ? '하락' : '횡보';
   const summary = !volPass
-    ? `변동성 부족 (${(volRatio * 100).toFixed(2)}% · 최소 ${(VOL_MIN * 100).toFixed(1)}%) — WAIT`
+    ? `변동성 부족 (${(volRatio * 100).toFixed(2)}% · 최소 ${(VOL_MIN * 100).toFixed(1)}%), WAIT`
     : status === 'BOTH_READY'
       ? `${trendKo} 추세 · ${longTrigger.toLocaleString()} 이상 매수 / ${shortTrigger.toLocaleString()} 이하 매도 트리거`
       : status === 'LONG_READY'

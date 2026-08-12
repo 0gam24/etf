@@ -111,7 +111,7 @@ export default async function AuthorPage({ params }: PageProps) {
         <div className="author-disclosure-block">
           <div className="author-disclosure-label">발행·검수 책임</div>
           <p className="author-disclosure-text">
-            {PUBLISHER.name} — {PUBLISHER.description}
+            {PUBLISHER.name}, {PUBLISHER.description}
           </p>
         </div>
 

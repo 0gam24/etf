@@ -22,7 +22,7 @@ export default function IncomeHero({ etfCount, topYield, monthlyCount, asOf, lat
           <FreshnessPill isoDate={latestPostDate} />
         </div>
         <h1 className="income-hero-title">
-          월배당 ETF·커버드콜 ETF — <span className="income-hero-accent">매월 분배금이 들어오는</span> ETF 분배금 정리
+          월배당 ETF·커버드콜 ETF, <span className="income-hero-accent">매월 분배금이 들어오는</span> ETF 분배금 정리
         </h1>
         <p className="income-hero-sub">
           월배당 ETF와 커버드콜 ETF의 실제 분배금·연 분배율·계좌별 세후 수익률, 월 목표 현금흐름 역산까지.

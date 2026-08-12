@@ -22,7 +22,7 @@ export async function GET(
   }
 
   const rssFeed = renderRss(getCategoryFeedItems(category.slug), {
-    title: `${SITE_NAME} — ${category.name}`,
+    title: `${SITE_NAME} · ${category.name}`,
     description: `${SITE_NAME}의 ${category.name} 카테고리 새 글을 모은 RSS 피드입니다.`,
     selfPath: `/rss/${category.slug}.xml`,
   });

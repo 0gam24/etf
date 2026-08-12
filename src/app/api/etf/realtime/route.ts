@@ -250,7 +250,7 @@ export async function GET(req: NextRequest) {
     kisMode: getKisMode(),
     tokenCache,
     fallbackReason: daily.okCount > 0
-      ? `KIS 미설정 — 일별 종가(${via}${baseDate ? ` ${baseDate}` : ''})`
+      ? `일별 종가(${via}${baseDate ? ` ${baseDate}` : ''})`
       : `KIS 미설정 · 일별 종가 ${via === 'none' ? '소스 없음' : '미보유 코드'}`,
     ts,
   };

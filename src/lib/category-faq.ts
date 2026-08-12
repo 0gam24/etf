@@ -85,9 +85,9 @@ export const CATEGORY_FAQ: Record<string, FaqItem[]> = {
 };
 
 export const CATEGORY_FAQ_TITLE: Record<string, string> = {
-  pulse: '오늘의 관전포인트 — 자주 묻는 질문',
-  surge: '급등 ETF 분석 — 자주 묻는 질문',
-  flow: '자금 흐름 리포트 — 자주 묻는 질문',
-  income: '월배당·커버드콜 — 자주 묻는 질문',
-  breaking: 'ETF 속보 — 자주 묻는 질문',
+  pulse: '오늘의 관전포인트 자주 묻는 질문',
+  surge: '급등 ETF 분석 자주 묻는 질문',
+  flow: '자금 흐름 리포트 자주 묻는 질문',
+  income: '월배당·커버드콜 자주 묻는 질문',
+  breaking: 'ETF 속보 자주 묻는 질문',
 };

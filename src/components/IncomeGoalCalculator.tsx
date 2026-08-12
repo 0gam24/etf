@@ -31,7 +31,7 @@ export default function IncomeGoalCalculator({ etfs }: Props) {
       <div className="pulse-section-head">
         <h2 className="pulse-section-title">월 목표 현금흐름 역산</h2>
         <p className="pulse-section-hint">
-          "월 ○○만원 배당을 받으려면 얼마가 필요한가" — ETF·계좌 조합별 실제 필요 원금
+          "월 ○○만원 배당을 받으려면 얼마가 필요한가", ETF·계좌 조합별 실제 필요 원금
         </p>
       </div>
 

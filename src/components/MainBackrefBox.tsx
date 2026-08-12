@@ -115,7 +115,7 @@ export default function MainBackrefBox({
     <aside
       style={containerStyle}
       role="complementary"
-      aria-label="메인 사이트 출처 — smartdatashop.kr"
+      aria-label="메인 사이트 출처: smartdatashop.kr"
       data-network="smartdatashop"
       data-network-variant={variant}
     >

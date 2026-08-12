@@ -27,7 +27,7 @@ export default function HomeDefenseTop3({ defenseEtfs }: Props) {
   const top = defenseEtfs.slice(0, 3);
 
   return (
-    <section className="home-defense" aria-label="원금 방어 — 안정성 최상위">
+    <section className="home-defense" aria-label="원금 방어, 안정성 최상위">
       <div className="home-defense-head">
         <div className="home-defense-eyebrow">
           <Shield size={14} strokeWidth={2.6} aria-hidden /> RISK · 원금이 흔들리는 날에는

@@ -17,7 +17,7 @@ export default function AuthorSlider({ authors }: Props) {
           {authors.length}명의 실전 투자자가 매일 분석합니다
         </h2>
         <p className="author-slider-sub">
-          전직 PB·증권사 애널리스트, 워킹맘·전업주부, 자영업자·엔지니어 — 자기 자산을 직접 굴리는 사람들의 글입니다.
+          전직 PB·증권사 애널리스트, 워킹맘·전업주부, 자영업자·엔지니어까지, 자기 자산을 직접 굴리는 사람들의 글입니다.
         </p>
       </div>
 

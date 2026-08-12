@@ -14,7 +14,7 @@ export default function FlowExtremes({ hottest, coldest }: Props) {
     <section className="flow-extremes">
       <div className="pulse-section-head">
         <h2 className="pulse-section-title">오늘 가장 뜨거운 / 차가운 섹터</h2>
-        <p className="pulse-section-hint">평균 등락률과 거래대금이 가장 극단인 섹터 — 진입·이탈의 신호</p>
+        <p className="pulse-section-hint">평균 등락률과 거래대금이 가장 극단인 섹터, 진입·이탈의 신호</p>
       </div>
 
       <div className="flow-extremes-grid">

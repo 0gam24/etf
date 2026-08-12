@@ -33,7 +33,7 @@ export default function ProductCard({ product, variant = 'full' }: Props) {
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={product.image}
-      alt={`${product.title}${product.source ? ` — ${product.source}` : ''} 표지`}
+      alt={`${product.title}${product.source ? `, ${product.source}` : ''} 표지`}
       loading="lazy"
     />
   ) : (
@@ -102,7 +102,7 @@ export default function ProductCard({ product, variant = 'full' }: Props) {
         target="_blank"
         rel="nofollow sponsored noopener noreferrer"
         className="product-mini"
-        aria-label={`${product.title} — 자세히 보기 (새 탭)`}
+        aria-label={`${product.title} 자세히 보기 (새 탭)`}
       >
         {inner}
       </a>
@@ -153,7 +153,7 @@ export default function ProductCard({ product, variant = 'full' }: Props) {
         target="_blank"
         rel="nofollow sponsored noopener noreferrer"
         className="product-card-resource"
-        aria-label={`${product.title} — 자세히 보기 (새 탭)`}
+        aria-label={`${product.title} 자세히 보기 (새 탭)`}
       >
         {innerResource}
       </a>
@@ -191,7 +191,7 @@ export default function ProductCard({ product, variant = 'full' }: Props) {
       target="_blank"
       rel="nofollow sponsored noopener noreferrer"
       className="product-card"
-      aria-label={`${product.title} — 자세히 보기 (새 탭)`}
+      aria-label={`${product.title} 자세히 보기 (새 탭)`}
     >
       {innerFull}
     </a>

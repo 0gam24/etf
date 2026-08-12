@@ -34,7 +34,7 @@ export async function GET() {
   ).join('\n');
 
   const compareLines = COMPARE_PAIRS.map(
-    (c) => `- [${c.slug.replace(/-vs-/, ' vs ')}](${SITE}/compare/${c.slug}): ${c.searchIntent} — ${c.context}`,
+    (c) => `- [${c.slug.replace(/-vs-/, ' vs ')}](${SITE}/compare/${c.slug}): ${c.searchIntent}. ${c.context}`,
   ).join('\n');
 
   const personaLines = ALL_PERSONAS.map(

@@ -3,7 +3,7 @@ import { GUIDES } from '@/lib/guides';
 import { ALL_PERSONAS } from '@/lib/personas-config';
 
 /**
- * Daily ETF Pulse — Image sitemap.
+ * Daily ETF Pulse, Image sitemap.
  *
  *   Google 가이드 (developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps):
  *     - <image:image> 태그로 페이지의 핵심 이미지 정보 제공
@@ -11,7 +11,7 @@ import { ALL_PERSONAS } from '@/lib/personas-config';
  *     - 페이지당 최대 1,000개 이미지
  *
  *   우리 사이트:
- *     - 모든 글의 OG 이미지 (/api/og?...) — SVG, 동적 생성
+ *     - 모든 글의 OG 이미지 (/api/og?...), SVG, 동적 생성
  *     - 가이드 페이지: 카테고리별 OG
  *     - 카테고리 랜딩: 사이트 기본 OG
  *
@@ -57,8 +57,8 @@ export async function GET() {
   <url>
     <loc>${SITE}</loc>
     <image:image>
-      <image:loc>${ogImageUrl({ title: 'Daily ETF Pulse — 오늘 뜨는 ETF의 진짜 이유', category: 'pulse' })}</image:loc>
-      <image:title>${escapeXml('Daily ETF Pulse — 오늘 뜨는 ETF의 진짜 이유')}</image:title>
+      <image:loc>${ogImageUrl({ title: 'Daily ETF Pulse, 오늘 뜨는 ETF의 진짜 이유', category: 'pulse' })}</image:loc>
+      <image:title>${escapeXml('Daily ETF Pulse, 오늘 뜨는 ETF의 진짜 이유')}</image:title>
     </image:image>
   </url>`);
 
@@ -72,26 +72,26 @@ export async function GET() {
   </url>`);
   });
 
-  // 정적 신뢰·자료실 페이지 — Google Image Search 노출 가능성 + OG 카드 양호 유지.
+  // 정적 신뢰·자료실 페이지, Google Image Search 노출 가능성 + OG 카드 양호 유지.
   //   (about·newsletter·resources·compare·etf 인덱스 모두 OG 이미지 동적 생성됨)
   const STATIC_PAGES: Array<{ path: string; title: string; category?: string }> = [
-    { path: '/about',      title: 'Daily ETF Pulse 편집팀 — 발행 원칙·데이터 출처',  category: 'pulse' },
-    { path: '/newsletter', title: 'Daily ETF Pulse 뉴스레터 — 매일 아침 9시 갱신',  category: 'pulse' },
-    { path: '/feeds',      title: '구독 · 피드 (RSS·Atom·JSON) — Daily ETF Pulse',   category: 'pulse' },
-    { path: '/resources',  title: 'ETF 학습 자료실 — 도서·도구 큐레이션',           category: 'income' },
-    { path: '/compare',    title: 'ETF 1:1 비교 허브 — 운용사·섹터·환헤지',         category: 'flow' },
+    { path: '/about',      title: 'Daily ETF Pulse 편집팀, 발행 원칙·데이터 출처',  category: 'pulse' },
+    { path: '/newsletter', title: 'Daily ETF Pulse 뉴스레터, 매일 아침 9시 갱신',  category: 'pulse' },
+    { path: '/feeds',      title: '구독 · 피드 (RSS·Atom·JSON), Daily ETF Pulse',   category: 'pulse' },
+    { path: '/resources',  title: 'ETF 학습 자료실, 도서·도구 큐레이션',           category: 'income' },
+    { path: '/compare',    title: 'ETF 1:1 비교 허브, 운용사·섹터·환헤지',         category: 'flow' },
     { path: '/etf',        title: 'KRX 1095종 ETF 종목 사전',                      category: 'surge' },
-    { path: '/guide',      title: 'ETF 투자 가이드 — 월배당·커버드콜·세금·수수료·입문', category: 'pulse' },
-    { path: '/guide/latest', title: '전체 ETF 가이드 — 최신 발행순 모아보기',           category: 'pulse' },
-    { path: '/today',      title: '오늘의 ETF 종합 리포트 — 시그널·분배락·거래량', category: 'pulse' },
+    { path: '/guide',      title: 'ETF 투자 가이드, 월배당·커버드콜·세금·수수료·입문', category: 'pulse' },
+    { path: '/guide/latest', title: '전체 ETF 가이드, 최신 발행순 모아보기',           category: 'pulse' },
+    { path: '/today',      title: '오늘의 ETF 종합 리포트, 시그널·분배락·거래량', category: 'pulse' },
     { path: '/weekly',     title: '주간 ETF 펄스 리포트 · 주차별 자금 흐름',        category: 'flow' },
-    { path: '/strategy/kospi200-breakout', title: '코스피200 변동성 돌파 시그널 — Andrea Unger',  category: 'surge' },
-    { path: '/strategy/track-record',      title: '시그널 트랙 레코드 — Transparent 결과 공개', category: 'surge' },
+    { path: '/strategy/kospi200-breakout', title: '코스피200 변동성 돌파 시그널, Andrea Unger',  category: 'surge' },
+    { path: '/strategy/track-record',      title: '시그널 트랙 레코드, Transparent 결과 공개', category: 'surge' },
     { path: '/tools/portfolio',  title: 'ETF 포트폴리오 실시간 시뮬레이션',                category: 'pulse' },
-    { path: '/tools/tax-compare', title: '계좌별 세후 수익률 비교 — IRP·ISA·연금저축',   category: 'income' },
+    { path: '/tools/tax-compare', title: '계좌별 세후 수익률 비교, IRP·ISA·연금저축',   category: 'income' },
   ];
 
-  // ── 페르소나 entry pages 7종 (Phase 4) — Image Sitemap 등록 ───────
+  // ── 페르소나 entry pages 7종 (Phase 4), Image Sitemap 등록 ───────
   ALL_PERSONAS.forEach(p => {
     STATIC_PAGES.push({
       path: `/for/${p.slug}`,
@@ -124,7 +124,7 @@ export async function GET() {
   </url>`);
   });
 
-  // 글 상세 — 각 글의 OG 이미지
+  // 글 상세, 각 글의 OG 이미지
   allPosts.forEach(post => {
     const url = `${SITE}/${post.meta.category}/${encodeURI(post.meta.slug)}`;
     const ogParams: Record<string, string> = {

@@ -68,13 +68,13 @@ export default async function HomePage() {
   const itemListSchema = buildItemListSchema(
     feedForSchema.map(i => ({ url: i.href, name: i.title })),
     bundle
-      ? `Daily ETF Pulse — ${formatDateKeyKo(bundle.dateKey)} 발행 포함 최신 글 ${feedForSchema.length}편`
+      ? `Daily ETF Pulse, ${formatDateKeyKo(bundle.dateKey)} 발행 포함 최신 글 ${feedForSchema.length}편`
       : 'Daily ETF Pulse 최신 글',
   );
   const collectionSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Daily ETF Pulse — 매일 발행하는 ETF 분석·투자 가이드',
+    name: 'Daily ETF Pulse, 매일 발행하는 ETF 분석·투자 가이드',
     description: 'ETF 투자 가이드와 시장 분석을 매일 발행하는 홈 피드.',
     url: process.env.SITE_URL || 'https://iknowhowinfo.com',
     inLanguage: 'ko-KR',

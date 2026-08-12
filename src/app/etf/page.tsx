@@ -159,7 +159,7 @@ export default function EtfIndexPage() {
           <span className="etf-index-eyebrow-stat">{totalCount.toLocaleString()}종 · {sectorCount}개 섹터</span>
         </div>
         <h1 className="etf-index-title">
-          KRX 상장 ETF 종목 사전 — <span className="etf-index-title-accent">전 종목 한 페이지</span>
+          KRX 상장 ETF 종목 사전, <span className="etf-index-title-accent">전 종목 한 페이지</span>
         </h1>
         <p className="etf-index-tagline">
           한국거래소(KRX) 상장 ETF 전체를 거래량·섹터·운용사 기준으로 정리. 종목별 페이지에서 시세·구성종목·분배금까지 한눈에 확인.

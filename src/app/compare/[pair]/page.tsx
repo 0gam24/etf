@@ -200,7 +200,7 @@ export default async function ComparePairPage({ params }: PageProps) {
           </div>
         </div>
         {!etfA && !etfB && (
-          <p className="compare-note">두 종목 모두 오늘 시세 데이터가 미수집 — 다음 갱신 주기에 반영됩니다.</p>
+          <p className="compare-note">두 종목 모두 오늘 시세 데이터가 미수집 상태이며, 다음 갱신 주기에 반영됩니다.</p>
         )}
       </section>
 
@@ -249,7 +249,7 @@ export default async function ComparePairPage({ params }: PageProps) {
         <ul className="compare-criteria">
           <li><strong>거래량·유동성 우선</strong>이라면 거래량이 큰 종목이 매매 편의성·호가 스프레드에서 유리합니다.</li>
           <li><strong>총보수 절약</strong>이 목표라면 운용사 공식 PDP에서 총보수(연 0.05~0.30%)를 직접 비교하세요.</li>
-          <li><strong>같은 지수 추종</strong>이라면 장기 성과는 거의 동일 — 분배 정책·운용사 선호로 결정합니다.</li>
+          <li><strong>같은 지수 추종</strong>이라면 장기 성과는 거의 동일합니다. 분배 정책·운용사 선호로 결정합니다.</li>
           <li><strong>환헷지 vs 비헷지</strong>는 본인 환 시각에 따라 분리 매수도 좋은 전략입니다.</li>
         </ul>
         <p className="compare-note">

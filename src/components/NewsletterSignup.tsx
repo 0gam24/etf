@@ -85,7 +85,7 @@ export default function NewsletterSignup({ variant = 'compact' }: Props) {
         <h2 className="newsletter-full-title">일일 ETF 요약 · 이메일로 받기</h2>
       </div>
       <p className="newsletter-full-desc">
-        매일 아침 9시 발행되는 ETF 분석의 핵심을 한 통의 이메일로 정리해 드립니다. 거래량 TOP 3·섹터 자금 흐름·월배당 분배 캘린더 — 출근 전 5분.
+        매일 아침 9시 발행되는 ETF 분석의 핵심을 한 통의 이메일로 정리해 드립니다. 거래량 TOP 3·섹터 자금 흐름·월배당 분배 캘린더까지, 출근 전 5분.
       </p>
 
       {submitted ? (

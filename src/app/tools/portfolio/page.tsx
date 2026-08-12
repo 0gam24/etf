@@ -28,7 +28,7 @@ export default function PortfolioPage() {
         </h1>
         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
           ETF 코드와 보유수량을 입력하면 KRX 종가 기준 시세로 손익을 자동 계산합니다.
-          입력값은 브라우저(localStorage) 에만 저장 — 서버에 전송 안 됨.
+          입력값은 브라우저(localStorage) 에만 저장하며, 서버로 전송하지 않습니다.
         </p>
       </header>
 

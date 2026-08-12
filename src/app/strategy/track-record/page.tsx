@@ -79,7 +79,7 @@ export default function TrackRecordPage() {
         </h1>
         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
           매일 발행한 Unger 변동성 돌파 시그널을 다음 거래일 OHLC 로 자동 검증.
-          성공·실패 모두 transparent 노출 — paper trading 결과이며 실 매매 X.
+          성공·실패 모두 transparent 노출. paper trading 결과이며 실 매매 X.
         </p>
         {record?.updatedAt && (
           <p style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: 'var(--text-dim)' }}>
@@ -124,7 +124,7 @@ export default function TrackRecordPage() {
         <h2 style={{ fontSize: 'var(--fs-h3)', marginBottom: 'var(--space-2)', color: 'var(--red-400)' }}>가상 매매 결과라는 점을 꼭 확인하세요</h2>
         <ul style={{ color: 'var(--text-secondary)', lineHeight: 1.7, fontSize: '0.9rem' }}>
           <li>본 결과는 <strong>가상 매매 시뮬레이션</strong>입니다. 실제 자금 매매 X.</li>
-          <li>슬리피지·수수료·세금 미반영 — 실 매매 시 손익이 더 작아질 수 있음.</li>
+          <li>슬리피지·수수료·세금 미반영. 실 매매 시 손익이 더 작아질 수 있음.</li>
           <li>과거 성과가 미래 결과를 보장하지 않습니다.</li>
         </ul>
       </section>

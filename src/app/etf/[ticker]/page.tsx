@@ -278,15 +278,15 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
     name: displayName,
     code: displayCode,
     description: hasPriceData
-      ? `${displayName} ETF — 한국거래소(KRX) 상장. 섹터: ${displaySector || '-'}, 현재가 ${etf!.price.toLocaleString()}원, 거래량 ${etf!.volume.toLocaleString()}주.`
-      : `${displayName} ETF — 한국거래소(KRX) 상장 종목. 단축코드 ${displayCode}.`,
+      ? `${displayName}, 한국거래소(KRX) 상장 ETF. 섹터: ${displaySector || '-'}, 현재가 ${etf!.price.toLocaleString()}원, 거래량 ${etf!.volume.toLocaleString()}주.`
+      : `${displayName}, 한국거래소(KRX) 상장 ETF. 단축코드 ${displayCode}.`,
     url: `/etf/${canonicalSlug}`,
     category: 'ETF',
     ...(hasPriceData ? { price: etf!.price, priceDate: formattedBaseDate } : {}),
   });
 
   const datasetSchema = buildDatasetSchema({
-    name: `${displayName} (${displayCode}) — ETF 종목 정보`,
+    name: `${displayName} (${displayCode}) ETF 종목 정보`,
     description: hasPriceData
       ? `${displayName} ETF의 일별 종가·등락률·거래량·거래대금 + 구성종목 TOP 10 + 분배 정보. 한국거래소(KRX) 공공데이터 기준.`
       : `${displayName} ETF의 단축코드·운용사·종목 메타 정보. 한국거래소(KRX) 공공데이터 기준.`,
@@ -334,8 +334,8 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
         </h1>
         <p className="etf-dict-tagline">
           {hasPriceData
-            ? `${displayName} ETF — 오늘 시세, 구성종목, 분배금, 투자 포인트 한 페이지 정리. 매일 09:00 갱신.`
-            : `${displayName} ETF — ${issuerLabel ? `${issuerLabel.split(' ')[0]} 운용 · ` : ''}단축코드 ${displayCode}. 한국거래소(KRX) 상장 종목 정보.`}
+            ? `${displayName}의 오늘 시세, 구성종목, 분배금, 투자 포인트를 한 페이지에 정리했습니다. 매일 09:00 갱신.`
+            : `${displayName} ETF. ${issuerLabel ? `${issuerLabel.split(' ')[0]} 운용 · ` : ''}단축코드 ${displayCode}. 한국거래소(KRX) 상장 종목 정보.`}
         </p>
 
         {/* Authority 외부 권위 링크 — Google E-E-A-T (Trustworthiness) 신호 */}

@@ -103,7 +103,7 @@ export default function FeedsPage() {
         <ul className="about-list">
           {SUBSCRIBE_FEEDS.map(f => (
             <li key={f.href}>
-              <strong>{f.label}</strong>{' — '}{f.desc}
+              <strong>{f.label}</strong>{': '}{f.desc}
               <br />
               <a href={f.href} target="_blank" rel="noopener noreferrer" style={feedUrlStyle}>{`${SITE_URL}${f.href}`}</a>
             </li>
@@ -135,7 +135,7 @@ export default function FeedsPage() {
         <ul className="about-list">
           {AI_SEARCH_FILES.map(f => (
             <li key={f.href}>
-              <strong>{f.label}</strong>{' — '}{f.desc}
+              <strong>{f.label}</strong>{': '}{f.desc}
               <br />
               <a href={f.href} target="_blank" rel="noopener noreferrer" style={feedUrlStyle}>{`${SITE_URL}${f.href}`}</a>
             </li>
@@ -146,9 +146,9 @@ export default function FeedsPage() {
       <section className="about-section">
         <h2 className="about-h2">피드를 어떻게 쓰나요?</h2>
         <ul className="about-list">
-          <li><strong>1) 피드 리더 준비</strong> — Feedly·Inoreader 같은 무료 RSS 리더 앱이나 웹 서비스를 준비합니다.</li>
-          <li><strong>2) 주소 등록</strong> — 리더의 &quot;구독 추가&quot;에 위 RSS 주소(<code>/rss.xml</code>)를 붙여 넣습니다.</li>
-          <li><strong>3) 자동 수신</strong> — 새 글이 올라오면 리더가 자동으로 받아오므로, 매일 사이트를 직접 확인하지 않아도 됩니다.</li>
+          <li><strong>1) 피드 리더 준비</strong>: Feedly·Inoreader 같은 무료 RSS 리더 앱이나 웹 서비스를 준비합니다.</li>
+          <li><strong>2) 주소 등록</strong>: 리더의 &quot;구독 추가&quot;에 위 RSS 주소(<code>/rss.xml</code>)를 붙여 넣습니다.</li>
+          <li><strong>3) 자동 수신</strong>: 새 글이 올라오면 리더가 자동으로 받아오므로, 매일 사이트를 직접 확인하지 않아도 됩니다.</li>
         </ul>
         <p className="about-desc" style={{ marginTop: '0.75rem' }}>
           이메일로 받아보고 싶다면 <a href="/newsletter"><strong>뉴스레터 구독</strong></a>을, 사이트 전반이 궁금하다면 <a href="/about"><strong>편집팀 소개</strong></a>를 참고하세요. 모든 콘텐츠는 정보 제공 목적이며 투자 권유가 아닙니다.

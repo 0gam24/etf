@@ -114,7 +114,7 @@ export function buildMarketHookCopy(input: MarketHookInput, baseDate?: string, n
       tc ? `어제 ${tc.name} 섹터가 ${tcSign}${tcPct}% 강세, 오늘도 흐름 이어질지 살펴봅니다.` : `어제 평균 ${avgSign}${avgPct}% 상승, 오늘 흐름 점검.`,
     ] : [
       tc ? `오늘 시장은 ${avgSign}${avgPct}% 상승, ${tc.name} 섹터가 ${tcSign}${tcPct}%로 흐름을 주도합니다.` : `오늘 시장 평균 ${avgSign}${avgPct}% 상승, 자금이 본격 유입 중입니다.`,
-      `${totalCount}종 평균 ${avgSign}${avgPct}% — 오늘 시장은 매수 우위로 출발했습니다.`,
+      `${totalCount}종 평균 ${avgSign}${avgPct}%. 오늘 시장은 매수 우위로 출발했습니다.`,
     ];
     return { line: pickByDate(variants, baseDate), caption: `${prefix} · 분석 ${totalCount}종 평균 ${avgSign}${avgPct}%` };
   }
@@ -126,7 +126,7 @@ export function buildMarketHookCopy(input: MarketHookInput, baseDate?: string, n
       tc ? `어제 ${tc.name} 섹터에서 ${tcPct}% 자금 이탈, 오늘 분위기 점검.` : `어제 평균 ${avgPct}% 약세, 위험 관리가 필요합니다.`,
     ] : [
       tc ? `오늘 시장은 ${avgPct}% 약세, ${tc.name} 섹터에서 ${tcPct}% 자금 이탈이 관찰됩니다.` : `오늘 시장 평균 ${avgPct}% 하락, 매도 압력이 우위입니다.`,
-      `${totalCount}종 평균 ${avgPct}% — 오늘은 위험 관리에 무게가 실립니다.`,
+      `${totalCount}종 평균 ${avgPct}%. 오늘은 위험 관리에 무게가 실립니다.`,
     ];
     return { line: pickByDate(variants, baseDate), caption: `${prefix} · 분석 ${totalCount}종 평균 ${avgPct}%` };
   }
@@ -137,7 +137,7 @@ export function buildMarketHookCopy(input: MarketHookInput, baseDate?: string, n
     tc ? `어제 ${tc.name} 섹터가 ${tcSign}${tcPct}%, 다른 섹터는 보합권에 머물렀습니다.` : `어제 평균 ${avgSign}${avgPct}% 보합, 오늘 변동성 확인 필요.`,
   ] : [
     tc ? `오늘 시장은 ${avgSign}${avgPct}% 좁은 흐름, ${tc.name} 섹터가 ${tcSign}${tcPct}%로 일부 차별화됩니다.` : `오늘 시장은 평균 ${avgSign}${avgPct}%, 방향을 찾는 관망 흐름입니다.`,
-    `${totalCount}종 평균 ${avgSign}${avgPct}% — 큰 자금 이동 없이 종목별 차별화가 보입니다.`,
+    `${totalCount}종 평균 ${avgSign}${avgPct}%. 큰 자금 이동 없이 종목별 차별화가 보입니다.`,
   ];
   return { line: pickByDate(variants, baseDate), caption: `${prefix} · 분석 ${totalCount}종 평균 ${avgSign}${avgPct}%` };
 }

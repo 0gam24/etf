@@ -19,7 +19,7 @@ export default function AiAgentDisclosure({ variant = 'inline' }: Props) {
   if (variant === 'compact') {
     return (
       <span
-        title="공공데이터 기반 자동 분석 — Daily ETF Pulse 편집팀 발행"
+        title="공공데이터 기반 자동 분석, Daily ETF Pulse 편집팀 발행"
         style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -69,7 +69,7 @@ export default function AiAgentDisclosure({ variant = 'inline' }: Props) {
       </p>
 
       <p style={{ fontSize: '0.8rem', lineHeight: 1.6, color: 'var(--text-dim)', margin: 0, paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-        발행·검수 책임 — <Link href={PUBLISHER.url} style={{ color: 'var(--text-secondary)' }}>{PUBLISHER.name}</Link>
+        발행·검수 책임: <Link href={PUBLISHER.url} style={{ color: 'var(--text-secondary)' }}>{PUBLISHER.name}</Link>
       </p>
     </section>
   );
