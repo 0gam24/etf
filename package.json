@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-network-mirror.mjs",
+    "prebuild": "node scripts/generate-network-mirror.mjs && node scripts/validate-guide-structure.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -39,7 +39,8 @@
     "validate:schema": "node scripts/validate-schema.mjs",
     "keywords:kin": "node scripts/fetch-kin-questions.mjs",
     "generate:og": "node scripts/generate-og-images.mjs",
-    "push:etf": "node scripts/push-etf-pages.mjs"
+    "push:etf": "node scripts/push-etf-pages.mjs",
+    "validate:guides": "node scripts/validate-guide-structure.mjs"
   },
   "dependencies": {
     "@vercel/og": "^0.11.1",

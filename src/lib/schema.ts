@@ -74,6 +74,13 @@ export interface ArticleSchemaInput {
   section?: string;
   /** 외부 근거 자료 URL — schema.org/citation (E-E-A-T·생성형 검색 인용 신호) */
   citations?: string[];
+  /**
+   * 음성·요약 인용 대상 지정 (schema.org/speakable).
+   *   true로 주면 H1과 정답블록(.answer-box)을 speakable로 표시한다.
+   *   ⚠️ 정답블록이 실제로 렌더되는 글에서만 true를 줄 것. 마크업과 화면이 어긋나면
+   *      구조화 데이터 위반이 된다. (AnswerBox는 answer 값이 있을 때만 렌더된다)
+   */
+  speakable?: boolean;
 }
 
 export function buildArticleSchema(input: ArticleSchemaInput) {
@@ -126,6 +133,16 @@ export function buildArticleSchema(input: ArticleSchemaInput) {
     ...(input.keywords?.length ? { keywords: input.keywords.join(', ') } : {}),
     ...(input.section ? { articleSection: input.section } : {}),
     ...(input.citations?.length ? { citation: input.citations } : {}),
+    // speakable — 음성 어시스턴트·생성형 검색이 "이 페이지의 답"으로 읽어갈 구간 지정.
+    //   AnswerBox(.answer-box)가 렌더될 때만 붙인다. 화면에 없는 것을 가리키면 안 된다.
+    ...(input.speakable
+      ? {
+          speakable: {
+            '@type': 'SpeakableSpecification',
+            cssSelector: ['h1', '.answer-box'],
+          },
+        }
+      : {}),
     inLanguage: 'ko-KR',
   };
 }

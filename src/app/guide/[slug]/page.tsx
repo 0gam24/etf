@@ -106,6 +106,8 @@ export default async function GuidePage({ params }: PageProps) {
     keywords: g.keywords,
     section: g.section,
     ...(g.sources?.length ? { citations: g.sources.map(s => s.url) } : {}),
+    // 정답블록(AnswerBox)이 실제로 렌더될 때만 speakable을 붙인다.
+    speakable: !!g.answer,
   });
 
   // HowTo 스키마 (가이드가 단계형일 때만) — 보조 섹션은 자동 제외

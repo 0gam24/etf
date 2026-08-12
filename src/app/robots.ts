@@ -36,19 +36,34 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Yeti-Mobile',    allow: COMMON_ALLOW, disallow: COMMON_DISALLOW },
       // Daum 검색봇
       { userAgent: 'Daumoa',         allow: COMMON_ALLOW, disallow: COMMON_DISALLOW },
-      // AI 검색·요약 봇 — 명시적 allow 정책 (E-E-A-T 투명성 신호 + AI Overview 인입 허용).
-      //   허용 이유: 우리는 AI 작성을 투명하게 공개(<AiAgentDisclosure>)하는 정책이므로
-      //   AI 검색엔진(Perplexity·ChatGPT Search·Claude.ai)을 통한 인용도 수용.
-      //   /api/og 만 추가 허용 — 동적 OG 이미지 = 검색 미리보기 자산, 나머지 /api/* 보호.
-      { userAgent: 'GPTBot',         allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // OpenAI 학습 크롤러
-      { userAgent: 'OAI-SearchBot',  allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // ChatGPT Search 인덱스
-      { userAgent: 'PerplexityBot',  allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Perplexity 검색
-      { userAgent: 'ClaudeBot',      allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Claude 학습 크롤러
-      { userAgent: 'Claude-Web',     allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Claude 검색 시 fetch
-      { userAgent: 'Google-Extended',allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Gemini·Bard 학습
-      { userAgent: 'CCBot',          allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Common Crawl
-      { userAgent: 'anthropic-ai',   allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Anthropic 학습 크롤러 (legacy UA)
-      { userAgent: 'Applebot-Extended', allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Apple Intelligence 학습
+      // ── AI 봇 명시 allow ─────────────────────────────────────────────
+      //   허용 이유: AI 작성을 투명하게 공개(<AiAgentDisclosure>)하는 정책이므로
+      //   AI 검색엔진을 통한 인용도 수용한다. /api/og만 추가 허용, 나머지 /api/* 보호.
+      //
+      //   2026-08-12 보강 — 각 사가 봇을 "학습용"과 "검색 인출용"으로 분리 운영한다.
+      //     학습 봇 : 2년 뒤 모델이 우리를 아는지에 영향
+      //     인출 봇 : 지금 AI가 답변할 때 우리를 인용하는지에 영향  ← AEO 관점에서 이쪽이 핵심
+      //   기존 목록에 인출 봇이 여럿 빠져 있어(ChatGPT-User·Claude-User·Claude-SearchBot·
+      //   Perplexity-User) 실시간 인용 경로가 닫혀 있었다. 공식 문서 기준으로 보강한다.
+
+      // 검색 인출·사용자 요청 봇 (실시간 인용에 직결)
+      { userAgent: 'OAI-SearchBot',    allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // ChatGPT Search 인덱스
+      { userAgent: 'ChatGPT-User',     allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // 사용자가 물을 때 ChatGPT가 페이지를 열어봄
+      { userAgent: 'Claude-SearchBot', allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Claude 검색 인덱스
+      { userAgent: 'Claude-User',      allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // 사용자가 물을 때 Claude가 페이지를 열어봄
+      { userAgent: 'PerplexityBot',    allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Perplexity 인덱스
+      { userAgent: 'Perplexity-User',  allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Perplexity 사용자 요청 fetch
+
+      // 학습 크롤러
+      { userAgent: 'GPTBot',           allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // OpenAI 학습
+      { userAgent: 'ClaudeBot',        allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Anthropic 학습
+      { userAgent: 'Claude-Web',       allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Anthropic 구형 UA (호환 유지)
+      { userAgent: 'anthropic-ai',     allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Anthropic 구형 UA (호환 유지)
+      { userAgent: 'Google-Extended',  allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Gemini 학습
+      { userAgent: 'Applebot-Extended',allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Apple Intelligence 학습
+      { userAgent: 'Meta-ExternalAgent', allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Meta AI
+      { userAgent: 'Amazonbot',        allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Amazon
+      { userAgent: 'CCBot',            allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Common Crawl
     ],
     // 두 개 sitemap 모두 명시 — index + main
     // (검색엔진은 둘 다 처리. index가 우선 권장이지만 main 단독 발견도 가능하게 둠.)

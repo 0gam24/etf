@@ -236,6 +236,9 @@ export default async function PostPage({ params }: PageProps) {
     },
     keywords: post.meta.keywords,
     section: post.categoryName,
+    // AnswerBox는 summary가 있을 때만 렌더된다. 렌더되지 않는 글에 speakable을 붙이면
+    // 마크업이 화면에 없는 요소를 가리키게 되므로 조건을 맞춘다.
+    speakable: !!post.meta.summary,
   });
 
   const personSchema = authorMeta
