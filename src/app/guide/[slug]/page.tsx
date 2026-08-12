@@ -16,6 +16,22 @@ import type { ProductCategory } from '@/lib/products';
 import { buildArticleSchema, buildHowToSchema, jsonLd } from '@/lib/schema';
 import { SITE_NAME, SITE_LOCALE, articleTitle , padDescription, ogImageUrl } from '@/lib/site-meta';
 
+/**
+ * 본문 소제목 → 앵커 id.
+ *   한글을 그대로 살린다. 주소만 봐도 어느 문단인지 읽히고, 검색엔진이
+ *   결과에 문단 바로가기를 붙일 때 쓰는 단위가 된다.
+ *   같은 제목이 두 번 나와도 충돌하지 않도록 순번을 붙인다.
+ */
+function headingAnchor(heading: string, index: number): string {
+  const base = heading
+    .replace(/[^가-힣a-zA-Z0-9\s]/g, ' ')
+    .trim()
+    .replace(/\s+/g, '-')
+    .slice(0, 40)
+    .replace(/-+$/, '');
+  return base ? `${base}-${index + 1}` : `section-${index + 1}`;
+}
+
 /** 가이드 슬러그 → 추천 자료 매칭 카테고리 */
 function guideToProductCategory(slug: string): ProductCategory | undefined {
   const map: Record<string, ProductCategory> = {
@@ -88,12 +104,19 @@ export default async function GuidePage({ params }: PageProps) {
     ? getEtfsBySector(guideSector, '', 6, (getLatestEtfData()?.etfList || []) as RawEtf[])
     : [];
 
+  // 본문 h2에 붙일 앵커. 문단을 개별 주소로 가리킬 수 있어야 검색·답변엔진이 청크 단위로 인용한다.
+  //   한글 id는 HTML5에서 유효하다. 링크에 쓸 때만 브라우저가 자동 인코딩한다.
+  const sectionIds = g.sections.map((sec, i) => headingAnchor(sec.heading, i));
+
   // datePublished는 안정적 원발행일(불변) — lastReviewed는 격주 점검 크론이 갱신하므로 dateModified로.
   const publishedAt = getGuidePublishedAt(slug) || g.lastReviewed;
   const articleSchema = buildArticleSchema({
     type: 'Article',
     headline: g.title,
     description: g.description,
+    // 페이지 og:image와 같은 파일을 가리킨다. 이 인자를 빼면 스키마 기본값 /og/default.png가
+    // 잡혀서, 공유 미리보기(/og/guide.png)와 구조화 데이터가 서로 다른 그림을 가리켰다.
+    images: [ogImageUrl({ category: 'guide' })],
     url: `/guide/${slug}`,
     datePublished: `${publishedAt}T09:00:00+09:00`,
     // dateModified에 lastReviewed를 쓰지 않는다. 그 값은 격주 크론이 내용 점검 없이
@@ -105,7 +128,7 @@ export default async function GuidePage({ params }: PageProps) {
     },
     keywords: g.keywords,
     section: g.section,
-    ...(g.sources?.length ? { citations: g.sources.map(s => s.url) } : {}),
+    ...(g.sources?.length ? { citations: g.sources.map(s => ({ name: s.label, url: s.url })) } : {}),
     // 정답블록(AnswerBox)이 실제로 렌더될 때만 speakable을 붙인다.
     speakable: !!g.answer,
   });
@@ -216,10 +239,25 @@ export default async function GuidePage({ params }: PageProps) {
       {/* Hero 직후 RecommendBox top — 4카드 박스 (가이드 카테고리 매칭) */}
       <RecommendBox position="top" category={guideToProductCategory(g.slug)} />
 
+      {/* 목차 — 문단별 앵커. 긴 글에서 원하는 대목으로 바로 가고,
+          검색 결과에 문단 바로가기가 붙을 수 있는 구조를 만든다. */}
+      {g.sections.length >= 3 && (
+        <nav className="guide-toc" aria-label="목차">
+          <h2 className="guide-toc-title">이 글에서 다루는 내용</h2>
+          <ol className="guide-toc-list">
+            {g.sections.map((sec, i) => (
+              <li key={i}>
+                <a href={`#${sectionIds[i]}`}>{sec.heading}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+
       <div className="guide-article-body">
         {g.sections.map((sec, i) => (
           <section key={i} className="guide-article-section-block">
-            <h2 className="guide-article-h2">{sec.heading}</h2>
+            <h2 className="guide-article-h2" id={sectionIds[i]}>{sec.heading}</h2>
             {sec.paragraphs.map((p, pi) => (
               <p key={pi} className="guide-article-p">{p}</p>
             ))}

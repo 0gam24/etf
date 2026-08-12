@@ -121,7 +121,9 @@ async function main() {
   const body = {
     startDate: ymd(start),
     endDate: ymd(end),
-    dimensions: ['query'],
+    // page를 함께 받는다. 어느 쿼리가 어느 페이지로 들어오는지 모르면
+    // 글 구조를 바꾼 효과를 페이지 단위로 대조할 수 없다.
+    dimensions: ['query', 'page'],
     rowLimit: 1000,
     dataState: 'all',
   };
@@ -144,8 +146,12 @@ async function main() {
     console.log('⚠️ 데이터 0건 — 사이트가 아직 검색 노출이 적을 수 있습니다(신규 사이트면 정상).');
   }
 
+  // 한글 정규화(NFC). 검색콘솔은 자모가 분리된 형태(NFD)로 내려줄 때가 있어서
+  // 눈으로는 같은 '결제일'인데 문자열 비교가 어긋난다. 저장한 11개 파일에서
+  // 5,266건 중 891건(16.9%)이 이 상태였고, 키워드 집계가 조용히 0건으로 나왔다.
   const all = rows.map(r => ({
-    query: r.keys[0],
+    query: String(r.keys[0] || '').normalize('NFC'),
+    page: r.keys[1] ? String(r.keys[1]).normalize('NFC') : undefined,
     clicks: r.clicks || 0,
     impressions: r.impressions || 0,
     ctr: +((r.ctr || 0) * 100).toFixed(2),

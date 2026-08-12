@@ -65,11 +65,14 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Amazonbot',        allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Amazon
       { userAgent: 'CCBot',            allow: COMMON_ALLOW, disallow: COMMON_DISALLOW }, // Common Crawl
     ],
-    // 두 개 sitemap 모두 명시 — index + main
-    // (검색엔진은 둘 다 처리. index가 우선 권장이지만 main 단독 발견도 가능하게 둠.)
+    // sitemap 전부 명시. index만 읽는 검색엔진도, 개별 sitemap만 집어가는 곳도 있어서
+    // 어느 쪽이 와도 1,160종 종목 사전과 이미지가 발견되게 둔다.
+    // (예전에는 index와 main만 있어서 종목·이미지 sitemap은 index를 거쳐야만 닿았다.)
     sitemap: [
       `${baseUrl}/sitemap-index.xml`,
       `${baseUrl}/sitemap.xml`,
+      `${baseUrl}/sitemap-etf.xml`,
+      `${baseUrl}/sitemap-images.xml`,
     ],
     host: baseUrl,
   };

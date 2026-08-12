@@ -119,9 +119,50 @@ function ensureKeyFile(key, publicDir) {
 }
 
 /**
+ * 배포가 끝나 URL이 실제로 열릴 때까지 기다린다.
+ *
+ *   색인 통보를 배포보다 먼저 보내면 검색엔진 봇이 곧바로 찾아왔을 때 404를 받는다.
+ *   특히 네이버 Yeti는 IndexNow 통보 직후에 오는 편이라 손실이 크다.
+ *   한 번 404로 버려진 주소는 큐에서 빠지고, 다음 정기 수집까지 기다려야 한다.
+ *
+ *   기다려도 안 열리는 주소는 통보하지 않고 dead로 돌려준다. 통보 안 한 것보다
+ *   틀린 주소를 통보하는 쪽이 나쁘다. (2026-08-12)
+ *
+ * @returns {{ live: string[], dead: string[], waitedMs: number }}
+ */
+async function waitForLive(urls, opts = {}) {
+  const timeoutMs = opts.timeoutMs ?? 12 * 60 * 1000;
+  const intervalMs = opts.intervalMs ?? 20 * 1000;
+  const log = opts.log || (() => {});
+  const started = Date.now();
+  let pending = [...urls];
+  const live = [];
+
+  while (pending.length && Date.now() - started < timeoutMs) {
+    const still = [];
+    for (const u of pending) {
+      try {
+        const res = await fetch(u, { method: 'GET', redirect: 'follow' });
+        if (res.ok) live.push(u);
+        else still.push(u);
+      } catch {
+        still.push(u);
+      }
+    }
+    pending = still;
+    if (!pending.length) break;
+    log(`  배포 대기 ${live.length}/${urls.length} 확인 · ${Math.round((Date.now() - started) / 1000)}초 경과`);
+    await new Promise(r => setTimeout(r, intervalMs));
+  }
+
+  return { live, dead: pending, waitedMs: Date.now() - started };
+}
+
+/**
  * 여러 URL 경로를 받아 색인 요청
  *
  * @param {string[]} paths — /pulse/... 같은 상대 경로
+ * @param {object} opts — publicDir, waitForDeploy(기본 true), log
  * @returns {{ indexNow: object, naver: object, usedRealApi: boolean }}
  */
 async function submitAll(paths, opts = {}) {
@@ -134,7 +175,24 @@ async function submitAll(paths, opts = {}) {
   // public/ 에 키 파일 자동 생성 (CF Pages 빌드에 포함되도록)
   if (key && opts.publicDir) ensureKeyFile(key, opts.publicDir);
 
-  const urls = paths.map(p => `${siteUrl.replace(/\/+$/, '')}${p}`);
+  let urls = paths.map(p => `${siteUrl.replace(/\/+$/, '')}${p}`);
+  let dead = [];
+
+  // 배포 완료를 확인한 뒤에만 통보한다
+  if (opts.waitForDeploy !== false) {
+    const r = await waitForLive(urls, { log: opts.log, timeoutMs: opts.deployTimeoutMs });
+    urls = r.live;
+    dead = r.dead;
+    if (dead.length && opts.log) {
+      opts.log(`  ⚠️ 아직 열리지 않아 통보에서 제외: ${dead.length}건`);
+      dead.forEach(u => opts.log(`     ${u}`));
+    }
+  }
+
+  if (!urls.length) {
+    return { usedRealApi: false, reason: 'not-deployed', indexNow: null, naver: null, urls: [], dead };
+  }
+
   const indexNow = await submitIndexNow(urls, key);
   const naver = await pingNaverSitemap(siteUrl);
 
@@ -143,7 +201,8 @@ async function submitAll(paths, opts = {}) {
     indexNow,
     naver,
     urls,
+    dead,
   };
 }
 
-module.exports = { submitAll, submitIndexNow, ensureKeyFile, pingNaverSitemap };
+module.exports = { submitAll, submitIndexNow, ensureKeyFile, pingNaverSitemap, waitForLive };

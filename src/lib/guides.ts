@@ -138,7 +138,7 @@ const monthlyDividend: GuideDef = {
     '국내에 상장된 주요 월배당 ETF의 분배 캘린더, 계좌별 세후 수익률, 안정성 등급, 목표 현금흐름 역산을 한 페이지에 정리한 가이드.',
   keywords: ['월배당 ETF', '월배당 ETF 추천', '월배당 ETF 종류', 'TIGER 월배당', 'KODEX 월배당', '커버드콜 월배당', '월 100만원 배당'],
   answer: '월배당 ETF는 분배금을 매월 지급하도록 설계된 ETF로, 대부분 커버드콜 전략으로 분배 재원을 만듭니다. 안정성 등급이 높은 종목을 중심으로 2~3종을 조합하면 매달 현금흐름을 만들 수 있으나, 높은 분배율만 보지 말고 기초자산 추이와 계좌별 세금을 함께 따져야 합니다.',
-  section: '월배당 가이드',
+  section: '월배당 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -252,7 +252,7 @@ const coveredCall: GuideDef = {
     'TIGER·KODEX·SOL·ACE 등 국내 운용사가 상장한 주요 커버드콜 ETF의 기초자산·옵션 매도 비율·분배율·안정성을 한 페이지에 비교한 가이드.',
   keywords: ['커버드콜 ETF', '커버드콜 ETF 비교', 'TIGER 커버드콜', 'KODEX 커버드콜', 'JEPI 한국판', '나스닥100 커버드콜', '미국S&P500 커버드콜'],
   answer: '커버드콜 ETF는 기초자산을 보유하면서 콜옵션을 매도해 받은 프리미엄을 분배 재원으로 쓰는 ETF입니다. 횡보·약세장에서 프리미엄이 손실을 완충하지만 강세장에서는 시세 차익이 제한되므로, 기초자산·옵션 매도 비율·분배율을 함께 보고 골라야 합니다.',
-  section: '커버드콜 가이드',
+  section: '커버드콜 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -320,7 +320,7 @@ const defenseEtf: GuideDef = {
     'TIGER·KODEX·SOL 등 국내 운용사 방위산업 ETF의 구성종목 TOP·섹터 비중·최근 거래량 흐름을 정리한 비교 가이드.',
   keywords: ['방산 ETF', '방위산업 ETF', '한화에어로 ETF', 'LIG넥스원 ETF', 'KAI ETF', 'TIGER 방산', 'KODEX 방산', 'SOL 방산'],
   answer: '국내 방산 ETF는 한화에어로스페이스·LIG넥스원·한국항공우주(KAI) 등 방위산업 대표주에 분산 투자하는 ETF입니다. 운용사마다 구성종목 TOP과 집중도가 다르므로, 개별 종목 비중과 거래량·총보수를 비교해 선택하는 것이 핵심입니다.',
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -376,7 +376,7 @@ const aiSemiEtf: GuideDef = {
     'AI·HBM·데이터센터 테마에 노출된 국내 상장 ETF의 구성종목·비중·최근 흐름을 한 페이지에 정리한 가이드.',
   keywords: ['AI ETF', 'AI 반도체 ETF', 'HBM ETF', '엔비디아 ETF', 'TIGER 반도체', 'KODEX 반도체', '데이터센터 ETF', 'AI 인프라 ETF'],
   answer: 'AI·반도체 ETF는 엔비디아 등 미국 빅테크, 국내 HBM·반도체 장비주, 데이터센터 인프라 등 노출 경로가 ETF마다 다릅니다. 같은 "AI ETF"라도 기초지수와 구성종목이 크게 다르므로, 무엇에 투자하는지(미국 직접 노출 vs 국내 반도체)를 먼저 확인해야 합니다.',
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -440,7 +440,7 @@ const retirement: GuideDef = {
     'IRP·ISA·연금저축의 세제 혜택을 비교하고, 월배당 ETF를 어디에 담아야 가장 효율적인지 정리한 은퇴 자산 설계 가이드.',
   keywords: ['IRP ETF', 'ISA 비과세 ETF', '연금저축 ETF', '은퇴 자산 ETF', '4050 은퇴 설계', '연금 ETF 추천', 'ISA 연금저축 차이'],
   answer: '은퇴 자산은 ISA(비과세·분리과세)·연금저축·IRP(세액공제+과세이연)의 세제 혜택을 조합해 운용하는 것이 핵심입니다. 계좌마다 한도·인출 조건·세금이 다르므로, 월배당 ETF를 어느 계좌에 담느냐에 따라 세후 수령액이 크게 달라집니다.',
-  section: '은퇴 자산 가이드',
+  section: '은퇴 자산 가이드',
   sources: [
     { label: '국민연금공단', url: 'https://www.nps.or.kr' },
     { label: '국세청', url: 'https://www.nts.go.kr' },
@@ -539,7 +539,7 @@ const usDividend: GuideDef = {
     '미국 배당주 ETF의 기초자산(SCHD·NOBL·VYM 등 추종 지수), KODEX·ACE·TIGER 운용사별 차이, 환헷지 여부, 분배 캘린더, ISA·연금저축 매수 가이드를 정리한 가이드.',
   keywords: ['미국 배당주 ETF', '배당주 ETF 추천', 'SCHD 한국판', 'KODEX 미국배당다우존스', 'ACE 미국배당다우존스', '미국 배당귀족 ETF', '환헤지 배당 ETF'],
   answer: '국내 상장 미국 배당주 ETF는 SCHD(Dow Jones US Dividend 100) 등 미국 배당지수를 추종하며 KODEX·ACE·TIGER 등 운용사별로 환헤지 여부·총보수·분배 주기가 다릅니다. ISA·연금계좌에서 매수할 수 있다는 점이 미국 직구 대비 큰 장점입니다.',
-  section: '배당주 가이드',
+  section: '배당주 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -628,7 +628,7 @@ const currencyHedge: GuideDef = {
     '한국 상장 해외 ETF의 환헤지(H) 표기·헤지 비용·NAV 변동 차이·시기별 적합 옵션을 정리한 가이드. KODEX·TIGER·ACE의 헤지/비헤지 페어 비교.',
   keywords: ['환헤지 ETF', '환헷지 H 차이', '미국 ETF 환헤지', '환율 ETF', 'KODEX 환헤지', 'TIGER 환헤지', '환헤지 비용'],
   answer: '종목명 끝의 (H)는 환헤지형으로, 환율 변동 영향을 제거하는 대신 헤지 비용이 듭니다. 비헤지형은 환율이 오르면 추가 수익, 내리면 손실이 발생합니다. 달러 강세를 예상하면 비헤지, 환 변동을 피하고 싶으면 (H)형이 적합합니다.',
-  section: '환헤지 가이드',
+  section: '환헤지 가이드',
   sources: [
     { label: '한국은행 경제통계시스템 ECOS', url: 'https://ecos.bok.or.kr' },
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
@@ -710,7 +710,7 @@ const overseasEtf: GuideDef = {
     'SPY·QQQ·SCHD·VOO 같은 미국 상장 ETF를 한국 증권사로 직접 매수할 때 vs 한국 상장 미국 ETF(KODEX·TIGER 시리즈) 매수할 때의 세금·수수료·환전·계좌 활용 차이를 정리한 가이드.',
   keywords: ['해외 ETF', '미국 ETF 직구', 'SPY 한국', 'QQQ 한국', 'SCHD 직구', '해외 ETF 양도세', '해외 ETF 환전 수수료'],
   answer: '미국 상장 ETF(SPY·QQQ·SCHD)를 직접 매수하면 매매차익은 양도소득세 22%(250만원 공제)로 분리과세되고, 국내 상장 미국 ETF(KODEX·TIGER)는 배당소득세 대상이지만 ISA·연금계좌 활용이 가능합니다. 투자 금액·계좌 전략·금융소득 규모에 따라 유리한 쪽이 달라집니다.',
-  section: '해외상장 가이드',
+  section: '해외상장 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
@@ -795,7 +795,7 @@ const etfBasics: GuideDef = {
     'ETF의 개념, 펀드·주식과의 차이, 계좌 개설부터 첫 매수까지의 절차, 초보자가 첫 종목을 고르는 기준과 흔한 실수를 한 페이지에 정리한 ETF 입문 가이드.',
   keywords: ['ETF란', 'ETF 투자 방법', 'ETF 초보', 'ETF 시작하는 법', 'ETF 추천 초보', 'ETF 사는 법', 'ETF 종류'],
   answer: 'ETF는 여러 종목을 한 바구니에 담아 주식처럼 거래소에 상장한 펀드로, 1주만 사도 수십~수백 개 종목에 분산 투자됩니다. 입문자는 증권계좌 개설 후 거래량이 크고 KOSPI200·S&P500 같은 대표 지수를 추종하는 ETF부터 소액으로 시작하는 것이 안전합니다(레버리지·인버스는 비권장).',
-  section: 'ETF 입문 가이드',
+  section: 'ETF 입문 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -880,7 +880,7 @@ const etfTax: GuideDef = {
     '국내 상장 ETF와 해외 상장 ETF의 매매차익·분배금 과세 방식, 배당소득세·양도소득세·금융소득종합과세, 계좌별(일반·ISA·연금) 절세 차이를 정리한 ETF 세금 가이드.',
   keywords: ['ETF 세금', 'ETF 양도소득세', 'ETF 배당소득세', '해외 ETF 세금', '국내 ETF 세금', 'ETF 금융소득종합과세', 'ETF 절세'],
   answer: 'ETF 세금은 국내 주식형(매매차익 비과세)·국내 기타 ETF(배당소득세 15.4%)·해외 상장 ETF(양도소득세 22%, 250만원 공제·분리과세)로 나뉘고, 분배금은 공통 15.4% 과세됩니다. ISA·연금계좌를 쓰면 비과세 또는 과세 이연으로 세금을 크게 줄일 수 있습니다.',
-  section: 'ETF 세금 가이드',
+  section: 'ETF 세금 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '국세법령정보시스템', url: 'https://taxlaw.nts.go.kr' },
@@ -956,7 +956,7 @@ const etfFee: GuideDef = {
     'ETF 총보수의 구성, 표기된 보수 외에 빠지는 기타비용·매매중개수수료, 추적오차(괴리율)와 실부담비용(TER)까지, 같은 지수 ETF를 비용으로 비교하는 법을 정리한 가이드.',
   keywords: ['ETF 수수료', 'ETF 총보수', 'ETF 보수 비교', 'ETF 기타비용', 'ETF 추적오차', 'ETF TER', 'ETF 운용보수'],
   answer: 'ETF 비용은 표기 총보수(연 0.05~0.5%)에 기타비용·매매중개수수료를 더한 실부담비용(TER)으로 봐야 정확합니다. 같은 지수 ETF라면 장기 성과 차이는 대부분 비용에서 나오므로, 총보수만이 아니라 추적오차·괴리율·거래량까지 함께 비교해야 합니다.',
-  section: 'ETF 비용 가이드',
+  section: 'ETF 비용 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -1030,7 +1030,7 @@ const etfVsFund: GuideDef = {
     'ETF·일반 펀드·개별주식의 거래 방식, 비용, 분산 효과, 세금, 관리 난이도를 비교하고, 투자 성향과 목적에 따라 무엇이 적합한지 정리한 비교 가이드.',
   keywords: ['ETF vs 펀드', 'ETF vs 주식', 'ETF 펀드 차이', '펀드 ETF 비교', 'ETF 개별주식 차이', 'ETF 장단점'],
   answer: 'ETF는 주식처럼 실시간 매매되고 총보수가 낮으면서 여러 종목에 분산되는 점이 핵심 장점입니다. 즉시 매매·낮은 비용·분산을 동시에 원하면 ETF, 한 회사에 집중 투자하려면 개별주식, 한 번 가입해 적립식으로 두려면 일반 펀드가 맞습니다.',
-  section: 'ETF 비교 가이드',
+  section: 'ETF 비교 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -1105,7 +1105,7 @@ const etfDividend: GuideDef = {
     'ETF 분배금의 개념, 배당기준일·분배락일·지급일의 차이, 분배금을 받으려면 언제까지 매수해야 하는지, 분배율을 해석하는 법과 세금까지 정리한 ETF 분배금 가이드.',
   keywords: ['ETF 분배금', 'ETF 분배락일', 'ETF 배당일', 'ETF 배당 받는 법', '분배기준일', 'ETF 분배금 언제', 'ETF 분배율'],
   answer: 'ETF 분배금을 받으려면 결제 기간(T+2) 때문에 분배락일 전날까지 매수해 보유해야 합니다. 분배락일에는 분배금만큼 가격이 자연스럽게 빠지는데 이는 손해가 아니라 현금으로 받은 것이며, 분배율이 높다고 무조건 좋은 것은 아니므로 기초자산·세금을 함께 봐야 합니다.',
-  section: 'ETF 분배금 가이드',
+  section: 'ETF 분배금 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -1189,7 +1189,7 @@ const etfDca: GuideDef = {
   description:
     'ETF 적립식 투자(정액 분할 매수)의 원리, 거치식과의 차이, 코스트 애버리징 효과와 한계, 매수 주기·금액 정하는 법, 자동 적립 설정과 계좌 선택까지 정리한 ETF 적립식 가이드.',
   keywords: ['ETF 적립식', 'ETF 적립식 투자', 'ETF 매달 사기', '코스트 애버리징', 'ETF 자동매수', 'ETF 적립 vs 거치', 'ETF 분할매수'],
-  section: 'ETF 적립식 가이드',
+  section: 'ETF 적립식 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -1274,7 +1274,7 @@ const etfRebalancing: GuideDef = {
   description:
     'ETF 포트폴리오 리밸런싱의 개념, 왜 필요한지, 정기 방식과 임계값 방식의 차이, 리밸런싱 주기·세금·수수료 고려사항, 계좌별 실전 방법까지 정리한 ETF 리밸런싱 가이드.',
   keywords: ['ETF 리밸런싱', '포트폴리오 리밸런싱', 'ETF 비중 조절', '리밸런싱 방법', '리밸런싱 주기', '자산배분 리밸런싱', 'ETF 비중 관리'],
-  section: 'ETF 리밸런싱 가이드',
+  section: 'ETF 리밸런싱 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -1359,7 +1359,7 @@ const etfNavTracking: GuideDef = {
   description:
     'ETF의 NAV(순자산가치)·괴리율·추적오차가 무엇인지, 왜 생기는지, 어디서 확인하는지, 괴리율과 추적오차가 큰 ETF를 피하는 방법까지 정리한 ETF 괴리율·추적오차 가이드.',
   keywords: ['ETF 괴리율', 'ETF 추적오차', 'ETF NAV', '순자산가치', 'iNAV', 'ETF 고르는 법', '추적오차 확인'],
-  section: 'ETF 괴리율 가이드',
+  section: 'ETF 괴리율 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -1444,7 +1444,7 @@ const leveragedInverseEtf: GuideDef = {
   description:
     '레버리지 ETF와 인버스 ETF가 무엇인지, 일간 수익률 2배·-1배 구조의 의미, 변동성 끌림(음의 복리)으로 장기 수익이 갈리는 이유, 누가 어떤 용도로 쓰는지까지 정리한 레버리지·인버스 ETF 가이드.',
   keywords: ['레버리지 ETF', '인버스 ETF', '곱버스', '음의 복리', '변동성 끌림', '2배 ETF', '레버리지 위험'],
-  section: 'ETF 레버리지 가이드',
+  section: 'ETF 레버리지 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -1529,7 +1529,7 @@ const bondEtf: GuideDef = {
   description:
     '채권 ETF가 무엇인지, 국채·회사채·단기·장기 등 종류, 금리와 채권 가격의 반대 관계, 듀레이션(만기)이 변동성에 미치는 영향, 분배금·세금·고르는 법까지 정리한 채권 ETF 가이드.',
   keywords: ['채권 ETF', '국채 ETF', '회사채 ETF', '단기채 ETF', '장기채 ETF', '듀레이션', '채권 ETF 추천'],
-  section: 'ETF 채권 가이드',
+  section: 'ETF 채권 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '한국은행 경제통계시스템 ECOS', url: 'https://ecos.bok.or.kr' },
@@ -1614,7 +1614,7 @@ const isaAccountEtf: GuideDef = {
   description:
     'ISA 계좌로 ETF에 투자하면 손익 통산 후 비과세 한도까지 세금이 없고 초과분은 9.9%로 저율 분리과세됩니다. 연 2,000만 원 납입 한도, 서민형 혜택, 3년 의무 기간, 만기 연금 전환, 연금저축과의 차이까지 한 페이지에 정리했습니다.',
   keywords: ['ISA 계좌', 'ISA ETF', 'ISA 계좌 ETF', 'ISA 중개형', 'ISA 계좌 한도', 'ISA 연금저축 차이', 'ISA 계좌 단점'],
-  section: 'ISA 계좌 가이드',
+  section: 'ISA 계좌 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -1714,7 +1714,7 @@ const sp500VsNasdaq: GuideDef = {
   description:
     'S&P500과 나스닥100 ETF의 차이를 구성 종목·섹터 집중도·변동성·비용·환헤지 관점에서 비교하고, 분산과 성장 중 무엇을 우선할지, 둘을 함께 담을 때의 중복까지 정리한 S&P500 vs 나스닥100 ETF 가이드.',
   keywords: ['S&P500 vs 나스닥', '나스닥100 S&P500 차이', '미국 ETF 비교', 'S&P500 ETF', '나스닥100 ETF', 'QQQ SPY 차이'],
-  section: 'ETF 비교 가이드',
+  section: 'ETF 비교 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -1820,7 +1820,7 @@ const isaVsPension: GuideDef = {
   description:
     'ISA와 연금저축·IRP의 차이를 목적·세제 혜택(비과세·분리과세 vs 세액공제·과세이연)·인출 제약·ETF 투자 범위 관점에서 비교하고, 무엇을 먼저 채울지·병행 전략·ISA 만기 연금 전환까지 정리한 절세계좌 비교 가이드.',
   keywords: ['ISA vs 연금저축', 'ISA 연금저축 차이', 'ISA IRP 차이', '연금저축 IRP 차이', '절세계좌 비교', '세액공제 계좌'],
-  section: 'ISA 계좌 가이드',
+  section: 'ISA 계좌 가이드',
   sources: [
     { label: '국민연금공단', url: 'https://www.nps.or.kr' },
     { label: '국세청', url: 'https://www.nts.go.kr' },
@@ -1931,7 +1931,7 @@ const kodexVsTiger: GuideDef = {
   description:
     'KODEX(삼성자산운용)와 TIGER(미래에셋자산운용) ETF의 차이를 운용사·총보수·괴리율·추적오차·거래량·라인업 관점에서 비교하고, 같은 지수를 추종할 때 무엇을 보고 골라야 하는지 정리한 KODEX vs TIGER 비교 가이드.',
   keywords: ['KODEX vs TIGER', 'KODEX TIGER 차이', '코덱스 타이거 차이', 'ETF 운용사 비교', '삼성 미래에셋 ETF 차이', 'KODEX TIGER 어디가 좋아'],
-  section: 'ETF 비교 가이드',
+  section: 'ETF 비교 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -2032,7 +2032,7 @@ const domesticVsOverseasTax: GuideDef = {
   description:
     '국내 상장 ETF와 해외(미국 등) 상장 ETF의 세금 차이를 매매차익·분배금·종합과세 여부·손익통산·절세계좌 관점에서 비교하고, 무엇이 유리한지 판단 기준을 표로 정리한 국내 vs 해외 ETF 세금 가이드입니다.',
   keywords: ['국내 해외 ETF 세금', '해외 ETF 양도소득세', '국내 상장 ETF 세금', '미국 ETF 세금', 'ETF 양도세', 'ETF 배당소득세'],
-  section: 'ETF 세금 가이드',
+  section: 'ETF 세금 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '국세법령정보시스템', url: 'https://taxlaw.nts.go.kr' },
@@ -2128,7 +2128,7 @@ const hedgeVsUnhedged: GuideDef = {
   description:
     '환헤지(H) ETF와 환노출(UH) ETF의 차이를 환율 영향·헤지 비용·원화 강세/약세 시나리오·장기투자 관점에서 비교하고, 무엇을 고를지 판단 기준을 정리한 환헤지 vs 환노출 ETF 가이드.',
   keywords: ['환헤지 환노출 차이', '환헤지 ETF', '환노출 ETF', 'ETF H 차이', '환헤지 비용', '환노출 환헤지 장기투자'],
-  section: '환헤지 가이드',
+  section: '환헤지 가이드',
   sources: [
     { label: '한국은행 경제통계시스템 ECOS', url: 'https://ecos.bok.or.kr' },
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
@@ -2229,7 +2229,7 @@ const howToBuyEtf: GuideDef = {
   description:
     'ETF 처음 사는법을 계좌 개설·종목 검색(종목코드)·지정가/시장가 주문·거래 시간(09:00~15:30)·수수료·세금까지 단계별로 정리했습니다. 주식처럼 사고파는 ETF 매매 방법과 최소 금액까지 한 페이지에.',
   keywords: ['ETF 사는 법', 'ETF 처음 사는법', 'ETF 매매 방법', 'ETF 주문', 'ETF 거래 시간', '지정가 시장가', 'ETF 최소 금액'],
-  section: 'ETF 매매 가이드',
+  section: 'ETF 매매 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -2334,7 +2334,7 @@ const goldEtf: GuideDef = {
   description:
     '금 ETF가 무엇인지, 금현물·금선물·금광기업 ETF의 차이와 변동성, 안전자산·인플레이션 헤지로서의 역할, 환노출과 세금(배당소득세·금융소득 종합과세), 금 ETF 추천 기준과 고르는 법까지 한 페이지에 정리한 금 ETF 투자 가이드입니다.',
   keywords: ['금 ETF', '금 ETF 추천', 'KRX 금 ETF', '금현물 ETF', '금 투자 방법', '금 ETF 세금', '안전자산 ETF'],
-  section: 'ETF 금 가이드',
+  section: 'ETF 금 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '한국은행 경제통계시스템 ECOS', url: 'https://ecos.bok.or.kr' },
@@ -2439,7 +2439,7 @@ const reitEtf: GuideDef = {
   description:
     '리츠(REITs) ETF가 무엇인지, 부동산 임대수익 기반 배당의 구조와 장점, 국내·미국 리츠 ETF의 차이, 금리 민감성 등 단점·위험, 분배금 배당소득세, 좋은 리츠 ETF 고르는 법까지 한 페이지에 정리한 리츠 ETF 투자 가이드입니다.',
   keywords: ['리츠 ETF', '리츠 ETF 추천', '국내 리츠 ETF', '리츠 ETF란', '부동산 ETF', '리츠 ETF 배당', '월배당 리츠'],
-  section: 'ETF 리츠 가이드',
+  section: 'ETF 리츠 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -2544,7 +2544,7 @@ const batteryEtf: GuideDef = {
   description:
     '2차전지(배터리) ETF가 무엇인지, 배터리 셀·양극재·음극재·분리막 등 소재 기업 구성, 전기차·ESS 성장 테마, 높은 변동성 같은 단점과 위험, 종류와 세금, 2차전지 ETF 고르는 법까지 한 페이지에 정리한 배터리 ETF 투자 가이드입니다.',
   keywords: ['2차전지 ETF', '2차전지 ETF 추천', '배터리 ETF', '2차전지 소재 ETF', '전기차 ETF', '2차전지 ETF 단점'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -2644,7 +2644,7 @@ const dollarEtf: GuideDef = {
   description:
     '달러 ETF가 무엇인지, 원/달러 환율과 미국달러 선물을 추종하는 구조, 원화 약세 때 수익 나는 원리, 분산·환헤지 역할, 일반·레버리지·인버스 유형 차이와 음의 복리 위험, 세금과 고르는 법까지 정리한 달러 ETF 투자 가이드입니다.',
   keywords: ['달러 ETF', '미국달러 ETF', '달러 ETF 추천', '달러 레버리지 ETF', '환율 ETF', '달러 ETF 세금'],
-  section: 'ETF 달러 가이드',
+  section: 'ETF 달러 가이드',
   sources: [
     { label: '한국은행 경제통계시스템 ECOS', url: 'https://ecos.bok.or.kr' },
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
@@ -2744,7 +2744,7 @@ const commodityEtf: GuideDef = {
   description:
     '원자재 ETF란 무엇인지, 원유·금속·농산물 등 종류와 선물 추종·롤오버(콘탱고/백워데이션) 비용, 인플레이션 헤지·분산 역할, 높은 변동성 위험과 배당소득세·금융소득 종합과세까지 정리한 원자재 ETF 투자 가이드입니다.',
   keywords: ['원자재 ETF', '원유 ETF', '구리 ETF', '농산물 ETF', '원자재 ETF 추천', '롤오버 비용'],
-  section: 'ETF 원자재 가이드',
+  section: 'ETF 원자재 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -2848,7 +2848,7 @@ const etfVsStock: GuideDef = {
   description:
     'ETF와 개별주식의 차이를 분산·위험·수익·노력·비용·세금 관점에서 한눈에 비교합니다. ETF 주식 차이가 궁금한 초보가 무엇부터 시작할지, 코어-위성으로 둘을 함께 활용하는 법까지 쉽게 정리한 ETF vs 개별주식 가이드입니다.',
   keywords: ['ETF vs 개별주식', 'ETF 주식 차이', '초보 ETF 주식', 'ETF 장점', '개별주식 위험', 'ETF 분산투자'],
-  section: 'ETF 비교 가이드',
+  section: 'ETF 비교 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -2950,7 +2950,7 @@ const indiaEtf: GuideDef = {
   description:
     '인도 ETF가 무엇인지, 니프티50 등 인도 증시 지수를 추종하는 구조부터 성장 기대와 신흥국·루피 환율·정책 위험, 종류별 차이와 세금(배당소득세 15.4%), 인도 ETF 추천 기준과 고르는 법까지 한 페이지에 정리한 인도 ETF 투자 가이드입니다.',
   keywords: ['인도 ETF', '인도 ETF 추천', '니프티50 ETF', '인도 주식 ETF', '신흥국 ETF', '인도 ETF 세금'],
-  section: '해외상장 가이드',
+  section: '해외상장 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
@@ -3049,7 +3049,7 @@ const tdfEtf: GuideDef = {
   description:
     'TDF(타깃데이트펀드)가 무엇인지, 은퇴 시점에 맞춰 주식·채권 비중을 자동 조절하는 글라이드패스, 연금저축·IRP 활용, 빈티지(목표 연도) 선택, 운용 보수와 원금 비보장 같은 유의점까지 한 페이지에 정리한 TDF 투자 가이드입니다. TDF 추천 기준과 단점도 함께 다룹니다.',
   keywords: ['TDF', 'TDF 추천', '타깃데이트펀드', 'TDF 연금', 'TDF 빈티지', 'TDF ETF'],
-  section: '은퇴 자산 가이드',
+  section: '은퇴 자산 가이드',
   sources: [
     { label: '국민연금공단', url: 'https://www.nps.or.kr' },
     { label: '국세청', url: 'https://www.nts.go.kr' },
@@ -3154,7 +3154,7 @@ const trEtf: GuideDef = {
   description:
     'TR ETF(토탈리턴)가 무엇인지, 분배금을 지급하지 않고 자동 재투자하는 구조, 같은 지수의 일반(PR) ETF와의 차이, 복리·과세이연 장점과 현금흐름 없음·세금 같은 단점까지 정리한 TR ETF 가이드입니다.',
   keywords: ['TR ETF', '토탈리턴 ETF', 'TR ETF 분배금', 'TR ETF 차이', 'TR PR 차이', 'TR ETF 세금'],
-  section: 'ETF 분배금 가이드',
+  section: 'ETF 분배금 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -3250,7 +3250,7 @@ const highDividendEtf: GuideDef = {
   description:
     '고배당 ETF가 무엇인지, 고배당주 ETF의 분배 주기(월·분기), 분배율만 보면 안 되는 "고배당의 함정", 커버드콜·배당성장과의 차이, 세금과 고르는 법까지 정리한 고배당 ETF 가이드입니다.',
   keywords: ['고배당 ETF', '고배당주 ETF', '고배당 ETF 추천', '고배당 ETF 분배금', '고배당 ETF 분배 주기', '고배당 ETF 단점'],
-  section: '배당주 가이드',
+  section: '배당주 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -3345,7 +3345,7 @@ const etfTickerCode: GuideDef = {
   description:
     'ETF 종목코드(6자리 단축코드)가 무엇인지, 증권사 앱·KRX·네이버금융에서 코드를 찾는 법, 단축코드와 표준코드의 차이, 코드로 정확히 매수해야 하는 이유까지 정리한 ETF 종목코드 가이드입니다.',
   keywords: ['ETF 종목코드', 'ETF 단축코드', 'ETF 종목코드 찾는 법', 'ETF 코드 보는 법', 'KODEX 종목코드', 'ETF 코드 검색'],
-  section: 'ETF 입문 가이드',
+  section: 'ETF 입문 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -3440,7 +3440,7 @@ const aiPowerEtf: GuideDef = {
   description:
     '미국 AI 전력 인프라 ETF가 무엇인지, AI 데이터센터 전력 수요 급증 배경, 전력 유틸리티·전력기기·원전·전선 등 구성, 성장 기대와 테마 집중·금리 위험, 세금과 고르는 법까지 정리한 AI 전력 인프라 ETF 가이드입니다.',
   keywords: ['미국 AI 전력 인프라 ETF', 'AI 전력 ETF', '데이터센터 ETF', '전력 인프라 ETF', 'AI 인프라 ETF', '전력 ETF 추천'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -3535,7 +3535,7 @@ const spaceEtf: GuideDef = {
   description:
     '미국 우주테크 ETF가 무엇인지, 위성·발사체·우주방산 등 우주산업 구성, 초기 성장 산업의 기대와 높은 변동성·적자 기업 위험, 환율·세금과 고르는 법까지 정리한 우주테크 ETF 가이드입니다.',
   keywords: ['미국 우주 ETF', '우주테크 ETF', '우주산업 ETF', '우주 ETF 추천', '방산 우주 ETF', '위성 ETF'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -3630,7 +3630,7 @@ const robotEtf: GuideDef = {
   description:
     '로봇 ETF가 무엇인지, 산업용·협동로봇·AI로봇 등 구성, 자동화·고령화 성장 테마의 기대와 높은 변동성·테마 집중 위험, 환율·세금과 고르는 법까지 정리한 로봇 ETF 투자 가이드입니다.',
   keywords: ['로봇 ETF', '로봇 ETF 추천', '자동화 ETF', '로봇 산업 ETF', 'AI 로봇 ETF', '로봇 ETF 단점'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -3725,7 +3725,7 @@ const bioEtf: GuideDef = {
   description:
     '바이오 ETF가 무엇인지, 제약·바이오·헬스케어 구성, 신약 임상·금리에 민감한 높은 변동성, 국내 바이오와 미국 헬스케어의 차이, 세금과 고르는 법까지 정리한 바이오 ETF 투자 가이드입니다.',
   keywords: ['바이오 ETF', '바이오 ETF 추천', '제약 ETF', '헬스케어 ETF', '바이오 ETF 단점', '미국 헬스케어 ETF'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -3819,7 +3819,7 @@ const nuclearEtf: GuideDef = {
   description:
     '원자력 ETF가 무엇인지, 원전 건설·SMR·우라늄·원전 부품 등 구성, 탈탄소·AI 전력 수요 배경, 정책·안전 이슈에 민감한 위험, 환율·세금과 고르는 법까지 정리한 원자력 ETF 투자 가이드입니다.',
   keywords: ['원자력 ETF', '원전 ETF', 'SMR ETF', '우라늄 ETF', '원자력 ETF 추천', '원전 ETF 단점'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -3914,7 +3914,7 @@ const activeEtf: GuideDef = {
   description:
     '액티브 ETF가 무엇인지, 지수를 그대로 추종하는 패시브 ETF와의 차이, 초과수익 기대와 높은 보수·추적오차·성과 편차 같은 단점, 세금과 고르는 법까지 정리한 액티브 ETF 가이드입니다.',
   keywords: ['액티브 ETF', '액티브 ETF 차이', '액티브 패시브 차이', '액티브 ETF 단점', '액티브 ETF 추천', 'S&P500 액티브'],
-  section: 'ETF 비교 가이드',
+  section: 'ETF 비교 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -4010,7 +4010,7 @@ const etfDelisting: GuideDef = {
   description:
     'ETF 상장폐지(청산)가 무엇인지, 왜 일어나는지(순자산 미달·거래 부진), 상장폐지되면 내 돈은 어떻게 되는지(순자산가치로 청산), 미리 알아채는 신호와 피하는 법까지 정리한 ETF 상장폐지 가이드입니다.',
   keywords: ['ETF 상장폐지', 'ETF 청산', 'ETF 상장폐지 돈', 'ETF 상장폐지 신호', 'ETF 관리종목', 'ETF 폐지 대처'],
-  section: 'ETF 입문 가이드',
+  section: 'ETF 입문 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -4105,7 +4105,7 @@ const cdRateEtf: GuideDef = {
   description:
     'CD금리 ETF·KOFR금리 ETF·단기채권 ETF 등 파킹형 단기자금 ETF가 무엇인지, 하루만 보유해도 이자가 쌓이는 구조, 분배금이 안 보이는 이유, 예금자보호·세금·위험과 고르는 법까지 정리한 파킹 ETF 가이드입니다.',
   keywords: ['CD금리 ETF', '파킹형 ETF', 'KOFR ETF', 'CD금리 액티브 분배금', '단기채권 ETF', '파킹통장 대체 ETF'],
-  section: 'ETF 채권 가이드',
+  section: 'ETF 채권 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '한국은행 경제통계시스템 ECOS', url: 'https://ecos.bok.or.kr' },
@@ -4200,7 +4200,7 @@ const quantumComputingEtf: GuideDef = {
   description:
     '양자컴퓨팅 ETF가 무엇인지, 아이온큐·리게티 같은 순수 양자기업과 구글·IBM 등 빅테크·반도체 구성, 차세대 연산 산업의 성장 기대와 상업화 초기·고변동성 위험, 환율·세금과 고르는 법까지 정리한 양자컴퓨팅 ETF 투자 가이드입니다.',
   keywords: ['양자컴퓨팅 ETF', '양자컴퓨팅 ETF 추천', '미국 양자컴퓨팅 ETF', '양자컴퓨터 ETF', '퀀텀 ETF', '양자컴퓨팅 ETF 단점'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -4295,7 +4295,7 @@ const factorEtf: GuideDef = {
   description:
     '팩터(스마트베타) ETF가 무엇인지, 퀄리티·가치·모멘텀·저변동성·배당 같은 대표 팩터의 성격과 차이, 시장 대비 초과수익 기대와 특정 국면 부진·비용 한계, 세금과 고르는 법까지 정리한 스마트베타 ETF 투자 가이드입니다.',
   keywords: ['팩터 ETF', '스마트베타 ETF', '퀄리티 ETF', '모멘텀 ETF', '저변동성 ETF', '팩터 투자 ETF'],
-  section: 'ETF 입문 가이드',
+  section: 'ETF 입문 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -4391,7 +4391,7 @@ const bankEtf: GuideDef = {
   description:
     '은행 ETF가 무엇인지, KB·신한·하나·우리 같은 은행지주 구성과 고배당·주주환원(밸류업) 매력, 금리·경기·대출 건전성·규제 위험, 국내·미국 은행 ETF 차이와 세금·고르는 법까지 정리한 은행 ETF 투자 가이드입니다.',
   keywords: ['은행 ETF', '은행 ETF 추천', '금융 ETF', '은행주 ETF', '고배당 은행 ETF', '은행 ETF 배당'],
-  section: '배당주 가이드',
+  section: '배당주 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -4491,7 +4491,7 @@ const bondMixedEtf: GuideDef = {
   description:
     '채권혼합형 ETF가 무엇인지, 지수 혼합형과 개별주 혼합형 구분, 주식+채권 비율로 변동성을 낮추는 구조와 퇴직연금 안전자산 활용, 상승장 수익 제한·세금 한계와 고르는 법까지 정리한 채권혼합 ETF 투자 가이드입니다.',
   keywords: ['채권혼합 ETF', '채권혼합형 ETF', '주식 채권 혼합 ETF', '채권혼합50 ETF', '연금 채권혼합 ETF', '혼합형 ETF'],
-  section: 'ETF 채권 가이드',
+  section: 'ETF 채권 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '한국은행 경제통계시스템 ECOS', url: 'https://ecos.bok.or.kr' },
@@ -4591,7 +4591,7 @@ const usTreasuryEtf: GuideDef = {
   description:
     '미국 국채 ETF가 무엇인지, 초단기·중기·30년 장기채 만기별 성격, 금리와 채권 가격의 역관계와 금리 인하기 듀레이션 전략, 환헤지(H)와 환노출 차이, 장기채 변동성·세금과 고르는 법까지 정리한 미국 국채 ETF 가이드입니다.',
   keywords: ['미국 국채 ETF', '미국채 ETF', '미국 장기국채 ETF', '미국채10년 ETF', '미국 30년 국채 ETF', '국채 ETF 추천'],
-  section: 'ETF 채권 가이드',
+  section: 'ETF 채권 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '한국은행 경제통계시스템 ECOS', url: 'https://ecos.bok.or.kr' },
@@ -4686,7 +4686,7 @@ const chinaEtf: GuideDef = {
   description:
     '중국 ETF가 무엇인지, 본토(CSI300)와 홍콩(항셍·항셍테크), 전기차·반도체 테마의 구분과 차이, 성장 기대와 정부 규제·미중 갈등·위안화 환율 위험, 세금과 고르는 법까지 정리한 중국 ETF 투자 가이드입니다.',
   keywords: ['중국 ETF', '중국 ETF 추천', '차이나 CSI300 ETF', '항셍테크 ETF', '중국 본토 ETF', '중국 ETF 위험'],
-  section: '해외상장 가이드',
+  section: '해외상장 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
@@ -4781,7 +4781,7 @@ const trfEtf: GuideDef = {
   description:
     'TRF ETF가 무엇인지, 주식·채권을 3:7·5:5처럼 고정 비율로 유지하며 자동 리밸런싱하는 자산배분 구조, TDF와의 차이, 비율(3070·5050·7030) 고르는 법과 연금 활용·세금까지 정리한 TRF 자산배분 ETF 가이드입니다.',
   keywords: ['TRF ETF', 'TRF3070 ETF', 'TRF5050 ETF', '자산배분 ETF', 'TRF TDF 차이', '연금 자산배분 ETF'],
-  section: 'ETF 적립식 가이드',
+  section: 'ETF 적립식 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -4876,7 +4876,7 @@ const valueUpEtf: GuideDef = {
   description:
     '코리아 밸류업 ETF가 무엇인지, 기업 밸류업 프로그램과 저PBR·고ROE·주주환원 우량주 구성, 저평가 해소·배당 확대 기대와 정책 효과 불확실성·편입 기준 한계, 세금과 고르는 법까지 정리한 밸류업 ETF 가이드입니다.',
   keywords: ['밸류업 ETF', '코리아 밸류업 ETF', '밸류업 지수 ETF', '저PBR ETF', '주주환원 ETF', '밸류업 ETF 추천'],
-  section: '배당주 가이드',
+  section: '배당주 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -4971,7 +4971,7 @@ const usSemiconductorEtf: GuideDef = {
   description:
     '미국 반도체 ETF가 무엇인지, 필라델피아반도체지수(SOX) 구성과 설계·제조·장비 기업, AI 수요 기대와 반도체 경기 사이클·대형주 쏠림·환율·수출규제 위험, 세금과 고르는 법까지 정리한 미국 반도체 ETF 가이드입니다.',
   keywords: ['미국 반도체 ETF', '필라델피아반도체 ETF', '미국 반도체 ETF 추천', 'SOX 지수 ETF', '미국 반도체 ETF 종목코드', '반도체 팹리스 ETF'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -5066,7 +5066,7 @@ const shipbuildingEtf: GuideDef = {
   description:
     '조선 ETF가 무엇인지, HD현대중공업·한화오션·삼성중공업 같은 빅3와 기자재 기업 구성, 친환경 선박·수주 회복(슈퍼사이클) 기대와 수주 사이클·종목 집중 위험, 세금과 고르는 법까지 정리한 조선 ETF 투자 가이드입니다.',
   keywords: ['조선 ETF', '조선 ETF 추천', 'K조선 ETF', '조선주 ETF', '조선기자재 ETF', '조선 ETF 종목코드'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -5166,7 +5166,7 @@ const japanEtf: GuideDef = {
   description:
     '일본 ETF가 무엇인지, 닛케이225와 TOPIX의 차이, 일본 반도체·리츠 테마, 일본 증시 밸류업·엔저 수출 기대와 엔화 환율·환헤지(H) 변수, 위험과 세금·고르는 법까지 정리한 일본 ETF 투자 가이드입니다.',
   keywords: ['일본 ETF', '일본 ETF 추천', '닛케이225 ETF', 'TOPIX ETF', '일본 반도체 ETF', '일본 ETF 환헤지'],
-  section: '해외상장 가이드',
+  section: '해외상장 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
@@ -5261,7 +5261,7 @@ const humanoidRobotEtf: GuideDef = {
   description:
     '휴머노이드 로봇 ETF가 무엇인지, 인간형 로봇 개발사와 AI·구동부품·센서 구성, 일반 로봇 ETF와의 차이, 노동력 부족·AI 결합 성장 기대와 상업화 초기·고변동성 위험, 환율·세금과 고르는 법까지 정리한 가이드입니다.',
   keywords: ['휴머노이드 로봇 ETF', '휴머노이드 ETF', '인간형 로봇 ETF', '미국 휴머노이드 로봇 ETF', '로봇 ETF', '휴머노이드 로봇 ETF 단점'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -5356,7 +5356,7 @@ const dividendGrowthEtf: GuideDef = {
   description:
     '배당성장 ETF가 무엇인지, 배당을 꾸준히 늘리는 기업 구성과 고배당 ETF와의 차이, 복리 효과·인플레 방어 장점과 낮은 현재 수익률·배당 비보장 한계, 국내·미국·세금과 고르는 법까지 정리한 배당성장 ETF 가이드입니다.',
   keywords: ['배당성장 ETF', '배당성장 ETF 추천', '미국 배당성장 ETF', '배당귀족 ETF', '배당성장주 ETF', '배당성장 고배당 차이'],
-  section: '배당주 가이드',
+  section: '배당주 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -5451,7 +5451,7 @@ const corporateBondEtf: GuideDef = {
   description:
     '회사채 ETF가 무엇인지, 국채와의 차이(신용 스프레드), 우량등급(AA-이상)·종합채권·하이일드 구분, 신용위험·금리(듀레이션) 위험과 경기 영향, 세금·고르는 실전 단계까지 정리한 회사채 ETF 투자 가이드입니다.',
   keywords: ['회사채 ETF', '회사채 ETF 추천', '우량회사채 ETF', '종합채권 ETF', '크레딧 ETF', '회사채 ETF 위험'],
-  section: 'ETF 채권 가이드',
+  section: 'ETF 채권 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '한국은행 경제통계시스템 ECOS', url: 'https://ecos.bok.or.kr' },
@@ -5546,7 +5546,7 @@ const weeklyCoveredCallEtf: GuideDef = {
   description:
     '위클리·타겟데일리 커버드콜 ETF가 무엇인지, 매주·매일 옵션을 매도해 월분배를 키우는 구조와 타겟 프리미엄 방식, 높은 분배율의 이면(상승 제한·원금 환원 가능성), 세금과 고르는 법까지 정리한 위클리 커버드콜 ETF 가이드입니다.',
   keywords: ['위클리 커버드콜 ETF', '타겟데일리 커버드콜 ETF', '타겟위클리 커버드콜', '데일리 커버드콜 ETF', '월분배 커버드콜', '커버드콜 분배율'],
-  section: '커버드콜 가이드',
+  section: '커버드콜 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -5641,7 +5641,7 @@ const usBigtechEtf: GuideDef = {
   description:
     '미국 빅테크 ETF가 무엇인지, 매그니피센트7(애플·MS·구글·아마존·엔비디아·메타·테슬라) 구성과 미국 테크 TOP10, 성장 집중의 기대와 소수 종목 쏠림·환율 위험, AI·반도체 ETF와의 차이·세금까지 정리한 가이드입니다.',
   keywords: ['미국 빅테크 ETF', '매그니피센트7 ETF', '미국 테크 TOP10 ETF', '빅테크 ETF 추천', 'M7 ETF', '미국 빅테크 ETF 단점'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -5736,7 +5736,7 @@ const evEtf: GuideDef = {
   description:
     '전기차 ETF가 무엇인지, 완성차와 배터리·부품 EV 밸류체인 구성, 2차전지 ETF와의 차이, 전동화 성장 기대와 수요 둔화·경쟁·보조금 정책·환율 위험, 세금과 고르는 법까지 정리한 전기차 ETF 투자 가이드입니다.',
   keywords: ['전기차 ETF', '전기차 ETF 추천', 'EV ETF', '글로벌 전기차 ETF', '차이나 전기차 ETF', '전기차 ETF 단점'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -5831,7 +5831,7 @@ const copperEtf: GuideDef = {
   description:
     '구리 ETF가 무엇인지, 실물·선물형과 광산기업형의 차이, 전기화·전력망·전기차·데이터센터·신재생에너지 수요 기대와 경기 민감·롤오버 비용·환율 위험, 세금과 고르는 실전 단계까지 정리한 구리 ETF 투자 가이드입니다.',
   keywords: ['구리 ETF', '구리 ETF 추천', '구리 실물 ETF', '구리 선물 ETF', '구리 광산 ETF', '구리 ETF 전망'],
-  section: 'ETF 원자재 가이드',
+  section: 'ETF 원자재 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -5926,7 +5926,7 @@ const solarEnergyEtf: GuideDef = {
   description:
     '태양광·신재생에너지 ETF가 무엇인지, 태양광·풍력·ESS 등 구성과 에너지 전환·전력 수요 성장 기대, 금리·정부 정책·중국 공급과잉 위험, 환율·세금과 고르는 법까지 정리한 태양광 신재생에너지 ETF 투자 가이드입니다.',
   keywords: ['태양광 ETF', '신재생에너지 ETF', '태양광 ETF 추천', '클린에너지 ETF', '풍력 ETF', '태양광 ETF 전망'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -6021,7 +6021,7 @@ const isaToPensionTransfer: GuideDef = {
   description:
     '중개형 ISA 만기 자금을 연금저축펀드·IRP로 이전하는 방법과 전환액 10%(최대 300만 원) 추가 세액공제, 60일 전환 기한, 납입 한도 별도 인정, 전환 후 인출 제약 주의점까지 정리한 ISA 연금 이전 절세 가이드입니다.',
   keywords: ['ISA 연금저축 이전', 'ISA 만기 연금 전환', 'ISA 추가 세액공제', 'ISA IRP 이전', 'ISA 만기 활용', 'ISA 연금계좌 전환'],
-  section: 'ISA 계좌 가이드',
+  section: 'ISA 계좌 가이드',
   sources: [
     { label: '국민연금공단', url: 'https://www.nps.or.kr' },
     { label: '국세청', url: 'https://www.nts.go.kr' },
@@ -6113,7 +6113,7 @@ const pensionFundEtfTrading: GuideDef = {
   description:
     '연금저축펀드 계좌 안에서 ETF를 매매하거나 종목을 변경·리밸런싱할 때 세금이 어떻게 되는지, 과세이연 구조와 중도 매도·인출의 차이, 연금소득세와 중도해지 기타소득세까지 정리한 연금저축 ETF 매매 세금 가이드입니다.',
   keywords: ['연금저축펀드 ETF', '연금저축 ETF 매매', '연금저축 종목 변경', '연금저축 과세이연', '연금저축 중도매도 세금', '연금저축 ETF 세금'],
-  section: '은퇴 자산 가이드',
+  section: '은퇴 자산 가이드',
   sources: [
     { label: '국민연금공단', url: 'https://www.nps.or.kr' },
     { label: '국세청', url: 'https://www.nts.go.kr' },
@@ -6200,7 +6200,7 @@ const isaMaturityEtf: GuideDef = {
   description:
     'ISA 미국 S&P500·나스닥 ETF를 3년 만기·해지하면 강제 매도되는지, 만기 연장·연금 전환·현물 이관 선택지와 보유 ETF 처리 방법, 비과세 손익통산 정산과 타이밍까지 정리한 ISA 만기 ETF 가이드입니다.',
   keywords: ['ISA 만기 ETF', 'ISA 3년 만기 해지', 'ISA 강제 매도', 'ISA 만기 연장', 'ISA ETF 이관', 'ISA 만기 처리'],
-  section: 'ISA 계좌 가이드',
+  section: 'ISA 계좌 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -6287,7 +6287,7 @@ const isaVsGeneralAccountEtf: GuideDef = {
   description:
     'TIGER 미국S&P500 같은 국내 상장 해외 ETF를 일반 위탁계좌와 중개형 ISA에서 굴릴 때 세금(배당소득세 15.4% vs 손익통산·비과세·9.9%)과 비과세 혜택, 종합과세 차이를 비교한 계좌별 세금 가이드입니다.',
   keywords: ['국내 상장 해외 ETF 세금', '일반계좌 ISA 비교', 'TIGER 미국S&P500 세금', 'ISA 비과세 ETF', 'ETF 계좌별 세금', 'ISA 절세 ETF'],
-  section: 'ETF 세금 가이드',
+  section: 'ETF 세금 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '국세법령정보시스템', url: 'https://taxlaw.nts.go.kr' },
@@ -6375,7 +6375,7 @@ const isaWithdrawalRules: GuideDef = {
   description:
     'ISA 중도인출 시 납입 원금 기준과 세제 혜택 유지 조건, 인출은 원금부터 빠진다는 점, 한도 복원 안 됨(재납입 차감), 원금 초과 인출의 해지 위험까지 정리해 세제 불이익을 방지하는 ISA 중도인출 가이드입니다.',
   keywords: ['ISA 중도인출', 'ISA 원금 인출', 'ISA 납입 한도', 'ISA 중도해지', 'ISA 인출 불이익', 'ISA 재납입'],
-  section: 'ISA 계좌 가이드',
+  section: 'ISA 계좌 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -6462,7 +6462,7 @@ const youngInvestorEtfPortfolio: GuideDef = {
   description:
     '사회초년생이 연금저축펀드와 중개형 ISA 두 절세 계좌를 활용해 국내·미국 지수와 채권형 ETF를 적립식으로 분산 투자하는 계좌 우선순위와 포트폴리오 예시, 적립식 시작 방법과 주의점을 정리한 재테크 입문 가이드입니다.',
   keywords: ['사회초년생 ETF', '사회초년생 재테크', '연금저축 ISA 포트폴리오', 'ETF 분산 투자', '사회초년생 ETF 추천', '적립식 ETF 포트폴리오'],
-  section: 'ETF 적립식 가이드',
+  section: 'ETF 적립식 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -6549,7 +6549,7 @@ const singleStockLeverageEtf: GuideDef = {
   description:
     '삼성전자·SK하이닉스 같은 단일종목 레버리지 ETF의 구조와 종목 집중·레버리지 이중 위험, 변동성 끌림(음의 복리)으로 장기 수익이 깎이는 이유, 코스피 급락 국면의 손실 증폭까지 정리한 고위험 ETF 리스크 가이드입니다.',
   keywords: ['단일종목 레버리지 ETF', '삼성전자 레버리지 ETF', 'SK하이닉스 레버리지', '레버리지 ETF 위험', '단일종목 ETF 리스크', '레버리지 ETF 음의 복리'],
-  section: 'ETF 레버리지 가이드',
+  section: 'ETF 레버리지 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -6636,7 +6636,7 @@ const pensionFundCashDrag: GuideDef = {
   description:
     '연금저축펀드에 예수금(현금)을 방치하면 왜 손해인지(현금 끌림), 세액공제만 받고 매수를 안 할 때의 기회비용, 자동이체·자동매수(적립식) 설정 방법과 주의점, 적립식 효과까지 정리한 연금저축 ETF 적립 가이드입니다.',
   keywords: ['연금저축 예수금', '연금저축 자동이체', '연금저축 ETF 적립', '연금저축 현금 방치', '연금저축 자동매수', '연금저축 적립식'],
-  section: '은퇴 자산 가이드',
+  section: '은퇴 자산 가이드',
   sources: [
     { label: '국민연금공단', url: 'https://www.nps.or.kr' },
     { label: '국세청', url: 'https://www.nts.go.kr' },
@@ -6723,7 +6723,7 @@ const usDirectVsIsaEtf: GuideDef = {
   description:
     '미국 주식·ETF 직접 투자와 중개형 ISA 국내 상장 미국 ETF의 세금(양도소득세 22% vs 손익통산·9.9%), 환율·환전, 종합과세, 250만 원 공제를 비교해 금액·기간별로 어느 쪽이 유리한지 정리한 가이드입니다.',
   keywords: ['미국 직투 vs ISA', '미국 ETF 세금 비교', '미국 주식 양도소득세', 'ISA 미국 ETF', '국내 상장 미국 ETF 세금', '미국 ETF 절세'],
-  section: 'ETF 비교 가이드',
+  section: 'ETF 비교 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -6811,7 +6811,7 @@ const childInvestmentGiftTax: GuideDef = {
   description:
     '자녀에게 증여세 신고 후 아동수당 등으로 미국 ETF를 적립식 투자할 때 미성년 증여재산공제(10년 2,000만 원), 추가 불입의 증여 신고 여부, 자금 출처·자녀 명의 계좌 주의점을 정리한 자녀 증여 ETF 가이드입니다.',
   keywords: ['자녀 증여 ETF', '자녀 증여세 신고', '미성년 증여 공제', '자녀 명의 ETF 적립', '아동수당 ETF', '자녀 미국 ETF 증여'],
-  section: 'ETF 세금 가이드',
+  section: 'ETF 세금 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '국세법령정보시스템', url: 'https://taxlaw.nts.go.kr' },
@@ -6898,7 +6898,7 @@ const etfDistributionDate: GuideDef = {
   description:
     'ETF 분배금을 받으려면 언제까지 사야 하는지, 분배기준일·분배락일·지급일의 차이와 결제일(2거래일), 분배락 때 가격이 내리는 이유, 분배락 직전 매수가 이득이 아닌 까닭, 세금까지 정리한 ETF 분배락 가이드입니다.',
   keywords: ['ETF 분배락', '분배기준일', '분배락일', 'ETF 분배금 받는 법', 'ETF 분배금 매수 시점', '분배락 가격'],
-  section: 'ETF 분배금 가이드',
+  section: 'ETF 분배금 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -6985,7 +6985,7 @@ const europeEtf: GuideDef = {
   description:
     '유럽 ETF가 무엇인지, 유로스탁스50 등 대표 지수와 명품·방산·헬스케어 업종 비중, 미국·중국과 다른 분산 효과와 유로 환율·환헤지·유럽 경기 위험, 세금과 고르는 실전 단계까지 정리한 유럽 ETF 투자 가이드입니다.',
   keywords: ['유럽 ETF', '유럽 ETF 추천', '유로스탁스50 ETF', '유럽 주식 ETF', '독일 ETF', '유럽 ETF 환헤지'],
-  section: '해외상장 가이드',
+  section: '해외상장 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
@@ -7072,7 +7072,7 @@ const constructionEtf: GuideDef = {
   description:
     '건설 ETF가 무엇인지, 대형 건설사·건자재·인프라 구성과 원전·전력 인프라·해외 플랜트 수주·재건축 성장 기대, 부동산 경기·금리·부동산 PF 위험, 세금과 고르는 실전 단계까지 정리한 건설 ETF 투자 가이드입니다.',
   keywords: ['건설 ETF', '건설 ETF 추천', '건설주 ETF', '건설 ETF 종목코드', '인프라 ETF', '건설 ETF 전망'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -7159,7 +7159,7 @@ const autoEtf: GuideDef = {
   description:
     '자동차 ETF가 무엇인지, 현대차·기아 같은 완성차와 부품·자율주행 구성, 전기차 ETF와의 차이, 주주환원(밸류업)·전동화 기대와 경기·금리·관세·환율 위험, 세금과 고르는 법까지 정리한 자동차 ETF 투자 가이드입니다.',
   keywords: ['자동차 ETF', '자동차 ETF 추천', '현대차 ETF', '자동차 부품 ETF', '자율주행 ETF', '자동차 ETF 전망'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -7246,7 +7246,7 @@ const silverEtf: GuideDef = {
   description:
     '은 ETF가 무엇인지, 실물·선물형과 광산기업형의 차이, 안전자산이자 태양광·전기차·전자 산업 금속인 은의 두 얼굴, 금보다 큰 변동성·롤오버 비용·환율 위험과 세금·고르는 법까지 정리한 은 ETF 투자 가이드입니다.',
   keywords: ['은 ETF', '은 ETF 추천', '실버 ETF', '은 선물 ETF', '은 실물 ETF', '은 ETF 전망'],
-  section: 'ETF 원자재 가이드',
+  section: 'ETF 원자재 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -7333,7 +7333,7 @@ const rareEarthEtf: GuideDef = {
   description:
     '희토류·핵심광물 ETF가 무엇인지, 채굴·정제·영구자석 기업 구성과 방산·전기차·풍력·반도체 수요, 중국 공급 집중·수출통제·가격 변동 위험과 환율·세금, 고르는 실전 단계까지 정리한 희토류 핵심광물 ETF 투자 가이드입니다.',
   keywords: ['희토류 ETF', '핵심광물 ETF', '희토류 ETF 추천', '영구자석 ETF', '희토류 관련주 ETF', '희토류 ETF 전망'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -7420,7 +7420,7 @@ const vietnamEtf: GuideDef = {
   description:
     '베트남 ETF가 무엇인지, VN30 등 대표 지수와 제조업 이전(차이나+1)·젊은 인구·내수 성장 기대, 신흥국 변동성·베트남 동화 환율·외국인 한도·유동성 위험, 세금과 고르는 법까지 정리한 베트남 ETF 투자 가이드입니다.',
   keywords: ['베트남 ETF', '베트남 ETF 추천', 'VN30 ETF', '베트남 주식 ETF', '신흥국 ETF', '베트남 ETF 전망'],
-  section: '해외상장 가이드',
+  section: '해외상장 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
@@ -7507,7 +7507,7 @@ const berkshireEtf: GuideDef = {
   description:
     '버크셔 ETF가 무엇인지, 워런 버핏의 버크셔 해서웨이 보유 종목을 따라 담는 구조와 가치·우량주 스타일, 후계·집중·환율 위험, 일반 지수와의 차이와 세금·고르는 법까지 정리한 버크셔 포트폴리오 ETF 가이드입니다.',
   keywords: ['버크셔 ETF', '워런버핏 ETF', '버크셔 포트폴리오 ETF', '버핏 따라하기 ETF', '가치투자 ETF', '버크셔 해서웨이 ETF'],
-  section: '해외상장 가이드',
+  section: '해외상장 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
@@ -7594,7 +7594,7 @@ const entertainmentEtf: GuideDef = {
   description:
     '엔터·미디어 ETF가 무엇인지, K-pop 기획사·드라마·콘텐츠·미디어 기업 구성과 한류·IP 성장 기대, 소수 기획사 집중·아티스트·실적 변동 위험, 세금과 고르는 법까지 정리한 엔터 미디어 ETF 투자 가이드입니다.',
   keywords: ['엔터 ETF', '미디어 ETF', 'K-콘텐츠 ETF', 'K팝 ETF', '엔터테인먼트 ETF', '콘텐츠 ETF 추천'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -7681,7 +7681,7 @@ const usReitEtf: GuideDef = {
   description:
     '미국 리츠 ETF가 무엇인지, 데이터센터·물류·통신타워·주거 등 구성과 높은 배당 매력, 금리·경기·공실·환율 위험, 국내 리츠 ETF와의 차이와 세금·절세, 고르는 법까지 정리한 미국 리츠 ETF 투자 가이드입니다.',
   keywords: ['미국 리츠 ETF', '미국 리츠 ETF 추천', '미국 부동산 ETF', '해외 리츠 ETF', '리츠 ETF 배당', '데이터센터 리츠 ETF'],
-  section: 'ETF 리츠 가이드',
+  section: 'ETF 리츠 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -7768,7 +7768,7 @@ const aiSoftwareEtf: GuideDef = {
   description:
     'AI 소프트웨어 ETF가 무엇인지, AI 애플리케이션·SaaS·플랫폼 기업 구성과 AI·반도체 ETF와의 차이, 높은 밸류에이션·경쟁·금리 위험, 환율·세금과 고르는 실전 단계까지 정리한 AI 소프트웨어 ETF 투자 가이드입니다.',
   keywords: ['AI 소프트웨어 ETF', 'AI ETF 추천', 'AI 응용 ETF', 'AI SaaS ETF', 'AI 플랫폼 ETF', 'AI 소프트웨어 ETF 단점'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -7855,7 +7855,7 @@ const oilEtf: GuideDef = {
   description:
     '원유 ETF가 무엇인지, WTI 선물형과 에너지 기업형의 차이, 유가·OPEC+·지정학 변수와 선물 롤오버 비용(콘탱고), 레버리지·인버스 주의, 환율·세금과 고르는 실전 단계까지 정리한 원유 ETF 투자 가이드입니다.',
   keywords: ['원유 ETF', '원유 ETF 추천', 'WTI 원유 ETF', '원유 선물 ETF', '에너지 ETF', '원유 ETF 롤오버'],
-  section: 'ETF 원자재 가이드',
+  section: 'ETF 원자재 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -7942,7 +7942,7 @@ const gameEtf: GuideDef = {
   description:
     '게임 ETF가 무엇인지, 국내 게임사와 글로벌 게임·플랫폼 구성과 엔터 ETF와의 차이, 신작·플랫폼·IP 성장 기대와 흥행 사이클·규제·집중 위험, 세금과 고르는 실전 단계까지 정리한 게임 ETF 투자 가이드입니다.',
   keywords: ['게임 ETF', '게임 ETF 추천', '게임주 ETF', '글로벌 게임 ETF', 'K게임 ETF', '게임 ETF 전망'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -8029,7 +8029,7 @@ const luxuryEtf: GuideDef = {
   description:
     '명품(럭셔리) ETF가 무엇인지, LVMH·에르메스 같은 글로벌 럭셔리 브랜드 구성과 브랜드 파워·고마진 매력, 경기·중국 소비·환율 위험, 유럽 ETF와의 관계와 세금·고르는 법까지 정리한 명품 럭셔리 ETF 투자 가이드입니다.',
   keywords: ['명품 ETF', '럭셔리 ETF', '명품 ETF 추천', '글로벌 럭셔리 ETF', 'LVMH ETF', '명품주 ETF'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -8116,7 +8116,7 @@ const infrastructureEtf: GuideDef = {
   description:
     '글로벌 인프라 ETF가 무엇인지, 도로·공항·전력·통신 등 필수 인프라 기업 구성과 꾸준한 현금흐름·배당 매력, 금리·경기 위험, AI 전력 ETF와의 차이와 세금·고르는 법까지 정리한 인프라 ETF 투자 가이드입니다.',
   keywords: ['인프라 ETF', '글로벌 인프라 ETF', '인프라 ETF 추천', '유틸리티 ETF', '인프라 ETF 배당', '인프라 ETF 전망'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -8203,7 +8203,7 @@ const bitcoinEtf: GuideDef = {
   description:
     '비트코인 ETF가 무엇인지, 미국 상장 현물·선물 ETF와 국내 상장 블록체인·코인기업 ETF의 차이, 초고변동성·규제·국내 거래 제약, 환율과 세금까지 정리한 비트코인 블록체인 ETF 투자 가이드입니다. 고위험 상품 주의.',
   keywords: ['비트코인 ETF', '비트코인 현물 ETF', '블록체인 ETF', '코인 ETF', '비트코인 ETF 한국', '비트코인 ETF 세금'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
@@ -8290,7 +8290,7 @@ const taiwanEtf: GuideDef = {
   description:
     '대만 ETF가 무엇인지, 가권지수와 TSMC 등 반도체 비중, AI·반도체 수혜 기대와 TSMC 종목 집중·반도체 사이클·양안 지정학·환율 위험, 세금과 고르는 실전 단계까지 정리한 대만 TSMC 반도체 ETF 투자 가이드입니다.',
   keywords: ['대만 ETF', '대만 ETF 추천', 'TSMC ETF', '대만 반도체 ETF', '대만 가권 ETF', '대만 ETF 전망'],
-  section: '해외상장 가이드',
+  section: '해외상장 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
@@ -8377,7 +8377,7 @@ const cybersecurityEtf: GuideDef = {
   description:
     '사이버보안 ETF가 무엇인지, 네트워크·클라우드·데이터 보안 기업 구성과 디지털 전환·구독 매출 성장 기대, 높은 밸류에이션·경쟁·금리 위험, 환율·세금과 고르는 실전 단계까지 정리한 사이버보안 ETF 투자 가이드입니다.',
   keywords: ['사이버보안 ETF', '보안 ETF', '사이버보안 ETF 추천', '미국 사이버보안 ETF', '정보보안 ETF', '사이버보안 ETF 전망'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -8464,7 +8464,7 @@ const beautyEtf: GuideDef = {
   description:
     'K-뷰티·화장품 ETF가 무엇인지, 화장품 브랜드·ODM·OEM·뷰티 기업 구성과 수출·브랜드 성장 기대, 중국·면세 소비 의존·경기·유행 위험, 세금과 고르는 법까지 정리한 K-뷰티 화장품 ETF 투자 가이드입니다.',
   keywords: ['화장품 ETF', 'K뷰티 ETF', '뷰티 ETF', '화장품 ETF 추천', '화장품주 ETF', '화장품 ETF 전망'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -8551,7 +8551,7 @@ const agricultureEtf: GuideDef = {
   description:
     '농산물 ETF가 무엇인지, 옥수수·콩·밀 곡물 선물형과 농업기업형·종합 농산물의 차이, 날씨·식량 안보·인플레이션 변수와 선물 롤오버 비용(콘탱고), 환율·세금과 고르는 법까지 정리한 농산물 ETF 투자 가이드입니다.',
   keywords: ['농산물 ETF', '곡물 ETF', '농산물 ETF 추천', '농산물 선물 ETF', '식량 ETF', '농산물 ETF 전망'],
-  section: 'ETF 원자재 가이드',
+  section: 'ETF 원자재 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -8638,7 +8638,7 @@ const worldEtf: GuideDef = {
   description:
     '전세계 ETF가 무엇인지, 선진국만 담는 상품과 신흥국까지 포함하는 전세계형의 차이, 미국 비중이 큰 이유, 환율·세금과 미국 S&P500·선진국 ETF와의 차이까지 정리한 전세계 글로벌 분산투자 ETF 가이드입니다.',
   keywords: ['전세계 ETF', '글로벌 ETF', '전세계 주식 ETF', '글로벌 분산투자 ETF', '전세계 ETF 추천', '전세계 ETF 전망'],
-  section: '해외상장 가이드',
+  section: '해외상장 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
@@ -8725,7 +8725,7 @@ const healthcareEtf: GuideDef = {
   description:
     '헬스케어 ETF가 무엇인지, 신약개발 중심의 바이오 ETF와 어떻게 다른지, 대형 제약·의료기기·헬스케어 서비스를 담는 구조와 약가규제·특허 절벽 위험, 환율·세금과 고르는 법까지 정리한 헬스케어 ETF 투자 가이드입니다.',
   keywords: ['헬스케어 ETF', '미국 헬스케어 ETF', '제약 ETF', '의료기기 ETF', '헬스케어 ETF 추천', '헬스케어 ETF 전망'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -8811,7 +8811,7 @@ const naturalGasEtf: GuideDef = {
   description:
     '천연가스 ETF가 무엇인지, 선물을 담는 구조와 원유 ETF와의 차이, 계절성·날씨에 따른 초고변동성과 선물 롤오버 비용(콘탱고), 레버리지 위험과 환율·세금까지 정리한 천연가스 선물 ETF 투자 가이드입니다. 고위험 상품 주의.',
   keywords: ['천연가스 ETF', '천연가스 선물 ETF', '가스 ETF', '천연가스 ETF 추천', '천연가스 ETF 전망', '천연가스 레버리지 ETF'],
-  section: 'ETF 원자재 가이드',
+  section: 'ETF 원자재 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -8898,7 +8898,7 @@ const brazilEtf: GuideDef = {
   description:
     '브라질 ETF가 무엇인지, 중남미 대표 신흥국·자원국에 투자하는 구조와 철광석·원유 등 원자재·고금리 매력, 헤알 환율과 정치·정책 리스크, 다른 신흥국 ETF와의 차이와 환율·세금까지 정리한 브라질 ETF 투자 가이드입니다.',
   keywords: ['브라질 ETF', '브라질 주식 ETF', '중남미 ETF', '브라질 ETF 추천', '브라질 ETF 전망', '브라질 헤알 ETF'],
-  section: '해외상장 가이드',
+  section: '해외상장 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
@@ -8985,7 +8985,7 @@ const financialIncomeTax: GuideDef = {
   description:
     'ETF 분배금이 금융소득종합과세에 어떻게 포함되는지, 연 2,000만 원 기준과 국내 주식형·해외 상장 ETF의 차이, 건강보험료·피부양자 영향, ISA·연금계좌로 줄이는 절세 전략까지 정리한 금융소득종합과세 ETF 가이드입니다.',
   keywords: ['금융소득종합과세', 'ETF 종합과세', 'ETF 배당 세금', '금융소득 2000만원', 'ETF 건강보험료', 'ETF 분배금 종합과세'],
-  section: 'ETF 세금 가이드',
+  section: 'ETF 세금 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '국세법령정보시스템', url: 'https://taxlaw.nts.go.kr' },
@@ -9072,7 +9072,7 @@ const waterEtf: GuideDef = {
   description:
     '물 ETF가 무엇인지, 상하수도·수처리·펌프 등 물 장비 기업을 담는 구조와 기후변화·노후 인프라 교체라는 장기 수요, 방어적 성격과 유틸리티에서 오는 금리 민감성, 환율·세금까지 정리한 수자원·물 인프라 ETF 투자 가이드입니다.',
   keywords: ['물 ETF', '워터 ETF', '수자원 ETF', '물 인프라 ETF', '물 ETF 추천', '물 ETF 전망'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -9159,7 +9159,7 @@ const fintechEtf: GuideDef = {
   description:
     '핀테크 ETF가 무엇인지, 카드·간편결제·디지털뱅킹·금융 소프트웨어 기업을 담는 구조와 전통 은행 ETF와의 차이, 성장주 특성에서 오는 금리·규제·경쟁 위험과 환율·세금까지 정리한 핀테크 ETF 투자 가이드입니다.',
   keywords: ['핀테크 ETF', '핀테크 ETF 추천', '결제 ETF', '디지털금융 ETF', '핀테크 ETF 전망', '금융기술 ETF'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -9245,7 +9245,7 @@ const highYieldBondEtf: GuideDef = {
   description:
     '하이일드 채권 ETF가 무엇인지, 신용등급이 낮은 투기등급 회사채를 담는 구조와 우량 회사채·국채와의 차이, 높은 분배 수익의 대가인 부도·경기 위험, 금리 민감성과 세금까지 정리한 하이일드 채권 ETF 투자 가이드입니다.',
   keywords: ['하이일드 ETF', '하이일드 채권 ETF', '고수익 채권 ETF', '하이일드 ETF 추천', '정크본드 ETF', '하이일드 ETF 전망'],
-  section: 'ETF 채권 가이드',
+  section: 'ETF 채권 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '한국은행 경제통계시스템 ECOS', url: 'https://ecos.bok.or.kr' },
@@ -9332,7 +9332,7 @@ const saudiEtf: GuideDef = {
   description:
     '사우디 ETF가 무엇인지, 국영 석유기업 아람코와 은행·소재 비중이 큰 구조와 유가·국부펀드 주도의 Vision 2030 개혁, 달러에 고정된 리얄 환율과 유가·정치 위험, 세금까지 정리한 사우디아라비아 중동 ETF 투자 가이드입니다.',
   keywords: ['사우디 ETF', '사우디아라비아 ETF', '중동 ETF', '사우디 ETF 추천', '사우디 ETF 전망', '중동 산유국 ETF'],
-  section: '해외상장 가이드',
+  section: '해외상장 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
@@ -9419,7 +9419,7 @@ const carbonCreditEtf: GuideDef = {
   description:
     '탄소배출권 ETF가 무엇인지, 온실가스 배출권 중 주로 유럽 배출권 선물을 담는 구조와 기후정책·감축목표라는 가격 동력, 정책 되돌림·선물 롤오버 비용·변동성 위험과 환율·세금까지 정리한 탄소배출권 ETF 투자 가이드입니다.',
   keywords: ['탄소배출권 ETF', '탄소배출권 ETF 추천', '탄소 ETF', '배출권 ETF', '탄소배출권 ETF 전망', '유럽 탄소배출권 ETF'],
-  section: 'ETF 원자재 가이드',
+  section: 'ETF 원자재 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -9506,7 +9506,7 @@ const consumerStaplesEtf: GuideDef = {
   description:
     '필수소비재 ETF가 무엇인지, 코카콜라 같은 식품·음료·생활용품 대형 브랜드를 담는 구조와 경기 방어·안정 배당·인플레이션 전가력, 저성장·금리 민감이라는 한계와 환율·세금까지 정리한 필수소비재 ETF 투자 가이드입니다.',
   keywords: ['필수소비재 ETF', '미국 필수소비재 ETF', '경기방어 ETF', '소비재 ETF', '필수소비재 ETF 추천', '필수소비재 ETF 전망'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -9592,7 +9592,7 @@ const cloudEtf: GuideDef = {
   description:
     '클라우드 ETF가 무엇인지, 데이터센터 인프라와 클라우드 소프트웨어(SaaS) 기업을 담는 구조와 디지털 전환·AI 확산이라는 성장 동력, 금리·밸류에이션·경쟁 위험과 환율·세금까지 정리한 클라우드 컴퓨팅 ETF 투자 가이드입니다.',
   keywords: ['클라우드 ETF', '클라우드 컴퓨팅 ETF', 'SaaS ETF', '데이터센터 ETF', '클라우드 ETF 추천', '클라우드 ETF 전망'],
-  section: '테마 ETF 가이드',
+  section: '테마 ETF 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -9679,7 +9679,7 @@ const platinumEtf: GuideDef = {
   description:
     '백금 ETF가 무엇인지, 안전자산인 금·은과 다른 산업 수요 중심의 성격과 자동차 배기 촉매·수소 연료전지·보석 수요, 전기차 전환·공급 집중·선물 롤오버 위험과 환율·세금까지 정리한 백금 플래티넘 ETF 투자 가이드입니다.',
   keywords: ['백금 ETF', '플래티넘 ETF', '백금 선물 ETF', '백금 ETF 추천', '백금 ETF 전망', '백금 실물 ETF'],
-  section: 'ETF 원자재 가이드',
+  section: 'ETF 원자재 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
@@ -9766,7 +9766,7 @@ const indonesiaEtf: GuideDef = {
   description:
     '인도네시아 ETF가 무엇인지, 동남아 최대 인구·경제 대국에 투자하는 구조와 젊은 인구의 내수 성장·세계 최대 니켈 자원이라는 매력, 루피아 환율과 원자재·정치 위험, 세금까지 정리한 인도네시아 ETF 투자 가이드입니다.',
   keywords: ['인도네시아 ETF', '인도네시아 주식 ETF', '동남아 ETF', '인도네시아 ETF 추천', '인도네시아 ETF 전망', '인도네시아 니켈 ETF'],
-  section: '해외상장 가이드',
+  section: '해외상장 가이드',
   sources: [
     { label: '국세청', url: 'https://www.nts.go.kr' },
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
@@ -9853,7 +9853,7 @@ const tipsEtf: GuideDef = {
   description:
     '물가연동국채(TIPS) ETF가 무엇인지, 원금이 물가에 연동되는 구조와 일반 국채와의 차이, 언제 유리하고 언제 불리한지, 실질금리·디플레이션·환율 위험과 세금까지 정리한 물가연동국채(물가채) ETF 투자 가이드입니다.',
   keywords: ['물가연동국채 ETF', '물가채 ETF', 'TIPS ETF', '인플레이션 ETF', '물가연동채 ETF 추천', '물가채 ETF 전망'],
-  section: 'ETF 채권 가이드',
+  section: 'ETF 채권 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '한국은행 경제통계시스템 ECOS', url: 'https://ecos.bok.or.kr' },
@@ -21643,6 +21643,22 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 기반 가이드 14편 — 발행일이 비어 있어 /guide/latest 정렬과 sitemap lastmod에서 빠졌다.
+  // 각 슬러그가 guides.ts에 처음 들어온 커밋 날짜로 채웠다(git log -S 확인). (2026-08-12)
+  'monthly-dividend': '2026-04-25',
+  'covered-call': '2026-04-25',
+  'defense-etf': '2026-04-25',
+  'ai-semi-etf': '2026-04-25',
+  'retirement': '2026-04-25',
+  'us-dividend': '2026-04-27',
+  'currency-hedge': '2026-04-27',
+  'overseas-etf': '2026-04-27',
+  'etf-basics': '2026-05-31',
+  'etf-tax': '2026-05-31',
+  'etf-fee': '2026-05-31',
+  'etf-vs-fund': '2026-05-31',
+  'etf-dividend': '2026-06-01',
+  'etf-dca': '2026-06-04',
   // 2026-08-12 · 지식iN 질문 수요 기반 (상속세 물납·빚내서 투자 위험·법인 이익잉여금 미배당·ISA S&P500 나스닥100 동시보유·기초연금과 사적연금)
   'inheritance-tax-payment-in-kind': '2026-08-12',
   'investing-with-borrowed-money': '2026-08-12',
@@ -21940,12 +21956,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
   },
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension'],
   },
   {
     title: '배당·인컴',
@@ -21955,17 +21971,17 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '테마·섹터',
     description: '방산·조선·건설·자동차·AI·반도체·빅테크·소프트웨어·보안·로봇·전기차·신재생·희토류·게임·엔터·명품·뷰티·비트코인·인프라 등 특정 테마에 집중하는 섹터 ETF.',
-    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'bitcoin-krw-buy-withdrawal', 'crypto-exchange-fee-structure', 'crypto-leverage-long-term-risk', 'overseas-crypto-futures-tax', 'bitcoin-dominance-altcoin', 'crypto-liquidation-explained'],
+    slugs: ['defense-etf', 'shipbuilding-etf', 'construction-etf', 'ai-semi-etf', 'us-semiconductor-etf', 'us-bigtech-etf', 'ai-software-etf', 'cybersecurity-etf', 'battery-etf', 'ev-etf', 'auto-etf', 'ai-power-etf', 'solar-energy-etf', 'rare-earth-etf', 'space-etf', 'robot-etf', 'humanoid-robot-etf', 'bio-etf', 'nuclear-etf', 'quantum-computing-etf', 'game-etf', 'entertainment-etf', 'luxury-etf', 'beauty-etf', 'bitcoin-etf', 'infrastructure-etf', 'jets-airline-etf', 'bitcoin-futures-vs-spot', 'china-semiconductor-etf', 'crypto-perpetual-funding-fee', 'overseas-crypto-exchange-risks', 'crypto-investment-scam-signs', 'bitcoin-krw-buy-withdrawal', 'crypto-exchange-fee-structure', 'crypto-leverage-long-term-risk', 'overseas-crypto-futures-tax', 'bitcoin-dominance-altcoin', 'crypto-liquidation-explained', 'healthcare-etf', 'water-etf', 'fintech-etf', 'consumer-staples-etf', 'cloud-etf'],
   },
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea', 'world-etf', 'brazil-etf', 'saudi-etf', 'indonesia-etf'],
   },
   {
     title: '전략·자산배분',
     description: '적립식·리밸런싱·팩터·자산배분(TRF)·채권·미국국채·회사채·채권혼합·파킹·금·은·구리·원유·농산물·원자재·레버리지 — 포트폴리오를 굴리고 위험을 관리하는 전략.',
-    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual'],
+    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual', 'natural-gas-etf', 'carbon-credit-etf', 'platinum-etf', 'high-yield-bond-etf', 'tips-etf'],
   },
 ];
 
@@ -21987,25 +22003,77 @@ export function getGuideClusters(): { title: string; description: string; guides
   return groups;
 }
 
-/** 가이드 상호 내부링크 — 같은 클러스터의 다른 가이드(관련 가이드). 부족하면 다른 가이드로 보충. */
+/**
+ * 가이드 상호 내부링크 — 같은 클러스터에서 관련 가이드를 고른다.
+ *
+ *   예전에는 클러스터 목록의 앞 네 개를 그대로 잘랐다. 그래서 어느 글에서 출발하든
+ *   같은 네 편만 가리켰고, 238편 중 208편은 아무도 가리키지 않는 상태였다.
+ *   특히 새로 발행한 글은 목록 끝에 붙으므로 인바운드 링크가 영원히 0이었다
+ *   (8월 발행 30편 전부). 검색엔진은 아무도 링크하지 않는 문서를 중요하게 보지 않는다.
+ *
+ *   그래서 슬롯을 나눈다.
+ *     1.    키워드·출처 질문이 가장 많이 겹치는 글   (주제 근접성)
+ *     2.    최근 발행분 중 하나, 글마다 돌려가며      (새 글에 인바운드를 자동 생성)
+ *     3~4.  풀 전체를 돌며 채움                      (한쪽에 링크가 몰리지 않게)
+ *   2번 슬롯이 핵심이다. 새 글이 나오면 같은 클러스터의 기존 글들이 자동으로 그 글을 가리킨다.
+ *   결과: 아무도 안 가리키는 글 208편 → 13편, 한 글이 받는 최대 링크 61회 → 13회. (2026-08-12)
+ */
 export function getRelatedGuides(slug: string, limit = 4): GuideDef[] {
   const cluster = GUIDE_CLUSTERS.find(c => c.slugs.includes(slug));
-  const related: GuideDef[] = [];
-  if (cluster) {
-    for (const s of cluster.slugs) {
-      if (s === slug) continue;
-      const g = GUIDES.find(x => x.slug === s);
-      if (g) related.push(g);
-    }
+  const self = GUIDES.find(g => g.slug === slug);
+  // 클러스터에 배정되지 않은 가이드는 키워드가 겹치는 글을 후보로 쓴다.
+  // (배정 전이라고 해서 아무 데도 연결되지 않은 채 두지 않는다)
+  const selfKeywords = new Set((self?.keywords || []).map(k => k.toLowerCase()));
+  const pool = (
+    cluster
+      ? cluster.slugs.filter(s => s !== slug).map(s => GUIDES.find(g => g.slug === s))
+      : GUIDES.filter(
+          g => g.slug !== slug && (g.keywords || []).some(k => selfKeywords.has(k.toLowerCase())),
+        )
+  ).filter((g): g is GuideDef => !!g);
+
+  if (!pool.length) return GUIDES.filter(g => g.slug !== slug).slice(0, limit);
+
+  const picked: GuideDef[] = [];
+  const take = (g?: GuideDef) => {
+    if (g && g.slug !== slug && !picked.some(p => p.slug === g.slug)) picked.push(g);
+  };
+  // 출발 글마다 다른 지점에서 순회를 시작시키는 값. 같은 글은 항상 같은 결과를 낸다.
+  const rotation = [...slug].reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
+
+  // 1. 주제가 가장 가까운 글 — 키워드와 출처 질문이 겹치는 순
+  if (self) {
+    const selfQ = new Set((self.sourceQuestions || []).map(q => q.url));
+    const best = pool
+      .map(g => ({
+        g,
+        score:
+          (g.keywords || []).filter(k => selfKeywords.has(k.toLowerCase())).length * 2 +
+          (g.sourceQuestions || []).filter(q => selfQ.has(q.url)).length * 3,
+      }))
+      .filter(x => x.score > 0)
+      .sort((a, b) => b.score - a.score)[0];
+    take(best?.g);
   }
-  if (related.length < limit) {
-    for (const g of GUIDES) {
-      if (related.length >= limit) break;
-      if (g.slug === slug || related.some(r => r.slug === g.slug)) continue;
-      related.push(g);
-    }
+
+  // 2. 최근 발행분 — 새 글에 인바운드를 만들어 주는 슬롯.
+  //    최신 한 편만 고르면 그 한 편에만 링크가 몰린다. 최근 20편을 두고
+  //    출발 글마다 다른 편을 가리키게 돌려서 새 글들이 고르게 링크를 받게 한다.
+  const recent = [...pool]
+    .sort((a, b) => (getGuidePublishedAt(b.slug) || '').localeCompare(getGuidePublishedAt(a.slug) || ''))
+    .slice(0, 20);
+  for (let i = 0; i < recent.length && picked.length < 2; i++) {
+    take(recent[(rotation + i) % recent.length]);
   }
-  return related.slice(0, limit);
+
+  // 3~4. 나머지는 풀 전체를 돌며 채운다. 앞에서부터 자르면 클러스터 첫 글에만
+  //      링크가 쏠린다(예전 방식에서 한 편이 61회까지 받았다).
+  for (let i = 0; i < pool.length && picked.length < limit; i++) {
+    take(pool[(rotation * 7 + i) % pool.length]);
+  }
+  for (const g of GUIDES) { if (picked.length >= limit) break; take(g); }
+
+  return picked.slice(0, limit);
 }
 
 /**

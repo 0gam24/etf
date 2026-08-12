@@ -72,8 +72,12 @@ export interface ArticleSchemaInput {
   keywords?: string[];
   /** 카테고리(섹션) 라벨 — 예: '오늘의 관전포인트' */
   section?: string;
-  /** 외부 근거 자료 URL — schema.org/citation (E-E-A-T·생성형 검색 인용 신호) */
-  citations?: string[];
+  /**
+   * 외부 근거 자료 — schema.org/citation (E-E-A-T·생성형 검색 인용 신호).
+   *   URL만 주는 것보다 기관명을 함께 주는 편이 낫다. 검색엔진·답변엔진이
+   *   "이 글의 근거가 국세청"이라는 것을 URL 파싱 없이 바로 읽는다.
+   */
+  citations?: Array<{ name: string; url: string }>;
   /**
    * 음성·요약 인용 대상 지정 (schema.org/speakable).
    *   true로 주면 H1과 정답블록(.answer-box)을 speakable로 표시한다.
@@ -128,11 +132,16 @@ export function buildArticleSchema(input: ArticleSchemaInput) {
       correctionsPolicy: `${SITE}/about`,
       parentOrganization: PARENT_ORG, // smartdatashop network 자매 신호
     },
-    isBasedOn: PARENT_ORG.url, // 1차 출처 저널 backref (검색엔진 entity 연결)
+    // isBasedOn(자매 사이트 backref)은 뺐다. 가이드 본문은 그 사이트에서 파생된 글이
+    // 아닌데도 238편 전부가 "원본은 smartdatashop"이라고 선언하고 있었다. 같은 노드에
+    // "출처는 국세청"과 함께 실려 인용 신호가 흐려진다. 자매 관계는 아래
+    // publisher.parentOrganization이 이미 정확히 표현한다. (2026-08-12)
     mainEntityOfPage: { '@type': 'WebPage', '@id': abs(input.url) },
     ...(input.keywords?.length ? { keywords: input.keywords.join(', ') } : {}),
     ...(input.section ? { articleSection: input.section } : {}),
-    ...(input.citations?.length ? { citation: input.citations } : {}),
+    ...(input.citations?.length
+      ? { citation: input.citations.map(c => ({ '@type': 'WebPage', name: c.name, url: c.url })) }
+      : {}),
     // speakable — 음성 어시스턴트·생성형 검색이 "이 페이지의 답"으로 읽어갈 구간 지정.
     //   AnswerBox(.answer-box)가 렌더될 때만 붙인다. 화면에 없는 것을 가리키면 안 된다.
     ...(input.speakable

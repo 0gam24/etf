@@ -51,6 +51,25 @@ const publishedAt = {};
  */
 const isNewContent = slug => (publishedAt[slug] || '2000-01-01') > STYLE_RULE_FROM;
 
+/**
+ * 발행 사양 v1.0 시행일 — 문체 규칙(STYLE_RULE_FROM)과 별개로 둔다.
+ *
+ *   문체 시행일을 재사용하면 그 이후 발행된 110편이 새 규칙에 걸려 즉시 빌드가 막힌다.
+ *   기존 발행분은 소급 수정하지 않는다는 원칙대로, 이 시행일 '다음날' 발행분부터만 적용한다.
+ */
+const SPEC_RULE_FROM = '2026-08-12';
+const isNewSpec = slug => (publishedAt[slug] || '2000-01-01') > SPEC_RULE_FROM;
+
+/** 클러스터 배정 여부 — 배정되지 않으면 관련 가이드 링크가 주제와 무관해진다 */
+const clusteredSlugs = new Set();
+{
+  const cm = src.match(/GUIDE_CLUSTERS[^=]*=\s*\[([\s\S]*?)\n\];/);
+  if (cm) for (const x of cm[1].matchAll(/'([a-z0-9-]{4,})'/g)) clusteredSlugs.add(x[1]);
+}
+
+/** 제목에서 내용을 밀어내는 상투 라벨 */
+const CLICHE_TITLE = /완전정리|완전 정리|완전 가이드|총정리|완전 분석|한눈에 정리/;
+
 const errors = [];
 const warns = [];
 const BRAND_SUFFIX = ' | Daily ETF Pulse'.length;
@@ -95,13 +114,48 @@ for (let i = 0; i < marks.length; i++) {
   // E-E-A-T — 금융(YMYL) 주제라 1차 출처는 필수로 둔다
   if (!has(blk, 'sources')) E('sources(1차 출처) 없음 — 금융 주제 신뢰도 직결');
 
-  // 있으면 좋은 것
-  if (!has(blk, 'keyPoints')) W('keyPoints 없음 — 리스트형 스니펫 기회 손실');
-  if (!has(blk, 'sourceQuestions')) W('sourceQuestions 없음 — 주제 출처 추적 불가');
+  // 있으면 좋은 것 (시행일 이전 발행분)
+  if (!has(blk, 'keyPoints')) (isNewSpec(slug) ? E : W)('keyPoints 없음 — 리스트형 스니펫 기회 손실');
+  if (!has(blk, 'sourceQuestions')) (isNewSpec(slug) ? E : W)('sourceQuestions 없음 — 주제 출처 추적 불가');
 
   // 운영자 메타 노출 금지어
   const BAN = /파이프라인|크롤링|스크래핑|Gemini|GPT|LLM|샘플 데이터|placeholder|자동 발행/i;
   if (BAN.test(blk)) E('운영자 메타 금지어 포함');
+
+  // ── 발행 사양 v1.0 (시행일 다음날 발행분부터) ───────────────────────────────
+  const headings = [...blk.matchAll(/heading:\s*'((?:[^'\\]|\\.)*)'/g)].map(x => x[1]);
+
+  if (isNewSpec(slug)) {
+    // 소제목에도 긴 줄표를 쓰지 않는다 (제목·설명과 같은 기준)
+    if (headings.some(h => /—/.test(h))) E('본문 소제목에 긴 줄표(—) 사용');
+
+    // 상투 라벨이 노출창 앞자리를 차지하면 정작 조건 정보가 밀린다
+    if (CLICHE_TITLE.test(title)) E(`title에 상투 라벨 사용 — 조건·대상으로 대체할 것`);
+
+    // 주제 출처는 지식iN 질문 원문으로 추적 가능해야 한다
+    const sqUrls = [...(blk.match(/sourceQuestions:\s*\[([\s\S]*?)\n\s*\],/) || ['', ''])[1]
+      .matchAll(/url:\s*'([^']+)'/g)].map(x => x[1]);
+    if (has(blk, 'sourceQuestions') && !sqUrls.every(u => /kin\.naver\.com.*docId=\d+/.test(u)))
+      E('sourceQuestions에 질문 원문 주소(docId)가 없음 — 출처 추적 불가');
+
+    // 클러스터에 배정돼야 관련 가이드가 주제에 맞게 연결된다
+    if (!clusteredSlugs.has(slug)) E('GUIDE_CLUSTERS 미배정 — 관련 가이드 연결이 주제와 무관해짐');
+
+    // 스니펫 길이를 채우지 못하면 검색결과에서 설명 절반이 빈다
+    if (desc && (desc.length < 120 || desc.length > 155)) E(`description ${desc.length}자 (120~155)`);
+
+    // 청크 하나에 결론이 담기려면 섹션이 너무 적어도, 너무 많아도 안 된다
+    if (headings.length < 5 || headings.length > 7) W(`섹션 ${headings.length}개 (권장 5~7)`);
+
+    // 소제목이 무엇에 관한 문단인지 밝혀야 검색·답변엔진이 문단을 집는다
+    const kwHead = kwm ? (kwm[1].match(/'([^']+)'/) || [])[1] || '' : '';
+    const kwTokens = kwHead.split(/[\s·]+/).filter(t => t.length >= 2);
+    if (kwTokens.length && !headings.some(h => kwTokens.some(t => h.includes(t))))
+      W('본문 소제목에 핵심 검색어가 한 번도 없음');
+  }
+
+  // 발행일이 없으면 최신순 목록과 sitemap 갱신일에서 빠진다
+  if (!publishedAt[slug]) E('GUIDE_PUBLISHED_AT에 발행일 없음');
 }
 
 const uniq = a => [...new Set(a)];

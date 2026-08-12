@@ -1,5 +1,6 @@
 @AGENTS.md
 @SEO.md
+@PUBLISHING.md
 
 # 🔒 보안 규칙 (절대 위반 금지)
 

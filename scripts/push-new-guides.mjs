@@ -105,19 +105,29 @@ async function main() {
     return;
   }
 
-  // IndexNow (Bing·Naver·Yandex) + sitemap ping
-  const inRes = await submitAll(paths, { publicDir: path.join(ROOT, 'public') });
+  // 배포 완료 확인 → IndexNow (Bing·Naver·Yandex) + sitemap ping
+  //   먼저 통보하면 봇이 404를 받고 주소를 큐에서 버린다. 열린 것만 알린다.
+  console.log('  배포 확인 중...');
+  const inRes = await submitAll(paths, {
+    publicDir: path.join(ROOT, 'public'),
+    log: msg => console.log(msg),
+  });
+  if (inRes.reason === 'not-deployed') {
+    console.log('✗ 대기 시간 안에 열린 주소가 없습니다. 배포 완료 후 다시 실행하세요.');
+    process.exitCode = 1;
+    return;
+  }
   if (inRes.indexNow?.ok) {
-    console.log(`✔ IndexNow 통보 완료 (status ${inRes.indexNow.status}) — Bing·Naver Yeti·Yandex`);
+    console.log(`✔ IndexNow 통보 완료 (status ${inRes.indexNow.status}) · Bing·Naver Yeti·Yandex · ${inRes.urls.length}건`);
   } else {
     console.log(`○ IndexNow skip/실패:`, inRes.indexNow?.reason || inRes.indexNow?.status || inRes.reason);
   }
   if (inRes.naver) {
-    console.log(`  sitemap ping: ${inRes.naver.sitemapsRefreshed ?? 0}/${inRes.naver.sitemapsTotal ?? 0} 갱신`);
+    console.log(`  CDN 캐시 갱신: ${inRes.naver.sitemapsRefreshed ?? 0}/${inRes.naver.sitemapsTotal ?? 0}`);
   }
 
-  // Google Indexing API
-  const gUrls = paths.map(p => `${siteUrl}${p}`);
+  // Google Indexing API — 열린 주소만
+  const gUrls = inRes.urls;
   const gRes = await submitIndexing(gUrls);
   if (gRes.usedRealApi) {
     const ok = gRes.results.filter(r => r.ok).length;
