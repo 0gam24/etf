@@ -21394,6 +21394,397 @@ const basicPensionWithPrivatePension: GuideDef = {
   ],
 };
 
+const unlistedStockInheritanceValuation: GuideDef = {
+  slug: 'unlisted-stock-inheritance-valuation',
+  title: '비상장주식 상속세, 시가 없을 때 얼마로 평가하나',
+  tagline: '거래가 없어 값을 모를 때 세법이 정한 계산 순서를 먼저 본다',
+  description:
+    '상장되지 않은 회사 주식을 상속받으면 팔린 가격이 없어 세법이 정한 방식으로 값을 매깁니다. 순손익가치와 순자산가치를 3대 2로 섞는 보충적 평가, 부동산 과다 법인 예외, 최대주주 할증까지 계산 순서를 정리했습니다.',
+  keywords: ['비상장주식 상속세', '비상장주식 평가', '보충적 평가방법', '순손익가치 순자산가치', '최대주주 할증', '비상장주식 상속세 계산'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-13',
+  answer:
+    '비상장주식은 거래된 가격을 찾기 어려워 상속세및증여세법의 보충적 평가방법을 씁니다. 1주당 순손익가치와 순자산가치를 각각 3과 2의 비율로 가중평균하고, 부동산 비중이 큰 법인은 2와 3으로 뒤집습니다. 최대주주 지분에는 20% 할증이 붙되 중소기업은 빠지며, 개별 판정은 세무 전문가와 확인해야 합니다.',
+  keyPoints: [
+    '팔린 값을 확인할 수 없을 때만 보충적 평가로 넘어가며, 매매 사례나 감정가 같은 시가가 있으면 그 값이 우선입니다.',
+    '기본 산식은 1주당 순손익가치 곱하기 3에 순자산가치 곱하기 2를 더해 5로 나눈 금액입니다.',
+    '자산의 절반 이상이 부동산인 법인은 순손익가치와 순자산가치의 비율을 2대 3으로 뒤집어 계산합니다.',
+    '최대주주와 특수관계인 지분은 경영권 프리미엄을 반영해 20% 할증하지만, 중소기업 주식은 할증 대상에서 제외됩니다.',
+  ],
+  sources: [
+    { label: '국세청 상속세 안내', url: 'https://www.nts.go.kr' },
+    { label: '상속세 및 증여세법 시행령(국가법령정보센터)', url: 'https://www.law.go.kr' },
+    { label: '홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '비상장주식을 상속받았는데 주식 가치평가를 어떻게 하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=494335030' },
+    { summary: '아버지 비상장 중소기업 주식을 상속받는데 최대주주 할증평가가 적용되는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494613862' },
+  ],
+  comparisonTable: {
+    caption: '비상장주식 평가, 어떤 값을 우선 쓰나',
+    columns: ['구분', '무엇으로 평가', '언제 쓰나', '어느 경우에 유리한가'],
+    rows: [
+      ['시가', '매매 사례가, 감정가, 수용가', '평가 기준일 전후 일정 기간에 실제 값이 있을 때', '적정 거래가 있으면 다툼이 적다'],
+      ['보충적 평가(일반)', '순손익가치 3 대 순자산가치 2', '시가를 찾을 수 없는 대부분의 비상장주식', '이익이 꾸준한 회사에 값이 낮게 나오기도'],
+      ['보충적 평가(부동산 과다)', '순손익가치 2 대 순자산가치 3', '자산 절반 이상이 부동산인 법인', '부동산 가치가 커 값이 높게 나오는 편'],
+      ['하한', '순자산가치의 80%', '위 계산이 순자산의 80%보다 낮게 나올 때', '지나치게 낮은 평가를 막는 바닥값'],
+      ['최대주주 할증', '위 평가액에 20% 가산', '최대주주와 특수관계인 지분(중소기업 제외)', '경영권 프리미엄을 세액에 반영'],
+    ],
+  },
+  sections: [
+    {
+      heading: '왜 비상장주식은 값을 따로 계산하나',
+      paragraphs: [
+        '상장주식은 상속 개시일 앞뒤 두 달 종가 평균으로 값이 정해집니다. 매일 시장에서 거래되니 기준 삼을 가격이 분명합니다. 비상장주식은 그런 시세가 없어 얼마짜리인지 바로 알기 어렵습니다.',
+        '그래서 세법은 순서를 둡니다. 먼저 시가를 찾고, 시가로 볼 만한 매매 사례나 감정가가 없을 때 정해진 산식으로 값을 매깁니다. 이 산식을 보충적 평가방법이라고 부릅니다.',
+      ],
+    },
+    {
+      heading: '순손익가치와 순자산가치를 3대 2로',
+      paragraphs: [
+        '보충적 평가는 두 가지 값을 섞습니다. 하나는 최근 3년 순손익을 바탕으로 회사가 벌어들이는 힘을 본 순손익가치이고, 다른 하나는 자산에서 부채를 뺀 순자산을 주식 수로 나눈 순자산가치입니다.',
+        '일반 법인은 순손익가치에 3, 순자산가치에 2를 곱해 더한 뒤 5로 나눕니다. 이익이 안정적인 회사일수록 순손익가치가 값을 끌어올리고, 자산은 많은데 이익이 적은 회사는 순자산가치가 버팀목이 됩니다.',
+      ],
+    },
+    {
+      heading: '부동산이 많은 회사는 비율이 뒤집힌다',
+      paragraphs: [
+        '회사 자산의 절반 이상이 부동산이면 계산 비율이 바뀝니다. 순손익가치에 2, 순자산가치에 3을 곱해 이익보다 자산 쪽에 무게를 둡니다.',
+        '또한 어떤 경우든 계산 결과가 순자산가치의 80%보다 낮으면 그 80%를 바닥값으로 씁니다. 이익이 거의 없다고 값을 지나치게 낮게 잡는 것을 막으려는 장치입니다.',
+      ],
+    },
+    {
+      heading: '최대주주라면 20% 할증을 확인한다',
+      paragraphs: [
+        '최대주주와 특수관계인이 가진 지분에는 경영권을 넘긴다는 점을 반영해 평가액에 20%를 더합니다. 같은 회사 주식이라도 소액주주 지분보다 세 부담이 커질 수 있습니다.',
+        '다만 중소기업 주식은 이 할증에서 빠집니다. 최근 몇 해 사이 할증을 더 줄이거나 없애자는 논의도 있었으니, 적용 여부와 범위는 신고 시점 기준으로 국세청 안내에서 반드시 확인하는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '신고 전에 챙길 것',
+      paragraphs: [
+        '평가액이 정해지면 상속 재산 전체에 합산해 과세표준을 만들고, 10%에서 50%까지의 누진세율로 상속세를 계산합니다. 비상장주식은 회계 자료 정리에 시간이 걸리므로 상속 개시일이 속한 달의 말일부터 6개월 안이라는 신고 기한을 넉넉히 두고 준비하는 것이 좋습니다.',
+        '순손익가치 산정, 부동산 비중 판정, 할증 적용은 회사 재무 상태에 따라 결과가 크게 갈립니다. 금액이 크거나 지분 구조가 복잡하면 세무 전문가의 검토를 받아 신고하시기 바랍니다. 본 내용은 정보 제공 목적이며 개별 사안의 판정은 관할 세무서 심사에 따릅니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '시가가 있는데도 보충적 평가로 계산하나요?', answer: '아닙니다. 상속 개시일 앞뒤 정해진 기간에 매매 사례가나 감정가 같은 시가가 있으면 그 값을 먼저 씁니다. 보충적 평가는 시가를 확인할 수 없을 때 넘어가는 단계입니다.' },
+    { question: '순자산가치만으로 평가하는 경우도 있나요?', answer: '사업을 접었거나 개시한 지 3년이 안 된 법인 등은 순손익가치를 쓰기 어려워 순자산가치로만 평가하는 예외가 있습니다. 회사 상태별로 달라지므로 개별 확인이 필요합니다.' },
+    { question: '중소기업이면 할증이 전혀 없나요?', answer: '현행 기준에서 중소기업 주식은 최대주주 할증 대상에서 제외됩니다. 중견기업 여부나 매출 규모에 따라 달라질 수 있어 신고 전 요건을 따져봐야 합니다.' },
+    { question: '평가액이 너무 높게 나오면 조정할 수 있나요?', answer: '산식 자체는 정해져 있어 임의로 낮출 수 없습니다. 다만 순손익 산정 기준이나 부동산 비중 판정에 오류가 있으면 바로잡을 수 있으므로 근거 자료를 갖춰 검토받는 것이 좋습니다.' },
+  ],
+};
+
+const overseasListedEtfDelisting: GuideDef = {
+  slug: 'overseas-listed-etf-delisting',
+  title: '미국 상장 ETF 상장폐지되면 내 돈은 어떻게 되나',
+  tagline: '상장폐지와 원금 소멸은 다른 말이라는 데서 출발한다',
+  description:
+    '직접 투자한 미국 상장 ETF가 상장폐지된다는 소식에 원금이 사라질까 걱정하는 분이 많습니다. 상장폐지가 청산으로 이어질 때 돈이 어떻게 돌아오는지, 폐지 전에 팔면 되는지, 세금은 어떻게 되는지 순서대로 정리했습니다.',
+  keywords: ['해외 ETF 상장폐지', '미국 ETF 상장폐지', 'ETF 상장폐지 원금', 'ETF 청산 분배금', '해외상장 ETF 폐지', 'ETF 상장폐지 세금'],
+  section: 'ETF 입문 가이드',
+  lastReviewed: '2026-08-13',
+  answer:
+    '미국 상장 ETF가 상장폐지되어도 보유 자산이 사라지는 것은 아닙니다. 대부분 운용사가 편입 자산을 팔아 순자산가치대로 현금을 돌려주는 청산 절차를 거칩니다. 다만 청산 시점에 손익이 확정되고 원하는 때 팔 수 없어 불리할 수 있으니, 폐지 공지가 나오면 거래가 정지되기 전에 직접 매도할지 청산을 기다릴지 판단해야 합니다.',
+  keyPoints: [
+    '상장폐지는 거래소에서 빠지는 것이고, 보유 지분의 가치가 0이 되는 것과는 다릅니다.',
+    '대부분은 청산으로 이어져 편입 자산을 매각한 뒤 순자산가치 기준 현금을 계좌로 돌려줍니다.',
+    '폐지 예정 공지 후 거래가 정지되기 전까지는 시장에서 직접 팔 수 있어 청산을 기다릴 필요가 없습니다.',
+    '청산 분배는 매도와 같이 손익이 확정되는 사건이라, 이익이 났다면 해외주식 양도소득세 과세 대상이 됩니다.',
+  ],
+  sources: [
+    { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
+    { label: '미국 증권거래위원회(SEC) 투자자 안내', url: 'https://www.sec.gov' },
+    { label: '국세청 해외주식 양도소득세 안내', url: 'https://www.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '미국 직투 ETF가 상장폐지되면 어떻게 되는지 원금 회수가 되는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=472878284' },
+    { summary: 'ETF가 상장폐지되면 원금 회수가 가능한지', url: 'https://kin.naver.com/qna/detail.naver?docId=489722460' },
+    { summary: 'Tiger 미국 나스닥100 ETF 선물이 상장폐지된다는데 어떻게 되는지', url: 'https://kin.naver.com/qna/detail.naver?docId=493750993' },
+  ],
+  sections: [
+    {
+      heading: '상장폐지는 원금이 사라지는 사건이 아니다',
+      paragraphs: [
+        '상장폐지라는 말이 부도나 휴지 조각을 떠올리게 하지만, ETF에서는 성격이 다릅니다. ETF는 안에 실제 주식이나 채권 같은 자산을 담고 있고, 상장폐지는 그 상품이 거래소 명단에서 빠지는 절차일 뿐입니다.',
+        '운용 규모가 너무 작거나 전략을 접을 때 운용사가 상품을 정리하는데, 이때 담고 있던 자산은 남아 있습니다. 그래서 폐지가 곧 원금 소멸을 뜻하지는 않습니다.',
+      ],
+    },
+    {
+      heading: '청산되면 돈은 이렇게 돌아온다',
+      paragraphs: [
+        '상장폐지된 ETF는 대개 청산 절차를 밟습니다. 운용사가 편입 자산을 시장에서 팔고, 비용을 뺀 뒤 남은 금액을 순자산가치 기준으로 보유자에게 나눠 줍니다. 이 돈은 청산 분배금 형태로 증권계좌에 들어옵니다.',
+        '돌아오는 금액은 청산 시점의 자산 가치에 따라 정해집니다. 산 가격보다 자산이 올랐으면 이익이, 내렸으면 손실이 반영됩니다. 상장폐지 자체가 손해를 확정하는 것이 아니라, 그때의 시장 상황이 결과를 좌우합니다.',
+      ],
+    },
+    {
+      heading: '폐지 전에 직접 팔아도 된다',
+      paragraphs: [
+        '운용사는 상장폐지 예정일을 미리 공지합니다. 이 공지가 나온 뒤에도 거래가 정지되기 전까지는 시장에서 평소처럼 매도할 수 있습니다. 청산을 기다리는 대신 원하는 시점에 스스로 정리하는 선택입니다.',
+        '다만 폐지를 앞둔 종목은 거래량이 줄어 원하는 가격에 팔기 어려울 수 있습니다. 순자산가치와 시장가격 사이 벌어짐이 커지기도 합니다. 급하게 던지기보다 순자산가치를 확인하며 판단하는 편이 낫습니다.',
+      ],
+    },
+    {
+      heading: '세금은 매도와 같은 방식으로',
+      paragraphs: [
+        '미국 상장 ETF는 매매차익에 해외주식 양도소득세가 붙습니다. 한 해 실현 손익을 합쳐 기본공제 250만원을 빼고 남은 이익에 22%(지방소득세 포함)로 과세하며, 다음 해 5월에 스스로 신고합니다.',
+        '청산 분배 역시 보유하던 자산이 현금으로 바뀌는 실현 사건이라, 이익이 났다면 같은 양도소득세 계산에 들어갑니다. 폐지 전에 팔든 청산을 기다리든 과세 방식은 다르지 않습니다. 같은 해에 손실 난 다른 종목이 있으면 합산해 세 부담을 줄일 수 있습니다.',
+      ],
+    },
+    {
+      heading: '폐지 위험을 줄이려면',
+      paragraphs: [
+        '상장폐지가 자주 걸리는 쪽은 순자산 규모가 작거나 거래가 뜸한 소형 ETF, 좁은 테마를 좇는 상품입니다. 오래 담아둘 계획이라면 순자산 규모와 거래량이 넉넉한 상품인지 미리 살피는 것이 안전판이 됩니다.',
+        '이미 담은 종목에서 폐지 공지를 받았다면 당황할 필요는 없습니다. 청산 분배로 돈이 돌아오는 구조를 이해하고, 세금과 거래 여건을 따져 매도할지 기다릴지 정하면 됩니다. 본 내용은 정보 제공 목적이며 투자 판단과 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '상장폐지되면 투자한 돈을 아예 못 받나요?', answer: '아닙니다. ETF는 안에 실제 자산을 담고 있어, 청산되면 그 자산을 판 금액을 순자산가치 기준으로 돌려받습니다. 다만 그때의 자산 가치가 산 가격보다 낮으면 손실이 날 수는 있습니다.' },
+    { question: '청산 분배금은 언제 들어오나요?', answer: '상장폐지일 이후 운용사가 자산을 정리하는 데 며칠에서 몇 주가 걸릴 수 있습니다. 정확한 일정은 운용사 공지에 안내되므로 폐지 공지문을 확인하는 것이 좋습니다.' },
+    { question: '거래 정지 전에 파는 게 나은가요, 청산을 기다리는 게 나은가요?', answer: '거래량이 충분하고 순자산가치 근처에서 팔 수 있다면 직접 매도가 편합니다. 반대로 거래가 뜸해 제값을 받기 어렵다면 청산을 기다리는 편이 나을 수 있어 상황에 따라 판단합니다.' },
+    { question: '국내 상장 해외 ETF도 같은가요?', answer: '구조는 비슷해 청산 시 순자산가치대로 현금이 지급됩니다. 다만 과세는 국내 상장 ETF 기준(배당소득세 등)을 따르므로 해외 직접 상장 종목과 세금 계산이 다릅니다.' },
+  ],
+};
+
+const pensionTaxCreditRefundByIncome: GuideDef = {
+  slug: 'pension-tax-credit-refund-by-income',
+  title: '연금저축·IRP 세액공제, 연봉따라 환급액 얼마 차이',
+  tagline: '같은 900만원을 넣어도 돌려받는 돈이 갈리는 이유',
+  description:
+    '연말정산을 앞두고 연금저축과 IRP에 얼마를 넣어야 세금을 가장 많이 돌려받는지 헷갈립니다. 총급여 구간에 따라 갈리는 공제율, 연 900만원 한도, 연금저축과 IRP를 나누는 순서까지 환급액 기준으로 정리했습니다.',
+  keywords: ['연금저축 세액공제', 'IRP 세액공제', '연금저축 세액공제율', '연금저축 900만원', '연말정산 연금저축', '세액공제 환급액'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-13',
+  answer:
+    '연금저축과 IRP를 합쳐 연 900만원까지 세액공제를 받고, 이 가운데 연금저축 단독 한도는 600만원입니다. 공제율은 총급여 5,500만원(종합소득 4,500만원) 이하면 16.5%, 넘으면 13.2%입니다. 900만원을 채우면 16.5% 구간은 148만5천원, 13.2% 구간은 118만8천원을 돌려받아 연봉에 따라 약 30만원 차이가 납니다.',
+  keyPoints: [
+    '연금저축은 단독 600만원, IRP를 더하면 합산 900만원까지 세액공제 대상입니다.',
+    '총급여 5,500만원 이하는 16.5%, 초과하면 13.2% 공제율이 적용되어 같은 납입액도 환급액이 달라집니다.',
+    '900만원을 다 채우면 16.5% 구간은 148만5천원, 13.2% 구간은 118만8천원을 돌려받습니다.',
+    '연금저축 600만원을 먼저 채우고 IRP로 300만원을 더하는 조합이 한도를 가장 깔끔하게 쓰는 방법입니다.',
+  ],
+  sources: [
+    { label: '국세청 연말정산 안내', url: 'https://www.nts.go.kr' },
+    { label: '홈택스 연말정산 미리보기', url: 'https://www.hometax.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '연금저축 세액공제를 얼마까지 받을 수 있는지, 얼마를 넣어야 하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=494093073' },
+    { summary: 'ISA 만기 자금을 연금계좌로 전환입금하면 세액공제를 어떻게 받는지', url: 'https://kin.naver.com/qna/detail.naver?docId=493824974' },
+  ],
+  comparisonTable: {
+    caption: '연봉 구간별 세액공제 환급액(연 납입액 기준)',
+    columns: ['연 납입액', '16.5% 구간 환급', '13.2% 구간 환급', '어느 경우에 유리한가'],
+    rows: [
+      ['300만원', '49만5천원', '39만6천원', '부담이 작아 시작하기 좋은 구간'],
+      ['600만원', '99만원', '79만2천원', '연금저축 단독 한도를 다 쓰는 지점'],
+      ['700만원', '115만5천원', '92만4천원', 'IRP를 더해 한도를 늘리기 시작'],
+      ['900만원', '148만5천원', '118만8천원', '세액공제 한도를 모두 채운 최대치'],
+      ['1,000만원', '148만5천원', '118만8천원', '900만원 초과분은 공제가 없어 실익 없음'],
+    ],
+  },
+  sections: [
+    {
+      heading: '한도는 900만원, 연금저축은 600만원까지',
+      paragraphs: [
+        '연금저축과 IRP는 세액공제를 받을 수 있는 대표 계좌입니다. 두 계좌를 합쳐 한 해 900만원까지 공제 대상이 되고, 이 안에서 연금저축만 따로 보면 600만원이 한도입니다.',
+        '그래서 연금저축에 900만원을 다 넣어도 공제는 600만원까지만 잡힙니다. 900만원 한도를 온전히 쓰려면 연금저축 600만원에 IRP를 더하거나, 처음부터 IRP에 더 배분해야 합니다.',
+      ],
+    },
+    {
+      heading: '연봉이 공제율을 가른다',
+      paragraphs: [
+        '돌려받는 비율은 소득에 따라 둘로 나뉩니다. 총급여 5,500만원 이하, 종합소득으로는 4,500만원 이하면 16.5%를 적용합니다. 이 선을 넘으면 13.2%로 낮아집니다.',
+        '한도는 소득과 상관없이 900만원으로 같습니다. 결국 얼마를 넣느냐가 아니라 어느 구간에 있느냐에 따라 같은 납입액이라도 손에 쥐는 환급액이 달라집니다.',
+      ],
+    },
+    {
+      heading: '900만원을 채우면 얼마가 돌아오나',
+      paragraphs: [
+        '900만원을 모두 채운 경우로 보면 차이가 또렷합니다. 16.5% 구간은 900만원의 16.5%인 148만5천원을, 13.2% 구간은 118만8천원을 돌려받습니다. 두 구간의 격차는 약 30만원입니다.',
+        '중간에 멈춰도 비율은 같습니다. 600만원만 넣으면 각각 99만원과 79만2천원입니다. 연말이 다가올 때 남은 여력만큼 추가로 넣어 한도에 가깝게 맞추면 그만큼 환급이 늘어납니다.',
+      ],
+    },
+    {
+      heading: '넣는 순서와 갈아타기',
+      paragraphs: [
+        '가장 깔끔한 조합은 연금저축 600만원을 먼저 채우고 IRP로 300만원을 더하는 방식입니다. 연금저축은 IRP보다 중도 인출이 상대적으로 자유로워, 급전 가능성을 감안하면 연금저축을 우선 쓰는 편이 편합니다.',
+        'ISA 만기 자금을 연금계좌로 옮기면 별도의 전환 공제를 추가로 받을 수 있는 장치도 있습니다. 다만 요건과 한도가 따로 정해져 있으니 옮기기 전에 확인이 필요합니다.',
+      ],
+    },
+    {
+      heading: '공제만 보고 정하지 않기',
+      paragraphs: [
+        '세액공제는 크지만 이 계좌들은 원칙적으로 만 55세 이후 연금으로 받는 노후 자금입니다. 중간에 헐면 공제받은 세금과 운용 수익에 기타소득세가 매겨져 오히려 손해가 날 수 있습니다.',
+        '당장 쓸 돈까지 무리해 넣기보다, 노후에 묶어둘 여력 안에서 한도를 채우는 것이 맞습니다. 공제율과 한도는 해마다 바뀔 수 있으므로 그해 연말정산 기준은 국세청 안내에서 확인하시기 바랍니다. 본 내용은 정보 제공 목적입니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '연금저축에만 900만원 넣으면 다 공제되나요?', answer: '아닙니다. 연금저축 단독 한도는 600만원이라 900만원을 넣어도 공제는 600만원까지만 잡힙니다. 나머지 300만원 몫은 IRP에 넣어야 900만원 한도를 다 쓸 수 있습니다.' },
+    { question: '총급여가 5,500만원 정확히면 어느 율인가요?', answer: '5,500만원 이하 구간에 들어가 16.5%가 적용됩니다. 이 선을 넘어서면 13.2%로 내려가므로 경계에 걸친 해에는 총급여 확정치를 확인하는 것이 좋습니다.' },
+    { question: '900만원을 넘겨 넣으면 초과분은 어떻게 되나요?', answer: '초과분은 세액공제를 받지 못합니다. 다만 다음 해로 이월해 공제받을 수 있는 제도가 있어, 미리 넣어둔 초과 납입을 이듬해 공제로 돌릴 수 있습니다.' },
+    { question: '중간에 돈이 필요하면 빼도 되나요?', answer: '뺄 수는 있지만 공제받은 부분과 운용 수익에 기타소득세가 붙습니다. 세제 혜택을 되돌려주는 셈이라 급전용으로는 적합하지 않아 여유 자금으로 넣는 것이 원칙입니다.' },
+  ],
+};
+
+const etfTrackingErrorVsPremium: GuideDef = {
+  slug: 'etf-tracking-error-vs-premium',
+  title: 'ETF 추적오차와 괴리율, 뭐가 다른가',
+  tagline: '비슷해 보이는 두 숫자가 실제로는 다른 곳을 가리킨다',
+  description:
+    'ETF를 고를 때 추적오차와 괴리율이 자주 나오는데 무엇이 다른지 헷갈립니다. 하나는 지수를 얼마나 잘 따라가는지, 다른 하나는 지금 값이 제값인지를 봅니다. 두 숫자의 정의와 원인, 확인하는 방법을 갈라서 정리했습니다.',
+  keywords: ['ETF 추적오차', 'ETF 괴리율', '추적오차 괴리율 차이', 'ETF NAV', 'ETF 고르는 법', 'ETF 괴리율 보는 법'],
+  section: 'ETF 괴리율 가이드',
+  lastReviewed: '2026-08-13',
+  answer:
+    '추적오차는 ETF 수익률이 따라가려는 기초지수 수익률과 얼마나 벌어졌는지를 보는 값으로, 운용보수와 복제 방식, 현금 비중이 원인입니다. 괴리율은 지금 시장가격이 순자산가치(NAV)에서 얼마나 떨어져 있는지를 보는 값으로 수급이 원인입니다. 오래 담을수록 추적오차가, 살 때는 괴리율이 더 중요합니다.',
+  keyPoints: [
+    '추적오차는 ETF 수익률과 기초지수 수익률의 차이로, 상품이 지수를 얼마나 충실히 복제하는지를 나타냅니다.',
+    '괴리율은 시장가격에서 순자산가치를 뺀 뒤 순자산가치로 나눈 값으로, 지금 값이 제값에서 벗어난 정도입니다.',
+    '추적오차는 운용보수와 복제 방식, 현금 비중에서, 괴리율은 매수와 매도의 순간 수급에서 주로 생깁니다.',
+    '길게 보유할 상품은 추적오차가 낮은 것을, 매매 시점에는 괴리율이 작은 순간을 고르는 것이 유리합니다.',
+  ],
+  sources: [
+    { label: '한국거래소 ETF 정보', url: 'https://www.krx.co.kr' },
+    { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
+    { label: '금융투자협회 전자공시', url: 'https://dis.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ETF 괴리율과 추적오차의 관계가 무엇인지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=489739815' },
+    { summary: 'ETF 운용 보수가 괴리율에도 영향을 끼치는지', url: 'https://kin.naver.com/qna/detail.naver?docId=490272492' },
+    { summary: '증권사 앱에서 ETF 괴리율을 어떻게 보는지', url: 'https://kin.naver.com/qna/detail.naver?docId=470017395' },
+  ],
+  comparisonTable: {
+    caption: '추적오차와 괴리율, 무엇을 보는 숫자인가',
+    columns: ['구분', '추적오차', '괴리율', '어느 경우에 유리한가'],
+    rows: [
+      ['무엇을 비교', 'ETF 수익률 대 기초지수 수익률', '시장가격 대 순자산가치(NAV)', '보는 대상이 서로 다르다'],
+      ['주된 원인', '운용보수, 복제 방식, 현금 비중', '매수와 매도의 순간 수급', '원인이 달라 대응도 다르다'],
+      ['시간 성격', '기간에 걸쳐 쌓이는 값', '지금 이 순간의 값', '보유는 전자, 매매는 후자'],
+      ['낮으면 좋은 이유', '지수를 그대로 따라간다', '제값에 가깝게 산다', '둘 다 낮을수록 유리'],
+      ['확인 위치', '운용사 공시, 거래소 상품 정보', '증권사 앱 현재가 화면의 NAV 대비', '확인 창이 다르다'],
+    ],
+  },
+  sections: [
+    {
+      heading: '두 숫자가 각각 보는 것',
+      paragraphs: [
+        'ETF에는 두 가지 값이 늘 따라다닙니다. 추적오차는 이 ETF가 따라가겠다고 정한 지수를 실제로 얼마나 잘 좇았는지를 봅니다. 괴리율은 지금 화면에 찍힌 시장가격이 상품의 실제 값어치에서 얼마나 떨어져 있는지를 봅니다.',
+        '겹쳐 보이지만 대상이 다릅니다. 하나는 상품과 지수 사이의 거리이고, 다른 하나는 가격과 값어치 사이의 거리입니다. 그래서 같은 종목이라도 추적오차는 작은데 괴리율은 크거나, 그 반대일 수 있습니다.',
+      ],
+    },
+    {
+      heading: '추적오차는 왜 생기나',
+      paragraphs: [
+        '추적오차는 ETF 수익률과 기초지수 수익률이 벌어진 정도를 기간에 걸쳐 재는 값입니다. 가장 큰 원인은 운용보수입니다. 매년 떼는 보수만큼 ETF 수익률이 지수보다 조금씩 뒤처집니다.',
+        '지수에 담긴 종목을 전부 사지 않고 일부만 골라 담는 방식, 분배금이 들어와 잠시 현금으로 쌓이는 비중, 리밸런싱 시점의 매매 비용도 오차를 만듭니다. 오래 담을수록 이 작은 차이가 쌓여 수익률에 영향을 줍니다.',
+      ],
+    },
+    {
+      heading: '괴리율은 왜 생기나',
+      paragraphs: [
+        '괴리율은 시장가격에서 순자산가치를 뺀 값을 순자산가치로 나눈 비율입니다. 순자산가치는 ETF가 담은 자산을 그 순간 값으로 매긴 실제 값어치이고, 시장가격은 사려는 사람과 팔려는 사람이 만드는 값입니다.',
+        '사려는 힘이 몰리면 가격이 값어치보다 위로, 팔려는 힘이 몰리면 아래로 벌어집니다. 시장이 크게 출렁이거나 거래가 뜸한 종목에서 특히 커집니다. 유동성공급자가 이 벌어짐을 좁히려 매수와 매도 호가를 대지만, 급변 구간에서는 한계가 있습니다.',
+      ],
+    },
+    {
+      heading: '증권사 앱에서 확인하는 법',
+      paragraphs: [
+        '괴리율은 매매 직전에 바로 확인하는 것이 좋습니다. 증권사 앱의 ETF 현재가 화면에는 실시간 추정 순자산가치가 함께 뜨는데, 지금 가격이 이 값보다 지나치게 높으면 비싸게 사는 것입니다. 값어치 근처에서 사고파는 습관이 손실을 줄입니다.',
+        '추적오차는 순간값이 아니라 기간 값이라 운용사 공시나 거래소 상품 정보에서 확인합니다. 같은 지수를 좇는 상품이 여럿이면 추적오차와 보수를 나란히 비교해 더 충실히 따라가는 쪽을 고르면 됩니다.',
+      ],
+    },
+    {
+      heading: '언제 무엇을 더 봐야 하나',
+      paragraphs: [
+        '길게 담아 지수 수익을 그대로 얻는 것이 목적이라면 추적오차가 더 중요합니다. 오래 보유할수록 보수와 복제 차이가 누적되기 때문입니다. 반대로 자주 사고팔거나 큰 금액을 한 번에 넣는다면 그 순간의 괴리율을 챙겨야 합니다.',
+        '둘 다 낮을수록 좋은 상품이라는 점은 같습니다. 규모가 크고 거래가 활발한 대표 지수 ETF일수록 두 값이 안정적인 편입니다. 본 내용은 정보 제공 목적이며 개별 종목 선택과 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '괴리율이 마이너스면 손해인가요?', answer: '괴리율이 음수면 시장가격이 순자산가치보다 낮다는 뜻이라, 살 때는 오히려 값어치보다 싸게 사는 셈입니다. 반대로 팔 때 음수라면 제값보다 싸게 파는 것이니 방향에 따라 유불리가 갈립니다.' },
+    { question: '추적오차가 크면 나쁜 ETF인가요?', answer: '지수를 그대로 좇는 것이 목적인 상품이라면 추적오차가 작을수록 좋습니다. 다만 액티브 상품처럼 지수를 넘어서려는 전략은 오차가 크게 나타날 수 있어 상품 성격을 함께 봐야 합니다.' },
+    { question: '운용보수가 괴리율에도 영향을 주나요?', answer: '보수는 주로 추적오차에 쌓이는 요소입니다. 괴리율은 그 순간의 수급이 만드는 값이라 원인이 다릅니다. 다만 보수가 높으면 장기 수익률이 뒤처지므로 둘 다 낮은 상품이 유리합니다.' },
+    { question: '괴리율은 언제 특히 커지나요?', answer: '시장이 급하게 오르내리거나 거래량이 적은 종목, 해외 자산을 담아 국내 거래 시간과 시차가 있는 상품에서 커지기 쉽습니다. 이런 구간에서는 순자산가치를 꼭 확인하고 매매하는 것이 안전합니다.' },
+  ],
+};
+
+const overseasCryptoAccountReporting: GuideDef = {
+  slug: 'overseas-crypto-account-reporting',
+  title: '해외 거래소 코인, 세금 신고 지금 해야 하나',
+  tagline: '과세 시작 시점과 계좌 신고 의무를 갈라서 봐야 한다',
+  description:
+    '해외 거래소에 코인을 두면 지금 세금 신고를 해야 하는지 헷갈립니다. 소득세 과세는 2027년으로 미뤄졌지만 해외금융계좌 신고는 이미 의무입니다. 잔액 5억원 기준과 6월 신고, 미신고 불이익을 나눠서 정리했습니다.',
+  keywords: ['해외 가상자산 신고', '해외거래소 코인 세금', '해외금융계좌 신고 가상자산', '가상자산 과세 2027', '코인 세금 신고', '해외 코인 계좌 신고'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-13',
+  answer:
+    '해외 거래소에 둔 코인은 두 가지를 나눠 봐야 합니다. 팔아서 번 소득에 대한 과세는 2027년 1월 시행으로 미뤄져 지금 당장 소득세를 내지는 않습니다. 다만 해외금융계좌 신고는 별개로, 매월 말 잔액 합계가 한 번이라도 5억원을 넘으면 다음 해 6월에 신고해야 하며 가상자산도 신고 대상입니다.',
+  keyPoints: [
+    '가상자산 양도와 대여 소득에 대한 과세는 2027년 1월 1일로 시행이 미뤄졌습니다.',
+    '과세 유예와 별개로 해외금융계좌 신고 의무는 이미 시행 중이며 가상자산도 신고 대상입니다.',
+    '연중 매월 말일 중 하루라도 해외 계좌 잔액 합계가 5억원을 넘으면 다음 해 6월에 신고해야 합니다.',
+    '신고를 빠뜨리면 미신고 금액에 과태료가 붙고, 금액이 크면 명단 공개와 형사 고발까지 이어질 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 해외금융계좌 신고 안내', url: 'https://www.nts.go.kr' },
+    { label: '홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '기획재정부', url: 'https://www.moef.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '비트코인 등 가상자산을 팔아 번 차익을 지금 세금 신고해야 하는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494660463' },
+    { summary: '가상자산을 해외금융계좌로 신고해야 하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=463595687' },
+    { summary: '해외 거래소에 둔 가상자산 신고를 어떻게 하는지', url: 'https://kin.naver.com/qna/detail.naver?docId=471168915' },
+  ],
+  sections: [
+    {
+      heading: '과세와 계좌 신고는 다른 이야기',
+      paragraphs: [
+        '해외 거래소 코인 이야기가 나오면 세금이라는 말이 뭉뚱그려집니다. 실제로는 성격이 다른 두 가지가 섞여 있습니다. 하나는 팔아서 번 이익에 매기는 소득세이고, 다른 하나는 해외에 일정 규모 이상 자산을 두었다는 사실을 알리는 계좌 신고입니다.',
+        '이 둘은 시행 시점도, 목적도 다릅니다. 소득세는 얼마를 벌었는지에 대한 것이고, 계좌 신고는 얼마를 어디에 두었는지에 대한 것입니다. 헷갈리면 낼 필요 없는 걱정을 하거나, 반대로 해야 할 신고를 놓칩니다.',
+      ],
+    },
+    {
+      heading: '코인 소득 과세는 2027년으로',
+      paragraphs: [
+        '가상자산을 팔거나 빌려주어 얻은 소득에 대한 과세는 2027년 1월 1일부터 시행됩니다. 여러 차례 미뤄진 끝에 이 시점으로 정리됐습니다. 그래서 그전까지 실현한 매매차익 자체에는 아직 소득세가 매겨지지 않습니다.',
+        '다만 유예는 소득세에 한정된 이야기입니다. 유예라고 해서 다른 의무까지 사라지는 것은 아니며, 특히 아래의 계좌 신고는 지금도 적용됩니다. 시행 시점과 과세 방식은 바뀔 수 있으니 확정 내용은 국세청 안내로 확인하는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '해외금융계좌 신고는 이미 의무',
+      paragraphs: [
+        '해외금융계좌 신고는 해외에 둔 계좌 잔액이 일정 기준을 넘으면 그 사실을 국세청에 알리는 제도입니다. 예전에는 예금과 주식이 대상이었는데, 이제는 해외 거래소에 맡긴 가상자산과 개인 지갑도 신고 대상에 들어갑니다.',
+        '기준은 잔액입니다. 신고 대상 연도의 매월 말일 가운데 하루라도 모든 해외 계좌를 합친 잔액이 5억원을 넘으면 의무가 생깁니다. 넘긴 달이 한 번이라도 있으면 그 해분을 신고해야 합니다.',
+      ],
+    },
+    {
+      heading: '언제, 어떻게 신고하나',
+      paragraphs: [
+        '신고는 다음 해 6월에 합니다. 예를 들어 올해 어느 달 말에 잔액이 5억원을 넘겼다면 내년 6월에 신고하는 식입니다. 홈택스에서 전자 신고하거나 세무서에 제출할 수 있습니다.',
+        '여러 거래소와 지갑에 나눠 두었다면 합쳐서 판단합니다. 국내 원화 거래소 계좌는 해외 계좌가 아니므로 대상이 아니지만, 해외 거래소에 둔 잔액은 종류를 가리지 않고 합산 대상입니다. 잔액이 큰 편이라면 매월 말 기준을 미리 챙겨두는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '빠뜨리면 생기는 불이익',
+      paragraphs: [
+        '신고를 하지 않거나 실제보다 적게 신고하면 미신고 금액에 과태료가 붙습니다. 금액 구간에 따라 요율이 정해져 있고, 미신고 규모가 아주 크면 명단 공개와 형사 고발로도 이어질 수 있습니다.',
+        '소득세가 유예됐다는 말만 듣고 계좌 신고까지 안 해도 된다고 넘기는 경우가 많은데, 이 둘은 별개입니다. 잔액이 기준에 가깝다면 신고 대상인지 먼저 따져보시기 바랍니다. 본 내용은 정보 제공 목적이며 개별 사안은 관할 세무서나 세무 전문가와 확인해야 합니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '지금 코인을 팔아 이익이 나면 세금을 내나요?', answer: '가상자산 양도와 대여 소득에 대한 과세는 2027년 1월 시행으로 미뤄져, 그전까지 실현한 매매차익 자체에는 아직 소득세가 매겨지지 않습니다. 다만 계좌 신고 의무는 별개로 적용됩니다.' },
+    { question: '국내 거래소만 쓰면 계좌 신고를 하나요?', answer: '해외금융계좌 신고는 해외에 둔 계좌가 대상입니다. 국내 원화 거래소 계좌는 해외 계좌가 아니라 신고 대상이 아니지만, 해외 거래소나 개인 지갑에 둔 잔액은 대상이 됩니다.' },
+    { question: '5억원은 어느 시점 잔액으로 보나요?', answer: '연중 매월 말일의 잔액을 봅니다. 그 가운데 하루라도 모든 해외 계좌 합계가 5억원을 넘으면 그 해분 신고 의무가 생깁니다. 평소에는 적어도 특정 달 말에 넘겼다면 대상입니다.' },
+    { question: '신고를 놓치면 어떻게 되나요?', answer: '미신고나 과소신고 금액에 과태료가 부과되고, 규모가 크면 명단 공개와 형사 고발까지 갈 수 있습니다. 기한이 지난 뒤라도 기한 후 신고로 과태료를 줄일 수 있는 장치가 있어 빨리 바로잡는 것이 낫습니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
   stockOrderRejectedReasons,
   dividendRecordDateReform,
@@ -21633,6 +22024,11 @@ export const GUIDES: GuideDef[] = [
   corporateRetainedEarningsTax,
   isaSp500Nasdaq100Together,
   basicPensionWithPrivatePension,
+  unlistedStockInheritanceValuation,
+  overseasListedEtfDelisting,
+  pensionTaxCreditRefundByIncome,
+  etfTrackingErrorVsPremium,
+  overseasCryptoAccountReporting,
 ];
 
 /**
@@ -21929,6 +22325,12 @@ export const GUIDE_PUBLISHED_AT: Record<string, string> = {
   'etf-nav-tracking': '2026-06-07',
   // 2026-06-05
   'etf-rebalancing': '2026-06-05',
+  // 2026-08-13
+  'unlisted-stock-inheritance-valuation': '2026-08-13',
+  'overseas-listed-etf-delisting': '2026-08-13',
+  'pension-tax-credit-refund-by-income': '2026-08-13',
+  'etf-tracking-error-vs-premium': '2026-08-13',
+  'overseas-crypto-account-reporting': '2026-08-13',
 };
 
 /** 가이드 원발행일 조회 (없으면 undefined — 초기 기반 가이드). */
@@ -21956,12 +22358,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money', 'overseas-listed-etf-delisting', 'etf-tracking-error-vs-premium'],
   },
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'unlisted-stock-inheritance-valuation', 'pension-tax-credit-refund-by-income', 'overseas-crypto-account-reporting'],
   },
   {
     title: '배당·인컴',
