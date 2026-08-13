@@ -2438,3 +2438,37 @@ A. 실제 코드(src/lib/guides.ts + src/app/guide/[slug]/page.tsx) 기준으로
   - 직답은 결론만, 수치는 본문에
   - 핵심 포인트는 본문 요약이 아니라 본문에 없는 판단·조건·비교 결과
   - 소제목만 봐도 무슨 문단인지 알게. 의문형은 1~2개까지
+
+## 2026-08-13 · [일일 발행]
+
+### Q. (스케줄) 오늘 포스팅 5편 자율 발행
+
+A. 지식iN 코퍼스(kin-20260812.json 2,708건 · kin-20260718.json 보조)에서 질문 수요 기준으로 5편 선정·작성. 신규 지식iN 수집은 클라우드 IP라 시도하지 않고 저장 코퍼스로 진행(정상 경로). 각 편 핵심 사실 WebSearch 적대 검증.
+
+발행 5편(모두 신규 slug · 2026-08-13):
+  1. unlisted-stock-inheritance-valuation — 비상장주식 상속세, 시가 없을 때 평가
+     출처Q: 비상장주식 상속 가치평가 방법(docId 494335030) · 중소기업 최대주주 할증(494613862)
+     검증: 보충적 평가 순손익가치3:순자산가치2, 부동산과다법인 2:3, 하한 순자산 80%, 최대주주 20% 할증·중소기업 제외 확인
+  2. overseas-listed-etf-delisting — 미국 상장 ETF 상장폐지 시 원금·청산·세금
+     출처Q: 미국직투 ETF 상장폐지(472878284) · 원금회수 여부(489722460) · Tiger 나스닥100선물(493750993)
+     검증: 상장폐지≠원금소멸, 청산 시 NAV 기준 현금분배, 폐지 전 매도 가능, 해외주식 양도세(250만 공제·22%)
+  3. pension-tax-credit-refund-by-income — 연금저축·IRP 세액공제 연봉별 환급액
+     출처Q: 연금저축 세액공제 한도(494093073) · ISA 만기 연금전환 공제(493824974)
+     검증: 연금저축600/합산900만, 16.5%(총급여5,500이하)·13.2%, 900만시 148.5만/118.8만원
+  4. etf-tracking-error-vs-premium — 추적오차 vs 괴리율 차이
+     출처Q: 괴리율과 추적오차 관계(489739815) · 운용보수와 괴리율(490272492) · 괴리율 보는 법(470017395)
+     검증: 추적오차=수익률vs지수(보수·복제·현금), 괴리율=시장가vsNAV(수급), 보유는 전자·매매는 후자
+  5. overseas-crypto-account-reporting — 해외 거래소 코인 세금 신고
+     출처Q: 코인 차익 지금 신고?(494660463) · 가상자산 해외금융계좌 신고(463595687) · 해외 가상자산 신고(471168915)
+     검증: 가상자산 소득 과세 2027.1.1 유예, 해외금융계좌 신고는 별개 의무(월말 잔액 5억 초과 시 익년 6월 신고)
+
+검증: tsc 0, validate:guides ERROR 0(신규 5편 WARN 0), cf:build 성공. .next/server/app/guide/ 신규 5개 HTML prerender에 answer-box·guide-key-points·guide-sources·citation·2026-08-13 확인.
+문체: em dash 0, 운영자 메타/금지어 0, title≤60·desc 120~123·keywords 6·sections 5·faq 4.
+브랜치: 세션 지정 브랜치(claude/serene-hamilton-kl39p2)로 push + 드래프트 PR. main 병합 후 프로덕션 반영·색인 푸시 필요.
+
+★ 발행 URL(병합 후 라이브):
+  https://iknowhowinfo.com/guide/unlisted-stock-inheritance-valuation
+  https://iknowhowinfo.com/guide/overseas-listed-etf-delisting
+  https://iknowhowinfo.com/guide/pension-tax-credit-refund-by-income
+  https://iknowhowinfo.com/guide/etf-tracking-error-vs-premium
+  https://iknowhowinfo.com/guide/overseas-crypto-account-reporting
