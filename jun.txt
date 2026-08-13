@@ -2472,3 +2472,5 @@ A. 지식iN 코퍼스(kin-20260812.json 2,708건 · kin-20260718.json 보조)에
   https://iknowhowinfo.com/guide/pension-tax-credit-refund-by-income
   https://iknowhowinfo.com/guide/etf-tracking-error-vs-premium
   https://iknowhowinfo.com/guide/overseas-crypto-account-reporting
+
+색인 푸시 결과(npm run push:guides, 2026-08-13): IndexNow skip(no-site-url) · Google Indexing skip(no-urls) — 키 미설정으로 두 채널 모두 요청 미발송(안전). PR(main) 병합·프로덕션 배포 확인 후 재실행 필요.
