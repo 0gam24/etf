@@ -2438,3 +2438,35 @@ A. 실제 코드(src/lib/guides.ts + src/app/guide/[slug]/page.tsx) 기준으로
   - 직답은 결론만, 수치는 본문에
   - 핵심 포인트는 본문 요약이 아니라 본문에 없는 판단·조건·비교 결과
   - 소제목만 봐도 무슨 문단인지 알게. 의문형은 1~2개까지
+
+## 2026-08-15 · [일일 발행] 지식iN 수요 기반 가이드 5편
+
+### Q. (자동 루틴) 오늘의 가이드 5편 발행
+A. 네이버 지식iN 질문 코퍼스(data/keywords/kin/kin-20260812.json, 2708건)에서 반복 수요가 큰 주제를 롱테일로 확장해 5편 발행. 신규 수집(curl)은 클라우드 IP 차단으로 실패(정상), 저장 코퍼스로 선정.
+
+발행 5편(제목 / slug / 출처 질문 요지):
+1. 비상장주식 상속세, 주식 가치는 어떻게 평가하나 / unlisted-stock-inheritance-valuation
+   - 출처: 비상장 중소기업 주식 상속 시 최대주주 할증평가 적용 여부 / 비상장주식 상속 시 주식 가치 평가 방법
+   - 검증: 순손익가치3:순자산가치2(부동산과다 2:3), 순자산 80% 하한, 최대주주 20% 할증(중소기업 배제), 상증세법 시행령 확인. 세율 구간은 개정 논의 있어 평가방법 중심 서술.
+2. 미국 ETF 상장폐지되면 내 돈은 어떻게 되나 / us-listed-etf-delisting
+   - 출처: 미국 ETF 상장폐지 시 투자금 처리 / 미국 ETF 상장폐지 가능성과 자금 처리
+   - 검증: 청산 시 상장폐지일 순자산가치에서 비용 차감 후 계좌 자동 입금, 원금 아닌 그날 가치, 해외주식 양도세 250만원 공제 후 22%. KB증권·삼성운용 안내 등 확인.
+3. 리츠 ETF와 리츠 펀드, 뭐가 어떻게 다른가 / reit-etf-vs-reit-fund
+   - 출처: 리츠 ETF vs 리츠 펀드 차이 / 리츠 펀드와 리츠 ETF 차이점
+   - 검증: ETF 상장·실시간매매·월분배·저보수, 펀드 비상장·기준가·자동적립, 둘 다 배당소득 과세, 일부 리츠ETF 분리과세. 확인.
+4. 연말 배당주, 언제까지 사야 배당금 받나 / year-end-dividend-buy-deadline (계절 선행, 12월 피크)
+   - 출처: 월배당 ETF 12월 배당락일 매매 시점 / 배당기준일·배당락일과 마지막 매수일
+   - 검증: T+2 결제로 기준일 2영업일 전이 마지막 매수일, 배당락일=기준일 1영업일 전, 2023 배당절차 개선으로 기준일이 회사마다 상이. 확인.
+5. 금융소득 2000만원 넘기 전 연말에 뭘 줄이나 / year-end-financial-income-management (계절 선행, 연말 피크)
+   - 출처: 주식·ETF 배당 연 2000만원 시 세금 / 금융소득 2000만원 초과 종합과세 대상
+   - 검증: 2000만원 초과분 종합과세(6~45%), 14%(15.4%) 원천징수, 직장가입자 보수외 건보료·피부양자 탈락, ISA·연금 합산 제외. 확인.
+
+검증: tsc 에러 0, validate:guides ERROR 0(신규 5편 WARN 0), cf:build 성공, 프리렌더 5편 answer-box·guide-key-points·guide-sources·citation·발행일(2026-08-15) 모두 확인.
+색인 푸시: 발행 push 후 npm run push:guides 실행(결과는 보고 참조).
+
+★ 오늘 발행 링크(풀 URL)
+https://iknowhowinfo.com/guide/unlisted-stock-inheritance-valuation
+https://iknowhowinfo.com/guide/us-listed-etf-delisting
+https://iknowhowinfo.com/guide/reit-etf-vs-reit-fund
+https://iknowhowinfo.com/guide/year-end-dividend-buy-deadline
+https://iknowhowinfo.com/guide/year-end-financial-income-management
