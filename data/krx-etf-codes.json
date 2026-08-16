@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-08-09T01:50:14.424Z",
-  "baseDate": "20260806",
-  "count": 1160,
+  "fetchedAt": "2026-08-16T01:23:04.568Z",
+  "baseDate": "20260813",
+  "count": 1163,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -5758,10 +5758,25 @@
       "issueCode": "KR70226A0000",
       "name": "PLUS SK하이닉스샌디스크채권혼합50"
     },
+    "0226D0": {
+      "shortcode": "0226D0",
+      "issueCode": "KR70226D0007",
+      "name": "FOCUS 금융반도체지주채권혼합50액티브"
+    },
     "0226G0": {
       "shortcode": "0226G0",
       "issueCode": "KR70226G0004",
       "name": "WON 피지컬AI TOP2플러스액티브"
+    },
+    "0227K0": {
+      "shortcode": "0227K0",
+      "issueCode": "KR70227K0007",
+      "name": "RISE 미국우주위성통신"
+    },
+    "0228G0": {
+      "shortcode": "0228G0",
+      "issueCode": "KR70228G0002",
+      "name": "ACE 반도체Plus전략산업"
     },
     "069500": {
       "shortcode": "069500",
@@ -7270,10 +7285,25 @@
       "issueCode": "KR70226A0000",
       "name": "PLUS SK하이닉스샌디스크채권혼합50"
     },
+    "KR70226D0007": {
+      "shortcode": "0226D0",
+      "issueCode": "KR70226D0007",
+      "name": "FOCUS 금융반도체지주채권혼합50액티브"
+    },
     "KR70226G0004": {
       "shortcode": "0226G0",
       "issueCode": "KR70226G0004",
       "name": "WON 피지컬AI TOP2플러스액티브"
+    },
+    "KR70227K0007": {
+      "shortcode": "0227K0",
+      "issueCode": "KR70227K0007",
+      "name": "RISE 미국우주위성통신"
+    },
+    "KR70228G0002": {
+      "shortcode": "0228G0",
+      "issueCode": "KR70228G0002",
+      "name": "ACE 반도체Plus전략산업"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -13073,9 +13103,24 @@
       "name": "PLUS SK하이닉스샌디스크채권혼합50"
     },
     {
+      "shortcode": "0226D0",
+      "issueCode": "KR70226D0007",
+      "name": "FOCUS 금융반도체지주채권혼합50액티브"
+    },
+    {
       "shortcode": "0226G0",
       "issueCode": "KR70226G0004",
       "name": "WON 피지컬AI TOP2플러스액티브"
+    },
+    {
+      "shortcode": "0227K0",
+      "issueCode": "KR70227K0007",
+      "name": "RISE 미국우주위성통신"
+    },
+    {
+      "shortcode": "0228G0",
+      "issueCode": "KR70228G0002",
+      "name": "ACE 반도체Plus전략산업"
     },
     {
       "shortcode": "069500",

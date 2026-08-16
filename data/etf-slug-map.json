@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-09T01:50:14.615Z",
-  "sourceBaseDate": "20260806",
-  "count": 1160,
+  "generatedAt": "2026-08-16T01:23:04.739Z",
+  "sourceBaseDate": "20260813",
+  "count": 1163,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -1162,7 +1162,10 @@
     "0222F0": "mighty-aidata",
     "0225V0": "kodex-uscpusemiconductortop10",
     "0226A0": "plus-skbond-blend50",
-    "0226G0": "won-ai-top2plusactive"
+    "0226G0": "won-ai-top2plusactive",
+    "0226D0": "focus-financesemiconductorbond-blend50active",
+    "0227K0": "rise-us-0227k0",
+    "0228G0": "ace-semiconductorplus"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -5804,6 +5807,18 @@
     "won-ai-top2plusactive": {
       "code": "0226G0",
       "name": "WON 피지컬AI TOP2플러스액티브"
+    },
+    "focus-financesemiconductorbond-blend50active": {
+      "code": "0226D0",
+      "name": "FOCUS 금융반도체지주채권혼합50액티브"
+    },
+    "rise-us-0227k0": {
+      "code": "0227K0",
+      "name": "RISE 미국우주위성통신"
+    },
+    "ace-semiconductorplus": {
+      "code": "0228G0",
+      "name": "ACE 반도체Plus전략산업"
     }
   }
 }
