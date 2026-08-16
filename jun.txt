@@ -2438,3 +2438,41 @@ A. 실제 코드(src/lib/guides.ts + src/app/guide/[slug]/page.tsx) 기준으로
   - 직답은 결론만, 수치는 본문에
   - 핵심 포인트는 본문 요약이 아니라 본문에 없는 판단·조건·비교 결과
   - 소제목만 봐도 무슨 문단인지 알게. 의문형은 1~2개까지
+
+## 2026-08-16 · [일일 발행] 지식iN 질문 수요 기반 가이드 5편
+
+주제 소스: 저장된 지식iN 코퍼스 (data/keywords/kin/kin-20260812.json 2811건, kin-20260718.json 103건). 신규 라이브 수집은 클라우드 IP 차단으로 실패(정상), 저장 코퍼스로 선정. 슬롯 배분(계절 선행·랭크부스트·상시 최대수요·롱테일)에 맞춰 5편 선정.
+
+1. 배당 받으려면 며칠 전에 사야 하나, 배당락일 계산법 (dividend-buy-deadline-settlement)
+   - 출처 질문: 배당락 피해 언제 매수(484737586), 배당락 전날 매도해도 배당 나오나(492168884), 기준일·배당락일·지급일 차이(488851823)
+   - 검증: 국내 T+2 결제, 기준일 2영업일 전 매수, 배당락일=기준일 하루 전, 배당락일 매도해도 확정분 지급 (KRX·파인 확인)
+   - 슬롯: 계절 선행(연말 배당락 12월)
+
+2. ISA 만기일 길게 잡을까 짧게 잡을까, 뭐가 유리한가 (isa-maturity-date-setting)
+   - 출처 질문: 만기 2999년 설정 단점(494588795), 개설 직후 만기연장이 맞나(494628050)
+   - 검증: 의무유지 3년, 일반형 200만/서민형 400만 비과세, 초과분 9.9% 분리과세, 한도는 재가입 시 재충전 (금융위·파인 확인)
+   - 슬롯: 계절 선행(ISA 12~1월)
+
+3. 코인 세금 2027년 시행되나, 유예 논란과 과세 방식 (crypto-tax-2027-schedule)
+   - 출처 질문: 2027 시행 여부(493331916), 유예됐는지(408254548), 지금 판 차익 신고 여부(494660463)
+   - 검증: 2027-01-01 시행 확정(유예안 세제개편서 제외), 기본공제 250만원·22% 기타소득 분리과세, 첫 신고 2028년 5월, 시행 전 보유분 의제취득가액 특례(취득가vs2026말 시가 중 큰 값) (국세청·기재부 확인)
+   - 슬롯: 랭크부스트(crypto-tax 클러스터)
+
+4. 주식계좌 상속, 평가는 사망일 전후 2개월 종가 평균 (stock-account-inheritance-valuation)
+   - 출처 질문: 주식계좌 상속세 평가(475200164), 계산·평가 기준(469574383), 납부 전 매도 가능(490357587)
+   - 검증: 상장주식·ETF 평가기준일 전후 각 2개월(총 4개월) 종가 평균, 휴장일은 전 거래일, 비상장은 순손익·순자산 가중평균 별도 (국세청 상속재산 평가·상증세법 확인)
+   - 슬롯: 상시 최대수요(상속·증여 실무)
+
+5. 퇴직연금 디폴트옵션에서 ETF로 직접 바꾸는 방법 (default-option-to-etf-switch, howTo)
+   - 출처 질문: 디폴트옵션→ETF 변경법(492762779), 변경 시 기존 상품(494003069), DC 디폴트옵션 해제(492054816)
+   - 검증: 디폴트옵션은 운용지시 없을 때만 적용→직접 매수로 자동 해제, DC/IRP 위험자산 70% 한도, 기존 상품 매도로 예수금 확보 후 ETF 매수, 파생형 ETF 매수 제한 (고용노동부·통합연금포털 확인)
+   - 슬롯: 롱테일 확장(default-option-pension)
+
+검증 요약: tsc --noEmit 에러 0, validate:guides ERROR 0(243편), cf:build 성공, 신규 5편 prerender에 answer-box·guide-key-points·guide-sources·citation·발행일(2026년 8월 16일) 및 HowTo 스키마 확인. 신규 블록 em dash 0, 금지어 0.
+
+풀 URL:
+- https://iknowhowinfo.com/guide/dividend-buy-deadline-settlement
+- https://iknowhowinfo.com/guide/isa-maturity-date-setting
+- https://iknowhowinfo.com/guide/crypto-tax-2027-schedule
+- https://iknowhowinfo.com/guide/stock-account-inheritance-valuation
+- https://iknowhowinfo.com/guide/default-option-to-etf-switch

@@ -21394,6 +21394,410 @@ const basicPensionWithPrivatePension: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-08-16 · 배당 받으려면 며칠 전에 사야 하나 (배당락일·T+2 결제) */
+const dividendBuyDeadlineSettlement: GuideDef = {
+  slug: 'dividend-buy-deadline-settlement',
+  title: '배당 받으려면 며칠 전에 사야 하나, 배당락일 계산법',
+  tagline: '주주명부에 오르는 기준일과 이틀 걸리는 결제, 매수 마감일 잡는 법',
+  description:
+    '배당을 받으려면 배당기준일에 주주명부에 올라야 하고, 국내 주식은 결제가 이틀 걸려 기준일 2영업일 전까지 사야 합니다. 배당락일과 기준일, 지급일이 어떻게 다른지와 연말 결산 배당의 매수 마감일 계산법을 예시로 정리했습니다.',
+  keywords: ['배당 받는 법', '배당기준일', '배당락일', '배당 매수 마감일', 'T+2 결제', '연말 배당락', '배당지급일'],
+  section: '배당주 가이드',
+  lastReviewed: '2026-08-16',
+  answer:
+    '배당을 받으려면 배당기준일 현재 주주명부에 이름이 올라 있어야 합니다. 국내 주식은 매수한 뒤 이틀째에 결제가 끝나므로, 기준일로부터 2영업일 전까지는 사둬야 그날 주주로 잡힙니다. 배당락일은 기준일 하루 전 거래일이라 이날 사면 이번 배당은 받지 못하고, 반대로 이날 팔아도 이미 확정된 배당은 그대로 나옵니다.',
+  keyPoints: [
+    '국내 주식과 ETF는 결제가 이틀 걸려, 배당기준일로부터 2영업일 전까지 매수해야 그 배당을 받습니다.',
+    '배당락일은 배당기준일 하루 전 거래일로, 이날부터 산 사람은 이번 배당 대상에서 빠집니다.',
+    '배당락일에 주식을 팔아도 이미 주주로 확정됐다면 배당금은 예정대로 지급됩니다.',
+    '12월 결산 법인의 결산 배당은 연말 폐장일 부근이 기준일인 경우가 많아, 폐장 며칠 전 매수 마감을 놓치기 쉽습니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '배당락일을 피해 언제 매수해야 배당을 받는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=484737586' },
+    { summary: '배당락일이 2월 26일인데 2월 25일에 매도해도 배당금이 나오는지', url: 'https://kin.naver.com/qna/detail.naver?docId=492168884' },
+    { summary: '배당락일, 배당기준일, 배당지급일이 어떻게 다른지', url: 'https://kin.naver.com/qna/detail.naver?docId=488851823' },
+  ],
+  comparisonTable: {
+    caption: '배당 관련 날짜 한눈에 보기',
+    columns: ['구분', '배당기준일', '배당락일', '배당지급일'],
+    rows: [
+      ['의미', '주주명부 확정일', '기준일 하루 전 거래일', '실제 배당금 입금일'],
+      ['이날 사면', '당일 매수는 미확정(2영업일 전 필요)', '이번 배당 대상 제외', '해당 없음'],
+      ['이날 팔면', '2영업일 전 보유했다면 배당 유지', '이미 확정분은 배당 나옴', '해당 없음'],
+      ['주가 흐름', '권리 확정 시점', '배당만큼 낮게 출발하는 경향', '통장에 배당 입금'],
+      ['확인 방법', '기업 공시의 기준일 공고', '전일 종가 대비 시가 하락', '증권사 입금 내역'],
+    ],
+  },
+  sections: [
+    {
+      heading: '배당은 누가 받나, 배당기준일에 달렸다',
+      paragraphs: [
+        '배당을 받는 사람은 배당기준일 당시 주주명부에 올라 있는 주주입니다. 며칠을 보유했는지, 언제 팔지는 상관이 없고 오직 그 하루의 명부만 봅니다. 배당 투자에서 가장 먼저 챙길 것은 이 기준일에 확실히 주주로 잡혀 있는 일입니다.',
+        '주주명부는 회사가 배당 대상을 확정하려고 특정일 기준으로 정리하는 명단입니다. 이름이 오르는 시점이 매수 시점과 다르다는 점이 혼란을 부르는데, 그 차이는 결제 제도에서 나옵니다.',
+      ],
+    },
+    {
+      heading: '이틀 걸리는 결제, 왜 2영업일 전에 사야 하나',
+      paragraphs: [
+        '국내 주식과 ETF는 사는 즉시 내 것이 되는 것이 아니라 이틀 뒤에 결제가 끝납니다. 오늘 매수하면 이틀째 되는 영업일에 소유권이 넘어오므로, 주주명부에 오르려면 그만큼 앞서 사둬야 합니다.',
+        '그래서 배당기준일로부터 2영업일 전까지 매수를 마쳐야 그날 주주로 잡힙니다. 기준일 전날에 사면 결제가 기준일을 넘겨 끝나므로 이번 배당에서는 빠집니다. 주말이나 공휴일이 끼면 달력이 아니라 거래일 기준으로 세어야 날짜가 맞습니다.',
+      ],
+    },
+    {
+      heading: '배당락일에 사면 왜 배당을 못 받나',
+      paragraphs: [
+        '배당락일은 배당기준일 하루 전 거래일로, 이날부터 매수한 사람은 이번 배당 대상에서 제외됩니다. 배당받을 권리가 떨어져 나간다는 뜻에서 배당락이라 부릅니다.',
+        '반대로 배당락일에 주식을 팔아도 이미 2영업일 전에 보유해 주주로 확정됐다면 배당은 그대로 나옵니다. 배당락일에는 배당이 빠진 만큼 주가가 낮게 출발하는 경향이 있어, 배당만 노리고 급하게 사고파는 방식이 언제나 이득이 되지는 않습니다.',
+      ],
+    },
+    {
+      heading: '연말 결산 배당은 폐장일 부근이 고비다',
+      paragraphs: [
+        '12월에 회계연도가 끝나는 법인의 결산 배당은 연말 마지막 거래일 부근을 기준일로 잡는 경우가 많습니다. 12월 폐장을 며칠 앞두고 매수 마감이 걸리는데, 연말 휴장과 겹쳐 날짜를 잘못 세기 쉽습니다.',
+        '최근에는 배당액을 먼저 확정한 뒤 기준일을 정하도록 제도가 바뀌어, 회사마다 기준일이 예전과 다를 수 있습니다. 특정 종목의 배당을 노린다면 그 회사 공시에서 올해 기준일을 직접 확인하는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '매수 마감일을 놓치지 않으려면',
+      paragraphs: [
+        '먼저 목표 종목의 배당기준일을 공시에서 확인하고, 거기서 2영업일을 거꾸로 세어 매수 마감일을 잡으세요. 중간에 낀 주말과 공휴일을 빼는 것이 핵심입니다.',
+        '분기나 반기마다 배당을 주는 종목은 이 과정을 해마다 여러 번 반복해야 합니다. 배당은 투자 판단의 한 조각일 뿐이니 날짜만 보고 무리하게 담기보다 종목의 실적과 배당 지속성을 함께 살피시기 바랍니다. 투자 결정과 그 결과는 본인에게 달려 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '배당락일 당일에 사면 정말 배당을 못 받나요?', answer: '네. 배당락일부터는 새로 산 사람이 배당 대상에서 빠집니다. 이번 배당을 받으려면 배당락일 전날, 곧 기준일 기준 2영업일 전까지 매수를 끝내야 합니다.' },
+    { question: '배당기준일에 팔면 배당을 못 받나요?', answer: '이미 2영업일 전부터 보유해 주주로 확정됐다면 기준일 이후 언제 팔아도 배당은 나옵니다. 배당락일에 팔아도 마찬가지입니다.' },
+    { question: 'ETF 분배금도 같은 규칙인가요?', answer: '국내 상장 ETF의 분배금도 분배기준일에 보유해야 받으며, 주식과 같은 결제 주기라 기준일 2영업일 전 매수 규칙이 그대로 적용됩니다.' },
+    { question: '미국 주식은 며칠 전에 사야 하나요?', answer: '미국은 결제 주기와 배당락 기준이 국내와 달라 종목별 배당락일을 따로 확인해야 합니다. 국내 규칙을 그대로 대입하면 어긋날 수 있습니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-16 · ISA 만기일 길게 vs 짧게 설정 */
+const isaMaturityDateSetting: GuideDef = {
+  slug: 'isa-maturity-date-setting',
+  title: 'ISA 만기일 길게 잡을까 짧게 잡을까, 뭐가 유리한가',
+  tagline: '만기를 언제로 두느냐가 비과세 한도 재충전과 자금 활용을 가른다',
+  description:
+    'ISA는 만기일을 가입자가 정하는데, 길게 잡으면 계좌 관리가 편한 대신 비과세 한도를 다시 채울 기회가 늦어집니다. 의무 유지 3년과 200만원 비과세 한도를 기준으로, 만기를 짧게 또는 길게 두는 선택이 어떻게 갈리는지 정리했습니다.',
+  keywords: ['ISA 만기', 'ISA 만기일 설정', 'ISA 비과세 한도', 'ISA 재가입', 'ISA 의무가입기간', 'ISA 만기 연장'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-08-16',
+  answer:
+    'ISA 만기일은 가입자가 정하며, 최소 의무 유지 기간인 3년만 넘기면 언제 해지해도 세제 혜택을 받습니다. 만기를 길게 잡으면 재가입 절차 없이 계좌를 오래 쓸 수 있지만, 비과세 한도는 만기 뒤 새 계좌를 열 때 다시 채워지므로 한도를 자주 되살리고 싶다면 오히려 짧게 두는 편이 나을 수 있습니다.',
+  keyPoints: [
+    'ISA는 의무 유지 기간 3년을 채우면 만기 전이라도 해지 시 세제 혜택이 그대로 유지됩니다.',
+    '비과세 한도는 일반형 200만원, 서민형 400만원이며, 초과 수익은 9.9%로 분리과세됩니다.',
+    '만기가 지나 새로 가입하면 비과세 한도와 납입 한도가 새로 시작되므로, 한도 재충전이 목적이면 만기를 짧게 두는 편이 유리합니다.',
+    '만기를 아주 길게 잡으면 관리가 편한 대신 한도 재충전과 연금계좌 전환 시점이 그만큼 미뤄집니다.',
+  ],
+  sources: [
+    { label: '금융위원회 ISA 안내', url: 'https://www.fsc.go.kr' },
+    { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 만기를 2999년처럼 아주 길게 설정했을 때의 단점이 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=494588795' },
+    { summary: '계좌를 개설하자마자 만기를 연장하는 것이 맞는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494628050' },
+  ],
+  comparisonTable: {
+    caption: 'ISA 만기를 짧게 둘 때와 길게 둘 때',
+    columns: ['구분', '짧게(3~5년)', '길게(수십 년)'],
+    rows: [
+      ['비과세 한도 재충전', '만기마다 새 한도 확보', '한 번 쓰면 오래 고정'],
+      ['계좌 관리', '만기마다 재가입 필요', '재가입 없이 유지'],
+      ['서민형 자격', '재가입 때 소득 재확인', '기존 자격 그대로'],
+      ['연금계좌 전환', '만기 도래마다 전환 기회', '전환 시점 지연'],
+      ['맞는 사람', '한도를 자주 채우는 적극 활용형', '한 번 넣고 길게 묻어두는 형'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'ISA 만기일은 가입자가 정한다',
+      paragraphs: [
+        'ISA는 가입할 때 만기일을 스스로 정합니다. 짧게는 3년, 길게는 수십 년 뒤로 잡을 수 있어 같은 계좌라도 사람마다 만기가 제각각입니다. 만기일은 이 계좌를 언제까지 유지할지를 정하는 상한이라고 보면 됩니다.',
+        '만기 설정이 헷갈리는 이유는 만기가 곧 자금이 묶이는 기간이라고 오해하기 때문입니다. 실제로는 의무 유지 기간만 지나면 만기 전이라도 자유롭게 해지할 수 있어, 만기일과 자금 활용은 별개로 움직입니다.',
+      ],
+    },
+    {
+      heading: '3년만 채우면 세제 혜택은 지켜진다',
+      paragraphs: [
+        'ISA의 세제 혜택을 받으려면 가입일로부터 최소 3년의 의무 유지 기간을 채워야 합니다. 이 기간만 넘기면 설정한 만기가 아직 남아 있어도 해지할 때 비과세와 분리과세 혜택을 온전히 받습니다.',
+        '반대로 3년을 채우기 전에 깨면 그동안 받은 세제 혜택이 사라지고 일반 계좌처럼 과세됩니다. 그래서 만기일을 얼마로 잡든, 최소 3년은 유지한다는 전제 위에서 판단하는 것이 맞습니다.',
+      ],
+    },
+    {
+      heading: '비과세 한도는 만기 후 새 계좌에서 다시 찬다',
+      paragraphs: [
+        '비과세 한도는 일반형 200만원, 서민형 400만원으로 계좌 하나에 붙는 총액입니다. 이 한도를 다 쓰면 초과 수익은 9.9%로 분리과세되며, 같은 계좌를 계속 쓰는 한 한도가 새로 생기지는 않습니다.',
+        '한도가 다시 차는 시점은 만기가 지나 새 계좌로 재가입할 때입니다. 이때 비과세 한도와 연간 납입 한도가 초기화되므로, 한도를 자주 되살리려면 만기를 짧게 잡아 재가입 주기를 당기는 방법이 있습니다.',
+      ],
+    },
+    {
+      heading: '길게 잡으면 편하지만 한도가 묶인다',
+      paragraphs: [
+        '만기를 아주 길게 잡으면 만기마다 재가입하는 번거로움이 없어 관리가 단순해집니다. 자주 신경 쓰지 않고 오래 묻어두려는 사람에게는 이 편의가 큽니다.',
+        '대신 비과세 한도를 한 번 소진하면 오래 그대로 두게 되고, 만기 때 연금계좌로 옮겨 세액공제를 받는 기회도 뒤로 밀립니다. 서민형 자격은 재가입 때 소득을 다시 보는데, 만기를 길게 두면 지금 자격이 유지되는 대신 나중에 자격을 새로 얻기는 어려워질 수 있습니다.',
+      ],
+    },
+    {
+      heading: '내 활용 스타일에 맞춰 만기를 정하는 법',
+      paragraphs: [
+        '한도를 부지런히 채우고 만기마다 재가입해 새 한도를 노리는 적극적인 활용형이라면 3~5년 정도로 짧게 잡는 편이 어울립니다. 반대로 한 번 넣고 길게 두려는 성향이면 관리가 편한 긴 만기가 맞습니다.',
+        '만기 후 연금저축이나 IRP로 전환해 세액공제를 노릴 계획이 있다면 그 시점을 고려해 만기를 정하는 것도 방법입니다. 제도 세부 기준은 바뀔 수 있으니 가입 전 금융위원회 안내에서 현재 한도와 요건을 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '만기를 2999년으로 해두면 문제가 되나요?', answer: '계좌 유지 자체는 문제없지만 비과세 한도를 재충전할 기회가 사실상 사라지고, 만기 때 연금계좌 전환으로 얻을 세액공제 기회도 계속 미뤄집니다. 관리 편의와 한도 활용 사이의 선택입니다.' },
+    { question: '만기 전에 돈을 빼면 혜택이 날아가나요?', answer: '의무 유지 기간 3년을 채운 뒤라면 만기 전 해지라도 혜택이 유지됩니다. 3년을 채우기 전에 중도해지하면 그동안 받은 세제 혜택은 되돌려집니다.' },
+    { question: '만기를 짧게 잡았다가 연장할 수 있나요?', answer: '만기 도래 전 만기일을 미루는 연장이 가능합니다. 다만 연장하면 그만큼 재가입을 통한 한도 재충전 시점도 함께 뒤로 밀립니다.' },
+    { question: '서민형 요건을 못 채우게 되면 어떻게 되나요?', answer: '이미 서민형으로 가입했다면 그 계좌는 유지되지만, 만기 후 소득이 올라 요건을 벗어나면 다음 재가입 때는 일반형으로만 열 수 있습니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-16 · 코인 세금 2027년 시행 확정, 유예 논란과 과세 방식 */
+const cryptoTax2027Schedule: GuideDef = {
+  slug: 'crypto-tax-2027-schedule',
+  title: '코인 세금 2027년 시행되나, 유예 논란과 과세 방식',
+  tagline: '가상자산 소득 과세가 언제부터, 얼마의 공제와 세율로 시작되나',
+  description:
+    '가상자산 소득 과세는 여러 차례 미뤄졌지만 2027년 1월 시행으로 정리됐습니다. 연 250만원을 넘는 차익에 지방세 포함 22%가 분리과세되고 첫 신고는 2028년 5월입니다. 시행 전 보유분의 취득가액 특례와 지금 준비할 점을 짚었습니다.',
+  keywords: ['코인 세금', '가상자산 과세', '코인 세금 2027', '가상자산 소득세', '코인 세금 유예', '가상자산 기본공제', '코인 세율'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-16',
+  answer:
+    '가상자산 소득 과세는 2020년 도입된 뒤 여러 번 연기됐지만, 2027년 1월 1일 시행으로 확정됐습니다. 한 해 동안의 가상자산 소득에서 기본공제 250만원을 뺀 금액에 20%(지방소득세를 더하면 22%)가 기타소득으로 분리과세되며, 2027년 소득분에 대한 첫 신고와 납부는 2028년 5월에 이뤄집니다.',
+  keyPoints: [
+    '가상자산 과세는 2027년 1월 1일부터 시행되며, 그 전에 실현한 차익은 과세 대상이 아닙니다.',
+    '연간 소득에서 기본공제 250만원을 뺀 금액에 20%, 지방소득세를 더하면 22%가 부과됩니다.',
+    '기타소득으로 분리과세되며, 2027년 소득의 첫 신고와 납부는 2028년 5월입니다.',
+    '시행 전부터 보유한 코인은 실제 취득가액과 2026년 말 시가 중 더 큰 값을 취득가로 인정하는 특례가 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 가상자산소득 과세 안내', url: 'https://www.nts.go.kr' },
+    { label: '기획재정부', url: 'https://www.moef.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '2027년 비트코인 세금이 실제로 시행되는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=493331916' },
+    { summary: '비트코인 세금이 유예됐는지 여부가 헷갈린다', url: 'https://kin.naver.com/qna/detail.naver?docId=408254548' },
+    { summary: '지금 판 가상자산 차익도 세금 신고를 해야 하는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494660463' },
+  ],
+  comparisonTable: {
+    caption: '자산별 차익 과세 방식 비교',
+    columns: ['구분', '국내 상장주식', '해외주식 직투', '가상자산'],
+    rows: [
+      ['과세 시작', '현재는 대주주 위주', '현재 과세 중', '2027년 1월'],
+      ['기본공제', '해당 사항 적음', '연 250만원', '연 250만원'],
+      ['세율(지방세 포함)', '대주주 양도세', '22%', '22%'],
+      ['과세 방식', '분류과세', '양도소득 분류과세', '기타소득 분리과세'],
+      ['신고 시기', '반기별 등', '다음 해 5월', '다음 해 5월'],
+    ],
+  },
+  sections: [
+    {
+      heading: '몇 번을 미뤘고, 이번엔 2027년으로 확정됐다',
+      paragraphs: [
+        '가상자산 과세는 2020년 세법 개정으로 근거가 만들어졌지만, 시장 충격과 준비 부족을 이유로 시행이 여러 차례 미뤄졌습니다. 그 사이 "또 유예되는 것 아니냐"는 관측이 이어졌습니다.',
+        '결론은 2027년 1월 1일 시행입니다. 유예를 담은 안이 세제 개편에서 빠지면서 예정대로 과세가 시작되는 쪽으로 정리됐습니다. 시행 시점이 확정된 만큼 이제는 미뤄질 가능성보다 어떻게 과세되는지를 아는 편이 실익이 큽니다.',
+      ],
+    },
+    {
+      heading: '얼마부터 세금이 붙나, 250만원 공제와 22%',
+      paragraphs: [
+        '과세 대상은 1년 동안의 가상자산 소득에서 기본공제 250만원을 뺀 금액입니다. 예를 들어 한 해 차익이 500만원이면 250만원을 공제한 나머지 250만원에 세금이 붙습니다.',
+        '세율은 20%이고 지방소득세를 더하면 22%입니다. 위 사례라면 250만원의 22%인 약 55만원이 세금이 됩니다. 손실이 나거나 차익이 250만원을 넘지 않으면 낼 세금은 없습니다.',
+      ],
+    },
+    {
+      heading: '언제 신고하나, 2028년 5월 첫 신고',
+      paragraphs: [
+        '2027년 한 해 동안 실현한 가상자산 소득은 이듬해인 2028년 5월에 처음 신고하고 납부합니다. 종합소득에 합산하지 않고 따로 분리과세하는 기타소득으로 처리됩니다.',
+        '올해 실현한 차익은 시행 전이라 과세 대상이 아닙니다. 다만 시행 이후를 대비해 매수 시점과 취득가액을 알 수 있는 거래 내역을 남겨두면 나중에 계산이 수월합니다.',
+      ],
+    },
+    {
+      heading: '시행 전 보유분은 취득가를 어떻게 잡나',
+      paragraphs: [
+        '과세가 시작되기 전부터 들고 있던 코인은 실제 산 가격과 2026년 말 시가 중 더 큰 값을 취득가액으로 인정하는 특례가 있습니다. 오래전 싸게 산 자산이라도 과거 상승분 전체가 한꺼번에 과세되지 않도록 하는 장치입니다.',
+        '이 특례 덕분에 과세는 사실상 2027년 이후의 가격 변동을 중심으로 매겨집니다. 다만 세부 기준과 시가 산정 방법은 바뀔 수 있으니 신고 전에 국세청 안내에서 확정된 내용을 확인하는 것이 안전합니다.',
+      ],
+    },
+    {
+      heading: '지금 준비해둘 것',
+      paragraphs: [
+        '먼저 이용 중인 거래소에서 매수와 매도 내역을 정리해두는 것이 좋습니다. 취득가액과 실현 시점이 남아 있어야 과세가 시작됐을 때 소득을 정확히 계산할 수 있습니다.',
+        '가상자산은 가격 변동이 크고 원금 손실 위험이 있는 자산입니다. 세금은 수익이 났을 때 뒤따르는 결과일 뿐이니, 세제만 보고 투자 규모를 늘리기보다 감당 가능한 범위인지 먼저 판단하시기 바랍니다. 투자 판단과 그 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '2027년에 정말 시행되나요, 또 미뤄지지 않나요?', answer: '유예안이 세제 개편에서 빠지면서 2027년 1월 1일 시행으로 정리됐습니다. 향후 논의가 아주 없다고 단정할 수는 없으나 현재 확정된 일정은 2027년 시행입니다.' },
+    { question: '250만원까지는 세금이 전혀 없나요?', answer: '한 해 가상자산 소득이 250만원 이하이면 기본공제로 전액 상쇄되어 낼 세금이 없습니다. 초과분에 대해서만 22%가 매겨집니다.' },
+    { question: '해외 거래소에서 번 소득도 과세되나요?', answer: '거주자라면 국내외를 가리지 않고 가상자산 소득이 과세 대상입니다. 해외 거래분은 신고 의무가 더 까다로울 수 있어 내역 관리가 중요합니다.' },
+    { question: '예전에 산 코인은 그때 가격으로 세금을 매기나요?', answer: '실제 취득가액과 2026년 말 시가 중 큰 값을 취득가로 인정합니다. 오래전 저가에 산 자산의 과거 상승분이 통째로 과세되지 않도록 한 특례입니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-16 · 주식계좌 상속세 평가 (사망일 전후 2개월 종가 평균) */
+const stockAccountInheritanceValuation: GuideDef = {
+  slug: 'stock-account-inheritance-valuation',
+  title: '주식계좌 상속, 평가는 사망일 전후 2개월 종가 평균',
+  tagline: '물려받은 주식과 ETF를 상속세에서 얼마로 치는지 정하는 기준',
+  description:
+    '주식과 ETF가 담긴 계좌를 상속받으면 상속세를 매길 평가액부터 정해야 합니다. 상장주식은 사망일 전후 각 2개월, 넉 달간의 종가 평균으로 계산하며, 이 평균이 상속세 부담을 좌우합니다. 평가 방법과 신고 전 확인할 점을 정리했습니다.',
+  keywords: ['주식계좌 상속', '상속 주식 평가', '상장주식 상속세', '상속재산 평가', '종가 평균 평가', 'ETF 상속', '상속세 신고'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-16',
+  answer:
+    '상속받은 계좌 속 상장주식과 ETF는 사망일(평가기준일) 전후 각 2개월, 모두 넉 달 동안의 매일 종가를 평균한 값으로 평가합니다. 특정 하루의 종가가 아니라 이 기간 평균을 쓰기 때문에, 사망일에 주가가 급등하거나 급락했더라도 그 하루만으로 상속세가 결정되지는 않습니다.',
+  keyPoints: [
+    '상장주식과 ETF는 평가기준일(사망일) 전후 각 2개월, 총 4개월간의 매일 종가를 평균해 평가합니다.',
+    '거래가 없던 날도 계산에서 빼지 않으며, 기준일이 휴장일이면 그 전 거래일을 기준으로 봅니다.',
+    '평가액은 상속 개시일 현재 다른 재산과 합산되어 상속세 과세표준의 바탕이 됩니다.',
+    '비상장주식은 이 종가 평균이 아니라 순손익가치와 순자산가치를 가중평균하는 별도 방식으로 평가합니다.',
+  ],
+  sources: [
+    { label: '국세청 상속세 상속재산의 평가', url: 'https://www.nts.go.kr' },
+    { label: '국세법령정보시스템', url: 'https://taxlaw.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '주식계좌를 상속받을 때 상속세를 어떻게 평가하고 계산하는지', url: 'https://kin.naver.com/qna/detail.naver?docId=475200164' },
+    { summary: '주식계좌 상속세 계산과 평가 기준이 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=469574383' },
+    { summary: '상속세 납부 전에 상속받은 주식을 팔아도 되는지', url: 'https://kin.naver.com/qna/detail.naver?docId=490357587' },
+  ],
+  comparisonTable: {
+    caption: '상장주식과 비상장주식의 상속 평가 방식',
+    columns: ['구분', '상장주식·ETF', '비상장주식'],
+    rows: [
+      ['평가 기준', '전후 2개월 종가 평균', '순손익·순자산 가중평균'],
+      ['기준 자료', '거래소 공표 종가', '재무제표와 세무자료'],
+      ['최대주주', '원칙적으로 할증 없음', '지분 요건 시 할증평가'],
+      ['평가 난이도', '비교적 단순', '전문가 평가가 필요'],
+      ['확인처', '증권사 잔고와 거래소 시세', '상증세법 평가 규정'],
+    ],
+  },
+  sections: [
+    {
+      heading: '상속세는 물려받은 순간의 가치로 매긴다',
+      paragraphs: [
+        '상속세는 상속이 시작된 시점, 곧 사망일 현재의 재산 가치를 기준으로 계산합니다. 계좌에 담긴 주식과 ETF도 이 시점의 가치를 정해야 세금을 산출할 수 있습니다.',
+        '문제는 주가가 매일 움직인다는 점입니다. 사망일 하루의 종가로만 정하면 그날 우연히 급등하거나 급락한 값에 세금이 휘둘리게 되므로, 법은 일정 기간의 평균을 쓰도록 정해두었습니다.',
+      ],
+    },
+    {
+      heading: '상장주식은 왜 하루가 아니라 넉 달 평균인가',
+      paragraphs: [
+        '상장주식과 ETF는 평가기준일 전 2개월과 후 2개월, 모두 넉 달 동안 매일의 종가를 평균해 평가합니다. 특정 하루의 변동이 평가액을 과도하게 흔드는 것을 막으려는 취지입니다.',
+        '그래서 사망일에 주가가 크게 튀었더라도 그 하루가 평가를 좌우하지 않습니다. 반대로 이 넉 달 사이 주가가 전반적으로 높았다면 평가액이 올라가 상속세 부담도 함께 커집니다.',
+      ],
+    },
+    {
+      heading: '휴장일과 거래 없는 날은 어떻게 처리되나',
+      paragraphs: [
+        '평가기준일이 토요일이나 공휴일처럼 매매가 없는 날이면 그 전 거래일의 종가를 기준으로 봅니다. 기준일 자체가 시세가 없으면 계산이 안 되기 때문입니다.',
+        '넉 달 평균을 낼 때는 거래가 있었는지를 따지지 않고 공표된 매일의 종가를 그대로 씁니다. 거래량이 적었던 날이라고 빼거나 하지 않으므로, 평균은 그 기간 전체의 흐름을 반영합니다.',
+      ],
+    },
+    {
+      heading: '팔아서 현금이 된 뒤라면 평가가 달라지나',
+      paragraphs: [
+        '상속받은 주식을 나중에 처분하더라도 상속세를 매기는 평가액은 사망일 기준 넉 달 평균 그대로입니다. 판 가격이 평가액과 다르다고 상속세가 바뀌지는 않습니다.',
+        '다만 상속받은 뒤 팔아서 생긴 차익이나 차손은 별개의 문제로, 이후의 양도 관련 과세에서 취득가액을 어떻게 보는지에 따라 달라집니다. 처분 계획이 있다면 상속세와 양도 단계 과세를 나눠 살피는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '신고 전에 확인해둘 것',
+      paragraphs: [
+        '먼저 사망일 기준으로 계좌의 종목과 수량을 확정하고, 각 종목의 넉 달 종가 평균을 확인하세요. 증권사에서 상속 재산 평가용 잔고 증명을 받아두면 근거 자료로 쓰기 좋습니다.',
+        '비상장주식이 섞여 있으면 평가 방법이 완전히 달라 전문가의 도움이 필요할 수 있습니다. 세부 기준과 공제 항목은 바뀔 수 있으니 신고 전 국세청 안내에서 현재 규정을 확인하시기 바랍니다. 개별 사안의 판단과 신고 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '사망일 종가만으로 평가하면 안 되나요?', answer: '상장주식과 ETF는 하루 종가가 아니라 평가기준일 전후 각 2개월, 총 넉 달의 종가 평균을 씁니다. 특정 하루의 급등락이 세금을 좌우하지 않도록 한 규정입니다.' },
+    { question: 'ETF도 개별 주식과 같은 방식으로 평가하나요?', answer: '거래소에 상장된 ETF는 상장주식과 같은 넉 달 종가 평균 방식으로 평가합니다. 시세가 공표되므로 계산 방식이 동일합니다.' },
+    { question: '상속받은 주식을 바로 팔면 상속세가 줄어드나요?', answer: '판다고 상속세 평가액이 바뀌지는 않습니다. 상속세는 사망일 기준 평균으로 고정되고, 처분에서 생긴 손익은 양도 단계에서 따로 따집니다.' },
+    { question: '비상장주식은 어떻게 평가하나요?', answer: '순손익가치와 순자산가치를 가중평균하는 별도 방식으로 계산하며, 지분 요건에 따라 할증평가가 붙기도 합니다. 종가 평균을 쓰는 상장주식과는 접근이 완전히 다릅니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-16 · 퇴직연금 디폴트옵션에서 ETF로 직접 바꾸는 방법 (howTo) */
+const defaultOptionToEtfSwitch: GuideDef = {
+  slug: 'default-option-to-etf-switch',
+  title: '퇴직연금 디폴트옵션에서 ETF로 직접 바꾸는 방법',
+  tagline: '사전지정운용 상태를 풀고 원하는 ETF를 직접 담는 순서',
+  description:
+    '퇴직연금 계좌를 열어두고 운용 지시를 안 하면 디폴트옵션 상품으로 굴러갑니다. 여기서 직접 ETF를 사려면 기존 상품을 정리하고 예수금을 만든 뒤 매수하는 순서를 거칩니다. 위험자산 70% 한도까지 고려한 전환 절차를 단계별로 정리했습니다.',
+  keywords: ['디폴트옵션 ETF 변경', '퇴직연금 ETF 매수', '사전지정운용', 'DC형 ETF', 'IRP ETF 투자', '디폴트옵션 해제'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-16',
+  howTo: { totalTime: 'PT15M' },
+  answer:
+    '디폴트옵션은 가입자가 직접 운용 지시를 하지 않을 때 미리 정해둔 상품으로 자동 운용되는 제도입니다. 여기서 ETF로 바꾸려면 디폴트옵션으로 매수된 상품을 매도해 계좌에 예수금을 만든 다음, 퇴직연금 계좌에서 살 수 있는 ETF를 직접 사면 됩니다. 운용 지시를 시작하는 순간 디폴트옵션 적용은 자연히 멈춥니다.',
+  keyPoints: [
+    '디폴트옵션은 운용 지시가 없을 때만 적용되므로, 직접 매수 지시를 하면 별도 해제 신청 없이도 벗어납니다.',
+    'DC형과 IRP는 위험자산에 적립금의 최대 70%까지만 넣을 수 있어, ETF 매수도 이 한도 안에서 이뤄집니다.',
+    '기존 디폴트옵션 상품을 먼저 매도해 예수금을 만들어야 그 돈으로 ETF를 살 수 있습니다.',
+    '퇴직연금 계좌에서는 레버리지와 인버스 같은 파생형 ETF 등 일부 상품의 매수가 제한됩니다.',
+  ],
+  sources: [
+    { label: '고용노동부 퇴직연금', url: 'https://www.moel.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '디폴트옵션에서 ETF로 변경하는 방법이 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=492762779' },
+    { summary: '디폴트옵션을 변경하면 기존 상품은 어떻게 되는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494003069' },
+    { summary: 'DC형 퇴직연금의 디폴트옵션을 해제하는 방법', url: 'https://kin.naver.com/qna/detail.naver?docId=492054816' },
+  ],
+  sections: [
+    {
+      heading: '지금 계좌가 디폴트옵션으로 운용 중인지 확인한다',
+      paragraphs: [
+        '가장 먼저 내 퇴직연금 계좌가 디폴트옵션 상태인지 확인합니다. 가입만 하고 어떤 상품도 직접 고르지 않았다면, 적립금은 사전에 지정된 디폴트옵션 상품으로 운용되고 있을 가능성이 큽니다.',
+        '증권사나 은행의 퇴직연금 화면에서 보유 상품 목록을 보면 현재 무엇에 담겨 있는지 나옵니다. 디폴트옵션 상품명이 잡혀 있다면 그 상태에서 ETF로 옮기는 절차를 시작하면 됩니다.',
+      ],
+    },
+    {
+      heading: '위험자산 70% 한도와 매수 가능 ETF를 점검한다',
+      paragraphs: [
+        '전환에 앞서 규칙을 확인합니다. DC형과 IRP는 주식형처럼 위험자산으로 분류되는 상품에 적립금의 최대 70%까지만 넣을 수 있고, 나머지 30%는 예금이나 채권형 같은 안전자산으로 채워야 합니다.',
+        '또 퇴직연금 계좌에서는 레버리지나 인버스 같은 파생형 ETF의 매수가 제한됩니다. 사려는 ETF가 계좌에서 매매 가능한 상품인지 미리 확인해두면 매수 단계에서 막히는 일을 줄일 수 있습니다.',
+      ],
+    },
+    {
+      heading: '디폴트옵션으로 담긴 상품을 매도해 예수금을 만든다',
+      paragraphs: [
+        'ETF를 사려면 살 돈, 곧 예수금이 계좌에 있어야 합니다. 디폴트옵션으로 매수된 상품이 적립금을 차지하고 있으므로, 이 상품을 매도해 현금화하는 것이 먼저입니다.',
+        '매도하면 정산에 하루 이틀이 걸릴 수 있어 예수금이 바로 잡히지 않을 수 있습니다. 상품 종류에 따라 중도 해지 처리 방식이 다르니 화면 안내를 확인하고, 예수금이 들어온 뒤 다음 단계로 넘어가세요.',
+      ],
+    },
+    {
+      heading: '퇴직연금 계좌에서 원하는 ETF를 매수한다',
+      paragraphs: [
+        '예수금이 준비되면 퇴직연금 계좌의 매매 화면에서 원하는 ETF를 검색해 매수합니다. 이때 직접 운용 지시가 이뤄지므로 디폴트옵션 적용은 자동으로 멈추고, 별도의 해제 신청을 따로 하지 않아도 됩니다.',
+        '매수할 때 위험자산 70% 한도를 넘지 않도록 비중을 맞춰야 합니다. 한도를 초과하는 주문은 체결되지 않으니, 안전자산과 위험자산의 비율을 확인하며 나눠 담는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '운용 현황과 안전자산 비중을 주기적으로 점검한다',
+      paragraphs: [
+        '매수를 마친 뒤에는 주기적으로 계좌를 열어 운용 현황을 살핍니다. 시세가 움직이면 위험자산 비중이 70%를 넘나들 수 있어, 한도에 맞게 다시 조정이 필요할 때가 있습니다.',
+        '퇴직연금은 은퇴까지 오래 굴리는 자금이므로 잦은 매매보다 방향을 정해 꾸준히 유지하는 편이 어울립니다. 상품 구성과 한도 규정은 바뀔 수 있으니 통합연금포털이나 가입한 금융회사 안내에서 현재 기준을 확인하시기 바랍니다. 운용 결과에 대한 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '디폴트옵션을 따로 해제 신청해야 하나요?', answer: '별도 해제 신청 없이 직접 매수 지시를 하면 그 순간부터 디폴트옵션 적용이 멈춥니다. 운용 지시가 없을 때만 작동하는 제도이기 때문입니다.' },
+    { question: '기존 디폴트옵션 상품은 자동으로 팔리나요?', answer: '자동으로 팔리지 않습니다. 가입자가 직접 매도해 예수금을 만들어야 그 돈으로 ETF를 살 수 있습니다.' },
+    { question: '퇴직연금에서 아무 ETF나 살 수 있나요?', answer: '레버리지와 인버스 같은 파생형 ETF 등 일부는 매수가 제한됩니다. 또 위험자산은 적립금의 70% 한도 안에서만 담을 수 있습니다.' },
+    { question: '매도하자마자 바로 ETF를 살 수 있나요?', answer: '매도 정산에 하루 이틀이 걸릴 수 있어 예수금이 즉시 잡히지 않을 수 있습니다. 예수금이 계좌에 들어온 것을 확인한 뒤 매수하세요.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
   stockOrderRejectedReasons,
   dividendRecordDateReform,
@@ -21633,6 +22037,11 @@ export const GUIDES: GuideDef[] = [
   corporateRetainedEarningsTax,
   isaSp500Nasdaq100Together,
   basicPensionWithPrivatePension,
+  dividendBuyDeadlineSettlement,
+  isaMaturityDateSetting,
+  cryptoTax2027Schedule,
+  stockAccountInheritanceValuation,
+  defaultOptionToEtfSwitch,
 ];
 
 /**
@@ -21643,6 +22052,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-16 · 지식iN 질문 수요 기반 (배당 매수 마감일과 배당락·ISA 만기일 길게 vs 짧게·코인 세금 2027 시행·주식계좌 상속세 평가·퇴직연금 디폴트옵션에서 ETF 전환)
+  'dividend-buy-deadline-settlement': '2026-08-16',
+  'isa-maturity-date-setting': '2026-08-16',
+  'crypto-tax-2027-schedule': '2026-08-16',
+  'stock-account-inheritance-valuation': '2026-08-16',
+  'default-option-to-etf-switch': '2026-08-16',
   // 기반 가이드 14편 — 발행일이 비어 있어 /guide/latest 정렬과 sitemap lastmod에서 빠졌다.
   // 각 슬러그가 guides.ts에 처음 들어온 커밋 날짜로 채웠다(git log -S 확인). (2026-08-12)
   'monthly-dividend': '2026-04-25',
@@ -21961,12 +22376,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'isa-maturity-date-setting', 'crypto-tax-2027-schedule', 'stock-account-inheritance-valuation', 'default-option-to-etf-switch'],
   },
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income', 'dividend-buy-deadline-settlement'],
   },
   {
     title: '테마·섹터',
