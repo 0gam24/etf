@@ -21394,6 +21394,416 @@ const basicPensionWithPrivatePension: GuideDef = {
   ],
 };
 
+/** 2026-08-15 발행, 비상장주식 상속세 평가 (지식iN 질문 수요) */
+const unlistedStockInheritanceValuation: GuideDef = {
+  slug: 'unlisted-stock-inheritance-valuation',
+  title: '비상장주식 상속세, 주식 가치는 어떻게 평가하나',
+  tagline: '시가가 없을 때 순손익가치와 순자산가치로 값을 매기는 원리',
+  description:
+    '아버지 회사의 비상장주식을 물려받으면 세금을 매길 기준 가격부터 정해야 합니다. 시가가 없을 때 순손익가치와 순자산가치를 3대 2로 섞는 보충적 평가법, 순자산가치 80% 하한, 최대주주 20% 할증과 중소기업 예외까지 근거와 함께 짚었습니다.',
+  keywords: ['비상장주식 상속세', '비상장주식 평가', '순손익가치 순자산가치', '최대주주 할증평가', '주식 상속세', '보충적 평가방법'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-15',
+  answer:
+    '비상장주식은 사고팔린 시세가 없어 상속세를 매길 때 법에서 정한 방식으로 값을 계산합니다. 1주당 순손익가치와 순자산가치를 각각 3과 2의 비율로 가중평균하는 것이 원칙이며, 최대주주가 넘기는 지분은 경영권 프리미엄을 반영해 20%를 더 얹습니다. 다만 중소기업 주식은 이 할증에서 빠집니다.',
+  keyPoints: [
+    '시가가 확인되지 않는 비상장주식은 1주당 순손익가치와 순자산가치를 3대 2로 가중평균해 평가하며, 부동산이 자산의 절반을 넘는 법인은 2대 3으로 뒤집힙니다.',
+    '가중평균값이 순자산가치의 80%보다 낮게 나오면, 그 80% 금액을 평가액의 하한으로 삼습니다.',
+    '최대주주와 특수관계인이 넘기는 지분은 20%를 할증하지만, 중소기업 주식이나 3년 연속 결손 법인은 할증에서 제외됩니다.',
+    '가업상속공제 요건을 갖추면 상당액을 과세가액에서 빼주므로, 승계 전에 요건 충족 여부를 미리 점검하는 편이 유리합니다.',
+  ],
+  sources: [
+    { label: '국세청 상속·증여세 안내', url: 'https://www.nts.go.kr' },
+    { label: '국세법령정보시스템 상속세 및 증여세법', url: 'https://taxlaw.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '아버지의 비상장 중소기업 주식 60%를 상속받는데 최대주주 할증평가가 적용되는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40309&docId=494572599&answerNo=1' },
+    { summary: '비상장주식을 상속받을 때 주식 가치를 어떻게 평가해 세금을 매기는지 방법을 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40303&docId=493594679&answerNo=4' },
+  ],
+  comparisonTable: {
+    caption: '보충적 평가에서 두 가치를 섞는 비율',
+    columns: ['구분', '순손익가치', '순자산가치', '적용 대상'],
+    rows: [
+      ['일반 법인', '3', '2', '대부분의 비상장 법인'],
+      ['부동산 과다보유 법인', '2', '3', '자산 중 부동산 비중이 절반 이상'],
+      ['순자산가치만 적용', '0', '1', '사업 중단이나 청산 중, 자산가치 위주 법인'],
+      ['평가 하한', '없음', '80%', '가중평균값이 순자산가치의 80% 미만일 때'],
+      ['최대주주 할증', '가산 20%', '가산 20%', '평가액에 20% 가산, 중소기업은 제외'],
+    ],
+  },
+  sections: [
+    {
+      heading: '비상장주식 상속세 평가가 까다로운 이유',
+      paragraphs: [
+        '상장주식은 거래소에서 매일 시세가 찍히니 상속세 계산이 간단합니다. 비상장주식은 팔린 값이 없어 그 기준을 세울 수가 없습니다. 그래서 상속세및증여세법은 시가가 확인되지 않을 때 쓰는 보충적 평가방법을 따로 두고 있습니다.',
+        '문제는 이 계산이 회사의 손익과 자산을 모두 들여다봐야 나온다는 점입니다. 최근 몇 해 이익이 얼마였는지, 지금 순자산이 얼마인지에 따라 값이 크게 달라지므로, 상속 전에 회사 재무 상태를 정리해 두는 것이 실제 세 부담을 좌우합니다.',
+      ],
+    },
+    {
+      heading: '순손익가치와 순자산가치를 3대 2로 섞는다',
+      paragraphs: [
+        '보충적 평가의 뼈대는 두 가지 값입니다. 하나는 최근 3년 손익을 바탕으로 회사가 벌어들이는 힘을 본 순손익가치, 다른 하나는 지금 가진 순자산을 주식 수로 나눈 순자산가치입니다. 원칙은 이 둘을 3과 2의 비율로 가중평균하는 것입니다.',
+        '단 자산 구성에 따라 비율이 바뀝니다. 부동산이 회사 자산의 절반을 넘는 법인은 손익보다 자산이 값을 더 좌우한다고 보아 2대 3으로 뒤집습니다. 사업을 접었거나 청산 중인 회사는 순자산가치만으로 평가하기도 합니다.',
+      ],
+    },
+    {
+      heading: '순자산가치 80% 하한과 부동산 과다법인 예외',
+      paragraphs: [
+        '이익이 적자이거나 들쭉날쭉하면 순손익가치가 낮게 잡혀 가중평균값이 지나치게 작아질 수 있습니다. 이를 막으려고 하한선을 둡니다. 가중평균한 값이 순자산가치의 80%보다 낮으면, 그 80% 금액을 평가액으로 씁니다.',
+        '즉 아무리 손익이 나빠도 회사가 깔고 있는 자산 가치의 80% 밑으로는 내려가지 않습니다. 부동산이 많은 회사일수록 이 하한이 실제 평가액을 결정하는 경우가 잦으니, 자산 명세를 정확히 파악해 두는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '최대주주 할증 20%와 중소기업 예외',
+      paragraphs: [
+        '최대주주와 그 특수관계인이 넘기는 지분에는 경영권이 함께 따라온다고 보아 평가액에 20%를 더 얹습니다. 같은 회사 주식이라도 소액주주 몫보다 최대주주 몫이 더 비싸게 매겨지는 것입니다.',
+        '다만 예외가 넓습니다. 중소기업 주식, 평가 기준일 직전 3년 연속 결손인 법인, 가업상속공제나 가업승계 특례가 적용되는 주식은 할증에서 빠집니다. 상속받는 회사가 중소기업 요건에 해당하는지부터 확인하면 세액이 크게 달라질 수 있습니다.',
+      ],
+    },
+    {
+      heading: '평가액이 정해진 뒤 상속세는 어떻게 계산되나',
+      paragraphs: [
+        '이렇게 나온 주식 평가액을 다른 상속재산과 합쳐 과세표준을 만들고, 여기에 10%에서 50%에 이르는 누진세율을 적용합니다. 배우자공제나 일괄공제 같은 각종 공제를 먼저 빼고 세율을 매기므로, 평가액 자체만큼이나 공제 설계가 중요합니다.',
+        '세율 구간과 공제 한도는 개정 논의가 이어지고 있어 신고 시점의 기준이 지금과 다를 수 있습니다. 비상장주식 평가는 회계사와 세무사가 함께 검토하는 영역이니, 이 글로 큰 흐름을 잡되 실제 신고는 전문가의 계산을 받아 진행하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '비상장주식도 무조건 순손익 3대 순자산 2로 평가하나요?', answer: '그것이 원칙이지만 예외가 있습니다. 부동산이 자산의 절반을 넘는 법인은 2대 3으로 계산하고, 청산 중이거나 사업을 접은 회사는 순자산가치만으로 평가하기도 합니다.' },
+    { question: '적자 회사 주식이면 평가액이 0에 가깝나요?', answer: '아닙니다. 순자산가치의 80% 하한이 있어 손익이 나빠도 그 밑으로는 내려가지 않습니다. 회사가 보유한 자산이 많으면 적자라도 평가액이 꽤 잡힐 수 있습니다.' },
+    { question: '아버지가 최대주주였는데 저도 20% 할증을 무나요?', answer: '회사가 중소기업 요건에 해당하면 최대주주 할증에서 제외됩니다. 3년 연속 결손 법인이나 가업상속공제 대상 주식도 할증이 붙지 않으니 요건부터 확인해 보세요.' },
+    { question: '평가액은 언제 기준으로 잡나요?', answer: '상속개시일, 즉 사망일을 기준으로 계산합니다. 그 시점의 재무 상태와 최근 3년 손익이 반영되므로 상속이 발생하기 전 미리 준비할수록 대응 폭이 넓어집니다.' },
+  ],
+};
+
+/** 2026-08-15 발행, 미국 ETF 상장폐지 대응 (지식iN 질문 수요) */
+const usListedEtfDelisting: GuideDef = {
+  slug: 'us-listed-etf-delisting',
+  title: '미국 ETF 상장폐지되면 내 돈은 어떻게 되나',
+  tagline: '휴지조각이 아니라 그날의 순자산가치로 돌려받는다',
+  description:
+    '보유하던 미국 ETF가 상장폐지된다는 소식을 들으면 원금을 날리는 건 아닌지 걱정되기 마련입니다. 청산에서 상장폐지일 순자산가치로 계좌에 입금되는 흐름, 산 가격보다 낮으면 손실이 확정되는 이유, 양도소득세 처리까지 사례로 짚었습니다.',
+  keywords: ['미국 ETF 상장폐지', 'ETF 상장폐지', '미국 ETF 청산', 'ETF 상장폐지 원금', '해외 ETF 상장폐지', 'ETF 청산 세금'],
+  section: 'ETF 입문 가이드',
+  lastReviewed: '2026-08-15',
+  answer:
+    '미국 ETF가 상장폐지되어도 투자금이 사라지지는 않습니다. 운용사가 보유 자산을 모두 팔아 상장폐지일의 순자산가치를 계산하고, 비용을 뺀 잔여 금액을 별도 신청 없이 증권계좌로 넣어줍니다. 다만 돌려주는 것은 원금이 아니라 그날의 가치라, 산 가격보다 낮으면 손실이 확정된 채 정리됩니다.',
+  keyPoints: [
+    '상장폐지되어도 상장폐지일 순자산가치에서 잔여 비용을 뺀 금액이 계좌로 입금되므로, 돈이 통째로 사라지는 일은 없습니다.',
+    '상환금은 원금이 아니라 청산 시점의 가치라, 매수가보다 낮으면 손실이, 높으면 이익이 확정됩니다.',
+    '거래 정지 전에 시장에서 직접 팔 수도 있는데, 청산이 임박하면 호가가 순자산가치보다 낮게 눌릴 수 있어 둘을 함께 봐야 합니다.',
+    '미국 상장 ETF는 해외주식으로 분류돼, 청산이나 매도 차익은 연 250만원 기본공제 후 22%(지방세 포함)로 양도소득세가 매겨집니다.',
+  ],
+  sources: [
+    { label: '금융감독원 금융소비자포털 파인', url: 'https://fine.fss.or.kr' },
+    { label: '국세청 해외주식 양도소득세 안내', url: 'https://www.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '미국 직접투자 ETF가 상장폐지되면 어떻게 되는지, 투자금을 돌려받을 수 있는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=474327014&answerNo=1' },
+    { summary: '보유 중인 미국 ETF가 상장폐지될 가능성이 있는지, 그렇게 되면 투자금은 어떻게 처리되는지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=477444636&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: '상장폐지가 다가올 때 두 가지 회수 방법',
+    columns: ['구분', '거래 정지 전 매도', '청산 후 상환'],
+    rows: [
+      ['시점', '거래 정지일 이전', '상장폐지 후 수 주 이내'],
+      ['받는 금액', '그때의 시장 호가', '상장폐지일 순자산가치에서 비용 차감'],
+      ['가격 위험', '호가가 순자산가치보다 낮을 수 있음', '청산 자산 매각가에 따라 변동'],
+      ['절차', '직접 매도 주문 필요', '별도 신청 없이 계좌 입금'],
+      ['유리한 경우', '호가가 제값일 때 빠르게 정리', '호가가 지나치게 눌렸을 때 대기'],
+    ],
+  },
+  sections: [
+    {
+      heading: '미국 ETF 상장폐지, 먼저 알아둘 것',
+      paragraphs: [
+        '규모가 작거나 자금이 빠져나간 ETF는 운용사가 상품을 접기로 결정할 수 있습니다. 미국 시장은 상품 수가 워낙 많아 이런 정리가 국내보다 흔한 편입니다. 상장폐지라는 단어가 무섭게 들리지만, 개별 주식의 상장폐지와는 성격이 다릅니다.',
+        'ETF는 투자자 돈을 모아 기초자산을 담아 두는 구조라, 상품을 접을 때 그 자산을 팔아 돌려주면 됩니다. 회사가 부도나 주식이 종잇조각이 되는 상황과 달리, 남은 자산 가치는 투자자에게 돌아옵니다.',
+      ],
+    },
+    {
+      heading: '청산 절차와 순자산가치 상환의 흐름',
+      paragraphs: [
+        '상장폐지가 정해지면 운용사가 미리 날짜를 공지합니다. 정해진 날 이후 거래가 멈추고, 운용사는 담고 있던 기초자산을 매도해 현금으로 바꿉니다. 여기서 잔여 비용을 뺀 금액이 상장폐지일의 순자산가치입니다.',
+        '이 금액은 대체로 상장폐지 뒤 수 주 안에 별도 신청 없이 증권계좌로 들어옵니다. 그래서 아무것도 하지 않아도 회수 자체는 이뤄집니다. 다만 언제, 얼마가 들어오는지는 청산 진행에 따라 달라지니 운용사 공지를 확인해 두는 편이 좋습니다.',
+      ],
+    },
+    {
+      heading: '원금이 아니라 그날의 가치를 돌려준다',
+      paragraphs: [
+        '헷갈리기 쉬운 대목이 바로 여기입니다. 상환금은 내가 낸 원금이 아니라 청산 시점의 가치입니다. 매수가보다 순자산가치가 높으면 이익을 실현한 셈이고, 낮으면 손실이 확정된 상태로 정리됩니다.',
+        '그래서 상장폐지 소식이 손실 그 자체를 뜻하지는 않습니다. 이미 오른 상품이 접히면 이익이, 물려 있던 상품이 접히면 손실이 굳는 것뿐입니다. 회복을 기다릴 여지가 사라진다는 점이 핵심입니다.',
+      ],
+    },
+    {
+      heading: '거래 정지 전에 팔지, 청산을 기다릴지',
+      paragraphs: [
+        '거래가 멈추기 전까지는 시장에서 직접 팔 수 있습니다. 호가가 순자산가치와 비슷하다면 빨리 정리해 돈을 다른 곳에 쓰는 편이 나을 수 있습니다. 반대로 청산이 임박한 상품은 호가가 순자산가치보다 낮게 눌리기도 합니다.',
+        '이럴 때는 굳이 헐값에 던지기보다 청산 상환을 기다리는 편이 나을 수 있습니다. 매도 호가와 순자산가치를 나란히 놓고 어느 쪽이 유리한지 따져 결정하세요. 여기 담은 내용은 참고 정보이며, 매매 판단의 책임은 본인에게 있습니다.',
+      ],
+    },
+    {
+      heading: '미국 ETF 상장폐지와 양도소득세',
+      paragraphs: [
+        '미국에 상장된 ETF는 해외주식으로 분류됩니다. 청산으로 상환받거나 거래 정지 전에 매도해 차익이 생기면, 한 해 동안의 해외주식 손익을 합쳐 250만원을 기본공제한 뒤 남는 금액에 22%(지방세 포함)의 양도소득세가 붙습니다.',
+        '반대로 손실로 정리됐다면 같은 해 다른 해외주식 이익과 상계해 세 부담을 줄일 수 있습니다. 신고는 이듬해 5월 종합소득세 기간에 함께 하며, 정확한 계산은 그해 국세청 안내를 확인하는 것이 안전합니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: 'ETF가 상장폐지되면 투자금을 전부 잃나요?', answer: '아닙니다. 운용사가 남은 자산을 팔아 상장폐지일 순자산가치를 계좌로 넣어줍니다. 다만 매수가보다 그 가치가 낮으면 그만큼 손실이 확정된 채 회수됩니다.' },
+    { question: '상장폐지 상환금은 언제 들어오나요?', answer: '보통 상장폐지 뒤 수 주 안에 별도 신청 없이 증권계좌로 입금됩니다. 정확한 시기와 금액은 청산 진행에 달려 있으니 운용사 공지를 확인하세요.' },
+    { question: '거래 정지 전에 파는 게 나을까요?', answer: '호가가 순자산가치와 비슷하면 미리 파는 편이 편합니다. 다만 청산이 임박해 호가가 크게 눌렸다면 상환을 기다리는 쪽이 나을 수 있어, 두 값을 비교해 판단하는 것이 좋습니다.' },
+    { question: '청산으로 손실이 났는데 세금은 어떻게 되나요?', answer: '미국 ETF는 해외주식이라 그해 다른 해외주식 이익과 손익을 합산합니다. 손실이면 이익과 상계돼 양도소득세를 줄일 수 있습니다.' },
+  ],
+};
+
+/** 2026-08-15 발행, 리츠 ETF vs 리츠 펀드 (지식iN 질문 수요) */
+const reitEtfVsReitFund: GuideDef = {
+  slug: 'reit-etf-vs-reit-fund',
+  title: '리츠 ETF와 리츠 펀드, 뭐가 어떻게 다른가',
+  tagline: '실시간으로 사고파는 상장 상품과 하루 한 번 값이 매겨지는 펀드',
+  description:
+    '리츠에 투자할 때 ETF로 살지 펀드로 살지 헷갈리는 분이 많습니다. 둘 다 여러 부동산에 나눠 담지만 상장 여부와 매매 방식, 분배금 주기, 비용 구조가 다릅니다. 실시간 거래와 월분배가 중요한지, 소액 자동 적립이 편한지를 기준으로 갈라 정리했습니다.',
+  keywords: ['리츠 ETF', '리츠 펀드', '리츠 ETF 펀드 차이', '부동산 간접투자', '리츠 ETF 분배금', '리츠 투자 방법'],
+  section: 'ETF 리츠 가이드',
+  lastReviewed: '2026-08-15',
+  answer:
+    '리츠 ETF는 여러 리츠를 한 바구니에 담아 주식처럼 거래소에서 실시간으로 사고파는 상품이고, 리츠 펀드는 상장되지 않아 하루 한 번 정해지는 기준가로 사고 환매하는 상품입니다. 부동산에 분산 투자한다는 점은 같지만, ETF는 즉시 매매와 월분배에, 펀드는 소액 자동 적립에 강점이 있습니다.',
+  keyPoints: [
+    '리츠 ETF는 거래소에 상장돼 장중 시세로 즉시 매매되고, 리츠 펀드는 상장되지 않아 하루 한 번 산정되는 기준가로 거래됩니다.',
+    '분배금은 ETF 쪽에 월 단위 지급 상품이 많은 반면, 펀드는 분기나 반기 지급이거나 재투자형이 흔합니다.',
+    '비용은 ETF가 총보수 연 0.1% 안팎으로 낮은 편이고, 펀드는 판매보수가 얹혀 대체로 더 높습니다.',
+    '세금은 둘 다 분배와 배당 소득으로 과세되며, 일부 리츠 ETF는 요건을 갖추면 분리과세 혜택을 신청할 수 있습니다.',
+  ],
+  sources: [
+    { label: '금융감독원 금융소비자포털 파인', url: 'https://fine.fss.or.kr' },
+    { label: '한국거래소 ETF 상품 안내', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '리츠 ETF와 리츠 펀드가 어떻게 다른지, 무엇을 기준으로 골라야 하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=472788928&answerNo=1' },
+    { summary: '리츠 펀드와 리츠 ETF의 차이점이 무엇인지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?dirId=401&docId=485664753&answerNo=2' },
+  ],
+  comparisonTable: {
+    caption: '리츠 ETF와 리츠 펀드, 항목별 비교',
+    columns: ['구분', '리츠 ETF', '리츠 펀드', '어느 쪽이 편한가'],
+    rows: [
+      ['상장·거래', '거래소 상장, 실시간 매매', '비상장, 기준가로 환매', '즉시 사고팔려면 ETF'],
+      ['가격 결정', '장중 시세 수시 변동', '하루 한 번 기준가', '가격 확인이 잦으면 ETF'],
+      ['분배 주기', '월분배 상품 다수', '분기·반기 또는 재투자형', '월 현금흐름 원하면 ETF'],
+      ['비용', '총보수 연 0.1% 안팎', '판매보수 포함해 대체로 높음', '비용 아끼려면 ETF'],
+      ['소액 적립', '주 단위 수량으로 매수', '소액 자동 적립 편리', '자동 적립 원하면 펀드'],
+    ],
+  },
+  sections: [
+    {
+      heading: '리츠 ETF와 리츠 펀드, 공통점부터',
+      paragraphs: [
+        '두 상품 모두 부동산에 간접 투자하는 방식입니다. 빌딩이나 물류센터를 직접 사기는 어려우니, 여러 투자자의 돈을 모아 임대료와 매각 차익을 나눠 받는 구조를 이용합니다. 리츠 여러 개를 한꺼번에 담아 위험을 분산한다는 점도 같습니다.',
+        '차이는 그 바구니를 어떤 그릇에 담느냐에 있습니다. 하나는 거래소에 올려 주식처럼 거래하게 만든 ETF, 다른 하나는 상장하지 않고 운용사가 굴리는 펀드입니다. 이 그릇의 차이가 매매 방식과 비용, 분배 방식을 가릅니다.',
+      ],
+    },
+    {
+      heading: '리츠 ETF의 실시간 매매와 월분배',
+      paragraphs: [
+        '리츠 ETF는 거래소에 상장돼 있어 장이 열린 동안 언제든 시세로 사고팔 수 있습니다. 오늘 사서 오늘 파는 것도 가능하고, 호가창을 보며 원하는 가격에 주문을 낼 수 있습니다. 급하게 현금이 필요할 때 바로 처분할 수 있다는 뜻입니다.',
+        '국내 상장 리츠 ETF 중에는 분배금을 매달 주는 상품이 많아, 월세처럼 현금흐름을 만들려는 투자자에게 잘 맞습니다. 총보수도 연 0.1% 안팎으로 낮은 편이라 오래 들고 갈수록 비용 부담이 작습니다.',
+      ],
+    },
+    {
+      heading: '리츠 펀드의 기준가 거래와 자동 적립',
+      paragraphs: [
+        '리츠 펀드는 상장돼 있지 않아 장중에 실시간으로 거래되지 않습니다. 하루 한 번 산정되는 기준가로 매수와 환매가 이뤄지므로, 주문을 넣어도 그날 정해진 값으로 체결됩니다. 시세를 자주 확인할 필요가 없어 마음이 편하다는 사람도 있습니다.',
+        '대신 소액 자동 적립이 쉽습니다. 매달 일정 금액을 자동으로 넣어 꾸준히 모으기에 좋고, 분배금을 자동 재투자하는 유형도 많습니다. 다만 판매보수가 얹혀 총비용은 ETF보다 높은 경우가 흔합니다.',
+      ],
+    },
+    {
+      heading: '세금과 계좌, 어디에 담느냐가 실익을 가른다',
+      paragraphs: [
+        '리츠 ETF와 펀드에서 나오는 분배금과 배당은 모두 배당소득으로 과세됩니다. 다만 일부 리츠 ETF는 일정 요건을 갖추면 분리과세를 신청할 수 있어, 금융소득이 많은 투자자에게 유리하게 작용하기도 합니다.',
+        'ISA나 연금저축 같은 절세 계좌에 담으면 과세를 미루거나 낮출 수 있습니다. 어느 상품이 맞는지는 매매 빈도, 원하는 분배 주기, 세금 상황에 따라 갈리며, 최종 선택은 본인의 투자 성향에 달려 있습니다.',
+      ],
+    },
+    {
+      heading: '나에게 맞는 쪽을 고르는 기준',
+      paragraphs: [
+        '장중에 직접 사고팔고 싶고 매달 분배금을 받고 싶다면 리츠 ETF가 어울립니다. 반대로 시세에 흔들리지 않고 매달 같은 금액을 자동으로 모으는 습관이 목표라면 리츠 펀드가 편합니다.',
+        '둘 중 하나만 골라야 하는 것도 아닙니다. 목돈은 ETF로 굴리고 매달 적립은 펀드로 하는 식으로 나눠 쓰는 방법도 있습니다. 부동산 경기에 따라 값이 오르내릴 수 있다는 점은 두 상품 모두 같으니, 분산과 장기 관점을 잊지 마세요.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '리츠 ETF와 리츠 펀드 중 뭐가 더 안전한가요?', answer: '안전성 자체는 담는 부동산과 리츠 구성에 달려 있어 그릇의 차이만으로 우열을 가리기 어렵습니다. 다만 ETF는 언제든 팔 수 있어 환금성이 높고, 펀드는 시세 변동에 덜 노출된다는 체감 차이가 있습니다.' },
+    { question: '월배당을 받고 싶으면 어느 쪽이 나은가요?', answer: '국내 상장 리츠 ETF 중에 매달 분배금을 주는 상품이 많아 월 현금흐름 목적이라면 ETF가 유리합니다. 펀드는 분기나 반기 지급이거나 재투자형이 흔합니다.' },
+    { question: '소액으로 매달 모으고 싶은데요?', answer: '정해진 금액을 자동으로 적립하기에는 펀드가 편합니다. ETF도 적립식 매수가 가능하지만 정해진 수량 단위로 사야 해 원 단위 자동 적립만큼 매끄럽지는 않습니다.' },
+    { question: '비용은 얼마나 차이 나나요?', answer: '리츠 ETF는 총보수가 연 0.1% 안팎으로 낮은 편이고, 펀드는 판매보수가 더해져 대체로 더 높습니다. 오래 보유할수록 이 차이가 수익률에 쌓입니다.' },
+  ],
+};
+
+/** 2026-08-15 발행, 연말 배당주 배당기준일 (지식iN 질문 수요, 계절 선행) */
+const yearEndDividendBuyDeadline: GuideDef = {
+  slug: 'year-end-dividend-buy-deadline',
+  title: '연말 배당주, 언제까지 사야 배당금 받나',
+  tagline: '결제일 이틀을 계산해 배당락 전에 담는 법',
+  description:
+    '12월 배당을 받으려면 배당기준일 이틀 전까지 매수를 끝내야 합니다. 국내 주식은 결제에 2영업일이 걸리기 때문입니다. 배당락일과 마지막 매수일을 계산하는 법, 회사마다 기준일이 달라진 최근 변화, 배당락 뒤 주가가 빠지는 이유까지 짚었습니다.',
+  keywords: ['연말 배당주', '배당기준일', '배당락일', '배당금 받는법', '배당주 매수 시기', '12월 배당'],
+  section: '배당주 가이드',
+  lastReviewed: '2026-08-15',
+  answer:
+    '배당을 받으려면 배당기준일에 주주명부에 올라 있어야 하고, 국내 주식은 매수 뒤 2영업일에 결제되므로 기준일 2영업일 전까지 사야 합니다. 기준일 1영업일 전이 배당락일이라, 이날 사면 그 배당은 받지 못합니다. 최근에는 배당액을 먼저 정하고 기준일을 나중에 잡는 회사가 늘어 날짜를 개별 공시로 확인해야 합니다.',
+  keyPoints: [
+    '국내 주식은 매수 뒤 2영업일에 결제되므로, 배당기준일로부터 2영업일 전이 배당을 받는 마지막 매수일입니다.',
+    '배당락일은 기준일 1영업일 전이며, 이날 이후 매수분은 이번 배당 대상에서 빠집니다.',
+    '2023년 배당절차 개선으로 배당액을 먼저 확정한 뒤 기준일을 정하는 회사가 늘어, 기준일이 연말이 아닐 수 있습니다.',
+    '배당락일에는 지급 예정 배당만큼 주가가 이론적으로 내려, 배당만 노린 단기 매수가 늘 이득은 아닙니다.',
+  ],
+  sources: [
+    { label: '한국거래소 배당락·권리락 안내', url: 'https://www.krx.co.kr' },
+    { label: '한국예탁결제원 주주명부 기준일 안내', url: 'https://www.ksd.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '월배당 ETF의 12월 말 배당락일과 관련해 언제 사고팔아야 배당을 받는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40305&docId=480905304&answerNo=1' },
+    { summary: '배당기준일과 배당락일이 무엇이고 언제까지 매수해야 배당금을 받는지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=492056502&answerNo=6' },
+  ],
+  comparisonTable: {
+    caption: '배당기준일 기준으로 날짜를 계산하는 법',
+    columns: ['시점', '무슨 날', '이날 매수하면', '배당 여부'],
+    rows: [
+      ['기준일 2영업일 전', '마지막 매수일', '결제 완료로 주주명부 등재', '받음'],
+      ['기준일 1영업일 전', '배당락일', '기준일에 명부 미등재', '못 받음'],
+      ['배당기준일', '주주 확정일', '이미 결제가 늦음', '못 받음'],
+      ['기준일 다음날', '배당락 반영', '주가는 배당만큼 조정된 상태', '해당 없음'],
+      ['지급일', '배당 입금', '기준일 뒤 수 주에서 수개월', '계좌로 지급'],
+    ],
+  },
+  sections: [
+    {
+      heading: '배당주 매수, 왜 이틀을 계산해야 하나',
+      paragraphs: [
+        '배당은 배당기준일에 주주명부에 올라 있는 사람에게 지급합니다. 그런데 국내 주식은 산 당일 바로 내 이름으로 등록되지 않습니다. 매수 체결 뒤 2영업일이 지나야 결제가 끝나고 명부에 오릅니다. 이것을 T 더하기 2 결제라고 부릅니다.',
+        '그래서 기준일 당일에 사면 이미 늦습니다. 명부에 오르려면 기준일로부터 2영업일 전까지 매수를 마쳐야 합니다. 이 하루 이틀을 놓쳐 배당을 못 받는 일이 매년 반복되니, 달력을 미리 짚어 두는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '배당락일과 마지막 매수일 계산하기',
+      paragraphs: [
+        '기준일 1영업일 전을 배당락일이라 합니다. 이날 사면 결제가 기준일을 넘겨 이번 배당을 받지 못합니다. 따라서 배당을 받는 마지막 날은 배당락일보다 하루 더 앞선, 기준일 2영업일 전입니다.',
+        '중간에 주말이나 공휴일이 끼면 영업일 기준으로 앞당겨 세야 합니다. 연말에는 마지막 거래일이 휴장인 경우도 있어 계산이 더 헷갈립니다. 헷갈릴 때는 증권사 공지나 거래소 안내에서 그해 배당락일을 직접 확인하는 편이 확실합니다.',
+      ],
+    },
+    {
+      heading: '회사마다 기준일이 달라진 최근 변화',
+      paragraphs: [
+        '예전에는 12월 말 하루로 기준일이 몰려 있었습니다. 배당금을 모른 채 먼저 사야 하는 구조라 깜깜이 배당이라는 지적이 많았습니다. 2023년 배당절차 개선으로 배당액을 먼저 확정한 뒤 기준일을 정할 수 있게 바뀌었습니다.',
+        '정관을 고친 회사는 이제 배당금을 알고 나서 살지 말지 정할 수 있습니다. 대신 기준일이 연말이 아니라 이듬해 봄이 되기도 해, 예전 감각으로 12월에만 챙기면 놓칠 수 있습니다. 종목마다 공시된 기준일을 개별로 확인해야 합니다.',
+      ],
+    },
+    {
+      heading: '배당락 뒤 주가가 빠지는 이유',
+      paragraphs: [
+        '배당락일에는 주가가 지급 예정 배당만큼 이론적으로 내려서 시작합니다. 회사에서 배당으로 돈이 빠져나갈 것을 미리 반영하기 때문입니다. 그래서 배당락 직전에 사서 배당을 받아도, 주가가 그만큼 빠지면 실속이 크지 않을 수 있습니다.',
+        '배당을 받으면 세금도 붙습니다. 배당소득세를 떼고 나면 손에 쥐는 금액은 더 줄어듭니다. 단기 시세차익까지 노린다면 배당락 이후 주가가 얼마나 회복되는지도 함께 봐야 하며, 배당만 보고 급하게 담는 전략은 신중할 필요가 있습니다.',
+      ],
+    },
+    {
+      heading: '연말 배당 투자, 이렇게 준비하자',
+      paragraphs: [
+        '먼저 관심 종목의 배당기준일을 공시에서 확인하고, 거기서 2영업일을 앞당겨 마지막 매수일을 적어 둡니다. 여러 종목을 담을 계획이면 기준일이 제각각일 수 있으니 종목별로 정리하는 편이 안전합니다.',
+        '월배당 ETF는 매달 기준일이 돌아오므로 같은 계산을 매월 적용하면 됩니다. 배당 규모와 배당락, 세금을 함께 놓고 판단하시고, 이 글은 참고용이니 실제 매매는 그해 일정과 본인 상황에 맞춰 결정하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '배당기준일 당일에 사면 배당을 못 받나요?', answer: '받지 못합니다. 국내 주식은 결제에 2영업일이 걸려 기준일 당일 매수는 명부 등재가 늦습니다. 기준일로부터 2영업일 전까지 사야 배당 대상이 됩니다.' },
+    { question: '배당락일에 팔면 배당은 받나요?', answer: '배당락일 전날까지 보유해 마지막 매수 조건을 채웠다면, 배당락일에 팔아도 배당은 나옵니다. 이미 주주명부 등재 요건을 충족했기 때문입니다.' },
+    { question: '요즘은 기준일이 연말이 아니라던데요?', answer: '2023년 제도 개선으로 배당액을 먼저 정하고 기준일을 나중에 잡는 회사가 늘었습니다. 기준일이 이듬해 봄인 경우도 있어 종목별 공시를 확인해야 합니다.' },
+    { question: '배당받으면 무조건 이득 아닌가요?', answer: '꼭 그렇지는 않습니다. 배당락으로 주가가 배당만큼 내리고 배당소득세도 떼이므로, 주가 회복 여부와 세금까지 따져야 실제 이득인지 판단할 수 있습니다.' },
+  ],
+};
+
+/** 2026-08-15 발행, 연말 금융소득 2000만원 관리 (지식iN 질문 수요, 계절 선행) */
+const yearEndFinancialIncomeManagement: GuideDef = {
+  slug: 'year-end-financial-income-management',
+  title: '금융소득 2000만원 넘기 전 연말에 뭘 줄이나',
+  tagline: '이자와 배당을 합쳐 2000만원, 넘으면 세금과 건보료가 함께 붙는다',
+  description:
+    '이자와 배당을 합친 금융소득이 한 해 2000만원을 넘으면 초과분이 종합과세되고 건강보험료까지 따라붙습니다. 무엇이 합산되는지, 아슬아슬할 때 연말에 매도 시기와 계좌를 어떻게 조정하는지, 피부양자 자격은 어떻게 걸리는지 기준과 함께 정리했습니다.',
+  keywords: ['금융소득 2000만원', '금융소득종합과세', '금융소득종합과세 기준', '배당소득세 절세', '건강보험료 금융소득', '연말 절세'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-15',
+  answer:
+    '금융소득은 이자소득과 배당소득을 합쳐 계산하며, 한 해 2000만원을 넘으면 초과분이 다른 소득과 합산돼 6%에서 45%의 누진세율로 종합과세됩니다. 건강보험료도 늘 수 있어, 연말이 다가오면 배당과 분배 시기를 나누거나 ISA와 연금 같은 절세 계좌를 활용해 합산액을 조절하는 것이 실익이 큽니다.',
+  keyPoints: [
+    '이자와 배당을 합한 금융소득이 2000만원 이하면 14%(지방세 포함 15.4%) 원천징수로 끝나지만, 초과분은 6%에서 45% 누진세율로 종합과세됩니다.',
+    '직장가입자는 금융소득이 2000만원을 넘으면 초과분에 보수외 건강보험료가 추가로 붙습니다.',
+    '피부양자는 소득 기준을 넘으면 자격을 잃고 지역가입자로 전환돼, 금융소득 관리가 곧 건강보험료 관리가 됩니다.',
+    'ISA와 연금저축 계좌에서 난 분배와 배당은 금융소득 합산에서 빠지므로, 절세 계좌를 먼저 채우면 종합과세 문턱을 낮출 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 금융소득 종합과세 안내', url: 'https://www.nts.go.kr' },
+    { label: '국민건강보험공단 보험료 부과 안내', url: 'https://www.nhis.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '주식과 ETF 배당 및 분배금이 연 2000만원이면 세금이 어떻게 되는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=474004310&answerNo=1' },
+    { summary: '금융소득이 2000만원을 넘어 종합소득세 과세 대상이 되는 경우가 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40301&docId=494354707&answerNo=3' },
+  ],
+  comparisonTable: {
+    caption: '금융소득 2000만원 기준을 넘기 전과 후',
+    columns: ['구분', '2000만원 이하', '2000만원 초과'],
+    rows: [
+      ['과세 방식', '원천징수로 분리 종결', '초과분 종합과세'],
+      ['적용 세율', '14%(지방세 포함 15.4%)', '6%에서 45% 누진세율'],
+      ['건강보험료', '기본적으로 영향 없음', '초과분에 보수외 건강보험료'],
+      ['피부양자 자격', '유지', '소득 기준 넘으면 상실'],
+      ['연말 대응', '특별한 조치 불필요', '매도 분산과 절세 계좌 활용 검토'],
+    ],
+  },
+  sections: [
+    {
+      heading: '금융소득 2000만원, 무엇을 합산하나',
+      paragraphs: [
+        '금융소득은 이자소득과 배당소득을 더한 값입니다. 예금 이자, 채권 이자, 주식 배당, ETF 분배금이 모두 여기에 들어갑니다. 이 둘을 합쳐 한 해 2000만원을 넘는지가 종합과세를 가르는 문턱입니다.',
+        '주의할 점은 세전 금액을 기준으로 센다는 것입니다. 세금을 떼기 전 받은 이자와 배당의 합계로 판단하므로, 통장에 들어온 실수령액만 보고 안심하면 문턱을 넘겨 놓고도 모를 수 있습니다.',
+      ],
+    },
+    {
+      heading: '2000만원을 넘으면 세금이 어떻게 달라지나',
+      paragraphs: [
+        '2000만원까지는 14%, 지방소득세를 더하면 15.4%로 원천징수하고 끝납니다. 이 구간은 따로 신고할 필요가 없습니다. 하지만 2000만원을 넘기면 초과분이 근로소득이나 사업소득 같은 다른 소득과 합쳐집니다.',
+        '합쳐진 금액에는 6%에서 45%에 이르는 누진세율이 적용됩니다. 다른 소득이 많은 사람일수록 초과분에 붙는 세율이 높아져 세 부담이 크게 늘 수 있습니다. 그래서 문턱 근처에 있는 사람은 연말 관리가 특히 중요합니다.',
+      ],
+    },
+    {
+      heading: '건강보험료와 피부양자 자격도 걸린다',
+      paragraphs: [
+        '금융소득종합과세는 세금만의 문제가 아닙니다. 직장가입자는 금융소득이 2000만원을 넘으면 초과분에 보수외 건강보험료가 따로 붙습니다. 월급에서 떼는 보험료와 별개로 추가 부담이 생기는 것입니다.',
+        '피부양자로 올라 있는 사람은 더 민감합니다. 소득이 기준을 넘으면 피부양자 자격을 잃고 지역가입자로 바뀌어, 그동안 내지 않던 건강보험료를 새로 물게 됩니다. 금융소득 관리가 곧 건강보험료 관리가 되는 셈입니다.',
+      ],
+    },
+    {
+      heading: '연말에 줄일 수 있는 것부터 손본다',
+      paragraphs: [
+        '문턱을 아슬아슬하게 넘길 것 같으면 소득이 잡히는 시점을 나누는 방법이 있습니다. 큰 배당이 예상되는 종목의 매도나 만기 예금 수령을 이듬해로 미루면, 한 해에 몰리는 금융소득을 분산할 수 있습니다.',
+        '부부라면 명의를 나눠 한 사람에게 몰리지 않게 하는 방법도 있습니다. 다만 증여 문제가 얽힐 수 있어 규모가 크면 미리 따져야 합니다. 배당락 전후로 매매 시기를 조정하는 것도 그해 배당 귀속을 조절하는 한 방법입니다.',
+      ],
+    },
+    {
+      heading: '절세 계좌로 문턱 자체를 낮추기',
+      paragraphs: [
+        '가장 든든한 방법은 절세 계좌를 먼저 채우는 것입니다. ISA와 연금저축, IRP 안에서 발생한 분배금과 배당은 금융소득 합산 대상에서 빠지거나 과세가 미뤄집니다. 같은 배당이라도 어느 계좌에서 받느냐에 따라 종합과세 문턱에 닿는 정도가 달라집니다.',
+        '고배당 종목이나 월배당 ETF를 일반 계좌에 몰아 두면 문턱을 넘기기 쉬우니, 절세 계좌 한도부터 활용하는 순서가 유리합니다. 세법과 건강보험 기준은 자주 바뀌므로, 실제 신고나 조정 전에는 그해 국세청과 건강보험공단 안내로 최신 기준을 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '금융소득 2000만원은 세전인가요 세후인가요?', answer: '세전 금액으로 셉니다. 세금을 떼기 전 받은 이자와 배당의 합계로 판단하므로, 통장에 들어온 실수령액만 보면 문턱을 넘긴 것을 놓칠 수 있습니다.' },
+    { question: 'ETF 분배금도 금융소득에 들어가나요?', answer: '배당소득으로 분류되는 분배금은 금융소득에 포함됩니다. 다만 ISA나 연금 계좌에서 받은 분배금은 합산에서 빠지거나 과세가 미뤄집니다.' },
+    { question: '2000만원을 넘으면 전액에 높은 세율이 붙나요?', answer: '아닙니다. 2000만원까지는 14%로 분리 원천징수되고, 넘는 초과분만 다른 소득과 합쳐 누진세율로 과세됩니다. 전액이 한꺼번에 높은 세율을 무는 것은 아닙니다.' },
+    { question: '건강보험 피부양자인데 배당이 많으면 어떻게 되나요?', answer: '소득이 기준을 넘으면 피부양자 자격을 잃고 지역가입자로 전환돼 건강보험료를 새로 내야 합니다. 배당과 이자 규모가 커지면 세금과 함께 이 부분도 확인해야 합니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
   stockOrderRejectedReasons,
   dividendRecordDateReform,
@@ -21633,6 +22043,11 @@ export const GUIDES: GuideDef[] = [
   corporateRetainedEarningsTax,
   isaSp500Nasdaq100Together,
   basicPensionWithPrivatePension,
+  unlistedStockInheritanceValuation,
+  usListedEtfDelisting,
+  reitEtfVsReitFund,
+  yearEndDividendBuyDeadline,
+  yearEndFinancialIncomeManagement,
 ];
 
 /**
@@ -21665,6 +22080,11 @@ export const GUIDE_PUBLISHED_AT: Record<string, string> = {
   'corporate-retained-earnings-tax': '2026-08-12',
   'isa-sp500-nasdaq100-together': '2026-08-12',
   'basic-pension-with-private-pension': '2026-08-12',
+  'unlisted-stock-inheritance-valuation': '2026-08-15',
+  'us-listed-etf-delisting': '2026-08-15',
+  'reit-etf-vs-reit-fund': '2026-08-15',
+  'year-end-dividend-buy-deadline': '2026-08-15',
+  'year-end-financial-income-management': '2026-08-15',
   // 2026-08-06 · 지식iN 질문 수요 기반 (매수 주문 체결 안 되는 이유·배당기준일 개편 선배당 후투자·은퇴자 배당 ETF 월 생활비 역산·코인 선물 강제청산 원리·미국 ETF 배당 자동재투자 DRIP 국내)
   'stock-order-rejected-reasons': '2026-08-06',
   'dividend-record-date-reform': '2026-08-06',
@@ -21956,17 +22376,17 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money', 'us-listed-etf-delisting'],
   },
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'unlisted-stock-inheritance-valuation', 'year-end-financial-income-management'],
   },
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income', 'reit-etf-vs-reit-fund', 'year-end-dividend-buy-deadline'],
   },
   {
     title: '테마·섹터',
