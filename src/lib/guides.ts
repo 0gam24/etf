@@ -21394,7 +21394,427 @@ const basicPensionWithPrivatePension: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-08-17 · 퇴직연금 DC·IRP 안전자산 30% 자리에 담을 수 있는 ETF */
+const irpDcSafeAssetEtf: GuideDef = {
+  slug: 'irp-dc-safe-asset-etf',
+  title: '퇴직연금 안전자산 30%, 어떤 ETF를 담을 수 있나',
+  tagline: '위험자산 70% 한도를 이해하면 나머지 30% 자리가 보인다',
+  description:
+    '퇴직연금 DC형과 IRP는 적립금의 30%를 안전자산으로 채워야 합니다. 이 30% 자리에 어떤 ETF를 담을 수 있는지, 리츠 ETF와 채권혼합형이 안전자산으로 인정되는 기준은 무엇인지, 위험자산 70% 한도와 함께 정리했습니다.',
+  keywords: ['퇴직연금 안전자산', '퇴직연금 30% 규칙', 'IRP 안전자산 ETF', 'DC형 안전자산', '리츠 ETF 안전자산', '위험자산 70% 한도'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-17',
+  answer:
+    'DC형 퇴직연금과 IRP는 적립금의 70%까지만 주식형 같은 위험자산에 넣을 수 있고, 나머지 30%는 안전자산으로 채워야 합니다. 이 30% 자리에는 예금뿐 아니라 채권형·채권혼합형 ETF, 그리고 감독규정상 안전자산으로 분류되는 일부 리츠 ETF도 담을 수 있습니다. 다만 리츠 ETF라고 모두 안전자산은 아니므로 상품 분류를 확인해야 합니다.',
+  keyPoints: [
+    'DC형과 IRP는 위험자산 편입 한도가 70%로 묶여 있어, 최소 30%는 안전자산으로 운용해야 매수가 됩니다.',
+    '안전자산에는 예·적금 외에 국채·회사채 같은 채권형 ETF와 채권혼합형 ETF가 들어가며, 채권혼합형은 주식 비중이 40% 이하인 상품입니다.',
+    '리츠 ETF 가운데 감독규정상 안전자산으로 분류된 상품은 30% 자리에 담을 수 있지만, 같은 리츠라도 위험자산으로 분류되는 상품이 있어 구분이 필요합니다.',
+    '레버리지·인버스 같은 파생형 ETF는 위험 등급이 높아 퇴직연금 계좌에서 아예 매수가 막혀 있습니다.',
+  ],
+  sources: [
+    { label: '고용노동부 퇴직연금 안내', url: 'https://www.moel.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'IRP 계좌의 부동산 리츠 ETF가 안전자산에 해당하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40402&docId=494479461&answerNo=2' },
+    { summary: '퇴직연금 DC형에서 안전자산으로 무엇을 담아야 할지 추천을 구한다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=474284536&answerNo=1' },
+    { summary: 'DC에서 안전자산으로 채권을 담을 때 채권혼합형만 두 개를 동시에 담아도 되는지', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=492433908&answerNo=2' },
+  ],
+  comparisonTable: {
+    caption: '퇴직연금 계좌에서 자산 분류가 어떻게 나뉘나',
+    columns: ['구분', '위험자산(70% 한도)', '안전자산(30% 이상)'],
+    rows: [
+      ['대표 상품', '주식형 ETF, 주식혼합형 ETF', '예·적금, 채권형 ETF, 채권혼합형 ETF'],
+      ['주식 비중 기준', '주식 40% 초과', '주식 40% 이하 또는 채권 중심'],
+      ['리츠 ETF', '위험자산으로 분류된 상품', '안전자산으로 분류된 상품'],
+      ['담을 수 없는 것', '', '레버리지·인버스 등 파생형'],
+    ],
+  },
+  sections: [
+    {
+      heading: '퇴직연금 안전자산 30% 규칙부터',
+      paragraphs: [
+        'DC형 퇴직연금과 IRP에는 위험자산을 적립금의 70%까지만 담을 수 있는 한도가 있습니다. 남은 30%는 반드시 안전자산으로 채워야 하고, 이 조건을 맞추지 못하면 위험자산 추가 매수 자체가 되지 않습니다.',
+        '이 규칙은 노후 자금이 한쪽으로 쏠려 크게 흔들리는 것을 막으려는 장치입니다. 그래서 30% 자리를 무엇으로 채우느냐가 계좌 전체의 안정성을 좌우합니다.',
+      ],
+    },
+    {
+      heading: '안전자산으로 인정되는 ETF는 무엇인가',
+      paragraphs: [
+        '안전자산에는 예·적금만 들어가는 것이 아닙니다. 국채나 우량 회사채를 담는 채권형 ETF, 그리고 주식 비중이 40% 이하인 채권혼합형 ETF가 안전자산으로 분류됩니다.',
+        '채권혼합형은 이름은 혼합이지만 주식 비중을 낮게 묶어둔 상품이라 안전자산 몫으로 인정됩니다. 다만 같은 채권형이라도 상품마다 분류가 다를 수 있으니 매수 전 상품 설명서에서 위험 등급과 자산 분류를 확인하는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '리츠 ETF는 안전자산인가 아닌가',
+      paragraphs: [
+        '리츠 ETF는 딱 잘라 말하기 어렵습니다. 최근에는 안전자산 몫으로 담을 수 있도록 설계된 리츠 ETF가 나왔지만, 여전히 위험자산으로 분류되는 리츠 ETF도 함께 거래됩니다.',
+        '따라서 "리츠 ETF는 안전자산"이라고 일반화하면 안 되고, 담으려는 그 상품이 어느 쪽으로 분류되는지 개별 확인이 필요합니다. 증권사 매매 화면이나 상품 설명서에 안전자산 편입 가능 여부가 표시됩니다.',
+      ],
+    },
+    {
+      heading: '담을 수 없는 상품도 알아두기',
+      paragraphs: [
+        '레버리지와 인버스처럼 파생상품 비중이 높은 ETF는 위험 등급이 높아 퇴직연금 계좌에서 매수가 막혀 있습니다. 30% 안전자산을 채운다고 해서 열리는 것도 아닙니다.',
+        '이는 노후 자금의 변동성을 제한하려는 규정 때문입니다. 공격적인 매매를 원한다면 그 부분은 퇴직연금이 아닌 일반 계좌에서 다루는 것이 제도 취지에 맞습니다.',
+      ],
+    },
+    {
+      heading: '30% 자리를 채우는 실전 순서',
+      paragraphs: [
+        '먼저 위험자산에 담을 주식형 ETF 비중을 정하고, 그 비중이 70%를 넘지 않도록 맞춥니다. 그다음 남는 30%를 채권형·채권혼합형 ETF나 예금으로 채우면 한도 조건이 충족됩니다.',
+        '30%를 어떤 안전자산으로 채울지는 금리 환경과 본인의 위험 감내 수준에 따라 달라집니다. 어떤 조합도 수익을 보장하지 않으며, 분류 기준과 편입 한도는 감독규정 개정으로 바뀔 수 있으니 매수 시점의 공식 안내를 확인하시기 바랍니다. 본 내용은 정보 제공을 위한 것입니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '안전자산 30%를 안 채우면 어떻게 되나요?', answer: '위험자산 비중이 70%를 넘으면 위험자산을 더 살 수 없습니다. 기존 보유분이 강제로 팔리는 것은 아니지만, 조건을 맞출 때까지 추가 매수가 막힙니다.' },
+    { question: '채권혼합형 ETF만 두 개를 동시에 담아도 되나요?', answer: '둘 다 안전자산으로 분류된 상품이라면 함께 담아 30%를 채울 수 있습니다. 다만 상품별로 분류가 다를 수 있으니 각각의 자산 분류를 확인해야 합니다.' },
+    { question: '리츠 ETF가 안전자산인지 어디서 확인하나요?', answer: '증권사 매매 화면의 상품 정보나 운용사 상품 설명서에 안전자산 편입 가능 여부가 표시됩니다. 표시가 없으면 위험자산으로 보는 편이 안전합니다.' },
+    { question: 'TDF도 안전자산에 들어가나요?', answer: '적격 TDF로 분류된 상품은 위험자산 한도를 최대 80%까지 인정받는 예외가 있습니다. 일반 TDF와 분류가 다르니 상품명을 확인하세요.' },
+  ],
+};
+
+/** Q&A · 2026-08-17 · 미국 상장 ETF가 상장폐지될 때 국내 투자자가 겪는 일 */
+const usEtfDelistingProcess: GuideDef = {
+  slug: 'us-etf-delisting-process',
+  title: '미국 ETF 상장폐지되면 내 돈은 어떻게 되나',
+  tagline: '휴지 조각이 되는 게 아니라 순자산가치로 청산된다',
+  description:
+    '미국에 상장된 ETF가 상장폐지되면 순자산가치로 청산돼 현금으로 돌아옵니다. 상장폐지 전 매도와 청산 수령의 세금이 어떻게 달라지는지, 청산 대금은 언제 들어오는지, 미리 알아채는 신호까지 국내 투자자 기준으로 정리했습니다.',
+  keywords: ['미국 ETF 상장폐지', '해외 ETF 청산', '미국 ETF 청산 세금', '상장폐지 원금 회수', '해외직투 ETF 위험', 'ETF 청산 대금'],
+  section: '해외상장 가이드',
+  lastReviewed: '2026-08-17',
+  answer:
+    '미국 상장 ETF가 상장폐지되어도 투자금이 사라지는 것은 아닙니다. 운용사가 남은 자산을 팔아 순자산가치에서 비용을 뺀 금액을 현금으로 돌려줍니다. 다만 상장폐지 전에 시장에서 직접 파는 것과 청산 대금을 받는 것은 세금 성격이 달라질 수 있어, 상장폐지 공지가 뜨면 매도 시점을 먼저 판단하는 것이 중요합니다.',
+  keyPoints: [
+    '상장폐지된 ETF는 휴지 조각이 되는 것이 아니라, 순자산가치에서 보수 등을 뺀 금액이 현금으로 청산됩니다.',
+    '상장폐지 전에 시장에서 팔면 해외주식 양도소득세(22%, 지방소득세 포함, 연 250만원 기본공제) 대상이 됩니다.',
+    '보유한 채로 청산 대금을 받으면 취득가액과의 차익이 배당소득으로 과세되는 경우가 있어, 매도와 세금 성격이 달라질 수 있습니다.',
+    '청산 대금 입금은 보통 며칠에서 열흘가량 걸리며, 현지 운용사와 예탁결제원 사정에 따라 더 늦어질 수 있습니다.',
+  ],
+  sources: [
+    { label: '미국 증권거래위원회(SEC) 투자자 정보', url: 'https://www.investor.gov' },
+    { label: '국세청 해외주식 양도소득세 안내', url: 'https://www.nts.go.kr' },
+    { label: '한국예탁결제원', url: 'https://www.ksd.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '미국 ETF가 상장폐지되면 어떻게 되는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=474327014&answerNo=1' },
+    { summary: '미국 직투 ETF(MOON ETF)의 상장폐지에 관해 묻는다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=472878284&answerNo=1' },
+    { summary: '보유 중인 미국 ETF(SPGM)의 상장폐지 가능성이 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=477444636&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: '상장폐지 전 매도와 청산 수령은 무엇이 다른가',
+    columns: ['구분', '상장폐지 전 시장 매도', '보유 후 청산 대금 수령'],
+    rows: [
+      ['받는 방식', '내가 원하는 시점에 매도', '운용사가 자산 처분 후 지급'],
+      ['세금 성격', '해외주식 양도소득세', '경우에 따라 배당소득 과세'],
+      ['수령 시점', '매도 결제일(보통 며칠 내)', '청산 절차 후 며칠에서 열흘'],
+      ['가격', '시장 호가로 체결', '순자산가치 기준'],
+    ],
+  },
+  sections: [
+    {
+      heading: '미국 ETF 상장폐지, 원금이 사라지는 게 아니다',
+      paragraphs: [
+        '상장폐지라는 말이 개별 주식의 부도를 떠올리게 해 불안할 수 있지만, ETF는 구조가 다릅니다. ETF가 상장폐지되면 운용사가 안에 담긴 주식·채권을 팔아 그 돈을 투자자에게 나눠 줍니다.',
+        '돌려받는 금액은 청산 시점의 순자산가치에서 남은 보수 등을 뺀 값입니다. 거래가 부진하거나 운용 규모가 너무 작아 유지가 어려울 때 상장폐지가 결정되는 경우가 많습니다.',
+      ],
+    },
+    {
+      heading: '언제, 왜 상장폐지되나',
+      paragraphs: [
+        '미국 ETF는 운용 자산이 지나치게 적거나 오래도록 거래가 일어나지 않으면 운용사가 상품을 접기로 결정합니다. 테마가 유행을 지나 자금이 빠져나간 소형 ETF에서 자주 나타납니다.',
+        '상장폐지가 정해지면 운용사는 사전에 공지를 냅니다. 이때 마지막 거래일과 예상 청산일이 함께 안내되므로, 보유자는 그 일정 안에서 팔지 청산까지 기다릴지 정하면 됩니다.',
+      ],
+    },
+    {
+      heading: '전에 팔 때와 청산으로 받을 때 세금이 다르다',
+      paragraphs: [
+        '상장폐지 공지 뒤 마지막 거래일 전에 시장에서 팔면 일반적인 해외주식 매도와 같습니다. 매매차익은 해외주식 양도소득세로 잡혀 연 250만원 기본공제 후 22%(지방소득세 포함)로 신고합니다.',
+        '반면 팔지 않고 청산 대금을 받으면, 청산 금액과 취득가액의 차이가 배당소득으로 과세되는 사례가 있습니다. 이 경우 다른 금융소득과 합산돼 종합과세 기준에 영향을 줄 수 있습니다. 어느 쪽이 유리한지는 보유 규모와 다른 소득 상황에 따라 갈리니, 큰 금액이라면 증권사나 국세청에 미리 확인하는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '청산 대금은 언제 들어오나',
+      paragraphs: [
+        '청산 대금은 마지막 거래일이 지난 뒤 곧바로 들어오지 않습니다. 운용사가 남은 자산을 정리하고 그 돈이 국내 예탁결제원을 거쳐 계좌에 닿기까지 보통 며칠에서 열흘가량 걸립니다.',
+        '현지 운용사 일정이나 결제 과정에서 더 지연될 수도 있습니다. 그동안은 돈이 묶여 다른 투자에 쓰지 못하므로, 자금 계획이 빠듯하다면 청산을 기다리기보다 미리 파는 편을 고려할 만합니다.',
+      ],
+    },
+    {
+      heading: '미리 알아채는 신호와 대처',
+      paragraphs: [
+        '운용 규모가 계속 줄고 하루 거래량이 눈에 띄게 얇아지면 상장폐지 후보가 될 수 있다는 신호로 볼 수 있습니다. 매수 전에 운용 규모와 거래량을 확인하면 이런 상품을 어느 정도 피할 수 있습니다.',
+        '이미 보유 중이라면 운용사 공지를 놓치지 않는 것이 핵심입니다. 상장폐지 자체가 손실을 뜻하지는 않지만, 일정을 모르고 지나치면 원하지 않는 시점에 청산될 수 있습니다. 본 글은 정보 제공 목적이며 세금 처리는 개별 상황에 따라 달라질 수 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '상장폐지되면 투자한 돈을 다 잃나요?', answer: '아닙니다. 순자산가치에서 비용을 뺀 금액이 현금으로 청산됩니다. 다만 그 시점의 가격이 매수 때보다 낮으면 그만큼 손실은 남습니다.' },
+    { question: '상장폐지 전에 꼭 팔아야 하나요?', answer: '의무는 아닙니다. 팔지 않으면 청산 대금으로 돌려받습니다. 다만 매도와 청산은 세금 성격과 수령 시점이 다를 수 있어 비교해 판단하는 편이 좋습니다.' },
+    { question: '청산 대금에도 세금이 붙나요?', answer: '청산 차익이 배당소득으로 과세되는 경우가 있습니다. 시장에서 미리 팔았을 때의 양도소득세와 성격이 달라 결과가 다를 수 있습니다.' },
+    { question: '어떤 ETF가 상장폐지 위험이 큰가요?', answer: '운용 규모가 작고 거래량이 매우 적은 소형·테마 ETF가 상대적으로 위험이 큽니다. 매수 전 운용 규모와 거래량을 확인하면 도움이 됩니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-17 · 커버드콜 ETF 분배금 세금, 국내 상장과 미국 직상장 차이 */
+const coveredCallEtfDistributionTax: GuideDef = {
+  slug: 'covered-call-etf-distribution-tax',
+  title: '커버드콜 ETF 분배금 세금, 국내와 미국 차이',
+  tagline: '어디에 상장됐는지가 세금 성격을 가른다',
+  description:
+    '커버드콜 ETF 분배금에 세금이 붙는지는 국내 상장인지 미국 직상장인지에 따라 갈립니다. 국내 상장 분배금은 배당소득세 15.4%와 금융소득종합과세 합산 대상이고, 미국 직상장은 과세 성격이 다릅니다. 두 경우의 차이를 정리했습니다.',
+  keywords: ['커버드콜 ETF 세금', '커버드콜 분배금 과세', '커버드콜 배당소득세', '금융소득종합과세 분배금', '미국 커버드콜 양도소득세', '국내 커버드콜 세금'],
+  section: '커버드콜 가이드',
+  lastReviewed: '2026-08-17',
+  answer:
+    '커버드콜 ETF 분배금은 대부분 배당소득으로 잡혀 15.4%가 원천징수됩니다. 국내에 상장된 커버드콜 ETF는 분배금이 연 2,000만원 금융소득종합과세 한도에 합산되고, 미국 거래소에 직접 상장된 상품은 매매차익이 양도소득세로 분리과세돼 종합과세 부담이 다르게 계산됩니다. 어디에 상장된 상품인지가 세금의 갈림길입니다.',
+  keyPoints: [
+    '커버드콜 ETF 분배금은 성격상 배당소득으로 분류돼 지급 시 15.4%(지방소득세 포함)가 원천징수됩니다.',
+    '국내 상장 커버드콜 ETF의 분배금은 다른 이자·배당과 합쳐 연 2,000만원을 넘으면 금융소득종합과세 대상이 됩니다.',
+    '미국 거래소에 직접 상장된 커버드콜 ETF는 매매차익이 양도소득세(22%)로 분리과세돼, 종합과세 합산을 피할 수 있습니다.',
+    '국내주식형 커버드콜이라도 분배 재원이 옵션 프리미엄 등 과세 대상 이익이면 분배금에 세금이 붙을 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 국세상담센터', url: 'https://www.nts.go.kr' },
+    { label: '금융투자협회 전자공시', url: 'https://dis.kofia.or.kr' },
+    { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '국내 커버드콜 ETF 분배금이 금융소득종합과세에 잡히는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=403&docId=478703188&answerNo=0' },
+    { summary: '해외주식 커버드콜 ETF 분배금에 붙는 세금이 어떻게 되는지 묻는다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40308&docId=484586802&answerNo=2' },
+    { summary: '국내 커버드콜 ETF 분배금에 대한 세금이 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40309&docId=482284550&answerNo=2' },
+  ],
+  comparisonTable: {
+    caption: '커버드콜 ETF, 상장 위치별 과세가 어떻게 다른가',
+    columns: ['구분', '국내 상장 커버드콜', '미국 직상장 커버드콜'],
+    rows: [
+      ['분배금 과세', '배당소득세 15.4%', '미국 15% 원천징수'],
+      ['매매차익 과세', '해외지수형은 배당소득세', '양도소득세 22% 분리과세'],
+      ['종합과세 합산', '분배금이 2,000만원 한도에 합산', '분배금만 합산, 매매차익은 분리'],
+      ['유리한 경우', '소액·비과세 계좌 활용 시', '금융소득이 큰 사람'],
+    ],
+  },
+  sections: [
+    {
+      heading: '커버드콜 ETF 분배금은 어떤 소득으로 잡히나',
+      paragraphs: [
+        '커버드콜 ETF가 매달 주는 분배금은 대부분 배당소득으로 분류됩니다. 그래서 지급될 때 15.4%(지방소득세 포함)가 먼저 떼인 뒤 계좌에 들어옵니다.',
+        '분배금이 나온다고 세금이 없는 것이 아니라, 이미 원천징수가 끝난 금액을 받는 것입니다. 여기까지는 국내 상장이든 미국 상장이든 분배금 자체에 대해서는 비슷하게 적용됩니다.',
+      ],
+    },
+    {
+      heading: '국내 상장 커버드콜은 종합과세 합산이 관건',
+      paragraphs: [
+        '국내 거래소에 상장된 커버드콜 ETF는 분배금이 다른 이자·배당소득과 합쳐집니다. 이 합계가 연 2,000만원을 넘으면 금융소득종합과세 대상이 되어 세율이 올라갈 수 있습니다.',
+        '분배율이 높은 커버드콜을 큰 금액으로 담으면 분배금만으로도 이 기준에 가까워질 수 있습니다. 월배당 커버드콜을 여러 종목 보유한다면 한 해 분배금 합계를 미리 가늠해 두는 편이 좋습니다.',
+      ],
+    },
+    {
+      heading: '미국 직상장 커버드콜은 세금 성격이 다르다',
+      paragraphs: [
+        '미국 거래소에 직접 상장된 커버드콜 ETF를 달러로 사면, 매매차익은 해외주식 양도소득세로 잡혀 연 250만원 기본공제 후 22%로 분리과세됩니다. 분배금은 미국에서 15%가 원천징수되고 국내에서 추가로 떼지 않습니다.',
+        '분리과세라는 점이 핵심입니다. 매매차익이 종합과세에 합산되지 않으므로, 이미 금융소득이 큰 사람은 미국 직상장 쪽이 종합과세 부담을 낮추는 데 유리할 수 있습니다. 다만 분배금은 국내에서 종합과세 합산 대상이라는 점은 남습니다.',
+      ],
+    },
+    {
+      heading: '국내주식형이라고 늘 비과세는 아니다',
+      paragraphs: [
+        '국내주식형 커버드콜은 주식 매매차익이 비과세라 세금이 없다고 알려져 있었지만, 분배 재원이 문제가 됐습니다. 분배금이 국내주식 매매차익이 아니라 옵션 프리미엄 같은 과세 대상 이익에서 나오면 그 부분에 15.4%가 붙습니다.',
+        '실제로 세금이 없을 줄 알았던 국내주식형 커버드콜에서 분배금 과세가 나오는 사례가 있었습니다. 상품 이름만 보고 비과세라 단정하지 말고, 운용사 공지에서 분배 재원과 과세 여부를 확인하는 습관이 필요합니다.',
+      ],
+    },
+    {
+      heading: '세금을 줄이려면 계좌부터 본다',
+      paragraphs: [
+        'ISA나 연금계좌 안에서 커버드콜 ETF를 담으면 분배금 과세를 미루거나 낮출 여지가 생깁니다. 계좌 종류에 따라 비과세 한도나 저율 과세가 적용되기 때문입니다.',
+        '같은 상품이라도 어느 계좌에서 담느냐에 따라 세후 결과가 달라집니다. 세법과 상품 구조는 개정될 수 있으니, 큰 금액을 넣기 전에는 그해 기준을 확인하시기 바랍니다. 이 글은 특정 상품 추천이 아니라 세금 구조를 설명하기 위한 것입니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '커버드콜 분배금은 세금이 없다던데 사실인가요?', answer: '대부분 배당소득으로 15.4%가 원천징수됩니다. 국내주식형이라도 분배 재원이 옵션 프리미엄이면 과세되므로 비과세라고 보긴 어렵습니다.' },
+    { question: '분배금이 2,000만원을 넘으면 어떻게 되나요?', answer: '다른 금융소득과 합쳐 연 2,000만원을 넘으면 금융소득종합과세 대상이 됩니다. 넘는 부분은 다른 소득과 합산해 누진세율로 계산됩니다.' },
+    { question: '미국 커버드콜이 세금 면에서 더 유리한가요?', answer: '매매차익이 양도소득세로 분리과세돼 종합과세를 피할 수 있어, 금융소득이 큰 사람에게 유리할 수 있습니다. 분배금은 여전히 종합과세에 합산됩니다.' },
+    { question: 'ISA에서 커버드콜을 담으면 세금이 줄나요?', answer: 'ISA는 일정 한도까지 비과세나 저율 분리과세가 적용돼 분배금 부담을 낮출 수 있습니다. 다만 해외 거래소 원본 상품은 담을 수 없습니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-17 · 채권 ETF 분배금이 어디서 나오나, 단기채는 왜 분배가 적나 */
+const bondEtfDistributionSource: GuideDef = {
+  slug: 'bond-etf-distribution-source',
+  title: '채권 ETF 분배금은 어디서 나오나, 단기채는 왜 적나',
+  tagline: '분배 재원은 대부분 채권 이자, 만기가 길이를 정한다',
+  description:
+    '채권 ETF 분배금은 대부분 편입 채권의 이자에서 나옵니다. 단기채 ETF의 분배금이 유독 적은 이유, 이자를 분배하지 않고 재투자하는 상품이 있는 이유, 총보수가 분배와 수익률에 어떻게 반영되는지 실제 질문 순서로 풀었습니다.',
+  keywords: ['채권 ETF 분배금', '채권 ETF 이자', '단기채 ETF 분배금', '채권 ETF 재원', '채권 ETF 총보수', '채권 ETF 월분배'],
+  section: 'ETF 채권 가이드',
+  lastReviewed: '2026-08-17',
+  answer:
+    '채권 ETF의 분배금은 대부분 그 ETF가 담고 있는 채권에서 나오는 이자입니다. 단기채 ETF의 분배금이 적은 이유는 만기가 짧은 채권일수록 이자율 자체가 낮고, 일부 상품은 이자를 분배하지 않고 안에서 재투자해 가격에 반영하기 때문입니다. 그래서 분배금만 비교하면 실제 수익을 놓치기 쉽습니다.',
+  keyPoints: [
+    '채권 ETF 분배금의 주된 재원은 편입 채권에서 나오는 이자(쿠폰) 수익입니다.',
+    '단기채는 만기가 짧아 이자율 자체가 낮은 편이라, 같은 금액이어도 분배금이 장기채보다 적게 나옵니다.',
+    '일부 단기채·파킹형 ETF는 이자를 분배하지 않고 재투자해 가격에 녹이므로 분배금이 0에 가깝고, 대신 주가가 오릅니다.',
+    '총보수는 매일 순자산가치에서 조금씩 차감되므로, 분배금과 별도로 수익률에 이미 반영돼 있습니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '한국은행 경제통계시스템(ECOS)', url: 'https://ecos.bok.or.kr' },
+    { label: '금융투자협회 전자공시', url: 'https://dis.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '분배금이 없는 단기채권 ETF를 왜 사는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=60220&docId=431178461&answerNo=2' },
+    { summary: '채권 ETF 월분배금에 이자율이 어떻게 적용되는지 묻는다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=488622004&answerNo=3' },
+    { summary: '채권 ETF 분배금 구조에 대해 문의한다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=439618265&answerNo=3' },
+  ],
+  comparisonTable: {
+    caption: '분배형과 재투자형 채권 ETF는 무엇이 다른가',
+    columns: ['구분', '분배형(이자 지급)', '재투자형(가격 반영)'],
+    rows: [
+      ['이자 처리', '정기적으로 분배금 지급', 'ETF 안에서 재투자'],
+      ['분배금', '매월 또는 분기 지급', '거의 없거나 0'],
+      ['수익 확인', '분배금 + 가격 변동', '주로 가격 상승으로 확인'],
+      ['어울리는 경우', '현금흐름이 필요할 때', '세금·재투자를 단순하게 둘 때'],
+    ],
+  },
+  sections: [
+    {
+      heading: '채권 ETF 분배금은 결국 이자에서 나온다',
+      paragraphs: [
+        '채권 ETF는 안에 여러 채권을 담고 있고, 그 채권들이 정해진 시점마다 이자를 줍니다. 이 이자가 쌓여 투자자에게 분배금으로 나가는 것이 기본 구조입니다.',
+        '그래서 채권 ETF의 분배금은 주식 배당처럼 기업 실적에 따라 들쭉날쭉하기보다, 담고 있는 채권의 이자 수준을 따라갑니다. 금리가 높을 때 담은 채권이 많으면 분배금도 그만큼 두둑해집니다.',
+      ],
+    },
+    {
+      heading: '단기채 ETF 분배금이 유독 적은 이유',
+      paragraphs: [
+        '단기채는 만기가 짧습니다. 보통 만기가 짧은 채권일수록 이자율이 낮게 매겨지기 때문에, 단기채 ETF가 받는 이자 자체가 장기채보다 적습니다. 분배금이 작게 느껴지는 첫 번째 이유입니다.',
+        '두 번째 이유는 상품 설계입니다. 파킹형으로 불리는 초단기 상품 가운데는 이자를 밖으로 분배하지 않고 안에서 굴려 가격에 반영하는 방식이 많습니다. 이 경우 분배금이 거의 없는 대신 주가가 완만히 오릅니다.',
+      ],
+    },
+    {
+      heading: '분배금이 0이어도 손해가 아닌 경우',
+      paragraphs: [
+        '분배금이 없다고 수익이 없는 것은 아닙니다. 재투자형은 이자를 가격에 녹이므로, 분배 대신 주가가 오르는 형태로 수익이 쌓입니다. 나중에 팔 때 그 상승분이 실현됩니다.',
+        '오히려 분배금을 받으면 그때마다 세금이 붙지만, 재투자형은 파는 시점까지 과세를 미룰 수 있어 세금 관리가 단순해지는 면이 있습니다. 현금흐름이 필요하면 분배형, 굴려 두는 목적이면 재투자형이 어울립니다.',
+      ],
+    },
+    {
+      heading: '총보수는 분배금과 따로 떼지 않는다',
+      paragraphs: [
+        '채권 ETF에도 총보수가 붙지만, 분배금에서 따로 빼는 방식이 아닙니다. 총보수는 매일 순자산가치에서 조금씩 차감되어 이미 가격과 수익률에 반영돼 있습니다.',
+        '그래서 분배금만 보고 상품을 고르면 총보수와 기타비용을 놓칠 수 있습니다. 총보수와 기타비용을 합한 총비용을 함께 확인해야 실제 손에 쥐는 수익을 제대로 비교할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '분배금만 보고 고르지 않기',
+      paragraphs: [
+        '분배금이 큰 채권 ETF가 무조건 좋은 것은 아닙니다. 분배금이 크면 그만큼 만기가 길고 금리 변동에 민감할 수 있어, 금리가 오르면 가격이 더 크게 흔들립니다.',
+        '분배금, 총비용, 그리고 만기(듀레이션)를 함께 보고 본인의 목적에 맞는지 따지는 것이 순서입니다. 금리 방향은 누구도 확실히 알 수 없으므로 특정 시점의 분배율이 앞으로도 이어진다고 단정하기 어렵습니다. 본 글은 참고용 정보입니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '채권 ETF 분배금은 매달 나오나요?', answer: '상품에 따라 다릅니다. 월분배형은 매달, 분기형은 분기마다 지급합니다. 재투자형은 분배 없이 이자를 가격에 반영하기도 합니다.' },
+    { question: '분배금이 없는 단기채 ETF를 왜 사나요?', answer: '이자를 안에서 재투자해 가격이 오르는 형태로 수익이 쌓이기 때문입니다. 잠깐 자금을 굴릴 파킹 용도로 많이 쓰입니다.' },
+    { question: '채권 ETF 분배금에도 세금이 붙나요?', answer: '분배금은 배당소득으로 15.4%가 원천징수됩니다. 재투자형은 파는 시점까지 과세를 미루는 효과가 있습니다.' },
+    { question: '분배율이 높으면 좋은 채권 ETF인가요?', answer: '꼭 그렇지는 않습니다. 분배율이 높으면 만기가 길어 금리 변동에 더 민감할 수 있으니 총비용과 만기를 함께 봐야 합니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-17 · 퇴직연금 계좌 ETF 총보수와 계좌 수수료가 이중인지 */
+const pensionEtfTotalExpenseRatio: GuideDef = {
+  slug: 'pension-etf-total-expense-ratio',
+  title: '퇴직연금 ETF 총보수, 계좌 수수료와 이중으로 떼나',
+  tagline: '상품 안의 총보수와 계좌 밖의 수수료는 성격이 다르다',
+  description:
+    '퇴직연금 계좌에서 ETF를 사면 총보수와 계좌 운용관리수수료를 이중으로 떼는지 헷갈립니다. 총보수는 상품 가격에 매일 녹아 별도 청구가 없고, 계좌 수수료는 성격이 다릅니다. 두 비용이 어디서 어떻게 빠지는지 정리했습니다.',
+  keywords: ['퇴직연금 ETF 총보수', 'ETF 총보수 계산', 'IRP 계좌 수수료', '퇴직연금 수수료 이중', 'ETF 총보수 차감', '퇴직연금 비용'],
+  section: 'ETF 비용 가이드',
+  lastReviewed: '2026-08-17',
+  answer:
+    'ETF 총보수는 매매할 때 따로 청구되는 돈이 아니라, 상품의 순자산가치에서 매일 조금씩 차감되어 이미 가격에 반영됩니다. 퇴직연금 계좌의 운용관리·자산관리수수료는 계좌를 굴려주는 대가로 이와 별개입니다. 두 비용이 겹쳐 이중으로 떼는 것이 아니라, 하나는 상품 안에서 하나는 계좌 운영에서 각각 빠집니다.',
+  keyPoints: [
+    'ETF 총보수는 매수·매도 시 따로 청구되지 않고, 순자산가치에서 매일 일할로 차감돼 가격에 이미 녹아 있습니다.',
+    '퇴직연금 계좌의 운용관리·자산관리수수료는 흔히 연 0.2~0.5% 수준으로, ETF 총보수와는 별개의 비용입니다.',
+    '총보수와 기타비용을 합한 총비용비율(TER)을 보면 상품에 붙는 실제 비용을 비교적 정확히 가늠할 수 있습니다.',
+    '증권사 IRP는 온라인 가입 시 계좌 운용관리수수료를 면제하는 곳이 많아, 계좌 수수료는 상품 총보수와 따로 챙겨볼 값입니다.',
+  ],
+  sources: [
+    { label: '금융투자협회 전자공시', url: 'https://dis.kofia.or.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '퇴직연금으로 ETF를 매매할 때 총보수 비율을 어떻게 계산하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40301&docId=490814458&answerNo=0' },
+    { summary: '퇴직연금 ETF 거래 시 총보수 계산 방법이 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=6100402&docId=347678015&answerNo=0' },
+    { summary: '은행 퇴직연금에서 펀드와 ETF의 비용 차이가 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=490098806&answerNo=2' },
+  ],
+  comparisonTable: {
+    caption: '총보수와 계좌 수수료는 어떻게 다른가',
+    columns: ['구분', 'ETF 총보수', '계좌 운용관리수수료'],
+    rows: [
+      ['부과 대상', '상품(ETF) 자체', '퇴직연금 계좌'],
+      ['빠지는 방식', '순자산가치에서 매일 차감', '계좌 잔액 기준 정기 부과'],
+      ['별도 청구', '없음(가격에 반영)', '있음(면제되는 곳도)'],
+      ['확인 위치', '상품 설명서·TER', '증권사·은행 수수료 안내'],
+    ],
+  },
+  sections: [
+    {
+      heading: '퇴직연금 계좌에서 ETF 총보수는 어떻게 붙나',
+      paragraphs: [
+        '많은 분이 ETF를 살 때 총보수가 매매 수수료처럼 그때그때 빠져나간다고 생각합니다. 실제로는 다릅니다. 총보수는 운용사가 상품을 굴리는 대가로, 순자산가치에서 매일 조금씩 차감되어 이미 가격에 녹아 있습니다.',
+        '그래서 계좌 거래 내역에 "총보수 출금" 같은 항목이 따로 찍히지 않습니다. 눈에 보이지 않을 뿐, 매일 아주 조금씩 가격에 반영되는 방식으로 이미 내고 있는 셈입니다.',
+      ],
+    },
+    {
+      heading: '계좌 수수료는 총보수와 별개다',
+      paragraphs: [
+        '퇴직연금 계좌에는 운용관리수수료와 자산관리수수료가 붙을 수 있습니다. 이는 계좌를 관리하고 굴려주는 대가로, 상품에 붙는 총보수와는 성격이 다른 비용입니다.',
+        '즉 하나는 ETF라는 상품 안에서, 다른 하나는 퇴직연금 계좌라는 그릇에 대해 각각 매겨집니다. 두 비용이 같은 대상을 두 번 떼는 것이 아니라 서로 다른 층위에서 발생하는 것입니다.',
+      ],
+    },
+    {
+      heading: '그럼 이중으로 떼는 건 아닌가',
+      paragraphs: [
+        '결론부터 보면 같은 항목을 두 번 떼는 이중 부과는 아닙니다. 총보수는 상품 가격에, 계좌 수수료는 계좌에 각각 적용되므로 겹치지 않습니다.',
+        '다만 둘을 합치면 전체 비용이 늘어나는 것은 맞습니다. 그래서 총비용을 볼 때는 상품의 총보수와 계좌 수수료를 나란히 놓고 더해봐야 실제로 얼마가 나가는지 알 수 있습니다.',
+      ],
+    },
+    {
+      heading: '내 계좌 비용을 확인하는 법',
+      paragraphs: [
+        '상품에 붙는 비용은 총보수만이 아니라 기타비용까지 포함한 총비용비율(TER)로 확인하는 것이 정확합니다. 운용사 상품 설명서나 협회 공시에서 볼 수 있습니다.',
+        '계좌 수수료는 가입한 증권사·은행의 수수료 안내에서 확인합니다. 최근에는 온라인으로 가입한 IRP의 운용관리수수료를 면제하는 곳이 많아, 같은 상품이라도 어디서 계좌를 열었는지에 따라 총비용이 달라집니다.',
+      ],
+    },
+    {
+      heading: '펀드와 비교하면 왜 ETF가 저렴하다 하나',
+      paragraphs: [
+        '같은 지수를 따라가는 상품이라도 일반 공모펀드는 판매보수 등이 더해져 총보수가 높은 편입니다. ETF는 거래소에서 사고팔며 판매 단계 비용이 줄어 총보수가 낮은 경우가 많습니다.',
+        '다만 ETF는 매매할 때 호가 차이나 괴리 같은 요소가 있고, 펀드는 그런 부담이 없는 대신 총보수가 높습니다. 비용만으로 우열을 가르기보다 매매 방식과 총비용을 함께 보는 것이 맞습니다. 수수료 체계는 회사마다 다르고 바뀔 수 있으니 가입 시점의 안내를 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: 'ETF 총보수는 매매할 때마다 빠지나요?', answer: '아닙니다. 순자산가치에서 매일 조금씩 차감돼 가격에 반영됩니다. 거래 내역에 별도 출금으로 찍히지 않습니다.' },
+    { question: '총보수와 계좌 수수료를 이중으로 내는 건가요?', answer: '같은 항목을 두 번 떼는 것은 아닙니다. 총보수는 상품에, 계좌 수수료는 계좌에 각각 붙는 서로 다른 비용입니다.' },
+    { question: 'IRP 계좌 수수료는 얼마인가요?', answer: '보통 연 0.2~0.5% 수준이지만, 온라인 가입 시 운용관리수수료를 면제하는 곳이 많습니다. 가입한 회사 안내에서 확인하세요.' },
+    { question: '총보수가 낮으면 무조건 유리한가요?', answer: '비용이 낮은 것은 장점이지만, 기타비용과 매매 시 호가 차이까지 봐야 합니다. 총비용비율을 기준으로 비교하는 편이 정확합니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  irpDcSafeAssetEtf,
+  usEtfDelistingProcess,
+  coveredCallEtfDistributionTax,
+  bondEtfDistributionSource,
+  pensionEtfTotalExpenseRatio,
   stockOrderRejectedReasons,
   dividendRecordDateReform,
   retireeDividendEtfMonthlyIncome,
@@ -21643,6 +22063,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-17 · 지식iN 질문 수요 기반 (퇴직연금 안전자산 30% ETF·미국 ETF 상장폐지 대처·커버드콜 분배금 세금 국내 미국 차이·채권 ETF 분배금 재원·퇴직연금 ETF 총보수 계좌 수수료)
+  'irp-dc-safe-asset-etf': '2026-08-17',
+  'us-etf-delisting-process': '2026-08-17',
+  'covered-call-etf-distribution-tax': '2026-08-17',
+  'bond-etf-distribution-source': '2026-08-17',
+  'pension-etf-total-expense-ratio': '2026-08-17',
   // 기반 가이드 14편 — 발행일이 비어 있어 /guide/latest 정렬과 sitemap lastmod에서 빠졌다.
   // 각 슬러그가 guides.ts에 처음 들어온 커밋 날짜로 채웠다(git log -S 확인). (2026-08-12)
   'monthly-dividend': '2026-04-25',
@@ -21956,17 +22382,17 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money', 'pension-etf-total-expense-ratio'],
   },
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'irp-dc-safe-asset-etf'],
   },
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income', 'covered-call-etf-distribution-tax'],
   },
   {
     title: '테마·섹터',
@@ -21976,12 +22402,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea', 'world-etf', 'brazil-etf', 'saudi-etf', 'indonesia-etf'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea', 'world-etf', 'brazil-etf', 'saudi-etf', 'indonesia-etf', 'us-etf-delisting-process'],
   },
   {
     title: '전략·자산배분',
     description: '적립식·리밸런싱·팩터·자산배분(TRF)·채권·미국국채·회사채·채권혼합·파킹·금·은·구리·원유·농산물·원자재·레버리지 — 포트폴리오를 굴리고 위험을 관리하는 전략.',
-    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual', 'natural-gas-etf', 'carbon-credit-etf', 'platinum-etf', 'high-yield-bond-etf', 'tips-etf'],
+    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual', 'natural-gas-etf', 'carbon-credit-etf', 'platinum-etf', 'high-yield-bond-etf', 'tips-etf', 'bond-etf-distribution-source'],
   },
 ];
 
