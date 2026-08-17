@@ -2438,3 +2438,34 @@ A. 실제 코드(src/lib/guides.ts + src/app/guide/[slug]/page.tsx) 기준으로
   - 직답은 결론만, 수치는 본문에
   - 핵심 포인트는 본문 요약이 아니라 본문에 없는 판단·조건·비교 결과
   - 소제목만 봐도 무슨 문단인지 알게. 의문형은 1~2개까지
+
+## 2026-08-17 · [일일 발행 · 가이드 5편]
+
+지식iN 질문 수요 코퍼스(kin-20260812.json 2,811건 + kin-20260718.json)에서 롱테일 5편 선정. 네이버 신규 수집은 클라우드 IP 차단(HTTP 000)으로 실패 → 저장 코퍼스로 진행(정상 경로). 각 편 핵심 사실 WebSearch 적대적 검증 완료.
+
+1. 퇴직연금 안전자산 30%, 어떤 ETF를 담을 수 있나 (irp-dc-safe-asset-etf)
+   - 출처 질문: IRP 리츠 ETF 안전자산 해당 여부(docId=494479461), DC형 안전자산 추천(474284536), DC 채권혼합형 2개 동시 편입(492433908)
+   - 검증: 위험자산 70% 한도·안전자산 30% 의무 확인. 리츠 ETF는 감독규정상 안전자산으로 분류된 상품만 30% 편입 가능(전부 아님). 레버리지·인버스는 매수 불가.
+2. 미국 ETF 상장폐지되면 내 돈은 어떻게 되나 (us-etf-delisting-process)
+   - 출처 질문: 미국 ETF 상장폐지 시 처리(474327014), MOON ETF 상폐(472878284), SPGM 상폐 가능성(477444636)
+   - 검증: 순자산가치로 청산. 상폐 전 매도=해외주식 양도세 22%(250만원 공제), 청산 수령=경우에 따라 배당소득 과세. 청산대금 며칠~열흘.
+3. 커버드콜 ETF 분배금 세금, 국내와 미국 차이 (covered-call-etf-distribution-tax)
+   - 출처 질문: 국내 커버드콜 분배금 금융종합과세(478703188), 해외 커버드콜 분배금 세금(484586802), 국내 커버드콜 분배금 세금(482284550)
+   - 검증: 국내상장 분배금 15.4%+종합과세(2,000만원) 합산. 미국직상장 매매차익 양도세 22% 분리과세. 국내주식형도 분배 재원이 옵션프리미엄이면 과세.
+4. 채권 ETF 분배금은 어디서 나오나, 단기채는 왜 적나 (bond-etf-distribution-source)
+   - 출처 질문: 분배금 없는 단기채 ETF 이유(431178461), 채권 ETF 월분배 이자율(488622004), 채권 ETF 분배 구조(439618265)
+   - 검증: 분배 재원=편입 채권 이자. 단기채는 이자율 낮음+재투자형 설계로 분배 적음. 총보수는 NAV 매일 차감.
+5. 퇴직연금 ETF 총보수, 계좌 수수료와 이중으로 떼나 (pension-etf-total-expense-ratio)
+   - 출처 질문: 퇴직연금 ETF 총보수 비율 계산(490814458), 총보수 계산 방법(347678015), 퇴직연금 펀드 vs ETF 비용(490098806)
+   - 검증: 총보수는 NAV에서 매일 차감(별도 청구 없음). IRP 계좌 운용관리수수료(연 0.2~0.5%, 온라인 면제 많음)는 별개 → 이중 아님.
+
+검증: npx tsc --noEmit 에러 0, validate:guides ERROR 0(신규 5편 통과), cf:build 성공, 신규 5편 prerender HTML에 answer-box·guide-key-points·guide-sources·citation·발행일 모두 포함. 신규 블록 em dash 0·금지어 0.
+
+발행 경로: 세션 지정 브랜치 claude/serene-hamilton-4s0jb4에 커밋·푸시 후 draft PR 생성(하네스 브랜치 요구사항 준수). 색인 푸시는 production 반영(PR 머지) 이후 실행 대상 — 미반영 URL에 IndexNow 통보 시 봇이 404 수신하는 것을 방지(PUBLISHING.md §5).
+
+★ 발행 링크(머지 후 라이브)
+https://iknowhowinfo.com/guide/irp-dc-safe-asset-etf
+https://iknowhowinfo.com/guide/us-etf-delisting-process
+https://iknowhowinfo.com/guide/covered-call-etf-distribution-tax
+https://iknowhowinfo.com/guide/bond-etf-distribution-source
+https://iknowhowinfo.com/guide/pension-etf-total-expense-ratio
