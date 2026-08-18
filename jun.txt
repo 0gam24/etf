@@ -2438,3 +2438,38 @@ A. 실제 코드(src/lib/guides.ts + src/app/guide/[slug]/page.tsx) 기준으로
   - 직답은 결론만, 수치는 본문에
   - 핵심 포인트는 본문 요약이 아니라 본문에 없는 판단·조건·비교 결과
   - 소제목만 봐도 무슨 문단인지 알게. 의문형은 1~2개까지
+
+## 2026-08-18 · [일일 발행] 지식iN 수요 기반 가이드 5편
+
+오늘 발행분 5편. 주제 소스: 저장 코퍼스 data/keywords/kin/kin-20260812.json(2708문항).
+신규 지식iN 수집은 클라우드 IP 차단(curl exit 56)으로 2회 시도 후 조용히 넘어감(정상).
+
+1) overseas-etf-delisting · 미국 상장 ETF 상장폐지되면 내 돈은 어떻게 되나
+   - 출처질문: 미국직투 ETF 상장폐지(MOON) docId=472878284 / 미국 ETF 상폐 시 투자금 docId=474327014 / SPGM 상폐 가능성 docId=477444636
+   - 검증: 상폐 시 순자산가치 청산(원금 소멸 아님), 청산대금 입금 1~10영업일. 상폐 전 매도=해외주식 양도소득(250만 공제·22%·익년 5월), 상폐일까지 보유 후 청산대금 수령=의제배당 15.4% 원천징수. WebSearch로 세금 이원 구조 확인.
+
+2) etf-premium-discount-check · ETF 괴리율 확인하고 비싸게 안 사는 법 (howTo)
+   - 출처질문: NAV 괴리율 보고 싸게 docId=458112365 / 증권사앱 괴리율 보는 법 docId=470017395 / 괴리율과 추적오차 관계 docId=489739815
+   - 검증: 괴리율=(시장가-NAV)/NAV, NAV 장마감 확정·iNAV 실시간 추정, LP가 괴리 축소, 거래량 적거나 해외지수 ETF·분배시기 괴리 확대, 지정가 대응. 괴리율≠추적오차. WebSearch 확인.
+
+3) inherited-stock-valuation-tax · 주식계좌 상속, 평가액은 어떻게 정하고 세금은
+   - 출처질문: 주식계좌 상속시 상속세 docId=475200164 / 주식 33억 4자녀 상속세 docId=484901177 / 상속세(주식계좌) docId=469574383
+   - 검증: 상장주식·ETF 상속평가=사망일 앞뒤 각 2개월(총 4개월) 종가 평균(상증세법 §63). 일괄공제 5억, 배우자상속공제 최소 5억~최대 30억, 신고기한 사망월 말일부터 6개월, 취득가액=상속평가액. WebSearch 확인.
+
+4) irp-reit-etf-safe-asset · IRP 리츠 ETF는 안전자산 30%에 들어가나
+   - 출처질문: IRP 부동산리츠ETF 안전자산 여부 docId=494479461 / 리츠 ETF vs 리츠 펀드 docId=472788928
+   - 검증: 상장 리츠·리츠 ETF=위험자산(70% 한도), 안전자산 30%는 채권혼합형(채권≥50%)·예금·국채. 리츠 ETF는 안전자산 불인정. DC·IRP 동일. WebSearch 확인.
+
+5) child-stock-account-gift-tax-filing · 자녀 주식계좌 증여세 신고, 언제 얼마까지 비과세 (howTo)
+   - 출처질문: 자녀 명의 주식 증여세 발생? docId=494142920 / 아이 적금→주식계좌 증여 docId=494000716 / 주식 증여세 신고 방법 docId=493552014
+   - 검증: 증여재산공제 10년 합산 미성년 2천만·성년 5천만(직계존속 합산), 신고기한 증여월 말일부터 3개월, 홈택스 법정대리인 대리신고, 적법 증여 종잣돈의 수익은 자녀 재산. WebSearch 확인.
+
+검증: npx tsc --noEmit 0 err / validate:guides ERROR 0 / 신규 블록 em dash 0·금지어 0 / cf:build 성공 / prerender 5편 answer-box·guide-key-points·guide-sources·citation·2026-08-18 모두 포함.
+색인 푸시: 발행 push 후 npm run push:guides 실행(결과는 push 단계에 기록).
+
+★ 오늘 발행 링크(풀 URL)
+https://iknowhowinfo.com/guide/overseas-etf-delisting
+https://iknowhowinfo.com/guide/etf-premium-discount-check
+https://iknowhowinfo.com/guide/inherited-stock-valuation-tax
+https://iknowhowinfo.com/guide/irp-reit-etf-safe-asset
+https://iknowhowinfo.com/guide/child-stock-account-gift-tax-filing
