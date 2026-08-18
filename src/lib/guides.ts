@@ -21394,7 +21394,423 @@ const basicPensionWithPrivatePension: GuideDef = {
   ],
 };
 
+const overseasEtfDelisting: GuideDef = {
+  slug: 'overseas-etf-delisting',
+  title: '미국 상장 ETF 상장폐지되면 내 돈은 어떻게 되나',
+  tagline: '직접 투자한 해외 ETF가 문을 닫을 때 남는 돈과 세금',
+  description:
+    '미국에 직접 상장된 ETF가 상장폐지되면 투자금이 사라지는 게 아니라 순자산가치대로 청산됩니다. 상장폐지 전에 파는 경우와 청산 대금을 받는 경우의 세금 차이, 대금 입금 시기, 미리 알아채는 신호까지 한 페이지에 정리했습니다.',
+  keywords: ['미국 ETF 상장폐지', '해외 ETF 상장폐지', 'ETF 청산 세금', '미국 ETF 청산대금', '해외상장 ETF 상폐', '상장폐지 원금'],
+  section: '해외상장 가이드',
+  lastReviewed: '2026-08-18',
+  answer:
+    '미국에 상장된 ETF가 상장폐지되어도 투자금이 통째로 사라지지는 않습니다. 운용사가 보유 자산을 팔아 순자산가치대로 청산 대금을 돌려주기 때문입니다. 다만 상장폐지일까지 들고 있다가 청산 대금을 받으면 배당소득으로, 그 전에 시장에서 직접 팔면 양도소득으로 과세되어 부담이 달라집니다.',
+  keyPoints: [
+    '상장폐지된 ETF는 순자산가치를 기준으로 청산 대금이 지급되며, 입금까지 보통 1영업일에서 10영업일 정도 걸립니다.',
+    '상장폐지일까지 보유해 청산 대금을 받으면 청산 대금에서 취득가액을 뺀 금액에 배당소득세 15.4%가 원천징수됩니다.',
+    '상장폐지 전에 직접 팔면 해외주식 양도소득으로 잡혀, 연 250만원을 공제한 뒤 22%(지방소득세 포함) 세율로 이듬해 5월에 신고합니다.',
+    '순자산 규모가 작거나 거래가 거의 없는 ETF, 운용사의 청산 공지가 뜬 종목은 상장폐지 가능성이 큰 신호입니다.',
+  ],
+  sources: [
+    { label: '한국거래소 상장폐지 안내', url: 'https://www.krx.co.kr' },
+    { label: '국세청 해외주식 양도소득세 안내', url: 'https://www.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '미국에 직접 투자한 ETF가 상장폐지되면 어떻게 되는지 궁금하다 (MOON ETF 사례)', url: 'https://kin.naver.com/qna/detail.naver?docId=472878284' },
+    { summary: '미국 ETF가 상장폐지되면 투자금을 돌려받는지, 어떤 절차를 거치는지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?docId=474327014' },
+    { summary: '보유한 미국 ETF의 상장폐지 가능성이 있는지, 신호를 어떻게 보는지 궁금하다 (SPGM)', url: 'https://kin.naver.com/qna/detail.naver?docId=477444636' },
+  ],
+  comparisonTable: {
+    caption: '상장폐지 전에 팔 때와 청산 대금을 받을 때의 세금',
+    columns: ['구분', '상장폐지 전에 매도', '청산 대금 수령'],
+    rows: [
+      ['과세 성격', '해외주식 양도소득', '의제배당(배당소득)'],
+      ['기본공제', '연 250만원 공제', '공제 없음'],
+      ['세율', '22%(지방세 포함)', '15.4% 원천징수'],
+      ['납부 방식', '이듬해 5월 자진 신고', '청산 시 자동 원천징수'],
+      ['유리할 수 있는 경우', '다른 금융소득이 많아 종합과세가 부담될 때', '차익과 다른 금융소득이 모두 적을 때'],
+    ],
+  },
+  sections: [
+    {
+      heading: '상장폐지되어도 투자금이 사라지지 않는 이유',
+      paragraphs: [
+        'ETF는 운용사가 투자자 돈을 모아 실제 주식과 채권을 사서 신탁 형태로 보관합니다. 그래서 ETF가 상장폐지되어도 그 안에 담긴 자산이 그대로 남아 있고, 운용사는 이 자산을 팔아 남은 투자자들에게 순자산가치만큼 나눠 돌려줍니다. 회사가 망해 주식이 휴지가 되는 것과는 성격이 다릅니다.',
+        '다만 청산 과정에서 자산을 파는 시점의 시세로 정산되므로, 청산이 마무리될 때의 순자산가치가 곧 돌려받는 금액이 됩니다. 시장이 급락하는 국면에 청산이 겹치면 그만큼 손에 쥐는 돈이 줄 수 있습니다.',
+      ],
+    },
+    {
+      heading: '미국 ETF는 왜 상장폐지되나',
+      paragraphs: [
+        '가장 흔한 이유는 규모입니다. 순자산이 너무 작아 운용 수수료로 비용을 감당하기 어렵거나, 하루 거래량이 거의 없어 유지 실익이 없다고 판단하면 운용사가 스스로 청산을 결정합니다. 특정 테마가 유행을 지나 자금이 빠져나간 소형 ETF가 대표적입니다.',
+        '운용사 합병이나 상품 재편 과정에서 겹치는 ETF를 정리하기도 합니다. 이런 결정은 대개 몇 주 전 청산 공지로 미리 알려지므로, 보유 종목의 공지사항과 순자산 추이를 살피면 대응할 시간을 벌 수 있습니다.',
+      ],
+    },
+    {
+      heading: '상장폐지 전에 팔 때와 청산 대금을 받을 때 세금 차이',
+      paragraphs: [
+        '상장폐지 안내가 나온 뒤 시장에서 직접 팔면 일반 매도와 같아, 해외주식 양도소득으로 과세됩니다. 한 해 동안의 순이익에서 250만원을 공제한 나머지에 22%(지방소득세 포함)를 매기고, 이듬해 5월에 스스로 신고합니다.',
+        '반면 아무것도 하지 않고 상장폐지일까지 들고 있으면 청산 대금이 자동으로 들어오는데, 이때는 청산 대금에서 취득가액을 뺀 금액이 의제배당으로 잡혀 15.4%가 원천징수됩니다. 배당소득이라 다른 금융소득과 합쳐 연 2천만원을 넘으면 종합과세 대상이 될 수 있으니, 금융소득이 큰 편이라면 미리 파는 쪽이 유리한 경우도 있습니다.',
+      ],
+    },
+    {
+      heading: '청산 대금은 언제, 얼마로 들어오나',
+      paragraphs: [
+        '청산 대금은 순자산가치를 기준으로 계산되며, 상장폐지 이후 대금 입금까지 보통 1영업일에서 10영업일 정도 걸립니다. 현지 운용사 일정이나 예탁결제원 처리 사정에 따라 더 늦어질 수도 있습니다.',
+        '달러로 정산된 대금이 원화 계좌로 들어올 때는 그 시점 환율이 적용되므로, 상장폐지가 예고된 종목이라면 환율 흐름도 함께 보는 편이 좋습니다.',
+      ],
+    },
+    {
+      heading: '상장폐지 신호를 미리 읽는 법과 대처',
+      paragraphs: [
+        '순자산이 꾸준히 줄고 거래량이 말라가는 종목, 운용사가 청산이나 합병 공지를 낸 종목은 상장폐지로 이어질 수 있습니다. 증권사 화면의 순자산총액과 거래량, 운용사 공지사항을 정기적으로 확인하면 대부분 미리 알아챌 수 있습니다.',
+        '보유 종목에 신호가 보이면 같은 지수를 추종하는 규모 큰 대체 ETF로 갈아타는 것도 방법입니다. 다만 갈아타는 것도 매도라 세금이 따르므로, 차익 규모와 세금을 함께 따져 결정하시기 바랍니다. 본 내용은 정보 제공 목적이며 개별 판단과 책임은 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '상장폐지되면 투자한 돈을 다 잃나요?', answer: '아닙니다. ETF 안에 담긴 자산을 팔아 순자산가치대로 돌려주므로 원금이 통째로 사라지지는 않습니다. 다만 청산 시점의 시세로 정산되어 손실이 확정될 수는 있습니다.' },
+    { question: '상장폐지 전에 파는 게 나을까요, 그냥 두는 게 나을까요?', answer: '차익이 작으면 청산 대금의 15.4%가 부담이 적고, 금융소득이 많아 종합과세가 걱정되면 미리 팔아 양도소득으로 분리 과세받는 편이 나을 수 있습니다. 본인 금융소득 상황에 따라 갈립니다.' },
+    { question: '청산 대금은 며칠 만에 들어오나요?', answer: '보통 1영업일에서 10영업일 사이에 들어오지만, 현지 운용사와 예탁결제원 사정으로 더 걸릴 수 있습니다.' },
+    { question: '국내에 상장된 해외 ETF도 세금이 같나요?', answer: '다릅니다. 국내 상장 해외 ETF는 매매차익과 분배금 모두 배당소득세 15.4%로 과세되고, 이 글에서 다룬 방식은 미국 등 해외에 직접 상장된 ETF 기준입니다.' },
+  ],
+};
+
+const etfPremiumDiscountCheck: GuideDef = {
+  slug: 'etf-premium-discount-check',
+  title: 'ETF 괴리율 확인하고 비싸게 안 사는 법',
+  tagline: '시장가와 순자산가치의 벌어짐을 읽어 매수 타이밍 잡기',
+  description:
+    'ETF 괴리율은 시장가격이 순자산가치에서 얼마나 벌어졌는지 보여 줍니다. 괴리율과 iNAV를 어디서 확인하는지, 어떤 종목과 시간대에 커지는지, 지정가 주문으로 비싸게 사지 않는 법과 추적오차와의 차이까지 정리했습니다.',
+  keywords: ['ETF 괴리율', 'ETF 괴리율 보는 법', 'NAV 괴리율', 'iNAV', 'ETF 싸게 사는 법', 'ETF 추적오차 차이'],
+  section: 'ETF 괴리율 가이드',
+  lastReviewed: '2026-08-18',
+  howTo: { totalTime: 'PT10M' },
+  answer:
+    'ETF 괴리율은 시장에서 거래되는 가격이 실제 가치인 순자산가치(NAV)에서 얼마나 벌어졌는지를 나타냅니다. 괴리율이 플러스로 크면 그만큼 비싸게 사는 셈이므로, 매수 전에 증권사 앱이나 운용사 홈페이지에서 실시간 추정치인 iNAV와 시장가를 비교하고 지정가로 주문하면 비싼 값에 사는 것을 피할 수 있습니다.',
+  keyPoints: [
+    '괴리율은 (시장가격 - 순자산가치) / 순자산가치로 계산하며, 플러스면 비싸게, 마이너스면 싸게 거래되는 상태입니다.',
+    'NAV는 하루 한 번 장 마감 뒤 확정되고, iNAV는 장중 실시간으로 추정한 순자산가치라 매수 순간의 비교 기준은 iNAV입니다.',
+    '유동성공급자(LP)가 호가를 대며 괴리를 좁히지만, 거래가 적은 종목이나 해외 지수 ETF는 장중 괴리가 벌어지기 쉽습니다.',
+    '분배금 지급 시기나 해외 시장이 닫혀 있는 시간대에는 괴리율이 일시적으로 커질 수 있어, 이때 시장가 매수는 피하는 편이 안전합니다.',
+  ],
+  sources: [
+    { label: '한국거래소 ETF·ETN 정보', url: 'https://www.krx.co.kr' },
+    { label: '금융감독원 금융소비자 정보', url: 'https://www.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ETF를 싸게 사려면 NAV 괴리율을 보면 되는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=458112365' },
+    { summary: '증권사 앱에서 ETF 괴리율을 어디서 어떻게 확인하는지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?docId=470017395' },
+    { summary: 'ETF 괴리율과 추적오차가 어떻게 다른지 관계가 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=489739815' },
+  ],
+  comparisonTable: {
+    caption: '괴리율과 추적오차는 무엇이 다른가',
+    columns: ['구분', '괴리율', '추적오차'],
+    rows: [
+      ['무엇을 비교', '시장가격과 순자산가치의 차이', '순자산가치와 기초지수의 차이'],
+      ['생기는 원인', '수급, 유동성, 거래 시간대', '운용보수, 복제 방식, 현금 보유'],
+      ['확인 시점', '장중 실시간(iNAV 대비)', '기간 누적(월·연 단위)'],
+      ['투자자 대처', '지정가 주문, 거래 시간대 조정', '장기 보수·운용 실력 비교'],
+      ['커지기 쉬운 경우', '거래량 적은 종목, 해외 ETF', '파생형, 환헤지, 고보수 종목'],
+    ],
+  },
+  sections: [
+    {
+      heading: '순자산가치(NAV)와 실시간 iNAV의 차이 이해하기',
+      paragraphs: [
+        'NAV는 ETF가 담고 있는 자산의 실제 가치로, 하루 한 번 장이 끝난 뒤 확정됩니다. 문제는 우리가 사고파는 순간은 장중이라, 마감 후에 나오는 NAV로는 지금 비싼지 싼지 알 수 없다는 점입니다.',
+        '그래서 장중에는 iNAV, 즉 실시간으로 추정한 순자산가치를 봅니다. iNAV는 담긴 자산의 현재 시세를 반영해 초 단위로 갱신되므로, 지금 시장가격이 실제 가치보다 높은지 낮은지 가늠하는 기준이 됩니다.',
+      ],
+    },
+    {
+      heading: '증권사 앱과 운용사 홈페이지에서 괴리율 확인하기',
+      paragraphs: [
+        '대부분의 증권사 MTS는 ETF 현재가 화면에 NAV 또는 iNAV와 괴리율을 함께 보여 줍니다. 네이버 증권의 ETF 상세 화면, 운용사 홈페이지의 종목 페이지에서도 확인할 수 있습니다.',
+        '숫자가 어디 있는지 모르겠다면 현재가 아래 세부 정보나 투자정보 탭을 눌러 보세요. 괴리율이 플러스로 크게 찍혀 있으면 지금은 실제 가치보다 비싸게 거래되는 상태라는 뜻입니다.',
+      ],
+    },
+    {
+      heading: '괴리율이 커지는 시간대와 종목 구분하기',
+      paragraphs: [
+        '국내 지수를 담은 규모 큰 ETF는 대개 괴리가 작지만, 미국이나 유럽 지수를 담은 ETF는 그 나라 장이 닫혀 있는 우리 시간대에 괴리가 벌어지기 쉽습니다. 기초자산 가격이 멈춰 있는데 국내 투자자 수급만으로 값이 움직이기 때문입니다.',
+        '개장 직후와 마감 직전, 분배금 지급이 임박한 시기에도 괴리가 커지곤 합니다. 거래량이 적은 소형 ETF는 평소에도 호가가 성겨 괴리가 잘 벌어집니다.',
+      ],
+    },
+    {
+      heading: '지정가 주문으로 비싼 가격 피하기',
+      paragraphs: [
+        '괴리율이 커 보일 때 시장가로 던지면 비싼 호가를 그대로 물게 됩니다. 이럴 때는 iNAV 근처 가격에 지정가 주문을 걸어 두면, 값이 제자리로 돌아왔을 때 체결되어 비싸게 사는 것을 피할 수 있습니다.',
+        '유동성공급자가 호가를 좁히는 정규 거래 시간대, 특히 기초시장이 열려 있는 시간에 매매하면 괴리가 작아 유리합니다. 급하게 시장가로 사야 할 이유가 없다면 잠시 기다리는 것만으로도 몇 호가를 아낄 수 있습니다.',
+      ],
+    },
+    {
+      heading: '괴리율과 추적오차를 나눠 보고 장기 종목 고르기',
+      paragraphs: [
+        '괴리율은 지금 이 순간 비싸게 사느냐의 문제이고, 추적오차는 이 ETF가 오랜 기간 지수를 얼마나 충실히 따라왔느냐의 문제입니다. 둘은 원인도 대처법도 다릅니다.',
+        '단기 매수 타이밍은 괴리율로, 장기 보유 종목 선택은 낮은 보수와 작은 추적오차로 판단하면 됩니다. 두 지표를 섞어 보면 판단이 흐려지니 나눠서 보시기 바랍니다. 본 내용은 정보 제공 목적이며 투자 판단과 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '괴리율은 몇 % 이상이면 비싼 건가요?', answer: '넓은 지수를 담은 대형 ETF는 보통 플러스마이너스 0.5% 안팎에서 움직입니다. 그보다 크게 벌어져 있다면 주의할 구간이지만, 종목 성격과 거래 시간대에 따라 기준은 달라집니다.' },
+    { question: '괴리율은 어디서 실시간으로 보나요?', answer: '증권사 MTS의 ETF 현재가 화면, 네이버 증권 ETF 상세 페이지, 운용사 홈페이지에서 NAV 또는 iNAV와 함께 확인할 수 있습니다.' },
+    { question: '괴리율과 추적오차는 같은 말인가요?', answer: '다릅니다. 괴리율은 시장가격과 순자산가치의 차이, 추적오차는 순자산가치와 기초지수의 차이입니다. 원인과 대처법이 서로 다릅니다.' },
+    { question: '개장 직후에 바로 사도 되나요?', answer: '개장 직후와 마감 직전, 해외 지수 ETF의 해외장 마감 시간대에는 괴리가 커지기 쉽습니다. 급하지 않다면 정규 시간대에 지정가로 매수하는 편이 안전합니다.' },
+  ],
+};
+
+const inheritedStockValuationTax: GuideDef = {
+  slug: 'inherited-stock-valuation-tax',
+  title: '주식계좌 상속, 평가액은 어떻게 정하고 세금은',
+  tagline: '상속받은 주식과 ETF의 평가 기준과 공제로 보는 세금',
+  description:
+    '상속받은 상장주식과 ETF는 사망일 앞뒤 각 2개월, 합쳐 4개월 종가 평균으로 평가합니다. 일괄공제 5억원과 배우자공제로 세금이 나오는 기준, 나중에 팔 때의 취득가액, 신고 기한과 준비물까지 한 페이지에 정리했습니다.',
+  keywords: ['주식 상속세', '주식계좌 상속', '상장주식 상속 평가', '상속세 일괄공제', '상속주식 취득가액', '배우자 상속공제', '상속세 신고기한'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-18',
+  answer:
+    '상속받은 상장주식과 ETF는 사망일 당일 종가가 아니라, 사망일을 기준으로 앞뒤 각 2개월씩 총 4개월간의 종가 평균으로 평가합니다. 여기에 배우자공제와 일괄공제 5억원 등을 빼고 남은 금액에 세율을 적용하므로, 상속재산이 이 공제 범위 안이면 세금이 나오지 않을 수 있습니다.',
+  keyPoints: [
+    '상장주식과 ETF의 상속 평가액은 사망일 앞뒤 각 2개월, 합쳐서 4개월간 매일 종가의 평균으로 계산합니다.',
+    '기초공제 2억원과 인적공제 합계, 또는 일괄공제 5억원 중 큰 금액을 공제하며 대개 일괄공제 5억원을 적용합니다.',
+    '배우자가 상속받으면 최소 5억원에서 최대 30억원까지 배우자 상속공제가 더해져 실제 과세 문턱이 크게 올라갑니다.',
+    '상속세 신고는 사망일이 속한 달의 말일부터 6개월 안에 하며, 기한 내 신고하면 신고세액공제를 받습니다.',
+  ],
+  sources: [
+    { label: '국세청 상속세 안내', url: 'https://www.nts.go.kr' },
+    { label: '국세법령정보시스템(상속세 및 증여세법)', url: 'https://taxlaw.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '주식계좌를 상속받으면 상속세를 어떻게 계산하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=475200164' },
+    { summary: '주식 33억원을 네 자녀가 상속받을 때 상속세가 얼마나 되는지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?docId=484901177' },
+    { summary: '주식계좌 상속과 관련한 평가와 세금 처리가 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=469574383' },
+  ],
+  comparisonTable: {
+    caption: '상속세를 줄여 주는 주요 공제',
+    columns: ['공제 항목', '공제 금액', '적용 조건'],
+    rows: [
+      ['일괄공제', '5억원', '기초공제와 인적공제 합계와 비교해 큰 금액'],
+      ['배우자 상속공제', '최소 5억원 ~ 최대 30억원', '배우자가 실제 상속받은 범위'],
+      ['금융재산 상속공제', '최대 2억원', '순금융재산의 일정 비율'],
+      ['기초공제', '2억원', '모든 상속에 기본 적용'],
+      ['동거주택 상속공제', '최대 6억원', '요건 갖춘 무주택 상속인'],
+    ],
+  },
+  sections: [
+    {
+      heading: '상속받은 주식은 종가 하나로 정하지 않는다',
+      paragraphs: [
+        '상속받은 상장주식과 ETF는 사망일 하루의 종가로 값을 매기지 않습니다. 그날 시세가 유난히 높거나 낮으면 불공평해지기 때문에, 사망일을 가운데 두고 앞 2개월과 뒤 2개월, 합쳐 4개월간 매일 종가의 평균을 평가액으로 씁니다.',
+        '이 방식은 상속세 및 증여세법에 정해진 원칙이라 임의로 유리한 날을 고를 수 없습니다. 주가가 크게 출렁인 시기에 상속이 개시되면 평균을 내는 과정에서 부담이 완화되기도, 반대로 커지기도 합니다.',
+      ],
+    },
+    {
+      heading: '공제부터 확인해야 하는 이유',
+      paragraphs: [
+        '평가액이 정해지면 그다음은 공제입니다. 상속세는 재산 전체에 바로 세율을 매기는 것이 아니라 공제를 빼고 남은 금액에만 매깁니다. 배우자와 자녀가 있는 일반적인 경우 일괄공제 5억원이 기본으로 적용되고, 배우자가 상속받으면 최소 5억원이 더 붙습니다.',
+        '그래서 배우자가 있는 상속이라면 재산이 10억원 안팎까지는 세금이 나오지 않는 경우가 많습니다. 상속받은 주식 평가액을 계산했다면, 겁부터 먹기 전에 적용 가능한 공제를 먼저 더해 보는 편이 좋습니다.',
+      ],
+    },
+    {
+      heading: '상속받은 주식의 취득가액은 언제 기준인가',
+      paragraphs: [
+        '상속받은 주식을 나중에 팔 때의 양도세 취득가액은 내가 산 값이 아니라 상속 당시의 평가액, 즉 4개월 종가 평균이 됩니다. 상속 시점에 이미 그 가격으로 넘겨받은 것으로 보기 때문입니다.',
+        '이 점은 매도 계획에도 영향을 줍니다. 상속 평가액이 곧 취득가액이라, 그 뒤로 주가가 오른 만큼만 양도차익으로 잡힙니다. 상속받자마자 팔면 차익이 거의 없어 양도세 부담이 작을 수 있습니다.',
+      ],
+    },
+    {
+      heading: '신고 기한과 준비물',
+      paragraphs: [
+        '상속세 신고는 사망일이 속한 달의 말일부터 6개월 안에 해야 합니다. 이 기한 안에 신고하면 신고세액공제를 받아 세금을 조금 줄일 수 있고, 늦으면 가산세가 붙습니다.',
+        '준비물로는 사망일 기준 잔고증명서, 상속 개시 전후의 시세를 확인할 수 있는 자료, 상속인 관계를 보여 주는 가족관계 서류 등이 필요합니다. 평가와 공제 계산이 복잡하면 세무 전문가의 도움을 받는 것이 안전합니다.',
+      ],
+    },
+    {
+      heading: '세금이 클 때 나눠 내는 방법과 주의점',
+      paragraphs: [
+        '상속재산이 많아 세금이 크면 한 번에 내기 어려울 수 있습니다. 이때는 세금을 두 번에 나눠 내는 분납, 여러 해에 걸쳐 내는 연부연납을 활용할 수 있습니다. 연부연납은 담보와 가산금이 따르므로 조건을 확인해야 합니다.',
+        '상속받은 주식을 급하게 팔아 세금을 마련하려다 하락장에 손해를 보는 경우도 있으니, 납부 방법과 매도 시점을 함께 계획하는 편이 좋습니다. 본 내용은 정보 제공 목적이며 개별 사안의 판단은 본인 책임입니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '상속재산이 5억원 이하면 세금이 없나요?', answer: '일괄공제 5억원이 적용되어 대개 세금이 나오지 않습니다. 다만 사망 전 10년 안에 미리 증여한 재산은 합산되므로, 사전 증여가 있었다면 함께 따져야 합니다.' },
+    { question: '주식 평가는 사망일 종가로 하면 안 되나요?', answer: '안 됩니다. 상속세 및 증여세법상 상장주식은 사망일 앞뒤 각 2개월, 합쳐 4개월 종가 평균으로 평가하도록 정해져 있습니다.' },
+    { question: '상속받은 주식을 팔면 양도세 취득가는 얼마로 잡히나요?', answer: '상속 당시의 평가액, 즉 4개월 종가 평균이 취득가액이 됩니다. 그 뒤 오른 만큼만 양도차익으로 과세됩니다.' },
+    { question: '신고를 안 하면 어떻게 되나요?', answer: '무신고와 납부 지연에 가산세가 붙어 부담이 커집니다. 세금이 없더라도 취득가액을 확정해 두기 위해 신고해 두는 편이 이후에 유리합니다.' },
+  ],
+};
+
+const irpReitEtfSafeAsset: GuideDef = {
+  slug: 'irp-reit-etf-safe-asset',
+  title: 'IRP 리츠 ETF는 안전자산 30%에 들어가나',
+  tagline: '퇴직연금 위험자산 70% 한도에서 리츠 ETF가 놓이는 자리',
+  description:
+    '리츠 ETF는 IRP와 DC형 퇴직연금에서 안전자산 30%로 인정되지 않고 위험자산 70% 한도에 들어갑니다. 안전자산으로 채우는 상품, 리츠 ETF가 위험자산인 이유, 리츠 펀드와의 차이까지 계좌 기준으로 정리했습니다.',
+  keywords: ['IRP 리츠 ETF', '퇴직연금 리츠 ETF', 'IRP 안전자산 30%', '퇴직연금 위험자산 70%', 'IRP 리츠 투자', '리츠 ETF 안전자산'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-18',
+  answer:
+    '리츠 ETF는 IRP나 DC형 퇴직연금에서 안전자산으로 인정되지 않습니다. 상장 리츠와 리츠 ETF는 주식처럼 가격이 오르내리는 위험자산으로 분류되어, 적립금의 70%까지만 담을 수 있는 위험자산 한도에 포함됩니다. 의무적으로 채워야 하는 안전자산 30%는 채권혼합형 ETF나 예금처럼 원리금이 비교적 안정적인 상품으로 채워야 합니다.',
+  keyPoints: [
+    'IRP와 DC형 퇴직연금은 적립금의 최소 30%를 안전자산에 넣어야 하고, 위험자산은 70%까지만 담을 수 있습니다.',
+    '상장 리츠와 리츠 ETF는 가격 변동이 큰 위험자산으로 분류되어 70% 한도 안에서만 투자됩니다.',
+    '안전자산 30%는 채권 비중이 50% 이상인 채권혼합형 ETF, 국채, 예금, 원리금보장상품 등으로 채웁니다.',
+    '리츠 ETF의 배당이 매력적이더라도 안전자산 칸을 대신할 수 없으므로, 위험자산 70% 안에서 비중을 조절해야 합니다.',
+  ],
+  sources: [
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+    { label: '고용노동부 퇴직연금 제도 안내', url: 'https://www.moel.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'IRP 계좌에서 부동산 리츠 ETF가 안전자산에 해당하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=494479461' },
+    { summary: '리츠 ETF와 리츠 펀드가 어떻게 다른지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?docId=472788928' },
+  ],
+  comparisonTable: {
+    caption: 'IRP 안전자산과 위험자산은 무엇으로 나뉘나',
+    columns: ['구분', '안전자산 (최소 30%)', '위험자산 (최대 70%)'],
+    rows: [
+      ['대표 상품', '예금, 국채, 채권혼합형 ETF', '주식형 ETF, 리츠 ETF, 상장 리츠'],
+      ['채권혼합 기준', '채권 비중 50% 이상', '채권 비중 50% 미만'],
+      ['리츠 ETF 분류', '해당 안 됨', '해당됨'],
+      ['성격', '원리금이 비교적 안정적', '가격 변동과 배당 기대'],
+      ['담을 수 있는 비중', '30% 이상 의무', '70%까지 한도'],
+    ],
+  },
+  sections: [
+    {
+      heading: '퇴직연금은 왜 위험자산을 70%로 묶어 두나',
+      paragraphs: [
+        'IRP와 DC형 퇴직연금은 은퇴 후를 위한 자금이라, 한 종목이나 위험자산에 몰렸다가 크게 무너지는 일을 막는 장치가 있습니다. 그래서 적립금의 최소 30%는 안전자산에 두고, 위험자산은 70%까지만 담도록 규정으로 정해 두었습니다.',
+        '이 한도는 상품을 살 때 계좌에서 자동으로 점검됩니다. 위험자산 비중이 70%를 넘게 사려고 하면 매수가 제한되므로, 어떤 상품이 위험자산으로 분류되는지 미리 알아 두는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '리츠 ETF가 위험자산으로 분류되는 이유',
+      paragraphs: [
+        '리츠는 부동산에 투자하는 상품이지만, 상장 리츠와 그것을 담은 리츠 ETF는 거래소에서 주식처럼 실시간으로 값이 오르내립니다. 배당은 꾸준할지 몰라도 가격 변동성은 주식에 가깝습니다.',
+        '이런 성격 때문에 리츠 ETF는 퇴직연금에서 안전자산이 아니라 위험자산으로 분류됩니다. 결과적으로 리츠 ETF는 위험자산 70% 한도 안에서만 담을 수 있고, 안전자산 30% 칸을 채우는 데는 쓸 수 없습니다.',
+      ],
+    },
+    {
+      heading: '안전자산 30%는 무엇으로 채우나',
+      paragraphs: [
+        '안전자산 칸은 원리금이 비교적 안정적인 상품으로 채웁니다. 예금과 국채, 그리고 채권 비중이 50% 이상인 채권혼합형 ETF가 대표적입니다. 채권혼합형 ETF는 주식을 일부 담아 수익을 노리면서도 안전자산으로 인정되어, 30% 칸을 채우면서 기대수익을 조금 높이는 데 쓰입니다.',
+        '반대로 주식 비중이 큰 혼합형이나 주식형 ETF, 리츠 ETF는 아무리 배당이 좋아도 안전자산 칸에 넣을 수 없습니다. 안전자산 상품인지 헷갈리면 상품 설명서의 위험자산 여부 표기를 확인하세요.',
+      ],
+    },
+    {
+      heading: '리츠 ETF를 IRP에 담고 싶다면',
+      paragraphs: [
+        '리츠 ETF의 배당이 꾸준해 은퇴 현금흐름에 보태고 싶다면, 위험자산 70% 한도 안에서 비중을 정하면 됩니다. 배당은 계좌 안에서 재투자되며 인출 시점까지 과세가 미뤄지는 점이 연금계좌의 장점입니다.',
+        '다만 리츠 ETF 하나에 위험자산 한도를 몰아넣기보다, 지수형 ETF와 섞어 분산하는 편이 변동성을 낮춥니다. 안전자산 30%와 위험자산 70%의 비율은 은퇴까지 남은 기간과 위험 감내 수준에 맞춰 조절하시기 바랍니다.',
+      ],
+    },
+    {
+      heading: '리츠 ETF와 리츠 펀드, 계좌에서 뭐가 다른가',
+      paragraphs: [
+        '리츠 ETF는 거래소에서 실시간 가격으로 사고팔고, 리츠 펀드는 하루 한 번 산정되는 기준가로 매매됩니다. 매매 방식과 비용 구조는 다르지만, 퇴직연금에서 둘 다 위험자산으로 분류된다는 점은 같습니다.',
+        '따라서 안전자산 30% 요건을 두 상품 중 어느 것으로도 대신할 수 없습니다. 실시간 대응이 편하면 ETF, 자동 적립이 편하면 펀드처럼 매매 습관에 맞춰 고르되, 안전자산 칸은 별도로 채워야 합니다. 본 내용은 정보 제공 목적이며 투자 판단과 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '리츠 ETF를 IRP 안전자산 30%로 채울 수 있나요?', answer: '채울 수 없습니다. 상장 리츠와 리츠 ETF는 위험자산으로 분류되어 70% 한도 안에서만 담을 수 있습니다.' },
+    { question: '채권혼합형 ETF는 안전자산인가요?', answer: '채권 비중이 50% 이상인 채권혼합형 ETF는 안전자산으로 인정되어 30% 칸을 채우는 데 쓸 수 있습니다.' },
+    { question: '리츠 ETF 배당은 IRP에서 어떻게 되나요?', answer: '배당은 계좌 안에서 재투자되고 과세가 인출 시점까지 미뤄집니다. 나중에 연금으로 받으면 연금소득세, 연금 외로 받으면 기타소득세가 적용됩니다.' },
+    { question: 'DC형과 IRP의 규정이 같나요?', answer: '둘 다 위험자산 70% 한도와 안전자산 30% 의무가 같게 적용됩니다. 리츠 ETF가 위험자산으로 잡히는 점도 동일합니다.' },
+  ],
+};
+
+const childStockAccountGiftTaxFiling: GuideDef = {
+  slug: 'child-stock-account-gift-tax-filing',
+  title: '자녀 주식계좌 증여세 신고, 언제 얼마까지 비과세',
+  tagline: '아이 명의 투자, 세금 없이 주는 한도와 신고 방법',
+  description:
+    '자녀 명의 계좌로 돈을 넣거나 주식을 옮기면 증여로 봅니다. 미성년 2천만원, 성년 5천만원까지 세금 없이 주는 공제 한도, 홈택스 신고 방법과 3개월 기한, 종잣돈 수익을 자녀 재산으로 인정받는 법까지 정리했습니다.',
+  keywords: ['자녀 주식 증여세', '자녀 주식계좌 증여', '증여재산공제', '미성년 자녀 증여 2000만원', '증여세 신고 방법', '주식 증여 신고기한'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-18',
+  howTo: { totalTime: 'PT20M' },
+  answer:
+    '자녀 명의 계좌로 돈을 넣거나 주식을 옮기는 것은 증여에 해당해 원칙적으로 신고 대상입니다. 다만 증여재산공제 덕분에 미성년 자녀는 10년 동안 2천만원, 성년 자녀는 5천만원까지 세금 없이 줄 수 있습니다. 공제 범위 안이라도 신고해 두면 그 종잣돈으로 불린 수익을 자녀 재산으로 인정받기 쉽습니다.',
+  keyPoints: [
+    '증여재산공제는 10년 합산 기준으로 미성년 자녀 2천만원, 성년 자녀 5천만원이며, 직계존속이 준 금액을 모두 합쳐 계산합니다.',
+    '증여세 신고 기한은 증여일이 속한 달의 말일부터 3개월 이내이고, 미성년 자녀는 부모가 대리로 신고합니다.',
+    '공제 한도 안이라 낼 세금이 없어도 신고해 두면 이후 투자로 불어난 수익을 자녀 재산으로 인정받는 근거가 됩니다.',
+    '태어났을 때 2천만원, 10년 뒤 다시 2천만원, 성년에 5천만원 식으로 10년 주기를 활용하면 세금 없이 이전 규모를 키울 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 증여세 안내', url: 'https://www.nts.go.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '자녀 명의로 주식을 사줬는데 증여세가 발생하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=494142920' },
+    { summary: '아이 명의 적금통장에서 주식계좌로 옮길 때 증여세를 어떻게 처리하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=494000716' },
+    { summary: '자녀 주식 증여를 어떻게 신고하는지 방법을 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?docId=493552014' },
+  ],
+  comparisonTable: {
+    caption: '나이별 증여재산공제 한도 (10년 합산)',
+    columns: ['구분', '미성년 자녀', '성년 자녀'],
+    rows: [
+      ['공제 한도', '2천만원', '5천만원'],
+      ['합산 기간', '10년', '10년'],
+      ['합산 대상', '부모·조부모 등 직계존속 합산', '부모·조부모 등 직계존속 합산'],
+      ['신고 대리', '법정대리인(부모)', '본인 또는 대리'],
+      ['활용 예', '출생 직후 2천만원', '성년 후 5천만원 추가'],
+    ],
+  },
+  sections: [
+    {
+      heading: '자녀 계좌 입금이 증여에 해당하는지 확인하기',
+      paragraphs: [
+        '부모가 자녀 명의 계좌에 돈을 넣거나, 부모 계좌의 주식을 자녀 계좌로 옮기는 것은 재산이 무상으로 넘어가는 것이라 증여에 해당합니다. 자녀 이름의 계좌를 만들어 부모가 대신 굴리더라도 실제 자금이 부모 돈이라면 마찬가지입니다.',
+        '증여인지부터 짚어야 하는 이유는, 나중에 그 돈으로 큰 수익이 났을 때 자금 출처를 묻는 상황이 생기기 때문입니다. 처음에 증여로 정리해 두면 이후 불어난 금액을 자녀 재산으로 설명하기가 쉬워집니다.',
+      ],
+    },
+    {
+      heading: '나이별 공제 한도와 10년 합산 계산하기',
+      paragraphs: [
+        '자녀에게 세금 없이 줄 수 있는 금액은 미성년이면 10년 동안 2천만원, 성년이면 5천만원입니다. 이 한도는 부모뿐 아니라 조부모 등 직계존속이 준 금액을 모두 합쳐서 따집니다. 할아버지와 아버지가 각각 준 돈은 따로가 아니라 합산된다는 뜻입니다.',
+        '10년 단위로 새로 채워지므로, 태어난 직후 2천만원을 주고 만 열 살이 지나 다시 2천만원, 성년이 되어 5천만원을 주는 식으로 나누면 세금 없이 옮기는 규모를 키울 수 있습니다.',
+      ],
+    },
+    {
+      heading: '홈택스에서 증여세 신고서 작성하기',
+      paragraphs: [
+        '증여세는 국세청 홈택스에서 신고합니다. 미성년 자녀는 법정대리인인 부모가 자녀의 인증 수단으로 접속해 대리 신고하며, 증여재산 종류와 금액, 증여자와의 관계를 입력하고 계좌 이체 내역이나 주식 입고 내역을 증빙으로 붙입니다.',
+        '공제 한도 안이라 낼 세금이 없어도 신고서는 제출해 두는 편이 좋습니다. 신고 기록 자체가 언제 얼마를 적법하게 증여했는지 보여 주는 근거가 되기 때문입니다.',
+      ],
+    },
+    {
+      heading: '증여한 종잣돈과 이후 수익 구분해 두기',
+      paragraphs: [
+        '적법하게 증여 신고한 종잣돈으로 자녀 계좌에서 투자해 수익이 났다면, 그 수익은 자녀의 재산으로 봅니다. 처음 증여한 원금만 공제 한도로 따지고, 그 뒤 불어난 부분은 원칙적으로 추가 증여가 아닙니다.',
+        '다만 이 논리가 성립하려면 최초 증여가 신고로 정리되어 있어야 합니다. 신고 없이 큰돈을 굴리다 수익이 커지면, 나중에 전체를 증여로 보아 세금이 매겨질 수 있으니 처음 정리가 중요합니다.',
+      ],
+    },
+    {
+      heading: '10년 주기로 나눠 증여 계획 세우기',
+      paragraphs: [
+        '한 번에 큰 금액을 주면 공제를 넘는 부분에 증여세가 붙습니다. 그래서 자녀가 어릴 때부터 10년 주기에 맞춰 조금씩 나눠 증여하면, 같은 총액이라도 세금 없이 옮길 수 있는 부분이 커집니다.',
+        '증여 시점의 시세로 평가되므로, 주식이나 ETF는 값이 낮을 때 증여하면 같은 한도로 더 많은 수량을 넘길 수 있습니다. 다만 절세만 보고 무리하게 자금을 옮기기보다 가정의 자금 계획 안에서 판단하시기 바랍니다. 본 내용은 정보 제공 목적이며 개별 판단과 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '공제 한도 안이면 신고를 안 해도 되나요?', answer: '세금은 없지만 신고해 두기를 권합니다. 신고 기록이 있어야 이후 그 돈으로 불린 수익을 자녀 재산으로 설명하는 근거가 됩니다.' },
+    { question: '자녀 계좌로 산 주식이 오르면 그 수익도 증여인가요?', answer: '적법하게 증여 신고한 종잣돈에서 난 수익은 자녀의 재산으로 봅니다. 다만 최초 증여가 신고로 정리되어 있어야 이 구분이 인정됩니다.' },
+    { question: '용돈이나 세뱃돈도 증여세를 내야 하나요?', answer: '사회통념상 통상적인 용돈은 과세하지 않습니다. 다만 그 돈을 모아 투자해 큰 수익이 나면 자금 출처를 설명해야 하는 상황이 생길 수 있습니다.' },
+    { question: '신고 기한을 넘기면 어떻게 되나요?', answer: '증여일이 속한 달의 말일부터 3개월을 넘기면 무신고 가산세가 붙습니다. 공제 한도 자체는 유지되지만 한도를 넘긴 금액에 가산세까지 더해집니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  overseasEtfDelisting,
+  etfPremiumDiscountCheck,
+  inheritedStockValuationTax,
+  irpReitEtfSafeAsset,
+  childStockAccountGiftTaxFiling,
   stockOrderRejectedReasons,
   dividendRecordDateReform,
   retireeDividendEtfMonthlyIncome,
@@ -21659,6 +22075,12 @@ export const GUIDE_PUBLISHED_AT: Record<string, string> = {
   'etf-vs-fund': '2026-05-31',
   'etf-dividend': '2026-06-01',
   'etf-dca': '2026-06-04',
+  // 2026-08-18 · 지식iN 질문 수요 기반 (미국 상장 ETF 상장폐지 청산·세금·ETF 괴리율 확인과 싸게 사는 법·주식계좌 상속 평가와 세금·IRP 리츠 ETF 안전자산 여부·자녀 주식계좌 증여세 신고)
+  'overseas-etf-delisting': '2026-08-18',
+  'etf-premium-discount-check': '2026-08-18',
+  'inherited-stock-valuation-tax': '2026-08-18',
+  'irp-reit-etf-safe-asset': '2026-08-18',
+  'child-stock-account-gift-tax-filing': '2026-08-18',
   // 2026-08-12 · 지식iN 질문 수요 기반 (상속세 물납·빚내서 투자 위험·법인 이익잉여금 미배당·ISA S&P500 나스닥100 동시보유·기초연금과 사적연금)
   'inheritance-tax-payment-in-kind': '2026-08-12',
   'investing-with-borrowed-money': '2026-08-12',
@@ -21956,12 +22378,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money', 'etf-premium-discount-check'],
   },
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'inherited-stock-valuation-tax', 'irp-reit-etf-safe-asset', 'child-stock-account-gift-tax-filing'],
   },
   {
     title: '배당·인컴',
@@ -21976,7 +22398,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea', 'world-etf', 'brazil-etf', 'saudi-etf', 'indonesia-etf'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea', 'world-etf', 'brazil-etf', 'saudi-etf', 'indonesia-etf', 'overseas-etf-delisting'],
   },
   {
     title: '전략·자산배분',
