@@ -21394,7 +21394,500 @@ const basicPensionWithPrivatePension: GuideDef = {
   ],
 };
 
+/** 지식iN 질문 수요 기반 (2026-08-20) */
+const pensionSavingsYearEndFill: GuideDef = {
+  slug: 'pension-savings-year-end-fill',
+  title: '연말 연금저축·IRP 한도 채우기, 세액공제 최대 148만원',
+  tagline: '12월 31일까지 입금해야 올해분 공제, 남은 한도부터 확인',
+  description:
+    '연금저축은 연 600만원, IRP를 더하면 900만원까지 세액공제되고, 총급여 5,500만원 이하는 16.5%가 적용돼 최대 148만원을 돌려받습니다. 12월 31일까지 입금한 금액만 올해분으로 공제되니 남은 한도를 미리 계산하는 법을 정리했습니다.',
+  keywords: ['연금저축 세액공제', '연금저축 IRP 한도', '연말정산 연금저축', 'IRP 세액공제 한도', '연금저축 12월 납입', '세액공제 148만원'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-20',
+  answer:
+    '연금저축은 한 해 600만원, IRP까지 더하면 최대 900만원 납입액에 세액공제가 붙습니다. 총급여 5,500만원 이하면 16.5%, 넘으면 13.2%가 적용돼 900만원을 채우면 118만8천원에서 148만5천원을 돌려받습니다. 기준은 입금일이라, 12월 31일까지 계좌에 들어온 금액만 올해 공제 대상이 됩니다.',
+  keyPoints: [
+    '세액공제 한도는 연금저축 단독 600만원, IRP를 합치면 900만원입니다. 연금저축 600만원을 먼저 채우고 남은 300만원을 IRP에 넣는 조합이 가장 많이 쓰입니다.',
+    '공제율은 총급여 5,500만원(종합소득 4,500만원) 이하 16.5%, 초과 13.2%입니다. 900만원을 다 채우면 각각 148만5천원, 118만8천원을 환급받습니다.',
+    '기준은 입금일입니다. 12월 31일까지 계좌에 들어온 금액만 그해 세액공제에 잡히고, 1월 1일 이후 입금분은 다음 해로 넘어갑니다.',
+    '한도를 넘겨 넣은 초과 납입금은 버리지 않아도 됩니다. 다음 해로 이월해 공제받도록 신청할 수 있어, 급하게 채우다 한도를 넘겨도 손해로 끝나지 않습니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '연말정산을 앞두고 연금저축과 IRP에 얼마를 더 넣어야 세액공제를 최대로 받는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=492609996' },
+    { summary: '연금저축·IRP·ISA의 납입 한도가 각각 어떻게 되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493739620' },
+    { summary: '연금저축 세액공제가 어떻게 적용되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494093073' },
+  ],
+  comparisonTable: {
+    caption: '세액공제 한도와 역할, 연금저축과 IRP',
+    columns: ['구분', '연금저축', 'IRP 추가분'],
+    rows: [
+      ['공제 한도', '연 600만원', '연금저축 포함 900만원'],
+      ['공제율', '16.5% 또는 13.2%', '동일'],
+      ['담는 자산', '펀드·ETF 중심', 'ETF·예금·리츠 등'],
+      ['중도인출', '일부 가능', '사유 있을 때만'],
+    ],
+  },
+  sections: [
+    {
+      heading: '연금저축·IRP 세액공제 한도부터 정리',
+      paragraphs: [
+        '세액공제를 받을 수 있는 한도는 연금저축만 넣을 때 연 600만원, 여기에 IRP를 더하면 최대 900만원입니다. 두 계좌를 합쳐 900만원이 상한이라, 연금저축 600만원을 먼저 채우고 남은 300만원을 IRP에 넣는 조합이 가장 흔합니다.',
+        'IRP만으로도 900만원을 다 채울 수 있지만, IRP는 위험자산 편입이 70%로 제한됩니다. 주식형 ETF 비중을 크게 가져가고 싶다면 연금저축 한도를 먼저 쓰고 IRP는 나머지를 담는 식이 유연합니다.',
+      ],
+    },
+    {
+      heading: '총급여로 갈리는 공제율과 환급액',
+      paragraphs: [
+        '돌려받는 비율은 소득에 따라 두 갈래입니다. 총급여 5,500만원(종합소득 4,500만원) 이하면 16.5%, 넘으면 13.2%가 적용됩니다. 한도 900만원을 다 채우면 각각 148만5천원, 118만8천원을 환급받는 셈입니다.',
+        '공제율은 갈려도 한도 900만원은 소득과 무관하게 같습니다. 연봉이 높아 13.2%를 적용받더라도 넣은 만큼 돌려받는 구조라, 여력이 되면 한도까지 채우는 편이 유리합니다.',
+      ],
+    },
+    {
+      heading: '12월 31일이 마감선인 이유',
+      paragraphs: [
+        '세액공제는 그해 계좌에 실제로 입금된 금액을 기준으로 잡습니다. 12월 31일까지 들어온 돈만 올해 연말정산에 반영되고, 하루 늦은 1월 1일 입금분은 이듬해로 넘어갑니다.',
+        '그래서 매달 나눠 넣지 못했다면 연말에 남은 한도를 한꺼번에 넣어도 됩니다. 한 번에 넣든 나눠 넣든 그해 총 납입액이 같으면 공제액도 같으니, 마감 전 잔여 한도를 채우는 것이 핵심입니다.',
+      ],
+    },
+    {
+      heading: '남은 한도 계산하는 법',
+      paragraphs: [
+        '올해 얼마를 더 넣어야 할지는 이미 넣은 금액을 빼면 나옵니다. 홈택스 연금계좌 납입내역이나 증권사 앱에서 올해 누적 납입액을 확인하고, 900만원에서 그 값을 빼면 남은 한도가 됩니다.',
+        '예를 들어 매달 40만원씩 넣어 480만원을 채웠다면 남은 한도는 420만원입니다. 다만 900만원을 넘겨 넣은 금액은 그해 공제에 잡히지 않으니, 한도 안에서 채우는 것을 먼저 확인하세요.',
+      ],
+    },
+    {
+      heading: '한도를 넘겼거나 못 채웠을 때',
+      paragraphs: [
+        '실수로 한도를 넘겨 넣었어도 그 돈이 사라지지는 않습니다. 초과 납입분은 다음 해로 이월해 공제받도록 신청할 수 있어, 올해 못 받은 공제를 이듬해에 이어 받을 수 있습니다.',
+        '반대로 여력이 부족하면 무리해서 900만원을 다 채울 필요는 없습니다. 연금계좌는 만 55세 전에 헐면 세액공제받은 금액에 기타소득세가 붙으니, 오래 묻어 둘 수 있는 금액만 넣는 편이 안전합니다. 한도와 공제율은 바뀔 수 있으니 납입 전 그해 기준을 확인하세요. 투자 판단과 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '연금저축과 IRP 중 어디부터 채우나요?',
+      answer:
+        '연금저축 600만원을 먼저 채우고 남은 300만원을 IRP에 넣는 조합이 많이 쓰입니다. 주식형 ETF 비중을 크게 가져가려면 위험자산 70% 제한이 없는 연금저축을 먼저 쓰는 편이 유연합니다.',
+    },
+    {
+      question: '12월에 한꺼번에 넣어도 세액공제가 되나요?',
+      answer:
+        '됩니다. 그해 총 납입액을 기준으로 공제하므로 매달 나눠 넣든 연말에 몰아넣든 결과는 같습니다. 다만 12월 31일까지 입금이 완료돼야 올해분으로 잡힙니다.',
+    },
+    {
+      question: '공제 한도 900만원을 넘게 넣으면 어떻게 되나요?',
+      answer:
+        '초과 납입분은 다음 해로 이월해 공제받도록 신청할 수 있습니다. 올해 한도를 넘긴 금액이 사라지지 않고 이듬해 공제로 이어집니다.',
+    },
+    {
+      question: '연봉이 5,500만원을 넘으면 공제율이 얼마인가요?',
+      answer:
+        '총급여 5,500만원을 넘으면 13.2%가 적용됩니다. 900만원을 다 채우면 약 118만8천원을 환급받고, 5,500만원 이하라면 16.5%로 약 148만5천원을 돌려받습니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-20) */
+const overseasEtfYearEndLossHarvesting: GuideDef = {
+  slug: 'overseas-etf-year-end-loss-harvesting',
+  title: '연말 해외 ETF 손절 손익통산, 양도세 250만원 공제 활용',
+  tagline: '평가손실 종목을 그해 안에 팔아 이익과 합치면 양도세가 준다',
+  description:
+    '해외 ETF와 해외주식은 1년간 실현한 이익과 손실을 합친 순이익에서 250만원을 뺀 금액에 22%가 붙습니다. 평가손실 난 종목을 12월 31일 전에 팔아 이익과 합치면 세금이 줄어드는 손익통산 원리와 결제일 주의점을 정리했습니다.',
+  keywords: ['해외 ETF 양도소득세', '해외주식 손익통산', '연말 손절 절세', '양도소득세 250만원 공제', '해외 ETF 결제일', '해외주식 양도세 신고'],
+  section: '해외상장 가이드',
+  lastReviewed: '2026-08-20',
+  answer:
+    '해외 ETF와 해외주식은 1년간 실현한 이익과 손실을 합쳐(손익통산) 순이익에서 250만원을 뺀 금액에 22%(양도세 20%에 지방소득세 2%)를 매깁니다. 그래서 평가손실이 난 종목을 12월 31일 전에 팔아 그해 이익과 합치면 과세 대상 순이익이 줄어듭니다. 연말이 이 손익통산을 맞출 수 있는 마지막 시점입니다.',
+  keyPoints: [
+    '해외 상장 ETF와 해외주식 양도차익은 연 250만원 기본공제 뒤 22%로 과세하고, 다음 해 5월에 자진 신고합니다.',
+    '같은 해 안에 실현한 이익과 손실만 통산합니다. 12월 31일까지 매도가 끝난 손실만 올해 이익과 합쳐집니다.',
+    '결제일을 봐야 합니다. 해외주식은 결제까지 며칠 걸려, 연말 막판 매도는 결제가 해를 넘겨 통산에서 빠질 수 있습니다.',
+    '손절 뒤 같은 종목을 다시 사도 되지만, 목적이 절세라면 재매수 시점의 가격과 환율 변동을 함께 따져야 실익이 남습니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '해외 ETF를 팔 때 양도소득세를 줄이는 방법이 있는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494096130' },
+    { summary: '해외상장 ETF 양도소득세를 어떻게 신고하는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493274485' },
+  ],
+  comparisonTable: {
+    caption: '연말 손절로 달라지는 양도세, 이익 700만원 가정',
+    columns: ['구분', '손절 안 함', '연말 손절 후'],
+    rows: [
+      ['실현이익', '700만원', '700만원'],
+      ['실현손실', '0', '300만원'],
+      ['통산 순이익', '700만원', '400만원'],
+      ['과세표준(250만 공제)', '450만원', '150만원'],
+      ['양도세(22%)', '약 99만원', '약 33만원'],
+    ],
+  },
+  sections: [
+    {
+      heading: '해외 ETF 양도소득세 구조부터 확인',
+      paragraphs: [
+        '미국 등 해외에 상장된 ETF와 해외주식은 국내주식과 세금 체계가 다릅니다. 1년(1월 1일부터 12월 31일까지) 동안 실현한 매매손익을 모두 합친 순이익에서 250만원을 기본공제하고, 남은 금액에 22%를 매깁니다.',
+        '이 22%는 양도소득세 20%에 지방소득세 2%를 더한 값입니다. 세금은 매도한 해가 아니라 다음 해 5월에 직접 신고하고 납부하므로, 2026년에 판 종목은 2027년 5월에 신고합니다.',
+      ],
+    },
+    {
+      heading: '손익통산이 세금을 줄이는 원리',
+      paragraphs: [
+        '핵심은 이익과 손실을 합쳐서 세금을 매긴다는 점입니다. A 종목에서 700만원 이익이 났고 B 종목이 300만원 손실 상태라면, B를 팔아 손실을 실현하면 그해 순이익이 400만원으로 줄어듭니다.',
+        '앞의 표처럼 순이익 700만원일 때 양도세는 약 99만원이지만, 300만원 손실을 실현해 400만원으로 낮추면 약 33만원으로 줄어듭니다. 평가손실로 들고만 있으면 통산되지 않고, 실제로 팔아야 손실이 잡힙니다.',
+      ],
+    },
+    {
+      heading: '왜 12월이 마지막 기회인가',
+      paragraphs: [
+        '손익통산은 같은 해에 실현한 손익끼리만 됩니다. 올해 난 이익을 줄이려면 손실도 올해 안에 실현해야 하므로, 12월 31일이 지나면 그 손실은 이듬해 몫이 되어 올해 이익과 합칠 수 없습니다.',
+        '주의할 점은 결제일입니다. 해외주식은 매도 체결 뒤 실제 결제까지 며칠이 걸립니다. 연말 마지막 거래일에 팔면 결제가 해를 넘겨 올해 손익에 안 잡힐 수 있으니, 며칠 여유를 두고 매도하는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '손절 후 재매수, 이건 조심',
+      paragraphs: [
+        '장기적으로 계속 보유하고 싶은 종목이라면 손실만 실현하고 다시 사는 방법도 있습니다. 손실을 확정해 통산에 쓰면서 보유는 이어가는 셈입니다. 국내는 미국식 워시세일 규정이 그대로 적용되지 않지만, 제도는 바뀔 수 있으니 신고 전 기준을 확인하는 편이 좋습니다.',
+        '다만 파는 순간과 다시 사는 순간의 가격이 다를 수 있고, 그 사이 환율도 움직입니다. 세금 몇십만원을 아끼려다 재매수 가격이 올라 더 큰 비용을 치를 수 있어, 절세 효과와 가격·환율 위험을 저울질해야 합니다.',
+      ],
+    },
+    {
+      heading: '250만원 공제를 해마다 나눠 쓰기',
+      paragraphs: [
+        '기본공제 250만원은 해마다 새로 주어집니다. 이익이 크게 쌓인 종목을 한 해에 몰아서 팔면 공제 한 번만 쓰지만, 두 해에 나눠 팔면 250만원 공제를 두 번 활용할 수 있습니다.',
+        '연말은 그해 손익을 정리하며 다음 해 매도 계획까지 세우기 좋은 시점입니다. 이익 실현을 두 해로 분산하고 손실을 같은 해에 맞춰 통산하면 세 부담을 낮출 수 있습니다. 세율과 공제 한도는 개정될 수 있으니 매도 전 최신 기준을 확인하고, 투자 판단과 책임은 본인 몫이라는 점을 염두에 두세요.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '해외 ETF 양도소득세는 언제 신고하나요?',
+      answer:
+        '매도한 다음 해 5월에 직접 신고하고 납부합니다. 2026년에 판 종목은 2027년 5월이 신고 기한입니다. 연 250만원을 공제한 순이익에 22%가 매겨집니다.',
+    },
+    {
+      question: '평가손실만 있어도 세금이 줄어드나요?',
+      answer:
+        '아닙니다. 들고만 있는 평가손실은 통산되지 않습니다. 실제로 팔아 손실을 실현해야 그해 이익과 합쳐져 과세 대상 순이익이 줄어듭니다.',
+    },
+    {
+      question: '연말 마지막 날에 팔아도 올해 손익으로 잡히나요?',
+      answer:
+        '결제일 기준으로 판단하므로 주의가 필요합니다. 해외주식은 결제까지 며칠 걸려 마지막 거래일 매도는 결제가 해를 넘길 수 있습니다. 며칠 여유를 두고 파는 편이 안전합니다.',
+    },
+    {
+      question: '손절한 종목을 바로 다시 사도 되나요?',
+      answer:
+        '다시 살 수 있습니다. 다만 절세가 목적이라면 재매수 시점의 가격과 환율 변동을 함께 따져야 합니다. 아낀 세금보다 가격 상승 부담이 더 클 수도 있습니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-20) */
+const etfTotalExpenseVsTer: GuideDef = {
+  slug: 'etf-total-expense-vs-ter',
+  title: 'ETF 총보수와 실부담비용 차이, 진짜 내는 비용 확인법',
+  tagline: '공시 총보수만 보면 놓치는 기타비용과 매매중개수수료',
+  description:
+    'ETF 총보수는 운용·판매·수탁 보수만 더한 값이고, 실제로는 기타비용과 매매중개수수료가 붙은 실부담비용이 빠져나갑니다. 표면 총보수가 낮아도 실부담이 더 클 수 있어, 금융투자협회 공시에서 진짜 비용을 확인하는 법을 정리했습니다.',
+  keywords: ['ETF 총보수', 'ETF 실부담비용', 'ETF 총보수 차이', 'ETF 기타비용', 'ETF 수수료 비교', 'ETF 실부담비용 확인'],
+  section: 'ETF 비용 가이드',
+  lastReviewed: '2026-08-20',
+  answer:
+    'ETF 총보수는 운용, 판매, 수탁, 사무관리 보수를 더한 값으로 상품정보에 크게 표시되는 숫자입니다. 하지만 실제로 빠져나가는 비용은 여기에 기타비용과 매매중개수수료가 더해진 실부담비용입니다. 표면 총보수가 낮아도 실부담이 더 클 수 있어, 금융투자협회 전자공시의 실부담비용률로 비교하는 편이 정확합니다.',
+  keyPoints: [
+    '총보수는 운용·판매·수탁·사무관리 보수를 합한 값으로, MTS와 거래소 상품정보에 크게 표시됩니다.',
+    '실부담비용은 총보수에 기타비용(지수사용료·회계감사·보관수수료 등)과 매매중개수수료를 더한 실제 부담액입니다.',
+    '실부담비용이 총보수보다 1.5배 안팎 큰 사례도 있습니다. 표면 연 0.2%가 실제로는 0.3%를 넘기도 합니다.',
+    '정확한 값은 금융투자협회 전자공시나 운용사 월간 운용보고서의 실부담비용률에서 확인할 수 있습니다.',
+  ],
+  sources: [
+    { label: '금융투자협회 전자공시', url: 'https://dis.kofia.or.kr' },
+    { label: '한국거래소', url: 'https://www.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ETF 총보수가 무엇이고 어디까지 포함되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493380947' },
+    { summary: 'ETF 운용 보수가 어떤 영향을 주는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=490272492' },
+  ],
+  comparisonTable: {
+    caption: '총보수와 실부담비용, 무엇이 다른가',
+    columns: ['구분', '총보수', '실부담비용'],
+    rows: [
+      ['포함 항목', '운용·판매·수탁·사무관리', '총보수에 기타비용·매매중개'],
+      ['표시 위치', 'MTS·거래소 상품정보', '금융투자협회 전자공시'],
+      ['성격', '미리 정해진 고정 보수', '기간이 끝난 뒤 집계'],
+      ['체감', '실제보다 낮게 보임', '실제 부담에 가까움'],
+    ],
+  },
+  sections: [
+    {
+      heading: '총보수에 들어가는 항목',
+      paragraphs: [
+        'ETF 총보수는 상품을 굴리는 데 드는 기본 보수를 합한 값입니다. 운용사가 받는 운용보수, 판매사 몫의 판매보수, 자산을 맡아 두는 수탁보수, 장부를 관리하는 사무관리보수가 여기에 들어갑니다.',
+        '이 총보수는 자산운용사 홈페이지와 MTS, 거래소 상품정보에 연 0.05%, 0.3% 같은 형태로 크게 표시됩니다. 투자자가 상품을 고를 때 가장 먼저 보는 숫자이지만, 실제로 부담하는 비용의 전부는 아닙니다.',
+      ],
+    },
+    {
+      heading: '총보수에 안 잡히는 숨은 비용',
+      paragraphs: [
+        '총보수 바깥에도 비용이 있습니다. 대표적인 것이 기타비용으로, 지수 사용료, 회계감사비, 해외자산 보관수수료, 예탁결제 보수 같은 항목이 들어갑니다. 이 비용은 운용 과정에서 실제로 지출되지만 총보수에는 포함되지 않습니다.',
+        '또 하나는 매매중개수수료입니다. ETF가 지수를 따라가려면 편입 종목을 사고파는데, 이때 붙는 거래 비용입니다. 회전율이 높은 액티브 상품일수록 이 비용이 커지는 경향이 있습니다.',
+      ],
+    },
+    {
+      heading: '실부담비용이 총보수보다 큰 이유',
+      paragraphs: [
+        '실부담비용은 총보수에 기타비용과 매매중개수수료를 모두 더한 값입니다. 그래서 표면에 적힌 총보수보다 항상 크거나 같습니다. 사례에 따라 실부담비용이 총보수의 1.5배 안팎에 이르기도 합니다.',
+        '겉으로 연 0.2%로 보이던 상품이 실제로는 0.3%를 넘길 수 있다는 뜻입니다. 장기로 오래 담을수록 이 차이가 복리로 수익률을 갉아먹으니, 비슷한 지수를 담은 상품이라면 표면 총보수보다 실부담비용으로 비교해야 합니다.',
+      ],
+    },
+    {
+      heading: '실부담비용 확인하는 곳',
+      paragraphs: [
+        '실부담비용은 상품 화면의 총보수 옆에 나오지 않는 경우가 많습니다. 가장 정확한 곳은 금융투자협회 전자공시 서비스로, 상품별 총보수와 기타비용, 매매중개수수료를 합한 실부담비용률을 확인할 수 있습니다.',
+        '운용사가 매달 내는 월간 운용보고서에도 실부담비용률이 실립니다. ETF 비교 사이트나 증권사 앱의 비용 항목에서 이 값을 제공하기도 하니, 표면 총보수만 보지 말고 실부담비용까지 함께 확인하는 습관이 좋습니다.',
+      ],
+    },
+    {
+      heading: '비슷한 ETF 고를 때 비용 비교법',
+      paragraphs: [
+        '같은 지수를 따라가는 ETF가 여럿일 때는 비용이 장기 수익률을 가르는 핵심 변수입니다. 표면 총보수가 같아도 기타비용과 매매중개수수료 차이로 실부담이 벌어질 수 있으니, 실부담비용률을 나란히 놓고 비교하는 편이 낫습니다.',
+        '다만 비용만으로 결정할 일은 아닙니다. 추적오차, 거래량과 호가 스프레드, 운용 규모도 실제 성과에 영향을 줍니다. 비용은 중요한 기준 하나일 뿐이며, 상품 설명서와 공시를 함께 확인하고 투자 판단은 본인 책임으로 내리는 것이 안전합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ETF 총보수와 실부담비용은 무엇이 다른가요?',
+      answer:
+        '총보수는 운용·판매·수탁·사무관리 보수를 합한 값이고, 실부담비용은 여기에 기타비용과 매매중개수수료를 더한 실제 부담액입니다. 실부담비용이 총보수보다 크거나 같습니다.',
+    },
+    {
+      question: '실부담비용은 어디서 확인하나요?',
+      answer:
+        '금융투자협회 전자공시 서비스나 운용사 월간 운용보고서에서 실부담비용률을 확인할 수 있습니다. 상품정보에 크게 뜨는 총보수만으로는 실제 비용을 알기 어렵습니다.',
+    },
+    {
+      question: '실부담비용이 총보수보다 얼마나 큰가요?',
+      answer:
+        '상품과 회전율에 따라 다르지만, 실부담비용이 총보수의 1.5배 안팎에 이르는 사례도 있습니다. 표면 0.2%가 실제로는 0.3%를 넘기도 합니다.',
+    },
+    {
+      question: '비슷한 ETF는 총보수가 낮은 걸 고르면 되나요?',
+      answer:
+        '표면 총보수보다 실부담비용으로 비교하는 편이 정확합니다. 다만 추적오차, 거래량, 운용 규모도 성과에 영향을 주니 비용 하나만으로 결정하지는 마세요.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-20) */
+const stockInheritanceValuationTax: GuideDef = {
+  slug: 'stock-inheritance-valuation-tax',
+  title: '상속받은 주식 평가액, 사망일 전후 2개월 종가 평균',
+  tagline: '상속일 당일 시세가 아니라 4개월 평균으로 정해진다',
+  description:
+    '상장주식을 상속받으면 평가액은 사망일 당일 시세가 아니라 전후 각 2개월, 총 4개월간 종가의 평균으로 정해집니다. 이 평가액으로 상속세를 계산하는 원리와 신고 기한 6개월, 상속공제로 세금이 갈리는 지점을 정리했습니다.',
+  keywords: ['주식 상속 평가', '상속 주식 상속세', '상장주식 평가 4개월', '주식 상속세 계산', '상속 주식 종가 평균', '상속세 신고 기한'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-20',
+  answer:
+    '상장주식을 상속받으면 평가액은 사망일(평가기준일) 당일 시세가 아니라, 그 전후 각 2개월씩 총 4개월간 매일 종가의 평균으로 정해집니다. 급등하거나 급락한 하루로 세금이 정해지지 않도록 완충하는 방식입니다. 이 평가액을 상속재산에 합산해 상속세를 계산하고, 신고는 사망일이 속한 달 말일부터 6개월 안에 합니다.',
+  keyPoints: [
+    '상장주식 평가액은 사망일 이전 2개월과 이후 2개월, 총 4개월간 매일 종가의 단순평균으로 산정합니다.',
+    '상속세 신고와 납부 기한은 사망일이 속한 달의 말일부터 6개월 이내입니다.',
+    '일괄공제 5억원, 배우자공제 최소 5억원 등 상속공제로 실제 과세 여부가 크게 갈립니다.',
+    '최대주주와 특수관계인 지분은 20% 할증평가 등 별도 규정이 적용돼, 소액 상속과는 계산이 다릅니다.',
+  ],
+  sources: [
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+    { label: '국가법령정보센터', url: 'https://www.law.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '상속받은 주식의 상속세가 어떻게 계산되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=492831953' },
+    { summary: '사망 직전 상장주식을 증여할 때 증여세와 상속세가 별도인지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=493361205' },
+  ],
+  comparisonTable: {
+    caption: '상속재산 평가 방식, 상장주식과 예금·현금',
+    columns: ['구분', '상장주식', '예금·현금'],
+    rows: [
+      ['평가 기준', '전후 2개월 종가 평균', '잔액 그대로'],
+      ['기준일', '사망일', '사망일'],
+      ['변동성 반영', '4개월 평균으로 완화', '없음'],
+      ['신고 기한', '6개월 이내', '6개월 이내'],
+    ],
+  },
+  sections: [
+    {
+      heading: '상속 주식은 언제 시세로 평가하나',
+      paragraphs: [
+        '주식을 상속받으면 가장 먼저 궁금한 것이 얼마로 값을 매기느냐입니다. 상장주식은 사망일을 평가기준일로 삼되, 그날 하루의 종가가 아니라 전후 각 2개월씩 총 4개월간 매일의 거래소 종가를 단순평균해 평가액을 정합니다.',
+        '예를 들어 사망일이 6월 15일이면 4월 15일부터 8월 15일까지의 종가를 모두 더해 평균을 냅니다. 거래가 없던 휴일은 빼고 실제 거래일 종가만 계산에 넣습니다.',
+      ],
+    },
+    {
+      heading: '4개월 평균으로 정하는 이유',
+      paragraphs: [
+        '하루 종가로만 평가하면 그날 우연히 주가가 급등하거나 급락했을 때 세금이 크게 흔들립니다. 4개월 평균은 이런 단기 변동을 완충해, 특정 하루의 시세로 상속세가 좌우되지 않도록 합니다.',
+        '이 방식은 상속인에게 유리할 때도 불리할 때도 있습니다. 사망 전후 주가가 크게 올랐다면 평균이 당일 시세보다 낮아 유리하고, 반대로 계속 내렸다면 평균이 더 높게 잡힐 수 있습니다. 시세를 임의로 고를 수는 없는 구조입니다.',
+      ],
+    },
+    {
+      heading: '상속세 신고 기한과 절차',
+      paragraphs: [
+        '상속세는 사망일이 속한 달의 말일부터 6개월 이내에 신고하고 납부해야 합니다. 6월 15일 사망이라면 12월 31일까지가 기한입니다. 이 기간을 넘기면 가산세가 붙을 수 있습니다.',
+        '주식은 상속인 명의로 이전하는 명의개서 절차도 함께 진행합니다. 증권사에 상속 관련 서류를 내고 계좌를 상속인 앞으로 옮긴 뒤, 평가액을 반영해 상속세를 신고하는 흐름입니다.',
+      ],
+    },
+    {
+      heading: '상속공제로 갈리는 실제 세금',
+      paragraphs: [
+        '평가액이 나와도 곧바로 세금이 되는 것은 아닙니다. 상속에는 여러 공제가 있어, 일괄공제 5억원이나 배우자가 있으면 최소 5억원의 배우자공제가 적용됩니다. 상속재산이 이 공제 범위 안이면 실제로 낼 세금이 없을 수 있습니다.',
+        '반대로 주식 외에 부동산이나 예금이 많아 합산 재산이 공제를 넘으면 초과분에 10%에서 50%의 누진세율이 매겨집니다. 공제 항목과 한도는 가족 구성과 재산 형태에 따라 달라지니, 전체 상속재산을 함께 계산해 봐야 합니다.',
+      ],
+    },
+    {
+      heading: '최대주주 지분은 규정이 다르다',
+      paragraphs: [
+        '지금까지는 소액으로 주식을 상속받는 일반적인 경우입니다. 회사를 지배하는 최대주주나 특수관계인이 가진 지분은 경영권 프리미엄을 반영해 평가액에 20%를 더하는 할증평가가 적용될 수 있습니다.',
+        '비상장주식은 시세가 없어 별도의 보충적 평가방법을 씁니다. 지분율이 크거나 비상장 주식이 섞여 있으면 계산이 복잡해지므로, 세무 전문가의 확인을 받는 편이 안전합니다. 세법과 공제 한도는 개정될 수 있으니 신고 전 국세청 기준을 확인하고, 구체적인 판단은 전문가 상담을 권합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '상속받은 주식은 사망일 당일 시세로 평가하나요?',
+      answer:
+        '아닙니다. 상장주식은 사망일 전후 각 2개월, 총 4개월간의 매일 종가를 단순평균해 평가합니다. 특정 하루의 시세로 세금이 정해지지 않도록 하는 방식입니다.',
+    },
+    {
+      question: '상속세는 언제까지 신고해야 하나요?',
+      answer:
+        '사망일이 속한 달의 말일부터 6개월 이내에 신고하고 납부해야 합니다. 기한을 넘기면 가산세가 붙을 수 있으니 서류 준비를 서두르는 편이 좋습니다.',
+    },
+    {
+      question: '주식을 상속받으면 무조건 상속세를 내나요?',
+      answer:
+        '아닙니다. 일괄공제 5억원, 배우자공제 최소 5억원 등 상속공제가 있어, 전체 상속재산이 공제 범위 안이면 낼 세금이 없을 수 있습니다. 전체 재산을 합산해 판단합니다.',
+    },
+    {
+      question: '최대주주 지분도 같은 방식으로 평가하나요?',
+      answer:
+        '최대주주와 특수관계인 지분은 경영권 가치를 반영해 20% 할증평가가 적용될 수 있습니다. 비상장주식은 별도의 보충적 평가방법을 쓰므로 소액 상속과 계산이 다릅니다.',
+    },
+  ],
+};
+
+/** 지식iN 질문 수요 기반 (2026-08-20) */
+const isaLongMaturityDateDrawback: GuideDef = {
+  slug: 'isa-long-maturity-date-drawback',
+  title: 'ISA 만기 길게 잡으면 유리할까, 3년 후 재가입과 비교',
+  tagline: '만기는 3년부터 자유롭게, 길게 두는 것과 재가입의 득실',
+  description:
+    'ISA는 의무가입 3년만 지나면 언제든 해지할 수 있고 만기는 수십 년까지 자유롭게 잡습니다. 만기를 길게 두는 것과 3년 뒤 해지·재가입으로 비과세 한도를 새로 받는 방법 중 무엇이 유리한지, 금융소득 규모별로 정리했습니다.',
+  keywords: ['ISA 만기일', 'ISA 만기 설정', 'ISA 만기 길게', 'ISA 3년 재가입', 'ISA 비과세 한도', 'ISA 만기 단점'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-08-20',
+  answer:
+    'ISA는 의무가입 3년만 지나면 불이익 없이 해지할 수 있고, 만기는 3년부터 수십 년까지 자유롭게 정합니다. 만기를 길게 두면 한 계좌를 계속 굴리며 비과세 혜택을 이어가기 편하지만, 3년마다 해지하고 다시 가입해 비과세 한도를 새로 받는 방법을 포기하는 셈입니다. 어느 쪽이 유리한지는 금융소득 규모에 달렸습니다.',
+  keyPoints: [
+    '의무가입기간은 3년, 만기는 3년부터 수십 년까지 자유롭게 설정합니다. 3년만 채우면 불이익 없이 해지할 수 있습니다.',
+    '만기를 길게 두면 계좌 관리가 편하고, 금융소득종합과세 대상이 될 사람은 분리과세 창구를 오래 유지해 유리합니다.',
+    '3년 뒤 해지하고 재가입하면 비과세 한도(일반형 200만원, 서민형 400만원)가 초기화돼 새로 받습니다.',
+    '재가입에는 함정이 있습니다. 3년 사이 소득이 늘면 서민형 요건을 못 채워 일반형으로만 다시 가입될 수 있습니다.',
+  ],
+  sources: [
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+    { label: '금융감독원', url: 'https://www.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 만기를 2999년처럼 아주 길게 설정하면 어떤 단점이 있는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494588795' },
+    { summary: 'ISA 계좌를 개설하자마자 만기를 길게 연장해도 되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494628050' },
+    { summary: 'ISA 만기 10년 이상 설정이 지금도 가능한지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?docId=494627408' },
+  ],
+  comparisonTable: {
+    caption: '만기를 길게 두기와 3년 후 재가입, 무엇이 유리한가',
+    columns: ['구분', '만기 길게', '3년 후 재가입'],
+    rows: [
+      ['계좌 관리', '한 계좌 유지', '해지·재개설 반복'],
+      ['비과세 한도', '기존 한도 유지', '새 한도로 초기화'],
+      ['유리한 경우', '금융소득종합과세 대상', '비과세 한도 자주 소진'],
+      ['주의점', '한도 소진 시 추가납입 불가', '서민형 재판정 탈락 위험'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'ISA 만기일은 어떻게 정하나',
+      paragraphs: [
+        'ISA를 열 때 만기일을 정합니다. 여기서 헷갈리는 것이 의무가입기간과 만기의 차이입니다. 의무가입기간은 3년으로 고정이고, 이 3년만 채우면 세제 혜택을 유지한 채 언제든 해지할 수 있습니다.',
+        '만기는 이와 별개로 3년부터 수십 년까지 자유롭게 잡습니다. 일부 투자자가 만기를 2999년처럼 아주 길게 설정하는 것도 이 때문입니다. 만기를 길게 잡아도 3년만 지나면 중도 해지에 불이익이 없어, 사실상 하한선만 3년인 셈입니다.',
+      ],
+    },
+    {
+      heading: '만기를 길게 잡으면 좋은 점',
+      paragraphs: [
+        '만기를 길게 두면 한 계좌를 오래 굴릴 수 있습니다. 만기가 되면 계좌가 종료되고 재가입 절차를 밟아야 하는데, 만기를 멀리 잡으면 그 번거로움 없이 계속 투자할 수 있습니다.',
+        '특히 앞으로 금융소득종합과세 대상이 될 가능성이 있다면 길게 잡는 편이 유리합니다. ISA 안의 이익은 비과세 한도를 넘어도 9.9%로 분리과세되므로, 이 계좌를 오래 유지하는 것 자체가 종합과세를 피하는 창구가 됩니다.',
+      ],
+    },
+    {
+      heading: '3년 후 해지·재가입이 유리한 경우',
+      paragraphs: [
+        '반대로 만기를 짧게 잡고 3년마다 해지한 뒤 다시 가입하는 방법도 있습니다. ISA는 만기나 해지 때 계좌 안 순이익을 200만원(서민형 400만원)까지 비과세하는데, 해지하고 재가입하면 이 비과세 한도가 초기화되어 새로 받습니다.',
+        '3년 동안 낸 이익이 비과세 한도를 꽉 채울 만큼 크다면, 그 시점에 해지해 혜택을 확정하고 새 계좌에서 다시 한도를 쌓는 편이 이득일 수 있습니다. 이익이 한도를 넘어 분리과세로 넘어가기 전에 끊어 주는 셈입니다.',
+      ],
+    },
+    {
+      heading: '재가입 전에 확인할 서민형 요건',
+      paragraphs: [
+        '재가입에는 놓치기 쉬운 함정이 있습니다. 서민형은 비과세 한도가 400만원으로 일반형의 두 배지만, 총급여 5,000만원(종합소득 3,800만원) 이하 같은 소득 요건을 충족해야 합니다.',
+        '가입 후 3년 사이 연봉이 올라 이 요건을 넘기면, 해지하고 다시 가입할 때는 일반형으로만 가능해 비과세 한도가 200만원으로 줄어듭니다. 재가입으로 한도를 새로 받으려다 오히려 유형이 낮아질 수 있어, 해지 전에 지금 소득으로도 서민형 요건을 채우는지 확인해야 합니다.',
+      ],
+    },
+    {
+      heading: '내 상황에서 만기를 정하는 기준',
+      paragraphs: [
+        '정답은 하나가 아니라 금융소득 규모에 달렸습니다. 이자·배당이 많아 종합과세가 걱정되는 사람은 만기를 길게 잡아 분리과세 창구를 오래 유지하는 편이 낫습니다. 반대로 3년마다 비과세 한도를 꽉 채울 만큼 이익이 나는 사람은 짧게 잡고 재가입을 반복하는 편이 유리할 수 있습니다.',
+        '처음부터 하나로 정하기 어렵다면 만기를 넉넉히 길게 잡아 두는 편이 무난합니다. 만기가 길어도 3년만 지나면 언제든 해지할 수 있어 선택지가 열려 있기 때문입니다. 세법과 요건은 바뀔 수 있으니 가입 전 최신 기준을 확인하고, 투자 판단과 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA 만기를 아주 길게 잡으면 손해인가요?',
+      answer:
+        '반드시 손해는 아닙니다. 3년만 지나면 언제든 해지할 수 있어 선택지가 열려 있습니다. 다만 계좌를 계속 유지하면 3년마다 비과세 한도를 새로 받는 재가입 방법은 쓰지 못합니다.',
+    },
+    {
+      question: '의무가입기간 3년과 만기는 다른 건가요?',
+      answer:
+        '다릅니다. 의무가입기간 3년은 세제 혜택을 지키려면 채워야 하는 최소 기간이고, 만기는 3년부터 수십 년까지 자유롭게 정하는 계좌 종료 시점입니다.',
+    },
+    {
+      question: '3년마다 해지하고 재가입하면 뭐가 좋나요?',
+      answer:
+        '해지할 때 순이익을 비과세받고, 재가입하면 비과세 한도가 초기화돼 새로 받습니다. 3년 안에 이익이 한도를 채울 만큼 크다면 혜택을 자주 실현할 수 있어 유리합니다.',
+    },
+    {
+      question: '재가입할 때 서민형이 안 될 수도 있나요?',
+      answer:
+        '가능합니다. 서민형은 총급여 5,000만원 이하 같은 소득 요건이 있어, 3년 사이 소득이 늘면 일반형으로만 재가입돼 비과세 한도가 400만원에서 200만원으로 줄 수 있습니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  pensionSavingsYearEndFill,
+  overseasEtfYearEndLossHarvesting,
+  etfTotalExpenseVsTer,
+  stockInheritanceValuationTax,
+  isaLongMaturityDateDrawback,
   stockOrderRejectedReasons,
   dividendRecordDateReform,
   retireeDividendEtfMonthlyIncome,
@@ -21643,6 +22136,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-20 · 지식iN 질문 수요 기반 (연말 연금저축·IRP 세액공제 한도 채우기·연말 해외 ETF 손절 손익통산·ETF 총보수 vs 실부담비용·상장주식 상속 평가와 상속세·ISA 만기 길게 vs 3년 재가입)
+  'pension-savings-year-end-fill': '2026-08-20',
+  'overseas-etf-year-end-loss-harvesting': '2026-08-20',
+  'etf-total-expense-vs-ter': '2026-08-20',
+  'stock-inheritance-valuation-tax': '2026-08-20',
+  'isa-long-maturity-date-drawback': '2026-08-20',
   // 기반 가이드 14편 — 발행일이 비어 있어 /guide/latest 정렬과 sitemap lastmod에서 빠졌다.
   // 각 슬러그가 guides.ts에 처음 들어온 커밋 날짜로 채웠다(git log -S 확인). (2026-08-12)
   'monthly-dividend': '2026-04-25',
@@ -21956,12 +22455,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money', 'etf-total-expense-vs-ter'],
   },
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'pension-savings-year-end-fill', 'overseas-etf-year-end-loss-harvesting', 'stock-inheritance-valuation-tax', 'isa-long-maturity-date-drawback'],
   },
   {
     title: '배당·인컴',

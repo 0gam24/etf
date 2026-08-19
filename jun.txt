@@ -2438,3 +2438,52 @@ A. 실제 코드(src/lib/guides.ts + src/app/guide/[slug]/page.tsx) 기준으로
   - 직답은 결론만, 수치는 본문에
   - 핵심 포인트는 본문 요약이 아니라 본문에 없는 판단·조건·비교 결과
   - 소제목만 봐도 무슨 문단인지 알게. 의문형은 1~2개까지
+
+## 2026-08-20 · [가이드 발행 · 지식iN 수요 기반 5편]
+
+### 발행 5편 (슬롯 배분: 계절 선행 2 + 상시 최대수요 1 + 중간부스트 1 + 롱테일 1)
+
+1. 연말 연금저축·IRP 한도 채우기, 세액공제 최대 148만원 (slug: pension-savings-year-end-fill)
+   - 출처 질문: 연말정산 앞두고 연금저축·IRP 얼마 넣어야 세액공제 최대(docId 492609996), 연금저축·IRP·ISA 한도(493739620), 연금저축 세액공제 문의(494093073)
+   - 검증: 연금저축 600만·IRP포함 900만, 16.5%/13.2%, 최대 148.5만/118.8만 환급, 12/31 입금분만 당해 공제, 초과분 이월 (WebSearch 뱅크샐러드·KB·taxly 교차확인)
+   - 슬롯: 계절 선행(연말정산 시즌 11~1월 수요 선점)
+
+2. 연말 해외 ETF 손절 손익통산, 양도세 250만원 공제 활용 (slug: overseas-etf-year-end-loss-harvesting)
+   - 출처 질문: 해외 ETF 팔 때 양도세 안 내는 법(docId 494096130), 해외상장 ETF 양도세 신고(493274485)
+   - 검증: 연 250만 기본공제 후 22%(양도20+지방2), 같은 해 실현 손익통산, 결제일 주의, 다음해 5월 신고 (WebSearch KB·토스뱅크·유안타 교차확인)
+   - 슬롯: 계절 선행(연말 절세매도 시즌 12월 수요 선점)
+
+3. ETF 총보수와 실부담비용 차이, 진짜 내는 비용 확인법 (slug: etf-total-expense-vs-ter)
+   - 출처 질문: ETF 총보수가 뭔지(docId 493380947), 운용보수 영향(490272492)
+   - 검증: 총보수=운용/판매/수탁/사무관리, 실부담비용=총보수+기타비용+매매중개수수료, 1.5배 안팎 차이, 금융투자협회 전자공시 확인 (WebSearch 시사저널e·ETF check 교차확인)
+   - 슬롯: 중간 부스트(총보수 코퍼스 181건 상시 수요)
+
+4. 상속받은 주식 평가액, 사망일 전후 2개월 종가 평균 (slug: stock-inheritance-valuation-tax)
+   - 출처 질문: 상속 주식 상속세 계산(docId 492831953), 사망 직전 상장주식 증여시 증여세·상속세 별도?(493361205)
+   - 검증: 평가기준일(사망일) 전후 각 2개월 총 4개월 종가 단순평균, 신고 6개월 이내, 일괄공제 5억·배우자공제 최소 5억, 최대주주 20% 할증 (WebSearch 국세청·상증세법시행령·KB 교차확인)
+   - 슬롯: 상시 최대 수요(상속 주식 코퍼스 179건 현재 1순위 풀)
+
+5. ISA 만기 길게 잡으면 유리할까, 3년 후 재가입과 비교 (slug: isa-long-maturity-date-drawback)
+   - 출처 질문: ISA 만기 2999년 설정 단점(docId 494588795), 개설하자마자 만기연장(494628050), 만기 10년이상 설정 가능(494627408)
+   - 검증: 의무가입 3년·만기 3~수십년 자유, 만기 길게=금소세 대상 유리, 3년후 재가입=비과세 한도(200/서민형400만) 초기화, 서민형 소득요건(총급여 5천 이하) 재판정 함정 (WebSearch 금융위·농민신문·웰스매니지먼트 교차확인)
+   - 슬롯: 롱테일 확장(ISA 만기 질문 다수에서 "만기 길게 설정" 세부 각도)
+
+### 슬롯1 교체 기록
+- 최초 슬롯1 후보 "금융소득종합과세 배당 타이밍" → 2026 고배당 분리과세 한시 개정으로 사실관계 미묘/불확실 확인(WebSearch) → 사실검증 규칙에 따라 안정적 계절 주제 "연말 연금저축·IRP 한도 채우기"로 교체.
+
+### 지식iN 신규 수집
+- 클라우드 IP 네이버 차단(HTTP 000) 2회 재시도 후 실패 → 정상. 저장 코퍼스 사용.
+- 사용 코퍼스: data/keywords/kin/kin-20260812.json(2708건), kin-20260718.json
+
+### 검증
+- npm run validate:guides: ERROR 0 (신규 5편 warn 0)
+- npx tsc --noEmit: exit 0
+- npm run cf:build: exit 0, /guide 신규 5편 prerender 확인(answer-box·guide-key-points·guide-sources·citation·2026-08-20 모두 포함)
+- 금지어(파이프라인·크롤링·Gemini·GPT·LLM·에이전트·샘플데이터)·em dash: 신규 블록 0건
+
+### 발행 URL
+https://iknowhowinfo.com/guide/pension-savings-year-end-fill
+https://iknowhowinfo.com/guide/overseas-etf-year-end-loss-harvesting
+https://iknowhowinfo.com/guide/etf-total-expense-vs-ter
+https://iknowhowinfo.com/guide/stock-inheritance-valuation-tax
+https://iknowhowinfo.com/guide/isa-long-maturity-date-drawback
