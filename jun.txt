@@ -2438,3 +2438,42 @@ A. 실제 코드(src/lib/guides.ts + src/app/guide/[slug]/page.tsx) 기준으로
   - 직답은 결론만, 수치는 본문에
   - 핵심 포인트는 본문 요약이 아니라 본문에 없는 판단·조건·비교 결과
   - 소제목만 봐도 무슨 문단인지 알게. 의문형은 1~2개까지
+
+## 2026-08-20 · 발행 · 지식iN 질문 수요 기반 5편
+
+### 발행 주제와 출처 질문
+1. `etf-disparity-safe-range-buy` — ETF 괴리율, 얼마부터 조심해야 살까
+   - 출처: 지식iN 458112365(NAV 괴리율 적정 수준), 458688538(괴리율 판단 기준), 494437099(단일 종목 레버리지 관리강화)
+2. `covered-call-weekly-daily-target-difference` — 커버드콜 ETF, 위클리·데일리·타겟 차이
+   - 출처: 지식iN 494367679(타겟/위클리/데일리 차이), 493595067(JEPQ vs RISE 데일리 차이), 494150639(이름 뒤 5% 의미)
+3. `irp-pension-vs-lump-sum-tax` — IRP 수령, 연금과 일시금 세금 차이
+   - 출처: 지식iN 493203442(IRP 분배금 연금개시 방법), 494687405(퇴직연금 수령 세금), 494576861(DC형 수령 후 사용)
+4. `stock-inheritance-report-basics` — 주식 상속세, 신고 기간과 서류 준비
+   - 출처: 지식iN 475200164(주식계좌 상속시), 491808439(주식 상속세 절차), 492831953(주식 상속세 세율)
+5. `bond-etf-monthly-distribution-calc` — 채권 ETF, 월분배금이 얼마인지 계산하는 법
+   - 출처: 지식iN 488622004(월분배금 이자율 적용), 439618265(채권 ETF 분배금 결정), 417060270(미국채 ETF 분배금 vs 금리)
+
+### 사실 검증 요약
+- 괴리율 KRX 관리 기준: 국내 자산 2%, 해외 자산 5% (LP 종가 기준 관리 의무). 관리 벗어나면 관리 종목 지정 또는 LP 교체 가능
+- 커버드콜: 데일리/위클리/먼슬리는 옵션 만기 차이, 타겟은 옵션 매도 비율을 100% 이하로 낮춰 상승 여력 확보. 만기 짧을수록 프리미엄 빈도 높지만 상승 참여 줄어듦
+- IRP: 55~69세 5.5%, 70~79세 4.4%, 80세 이상 3.3% 저율분리과세. 10년 이상 분할 시 퇴직소득세 30% 감면(10년 초과분 40%). 일시금은 퇴직금 원세율 + 기타 소득 부분은 기타소득세 16.5%
+- 상속세: 상속 개시일 속한 달 말일부터 6개월(국외 거주자 9개월). 상장주식은 상속 개시일 전후 각 2개월 종가 평균. 신고세액공제 3%
+- 채권 ETF: 표면금리·YTM·듀레이션 3지표. 월 예상 분배금 ≈ 투자금 × (YTM - 총보수) ÷ 12. 금리 상승 시 분배는 늘고 NAV는 하락
+
+### 검증 결과
+- `npm run validate:guides`: ERROR 0 (243편 검증)
+- `npx tsc --noEmit`: 에러 0
+- `npm run cf:build`: 성공. `.next/server/app/guide/`에 신규 5개 HTML prerender 확인
+- 각 HTML에서 answer-box, guide-key-points, guide-sources, "citation", 2026-08-20 발행일 모두 포함 확인
+- 신규 5개 블록 em dash 0건, 금지어 0건
+
+### 지식iN 신규 수집
+- 클라우드 IP에서 kin.naver.com 접근 시도 → HTTP 403 (예상됨, 클라우드 IP 차단)
+- 저장된 코퍼스 사용: `data/keywords/kin/kin-20260812.json` (2,708 질문)
+- 코퍼스 기반 주제 선정으로 문제 없이 진행
+
+### 색인 푸시 결과
+- 이 세션은 하네스 요구로 `claude/serene-hamilton-z65g1y` 브랜치로 push 하고 draft PR #27을 열었다. main 병합 전에는 5개 URL이 production에 살아 있지 않다.
+- `npm run push:guides -- --dry`로 대상만 확인 (5편 + /guide/latest, /guide, / 총 8 URL).
+- 실제 IndexNow · Google Indexing 요청은 PR 병합 후 production 반영을 확인하고 실행하는 것이 정답. 지금 요청하면 색인 봇이 404를 받고 URL을 버릴 위험이 있어 보류.
+- 참고: 병합 후 실행 명령 → `npm run push:guides`
