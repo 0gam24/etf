@@ -21394,6 +21394,451 @@ const basicPensionWithPrivatePension: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-08-20 · ETF 괴리율 실전 매매 판단 */
+const etfDisparitySafeRangeBuy: GuideDef = {
+  slug: 'etf-disparity-safe-range-buy',
+  title: 'ETF 괴리율, 얼마부터 조심해야 살까',
+  tagline: '괴리율만 보고 사고팔지 말고 정상 범위를 알고 판단합니다',
+  description:
+    'ETF 매수 창에 뜨는 괴리율이 몇 퍼센트부터 위험 신호인지 헷갈리는 분이 많습니다. 국내와 해외 자산 상품에 각각 어느 정도가 정상 범위인지, 유동성공급자의 관리 기준과 함께 실전에서 사고팔 때 확인해야 할 지점을 정리했습니다.',
+  keywords: ['ETF 괴리율', 'ETF 괴리율 기준', 'NAV 괴리율', 'ETF 매수 타이밍', 'ETF 유동성공급자', 'ETF 관리종목'],
+  section: 'ETF 괴리율 가이드',
+  lastReviewed: '2026-08-20',
+  answer:
+    '괴리율은 시장가격과 순자산가치의 차이라, 정상 거래 시간대에는 대체로 국내 자산 상품 2% 이내, 해외 자산 상품 5% 이내로 유지되도록 유동성공급자가 관리합니다. 이 범위 안이면 크게 손해 볼 매수는 아니고, 이 범위를 자주 넘나들면 시장가로 서두르기보다 원인을 확인하고 지정가로 여유를 두는 편이 안전합니다.',
+  keyPoints: [
+    '한국거래소는 유동성공급자에게 종가 기준 괴리율을 국내 자산 2% 이내, 해외 자산 5% 이내로 관리하도록 의무를 두고 있습니다.',
+    '이 관리 범위를 반복적으로 벗어나면 관리 종목으로 지정되거나 유동성공급자 교체가 이어질 수 있어, 종목 자체의 위험 신호로 봅니다.',
+    '개장 직후·마감 직전과 해외장과 국내장이 어긋나는 시간대에는 일시적으로 괴리율이 벌어질 수 있어, 이 구간의 시장가 매수는 피하는 편이 낫습니다.',
+    '괴리율은 방향도 함께 봅니다. 시장가가 NAV보다 계속 높으면 프리미엄, 낮으면 디스카운트로 실제 손익에 반대 방향으로 반영됩니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ETF를 싸게 사려면 NAV 괴리율을 보면 되는지, 어느 정도가 적정 수준인지', url: 'https://kin.naver.com/qna/detail.naver?docId=458112365' },
+    { summary: 'ETF 상품 괴리율이 어느 정도가 적고 어느 정도가 높은 건지 판단 기준이 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=458688538' },
+    { summary: '단일 종목 레버리지 ETF 괴리율 관리 강화 규정이 무엇인지 설명이 필요하다', url: 'https://kin.naver.com/qna/detail.naver?docId=494437099' },
+  ],
+  comparisonTable: {
+    caption: '괴리율이 어느 범위면 정상 매수 가능한가',
+    columns: ['자산 유형', 'LP 관리 의무', '이 범위 안 매수 판단', '이 범위 벗어나면'],
+    rows: [
+      ['국내 주식·채권 ETF', '2% 이내', '지정가로 여유 두고 매수', '원인 확인, 시장가 매수는 보류'],
+      ['해외 자산 ETF', '5% 이내', '해외장·국내장 시차 감안해 매수', '해외장 개장 시간대에 다시 확인'],
+      ['레버리지·단일종목 파생 ETF', '관리 기준 강화 대상', '평상시 지정가만 사용', '괴리율 확대 자체가 주요 위험 신호'],
+    ],
+  },
+  sections: [
+    {
+      heading: '괴리율이 무엇을 뜻하나',
+      paragraphs: [
+        'ETF는 시장에서 사고팔리는 가격이 있고, 그 안에 담긴 주식·채권 등이 실제로 얼마인지 계산한 순자산가치(NAV)가 따로 있습니다. 이 둘의 차이를 시장가격 기준 비율로 나타낸 값이 괴리율입니다.',
+        '시장가가 NAV보다 비싸게 형성되면 플러스, 싸게 형성되면 마이너스로 표시됩니다. 완전히 0으로 붙어 있는 종목은 거의 없고, 조금씩 오가는 상태가 정상입니다.',
+      ],
+    },
+    {
+      heading: 'ETF 괴리율 관리 기준, 국내 2%와 해외 5%',
+      paragraphs: [
+        '한국거래소는 유동성공급자(LP)에게 종가 기준으로 괴리율이 일정 범위 안에 있도록 관리하는 의무를 두고 있습니다. 국내 자산을 기초로 하는 ETF는 2% 이내, 해외 자산을 기초로 하는 ETF는 5% 이내가 기본선입니다.',
+        '이 기준을 반복적으로 넘어서면 그 종목은 관리 종목으로 지정되거나, 운용사가 유동성공급자를 교체하도록 요구받을 수 있습니다. 종목 자체가 안전한지 살피는 신호로 활용됩니다.',
+      ],
+    },
+    {
+      heading: '괴리율을 살 때 실제로 어떻게 활용하나',
+      paragraphs: [
+        '매수창에서 괴리율이 관리 기준 안이라면 크게 손해 볼 상황은 아닙니다. 다만 시장가 매수는 그 순간의 매도호가로 체결되기 때문에, 괴리율이 벌어져 있는 순간에 급히 사면 남보다 비싸게 잡을 위험이 있습니다.',
+        '지정가를 넣고 NAV 근처까지 붙기를 기다리는 방법이 유용합니다. 특히 해외 자산 ETF는 국내장이 열려 있어도 해외장은 닫혀 있을 수 있어 낮 시간대에 괴리율이 벌어지기 쉽습니다.',
+      ],
+    },
+    {
+      heading: '괴리율이 벌어지기 쉬운 시간대',
+      paragraphs: [
+        '개장 직후 몇 분과 마감 직전 몇 분은 호가가 얇아 괴리율이 튀는 경우가 흔합니다. 이 시간대에는 시장가 대신 지정가를 쓰거나 조금 기다렸다가 매매하는 편이 좋습니다.',
+        '해외 지수를 따라가는 ETF는 미국·유럽 시장이 열리기 전 국내 시간대에는 실시간 NAV 대신 전일 종가 기반 iNAV가 표시되기도 합니다. 이런 상황에서 벌어진 괴리율은 착시일 수 있어, 각 운용사가 안내하는 계산 방식과 함께 봐야 합니다.',
+      ],
+    },
+    {
+      heading: '관리 범위를 벗어난 종목은 어떻게 볼까',
+      paragraphs: [
+        '거래일 종가 기준으로 여러 번 국내 2% 또는 해외 5%를 벗어나는 종목은 뭔가 관리에 부담이 있다는 뜻입니다. 신규 상장 초기라 유동성이 얕은 경우, 기초자산 거래가 정지된 경우, 파생 계약 결제가 얽힌 경우 등 원인이 다양합니다.',
+        '단순히 괴리율이 크니 사면 이득이라고 판단하기 전에, 종목 개요와 최근 공시를 확인하는 편이 안전합니다. 유동성공급자가 교체됐거나 관리 종목으로 지정된 종목이라면 매수 자체를 미루는 선택도 유효합니다.',
+      ],
+    },
+    {
+      heading: '괴리율과 추적오차는 다른 개념',
+      paragraphs: [
+        '괴리율은 시장가와 NAV의 차이, 추적오차는 NAV가 기초지수를 얼마나 잘 따라가는지를 말합니다. 괴리율은 매매 순간의 지표고 추적오차는 운용 성과 지표입니다.',
+        '괴리율이 커도 추적오차는 작을 수 있고, 반대로 추적오차가 큰데 괴리율은 작을 수도 있습니다. 두 지표를 나눠서 이해해야 오해가 없습니다. 본 자료는 정보 제공 목적이며 매매 결정과 그 결과에 대한 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '괴리율은 어디서 볼 수 있나요?', answer: 'HTS·MTS 종목 상세, 한국거래소 정보데이터시스템, 운용사 상품 페이지 어디서든 확인됩니다. 실시간 값과 종가 기준 값이 함께 표시되는 경우가 많아 어떤 기준인지 확인하고 보시기 바랍니다.' },
+    { question: 'NAV보다 싸게 살 수 있는 순간이 유리한 것 아닌가요?', answer: '이론적으로는 그렇지만 그 상태가 오래 유지되지 않고, 유동성공급자가 다시 붙이면서 매수 체결가는 NAV 근처로 올라올 수 있습니다. 마이너스 괴리율 상태에서 매도 호가 자체가 이미 그만큼 낮은 경우가 흔합니다.' },
+    { question: '해외 ETF는 왜 괴리율이 더 크게 잡히나요?', answer: '해외장 종가와 국내장 매매 시간이 어긋나 실시간 NAV 계산이 시차만큼 뒤처지기 때문입니다. 국내 자산 상품보다 기준 자체도 5%로 넓게 설정돼 있습니다.' },
+    { question: '괴리율이 계속 마이너스면 팔아야 하나요?', answer: '괴리율만 보고 매도 판단을 하기는 이릅니다. 상품 자체 문제인지 특정 시간대 착시인지 먼저 확인하고, 매매 결정은 보유 목적과 함께 판단하시기 바랍니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-20 · 위클리·데일리·타겟 커버드콜 ETF 차이 */
+const coveredCallWeeklyDailyTargetDifference: GuideDef = {
+  slug: 'covered-call-weekly-daily-target-difference',
+  title: '커버드콜 ETF, 위클리·데일리·타겟 차이',
+  tagline: '이름 앞에 붙는 단어가 옵션 매도 방식과 분배 성격을 결정합니다',
+  description:
+    '국내 상장 커버드콜 ETF에는 데일리·위클리·타겟 같은 수식어가 앞에 붙습니다. 이 단어들이 어떤 옵션 만기와 매도 비율을 뜻하는지, 분배금과 상승 여력에 어떻게 영향을 주는지, 어떤 성향에 어느 쪽이 맞는지 정리했습니다.',
+  keywords: ['커버드콜 ETF', '데일리 커버드콜', '위클리 커버드콜', '타겟 커버드콜', '커버드콜 옵션 매도', '커버드콜 분배금'],
+  section: '커버드콜 가이드',
+  lastReviewed: '2026-08-20',
+  answer:
+    '데일리·위클리·먼슬리는 매도하는 콜옵션의 만기를 뜻하고, 타겟은 옵션을 100%가 아니라 정해진 비율만큼만 팔아 상승 여력을 남기는 방식을 뜻합니다. 만기가 짧을수록 프리미엄을 자주 챙기지만 상승장에서 이익 폭이 더 잘려나가고, 타겟은 프리미엄을 덜 받는 대신 기초자산 상승분을 조금 더 담을 수 있습니다.',
+  keyPoints: [
+    '데일리 커버드콜은 매 영업일 만기 콜을 팔아 매일 프리미엄을 확보하며, 위클리는 주 단위, 먼슬리는 월 단위로 이 주기가 길어집니다.',
+    '타겟 커버드콜은 콜옵션을 자산의 일부(예: 40~60%)에만 매도해 그 나머지 자산은 기초지수 상승에 그대로 노출됩니다.',
+    '만기가 짧은 상품은 분배금이 규칙적으로 많이 나오지만 강세장에서 시세 차익은 위클리·먼슬리보다 더 잘려나가는 경향이 있습니다.',
+    '이름에 OTM이 붙으면 행사가가 현재가보다 위쪽인 콜옵션을 팔았다는 뜻으로, 프리미엄은 다소 줄지만 그만큼 상승 여력을 더 남깁니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '커버드콜 ETF들이 타겟, 위클리, 데일리로 나뉘는데 어떤 차이가 있는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494367679' },
+    { summary: 'JEPQ와 RISE 미국테크100 데일리고정커버드콜 ETF의 차이점이 무엇인지', url: 'https://kin.naver.com/qna/detail.naver?docId=493595067' },
+    { summary: '커버드콜 ETF 이름 뒤에 붙은 5% 같은 숫자가 무엇을 뜻하는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494150639' },
+  ],
+  comparisonTable: {
+    caption: '옵션 만기·매도 비율이 성격을 어떻게 바꾸나',
+    columns: ['방식', '옵션 만기', '옵션 매도 비율', '성격'],
+    rows: [
+      ['데일리', '매 영업일', '100% (또는 고정 비율)', '분배 빈도 높음, 상승 참여 폭 작음'],
+      ['위클리', '주 1회', '100% 또는 부분', '주간 프리미엄 확보, 상승은 중간'],
+      ['먼슬리', '월 1회', '100% 또는 부분', '프리미엄 규모 크나 빈도 낮음'],
+      ['타겟', '주간·월간과 결합', '30~60% 등 일부', '상승 여력 확보 우선, 프리미엄 감소'],
+    ],
+  },
+  sections: [
+    {
+      heading: '데일리·위클리·먼슬리는 무엇이 다른가',
+      paragraphs: [
+        '이름 앞에 붙는 데일리·위클리·먼슬리는 파는 콜옵션의 만기를 가리킵니다. 데일리는 하루짜리 콜을 매일 새로 매도하고, 위클리는 한 주짜리 콜을, 먼슬리는 한 달짜리 콜을 만기 때마다 다시 매도합니다.',
+        '만기가 짧으면 옵션 프리미엄을 자주 챙기지만 한 번에 받는 규모는 작고, 만기가 길면 규모는 크되 빈도는 낮아집니다. 만기 시점마다 매도 계약을 다시 맞춰야 해서 운용 부담과 거래 비용도 함께 달라집니다.',
+      ],
+    },
+    {
+      heading: '타겟은 매도 비율을 낮춘 방식',
+      paragraphs: [
+        '타겟 커버드콜은 만기와는 별개 개념입니다. 담은 기초자산 전체에 대해 콜옵션을 100% 팔지 않고 목표 프리미엄 수준에 맞춰 일부만 매도합니다. 그래서 남은 자산은 기초지수가 오르는 만큼 그대로 상승분을 반영합니다.',
+        '분배금은 100% 매도형보다 줄어드는 대신, 강세장에서 상승 참여율이 커집니다. 상품 페이지에는 목표 프리미엄 수준과 실제 옵션 매도 비율이 명시돼 있어, 판단할 때 이 두 값을 함께 봅니다.',
+      ],
+    },
+    {
+      heading: '만기가 짧을수록 왜 상승이 잘려나가나',
+      paragraphs: [
+        '콜옵션을 팔았다는 것은 정해진 가격 이상으로 오르는 상승분을 옵션 매수자에게 넘긴다는 약속입니다. 매도 뒤 기초자산이 크게 오르면 옵션 매수자가 권리를 행사하고, ETF는 그 초과분을 손실로 반영합니다.',
+        '만기가 짧으면 이 정산 주기가 잦아, 크게 오르는 국면을 여러 번 놓치기 쉽습니다. 반대로 옆으로 횡보하거나 조금씩 오르는 국면에서는 프리미엄만 계속 챙길 수 있어 유리하게 작동합니다.',
+      ],
+    },
+    {
+      heading: '이름 뒤 숫자·OTM·고정이라는 표기',
+      paragraphs: [
+        '상품명에 5%, 7% 같은 숫자가 붙는 경우가 있습니다. 이는 목표로 하는 연간 분배율이거나 옵션 매도 시 행사가와 현재가의 차이(OTM 비율)를 나타내는 값입니다. 반드시 실현 분배율은 아닙니다.',
+        'OTM 커버드콜은 현재가보다 위쪽 행사가로 콜을 팔아 상승 여력을 조금 남깁니다. 고정형은 매도 규칙을 계산식으로 정해두고 그대로 지키는 방식으로, 시장 상황에 따라 재량을 두지 않습니다.',
+      ],
+    },
+    {
+      heading: '성향별로 어느 쪽이 맞을까',
+      paragraphs: [
+        '분배금이 매월 규칙적으로 들어오는 것이 목적이라면 위클리·데일리 100% 매도형이 이 목적에 맞습니다. 은퇴 생활비처럼 예측 가능한 현금흐름이 중요한 자금에 어울립니다.',
+        '어느 정도 시세 상승을 놓치고 싶지 않다면 타겟 또는 OTM 방식이 어울립니다. 강세장에서 상승 참여율이 상대적으로 높지만 분배금은 줄어듭니다. 어떤 방식도 원금을 보장하지 않으며, 기초자산이 크게 하락하면 손실이 함께 발생합니다.',
+      ],
+    },
+    {
+      heading: '고르기 전에 확인하는 지점',
+      paragraphs: [
+        '상품 페이지의 목표 분배율은 최근 성과가 아니라 향후 지향점이며, 시장 상황에 따라 실현 값이 달라집니다. 지난 12개월 분배 이력, 옵션 매도 비율, 총보수, 기초자산 종류를 함께 살펴야 실제 감이 잡힙니다.',
+        '같은 이름 뒤에 데일리와 위클리가 병기된 경우 매도 주기가 두 개 결합됐다는 뜻입니다. 상품 요약 페이지 설명을 정독하는 편이 좋습니다. 본 자료는 정보 제공 목적이며 개별 상품 선택과 결과에 대한 판단은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '데일리 커버드콜이면 분배도 매일 들어오나요?', answer: '매일 옵션을 파는 것과 분배 지급 주기는 별개입니다. 국내 상장 상품 대부분이 월 1회 분배 지급 구조를 갖추고, 매일 쌓인 프리미엄이 다음 지급일에 합산됩니다.' },
+    { question: '위클리와 데일리 중 어느 쪽이 분배가 더 많나요?', answer: '이론적으로 데일리가 프리미엄 축적 빈도가 잦지만, 실제 분배액은 옵션 매도 비율과 시장 변동성에 따라 달라집니다. 최근 12개월 실현 분배율을 함께 봐야 판단이 정확합니다.' },
+    { question: '타겟 커버드콜은 원금이 덜 녹나요?', answer: '옵션 매도 비율이 낮아 강세장 상승 참여는 크지만, 기초자산이 하락할 때는 100% 매도형과 마찬가지로 손실이 발생합니다. 원금 보전형 상품이 아닙니다.' },
+    { question: '상품명에 붙은 7%는 확정 분배율인가요?', answer: '목표 수준이거나 옵션 매도 시 참고 값입니다. 실현 분배율은 시장 변동성에 따라 다르며 확정 수익은 아닙니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-20 · IRP 수령, 연금 vs 일시금 세금 */
+const irpPensionVsLumpSumTax: GuideDef = {
+  slug: 'irp-pension-vs-lump-sum-tax',
+  title: 'IRP 수령, 연금과 일시금 세금 차이',
+  tagline: '한 번에 받을지 나눠서 받을지에 따라 실수령이 크게 달라집니다',
+  description:
+    'IRP를 만 55세 이후 어떻게 받아야 할지 고민하는 분이 많습니다. 연금으로 나눠 받을 때와 일시금으로 받을 때 세금이 어떻게 계산되는지, 왜 10년 이상 나눠 받으라고 권하는지, 확인해야 할 세율 구간을 정리했습니다.',
+  keywords: ['IRP 수령', 'IRP 연금 일시금', '퇴직소득세 감면', '연금소득세 저율분리과세', 'IRP 수령 세금', '퇴직연금 수령 방법'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-20',
+  answer:
+    'IRP를 만 55세 이후 10년 이상 나눠 받으면 저율분리과세가 적용돼 나이에 따라 연금소득세 5.5%부터 3.3%까지 낮은 세율이 적용됩니다. 반대로 한 번에 일시금으로 받으면 원천이 퇴직금인 부분은 퇴직소득세로, 세액공제와 운용수익 부분은 기타소득세 16.5%로 분리 과세됩니다. 같은 계좌라도 어떻게 받느냐가 실수령을 크게 바꿉니다.',
+  keyPoints: [
+    'IRP에서 연금을 개시하려면 만 55세 이상이고 계좌 가입 후 5년이 지나야 하며, 5년 요건은 퇴직금이 들어온 경우에는 별도로 적용됩니다.',
+    '연금 수령 세율은 나이에 따라 55~69세 5.5%, 70~79세 4.4%, 80세 이상 3.3%로 낮아지고 종신형으로 설정하면 55세부터 4.4%가 적용됩니다.',
+    '10년 이상 나눠 받으면 퇴직금 원천에 대해서는 퇴직소득세율의 30% 감면(10년 초과분은 40%)이 함께 적용됩니다.',
+    '연간 연금 수령 한도를 초과해 받는 금액은 이 감면·저율분리과세 혜택이 빠지고, 초과분에는 원래 세율이 그대로 적용됩니다.',
+  ],
+  sources: [
+    { label: '국세청 국세신고안내 · 연금소득', url: 'https://www.nts.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+    { label: '고용노동부 퇴직연금 안내', url: 'https://www.moel.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'IRP 계좌에서 매달 발생하는 분배금을 연금 개시로 수령하는 방법과 세금이 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=493203442' },
+    { summary: '퇴직연금 수령 방법과 세금 계산 방식이 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=494687405' },
+    { summary: 'DC형 퇴직연금을 수령한 뒤 바로 사용할 수 있는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=494576861' },
+  ],
+  comparisonTable: {
+    caption: '수령 방식별 세금이 달라지는 지점',
+    columns: ['수령 방식', '퇴직금 원천 부분', '세액공제·운용수익 부분', '건강보험료 반영'],
+    rows: [
+      ['일시금 수령', '퇴직소득세 원세율', '기타소득세 16.5% 분리과세', '건강보험료 산정 대상에 포함 가능'],
+      ['10년 이상 연금 수령', '퇴직소득세 30% 감면', '연금소득세 5.5~3.3% 저율분리', '금액에 따라 반영 여부 달라짐'],
+      ['10년 초과분 연금', '퇴직소득세 40% 감면', '연금소득세 저율분리 유지', '연간 한도 초과분은 별도 계산'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'IRP를 받을 수 있는 시점',
+      paragraphs: [
+        'IRP에서 연금을 개시하려면 두 가지 요건을 함께 채워야 합니다. 만 55세 이상이고, 계좌 가입 후 5년이 지나야 합니다. 다만 회사에서 퇴직금이 IRP로 이전된 계좌라면 5년 요건과 무관하게 즉시 수령이 가능한 경우가 있습니다.',
+        '연금 수령을 선택하면 그 시점부터 매월 또는 매년 정해진 금액이 계좌에서 빠져나옵니다. 나머지 잔액은 계좌 안에서 운용을 이어갈 수 있습니다.',
+      ],
+    },
+    {
+      heading: '연금소득세 저율분리과세 · 5.5%부터 3.3%까지',
+      paragraphs: [
+        '연금으로 나눠 받는 금액에는 낮은 연금소득세가 원천 징수됩니다. 55~69세는 5.5%, 70~79세는 4.4%, 80세 이상은 3.3%로 나이에 따라 낮아집니다.',
+        '종신형으로 지급 방식을 정하면 55~69세 구간부터 4.4%가 적용됩니다. 이 세율은 종합소득세와 별도로 분리 과세되므로 다른 소득과 합쳐지지 않습니다.',
+      ],
+    },
+    {
+      heading: '왜 10년 이상 나눠 받으라고 권하나',
+      paragraphs: [
+        '퇴직금 원천으로 IRP에 들어온 금액은 연금으로 나눠 받으면 퇴직소득세의 30%가 감면됩니다. 수령이 10년을 넘어서면 초과분에 대해서는 감면율이 40%로 올라갑니다.',
+        '반대로 일시금으로 한 번에 받으면 이 감면이 빠지고 원세율이 그대로 적용됩니다. 같은 퇴직금이라도 어떻게 받느냐에 따라 세금 부담이 뚜렷하게 벌어집니다.',
+      ],
+    },
+    {
+      heading: '일시금 수령의 두 가지 세율',
+      paragraphs: [
+        'IRP를 일시금으로 해지하면 계좌 안 자금이 원천별로 나뉘어 과세됩니다. 회사에서 이전된 퇴직금 부분은 퇴직소득세 원세율이 적용되고, 개인이 넣어 세액공제를 받은 금액과 그 운용수익 부분에는 기타소득세 16.5%가 분리 과세로 붙습니다.',
+        '지금까지 세액공제로 돌려받은 금액이 큰 계좌일수록 이 16.5% 부담이 무겁게 느껴집니다. 나눠 받을 여력이 있으면 시간을 두고 연금으로 인출하는 편이 이 부담을 낮춥니다.',
+      ],
+    },
+    {
+      heading: '연간 연금 수령 한도가 왜 중요한가',
+      paragraphs: [
+        '연간 연금 수령 한도는 계좌 잔액과 수령 개시 후 연차에 따라 계산됩니다. 이 한도 안에서 받은 금액에만 저율분리과세와 감면이 적용됩니다.',
+        '급하게 큰돈이 필요해 한도를 초과해 인출하면 그 초과분에는 낮은 세율 대신 원래 세율이 적용됩니다. 급전이 필요할 때는 IRP 인출 대신 다른 자산으로 먼저 대응하는 편이 유리한 경우가 많습니다.',
+      ],
+    },
+    {
+      heading: '수령 방식을 정하기 전에 확인할 것',
+      paragraphs: [
+        '본인의 IRP 계좌에 퇴직금 이전분이 얼마고 세액공제 원천이 얼마인지 계좌 상세 화면에서 나누어 볼 수 있습니다. 이 비율에 따라 일시금과 연금의 세금 격차가 달라집니다.',
+        '건강보험 피부양자 자격 유지·상실은 소득 종류별 반영 기준이 있어, 큰 금액을 일시에 받으면 다음 해 산정에 영향이 갈 수 있습니다. 개별 상황 판단은 국세청 안내나 세무사 상담을 통해 확정하는 것이 안전합니다. 본 자료는 정보 제공 목적이며 최종 판단은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '연금 수령을 시작한 뒤 중간에 일시금으로 바꿀 수 있나요?', answer: '남은 잔액을 해지해 일시금으로 받는 것은 가능하지만, 그 시점의 인출분은 일시금 세율로 다시 계산됩니다. 이미 받은 연금에 대한 저율분리과세는 되돌리지 않습니다.' },
+    { question: '10년보다 짧게 나눠 받으면 감면이 전혀 없나요?', answer: '감면은 10년 이상 나눠 받는 경우 적용되고, 그 이전에 인출한 금액은 감면 대상이 아닙니다. 다만 연금 형태로 받는 동안 연금소득세 저율분리과세는 그대로 적용됩니다.' },
+    { question: '연금 수령을 매월과 매년 중 어느 쪽으로 정하나요?', answer: '지급 주기는 매월·매분기·매년 등에서 선택할 수 있고 세율에는 차이가 없습니다. 생활비 흐름에 맞추는 편이 관리가 편합니다.' },
+    { question: 'IRP 안에서 운용을 이어가면서 연금을 받을 수 있나요?', answer: '연금 수령 중에도 남은 잔액은 ETF·펀드 등으로 운용을 이어갈 수 있습니다. 계좌 자체를 해지하지 않고 부분 인출 형태로 지급됩니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-20 · 주식 상속세 신고 기간과 필요 서류 */
+const stockInheritanceReportBasics: GuideDef = {
+  slug: 'stock-inheritance-report-basics',
+  title: '주식 상속세, 신고 기간과 서류 준비',
+  tagline: '언제까지, 무엇을 준비해야 하는지 흐름을 먼저 잡습니다',
+  description:
+    '부모님의 주식 계좌를 상속받게 되면 신고 기간을 놓치지 않는 것이 가장 급합니다. 상속 개시일을 기준으로 세는 신고 기한과 상장·비상장 주식의 평가 방법, 준비할 서류와 기한 초과 시 가산세까지 실무 흐름을 정리했습니다.',
+  keywords: ['주식 상속세', '상속세 신고 기간', '주식 상속 평가', '주식 상속 서류', '상속재산 평가', '상속세 가산세'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-20',
+  answer:
+    '주식이 포함된 상속 재산은 상속 개시일이 속하는 달의 말일부터 6개월 안에 관할 세무서에 신고해야 하며, 상장 주식은 상속 개시일 전후 각 2개월(총 4개월) 종가의 평균으로 평가합니다. 이 기한을 놓치면 신고불성실 가산세가 붙기 때문에 서류 준비와 평가액 계산은 상속이 확정된 직후부터 시작하는 편이 안전합니다.',
+  keyPoints: [
+    '상속세 신고 기한은 상속 개시일이 속한 달의 말일부터 6개월이며, 국외 거주자가 상속을 받는 경우에는 9개월이 적용됩니다.',
+    '상장 주식은 상속 개시일을 기준으로 이전 2개월·이후 2개월, 총 4개월간의 종가 평균으로 평가합니다.',
+    '비상장 주식은 상증세법상 보충적 평가 방법으로 계산하고, 최대주주에 해당하면 할증평가가 붙을 수 있습니다.',
+    '기한 안에 신고하면 신고세액공제 3%가 적용되고, 기한을 놓치면 신고·납부 불성실 가산세가 이자처럼 부과됩니다.',
+  ],
+  sources: [
+    { label: '국세청 상속세 안내', url: 'https://www.nts.go.kr' },
+    { label: '홈택스 상속세 전자신고', url: 'https://www.hometax.go.kr' },
+    { label: '찾기 쉬운 생활법령정보 · 상속세', url: 'https://easylaw.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '주식 계좌를 상속받을 때 상속세가 어떻게 계산되는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=475200164' },
+    { summary: '주식 상속세 신고와 관련해 절차와 기간이 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=491808439' },
+    { summary: '주식 상속세 관련 세율과 공제가 어떻게 되는지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?docId=492831953' },
+  ],
+  comparisonTable: {
+    caption: '주식 종류별 평가 방법과 유의점',
+    columns: ['주식 종류', '평가 기준', '유의점'],
+    rows: [
+      ['상장 주식', '상속 개시일 전후 각 2개월 종가 평균', '평균 계산 기간이 하락장과 겹치면 유리, 반대는 불리'],
+      ['ETF·펀드', '상장 ETF는 상장주식과 같은 방식, 펀드는 기준가 평균', 'ETF는 4개월 종가 평균, 펀드는 상속개시일 기준가 활용'],
+      ['비상장 주식', '상증세법 보충적 평가(자산가치·수익가치)', '최대주주는 할증평가 적용, 감정평가 여부 검토 필요'],
+    ],
+  },
+  sections: [
+    {
+      heading: '상속세 신고 기간과 시작점',
+      paragraphs: [
+        '상속세 신고는 상속 개시일, 즉 사망일이 속한 달의 말일부터 6개월 안에 관할 세무서에 접수합니다. 예를 들어 3월 12일에 사망하셨다면 3월 말일 기준 6개월인 9월 30일이 기한입니다.',
+        '상속인이나 피상속인이 국외 거주자였다면 이 기한이 9개월로 늘어납니다. 기한 안에 신고하면 산출 세액의 3%가 신고세액공제로 차감되므로, 미루지 않고 준비하는 편이 유리합니다.',
+      ],
+    },
+    {
+      heading: '상장 주식·ETF는 4개월 평균으로 평가',
+      paragraphs: [
+        '상속 재산으로 들어온 상장 주식과 상장 ETF는 상속 개시일을 기준으로 이전 2개월과 이후 2개월, 총 4개월간의 최종 시세가액(종가)을 매일 단순 평균합니다.',
+        '이 방식은 시장 변동을 어느 정도 흡수하기 위한 장치입니다. 상속이 발생한 시점 앞뒤로 시세가 크게 오르면 그만큼 평가액이 올라가고, 크게 내리면 평가액도 낮아집니다.',
+      ],
+    },
+    {
+      heading: '비상장 주식은 별도 계산',
+      paragraphs: [
+        '상속 재산에 비상장 주식이 포함돼 있으면 상장 주식과 다르게 계산합니다. 상증세법에서 정한 보충적 평가 방법으로 회사의 순자산가치와 순손익가치를 반영해 산출합니다.',
+        '피상속인이 그 회사의 최대주주이거나 특수관계자 그룹에 속하면 계산된 가치에 할증평가가 더해질 수 있습니다. 규모가 큰 경우에는 감정평가를 함께 활용하는 실무가 흔합니다.',
+      ],
+    },
+    {
+      heading: '준비할 서류의 큰 틀',
+      paragraphs: [
+        '가족관계증명서·사망진단서 같은 관계·사실 서류가 기본입니다. 여기에 상속 재산 목록을 뒷받침하는 자료로 예금·부동산·주식·차량 등 종류별 잔액증명 또는 소유 사실 증빙을 모읍니다.',
+        '주식과 ETF 부분은 각 증권사에서 발급하는 잔고증명서와 상속개시일 기준 평가내역을 활용합니다. 홈택스 상속세 전자신고 화면에서 항목별로 나뉘어 있으니 이 구분에 맞춰 준비하면 정리가 쉽습니다.',
+      ],
+    },
+    {
+      heading: '공제와 세율의 큰 틀',
+      paragraphs: [
+        '상속세는 상속 재산에서 채무·장례비 등을 빼고, 배우자공제·일괄공제 등 인적공제를 차감한 뒤 남은 금액에 세율을 적용합니다. 최대 50%의 누진세율이 적용되지만 대부분의 사례에서 각종 공제로 부담이 크게 줄어듭니다.',
+        '배우자가 상속인이면 배우자공제가 크게 작용해 실제 세액이 낮아지는 경우가 흔합니다. 단, 공제 요건과 절차가 세부적으로 나뉘므로 개별 상황은 세무서 안내나 세무사 상담으로 확인하는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '기한을 놓치면 어떻게 되나',
+      paragraphs: [
+        '신고 기한을 놓치면 산출 세액에 신고불성실 가산세(20% 또는 그 이상)와 납부지연 가산세가 함께 붙습니다. 늦어질수록 원세액을 넘는 부담이 쌓입니다.',
+        '반대로 재산 파악이 어려워도 우선 예상 평가액으로 기한 안에 신고한 뒤 추후 경정 청구·수정 신고로 조정하는 방법이 있습니다. 본 자료는 정보 제공 목적이며 개별 신고와 관련한 최종 판단은 관할 세무서와 상담으로 확정하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '상속 재산에 예금이 함께 있으면 신고를 나눠서 하나요?', answer: '한 번의 상속세 신고에 모든 재산을 함께 담습니다. 예금·부동산·주식·자동차 등 종류별로 항목을 나누어 평가액과 근거 서류를 함께 제출합니다.' },
+    { question: '상장 주식 평가 기간에 큰 하락이 있었으면 평균이 낮아지나요?', answer: '이전 2개월과 이후 2개월 종가의 단순 평균이므로 이 기간에 크게 하락하면 평균이 함께 내려갑니다. 반대로 이 기간에 큰 반등이 있으면 평균은 그만큼 올라갑니다.' },
+    { question: '상속받은 주식을 바로 매도할 수 있나요?', answer: '명의개서(계좌 이전)가 마무리되면 매도가 가능합니다. 매도 시 취득가는 상속 평가액이 되어, 그 이후 시세 차이만큼만 양도소득 계산에 반영됩니다.' },
+    { question: '기한 안에 상속 재산을 모두 파악하지 못했다면 어떻게 하나요?', answer: '우선 예상 평가액으로 기한 안에 신고하고, 이후 정확한 자료가 확보되면 수정 신고나 경정 청구로 조정하는 흐름이 안전합니다. 늦게 신고할수록 가산세 부담이 커집니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-20 · 채권 ETF 월분배금 얼마 계산 */
+const bondEtfMonthlyDistributionCalc: GuideDef = {
+  slug: 'bond-etf-monthly-distribution-calc',
+  title: '채권 ETF, 월분배금이 얼마인지 계산하는 법',
+  tagline: '표면금리와 만기수익률의 차이를 알면 예상 흐름이 잡힙니다',
+  description:
+    '채권 ETF를 사서 매달 얼마를 받게 될지 궁금해하는 분이 많습니다. 표면금리와 만기수익률, 듀레이션이 분배금과 어떻게 이어지는지, 상품 페이지에서 확인해야 할 항목과 함께 간단한 월 예상 분배금 계산 순서를 정리했습니다.',
+  keywords: ['채권 ETF', '채권 ETF 분배금', '만기수익률', '표면금리', '채권 ETF 이자', '채권 ETF 월분배'],
+  section: 'ETF 채권 가이드',
+  lastReviewed: '2026-08-20',
+  answer:
+    '채권 ETF의 분배금은 담고 있는 채권들의 표면이자와 시세 변동에서 나오는 이자수익이 재원입니다. 예상 흐름은 상품 페이지에 공시된 만기수익률(YTM)과 총보수, 지급 주기를 조합해 계산합니다. 금리가 오르면 YTM은 오르지만 채권 가격은 떨어져 분배 재원과 시세가 반대로 움직이는 성격을 함께 이해해야 합니다.',
+  keyPoints: [
+    '채권 ETF 분배금은 표면이자와 이자수익을 재원으로 하며, 채권 자체의 가격 상승분은 배당되지 않고 NAV에 반영됩니다.',
+    '상품 페이지의 만기수익률(YTM)은 지금 시점에 산 채권을 만기까지 들고 있을 때 기대되는 연 수익률로, 총보수를 차감하기 전 값입니다.',
+    '월 예상 분배금은 대략 투자금 × (YTM - 총보수) ÷ 12 로 산출하며, 실제 지급은 시세와 매매에 따라 매월 다르게 나옵니다.',
+    '금리 상승 국면에서는 YTM이 올라 분배 재원이 커지지만 채권 가격이 함께 떨어져 원금 평가액은 줄어드는 반대 효과가 나타납니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
+    { label: '한국은행 경제통계시스템 ECOS', url: 'https://ecos.bok.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '채권 ETF 월분배금에 이자율이 어떻게 적용되는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=488622004' },
+    { summary: '채권 ETF 분배금이 어떻게 결정되는지, 표면금리와 연결이 되는지', url: 'https://kin.naver.com/qna/detail.naver?docId=439618265' },
+    { summary: '미국 채권 금리와 미국채 ETF 분배금의 차이가 무엇인지', url: 'https://kin.naver.com/qna/detail.naver?docId=417060270' },
+  ],
+  comparisonTable: {
+    caption: '지표별 의미와 분배금과의 관계',
+    columns: ['지표', '뜻', '분배금과의 관계'],
+    rows: [
+      ['표면금리(쿠폰)', '개별 채권이 액면 대비 지급하는 정해진 이자율', '분배 재원의 뼈대. 채권 발행 시 결정되어 변하지 않음'],
+      ['만기수익률(YTM)', '지금 시세로 산 채권을 만기까지 보유 시 연 환산 기대 수익률', '분배금 예상을 잡을 때 실제 사용하는 값'],
+      ['듀레이션', '금리 1% 변동 시 채권 가격이 얼마나 움직이는지', '분배가 아닌 가격 변동성. 원금 안정성 판단'],
+      ['총보수', '운용사·판매사가 매년 떼가는 비용', 'YTM에서 빼야 실제 손에 남는 수익률'],
+    ],
+  },
+  sections: [
+    {
+      heading: '분배금은 어디서 나오나',
+      paragraphs: [
+        '채권 ETF는 여러 채권을 묶어 담고, 그 채권들이 정해진 시점에 지급하는 표면이자를 모아 분배금으로 지급합니다. 시장에서 채권 가격이 오르내리는 부분은 배당하지 않고 순자산가치(NAV)에 반영됩니다.',
+        '그래서 채권 ETF는 주식 배당형 ETF와 원리가 다릅니다. 배당형 주식이 회사 이익에서 배당을 지급하는 반면, 채권 ETF는 이자 지급 약속을 지키는 채권의 성질을 그대로 이어받습니다.',
+      ],
+    },
+    {
+      heading: '표면금리와 만기수익률은 무엇이 다른가',
+      paragraphs: [
+        '표면금리는 채권이 발행될 때 정해진 이자율입니다. 액면 1만 원짜리 채권이 표면금리 4%라면 매년 400원이 이자로 나옵니다. 이 값은 발행 이후 바뀌지 않습니다.',
+        '반면 만기수익률(YTM)은 지금 시점의 시세로 이 채권을 사서 만기까지 들고 있을 때 기대되는 연 수익률입니다. 금리가 올라 채권 가격이 떨어지면 YTM은 올라가고, 금리가 내려 가격이 오르면 YTM은 내려갑니다.',
+      ],
+    },
+    {
+      heading: '월 예상 분배금 계산 순서',
+      paragraphs: [
+        '상품 페이지에서 다음 세 값을 확인합니다. 만기수익률(YTM), 총보수, 지급 주기(대부분 월). 그다음에는 다음 식을 씁니다. 월 예상 분배금은 대략 투자금 × (YTM - 총보수) ÷ 12 입니다.',
+        '예를 들어 YTM 4.5%, 총보수 0.15%인 채권 ETF에 1,000만 원을 넣었다면 월 예상 분배는 약 1,000만 × (4.5% - 0.15%) ÷ 12 ≒ 3만 6천 원 수준입니다. 실제 지급액은 담고 있는 채권들의 이자 지급 시기와 매매에 따라 매월 조금씩 다르게 나옵니다.',
+      ],
+    },
+    {
+      heading: '금리 방향에 따라 흐름이 반대로 갈릴 수 있다',
+      paragraphs: [
+        '금리가 오르는 국면에서는 새로 담기는 채권의 표면이자가 높아 분배 재원이 커집니다. 다만 이미 담아둔 채권들의 시세는 떨어지기 때문에 NAV는 하락합니다. 분배는 늘어도 평가액은 줄어드는 상태가 이어질 수 있습니다.',
+        '반대로 금리가 내리는 국면에서는 새 채권의 표면이자가 낮아 분배 재원은 줄지만, 담아둔 채권 시세가 올라 NAV는 상승합니다. 이 두 힘의 방향을 따로 보아야 실제 성과가 이해됩니다.',
+      ],
+    },
+    {
+      heading: '만기매칭형과 일반 채권 ETF의 차이',
+      paragraphs: [
+        '만기매칭형 채권 ETF는 담는 채권들의 만기를 특정 시점에 맞추고, 그 시점이 오면 상장폐지 후 잔여 현금이 상환됩니다. 이 유형은 상장 시점의 YTM이 만기 상환액 기준 예상 수익률에 가깝게 이어집니다.',
+        '일반 채권 ETF는 만기가 오는 채권을 계속 새 채권으로 갈아 넣습니다. 그래서 YTM은 시장 금리에 따라 계속 변합니다. 어느 쪽이 자기 목적에 맞는지는 만기 시점 필요 여부에 따라 갈립니다.',
+      ],
+    },
+    {
+      heading: '상품 페이지에서 확인하는 지점',
+      paragraphs: [
+        '보유 채권의 표면금리 평균, 만기수익률, 듀레이션, 총보수, 신용등급 분포가 핵심입니다. 이 다섯 항목만 봐도 분배 흐름과 가격 변동성을 대략 잡을 수 있습니다.',
+        '분배 이력은 최근 12개월치를 함께 봅니다. 목표 분배율은 향후 방향을 나타내는 값이지 확정 수익이 아닙니다. 본 자료는 정보 제공 목적이며 매매 결정과 그 결과에 대한 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '표면금리가 높은 채권을 담은 ETF가 무조건 유리한가요?', answer: '반드시 그렇지는 않습니다. 표면금리가 높다는 것은 발행 당시 시장 금리가 높았거나 신용 위험이 크게 반영됐다는 뜻일 수 있어, 신용등급과 함께 봐야 합니다.' },
+    { question: '월 분배금이 매달 같지 않은데 왜 그런가요?', answer: '담고 있는 채권들의 이자 지급일이 달마다 다르고 매매도 이어지기 때문에, 월별 지급액이 조금씩 다르게 나오는 경우가 많습니다. 연 단위로 보면 YTM에 근접하는 흐름을 보입니다.' },
+    { question: '금리 인상기에 채권 ETF를 사는 것이 손해인가요?', answer: '이미 담긴 채권의 시세는 떨어지지만 새로 담기는 채권의 이자가 높아져 분배 재원이 커집니다. 목적이 시세 차익이 아니라 이자 수령이라면 나쁘지 않은 국면이 될 수 있습니다.' },
+    { question: '개인연금 계좌에서도 채권 ETF를 담을 수 있나요?', answer: '연금저축·IRP에서 담을 수 있는 채권 ETF 목록은 계좌 유형과 안전자산 요건에 따라 다릅니다. 계좌 개설사의 상품 목록에서 담을 수 있는지 미리 확인하시기 바랍니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
   stockOrderRejectedReasons,
   dividendRecordDateReform,
@@ -21633,6 +22078,11 @@ export const GUIDES: GuideDef[] = [
   corporateRetainedEarningsTax,
   isaSp500Nasdaq100Together,
   basicPensionWithPrivatePension,
+  etfDisparitySafeRangeBuy,
+  coveredCallWeeklyDailyTargetDifference,
+  irpPensionVsLumpSumTax,
+  stockInheritanceReportBasics,
+  bondEtfMonthlyDistributionCalc,
 ];
 
 /**
@@ -21643,6 +22093,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-20 지식iN 질문 수요 기반 5편
+  'etf-disparity-safe-range-buy': '2026-08-20',
+  'covered-call-weekly-daily-target-difference': '2026-08-20',
+  'irp-pension-vs-lump-sum-tax': '2026-08-20',
+  'stock-inheritance-report-basics': '2026-08-20',
+  'bond-etf-monthly-distribution-calc': '2026-08-20',
   // 기반 가이드 14편 — 발행일이 비어 있어 /guide/latest 정렬과 sitemap lastmod에서 빠졌다.
   // 각 슬러그가 guides.ts에 처음 들어온 커밋 날짜로 채웠다(git log -S 확인). (2026-08-12)
   'monthly-dividend': '2026-04-25',
@@ -21956,17 +22412,17 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money', 'etf-disparity-safe-range-buy'],
   },
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'irp-pension-vs-lump-sum-tax', 'stock-inheritance-report-basics'],
   },
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income', 'covered-call-weekly-daily-target-difference'],
   },
   {
     title: '테마·섹터',
@@ -21981,7 +22437,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '전략·자산배분',
     description: '적립식·리밸런싱·팩터·자산배분(TRF)·채권·미국국채·회사채·채권혼합·파킹·금·은·구리·원유·농산물·원자재·레버리지 — 포트폴리오를 굴리고 위험을 관리하는 전략.',
-    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual', 'natural-gas-etf', 'carbon-credit-etf', 'platinum-etf', 'high-yield-bond-etf', 'tips-etf'],
+    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual', 'natural-gas-etf', 'carbon-credit-etf', 'platinum-etf', 'high-yield-bond-etf', 'tips-etf', 'bond-etf-monthly-distribution-calc'],
   },
 ];
 
