@@ -2438,3 +2438,45 @@ A. 실제 코드(src/lib/guides.ts + src/app/guide/[slug]/page.tsx) 기준으로
   - 직답은 결론만, 수치는 본문에
   - 핵심 포인트는 본문 요약이 아니라 본문에 없는 판단·조건·비교 결과
   - 소제목만 봐도 무슨 문단인지 알게. 의문형은 1~2개까지
+
+## 2026-08-21 · [일일 발행] 지식iN 질문 수요 기반 가이드 5편
+
+오늘 자율 발행 루틴 실행. 네이버 지식iN 질문 코퍼스(data/keywords/kin/kin-20260812.json 2,708건, kin-20260718.json)에서 반복 질문 수요 기준으로 주제 선정. 신규 수집은 클라우드 IP 특성상 시도만, 저장 코퍼스로 선정(정상 경로). 각 편 핵심 사실은 WebSearch로 적대적 검증 후 작성.
+
+발행 5편(모두 신규 slug, 롱테일 확장):
+
+1. ETF 괴리율과 추적오차 차이, 무엇을 봐야 하나 (tracking-error-vs-premium-discount)
+   - 출처 질문: "ETF 괴리율과 추적오차 관계"(489739815), "싸게 사려면 NAV 괴리율 보면 되나"(458112365), "운용보수가 괴리율에 영향"(490272492)
+   - 검증: 괴리율=(시장가-NAV)/NAV(수급·유동성·시차), 추적오차=지수 대비 수익률 편차(총보수·복제·현금비중). 매수 시점=괴리율, 장기보유=추적오차.
+   - 각도: 비교/판단. section: ETF 괴리율 가이드. cluster: ETF 기초·입문.
+
+2. ETF 상장폐지되면 투자금은 돌려받나 (etf-delisting-money-back)
+   - 출처 질문: "상장폐지시 원금회수 가능여부"(489722460), "상장폐지되면 어떻게"(488312128), "미국 ETF 상장폐지"(474327014)
+   - 검증(WebSearch): 상장 1년 초과+순자산 50억 미만+반기말 미해소→상장폐지, 한 달 전 예고공시, 상장폐지일 NAV에서 보수 뺀 해지상환금 지급(원금 보장 아님). 미국 직투는 청산 정산+환율/현지과세.
+   - 각도: 판단/이유. section: ETF 매매 가이드. cluster: ETF 기초·입문.
+
+3. IRP에서 리츠 ETF는 안전자산에 들어갈까 (irp-reit-etf-safe-asset)
+   - 출처 질문: "IRP 계좌 부동산 리츠ETF가 안전자산 해당 여부"(494479461)
+   - 검증(WebSearch): IRP 위험자산 최대 70%, 안전자산 30% 이상. 리츠 ETF는 상품·금융회사 기준에 따라 안전/위험 분류 갈림(안전자산용 설계 리츠 ETF 존재). 편입 전 가입사·통합연금포털 확인.
+   - 각도: 판단. section: 은퇴 자산 가이드. cluster: 세금·절세 계좌.
+
+4. 커버드콜 ETF 타겟·위클리·데일리 차이 (covered-call-payout-cycle-types)
+   - 출처 질문: "타겟,위클리,데일리 차이"(494367679), "반도체 타겟 커버드콜"(493509619), "커버드콜 5% 의미"(494150639)
+   - 검증(WebSearch): 옵션 매도 주기(데일리 매일/위클리 매주/타겟 목표 분배 조절). 주기 짧을수록 프리미엄 잦지만 상승참여↓·거래비용↑. 분배금≠배당, 원금 감소 가능(ROC).
+   - 각도: 비교. section: 커버드콜 가이드. cluster: 배당·인컴.
+
+5. 연말 배당 받으려면 언제까지 사야 하나 (year-end-dividend-buy-deadline)
+   - 출처 질문: "배당락일 피해 언제 사야"(484737586), "배당락일 전날까지 보유 이유"(484737621), "배당락일은 기준일 전날인지"(492186504)
+   - 검증(WebSearch): T+2 결제. 배당기준일 주주명부 등재하려면 2영업일 전=배당락 전날까지 매수. 배당락일 당일 매수는 이번 배당 제외. 2026년 배당액 선확정 후 기준일 지정 방식 확산 언급.
+   - 각도: 방법/판단(계절 선행: 연말 결산배당). section: ETF 분배금 가이드. cluster: 배당·인컴.
+
+검증 결과: npx tsc --noEmit 0 에러. validate:guides ERROR 0(신규 5편 통과, WARN은 기존 발행분). cf:build 성공. 신규 5편 prerender HTML 각각 answer-box·guide-key-points·guide-sources·citation·2026-08-21 포함 확인. 신규 블록 금지어(파이프라인·크롤링·Gemini·GPT·LLM 등)·em dash 0건.
+
+지식iN 신규 수집: 클라우드 IP 차단 예상으로 저장 코퍼스 사용(kin-20260812.json 주 소스, kin-20260718.json 보조). 색인 푸시 결과는 push:guides 실행 후 기록.
+
+★ 발행 링크:
+https://iknowhowinfo.com/guide/tracking-error-vs-premium-discount
+https://iknowhowinfo.com/guide/etf-delisting-money-back
+https://iknowhowinfo.com/guide/irp-reit-etf-safe-asset
+https://iknowhowinfo.com/guide/covered-call-payout-cycle-types
+https://iknowhowinfo.com/guide/year-end-dividend-buy-deadline
