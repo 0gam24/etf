@@ -2480,3 +2480,9 @@ https://iknowhowinfo.com/guide/etf-delisting-money-back
 https://iknowhowinfo.com/guide/irp-reit-etf-safe-asset
 https://iknowhowinfo.com/guide/covered-call-payout-cycle-types
 https://iknowhowinfo.com/guide/year-end-dividend-buy-deadline
+
+### 색인 푸시 결과 (2026-08-21)
+- 이번 발행은 지정 브랜치(claude/serene-hamilton-71m55s) + 드래프트 PR #28 경로. 아직 main 병합·프로덕션 배포 전이라 URL이 라이브가 아님.
+- `npm run push:guides -- --dry` 실행: 대상 2026-08-21 가이드 5편 + 허브(/guide/latest·/guide·/) 정확히 선정 확인.
+- 라이브 색인 푸시(IndexNow: Bing·Naver Yeti / Google Indexing)는 PR 병합·배포로 URL 200 확인 후 실행 예정. 배포 전 통보 시 봇이 404 받고 주소 버림(CLAUDE.md·PUBLISHING.md §5 준수).
+- PR: https://github.com/0gam24/etf/pull/28
