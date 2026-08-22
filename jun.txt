@@ -2467,7 +2467,7 @@ A. 실제 코드(src/lib/guides.ts + src/app/guide/[slug]/page.tsx) 기준으로
 
 ### 검증: tsc --noEmit 에러 0, validate:guides ERROR 0(신규 5편 WARN 0), cf:build 성공, prerender 5편 answer-box·key-points·sources·citation·2026-08-22 모두 확인. em dash 0·금지어 0.
 
-### 색인 푸시 결과: (push 후 기록)
+### 색인 푸시 결과: 이연. 이번 발행은 feature 브랜치(claude/serene-hamilton-ovoqcz) + Draft PR #29로 진행되어 production 미반영 상태. push:guides --dry로 대상 5편+허브 확인만 수행. 실제 색인 통보(IndexNow/Google)는 PR 머지·배포 완료 후 실행(배포 전 통보 시 봇 404 회피).
 
 ### 발행 URL:
 https://iknowhowinfo.com/guide/etf-delisting-money-recovery
