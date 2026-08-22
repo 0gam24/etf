@@ -21394,7 +21394,401 @@ const basicPensionWithPrivatePension: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-08-22 · ETF가 상장폐지되면 원금은 어떻게 되나 */
+const etfDelistingMoneyRecovery: GuideDef = {
+  slug: 'etf-delisting-money-recovery',
+  title: 'ETF 상장폐지되면 원금은 어떻게 되나',
+  tagline: '휴지 조각이 되는지, 돈을 어떻게 돌려받는지부터 짚는다',
+  description:
+    'ETF가 상장폐지되면 투자금이 사라질까 걱정하는 분이 많습니다. 상장폐지 사유와 정리매매 여부, 순자산가치 기준으로 돈을 돌려받는 절차, 순자산 50억원 규모를 미리 확인하는 법까지 실제 회수 흐름을 하나씩 정리했습니다.',
+  keywords: ['ETF 상장폐지', 'ETF 상장폐지 원금', 'ETF 상장폐지 절차', '상장폐지 순자산', 'ETF 정리매매', 'ETF 투자금 회수'],
+  section: 'ETF 매매 가이드',
+  lastReviewed: '2026-08-22',
+  answer:
+    'ETF는 상장폐지되어도 개별 주식처럼 휴지 조각이 되지는 않습니다. 상장폐지일 무렵의 순자산가치에서 보수 등을 뺀 금액을 현금으로 돌려받기 때문입니다. 다만 강세장에서 손해를 본 시점에 폐지되면 그 손실은 그대로 확정되므로, 순자산총액이 작은 종목은 미리 규모를 확인하는 편이 안전합니다.',
+  keyPoints: [
+    '상장 1년이 지난 ETF의 순자산총액이 50억원 미만으로 떨어지고 다음 반기 말까지 회복되지 않으면 상장폐지 사유가 됩니다.',
+    '기초지수와의 상관계수가 0.9 미만으로 3개월 이상 지속되거나 유동성공급 계약이 끊겨도 상장폐지 대상이 됩니다.',
+    'ETF는 상장폐지 직전까지 매도할 수 있고, 팔지 않아도 폐지일 순자산가치에서 보수를 뺀 금액을 현금으로 상환받습니다.',
+    '순자산총액 100억원 안팎으로 작은 종목은 50억원 기준에 가까워 폐지 위험이 상대적으로 크므로 매수 전에 규모를 확인하는 편이 좋습니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융투자협회 전자공시서비스', url: 'https://dis.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ETF가 상장폐지되면 원금 회수가 가능한지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=489722460' },
+    { summary: 'ETF가 상장폐지가 되면 어떻게 되는지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?docId=488312128' },
+    { summary: '미국 ETF가 상장폐지되면 어떻게 되는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=474327014' },
+  ],
+  comparisonTable: {
+    caption: '개별 주식 상장폐지와 무엇이 다른가',
+    columns: ['구분', 'ETF 상장폐지', '개별 주식 상장폐지'],
+    rows: [
+      ['잔여 가치', '순자산가치만큼 현금 상환', '정리매매 후 사실상 소멸 가능'],
+      ['정리매매', '폐지 직전까지 시장에서 매도 가능', '정리매매 기간에만 거래'],
+      ['원금 성격', '보유 자산의 실제 가치가 남음', '기업 부실이면 회수 어려움'],
+      ['주요 사유', '순자산 미달, 추적 오차, 유동성', '자본잠식, 감사의견 거절 등'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'ETF 상장폐지는 개별 주식 상장폐지와 다르다',
+      paragraphs: [
+        'ETF 상장폐지를 개별 주식의 상장폐지와 같은 것으로 오해해 원금이 통째로 날아간다고 생각하기 쉽습니다. 둘은 성격이 다릅니다. 개별 주식은 회사가 부실해서 쫓겨나는 경우가 많아 남는 가치가 거의 없을 수 있습니다.',
+        'ETF는 그 안에 실제 주식과 채권 같은 자산이 담겨 있습니다. 상장이 끝나도 그 자산의 가치는 남아 있고, 운용사가 이를 정리해 순자산가치만큼 투자자에게 돌려줍니다. 상장폐지가 곧 손실 확정을 뜻하지는 않는 이유입니다.',
+      ],
+    },
+    {
+      heading: '어떤 경우에 상장폐지되나',
+      paragraphs: [
+        '가장 흔한 사유는 규모 미달입니다. 상장한 지 1년이 지난 ETF의 순자산총액이 50억원에 못 미치는 상태로 다음 반기 말까지 이어지면 상장폐지 절차가 시작됩니다. 거래가 적어 규모가 쪼그라든 종목이 여기에 걸립니다.',
+        '이 밖에 기초지수를 제대로 따라가지 못해 상관계수가 0.9 아래로 3개월 넘게 유지되거나, 매매를 받쳐주는 유동성공급 계약이 끊기거나 이행되지 않아도 대상이 됩니다. 운용사가 사업성을 이유로 자진 상장폐지하는 경우도 있습니다.',
+      ],
+    },
+    {
+      heading: '돈은 어떤 절차로 돌려받나',
+      paragraphs: [
+        '상장폐지가 결정되면 투자자는 두 갈래로 대응할 수 있습니다. 하나는 폐지 직전까지 시장에서 그냥 파는 것이고, 다른 하나는 팔지 않고 남겨두는 것입니다.',
+        '팔지 않으면 상장폐지일의 순자산가치에서 보수 등을 뺀 금액을 현금으로 상환받습니다. 계좌로 자동 입금되므로 별도 신청이 필요 없는 경우가 대부분입니다. 어느 쪽이든 그 시점의 자산 가치를 기준으로 정산되니, 평가손이 난 상태라면 그 손실은 확정된다는 점은 같습니다.',
+      ],
+    },
+    {
+      heading: '폐지 위험을 미리 걸러내려면',
+      paragraphs: [
+        '위험을 줄이는 가장 쉬운 방법은 규모가 작은 종목을 피하는 것입니다. 순자산총액이 100억원 안팎으로 작으면 50억원 기준에 가까워 시장이 흔들릴 때 폐지 구간에 들어갈 수 있습니다.',
+        '거래량이 꾸준한지, 유동성공급자가 호가를 잘 대주는지도 함께 봐야 합니다. 한국거래소 정보데이터시스템이나 운용사 공시에서 순자산총액과 거래 현황을 확인할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '해외 상장 ETF는 조금 다르다',
+      paragraphs: [
+        '미국 등 해외에 상장된 ETF를 직접 산 경우에는 그 나라의 규정을 따릅니다. 청산 절차와 세금 처리가 국내와 달라, 상환금이 달러로 지급되거나 환율과 현지 세금이 얽힐 수 있습니다.',
+        '국내 상장 상품이든 해외 직투 상품이든 상장폐지 자체로 자산이 사라지지는 않지만, 되돌려받는 시점의 가치와 세금은 상황마다 다릅니다. 본 내용은 정보 제공 목적이며 개별 종목의 처리 방식은 해당 운용사 공시로 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: 'ETF가 상장폐지되면 투자금을 전부 잃나요?', answer: '아닙니다. ETF 안에 담긴 자산의 가치만큼 순자산가치를 기준으로 현금을 돌려받습니다. 다만 그 시점에 평가손이 나 있었다면 손실은 확정됩니다.' },
+    { question: '상장폐지된다는데 지금 파는 게 나을까요?', answer: '폐지 직전까지 시장에서 팔 수 있고, 팔지 않으면 폐지일 순자산가치로 상환받습니다. 호가가 순자산가치보다 크게 낮게 형성됐다면 상환을 기다리는 편이 유리할 수 있습니다.' },
+    { question: '상장폐지 위험이 큰 ETF는 어떻게 알아보나요?', answer: '순자산총액이 작고 거래량이 적은 종목이 위험합니다. 100억원 안팎이면 50억원 기준에 근접한 것이니 규모와 거래 현황을 미리 확인하세요.' },
+    { question: '상환받은 돈에도 세금이 붙나요?', answer: '상환도 매도와 비슷하게 과세될 수 있습니다. 국내 상장 상품인지 해외 직투 상품인지, 계좌 종류가 무엇인지에 따라 달라지므로 개별 확인이 필요합니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-22 · DC형 퇴직연금 중도인출 사유 */
+const dcPensionEarlyWithdrawal: GuideDef = {
+  slug: 'dc-pension-early-withdrawal',
+  title: 'DC형 퇴직연금 중도인출, 언제 되고 언제 안 되나',
+  tagline: '주택 구입과 요양, 파산 같은 법정 사유부터 확인한다',
+  description:
+    'DC형 퇴직연금은 아무 때나 꺼낼 수 없고 법에서 정한 사유가 있어야 중도인출이 됩니다. 무주택자의 주택구입과 전세보증금, 6개월 이상 요양, 파산 같은 인정 사유와 생애 한 번 제한, 신청 기한과 필요 서류를 정리했습니다.',
+  keywords: ['DC형 퇴직연금 중도인출', '퇴직연금 중도인출 사유', 'DC 주택구입 인출', '퇴직연금 무주택', '퇴직연금 중도인출 서류', 'DC형 인출 조건'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-22',
+  answer:
+    'DC형 퇴직연금은 노후 재원이라 법에서 정한 사유가 있을 때만 중도인출이 됩니다. 무주택자의 주택 구입이나 전세보증금 마련, 본인이나 부양가족의 6개월 이상 요양, 최근 5년 안의 파산이나 개인회생, 천재지변 등이 대표적입니다. 주택 관련 인출은 생애 한 번으로 제한되고 신청 기한도 정해져 있습니다.',
+  keyPoints: [
+    '주택 구입과 전세보증금 인출은 신청일 기준 무주택자만 가능하고, 둘을 합쳐 생애 단 한 번만 허용됩니다.',
+    '본인이나 배우자, 부양가족이 6개월 이상 요양이 필요할 때, 최근 5년 이내 파산선고나 개인회생 개시 결정을 받은 경우도 인정 사유입니다.',
+    '주택 구입은 소유권 이전 등기 후 1개월 이내, 전세보증금은 잔금 지급일 이후 1개월 이내에 신청해야 합니다.',
+    '단순 생활비나 투자 목적으로는 인출이 안 되며, 인출한 금액은 나중에 연금으로 받을 재원이 그만큼 줄어듭니다.',
+  ],
+  sources: [
+    { label: '고용노동부 퇴직연금 안내', url: 'https://www.moel.go.kr' },
+    { label: '근로복지공단 퇴직연금', url: 'https://pension.comwel.or.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '최초 주택구매를 위해 DC형 퇴직연금을 중도인출할 수 있는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=494581578' },
+    { summary: 'DC형 퇴직연금 중도인출 방법이 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=494544038' },
+  ],
+  sections: [
+    {
+      heading: 'DC형은 왜 아무 때나 못 꺼내나',
+      paragraphs: [
+        'DC형 퇴직연금은 회사가 넣어준 돈을 본인이 직접 굴리는 노후 재원입니다. 자유롭게 꺼내 쓸 수 있는 예금이 아니라, 은퇴 후 생활을 위해 묶어두는 성격이라 법이 인출 사유를 좁게 정해두었습니다.',
+        '그래서 계좌에 돈이 있어도 사유가 맞지 않으면 인출 신청이 반려됩니다. 생활비가 급하다거나 다른 데 투자하고 싶다는 이유로는 꺼낼 수 없다는 점을 먼저 이해해야 합니다.',
+      ],
+    },
+    {
+      heading: '중도인출이 인정되는 사유',
+      paragraphs: [
+        '가장 많이 쓰이는 사유는 무주택자의 주택 구입과 전세보증금 마련입니다. 이 밖에 본인이나 배우자, 부양가족이 6개월 이상 요양이 필요한 경우, 최근 5년 이내에 파산선고나 개인회생 절차 개시 결정을 받은 경우, 천재지변으로 피해를 입은 경우가 인정됩니다.',
+        '주의할 점은 이 사유들이 법으로 열거돼 있다는 것입니다. 여기에 들지 않으면 아무리 사정이 급해도 인출이 안 됩니다. 자신의 상황이 어느 사유에 해당하는지부터 확인하는 것이 먼저입니다.',
+      ],
+    },
+    {
+      heading: '주택 관련 인출은 조건이 까다롭다',
+      paragraphs: [
+        '주택 구입과 전세보증금 인출은 신청일 기준으로 본인 명의의 집이 없어야 합니다. 과거에 집을 가졌더라도 지금 무주택이면 가능하지만, 주택 구입과 전세보증금을 통틀어 생애 단 한 번만 허용됩니다.',
+        '신청 기한도 정해져 있습니다. 주택 구입은 소유권 이전 등기를 마친 뒤 1개월 안에, 전세보증금은 잔금을 치른 뒤 1개월 안에 신청해야 합니다. 시기를 놓치면 사유가 맞아도 인출이 어렵습니다.',
+      ],
+    },
+    {
+      heading: '필요한 서류와 신청 절차',
+      paragraphs: [
+        '주택 구입이라면 부동산 매매계약서 사본, 주민등록초본, 무주택을 증빙하는 지방세 세목별 과세증명서, 건물 등기부등본 등이 필요합니다. 전세보증금은 임대차계약서 사본과 주민등록초본, 무주택 증빙 서류를 준비합니다.',
+        '서류를 갖춰 퇴직연금을 운용하는 금융회사에 신청하면 심사를 거쳐 지급됩니다. 서류 요건은 회사마다 조금씩 다를 수 있으니 신청 전에 해당 금융회사에 미리 확인하는 편이 매끄럽습니다.',
+      ],
+    },
+    {
+      heading: '인출 전에 따져볼 것',
+      paragraphs: [
+        '중도인출은 당장 목돈을 마련해주지만, 그만큼 노후에 받을 연금이 줄어듭니다. 꺼낸 돈은 다시 채워 넣기 어렵고, 그 사이 굴렸다면 붙었을 수익도 함께 사라집니다.',
+        '세금 측면도 살펴야 합니다. 인출 사유와 금액에 따라 부과되는 세율이 달라질 수 있어, 실수령액이 생각보다 적을 수 있습니다. 대출 등 다른 방법과 견줘본 뒤 결정하시길 권합니다. 본 내용은 정보 제공 목적이며 구체적인 요건은 관할 기관과 금융회사 안내를 따릅니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '생활비가 급한데 DC형에서 꺼내 쓸 수 있나요?', answer: '단순 생활비는 인정 사유가 아니라 인출이 안 됩니다. 무주택자의 주택 마련, 6개월 이상 요양, 파산 등 법에서 정한 사유에 해당해야 가능합니다.' },
+    { question: '전에 집이 있었는데 지금은 없으면 주택 인출이 되나요?', answer: '신청일 기준으로 무주택이면 가능합니다. 다만 주택 구입과 전세보증금을 합쳐 생애 한 번만 허용된다는 제한이 있습니다.' },
+    { question: '중도인출하면 세금은 어떻게 되나요?', answer: '인출 사유와 금액에 따라 적용되는 세율이 달라집니다. 사유에 따라 낮은 세율이 적용되기도 하므로 신청 전 금융회사에서 실수령액을 확인하세요.' },
+    { question: 'IRP도 같은 사유로 중도인출되나요?', answer: 'IRP도 법정 사유가 있어야 인출됩니다. 다만 계좌 성격과 요건이 조금씩 달라 개별 확인이 필요합니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-22 · 리츠 ETF와 리츠 펀드 차이 */
+const reitEtfVsReitFund: GuideDef = {
+  slug: 'reit-etf-vs-reit-fund',
+  title: '리츠 ETF와 리츠 펀드, 뭐가 다르고 어느 게 맞나',
+  tagline: '실시간 매매냐 정해진 기준가냐부터 갈린다',
+  description:
+    '리츠에 투자할 때 ETF로 살지 펀드로 살지 고민하는 분이 많습니다. 거래 방식과 실시간 매매 여부, 보수 구조, 환금성, 분배금이 어떻게 다른지 항목별로 비교하고 어느 경우에 어느 쪽이 맞는지 판단 기준까지 정리했습니다.',
+  keywords: ['리츠 ETF', '리츠 펀드', '리츠 ETF 펀드 차이', '부동산 리츠 투자', '리츠 ETF 배당', '리츠 환금성'],
+  section: 'ETF 비교 가이드',
+  lastReviewed: '2026-08-22',
+  answer:
+    '리츠 ETF와 리츠 펀드는 둘 다 여러 부동산 리츠에 나눠 담는 상품이지만 거래 방식이 다릅니다. ETF는 주식처럼 장중에 실시간 가격으로 사고팔 수 있고, 펀드는 하루 한 번 정해지는 기준가로 가입하고 환매합니다. 자주 매매하거나 실시간 시세가 중요하면 ETF, 자동이체로 꾸준히 모으는 데는 펀드가 편할 수 있습니다.',
+  keyPoints: [
+    '리츠 ETF는 증권시장에서 주식처럼 실시간 가격으로 매매되고, 리츠 펀드는 하루 한 번 산정되는 기준가로 가입과 환매가 이뤄집니다.',
+    '환금성은 ETF가 대체로 빠릅니다. 팔면 통상 영업일 기준 이틀 뒤 현금화되지만, 펀드는 환매에 며칠 더 걸리는 경우가 있습니다.',
+    'ETF는 매매 때 증권사 수수료가 붙고, 펀드는 상품에 따라 판매보수나 환매수수료 구조가 달라 총비용을 따로 비교해야 합니다.',
+    '두 상품 모두 담긴 리츠에서 나오는 임대수익 등이 분배금이나 결산 분배로 지급되며, 계좌 종류에 따라 세금이 달라집니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융투자협회 전자공시서비스', url: 'https://dis.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '리츠 ETF와 리츠 펀드의 차이가 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=472788928' },
+    { summary: '리츠 펀드와 리츠 ETF의 차이점이 무엇인지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?docId=485664753' },
+  ],
+  comparisonTable: {
+    caption: '리츠 ETF와 리츠 펀드 한눈 비교',
+    columns: ['구분', '리츠 ETF', '리츠 펀드'],
+    rows: [
+      ['매매 방식', '장중 실시간 가격', '하루 한 번 기준가'],
+      ['환금성', '매도 후 통상 이틀 뒤 현금화', '환매에 며칠 더 소요'],
+      ['비용', '증권사 매매수수료', '판매보수, 환매수수료 구조'],
+      ['적립 편의', '수동 매수 위주', '자동이체 적립 편리'],
+      ['어느 경우에 유리', '실시간 매매, 저비용 선호', '꾸준한 자동 적립 선호'],
+    ],
+  },
+  sections: [
+    {
+      heading: '둘 다 여러 리츠에 나눠 담는 상품이다',
+      paragraphs: [
+        '리츠 ETF와 리츠 펀드는 개별 리츠 하나를 사는 것과 다릅니다. 오피스, 물류센터, 리테일 같은 여러 부동산 리츠를 한 바구니에 나눠 담아, 한 종목이 흔들려도 충격을 분산하도록 설계됐습니다.',
+        '이 점에서 두 상품의 목적은 비슷합니다. 차이는 그 바구니를 어떻게 사고파느냐, 비용이 어떻게 붙느냐에서 나옵니다. 그래서 무엇을 담느냐보다 어떻게 굴리느냐를 보고 고르는 편이 낫습니다.',
+      ],
+    },
+    {
+      heading: '가장 큰 차이는 거래 방식',
+      paragraphs: [
+        '리츠 ETF는 증권시장에 상장돼 있어 장이 열린 동안 주식처럼 실시간 가격으로 매매합니다. 원하는 가격에 지정가 주문을 낼 수도 있어 시세를 보며 대응하기 좋습니다.',
+        '리츠 펀드는 상장 상품이 아니라 하루 한 번 산정되는 기준가로 가입하고 환매합니다. 오늘 신청해도 반영되는 기준가는 정해진 시점의 값이라, 장중 시세를 노려 사고파는 방식과는 맞지 않습니다.',
+      ],
+    },
+    {
+      heading: '환금성과 비용을 따져보면',
+      paragraphs: [
+        '급하게 현금이 필요할 때는 ETF가 대체로 빠릅니다. 시장에서 팔면 통상 영업일 기준 이틀 뒤 현금화됩니다. 펀드는 환매 신청 후 대금을 받기까지 며칠 더 걸리는 경우가 있어 자금 계획에 여유가 필요합니다.',
+        '비용 구조도 다릅니다. ETF는 살 때와 팔 때 증권사 매매수수료가 붙고, 펀드는 상품에 따라 판매보수나 일정 기간 안에 팔면 무는 환매수수료가 있습니다. 총보수만이 아니라 이런 항목까지 합쳐 실제 부담을 비교해야 합니다.',
+      ],
+    },
+    {
+      heading: '분배금과 세금은 어떻게 다르나',
+      paragraphs: [
+        '두 상품 모두 담긴 리츠가 부동산에서 벌어들인 임대수익 등을 투자자에게 나눠줍니다. ETF는 분배금 형태로, 펀드는 결산 시점 분배나 재투자 형태로 지급되는 경우가 많습니다.',
+        '세금은 상품 종류만이 아니라 어떤 계좌에서 담았는지에 따라 갈립니다. 일반 계좌, ISA, 연금계좌 각각 과세가 다르므로, 세후 수익을 비교하려면 계좌 유형까지 함께 놓고 봐야 합니다.',
+      ],
+    },
+    {
+      heading: '어느 쪽이 나에게 맞을까',
+      paragraphs: [
+        '시세를 보며 직접 매매하고 비용을 낮추고 싶다면 리츠 ETF가 대체로 편합니다. 반대로 매달 자동이체로 꾸준히 모으는 방식이 익숙하고 장중 시세에 신경 쓰기 싫다면 펀드가 손이 덜 갑니다.',
+        '정답이 하나로 정해진 것은 아닙니다. 매매 빈도, 적립 방식, 비용 민감도, 세금까지 자신의 상황에 맞춰 고르면 됩니다. 어떤 상품도 수익을 보장하지 않으며 투자 판단과 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '리츠 ETF와 리츠 펀드 중 배당이 더 많은 쪽은 어디인가요?', answer: '담고 있는 리츠와 운용 방식에 따라 다릅니다. 상품 종류만으로 배당이 더 많다고 단정할 수 없어, 개별 상품의 분배 이력과 구성을 비교해야 합니다.' },
+    { question: '소액으로 자동 적립하려면 어느 쪽이 편한가요?', answer: '정기적으로 자동이체해 모으는 데는 펀드가 익숙합니다. ETF도 적립이 가능하지만 대체로 직접 매수하는 방식이라 손이 더 갑니다.' },
+    { question: '리츠 ETF는 실시간으로 언제든 팔 수 있나요?', answer: '장이 열린 시간에는 시장에서 팔 수 있습니다. 다만 거래가 적은 종목은 원하는 가격에 바로 체결되지 않을 수 있으니 거래량을 확인하세요.' },
+    { question: '연금계좌에서도 리츠 ETF나 펀드를 담을 수 있나요?', answer: '상품과 계좌 요건에 따라 가능 여부가 갈립니다. 특히 IRP는 위험자산 분류와 편입 한도가 있어 상품별로 확인이 필요합니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-22 · IRP 계좌 리츠 ETF 안전자산 편입 여부 */
+const irpReitEtfSafeAsset: GuideDef = {
+  slug: 'irp-reit-etf-safe-asset',
+  title: 'IRP에서 리츠 ETF는 안전자산에 들어갈까',
+  tagline: '위험자산 70% 한도와 상품별 분류부터 확인한다',
+  description:
+    'IRP에 부동산 리츠 ETF를 담을 때 안전자산 30% 몫에 들어가는지 헷갈리는 분이 많습니다. 위험자산 70% 한도와 안전자산 분류 기준, 같은 리츠라도 상품마다 분류가 갈리는 이유, 화면에서 직접 확인하는 법을 정리했습니다.',
+  keywords: ['IRP 리츠 ETF', 'IRP 안전자산', '퇴직연금 위험자산 70%', 'IRP 리츠 편입', '안전자산 30%', 'IRP ETF 분류'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-22',
+  answer:
+    'IRP에서 부동산 리츠 ETF는 대체로 위험자산으로 분류돼 안전자산 30% 몫이 아니라 위험자산 70% 한도 안에서 담깁니다. 다만 최근에는 채권 등을 섞어 안전자산으로 분류되도록 설계한 리츠 관련 ETF도 나오고 있어, 같은 리츠라도 상품마다 분류가 갈립니다. 그래서 매수 전 금융회사 화면에서 그 상품의 분류를 직접 확인해야 합니다.',
+  keyPoints: [
+    'IRP는 주식형 같은 위험자산을 최대 70%까지만 담을 수 있고, 나머지 30% 이상은 안전자산으로 채워야 합니다.',
+    '일반적인 부동산 리츠 ETF는 위험자산으로 분류돼 70% 한도 안에서 담기며, 안전자산 30% 몫에는 들어가지 않습니다.',
+    '채권을 섞어 안전자산 요건에 맞춘 일부 리츠 관련 ETF는 안전자산으로 분류되기도 해, 같은 리츠라도 상품마다 다릅니다.',
+    '분류는 상품 이름이 아니라 실제 구성으로 정해지므로, 매수 화면의 위험자산 여부 표시나 상품 설명서로 확인해야 합니다.',
+  ],
+  sources: [
+    { label: '고용노동부 퇴직연금 안내', url: 'https://www.moel.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'IRP 계좌의 부동산 리츠 ETF가 안전자산에 해당되는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=494479461' },
+    { summary: 'IRP에서 ETF, 리츠, 펀드를 어떻게 담아야 하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=466914062' },
+  ],
+  comparisonTable: {
+    caption: 'IRP 안에서 자산은 어떻게 나뉘나',
+    columns: ['구분', '위험자산 70% 한도', '안전자산 30% 이상'],
+    rows: [
+      ['대표 상품', '주식형 ETF, 일반 리츠 ETF', '예금, 채권형 ETF'],
+      ['리츠 취급', '대체로 위험자산으로 분류', '채권 혼합형 일부만 해당'],
+      ['편입 한도', '전체의 70%까지', '반드시 30% 이상 유지'],
+      ['확인 방법', '매수 화면 위험자산 표시', '매수 화면 안전자산 표시'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'IRP에는 위험자산 70% 한도가 있다',
+      paragraphs: [
+        'IRP는 노후 자금을 지키기 위해 위험자산을 전체의 70%까지만 담도록 정해두었습니다. 나머지 30% 이상은 예금이나 채권형처럼 상대적으로 안전한 자산으로 채워야 합니다.',
+        '이 한도는 계좌 전체 평가액을 기준으로 계산됩니다. 그래서 어떤 상품이 위험자산인지 안전자산인지에 따라 담을 수 있는 비중이 달라집니다. 리츠 ETF가 어느 쪽으로 분류되는지가 실제 매수에 바로 영향을 주는 이유입니다.',
+      ],
+    },
+    {
+      heading: '일반 리츠 ETF는 대체로 위험자산',
+      paragraphs: [
+        '부동산 리츠는 주가처럼 가격이 오르내리는 상장 상품이라, 이를 담은 일반적인 리츠 ETF는 위험자산으로 분류되는 경우가 많습니다. 따라서 안전자산 30% 몫이 아니라 위험자산 70% 한도 안에서 담깁니다.',
+        '질문이 많은 부분이 여기입니다. 부동산이라 안정적일 것 같아 안전자산으로 오해하기 쉽지만, 분류 기준은 자산의 이미지가 아니라 가격 변동 성격과 구성입니다. 리츠 ETF를 안전자산 몫으로 채우려는 계획은 대개 통하지 않습니다.',
+      ],
+    },
+    {
+      heading: '그런데 안전자산으로 분류되는 리츠 ETF도 있다',
+      paragraphs: [
+        '최근에는 리츠에 채권 등을 섞어 안전자산 요건을 맞춘 상품도 나오고 있습니다. 이런 ETF는 안전자산으로 분류돼 30% 몫에 담을 수 있습니다. 같은 리츠라는 이름을 달고 있어도 분류가 갈리는 이유입니다.',
+        '그래서 리츠 ETF라는 큰 범주만 보고 판단하면 안 됩니다. 그 상품이 무엇을 얼마나 담고 있는지, 위험자산인지 안전자산인지가 상품마다 다르므로 하나하나 확인해야 합니다.',
+      ],
+    },
+    {
+      heading: '분류는 어디서 확인하나',
+      paragraphs: [
+        '가장 확실한 방법은 매수 화면입니다. 증권사나 은행의 IRP 매수 화면에는 그 상품이 위험자산인지 안전자산인지, 편입 한도가 얼마인지 표시됩니다. 한도를 넘기면 주문 자체가 막히기도 합니다.',
+        '상품 설명서나 집합투자규약에서도 자산 구성과 분류를 확인할 수 있습니다. 이름만 보고 짐작하기보다, 실제 표시를 확인한 뒤 비중을 짜는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '한도를 활용하는 방법',
+      paragraphs: [
+        '리츠 ETF로 임대수익 성격의 분배를 노리고 싶다면 위험자산 70% 안에서 다른 주식형 상품과 비중을 나눠 담으면 됩니다. 안전자산 30%는 예금이나 채권형으로 채우는 것이 일반적입니다.',
+        '위험자산 비중을 최대로 쓰고 싶어 안전자산으로 분류된 리츠 관련 상품을 찾는 분도 있습니다. 다만 분류가 안전자산이라고 해서 손실 위험이 없다는 뜻은 아닙니다. 본 내용은 정보 제공 목적이며 상품별 분류와 위험은 금융회사 안내로 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '부동산 리츠 ETF는 안전하니까 안전자산 아닌가요?', answer: '부동산이라는 이미지와 달리 가격 변동이 있어 일반 리츠 ETF는 대체로 위험자산으로 분류됩니다. 안전자산 여부는 자산의 안정감이 아니라 구성과 규정으로 정해집니다.' },
+    { question: 'IRP에서 리츠 ETF를 아예 못 담나요?', answer: '담을 수 있습니다. 다만 대체로 위험자산 70% 한도 안에서 담기므로, 그 비중을 다른 위험자산과 나눠 써야 합니다.' },
+    { question: '안전자산으로 분류된 리츠 ETF는 손실이 없나요?', answer: '아닙니다. 안전자산 분류는 한도 규정상 구분일 뿐 원금 보장을 뜻하지 않습니다. 채권 비중이 있어도 가격은 변동합니다.' },
+    { question: '상품이 위험자산인지 어디서 보나요?', answer: 'IRP 매수 화면의 위험자산 표시나 상품 설명서에서 확인할 수 있습니다. 한도를 넘기면 주문이 막히기도 합니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-22 · ETF 총보수가 빠져나가는 방식 */
+const etfTotalExpenseDeduction: GuideDef = {
+  slug: 'etf-total-expense-deduction',
+  title: 'ETF 총보수는 어떻게 빠져나가나',
+  tagline: '계좌에서 안 빠지는데 어떻게 내는지부터 짚는다',
+  description:
+    'ETF 총보수는 계좌에서 따로 빠져나가지 않는데 대체 어떻게 내는지 궁금해하는 분이 많습니다. 순자산가치에서 매일 일할로 차감되는 구조와 총보수비용, 기타비용의 차이, 실제 부담하는 비용을 확인하는 법까지 정리했습니다.',
+  keywords: ['ETF 총보수', 'ETF 총보수 차감', 'ETF 총보수비용', 'ETF 실부담비용', 'ETF 기타비용', 'ETF 보수 확인'],
+  section: 'ETF 비용 가이드',
+  lastReviewed: '2026-08-22',
+  answer:
+    'ETF 총보수는 계좌에서 따로 돈이 빠져나가는 방식이 아닙니다. 순자산가치에서 매일 조금씩 일할로 차감되어 가격에 이미 반영되기 때문에, 명세서에 수수료 항목이 따로 찍히지 않습니다. 실제 부담은 공시된 총보수만이 아니라 기타비용과 매매중개수수료까지 더한 총보수비용으로 봐야 정확합니다.',
+  keyPoints: [
+    '총보수는 순자산가치에서 매일 일할로 차감되어 가격에 반영되므로, 계좌 명세서에 별도 수수료 청구가 찍히지 않습니다.',
+    '총보수는 운용, 판매, 수탁, 사무관리 보수를 합한 값이며 투자자가 따로 납부하지 않고 수익률에서 조용히 빠집니다.',
+    '여기에 결제수수료, 지수사용료 같은 기타비용을 더하면 총보수비용이 되고, 매매중개수수료까지 더한 값이 실제 부담에 가깝습니다.',
+    '공시 총보수가 낮아 보여도 기타비용을 더한 실부담이 몇 배 큰 경우가 있어, 총보수만 보고 고르면 비용을 과소평가할 수 있습니다.',
+  ],
+  sources: [
+    { label: '금융투자협회 전자공시서비스', url: 'https://dis.kofia.or.kr' },
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ETF 총보수가 어떻게 처리되는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=344384109' },
+    { summary: 'ETF 총보수가 무엇인지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?docId=493380947' },
+    { summary: '퇴직연금 ETF 매매 시 총보수 비율을 어떻게 계산하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=490814458' },
+  ],
+  sections: [
+    {
+      heading: '총보수는 계좌에서 따로 빠지지 않는다',
+      paragraphs: [
+        'ETF 총보수를 놓고 가장 많이 하는 오해가, 통장에서 수수료가 따로 빠져나갈 것이라는 생각입니다. 실제로는 그렇지 않습니다. 명세서를 뒤져봐도 수수료 청구 항목이 보이지 않아 안 내는 것 아니냐고 여기기 쉽습니다.',
+        '총보수는 다른 방식으로 냅니다. 눈에 보이는 청구가 아니라, ETF 가격 안에 이미 녹아 들어가 있습니다. 이 구조를 알면 왜 명세서에 안 찍히는지, 그런데도 왜 비용을 내고 있는지가 정리됩니다.',
+      ],
+    },
+    {
+      heading: '순자산가치에서 매일 조금씩 차감된다',
+      paragraphs: [
+        '운용사는 연 단위로 정한 총보수를 하루치로 쪼개 매일 ETF의 순자산가치에서 뺍니다. 일할로 조금씩 차감하는 방식이라, 그날그날의 가격에 비용이 이미 반영되어 있습니다.',
+        '그래서 투자자가 따로 이체하거나 결제할 일이 없습니다. 대신 수익률이 그만큼 낮아지는 형태로 비용을 부담합니다. 청구서가 없을 뿐 안 내는 것이 아니라, 수익에서 조용히 빠지고 있는 셈입니다.',
+      ],
+    },
+    {
+      heading: '총보수와 총보수비용은 다르다',
+      paragraphs: [
+        '흔히 말하는 총보수는 운용보수, 판매보수, 수탁보수, 사무관리보수를 합한 값입니다. 상품 소개에 크게 적히는 숫자가 보통 이 총보수입니다.',
+        '그런데 ETF를 굴리다 보면 결제수수료, 해외거래 예탁비용, 지수사용료 같은 기타비용이 추가로 듭니다. 총보수에 이 기타비용을 더한 것이 총보수비용이고, 여기에 매매중개수수료까지 더해야 실제로 부담하는 비용에 가까워집니다.',
+      ],
+    },
+    {
+      heading: '싸 보이는 총보수의 함정',
+      paragraphs: [
+        '총보수만 보면 아주 낮아 경쟁력 있어 보이는 상품이 있습니다. 하지만 기타비용을 더한 실부담은 그보다 훨씬 클 수 있습니다. 공시 총보수가 낮은데 실제 비용은 몇 배에 달하는 사례도 있습니다.',
+        '특히 해외 자산을 담거나 회전이 잦은 상품은 기타비용이 붙기 쉽습니다. 총보수라는 앞 숫자만 비교하면 진짜 저비용 상품을 잘못 고를 수 있으니 주의가 필요합니다.',
+      ],
+    },
+    {
+      heading: '실제 부담을 확인하는 법',
+      paragraphs: [
+        '실부담을 제대로 보려면 총보수 대신 총보수비용을 확인해야 합니다. 금융투자협회 전자공시서비스나 운용사, 한국거래소 자료에서 상품별 총보수비용이 공개됩니다.',
+        '같은 지수를 따라가는 ETF끼리 비교할 때도 총보수가 아니라 총보수비용과 매매중개수수료까지 함께 놓고 보면 판단이 정확해집니다. 비용은 장기 수익률에 꾸준히 영향을 주므로, 앞 숫자에 현혹되지 않는 것이 중요합니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: 'ETF 총보수는 왜 명세서에 안 나오나요?', answer: '순자산가치에서 매일 일할로 차감돼 가격에 이미 반영되기 때문입니다. 별도로 청구되지 않을 뿐, 수익률이 그만큼 낮아지는 형태로 부담합니다.' },
+    { question: '총보수와 총보수비용은 뭐가 다른가요?', answer: '총보수는 운용, 판매, 수탁, 사무관리 보수의 합이고, 여기에 기타비용을 더한 것이 총보수비용입니다. 실제 부담은 총보수비용으로 봐야 정확합니다.' },
+    { question: '총보수가 낮으면 무조건 좋은 ETF인가요?', answer: '아닙니다. 기타비용을 더한 실부담이 클 수 있어 총보수만으로 판단하면 비용을 과소평가할 수 있습니다. 총보수비용까지 비교하세요.' },
+    { question: '총보수비용은 어디서 확인하나요?', answer: '금융투자협회 전자공시서비스와 운용사, 한국거래소 자료에서 상품별로 공개됩니다. 같은 지수 상품끼리 비교할 때 유용합니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  etfDelistingMoneyRecovery,
+  dcPensionEarlyWithdrawal,
+  reitEtfVsReitFund,
+  irpReitEtfSafeAsset,
+  etfTotalExpenseDeduction,
   stockOrderRejectedReasons,
   dividendRecordDateReform,
   retireeDividendEtfMonthlyIncome,
@@ -21643,6 +22037,12 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-22 · 지식iN 질문 수요 기반 (ETF 상장폐지 원금 회수·DC형 퇴직연금 중도인출 사유·리츠 ETF vs 리츠 펀드·IRP 리츠 ETF 안전자산 분류·ETF 총보수 차감 방식)
+  'etf-delisting-money-recovery': '2026-08-22',
+  'dc-pension-early-withdrawal': '2026-08-22',
+  'reit-etf-vs-reit-fund': '2026-08-22',
+  'irp-reit-etf-safe-asset': '2026-08-22',
+  'etf-total-expense-deduction': '2026-08-22',
   // 기반 가이드 14편 — 발행일이 비어 있어 /guide/latest 정렬과 sitemap lastmod에서 빠졌다.
   // 각 슬러그가 guides.ts에 처음 들어온 커밋 날짜로 채웠다(git log -S 확인). (2026-08-12)
   'monthly-dividend': '2026-04-25',
@@ -21956,17 +22356,17 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money', 'etf-delisting-money-recovery', 'etf-total-expense-deduction'],
   },
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'dc-pension-early-withdrawal', 'irp-reit-etf-safe-asset'],
   },
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income', 'reit-etf-vs-reit-fund'],
   },
   {
     title: '테마·섹터',

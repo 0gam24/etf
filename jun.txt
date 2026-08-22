@@ -2438,3 +2438,40 @@ A. 실제 코드(src/lib/guides.ts + src/app/guide/[slug]/page.tsx) 기준으로
   - 직답은 결론만, 수치는 본문에
   - 핵심 포인트는 본문 요약이 아니라 본문에 없는 판단·조건·비교 결과
   - 소제목만 봐도 무슨 문단인지 알게. 의문형은 1~2개까지
+
+## 2026-08-22 · [일일 발행]
+
+### 오늘 발행 5편 (지식iN 질문 수요 기반, 코퍼스: kin-20260812.json + kin-20260718.json)
+
+1. ETF 상장폐지되면 원금은 어떻게 되나 (etf-delisting-money-recovery)
+   - 출처 질문: "ETF 상장폐지시 원금회수가능여부"(docId 489722460), "etf가 상장폐지되면 어떻게 되나요"(488312128), "미국 ETF 상장폐지되면"(474327014)
+   - 검증: KRX 순자산총액 50억원 미만+반기 미해소 상폐 사유, 상관계수 0.9 미만 3개월, 유동성공급 미체결. 상폐 직전까지 매도 가능, 폐지일 순자산가치에서 보수 뺀 금액 현금 상환 확인.
+
+2. DC형 퇴직연금 중도인출, 언제 되고 언제 안 되나 (dc-pension-early-withdrawal)
+   - 출처 질문: "최초주택구매 DC퇴직연금 중도인출"(494581578), "dc형 퇴직연금 중도인출 방법"(494544038)
+   - 검증: 무주택 주택구입·전세보증금(생애 1회), 6개월 이상 요양, 5년 내 파산·개인회생, 천재지변. 주택 구입 소유권 이전 등기 후 1개월/전세 잔금 후 1개월 신청 기한 확인(고용노동부·KB 자료).
+
+3. 리츠 ETF와 리츠 펀드, 뭐가 다르고 어느 게 맞나 (reit-etf-vs-reit-fund)
+   - 출처 질문: "리츠 etf vs 리츠 펀드"(472788928), "리츠 펀드와 리츠 ETF의 차이점"(485664753)
+   - 검증: ETF 장중 실시간 매매 vs 펀드 하루 1회 기준가, 환금성·보수구조·분배 방식 차이. 비교표(어느 경우 유리) 포함.
+
+4. IRP에서 리츠 ETF는 안전자산에 들어갈까 (irp-reit-etf-safe-asset)
+   - 출처 질문: "irp계좌의 부동산리츠ETF가 안전자산에 해당되는지"(494479461), "IRP와 ETF,리츠,펀드"(466914062)
+   - 검증: IRP 위험자산 70% 한도/안전자산 30% 이상, 일반 리츠 ETF는 대체로 위험자산 분류, 채권 혼합형 일부만 안전자산. 매수 화면 표시로 확인(삼성운용 안전자산 리츠 ETF 사례).
+
+5. ETF 총보수는 어떻게 빠져나가나 (etf-total-expense-deduction)
+   - 출처 질문: "ETF 총보수 어떻게 처리되는 거죠"(344384109), "etf 총보수"(493380947), "퇴직연금 ETF 매매시 총보수 비율 계산"(490814458)
+   - 검증: 순자산가치에서 매일 일할 차감, 명세서 미청구. 총보수(운용·판매·수탁·사무관리) vs 총보수비용(TER, 기타비용 포함) vs 매매중개수수료 실부담 차이 확인.
+
+### 지식iN 신규 수집: 클라우드 IP 네이버 차단(HTTP 000)으로 실패, 1회 재시도 후 저장 코퍼스 사용. 사용 파일: data/keywords/kin/kin-20260812.json (2708건), kin-20260718.json.
+
+### 검증: tsc --noEmit 에러 0, validate:guides ERROR 0(신규 5편 WARN 0), cf:build 성공, prerender 5편 answer-box·key-points·sources·citation·2026-08-22 모두 확인. em dash 0·금지어 0.
+
+### 색인 푸시 결과: 이연. 이번 발행은 feature 브랜치(claude/serene-hamilton-ovoqcz) + Draft PR #29로 진행되어 production 미반영 상태. push:guides --dry로 대상 5편+허브 확인만 수행. 실제 색인 통보(IndexNow/Google)는 PR 머지·배포 완료 후 실행(배포 전 통보 시 봇 404 회피).
+
+### 발행 URL:
+https://iknowhowinfo.com/guide/etf-delisting-money-recovery
+https://iknowhowinfo.com/guide/dc-pension-early-withdrawal
+https://iknowhowinfo.com/guide/reit-etf-vs-reit-fund
+https://iknowhowinfo.com/guide/irp-reit-etf-safe-asset
+https://iknowhowinfo.com/guide/etf-total-expense-deduction
