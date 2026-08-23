@@ -2438,3 +2438,32 @@ A. 실제 코드(src/lib/guides.ts + src/app/guide/[slug]/page.tsx) 기준으로
   - 직답은 결론만, 수치는 본문에
   - 핵심 포인트는 본문 요약이 아니라 본문에 없는 판단·조건·비교 결과
   - 소제목만 봐도 무슨 문단인지 알게. 의문형은 1~2개까지
+
+## 2026-08-23 · [일일 가이드 발행]
+
+오늘 5편 발행 (지식iN 질문 수요 기반, 롱테일 확장). 지식iN 신규 수집은 클라우드 IP 차단으로 실패(정상), 저장 코퍼스 kin-20260812.json(2708건)·kin-20260718.json 사용.
+
+1. 연금저축 세액공제 안 받은 돈, 인출할 때 세금은 (pension-unclaimed-contribution-tax)
+   - 출처 질문: 연금저축펀드 세액공제 안받은 금액 소득세 부과 (docId=491441194)
+   - 검증: 세액공제 미적용 납입원금은 과세제외 재원으로 인출 시 비과세, 공제받은 원금+수익은 연금외수령 16.5% 기타소득세 (국세청·프리즘 확인)
+2. 퇴직연금 디폴트옵션 바꾸기, 변경과 해지 방법 (default-option-change-cancel) · howTo
+   - 출처 질문: 디폴트옵션 변경 시 기존 처리(docId=494003069), 삼성증권 해제방법(docId=492054816), ETF로 변경(docId=492762779)
+   - 검증: 사전지정운용제도, 이미 매수분은 매도 후 재매수, DC/IRP 회사별 절차 상이
+3. ETF 괴리율·NAV 어디서 보나, 싸게 사는 확인법 (etf-nav-check-how-to) · howTo
+   - 출처 질문: 나무증권 괴리율 보는법(docId=470017395), NAV 괴리율 보면 싸게사나(docId=458112365)
+   - 검증: 괴리율=(시장가-NAV)/NAV, iNAV 실시간 추정, KRX·운용사·증권사앱 확인
+4. 비트코인 증여세, 자녀에게 코인 줄 때 계산과 신고 (bitcoin-gift-tax-filing)
+   - 출처 질문: 비트코인 증여세 계산(docId=474330456), 가상자산 증여 신고(docId=486216678)
+   - 검증: 평가=증여일 전후 각 1개월 고시거래소 일평균가액 평균(상증세법 §60·65), 공제 성인자녀 5천만·미성년 2천만·배우자 6억(10년), 신고기한 말일부터 3개월, 신고세액공제 3% (국세청 확인)
+5. S&P500·나스닥100 지수 ETF도 상장폐지되나 (index-etf-delisting-risk)
+   - 출처 질문: 코덱스 S&P500·나스닥100 적립 상폐걱정(docId=494335324), 지수연동 ETF 상폐위험(docId=436341057), 상폐시 원금회수(docId=489722460)
+   - 검증: 상폐사유 순자산 50억 미만·상관계수 0.9 미만 3개월, 청산 시 순자산가치-비용 현금 지급(해지상환금), 한달 전 예고공시 (한경·삼성자산운용 확인)
+
+검증: tsc 0 error, validate:guides ERROR 0(신규 5편 WARN 0), cf:build 성공, prerender 5편 answer-box·guide-key-points·guide-sources·citation·2026-08-23 확인. 신규 블록 em dash 0·금지어 0.
+
+★ 발행 URL:
+https://iknowhowinfo.com/guide/pension-unclaimed-contribution-tax
+https://iknowhowinfo.com/guide/default-option-change-cancel
+https://iknowhowinfo.com/guide/etf-nav-check-how-to
+https://iknowhowinfo.com/guide/bitcoin-gift-tax-filing
+https://iknowhowinfo.com/guide/index-etf-delisting-risk
