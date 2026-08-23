@@ -21394,7 +21394,422 @@ const basicPensionWithPrivatePension: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-08-23 · 연금계좌에서 세액공제 안 받은 돈을 꺼낼 때 */
+const pensionUnclaimedContributionTax: GuideDef = {
+  slug: 'pension-unclaimed-contribution-tax',
+  title: '연금저축 세액공제 안 받은 돈, 인출할 때 세금은',
+  tagline: '어떤 돈이 세금 없이 먼저 나가는지 순서를 알면 손해가 없다',
+  description:
+    '연금저축이나 IRP에 넣었지만 세액공제를 받지 않은 납입원금은 나중에 꺼낼 때 세금이 붙지 않습니다. 어떤 돈이 과세 제외로 먼저 나가는지, 세액공제 받은 돈과 무엇이 다른지, 신청하지 않은 금액을 어떻게 증빙하는지 정리했습니다.',
+  keywords: ['연금저축 세액공제', '세액공제 안받은 금액', '연금저축 인출 세금', '연금계좌 과세제외', 'IRP 중도인출 세금', '연금저축 납입확인서'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-23',
+  answer:
+    '세액공제를 받지 않은 납입원금은 연금계좌에서 인출해도 세금이 없습니다. 반면 세액공제를 받은 원금과 그동안 불어난 운용수익을 연금 외 방식으로 꺼내면 16.5%의 기타소득세가 붙습니다. 그래서 어떤 돈이 먼저 빠져나가는지 순서를 알아두면 불필요한 세금을 피할 수 있습니다.',
+  keyPoints: [
+    '세액공제를 받지 않은 납입금은 과세 제외 재원으로 분류되어, 연금 수령이든 중도 인출이든 세금 없이 꺼낼 수 있습니다.',
+    '세액공제를 받은 납입금과 운용수익을 연금 외로 인출하면 16.5%(지방소득세 포함) 기타소득세가 부과됩니다.',
+    '연금계좌 인출은 세금 없는 과세 제외 재원부터 나가고, 세액공제 받은 금액과 수익이 가장 나중에 나가는 순서로 계산됩니다.',
+    '연금저축과 IRP를 합쳐 연 900만원을 넘겨 넣은 초과분이나 세액공제를 신청하지 않은 금액은 납입확인서로 과세 제외를 증빙합니다.',
+  ],
+  sources: [
+    { label: '국세청 연금계좌 세액공제 안내', url: 'https://www.nts.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '연금저축펀드에 세액공제를 받지 않은 금액이 있는데 인출할 때 소득세가 부과되는지', url: 'https://kin.naver.com/qna/detail.naver?docId=491441194' },
+  ],
+  comparisonTable: {
+    caption: '연금계좌에서 꺼낼 때 세금이 갈리는 기준',
+    columns: ['구분', '세액공제 받은 납입금', '세액공제 안 받은 납입금'],
+    rows: [
+      ['연금으로 수령', '3.3~5.5% 연금소득세', '세금 없음'],
+      ['중도 인출·연금 외 수령', '16.5% 기타소득세', '세금 없음'],
+      ['인출되는 순서', '가장 나중에 인출', '가장 먼저 인출'],
+      ['증빙 방법', '자동 반영', '납입확인서로 과세 제외 신청'],
+    ],
+  },
+  sections: [
+    {
+      heading: '연금저축에서 세금이 갈리는 기준은 돈의 성격',
+      paragraphs: [
+        '연금계좌 안에 있는 돈이라고 다 같은 돈이 아닙니다. 세액공제를 받은 납입금인지, 받지 않은 납입금인지, 그리고 그 돈이 불어난 운용수익인지에 따라 나중에 꺼낼 때 세금이 완전히 달라집니다.',
+        '세액공제라는 혜택을 이미 받은 돈은 그 혜택을 되돌려받는 성격의 세금이 붙고, 혜택을 받지 않은 돈은 그냥 내 원금이라 다시 세금을 매기지 않습니다. 이 구분이 모든 계산의 출발점입니다.',
+      ],
+    },
+    {
+      heading: '세액공제 안 받은 돈은 왜 세금이 없나',
+      paragraphs: [
+        '세액공제를 신청하지 않았거나 한도를 넘겨 공제 대상이 아니었던 납입금은 세무상 과세 제외 재원으로 잡힙니다. 이미 세금을 낸 뒤 저축한 내 돈이므로, 다시 인출한다고 해서 국가가 세금을 매길 근거가 없습니다.',
+        '그래서 이 돈은 연금으로 나눠 받든, 급하게 목돈으로 한 번에 빼든 세금이 붙지 않습니다. 한도를 넘겨 넣었다가 나중에 되찾는 경우에도 같은 원리로 과세되지 않습니다.',
+      ],
+    },
+    {
+      heading: '인출은 세금 없는 돈부터 빠져나간다',
+      paragraphs: [
+        '연금계좌에서 돈을 꺼내면 아무 순서로나 나가는 것이 아니라 정해진 순서가 있습니다. 세금이 없는 과세 제외 재원이 가장 먼저 나가고, 세액공제를 받은 원금과 운용수익이 가장 마지막에 나갑니다.',
+        '이 순서 덕분에 세액공제를 받지 않은 돈이 계좌에 섞여 있다면, 그만큼은 세금 없이 먼저 꺼낼 수 있습니다. 급히 일부만 인출해야 할 때 이 점을 알고 있으면 세금 부담을 낮출 수 있습니다.',
+      ],
+    },
+    {
+      heading: '세액공제를 신청하지 않은 금액을 증빙하는 법',
+      paragraphs: [
+        '내가 세액공제를 받지 않았다는 사실은 금융회사가 자동으로 다 아는 것이 아닙니다. 특히 여러 해에 걸쳐 신청 여부가 달랐다면, 과세 제외로 인정받기 위해 납입확인서 같은 서류로 공제받지 않은 금액을 밝혀야 합니다.',
+        '연말정산이나 종합소득세 신고에서 공제를 받지 않았던 기록이 근거가 됩니다. 인출 전 가입한 금융회사에 과세 제외 재원 반영을 요청해 두면, 실제로 뺄 때 세금이 잘못 떼이는 일을 줄일 수 있습니다.',
+      ],
+    },
+    {
+      heading: '연금으로 받을지 목돈으로 뺄지에 따른 차이',
+      paragraphs: [
+        '세액공제를 받은 원금과 수익은 만 55세 이후 연금 형태로 나눠 받으면 3.3~5.5%의 낮은 연금소득세만 냅니다. 반면 요건을 갖추지 못한 채 목돈으로 한 번에 빼면 16.5%의 기타소득세가 적용돼 부담이 큽니다.',
+        '결국 세금 없이 뺄 수 있는 돈과 그렇지 않은 돈을 구분하고, 세금이 붙는 부분은 되도록 연금으로 천천히 받는 편이 유리합니다. 개인별 적용은 가입 상품과 시기에 따라 달라지므로, 실제 인출 전 금융회사와 국세청 안내로 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '세액공제를 안 받은 돈만 골라서 뺄 수 있나요?', answer: '따로 지정해서 빼는 것은 아니고, 인출하면 과세 제외 재원이 자동으로 먼저 나갑니다. 그래서 그 금액 한도 안에서 인출하면 세금이 붙지 않습니다.' },
+    { question: '한도를 넘겨 넣은 초과 납입금도 세금 없이 빼나요?', answer: '연 납입 한도나 세액공제 한도를 넘겨 넣어 공제받지 못한 금액은 과세 제외 재원이라 인출해도 세금이 없습니다. 다만 계좌에 반영이 됐는지 미리 확인하는 편이 안전합니다.' },
+    { question: '운용수익도 세금이 없나요?', answer: '운용수익은 성격이 다릅니다. 세액공제를 받지 않은 원금에서 생긴 수익이라도 인출 시에는 기타소득세나 연금소득세 대상이 됩니다. 세금이 없는 것은 원금 부분입니다.' },
+    { question: '증빙 서류는 어디서 떼나요?', answer: '가입한 금융회사에서 납입확인서를, 국세청 홈택스에서 연말정산·종합소득세 신고 내역을 확인할 수 있습니다. 공제받지 않은 금액을 밝힐 근거로 씁니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-23 · 퇴직연금 디폴트옵션을 바꾸거나 해지하는 법 */
+const defaultOptionChangeCancel: GuideDef = {
+  slug: 'default-option-change-cancel',
+  title: '퇴직연금 디폴트옵션 바꾸기, 변경과 해지 방법',
+  tagline: '이미 매수된 상품을 정리하고 원하는 대로 다시 담는 순서',
+  description:
+    '퇴직연금 디폴트옵션은 한 번 지정한 뒤에도 다른 상품으로 바꾸거나 직접 운용으로 되돌릴 수 있습니다. 이미 매수된 상품을 어떻게 매도하고 새로 담는지, 변경과 해지 절차가 회사·계좌 유형별로 어떻게 다른지 단계로 짚었습니다.',
+  keywords: ['퇴직연금 디폴트옵션', '디폴트옵션 변경', '디폴트옵션 해지', '사전지정운용제도', 'DC형 퇴직연금 운용', '디폴트옵션 매도'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-23',
+  howTo: { totalTime: 'PT20M' },
+  answer:
+    '퇴직연금 디폴트옵션은 한 번 지정한 뒤에도 증권사나 은행 앱, 영업점에서 언제든 다른 상품으로 바꾸거나 직접 운용으로 전환할 수 있습니다. 이미 디폴트옵션으로 매수된 상품이 있다면 그 상품을 매도한 뒤 원하는 상품을 새로 사는 방식으로 정리하며, 회사와 상품에 따라 절차가 조금씩 다릅니다.',
+  keyPoints: [
+    '디폴트옵션은 DC형 퇴직연금과 IRP에서 운용 지시를 하지 않을 때 미리 정해둔 상품으로 자동 운용되는 사전지정운용제도입니다.',
+    '이미 디폴트옵션 상품이 매수된 경우, 그 상품을 매도한 뒤 원하는 ETF나 예금 등으로 다시 매수해야 실제 운용이 바뀝니다.',
+    '지정 상품 자체를 다른 등급이나 상품으로 교체하는 것과, 자동 운용을 끄고 직접 운용으로 전환하는 것은 별개 절차입니다.',
+    '변경·해지 신청은 가입한 증권사나 은행 앱, 영업점에서 하며 반영까지 영업일 기준 며칠이 걸릴 수 있습니다.',
+  ],
+  sources: [
+    { label: '고용노동부 퇴직연금 안내', url: 'https://www.moel.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+    { label: '근로복지공단 퇴직연금', url: 'https://pension.comwel.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '퇴직연금 디폴트옵션을 변경하면 기존에 지정된 디폴트옵션은 어떻게 되는지', url: 'https://kin.naver.com/qna/detail.naver?docId=494003069' },
+    { summary: '삼성증권 DC형 퇴직연금 디폴트옵션을 해제하는 방법이 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=492054816' },
+    { summary: '퇴직연금 디폴트옵션에서 ETF로 변경하는 방법', url: 'https://kin.naver.com/qna/detail.naver?docId=492762779' },
+  ],
+  comparisonTable: {
+    caption: '디폴트옵션과 직접 운용은 무엇이 다른가',
+    columns: ['구분', '디폴트옵션(사전지정)', '직접 운용'],
+    rows: [
+      ['운용 방식', '지시 없으면 자동 적용', '본인이 직접 매매'],
+      ['고를 수 있는 상품', '사전 승인된 상품 묶음', '계좌에서 살 수 있는 상품 전체'],
+      ['손이 가는 정도', '낮음', '높음'],
+      ['맞는 경우', '자주 챙기기 어려운 분', '직접 종목을 고르고 싶은 분'],
+    ],
+  },
+  sections: [
+    {
+      heading: '디폴트옵션이 지금 어떻게 걸려 있는지 확인하기',
+      paragraphs: [
+        '먼저 내 계좌에 디폴트옵션이 실제로 매수돼 있는지, 아니면 지정만 해두고 아직 적용되지 않았는지 확인합니다. 운용 지시를 하지 않은 채 일정 기간이 지나면 미리 정해둔 상품으로 자동 매수되기 때문입니다.',
+        '증권사나 은행 앱의 퇴직연금 메뉴에서 보유 상품과 디폴트옵션 지정 내역을 함께 볼 수 있습니다. 이미 매수됐다면 변경은 매도부터, 지정만 돼 있다면 지정 상품 교체부터 시작합니다.',
+      ],
+    },
+    {
+      heading: '지정 상품만 바꿀지 직접 운용으로 옮길지 정하기',
+      paragraphs: [
+        '바꾸는 방향을 먼저 정해야 절차가 갈립니다. 자동 운용은 그대로 두되 어떤 상품으로 자동 매수될지만 다른 등급이나 상품으로 교체하는 방법이 있고, 아예 자동 운용을 끄고 앞으로는 직접 사고파는 방법이 있습니다.',
+        '자주 챙기기 어렵다면 지정 상품만 나에게 맞는 위험 등급으로 바꾸는 편이 편합니다. 직접 종목을 고르고 싶다면 직접 운용으로 전환하면 됩니다.',
+      ],
+    },
+    {
+      heading: '이미 매수된 디폴트옵션 상품 매도하기',
+      paragraphs: [
+        '이미 디폴트옵션으로 특정 상품이 매수돼 있다면, 그 상품을 팔아야 다른 상품을 담을 현금이 생깁니다. 앱의 보유 상품 화면에서 해당 상품을 매도 신청합니다.',
+        '예금형 상품은 중도 해지 시 약정 이자 대신 중도해지 이율이 적용될 수 있고, 펀드나 ETF형은 매도 체결까지 시간이 걸립니다. 매도 대금이 들어온 뒤에야 다음 매수가 가능하다는 점을 감안합니다.',
+      ],
+    },
+    {
+      heading: '원하는 상품으로 다시 매수하거나 예금으로 두기',
+      paragraphs: [
+        '매도 대금이 계좌에 들어오면 원하는 상품을 새로 삽니다. 퇴직연금 계좌에서 살 수 있는 ETF나 펀드, 예금 중에서 본인 성향에 맞게 고르면 됩니다.',
+        '한 번에 결정하기 어렵다면 우선 원리금보장 상품에 넣어두고 천천히 옮기는 방법도 있습니다. 다만 현금성 자산으로 오래 두면 물가만큼도 불리기 어렵다는 점은 감안하는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '반영 시점과 퇴직연금 유형별 유의점 확인하기',
+      paragraphs: [
+        '신청이 즉시 끝나는 것이 아니라 매도와 매수가 각각 체결돼야 실제 운용이 바뀝니다. 영업일 기준 며칠이 걸릴 수 있으니 시세가 크게 움직이는 날에는 체결 시점을 염두에 둡니다.',
+        'DC형과 IRP는 회사와 금융기관마다 화면과 절차가 조금씩 다릅니다. 헷갈리면 가입한 곳 고객센터에 디폴트옵션 변경 또는 해지 절차를 문의하는 편이 확실합니다. 어떤 상품도 수익을 보장하지 않으며 선택과 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '디폴트옵션을 해지하면 넣어둔 돈이 빠져나가나요?', answer: '아닙니다. 자동 운용을 끄는 것일 뿐 계좌의 돈은 그대로입니다. 다만 이미 매수된 상품이 있으면 그 상품을 어떻게 둘지는 본인이 정해야 합니다.' },
+    { question: '지정 상품을 바꾸면 기존에 매수된 것도 자동으로 바뀌나요?', answer: '앞으로 자동 매수될 상품만 바뀝니다. 이미 매수된 상품은 그대로 남으므로, 바꾸고 싶으면 그 상품을 직접 매도하고 다시 매수해야 합니다.' },
+    { question: '변경 신청은 언제든 할 수 있나요?', answer: '가입 기간 중에는 언제든 신청할 수 있습니다. 다만 매도·매수 체결에 시간이 걸리고, 예금형은 중도해지 이율이 적용될 수 있습니다.' },
+    { question: '그냥 두면 어떻게 되나요?', answer: '운용 지시 없이 두면 지정된 디폴트옵션 상품으로 계속 운용됩니다. 방치보다는 본인 성향에 맞는지 한 번은 점검하는 편이 좋습니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-23 · ETF 괴리율과 NAV를 확인해 비싸게 사지 않는 법 */
+const etfNavCheckHowTo: GuideDef = {
+  slug: 'etf-nav-check-how-to',
+  title: 'ETF 괴리율·NAV 어디서 보나, 싸게 사는 확인법',
+  tagline: '시장가격이 실제 가치보다 벗어났는지 사기 전에 보는 법',
+  description:
+    'ETF를 싸게 사려면 시장가격이 순자산가치에서 얼마나 벗어났는지 보여주는 괴리율을 알아야 합니다. NAV와 iNAV, 괴리율을 증권사 앱과 운용사, 한국거래소에서 확인하는 방법과 비싸게 사지 않는 요령을 단계로 정리했습니다.',
+  keywords: ['ETF 괴리율', 'ETF NAV 보는법', 'iNAV', 'ETF 괴리율 확인', '순자산가치', 'ETF 싸게 사는법'],
+  section: 'ETF 괴리율 가이드',
+  lastReviewed: '2026-08-23',
+  howTo: { totalTime: 'PT10M' },
+  answer:
+    'ETF의 NAV(순자산가치)와 괴리율은 증권사 앱의 종목 상세 화면, 운용사 상품 페이지, 한국거래소 정보데이터시스템에서 확인할 수 있습니다. 괴리율은 시장가격이 실제 가치보다 얼마나 벗어났는지를 나타내며, 이 값이 크게 플러스일 때 사면 비싸게 살 수 있어 매수 전에 살펴보면 도움이 됩니다.',
+  keyPoints: [
+    '괴리율은 (시장가격 빼기 NAV) 나누기 NAV로 계산하며, 플러스면 실제 가치보다 비싸게, 마이너스면 싸게 거래되고 있다는 뜻입니다.',
+    '장중에는 실시간 추정치인 iNAV를 기준으로 괴리율을 보고, 종가 기준 괴리율은 매매 다음 날 확정 공시됩니다.',
+    '괴리율은 증권사 앱 종목 상세, 운용사 상품 페이지, 한국거래소 정보데이터시스템 세 곳에서 확인할 수 있습니다.',
+    '거래가 뜸한 ETF나 해외 자산을 담은 ETF는 괴리율이 벌어지기 쉬워, 유동성공급자 호가와 함께 살펴봐야 합니다.',
+  ],
+  sources: [
+    { label: '한국거래소 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융투자협회 전자공시서비스', url: 'https://dis.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'NH투자증권 나무증권 앱에서 ETF 괴리율을 보는 방법', url: 'https://kin.naver.com/qna/detail.naver?docId=470017395' },
+    { summary: 'ETF를 싸게 사려면 NAV 괴리율을 보면 되는지', url: 'https://kin.naver.com/qna/detail.naver?docId=458112365' },
+  ],
+  comparisonTable: {
+    caption: 'NAV·iNAV·괴리율·추적오차 헷갈리지 않기',
+    columns: ['용어', '뜻', '언제 보나'],
+    rows: [
+      ['NAV', '하루 한 번 계산되는 순자산가치', '종가 확정 뒤'],
+      ['iNAV', '장중 실시간 추정 순자산가치', '매매 시점 비교'],
+      ['괴리율', '시장가격이 NAV에서 벗어난 정도', '매수·매도 직전'],
+      ['추적오차', '지수와 수익률이 벌어진 정도', '장기 보유 판단'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'ETF 괴리율이 무엇인지부터 짚기',
+      paragraphs: [
+        'ETF는 담고 있는 자산의 실제 가치가 있고, 시장에서 사고팔리는 가격이 따로 있습니다. 이 둘이 항상 똑같지는 않은데, 실제 가치를 NAV(순자산가치), 시장가격이 NAV에서 벗어난 정도를 괴리율이라고 부릅니다.',
+        '괴리율이 플러스면 실제 가치보다 비싸게 팔리는 중이고, 마이너스면 싸게 팔리는 중입니다. 비싸게 사면 나중에 가격이 제자리로 돌아올 때 손해가 될 수 있어, 사기 전에 이 값을 보는 습관이 도움이 됩니다.',
+      ],
+    },
+    {
+      heading: '증권사 앱 종목 상세에서 괴리율 찾기',
+      paragraphs: [
+        '가장 손쉬운 방법은 쓰는 증권사 앱입니다. ETF 종목을 검색해 상세 화면으로 들어가면 현재가 근처에 NAV 또는 iNAV, 괴리율 항목이 표시됩니다. 앱마다 이름이 조금씩 달라 순자산가치, 기준가로 적혀 있기도 합니다.',
+        '항목이 잘 보이지 않으면 종목 정보나 투자설명 탭을 살펴보면 됩니다. 장중이라면 여기 표시되는 값은 실시간 추정치인 iNAV라는 점을 기억합니다.',
+      ],
+    },
+    {
+      heading: '운용사와 한국거래소에서 NAV 교차 확인하기',
+      paragraphs: [
+        '앱 숫자가 미덥지 않으면 운용사 상품 페이지에서 같은 ETF의 NAV와 구성 내역을 확인할 수 있습니다. 운용사는 매일 종가 기준 NAV를 공시합니다.',
+        '한국거래소 정보데이터시스템에서도 종목별 NAV와 괴리율, 추적오차를 조회할 수 있습니다. 여러 곳의 값을 대조하면 특정 앱의 표시 지연이나 오류를 걸러낼 수 있습니다.',
+      ],
+    },
+    {
+      heading: '장중 iNAV로 비싼 구간 피해서 매수하기',
+      paragraphs: [
+        '실제 매수는 장중에 이뤄지므로 종가 NAV보다 실시간 iNAV가 더 쓸모 있습니다. 현재가가 iNAV보다 눈에 띄게 높다면 그 순간에는 비싸게 사는 셈입니다.',
+        '시초가 직후나 마감 직전처럼 호가가 얇은 시간대에는 괴리가 커지기 쉽습니다. 급하지 않다면 호가가 촘촘해지는 시간대에 현재가와 iNAV 차이가 좁혀졌을 때 사는 편이 유리합니다.',
+      ],
+    },
+    {
+      heading: '괴리율이 자주 벌어지는 ETF 걸러내기',
+      paragraphs: [
+        '거래량이 적은 ETF, 해외 지수나 원자재를 담아 시차가 있는 ETF는 구조적으로 괴리율이 크게 움직입니다. 같은 지수를 따라가는 상품이 여럿이면 거래가 활발하고 괴리율이 안정적인 쪽이 매매에 유리합니다.',
+        '유동성공급자가 호가를 촘촘히 대는 상품일수록 괴리가 빨리 좁혀집니다. 괴리율은 참고 지표일 뿐 수익을 보장하지 않으므로, 종합적인 판단과 책임은 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '괴리율이 몇 퍼센트면 사지 말아야 하나요?', answer: '고정된 기준선이 있는 것은 아닙니다. 같은 ETF의 평소 괴리율보다 유난히 플러스로 벌어져 있다면 그 순간은 비싼 편이라고 볼 수 있습니다.' },
+    { question: 'iNAV와 NAV는 무엇이 다른가요?', answer: 'NAV는 하루 한 번 종가로 확정되는 값이고, iNAV는 장중에 실시간으로 추정한 값입니다. 매매 타이밍을 볼 때는 iNAV가 더 유용합니다.' },
+    { question: '괴리율과 추적오차는 같은 말인가요?', answer: '다릅니다. 괴리율은 시장가격과 NAV의 차이, 추적오차는 ETF 수익률과 기초지수 수익률의 차이입니다. 앞은 매매 시점, 뒤는 장기 보유를 볼 때 봅니다.' },
+    { question: '괴리율이 마이너스면 무조건 이득인가요?', answer: '싸게 거래되는 것은 맞지만, 거래가 뜸해 팔 때도 마이너스일 수 있습니다. 살 때와 팔 때를 함께 봐야 실제 이득인지 알 수 있습니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-23 · 자녀에게 코인을 증여할 때 세금 계산과 신고 */
+const bitcoinGiftTaxFiling: GuideDef = {
+  slug: 'bitcoin-gift-tax-filing',
+  title: '비트코인 증여세, 자녀에게 코인 줄 때 계산과 신고',
+  tagline: '평가액과 공제 한도, 신고 기한을 순서대로 짚는다',
+  description:
+    '비트코인 같은 가상자산을 자녀에게 증여하면 증여세가 붙습니다. 평가액을 증여일 전후 각 1개월 일평균가액의 평균으로 정하는 방법, 성인과 미성년 자녀의 공제 한도, 세율과 3개월 신고 기한까지 계산 순서대로 짚었습니다.',
+  keywords: ['비트코인 증여세', '가상자산 증여세', '코인 증여 신고', '증여세 계산', '증여재산공제', '가상자산 평가방법'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-23',
+  answer:
+    '비트코인 같은 가상자산을 증여하면 증여세 대상이며, 평가액은 증여일 전후 각 1개월간 국세청이 고시한 거래소의 일평균가액을 평균해 정합니다. 성인 자녀는 10년간 5천만원, 미성년 자녀는 2천만원까지 공제되고, 신고는 증여받은 날이 속한 달의 말일부터 3개월 안에 해야 합니다.',
+  keyPoints: [
+    '가상자산 증여 평가액은 증여일 전후 각 1개월, 합쳐 2개월간 고시 거래소의 일평균가액을 평균해 계산합니다.',
+    '증여재산공제는 10년 합산 기준으로 성인 자녀 5천만원, 미성년 자녀 2천만원, 배우자 6억원까지입니다.',
+    '증여세율은 과세표준 1억원 이하 10%부터 30억원 초과 50%까지 다섯 단계 누진 구조입니다.',
+    '신고 기한은 증여받은 날이 속하는 달의 말일부터 3개월이며, 기한 안에 신고하면 산출세액의 3%를 신고세액공제로 빼줍니다.',
+  ],
+  sources: [
+    { label: '국세청 세금정보', url: 'https://www.nts.go.kr' },
+    { label: '국세청 홈택스', url: 'https://hometax.go.kr' },
+    { label: '국세법령정보시스템', url: 'https://taxlaw.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '비트코인을 증여할 때 증여세를 어떻게 계산하는지', url: 'https://kin.naver.com/qna/detail.naver?docId=474330456' },
+    { summary: '가상자산 증여를 신고해야 하는지와 신고 방법', url: 'https://kin.naver.com/qna/detail.naver?docId=486216678' },
+  ],
+  comparisonTable: {
+    caption: '누구에게 주느냐에 따른 10년 증여공제 한도',
+    columns: ['증여자와의 관계', '공제 한도(10년 합산)', '참고'],
+    rows: [
+      ['배우자', '6억원', '가장 큰 공제'],
+      ['성인 자녀·직계비속', '5천만원', '만 19세 이상'],
+      ['미성년 자녀', '2천만원', '만 19세 미만'],
+      ['기타 친족', '1천만원', '6촌 이내 혈족 등'],
+    ],
+  },
+  sections: [
+    {
+      heading: '비트코인 증여세는 평가액을 정하는 것부터',
+      paragraphs: [
+        '가상자산도 재산이라 자녀나 배우자에게 넘기면 증여세 대상이 됩니다. 세금 계산의 첫 단추는 그 코인의 값을 얼마로 볼지 정하는 일입니다. 코인은 하루에도 크게 오르내리기 때문에 한 시점의 가격을 쓰지 않습니다.',
+        '주식이 특정일 종가로 평가되는 것과 달리, 가상자산은 변동성이 커서 일정 기간의 평균을 씁니다. 이 평가액이 확정돼야 공제와 세율을 얹어 실제 낼 세금을 구할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '증여일 전후 1개월 평균으로 평가하는 이유',
+      paragraphs: [
+        '가상자산은 증여일을 기준으로 앞뒤 각 1개월, 합쳐 두 달 동안 국세청이 고시한 거래소가 공시하는 일평균가액을 다시 평균한 값으로 평가합니다. 특정 하루의 급등락에 세금이 좌우되지 않도록 기간 평균을 쓰는 것입니다.',
+        '기준이 되는 거래소는 국세청이 정해 고시한 곳들입니다. 어느 거래소 지갑에서 옮겼든 평가 기준은 이 고시 거래소의 평균가라는 점을 알아두면 계산이 헷갈리지 않습니다.',
+      ],
+    },
+    {
+      heading: '자녀에게 줄 때 얼마까지 세금이 없나',
+      paragraphs: [
+        '증여재산공제는 10년을 합산해 따집니다. 성인이 된 자녀는 5천만원, 미성년 자녀는 2천만원까지, 배우자는 6억원까지 공제됩니다. 평가액이 이 한도 안이면 낼 세금은 없지만 신고는 해두는 편이 좋습니다.',
+        '10년 합산이라는 점이 중요합니다. 몇 년 전 이미 5천만원을 증여했다면 이번에 남은 공제는 그만큼 줄어듭니다. 미리 나눠 증여할 계획이라면 이 10년 주기를 염두에 두어야 합니다.',
+      ],
+    },
+    {
+      heading: '증여세 계산과 신고는 어떤 순서로 하나',
+      paragraphs: [
+        '평가액에서 증여재산공제를 뺀 금액이 과세표준입니다. 여기에 1억원 이하 10%부터 30억원 초과 50%까지 누진세율을 적용해 산출세액을 구하고, 기한 안에 스스로 신고하면 3%를 신고세액공제로 빼줍니다.',
+        '신고는 증여받은 날이 속한 달의 말일부터 3개월 안에 홈택스나 관할 세무서에서 합니다. 코인은 지갑 간 이체 기록이 남으므로, 증여 시점과 이체 내역을 함께 정리해 두면 신고가 수월합니다.',
+      ],
+    },
+    {
+      heading: '깜빡하면 무거워지는 무신고 가산세',
+      paragraphs: [
+        '공제 한도 안이라 낼 세금이 없더라도, 자금 출처를 밝혀 두는 의미에서 신고를 해두는 편이 안전합니다. 낼 세금이 있는데 신고하지 않으면 무신고 가산세와 납부지연 가산세가 함께 붙어 부담이 커집니다.',
+        '거래소 거래내역과 이체 증빙을 근거로 삼습니다. 세법은 개정될 수 있고 개별 사안마다 판단이 다를 수 있으니, 금액이 크다면 신고 전 세무 전문가나 국세청 상담으로 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '코인을 팔지 않고 그대로 자녀 지갑에 옮겨도 증여인가요?', answer: '네, 대가 없이 소유를 넘기면 형태와 무관하게 증여입니다. 지갑 간 이체도 증여에 해당하며 평가액을 기준으로 세금을 따집니다.' },
+    { question: '평가액은 옮긴 날 시세로 하면 되나요?', answer: '아닙니다. 증여일 하루 시세가 아니라 전후 각 1개월, 합쳐 두 달간 고시 거래소 일평균가액의 평균으로 평가합니다.' },
+    { question: '공제 한도 안이면 신고를 안 해도 되나요?', answer: '낼 세금은 없지만 신고해 두는 편이 안전합니다. 나중에 자금 출처를 확인할 때 증여 사실을 미리 신고한 기록이 근거가 됩니다.' },
+    { question: '해외 거래소에 있는 코인을 증여하면 다른가요?', answer: '증여세 대상인 것은 같습니다. 다만 평가와 증빙이 복잡해질 수 있어, 금액이 크면 전문가 상담을 받는 편이 좋습니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-23 · 지수 ETF도 상장폐지되는지, 적립 투자자의 걱정 */
+const indexEtfDelistingRisk: GuideDef = {
+  slug: 'index-etf-delisting-risk',
+  title: 'S&P500·나스닥100 지수 ETF도 상장폐지되나',
+  tagline: '적립식으로 모으던 원금이 어떻게 되는지부터 짚는다',
+  description:
+    'S&P500이나 나스닥100을 따라가는 지수 ETF도 상장폐지될 수 있는지, 그렇다면 적립식으로 모으던 원금은 어떻게 되는지 걱정하는 분이 많습니다. 상장폐지 사유와 현금 상환 절차, 주식 상폐와 다른 점을 정리했습니다.',
+  keywords: ['지수 ETF 상장폐지', 'ETF 상장폐지', 'S&P500 ETF 상폐', '나스닥100 ETF 상폐', 'ETF 원금 회수', 'ETF 상폐 위험'],
+  section: 'ETF 입문 가이드',
+  lastReviewed: '2026-08-23',
+  answer:
+    '이론적으로 어떤 ETF도 상장폐지될 수 있지만, S&P500이나 나스닥100을 따라가는 대형 지수 ETF는 순자산이 크고 거래도 활발해 상장폐지 가능성이 매우 낮습니다. 설령 상장폐지되더라도 원금이 사라지는 것이 아니라 남은 순자산가치를 현금으로 돌려받으므로, 적립식 투자자가 지나치게 걱정할 일은 아닙니다.',
+  keyPoints: [
+    'ETF 상장폐지 주요 사유는 순자산 50억원 미만 지속, 지수와의 상관계수 0.9 미만 3개월 지속 등으로, 대형 지수 ETF는 여기에 해당하기 어렵습니다.',
+    '상장폐지가 결정되면 운용사가 약 한 달 전 예고 공시를 하고, 그 전까지는 시장에서 평소처럼 매도할 수 있습니다.',
+    '상장폐지돼도 보유 자산을 매각해 순자산가치에서 비용을 뺀 금액을 현금으로 지급하므로, 주식 상장폐지와 달리 원금이 통째로 사라지지 않습니다.',
+    '같은 지수를 따라가는 ETF가 여럿일 때는 순자산 규모와 거래량이 큰 상품을 고르면 상장폐지 위험을 더 낮출 수 있습니다.',
+  ],
+  sources: [
+    { label: '한국거래소 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융투자협회 전자공시서비스', url: 'https://dis.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '코덱스에서 S&P500과 나스닥100 ETF를 매달 적립하고 있는데 상장폐지될까 걱정된다', url: 'https://kin.naver.com/qna/detail.naver?docId=494335324' },
+    { summary: '지수에 연동되는 ETF 상품도 상장폐지될 위험이 있는지', url: 'https://kin.naver.com/qna/detail.naver?docId=436341057' },
+    { summary: 'ETF가 상장폐지되면 원금 회수가 가능한지', url: 'https://kin.naver.com/qna/detail.naver?docId=489722460' },
+  ],
+  comparisonTable: {
+    caption: 'ETF 상장폐지는 주식 상장폐지와 무엇이 다른가',
+    columns: ['구분', 'ETF 상장폐지', '개별 주식 상장폐지'],
+    rows: [
+      ['돈을 돌려받나', '순자산가치를 현금 지급', '정리매매 뒤 대부분 손실'],
+      ['주된 사유', '순자산 미달, 추적 부실', '실적 악화, 감사의견 거절 등'],
+      ['예고', '약 한 달 전 공시', '상폐 절차 공시'],
+      ['원금 회수', '남은 가치만큼 회수', '회수 거의 어려움'],
+    ],
+  },
+  sections: [
+    {
+      heading: '지수 ETF도 상장폐지 대상이 될 수 있나',
+      paragraphs: [
+        '결론부터 답하면 어떤 ETF든 제도상 상장폐지 대상이 될 수 있습니다. 다만 될 수 있다는 것과 실제로 그럴 가능성이 높다는 것은 다른 이야기입니다.',
+        'S&P500이나 나스닥100처럼 널리 쓰이는 지수를 따라가는 대형 ETF는 순자산이 크고 거래도 활발해, 상장폐지 요건에 걸릴 일이 거의 없습니다. 걱정의 크기와 실제 위험의 크기가 다른 셈입니다.',
+      ],
+    },
+    {
+      heading: '대형 지수 ETF의 상장폐지 가능성이 낮은 이유',
+      paragraphs: [
+        'ETF가 상장폐지되는 대표적인 사유는 순자산총액이 50억원에 못 미치는 상태가 이어지거나, ETF 가격과 기초지수의 움직임이 어긋나는 정도가 일정 기간 지속되는 경우입니다. 규모가 작고 잘 안 팔리는 ETF에서 주로 나타납니다.',
+        '많은 사람이 담는 대형 지수 ETF는 순자산이 수천억원대인 경우가 흔하고 추적도 잘 맞습니다. 이런 상품이 상장폐지 요건에 닿으려면 상당한 규모의 자금이 오래 빠져나가야 하는데, 현실에서는 드문 일입니다.',
+      ],
+    },
+    {
+      heading: '상장폐지되면 내 돈은 어떻게 되나',
+      paragraphs: [
+        'ETF 상장폐지는 개별 주식 상장폐지와 성격이 다릅니다. 운용사가 ETF가 담고 있던 자산을 모두 팔아 현금으로 만든 뒤, 순자산가치에서 비용을 뺀 금액을 투자자에게 돌려줍니다. 이를 해지상환금이라고 합니다.',
+        '즉 상장폐지됐다고 원금이 통째로 사라지는 것이 아니라, 그 시점의 남은 가치만큼 현금으로 회수합니다. 상장폐지가 결정되면 약 한 달 전 예고 공시가 나오므로, 그 전에 시장에서 직접 팔아 정리할 수도 있습니다.',
+      ],
+    },
+    {
+      heading: '주식 상장폐지와 다른 점',
+      paragraphs: [
+        '개별 주식은 회사가 부실해져 상장폐지되면 정리매매를 거치며 가치가 크게 떨어지고, 원금 회수가 어려운 경우가 많습니다. 회사 자체의 가치가 훼손됐기 때문입니다.',
+        '반면 지수 ETF는 여러 종목에 나눠 담긴 자산의 가치가 그대로 남아 있어, 상장폐지되어도 그 자산을 팔아 돌려받습니다. 상장폐지라는 같은 단어를 써도 투자자에게 미치는 결과는 전혀 다릅니다.',
+      ],
+    },
+    {
+      heading: '적립식으로 담을 때 걱정을 줄이는 기준',
+      paragraphs: [
+        '매달 꾸준히 모으는 적립식이라면 상장폐지 위험보다 상품을 잘 고르는 데 신경 쓰는 편이 낫습니다. 같은 지수를 따라가는 ETF가 여럿이면 순자산이 크고 거래량이 많은 쪽을 고르면 됩니다.',
+        '순자산 규모는 운용사 페이지나 한국거래소에서 확인할 수 있습니다. 규모가 큰 대표 상품 위주로 담으면 상장폐지 걱정은 사실상 접어둬도 됩니다. 다만 어떤 상품도 수익을 보장하지 않으며, 최종 판단과 책임은 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '상장폐지되면 투자한 돈을 전부 잃나요?', answer: '아닙니다. ETF가 담은 자산을 팔아 순자산가치만큼 현금으로 돌려받습니다. 주식 상장폐지처럼 원금이 통째로 사라지는 것과는 다릅니다.' },
+    { question: '상장폐지 전에 미리 알 수 있나요?', answer: '상장폐지가 결정되면 운용사가 약 한 달 전 예고 공시를 합니다. 그 전까지는 시장에서 평소처럼 매도할 수 있습니다.' },
+    { question: '어떤 ETF가 상장폐지 위험이 큰가요?', answer: '순자산이 작고 거래가 뜸한 ETF, 좁은 테마를 담아 자금 유출이 잦은 ETF가 상대적으로 위험합니다. 대형 지수 ETF는 이에 해당하기 어렵습니다.' },
+    { question: '상장폐지되면 세금은 어떻게 되나요?', answer: '해지상환금으로 돌려받을 때 매매차익이 있으면 상품 유형에 따라 과세될 수 있습니다. 국내 주식형과 기타 유형의 과세가 다르므로 보유 상품 기준을 확인해야 합니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  pensionUnclaimedContributionTax,
+  defaultOptionChangeCancel,
+  etfNavCheckHowTo,
+  bitcoinGiftTaxFiling,
+  indexEtfDelistingRisk,
   stockOrderRejectedReasons,
   dividendRecordDateReform,
   retireeDividendEtfMonthlyIncome,
@@ -21643,6 +22058,11 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  'pension-unclaimed-contribution-tax': '2026-08-23',
+  'default-option-change-cancel': '2026-08-23',
+  'etf-nav-check-how-to': '2026-08-23',
+  'bitcoin-gift-tax-filing': '2026-08-23',
+  'index-etf-delisting-risk': '2026-08-23',
   // 기반 가이드 14편 — 발행일이 비어 있어 /guide/latest 정렬과 sitemap lastmod에서 빠졌다.
   // 각 슬러그가 guides.ts에 처음 들어온 커밋 날짜로 채웠다(git log -S 확인). (2026-08-12)
   'monthly-dividend': '2026-04-25',
@@ -21956,12 +22376,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money', 'etf-nav-check-how-to', 'index-etf-delisting-risk'],
   },
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'pension-unclaimed-contribution-tax', 'default-option-change-cancel', 'bitcoin-gift-tax-filing'],
   },
   {
     title: '배당·인컴',
