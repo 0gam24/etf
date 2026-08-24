@@ -21394,6 +21394,394 @@ const basicPensionWithPrivatePension: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-08-24 · 해외주식 양도세, 연말에 얼마 팔아야 절세되나 */
+const overseasStockYearEndTaxSaving: GuideDef = {
+  slug: 'overseas-stock-year-end-tax-saving',
+  title: '해외주식 양도세, 연말에 얼마 팔아야 절세될까',
+  tagline: '해마다 리셋되는 250만원 공제를 흘려보내지 않는 법',
+  description:
+    '해외주식 차익은 연 250만원까지 공제되고 남은 금액에 22%가 붙습니다. 공제는 해마다 새로 생겨 안 쓰면 사라집니다. 연말에 이익 난 종목을 얼마씩 나눠 파는지, 손실 종목을 언제 정리하는지를 12월 결제일까지 맞춰 정리했습니다.',
+  keywords: ['해외주식 양도세', '해외주식 양도소득세', '250만원 기본공제', '해외주식 절세', '양도세 손익통산', '연말 절세 매도'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-24',
+  answer:
+    '해외주식 양도차익은 한 해 250만원까지 기본공제되고, 이를 넘는 금액에만 22%가 매겨집니다. 이 공제는 매년 새로 주어지고 쓰지 않으면 그해로 소멸하므로, 크게 오른 종목을 여러 해에 걸쳐 나눠 팔거나 연말에 손실 종목과 함께 정리하면 세금을 줄일 수 있습니다.',
+  keyPoints: [
+    '해외주식 양도세는 연 250만원 공제 후 남은 차익에 22%(양도세 20%, 지방소득세 2%)가 붙습니다.',
+    '기본공제 250만원은 해마다 새로 생기며 이월되지 않아, 매년 이익을 250만원어치씩 실현하면 그만큼 비과세로 지나갑니다.',
+    '같은 해에 판 해외주식끼리는 이익과 손실이 상계되므로, 이익 종목을 팔 때 물려 있던 손실 종목을 함께 정리하면 과세 대상이 줄어듭니다.',
+    '기준은 매도 체결일이 아니라 결제일이라, 12월 마지막 거래일에 팔면 결제가 다음 해로 넘어가 그해 공제에 반영되지 않을 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 양도소득세 안내', url: 'https://www.nts.go.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '해외주식 양도소득세를 줄이려면 연말에 얼마어치를 팔아야 하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=494649801' },
+    { summary: '해외주식 양도세 250만원 공제가 어떻게 적용되는지, 손실 종목과 상계가 되는지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?docId=493985244' },
+  ],
+  comparisonTable: {
+    caption: '차익 1000만원을 한 해에 다 팔 때와 두 해로 나눌 때',
+    columns: ['구분', '올해 한 번에 매도', '두 해로 나눠 매도'],
+    rows: [
+      ['실현 차익', '1000만원', '500만원 + 500만원'],
+      ['적용 공제', '250만원(1회)', '250만원 + 250만원'],
+      ['과세 대상', '750만원', '250만원 + 250만원'],
+      ['대략 세액', '약 165만원', '약 110만원'],
+      ['유리한 경우', '올해 안에 꼭 팔아야 할 때', '급하지 않고 나눠 팔 수 있을 때'],
+    ],
+  },
+  sections: [
+    {
+      heading: '250만원 공제는 매년 새로 생기고 사라진다',
+      paragraphs: [
+        '해외주식은 국내 상장 대형주와 달리 차익에 양도세가 붙습니다. 다만 한 해 동안 번 순차익에서 250만원을 먼저 빼주고, 남은 금액에만 22%를 매깁니다. 여기서 중요한 점은 이 250만원이 이월되지 않는다는 것입니다. 올해 이익이 100만원뿐이었다면 남은 150만원어치 공제는 내년으로 넘어가지 않고 그대로 없어집니다.',
+        '그래서 오래 들고 크게 오른 종목이 있다면, 팔 필요가 생겼을 때 한 해에 몰아 파는 대신 매년 250만원씩 이익을 실현해 두는 방법을 생각해 볼 수 있습니다. 이렇게 하면 그만큼의 차익이 해마다 비과세로 지나갑니다.',
+      ],
+    },
+    {
+      heading: '이익 종목과 손실 종목을 같은 해에 정리한다',
+      paragraphs: [
+        '같은 해에 판 해외주식은 이익과 손실이 서로 상계됩니다. A를 팔아 500만원을 벌고 B를 팔아 200만원을 잃었다면, 그해 과세 대상은 300만원에서 다시 250만원 공제를 뺀 50만원입니다. 물려 있던 종목을 계속 들고만 있으면 이 상계 효과를 쓸 수 없습니다.',
+        '반대로 손실만 실현하고 이익을 남겨두면 그 손실은 다음 해로 넘어가지 않아 의미가 옅어집니다. 손실 종목을 정리할 생각이라면 이익을 함께 실현하는 해에 맞추는 편이 절세 측면에서 낫습니다. 다만 세금만 보고 팔 종목을 정하는 것이 아니라, 그 종목을 계속 보유할 이유가 있는지를 먼저 따지는 순서가 맞습니다.',
+      ],
+    },
+    {
+      heading: '체결일이 아니라 결제일로 해가 갈린다',
+      paragraphs: [
+        '연말 매도에서 자주 놓치는 부분이 결제일입니다. 과세연도를 가르는 기준은 주문이 체결된 날이 아니라 대금 결제가 끝난 날입니다. 해외 시장은 나라마다 결제에 걸리는 기간이 다르고 현지 휴장일도 겹치므로, 12월 마지막 며칠에 팔면 결제가 이듬해로 넘어가 올해 공제에 잡히지 않을 수 있습니다.',
+        '올해분 공제로 처리하려면 12월 말이 아니라 며칠 여유를 두고 매도를 끝내는 것이 안전합니다. 증권사마다 해외주식 결제일 안내가 다르니, 연말 절세 매도를 계획한다면 거래하는 증권사의 결제일 기준을 미리 확인하시기 바랍니다.',
+      ],
+    },
+    {
+      heading: '환율과 신고까지 함께 본다',
+      paragraphs: [
+        '해외주식 차익은 사고팔 때의 환율로 원화 환산해 계산합니다. 주가는 그대로여도 환율이 움직이면 원화 기준 차익이 달라지므로, 세금은 달러 수익률이 아니라 원화 손익으로 매겨진다는 점을 기억해 두면 좋습니다.',
+        '한 해에 실현한 해외주식 차익은 이듬해 5월에 스스로 신고하고 납부합니다. 여러 증권사에 계좌가 흩어져 있으면 각 계좌 손익을 합산해 신고해야 하니, 연말에 종목을 정리할 때 계좌별 실현손익을 함께 정리해 두면 신고가 수월합니다. 세부 적용은 개인 상황에 따라 달라질 수 있어, 금액이 크다면 국세청 안내나 세무 전문가의 확인을 거치는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '해외주식 양도세와 국내 상장 해외 ETF는 세금이 다르다',
+      paragraphs: [
+        '같은 미국 지수에 투자해도 어떤 그릇에 담았느냐에 따라 세금 방식이 갈립니다. 해외 시장에 직접 상장된 주식이나 ETF를 사면 지금까지 설명한 양도세, 즉 250만원 공제 후 22% 구조가 적용됩니다. 반면 국내 거래소에 상장된 해외 지수 ETF는 매매차익이 배당소득으로 분류되어 15.4%가 원천징수되고 금융소득 종합과세 대상에 들어갑니다.',
+        '그래서 연말 절세를 계획할 때는 내가 가진 것이 해외 직접 투자인지 국내 상장 상품인지부터 구분해야 합니다. 250만원 공제와 손익통산은 앞의 해외 직접 투자 쪽 이야기이고, 국내 상장 해외 ETF는 공제 구조가 다릅니다. 두 그릇의 세금이 다르다는 점을 알아두면 어느 계좌에서 무엇을 팔지 판단이 쉬워집니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '올해 이익이 250만원 아래면 세금이 아예 없나요?', answer: '순차익이 250만원을 넘지 않으면 공제 안에 들어와 낼 세금이 없습니다. 다만 이 경우에도 차익이 있었다면 이듬해 5월 신고 대상에는 해당하므로, 세액이 0원이더라도 신고 여부는 증권사 안내로 확인하는 것이 좋습니다.' },
+    { question: '국내 주식에서 난 손실로 해외주식 이익을 줄일 수 있나요?', answer: '양도세가 매겨지는 같은 소득 그룹 안에서만 상계됩니다. 일반적인 국내 상장주식 매매차익은 대부분 과세 대상이 아니라 해외주식 이익과 합산되지 않습니다. 상계는 해외주식과 같은 양도세 대상 자산끼리 이뤄진다고 보면 됩니다.' },
+    { question: '손실 종목을 팔았다가 바로 다시 사도 상계가 되나요?', answer: '손실을 실현하면 그해 상계에는 반영됩니다. 다만 세금만을 위해 팔고 바로 되사는 것은 매매비용이 들고 재매수 가격도 달라지므로, 실익을 따져 판단할 문제입니다. 규정 해석이 애매하면 세무 상담을 권합니다.' },
+    { question: '배당으로 받은 돈에도 이 공제가 적용되나요?', answer: '250만원 기본공제는 매매차익에 붙는 양도소득 공제라, 배당으로 받은 돈에는 적용되지 않습니다. 해외주식 배당은 현지에서 세금을 뗀 뒤 국내에서 배당소득으로 다시 다뤄지므로 양도세와는 별개로 봐야 합니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-24 · 주식·ETF 계좌 상속 시 평가액은 어떻게 정하나 */
+const inheritedStockAccountValuation: GuideDef = {
+  slug: 'inherited-stock-account-valuation',
+  title: '주식·ETF 계좌 상속받으면 평가액은 어떻게 정할까',
+  tagline: '사망일 종가 하나가 아니라 전후 넉 달 평균으로 매긴다',
+  description:
+    '상속받은 주식이나 ETF는 돌아가신 날 종가 하나로 값을 매기지 않습니다. 사망일 전후 각 2개월, 넉 달간의 종가를 평균해 평가액을 정합니다. 왜 하루가 아닌 평균인지, 상속 후 팔 때 취득가는 어떻게 잡히는지까지 정리했습니다.',
+  keywords: ['주식 계좌 상속', '상속 주식 평가', '상속 주식 평가액', '상속 ETF 세금', '상장주식 상속 평가', '상속 취득가'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-24',
+  answer:
+    '상속받은 상장주식과 ETF는 사망일 하루의 종가가 아니라, 사망일 전후 각 2개월씩 넉 달 동안의 매일 종가를 평균한 값으로 평가합니다. 특정 하루의 급등락에 상속세가 휘둘리지 않게 하려는 장치이며, 이 평균값이 나중에 상속인이 그 주식을 팔 때의 취득가 기준이 되기도 합니다.',
+  keyPoints: [
+    '상장주식·ETF 상속 평가액은 사망일 전 2개월과 후 2개월, 합쳐 넉 달간 매일 종가의 평균으로 계산합니다.',
+    '하루 종가가 아니라 평균을 쓰는 이유는, 사망일에 우연히 급등하거나 급락한 가격으로 세금이 커지거나 작아지는 것을 막기 위해서입니다.',
+    '평가된 금액은 상속인이 뒤에 그 주식을 팔 때의 취득가로 이어질 수 있어, 상속 시점 평가가 나중 양도 단계에도 영향을 줍니다.',
+    '2026년 세제개편으로 대주주나 저PBR 기업 등 일부는 장기 평균을 반영하는 방향이 논의되고 있어, 일반적인 소액 상속과는 기준이 다를 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 상속세 상속재산의 평가 안내', url: 'https://www.nts.go.kr' },
+    { label: '국세법령정보시스템', url: 'https://taxlaw.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '부모님 주식계좌를 상속받는데 주식 가치는 어느 시점 가격으로 평가하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=494506784' },
+    { summary: '상속받은 주식의 평가 방법과 나중에 팔 때 세금이 어떻게 되는지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?docId=493988114' },
+  ],
+  sections: [
+    {
+      heading: '왜 하루가 아니라 넉 달 평균인가',
+      paragraphs: [
+        '상속세를 매기려면 물려받은 재산에 값을 붙여야 합니다. 부동산은 시세를 바로 잡기 어렵지만 상장주식은 매일 시세가 찍히니 사망일 종가를 쓰면 될 것 같습니다. 그런데 실제 기준은 다릅니다. 사망일 전 2개월과 후 2개월, 넉 달 동안의 매일 종가를 평균해 평가액을 정합니다.',
+        '하루 가격으로 정하면 하필 그날 급등한 종목은 세금이 크게 잡히고, 급락한 날이면 지나치게 작게 잡히는 문제가 생깁니다. 상속인이 사망 시점을 고를 수 있는 것도 아니어서, 우연한 하루에 부담이 좌우되지 않도록 일정 기간 평균을 쓰는 것입니다.',
+      ],
+    },
+    {
+      heading: '평균은 어떻게 계산되나',
+      paragraphs: [
+        '계산은 넉 달 동안 거래가 있었던 날의 종가를 모아 산술평균하는 방식입니다. 거래량으로 가중하지 않고 각 날의 종가를 동등하게 봅니다. 사망일이 주말이나 공휴일이라 시세가 없으면 그 직전 거래일을 기준으로 삼습니다.',
+        '실무에서는 개인이 일일이 종가를 더할 필요 없이, 국세청이 안내하는 평가 방식과 조회 도구로 확인할 수 있습니다. ETF도 상장되어 매일 시세가 있으므로 개별 상장주식과 같은 방식으로 평가한다고 보면 됩니다.',
+      ],
+    },
+    {
+      heading: '상속 평가액이 나중 양도세로 이어진다',
+      paragraphs: [
+        '상속 평가가 중요한 또 하나의 이유는, 그 금액이 상속인이 나중에 주식을 팔 때의 취득가 역할을 할 수 있기 때문입니다. 돌아가신 분이 오래전 싸게 산 주식이라도, 상속인에게는 상속 시점 평가액이 새 출발점이 됩니다. 그만큼 상속 이후의 차익 계산 기준이 올라가는 셈입니다.',
+        '그래서 상속세만 보고 평가가 낮기를 바랄 일도, 반대로 높기를 바랄 일도 아닙니다. 상속세 부담과 이후 양도 단계 부담이 서로 맞물려 있어, 재산 규모와 처분 계획을 함께 놓고 봐야 전체 그림이 보입니다.',
+      ],
+    },
+    {
+      heading: '개편 논의와 확인해야 할 것',
+      paragraphs: [
+        '기본 골격은 전후 2개월 평균이지만, 2026년 세제개편에서 의도적으로 주가를 눌러 상속·증여세를 낮추는 관행을 막기 위해 대주주나 저PBR 기업 등 일부에 장기 평균을 반영하는 방향이 논의되고 있습니다. 이런 강화는 특수한 경우를 겨냥한 것으로, 소액을 상속받는 일반 투자자에게 곧바로 같은 기준이 적용된다고 보기는 어렵습니다.',
+        '규정은 개정될 수 있으니 실제 신고 전에는 국세청 안내에서 그 시점의 평가 기준을 확인하는 것이 정확합니다. 금액이 크거나 비상장주식이 섞여 있으면 평가와 신고가 까다로워지므로 세무 전문가의 도움을 받는 편이 안전합니다. 이 글은 이해를 돕기 위한 정보이며 개별 신고의 책임은 본인에게 있습니다.',
+      ],
+    },
+    {
+      heading: '상속받은 주식 계좌, 명의 이전은 어떻게 하나',
+      paragraphs: [
+        '평가와 세금 계산이 끝나도 실제로 주식을 쓰려면 계좌 명의를 상속인 앞으로 옮겨야 합니다. 상장주식은 대개 증권사를 통해 상속인 명의 계좌로 옮기는 절차를 밟습니다. 사망 사실과 상속 관계를 확인할 서류, 상속인 전원의 협의 내용 등이 필요하며, 여러 상속인이 나눠 받는 경우 지분을 어떻게 배분할지 정리해 두어야 합니다.',
+        '명의를 옮기는 것 자체가 세금을 새로 발생시키지는 않습니다. 세금은 상속 단계에서 이미 평가액으로 정산되고, 이전은 그 결과를 반영해 계좌 주인을 바꾸는 실무 절차입니다. 증권사마다 요구 서류가 조금씩 다르니 해당 증권사에 필요한 서류 목록을 먼저 확인하면 진행이 매끄럽습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '사망일 종가만 알면 세금을 계산할 수 있나요?', answer: '아닙니다. 사망일 하루 종가가 아니라 전후 2개월씩 넉 달간의 종가 평균을 써야 하므로, 그 기간의 시세를 모아 평균한 값이 평가액이 됩니다. 하루 가격만으로는 정확한 상속세를 계산할 수 없습니다.' },
+    { question: '상속받은 주식을 바로 팔면 양도세가 많이 나오나요?', answer: '상속 평가액이 취득가 기준이 되므로, 상속 직후 시세가 평가액과 비슷하다면 차익이 크지 않아 부담도 작을 수 있습니다. 다만 국내 대형 상장주식은 대부분 매매차익 자체가 과세 대상이 아니어서, 종목과 계좌 성격에 따라 결과가 갈립니다.' },
+    { question: '해외주식이나 비상장주식도 같은 방식인가요?', answer: '해외 상장주식도 시세가 있는 경우 기간 평균의 취지가 비슷하게 적용되지만 세부 기준이 다를 수 있고, 비상장주식은 시세가 없어 별도의 평가 방법을 따릅니다. 이 경우 평가가 복잡하므로 전문가 확인이 필요합니다.' },
+    { question: '상속세를 낼 현금이 없으면 그 주식으로 낼 수 있나요?', answer: '일정 요건을 갖추면 재산 자체로 내는 물납을 신청할 수 있고, 상장주식은 시세가 분명해 충당 순서에서 앞쪽에 있습니다. 다만 요건 심사가 있으므로 신청만으로 자동 인정되지는 않습니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-24 · 금융소득 2000만원 넘으면 세금이 얼마나 느나 */
+const financialIncomeOver20Million: GuideDef = {
+  slug: 'financial-income-over-20million',
+  title: '금융소득 2000만원 넘으면 세금 얼마나 늘까',
+  tagline: '넘는 순간 전액이 아니라 초과분만 합산된다',
+  description:
+    '이자와 배당을 합쳐 한 해 2000만원을 넘으면 금융소득 종합과세 대상이 됩니다. 다만 넘는 순간 전부가 아니라 초과분만 다른 소득과 합산됩니다. 세금이 실제로 얼마나 느는지, 건강보험료는 어떻게 걸리는지 구간별로 정리했습니다.',
+  keywords: ['금융소득 2000만원', '금융소득 종합과세', '배당소득세', '금융소득 건강보험료', '종합과세 기준', '이자 배당 세금'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-24',
+  answer:
+    '한 해 이자와 배당을 합친 금융소득이 2000만원을 넘으면 종합과세 대상이 되지만, 2000만원까지는 15.4%로 분리과세되고 초과분만 다른 종합소득과 합쳐 6~45% 누진세율로 계산합니다. 그래서 살짝 넘겼다고 전체 세금이 급등하지는 않으며, 다른 소득이 많을수록 초과분에 붙는 세율이 높아지는 구조입니다.',
+  keyPoints: [
+    '이자와 배당을 합한 금융소득이 연 2000만원을 넘으면 종합과세 대상이 되고, 2000만원까지는 15.4% 분리과세로 유지됩니다.',
+    '2000만원을 넘겨도 초과분만 다른 소득과 합산되며, 최종 세액은 분리과세로 계산한 값과 비교해 더 큰 쪽으로 정해집니다.',
+    '실제 부담은 근로·사업 등 다른 소득 크기에 좌우되어, 같은 금융소득이라도 다른 소득이 적으면 추가 세금이 크지 않을 수 있습니다.',
+    '세금과 별개로 건강보험료가 걸릴 수 있어, 직장가입자는 금융소득 2000만원 초과분에 보수외 보험료가 붙고 지역가입자는 소득에 반영됩니다.',
+  ],
+  sources: [
+    { label: '국세청 종합소득세 안내', url: 'https://www.nts.go.kr' },
+    { label: '국민건강보험공단', url: 'https://www.nhis.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '배당·이자로 금융소득이 2000만원을 넘으면 세금이 얼마나 늘고 어떻게 계산되는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=493985244' },
+    { summary: '직장가입자인데 금융소득종합과세 대상이 되면 건강보험료에 어떤 영향이 있는지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?docId=494649801' },
+  ],
+  comparisonTable: {
+    caption: '금융소득 구간별로 달라지는 것',
+    columns: ['구분', '2000만원 이하', '2000만원 초과'],
+    rows: [
+      ['과세 방식', '분리과세로 종결', '초과분 종합합산'],
+      ['적용 세율', '15.4% 원천징수', '초과분 6~45% 누진'],
+      ['따로 신고', '대개 불필요', '5월 종합소득세 신고'],
+      ['건강보험료', '별도 반영 적음', '초과분 보험료 반영'],
+      ['체감 부담', '낮음', '다른 소득 클수록 커짐'],
+    ],
+  },
+  sections: [
+    {
+      heading: '2000만원은 전액이 아니라 경계선이다',
+      paragraphs: [
+        '금융소득 종합과세라는 말 때문에 2000만원을 넘으면 전체 금융소득에 높은 세율이 붙는다고 오해하기 쉽습니다. 실제로는 2000만원까지는 그대로 15.4%로 분리과세되고, 넘어선 초과분만 근로소득이나 사업소득 같은 다른 종합소득과 합쳐 계산합니다.',
+        '즉 2000만원은 세금이 갑자기 튀는 절벽이 아니라, 그 위쪽만 다른 소득과 합류시키는 경계선입니다. 1원 더 벌었다고 세금이 몇 배로 뛰는 구조가 아니라는 점을 먼저 이해하면 불필요한 걱정을 덜 수 있습니다.',
+      ],
+    },
+    {
+      heading: '초과분에 붙는 세율은 다른 소득이 정한다',
+      paragraphs: [
+        '초과분은 다른 종합소득과 합산해 누진세율을 적용한 뒤, 전부 분리과세했을 때의 세액과 비교해 더 큰 쪽으로 확정합니다. 그래서 같은 금액을 초과했더라도 사람마다 결과가 다릅니다.',
+        '은퇴 후 다른 소득이 거의 없는 사람은 낮은 세율 구간에 들어가 추가 부담이 크지 않을 수 있고, 고소득 근로자는 초과분이 높은 구간에 얹혀 세율이 올라갑니다. 본인의 다른 소득이 얼마인지를 먼저 봐야 실제 부담을 가늠할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '세금보다 건강보험료가 더 아플 수 있다',
+      paragraphs: [
+        '금융소득이 커질 때 세금 못지않게 신경 쓰이는 것이 건강보험료입니다. 직장가입자는 급여 외 소득이 일정 기준을 넘으면 그 초과분에 보수외 보험료가 별도로 붙고, 지역가입자는 금융소득이 소득 점수에 반영되어 보험료가 오릅니다.',
+        '특히 배우자나 부모의 피부양자로 올라 있던 사람이 금융소득이 커지면 피부양자에서 빠져 지역가입자로 전환될 수 있습니다. 이 경우 부담이 눈에 띄게 늘 수 있어, 세금만이 아니라 건강보험 쪽 영향을 함께 확인하는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '넘길지 말지 조절하는 방법',
+      paragraphs: [
+        '금융소득 시점을 어느 정도 조절할 수 있다면, 배당이나 이자가 한 해에 몰리지 않게 분산하는 것이 한 방법입니다. 만기가 긴 상품의 이자가 한꺼번에 잡히지 않도록 시기를 나누거나, ISA처럼 세제 혜택이 있는 계좌를 활용하면 종합과세 구간에 걸리는 것을 늦출 수 있습니다.',
+        '다만 2000만원 기준이나 건강보험료 반영 기준은 제도 변화가 있을 수 있어, 최근에도 보수외 소득 기준을 낮추는 논의가 이어지고 있습니다. 확정되지 않은 안까지 미리 대응할 필요는 없지만, 금액이 경계선에 가깝다면 그해 기준을 국세청과 건강보험공단 안내에서 확인하시기 바랍니다. 판단과 책임은 본인 몫입니다.',
+      ],
+    },
+    {
+      heading: '2000만원 안쪽으로 관리하는 실전 방법',
+      paragraphs: [
+        '금융소득이 경계선 근처라면 몇 가지로 부담을 눌러둘 수 있습니다. 부부가 각자 계좌를 나눠 소득을 분산하면 한 사람에게 몰리는 것을 막을 수 있고, 만기에 이자가 한꺼번에 잡히는 상품은 만기를 여러 해로 나누면 한 해에 뭉치는 것을 피할 수 있습니다.',
+        '분배를 재투자하는 형태로 세금 시점을 뒤로 미루는 상품이나, 비과세와 분리과세 혜택이 있는 계좌를 활용하는 것도 방법입니다. 다만 세금을 줄이려다 상품 선택이 좁아지거나 자금이 오래 묶이면 본말이 바뀝니다. 절세는 투자 판단의 한 요소일 뿐이니, 수익 구조와 유동성을 함께 놓고 균형을 잡는 편이 낫습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '2000만원을 딱 1만원 넘기면 세금이 크게 뛰나요?', answer: '그렇지 않습니다. 초과분인 1만원만 다른 소득과 합산되고, 전체를 분리과세한 세액과 비교해 큰 쪽으로 정해지므로 실제로는 거의 차이가 없습니다. 세금이 절벽처럼 튀는 구조가 아닙니다.' },
+    { question: 'ISA 계좌에서 난 금융소득도 2000만원에 포함되나요?', answer: 'ISA는 일정 한도까지 비과세되고 초과분도 낮은 세율로 분리과세되는 혜택이 있어, 종합과세 대상 금융소득을 계산할 때 일반 계좌와 다르게 다뤄집니다. 구체적인 한도와 처리 방식은 계좌 유형에 따라 다르니 확인이 필요합니다.' },
+    { question: '금융소득 때문에 종합소득세 신고를 꼭 해야 하나요?', answer: '2000만원을 넘겨 종합과세 대상이 되면 이듬해 5월에 다른 소득과 합산해 신고합니다. 넘지 않으면 대개 원천징수로 종결되어 따로 신고하지 않아도 되지만, 다른 종합소득이 있는 경우는 상황에 따라 달라집니다.' },
+    { question: '국내 주식 매매차익도 금융소득에 들어가나요?', answer: '금융소득은 이자와 배당을 말합니다. 일반적인 국내 상장주식 매매차익은 대부분 과세 대상도 아니고 금융소득 종합과세 계산에도 들어가지 않습니다. 다만 배당으로 받은 돈은 배당소득이라 여기에 포함됩니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-24 · 배당락일에 팔아도 배당 받나, 짧게 보유해도 되나 */
+const dividendShortHoldEligibility: GuideDef = {
+  slug: 'dividend-short-hold-eligibility',
+  title: '배당락일에 팔아도 배당 받나, 하루만 보유해도 될까',
+  tagline: '권리는 기준일 명부로 정해지고 결제는 이틀이 걸린다',
+  description:
+    '배당은 배당기준일에 주주명부에 이름이 있으면 받습니다. 국내 주식은 결제가 이틀 걸려 배당락일 전날까지 사야 하고, 배당락일에는 팔아도 배당이 유지됩니다. 하루만 들고 배당을 받고 파는 방식이 정말 이득인지까지 짚었습니다.',
+  keywords: ['배당락일 배당', '배당 받는 방법', '배당기준일 매수', '배당락일 매도', '배당 결제일', '배당 하루 보유'],
+  section: 'ETF 분배금 가이드',
+  lastReviewed: '2026-08-24',
+  answer:
+    '배당은 배당기준일에 주주명부에 올라 있으면 받습니다. 국내 주식은 결제에 2영업일이 걸려 배당락일 전날까지 매수해야 기준일에 주주로 잡히고, 배당락일부터는 팔아도 그 배당을 받습니다. 다만 배당락일에 주가가 배당만큼 내리는 경향이 있어, 하루만 들고 받고 파는 방식이 늘 이득이 되지는 않습니다.',
+  keyPoints: [
+    '배당을 받으려면 배당기준일에 주주명부에 있어야 하고, 국내 주식은 결제가 2영업일 걸려 배당락일 전날까지 매수를 끝내야 합니다.',
+    '배당락일에는 주식을 팔아도 이번 배당을 받습니다. 이미 기준일 주주로 확정된 뒤이기 때문입니다.',
+    '배당락일에는 지급될 배당만큼 주가가 낮게 출발하는 경향이 있어, 배당을 받아도 시세 하락으로 상쇄되는 부분이 생깁니다.',
+    '짧게 들고 배당만 받고 파는 방식은 배당소득세 15.4%와 매매비용까지 감안하면 계산만큼 이득이 아닐 수 있습니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '배당락일에 주식을 팔아도 배당을 받는지, 배당을 받으려면 언제까지 사고 언제까지 들고 있어야 하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=494649801' },
+    { summary: '배당락일 전날까지 주식을 보유해야 하는 이유가 무엇인지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?docId=493985244' },
+  ],
+  sections: [
+    {
+      heading: '배당을 받는 기준은 명부다',
+      paragraphs: [
+        '배당은 회사가 정한 배당기준일에 주주명부에 이름이 올라 있는 사람에게 지급됩니다. 며칠을 보유했는지, 얼마에 샀는지는 따지지 않습니다. 오직 기준일 그 시점에 주주였는지만 봅니다. 그래서 배당을 받으려면 기준일에 명부상 주주로 확정되어 있어야 합니다.',
+        '문제는 주식을 사는 순간 바로 명부에 올라가지 않는다는 데 있습니다. 국내 주식은 매수 체결 후 소유권이 넘어오기까지 2영업일이 걸립니다. 이 시차 때문에 언제까지 사야 하는지가 갈립니다.',
+      ],
+    },
+    {
+      heading: '언제까지 사고, 언제 팔 수 있나',
+      paragraphs: [
+        '결제가 2영업일 걸리므로, 배당기준일에 주주가 되려면 그 2영업일 전까지 매수를 마쳐야 합니다. 이날이 배당을 받을 수 있는 마지막 매수일이고, 그 다음 날이 배당락일입니다. 배당락일에 사는 사람은 기준일에 결제가 끝나지 않아 이번 배당을 받지 못합니다.',
+        '반대로 이미 주식을 들고 있었다면, 배당락일에 팔아도 배당은 그대로 받습니다. 기준일 주주로 확정된 뒤라 매도해도 권리가 사라지지 않기 때문입니다. 그래서 이론적으로는 배당락일 전날 사서 배당락일에 파는, 딱 필요한 만큼만 보유하는 방식이 가능합니다.',
+      ],
+    },
+    {
+      heading: '하루만 들고 파는 게 이득일까',
+      paragraphs: [
+        '여기서 놓치기 쉬운 것이 배당락입니다. 배당락일에는 지급 예정인 배당만큼 기준가격을 낮춰 거래가 시작됩니다. 배당으로 빠져나갈 금액이 미리 주가에 반영되는 셈이라, 배당을 받아도 그만큼 시세가 내려가 있어 순이익이 생각보다 적습니다.',
+        '여기에 배당소득세 15.4%가 원천징수되고 사고파는 데 드는 비용까지 더하면, 짧게 들고 배당만 노리는 전략은 계산기 두드린 것만큼 남지 않는 경우가 많습니다. 배당락 이후 주가가 며칠 만에 회복될지는 정해져 있지 않아, 회복을 전제로 한 단기 매매는 예상과 다를 수 있습니다.',
+      ],
+    },
+    {
+      heading: '해외주식과 ETF는 조금 다르다',
+      paragraphs: [
+        '미국주식도 기준일 명부로 배당 대상을 정하는 원리는 같지만, 시장마다 결제에 걸리는 기간과 배당락일을 표기하는 방식이 달라 국내 감각으로 날짜를 맞추면 어긋날 수 있습니다. 해외 종목은 해당 시장의 배당락일을 따로 확인하는 편이 안전합니다.',
+        'ETF의 분배금도 기준일에 보유하고 있으면 받는 구조는 비슷합니다. 다만 월배당처럼 분배가 잦은 상품은 기준일이 자주 돌아오므로, 분배만 노리고 짧게 사고파는 것보다 보유 목적에 맞춰 판단하는 편이 낫습니다. 투자 판단과 결과에 대한 책임은 본인에게 있습니다.',
+      ],
+    },
+    {
+      heading: '배당 받으려 급하게 사는 것을 경계한다',
+      paragraphs: [
+        '기준일이 다가오면 배당을 받으려는 매수가 몰려 주가가 오르기도 합니다. 그러나 배당락일에는 그만큼 가격이 내려 출발하므로, 기준일 직전에 비싸게 사서 배당을 받고 배당락으로 다시 내리면 남는 것이 크지 않습니다. 배당 자체는 이미 주가에 반영되어 있다고 보는 편이 현실적입니다.',
+        '오래 보유할 종목이라면 기준일 며칠 사이의 타이밍은 큰 의미가 없습니다. 반대로 배당 하나만 보고 잠깐 들어갔다 나오는 매매는 세금과 비용, 배당락 회복 여부라는 변수가 겹쳐 예상과 어긋나기 쉽습니다. 배당은 보유의 결과로 따라오는 것이지, 그 자체를 노린 단타의 수단으로 삼기에는 위험이 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '배당락일 당일에 사면 이번 배당을 받나요?', answer: '받지 못합니다. 배당락일에 매수하면 결제가 배당기준일까지 끝나지 않아 명부에 오르지 못합니다. 이번 배당을 받으려면 배당락일 전날, 즉 마지막 매수 가능일까지 사야 합니다.' },
+    { question: '기준일에 딱 하루만 들고 있어도 배당을 다 받나요?', answer: '보유 기간과 무관하게 기준일에 주주명부에 있으면 배당은 전액 받습니다. 다만 배당락으로 주가가 낮아지고 세금과 비용이 붙어, 하루 보유만으로 순이익을 남기기는 쉽지 않습니다.' },
+    { question: '배당기준일과 배당락일은 어디서 확인하나요?', answer: '회사 공시나 증권사 앱의 종목 정보에서 배당기준일을 확인할 수 있고, 그 2영업일 전이 마지막 매수일, 그 다음 날이 배당락일입니다. 최근에는 배당액을 먼저 정한 뒤 기준일을 잡는 방식으로 바뀐 곳도 있어 종목별 일정 확인이 필요합니다.' },
+    { question: '배당락으로 내린 주가는 다시 오르나요?', answer: '배당락 하락분이 얼마 만에 메워질지는 정해져 있지 않습니다. 실적과 시장 흐름에 따라 금방 회복하기도 하고 오래 걸리기도 하므로, 회복을 전제로 배당만 노린 단기 매매는 기대와 다를 수 있습니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-24 · 연금저축·IRP 세액공제 연말 막차, 12월 납입 */
+const pensionYearEndContributionDeadline: GuideDef = {
+  slug: 'pension-year-end-contribution-deadline',
+  title: '연금저축·IRP 세액공제, 연말에 몰아 넣어도 될까',
+  tagline: '12월 안에만 넣으면 그해 공제, 다만 뺄 때를 기억한다',
+  description:
+    '연금저축과 IRP는 12월 31일까지 넣은 돈이 그해 세액공제에 잡힙니다. 연말에 한도를 몰아 채워도 공제는 그대로 받습니다. 합산 900만원 한도와 공제율, 그리고 중간에 깨면 돌려받은 세금을 토해내는 구조까지 정리했습니다.',
+  keywords: ['연금저축 IRP', '연금저축 세액공제', 'IRP 세액공제', '연말정산 연금저축', '세액공제 900만원', '연금저축 납입 한도'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-24',
+  answer:
+    '연금저축과 IRP는 그해 12월 31일까지 납입한 금액이 세액공제 대상이라, 연말에 한도를 몰아 채워도 그해 공제를 받습니다. 둘을 합쳐 연 900만원까지 공제되고 공제율은 총급여에 따라 13.2% 또는 16.5%입니다. 다만 공제받은 돈을 중도에 인출하면 돌려받은 세금을 다시 내야 하므로, 오래 묶어둘 여유 자금으로 넣는 것이 중요합니다.',
+  keyPoints: [
+    '연금저축과 IRP는 12월 31일까지 넣은 금액이 그해 세액공제 대상이라, 연말에 몰아 넣어도 공제 효과는 같습니다.',
+    '세액공제 한도는 두 계좌를 합쳐 연 900만원이고, 연금저축 단독으로는 600만원까지 인정됩니다.',
+    '공제율은 총급여 5500만원(종합소득 4500만원) 이하면 16.5%, 초과하면 13.2%로, 900만원을 채우면 최대 약 148만원을 돌려받습니다.',
+    '공제받은 원금과 수익을 연금 개시 전에 중도 인출하면 대개 16.5%의 기타소득세가 붙어, 받았던 혜택을 반납하게 됩니다.',
+  ],
+  sources: [
+    { label: '국세청 연금계좌 세액공제 안내', url: 'https://www.nts.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '연금저축과 IRP를 연말에 몰아서 넣어도 그해 세액공제를 받을 수 있는지, 한도와 공제율이 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?docId=493985244' },
+    { summary: '연금저축과 IRP 세액공제를 최대로 받으려면 각각 얼마씩 넣어야 하는지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?docId=494649801' },
+  ],
+  comparisonTable: {
+    caption: '한도를 채울 때 두 계좌를 나누는 예',
+    columns: ['구분', '연금저축만', '연금저축 + IRP'],
+    rows: [
+      ['공제 인정 한도', '600만원', '900만원'],
+      ['예시 납입', '연금저축 600만원', '연금저축 600 + IRP 300'],
+      ['16.5% 적용 시 환급', '약 99만원', '약 148만원'],
+      ['상품 선택 폭', '넓음', 'IRP는 위험자산 한도 있음'],
+      ['유리한 경우', '600만원까지만 넣을 때', '한도를 끝까지 채울 때'],
+    ],
+  },
+  sections: [
+    {
+      heading: '연말에 넣어도 그해 공제는 그대로다',
+      paragraphs: [
+        '세액공제는 그해 12월 31일까지 계좌에 들어온 금액을 기준으로 계산합니다. 그래서 1월부터 매달 나눠 넣든, 12월에 한꺼번에 채우든 그해 공제액은 같습니다. 매달 자동이체가 부담스러워 미뤄뒀다면 연말에 한도를 몰아 넣어도 늦지 않습니다.',
+        '다만 은행이나 증권사의 입금 처리 시점이 있으니, 마지막 날 밤에 이체하기보다 며칠 여유를 두는 편이 안전합니다. 연말에는 이체가 몰려 처리가 지연될 수 있어, 12월 마지막 영업일 이전에 넣어두는 것을 권합니다.',
+      ],
+    },
+    {
+      heading: '한도 900만원을 어떻게 나눌까',
+      paragraphs: [
+        '세액공제 한도는 연금저축과 IRP를 합쳐 연 900만원입니다. 연금저축 하나만으로는 600만원까지 인정되므로, 900만원을 다 채우려면 연금저축 600만원에 IRP로 300만원을 더 넣는 조합이 자주 쓰입니다. IRP만으로 900만원을 채우는 것도 가능합니다.',
+        '두 계좌는 성격이 조금 다릅니다. IRP는 위험자산에 담을 수 있는 비중에 한도가 있어 안전자산을 일정 부분 담아야 하고, 연금저축은 상품 선택이 상대적으로 자유롭습니다. 어느 쪽에 얼마를 넣을지는 담고 싶은 상품과 투자 성향에 따라 정하면 됩니다.',
+      ],
+    },
+    {
+      heading: '돌려받는 세금은 소득에 따라 다르다',
+      paragraphs: [
+        '공제율은 소득 구간으로 갈립니다. 총급여 5500만원, 종합소득 기준으로는 4500만원 이하면 16.5%가 적용되고, 그 위로는 13.2%입니다. 900만원을 채우면 16.5% 구간에서 약 148만원, 13.2% 구간에서 약 119만원을 돌려받는 셈입니다.',
+        '연봉이 낮은 해일수록 공제율이 높으니, 소득이 적은 시기에 한도를 채우는 것이 환급 측면에서는 유리합니다. 다만 매년 한도가 새로 생기고 이월되지 않으므로, 여유가 될 때 그해 한도를 챙기는 습관이 길게 보면 도움이 됩니다.',
+      ],
+    },
+    {
+      heading: '넣기 전에 뺄 때를 생각한다',
+      paragraphs: [
+        '세액공제의 이면은 돈이 묶인다는 점입니다. 공제를 받은 원금과 그 수익을 연금 개시 전에 중도 인출하면 대개 16.5%의 기타소득세가 붙습니다. 돌려받았던 세금을 사실상 반납하는 구조라, 급하게 쓸 돈을 넣으면 혜택이 사라집니다.',
+        '그래서 연말 공제만 보고 무리하게 채우기보다, 몇 년간 쓰지 않아도 되는 자금인지 먼저 따지는 순서가 맞습니다. 세액공제는 노후를 위해 오래 묶어두는 대가로 주어지는 혜택입니다. 개인의 소득과 자금 사정에 따라 적정 납입액이 다르니, 무리 없는 선에서 결정하시기 바랍니다.',
+      ],
+    },
+    {
+      heading: '연금저축·IRP에서 나중에 돈을 받을 때',
+      paragraphs: [
+        '넣을 때 세금을 돌려받는 대신, 받을 때 세금을 냅니다. 만 55세 이후 연금 형태로 나눠 받으면 연금소득세가 적용되는데, 수령 나이에 따라 대체로 3.3%에서 5.5% 사이의 낮은 세율이 붙습니다. 넣을 때 13.2~16.5%를 돌려받고 받을 때 더 낮은 세율을 내는 구조라, 시점을 미루는 효과와 세율 차이가 함께 작동합니다.',
+        '반대로 연금이 아니라 한꺼번에 목돈으로 찾으면 낮은 연금소득세 대신 다른 세금이 붙어 혜택이 줄어듭니다. 그래서 연금저축과 IRP는 노후에 나눠 받는 것을 전제로 설계하는 편이 유리합니다. 수령 방식과 세율은 제도와 나이에 따라 달라지므로, 인출을 앞두고는 그 시점 기준을 확인하는 것이 정확합니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '12월 31일에 넣어도 올해 공제를 받나요?', answer: '그날까지 계좌에 입금이 완료되면 올해 공제 대상입니다. 다만 연말에는 이체 처리가 지연될 수 있어 마지막 날에 몰기보다 며칠 앞서 넣는 것이 안전합니다.' },
+    { question: '한도인 900만원을 넘겨 넣으면 어떻게 되나요?', answer: '공제는 900만원까지만 인정되고 초과분은 세액공제를 받지 못합니다. 다만 초과 납입한 금액은 나중에 공제받지 않은 원금으로 관리되어, 인출 시 과세에서 빠지도록 처리할 수 있습니다.' },
+    { question: '중도에 급하게 돈이 필요하면 어떻게 하나요?', answer: '공제받은 부분을 인출하면 기타소득세가 붙습니다. 다만 요건을 갖춘 부득이한 사유의 인출은 낮은 세율이 적용되기도 하므로, 해지 전에 조건을 확인하고 필요하면 담보대출 같은 대안을 먼저 살피는 것이 좋습니다.' },
+    { question: '연금저축과 IRP 중 하나만 있어도 공제를 받나요?', answer: '둘 중 하나만 있어도 그 계좌 납입액만큼 공제됩니다. 연금저축만 있으면 600만원까지, IRP만 있으면 900만원까지 인정됩니다. 900만원을 다 채우려면 연금저축에 IRP를 더하는 조합이 필요합니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
   stockOrderRejectedReasons,
   dividendRecordDateReform,
@@ -21633,6 +22021,11 @@ export const GUIDES: GuideDef[] = [
   corporateRetainedEarningsTax,
   isaSp500Nasdaq100Together,
   basicPensionWithPrivatePension,
+  overseasStockYearEndTaxSaving,
+  inheritedStockAccountValuation,
+  financialIncomeOver20Million,
+  dividendShortHoldEligibility,
+  pensionYearEndContributionDeadline,
 ];
 
 /**
@@ -21665,6 +22058,12 @@ export const GUIDE_PUBLISHED_AT: Record<string, string> = {
   'corporate-retained-earnings-tax': '2026-08-12',
   'isa-sp500-nasdaq100-together': '2026-08-12',
   'basic-pension-with-private-pension': '2026-08-12',
+  // 2026-08-24 · 지식iN 질문 수요 기반 (해외주식 양도세 연말 절세 매도·주식 ETF 계좌 상속 평가액·금융소득 2000만원 종합과세·배당락일 매도 배당 권리·연금저축 IRP 세액공제 연말 납입)
+  'overseas-stock-year-end-tax-saving': '2026-08-24',
+  'inherited-stock-account-valuation': '2026-08-24',
+  'financial-income-over-20million': '2026-08-24',
+  'dividend-short-hold-eligibility': '2026-08-24',
+  'pension-year-end-contribution-deadline': '2026-08-24',
   // 2026-08-06 · 지식iN 질문 수요 기반 (매수 주문 체결 안 되는 이유·배당기준일 개편 선배당 후투자·은퇴자 배당 ETF 월 생활비 역산·코인 선물 강제청산 원리·미국 ETF 배당 자동재투자 DRIP 국내)
   'stock-order-rejected-reasons': '2026-08-06',
   'dividend-record-date-reform': '2026-08-06',
@@ -21961,12 +22360,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'overseas-stock-year-end-tax-saving', 'inherited-stock-account-valuation', 'financial-income-over-20million', 'pension-year-end-contribution-deadline'],
   },
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income', 'dividend-short-hold-eligibility'],
   },
   {
     title: '테마·섹터',
