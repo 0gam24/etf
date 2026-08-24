@@ -2438,3 +2438,47 @@ A. 실제 코드(src/lib/guides.ts + src/app/guide/[slug]/page.tsx) 기준으로
   - 직답은 결론만, 수치는 본문에
   - 핵심 포인트는 본문 요약이 아니라 본문에 없는 판단·조건·비교 결과
   - 소제목만 봐도 무슨 문단인지 알게. 의문형은 1~2개까지
+
+## 2026-08-24 · [일일 발행]
+
+### 오늘 발행 5편 (지식iN 질문 수요 기반)
+
+1. 해외주식 양도세, 연말에 얼마 팔아야 절세될까 (overseas-stock-year-end-tax-saving)
+   출처 질문: 해외주식 양도세를 줄이려면 연말에 얼마어치를 팔아야 하나 / 250만원 공제·손실 상계가 되나
+   검증: 국세청·홈택스. 250만원 연 기본공제(미이월), 22%(20%+2%), 해외주식 간 손익통산, 결제일 기준 연도 귀속. WebSearch 교차확인.
+
+2. 주식·ETF 계좌 상속받으면 평가액은 어떻게 정할까 (inherited-stock-account-valuation)
+   출처 질문: 부모 주식계좌 상속 시 평가 시점 / 상속 주식 평가 방법과 이후 세금
+   검증: 상속개시일 전후 각 2개월(넉 달) 종가 평균, 취득가 승계. 2026 세제개편 대주주·저PBR 장기평균 논의는 caveat로만 표기.
+
+3. 금융소득 2000만원 넘으면 세금 얼마나 늘까 (financial-income-over-20million)
+   출처 질문: 금융소득 2000만원 초과 시 세금 계산 / 직장가입자 종합과세 시 건보료 영향
+   검증: 2000만원 초과분만 종합합산(6~45%), 이하 15.4% 분리, 비교과세. 건보료 2000만원 초과분 반영. 1000만원 강화는 '논의 중'으로만.
+
+4. 배당락일에 팔아도 배당 받나, 하루만 보유해도 될까 (dividend-short-hold-eligibility)
+   출처 질문: 배당락일 매도해도 배당 받나 / 배당락일 전날까지 보유해야 하는 이유
+   검증: 배당기준일 명부 확정, 국내 T+2 결제 → 배당락일 전날까지 매수, 배당락일 매도 가능. 배당락·15.4%·비용으로 단타 실익 제한.
+
+5. 연금저축·IRP 세액공제, 연말에 몰아 넣어도 될까 (pension-year-end-contribution-deadline)
+   출처 질문: 연금저축·IRP 연말 몰아넣기 공제 인정 여부·한도·공제율 / 최대 공제 배분
+   검증: 12/31까지 납입분 그해 공제, 합산 900만원(연금저축 단독 600), 16.5%/13.2%, 최대 약 148만원, 중도인출 기타소득세 16.5%.
+
+### 검증 결과
+- validate:guides → ERROR 0 (배포 가능), 신규 5편 WARN 0
+- npx tsc --noEmit → 0 errors
+- npm run cf:build → 성공, .next/server/app/guide/에 5편 prerender, 각 HTML에 answer-box·guide-key-points·guide-sources·"citation"·2026-08-24 포함
+- em dash(—) 0건, 운영자 메타 금지어 0건 (신규 블록)
+
+### 지식iN 신규 수집
+- 클라우드 IP 네이버 차단으로 신규 수집 생략(정상). 저장 코퍼스 사용: data/keywords/kin/kin-20260812.json, kin-20260718.json
+
+### 색인 푸시
+- 이번 발행은 지정 브랜치(claude/serene-hamilton-clgsdb)로 push 후 draft PR 생성. production 미배포 상태라 URL이 아직 열리지 않음.
+- 404 통보 방지를 위해 실제 색인 푸시(npm run push:guides)는 PR 머지·production 반영 확인 후로 보류. --dry로 대상만 확인.
+
+### 오늘 발행 링크 (병합·배포 후 라이브)
+https://iknowhowinfo.com/guide/overseas-stock-year-end-tax-saving
+https://iknowhowinfo.com/guide/inherited-stock-account-valuation
+https://iknowhowinfo.com/guide/financial-income-over-20million
+https://iknowhowinfo.com/guide/dividend-short-hold-eligibility
+https://iknowhowinfo.com/guide/pension-year-end-contribution-deadline
