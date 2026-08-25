@@ -21394,7 +21394,416 @@ const basicPensionWithPrivatePension: GuideDef = {
   ],
 };
 
+
+/** Q&A · 2026-08-25 · 주식계좌 상속, 명의변경 절차와 상장주식 평가 */
+const stockAccountInheritanceTransfer: GuideDef = {
+  slug: 'stock-account-inheritance-transfer',
+  title: '주식계좌 상속, 명의변경 절차와 상장주식 평가',
+  tagline: '고인의 주식과 ETF, 어떻게 넘겨받고 세금은 어떻게 매겨지나',
+  description:
+    '고인이 남긴 주식과 ETF는 상속인 명의로 계좌를 옮겨야 인출할 수 있습니다. 명의변경에 필요한 서류, 상장주식을 사망일 전후 넉 달 종가로 평가하는 방식, 상속개시일이 속한 달 말일부터 여섯 달인 신고기한까지 순서대로 정리했습니다.',
+  keywords: ['주식 상속', '주식계좌 상속', '상속 주식 명의변경', '상장주식 상속 평가', '상속세 신고기한', '주식 상속 절차'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-25',
+  answer:
+    '상속받은 주식과 ETF는 팔거나 옮기기 전에 먼저 상속인 명의로 계좌 이전을 마쳐야 합니다. 상장주식의 상속 평가액은 사망일 전후 각 두 달, 합쳐 넉 달 동안의 종가 평균으로 정하며, 상속세 신고와 납부는 상속개시일이 속한 달의 말일부터 여섯 달 안에 해야 합니다.',
+  keyPoints: [
+    '상속 주식은 증권사에 사망 사실을 알리고 상속인 명의로 계좌를 이전한 뒤에야 매도나 출고가 됩니다.',
+    '상장주식의 상속 평가액은 사망일 전후 각 두 달, 총 넉 달간의 매일 종가를 평균한 값으로 정합니다.',
+    '상속세 신고·납부 기한은 상속이 시작된 날이 속한 달의 말일부터 여섯 달이며, 늦으면 가산세가 붙습니다.',
+    '고인이 여러 증권사에 계좌를 뒀을 수 있어, 금융감독원 상속인 조회 서비스로 계좌를 한 번에 확인하는 편이 안전합니다.',
+  ],
+  sources: [
+    { label: '국세청 상속세 안내', url: 'https://www.nts.go.kr' },
+    { label: '금융감독원 상속인 금융거래 조회', url: 'https://www.fss.or.kr' },
+    { label: '한국예탁결제원', url: 'https://www.ksd.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '주식계좌를 상속받을 때 상속세가 어떻게 매겨지는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40303&docId=475200164&answerNo=3' },
+    { summary: '주식 명의자가 사망한 뒤 명의변경과 상속 이전은 어떻게 하나', url: 'https://kin.naver.com/qna/detail.naver?dirId=40303&docId=422718194&answerNo=1' },
+    { summary: '상속받은 주식계좌 처리 절차와 세금 관련해 문의한다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40303&docId=469574383&answerNo=1' },
+  ],
+  sections: [
+    {
+      heading: '먼저 할 일은 계좌 이전이다',
+      paragraphs: [
+        '고인의 주식이나 ETF는 상속인이 곧바로 팔 수 없습니다. 증권사에 사망 사실을 알리면 계좌가 일단 정지되고, 상속인 명의로 이전 절차를 밟은 뒤에야 매도하거나 다른 계좌로 옮길 수 있습니다. 상속인이 여럿이면 협의로 배분을 정하거나 대표 상속인 계좌로 옮긴 다음 나누는 방식을 씁니다.',
+        '필요한 서류는 대체로 고인의 기본증명서와 가족관계증명서, 상속인 신분증, 상속인 사이의 협의가 있다면 상속재산 분할협의서입니다. 증권사마다 요구 서류가 조금씩 다르므로 해당 증권사에 미리 목록을 확인해 두면 방문 횟수를 줄일 수 있습니다.',
+      ],
+    },
+    {
+      heading: '흩어진 계좌부터 찾는다',
+      paragraphs: [
+        '고인이 어느 증권사에 계좌를 뒀는지 유족이 다 알기는 어렵습니다. 금융감독원이 운영하는 상속인 금융거래 조회 서비스를 이용하면 은행과 증권사에 걸친 계좌를 한 번에 확인할 수 있습니다. 시군구청이나 주민센터 방문 접수, 온라인 신청이 모두 가능합니다.',
+        '조회로 빠뜨린 계좌를 찾아야 나중에 뒤늦게 재산이 드러나 신고를 다시 하는 일을 막습니다. 상속 재산 전체 규모를 먼저 파악해야 세금 계산도 정확해지므로 이 단계를 건너뛰지 않는 편이 좋습니다.',
+      ],
+    },
+    {
+      heading: '상장주식은 넉 달 평균으로 평가한다',
+      paragraphs: [
+        '상속세를 매기려면 물려받은 주식의 값을 정해야 합니다. 거래소에 상장된 주식과 ETF는 사망일 하루 종가가 아니라, 사망일 전 두 달과 후 두 달을 합친 넉 달 동안의 매일 종가를 평균한 값으로 평가합니다. 특정 하루의 급등락에 좌우되지 않도록 만든 규정입니다.',
+        '이 평가 방식은 개정 논의가 이어지는 영역이라 세부 기준이 바뀔 수 있습니다. 실제 신고 전에는 국세청 안내에서 현재 기준을 확인하시기 바랍니다. 비상장주식은 평가 방법이 완전히 달라 별도의 산식을 따릅니다.',
+      ],
+    },
+    {
+      heading: '신고와 납부 기한을 놓치지 않는다',
+      paragraphs: [
+        '상속세 신고와 납부는 상속이 시작된 날, 곧 사망일이 속한 달의 말일부터 여섯 달 안에 마쳐야 합니다. 예를 들어 3월에 사망했다면 9월 말까지입니다. 기한을 넘기면 신고와 납부에 각각 가산세가 붙어 부담이 커집니다.',
+        '한 번에 낼 현금이 부족하면 여러 해에 걸쳐 나눠 내는 연부연납이나 재산으로 내는 물납을 검토할 수 있습니다. 다만 요건과 허가 절차가 따로 있으니 기한 안에 함께 신청해야 합니다.',
+      ],
+    },
+    {
+      heading: '팔 계획이 있다면 평가액을 기억해 둔다',
+      paragraphs: [
+        '상속받은 주식을 나중에 팔 때 세금 계산의 기준이 되는 취득가는 상속 시점의 평가액입니다. 그래서 신고 때 정한 평가액을 잘 남겨 두면 이후 양도 단계에서 유리하게 쓸 수 있습니다. 특히 해외주식이나 ETF는 매도 차익에 세금이 붙으므로 이 기록이 중요합니다.',
+        '상속은 재산 종류와 상속인 구성에 따라 계산이 크게 달라집니다. 여기 담은 내용은 큰 흐름을 잡기 위한 정보이며, 구체적인 판단과 신고는 세무 전문가의 확인을 받는 편이 안전합니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '상속받은 주식을 바로 팔 수 있나요?', answer: '먼저 상속인 명의로 계좌 이전을 마쳐야 매도할 수 있습니다. 사망 사실이 확인되면 고인 계좌는 정지되므로, 명의변경 전에는 거래가 되지 않습니다.' },
+    { question: '상장주식의 상속 평가액은 언제 시세로 정하나요?', answer: '사망일 하루가 아니라 사망일 전 두 달과 후 두 달을 합한 넉 달 동안의 매일 종가를 평균해 정합니다. 특정일의 급등락 영향을 줄이기 위한 방식입니다.' },
+    { question: '상속세 신고 기한은 언제까지인가요?', answer: '상속이 시작된 날이 속한 달의 말일부터 여섯 달 안입니다. 이 기한을 넘기면 신고와 납부 각각에 가산세가 더해집니다.' },
+    { question: '고인의 증권 계좌를 모를 때는 어떻게 찾나요?', answer: '금융감독원 상속인 금융거래 조회 서비스를 이용하면 은행과 증권사 계좌를 한 번에 확인할 수 있습니다. 온라인이나 주민센터에서 신청합니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-25 · 상속받은 주식 팔 때 취득가는 상속 시점 시가 */
+const inheritedStockCostBasis: GuideDef = {
+  slug: 'inherited-stock-cost-basis',
+  title: '상속받은 주식 팔 때 취득가는 상속 시점 시가',
+  tagline: '살 때 가격이 아니라 물려받을 때 시가로 세금이 계산된다',
+  description:
+    '상속받은 주식을 팔 때 취득가는 처음 매수가가 아니라 물려받은 시점의 평가액으로 잡힙니다. 국내 상장 소액주주는 장내 매도 시 양도세가 없지만 해외주식과 ETF는 다릅니다. 취득가액 계산과 계좌 유형별 과세 차이를 함께 짚었습니다.',
+  keywords: ['상속 주식 양도세', '상속 주식 취득가액', '상속 주식 매도', '취득가액 계산', '상속개시일 평가액', '해외주식 상속 양도세'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-08-25',
+  answer:
+    '상속받은 주식을 팔 때 양도차익을 계산하는 취득가는 고인이 처음 산 가격이 아니라, 상속이 시작된 시점의 평가액입니다. 상장주식은 사망일 전후 넉 달 종가 평균이 그 기준이 됩니다. 다만 국내 상장주식을 장내에서 파는 소액주주는 양도세 자체가 없고, 해외주식과 국내 상장 해외형 ETF는 매도 차익에 세금이 붙는다는 점에서 갈립니다.',
+  keyPoints: [
+    '상속 자산의 취득가는 매수 원가가 아니라 상속개시일 현재의 평가액으로, 그만큼 양도차익이 줄어드는 효과가 있습니다.',
+    '국내 상장주식을 장내에서 파는 소액주주는 대주주가 아닌 한 양도소득세가 없어 취득가 자체가 문제 되지 않습니다.',
+    '해외주식과 국내 상장 해외형 ETF는 매도 차익에 과세되므로, 상속 시점 평가액을 취득가로 남겨 두는 것이 중요합니다.',
+    '상속세 신고 때 정한 평가액이 이후 양도세 취득가로 이어지므로, 두 단계를 따로 보지 말고 함께 관리하는 편이 낫습니다.',
+  ],
+  sources: [
+    { label: '국세청 양도소득세 안내', url: 'https://www.nts.go.kr' },
+    { label: '국세법령정보시스템', url: 'https://taxlaw.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '상속받은 주식의 취득가액을 어떻게 잡고 수정하는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40303&docId=493740198&answerNo=5' },
+    { summary: '주식에서 손해가 났을 때 상속세와 이후 양도는 어떻게 되나', url: 'https://kin.naver.com/qna/detail.naver?dirId=40303&docId=490133722&answerNo=2' },
+  ],
+  comparisonTable: {
+    caption: '상속받은 주식을 팔 때, 종류별 양도세와 취득가 기준',
+    columns: ['구분', '매도 차익 과세', '취득가 기준', '취득가가 중요한가'],
+    rows: [
+      ['국내 상장주식 (소액주주 장내)', '없음', '해당 없음', '낮음'],
+      ['국내 상장주식 (대주주)', '있음', '상속 시점 평가액', '높음'],
+      ['해외주식', '있음', '상속 시점 평가액', '높음'],
+      ['국내 상장 해외형·기타 ETF', '있음(배당소득 등)', '상속 시점 평가액', '높음'],
+      ['비상장주식', '있음', '상속 시점 평가액', '높음'],
+    ],
+  },
+  sections: [
+    {
+      heading: '취득가는 물려받은 시점의 값이다',
+      paragraphs: [
+        '상속받은 주식을 팔아 세금을 계산할 때 가장 많이 헷갈리는 지점이 취득가입니다. 고인이 오래전에 산 낮은 가격이 아니라, 상속이 시작된 시점의 평가액을 취득가로 봅니다. 그래서 고인이 크게 이익을 본 종목이라도 상속인 입장에서는 물려받을 때 값부터 다시 계산이 시작됩니다.',
+        '이 구조 덕분에 상속 전에 쌓여 있던 평가이익에는 양도세가 자동으로 얹히지 않습니다. 상속인이 물려받은 뒤 값이 더 오른 만큼에 대해서만 차익을 따지는 셈입니다.',
+      ],
+    },
+    {
+      heading: '국내 상장주식은 대부분 양도세가 없다',
+      paragraphs: [
+        '헷갈림의 절반은 여기서 풀립니다. 국내 상장주식을 거래소에서 파는 일반 투자자, 곧 대주주가 아닌 소액주주는 매도 차익에 양도소득세가 붙지 않습니다. 상속으로 받은 국내 상장주식을 장내에서 정리하는 경우라면 취득가가 얼마인지 따질 일 자체가 잘 생기지 않습니다.',
+        '반대로 지분이나 보유액이 커서 대주주에 해당하면 양도세 대상이 됩니다. 이때는 상속 시점 평가액이 취득가가 되어 세금 계산에 직접 쓰입니다.',
+      ],
+    },
+    {
+      heading: '해외주식과 ETF는 이야기가 다르다',
+      paragraphs: [
+        '해외에 상장된 주식은 매도 차익에 양도소득세가 붙습니다. 상속받은 미국 주식을 팔면 상속 시점 평가액을 취득가로 삼아 오른 만큼에 세금을 냅니다. 국내에 상장된 해외형 ETF나 일부 유형의 ETF도 매도 차익이 배당소득 등으로 과세되는 구조라, 취득가 기록이 세금에 그대로 반영됩니다.',
+        '그래서 상속 재산에 해외주식이나 ETF가 섞여 있으면 상속 시점 평가액을 반드시 남겨 둬야 합니다. 이 값이 없으면 나중에 양도세를 계산할 때 불리하게 잡힐 수 있습니다.',
+      ],
+    },
+    {
+      heading: '상속세 신고 평가액과 이어서 본다',
+      paragraphs: [
+        '상속세를 신고할 때 정한 평가액이 이후 양도세의 취득가로 연결됩니다. 두 단계를 따로 떼어 생각하면, 상속세를 줄이려 평가액을 낮게 잡았다가 나중에 팔 때 양도차익이 커져 세금이 늘어나는 엇박자가 생길 수 있습니다.',
+        '반대로 평가액이 높으면 상속세는 늘지만 이후 양도차익은 줄어듭니다. 어느 쪽이 유리한지는 재산 규모와 매도 계획에 따라 달라지므로, 신고 전에 두 세금을 함께 놓고 따져보는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '팔기 전에 확인할 것',
+      paragraphs: [
+        '정리하자면 상속 주식을 팔기 전에 세 가지를 봐야 합니다. 내가 파는 것이 양도세 대상인 자산인지, 상속 시점 평가액이 얼마로 기록됐는지, 그리고 매도 시점에 그 값 대비 얼마나 올랐는지입니다. 이 세 가지가 정해지면 세금 규모를 가늠할 수 있습니다.',
+        '개별 상황은 자산 종류와 보유 규모에 따라 크게 갈립니다. 여기 담은 내용은 판단의 밑그림이며, 실제 신고와 절세 판단은 세무 전문가의 확인을 받으시길 권합니다. 투자와 세무 판단의 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '상속받은 주식의 취득가는 언제 가격인가요?', answer: '고인의 매수가가 아니라 상속이 시작된 시점의 평가액입니다. 상장주식은 사망일 전후 넉 달 종가 평균이 그 기준이 됩니다.' },
+    { question: '상속받은 국내 상장주식을 팔면 양도세를 내나요?', answer: '대주주가 아닌 소액주주가 거래소에서 파는 경우에는 양도소득세가 없습니다. 대주주에 해당하면 상속 시점 평가액을 취득가로 삼아 과세됩니다.' },
+    { question: '상속받은 미국 주식이나 ETF는 어떤가요?', answer: '해외주식과 국내 상장 해외형 ETF는 매도 차익에 세금이 붙습니다. 상속 시점 평가액을 취득가로 남겨 둬야 나중에 불리하지 않습니다.' },
+    { question: '상속세 평가액을 낮추면 무조건 유리한가요?', answer: '상속세는 줄지만 나중에 팔 때 양도차익이 커져 양도세가 늘 수 있습니다. 두 세금을 함께 놓고 비교해 판단하는 편이 낫습니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-25 · DC·IRP 퇴직연금 중도인출, 되는 사유와 세금 */
+const dcPensionEarlyWithdrawal: GuideDef = {
+  slug: 'dc-pension-early-withdrawal',
+  title: 'DC·IRP 퇴직연금 중도인출, 되는 사유와 세금',
+  tagline: '급하게 돈이 필요할 때, 법이 정한 사유만 인출된다',
+  description:
+    'DC형과 IRP는 법이 정한 사유에 해당할 때만 중도인출이 됩니다. 무주택자 주택 구입, 여섯 달 넘는 요양, 회생·파산, 천재지변 등 인정 사유와 사유별로 갈리는 세금, 인출 대신 담보대출을 쓰는 선택지까지 정리했습니다.',
+  keywords: ['퇴직연금 중도인출', 'DC형 중도인출', 'IRP 중도인출', '중도인출 사유', '중도인출 세금', '무주택 주택구입 인출'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-25',
+  answer:
+    'DC형 퇴직연금과 IRP는 아무 때나 헐 수 없고, 법이 정한 사유에 해당해야 중도인출이 됩니다. 무주택자의 주택 구입이나 전세보증금, 본인이나 부양가족의 여섯 달 이상 요양, 회생·파산 결정, 천재지변 같은 경우가 대표적입니다. 사유에 따라 매기는 세금이 달라지므로, 인출 전에 담보대출과 어느 쪽이 나은지 함께 따지는 것이 좋습니다.',
+  keyPoints: [
+    '중도인출이 되는 계좌는 DC형과 IRP이며, 회사가 적립을 책임지는 DB형은 재직 중 중도인출이 되지 않습니다.',
+    '인정 사유는 무주택자 주택 구입·전세보증금, 여섯 달 이상 요양, 회생·파산, 천재지변 등으로 한정됩니다.',
+    '요양·파산·천재지변 같은 부득이한 사유는 낮은 세율이 적용되지만, 그 외 사유는 세 부담이 더 클 수 있습니다.',
+    '집을 담보로 하듯 퇴직연금을 담보로 대출받는 방법도 있어, 인출로 노후 자금을 헐기 전에 비교해 볼 만합니다.',
+  ],
+  sources: [
+    { label: '고용노동부 퇴직연금', url: 'https://www.moel.go.kr' },
+    { label: '근로복지공단 퇴직연금', url: 'https://www.comwel.or.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '첫 주택 구입 때 DC형 퇴직연금 중도인출이 되는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=402&docId=494581578&answerNo=1' },
+    { summary: 'DC형 퇴직연금을 중도인출하는 방법과 조건을 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?dirId=60802&docId=494544038&answerNo=3' },
+  ],
+  comparisonTable: {
+    caption: '중도인출 인정 사유와 성격',
+    columns: ['사유', '인출 가능', '세금 성격', '메모'],
+    rows: [
+      ['무주택자 주택 구입', '가능', '상대적으로 무거움', '신청일 기준 무주택 판단'],
+      ['무주택자 전세보증금', '가능', '상대적으로 무거움', '거주 목적, 횟수 제한 있음'],
+      ['여섯 달 이상 요양', '가능', '낮은 세율(부득이)', '의료비 부담 요건 확인'],
+      ['회생·파산 결정', '가능', '낮은 세율(부득이)', '결정일로부터 기한 있음'],
+      ['천재지변 피해', '가능', '낮은 세율(부득이)', '피해 사실 증빙'],
+    ],
+  },
+  sections: [
+    {
+      heading: '중도인출은 원래 잘 안 되게 막혀 있다',
+      paragraphs: [
+        '퇴직연금은 노후에 쓰라고 세금 혜택까지 얹어 묶어 둔 돈입니다. 그래서 중간에 빼는 길을 좁게 열어 두었습니다. 인출이 가능한 계좌는 근로자가 직접 운용하는 DC형과 개인이 따로 만든 IRP이고, 회사가 퇴직금을 책임지는 DB형은 재직 중에 헐 수 없습니다.',
+        '가능한 계좌라도 사유가 맞아야 합니다. 단순히 급전이 필요하다는 이유로는 인출이 되지 않고, 법이 정해 둔 사유에 해당하는지를 먼저 확인해야 합니다.',
+      ],
+    },
+    {
+      heading: '어떤 사유일 때 인출이 되나',
+      paragraphs: [
+        '대표적인 사유는 무주택자인 본인 명의의 주택 구입입니다. 여기서 무주택 판단은 신청하는 시점을 기준으로 하므로, 예전에 집이 있었더라도 지금 무주택이면 해당할 수 있습니다. 무주택자가 거주 목적으로 전세보증금을 마련하는 경우도 포함됩니다.',
+        '이 밖에 본인이나 배우자, 부양가족이 여섯 달 넘게 요양이 필요한 경우, 회생이나 파산 결정을 받은 경우, 천재지변으로 피해를 입은 경우가 있습니다. 사유별로 요구하는 증빙과 세부 요건이 달라, 신청 전에 가입한 금융회사에 확인하는 순서가 안전합니다.',
+      ],
+    },
+    {
+      heading: '세금은 사유에 따라 갈린다',
+      paragraphs: [
+        '중도인출에는 세금이 따라붙는데, 사유의 성격에 따라 부담이 다릅니다. 요양이나 파산, 천재지변처럼 부득이하다고 인정되는 사유는 상대적으로 낮은 세율이 적용됩니다. 반면 주택 구입 같은 사유는 세 부담이 더 무겁게 매겨질 수 있습니다.',
+        '세율 구조와 적용 기준은 제도 변경에 따라 달라질 수 있으므로, 인출로 손에 쥐는 실제 금액은 신청 전에 금융회사를 통해 확인하는 편이 정확합니다. 세금을 빼고 나면 생각보다 남는 돈이 적을 수 있다는 점도 감안해야 합니다.',
+      ],
+    },
+    {
+      heading: '인출 대신 담보대출도 있다',
+      paragraphs: [
+        '노후 자금을 헐기 전에 살펴볼 선택지가 담보대출입니다. 일정 사유에서는 퇴직연금 적립금을 담보로 대출을 받을 수 있어, 계좌를 깨지 않고 급한 자금을 마련할 수 있습니다. 이렇게 하면 적립금이 계속 굴러가고 세금 정산도 인출과 다르게 흘러갑니다.',
+        '대출은 이자 부담이 생기지만, 중도인출로 노후 재원과 세제 혜택을 한꺼번에 잃는 것과 비교해 어느 쪽이 나은지는 상황에 따라 다릅니다. 두 방법을 나란히 놓고 총비용을 견줘 보는 것이 좋습니다.',
+      ],
+    },
+    {
+      heading: '헐기 전에 정리할 순서',
+      paragraphs: [
+        '실행에 앞서 확인할 순서는 이렇습니다. 내 계좌가 인출 가능한 유형인지, 내 사정이 인정 사유에 해당하는지, 세금을 뺀 실수령액이 얼마인지, 담보대출과 비교하면 어느 쪽이 유리한지입니다. 이 네 가지를 따져 보면 성급한 결정을 줄일 수 있습니다.',
+        '퇴직연금은 한 번 헐면 그만큼 노후 준비가 뒤로 밀립니다. 여기 담은 내용은 판단을 돕기 위한 정보이며, 실제 신청과 세금은 가입한 금융회사와 관할 기관의 안내를 따르시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '퇴직연금은 아무 때나 중도인출할 수 있나요?', answer: '아닙니다. DC형과 IRP만 가능하고, 그마저도 무주택자 주택 구입, 여섯 달 이상 요양, 회생·파산, 천재지변 같은 법정 사유에 해당해야 인출됩니다.' },
+    { question: 'DB형도 중도인출이 되나요?', answer: '회사가 퇴직급여를 책임지는 DB형은 재직 중 중도인출이 되지 않습니다. 중도인출은 근로자가 직접 운용하는 DC형과 개인이 만든 IRP에서 가능합니다.' },
+    { question: '집을 살 때 인출하면 세금이 적나요?', answer: '주택 구입 사유는 요양·파산·천재지변 같은 부득이한 사유보다 세 부담이 무거운 편입니다. 실제 실수령액은 신청 전에 금융회사로 확인하는 것이 정확합니다.' },
+    { question: '인출 말고 다른 방법은 없나요?', answer: '일정 사유에서는 퇴직연금을 담보로 대출을 받을 수 있습니다. 계좌를 깨지 않고 자금을 마련하는 방법이라, 인출과 총비용을 비교해 선택하는 편이 좋습니다.' },
+  ],
+};
+
+/** Q&A · 2026-08-25 · 미국 직투 ETF 상장폐지되면 원금은 어떻게 되나 */
+const usEtfDelistingLiquidation: GuideDef = {
+  slug: 'us-etf-delisting-liquidation',
+  title: '미국 직투 ETF 상장폐지되면 원금은 어떻게 되나',
+  tagline: '거래는 멈춰도 순자산은 현금으로 돌아온다, 단 예외가 있다',
+  description:
+    '미국에 상장한 ETF가 상장폐지돼도 순자산가치에서 비용을 뺀 금액이 현금으로 돌아옵니다. 자진 청산과 거래소 요건 미달은 무엇이 다른지, 레버리지 상품처럼 순자산 자체가 녹는 예외는 어떤 경우인지, 대처 순서까지 짚었습니다.',
+  keywords: ['미국 ETF 상장폐지', 'ETF 청산', 'ETF 상장폐지 원금', '해외 ETF 상장폐지', 'ETF 청산 대금', '레버리지 ETF 상장폐지'],
+  section: '해외상장 가이드',
+  lastReviewed: '2026-08-25',
+  answer:
+    '미국에 상장된 ETF가 상장폐지되어도 투자금이 사라지지는 않습니다. 운용사가 보유 자산을 정리해 순자산가치에서 비용을 뺀 금액을 청산 대금으로 계좌에 넣어 줍니다. 다만 레버리지나 인버스처럼 순자산 자체가 크게 줄어든 상태로 폐지되는 상품은 돌려받는 금액도 그만큼 적어질 수 있습니다.',
+  keyPoints: [
+    '상장폐지는 거래소에서 사고파는 창구가 닫히는 것이지, 보유한 순자산이 사라지는 사건이 아닙니다.',
+    '자진 청산은 운용사가 자산을 팔아 순자산가치에서 비용을 뺀 금액을 청산 대금으로 계좌에 지급합니다.',
+    '레버리지·인버스 상품은 순자산 자체가 녹은 뒤 폐지되기도 해, 원금 손실은 폐지가 아니라 가격 하락에서 옵니다.',
+    '폐지 공지가 뜨면 남은 거래일에 파는 것과 청산 대금을 기다리는 것 중 실익을 따져 결정하는 편이 낫습니다.',
+  ],
+  sources: [
+    { label: '금융감독원 금융소비자 정보', url: 'https://www.fss.or.kr' },
+    { label: '미국 증권거래위원회(SEC) 투자자 안내', url: 'https://www.sec.gov' },
+  ],
+  sourceQuestions: [
+    { summary: '미국 ETF가 상장폐지되면 어떻게 되는지, 투자금은 회수되는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=474327014&answerNo=1' },
+    { summary: 'ETF 상장폐지 시 원금 회수가 가능한지 알고 싶다', url: 'https://kin.naver.com/qna/detail.naver?dirId=403&docId=489722460&answerNo=1' },
+    { summary: '미국 직투로 산 ETF의 상장폐지 사례가 걱정된다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=472878284&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: '상장폐지 유형별로 원금이 어떻게 되나',
+    columns: ['유형', '거래 창구', '청산 대금', '원금 관점'],
+    rows: [
+      ['운용사 자진 청산', '폐지일에 닫힘', '순자산에서 비용 뺀 금액 지급', '대체로 보전'],
+      ['거래소 상장 요건 미달', '폐지 후 제한적', '청산 시 잔여 자산 분배', '대체로 보전'],
+      ['레버리지·인버스 소멸', '폐지일에 닫힘', '남은 순자산만 지급', '가격 하락분 손실'],
+      ['합병·유형 전환', '이어짐', '동일 가치로 승계', '유지'],
+    ],
+  },
+  sections: [
+    {
+      heading: '상장폐지와 원금 소멸은 다른 말이다',
+      paragraphs: [
+        '상장폐지라는 말이 무섭게 들리지만, ETF에서는 거래소라는 매매 창구가 닫힌다는 뜻에 가깝습니다. ETF는 그 안에 실제 주식이나 채권 같은 자산을 담고 있고, 상장이 폐지돼도 그 자산이 증발하는 것은 아닙니다. 창구가 닫히면 운용사가 자산을 정리해 투자자에게 돌려주는 절차로 넘어갑니다.',
+        '개별 회사가 부도로 상장폐지되어 주식이 휴지가 되는 상황과는 결이 다릅니다. ETF는 담고 있는 자산의 값이 남아 있는 한, 그 값을 청산 대금으로 받게 됩니다.',
+      ],
+    },
+    {
+      heading: '자진 청산은 어떻게 진행되나',
+      paragraphs: [
+        '규모가 작아 운용이 어렵거나 전략을 접을 때 운용사가 스스로 ETF를 청산합니다. 이 경우 정해진 폐지일까지 거래가 이어지다가, 이후 운용사가 담긴 자산을 모두 팔아 현금으로 바꾼 뒤 순자산가치에서 비용을 뺀 금액을 투자자 계좌로 넣어 줍니다.',
+        '투자자가 따로 신청하지 않아도 남아 있는 자금이 계좌로 들어오는 것이 일반적입니다. 다만 청산 대금이 들어오기까지 시간이 걸릴 수 있고, 그동안은 돈이 묶이는 점을 감안해야 합니다.',
+      ],
+    },
+    {
+      heading: '레버리지·인버스는 이야기가 다르다',
+      paragraphs: [
+        '최근 미국에서 상장폐지가 잦은 쪽은 특정 종목을 두세 배로 추종하는 레버리지 상품입니다. 이런 상품은 기초자산이 급락하면 순자산가치 자체가 짧은 시간에 크게 녹습니다. 이때는 폐지 때문에 원금을 잃는 것이 아니라, 폐지되기 전에 이미 가격이 무너진 것이 손실의 원인입니다.',
+        '그래서 이런 상품은 상장폐지 여부보다 변동성 자체가 더 큰 위험입니다. 청산 대금은 남은 순자산 기준으로 지급되므로, 순자산이 거의 사라진 상태라면 돌려받는 금액도 그만큼 적습니다.',
+      ],
+    },
+    {
+      heading: '폐지 공지가 뜨면 무엇을 하나',
+      paragraphs: [
+        '보유한 ETF의 상장폐지가 예고되면 두 갈래를 놓고 판단합니다. 하나는 남은 거래일 동안 시장에서 직접 파는 것이고, 다른 하나는 폐지 뒤 청산 대금을 기다리는 것입니다. 거래량이 줄어 제값을 받기 어려워 보이면 청산을 기다리는 편이 나을 수 있습니다.',
+        '해외 상품은 공지가 영어로 나오고 일정이 국내와 다를 수 있으므로, 이용 중인 증권사의 안내와 운용사 공지를 함께 확인하는 것이 좋습니다. 세금 처리도 매도와 청산이 다를 수 있어 미리 확인해 두면 도움이 됩니다.',
+      ],
+    },
+    {
+      heading: '미리 걸러내는 신호',
+      paragraphs: [
+        '상장폐지 위험을 줄이려면 살 때부터 몇 가지를 봅니다. 운용 규모가 지나치게 작거나 거래량이 꾸준히 얇은 상품, 특정 테마에 극단적으로 쏠린 소형 상품일수록 청산 가능성이 높은 편입니다. 레버리지·인버스처럼 구조가 복잡한 상품은 애초에 오래 들고 가기에 맞지 않습니다.',
+        '여기 담은 내용은 이해를 돕기 위한 정보이며 특정 상품의 매매를 권하는 것이 아닙니다. 해외 상품 투자와 그에 따르는 위험 판단의 책임은 본인에게 있으니, 상품별 공지와 설명서를 직접 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '미국 ETF가 상장폐지되면 투자금을 다 잃나요?', answer: '아닙니다. 운용사가 담긴 자산을 정리해 순자산가치에서 비용을 뺀 금액을 청산 대금으로 지급합니다. 거래 창구가 닫히는 것이지 자산이 사라지는 것은 아닙니다.' },
+    { question: '청산 대금은 어떻게 받나요?', answer: '대체로 투자자가 따로 신청하지 않아도 남은 자금이 증권 계좌로 들어옵니다. 다만 지급까지 시간이 걸릴 수 있어 그동안은 자금이 묶입니다.' },
+    { question: '레버리지 ETF는 왜 원금 손실이 크다고 하나요?', answer: '상장폐지 때문이 아니라 기초자산 급락으로 순자산 자체가 녹기 때문입니다. 청산 대금은 남은 순자산 기준이라, 이미 값이 무너졌다면 돌려받는 금액도 적습니다.' },
+    { question: '폐지가 예고되면 파는 게 나은가요, 기다리는 게 나은가요?', answer: '거래량이 얇아 제값을 받기 어려우면 청산을 기다리는 편이, 시장에서 제값에 팔 수 있으면 매도가 나을 수 있습니다. 세금 처리도 달라 함께 확인하세요.' },
+  ],
+};
+
+/** Q&A · 2026-08-25 · 개별 리츠주와 리츠 ETF, 어느 쪽이 유리한가 */
+const reitVsReitEtf: GuideDef = {
+  slug: 'reit-vs-reit-etf',
+  title: '개별 리츠주와 리츠 ETF, 어느 쪽이 유리한가',
+  tagline: '한 건물에 집중하느냐, 여러 리츠에 나눠 담느냐',
+  description:
+    '개별 리츠주는 한 회사의 부동산에 집중하고, 리츠 ETF는 여러 리츠를 묶어 위험을 나눕니다. 배당 흐름, 운용보수, 분리과세 적용, 개별 종목 리스크에서 둘이 어떻게 갈리는지 비교하고 어느 상황에 무엇이 유리한지 정리했습니다.',
+  keywords: ['리츠 ETF 차이', '개별 리츠 vs 리츠 ETF', '리츠 ETF 비교', '리츠 배당', '리츠 분산투자', '리츠 ETF 보수'],
+  section: 'ETF 리츠 가이드',
+  lastReviewed: '2026-08-25',
+  answer:
+    '개별 리츠주는 특정 부동산 회사 한 곳에 투자해 배당을 직접 받고, 리츠 ETF는 여러 리츠를 한 바구니에 담아 위험을 분산합니다. 한 곳에 집중해 높은 배당과 상승을 노리려면 개별 리츠가, 한 종목이 흔들려도 충격을 줄이며 부동산 배당에 넓게 투자하려면 리츠 ETF가 대체로 맞습니다.',
+  keyPoints: [
+    '개별 리츠주는 한 회사의 부동산 성과에 수익이 직결돼, 잘되면 크게 벌지만 한 곳이 흔들리면 타격도 큽니다.',
+    '리츠 ETF는 여러 리츠를 묶어 개별 종목 리스크를 분산하는 대신, 운용보수가 붙고 배당이 평균에 수렴합니다.',
+    '개별 리츠는 배당을 직접 받고, 리츠 ETF는 편입 리츠들의 배당을 모아 분배금 형태로 지급합니다.',
+    '세금은 상품 구조와 계좌에 따라 갈리므로, 분리과세나 절세계좌 활용 여부를 사기 전에 확인하는 편이 낫습니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX)', url: 'https://www.krx.co.kr' },
+    { label: '국토교통부 리츠정보시스템', url: 'https://reits.molit.go.kr' },
+    { label: '금융감독원 금융소비자 정보', url: 'https://www.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '리츠 펀드와 리츠 ETF의 차이점이 무엇인지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=401&docId=485664753&answerNo=2' },
+    { summary: '배당만 보고 투자한다면 리츠와 국내 고배당 ETF 중 무엇이 나은가', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=397671241&answerNo=2' },
+  ],
+  comparisonTable: {
+    caption: '개별 리츠주와 리츠 ETF, 무엇이 다른가',
+    columns: ['구분', '개별 리츠주', '리츠 ETF', '어느 경우에 유리한가'],
+    rows: [
+      ['분산 정도', '한 회사에 집중', '여러 리츠에 분산', '집중은 개별, 분산은 ETF'],
+      ['배당·분배', '리츠 배당 직접 수령', '편입 배당 모아 분배', '직접 수령 선호면 개별'],
+      ['비용', '운용보수 없음', '운용보수 발생', '비용 최소화는 개별'],
+      ['개별 리스크', '높음', '낮음(분산)', '리스크 축소는 ETF'],
+      ['관리 부담', '종목 선정·점검 필요', '한 종목으로 넓게 보유', '손 덜 가는 쪽은 ETF'],
+    ],
+  },
+  sections: [
+    {
+      heading: '리츠와 리츠 ETF는 담는 단위가 다르다',
+      paragraphs: [
+        '리츠는 여러 사람의 돈을 모아 빌딩이나 물류센터 같은 부동산에 투자하고 임대수익을 배당으로 돌려주는 회사입니다. 개별 리츠주를 산다는 것은 그런 회사 한 곳의 주식을 갖는 것이고, 그 회사가 굴리는 부동산의 성과가 곧 내 수익이 됩니다.',
+        '리츠 ETF는 이런 리츠 여러 개를 한 바구니에 담은 상품입니다. 한 종목만 사도 여러 리츠에 나눠 투자한 효과가 나므로, 담는 단위가 회사 하나냐 여러 개냐에서 둘이 갈립니다.',
+      ],
+    },
+    {
+      heading: '집중과 분산의 맞바꿈',
+      paragraphs: [
+        '개별 리츠주는 집중의 상품입니다. 고른 리츠가 좋은 자산을 싸게 사들이고 임대가 잘 되면 배당과 주가가 함께 오릅니다. 대신 그 회사가 공실이 늘거나 무리한 차입으로 흔들리면 손실도 고스란히 떠안습니다.',
+        '리츠 ETF는 분산의 상품입니다. 한 리츠가 부진해도 다른 리츠가 받쳐 주어 충격이 줄어듭니다. 그만큼 특정 종목이 크게 오를 때의 폭발력은 개별 리츠보다 약합니다. 높은 기대수익과 낮은 변동성을 맞바꾸는 셈입니다.',
+      ],
+    },
+    {
+      heading: '배당과 비용에서 갈리는 점',
+      paragraphs: [
+        '개별 리츠주는 그 회사가 정한 배당을 직접 받습니다. 배당 시기와 규모를 종목별로 챙겨야 하지만 중간에 떼는 운용보수가 없습니다. 리츠 ETF는 편입한 리츠들이 준 배당을 모아 분배금으로 내주는 대신, 운용보수가 매년 조금씩 빠집니다.',
+        '보수는 상품마다 다르고 낮은 편이지만 장기로 보면 수익률에 영향을 줍니다. 대신 리츠 ETF는 여러 종목을 일일이 고르고 점검하는 수고를 줄여 주므로, 시간과 비용을 어떻게 저울질하느냐의 문제입니다.',
+      ],
+    },
+    {
+      heading: '세금은 구조와 계좌를 함께 본다',
+      paragraphs: [
+        '리츠에서 나오는 배당과 리츠 ETF의 분배금은 대체로 배당소득으로 과세됩니다. 다만 상품의 구조와 어떤 계좌에서 담느냐에 따라 세금이 달라지고, 일정 요건에서 분리과세 같은 혜택이 적용되기도 합니다.',
+        '금융소득이 큰 사람이라면 분리과세나 ISA·연금 같은 절세계좌 활용 여부가 실수령 배당을 좌우할 수 있습니다. 세부 요건은 바뀔 수 있으니, 사기 전에 상품설명서와 현재 세제 기준을 확인하는 순서가 안전합니다.',
+      ],
+    },
+    {
+      heading: '어느 쪽을 고를까',
+      paragraphs: [
+        '한 곳을 깊이 들여다볼 시간과 자신이 있고, 특정 부동산 테마에 확신이 있다면 개별 리츠주가 맞을 수 있습니다. 반대로 부동산 배당에 넓게 발을 걸치되 한 종목의 사고에 흔들리고 싶지 않다면 리츠 ETF가 편합니다. 두 가지를 섞어 뼈대는 ETF로, 확신이 있는 한두 종목은 개별로 담는 방법도 있습니다.',
+        '무엇이 유리한지는 투자 기간과 감당할 수 있는 변동성, 세금 상황에 따라 갈립니다. 여기 담은 내용은 판단을 돕기 위한 정보이며, 최종 선택과 그 결과에 대한 책임은 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '리츠와 리츠 ETF 중 초보자에게는 무엇이 낫나요?', answer: '종목을 하나하나 고르고 점검하기 부담스럽다면 여러 리츠에 자동으로 분산되는 리츠 ETF가 시작하기 편합니다. 개별 리츠는 회사 분석에 시간이 더 듭니다.' },
+    { question: '리츠 ETF는 배당을 어떻게 주나요?', answer: '편입한 리츠들이 지급한 배당을 모아 분배금 형태로 정기적으로 나눠 줍니다. 개별 리츠처럼 각 회사의 배당을 따로 받는 방식과는 다릅니다.' },
+    { question: '리츠 ETF는 운용보수가 부담되지 않나요?', answer: '보수는 상품마다 다르고 낮은 편이지만 장기 보유 시 수익률에 영향을 줍니다. 대신 여러 종목을 직접 관리하는 수고를 덜어 준다는 이점이 있습니다.' },
+    { question: '리츠 배당의 세금은 어떻게 되나요?', answer: '대체로 배당소득으로 과세되며, 상품 구조와 계좌에 따라 분리과세 같은 혜택이 적용될 수 있습니다. 사기 전에 현재 세제 기준을 확인하는 편이 좋습니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  stockAccountInheritanceTransfer,
+  inheritedStockCostBasis,
+  dcPensionEarlyWithdrawal,
+  usEtfDelistingLiquidation,
+  reitVsReitEtf,
   stockOrderRejectedReasons,
   dividendRecordDateReform,
   retireeDividendEtfMonthlyIncome,
@@ -21665,6 +22074,12 @@ export const GUIDE_PUBLISHED_AT: Record<string, string> = {
   'corporate-retained-earnings-tax': '2026-08-12',
   'isa-sp500-nasdaq100-together': '2026-08-12',
   'basic-pension-with-private-pension': '2026-08-12',
+  // 2026-08-25 · 지식iN 질문 수요 기반 (주식계좌 상속 명의변경 절차·상속 주식 양도세 취득가·DC IRP 퇴직연금 중도인출·미국 직투 ETF 상장폐지 원금·개별 리츠주와 리츠 ETF 비교)
+  'stock-account-inheritance-transfer': '2026-08-25',
+  'inherited-stock-cost-basis': '2026-08-25',
+  'dc-pension-early-withdrawal': '2026-08-25',
+  'us-etf-delisting-liquidation': '2026-08-25',
+  'reit-vs-reit-etf': '2026-08-25',
   // 2026-08-06 · 지식iN 질문 수요 기반 (매수 주문 체결 안 되는 이유·배당기준일 개편 선배당 후투자·은퇴자 배당 ETF 월 생활비 역산·코인 선물 강제청산 원리·미국 ETF 배당 자동재투자 DRIP 국내)
   'stock-order-rejected-reasons': '2026-08-06',
   'dividend-record-date-reform': '2026-08-06',
@@ -21961,12 +22376,12 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'stock-account-inheritance-transfer', 'inherited-stock-cost-basis', 'dc-pension-early-withdrawal'],
   },
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income', 'reit-vs-reit-etf'],
   },
   {
     title: '테마·섹터',
@@ -21976,7 +22391,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea', 'world-etf', 'brazil-etf', 'saudi-etf', 'indonesia-etf'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea', 'world-etf', 'brazil-etf', 'saudi-etf', 'indonesia-etf', 'us-etf-delisting-liquidation'],
   },
   {
     title: '전략·자산배분',
