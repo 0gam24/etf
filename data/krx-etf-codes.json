@@ -1,6 +1,6 @@
 {
-  "fetchedAt": "2026-08-16T01:23:04.568Z",
-  "baseDate": "20260813",
+  "fetchedAt": "2026-08-30T04:13:08.111Z",
+  "baseDate": "20260827",
   "count": 1163,
   "byShortcode": {
     "100910": {
@@ -2138,11 +2138,6 @@
       "issueCode": "KR7396520009",
       "name": "TIGER 차이나반도체FACTSET"
     },
-    "397420": {
-      "shortcode": "397420",
-      "issueCode": "KR7397420001",
-      "name": "RISE 국채선물5년추종"
-    },
     "399110": {
       "shortcode": "399110",
       "issueCode": "KR7399110006",
@@ -2516,7 +2511,7 @@
     "434960": {
       "shortcode": "434960",
       "issueCode": "KR7434960001",
-      "name": "DAISHIN343 K200"
+      "name": "DAISHIN K200"
     },
     "435040": {
       "shortcode": "435040",
@@ -3856,7 +3851,7 @@
     "486240": {
       "shortcode": "486240",
       "issueCode": "KR7486240005",
-      "name": "DAISHIN343 AI반도체&인프라액티브"
+      "name": "DAISHIN AI반도체&인프라액티브"
     },
     "486290": {
       "shortcode": "486290",
@@ -3962,11 +3957,6 @@
       "shortcode": "489000",
       "issueCode": "KR7489000000",
       "name": "PLUS 일본엔화초단기국채(합성)"
-    },
-    "489010": {
-      "shortcode": "489010",
-      "issueCode": "KR7489010009",
-      "name": "PLUS 글로벌AI인프라"
     },
     "489030": {
       "shortcode": "489030",
@@ -4482,11 +4472,6 @@
       "shortcode": "0035T0",
       "issueCode": "KR70035T0000",
       "name": "PLUS 글로벌휴머노이드로봇액티브"
-    },
-    "0036D0": {
-      "shortcode": "0036D0",
-      "issueCode": "KR70036D0007",
-      "name": "TIME 미국배당다우존스액티브"
     },
     "0036R0": {
       "shortcode": "0036R0",
@@ -5311,7 +5296,7 @@
     "0174J0": {
       "shortcode": "0174J0",
       "issueCode": "KR70174J0003",
-      "name": "DAISHIN343 오피스리츠플러스"
+      "name": "DAISHIN 오피스리츠플러스"
     },
     "0174R0": {
       "shortcode": "0174R0",
@@ -5431,7 +5416,7 @@
     "0189Z0": {
       "shortcode": "0189Z0",
       "issueCode": "KR70189Z0006",
-      "name": "DAISHIN343 금융&지주고배당"
+      "name": "DAISHIN 금융&지주고배당"
     },
     "0190C0": {
       "shortcode": "0190C0",
@@ -5778,6 +5763,21 @@
       "issueCode": "KR70228G0002",
       "name": "ACE 반도체Plus전략산업"
     },
+    "0231Z0": {
+      "shortcode": "0231Z0",
+      "issueCode": "KR70231Z0004",
+      "name": "KODEX 코리아TDF2065액티브 적격"
+    },
+    "0233A0": {
+      "shortcode": "0233A0",
+      "issueCode": "KR70233A0001",
+      "name": "ACE 삼성전자SK하이닉스플러스채권혼합50"
+    },
+    "0233J0": {
+      "shortcode": "0233J0",
+      "issueCode": "KR70233J0002",
+      "name": "TIGER 삼성전자SK하이닉스미국채혼합50"
+    },
     "069500": {
       "shortcode": "069500",
       "issueCode": "KR7069500007",
@@ -6009,11 +6009,6 @@
       "shortcode": "0035T0",
       "issueCode": "KR70035T0000",
       "name": "PLUS 글로벌휴머노이드로봇액티브"
-    },
-    "KR70036D0007": {
-      "shortcode": "0036D0",
-      "issueCode": "KR70036D0007",
-      "name": "TIME 미국배당다우존스액티브"
     },
     "KR70036R0001": {
       "shortcode": "0036R0",
@@ -6838,7 +6833,7 @@
     "KR70174J0003": {
       "shortcode": "0174J0",
       "issueCode": "KR70174J0003",
-      "name": "DAISHIN343 오피스리츠플러스"
+      "name": "DAISHIN 오피스리츠플러스"
     },
     "KR70174R0003": {
       "shortcode": "0174R0",
@@ -6958,7 +6953,7 @@
     "KR70189Z0006": {
       "shortcode": "0189Z0",
       "issueCode": "KR70189Z0006",
-      "name": "DAISHIN343 금융&지주고배당"
+      "name": "DAISHIN 금융&지주고배당"
     },
     "KR70190C0000": {
       "shortcode": "0190C0",
@@ -7304,6 +7299,21 @@
       "shortcode": "0228G0",
       "issueCode": "KR70228G0002",
       "name": "ACE 반도체Plus전략산업"
+    },
+    "KR70231Z0004": {
+      "shortcode": "0231Z0",
+      "issueCode": "KR70231Z0004",
+      "name": "KODEX 코리아TDF2065액티브 적격"
+    },
+    "KR70233A0001": {
+      "shortcode": "0233A0",
+      "issueCode": "KR70233A0001",
+      "name": "ACE 삼성전자SK하이닉스플러스채권혼합50"
+    },
+    "KR70233J0002": {
+      "shortcode": "0233J0",
+      "issueCode": "KR70233J0002",
+      "name": "TIGER 삼성전자SK하이닉스미국채혼합50"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -9480,11 +9490,6 @@
       "issueCode": "KR7396520009",
       "name": "TIGER 차이나반도체FACTSET"
     },
-    "KR7397420001": {
-      "shortcode": "397420",
-      "issueCode": "KR7397420001",
-      "name": "RISE 국채선물5년추종"
-    },
     "KR7399110006": {
       "shortcode": "399110",
       "issueCode": "KR7399110006",
@@ -9858,7 +9863,7 @@
     "KR7434960001": {
       "shortcode": "434960",
       "issueCode": "KR7434960001",
-      "name": "DAISHIN343 K200"
+      "name": "DAISHIN K200"
     },
     "KR7435040001": {
       "shortcode": "435040",
@@ -11198,7 +11203,7 @@
     "KR7486240005": {
       "shortcode": "486240",
       "issueCode": "KR7486240005",
-      "name": "DAISHIN343 AI반도체&인프라액티브"
+      "name": "DAISHIN AI반도체&인프라액티브"
     },
     "KR7486290000": {
       "shortcode": "486290",
@@ -11304,11 +11309,6 @@
       "shortcode": "489000",
       "issueCode": "KR7489000000",
       "name": "PLUS 일본엔화초단기국채(합성)"
-    },
-    "KR7489010009": {
-      "shortcode": "489010",
-      "issueCode": "KR7489010009",
-      "name": "PLUS 글로벌AI인프라"
     },
     "KR7489030007": {
       "shortcode": "489030",
@@ -11826,11 +11826,6 @@
       "shortcode": "0035T0",
       "issueCode": "KR70035T0000",
       "name": "PLUS 글로벌휴머노이드로봇액티브"
-    },
-    {
-      "shortcode": "0036D0",
-      "issueCode": "KR70036D0007",
-      "name": "TIME 미국배당다우존스액티브"
     },
     {
       "shortcode": "0036R0",
@@ -12655,7 +12650,7 @@
     {
       "shortcode": "0174J0",
       "issueCode": "KR70174J0003",
-      "name": "DAISHIN343 오피스리츠플러스"
+      "name": "DAISHIN 오피스리츠플러스"
     },
     {
       "shortcode": "0174R0",
@@ -12775,7 +12770,7 @@
     {
       "shortcode": "0189Z0",
       "issueCode": "KR70189Z0006",
-      "name": "DAISHIN343 금융&지주고배당"
+      "name": "DAISHIN 금융&지주고배당"
     },
     {
       "shortcode": "0190C0",
@@ -13121,6 +13116,21 @@
       "shortcode": "0228G0",
       "issueCode": "KR70228G0002",
       "name": "ACE 반도체Plus전략산업"
+    },
+    {
+      "shortcode": "0231Z0",
+      "issueCode": "KR70231Z0004",
+      "name": "KODEX 코리아TDF2065액티브 적격"
+    },
+    {
+      "shortcode": "0233A0",
+      "issueCode": "KR70233A0001",
+      "name": "ACE 삼성전자SK하이닉스플러스채권혼합50"
+    },
+    {
+      "shortcode": "0233J0",
+      "issueCode": "KR70233J0002",
+      "name": "TIGER 삼성전자SK하이닉스미국채혼합50"
     },
     {
       "shortcode": "069500",
@@ -15298,11 +15308,6 @@
       "name": "TIGER 차이나반도체FACTSET"
     },
     {
-      "shortcode": "397420",
-      "issueCode": "KR7397420001",
-      "name": "RISE 국채선물5년추종"
-    },
-    {
       "shortcode": "399110",
       "issueCode": "KR7399110006",
       "name": "SOL 미국S&P500ESG"
@@ -15675,7 +15680,7 @@
     {
       "shortcode": "434960",
       "issueCode": "KR7434960001",
-      "name": "DAISHIN343 K200"
+      "name": "DAISHIN K200"
     },
     {
       "shortcode": "435040",
@@ -17015,7 +17020,7 @@
     {
       "shortcode": "486240",
       "issueCode": "KR7486240005",
-      "name": "DAISHIN343 AI반도체&인프라액티브"
+      "name": "DAISHIN AI반도체&인프라액티브"
     },
     {
       "shortcode": "486290",
@@ -17121,11 +17126,6 @@
       "shortcode": "489000",
       "issueCode": "KR7489000000",
       "name": "PLUS 일본엔화초단기국채(합성)"
-    },
-    {
-      "shortcode": "489010",
-      "issueCode": "KR7489010009",
-      "name": "PLUS 글로벌AI인프라"
     },
     {
       "shortcode": "489030",

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-16T01:23:04.739Z",
-  "sourceBaseDate": "20260813",
+  "generatedAt": "2026-08-30T04:13:08.273Z",
+  "sourceBaseDate": "20260827",
   "count": 1163,
   "byCode": {
     "100910": "kiwoom-krx100",
@@ -430,7 +430,6 @@
     "396500": "tiger-semiconductortop10",
     "396510": "tiger-chinaenergysolactive",
     "396520": "tiger-chinasemiconductorfactset",
-    "397420": "rise-treasury-futures5y",
     "399110": "sol-us-sp500esg",
     "399580": "rise-globalenergy",
     "400570": "kodex-iceh",
@@ -795,7 +794,6 @@
     "488770": "kodex-mma-active",
     "488980": "sol-26-12-corporate-bondaa-plusactive",
     "489000": "plus-japansynthetic",
-    "489010": "plus-globalaiinfrastructure",
     "489030": "plus-covered-call-489030",
     "489250": "kodex-us-dividend-djones",
     "489290": "won-us",
@@ -899,7 +897,6 @@
     "0026S0": "1q-us-sp500",
     "0028X0": "kodex-usfinancetechactive",
     "0035T0": "plus-globalactive",
-    "0036D0": "time-us-dividend-djonesactive",
     "0036R0": "rise-us-0036r0",
     "0036Z0": "rise-us-0036z0",
     "0038A0": "kodex-us",
@@ -1165,7 +1162,10 @@
     "0226G0": "won-ai-top2plusactive",
     "0226D0": "focus-financesemiconductorbond-blend50active",
     "0227K0": "rise-us-0227k0",
-    "0228G0": "ace-semiconductorplus"
+    "0228G0": "ace-semiconductorplus",
+    "0231Z0": "kodex-tdf2065active-qualified",
+    "0233A0": "ace-skplusbond-blend50",
+    "0233J0": "tiger-skus-treasury-blend50"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -2876,10 +2876,6 @@
       "code": "396520",
       "name": "TIGER 차이나반도체FACTSET"
     },
-    "rise-treasury-futures5y": {
-      "code": "397420",
-      "name": "RISE 국채선물5년추종"
-    },
     "sol-us-sp500esg": {
       "code": "399110",
       "name": "SOL 미국S&P500ESG"
@@ -3178,7 +3174,7 @@
     },
     "daishin343-k200": {
       "code": "434960",
-      "name": "DAISHIN343 K200"
+      "name": "DAISHIN K200"
     },
     "ace-globaltop10": {
       "code": "435040",
@@ -4250,7 +4246,7 @@
     },
     "daishin343-aisemiconductorinfrastructureactive": {
       "code": "486240",
-      "name": "DAISHIN343 AI반도체&인프라액티브"
+      "name": "DAISHIN AI반도체&인프라액티브"
     },
     "tiger-us-nasdaq100covered-call": {
       "code": "486290",
@@ -4335,10 +4331,6 @@
     "plus-japansynthetic": {
       "code": "489000",
       "name": "PLUS 일본엔화초단기국채(합성)"
-    },
-    "plus-globalaiinfrastructure": {
-      "code": "489010",
-      "name": "PLUS 글로벌AI인프라"
     },
     "plus-covered-call-489030": {
       "code": "489030",
@@ -4751,10 +4743,6 @@
     "plus-globalactive": {
       "code": "0035T0",
       "name": "PLUS 글로벌휴머노이드로봇액티브"
-    },
-    "time-us-dividend-djonesactive": {
-      "code": "0036D0",
-      "name": "TIME 미국배당다우존스액티브"
     },
     "rise-us-0036r0": {
       "code": "0036R0",
@@ -5414,7 +5402,7 @@
     },
     "daishin343-reitplus": {
       "code": "0174J0",
-      "name": "DAISHIN343 오피스리츠플러스"
+      "name": "DAISHIN 오피스리츠플러스"
     },
     "kiwoom-us": {
       "code": "0174R0",
@@ -5674,7 +5662,7 @@
     },
     "daishin343-finance": {
       "code": "0189Z0",
-      "name": "DAISHIN343 금융&지주고배당"
+      "name": "DAISHIN 금융&지주고배당"
     },
     "kodex-top3plus": {
       "code": "0204D0",
@@ -5819,6 +5807,18 @@
     "ace-semiconductorplus": {
       "code": "0228G0",
       "name": "ACE 반도체Plus전략산업"
+    },
+    "kodex-tdf2065active-qualified": {
+      "code": "0231Z0",
+      "name": "KODEX 코리아TDF2065액티브 적격"
+    },
+    "ace-skplusbond-blend50": {
+      "code": "0233A0",
+      "name": "ACE 삼성전자SK하이닉스플러스채권혼합50"
+    },
+    "tiger-skus-treasury-blend50": {
+      "code": "0233J0",
+      "name": "TIGER 삼성전자SK하이닉스미국채혼합50"
     }
   }
 }
