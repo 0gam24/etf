@@ -152,6 +152,16 @@ for (let i = 0; i < marks.length; i++) {
     const kwTokens = kwHead.split(/[\s·]+/).filter(t => t.length >= 2);
     if (kwTokens.length && !headings.some(h => kwTokens.some(t => h.includes(t))))
       W('본문 소제목에 핵심 검색어가 한 번도 없음');
+
+    // ── v1.1 (2026-08-31) — 정보 밀도·중복 제거 ──────────────────────────
+    // 화살표형 단계 나열은 남발하면 기계적으로 읽힌다 (PUBLISHING.md §3)
+    const arrowCount = (blk.match(/→/g) || []).length;
+    if (arrowCount > 1) W(`화살표(→) ${arrowCount}회 사용 (권장 최대 1회)`);
+
+    // 종합 정리·체크리스트성 블록은 글 하나에 하나만 — 본문 재탕 방지
+    const CHECKLIST_HEADING = /체크리스트|최종 점검|핵심 정리|확인할 것|체크포인트/;
+    const checklistHeadings = headings.filter(h => CHECKLIST_HEADING.test(h));
+    if (checklistHeadings.length > 1) W(`체크리스트성 소제목 ${checklistHeadings.length}개 (최대 1개 권장)`);
   }
 
   // 발행일이 없으면 최신순 목록과 sitemap 갱신일에서 빠진다
