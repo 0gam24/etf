@@ -21499,7 +21499,114 @@ const companyIrpVsIndividualIrp: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-01 · IRP로 이체한 퇴직금의 퇴직소득세 이연과 연금수령 감면 구조 */
+const irpSeverancePayTaxDeferral: GuideDef = {
+  slug: 'irp-severance-pay-tax-deferral',
+  title: 'IRP 퇴직소득세, 연금으로 받으면 왜 줄어드나',
+  tagline: '퇴직금을 계좌에 그대로 두고 나눠 받을수록 세금이 줄어드는 구조입니다',
+  description:
+    '퇴직금을 받은 날로부터 60일 안에 IRP 계좌로 옮기면 퇴직소득세를 바로 내지 않고 미룰 수 있습니다. 연금으로 나눠 받는 기간이 길어질수록 세금이 30%에서 최대 50%까지 줄어드는 구조와 중도 인출 시 달라지는 점을 정리했습니다.',
+  keywords: ['IRP 퇴직소득세', '퇴직소득세 이연', '퇴직금 IRP 이체', '연금 실제 수령연차', 'IRP 연금수령 요건', '퇴직소득세 감면율'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-09-01',
+  answer:
+    '퇴직금을 받은 날로부터 60일 이내에 IRP 등 연금계좌로 옮기면 퇴직소득세를 원천징수 당하지 않고 이연할 수 있습니다. 이 이연퇴직소득을 연금으로 나눠 받으면 연금 실제 수령연차가 10년 이하일 때는 세금의 30%, 10년을 넘으면 40%, 20년을 넘으면 50%가 줄어들지만, 연금이 아닌 형태로 찾으면 그 감면이 사라집니다.',
+  keyPoints: [
+    '퇴직금을 받은 날로부터 60일 이내에 IRP 등 연금계좌로 입금하면 퇴직소득세를 바로 내지 않고 미룰 수 있습니다(소득세법 제146조 제2항, 시행령 제202조의2).',
+    '퇴직급여만 들어 있는 IRP는 만 55세 이상이면 가입 기간 5년 요건과 무관하게 연금으로 받기 시작할 수 있습니다(소득세법 시행령 제40조의2).',
+    '연금 실제 수령연차 10년 이하는 이연퇴직소득세의 70%, 10년 초과 20년 이하는 60%, 20년 초과는 50%만 원천징수됩니다(소득세법 제129조).',
+    '연금이 아닌 형태로 인출하면 인출 금액이 이연퇴직소득에서 차지하는 비율만큼 세금이 그대로 원천징수돼 감면 효과를 잃습니다.',
+  ],
+  sources: [
+    { label: '국세청 · 퇴직소득세의 이연', url: 'https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=6602&cntntsId=7882' },
+    { label: '국가법령정보센터 · 소득세법 제129조·제146조', url: 'https://www.law.go.kr' },
+    { label: '국가법령정보센터 · 소득세법 시행령 제40조의2', url: 'https://www.law.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '3년 6개월 근무 후 IRP로 받은 퇴직금 약 700만원의 퇴직소득세가 얼마나 되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=60802&docId=493768839&answerNo=2' },
+    { summary: '10년 10개월 근무하고 중간정산 이력이 있는 DC형 퇴직연금 3,500만원의 퇴직소득세를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40301&docId=494565550&answerNo=2' },
+    { summary: '퇴직금 수령용으로 증권사 IRP 계좌를 처음 개설하는 절차를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=493777632&answerNo=3' },
+  ],
+  comparisonTable: {
+    caption: '이연퇴직소득세, 연금 수령연차별 원천징수 구조',
+    columns: ['구분', '적용 세율', '감면율', '확인할 점'],
+    rows: [
+      ['연금 실제 수령연차 10년 이하', '연금외수령 세율의 70%', '30% 감면', '연금 개시 초반이라 감면폭이 상대적으로 작음'],
+      ['10년 초과 20년 이하', '연금외수령 세율의 60%', '40% 감면', '수령 기간을 늘릴수록 감면율이 커짐'],
+      ['20년 초과', '연금외수령 세율의 50%', '50% 감면', '장기간 나눠 받을 자금 계획이 맞아야 함'],
+      ['연금 외 수령(중도인출·일시금)', '이연퇴직소득세 전액(인출 비율만큼)', '감면 없음', '급하게 목돈이 필요해도 세금 부담이 커짐'],
+    ],
+  },
+  sections: [
+    {
+      heading: '퇴직금을 IRP로 옮기면 퇴직소득세가 미뤄진다',
+      paragraphs: [
+        '회사에서 퇴직금을 받을 때 원래는 퇴직소득세를 원천징수한 나머지 금액이 지급됩니다. 하지만 퇴직금을 받은 날로부터 60일 이내에 본인 명의의 IRP 등 연금계좌로 입금하면, 그 세금은 당장 걷히지 않고 계좌 안에서 이연퇴직소득이라는 이름으로 미뤄집니다(소득세법 제146조 제2항, 시행령 제202조의2).',
+        '회사가 처음부터 IRP 계좌로 퇴직금을 바로 이체하는 경우가 많지만, 일단 개인 계좌로 받았더라도 60일 안에 IRP에 옮기면 같은 이연 효과를 받을 수 있습니다. 기한을 넘기면 이미 원천징수된 세금을 되돌릴 방법이 없으므로, 계좌 개설과 이체 시점을 퇴직 전에 미리 맞춰두는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: 'IRP 연금 수령 요건, 55세와 5년 그리고 예외',
+      paragraphs: [
+        '연금계좌에서 연금으로 인출하려면 원칙적으로 가입자가 만 55세 이상이어야 하고, 계좌를 만든 지 5년이 지나야 합니다(소득세법 시행령 제40조의2).',
+        '다만 계좌에 든 돈이 회사에서 넘어온 이연퇴직소득뿐이라면 이 5년 요건이 적용되지 않습니다. 즉 퇴직금만 넣어둔 IRP는 만 55세만 넘으면 계좌를 개설한 지 얼마 안 됐어도 연금 수령을 시작할 수 있습니다. 본인이 세액공제를 노리고 추가로 낸 돈이 섞여 있다면 그 부분은 일반 연금계좌 요건을 그대로 따릅니다.',
+      ],
+    },
+    {
+      heading: '연금으로 나눠 받을수록 세금이 줄어드는 구조',
+      paragraphs: [
+        '이연퇴직소득을 연금으로 받기 시작하면, 매번 인출할 때마다 그 금액에 해당하는 이연퇴직소득세가 원천징수됩니다. 이때 적용되는 세율은 전액이 아니라 연금 실제 수령연차에 따라 낮아집니다(소득세법 제129조).',
+        '연금 실제 수령연차가 10년 이하인 동안은 연금 외 형태로 받았을 때 매길 세율의 70%만 적용되어 30%가 줄어듭니다. 10년을 넘어 20년 이하 구간에서는 60%만 적용되어 40%가 줄고, 20년을 넘으면 50%만 적용되어 절반이 줄어듭니다. 오래 나눠 받을수록 감면폭이 커지는 계단식 구조입니다.',
+      ],
+    },
+    {
+      heading: '중도에 연금 아닌 형태로 찾으면 감면이 사라진다',
+      paragraphs: [
+        '급하게 목돈이 필요해 연금이 아닌 형태로 중도 인출하면, 그 인출 금액이 전체 이연퇴직소득에서 차지하는 비율만큼 이연퇴직소득세가 그대로 원천징수됩니다. 계산식은 이연퇴직소득세에 인출 금액을 이연퇴직소득 총액으로 나눈 비율을 곱하는 방식입니다.',
+        '이때는 연금 실제 수령연차에 따른 감면율이 적용되지 않아, 처음부터 일시금으로 받았을 때와 같은 수준의 세금을 그 인출분만큼 내게 됩니다. 나머지 계좌에 남은 금액은 이후에 연금으로 받으면 그 시점의 수령연차에 맞는 감면율이 다시 적용됩니다.',
+      ],
+    },
+    {
+      heading: '운용 수익에 붙는 세금은 따로 계산된다',
+      paragraphs: [
+        'IRP 안에서 이연퇴직소득을 굴려 생긴 운용 수익은 퇴직소득세가 아니라 연금소득세 대상입니다. 이 부분은 나이에 따라 3.3~5.5%의 낮은 세율로 별도 과세되고, 사적연금 수령액이 연간 일정 금액을 넘으면 종합과세와 분리과세 중 유리한 쪽을 선택하는 방식이 적용됩니다.',
+        '즉 같은 IRP 계좌라도 회사가 넣어준 퇴직금 부분과 그 돈을 굴려 늘어난 부분은 세금 계산 방식이 다릅니다. 정확한 구간별 세율과 종합과세 기준은 연금 수령 세금을 다루는 별도 자료에서 확인하는 편이 낫습니다.',
+      ],
+    },
+    {
+      heading: '실제로 어떤 상황에서 유리한가',
+      paragraphs: [
+        '근속 기간이 길어 퇴직금 규모가 크고, 당장 목돈이 급하지 않다면 IRP로 옮겨 오래 나눠 받는 쪽이 세금 면에서 유리하다고 볼 수 있습니다. 20년 넘게 나눠 받으면 이연퇴직소득세의 절반만 내는 셈이기 때문입니다.',
+        '반대로 주택 구입이나 채무 상환처럼 당장 목돈이 필요한 상황이면 세금을 아끼려고 무리하게 수령을 미루는 것이 오히려 손해일 수 있습니다. 본인의 근속연수·퇴직금 규모·자금 계획을 함께 놓고, 실제 예상 세액은 IRP를 개설한 금융회사나 국세청 상담을 통해 재확인하는 것이 좋습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '퇴직금을 받고 60일이 지나 IRP에 넣으면 이연이 안 되나요?',
+      answer:
+        '네, 60일 기한을 넘기면 이미 원천징수된 퇴직소득세를 돌려받을 방법이 없어 이연 혜택을 받지 못합니다. 퇴직 전에 IRP 계좌를 미리 개설해 이체 시점을 회사와 맞춰두는 것이 안전합니다.',
+    },
+    {
+      question: 'IRP에 개인 돈도 추가로 넣었다면 퇴직소득세 감면율이 똑같이 적용되나요?',
+      answer:
+        '아니요. 개인이 세액공제를 노리고 추가로 낸 부담금과 그 운용 수익은 퇴직소득세가 아니라 연금소득세(3.3~5.5%) 대상이라 계산 방식이 다릅니다. 연금 실제 수령연차에 따른 감면율은 회사가 넣어준 이연퇴직소득 부분에만 적용됩니다.',
+    },
+    {
+      question: '중도인출을 조금만 해도 전체 감면 혜택이 사라지나요?',
+      answer:
+        '아니요. 중도인출한 금액에 해당하는 부분만 이연퇴직소득세가 원천징수되고, 계좌에 남은 나머지 금액은 이후에도 연금 실제 수령연차에 맞는 감면율을 그대로 적용받습니다.',
+    },
+    {
+      question: '연금 실제 수령연차는 언제부터 세나요?',
+      answer:
+        '연금계좌에서 이연퇴직소득을 실제로 처음 인출해 받기 시작한 해를 1년차로 셉니다. 그 이후 매년 연금을 받을 때마다 수령연차가 하나씩 늘어나는 방식입니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  irpSeverancePayTaxDeferral,
   companyIrpVsIndividualIrp,
   stockOrderRejectedReasons,
   dividendRecordDateReform,
@@ -21749,6 +21856,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-01 · 지식iN 질문 수요 기반 (IRP 퇴직소득세 이연과 연금수령 감면 구조)
+  'irp-severance-pay-tax-deferral': '2026-09-01',
   // 2026-08-31 · 지식iN 질문 수요 기반 (기업형 IRP와 개인형 IRP 차이)
   'company-irp-vs-individual-irp': '2026-08-31',
   // 기반 가이드 14편 — 발행일이 비어 있어 /guide/latest 정렬과 sitemap lastmod에서 빠졌다.
@@ -22069,7 +22178,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral'],
   },
   {
     title: '배당·인컴',
