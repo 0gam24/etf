@@ -21394,7 +21394,113 @@ const basicPensionWithPrivatePension: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-08-31 · 기업형 IRP(10인 미만 사업장 특례)와 개인형 IRP 차이 */
+const companyIrpVsIndividualIrp: GuideDef = {
+  slug: 'company-irp-vs-individual-irp',
+  title: '기업형 IRP와 개인형 IRP, 뭐가 다른가',
+  tagline: '10인 미만 사업장 특례와 세액공제용 개인형 IRP는 서로 다른 이야기입니다',
+  description:
+    '기업형 IRP는 상시 10인 미만 사업장이 근로자 동의로 설정하는 개인형퇴직연금제도로, 근로자가 직접 세액공제를 노리고 여는 개인형 IRP와는 납입 주체와 세액공제 대상이 다릅니다. 근거 법령과 세액공제 적용 범위를 정리했습니다.',
+  keywords: ['기업형 IRP', '개인형 IRP 차이', 'IRP 세액공제', '10인 미만 사업장 퇴직연금', '근로자퇴직급여보장법', '확정기여형 DC IRP'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-08-31',
+  answer:
+    '기업형 IRP는 근로자퇴직급여보장법 제25조에 따라 상시근로자 10인 미만 사업장이 근로자 동의로 설정하는 개인형퇴직연금제도로, 회사가 연간 임금총액의 12분의 1 이상을 부담금으로 넣어 확정기여형(DC)과 같은 방식으로 운용됩니다. 세액공제는 근로자가 직접 낸 부담금에만 적용되고, 회사가 낸 부담금에는 적용되지 않습니다.',
+  keyPoints: [
+    '기업형 IRP는 근로자퇴직급여보장법 제25조 특례로, 상시근로자 10인 미만 사업장이 개별 근로자 동의를 받아 설정하면 퇴직급여제도를 갖춘 것으로 인정됩니다.',
+    '회사는 가입자별로 연간 임금총액의 12분의 1 이상을 현금으로 근로자의 IRP 계좌에 매년 납입하고, 운용 방식과 수급 요건은 확정기여형(DC) 퇴직연금과 동일합니다.',
+    '세액공제는 근로자 본인이 추가로 낸 부담금에만 적용되고, 회사가 넣은 사용자부담금은 퇴직급여 성격이라 세액공제 대상에서 빠집니다.',
+    '근로자 개인부담금은 연금저축과 합쳐 연 900만원까지 세액공제되므로, 기업형 IRP 계좌에 추가 납입해도 일반 개인형 IRP와 같은 한도 안에서 공제받습니다.',
+  ],
+  sources: [
+    { label: '국가법령정보센터 · 근로자퇴직급여 보장법 제25조', url: 'https://www.law.go.kr' },
+    { label: '고용노동부 퇴직연금 안내', url: 'https://www.moel.go.kr' },
+    { label: '국세청 · 연금계좌 세액공제 안내', url: 'https://www.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '퇴직연금 기업형 IRP 개념을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=60802&docId=493249220&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: '기업형 IRP와 개인형 IRP 비교',
+    columns: ['구분', '기업형 IRP(10인 미만 특례)', '개인형 IRP(일반)', '확인할 점'],
+    rows: [
+      ['법적 근거', '근로자퇴직급여보장법 제25조', '근로자퇴직급여보장법 일반 규정', '회사 규모와 가입 목적으로 구분'],
+      ['가입 주체', '회사가 근로자 동의를 받아 설정', '근로자·자영업자가 본인 의사로 개설', '누가 개설을 주도했는지 확인'],
+      ['주요 납입자', '회사(연간 임금총액의 12분의 1 이상)', '근로자 본인', '돈을 넣는 사람이 다르면 성격도 다름'],
+      ['세액공제 대상', '회사 부담금은 대상 아님', '근로자 본인 부담금은 연 900만원 한도 대상', '본인 돈을 추가로 넣었는지가 기준'],
+      ['운용 방식', '확정기여형(DC)과 동일', '근로자가 직접 상품 선택', '두 경우 모두 근로자가 직접 운용'],
+    ],
+  },
+  sections: [
+    {
+      heading: '기업형 IRP는 무엇을 근거로 하는 제도인가',
+      paragraphs: [
+        '기업형 IRP는 근로자퇴직급여보장법 제25조(10명 미만을 사용하는 사업에 대한 특례)에 근거합니다. 상시근로자가 10명 미만인 사업장에서 사용자가 개별 근로자의 동의를 받아 개인형퇴직연금제도를 설정하면, 그 사업장은 퇴직급여제도를 갖춘 것으로 봅니다.',
+        '정식 법률 용어는 아니지만, 회사가 근로자 명의의 IRP 계좌에 퇴직급여를 대신 넣어주는 이 방식을 업계에서는 흔히 기업형 IRP라고 부릅니다. 계좌 종류 자체는 일반 개인형 IRP와 같은 개인형퇴직연금제도 계좌입니다.',
+      ],
+    },
+    {
+      heading: '개인형 IRP와 무엇이 다른가',
+      paragraphs: [
+        '흔히 말하는 개인형 IRP는 근로자나 자영업자가 본인 의사로 금융회사에 개설해 세액공제를 노리고 자기 돈을 넣는 계좌입니다. 반면 기업형 IRP는 회사가 퇴직급여제도 대신 설정해, 회사 부담으로 돈이 들어간다는 점이 가장 큰 차이입니다.',
+        '즉 계좌의 그릇은 같은 개인형퇴직연금제도(IRP)이지만, 누가 왜 돈을 넣는지가 다릅니다. 기업형 IRP는 퇴직급여를 갈음하는 성격이고, 개인형 IRP는 세액공제를 위한 추가 저축 성격입니다.',
+      ],
+    },
+    {
+      heading: '회사는 얼마를 언제 넣어야 하나',
+      paragraphs: [
+        '사용자는 가입자별로 연간 임금총액의 12분의 1 이상에 해당하는 금액을 현금으로 근로자의 IRP 계정에 납입해야 합니다. 이는 일반적인 퇴직금 산정 방식과 같은 수준으로, 사실상 매년 한 달 치 임금이 퇴직연금으로 쌓이는 구조입니다.',
+        '적립금 운용 방법, 사용자부담금 수준, 퇴직급여 수급 요건 등은 확정기여형(DC) 퇴직연금제도와 동일하게 적용됩니다. 근로자가 계좌 안에서 상품을 골라 직접 운용한다는 점도 DC형과 같습니다.',
+      ],
+    },
+    {
+      heading: '세액공제는 어디까지 적용되나',
+      paragraphs: [
+        '회사가 넣은 사용자부담금은 근로자의 퇴직급여를 미리 적립한 것이라 세액공제 대상이 아닙니다. 세액공제는 근로자 본인이 자기 돈으로 추가 납입한 가입자부담금에만 적용됩니다.',
+        '근로자 개인부담금은 연금저축과 합쳐 연 900만원까지 세액공제 한도가 적용되며, 총급여나 종합소득 금액에 따라 공제율이 달라집니다. 기업형 IRP 계좌라도 근로자가 추가로 돈을 넣으면 이 한도 안에서 똑같이 공제받습니다.',
+      ],
+    },
+    {
+      heading: '가입 전에 확인해야 할 점',
+      paragraphs: [
+        '사업장 상시근로자가 10명을 넘어서면 이 특례를 계속 쓸 수 있는지 회사와 확인이 필요합니다. 근로자 수가 바뀌는 시점에 퇴직연금제도를 다시 정비해야 할 수 있습니다.',
+        '금융회사마다 사용자부담금과 가입자부담금에 매기는 수수료 체계가 다르므로, 계좌를 정하기 전에 가입한 금융회사의 수수료 안내를 직접 확인하는 것이 좋습니다. 이직할 때는 이 계좌도 일반 IRP처럼 그대로 유지하거나 다른 퇴직연금제도로 옮길 수 있습니다.',
+      ],
+    },
+    {
+      heading: '실제로 어떤 상황에 해당하나',
+      paragraphs: [
+        '본인이 다니는 회사가 상시근로자 10명 미만이고, 회사 안내에 따라 IRP 계좌를 개설했다면 대부분 이 특례에 해당합니다. 이 경우 회사가 넣어준 돈은 퇴직급여이고, 세액공제를 더 받고 싶다면 같은 계좌든 다른 금융회사 계좌든 본인 돈을 추가로 넣어야 합니다.',
+        '10명 이상 사업장의 확정기여형(DC) 가입자가 세액공제를 위해 추가로 여는 IRP도 결과적으로는 같은 개인형퇴직연금제도 계좌이므로, 회사 규모와 무관하게 세액공제 원리는 동일합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '기업형 IRP도 개인형 IRP와 같은 계좌인가요?',
+      answer:
+        '네, 계좌 종류 자체는 같은 개인형퇴직연금제도(IRP) 계좌입니다. 다만 상시근로자 10명 미만 사업장이 근로자퇴직급여보장법 제25조 특례로 설정했다는 점에서 회사가 부담금을 넣는다는 차이가 있습니다.',
+    },
+    {
+      question: '회사가 넣어준 돈도 연말정산에서 세액공제 받을 수 있나요?',
+      answer:
+        '아니요. 회사가 낸 사용자부담금은 근로자의 퇴직급여를 미리 적립한 것이라 세액공제 대상이 아닙니다. 세액공제는 근로자 본인이 추가로 낸 가입자부담금에만 적용됩니다.',
+    },
+    {
+      question: '기업형 IRP 계좌에 제 돈을 추가로 넣어도 세액공제를 받을 수 있나요?',
+      answer:
+        '가능합니다. 같은 계좌라도 근로자 본인이 추가로 낸 금액은 연금저축과 합쳐 연 900만원 한도 안에서 세액공제 대상이 됩니다.',
+    },
+    {
+      question: '회사 규모가 10명을 넘으면 이 계좌는 어떻게 되나요?',
+      answer:
+        '상시근로자 수가 늘어 특례 요건을 벗어나면 회사가 별도의 퇴직연금제도를 다시 갖춰야 할 수 있습니다. 구체적인 처리는 회사와 퇴직연금사업자 안내에 따라 달라지므로 확인이 필요합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  companyIrpVsIndividualIrp,
   stockOrderRejectedReasons,
   dividendRecordDateReform,
   retireeDividendEtfMonthlyIncome,
@@ -21643,6 +21749,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-08-31 · 지식iN 질문 수요 기반 (기업형 IRP와 개인형 IRP 차이)
+  'company-irp-vs-individual-irp': '2026-08-31',
   // 기반 가이드 14편 — 발행일이 비어 있어 /guide/latest 정렬과 sitemap lastmod에서 빠졌다.
   // 각 슬러그가 guides.ts에 처음 들어온 커밋 날짜로 채웠다(git log -S 확인). (2026-08-12)
   'monthly-dividend': '2026-04-25',
@@ -21961,7 +22069,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp'],
   },
   {
     title: '배당·인컴',
