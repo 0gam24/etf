@@ -21605,7 +21605,116 @@ const irpSeverancePayTaxDeferral: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-02 · 인버스 ETF가 폭락장에서 안전자산이 될 수 있는지 여부와 규제상 위험 등급 */
+const inverseEtfCrashSafety: GuideDef = {
+  slug: 'inverse-etf-crash-safety',
+  title: '인버스 ETF는 폭락장에서 정말 안전할까',
+  tagline: '매일 재조정되는 파생상품형 구조라 방향만 맞다고 안심할 수 없습니다',
+  description:
+    '제2의 대공황 같은 폭락장에서 인버스 ETF가 안전한 피난처가 될 수 있을지 궁금해하는 투자자가 많습니다. 매일 배율을 재조정하는 구조가 하락장에서 실제로 어떻게 움직이는지, 규제 당국이 이 상품을 고위험 단기 매매 도구로 다루는 이유를 정리했습니다.',
+  keywords: ['인버스 ETF 폭락장', '인버스 ETF 안전성', '레버리지 인버스 ETF 위험', '곱버스 기본예탁금', '인버스 ETF 음의 복리', '단일종목 레버리지 ETF'],
+  section: 'ETF 레버리지 가이드',
+  lastReviewed: '2026-09-02',
+  answer:
+    '인버스 ETF는 매일 정해진 배율로 재조정되는 파생상품형 상품이라 폭락장에서 원금을 지켜주는 안전자산이 아니라 하락에 베팅하는 단기 매매 도구입니다. 하락이 급락과 반등을 반복하며 진행되면 음의 복리로 실제 수익이 지수 하락폭보다 작아질 수 있고, 배율이 큰 상품일수록 기본예탁금과 사전교육 같은 규제 문턱도 높습니다.',
+  keyPoints: [
+    '인버스 ETF는 선물·스와프 같은 파생상품으로 기초지수의 하루 수익률을 반대 방향으로 매일 재조정하는 상품이라, 여러 날을 누적하면 단순히 지수 하락폭만큼 수익이 나지 않습니다.',
+    '국내에서는 코스피200 선물인버스2X 같은 2배율 이상 레버리지·인버스 상품에 2020년부터 기본예탁금 1,000만원과 사전교육 이수 의무가 적용되고 있고, 단순 -1배 인버스는 이 의무 대상이 아닙니다.',
+    '2026년 5월 27일부터는 삼성전자·SK하이닉스를 기초로 한 개별 종목형 ±2배 레버리지·인버스 상품도 상장되면서, 기본예탁금 1,000만원과 일반교육 1시간·심화교육 1시간의 사전교육 이수가 새로 의무화됐습니다.',
+    '급락과 반등이 반복되는 변동성 장세에서는 인버스 ETF의 실제 수익이 지수 하락폭보다 작아지는 반면, 극단적 패닉 국면에서는 파생상품 시장 유동성 저하로 시장가격과 순자산가치(NAV) 사이 괴리율이 커질 위험도 있습니다.',
+  ],
+  sources: [
+    { label: '금융위원회 · 단일종목 레버리지 상품(ETF·ETN) 투자시 유의사항 안내', url: 'https://www.fsc.go.kr/no010101/86973' },
+    { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '제2의 대공황이 온다면 인버스 ETF가 안전할지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=474652222&answerNo=1' },
+    { summary: '인버스 ETF에도 음의 복리효과가 적용되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=373563113&answerNo=2' },
+    { summary: '코스피200 ETF의 레버리지·인버스 투자 장단점을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=486125641&answerNo=8' },
+  ],
+  comparisonTable: {
+    caption: '하락장 유형별 인버스 ETF의 실제 움직임',
+    columns: ['하락장 유형', '인버스 ETF의 실제 움직임', '음의 복리 영향', '확인할 점'],
+    rows: [
+      ['며칠간 곧게 떨어지는 단조 하락', '거의 예측한 방향과 배율대로 수익 발생', '영향 작음', '단기 헤지 목적에는 비교적 유리'],
+      ['급락과 반등이 반복되는 변동성 하락장', '지수 하락폭보다 수익이 작거나 손실로 남을 수 있음', '영향 큼', '보유 기간을 최대한 짧게 잡아야 함'],
+      ['단기 급락 후 곧바로 안정되는 경우', '급락 구간에서는 수익, 이후에는 정체', '영향 제한적', '언제 청산할지 기준을 미리 정해야 함'],
+      ['수개월 이상 이어지는 장기 하락장', '중간중간 반등이 섞여 누적 수익이 예상보다 낮아지기 쉬움', '영향 매우 큼', '장기 보유용으로 설계된 상품이 아님을 재확인'],
+      ['패닉성 폭락(대공황·금융위기형)', '파생상품 시장 유동성 저하로 괴리율이 커질 수 있음', '변동성·괴리 모두 확대', '실시간 괴리율과 거래량을 함께 점검'],
+    ],
+  },
+  sections: [
+    {
+      heading: '인버스 ETF는 안전자산이 아니라 방향성 베팅 도구다',
+      paragraphs: [
+        '인버스 ETF는 예금이나 국채처럼 원금을 지켜주는 안전자산이 아니라, 지수가 떨어질 때 이익을 보도록 설계된 파생상품형 상품입니다. 폭락이 예상된다고 이 상품을 사둔다고 해서 손실을 막아준다는 보장은 없습니다.',
+        '인버스 ETF는 선물이나 스와프 같은 파생상품을 활용해 기초지수의 하루 수익률을 반대 방향(-1배)이나 두 배 반대 방향(-2배, 이른바 곱버스)으로 매일 다시 맞추도록 만들어집니다. 하루 단위로 설계된 상품이라는 점이 이후 모든 위험의 출발점입니다.',
+      ],
+    },
+    {
+      heading: '폭락장이라고 다 같은 하락은 아니다',
+      paragraphs: [
+        '실제 폭락장은 한 방향으로 곧게 떨어지는 경우보다, 급락과 반등이 반복되면서 전체적으로는 하락하는 경우가 많습니다. 인버스 ETF의 실제 수익은 이 경로에 따라 크게 달라집니다.',
+        '예를 들어 지수가 첫날 10% 급락한 뒤 다음 날 8% 반등한다면, -2배 인버스는 첫날 20% 오른 뒤 이튿날 16% 내려가는 식으로 반등분을 그대로 반대로 맞습니다. 이런 흐름이 여러 차례 반복될수록 최종 수익은 지수 하락폭을 단순히 배율로 곱한 값과 점점 멀어집니다.',
+      ],
+    },
+    {
+      heading: '규제도 이 상품을 안전자산이 아닌 고위험 상품으로 다룬다',
+      paragraphs: [
+        '금융당국은 인버스·레버리지 ETF를 원금 보전형 상품이 아니라 손익이 증폭되는 고위험 단기 매매 도구로 규정하고 있습니다. 배율이 커질수록 요구하는 안전장치도 늘어납니다.',
+        '국내에서는 코스피200 선물인버스2X 같은 2배율 이상 레버리지·인버스 상품에 대해 2020년부터 기본예탁금 1,000만원과 사전교육 이수 의무가 적용돼 왔습니다. 단순 -1배 인버스 상품은 이 의무 대상이 아니지만, 배율이 있는 상품일수록 규제 문턱이 높아진다는 점 자체가 위험 수준을 보여줍니다.',
+        '2026년 5월 27일부터는 삼성전자·SK하이닉스 같은 개별 종목을 기초로 한 ±2배 레버리지·인버스 상품이 새로 상장되면서, 신규 투자자에게 기본예탁금 1,000만원 예치와 일반교육 1시간·심화교육 1시간의 사전교육 이수가 의무화됐습니다(금융위원회). 지수형보다 개별 종목 기초 상품의 위험을 더 무겁게 본다는 뜻입니다.',
+      ],
+    },
+    {
+      heading: '극단적인 급락장에서는 유동성과 괴리율도 흔들릴 수 있다',
+      paragraphs: [
+        '인버스 ETF는 선물이나 스와프 같은 파생상품으로 포지션을 구성하기 때문에, 시장 전체가 패닉에 빠지는 극단적인 국면에서는 이 파생상품 시장의 유동성도 함께 나빠질 수 있습니다.',
+        '유동성이 얇아지면 인버스 ETF의 시장가격이 순자산가치(NAV)에서 벌어지는 괴리율이 평소보다 커질 위험이 있습니다. 실제로 얼마나 벌어질지는 상품과 시점마다 달라, 매매 전 거래소나 운용사가 공시하는 실시간 괴리율을 확인하는 습관이 필요합니다.',
+      ],
+    },
+    {
+      heading: '그렇다고 인버스 ETF가 쓸모없다는 뜻은 아니다',
+      paragraphs: [
+        '구조적 위험이 크다고 해서 인버스 ETF 자체가 무의미한 상품인 것은 아닙니다. 이미 주식을 보유한 투자자가 짧은 기간 하락 위험을 상쇄하려는 헤지 목적이라면 합리적인 선택이 될 수 있습니다.',
+        '다만 이 경우에도 보유 기간을 며칠에서 길어야 몇 주 단위로 짧게 잡고, 애초에 예상한 하락이 오지 않거나 반등이 나오면 청산할 기준을 미리 정해두는 편이 안전합니다. 폭락에 대비해 오래 들고 간다는 접근은 이 상품의 설계 목적과 어긋납니다.',
+      ],
+    },
+    {
+      heading: '실제로 무엇을 확인하고 판단해야 하나',
+      paragraphs: [
+        '인버스 ETF를 폭락장 대비용으로 고려하고 있다면, 먼저 본인이 원하는 것이 짧은 기간의 헤지인지 장기적인 안전자산인지부터 구분해야 합니다. 후자라면 인버스 ETF보다 현금성 자산이나 국채 비중을 늘리는 쪽이 설계 목적에 더 맞습니다.',
+        '전자라면 배율(-1배인지 -2배인지)에 따라 적용되는 기본예탁금·사전교육 요건을 증권사에서 먼저 확인하고, 보유 기간과 청산 기준을 정한 뒤 실시간 괴리율까지 점검하는 순서로 접근하는 편이 안전합니다. 본 내용은 정보 제공 목적이며 특정 상품 매수를 권유하지 않고, 투자 판단과 책임은 투자자 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '인버스 ETF도 상장폐지가 될 수 있나요?',
+      answer:
+        '네. 추적하는 선물 계약 만기나 운용상 이슈로 상장폐지되는 경우가 있고, 상장폐지 시에는 최종 기준가로 정산돼 투자자에게 지급됩니다. 다만 상장폐지 여부와 폭락장에서의 안전성은 별개의 문제이므로 각각 따로 확인해야 합니다.',
+    },
+    {
+      question: '인버스 ETF에도 분배금(배당)이 나오나요?',
+      answer:
+        '대부분의 인버스 ETF는 분배금 지급을 목적으로 설계되지 않아 분배금이 거의 없거나 매우 적습니다. 현금 흐름이 아니라 방향성 수익을 노리는 상품이라는 점을 다시 확인해두는 편이 좋습니다.',
+    },
+    {
+      question: '인버스 2배(곱버스)와 인버스 1배는 위험 수준이 같나요?',
+      answer:
+        '아니요. 인버스 2배는 음의 복리 효과가 더 크게 나타나고, 국내에서는 기본예탁금과 사전교육 같은 별도 요건도 적용돼 인버스 1배보다 규제 문턱이 높습니다.',
+    },
+    {
+      question: '장기 하락장이 확실해 보이면 인버스 ETF를 계속 들고 있어도 되나요?',
+      answer:
+        '권장하지 않습니다. 하락이 길게 이어지는 동안에도 중간중간 반등이 섞이면 음의 복리로 누적 수익이 기대보다 낮아질 수 있어, 이 상품은 짧은 기간의 매매·헤지용으로 설계됐다는 점을 감안해야 합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  inverseEtfCrashSafety,
   irpSeverancePayTaxDeferral,
   companyIrpVsIndividualIrp,
   stockOrderRejectedReasons,
@@ -21856,6 +21965,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-02 · 지식iN 질문 수요 기반 (인버스 ETF 폭락장 안전성과 규제상 위험 등급)
+  'inverse-etf-crash-safety': '2026-09-02',
   // 2026-09-01 · 지식iN 질문 수요 기반 (IRP 퇴직소득세 이연과 연금수령 감면 구조)
   'irp-severance-pay-tax-deferral': '2026-09-01',
   // 2026-08-31 · 지식iN 질문 수요 기반 (기업형 IRP와 개인형 IRP 차이)
@@ -22198,7 +22309,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '전략·자산배분',
     description: '적립식·리밸런싱·팩터·자산배분(TRF)·채권·미국국채·회사채·채권혼합·파킹·금·은·구리·원유·농산물·원자재·레버리지 — 포트폴리오를 굴리고 위험을 관리하는 전략.',
-    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual', 'natural-gas-etf', 'carbon-credit-etf', 'platinum-etf', 'high-yield-bond-etf', 'tips-etf'],
+    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual', 'natural-gas-etf', 'carbon-credit-etf', 'platinum-etf', 'high-yield-bond-etf', 'tips-etf', 'inverse-etf-crash-safety'],
   },
 ];
 
