@@ -21713,7 +21713,113 @@ const inverseEtfCrashSafety: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-03 · 미국 단기채 3배 레버리지 ETF의 실제 존재 여부와 국내 채권 ETF 배율 제한 */
+const usTreasury3xLeverageEtf: GuideDef = {
+  slug: 'us-treasury-3x-leverage-etf',
+  title: '미국 단기채 3배 ETF는 없고 중장기채만 있는 이유',
+  tagline: 'TMF·TYD는 있어도 1~3년 단기채를 3배로 추종하는 ETF는 아직 없습니다',
+  description:
+    '미국 국채를 3배로 추종하는 ETF는 20년 이상 장기채(TMF)와 7~10년 중기채(TYD)뿐이고 1~3년 단기채 상품은 없습니다. 국내 상장 채권 ETF가 2배까지만 나오는 이유와 해외 직접투자 시 확인할 점을 정리했습니다.',
+  keywords: ['미국 단기채 3배 ETF', '미국 국채 레버리지 ETF', 'TMF 국채 ETF', 'TYD 국채 ETF', '채권 레버리지 ETF 위험', '국내 채권 ETF 배율 제한'],
+  section: 'ETF 채권 가이드',
+  lastReviewed: '2026-09-03',
+  answer:
+    '미국 국채를 3배로 추종하는 레버리지 ETF는 실제로 있지만 20년 이상 초장기채(TMF)와 7~10년 중기채(TYD) 두 구간뿐입니다. 1~3년 단기채를 3배로 추종하는 ETF는 미국에도 없고, 국내 상장 채권 ETF는 시행령상 배율이 최대 2배로 묶여 있습니다.',
+  keyPoints: [
+    '미국 상장 3배 국채 ETF는 Direxion의 TMF(20년 이상 초장기채)와 TYD(7~10년 중기채) 두 구간뿐이고, 1~3년 단기채를 3배로 추종하는 ETF는 없습니다.',
+    '국내 상장 채권 ETF는 자본시장법 시행령상 동일종목 파생상품 위험평가액이 순자산총액의 200%로 묶여 있어, 배율이 사실상 2배를 넘지 못합니다.',
+    '국내에는 ACE·RISE 같은 운용사의 미국 장기국채선물 2배 레버리지 ETF만 있고, 3배 상품에 투자하려면 미국 등 해외 상장 ETF를 직접 매수해야 합니다.',
+    '단기채는 금리 변동에 따른 가격 변동폭 자체가 작아, 배율을 높여도 상품성이 크지 않다는 점이 3배 단기채 ETF가 없는 배경으로 꼽힙니다.',
+  ],
+  sources: [
+    { label: '금융위원회 보도자료 · 국내-해외상장 ETF 간 비대칭 규제 해소', url: 'https://www.fsc.go.kr/po010101/86751' },
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: 'Direxion 공식 상품 페이지(TMF·TYD)', url: 'https://www.direxion.com/product/daily-20-year-treasury-bull-bear-3x-etfs' },
+  ],
+  sourceQuestions: [
+    { summary: '미국 단기 채권(10년 이하)을 3배로 추종하는 ETF 상품이 있는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=487969650&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: '미국 국채 레버리지 ETF, 만기 구간별 비교',
+    columns: ['만기 구간', '3배 ETF 존재 여부', '대표 상품(해외)', '확인할 점'],
+    rows: [
+      ['초단기(1~3년)', '없음', '해당 없음', 'ETN 형태 사례는 있었으나 ETF와 구조가 다름'],
+      ['중기(7~10년)', '있음', 'TYD(3배)', '흔히 "10년 이하"로 검색해 걸리는 상품'],
+      ['장기(20년 이상)', '있음', 'TMF(3배)', '금리 변동에 가장 민감, 가격 진폭이 큼'],
+      ['국내 상장(전 구간)', '없음(최대 2배)', 'ACE·RISE 미국장기국채선물레버리지 등', '자본시장법 시행령상 배율 2배로 제한'],
+      ['해외 직접투자', '구간별로 있음', 'TMF, TYD 등', '환전·양도소득세를 국내 상장 ETF와 별도로 확인'],
+    ],
+  },
+  sections: [
+    {
+      heading: '미국 국채 3배 ETF, 실제로는 어떤 만기 구간에 있나',
+      paragraphs: [
+        '미국에 상장된 국채 3배 레버리지 ETF는 실제로 존재하지만, 만기 구간이 20년 이상 초장기채와 7~10년 중기채 두 가지뿐입니다. 대표적으로 20년 이상 국채를 3배로 추종하는 TMF와 7~10년 국채를 3배로 추종하는 TYD가 상장돼 있습니다.',
+        '채권시장에서는 보통 1~3년을 단기, 7~10년을 중기, 20년 이상을 장기로 구분합니다. "10년 이하는 단기"라고 생각하고 찾으면 TYD(7~10년)가 걸리지만, 1~3년처럼 짧은 만기를 3배로 추종하는 ETF는 미국에도 상장돼 있지 않습니다.',
+      ],
+    },
+    {
+      heading: '왜 진짜 단기채에는 3배 상품이 없나',
+      paragraphs: [
+        '단기채는 만기가 짧을수록 금리 변동에 따른 가격 변동폭(듀레이션)이 작습니다. 배율을 3배로 키워도 기초자산 자체의 하루 변동폭이 작으니 상품으로서 매력이 크지 않고, 발행사 입장에서도 거래량을 모으기 어려워 상장 유인이 낮습니다.',
+        '해외 발행사가 초단기 국채에 3배 노출을 주는 ETN을 만든 사례는 있었지만, ETN은 발행사가 파산하면 원금을 돌려받지 못할 수 있는 무담보 채무증서라 ETF와 구조 자체가 다릅니다. 지금도 상장이 유지되고 있는지는 거래소 상품 목록에서 직접 확인해야 합니다.',
+      ],
+    },
+    {
+      heading: '국내 상장 국채 ETF는 왜 2배가 최대인가',
+      paragraphs: [
+        '국내에 상장된 채권 ETF는 자본시장법 시행령에 따라 동일종목 가격변동에 따른 파생상품 위험평가액이 순자산총액의 200%까지만 허용됩니다. 이 한도 안에서 상품을 설계하다 보니 국내 레버리지·인버스 ETF의 배율은 사실상 2배를 넘지 못합니다.',
+        '그래서 ACE·RISE 같은 운용사가 내놓은 미국 장기국채선물 레버리지 ETF도 모두 2배 상품입니다. 미국 시장의 TMF·TYD 같은 3배 상품은 국내에는 상장돼 있지 않고, 투자하려면 해외 상장 ETF를 직접 매수하는 방법뿐입니다.',
+      ],
+    },
+    {
+      heading: '해외 직접투자로 접근할 때 확인할 점',
+      paragraphs: [
+        'TMF·TYD 같은 미국 상장 3배 국채 ETF를 직접 매수하려면 해외주식 계좌가 있어야 하고, 환전과 양도소득세 신고를 국내 상장 ETF와 별도로 챙겨야 합니다. 해외주식 양도차익은 연 250만원을 공제한 뒤 22%(지방소득세 포함)가 매겨집니다.',
+        '매매 시점의 환율도 손익에 그대로 얹힙니다. 원화로 환산한 수익률이 달러 기준 수익률과 달라질 수 있다는 점을 매수 전에 감안해야 합니다.',
+      ],
+    },
+    {
+      heading: '3배 국채 ETF의 위험, 일반 채권 ETF와 다르게 봐야 한다',
+      paragraphs: [
+        '국채 ETF는 흔히 안전자산으로 여겨지지만, 3배 레버리지가 붙으면 이야기가 달라집니다. 금리가 예상과 반대로 움직이면 손실도 3배로 커지고, 선물·스와프 같은 파생상품을 활용하는 구조라 괴리율과 유동성도 함께 살펴야 합니다.',
+        '장기채(TMF)일수록 금리 변동에 따른 가격 진폭이 커서, 여기에 3배 레버리지가 겹치면 하루 변동폭이 상당히 커질 수 있습니다. 3배 레버리지는 하루 단위로 배율을 다시 맞추는 구조라, 금리가 오르내림을 반복하는 구간에서는 변동성 끌림(음의 복리)으로 장기 보유 시 실제 손익이 단순 배율 계산과 달라질 수 있습니다.',
+      ],
+    },
+    {
+      heading: '앞으로 확인해야 할 점',
+      paragraphs: [
+        '2026년 4월 시행된 시행령 개정은 단일종목 ETF 도입을 허용한 것이지, 채권 ETF의 배율 상한을 직접 손본 것은 아닙니다. 그래서 국채 ETF의 3배 상품이 국내에 곧 나온다고 단정할 근거는 아직 없습니다.',
+        '3배 국채 ETF를 찾고 있다면 먼저 원하는 만기 구간(단기·중기·장기)부터 명확히 정하고, 그 구간에 실제로 어떤 상품이 상장돼 있는지 운용사·거래소 공시로 확인하는 순서가 헷갈리지 않는 방법입니다. 국내 상품 목록이 바뀌었는지는 한국거래소 정보데이터시스템에서 다시 조회할 수 있습니다. 본 내용은 정보 제공 목적이며 특정 상품 매수를 권유하지 않습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'TYD도 3배 단기채 ETF라고 부를 수 있나요?',
+      answer:
+        'TYD는 7~10년 만기 국채를 3배로 추종해 채권시장 기준으로는 중기채에 가깝습니다. "10년 이하"라는 이유로 단기채로 부르는 경우도 있지만, 1~3년처럼 짧은 만기를 3배로 추종하는 상품과는 구분해야 합니다.',
+    },
+    {
+      question: '국내 증권사 앱에서 TMF·TYD를 살 수 있나요?',
+      answer:
+        '해외주식 거래가 가능한 계좌라면 대부분의 국내 증권사에서 미국 상장 ETF로 매수할 수 있습니다. 다만 환전이 필요하고, 매매차익에는 국내 상장 ETF와 다른 양도소득세 규정이 적용됩니다.',
+    },
+    {
+      question: '국내 상장 채권 ETF의 배율이 앞으로 3배까지 늘어날 수 있나요?',
+      answer:
+        '가능성을 완전히 배제할 수는 없지만, 지금까지 발표된 시행령 개정은 단일종목 ETF 허용에 초점이 맞춰져 있어 채권 ETF 배율 확대를 직접 예고하는 내용은 아직 없습니다. 변경이 있다면 금융위원회·한국거래소 공지로 먼저 확인할 수 있습니다.',
+    },
+    {
+      question: '3배 국채 ETF를 헤지 목적으로 오래 들고 있어도 되나요?',
+      answer:
+        '권장하지 않습니다. 3배 레버리지는 하루 단위로 배율을 재조정하는 구조라, 금리가 오르내림을 반복하면 변동성 끌림으로 장기 손익이 단순 배율 계산과 달라지기 쉽습니다. 짧은 기간의 방향성 베팅이나 헤지에 한정해 접근하는 편이 안전합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  usTreasury3xLeverageEtf,
   inverseEtfCrashSafety,
   irpSeverancePayTaxDeferral,
   companyIrpVsIndividualIrp,
@@ -21965,6 +22071,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-03 · 지식iN 질문 수요 기반 (미국 단기채 3배 레버리지 ETF 존재 여부와 국내 채권 ETF 배율 제한)
+  'us-treasury-3x-leverage-etf': '2026-09-03',
   // 2026-09-02 · 지식iN 질문 수요 기반 (인버스 ETF 폭락장 안전성과 규제상 위험 등급)
   'inverse-etf-crash-safety': '2026-09-02',
   // 2026-09-01 · 지식iN 질문 수요 기반 (IRP 퇴직소득세 이연과 연금수령 감면 구조)
@@ -22309,7 +22417,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '전략·자산배분',
     description: '적립식·리밸런싱·팩터·자산배분(TRF)·채권·미국국채·회사채·채권혼합·파킹·금·은·구리·원유·농산물·원자재·레버리지 — 포트폴리오를 굴리고 위험을 관리하는 전략.',
-    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual', 'natural-gas-etf', 'carbon-credit-etf', 'platinum-etf', 'high-yield-bond-etf', 'tips-etf', 'inverse-etf-crash-safety'],
+    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual', 'natural-gas-etf', 'carbon-credit-etf', 'platinum-etf', 'high-yield-bond-etf', 'tips-etf', 'inverse-etf-crash-safety', 'us-treasury-3x-leverage-etf'],
   },
 ];
 
