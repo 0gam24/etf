@@ -21818,7 +21818,113 @@ const usTreasury3xLeverageEtf: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-04 · 해외 ETF 분배금 과표기준가 0원 비과세 메커니즘 */
+const etfDistributionTaxBaseZero: GuideDef = {
+  slug: 'etf-distribution-tax-base-zero',
+  title: '해외 ETF 분배금 세금 0원, 과표기준가로 보는 이유',
+  tagline: '분배금을 다 받았는데 원천징수세액이 0원인 건 오류가 아닙니다',
+  description:
+    '국내 상장 해외 ETF는 분배금 전액이 아니라 분배금과 보유기간 과표기준가 증가분 중 더 작은 금액에만 배당소득세 15.4%가 매겨집니다. 이 증가분이 0이 되어 분배금을 받고도 세금이 붙지 않는 조건과 확인 방법을 정리했습니다.',
+  keywords: ['해외 ETF 분배금', '과표기준가', 'ETF 분배금 세금', '보유기간과세', '과표증분', 'ETF 배당소득세 15.4%', '분배금 비과세'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-09-04',
+  answer:
+    '국내 상장 해외 ETF의 분배금은 현금 지급액과 보유기간 동안 오른 과표기준가 증가분 중 더 작은 금액에만 배당소득세 15.4%가 매겨집니다. 기초자산 약세로 과표기준가가 오르지 않으면 이 증가분이 0이 되어, 분배금을 받고도 세금이 전혀 붙지 않는 경우가 생깁니다.',
+  keyPoints: [
+    '국내 상장 해외 ETF의 분배금은 매매차익과 마찬가지로 분배금과 과표기준가 증가분(과표증분) 중 더 작은 금액에만 15.4% 배당소득세가 매겨지는 보유기간과세 방식을 따릅니다.',
+    '분배기준일의 과표기준가가 매수 시점보다 낮거나 같으면 과표증분이 0이 되어, 현금 분배금을 온전히 받고도 원천징수 세금이 붙지 않습니다.',
+    '국내 주식형 ETF는 이 계산과 무관하게 분배금에 15.4%가 그대로 붙으므로, 과표증분 규칙은 해외·채권·원자재 등 기타 ETF에만 적용된다는 점을 구분해야 합니다.',
+    '정확한 과표기준가는 증권사 MTS나 운용사 홈페이지 상품 상세에서 매수일·분배기준일 기준으로 조회할 수 있어, 분배 명세서의 세금 0원 표시를 직접 검증할 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 · 배당소득세 안내', url: 'https://www.nts.go.kr' },
+    { label: '금융투자협회', url: 'https://www.kofia.or.kr' },
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '국내 상장 해외 ETF 분배금에서 주당 과세표준액이 0이 되는 경우를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=488564689&answerNo=2' },
+  ],
+  comparisonTable: {
+    caption: '국내 주식형 ETF와 기타 ETF의 분배금 과세 비교',
+    columns: ['구분', '국내 주식형 ETF', '기타 ETF(해외·채권·원자재 등)', '확인할 점'],
+    rows: [
+      ['분배금 과세 기준', '분배금 전액에 15.4%', '분배금과 과표증분 중 작은 금액에 15.4%', '기타 ETF는 과표기준가 증가분을 함께 확인'],
+      ['과표증분이 0일 때', '해당 없음, 무조건 과세', '세금 0원, 현금은 전액 수령', '분배 명세서의 과세대상 배당소득 항목 확인'],
+      ['매매차익 과세', '비과세', '매매차익과 과표증분 중 작은 금액에 15.4%', '매매차익도 같은 min 규칙 적용'],
+      ['과표기준가 확인처', '해당 없음', '운용사 홈페이지·증권사 MTS 상품 상세', '매수일·분배기준일 기준으로 조회'],
+      ['오해하기 쉬운 점', '없음', '세금 0원을 명세서 오류로 착각하기 쉬움', '과표증분 개념을 모르면 명세서 보고 당황'],
+    ],
+  },
+  sections: [
+    {
+      heading: '해외 ETF 분배금도 보유기간과세를 따른다',
+      paragraphs: [
+        '국내 주식형이 아닌 해외 지수·채권·원자재 등을 담은 ETF는 분배금에도 매매차익과 같은 방식의 배당소득세가 적용됩니다. 분배금으로 받은 현금 전액이 아니라, 그 분배금과 보유기간 동안 오른 과표기준가 증가분(과표증분) 중 더 작은 금액에만 15.4%(지방소득세 포함)가 원천징수됩니다.',
+        '이 계산 방식을 보유기간과세라고 부르며, 국내 주식형 ETF의 매매차익 비과세와 함께 국내 ETF 세제의 핵심 규칙 중 하나입니다. 매매차익뿐 아니라 분배금에도 같은 min 규칙이 적용된다는 점은 자주 놓치는 부분입니다.',
+      ],
+    },
+    {
+      heading: '과표기준가란 무엇이고 어디서 확인하나',
+      paragraphs: [
+        '과표기준가는 ETF가 보유한 자산에서 생긴 수익 중 실제로 과세 대상이 되는 부분만 모아 계산한 기준가격입니다. 시장에서 거래되는 가격이나 순자산가치(NAV)와는 다른 개념으로, 국내주식 매매차익처럼 비과세되는 수익은 과표기준가에 반영되지 않습니다.',
+        '이 값은 자산운용사가 매영업일 산정해 공시하며, 운용사 홈페이지의 상품 상세 페이지나 증권사 MTS의 ETF 세금 정보 화면에서 조회할 수 있습니다. 분배금 세금을 직접 검증하려면 매수일과 분배기준일의 과표기준가를 각각 확인해 그 차이(과표증분)를 계산하면 됩니다.',
+      ],
+    },
+    {
+      heading: '과표증분이 0이 되는 조건',
+      paragraphs: [
+        '과표증분은 분배기준일의 과표기준가에서 매수일의 과표기준가를 뺀 값입니다. 기초지수가 약세를 보이거나 커버드콜처럼 기초자산 가격 흐름이 그대로 분배 재원에 반영되는 구조에서는, 과표기준가가 매수 시점보다 오르지 않거나 오히려 낮아지는 경우가 생깁니다.',
+        '이때 과표증분은 0 또는 마이너스가 되고, 마이너스는 0으로 처리됩니다. 분배금과 과표증분 중 더 작은 금액에만 과세하므로, 과표증분이 0이면 분배금 액수와 관계없이 원천징수 세액도 0원이 됩니다.',
+      ],
+    },
+    {
+      heading: '세금 0원이 손해가 아닌 이유',
+      paragraphs: [
+        '분배 명세서에 세금이 0원으로 찍히면 오류라고 오해하기 쉽지만, 이는 실제로 투자자에게 유리한 결과입니다. 현금 분배금은 세금 없이 전액 계좌에 들어오고, 나중에 이 ETF를 팔 때도 매매차익과 과표증분 중 작은 금액에만 다시 과세되므로 이중으로 손해를 보는 구조가 아닙니다.',
+        '다만 이번 회차의 과표증분이 0으로 처리됐다고 해서 매도 시점까지의 과표기준가 상승분 전체가 사라지는 것은 아닙니다. 매도할 때는 매수 시점부터 매도 시점까지 전체 기간의 과표증분을 다시 계산하므로, 분배 시점의 비과세가 매도 시 세금을 완전히 없애주는 것은 아닙니다.',
+      ],
+    },
+    {
+      heading: '국내 주식형 ETF와 헷갈리지 않기',
+      paragraphs: [
+        '코스피200·코스닥150처럼 국내 주식에 투자하는 국내 주식형 ETF는 이 계산과 무관합니다. 매매차익은 비과세이지만 분배금은 과표증분과 상관없이 지급액 전체에 15.4%가 그대로 원천징수됩니다.',
+        '따라서 보유한 ETF가 국내 주식형인지, 해외·채권·원자재 등을 담은 기타 ETF인지부터 구분해야 합니다. 같은 계좌에 두 유형을 함께 담고 있으면 분배 명세서에서 종목별로 과세 결과가 다르게 나타날 수 있습니다.',
+      ],
+    },
+    {
+      heading: '분배 명세서에서 직접 확인하는 법',
+      paragraphs: [
+        '증권사 MTS의 배당·분배금 내역에서 종목별 지급액과 원천징수세액을 함께 확인할 수 있습니다. 세액이 0원인 종목이 있다면 해당 ETF가 기타 ETF로 분류되는지, 그 회차의 과표증분이 실제로 0 이하였는지를 운용사 공시로 대사해보면 됩니다.',
+        '과표기준가 산정과 원천징수 세액 계산은 운용사와 예탁결제기관의 시스템으로 처리되며, 투자자가 직접 세액을 조정할 여지는 없습니다. 명세서 내용이 이해되지 않으면 거래 증권사 고객센터나 운용사 공시로 확인하는 것이 정확합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '과표기준가가 마이너스로 떨어지면 세금을 돌려받나요?',
+      answer:
+        '아니요. 과표증분이 마이너스면 0으로 처리되어 그 회차의 세금이 없을 뿐이며, 이미 낸 세금을 환급받는 개념은 아닙니다.',
+    },
+    {
+      question: '국내 상장 미국 배당 ETF도 이 규칙이 적용되나요?',
+      answer:
+        '네. 국내 주식형이 아닌 미국·해외 지수를 추종하는 ETF는 대부분 기타 ETF로 분류돼 동일한 min 규칙이 적용됩니다. 다만 상품마다 과표기준가 흐름이 달라 매 분배 회차마다 결과가 다를 수 있습니다.',
+    },
+    {
+      question: '과표기준가는 정확히 어디서 확인하나요?',
+      answer:
+        '자산운용사 홈페이지의 상품 상세 페이지나 증권사 MTS의 ETF 상세 화면에서 일별 과표기준가를 조회할 수 있습니다. 산정 주체는 운용사이므로 공식 공시를 기준으로 확인하는 것이 안전합니다.',
+    },
+    {
+      question: '커버드콜 ETF도 분배금 세금이 0원이 될 수 있나요?',
+      answer:
+        '기초자산 가격 하락으로 과표기준가가 오르지 않으면 커버드콜 ETF도 같은 원리로 분배금 세금이 0원이 될 수 있습니다. 다만 옵션 프리미엄 등 상품 구조에 따라 계산이 달라질 수 있어 공시된 과표기준가로 개별 확인이 필요합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  etfDistributionTaxBaseZero,
   usTreasury3xLeverageEtf,
   inverseEtfCrashSafety,
   irpSeverancePayTaxDeferral,
@@ -22071,6 +22177,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-04 · 지식iN 질문 수요 기반 (국내 상장 해외 ETF 분배금의 과표기준가 0원 비과세 조건)
+  'etf-distribution-tax-base-zero': '2026-09-04',
   // 2026-09-03 · 지식iN 질문 수요 기반 (미국 단기채 3배 레버리지 ETF 존재 여부와 국내 채권 ETF 배율 제한)
   'us-treasury-3x-leverage-etf': '2026-09-03',
   // 2026-09-02 · 지식iN 질문 수요 기반 (인버스 ETF 폭락장 안전성과 규제상 위험 등급)
@@ -22397,7 +22505,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero'],
   },
   {
     title: '배당·인컴',
