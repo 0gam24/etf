@@ -21923,7 +21923,119 @@ const etfDistributionTaxBaseZero: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-05 · 미국 상장 ETF NAV·괴리율 확인 경로 (국내 ETF와 공시 주체가 다름) */
+const usEtfNavDiscountCheck: GuideDef = {
+  slug: 'us-etf-nav-discount-check',
+  title: '미국 ETF NAV·괴리율은 어디서 확인하나',
+  tagline: '국내 상장 ETF와 확인 경로가 다르다',
+  description:
+    '미국에 상장된 ETF는 국내 ETF와 확인 경로가 다릅니다. 공식 NAV는 운용사가 SEC 규정에 따라 전일 기준으로 웹사이트에 게시하고, 장중 추정치인 IOPV는 거래소가 15초 간격으로 내보냅니다. 두 지표를 어디서 보는지 정리했습니다.',
+  keywords: ['미국 ETF NAV', '미국 ETF 괴리율', 'IOPV 확인', 'ETF 프리미엄 할인율', '해외 ETF 시세 확인', 'SEC ETF 공시 규정'],
+  section: 'ETF 괴리율 가이드',
+  lastReviewed: '2026-09-05',
+  answer:
+    '미국 상장 ETF는 한국거래소가 아니라 미국 운용사와 거래소가 NAV·괴리율을 공시합니다. 공식 NAV는 운용사가 전일 종가 기준으로 웹사이트에 매일 올리고, 장중 추정치는 거래소가 15초 간격으로 내보내는 IOPV로 확인할 수 있습니다.',
+  keyPoints: [
+    '국내 ETF와 달리 미국 ETF의 공식 NAV·괴리율은 한국거래소가 아니라 미국 운용사가 SEC 규정(Rule 6c-11)에 따라 공시하므로, KRX 정보데이터시스템에서는 조회할 수 없습니다.',
+    '실시간에 가까운 값이 필요하면 원래 티커에 .IV를 붙인 코드로 조회하는 IOPV를 보되, 15초 간격 추정치라 실제 체결가와 다를 수 있다는 점을 감안해야 합니다.',
+    '프리미엄이나 할인율이 2%를 넘는 상태가 7거래일 연속 이어지면 SEC 규정상 운용사가 원인을 설명해야 하므로, 평소보다 괴리가 크게 벌어졌을 땐 운용사 페이지에 별도 공지가 있는지부터 확인하면 됩니다.',
+    '국내 증권사 해외주식 화면이 NAV·괴리율을 보여주지 않더라도 데이터가 없는 것은 아니며, 운용사 공식 페이지나 금융정보업체에서 따로 찾아야 하는 경우가 많습니다.',
+  ],
+  sources: [
+    { label: '미국 증권거래위원회(SEC) ETF 규정 Rule 6c-11', url: 'https://www.sec.gov' },
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '미국 ETF 구매 시 NAV나 괴리율을 어디서 확인하는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=363176336&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: '국내 상장 ETF vs 미국 상장 ETF, NAV·괴리율 확인 경로 비교',
+    columns: ['구분', '국내 상장 ETF', '미국 상장 ETF', '확인할 점'],
+    rows: [
+      ['공시 주체', '한국거래소(KRX)', '운용사(SEC Rule 6c-11)', '어느 기관이 공식 수치를 내는지 먼저 확인'],
+      ['공식 NAV 산출', '장 마감 후 하루 1회', '전일 종가 기준 하루 1회, 운용사 웹사이트 게시', '둘 다 실시간 확정치는 아님'],
+      ['실시간 지표', '증권사 앱 iNAV', '거래소 IOPV(티커+.IV 코드)', '실시간 값은 추정치임을 유의'],
+      ['괴리율 특별 공시', '별도 트리거 규정 없음', '2% 초과가 7거래일 지속되면 원인 설명 게시', '큰 괴리가 계속되면 설명이 붙는지 확인'],
+      ['주 확인 경로', 'KRX 정보데이터시스템·증권사 앱', '운용사 홈페이지·금융정보업체', '두 경로를 함께 확인하는 습관'],
+    ],
+  },
+  sections: [
+    {
+      heading: '국내 ETF와 확인 경로가 다른 이유',
+      paragraphs: [
+        '미국 상장 ETF는 국내 상장 ETF와 관리·감독 주체 자체가 다릅니다. 국내 ETF는 한국거래소(KRX)가 상장과 공시를 관리하지만, 미국 상장 ETF는 미국 증권거래위원회(SEC)의 규정을 따르고 뉴욕증권거래소 같은 미국 거래소가 시세 데이터를 관리합니다.',
+        '그래서 국내 투자자에게 익숙한 "KRX 정보데이터시스템에서 괴리율 확인" 방식이 미국 ETF에는 그대로 적용되지 않습니다. NAV와 괴리율을 보려면 공시 주체가 다르다는 점부터 알아야 경로를 제대로 찾을 수 있습니다.',
+      ],
+    },
+    {
+      heading: '전일 기준 NAV는 운용사 홈페이지에 있다',
+      paragraphs: [
+        '미국 ETF의 공식 NAV는 운용사가 공시합니다. SEC의 ETF 규정(Rule 6c-11)은 운용사가 매 영업일 종가 기준 NAV, 시장가, 괴리율(프리미엄·할인율)을 표와 그래프 형태로 자사 웹사이트에 게시하도록 정하고 있습니다.',
+        '티커를 알고 있다면 해당 ETF를 운용하는 자산운용사 사이트에서 전일 기준 수치를 직접 확인할 수 있습니다. 증권사 앱보다 운용사 공식 페이지가 더 정확한 1차 자료인 경우가 많습니다.',
+      ],
+    },
+    {
+      heading: '장중 추정치는 거래소가 15초마다 낸다',
+      paragraphs: [
+        '실시간에 가까운 값이 필요하다면 IOPV(Indicative Optimized Portfolio Value)를 봅니다. ETF가 상장된 거래소가 장중 15초 간격으로 추정 가치를 계산해 시장 데이터로 내보내는 지표입니다.',
+        'IOPV는 보통 원래 티커에 .IV를 붙인 별도 코드로 조회하며, 금융정보업체 화면에서 확인할 수 있습니다. 다만 어디까지나 추정치라 실제 종가 기준 NAV와 정확히 일치하지는 않습니다.',
+      ],
+    },
+    {
+      heading: '괴리율이 2%를 7거래일 넘게 넘으면 별도로 공시된다',
+      paragraphs: [
+        'SEC 규정은 괴리율이 크게 벌어진 경우를 따로 다룹니다. 프리미엄이나 할인율이 2%를 넘는 상태가 7거래일 연속 이어지면, 운용사는 그 사실과 원인으로 추정되는 요인을 웹사이트에 추가로 설명해야 합니다.',
+        '이 기준을 알아두면 평소 지켜보던 ETF의 괴리율이 유독 크게 벌어졌을 때, 운용사 페이지에 별도 설명이 붙어 있는지부터 찾아보는 식으로 판단할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '한국 투자자는 실제로 어디서 확인하나',
+      paragraphs: [
+        '국내 증권사의 해외주식 화면은 대체로 실시간 시장가 중심으로 구성돼 있어, NAV나 괴리율까지 함께 보여주는지는 증권사와 상품마다 다릅니다. 화면에 해당 정보가 안 보인다고 데이터 자체가 없는 것은 아닙니다.',
+        '가장 확실한 방법은 티커를 검색해 운용사 공식 페이지에서 전일 NAV·괴리율을 확인하고, 장중 매매 시점에는 금융정보업체에서 IOPV(.IV 코드)를 함께 보는 것입니다. 두 경로를 같이 확인하는 습관이 판단의 정확도를 높여줍니다.',
+      ],
+    },
+    {
+      heading: '괴리율 수치만 보고 판단하면 안 되는 이유',
+      paragraphs: [
+        '공식 NAV는 전일 종가 기준이라 실시간 판단 근거로 쓰기엔 한계가 있습니다. 미국 시장이 열려 있는 동안에도 국내에서 조회하는 수치는 하루 전 값일 수 있다는 점을 감안해야 합니다.',
+        'IOPV 역시 추정치라 실제 체결가와 차이가 날 수 있고, 보유 자산이 미국 외 시장(유럽·아시아 등)에 걸쳐 있는 ETF는 시차 때문에 괴리가 더 크게 나타나기도 합니다. 괴리율이 크다고 곧바로 매수·매도 신호로 단정하기보다, 왜 벌어졌는지 원인을 먼저 살펴보는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '다음에 확인할 것',
+      paragraphs: [
+        '관심 있는 ETF가 있다면 운용사 공식 페이지를 즐겨찾기 해두고, 매매 전에는 전일 NAV·괴리율과 장중 IOPV를 함께 살펴보는 순서를 습관으로 만드는 편이 낫습니다.',
+        '괴리율이 유독 크게 벌어진 상태가 이어진다면 운용사 페이지에 원인 설명이 올라와 있는지부터 확인하고, 그래도 판단이 서지 않으면 매매를 서두르지 않는 편이 낫습니다. 이 글은 정보 제공 목적이며 특정 종목 매수를 권하지 않고, 투자 판단과 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '미국 ETF도 국내처럼 하루에 한 번만 NAV가 나오나요?',
+      answer:
+        '공식 NAV는 미국 기준 전일 종가로 하루 한 번 운용사 웹사이트에 게시됩니다. 장중에는 거래소가 15초 간격으로 내보내는 IOPV로 대략적인 가치를 함께 볼 수 있습니다.',
+    },
+    {
+      question: 'IOPV와 실제 NAV는 늘 같은가요?',
+      answer:
+        'IOPV는 실시간으로 추정한 값이라 종가 기준 NAV와 정확히 일치하지 않을 수 있습니다. 보유 자산이 해외 시장 것이면 시차 때문에 차이가 더 커지기도 합니다.',
+    },
+    {
+      question: '국내 증권사 앱에서 미국 ETF 괴리율을 바로 볼 수 있나요?',
+      answer:
+        '증권사와 상품마다 제공 범위가 달라, 실시간 시장가만 보여주고 NAV·괴리율은 따로 확인해야 하는 경우가 많습니다. 화면에 없다면 운용사 공식 페이지에서 직접 확인하는 편이 정확합니다.',
+    },
+    {
+      question: '괴리율이 크게 벌어지면 운용사가 알려주나요?',
+      answer:
+        '프리미엄이나 할인율이 2%를 넘는 상태가 7거래일 연속 이어지면 SEC 규정에 따라 운용사가 그 사실과 추정 원인을 웹사이트에 게시해야 합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  usEtfNavDiscountCheck,
   etfDistributionTaxBaseZero,
   usTreasury3xLeverageEtf,
   inverseEtfCrashSafety,
@@ -22177,6 +22289,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-05 · 지식iN 질문 수요 기반 (미국 상장 ETF NAV·괴리율을 어디서 확인하는지, 롱테일 확장: 국내 ETF와 공시 주체가 다름)
+  'us-etf-nav-discount-check': '2026-09-05',
   // 2026-09-04 · 지식iN 질문 수요 기반 (국내 상장 해외 ETF 분배금의 과표기준가 0원 비과세 조건)
   'etf-distribution-tax-base-zero': '2026-09-04',
   // 2026-09-03 · 지식iN 질문 수요 기반 (미국 단기채 3배 레버리지 ETF 존재 여부와 국내 채권 ETF 배율 제한)
@@ -22500,7 +22614,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'us-etf-nav-discount-check', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
   },
   {
     title: '세금·절세 계좌',
