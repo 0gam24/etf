@@ -22034,7 +22034,98 @@ const usEtfNavDiscountCheck: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-06 · ETF 총보수와 괴리율의 관계(총보수가 높다고 괴리율도 커지지 않는 이유) */
+const etfFeeDiscountRelation: GuideDef = {
+  slug: 'etf-fee-discount-relation',
+  title: 'ETF 총보수가 괴리율에 영향을 줄까',
+  tagline: '두 숫자는 애초에 다른 곳에서 나온다',
+  description:
+    'ETF 총보수가 높으면 괴리율도 커질 거라 생각하기 쉽지만, 두 숫자는 만들어지는 경로가 다릅니다. 총보수가 순자산가치(NAV)에 반영되는 방식과, 괴리율을 실제로 움직이는 거래량·유동성공급자 요인을 나눠 정리했습니다.',
+  keywords: ['ETF 총보수 괴리율', 'ETF 괴리율 원인', 'ETF 총보수', 'ETF NAV 계산', '유동성공급자 LP', 'ETF 고르는 법'],
+  section: 'ETF 괴리율 가이드',
+  lastReviewed: '2026-09-06',
+  answer:
+    'ETF 총보수는 매일 NAV 계산에 조금씩 반영돼 장기 수익률을 깎는 비용이고, 괴리율은 시장가격과 NAV가 그날 벌어지는 차이라 만들어지는 경로가 다릅니다. 총보수가 낮다고 괴리율까지 작다고 볼 근거는 없습니다.',
+  keyPoints: [
+    '총보수는 순자산가치(NAV) 산정 과정에서 매일 조금씩 차감되는 비용이라 장기 누적 수익률에는 영향을 주지만, 그날그날의 시장가격과 NAV 차이인 괴리율과는 반영 경로가 다릅니다.',
+    '괴리율을 실질적으로 좌우하는 것은 거래량과 유동성공급자(LP)가 iNAV 근처에서 호가를 대는지 여부이며, 총보수가 낮은 ETF라도 거래가 얇으면 괴리율이 커질 수 있습니다.',
+    '해외 자산을 담거나 스와프 계약으로 지수를 복제하는 합성 ETF는 총보수 외에 환율 변동·스와프 비용이 얹혀 간접적으로 괴리 요인을 늘릴 수 있습니다.',
+    'ETF를 고를 때는 총보수(장기 비용)와 괴리율(당일 매매 비용)을 각각 따로 확인해야 하며, 하나가 낮다고 다른 하나도 낮다고 단정할 근거는 없습니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ETF 운용 보수가 괴리율에도 영향을 끼치는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=490272492&answerNo=7' },
+    { summary: '종가 기준 ETF 괴리율이 유독 커 보이는 이유(유동성공급자 호가 제공)를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=458688538&answerNo=2' },
+    { summary: '해외 자산 ETF의 환율 변동이 NAV·괴리율에 미치는 영향을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=401&docId=485454619&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: '총보수 vs 괴리율, 무엇이 다른가',
+    columns: ['구분', '총보수', '괴리율', '확인할 점'],
+    rows: [
+      ['정의', '펀드 운용에 드는 연간 비용 비율', '시장가격이 NAV보다 높거나 낮은 정도', '두 숫자는 애초에 다른 것을 잰다'],
+      ['어디서 발생', '운용사가 보수를 매일 NAV에서 차감', '거래소에서 매수·매도 호가가 만나는 가격', '전자는 펀드 내부, 후자는 시장 거래'],
+      ['영향 기간', '보유 기간 내내 누적되는 장기 비용', '그날그날 벌어졌다 좁혀지는 단기 차이', '총보수는 장기, 괴리율은 단기 관점'],
+      ['확인 방법', '운용사 상품설명서·투자설명서', '증권사 앱 괴리율 화면·KRX 정보데이터시스템', '두 곳을 각각 따로 확인해야 함'],
+      ['낮다고 보장되는 것', '장기 복리 비용 부담이 작다는 것', '실제 거래가 활발하고 LP 호가가 촘촘하다는 것', '하나가 낮다고 다른 하나도 낮다고 볼 근거는 없음'],
+    ],
+  },
+  sections: [
+    {
+      heading: '총보수와 괴리율은 나오는 곳이 다르다',
+      paragraphs: [
+        '총보수와 괴리율은 둘 다 ETF를 고를 때 확인하는 숫자이지만, 계산되는 장소와 시점이 전혀 다릅니다. 총보수는 펀드 내부에서 운용사가 매일 자산에서 떼어가는 비용이고, 괴리율은 거래소에서 투자자들이 사고파는 가격과 그 시점의 순자산가치(NAV)를 비교한 결과입니다.',
+        '그래서 총보수가 낮은 ETF라고 해서 시장가격이 항상 NAV에 딱 붙어 거래된다는 보장은 없고, 총보수가 상대적으로 높은 ETF도 거래가 활발하면 괴리율이 작게 유지될 수 있습니다. 둘을 하나의 원인으로 묶어 생각하면 실제 매매에서 오해가 생기기 쉽습니다.',
+      ],
+    },
+    {
+      heading: '총보수가 NAV에 반영되는 방식',
+      paragraphs: [
+        '총보수는 운용사가 펀드 자산에서 매일 조금씩 떼어가는 방식으로 반영됩니다. NAV는 ETF가 보유한 자산의 총가치에서 이런 비용을 포함한 부채를 뺀 뒤 발행 좌수로 나눈 값이라, 총보수가 쌓일수록 다른 조건이 같다면 NAV는 그만큼씩 낮아지는 방향으로 움직입니다.',
+        '이 반영은 하루 단위로 아주 작게 이뤄지기 때문에 특정 날짜에 갑자기 괴리율을 벌어지게 만드는 힘으로 작동하지 않습니다. 총보수의 영향은 하루하루 눈에 띄지 않다가 보유 기간이 길어질수록 누적 수익률 차이로 서서히 드러나는 비용입니다.',
+      ],
+    },
+    {
+      heading: '괴리율을 실제로 움직이는 것은 거래량과 유동성공급자다',
+      paragraphs: [
+        '괴리율은 시장가격에서 NAV를 뺀 값을 NAV로 나눈 비율로, 그날그날의 매수·매도 힘의 균형에서 만들어집니다. 이 균형을 좁혀주는 역할은 유동성공급자(LP)가 맡아, 시장가격이 실시간 추정치인 iNAV에서 크게 벗어나지 않도록 양방향 호가를 대는 방식으로 조절합니다.',
+        '그래서 괴리율이 벌어지는 주된 원인은 총보수 수준이 아니라 그 ETF의 거래량이 얼마나 두텁고, 유동성공급자가 얼마나 촘촘하게 호가를 대는지에 있습니다. 거래량이 적은 ETF일수록, 유동성공급자의 호가 의무가 느슨해지는 시간대일수록 괴리율이 커질 여지가 큽니다.',
+      ],
+    },
+    {
+      heading: '해외 자산·합성 ETF는 총보수 밖의 비용이 낀다',
+      paragraphs: [
+        '다만 총보수와 괴리율이 완전히 무관하다고 단정하기는 어려운 예외가 있습니다. 해외 주식이나 채권을 담은 ETF는 해당 시장이 열려 있지 않은 시간에 국내에서 거래되기 때문에, 고시되는 NAV가 실시간 가치를 그대로 반영하지 못하고 환율 변동까지 겹쳐 괴리가 커 보일 수 있습니다.',
+        '지수를 직접 담지 않고 스와프 계약으로 수익률을 받아오는 합성 ETF는 총보수 외에 거래상대방과 맺은 스와프 비용이 별도로 들어갑니다. 이런 비용은 총보수 항목에 온전히 다 드러나지 않으면서도 NAV와 시장가격의 관계에 간접적으로 영향을 줄 수 있어, 총보수 숫자만으로 괴리 위험까지 가늠하기는 어렵습니다.',
+      ],
+    },
+    {
+      heading: '총보수 낮은 ETF가 괴리율도 낮다고 볼 수 있을까',
+      paragraphs: [
+        '그렇게 볼 근거는 없습니다. 총보수는 운용사가 정하는 고정 비율이고 괴리율은 그날의 수급이 만드는 결과라, 총보수가 낮다는 사실만으로 괴리율까지 안심할 수 있는 것은 아닙니다.',
+        '실제로는 총보수가 낮아도 순자산 규모가 작고 거래량이 얇은 ETF에서 괴리율이 더 크게 나타나는 경우가 흔합니다. 반대로 총보수가 다소 높아도 거래량이 많고 유동성공급자가 활발히 호가를 대는 대형 ETF는 괴리율이 작게 유지되는 편입니다.',
+      ],
+    },
+    {
+      heading: 'ETF를 고를 때 두 숫자를 함께 보는 법',
+      paragraphs: [
+        'ETF를 고를 때는 총보수와 괴리율을 서로 다른 질문에 대한 답으로 따로 확인하는 편이 정확합니다. 총보수는 상품설명서나 투자설명서에서 확인해 오래 들고 갈수록 비용이 얼마나 쌓이는지 가늠하는 용도로, 괴리율은 매매 직전 증권사 앱이나 한국거래소 정보데이터시스템에서 확인해 지금 사도 되는 가격인지 판단하는 용도로 씁니다.',
+        '두 숫자 중 하나만 보고 상품을 고르면 장기 비용과 당장의 매매 비용 중 한쪽을 놓치게 됩니다. 특히 순자산 규모가 작거나 상장한 지 얼마 안 된 ETF는 총보수가 낮아 보여도 거래량 자료를 함께 확인하는 편이 안전합니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '총보수가 0에 가까운 ETF는 괴리율도 항상 작나요?', answer: '아닙니다. 총보수와 괴리율은 만들어지는 경로가 달라, 총보수가 아주 낮아도 거래량이 적으면 괴리율은 얼마든지 커질 수 있습니다.' },
+    { question: '총보수가 인상되면 그 즉시 괴리율도 벌어지나요?', answer: '아닙니다. 총보수 변경은 공시를 거쳐 NAV 계산식에 반영될 뿐이라, 그 자체가 시장의 매수·매도 힘의 균형을 바꾸는 요인은 아니어서 괴리율과 직접 연결되지 않습니다.' },
+    { question: '상장한 지 얼마 안 된 ETF는 괴리율을 더 조심해야 하나요?', answer: '네. 순자산이 아직 충분히 쌓이지 않아 거래량이 얇은 경우가 많아, 총보수 수준과 무관하게 괴리율이 크게 벌어질 수 있어 초기에는 지정가 주문으로 더 신경 쓰는 편이 안전합니다.' },
+    { question: '괴리율은 어디서 확인할 수 있나요?', answer: '한국거래소 정보데이터시스템이나 각 증권사 앱의 ETF 상세 화면에서 매일 발표되는 값을 확인할 수 있습니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  etfFeeDiscountRelation,
   usEtfNavDiscountCheck,
   etfDistributionTaxBaseZero,
   usTreasury3xLeverageEtf,
@@ -22289,6 +22380,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-06 · 지식iN 질문 수요 기반 (ETF 운용 보수가 괴리율에도 영향을 끼치는지, 총보수와 괴리율 관계)
+  'etf-fee-discount-relation': '2026-09-06',
   // 2026-09-05 · 지식iN 질문 수요 기반 (미국 상장 ETF NAV·괴리율을 어디서 확인하는지, 롱테일 확장: 국내 ETF와 공시 주체가 다름)
   'us-etf-nav-discount-check': '2026-09-05',
   // 2026-09-04 · 지식iN 질문 수요 기반 (국내 상장 해외 ETF 분배금의 과표기준가 0원 비과세 조건)
@@ -22614,7 +22707,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'us-etf-nav-discount-check', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'us-etf-nav-discount-check', 'etf-fee-discount-relation', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
   },
   {
     title: '세금·절세 계좌',
