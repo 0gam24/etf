@@ -22124,7 +22124,114 @@ const etfFeeDiscountRelation: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-07 · 지식iN 질문 수요 기반 (삼성전자·SK하이닉스 1배 인버스 ETF 존재 여부) */
+const singleStockInverseEtf2xOnly: GuideDef = {
+  slug: 'single-stock-inverse-etf-2x-only',
+  title: '삼성전자·SK하이닉스 인버스 ETF는 왜 다 2배일까',
+  tagline: '규제가 연 건 ±2배까지, 실제로 나온 것도 딱 그만큼입니다',
+  description:
+    '2026년 4월 자본시장법 시행령 개정으로 삼성전자·SK하이닉스 단일종목 ETF가 상장됐지만, 실제 나온 상품은 레버리지2X와 인버스2X뿐입니다. 1배 인버스가 없는 이유와 개인투자자 손실 이후 강화된 예탁금·상장 규제를 정리했습니다.',
+  keywords: ['삼성전자 인버스 ETF', '단일종목 인버스 ETF', 'SK하이닉스 인버스 ETF', '인버스2X ETF', '단일종목 레버리지 ETF 규제', '기본예탁금 3000만원'],
+  section: 'ETF 레버리지 가이드',
+  lastReviewed: '2026-09-07',
+  answer:
+    '삼성전자·SK하이닉스 단일종목 ETF는 2026년 5월 상장 이후 정방향 2배(레버리지2X)와 역방향 2배(인버스2X)만 나왔고, 1배 인버스 상품은 상장된 적이 없습니다. 반대 방향으로 낮은 배율을 원한다면 코스피200 인버스처럼 지수 전체를 담는 일반 ETF가 대안입니다.',
+  keyPoints: [
+    '2026년 4월 28일 시행된 자본시장법 시행령 개정으로 시가총액 상위 10%·거래대금 상위 5%에 드는 우량주에 한해 ±2배 이내 단일종목 ETF가 허용됐고, 지금은 삼성전자와 SK하이닉스만 이 조건을 충족합니다.',
+    '5월 27일 상장된 18종(ETF 16종, ETN 2종) 상품은 모두 레버리지2X 아니면 인버스2X이며, 배율을 낮춘 1배 인버스 단일종목 상품은 상장된 적이 없습니다.',
+    '상장 이후 개인투자자 손실이 7월 말 기준 약 10조원으로 불어났다는 보도가 나오자 금융당국은 7월 16일 신규 상장을 잠정 중단하고 광고를 금지했습니다.',
+    '7월 31일부터는 국내외 상장 단일종목 레버리지·인버스 상품 모두 기본예탁금이 현금 3000만원으로 오르고, 기존 투자자가 추가로 매수할 때도 같은 기준이 적용됩니다.',
+  ],
+  sources: [
+    { label: '금융위원회 · 국내외 ETF 비대칭 규제 해소 자본시장법 시행령 개정', url: 'https://www.fsc.go.kr/po010101/86751' },
+    { label: '금융위원회 · 단일종목 레버리지 상품 보완방안', url: 'https://www.fsc.go.kr/no010101/87353' },
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '삼성전자, SK하이닉스 1배 인버스 ETF가 있는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=494578576&answerNo=3' },
+  ],
+  comparisonTable: {
+    caption: '삼성전자·SK하이닉스 단일종목 상품, 배율별 비교',
+    columns: ['구분', '레버리지2X', '인버스2X', '확인할 점'],
+    rows: [
+      ['상장일', '2026-05-27', '2026-05-27', '두 배율 모두 같은 날 함께 상장됨'],
+      ['추종 배율', '정방향 +2배', '역방향 -2배', '±1배 단일종목 상품은 상장된 적 없음'],
+      ['기본예탁금(7월 31일~)', '현금 3000만원 이상', '현금 3000만원 이상', '국내외 상장 상품 모두 동일 적용'],
+      ['사전교육', '심화교육 1시간 추가', '심화교육 1시간 추가', '일반 ETF 매매 교육과 별도로 필요'],
+      ['1배로 반대 방향 베팅', '해당 상품 없음', '해당 상품 없음', '코스피200 인버스 등 지수 전체 대상 ETF가 대안'],
+    ],
+  },
+  sections: [
+    {
+      heading: '삼성전자·SK하이닉스 단일종목 ETF를 연 자본시장법 시행령 개정',
+      paragraphs: [
+        '예전에는 지수 구성종목이 10개 이상이어야 하고 한 종목 비중이 30%를 넘지 못하게 하는 분산투자 요건 때문에, 한 기업만 담는 ETF는 아예 상장될 수 없었습니다. 이 요건이 자본시장법 시행령 개정으로 2026년 4월 28일 풀리면서 단일종목 ETF의 상장 근거가 생겼습니다.',
+        '다만 아무 종목이나 되는 것은 아니고, 시가총액 상위 10%·거래대금 상위 5% 안에 드는 우량주로 대상이 제한됩니다. 2026년 9월 현재 이 조건을 충족하는 종목은 삼성전자와 SK하이닉스뿐이라, 단일종목 ETF도 이 두 종목에만 있습니다.',
+      ],
+    },
+    {
+      heading: '2026년 5월 상장된 18종은 레버리지2X와 인버스2X뿐',
+      paragraphs: [
+        '2026년 5월 27일 삼성전자·SK하이닉스를 기초로 한 단일종목 상품 18종(ETF 16종, ETN 2종)이 한꺼번에 상장됐습니다. 신탁원본액 기준 상장 규모는 약 4조 3000억원이었습니다.',
+        '구성은 정방향으로 2배를 추종하는 레버리지2X와 역방향으로 2배를 추종하는 인버스2X 두 갈래뿐입니다. 미래에셋 TIGER, 한국투자 ACE, 삼성 KODEX, 키움 KIWOOM 등 여러 운용사가 같은 두 배율의 상품을 나란히 내놨습니다.',
+      ],
+    },
+    {
+      heading: '왜 1배 인버스는 없는가',
+      paragraphs: [
+        '시행령이 허용한 범위 자체가 ±2배 이내였고, 실제로 상장까지 이어진 것도 레버리지2X와 인버스2X 두 가지뿐이었습니다. 그 결과 단일종목으로 순수하게 반대 방향 1배만 따라가는 상품은 지금까지 상장된 적이 없습니다.',
+        '1배 인버스가 법으로 금지된 것은 아니지만, 지금까지 나온 상품 라인업만 놓고 보면 삼성전자·SK하이닉스에 반대 방향으로 베팅하려는 투자자도 결국 2배 배율의 인버스2X를 골라야 하는 상황입니다. 배율이 낮은 상품을 원한다면 코스피200 지수 전체를 대상으로 하는 일반 인버스 ETF 쪽이 대안이 될 수 있습니다.',
+      ],
+    },
+    {
+      heading: '상장 이후 개인투자자 손실이 커졌다',
+      paragraphs: [
+        '상장 두 달여 만인 7월 말 기준으로 개인투자자의 손실이 실현손실과 평가손실을 합쳐 약 10조원에 이르렀다고 여러 금융투자업계 보도가 전했습니다. 레버리지·인버스 구조 특성상 코스피가 급락한 국면에서 손실이 짧은 기간에 크게 불어난 결과로 풀이됩니다.',
+        '잦은 매매로 거래대금이 늘면서 시장 변동성에도 영향을 줬다는 지적이 나왔고, 이는 단일종목 레버리지·인버스 상품이 일반 ETF보다 훨씬 큰 변동성을 가진다는 점을 보여준 사례로 거론됩니다.',
+      ],
+    },
+    {
+      heading: '금융당국이 예탁금과 신규 상장을 조인 이유',
+      paragraphs: [
+        '금융위원회는 7월 16일 시장 안정화까지 단일종목 상품의 신규 상장을 잠정 중단하고 광고를 금지한다고 발표했습니다. 이미 상장된 18종은 그대로 거래되지만, 추가 종목이나 추가 배율 상품은 당분간 나오지 않습니다.',
+        '기본예탁금도 강화됐습니다. 원래 8월 초 단계적으로 올릴 계획이었으나 앞당겨, 2026년 7월 31일부터 국내외 상장 단일종목 레버리지·인버스 상품 모두 현금 3000만원 이상을 예탁해야 매수할 수 있습니다. 주식·ETF·채권 같은 대용증권은 예탁금으로 인정되지 않고, 기존 투자자가 추가로 매수할 때도 같은 기준이 적용됩니다.',
+        '최소 매매단위를 1주에서 20주로 늘리는 방안도 2026년 11월 시행을 목표로 준비되고 있어, 앞으로 상품 가격 단위 자체가 바뀔 수 있습니다.',
+      ],
+    },
+    {
+      heading: '지금 투자하려면 확인해야 할 것들',
+      paragraphs: [
+        '단일종목 레버리지·인버스 상품은 일반 사전교육에 심화교육 1시간이 추가로 필요합니다. 왜 하루 단위로 배율이 재설정되는지, 등락이 반복되면 왜 가치가 깎이는지를 다루는 내용이라 형식적으로 통과하지 말고 실제로 이해하고 넘어가는 편이 낫습니다.',
+        '매수 전에는 계좌에 현금 3000만원 이상이 있는지부터 확인해야 하고, 보유 중인 다른 주식이나 ETF를 판다고 예탁금 요건을 채울 수 있는 것은 아니라는 점도 챙겨야 합니다. 신규 상장 재개 여부나 매매단위 변경 시점은 금융위원회 공지로 다시 확인하는 것이 정확합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '삼성전자 1배 인버스 ETF는 앞으로 나올 수 있나요?',
+      answer:
+        '법으로 금지된 배율은 아니지만, 2026년 7월 16일부터 단일종목 상품의 신규 상장 자체가 잠정 중단된 상태라 당장 새 배율 상품이 나오기는 어렵습니다. 재개 여부는 금융위원회 발표로 확인해야 합니다.',
+    },
+    {
+      question: 'ETN으로 나온 인버스 상품도 있나요?',
+      answer:
+        '2026년 5월 상장된 ETN 2종은 모두 레버리지 상품이고, 인버스 ETN은 상장되지 않았습니다. 인버스는 ETF 쪽에서만 나왔습니다.',
+    },
+    {
+      question: '기본예탁금 3000만원은 이미 사놓은 사람에게도 적용되나요?',
+      answer:
+        '새로 매수할 때 적용되는 기준이라 기존 보유분을 파는 데는 영향이 없습니다. 다만 추가로 더 사려면 같은 3000만원 기준을 채워야 합니다.',
+    },
+    {
+      question: '일반 코스피200 인버스 ETF에도 같은 예탁금 규제가 적용되나요?',
+      answer:
+        '아닙니다. 이번 예탁금 강화는 삼성전자·SK하이닉스 같은 단일종목 레버리지·인버스 상품에만 적용되고, 지수 전체를 담는 일반 인버스·레버리지 ETF는 대상이 아닙니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  singleStockInverseEtf2xOnly,
   etfFeeDiscountRelation,
   usEtfNavDiscountCheck,
   etfDistributionTaxBaseZero,
@@ -22380,6 +22487,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-07 · 지식iN 질문 수요 기반 (삼성전자·SK하이닉스 1배 인버스 ETF 존재 여부, 실제로 상장된 건 인버스2X뿐)
+  'single-stock-inverse-etf-2x-only': '2026-09-07',
   // 2026-09-06 · 지식iN 질문 수요 기반 (ETF 운용 보수가 괴리율에도 영향을 끼치는지, 총보수와 괴리율 관계)
   'etf-fee-discount-relation': '2026-09-06',
   // 2026-09-05 · 지식iN 질문 수요 기반 (미국 상장 ETF NAV·괴리율을 어디서 확인하는지, 롱테일 확장: 국내 ETF와 공시 주체가 다름)
@@ -22732,7 +22841,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '전략·자산배분',
     description: '적립식·리밸런싱·팩터·자산배분(TRF)·채권·미국국채·회사채·채권혼합·파킹·금·은·구리·원유·농산물·원자재·레버리지 — 포트폴리오를 굴리고 위험을 관리하는 전략.',
-    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual', 'natural-gas-etf', 'carbon-credit-etf', 'platinum-etf', 'high-yield-bond-etf', 'tips-etf', 'inverse-etf-crash-safety', 'us-treasury-3x-leverage-etf'],
+    slugs: ['etf-dca', 'etf-rebalancing', 'factor-etf', 'trf-etf', 'bond-etf', 'bond-etf-duration', 'us-treasury-etf', 'corporate-bond-etf', 'bond-mixed-etf', 'cd-rate-etf', 'gold-etf', 'gold-investment-methods', 'silver-etf', 'copper-etf', 'oil-etf', 'agriculture-etf', 'commodity-etf', 'leveraged-inverse-etf', 'single-stock-leverage-etf', 'leverage-etf-requirements', 'target-maturity-bond-etf', 'futures-etf-roll-cost', 'dca-order-type', 'sector-concentration-rebalancing', 'parking-etf', 'lump-sum-vs-dca', 'etf-portfolio-overlap', 'leverage-etf-long-term-decay', 'us-short-term-bond-etf', 'sgov-dollar-parking-etf', 'cd-rate-etf-vs-parking', 'cd-rate-etf-interest-accrual', 'natural-gas-etf', 'carbon-credit-etf', 'platinum-etf', 'high-yield-bond-etf', 'tips-etf', 'inverse-etf-crash-safety', 'us-treasury-3x-leverage-etf', 'single-stock-inverse-etf-2x-only'],
   },
 ];
 
