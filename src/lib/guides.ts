@@ -22230,7 +22230,120 @@ const singleStockInverseEtf2xOnly: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-08 · 국내 상장 리츠 ETF 종류, 국내형·해외형 매매차익 과세 차이 */
+const reitEtfTypesTax: GuideDef = {
+  slug: 'reit-etf-types-tax',
+  title: '리츠 ETF 종류, 국내형과 해외형은 세금부터 다르다',
+  tagline: '국내 리츠를 담았는지 해외 리츠를 담았는지에 따라 매매차익 과세 여부가 갈립니다',
+  description:
+    '국내 증시에는 국내 리츠를 담은 ETF와 해외 리츠를 담은 ETF가 함께 상장돼 있습니다. 두 유형은 매매차익 과세 여부부터 갈리므로, 상장된 리츠 ETF 목록과 국내주식형 여부 확인 방법, 분배금 배당소득세 적용 범위를 정리했습니다.',
+  keywords: ['리츠 ETF 종류', '국내 리츠 ETF', '해외 리츠 ETF 세금', '국내주식형 ETF 비과세', 'TIGER 리츠부동산인프라', 'KODEX 한국부동산리츠인프라'],
+  section: 'ETF 리츠 가이드',
+  lastReviewed: '2026-09-08',
+  answer:
+    '국내 증시에 상장된 리츠 ETF는 국내 리츠를 담은 것과 해외 리츠를 담은 것으로 나뉘고, 국내 상장 주식에 자산총액의 60% 이상을 투자하는 국내주식형 요건을 충족하면 매매차익이 비과세됩니다. 해외 지수를 추종하거나 합성 구조인 리츠 ETF는 매매차익도 분배금과 마찬가지로 배당소득세 15.4%가 원천징수됩니다.',
+  keyPoints: [
+    'TIGER 리츠부동산인프라·KODEX 한국부동산리츠인프라·PLUS K리츠 등은 국내 상장 리츠·인프라 자산 위주로 구성돼 국내주식형 ETF 요건을 충족하는 경우가 많습니다.',
+    'ACE 미국부동산리츠(합성 H)·KODEX 일본부동산리츠(H)·ACE 싱가포르리츠처럼 해외 지수를 추종하거나 합성 구조인 ETF는 매매차익도 배당소득세 15.4% 원천징수 대상입니다.',
+    '분배금은 국내형·해외형 구분 없이 배당소득세 15.4%가 똑같이 원천징수되며, 다른 금융소득과 합산해 연 2천만원을 넘으면 종합과세 대상이 됩니다.',
+    '채권혼합형·액티브형 리츠 ETF는 국내 주식 편입 비중이 상품마다 달라, 매매차익 비과세 여부는 투자설명서나 운용사 공시로 개별 확인해야 합니다.',
+  ],
+  sources: [
+    { label: '국가법령정보센터 · 소득세법 시행령', url: 'https://www.law.go.kr' },
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융투자협회 전자공시서비스', url: 'https://dis.kofia.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '국내 상장 리츠 ETF 종류를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=485672875&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: '국내 리츠 ETF와 해외 리츠 ETF 비교',
+    columns: ['구분', '국내 리츠 담은 ETF', '해외 리츠 담은 ETF', '확인할 점'],
+    rows: [
+      ['대표 예시', 'TIGER 리츠부동산인프라, KODEX 한국부동산리츠인프라, PLUS K리츠', 'ACE 미국부동산리츠(합성 H), KODEX 일본부동산리츠(H), ACE 싱가포르리츠', '이름의 국가명·합성(H) 표기로 1차 구분'],
+      ['편입 자산', '한국거래소 상장 리츠·인프라 증권', '미국·일본·싱가포르 등 해외 리츠', '투자설명서의 기초지수 확인'],
+      ['매매차익 과세', '국내주식 60% 이상 편입 시 비과세', '매매차익도 배당소득세 15.4% 원천징수', '운용사 공시의 국내주식형 여부'],
+      ['분배금 과세', '배당소득세 15.4% 원천징수', '배당소득세 15.4% 원천징수', '유형과 무관하게 동일'],
+      ['환율 영향', '원화 자산이라 환율 영향 없음', '(H) 표기 없으면 환율 변동 그대로 반영', '환헤지(H) 표기 여부'],
+    ],
+  },
+  sections: [
+    {
+      heading: '국내 증시 리츠 ETF, 국내형과 해외형으로 나뉜다',
+      paragraphs: [
+        '국내 거래소에는 국내 리츠를 담은 ETF와 해외 리츠를 담은 ETF가 함께 상장돼 있습니다. TIGER 리츠부동산인프라, KODEX 한국부동산리츠인프라, PLUS K리츠, ACE 리츠부동산인프라액티브, DAISHIN 오피스리츠플러스 등은 국내 상장 리츠·인프라 자산 위주로 구성됩니다.',
+        'ACE 미국부동산리츠(합성 H), TIGER 미국MSCI리츠(합성 H), KODEX 미국부동산리츠(H), KODEX 일본부동산리츠(H), ACE 싱가포르리츠, RISE 글로벌데이터센터리츠(합성)는 이름에 국가명이나 합성(H) 표기가 붙어 해외 리츠를 담았다는 신호를 줍니다. TIGER 리츠부동산인프라채권처럼 채권을 섞은 혼합형도 있습니다.',
+      ],
+    },
+    {
+      heading: '국내주식형 ETF는 매매차익이 비과세되는 이유',
+      paragraphs: [
+        '소득세법 시행령은 국내 상장 주식과 주식 관련 파생상품에 자산총액의 60% 이상을 투자하는 집합투자기구를 국내주식형으로 분류하고, 이 요건을 충족하는 상장지수집합투자기구(ETF)의 매매차익에는 세금을 매기지 않습니다.',
+        '국내 리츠는 한국거래소에 상장된 증권이라 이 요건의 투자 대상에 포함됩니다. TIGER 리츠부동산인프라처럼 국내 상장 리츠·인프라 증권에 자산총액의 60% 이상을 투자하는 구조라면 국내주식형 요건을 충족해 매매차익이 비과세됩니다.',
+      ],
+    },
+    {
+      heading: '해외 리츠를 담은 ETF는 매매차익도 세금이 붙는다',
+      paragraphs: [
+        '해외 지수를 추종하거나 합성 복제 구조를 쓰는 ETF는 국내주식형 요건을 충족하지 못해 매매차익도 배당소득으로 과세됩니다. 세율은 15.4%(지방소득세 포함)로, 증권사가 매도 시점에 원천징수합니다.',
+        '환헤지 표기가 없는 해외 리츠 ETF는 원/달러 등 환율 변동이 수익률에 그대로 반영됩니다. 이름 끝에 (H)가 붙으면 환헤지형, 없으면 환노출형입니다.',
+      ],
+    },
+    {
+      heading: '채권혼합형·액티브형은 국내주식 비중부터 확인한다',
+      paragraphs: [
+        'TIGER 리츠부동산인프라채권, TIGER 리츠부동산인프라10채권혼합액티브처럼 채권을 섞은 상품은 국내 주식 편입 비중이 60%에 못 미칠 수 있어 매매차익 비과세 여부를 이름만으로 단정하기 어렵습니다.',
+        '정확한 확인은 운용사가 공시하는 투자설명서나 월간 운용보고서, 금융투자협회 전자공시서비스에서 해당 펀드의 국내주식 편입 비중과 과세 유형을 직접 보는 방법이 가장 확실합니다.',
+      ],
+    },
+    {
+      heading: '분배금은 유형과 무관하게 배당소득세가 붙는다',
+      paragraphs: [
+        '매매차익 과세 여부와 별개로, 리츠 ETF의 분배금은 국내형이든 해외형이든 배당소득세 15.4%가 원천징수됩니다. 리츠 자체가 임대수익 대부분을 배당으로 지급하는 구조라 분배금 규모가 상대적으로 큰 편입니다.',
+        '국내주식형 ETF라도 분배금은 과세 대상이라는 점에서, 국내형이라 세금이 아예 없다고 오해하기 쉽습니다. 비과세는 매매차익에 한정된다는 점을 구분해야 합니다.',
+      ],
+    },
+    {
+      heading: '국내형과 해외형의 위험은 세금과 다르게 갈린다',
+      paragraphs: [
+        '국내 리츠 ETF는 국내 상업용 부동산 경기와 금리에 직접 영향을 받고, 개별 리츠 종목의 거래량이 크지 않아 유동성이 낮은 편입니다. 해외 리츠 ETF는 여기에 환율 변동, 현지 부동산 시장과 통화정책 변수가 더해집니다.',
+        '세금 부담이 적다고 위험까지 적은 것은 아닙니다. 리츠는 대출 비중이 큰 구조라 금리 상승기에는 국내형·해외형 모두 가격이 흔들릴 수 있고, 분배금도 임대수익이 줄면 함께 낮아질 수 있습니다.',
+      ],
+    },
+    {
+      heading: '가입 전 확인할 순서',
+      paragraphs: [
+        '이름에 국가명이나 합성(H) 표기가 있는지로 1차 구분한 다음, 실제 과세 유형은 운용사 투자설명서의 국내주식형 여부 항목에서 확인하는 것이 정확합니다. 채권혼합형·액티브형은 특히 이 확인을 건너뛰지 않는 것이 좋습니다.',
+        '본인 계좌가 일반 위탁계좌인지 ISA·연금계좌인지에 따라서도 세후 실수령액이 달라지므로, 어느 계좌에 담을지는 과세 유형을 확인한 다음에 정하는 순서가 맞습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '리츠 ETF 이름만 보고 국내형인지 해외형인지 알 수 있나요?',
+      answer:
+        '국가명이나 합성(H) 표기가 있으면 해외형일 가능성이 높지만, 정확한 과세 유형은 투자설명서의 국내주식형 여부 항목으로 확인하는 것이 안전합니다.',
+    },
+    {
+      question: '채권혼합형 리츠 ETF도 매매차익이 비과세인가요?',
+      answer:
+        '국내 주식 편입 비중이 60% 미만이면 국내주식형 요건을 충족하지 못해 매매차익이 과세될 수 있습니다. 상품마다 비중이 달라 개별 확인이 필요합니다.',
+    },
+    {
+      question: '리츠 ETF 분배금도 금융소득종합과세에 들어가나요?',
+      answer:
+        '네, 분배금은 배당소득으로 다른 이자·배당 소득과 합산되어 연간 2천만원을 넘으면 종합과세 대상이 됩니다. 비과세되는 것은 국내주식형 ETF의 매매차익뿐입니다.',
+    },
+    {
+      question: '액티브형 리츠 ETF는 지수형과 세금 처리가 다른가요?',
+      answer:
+        '액티브 여부와 무관하게 국내 상장 주식 편입 비중이 과세를 가릅니다. ACE 리츠부동산인프라액티브처럼 국내 자산 위주면 지수형과 같은 기준이 적용될 수 있습니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  reitEtfTypesTax,
   singleStockInverseEtf2xOnly,
   etfFeeDiscountRelation,
   usEtfNavDiscountCheck,
@@ -22487,6 +22600,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-08 · 지식iN 질문 수요 기반 (국내 상장 리츠 ETF 종류, 국내형·해외형 매매차익 과세 차이)
+  'reit-etf-types-tax': '2026-09-08',
   // 2026-09-07 · 지식iN 질문 수요 기반 (삼성전자·SK하이닉스 1배 인버스 ETF 존재 여부, 실제로 상장된 건 인버스2X뿐)
   'single-stock-inverse-etf-2x-only': '2026-09-07',
   // 2026-09-06 · 지식iN 질문 수요 기반 (ETF 운용 보수가 괴리율에도 영향을 끼치는지, 총보수와 괴리율 관계)
@@ -22826,7 +22941,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'reit-etf-types-tax', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income'],
   },
   {
     title: '테마·섹터',
