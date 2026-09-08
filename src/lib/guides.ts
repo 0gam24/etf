@@ -22342,7 +22342,120 @@ const reitEtfTypesTax: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-09 · 특수관계인 간 비상장주식 저가양수도 증여세 */
+const relatedPartyStockTradeGiftTax: GuideDef = {
+  slug: 'related-party-stock-trade-gift-tax',
+  title: '특수관계인 저가양수도, 증여세 몇 %부터 붙나',
+  tagline: '기준금액을 넘는 차액만 과세되고, 매매냐 증자대금 대납이냐에 따라 판단 기준도 다릅니다',
+  description:
+    '부모와 자녀 같은 특수관계인끼리 주식을 시세보다 싸게 사고팔면 증여세가 붙을 수 있습니다. 상속세및증여세법이 정한 기준금액과, 자녀 회사의 증자대금을 부모가 대신 내는 경우의 처리 기준까지 국세청·법령 자료로 정리했습니다.',
+  keywords: ['특수관계인 저가양수도', '저가양수도 증여세', '비상장주식 증여세', '부당행위계산부인', '증자대금 대납 증여', '상속세및증여세법 35조', '비상장주식 시가평가'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-09-09',
+  answer:
+    '특수관계인 간에 주식을 시가보다 낮게 사고팔면, 시가와 거래가의 차액이 시가의 30%와 3억원 중 적은 금액을 넘을 때만 그 초과분에 증여세가 붙습니다. 자녀 회사의 증자대금을 부모가 대신 내는 경우는 이 기준과 성격이 달라, 대납한 금액 자체가 증여로 판단될 여지가 큽니다.',
+  keyPoints: [
+    '특수관계인 간 저가양수도는 시가와 거래가의 차액이 시가의 30%와 3억원 중 적은 금액을 넘을 때만 그 초과분에 한해 증여세 대상이 됩니다(상속세및증여세법 제35조, 시행령 제26조).',
+    '파는 사람 쪽은 별도로 소득세법 제101조의 부당행위계산부인이 적용될 수 있어, 시가와 거래가 차이가 시가의 5%와 3억원 중 적은 금액을 넘으면 국세청이 양도가액을 시가로 다시 계산해 양도소득세를 매길 수 있습니다.',
+    '비상장주식은 특수관계 없는 자와의 매매사례가액이 있으면 그 가액을, 없으면 순손익가치와 순자산가치를 가중평균한 보충적 평가방법으로 시가를 정합니다.',
+    '부모가 자녀 회사의 증자대금을 대신 내고 자녀 명의로 신주를 받게 하면 저가양수도가 아니라, 대납한 금액 자체가 증여재산으로 취급될 여지가 커 판단 기준이 달라집니다.',
+  ],
+  sources: [
+    { label: '국가법령정보센터 · 상속세및증여세법 제35조', url: 'https://www.law.go.kr' },
+    { label: '국가법령정보센터 · 소득세법 제101조', url: 'https://www.law.go.kr' },
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '아들 혼자 자금 마련이 어려워 부모가 증자대금을 대신 내고 주식을 부모 명의로 받으려는데 증여세 문제가 되는지 궁금하다', url: 'https://kin.naver.com/qna/detail.naver?dirId=40309&docId=494410781&answerNo=0' },
+  ],
+  comparisonTable: {
+    caption: '특수관계인 간 주식 거래 시나리오별 세금 비교',
+    columns: ['상황', '적용 법령', '과세 대상', '확인할 점'],
+    rows: [
+      ['기존 주식을 시가보다 30%·3억원 중 적은 금액 넘게 싸게 살 때', '상속세및증여세법 제35조', '산 사람(매수자)에게 증여세', '차액에서 기준금액을 뺀 부분만 과세'],
+      ['기존 주식을 시가보다 5%·3억원 중 적은 금액 넘게 싸게 팔 때', '소득세법 제101조(부당행위계산부인)', '판 사람(매도자)의 양도소득세를 시가로 재계산', '매도자에게 세부담이 돌아옴'],
+      ['비상장주식이라 시가를 알기 어려울 때', '상속세및증여세법 제60·63조, 시행령 제54조', '보충적 평가액을 시가로 사용', '매매사례가액이 있으면 그 가액 우선'],
+      ['부모가 자녀 회사의 증자대금을 대신 내고 자녀 명의로 받을 때', '상속세및증여세법 제2조(완전포괄주의)', '자금을 받은 자녀에게 증여세', '대납한 금액 자체가 증여재산'],
+      ['부모가 증자대금을 내고 부모 명의로 받았다가 나중에 자녀에게 넘길 때', '상속세및증여세법 제45조의2 검토 여지 포함', '넘기는 시점에 자녀에게 증여세', '이전 시점의 비상장주식 평가액 기준'],
+    ],
+  },
+  sections: [
+    {
+      heading: '특수관계인 간 주식거래, 언제 증여세 문제가 되나',
+      paragraphs: [
+        '특수관계인끼리 주식을 사고팔 때는 거래가격이 시세와 얼마나 차이 나는지가 증여세 여부를 가릅니다. 상속세및증여세법은 대가와 시가의 차액이 일정 기준을 넘으면 그 초과분을 증여받은 것으로 보는 완전포괄주의를 채택하고 있어, 매매 형식을 갖췄더라도 실질이 무상 이전에 가까우면 과세 대상이 됩니다.',
+        '이 규정은 상장주식뿐 아니라 비상장주식, 부동산 등 재산 전반에 적용됩니다. 부모가 자녀 회사의 지분을 시세보다 싸게 사들이거나 반대로 비싸게 사주는 것처럼, 특수관계인 사이의 거래라면 늘 이 기준부터 확인해야 합니다.',
+      ],
+    },
+    {
+      heading: '저가양수도 증여세 기준금액, 시가의 30% 또는 3억원',
+      paragraphs: [
+        '특수관계인 간 저가양수도는 시가와 대가의 차액이 시가의 30%와 3억원 중 적은 금액을 넘을 때만 그 초과분에 증여세가 붙습니다(상속세및증여세법 제35조, 시행령 제26조).',
+        '예를 들어 시가 10억원짜리 비상장주식을 8억원에 샀다면 차액은 2억원으로, 기준금액인 3억원(시가 30%와 3억원 중 적은 금액)을 넘지 않아 증여세 대상이 아닙니다. 반대로 시가 20억원인 주식을 10억원에 샀다면 차액이 10억원으로 기준금액 3억원을 넘어, 초과한 7억원에 증여세가 붙습니다.',
+      ],
+    },
+    {
+      heading: '파는 사람에게는 양도소득세가 다시 계산될 수 있다',
+      paragraphs: [
+        '특수관계인에게 주식을 싸게 팔았다면 사는 사람의 증여세와는 별도로, 파는 사람의 양도소득세도 다시 계산될 수 있습니다. 소득세법 제101조의 부당행위계산부인은 시가와 거래가의 차이가 시가의 5%와 3억원 중 적은 금액을 넘으면, 국세청이 실제 거래가가 아닌 시가를 기준으로 양도소득세를 매기도록 정하고 있습니다.',
+        '같은 저가 거래라도 사는 쪽은 증여세, 파는 쪽은 양도소득세라는 서로 다른 세금이 각각의 기준으로 판단됩니다. 두 기준의 문턱(30%·5%)이 달라 한쪽만 확인하고 안심하면 다른 쪽에서 세금이 나올 수 있습니다.',
+      ],
+    },
+    {
+      heading: '비상장주식의 시가는 어떻게 정하나',
+      paragraphs: [
+        '비상장주식은 거래소에서 매일 형성되는 가격이 없어 시가를 정하는 것 자체가 쟁점이 됩니다. 특수관계가 없는 제3자와의 매매사례가액처럼 객관적 교환가치가 적정히 반영된 거래가 있으면 그 가격을 시가로 삼습니다.',
+        '그런 거래가 없으면 상속세및증여세법의 보충적 평가방법을 씁니다. 최근 3년간의 순손익가치와 직전 사업연도 말 순자산가치를 일정 비율로 가중평균해 1주당 가액을 계산하는 방식으로, 회사의 실적과 재무상태를 함께 반영합니다.',
+      ],
+    },
+    {
+      heading: '자녀 회사 증자대금을 부모가 대신 낼 때',
+      paragraphs: [
+        '신주를 새로 인수하며 대금을 부모가 대신 내는 경우는 앞서 본 저가양수도와는 성격이 다릅니다. 기존 주식을 싸게 사고파는 매매가 아니라 자금 자체를 대신 내주는 행위이기 때문에, 상속세및증여세법 제2조의 완전포괄주의에 따라 그 대납액이 곧바로 증여재산으로 판단될 여지가 큽니다.',
+        '신주를 처음부터 자녀 명의로 받는다면 대금을 낸 시점이 증여 시기가 되는 경우가 많고, 일단 부모 명의로 받아뒀다가 나중에 자녀에게 넘긴다면 넘기는 시점의 비상장주식 평가액을 기준으로 다시 증여세를 따져야 합니다. 사실관계에 따라 명의신탁재산 증여의제(상속세및증여세법 제45조의2) 적용 여부까지 함께 검토될 수 있어, 실행 전에 세무사나 관할 세무서에 구체적인 거래 구조를 확인하는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '리스크와 반대 관점: 특수관계인 범위부터 확인해야 한다',
+      paragraphs: [
+        '저가양수도라는 말만 듣고 가족 간 거래를 지레 겁내는 경우가 많은데, 기준금액 이하로만 거래하면 증여세 문제가 아예 생기지 않습니다. 앞서 본 예시처럼 시가의 30%(또는 3억원 중 적은 금액) 이내의 가격 차이는 세법이 정상적인 거래 오차로 인정하는 범위입니다.',
+        '다만 특수관계인의 범위는 생각보다 넓어서, 배우자와 직계존비속뿐 아니라 본인이나 친족이 일정 지분 이상을 가진 법인까지 포함됩니다. 반대로 특수관계가 전혀 없는 사람과의 거래라면 이 규정의 적용 문턱 자체가 달라지므로, 거래 상대방이 세법상 특수관계인에 해당하는지부터 먼저 짚어야 합니다.',
+      ],
+    },
+    {
+      heading: '거래 전에 무엇을 확인해야 하나',
+      paragraphs: [
+        '실제 거래를 앞두고 있다면 가격을 정하기 전에 비상장주식 평가부터 받아보는 편이 순서에 맞습니다. 평가액을 알아야 시가의 30%(또는 5%)와 3억원 중 적은 금액이라는 기준금액을 계산할 수 있고, 그에 맞춰 거래가를 정해야 증여세와 양도소득세 양쪽 위험을 함께 줄일 수 있습니다.',
+        '증자대금 대납처럼 매매가 아닌 자본거래 형태라면 기준 자체가 달라지므로, 국세청 홈택스 상담이나 세무사를 통해 거래 구조를 먼저 확인하는 것이 확정 신고 뒤에 바로잡는 것보다 부담이 적습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '특수관계가 없는 사람에게 싸게 팔아도 증여세가 붙나요?',
+      answer:
+        '상속세및증여세법 제35조는 특수관계가 없는 거래에도 적용될 수 있지만, 거래 관행상 정당한 사유 없이 현저히 낮은 가격으로 거래했다는 점을 과세관청이 입증해야 하는 등 특수관계인 간 거래보다 문턱이 높습니다. 구체적인 적용 여부는 국세청 상담으로 확인하는 것이 정확합니다.',
+    },
+    {
+      question: '기준금액 이하로 거래하면 어느 쪽도 세금 문제가 없나요?',
+      answer:
+        '증여세 기준(시가 30%·3억원 중 적은 금액)을 넘지 않으면 상속세및증여세법 제35조는 적용되지 않습니다. 다만 양도소득세 쪽 부당행위계산부인 기준(시가 5%·3억원 중 적은 금액)은 별도로 판단하므로, 두 기준을 각각 확인해야 합니다.',
+    },
+    {
+      question: '신주인수대금을 대신 냈지만 아직 자녀 명의로 옮기지 않았다면 지금 신고해야 하나요?',
+      answer:
+        '처음부터 자녀 명의로 신주를 받았다면 대금을 낸 시점이 증여 시기로 판단될 수 있어 신고 시점을 검토해야 합니다. 부모 명의로 남아 있다면 아직 자녀에게 재산이 넘어간 것으로 보기 어려운 경우가 많지만, 사실관계에 따라 결론이 달라지므로 관할 세무서나 세무사 확인이 필요합니다.',
+    },
+    {
+      question: '비상장주식 시가를 정할 때 특수관계인끼리의 거래가액도 인정되나요?',
+      answer:
+        '인정되지 않습니다. 시가로 인정되려면 특수관계가 없는 제3자와의 매매사례가액처럼 객관적 교환가치가 적정히 반영된 거래여야 하고, 그런 사례가 없으면 순손익가치와 순자산가치를 가중평균하는 보충적 평가방법으로 다시 계산합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  relatedPartyStockTradeGiftTax,
   reitEtfTypesTax,
   singleStockInverseEtf2xOnly,
   etfFeeDiscountRelation,
@@ -22600,6 +22713,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-09 · 지식iN 질문 수요 기반 (부모가 자녀 회사 증자대금을 대신 내면 증여세 문제되는지, 특수관계인 저가양수도 기준)
+  'related-party-stock-trade-gift-tax': '2026-09-09',
   // 2026-09-08 · 지식iN 질문 수요 기반 (국내 상장 리츠 ETF 종류, 국내형·해외형 매매차익 과세 차이)
   'reit-etf-types-tax': '2026-09-08',
   // 2026-09-07 · 지식iN 질문 수요 기반 (삼성전자·SK하이닉스 1배 인버스 ETF 존재 여부, 실제로 상장된 건 인버스2X뿐)
@@ -22936,7 +23051,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax'],
   },
   {
     title: '배당·인컴',
