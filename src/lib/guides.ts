@@ -22454,7 +22454,115 @@ const relatedPartyStockTradeGiftTax: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-10 · 해외주식 양도차익 250만원 이하일 때 확정신고 의무와 무신고가산세 관계 */
+const overseasStockUnder250NoFiling: GuideDef = {
+  slug: 'overseas-stock-under-250-no-filing',
+  title: '해외주식 양도소득세, 250만원 안 넘으면 신고 안 해도 될까',
+  tagline: '세액은 0원이라도 소득세법이 정한 신고 의무는 별개입니다',
+  description:
+    '해외주식을 팔아 남긴 차익이 연 250만원 이하면 낼 세금은 0원이지만, 소득세법상 확정신고 의무 자체는 원칙적으로 남아 있습니다. 신고를 안 해도 가산세가 붙지 않는 이유와 손실만 났을 때 이월공제가 되지 않는 점, 여러 계좌를 합산하는 기준까지 정리했습니다.',
+  keywords: ['해외주식 양도소득세 신고', '해외주식 250만원 공제', '양도소득세 신고 의무', '해외주식 양도손실 이월공제', '무신고가산세', '해외주식 확정신고'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-09-10',
+  answer:
+    '해외주식 양도차익이 연 250만원 이하면 낼 세금은 0원이지만, 소득세법 제118조의8이 정한 확정신고 대상에서 자동으로 빠지는 것은 아닙니다. 다만 무신고가산세는 실제 납부할 세액에 비율을 곱해 계산하므로 세액이 0원이면 가산세도 붙지 않고, 손실만 났다면 그 손실은 다음 해로 넘어가지 않고 그해 안에서 사라집니다.',
+  keyPoints: [
+    '해외주식 양도차익이 연 250만원(기본공제, 소득세법 제118조의7) 이하면 과세표준이 0원이 되어 납부세액은 없지만, 확정신고 자체를 면제한다는 규정은 따로 없습니다.',
+    '국세기본법 제47조의2 무신고가산세는 무신고납부세액에 비율을 곱해 계산되므로, 납부세액이 0원이면 계산식의 결과도 0원이라 가산세가 붙지 않습니다.',
+    '해외주식 양도손실은 같은 해에 낸 다른 해외주식 이익과만 상계되고, 다음 해 이익으로 넘겨 공제받는 이월공제는 인정되지 않습니다.',
+    '증권사 여러 곳에 계좌가 있다면 계좌별로 따로 판단하지 않고, 한 해 전체 매매손익을 합산한 금액으로 250만원 초과 여부를 가립니다.',
+  ],
+  sources: [
+    { label: '국세청 홈택스 · 양도소득세 신고', url: 'https://www.hometax.go.kr' },
+    { label: '국가법령정보센터 · 소득세법 제118조의7·118조의8', url: 'https://www.law.go.kr' },
+    { label: '국가법령정보센터 · 국세기본법 제47조의2(무신고가산세)', url: 'https://www.law.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '해외주식 양도소득세가 250만원 미만이면 신고하지 않아도 되는지, 무신고 시 세무서 소명 요청 가능성', url: 'https://kin.naver.com/qna/detail.naver?dirId=40301&docId=493742303&answerNo=2' },
+    { summary: '해외주식·해외선물 양도소득세의 기본공제 250만원과 22% 세율, 5월 신고 방식', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=493583447&answerNo=6' },
+    { summary: '해외주식 양도소득세 기한후 신고를 이미 했는데 다시 신고하려다 막힌 경우', url: 'https://kin.naver.com/qna/detail.naver?dirId=40301&docId=494533156&answerNo=2' },
+  ],
+  comparisonTable: {
+    caption: '해외주식 양도차익 상황별 신고 의무와 세액',
+    columns: ['상황', '납부할 세액', '법적 신고 의무', '확인할 점'],
+    rows: [
+      ['한 해 순이익 250만원 이하', '0원', '문언상 있음(과세표준 0)', '가산세 없이 넘어가는 경우가 대부분'],
+      ['한 해 순이익 250만원 초과', '초과분의 22%', '있음', '다음 해 5월 1일부터 31일까지 홈택스 확정신고 필수'],
+      ['한 해 손익 합산 결과 손실', '0원', '문언상 있음(과세표준 0)', '이월공제가 안 되므로 그 손실은 그해로 소멸'],
+      ['여러 증권사 계좌 합산 시 초과', '초과분의 22%', '있음', '계좌별이 아니라 연간 전체 합산 기준으로 판단'],
+      ['미국 등 해외 상장 ETF 매매차익 포함', '해외주식과 동일 계산', '있음(합산 250만원 초과 시)', '해외주식 계좌와 분리하지 않고 함께 합산'],
+    ],
+  },
+  sections: [
+    {
+      heading: '해외주식 양도소득세 신고 의무는 소득세법에 어떻게 정해져 있나',
+      paragraphs: [
+        '해외주식이나 해외 상장 ETF를 팔아 생긴 차익은 소득세법이 정한 국외자산 양도소득으로 분류되어, 국내주식과 달리 원천징수 없이 투자자가 직접 계산해 신고합니다. 소득세법 제118조의8은 이 소득이 있는 거주자가 양도한 다음 해 5월 1일부터 31일까지 양도소득 과세표준을 확정신고하도록 정하고 있습니다.',
+        '여기에 소득세법 제118조의7의 기본공제 250만원이 더해집니다. 한 해 동안 실현한 양도차익에서 250만원을 빼고 남은 금액에 22퍼센트(지방소득세 포함)를 곱해 세액을 계산하는 구조라, 250만원을 넘지 않으면 계산 결과는 0원이 됩니다.',
+      ],
+    },
+    {
+      heading: '250만원 이하인데도 신고 의무가 사라지지 않는 이유',
+      paragraphs: [
+        '기본공제는 세금을 매기는 기준(과세표준)을 낮추는 장치이지, 신고 대상 자체를 없애는 장치가 아닙니다. 법 문언은 국외자산 양도소득금액이 있는 거주자를 신고 대상으로 정하고 있어서, 차익이 났다면 250만원 이하라도 원칙적으로 그 범주에 들어갑니다.',
+        '실무에서는 이 부분을 두고 해석이 엇갈립니다. 과세표준이 0원이면 신고서를 낼 실익이 없다고 보는 시각이 있는가 하면, 법 문언대로 신고 자체는 해두는 것이 안전하다고 보는 시각도 있습니다. 확정된 유권해석을 찾기 어려운 영역이라 본 글은 두 시각을 함께 소개하며, 개별 상황에서 어느 쪽이 맞는지는 국세청 상담이나 세무사 확인을 권합니다.',
+      ],
+    },
+    {
+      heading: '신고 안 해도 가산세가 안 붙는 이유는 계산식에 있다',
+      paragraphs: [
+        '국세기본법 제47조의2 무신고가산세는 정해진 기한까지 신고하지 않은 경우 무신고납부세액에 일정 비율을 곱해 매기는 가산세입니다. 여기서 핵심은 가산세의 기준이 되는 금액이 실제 납부해야 할 세액이라는 점입니다.',
+        '순이익이 250만원 이하라 납부할 세액 자체가 0원이라면, 0원에 비율을 곱해도 결과는 0원입니다. 신고를 하지 않았다는 사실은 남지만, 그로 인해 추가로 물어야 할 가산세는 발생하지 않는 구조입니다.',
+      ],
+    },
+    {
+      heading: '손실만 났을 때는 어떻게 되나, 이월공제가 안 되는 함정',
+      paragraphs: [
+        '해외주식은 같은 해에 판 종목끼리만 손익을 더하고 뺄 수 있습니다. 1월부터 12월까지 이익 난 종목과 손실 난 종목을 모두 합쳐 순이익을 구하는 방식이라, 한 해 안에서는 손실이 세금을 줄이는 역할을 합니다.',
+        '문제는 그해 손익을 합쳐도 전체가 손실로 끝난 경우입니다. 국내 사업소득 결손금과 달리 해외주식 양도손실은 다음 해로 넘겨 그다음 해 이익과 상계할 수 없습니다. 신고 여부와 관계없이 그 손실은 그해로 소멸하므로, 손실 난 해에 신고를 미룬다고 나중에 되찾을 수 있는 성격이 아닙니다.',
+      ],
+    },
+    {
+      heading: '여러 증권사 계좌를 쓴다면 합산 기준을 놓치지 말아야 한다',
+      paragraphs: [
+        '250만원 초과 여부는 계좌 단위가 아니라 사람 단위로 계산합니다. A증권에서 100만원, B증권에서 200만원을 벌었다면 각각은 250만원 이하지만 합치면 300만원이 되어 신고 대상으로 바뀝니다.',
+        '미국 등 해외에 상장된 ETF를 함께 매매했다면 그 매매차익도 해외주식과 똑같이 양도소득으로 합산됩니다. 계좌나 상품 종류로 나누어 따로 계산하지 말고, 증권사 통합 거래내역을 받아 한 번에 더하는 것이 안전합니다.',
+      ],
+    },
+    {
+      heading: '그래도 매매내역만큼은 챙겨두는 게 낫다',
+      paragraphs: [
+        '250만원 이하라 세액이 없다는 사실과, 국세청이 그 사실을 확인할 방법이 없다는 것은 다른 이야기입니다. 실제로 무신고 상태에서 세무서가 해외 계좌 정보를 바탕으로 소명을 요청하는 사례가 있고, 이때 매매내역을 바로 못 챙기면 확인 절차가 길어집니다.',
+        '그래서 순이익이 애매하게 250만원 근처거나 여러 계좌를 쓰는 경우라면, 세액이 0원이더라도 홈택스에서 신고서를 한 번 접수해 두거나 최소한 연간 거래내역을 증권사에서 내려받아 보관해 두는 편이 다음 해 소명 요청에 대비하기 쉽습니다. 정확한 판단이 필요한 개별 사안은 국세청 상담이나 세무사를 통해 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '해외주식으로 손실만 났는데도 신고해야 하나요?',
+      answer:
+        '손실이면 과세표준도 0원 이하라 실무상 신고까지 챙기는 경우는 많지 않습니다. 다만 이월공제가 인정되지 않으므로 신고 여부와 관계없이 그 손실은 다음 해로 넘어가지 않고 그해에 사라집니다.',
+    },
+    {
+      question: '해외주식 양도소득세는 종합소득세 신고와 같이 하나요?',
+      answer:
+        '아닙니다. 홈택스에서 종합소득세와는 별도 메뉴인 양도소득 과세표준 확정신고로 접수합니다. 신고 기간이 5월로 겹칠 뿐 서식과 절차는 다릅니다.',
+    },
+    {
+      question: '작년 해외주식 차익을 신고하지 못했는데 지금이라도 해야 하나요?',
+      answer:
+        '순이익이 250만원을 넘었다면 지금이라도 기한후신고로 접수하고 세액을 납부하는 편이 낫습니다. 무신고 상태를 오래 두면 나중에 확인됐을 때 무신고가산세에 더해 납부지연가산세까지 함께 계산됩니다.',
+    },
+    {
+      question: '250만원 기준은 실현한 이익 기준인가요, 아직 안 판 평가이익도 포함되나요?',
+      answer:
+        '실제로 매도해 확정된 차익만 기준입니다. 아직 팔지 않고 보유 중인 종목의 평가이익이나 평가손실은 그해 계산에 들어가지 않습니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  overseasStockUnder250NoFiling,
   relatedPartyStockTradeGiftTax,
   reitEtfTypesTax,
   singleStockInverseEtf2xOnly,
@@ -22713,6 +22821,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-10 · 지식iN 질문 수요 기반 (해외주식 양도차익 250만원 이하일 때 확정신고 의무와 무신고가산세 관계)
+  'overseas-stock-under-250-no-filing': '2026-09-10',
   // 2026-09-09 · 지식iN 질문 수요 기반 (부모가 자녀 회사 증자대금을 대신 내면 증여세 문제되는지, 특수관계인 저가양수도 기준)
   'related-party-stock-trade-gift-tax': '2026-09-09',
   // 2026-09-08 · 지식iN 질문 수요 기반 (국내 상장 리츠 ETF 종류, 국내형·해외형 매매차익 과세 차이)
@@ -23051,7 +23161,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing'],
   },
   {
     title: '배당·인컴',
