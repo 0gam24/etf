@@ -22561,7 +22561,111 @@ const overseasStockUnder250NoFiling: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-11 · 지식iN 질문 수요 기반 (해외주식 양도세 연말 매도, 순이익을 250만원 근처로 맞추는 계산과 결제일 기준 타이밍) */
+const overseasStockYearEndSellAmount: GuideDef = {
+  slug: 'overseas-stock-year-end-sell-amount',
+  title: '해외주식 양도세 연말 매도, 얼마까지 팔아야 유리할까',
+  tagline: '순이익 250만원을 기준으로 팔지 말지를 가른다',
+  description:
+    '해외주식 양도소득세는 연 250만원까지 기본공제되고 초과분에는 22%가 붙습니다. 이익과 손실을 같은 해에 함께 실현해 순이익을 조절하는 계산법과, 매도일이 아니라 결제일 기준으로 과세연도가 갈린다는 점을 확인할 수 있습니다.',
+  keywords: ['해외주식 양도세', '해외주식 양도세 연말 매도', '양도소득세 250만원 공제', '해외주식 손익통산', '해외주식 결제일 기준', '해외주식 절세 매도 타이밍'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-09-11',
+  answer:
+    '해외주식 양도소득세는 같은 해에 실현한 이익과 손실을 합친 순이익에서 연 250만원을 공제한 나머지에 22%를 매기므로, 연말에는 순이익을 250만원 근처로 맞추는 방향으로 매도 여부를 판단하면 됩니다. 다만 과세연도 구분은 주문이 체결된 날이 아니라 대금이 결제된 날 기준이라, 마지막 주 매도는 결제일이 해를 넘기지 않는지부터 확인해야 합니다.',
+  keyPoints: [
+    '해외주식 양도소득세는 같은 과세연도(1~12월)에 실현한 모든 종목의 이익과 손실을 합산한 순이익에서 연 250만원을 공제한 뒤 22%를 매기므로, 순이익이 250만원 이하면 세금이 없습니다.',
+    '손실 종목을 팔아 이익과 상계하려면 반드시 같은 해 안에 매도가 끝나야 하며, 해를 넘겨 손실을 실현하면 올해 이익과는 통산되지 않습니다.',
+    '과세연도 구분은 매매가 체결된 날이 아니라 대금이 결제된 날 기준이라, 미국 주식은 체결 후 통상 1영업일 뒤 결제되는 점을 감안해 여유 있게 매도해야 합니다.',
+    '순이익이 250만원을 크게 넘는다면 무리하게 맞추기보다 초과분에 대한 세금을 확정하고 다음 해 5월 신고를 준비하는 편이 안전합니다.',
+  ],
+  sources: [
+    { label: '국세청 · 주식등 양도소득세 안내', url: 'https://www.nts.go.kr' },
+    { label: '국가법령정보센터 · 소득세법 제98조(양도 또는 취득의 시기)', url: 'https://www.law.go.kr' },
+    { label: '국가법령정보센터 · 소득세법 시행령 제162조', url: 'https://www.law.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '해외주식·ETF 250만원 기본공제 절세를 위해 연말 몇 월에 팔고 언제 다시 사야 하는지', url: 'https://kin.naver.com/qna/detail.naver?dirId=403&docId=494628198&answerNo=2' },
+    { summary: '해외주식 양도소득세를 납부서가 나오기 전에 미리 자진납부할 수 있는지', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=494243855&answerNo=4' },
+    { summary: '해외주식 양도소득세가 어떤 경우에 면제되는지, 250만원 이하면 세금이 없는지', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=493645037&answerNo=3' },
+  ],
+  comparisonTable: {
+    caption: '연말 매도 판단 시나리오',
+    columns: ['상황', '판단 기준', '기대 효과', '확인할 점'],
+    rows: [
+      ['순이익이 250만원 이하', '추가 매도 없이 유지', '기본공제 안에서 세금 0원', '증권사 연간 손익 조회로 순이익 먼저 확인'],
+      ['이익은 크고 평가손실 종목도 있음', '손실 종목을 같은 해 안에 함께 매도', '손익통산으로 과세표준 축소', '해를 넘기면 손실이 올해 이익과 통산되지 않음'],
+      ['순이익이 250만원을 약간 넘음', '무리하게 맞추기보다 초과분 세액부터 계산', '초과분에만 22% 과세되어 세부담이 크지 않음', '추가 매도는 세금보다 그 종목을 지금 팔 이유로 판단'],
+      ['연말 마지막 주에 매도 예정', '결제일이 12월 31일을 넘기지 않는지 확인', '올해 손익으로 인정받음', '국가별 결제 주기·휴장일이 달라 매년 마감일이 다름'],
+      ['이미 250만원 초과가 확정됨', '추가 손절보다 신고 준비로 전환', '가산세 없이 정상 납부', '다음 해 5월 홈택스 신고 기한(공휴일이면 순연)'],
+    ],
+  },
+  sections: [
+    {
+      heading: '연말 절세 매도, 순이익부터 확인하는 게 먼저다',
+      paragraphs: [
+        '해외주식 양도소득세를 줄이려는 매도는 종목 하나의 수익률이 아니라 한 해 전체 순이익을 먼저 확인하는 데서 시작합니다. 증권사 앱의 연간 손익 조회 화면에서 올해 실현한 모든 해외주식·해외 ETF의 매매차익과 매매차손을 합친 숫자를 확인하면, 그 순이익이 기본공제 250만원 아래인지 위인지에 따라 해야 할 일이 달라집니다.',
+        '순이익이 250만원 이하라면 추가로 손실을 만들 필요가 없습니다. 기본공제 안에서 이미 세금이 0원이기 때문입니다. 반대로 250만원을 넘는다면, 남은 기간 동안 평가손실 중인 종목을 함께 정리해 순이익을 줄일지, 아니면 초과분에 대한 세금을 그대로 내고 넘어갈지를 판단해야 합니다.',
+      ],
+    },
+    {
+      heading: '이익만 있다면 더 팔 금액보다 초과분의 세금부터 계산한다',
+      paragraphs: [
+        '이익 종목만 보유하고 손실 종목이 없다면, 팔 종목을 더 늘리는 것보다 지금까지 실현한 순이익에 세금이 얼마나 붙는지부터 계산하는 편이 순서에 맞습니다. 순이익에서 250만원을 뺀 금액에 22%를 곱하면 예상 세액이 나옵니다.',
+        '예를 들어 올해 해외주식에서 실현한 순이익이 400만원이라면, 250만원을 공제한 150만원에 22%를 곱해 33만원의 세금이 나옵니다. 여기서 평가이익 중인 종목을 추가로 팔아 순이익을 더 키우면 초과분만큼 세금도 같이 늘어나므로, 추가 매도는 세금보다 그 종목을 지금 팔 이유가 있는지로 판단하는 편이 맞습니다.',
+      ],
+    },
+    {
+      heading: '손실 종목은 같은 해 안에 함께 팔아야 상계된다',
+      paragraphs: [
+        '순이익이 250만원을 넘고 평가손실 중인 다른 해외 종목이 있다면, 그 종목을 같은 해 안에 함께 매도해 손실을 확정하는 방법으로 순이익을 줄일 수 있습니다. 이익과 손실이 서로 상계되는 손익통산은 같은 과세연도(1월 1일부터 12월 31일까지) 안에서만 적용되기 때문에, 해를 넘겨 손실을 실현하면 올해 이익과는 합쳐지지 않습니다.',
+        '예를 들어 A종목에서 400만원 이익, B종목에서 150만원 평가손실 중이라면, 연말 전에 B종목을 팔아 손실을 확정하면 순이익이 250만원으로 줄어 기본공제 안에 들어와 세금이 0원이 됩니다. 팔지 않고 넘기면 손실은 미실현 상태로 남아 올해 세금 계산에는 반영되지 않습니다.',
+      ],
+    },
+    {
+      heading: '매도일이 아니라 결제일 기준, 연말에는 여유를 둬야 한다',
+      paragraphs: [
+        '해외주식의 양도·취득 시기는 소득세법 제98조와 시행령 제162조에 따라 대금이 결제된 날을 기준으로 합니다. 매매 주문이 체결된 날짜가 아니라 실제로 대금이 오간 날짜로 어느 과세연도에 속하는지를 가립니다.',
+        '미국 주식은 2024년 5월부터 결제 주기가 체결 후 2영업일에서 1영업일로 단축됐지만, 그래도 12월 마지막 주에 몰아서 매도하면 결제일이 다음 해로 넘어갈 위험이 있습니다. 국가마다 결제 주기와 휴장일이 달라 정확한 마감 시점은 매년 다르므로, 연말 매도는 여유를 두고 미리 하고 거래 증권사 공지사항에서 그해의 매도 권장일을 확인하는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '세금만 보고 서두르는 손절은 주의해야 한다',
+      paragraphs: [
+        '절세를 이유로 장기 보유할 생각이었던 종목까지 서둘러 손절하는 것은 다시 생각해볼 필요가 있습니다. 아낄 수 있는 세금은 순이익 초과분의 22%인 반면, 확신을 갖고 담았던 종목을 연말에 팔았다가 이후 반등하면 그 기회비용이 아낀 세금보다 클 수 있습니다.',
+        '한국 세법에는 매도와 재매수를 제한하는 별도 규정이 알려져 있지 않아, 손실을 확정한 뒤 같은 종목을 곧바로 다시 사는 경우가 많습니다. 다만 재매수 시점의 가격이 새로운 취득가로 잡히므로 이후 양도차익 계산 기준이 달라진다는 점은 감안해야 하고, 금액이 크다면 매도 전에 세무 전문가와 상의하는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '신고는 다음 해 5월, 확정 후엔 미룰 이유가 없다',
+      paragraphs: [
+        '연말 매도로 순이익을 조정했든 그대로 뒀든, 해외주식 양도소득세는 다음 해 5월 한 달 동안 국세청 홈택스에서 신고하고 납부합니다. 2025년 귀속분은 마감일인 2026년 5월 31일이 일요일과 겹쳐 6월 1일까지 신고 기한이 늘어났던 것처럼, 마감일이 공휴일과 겹치면 다음 영업일로 넘어갑니다.',
+        '순이익이 250만원을 넘는 게 이미 확정됐다면 신고 대상이라는 사실 자체는 바뀌지 않으므로, 남은 기간 손실 종목을 더 찾기보다 정확한 순이익을 계산해 신고를 준비하는 편이 낫습니다. 구체적인 결제일 마감 시점과 신고 서식은 거래 증권사 공지와 홈택스 안내에서 그해 기준으로 다시 확인하시기 바랍니다. 본 정보는 참고용이며 투자와 매도 판단의 책임은 본인에게 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '순이익이 250만원 이하면 굳이 팔지 않아도 되나요?',
+      answer: '네. 실현한 순이익이 연 250만원 이하라면 기본공제 안에서 세금이 0원이므로, 절세만을 목적으로 추가 매도를 할 필요는 없습니다. 다만 이 계산은 실현된 손익만 반영하므로, 아직 팔지 않은 평가이익·평가손실은 포함되지 않습니다.',
+    },
+    {
+      question: '손실 종목을 팔고 같은 날 다시 사도 되나요?',
+      answer: '매도와 재매수 자체를 금지하는 별도 규정은 알려져 있지 않아, 실무에서는 손실을 확정한 뒤 곧바로 재매수하는 경우가 많습니다. 다만 재매수 시점의 가격이 새 취득가가 되어 이후 매도할 때 양도차익 계산 기준이 달라지므로, 금액이 크면 세무 전문가 확인을 권합니다.',
+    },
+    {
+      question: '매도 주문을 냈는데 결제가 해를 넘기면 어떻게 되나요?',
+      answer: '결제일이 다음 해로 넘어가면 그 매매는 올해가 아니라 다음 해의 손익으로 잡힙니다. 올해 순이익을 줄이려고 손실 종목을 팔았는데 결제가 해를 넘기면 의도한 절세 효과를 볼 수 없으므로, 연말에는 결제일을 감안해 여유 있게 매도해야 합니다.',
+    },
+    {
+      question: '순이익을 계산할 때 환율은 어떻게 반영되나요?',
+      answer: '매도 대금과 취득 시 필요경비는 각각 그 거래 시점의 환율로 원화 환산해 계산합니다. 환율 변동도 결국 원화 기준 순이익에 영향을 주므로, 정확한 금액은 증권사가 제공하는 연간 손익 내역을 기준으로 확인하는 것이 정확합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  overseasStockYearEndSellAmount,
   overseasStockUnder250NoFiling,
   relatedPartyStockTradeGiftTax,
   reitEtfTypesTax,
@@ -22821,6 +22925,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-11 · 지식iN 질문 수요 기반 (해외주식 양도세 연말 매도, 순이익을 250만원 근처로 맞추는 계산과 결제일 기준 타이밍)
+  'overseas-stock-year-end-sell-amount': '2026-09-11',
   // 2026-09-10 · 지식iN 질문 수요 기반 (해외주식 양도차익 250만원 이하일 때 확정신고 의무와 무신고가산세 관계)
   'overseas-stock-under-250-no-filing': '2026-09-10',
   // 2026-09-09 · 지식iN 질문 수요 기반 (부모가 자녀 회사 증자대금을 대신 내면 증여세 문제되는지, 특수관계인 저가양수도 기준)
@@ -23161,7 +23267,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount'],
   },
   {
     title: '배당·인컴',
