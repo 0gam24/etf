@@ -22664,7 +22664,119 @@ const overseasStockYearEndSellAmount: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-12 · 나스닥100 ETF로 특정 종목(아이온큐)에 간접투자할 수 있는지, 지수 편입 조건과 확인 방법 */
+const nasdaq100EtfIndividualStockExposure: GuideDef = {
+  slug: 'nasdaq100-etf-individual-stock-exposure',
+  title: '나스닥100 ETF로 아이온큐 간접투자 가능할까, 확인법',
+  tagline: '시가총액보다 먼저 보는 것은 어느 거래소에 상장돼 있는가입니다',
+  description:
+    '나스닥100 ETF를 사면 아이온큐 같은 인기 종목도 함께 담기는지 궁금해하는 투자자가 많습니다. 지수 편입에는 나스닥 상장이라는 조건이 있어 시가총액만으로는 판단할 수 없습니다. 편입 조건과 확인 방법을 정리했습니다.',
+  keywords: [
+    '나스닥100 ETF',
+    '나스닥100 편입종목 확인',
+    '아이온큐 나스닥100',
+    '지수 ETF 개별종목 노출',
+    '나스닥100 편입 조건',
+    'QQQ 편입종목',
+    '나스닥 상장 요건',
+  ],
+  section: '해외상장 가이드',
+  lastReviewed: '2026-09-12',
+  answer:
+    '나스닥100은 나스닥에 단독 상장된 종목만 담는 지수라, 뉴욕증권거래소(NYSE)에 상장된 아이온큐는 시가총액이 아무리 커져도 편입될 수 없습니다. 특정 종목에 대한 노출을 원한다면 그 종목의 상장 거래소부터 확인해야 합니다.',
+  keyPoints: [
+    '나스닥100은 나스닥(Global Select·Global Market)에 단독 상장된 비금융 종목만 담아, NYSE에 상장된 아이온큐는 시가총액과 무관하게 편입 대상 자체가 아닙니다.',
+    'S&P500은 나스닥과 뉴욕증권거래소 등 여러 거래소 상장을 모두 인정해, 편입 거래소 문턱이 나스닥100보다 낮습니다.',
+    '국내 상장 TIGER·KODEX 등 나스닥100 ETF는 미국 나스닥100 지수를 그대로 복제하므로, 미국 원지수에서 빠진 종목은 국내 상품에도 담기지 않습니다.',
+    '특정 종목이 지수에 담겼는지는 상장 거래소를 먼저 확인한 뒤, 운용사가 공개하는 구성종목 내역에서 편입 비중까지 봐야 정확합니다.',
+  ],
+  sources: [
+    { label: 'Nasdaq, Inc. 나스닥100 지수 방법론(Index Methodology Guide)', url: 'https://indexes.nasdaq.com/docs/Methodology_NDX.pdf' },
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    {
+      summary: '아이온큐에 간접 투자하려면 나스닥100 ETF를 사면 되는지 묻는 질문',
+      url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=488995699&answerNo=2',
+    },
+  ],
+  comparisonTable: {
+    caption: '지수·투자 방식별 아이온큐(NYSE 상장) 편입 가능 여부',
+    columns: ['방식', '편입 대상 거래소 범위', '아이온큐 편입 가능 여부', '확인할 점'],
+    rows: [
+      ['나스닥100(NDX)', '나스닥(Global Select·Global Market)에 단독 상장된 종목만', '불가능, NYSE 상장이라 자격 자체가 없음', '거래소부터 확인하고 그다음 시가총액·유동성을 봄'],
+      ['S&P500', 'NYSE·NYSE American·나스닥 등 여러 거래소 상장 허용', '거래소 요건은 충족, 편입 여부는 별도 심사', '거래소를 통과해도 편입은 위원회 심사를 거침'],
+      ['나스닥종합지수(Nasdaq Composite)', '나스닥 상장 종목 전체, 시가총액 상위로 좁히지 않음', '가능, 나스닥 상장이면 자동 포함', '이 지수를 그대로 추종하는 상장지수펀드는 흔치 않음'],
+      ['개별 종목 직접 매수', '해당 없음, 상장 거래소와 무관하게 매수 가능', '가능, 해당 거래소에서 바로 매수', '분산 효과 없이 그 종목 리스크를 그대로 떠안음'],
+      ['러셀2000·3000 등 광범위 지수', '거래소를 특정하지 않고 미국 상장 종목 전반', '지수마다 포함 대상과 기준이 다름', '지수 설명 자료에서 편입 대상 거래소 범위를 먼저 확인'],
+    ],
+  },
+  sections: [
+    {
+      heading: '나스닥100은 시가총액보다 상장 거래소를 먼저 본다',
+      paragraphs: [
+        '나스닥100은 나스닥(Nasdaq Global Select Market 또는 Nasdaq Global Market)에 상장된 비금융업 종목 가운데 시가총액 상위 종목을 담는 지수입니다. 지수를 산출하는 나스닥은 이 지수를 자사 거래소에 상장된 종목들의 대표 지수로 설계했기 때문에, 상장 거래소 요건을 시가총액보다 앞서 적용합니다.',
+        '2026년 5월부터는 신규 상장 종목이 시가총액 기준 나스닥 상위 40위 안에 들면 상장 후 15거래일 만에 조기 편입될 수 있도록 방법론이 바뀌었고, 유통주식 비율 최소 10% 요건도 없어졌습니다. 다만 이런 완화는 나스닥에 상장된 종목에 한정된 이야기이고, 상장 거래소 자체를 대체하는 조건은 아닙니다.',
+      ],
+    },
+    {
+      heading: '아이온큐가 나스닥100에 들어갈 수 없는 이유',
+      paragraphs: [
+        '아이온큐(IonQ)는 2021년 뉴욕증권거래소(NYSE)에 상장된 종목입니다. 나스닥100 지수 방법론은 종목의 주 상장 거래소가 나스닥 한 곳에만 단독으로 걸려 있을 것을 편입 자격으로 요구하므로, NYSE에 상장된 아이온큐는 매출과 시가총액이 아무리 커져도 이 지수에 들어올 자격 자체가 없습니다.',
+        '이는 아이온큐만의 문제가 아니라 구조적인 제외입니다. 버크셔해서웨이나 JP모간처럼 시가총액이 큰 대형주도 NYSE에 상장돼 있어 나스닥100 대상에서 똑같이 빠집니다. 즉 나스닥100 편입 여부를 판단할 때 가장 먼저 확인해야 할 것은 실적이나 성장성이 아니라 그 종목이 어느 거래소에 상장돼 있는가입니다.',
+      ],
+    },
+    {
+      heading: 'S&P500과 비교하면 나스닥100의 거래소 문턱이 더 높다',
+      paragraphs: [
+        'S&P500은 나스닥100과 달리 NYSE·NYSE American·나스닥 등 여러 미국 거래소에 상장된 종목을 폭넓게 편입 대상으로 인정합니다. 그래서 NYSE에 상장된 아이온큐도 거래소 요건 자체는 통과하며, 실제 편입 여부는 시가총액·유동성·수익성 등을 보는 별도 심사에서 갈립니다.',
+        '지수마다 편입 대상 거래소 범위를 다르게 정해 둔다는 점이 핵심입니다. 나스닥100처럼 특정 거래소 하나로 좁힌 지수가 있는가 하면, S&P500처럼 여러 거래소를 폭넓게 인정하는 지수도 있어, 어떤 지수를 기준으로 이야기하는지에 따라 같은 종목의 편입 가능 여부가 달라집니다.',
+      ],
+    },
+    {
+      heading: '국내 상장 나스닥100 ETF도 같은 규칙을 그대로 따른다',
+      paragraphs: [
+        'TIGER·KODEX·ACE·RISE·SOL 미국나스닥100처럼 국내 거래소에 상장된 나스닥100 ETF는 미국의 나스닥100 지수를 그대로 복제하는 상품입니다. 미국 원지수에서 애초에 자격이 없어 빠진 종목은 이를 복제하는 국내 상품의 구성종목에도 들어갈 수 없습니다.',
+        '따라서 국내 증권사에서 나스닥100 ETF를 검색해 아이온큐가 보이지 않는다고 해서 해당 상품이나 운용사가 종목을 누락한 것이 아니라, 미국 원지수 자체의 편입 자격 문제입니다. 운용사를 바꿔도 결과는 같습니다.',
+      ],
+    },
+    {
+      heading: '특정 종목 노출을 원한다면 무엇을 확인해야 하나',
+      paragraphs: [
+        '원하는 종목이 나스닥100 같은 특정 거래소 한정 지수에 들어갈 수 없다면, 그 종목이 실제로 포함된 다른 지수의 ETF를 찾거나 개별 종목을 직접 매수하는 방법이 남습니다. 다만 개별 종목 직접 매수는 지수 ETF와 달리 분산 효과가 없어 그 종목 하나의 등락을 그대로 떠안는다는 점이 다릅니다.',
+        '어느 쪽을 택할지는 종목 하나에 대한 노출 정도를 어느 선까지 감당할 수 있는지에 달려 있습니다. 이는 개별 종목의 매수를 권하거나 말리는 문제가 아니라, 지수 ETF가 애초에 그 종목을 담을 수 있는 구조인지부터 가려야 하는 문제입니다.',
+      ],
+    },
+    {
+      heading: '구성종목과 편입 비중은 어디서 확인하나',
+      paragraphs: [
+        '나스닥100 지수 자체의 구성종목은 나스닥이 운영하는 지수 페이지나 이 지수를 원조로 추종하는 미국 상장 ETF 운용사가 공개하는 자료에서 확인할 수 있습니다. 지수는 3월·6월·9월·12월 분기마다 정기 재조정을 하고 필요하면 특별 조정도 하므로, 시점에 따라 구성이 달라질 수 있습니다.',
+        '국내 상장 나스닥100 ETF는 각 운용사 홈페이지의 월간 자산구성내역에서 편입 종목과 비중을 확인할 수 있습니다. 편입 여부가 궁금한 종목이 있다면 이름으로 검색하기보다, 그 종목의 상장 거래소를 먼저 확인한 뒤 자산구성내역에서 실제 비중까지 함께 보는 순서가 정확합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '나스닥종합지수(Nasdaq Composite)라면 아이온큐도 포함되나요?',
+      answer: '네. 나스닥종합지수는 나스닥에 상장된 거의 모든 종목을 담아 상위 100개로 좁히지 않으므로, 나스닥 상장 종목이면 시가총액과 무관하게 포함됩니다. 다만 이 지수를 그대로 추종하는 상장지수펀드는 흔하지 않습니다.',
+    },
+    {
+      question: '나스닥100에 들어간 뒤 다른 거래소로 이전 상장하면 어떻게 되나요?',
+      answer: '나스닥 단독 상장이라는 자격을 잃으므로 다음 재조정 시점에 지수에서 제외될 수 있습니다. 실제 이전 상장 사례가 생기면 나스닥의 특별 조정 공지나 운용사 안내에서 제외 시점을 확인하는 것이 정확합니다.',
+    },
+    {
+      question: '이런 상장 거래소 제한이 나스닥100에만 있는 규칙인가요?',
+      answer: '아닙니다. 지수마다 편입 대상 거래소 범위가 다릅니다. S&P500처럼 여러 거래소 상장 종목을 폭넓게 인정하는 지수도 있고, 나스닥100처럼 하나의 거래소로 좁힌 지수도 있어 지수 설명 자료에서 그 범위를 먼저 확인해야 합니다.',
+    },
+    {
+      question: '국내 상장 나스닥100 ETF 중 골라서 사면 아이온큐를 담은 상품이 있을까요?',
+      answer: '없습니다. 국내 상장 나스닥100 ETF는 운용사와 무관하게 같은 미국 나스닥100 지수를 그대로 복제하므로, 원지수에 편입 자격이 없는 종목은 어느 운용사 상품에도 담기지 않습니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  nasdaq100EtfIndividualStockExposure,
   overseasStockYearEndSellAmount,
   overseasStockUnder250NoFiling,
   relatedPartyStockTradeGiftTax,
@@ -22925,6 +23037,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-12 · 지식iN 질문 수요 기반 (나스닥100 ETF로 아이온큐 같은 특정 종목에 간접투자할 수 있는지, 상장 거래소 요건이 편입 자격을 가르는 구조)
+  'nasdaq100-etf-individual-stock-exposure': '2026-09-12',
   // 2026-09-11 · 지식iN 질문 수요 기반 (해외주식 양도세 연말 매도, 순이익을 250만원 근처로 맞추는 계산과 결제일 기준 타이밍)
   'overseas-stock-year-end-sell-amount': '2026-09-11',
   // 2026-09-10 · 지식iN 질문 수요 기반 (해외주식 양도차익 250만원 이하일 때 확정신고 의무와 무신고가산세 관계)
@@ -23282,7 +23396,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea', 'world-etf', 'brazil-etf', 'saudi-etf', 'indonesia-etf'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea', 'world-etf', 'brazil-etf', 'saudi-etf', 'indonesia-etf', 'nasdaq100-etf-individual-stock-exposure'],
   },
   {
     title: '전략·자산배분',
