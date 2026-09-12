@@ -22775,7 +22775,113 @@ const nasdaq100EtfIndividualStockExposure: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-13 · 지정학적 위기 때 해외지수 ETF 괴리율이 커지는 이유 */
+const overseasEtfGeopoliticalDiscountSpike: GuideDef = {
+  slug: 'overseas-etf-geopolitical-discount-spike',
+  title: '해외 ETF 괴리율, 지정학적 위기 때 커지는 이유',
+  tagline: '순자산가치가 멈춰 있는 시간에 사건이 터지면 가격만 먼저 움직입니다',
+  description:
+    '해외 지수를 추종하는 국내 상장 ETF는 미국 증시가 열려 있는 밤 동안 순자산가치가 그대로 멈춰 있어, 지정학적 위기로 시장이 크게 흔들리면 다음 날 괴리율이 한꺼번에 벌어집니다. 한국거래소 공시 기준과 유동성공급자 관리 의무 강화 내용을 근거로 정리했습니다.',
+  keywords: ['해외 ETF 괴리율', 'ETF 괴리율 급등', '해외지수 ETF 시차', 'iNAV 괴리율', 'ETF 괴리율 공시 기준', '유동성공급자 관리기준'],
+  section: 'ETF 괴리율 가이드',
+  lastReviewed: '2026-09-13',
+  answer:
+    '해외지수 ETF의 순자산가치는 미국 증시가 마감된 시점 가격으로 하루 한 번만 정해지는데, 한국 장이 열린 낮 동안 지정학적 위기 등으로 상황이 급변하면 시장가격만 먼저 움직여 괴리율이 크게 벌어집니다. 한국거래소는 이 괴리가 일정 기준을 넘으면 공시하도록 하고, 유동성공급자의 관리 의무도 2026년 8월부터 더 엄격해졌습니다.',
+  keyPoints: [
+    '국내 상장 해외지수 ETF의 순자산가치(NAV)는 미국 증시가 마감된 시점 가격을 기준으로 하루 한 번 산출되므로, 한국 장이 열려 있는 동안 미국에서 큰 사건이 터져도 NAV 자체는 전날 값에 머뭅니다.',
+    '한국거래소는 괴리율이 국내투자형 ETF 1%, 해외투자형 ETF 2%를 넘으면 거래소가 의무적으로 공시하도록 정하고 있어, 위기 상황에서는 해외 ETF 쪽 공시가 먼저, 더 자주 뜹니다.',
+    '2026년 8월 19일부터 유동성공급자(LP)가 종가 기준으로 지켜야 하는 괴리율 관리 기준이 국내 상품 3%에서 2%로, 해외 상품 6%에서 5%로 강화됐습니다.',
+    '관리 기준의 두 배(국내 4%, 해외 10%)를 넘으면 거래소의 상장폐지 유의 절차 대상이 될 수 있어, 위기 때 벌어진 괴리율은 시간이 지나 정상화되는지 지켜봐야 합니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX) ETF 시장 안내', url: 'https://www.krx.co.kr' },
+    { label: '금융위원회 · 유가증권시장 업무규정 개정 보도자료', url: 'https://www.fsc.go.kr' },
+    { label: 'KRX 정보데이터시스템', url: 'https://data.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '전쟁 같은 지정학적 이슈가 터지면 ETF 괴리율이 유독 크게 벌어지는 이유를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=459107322&answerNo=2' },
+  ],
+  comparisonTable: {
+    caption: '평상시와 위기 상황, 해외지수 ETF 괴리율 비교',
+    columns: ['구분', '평상시', '위기 상황(지정학적 이슈 등)', '확인할 점'],
+    rows: [
+      ['NAV 산출 시점', '전날 미국 종가 기준, 하루 1회', '기준은 같지만 실제 가치와 차이가 커짐', 'NAV가 갱신되지 않는 시간대라는 점'],
+      ['공시 발동 기준', '국내 1%, 해외 2% 넘으면 거래소 공시', '해외 ETF 쪽 공시가 먼저, 자주 뜨는 편', '공시가 뜨면 원인이 시차인지부터 확인'],
+      ['LP 관리 기준(2026-08-19 강화)', '종가 기준 국내 2%, 해외 5% 이내로 관리', '변동성이 커 LP도 기준 맞추기가 부담스러움', '관리 기준의 두 배(국내 4%, 해외 10%) 초과 여부'],
+      ['괴리율 지속 기간', '보통 하루 이틀 안에 좁혀짐', '사태가 길어지면 좁혀지는 데 더 걸릴 수 있음', '반복되면 상장폐지 유의 절차 대상인지 확인'],
+      ['투자자 대응', '정규장 중 지정가 주문 정도로 충분', '시장가 대신 지정가로 넣고 며칠 지켜보는 편', '괴리율이 좁혀지는지 며칠 지켜본 뒤 판단'],
+    ],
+  },
+  sections: [
+    {
+      heading: '해외지수 ETF의 순자산가치는 하루에 한 번만 정해진다',
+      paragraphs: [
+        '국내에 상장된 해외지수 ETF의 공식 순자산가치(NAV)는 미국 증시가 마감된 뒤 그날 종가를 반영해 하루 한 번 산출됩니다. 국내 ETF처럼 기초자산이 같은 시간대에 실시간으로 거래되는 구조와는 다릅니다.',
+        '이 NAV를 기준으로 다음 날 한국 장에서 ETF가 거래됩니다. 미국 야간 선물시장 가격이나 환율 변화 정도는 실시간 추정치인 iNAV에 반영되지만, 공식 NAV 자체는 여전히 전날 종가에 묶여 있습니다.',
+      ],
+    },
+    {
+      heading: '한국 장이 열려 있는 동안 미국에서 사건이 터지면',
+      paragraphs: [
+        '한국 낮 시간은 미국 증시 입장에서는 야간입니다. 이 시간에 전쟁 발발이나 지정학적 충돌처럼 시장을 크게 흔드는 사건이 알려지면, 미국 주가지수 선물이 먼저 반응하고 국내 ETF 가격도 그 소식을 따라 움직입니다.',
+        '문제는 공식 NAV의 기준이 되는 미국 정규장이 아직 열리지도 않았다는 점입니다. 국내 ETF 시장가격은 최신 정보를 반영하려 하는데, 비교 대상인 NAV는 사건이 터지기 전 값 그대로라 두 수치의 차이, 즉 괴리율이 순간적으로 커집니다.',
+      ],
+    },
+    {
+      heading: 'iNAV와 실제 가격의 시차가 괴리율을 만든다',
+      paragraphs: [
+        '거래소는 장중 실시간 추정 순자산가치인 iNAV를 계속 산출해 내보내지만, 이 역시 선물가격과 환율 등으로 추정한 값일 뿐 미국 정규장이 열려 정식으로 확정된 가격은 아닙니다.',
+        '사건이 클수록 선물시장의 변동폭도 커서 iNAV 추정치와 실제 시장가격의 차이가 벌어지기 쉽습니다. 미국 정규장이 열리고 하루이틀 지나 NAV가 실제 상황을 온전히 반영하기 전까지는 이 격차가 이어질 수 있습니다.',
+      ],
+    },
+    {
+      heading: '괴리율이 얼마나 벌어지면 공시되나',
+      paragraphs: [
+        '한국거래소는 괴리율이 일정 수준을 넘으면 투자자 보호를 위해 거래소가 직접 공시하도록 정해 두었습니다. 국내 자산에 투자하는 ETF는 1%, 해외 자산에 투자하는 ETF는 2%를 넘으면 공시 대상입니다.',
+        '해외 자산을 담은 ETF의 기준이 더 낮게 잡힌 이유도 시차 구조 때문입니다. 평소에도 국내 ETF보다 괴리가 생기기 쉬운 만큼, 더 촘촘한 기준으로 투자자에게 알리도록 한 것입니다. 위기 상황에서는 이 공시가 짧은 기간에 여러 번 뜰 수 있습니다.',
+      ],
+    },
+    {
+      heading: '유동성공급자 관리 기준은 2026년 8월에 강화됐다',
+      paragraphs: [
+        '유동성공급자(LP)는 시장가격이 NAV에서 크게 벗어나지 않도록 양방향 호가를 대는 증권사입니다. 금융위원회가 승인한 유가증권시장 업무규정 개정에 따라 2026년 8월 19일부터 LP가 종가 기준으로 지켜야 하는 괴리율 관리 기준이 국내 상품 3%에서 2%로, 해외 상품 6%에서 5%로 낮아졌습니다.',
+        '이 관리 기준의 두 배, 즉 국내 4%·해외 10%를 넘는 상태가 이어지면 거래소의 상장폐지 유의 종목 지정 절차 대상이 될 수 있습니다. 다만 변동성이 큰 장세에서는 LP도 헤지가 어려워져 기준을 맞추는 데 시간이 걸릴 수 있다는 점이 함께 지적됩니다.',
+      ],
+    },
+    {
+      heading: '괴리율이 벌어진 뒤 무엇을 지켜봐야 하나',
+      paragraphs: [
+        '괴리율이 크게 벌어졌다고 곧바로 손해가 확정되는 것은 아닙니다. 미국 정규장이 열려 NAV가 실제 상황을 반영하고 나면, 재정거래를 통해 시장가격과 NAV의 차이가 다시 좁혀지는 경우가 대부분입니다.',
+        '다만 그 기간에 시장가로 서둘러 매매하면 벌어진 가격 그대로 체결될 수 있으므로, 지정가 주문으로 원하는 가격을 정해 두고 괴리율이 정상 범위로 돌아오는지 며칠 지켜보는 편이 안전합니다. 공시가 반복되거나 관리 기준의 두 배를 넘는 상태가 길어진다면 해당 종목의 공시 이력을 직접 확인해 볼 필요가 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '국내 자산에 투자하는 ETF도 위기 때 괴리율이 크게 벌어지나요?',
+      answer:
+        '국내 ETF는 기초자산도 국내 시장에서 실시간으로 거래되므로 NAV와 시장가격의 시차가 훨씬 짧습니다. 다만 국내 증시가 급락해 매매가 일시 정지되는 상황에서는 국내 ETF도 일시적으로 괴리율이 커질 수 있습니다.',
+    },
+    {
+      question: '괴리율이 큰 시점에 사면 손해인가요?',
+      answer:
+        '그 시점에 시장가로 사면 실제 가치보다 비싸게 매수할 가능성이 있습니다. 서두르지 않고 정규장 중 지정가로 주문해 괴리율이 좁혀졌는지 확인한 뒤 매매하는 편이 안전합니다.',
+    },
+    {
+      question: '레버리지·인버스 ETF도 같은 이유로 괴리율이 커지나요?',
+      answer:
+        '레버리지·인버스 ETF는 기초지수 변동을 배수로 반영하는 구조라 같은 시차 상황에서 괴리율이 더 크게 벌어지는 경향이 있어, 금융당국도 이런 상품에 별도의 진입 요건을 두고 관리하고 있습니다.',
+    },
+    {
+      question: '괴리율 공시는 어디서 확인하나요?',
+      answer:
+        '한국거래소 정보데이터시스템이나 증권사 앱의 ETF 상세 화면에서 실시간 괴리율과 공시 이력을 확인할 수 있습니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  overseasEtfGeopoliticalDiscountSpike,
   nasdaq100EtfIndividualStockExposure,
   overseasStockYearEndSellAmount,
   overseasStockUnder250NoFiling,
@@ -23037,6 +23143,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-13 · 지식iN 질문 수요 기반 (전쟁 등 지정학적 이슈가 터지면 ETF 괴리율이 유독 크게 벌어지는 이유)
+  'overseas-etf-geopolitical-discount-spike': '2026-09-13',
   // 2026-09-12 · 지식iN 질문 수요 기반 (나스닥100 ETF로 아이온큐 같은 특정 종목에 간접투자할 수 있는지, 상장 거래소 요건이 편입 자격을 가르는 구조)
   'nasdaq100-etf-individual-stock-exposure': '2026-09-12',
   // 2026-09-11 · 지식iN 질문 수요 기반 (해외주식 양도세 연말 매도, 순이익을 250만원 근처로 맞추는 계산과 결제일 기준 타이밍)
@@ -23376,7 +23484,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'us-etf-nav-discount-check', 'etf-fee-discount-relation', 'etf-lp-liquidity', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'us-etf-nav-discount-check', 'etf-fee-discount-relation', 'etf-lp-liquidity', 'overseas-etf-geopolitical-discount-spike', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
   },
   {
     title: '세금·절세 계좌',
