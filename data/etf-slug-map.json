@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-30T04:13:08.273Z",
-  "sourceBaseDate": "20260827",
-  "count": 1163,
+  "generatedAt": "2026-09-13T03:44:05.313Z",
+  "sourceBaseDate": "20260910",
+  "count": 1168,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -1165,7 +1165,12 @@
     "0228G0": "ace-semiconductorplus",
     "0231Z0": "kodex-tdf2065active-qualified",
     "0233A0": "ace-skplusbond-blend50",
-    "0233J0": "tiger-skus-treasury-blend50"
+    "0233J0": "tiger-skus-treasury-blend50",
+    "0229F0": "mighty-biotechactive",
+    "0232A0": "midas-mma-active",
+    "0233N0": "rise-globalaisemiconductor",
+    "0234N0": "kiwoom-sktop4",
+    "0238P0": "tiger-us-sp500us-treasury-blend50"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -5819,6 +5824,26 @@
     "tiger-skus-treasury-blend50": {
       "code": "0233J0",
       "name": "TIGER 삼성전자SK하이닉스미국채혼합50"
+    },
+    "mighty-biotechactive": {
+      "code": "0229F0",
+      "name": "마이티 신약포커스바이오액티브"
+    },
+    "midas-mma-active": {
+      "code": "0232A0",
+      "name": "MIDAS 머니마켓액티브"
+    },
+    "rise-globalaisemiconductor": {
+      "code": "0233N0",
+      "name": "RISE 글로벌AI낸드메모리반도체"
+    },
+    "kiwoom-sktop4": {
+      "code": "0234N0",
+      "name": "KIWOOM 삼성SK그룹TOP4+"
+    },
+    "tiger-us-sp500us-treasury-blend50": {
+      "code": "0238P0",
+      "name": "TIGER 미국S&P500미국채혼합50"
     }
   }
 }
