@@ -22880,7 +22880,116 @@ const overseasEtfGeopoliticalDiscountSpike: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-14 · 증여 신고한 자녀 주식을 매도해 현금화하면 추가 증여세가 붙는지 */
+const childGiftedStockSaleTax: GuideDef = {
+  slug: 'child-gifted-stock-sale-tax',
+  title: '자녀 증여 주식 매도, 증여세 또 붙을까',
+  tagline: '매도 자체보다 그다음 자금 흐름과 결정 주체가 관건입니다',
+  description:
+    '자녀 명의로 증여 신고까지 마친 주식을 팔아 현금으로 바꾸면 그 자체로 증여세가 또 붙는지 헷갈려 하는 분이 많습니다. 국세기본법의 납세의무 확정 시점과 상속세및증여세법의 반환·재증여 규정을 근거로 매도와 부모의 자금 회수를 구분해 정리했습니다.',
+  keywords: ['자녀 증여 주식 매도', '증여세 재차 증여', '자녀 명의 계좌 증여세', '증여재산 반환 규정', '명의신탁 증여의제', '미성년 자녀 증여공제', '부모 자금 회수 증여세'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-09-14',
+  answer:
+    '이미 증여 신고를 마친 주식을 자녀 명의 계좌에서 매도해 현금으로 바꾸는 것 자체는 국세기본법상 납세의무가 취득 시점에 이미 확정된 뒤의 일이라 새로운 증여세 대상이 아닙니다. 다만 그 대금을 부모가 되돌려 받거나 부모가 계좌를 계속 관리하면 별도의 증여 문제가 생길 수 있습니다.',
+  keyPoints: [
+    '증여세 납세의무는 국세기본법 제21조 제1항 제3호에 따라 재산을 취득한 시점에 확정되므로, 이미 신고한 주식을 나중에 팔아 현금으로 바꾸는 것 자체는 새로운 증여로 보지 않습니다.',
+    '상속세및증여세법 제4조 제4항은 반환·재증여 특례에서 금전을 제외하고 있어, 매도 대금을 부모가 되돌려 받으면 그 돈은 자녀에서 부모로 가는 별도의 증여로 취급될 수 있습니다.',
+    '부모가 계좌 비밀번호나 매매를 계속 쥐고 있으면 국세기본법 제14조 실질과세원칙과 상속세및증여세법 제45조의2 명의신탁재산 증여의제가 적용돼, 애초 증여 자체가 부정될 여지가 있습니다.',
+    '미성년 자녀는 10년간 2,000만원, 성년 자녀는 10년간 5,000만원까지 증여재산공제가 적용되며(상속세및증여세법 제53조), 이 한도 안에서 신고된 증여인지가 이후 매도·재투자 판단의 출발점입니다.',
+  ],
+  sources: [
+    { label: '국가법령정보센터 · 상속세및증여세법 제4조·제53조', url: 'https://www.law.go.kr' },
+    { label: '국가법령정보센터 · 국세기본법 제14조·제21조', url: 'https://www.law.go.kr' },
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '자녀 명의 주식 계좌를 만들면 증여세 부담이 줄어드는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=601&docId=494332619&answerNo=2' },
+    { summary: '아이 명의 적금통장을 주식계좌로 바꿔 투자수익이 늘어도 증여세가 붙는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40303&docId=494000716&answerNo=3' },
+    { summary: '자녀 명의로 주식을 사줬을 때 증여세가 발생하는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40309&docId=494142920&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: '상황별로 보는 자녀 증여 주식 매도·재투자',
+    columns: ['상황', '증여세 관계', '적용 근거', '확인할 점'],
+    rows: [
+      ['신고 마친 주식을 자녀 계좌 안에서 매도만 함', '새로운 증여 아님', '국세기본법 제21조①3호(취득 시 확정)', '매도 자체는 과세 사건이 아님'],
+      ['매도 대금이 계속 자녀 명의로 남아 재투자됨', '새로운 증여로 보지 않는 것이 일반적', '상속세및증여세법 제4조①(포괄주의)', '재투자 판단을 자녀가 직접 했는지'],
+      ['매도 대금을 부모가 되돌려 받음', '자녀→부모 별도 증여 가능', '상속세및증여세법 제4조④(금전은 반환특례 제외)', '계좌 이체 내역에 그대로 남음'],
+      ['부모가 비밀번호를 쥐고 매매를 계속 대신함', '명의신탁 증여의제 적용 여지', '상속세및증여세법 제45조의2, 국세기본법 제14조', '실제 매매 결정 주체가 누구인지'],
+      ['신고 없이 부모 돈으로 계속 추가 매수', '최초 증여부터 다시 문제될 수 있음', '상속세및증여세법 제53조 공제 한도 초과분 과세', '최초 증여 신고 여부부터 확인'],
+    ],
+  },
+  sections: [
+    {
+      heading: '증여세는 재산을 받은 시점에 이미 확정된다',
+      paragraphs: [
+        '증여세를 낼 의무는 국세기본법 제21조 제1항 제3호에 따라 재산을 증여받아 취득하는 바로 그 시점에 확정됩니다. 부모가 자녀 명의 계좌에 돈을 넣거나 주식을 사줘서 실제로 증여가 이뤄졌다면, 세금 문제는 이미 그 순간에 정리된 것입니다.',
+        '이후 그 재산을 어떻게 굴리느냐는 원칙적으로 별개의 문제입니다. 상속세및증여세법 제4조는 무상으로 이전받은 재산이나 이익을 증여세 대상으로 삼는데, 자녀가 이미 자기 것이 된 주식을 팔아 현금으로 바꾸는 행위 자체는 누구에게서 누구로 재산이 넘어가는 이전이 아닙니다.',
+      ],
+    },
+    {
+      heading: '자녀 증여 주식 매도는 그 자체로 새로운 증여가 아니다',
+      paragraphs: [
+        '따라서 증여 신고를 마치고 산 주식을 자녀 명의 계좌 안에서 매도해 현금으로 바꾸는 것만으로는 증여세가 다시 붙지 않습니다. 매도 대금이 계속 자녀 명의 계좌에 남아 자녀 소유로 유지된다면, 세법상 새로운 취득자가 생긴 것이 아니기 때문입니다.',
+        '여기서 핵심은 자녀 명의로 계속 유지되는가입니다. 매도 후 다른 종목을 다시 사는 것도 자녀 자신의 투자 판단으로 이뤄진다면 마찬가지로 새로운 증여로 보지 않는 것이 일반적인 해석입니다.',
+        '다만 이 부분을 문장 하나로 명시한 국세청의 공식 해석을 찾기는 어렵습니다. 위 결론은 취득 시점에 납세의무가 확정된다는 국세기본법 조항과 증여세 과세 대상을 정한 상속세및증여세법 조항을 함께 놓고 본 해석이므로, 금액이 크다면 세무 전문가의 확인을 받는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '매도 대금을 부모가 되돌려 받으면 상황이 달라진다',
+      paragraphs: [
+        '문제는 판 돈을 부모가 다시 가져가는 순간부터 시작됩니다. 상속세및증여세법 제4조 제4항은 증여받은 재산을 신고기한 안에 돌려주면 처음부터 증여가 없었던 것으로 보는 특례를 두면서도, 금전은 이 특례에서 제외한다고 명시하고 있습니다.',
+        '즉 주식과 달리 현금은 되돌려줘도 없었던 일로 되지 않습니다. 자녀 계좌에 있던 매도 대금을 부모가 가져가면, 원래 증여는 원래대로 유효하면서 그 돈을 다시 부모에게 준 것 자체가 자녀에서 부모로 가는 별도의 증여로 취급될 수 있습니다.',
+      ],
+    },
+    {
+      heading: '부모가 계좌를 계속 쥐고 있으면 명의신탁 문제가 생긴다',
+      paragraphs: [
+        '계좌 이름만 자녀이고 실제 관리와 매매를 부모가 계속하는 경우는 더 근본적인 문제가 생깁니다. 국세기본법 제14조 실질과세원칙은 명의와 실제 소유·수익이 다르면 세금은 실제로 소유하고 이익을 얻는 사람을 기준으로 매긴다고 정하고 있습니다.',
+        '상속세및증여세법 제45조의2는 명의개서가 필요한 재산(주식이 대표적입니다)의 명의자와 실제 소유자가 다르면, 조세 회피 목적이 없다는 것을 증명하지 못하는 한 명의자가 증여받은 것으로 보는 명의신탁재산 증여의제를 두고 있습니다. 부모가 비밀번호를 쥐고 매매를 계속 대신한다면 애초 증여 자체가 이 조항의 적용을 받을 수 있습니다.',
+      ],
+    },
+    {
+      heading: '부모가 매매를 계속 대신해주는 경우는 주의가 필요한가',
+      paragraphs: [
+        '네, 주의가 필요합니다. 자녀에게 돈을 증여한 뒤에도 부모가 계속적, 반복적으로 자녀 명의 계좌를 매매해 수익을 낸다면, 그 수익이 자녀 스스로의 투자 판단이 아니라 부모의 관리로 생긴 것이라는 지적이 세무 실무에서 나옵니다.',
+        '다만 정확히 어느 정도의 매매 빈도부터 문제가 되는지를 못박은 수치 기준은 확인하지 못했습니다. 이 부분은 사안별로 국세청이 실질을 따져 판단하는 영역이라, 부모가 계속 계좌를 관리해야 하는 상황이라면 국세청 상담센터나 세무 전문가에게 구체적인 거래 패턴을 놓고 확인받는 것이 안전합니다.',
+      ],
+    },
+    {
+      heading: '매도 이후 자금 흐름과 결정 주체가 핵심이다',
+      paragraphs: [
+        '매도 자체보다 그다음 단계, 그러니까 누가 돈을 가져가고 누가 매매를 결정하는지가 세법상 쟁점입니다. 자녀 계좌의 돈이 계속 자녀 소유로 남고 자녀가 스스로 투자 결정을 내렸다는 근거를 남겨두는 것이 가장 기본적인 대비입니다.',
+        '최초 증여를 신고했는지, 신고했다면 미성년 2,000만원·성년 5,000만원의 10년 공제 한도 안이었는지부터 다시 확인해두는 것이 좋습니다. 이미 한도를 넘겼는데 신고가 안 돼 있다면 매도·재투자보다 그 부분을 먼저 정리하는 것이 우선입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '증여 신고한 주식을 팔기만 해도 증여세 신고를 다시 해야 하나요?',
+      answer:
+        '아니요. 매도 자체는 새로운 취득이 아니라 이미 신고된 재산의 처분이라, 국세기본법상 증여세 납세의무가 다시 발생하지 않습니다. 다만 매도 대금을 계속 자녀 명의로 유지해야 이 판단이 유지됩니다.',
+    },
+    {
+      question: '매도 대금을 자녀 계좌에 그대로 두고 다른 주식을 사면 문제가 되나요?',
+      answer:
+        '자녀 본인의 투자 판단으로 재투자하는 것은 일반적으로 추가 증여로 보지 않습니다. 다만 그 판단과 매매를 실질적으로 누가 했는지가 나중에 쟁점이 될 수 있어 거래 내역을 남겨두는 것이 안전합니다.',
+    },
+    {
+      question: '부모가 용돈 명목으로 준 돈을 자녀가 투자에 쓰면 어떻게 되나요?',
+      answer:
+        '생활비·용돈으로 인정되던 돈이 실제로는 투자에 쓰였다면 비과세 근거가 사라져 증여로 판단될 수 있습니다. 자금의 실제 용도가 중요합니다.',
+    },
+    {
+      question: '부모가 계속 자녀 계좌로 매매를 대신 해주면 어떻게 되나요?',
+      answer:
+        '명확한 수치 기준이 법에 있는 것은 아니지만, 부모가 계속적·반복적으로 매매를 대신하고 그 수익이 사실상 부모의 판단으로 생긴 것이라면 추가 증여로 볼 여지가 있다는 지적이 세무 실무에서 나옵니다. 판단이 애매하면 국세청 상담이나 세무 전문가 확인이 안전합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  childGiftedStockSaleTax,
   overseasEtfGeopoliticalDiscountSpike,
   nasdaq100EtfIndividualStockExposure,
   overseasStockYearEndSellAmount,
@@ -23143,6 +23252,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-14 · 지식iN 질문 수요 기반 (증여 신고한 자녀 주식을 매도해 현금화하면 추가 증여세가 붙는지)
+  'child-gifted-stock-sale-tax': '2026-09-14',
   // 2026-09-13 · 지식iN 질문 수요 기반 (전쟁 등 지정학적 이슈가 터지면 ETF 괴리율이 유독 크게 벌어지는 이유)
   'overseas-etf-geopolitical-discount-spike': '2026-09-13',
   // 2026-09-12 · 지식iN 질문 수요 기반 (나스닥100 ETF로 아이온큐 같은 특정 종목에 간접투자할 수 있는지, 상장 거래소 요건이 편입 자격을 가르는 구조)
@@ -23489,7 +23600,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax'],
   },
   {
     title: '배당·인컴',
