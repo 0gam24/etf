@@ -22988,7 +22988,121 @@ const childGiftedStockSaleTax: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-15 · 부동산 시장이 하락할 때 리츠 ETF로 수익을 낼 수 있는지 */
+const reitInverseEtfRealEstateDrop: GuideDef = {
+  slug: 'reit-inverse-etf-real-estate-drop',
+  title: '리츠 ETF 인버스, 부동산 하락에 수익 낼 수 있나',
+  tagline: '리츠 ETF는 원래 매수 포지션, 하락에 베팅하려면 다른 상품이 필요합니다',
+  description:
+    '국내 상장 리츠 ETF는 모두 매수 포지션이라 부동산 시장이 내리면 함께 손실을 봅니다. 하락에 베팅하려면 어떤 상품이 필요한지, 국내와 해외 상품의 차이, 인버스 ETF의 위험과 거래 전 확인할 절차까지 정리했습니다.',
+  keywords: ['리츠 ETF 인버스', '부동산 하락 ETF', '인버스 리츠 ETF', '미국 리츠 인버스 ETF', '리츠 ETF 공매도', '해외 인버스 ETF 세금'],
+  section: 'ETF 리츠 가이드',
+  lastReviewed: '2026-09-15',
+  answer:
+    '국내 상장 리츠 ETF는 전부 매수 포지션이라 부동산 시장이 내리면 함께 손실을 봅니다. 하락에 베팅하려면 국내가 아니라 미국에 상장된 리츠 인버스 ETF를 해외주식 계좌로 사야 하며, 이 상품들은 매일 재조정되는 구조라 장기 보유에는 적합하지 않습니다.',
+  keyPoints: [
+    '국내 증시에 상장된 리츠 ETF는 전부 매수(롱) 포지션이라, 국내 부동산 시장이 내리면 이 ETF들도 함께 손실을 봅니다.',
+    '부동산 하락에 베팅하려면 국내가 아니라 미국 상장 리츠 인버스 ETF를 해외주식 계좌로 사야 합니다.',
+    '이 상품들은 매일 손익을 재조정하는 구조라 장기간 보유하면 실제 부동산 가격 흐름과 수익률이 어긋날 수 있습니다.',
+    '해외 인버스·레버리지 ETP는 투자자 보호를 위한 사전교육·예탁금 요건이 있고 기준이 최근에도 바뀌었으므로 매매 전 증권사 공지로 확인해야 합니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융위원회 보도자료', url: 'https://www.fsc.go.kr' },
+    { label: '한국금융투자협회 금융투자교육원', url: 'https://www.kifin.or.kr' },
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '부동산 시장이 하락할 때 수익을 낼 수 있는 리츠 ETF가 있는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=401&docId=485664870&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: '국내 리츠 ETF와 해외 리츠 인버스 ETF 비교',
+    columns: ['구분', '국내 리츠 ETF(매수)', '해외 리츠 인버스 ETF', '확인할 점'],
+    rows: [
+      ['상장 시장', '한국거래소(KRX)', '미국 증시', '해외주식 계좌 개설 필요'],
+      ['부동산 하락 시 방향', '함께 하락(손실)', '이론상 상승(이익) 가능', '지수 구성과 실제 상관관계 확인'],
+      ['상품 구조', '단순 매수형, 재조정 없음', '-1배·-2배·-3배 등 배수형, 매일 재조정', '장기 보유 시 복리 효과로 괴리 발생'],
+      ['과세 방식', '국내주식형이면 매매차익 비과세, 분배금 배당소득세 15.4%', '매매차익 전체가 양도소득세 대상', '분배금·매매차익 과세 방식이 서로 다름'],
+      ['거래 전 준비', '별도 사전교육 의무 없음', '레버리지·인버스 상품 사전교육·예탁금 요건 확인 필요', '증권사 공지에서 그 시점 기준 확인'],
+    ],
+  },
+  sections: [
+    {
+      heading: '리츠 ETF는 부동산이 오를 때 오르고 내릴 때 내린다',
+      paragraphs: [
+        '리츠 ETF는 여러 리츠를 담아 임대수익 배당과 자산가치 상승을 함께 추구하는 매수(롱) 포지션 상품입니다. 부동산 경기가 좋아지고 임대료·자산가치가 오르면 리츠 ETF도 함께 오르고, 반대로 부동산 시장이 냉각되면 리츠 ETF도 같이 내립니다.',
+        '그래서 부동산 시장 하락기에 리츠 ETF를 사서 수익을 내겠다는 생각은 방향을 반대로 잡은 것입니다. 하락기에 수익을 내려면 매수가 아니라 하락에 베팅하는 별도 구조의 상품이 필요합니다.',
+      ],
+    },
+    {
+      heading: '국내 증시에는 리츠 하락에 베팅하는 ETF가 없다',
+      paragraphs: [
+        '한국거래소에는 TIGER 리츠부동산인프라, KODEX 한국부동산리츠인프라 등 여러 리츠 ETF가 상장돼 있지만, 전부 매수 포지션 상품입니다. 리츠 지수를 역방향으로 추종하는 인버스 ETF는 이 글을 쓰는 시점 기준으로 국내에 상장돼 있지 않습니다.',
+        '새 상품이 상장될 가능성은 늘 열려 있으므로, 실제로 있는지는 한국거래소 정보데이터시스템에서 리츠 관련 ETF 목록을 검색해 직접 확인하는 편이 정확합니다.',
+      ],
+    },
+    {
+      heading: '미국에는 리츠 인버스 ETF가 상장돼 있다',
+      paragraphs: [
+        '미국 증시에는 부동산 섹터 지수를 역방향으로 추종하는 ETF가 여러 개 상장돼 있습니다. 같은 지수를 -1배로 추종하는 상품, -2배로 추종하는 상품, -3배로 추종하는 상품까지 배수가 다른 상품들이 함께 거래됩니다.',
+        '이 ETF들은 해외주식 계좌를 통해 국내에서도 직접 매매할 수 있습니다. 다만 종목명과 상장 여부는 운용사 사정에 따라 바뀔 수 있어, 실제 매매 전에는 증권사 앱이나 운용사 홈페이지에서 현재 상장 상태를 다시 확인해야 합니다.',
+      ],
+    },
+    {
+      heading: '매일 재조정되는 구조가 만드는 함정',
+      paragraphs: [
+        '인버스·레버리지 ETF는 하루 단위로 손익을 재조정하는 구조로 설계돼 있습니다. 오늘 하루의 등락률만 정확히 반대(또는 배수)로 따라가고, 다음 날은 전날 종가를 새 기준으로 다시 계산합니다.',
+        '그래서 부동산 지수가 며칠 사이 오르내림을 반복하다가 결국 하락으로 마감하더라도, 인버스 ETF의 누적 수익률은 그 하락폭만큼 오르지 않을 수 있습니다. 변동성이 클수록 이 차이는 커지고, 보유 기간이 길어질수록 눈에 띄게 벌어집니다.',
+      ],
+    },
+    {
+      heading: '해외 인버스·레버리지 ETP는 거래 전 확인할 절차가 있다',
+      paragraphs: [
+        '국내 투자자가 해외에 상장된 레버리지·인버스 ETF·ETN을 매매하려면 투자자 보호를 위한 사전교육 이수와 최소 예탁금 요건이 걸려 있습니다. 이 요건은 금융위원회 방침에 따라 국내 상장 상품과 해외 상장 상품 사이 형평성을 맞추는 방향으로 여러 차례 손질돼 왔고, 배수나 종목 구성(지수형인지 단일종목형인지)에 따라 적용 범위도 달라집니다.',
+        '구체적인 예탁금 액수와 교육 대상 범위는 시행 시점마다 달라졌으므로, 매매하기 전에 거래하는 증권사 공지나 한국금융투자협회 금융투자교육원 안내에서 그 시점 기준을 직접 확인해야 정확합니다.',
+      ],
+    },
+    {
+      heading: '국내 리츠 ETF와 해외 인버스 ETF는 세금도 다르게 매겨진다',
+      paragraphs: [
+        '국내 상장 리츠 ETF는 국내주식형 요건을 충족하면 매매차익이 비과세되고, 분배금에는 배당소득세 15.4%가 원천징수됩니다. 반면 해외에 상장된 리츠 인버스 ETF는 매매차익 전체가 양도소득세 대상입니다.',
+        '해외주식 양도소득세는 연간 매매차익에서 250만원을 기본공제하고 남은 금액에 22%(지방소득세 포함)를 매기며, 다음 해 5월에 직접 신고·납부해야 합니다. 같은 ETF라도 국내 상장인지 해외 상장인지에 따라 세금 계산이 완전히 달라지는 셈입니다.',
+      ],
+    },
+    {
+      heading: '실제로 베팅하기 전에 무엇을 따져야 하나',
+      paragraphs: [
+        '부동산 시장 하락을 예상한다고 해서 반드시 인버스 ETF로 대응해야 하는 것은 아닙니다. 보유 중인 리츠 비중을 줄이거나 다른 자산으로 분산하는 쪽이, 매일 재조정되는 상품을 장기간 들고 있는 것보다 다루기 쉬운 경우가 많습니다.',
+        '그래도 인버스 ETF로 대응하려 한다면 하락을 예상하는 기간이 짧은지, 사전교육·예탁금 요건을 그 시점 기준으로 충족했는지, 세금 신고 의무까지 감당할 수 있는지를 매매 전에 순서대로 확인하는 편이 안전합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '국내 리츠 ETF도 공매도로 하락에 베팅할 수 있나요?',
+      answer:
+        '공매도 가능 종목으로 지정된 리츠 ETF는 개별 종목처럼 대주·대차를 통해 공매도할 수 있습니다. 다만 공매도 가능 종목 지정 여부와 조건은 한국거래소 공시로 수시로 바뀌므로 거래하는 증권사에서 현재 가능 여부를 확인해야 합니다.',
+    },
+    {
+      question: '리츠 인버스 ETF는 배당(분배금)도 나오나요?',
+      answer:
+        '인버스 구조 특성상 분배금이 거의 없거나 매우 적은 경우가 많습니다. 이 상품은 배당 목적이 아니라 방향성 베팅과 헤지 목적으로 설계된 상품이라는 점을 염두에 두어야 합니다.',
+    },
+    {
+      question: '장기간 하락이 예상되면 인버스 ETF를 계속 들고 있어도 되나요?',
+      answer:
+        '매일 재조정되는 구조라 변동성이 큰 구간을 오래 지나면 실제 하락폭만큼 수익이 나지 않을 수 있습니다. 짧은 기간의 방향성 베팅에 적합하고, 장기 보유는 별도로 신중히 따져봐야 합니다.',
+    },
+    {
+      question: '해외 인버스 ETF를 사려면 사전교육을 어디서 받나요?',
+      answer:
+        '한국금융투자협회가 운영하는 금융투자교육원(kifin.or.kr)에서 온라인으로 이수할 수 있습니다. 이미 국내 상장 레버리지·인버스 상품 교육을 이수했다면 추가 이수 없이 인정되는 경우도 있으니 거래 증권사에 먼저 확인하는 편이 빠릅니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  reitInverseEtfRealEstateDrop,
   childGiftedStockSaleTax,
   overseasEtfGeopoliticalDiscountSpike,
   nasdaq100EtfIndividualStockExposure,
@@ -23252,6 +23366,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-15 · 지식iN 질문 수요 기반 (부동산 시장이 하락할 때 리츠 ETF로 수익을 낼 수 있는지)
+  'reit-inverse-etf-real-estate-drop': '2026-09-15',
   // 2026-09-14 · 지식iN 질문 수요 기반 (증여 신고한 자녀 주식을 매도해 현금화하면 추가 증여세가 붙는지)
   'child-gifted-stock-sale-tax': '2026-09-14',
   // 2026-09-13 · 지식iN 질문 수요 기반 (전쟁 등 지정학적 이슈가 터지면 ETF 괴리율이 유독 크게 벌어지는 이유)
@@ -23605,7 +23721,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'reit-etf-types-tax', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'reit-etf-types-tax', 'reit-inverse-etf-real-estate-drop', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income'],
   },
   {
     title: '테마·섹터',
