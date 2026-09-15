@@ -23101,7 +23101,117 @@ const reitInverseEtfRealEstateDrop: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-16 · 지식iN 질문 수요 기반 (종합소득세 신고 시 국민연금 보험료가 공제되는지, 국민연금 수령액은 어떻게 과세되는지) */
+const nationalPensionIncomeTax: GuideDef = {
+  slug: 'national-pension-income-tax',
+  title: '국민연금 종합소득세, 보험료 공제와 연금 수령 과세',
+  tagline: '낼 때는 전액 공제, 받을 때는 무조건 종합과세라는 두 원칙',
+  description:
+    '국민연금은 낼 때 보험료 전액이 연금보험료공제로 소득에서 빠지고, 받을 때는 연금소득간이세액표로 원천징수됩니다. 근로자와 지역가입자의 신고 방법 차이, 배우자 명의 납입금의 공제 여부, 다른 소득이 있을 때 5월 신고가 남는 경우까지 정리했습니다.',
+  keywords: ['국민연금 종합소득세', '연금보험료공제', '국민연금 소득공제', '공적연금 원천징수', '지역가입자 국민연금 공제', '연금소득간이세액표'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-09-16',
+  answer:
+    '국민연금은 낼 때 보험료 전액이 연금보험료공제로 소득에서 빠지고, 받을 때는 연금소득간이세액표로 원천징수됩니다. 근로자는 연말정산에서 자동 처리되지만 지역가입자는 본인이 직접 신고해야 하고, 다른 종합소득이 있으면 5월에 합산 정산이 남을 수 있습니다.',
+  keyPoints: [
+    '소득세법 제51조의3에 따라 본인이 낸 국민연금보험료는 전액 연금보험료공제 대상이지만, 배우자나 부양가족 명의로 낸 보험료는 본인이 공제받을 수 없습니다.',
+    '근로자는 원천공제된 날이 속한 과세기간의 연말정산에서 자동 반영되고, 지역가입자는 납부한 시점을 기준으로 5월 종합소득세 신고에서 직접 공제를 신청해야 합니다.',
+    '입사 전 납부분, 추가 납부분, 체납 후 납부분, 실업크레딧 납부액까지 근로 여부와 무관하게 공제 대상에 포함됩니다.',
+    '국민연금 같은 공적연금소득은 금액과 무관하게 무조건 종합과세 대상이라, 연 1,500만원 이하면 분리과세를 고를 수 있는 연금저축·IRP 같은 사적연금과는 다른 체계를 따릅니다.',
+  ],
+  sources: [
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+    { label: '국세청 국세상담센터 자주묻는 Q&A', url: 'https://call.nts.go.kr' },
+    { label: '국민연금공단', url: 'https://www.nps.or.kr' },
+    { label: '국가법령정보센터', url: 'https://www.law.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '종합소득세 신고 시 국민연금 보험료가 공제되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40301&docId=493624411&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: '국민연금보험료 공제, 가입 유형별로 이렇게 다릅니다',
+    columns: ['구분', '공제 시기', '신고 방법', '확인할 점'],
+    rows: [
+      ['근로자(직장가입자)', '원천공제된 날이 속한 과세기간', '회사 연말정산에서 자동 반영', '연말정산간소화 자료로 금액 확인'],
+      ['지역가입자', '실제 납부한 시점 기준', '5월 종합소득세 신고에서 본인이 직접 신청', '국민연금공단 납부확인서로 금액 확인'],
+      ['체납 후 납부·추가 납부', '납부한 해당 과세기간', '근로자·지역가입자 동일하게 그해 공제', '납부 영수증·완납 증명 보관'],
+      ['배우자·가족 명의 납입', '공제 대상 아님', '본인 명의가 아니면 신청 불가', '납부자 명의가 본인인지 확인'],
+      ['국민연금 수령(연금소득)', '다음 해 1월분 지급 시 연말정산', '연금소득간이세액표로 원천징수, 필요하면 5월 종합소득세 신고', '다른 종합소득 유무 확인'],
+    ],
+  },
+  sections: [
+    {
+      heading: '국민연금보험료는 왜 전액 공제되나',
+      paragraphs: [
+        '소득세법 제51조의3(연금보험료공제)에 따라, 해당 과세기간에 국민연금보험료를 낸 거주자는 그 낸 금액 전부를 종합소득금액에서 공제받습니다. 건강보험료·고용보험료가 근로기간 중 납입분만 인정되는 것과 달리, 국민연금은 이 제한이 없습니다.',
+        '그래서 입사 전에 지역가입자로 냈던 보험료, 소득이 늘어 추가로 납부한 금액, 한동안 밀렸다가 나중에 완납한 체납분, 실업크레딧으로 낸 금액까지 모두 공제 대상에 들어갑니다. 근로기간이나 현재 가입 자격과 상관없이 실제로 본인이 부담해 낸 금액인지가 기준입니다.',
+      ],
+    },
+    {
+      heading: '근로자와 지역가입자, 신고 방법이 다르다',
+      paragraphs: [
+        '근로자(직장가입자)는 급여에서 국민연금보험료가 원천공제된 날이 속하는 과세기간에 공제가 잡히고, 회사의 연말정산 과정에서 자동으로 반영됩니다. 따로 종합소득세를 신고할 필요는 없습니다.',
+        '지역가입자는 다릅니다. 실제로 보험료를 납부한 시점을 기준으로 공제받으며, 다른 소득과 합산해 5월에 본인이 직접 종합소득세를 신고할 때 이 공제를 신청해야 합니다. 자동으로 채워지는 항목이 아니므로, 국민연금공단 홈페이지나 앱에서 발급하는 납부확인서로 낸 금액을 미리 확인해 두는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '배우자·가족 명의로 낸 보험료는 공제 대상이 아니다',
+      paragraphs: [
+        '연금보험료공제는 거주자 본인이 부담해 납부한 보험료만 인정합니다. 배우자나 자녀 등 부양가족 명의로 가입된 국민연금 보험료를 대신 내주었더라도, 그 금액은 낸 사람이 아니라 명의자 본인만 공제받을 수 있습니다.',
+        '부부가 각자 지역가입자로 보험료를 내는 가정에서 한쪽이 두 사람분을 함께 이체하는 경우가 흔한데, 이때도 공제는 명의별로 갈립니다. 종합소득세 신고 전에 국민연금공단 납부확인서에서 본인 명의 납부액만 따로 뽑아 확인하는 것이 정확합니다.',
+      ],
+    },
+    {
+      heading: '국민연금을 받을 때는 연금소득간이세액표로 원천징수된다',
+      paragraphs: [
+        '국민연금 같은 공적연금소득은 연금소득간이세액표를 기준으로 원천징수됩니다. 해당 과세기간의 다음 해 1월분 연금을 지급할 때 국민연금공단이 연말정산을 실시해 그해 세금을 정산합니다.',
+        '수급자가 소득·세액공제신고서를 국민연금공단에 제출하면 그 내용대로 공제가 반영되고, 제출하지 않으면 공제 대상 1인(본인)으로만 계산됩니다. 부양가족 등 추가로 인정받을 공제가 있다면 신고서를 챙겨 내는 편이 유리합니다.',
+      ],
+    },
+    {
+      heading: '다른 소득이 있으면 5월 종합소득세 신고가 남는다',
+      paragraphs: [
+        '국민연금 같은 공적연금소득은 금액이 얼마든 분리과세를 선택할 수 없고 무조건 종합과세 대상입니다. 연금계좌(연금저축·IRP)에서 받는 사적연금소득이 연 1,500만원 이하면 분리과세를 고를 수 있는 것과는 다른 체계입니다.',
+        '연금소득만 있고 다른 소득이 없다면 1월분 연말정산으로 세금 정산이 대체로 끝나는 구조입니다. 다만 근로소득·사업소득·기타소득 등 다른 종합소득이 함께 있거나 공제 대상 가족이 바뀌었다면, 국민연금 원천징수분과 나머지 소득을 합쳐 5월에 종합소득세를 신고해야 세율 구간이 정확히 맞춰집니다.',
+      ],
+    },
+    {
+      heading: '공제받았다고 국민연금 자체가 절세 상품이 되는 것은 아니다',
+      paragraphs: [
+        '보험료를 전액 공제받는다는 점만 보고 국민연금을 세금을 줄이는 수단으로 여기는 경우가 있습니다. 하지만 국민연금은 의무 가입 성격의 공적 사회보험이라 납부율과 가입 여부를 임의로 조정해 공제액을 늘리는 방식의 절세로 접근할 상품은 아닙니다.',
+        '연금저축·IRP 같은 사적연금은 세액공제 한도와 분리과세 여부를 스스로 설계할 수 있어 절세 전략의 대상이 되지만, 국민연금 보험료공제는 실제로 낸 만큼만 그대로 반영되는 구조로 보는 편이 맞습니다.',
+      ],
+    },
+    {
+      heading: '무엇을 어디서 확인해야 하나',
+      paragraphs: [
+        '본인이 낸 국민연금보험료 총액은 국민연금공단 홈페이지나 모바일 앱의 납부확인서에서 조회할 수 있고, 근로자는 회사의 연말정산간소화 자료에서도 확인됩니다. 실제 공제액과 신고 방법은 개인마다 가입 유형과 다른 소득 구성에 따라 달라질 수 있으므로, 홈택스 종합소득세 모두채움 안내나 국세청 상담을 통해 본인 상황을 재확인하는 것이 정확합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '국민연금을 받으면 무조건 종합소득세를 신고해야 하나요?',
+      answer:
+        '공적연금소득은 분리과세를 선택할 수 없어 원칙적으로 종합소득에 포함됩니다. 다만 연금소득만 있고 1월분 연말정산으로 이미 정산이 끝났다면 추가 신고 없이 마무리되는 경우가 많고, 다른 소득이 함께 있을 때 5월 신고가 필요합니다. 본인 상황은 홈택스 모두채움 안내에서 확인하는 것이 정확합니다.',
+    },
+    {
+      question: '체납했던 국민연금보험료를 나중에 납부해도 공제받을 수 있나요?',
+      answer: '네. 체납 후 납부한 금액도 실제로 낸 과세기간에 연금보험료공제 대상으로 포함됩니다.',
+    },
+    {
+      question: '배우자 명의로 국민연금을 대신 내주면 제가 공제받을 수 있나요?',
+      answer: '아니요. 연금보험료공제는 본인이 낸 보험료만 인정되어, 배우자나 부양가족 명의로 낸 보험료는 명의자 본인만 공제받을 수 있습니다.',
+    },
+    {
+      question: '실업크레딧으로 낸 국민연금보험료도 공제 대상인가요?',
+      answer: '네. 실업크레딧 납부액도 본인이 부담한 국민연금보험료로 인정되어 연금보험료공제 대상에 포함됩니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  nationalPensionIncomeTax,
   reitInverseEtfRealEstateDrop,
   childGiftedStockSaleTax,
   overseasEtfGeopoliticalDiscountSpike,
@@ -23366,6 +23476,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-16 · 지식iN 질문 수요 기반 (종합소득세 신고 시 국민연금 보험료가 공제되는지, 국민연금 수령액은 어떻게 과세되는지)
+  'national-pension-income-tax': '2026-09-16',
   // 2026-09-15 · 지식iN 질문 수요 기반 (부동산 시장이 하락할 때 리츠 ETF로 수익을 낼 수 있는지)
   'reit-inverse-etf-real-estate-drop': '2026-09-15',
   // 2026-09-14 · 지식iN 질문 수요 기반 (증여 신고한 자녀 주식을 매도해 현금화하면 추가 증여세가 붙는지)
@@ -23716,7 +23828,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax'],
   },
   {
     title: '배당·인컴',
