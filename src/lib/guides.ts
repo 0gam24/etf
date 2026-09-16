@@ -23210,7 +23210,109 @@ const nationalPensionIncomeTax: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-17 · ISA 계좌 만기(계약기간)를 10년 이상으로 설정할 수 있는지 */
+const isaContractPeriodLongTerm: GuideDef = {
+  slug: 'isa-contract-period-long-term',
+  title: 'ISA 만기 10년 이상 설정, 지금도 가능할까',
+  tagline: '의무가입 3년과 계약기간은 다른 개념입니다',
+  description:
+    'ISA 계좌를 개설하거나 연장할 때 만기(계약기간)를 10년 이상으로 길게 설정할 수 있는지, 세제 혜택을 받는 의무가입기간 3년과는 어떻게 다른지, 최근 정부가 만기를 5년으로 제한하려다 철회한 배경까지 정리했습니다.',
+  keywords: ['ISA 만기 설정', 'ISA 계약기간', 'ISA 10년', 'ISA 의무가입기간', 'ISA 만기 연장', 'ISA 만기 5년 제한'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-09-17',
+  answer:
+    'ISA 계좌의 계약기간(만기)은 법으로 정한 상한이 없어 증권사에 따라 10년, 그 이상으로도 설정할 수 있습니다. 세제 혜택을 받는 데 필요한 의무가입기간은 3년뿐이라, 만기를 길게 잡아도 3년만 지나면 언제든 비과세·저율과세 혜택을 그대로 받으며 인출하거나 해지할 수 있습니다.',
+  keyPoints: [
+    '조세특례제한법상 ISA 세제 혜택을 받는 데 필요한 의무가입기간은 3년이며, 계좌가 존속하는 계약기간(만기)에는 법정 상한이 없습니다.',
+    '증권사 실무상 계약기간을 개설 시점에 10년 이상, 많게는 수십 년 단위로 설정할 수 있어 3년마다 계좌를 새로 만들거나 갱신할 필요가 없습니다.',
+    '정부가 2026년 8월 계약기간을 최대 5년으로 제한하는 개편안을 냈으나 반발이 커지자 9월 1일 국무회의에서 철회해, 계약기간을 자유롭게 설정할 수 있는 현행 제도가 유지됩니다.',
+    '가입일 또는 만기일이 속한 과세기간의 직전 3개 과세기간 중 한 번이라도 금융소득종합과세 대상자였다면 신규가입·만기연장이 모두 막히므로, 만기를 길게 잡기 전에 대상 여부부터 확인해야 합니다.',
+  ],
+  sources: [
+    { label: '국가법령정보센터 · 조세특례제한법', url: 'https://www.law.go.kr' },
+    { label: '기획재정부', url: 'https://www.moef.go.kr' },
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '미래에셋증권 ISA 계좌 만기를 10년 이상으로 설정하는 게 지금도 가능한지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=494627408&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: 'ISA 의무가입기간과 계약기간(만기), 무엇이 다른가',
+    columns: ['구분', '의무가입기간', '계약기간(만기)', '확인할 점'],
+    rows: [
+      ['법적 성격', '세제 혜택을 받기 위한 최소 조건', '계좌가 존속하는 기간, 고객이 설정', '두 개념이 서로 다름을 먼저 구분'],
+      ['기간', '3년(조세특례제한법)', '3년 이상, 법정 상한 없음', '증권사마다 설정 가능한 최대 연수가 다름'],
+      ['3년 이후', '혜택 발동, 해지·인출 자유', '만기까지 계좌를 유지할 의무는 없음', '만기를 길게 잡아도 3년 후 언제든 정리 가능'],
+      ['최근 변수', '변경 논의 없음', '2026년 8월 5년 제한안 추진, 9월 1일 철회', '국회 심사가 남아 있어 완전히 끝난 사안은 아님'],
+      ['재가입 제한', '직전 3개 과세기간 금융소득종합과세 대상이면 불가', '동일하게 적용', '본인이 대상자였는지 먼저 확인'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'ISA 만기 10년 이상 설정, 왜 가능한가',
+      paragraphs: [
+        'ISA 계좌의 계약기간에는 법으로 정한 상한이 없습니다. 조세특례제한법은 세제 혜택을 받기 위한 최소 의무가입기간만 3년으로 정해 두었을 뿐, 계좌를 얼마나 오래 유지할지는 증권사 약관과 고객의 선택에 맡겨져 있습니다.',
+        '그래서 미래에셋증권을 비롯한 주요 증권사는 계좌 개설이나 만기 연장 시 계약기간을 10년, 많게는 수십 년 단위로 길게 설정할 수 있게 해 두었습니다. 한 번 길게 설정해 두면 3년마다 계좌를 새로 만들거나 연장 신청을 반복할 필요가 없습니다.',
+      ],
+    },
+    {
+      heading: '의무가입기간 3년과 계약기간은 다른 개념이다',
+      paragraphs: [
+        '두 기간을 헷갈리면 계좌를 오래 묶어 둬야 한다고 오해하기 쉽습니다. 의무가입기간은 비과세·저율분리과세 같은 세제 혜택을 받기 위해 채워야 하는 최소 기간이고, 계약기간(만기)은 계좌 자체가 존속하는 기간을 뜻합니다.',
+        '계약기간을 10년으로 설정해 두더라도 가입일로부터 3년이 지나면 세제 혜택은 이미 전액 발동한 상태입니다. 그 이후로는 만기까지 기다릴 필요 없이 원하는 시점에 해지하거나 인출해도 비과세와 손익통산 혜택을 그대로 받습니다.',
+      ],
+    },
+    {
+      heading: '계약기간을 길게 잡으면 무엇이 편한가',
+      paragraphs: [
+        '계약기간을 짧게 설정하면 만기가 돌아올 때마다 연장 여부를 직접 결정하고 신청해야 합니다. 깜빡 잊고 넘어가면 계좌 운용에 차질이 생길 수도 있습니다.',
+        '반대로 계약기간을 처음부터 10년 이상으로 잡아 두면 그 기간 안에서는 별도 연장 절차 없이 납입과 재예치를 계속 이어갈 수 있어, 장기로 자산을 굴릴 계획이라면 관리 부담이 줄어듭니다. 다만 3년만 채운 뒤 정리할 생각이라면 만기를 길게 잡을 실익은 크지 않습니다.',
+      ],
+    },
+    {
+      heading: '2026년 계약기간 5년 제한 논의는 철회됐다',
+      paragraphs: [
+        '2026년 8월 3일 기획재정부가 발표한 세제개편안 초안에는 일반 ISA의 계약기간을 최대 5년으로 제한하는 내용이 포함돼 있었습니다. 시행되면 이미 장기로 설정해 둔 계좌에도 영향을 줄 수 있어 투자자 반발이 컸습니다.',
+        '이 방침은 9월 1일 국무회의에서 철회됐고, 정부는 계약기간과 납입한도를 현행대로 유지하기로 확정 발표했습니다. 다만 세법 개정은 국회 심사를 거쳐야 최종 확정되므로, 계좌를 새로 만들거나 만기를 연장하기 직전에는 그 시점 기준의 제도를 한 번 더 확인하는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '만기를 길게 잡기 전에 재가입 제한부터 확인한다',
+      paragraphs: [
+        'ISA는 누구나 계약기간을 길게 설정해 새로 가입하거나 연장할 수 있는 것은 아닙니다. 가입일 또는 만기일이 속한 과세기간의 직전 3개 과세기간 중 한 번이라도 금융소득종합과세 대상자였다면 신규가입과 만기연장 모두 막힙니다.',
+        '최근 몇 년 사이 금융소득이 늘어난 경우라면 계약기간을 정하기 전에 본인이 이 제한에 걸리는지부터 확인해야 합니다. 대상 여부는 가입하려는 증권사나 국세청 홈택스에서 확인할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '계약기간을 정할 때 무엇을 확인해야 하나',
+      paragraphs: [
+        '계약기간을 얼마로 설정할 수 있는지는 증권사별 상품 약관에 따라 최대 연수가 다를 수 있어, 계좌를 개설하거나 연장하려는 증권사 창구나 앱에서 설정 가능한 구체적인 연수를 먼저 확인하는 편이 정확합니다.',
+        '장기로 계좌를 운용할 계획이라면 계약기간을 길게 잡아 관리 부담을 줄이고, 3년 정도만 채우고 정리할 생각이라면 짧게 잡아도 무방합니다. 어느 쪽이든 의무가입기간 3년만 지나면 혜택은 이미 확보된 상태라는 점은 같습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA 만기를 3년으로 짧게 설정하면 불리한가요?',
+      answer: '불리하다고 보기는 어렵습니다. 세제 혜택은 의무가입기간 3년만 지나면 동일하게 적용되고, 다만 만기가 돌아올 때마다 직접 연장 신청을 해야 하는 번거로움이 있을 뿐입니다.',
+    },
+    {
+      question: '계약기간을 10년으로 정했는데 중간에 급하게 돈이 필요하면 어떻게 되나요?',
+      answer: '의무가입기간 3년이 지난 뒤라면 만기 전이라도 언제든 해지하거나 인출할 수 있습니다. 3년을 채우기 전에 해지하면 과세특례로 받은 세액이 추징될 수 있습니다.',
+    },
+    {
+      question: '증권사를 옮기면 계약기간도 다시 설정해야 하나요?',
+      answer: '증권사를 옮기는 이관 절차와 계약기간 승계 여부는 취급 방식이 회사마다 달라, 옮기려는 증권사에 미리 확인하는 편이 정확합니다.',
+    },
+    {
+      question: '정부의 계약기간 5년 제한안이 나중에 다시 추진될 수도 있나요?',
+      answer: '2026년 9월 국무회의에서 철회됐지만 세법 개정은 매년 국회 심사를 거치므로, 제도가 다시 바뀔 가능성은 남아 있습니다. 계좌를 새로 만들거나 연장하기 직전에 그 시점 기준 제도를 확인하는 것이 안전합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  isaContractPeriodLongTerm,
   nationalPensionIncomeTax,
   reitInverseEtfRealEstateDrop,
   childGiftedStockSaleTax,
@@ -23476,6 +23578,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-17 · 지식iN 질문 수요 기반 (ISA 계좌 만기를 10년 이상으로 설정하는 게 지금도 가능한지)
+  'isa-contract-period-long-term': '2026-09-17',
   // 2026-09-16 · 지식iN 질문 수요 기반 (종합소득세 신고 시 국민연금 보험료가 공제되는지, 국민연금 수령액은 어떻게 과세되는지)
   'national-pension-income-tax': '2026-09-16',
   // 2026-09-15 · 지식iN 질문 수요 기반 (부동산 시장이 하락할 때 리츠 ETF로 수익을 낼 수 있는지)
@@ -23828,7 +23932,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax', 'isa-contract-period-long-term'],
   },
   {
     title: '배당·인컴',
