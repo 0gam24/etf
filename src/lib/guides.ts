@@ -23311,7 +23311,116 @@ const isaContractPeriodLongTerm: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-18 · 지식iN 질문 수요 기반 (ETF 괴리율이 마이너스면 싸게 사는 신호인지, 2026-08-19 강화된 LP 관리 기준) */
+const etfDiscountRateBuySignal: GuideDef = {
+  slug: 'etf-discount-rate-buy-signal',
+  title: 'ETF 괴리율 마이너스, 싸게 사는 신호일까',
+  tagline: '숫자가 작을수록 안전하다는 뜻이지 무조건 저평가라는 뜻은 아닙니다',
+  description:
+    'ETF 괴리율이 마이너스면 시장가격이 순자산가치보다 낮다는 뜻이지만, 그 자체가 저가매수 신호는 아닙니다. 2026년 8월 19일 강화된 유동성공급자 관리 기준과 투자유의종목 지정 절차, 매매 전 실제로 확인할 순서를 정리했습니다.',
+  keywords: ['ETF 괴리율', '괴리율 마이너스', 'ETF 할인율', '투자유의종목', '유동성공급자 LP', 'ETF 저가매수'],
+  section: 'ETF 괴리율 가이드',
+  lastReviewed: '2026-09-18',
+  answer:
+    '괴리율이 마이너스라는 것은 시장가격이 그 순간의 순자산가치보다 낮다는 뜻일 뿐, 곧 저평가돼 싸게 살 기회라는 의미는 아닙니다. 2026년 8월 19일부터 유동성공급자의 관리 기준이 국내 2%, 해외 5%로 강화됐고, 이를 반복해 넘으면 투자유의종목으로 지정됩니다.',
+  keyPoints: [
+    '괴리율이 마이너스라는 것은 시장가격이 실시간 순자산가치(NAV)보다 낮다는 뜻일 뿐, 그 상태가 곧 저평가되어 싸게 살 기회라는 의미는 아닙니다.',
+    '2026년 8월 19일부터 유동성공급자(LP)의 종가 기준 괴리율 관리의무가 국내 상품 3%에서 2%로, 해외 상품 6%에서 5%로 강화됐고, 음수 괴리율도 절대값으로 판단합니다.',
+    '관리의무 기준의 2배를 넘는 괴리율이 반복되면 적출 및 지정예고를 거쳐 10거래일 이내 다시 기준을 넘을 때 투자유의종목으로 지정되며, 절차가 3단계에서 2단계로 짧아졌습니다.',
+    '고의·중과실 또는 상습적으로 관리의무를 어긴 유동성공급자는 한국거래소가 신규 유동성 공급 업무를 제한할 수 있습니다.',
+  ],
+  sources: [
+    { label: '금융위원회', url: 'https://www.fsc.go.kr' },
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '대한민국 정책브리핑 · ETF 괴리율 관리 강화 시행', url: 'https://www.korea.kr/news/policyNewsView.do?newsId=148969967' },
+  ],
+  sourceQuestions: [
+    { summary: 'ETF를 싸게 사려면 NAV 괴리율만 보면 되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=458112365&answerNo=3' },
+  ],
+  comparisonTable: {
+    caption: 'ETF 괴리율, 양수(프리미엄)와 음수(할인) 비교',
+    columns: ['구분', '괴리율 양수(프리미엄)', '괴리율 음수(할인)', '확인할 점'],
+    rows: [
+      ['뜻', '시장가격이 순자산가치보다 비쌈', '시장가격이 순자산가치보다 쌈', '어느 쪽도 저절로 옳은 가격은 아님'],
+      ['흔한 원인', '수요가 몰리거나 공급이 부족할 때', '거래량이 얇거나 일시적 수급 불균형', '지속 기간을 먼저 확인'],
+      ['관리의무 기준(2026-08-19~)', '국내 2%, 해외 5% 초과 시 위반 대상', '음수도 절대값 적용, 동일 기준', '기준 초과가 반복되는지 확인'],
+      ['투자유의종목 위험', '기준의 2배 반복 시 지정 절차 대상', '기준의 2배 반복 시 지정 절차 대상', '양수·음수 모두 같은 절차 적용'],
+      ['투자자가 할 일', '너무 비싸게 사는 건 아닌지 점검', '싸다고 서두르지 말고 원인 확인', '괴리율 하나만으로 매매 판단은 금물'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'ETF 괴리율 마이너스는 무엇을 뜻하나',
+      paragraphs: [
+        '괴리율은 ETF의 시장가격이 정규시장 매매거래시간 종료 시점에 산출한 실시간 순자산가치(NAV)에서 얼마나 벗어났는지를 나타내는 비율입니다. 괴리율이 마이너스라는 것은 시장에서 거래된 가격이 그 순간의 순자산가치보다 낮다는 뜻으로, 흔히 할인 상태라고 부릅니다.',
+        '반대로 괴리율이 플러스면 시장가격이 순자산가치보다 비싸게 거래된 프리미엄 상태입니다. 두 경우 모두 ETF가 담은 자산의 실제 가치와 거래소에서 매겨진 가격 사이에 차이가 생겼다는 신호일 뿐, 어느 쪽이 맞는 가격인지를 저절로 알려주지는 않습니다.',
+      ],
+    },
+    {
+      heading: '마이너스라고 곧장 저평가로 보면 안 되는 이유',
+      paragraphs: [
+        '마이너스 괴리율을 보고 지금이 싸게 살 기회라고 판단하기 쉽지만, 실제로는 거래량이 얇거나 유동성공급자의 호가가 성기게 벌어진 시간대에 일시적으로 나타나는 경우가 많습니다. 장 초반이나 장 마감 직전처럼 변동성이 큰 시간대에는 괴리율이 순간적으로 커졌다 다시 좁혀지는 일도 흔합니다.',
+        '해외 자산을 담은 ETF는 그 시장이 열려 있지 않은 시간에 국내에서 거래되다 보니, 고시되는 순자산가치 자체가 전일 종가를 기준으로 계산돼 실시간 가치를 그대로 반영하지 못하는 경우도 있습니다. 이런 구조적 요인 때문에 괴리가 벌어진 것이라면 저평가보다는 계산 시점의 차이에 가깝습니다.',
+      ],
+    },
+    {
+      heading: '2026년 8월 19일부터 관리 기준이 좁아졌다',
+      paragraphs: [
+        '금융위원회는 8월 12일 임시 정례회의에서 한국거래소 유가증권시장 업무규정 개정안을 승인했고, 8월 19일부터 시행에 들어갔습니다. 이에 따라 모든 ETF·ETN에 적용되는 유동성공급자의 종가 기준 괴리율 관리의무가 국내 상품은 3%에서 2%로, 해외 상품은 6%에서 5%로 좁혀졌습니다.',
+        '괴리율이 음수로 산출되는 경우에도 절대값을 적용해 관리의무를 따지도록 산정 기준을 명확히 했습니다. 시장가격이 순자산가치보다 국내 기준 2% 넘게 낮게 벌어져도 관리의무 위반 판단 대상이 되며, 마이너스라고 관리 대상에서 빠지는 것은 아닙니다.',
+      ],
+    },
+    {
+      heading: '투자유의종목으로 지정되면 벌어지는 일',
+      paragraphs: [
+        '괴리율이 관리의무 기준의 두 배, 즉 국내 상품 4%·해외 상품 10%를 넘어서는 상태가 반복되면 적출 및 지정예고 대상이 됩니다. 지정예고일로부터 10거래일 이내에 괴리율이 다시 기준을 넘으면 투자유의종목으로 지정되며, 이 절차는 기존 3단계(적출, 지정예고, 지정)에서 2단계로 짧아졌습니다.',
+        '투자유의종목으로 지정됐다는 것은 그 ETF의 시장가격과 순자산가치 차이가 우연이 아니라 반복적으로 벌어지고 있다는 거래소의 공식 경고입니다. 마이너스 괴리가 계속되는 종목이 이 절차를 밟고 있다면, 싸다는 인상과 별개로 그 가격이 좀처럼 좁혀지지 않는 상태라는 뜻으로 읽어야 합니다.',
+      ],
+    },
+    {
+      heading: '실제 매매 전에 확인할 순서',
+      paragraphs: [
+        '먼저 증권사 앱의 ETF 상세 화면이나 한국거래소 정보데이터시스템에서 당일 괴리율 수치를 확인합니다. 그다음에는 그 괴리가 하루짜리 일시적 현상인지, 최근 며칠째 이어지고 있는지를 살펴야 합니다. 연속해서 벌어지는 괴리는 일시적 수급보다 구조적인 원인을 의심해볼 필요가 있습니다.',
+        '이어서 해당 종목에 투자유의종목 지정예고나 지정 공지가 붙어 있는지 거래소 공시를 확인하고, 거래량과 순자산 규모도 함께 봅니다. 거래가 얇고 순자산이 작은 ETF일수록 유동성공급자의 호가가 성겨 괴리가 쉽게 좁혀지지 않는 경향이 있어, 마이너스 괴리율만 보고 매수를 서두르지 않는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '그래도 예외는 있다',
+      paragraphs: [
+        '거래량이 많고 순자산이 큰 대형 ETF에서 일시적으로 괴리가 벌어졌다가 유동성공급자가 빠르게 호가를 좁히는 경우, 그 짧은 구간에서는 가격이 순자산가치 쪽으로 되돌아가는 흐름이 나타나기도 합니다.',
+        '다만 이런 움직임을 노리고 매매하는 것은 기관투자자나 유동성공급자가 실시간 지표로 대응하는 차익거래 성격에 가까워, 개인 투자자가 같은 타이밍에 재현하기는 쉽지 않습니다. 괴리율이 크게 벌어진 종목을 발견했다면 저평가로 단정하기보다 왜 벌어졌는지부터 확인하는 편이 안전합니다. 이 글은 정보 제공 목적이며 특정 종목 매수를 권하지 않습니다.',
+      ],
+    },
+    {
+      heading: '판단은 괴리율 수치 하나로 끝나지 않는다',
+      paragraphs: [
+        '괴리율 마이너스는 지금 이 순간 시장가격이 순자산가치보다 싸다는 사실은 알려주지만, 그 상태가 곧 좁혀질지 계속될지까지 말해주지는 않습니다. 판단은 괴리율 수치 하나가 아니라 지속 기간, 투자유의종목 지정 여부, 거래량과 순자산 규모를 함께 놓고 내려야 합니다.',
+        '괴리율이 유독 크게 벌어진 종목을 발견했다면 매수를 서두르기보다 한국거래소 공시와 운용사 공지에서 지정예고나 지정 사실이 있는지부터 확인하고, 그래도 이유가 분명하지 않다면 며칠 더 지켜보는 편이 낫습니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '괴리율이 마이너스면 무조건 저평가된 건가요?',
+      answer: '아닙니다. 거래량이 얇거나 일시적 수급 불균형, 해외 자산 ETF의 계산 시점 차이 때문에 벌어지는 경우가 많아, 마이너스라는 사실만으로 저평가라고 단정할 수 없습니다.',
+    },
+    {
+      question: '투자유의종목으로 지정되면 매매가 정지되나요?',
+      answer: '지정 자체가 매매정지를 뜻하지는 않습니다. 다만 시장가격과 순자산가치 차이가 반복적으로 크다는 거래소의 공식 경고이므로, 지정 여부를 확인하고 신중하게 접근하는 편이 안전합니다.',
+    },
+    {
+      question: '괴리율은 어디서 확인할 수 있나요?',
+      answer: '증권사 앱의 ETF 상세 화면이나 한국거래소 정보데이터시스템에서 매일 발표되는 수치를 확인할 수 있습니다.',
+    },
+    {
+      question: '유동성공급자가 관리의무를 어기면 어떻게 되나요?',
+      answer: '고의·중과실 또는 상습적으로 괴리율 관리의무를 어긴 유동성공급자는 한국거래소가 신규 유동성 공급 업무를 제한할 수 있습니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  etfDiscountRateBuySignal,
   isaContractPeriodLongTerm,
   nationalPensionIncomeTax,
   reitInverseEtfRealEstateDrop,
@@ -23578,6 +23687,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-18 · 지식iN 질문 수요 기반 (ETF 괴리율이 마이너스면 싸게 사는 신호인지, 2026-08-19 강화된 LP 관리 기준)
+  'etf-discount-rate-buy-signal': '2026-09-18',
   // 2026-09-17 · 지식iN 질문 수요 기반 (ISA 계좌 만기를 10년 이상으로 설정하는 게 지금도 가능한지)
   'isa-contract-period-long-term': '2026-09-17',
   // 2026-09-16 · 지식iN 질문 수요 기반 (종합소득세 신고 시 국민연금 보험료가 공제되는지, 국민연금 수령액은 어떻게 과세되는지)
@@ -23927,7 +24038,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'us-etf-nav-discount-check', 'etf-fee-discount-relation', 'etf-lp-liquidity', 'overseas-etf-geopolitical-discount-spike', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'us-etf-nav-discount-check', 'etf-fee-discount-relation', 'etf-lp-liquidity', 'overseas-etf-geopolitical-discount-spike', 'etf-discount-rate-buy-signal', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
   },
   {
     title: '세금·절세 계좌',
