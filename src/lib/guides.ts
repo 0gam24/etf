@@ -23419,7 +23419,109 @@ const etfDiscountRateBuySignal: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-19 · 사망 직전 국내 상장 주식 증여 시 증여세·상속세 합산 여부 */
+const giftBeforeDeathInheritanceTaxMerge: GuideDef = {
+  slug: 'gift-before-death-inheritance-tax-merge',
+  title: '사망 직전 증여한 주식도 상속세에 합산되나',
+  tagline: '증여세를 냈어도 상속인이면 10년 치가 상속재산으로 다시 들어갑니다',
+  description:
+    '부모가 세상을 떠나기 얼마 전 국내 상장 주식을 증여했다면, 이미 낸 증여세와 별개로 상속세도 내야 하는지 헷갈립니다. 상속인은 10년, 상속인 아닌 사람은 5년 이내 증여재산이 상속세 과세가액에 합산되는 기준과 기납부 증여세액공제 한도를 정리했습니다.',
+  keywords: ['사망 직전 증여', '사전증여재산 상속세', '증여세 상속세 이중과세', '상속세 합산과세 10년', '증여세액공제', '상속공제 한도'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-09-19',
+  answer:
+    '국내 상장 주식을 사망 직전에 증여했더라도 증여세 신고·납부 의무는 그대로 있습니다. 다만 상속인에게는 상속개시일 전 10년, 상속인이 아닌 사람에게는 5년 이내 증여한 재산은 상속세 과세가액에 다시 합산되고, 이때 이미 낸 증여세액은 상속세에서 공제되어 완전한 이중과세는 아닙니다.',
+  keyPoints: [
+    '상속인(배우자·자녀)에게 한 증여는 상속개시일 전 10년, 상속인이 아닌 손자녀·며느리 등에게 한 증여는 5년 이내분만 상속재산에 합산됩니다.',
+    '합산되는 주식 가액은 상속 시점이 아니라 증여일 전후 2개월 평균 종가로 고정되어, 증여 후 주가가 오르면 결과적으로 일찍 증여한 쪽이 유리했던 셈이 됩니다.',
+    '이미 낸 증여세는 상속세 산출세액에서 공제되지만 상속재산 중 합산분이 차지하는 비율만큼만 인정되는 한도가 있어, 전액을 돌려받지 못할 수도 있습니다.',
+    '손자녀에게 사망 직전 증여했다면 세대생략증여로 증여세 자체가 30%(미성년자·20억원 초과 시 40%) 할증되어 있었을 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청 · 상속세 안내', url: 'https://www.nts.go.kr' },
+    { label: '국가법령정보센터 · 상속세및증여세법', url: 'https://www.law.go.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '사망 직전에 국내 상장 주식을 증여하면 증여세와 상속세가 각각 별도로 부과되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40303&docId=493361205&answerNo=4' },
+  ],
+  comparisonTable: {
+    caption: '상속인 증여 vs 상속인 아닌 사람 증여, 상속세 합산 비교',
+    columns: ['구분', '상속인(자녀·배우자 등)에게 증여', '상속인 아닌 사람(며느리·손자녀 등)에게 증여', '확인할 점'],
+    rows: [
+      ['합산 기간', '상속개시일 전 10년 이내', '상속개시일 전 5년 이내', '기간을 넘긴 증여는 상속재산에 합산되지 않음'],
+      ['평가 기준', '증여일 전후 2개월 평균 종가로 고정', '증여일 전후 2개월 평균 종가로 고정', '상속개시 시점 주가 변동은 반영하지 않음'],
+      ['증여세액공제', '증여 당시 산출세액을 상속세에서 공제(한도 있음)', '동일하게 공제(한도 있음)', '공제 한도를 넘는 부분은 못 돌려받음'],
+      ['상속공제 반영', '합산된 금액은 상속공제 한도 계산에서 차감', '동일하게 차감', '사전증여재산 자체엔 공제가 새로 붙지 않음'],
+      ['추가 할증', '해당 없음', '손자녀면 세대생략증여로 30%(미성년자·20억원 초과 40%) 할증', '누구에게 증여했는지에 따라 세액이 달라짐'],
+    ],
+  },
+  sections: [
+    {
+      heading: '증여세와 상속세는 왜 둘 다 나오는가',
+      paragraphs: [
+        '증여세와 상속세는 서로 다른 세금입니다. 살아 있을 때 재산을 넘기면 증여세가 붙고, 사망으로 재산이 상속인에게 넘어가면 상속세가 붙습니다. 국내 상장 주식을 증여받았다면 증여받은 날이 속한 달의 말일부터 3개월 이내에 증여세를 신고·납부해야 합니다.',
+        '여기서 끝나지 않는 경우가 있습니다. 증여한 사람이 그 뒤 일정 기간 안에 사망하면, 이미 증여세를 낸 그 재산이 상속세 계산에 다시 등장합니다. 두 세금이 완전히 따로 노는 것이 아니라, 특정 조건에서는 상속세 쪽 계산에 사전증여재산으로 되돌아온다는 뜻입니다.',
+      ],
+    },
+    {
+      heading: '상속개시일 전 10년, 5년이라는 합산 기준',
+      paragraphs: [
+        '상속세및증여세법 제13조는 상속개시일(사망일) 전 10년 이내에 상속인에게 증여한 재산과, 5년 이내에 상속인이 아닌 사람에게 증여한 재산을 상속세 과세가액에 합산하도록 정하고 있습니다. 자녀나 배우자처럼 상속인 지위에 있는 사람에게 준 증여는 10년까지 되짚어보고, 며느리나 손자녀처럼 상속인이 아닌 사람에게 준 증여는 5년까지만 봅니다.',
+        '그래서 사망 직전 증여는 대부분 이 기간 안에 들어가 합산 대상이 됩니다. 반대로 증여한 지 10년(또는 5년)이 지난 뒤 사망했다면, 그 재산은 상속재산에 다시 합산되지 않고 증여세만으로 마무리됩니다.',
+      ],
+    },
+    {
+      heading: '합산되는 주식 가액은 증여 당시 시세로 고정된다',
+      paragraphs: [
+        '상속재산에 더해지는 금액은 상속개시일이 아니라 증여 당시의 평가액입니다. 상장주식은 상속세및증여세법 제63조에 따라 평가기준일(여기서는 증여일) 전후 각 2개월, 총 4개월 동안의 거래소 최종 시세를 평균한 값으로 매깁니다.',
+        '이 방식 때문에 증여 이후 주가가 크게 올랐다면 그 오른 만큼은 상속세 계산에서 빠지므로 결과적으로 일찍 증여한 쪽이 유리했던 셈이 됩니다. 반대로 증여 후 주가가 크게 내렸다면, 지금 가치보다 높았던 증여 당시 가액이 그대로 상속재산에 들어가 불리해질 수 있습니다.',
+      ],
+    },
+    {
+      heading: '이미 낸 증여세는 상속세에서 공제되지만 한도가 있다',
+      paragraphs: [
+        '같은 재산에 증여세와 상속세를 전액 각각 매기면 이중과세가 되므로, 상속세및증여세법 제28조는 증여 당시 낸 증여세 산출세액을 상속세 산출세액에서 공제하도록 정하고 있습니다. 이 장치 덕분에 사전증여재산이라고 해서 두 세금을 고스란히 다 내는 구조는 아닙니다.',
+        '다만 이 공제에는 한도가 있습니다. 공제액은 상속세 산출세액에 전체 상속재산 중 합산된 증여재산이 차지하는 비율을 곱한 금액까지만 인정되므로, 상황에 따라 이미 낸 증여세를 전액 돌려받지 못하는 경우도 있습니다.',
+      ],
+    },
+    {
+      heading: '사전증여재산에는 상속공제가 새로 붙지 않는다',
+      paragraphs: [
+        '상속공제(배우자공제·일괄공제 등)는 상속세 과세가액에서 합산된 증여재산가액을 뺀 금액을 한도로 적용됩니다. 즉 사전증여재산 자체는 상속공제 혜택의 대상이 아니어서, 미리 증여했다는 이유로 공제를 두 번 받는 효과는 생기지 않습니다.',
+        '손자녀에게 증여한 경우는 계산이 한 겹 더 있습니다. 부모 세대를 건너뛴 세대생략증여로 보아 증여 당시 산출세액에 30%(미성년자이면서 증여재산이 20억원을 넘으면 40%)를 얹어 부과하며, 이렇게 할증된 증여세액이 상속세 공제 단계에도 그대로 반영됩니다. 상속인이 아닌 손자녀에게 준 증여라면 5년 기준과 이 할증 규정을 함께 봐야 합니다.',
+      ],
+    },
+    {
+      heading: '언제 무엇을 확인해야 하나',
+      paragraphs: [
+        '상속세 신고기한은 사망일이 속한 달의 말일부터 6개월 이내입니다. 사전증여재산이 있는지, 얼마가 합산되는지는 국세청 홈택스의 상속세 합산대상 사전증여재산 확인 서비스로 신고기한 만료 14일 전까지 신청해 확인할 수 있습니다.',
+        '합산 대상에서 제외되는 재산(비과세 증여재산, 공익법인 출연재산 등)이나 세부 계산은 사안마다 달라 여기서 다 다루기 어렵습니다. 정확한 합산액과 공제 한도는 상속세 신고 전에 관할 세무서나 세무 전문가에게 구체적인 금액으로 확인하는 편이 안전합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '증여세를 이미 냈다면 상속세는 안 내도 되나요?',
+      answer: '아닙니다. 합산 기간 안의 증여라면 증여세를 냈어도 그 재산은 상속세 과세가액에 다시 들어갑니다. 다만 증여 당시 낸 세액은 한도 안에서 상속세에서 공제됩니다.',
+    },
+    {
+      question: '상속인이 아닌 사위·며느리에게 증여했다면 몇 년 기준인가요?',
+      answer: '사위나 며느리는 원칙적으로 상속인이 아니므로 5년 기준이 적용됩니다. 다만 유증 등으로 상속인에 준하는 지위가 생기면 기준이 달라질 수 있어 개별 확인이 필요합니다.',
+    },
+    {
+      question: '증여받은 주식을 이미 팔았다면 어떻게 합산하나요?',
+      answer: '합산 대상은 증여받은 재산 자체이며, 그 뒤 팔았는지 여부와 상관없이 증여 당시 평가액을 기준으로 상속재산에 더합니다. 매도해 현금으로 바뀌었어도 합산 판단에는 영향을 주지 않습니다.',
+    },
+    {
+      question: '합산 기간을 넘기면 세무서가 알아서 빼주나요?',
+      answer: '아닙니다. 상속세 신고 시 사전증여재산 명세를 상속인이 직접 신고서에 반영해야 합니다. 기간이 지났다고 자동으로 빠지는 것이 아니라, 신고 과정에서 증여일과 기준일을 정확히 따져 반영 여부를 판단해야 합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  giftBeforeDeathInheritanceTaxMerge,
   etfDiscountRateBuySignal,
   isaContractPeriodLongTerm,
   nationalPensionIncomeTax,
@@ -23687,6 +23789,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-19 · 지식iN 질문 수요 기반 (사망 직전 국내 상장 주식을 증여하면 증여세·상속세가 각각 별도로 부과되는지)
+  'gift-before-death-inheritance-tax-merge': '2026-09-19',
   // 2026-09-18 · 지식iN 질문 수요 기반 (ETF 괴리율이 마이너스면 싸게 사는 신호인지, 2026-08-19 강화된 LP 관리 기준)
   'etf-discount-rate-buy-signal': '2026-09-18',
   // 2026-09-17 · 지식iN 질문 수요 기반 (ISA 계좌 만기를 10년 이상으로 설정하는 게 지금도 가능한지)
@@ -24043,7 +24147,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax', 'isa-contract-period-long-term'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax', 'isa-contract-period-long-term', 'gift-before-death-inheritance-tax-merge'],
   },
   {
     title: '배당·인컴',
