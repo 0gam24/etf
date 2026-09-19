@@ -23520,7 +23520,98 @@ const giftBeforeDeathInheritanceTaxMerge: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-20 · 국내 상장 나스닥100 ETF, 미국 지수는 오르는데 국내는 빠지는 것처럼 보이는 이유 */
+const nasdaq100EtfKoreaUsGap: GuideDef = {
+  slug: 'nasdaq100-etf-korea-us-gap',
+  title: '나스닥100 ETF, 미국은 올랐는데 국내는 빠지는 이유',
+  tagline: '추적 실패가 아니라 거래시간과 환율이 만드는 하루 차이입니다',
+  description:
+    '미국 나스닥100 지수가 상승 마감했다는 뉴스를 봐도 국내 상장 나스닥100 ETF는 그날 하락으로 끝나는 경우가 있습니다. 대부분 추적 실패가 아니라 두 시장의 거래시간 차이와 원/달러 환율, 유동성공급자 호가가 겹쳐 만드는 구조적인 현상입니다. 원인을 나눠 정리했습니다.',
+  keywords: ['나스닥100 ETF', '나스닥100 ETF 괴리', '환헤지 환노출 나스닥100', 'ETF 거래시간 차이', '원달러 환율 ETF', '나스닥100 선물 시차'],
+  section: 'ETF 괴리율 가이드',
+  lastReviewed: '2026-09-20',
+  answer:
+    '국내 상장 나스닥100 ETF가 미국 지수 상승 다음 날에도 내려 보이는 것은 대부분 추적 실패가 아니라 두 시장의 거래시간 차이와 원/달러 환율 변동 때문입니다. 유동성공급자 호가가 일시적으로 벌어지는 괴리율이 겹치면 체감 차이가 더 커 보일 수 있습니다.',
+  keyPoints: [
+    '한국 정규장(09:00~15:30)이 열릴 때 미국 나스닥은 서머타임 기준 한국시간 22:30~05:00 사이 이미 마감돼, 그날 미국 등락은 시가에 반영된 뒤입니다.',
+    '환헤지 없는 일반형 나스닥100 ETF는 원화 환산 가치라, 미국 지수가 올라도 그날 원/달러 환율이 내리면(원화 강세) 상승분이 줄거나 마이너스로 보일 수 있습니다.',
+    '미국 장이 닫힌 국내 거래시간에도 나스닥100 선물은 거래돼, 그 사이 선물가 변동이 다음 날 국내 ETF 시가의 갭으로 나타나 전날 뉴스와 어긋나 보일 수 있습니다.',
+    '유동성공급자 호가가 일시적으로 벌어지는 괴리율도 원인일 수 있지만, 보통 하루 이틀 안에 좁혀지는 부차적 요인이라 환율·거래시간 차이만큼 크지 않습니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '한국은행 경제통계시스템 ECOS', url: 'https://ecos.bok.or.kr' },
+    { label: 'CME Group 나스닥100(E-mini Nasdaq-100) 선물 거래시간 안내', url: 'https://www.cmegroup.com' },
+  ],
+  sourceQuestions: [
+    { summary: '국내 나스닥100 ETF가 미국 지수는 오르는데 왜 내려가는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=371348315&answerNo=1' },
+    { summary: '미국 본장이 닫혀 있는 낮 시간 동안 국내 ETF의 괴리율과 반영 속도를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=493888911&answerNo=2' },
+  ],
+  comparisonTable: {
+    caption: '환노출형과 환헤지형 나스닥100 ETF, 시차·환율 반영 비교',
+    columns: ['구분', '환노출형(일반)', '환헤지형(H)', '확인할 점'],
+    rows: [
+      ['원/달러 환율 영향', '그대로 반영됨', '헤지로 상당 부분 상쇄', '헤지 비율이 100%가 아닐 수 있음'],
+      ['헤지 비용', '없음', '있음, 총보수에 일부 반영', '운용사 공시로 총보수 비교'],
+      ['미국 지수 상승 시 원화 수익률', '환율 방향에 따라 늘거나 줄 수 있음', '지수 상승분에 더 가깝게 반영', '환율 전망에 따라 선택이 갈림'],
+      ['거래시간 차이로 인한 하루 갭', '동일하게 발생', '동일하게 발생', '환헤지 여부와 무관한 구조적 요인'],
+      ['유동성공급자 호가 괴리율 영향', '동일하게 발생', '동일하게 발생', '거래량이 많은 종목일수록 작음'],
+    ],
+  },
+  sections: [
+    {
+      heading: '국내 장이 열릴 때 미국 나스닥100은 이미 그날 몫을 반영한 뒤다',
+      paragraphs: [
+        '한국거래소 정규장은 오전 9시부터 오후 3시 30분까지 열립니다. 미국 나스닥 시장은 서머타임이 적용되는 3월부터 11월 초까지 한국시간 밤 10시 30분에 열려 다음 날 새벽 5시에 마감하고, 서머타임이 끝나면 밤 11시 30분 개장, 새벽 6시 마감으로 한 시간씩 늦어집니다.',
+        '국내 투자자가 아침 9시에 화면을 열 때는 미국 나스닥100의 그날 등락이 이미 몇 시간 전에 확정된 상태입니다. "오늘 미국 나스닥이 올랐다"는 아침 뉴스는 사실 어제 국내 장 마감 이후 벌어진 일이라, 그 상승분은 국내 나스닥100 ETF의 그날 시가에 이미 갭으로 반영되고 시작합니다. 장이 열린 뒤 오후 3시 30분까지 움직이는 가격은 그 시점부터는 국내 수급이 만드는 몫입니다.',
+      ],
+    },
+    {
+      heading: '환율이 상승분을 갉아먹거나 반대로 움직일 때',
+      paragraphs: [
+        '국내에 상장된 나스닥100 ETF 중 환헤지 표시(H)가 없는 일반형은 보유 자산이 달러로 평가되지만 ETF 가격 자체는 원화로 환산해 표시됩니다. 미국 지수가 오르더라도 같은 날 원/달러 환율이 내려가 원화 가치가 강해지면, 달러 기준 상승분이 원화로 환산되는 과정에서 줄어들거나 상쇄될 수 있습니다.',
+        '환헤지형(H)은 환율 변동의 영향을 줄이도록 설계돼 있어 지수 등락에 더 가깝게 움직이지만, 헤지 비용이 별도로 들고 헤지 비율이 100%로 완벽하게 맞아떨어지지는 않는다는 점은 감안해야 합니다. 환헤지와 환노출의 전반적인 차이는 별도로 다루는 주제라 여기서는 이 상황에 한정해 짚습니다.',
+      ],
+    },
+    {
+      heading: '국내 장중에도 나스닥100 선물은 거래를 이어간다',
+      paragraphs: [
+        '미국 정규장이 마감한 뒤에도 나스닥100 지수를 추종하는 선물(E-mini Nasdaq-100)은 시카고상품거래소(CME) 전산시스템에서 사실상 하루 거의 대부분 거래됩니다. 국내 장이 열려 있는 낮 시간에도 이 선물 가격은 계속 움직이고 있습니다.',
+        '그날 낮 동안 선물 가격이 상승 쪽으로 움직였다면 그 힘은 다음 날 미국 정규장이 열리고 나서야 지수에 온전히 반영되고, 그 결과가 또 하루 지나 국내 ETF 시가에 갭으로 나타납니다. 이렇게 하루씩 밀려 반영되는 구조 때문에, 특정 하루만 떼어 놓고 보면 미국과 국내가 반대로 움직이는 것처럼 느껴지기 쉽습니다.',
+      ],
+    },
+    {
+      heading: '유동성공급자 호가 괴리율도 일부 영향을 줄 수 있다',
+      paragraphs: [
+        '한국거래소는 ETF마다 유동성공급자(LP)를 지정해 매수·매도 호가를 꾸준히 제시하도록 하고 있습니다. LP가 실시간 순자산가치(iNAV)에 맞춰 호가를 촘촘히 내지 못하는 시간대에는 시장가격과 순자산가치 사이에 일시적인 괴리율이 생길 수 있습니다.',
+        '다만 이 요인은 대개 하루 이틀 안에 좁혀지는 부차적인 변수입니다. 해외지수를 담은 ETF의 괴리율 관리 기준과 지정 절차는 별도로 다루는 주제라 여기서는 존재만 짚고 넘어가며, 괴리율 자체를 판단 기준으로 삼고 싶다면 그 기준을 따로 확인하는 편이 정확합니다.',
+      ],
+    },
+    {
+      heading: '그렇다고 상품이 지수를 잘못 따라가고 있다는 뜻은 아니다',
+      paragraphs: [
+        '하루 이틀 엇갈려 보이는 정도는 앞서 설명한 거래시간과 환율 구조 때문에 생기는 정상적인 현상입니다. 같은 지수를 추종하는 국내 나스닥100 ETF 여러 종목을 비교해도 이런 시차는 똑같이 나타납니다.',
+        '다만 이 차이가 며칠씩 이어지며 좁혀지지 않고 계속 벌어진다면 이야기가 다릅니다. 그 경우엔 해당 종목의 거래량이 지나치게 얇거나 유동성공급자의 호가 제시가 부실하다는 신호일 수 있어, 그 종목만의 문제인지 따로 확인해볼 필요가 있습니다.',
+      ],
+    },
+    {
+      heading: '나스닥100 ETF 괴리, 확인하려면 어디를 보면 되나',
+      paragraphs: [
+        '당장 눈에 보이는 하루의 등락보다는 여러 날에 걸친 누적 수익률로 지수와 ETF 가격을 나란히 비교하는 편이 정확합니다. 한국거래소 정보데이터시스템에서 종목별 NAV·괴리율 추이를 조회할 수 있고, 그날 원/달러 환율은 한국은행 경제통계시스템에서 확인할 수 있습니다.',
+        '보유한 상품이 환헤지형인지 환노출형인지는 종목명 끝의 (H) 표시와 운용사 공시로 확인할 수 있습니다. 다음에 비슷한 상황을 마주하면 지수, 환율, 며칠간의 누적 수익률을 함께 놓고 판단하는 것이 첫 반응보다 정확합니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '환헤지형(H)을 사면 이런 차이가 아예 사라지나요?', answer: '환율 변동에 따른 부분은 줄어들지만, 거래시간 차이로 생기는 하루 정도의 갭은 환헤지 여부와 상관없이 똑같이 나타납니다. 헤지 비용이 별도로 든다는 점도 함께 고려해야 합니다.' },
+    { question: '미국 나스닥100 선물 가격은 어디서 확인할 수 있나요?', answer: '해외 선물 시세를 제공하는 증권사 HTS·MTS 화면이나 금융정보 사이트에서 나스닥100 선물(E-mini Nasdaq-100) 지수를 실시간에 가깝게 볼 수 있습니다.' },
+    { question: '서머타임이 끝나면 이런 시차가 없어지나요?', answer: '시차 자체는 한 시간 정도 밀릴 뿐 없어지지 않습니다. 2026년 기준 서머타임은 11월 1일 종료되고, 그 뒤에는 미국 정규장이 한국시간 밤 11시 30분에 열려 다음 날 새벽 6시에 마감합니다.' },
+    { question: '이런 구조 때문에 장기적으로 손해를 보게 되나요?', answer: '지수를 그대로 따라가는 구조라 시차나 환율로 인한 차이는 시간이 지나면 상쇄되는 경우가 많습니다. 다만 특정 시점에 매수·매도 타이밍을 잡을 때는 이 체감 차이를 감안하는 편이 좋습니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  nasdaq100EtfKoreaUsGap,
   giftBeforeDeathInheritanceTaxMerge,
   etfDiscountRateBuySignal,
   isaContractPeriodLongTerm,
@@ -23789,6 +23880,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-20 · 지식iN 질문 수요 기반 (국내 나스닥100 ETF가 미국 지수는 오르는데 왜 내려가는지)
+  'nasdaq100-etf-korea-us-gap': '2026-09-20',
   // 2026-09-19 · 지식iN 질문 수요 기반 (사망 직전 국내 상장 주식을 증여하면 증여세·상속세가 각각 별도로 부과되는지)
   'gift-before-death-inheritance-tax-merge': '2026-09-19',
   // 2026-09-18 · 지식iN 질문 수요 기반 (ETF 괴리율이 마이너스면 싸게 사는 신호인지, 2026-08-19 강화된 LP 관리 기준)
@@ -24162,7 +24255,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '해외·환율',
     description: '미국·중국·일본·유럽·인도·베트남·대만 등 해외 지수 ETF와 버크셔·환헤지·환노출, 달러 ETF — 해외 투자와 환율을 함께.',
-    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea', 'world-etf', 'brazil-etf', 'saudi-etf', 'indonesia-etf', 'nasdaq100-etf-individual-stock-exposure'],
+    slugs: ['overseas-etf', 'overseas-etf-trading-hours', 'sp500-vs-nasdaq', 'nasdaq100-etf-korea', 'sp500-all-in-risk', 'spy-voo-ivv', 'china-etf', 'japan-etf', 'europe-etf', 'india-etf', 'vietnam-etf', 'taiwan-etf', 'berkshire-etf', 'currency-hedge', 'hedge-vs-unhedged', 'dollar-etf', 'overseas-etf-currency-exchange', 'us-value-vs-growth-etf', 'nasdaq100-sp500-long-term-dca', 'us-bond-etf-currency-gain', 'kimchi-premium-arbitrage', 'sp500-nasdaq-overlap', 'us-stock-krw-integrated-margin', 'foreign-stock-fee-fx-spread', 'domestic-sp500-etf-comparison', 'overseas-etf-dividend-currency', 'us-etf-drip-korea', 'world-etf', 'brazil-etf', 'saudi-etf', 'indonesia-etf', 'nasdaq100-etf-individual-stock-exposure', 'nasdaq100-etf-korea-us-gap'],
   },
   {
     title: '전략·자산배분',
