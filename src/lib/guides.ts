@@ -23610,7 +23610,97 @@ const nasdaq100EtfKoreaUsGap: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-21 · 국내주식형 ETF(코덱스200 등)를 ISA에 담을 때 실제 이득이 있는지 */
+const isaDomesticEquityEtfBenefit: GuideDef = {
+  slug: 'isa-domestic-equity-etf-benefit',
+  title: '국내 ETF를 ISA에 담으면 이득일까, 코덱스200 매매차익 비과세 확인',
+  tagline: '매매차익은 원래 비과세라, ISA가 주는 진짜 이득은 다른 데 있습니다',
+  description:
+    '코덱스200처럼 국내 주식으로만 담은 ETF는 매매차익이 원래 비과세라, ISA에 넣어도 매매차익 쪽 비과세 혜택은 새로 생기지 않습니다. ISA가 실제로 주는 이득은 분배금 저율과세와 손익통산이며, 그 차이를 국내ETF 예시로 짚었습니다.',
+  keywords: ['국내 ETF ISA', '코덱스200 ISA', 'ISA 매매차익 비과세', '국내주식형 ETF ISA 혜택', 'ISA 손익통산', 'ISA 분배금 세금', '국내ETF 비과세'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-09-21',
+  answer:
+    '코덱스200 같은 국내주식형 ETF는 일반 위탁계좌에서도 매매차익이 이미 비과세라, ISA에 담아도 매매차익 쪽으로는 추가 혜택이 생기지 않습니다. ISA가 실제로 보태주는 이득은 분배금에 붙는 세금을 낮춰주는 것과, 계좌 안 다른 상품과 손익을 합쳐 계산해주는 손익통산입니다.',
+  keyPoints: [
+    '국내주식형 ETF의 매매차익은 일반계좌에서도 비과세라, ISA 비과세 한도(일반형 200만원·서민형 400만원)는 이 매매차익을 상대로는 소진되지 않습니다.',
+    'ISA에서 실제로 줄어드는 세금은 분배금입니다. 일반계좌라면 배당소득세 15.4%가 붙지만, ISA는 비과세 한도까지 세금이 없고 초과분도 9.9%로 낮게 매깁니다.',
+    'ISA 계좌 안에 국내ETF와 함께 해외ETF·채권형 ETF 같은 과세 상품을 같이 담으면, 손익을 합쳐 계산하는 손익통산 효과까지 더해져 실익이 커집니다.',
+    '순수하게 매매차익만 노리고 국내ETF 하나만 담을 계획이라면, ISA의 연 2,000만원 한도와 3년 의무 가입 기간에 비해 얻는 세제 이득은 제한적일 수 있습니다.',
+  ],
+  sources: [
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+    { label: '국세법령정보시스템', url: 'https://taxlaw.nts.go.kr' },
+    { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 계좌에 코덱스200 같은 국내 ETF를 담는 것이 혜택이 없는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=51002&docId=492299409&answerNo=5' },
+  ],
+  comparisonTable: {
+    caption: '코덱스200 같은 국내주식형 ETF, 일반계좌 vs ISA',
+    columns: ['구분', '일반 위탁계좌', 'ISA 계좌', '확인할 점'],
+    rows: [
+      ['매매차익 세금', '원래 비과세', '똑같이 비과세(추가 이득 없음)', 'ISA가 매매차익을 더 깎아주지는 않음'],
+      ['분배금 세금', '배당소득세 15.4%', '비과세 한도까지 비과세, 초과분 9.9%', '분배금 있는 국내ETF일수록 ISA 이득이 커짐'],
+      ['손익통산', '안 됨(종목별 개별 과세)', '계좌 안 여러 상품 손익 합산', '다른 과세 상품과 함께 담을 때 의미 있음'],
+      ['납입·인출 제약', '없음', '연 2,000만원 한도·3년 의무 가입', '단기 자금이면 일반계좌가 더 자유로움'],
+      ['담을 수 있는 상품', '모든 국내 상장 ETF·주식', '국내 상장 상품 중심(일부 제한)', '해외 증시 직접 상장 종목은 ISA에 못 담음'],
+    ],
+  },
+  sections: [
+    {
+      heading: '국내주식형 ETF는 원래 매매차익이 비과세다',
+      paragraphs: [
+        '코스피200·코스닥150을 담는 코덱스200 같은 국내주식형 ETF는 국내 주식으로만 구성돼 있어, 일반 위탁계좌에서 사고팔아도 매매차익에 세금이 붙지 않습니다. 세금이 붙는 쪽은 분배금뿐이고, 여기에는 배당소득세 15.4%가 매겨집니다.',
+        '이 비과세는 계좌 종류와 무관하게 국내주식형이라는 상품 성격에서 나오는 혜택입니다. 일반계좌든 ISA든 국내주식형 ETF를 담은 이상 매매차익 세금은 원래부터 없습니다.',
+      ],
+    },
+    {
+      heading: 'ISA에 담아도 매매차익 비과세는 그대로다',
+      paragraphs: [
+        'ISA의 비과세 한도(일반형 200만원·서민형 400만원)는 계좌 안에서 실제로 과세될 이익을 상대로 작동합니다. 국내주식형 ETF의 매매차익은 애초에 과세 대상이 아니므로, 이 한도를 채우는 데 쓰이지 않습니다.',
+        '그래서 "코덱스200을 ISA에 담으면 매매차익까지 비과세로 더 아낀다"는 기대는 사실과 다릅니다. 일반계좌에서도 이미 비과세였던 금액이라, ISA로 옮긴다고 세금이 한 번 더 줄어들지는 않습니다.',
+      ],
+    },
+    {
+      heading: 'ISA가 실제로 주는 이득은 분배금과 손익통산',
+      paragraphs: [
+        '국내주식형 ETF도 분배금에는 세금이 붙습니다. 일반계좌라면 배당소득세 15.4%가 원천징수되지만, ISA에서는 이 분배금이 계좌 안 비과세 한도까지 세금 없이 쌓이고, 한도를 넘는 부분도 9.9%로 낮게 과세됩니다.',
+        '또 하나는 손익통산입니다. 중개형 ISA는 국내 상장 ETF를 폭넓게 담을 수 있어, 국내주식형 ETF와 함께 해외ETF·채권형 ETF처럼 원래 과세되는 상품을 같이 넣으면 계좌 안 손익을 합쳐 계산해줍니다. 한 종목에서 난 손실로 다른 종목의 이익을 상쇄할 수 있다는 뜻입니다.',
+      ],
+    },
+    {
+      heading: '그래서 코덱스200을 ISA에 담아도 되는 경우',
+      paragraphs: [
+        '분배금이 나오는 국내주식형 ETF거나, 해외ETF·채권형 ETF 같은 다른 과세 상품과 함께 포트폴리오를 짤 계획이라면 ISA에 담는 편이 여전히 유리합니다. 분배금 저율과세와 손익통산 두 가지 혜택을 그대로 받기 때문입니다.',
+        '반대로 국내주식형 ETF 하나만 순수하게 시세차익 목적으로 담을 생각이라면, 매매차익 쪽 혜택은 일반계좌와 차이가 없어 ISA의 장점이 상대적으로 작아집니다.',
+      ],
+    },
+    {
+      heading: '일반계좌와 비교했을 때 확인할 점',
+      paragraphs: [
+        'ISA는 연 2,000만원, 5년 누적 1억원까지만 납입할 수 있고, 세제 혜택을 받으려면 3년 의무 가입 기간을 채워야 합니다. 그전에 해지하면 받은 혜택이 추징될 수 있어 일반계좌보다 자금 운용의 자유도가 낮습니다.',
+        '해외 증시에 직접 상장된 종목처럼 ISA에 담을 수 없는 상품도 있으므로, 담으려는 포트폴리오 전체가 ISA 운용 가능 상품 범위 안에 들어오는지 가입 증권사에서 먼저 확인하는 편이 좋습니다.',
+      ],
+    },
+    {
+      heading: '결론: 무엇을 ISA에 담을지가 먼저다',
+      paragraphs: [
+        'ISA에 국내ETF를 담을지 정할 때는 매매차익 비과세를 기대하기보다, 본인 포트폴리오에 분배금이 나오는 상품이나 손익통산을 볼 수 있는 다른 과세 상품이 섞여 있는지부터 따져보는 편이 정확합니다.',
+        '한도·의무 가입 기간 같은 구체적인 조건은 제도 변경으로 달라질 수 있어, ISA 가입 전에는 국세청 안내와 가입하려는 증권사의 최신 상품 안내를 함께 확인하는 것이 안전합니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '코덱스200 매매차익도 ISA 비과세 한도에 포함되나요?', answer: '매매차익 자체가 원래 비과세라 ISA의 비과세 한도를 소진하지 않습니다. 한도는 분배금처럼 원래 과세되는 이익에 적용됩니다.' },
+    { question: 'ISA 계좌에 국내ETF만 담으면 손해인가요?', answer: '손해는 아니지만 매매차익 쪽 이득은 일반계좌와 같아 추가로 아끼는 세금은 크지 않을 수 있습니다. 분배금이 있거나 다른 과세 상품과 함께 담을 때 ISA의 이득이 더 커집니다.' },
+    { question: '국내ETF와 해외ETF를 같은 ISA에 함께 담아도 되나요?', answer: '중개형 ISA는 국내 상장 ETF를 폭넓게 담을 수 있어, 국내 상장 해외ETF나 채권형 ETF와 함께 넣으면 손익통산 효과를 볼 수 있습니다. 정확히 담을 수 있는 상품 목록은 가입 증권사에서 확인해야 합니다.' },
+    { question: '국내주식형 ETF도 분배금이 나오나요?', answer: '코스피200처럼 지수를 추종하는 국내주식형 ETF도 편입 종목의 배당을 재원으로 분배금을 지급하는 경우가 많습니다. 매매차익과 달리 분배금에는 세금이 붙습니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  isaDomesticEquityEtfBenefit,
   nasdaq100EtfKoreaUsGap,
   giftBeforeDeathInheritanceTaxMerge,
   etfDiscountRateBuySignal,
@@ -23880,6 +23970,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-21 · 지식iN 질문 수요 기반 (ISA계좌에 코덱스200 같은 국내 ETF를 담는 것이 혜택이 없는지)
+  'isa-domestic-equity-etf-benefit': '2026-09-21',
   // 2026-09-20 · 지식iN 질문 수요 기반 (국내 나스닥100 ETF가 미국 지수는 오르는데 왜 내려가는지)
   'nasdaq100-etf-korea-us-gap': '2026-09-20',
   // 2026-09-19 · 지식iN 질문 수요 기반 (사망 직전 국내 상장 주식을 증여하면 증여세·상속세가 각각 별도로 부과되는지)
@@ -24240,7 +24332,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax', 'isa-contract-period-long-term', 'gift-before-death-inheritance-tax-merge'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax', 'isa-contract-period-long-term', 'gift-before-death-inheritance-tax-merge', 'isa-domestic-equity-etf-benefit'],
   },
   {
     title: '배당·인컴',
