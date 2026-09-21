@@ -23699,7 +23699,97 @@ const isaDomesticEquityEtfBenefit: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-22 · 지식iN 질문 수요 기반 (퇴직연금 디폴트옵션 변경 시 기존 적립금 처리와 실제 적용 시점) */
+const defaultOptionChangeEffect: GuideDef = {
+  slug: 'default-option-change-effect',
+  title: '디폴트옵션 변경하면 기존 적립금은 어떻게 되나',
+  tagline: '만기까지는 그대로, 새 지정은 다음 적용 시점부터입니다',
+  description:
+    '퇴직연금 디폴트옵션을 다른 상품으로 바꿔도 이미 투자된 적립금은 자동으로 팔리지 않고 그 상품의 만기까지 유지됩니다. 새로 지정한 상품이 실제 매수되는 시점과 만기 후 통지·대기 절차, 신규 납입금과의 차이를 정리했습니다.',
+  keywords: ['디폴트옵션 변경', '사전지정운용제도', '퇴직연금 디폴트옵션', 'DC 디폴트옵션 재지정', '디폴트옵션 적용 시점', '퇴직연금 적립금 만기'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-09-22',
+  answer:
+    '디폴트옵션을 다른 상품으로 재지정해도 이미 편입된 적립금은 자동 매도되지 않고 보유 상품의 만기까지 그대로 운용되며, 새로 지정한 상품은 만기 후 통지·대기 절차를 거쳐야 매수됩니다. 다만 이후 들어오는 신규 납입금에는 이 대기 절차가 적용되지 않습니다.',
+  keyPoints: [
+    '디폴트옵션을 다른 상품으로 바꿔도 이미 투자된 적립금은 자동 매도되지 않고, 보유 중인 상품의 만기가 될 때까지 그대로 운용됩니다.',
+    '정기예금 등 만기 상품의 만기가 지나고도 4주간 운용지시가 없으면 퇴직연금사업자가 통지하고, 통지 후 2주가 더 지나야 새로 지정한 디폴트옵션 상품이 매수됩니다(만기 후 최소 약 6주).',
+    '신규 가입자가 처음부터 운용지시를 하지 않은 경우에는 4주 대기 없이 통지 후 2주만 지나면 디폴트옵션이 적용됩니다.',
+    '한 번 디폴트옵션이 적용된 뒤 계좌에 들어오는 신규 납입금(부담금)은 별도의 통지·대기 기간 없이 곧바로 디폴트옵션 상품으로 운용됩니다.',
+  ],
+  sources: [
+    { label: '고용노동부 · 사전지정운용제도(디폴트옵션) 안내', url: 'https://www.moel.go.kr' },
+    { label: '국가법령정보센터 · 근로자퇴직급여 보장법 시행령', url: 'https://www.law.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '퇴직연금 디폴트옵션을 변경하면 기존에 편입돼 있던 디폴트옵션 적립금은 어떻게 처리되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40107&docId=494003069&answerNo=2' },
+    { summary: '퇴직연금 디폴트 상품을 다른 것으로 변경하려는데 실제로 언제 매수되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=401&docId=493398630&answerNo=2' },
+  ],
+  comparisonTable: {
+    caption: '디폴트옵션 적용 시점, 상황별 비교',
+    columns: ['구분', '통지·대기 절차', '실제 적용 시점', '확인할 점'],
+    rows: [
+      ['기존 만기 상품 재지정', '만기 후 4주 경과 + 통지 + 2주 대기', '만기 후 최소 약 6주 뒤', '만기 전에 미리 재지정해도 조기 적용은 안 됨'],
+      ['신규 가입자 최초 운용지시 없음', '통지 후 2주 대기(4주 유예 없음)', '가입 후 약 2주 뒤', '가입 초기에는 대기 기간이 짧음'],
+      ['디폴트옵션 적용 후 신규 납입금', '통지·대기 없음', '납입 즉시', '한 번 적용되면 이후 부담금은 바로 반영'],
+      ['이미 투자 중인 기존 적립금', '해당 없음(매도되지 않음)', '보유 상품 만기 때까지 유지', '재지정은 앞으로 적용될 상품만 바꾸는 것'],
+    ],
+  },
+  sections: [
+    {
+      heading: '디폴트옵션 재지정, 정확히 무엇이 바뀌나',
+      paragraphs: [
+        '퇴직연금 디폴트옵션(사전지정운용제도)을 다른 상품으로 재지정하면, 지금 갖고 있는 적립금이 그 즉시 새 상품으로 갈아타는 것으로 오해하기 쉽습니다. 실제로는 그렇지 않습니다.',
+        '재지정은 "앞으로 운용지시 없이 방치됐을 때 적용될 상품"을 미리 바꿔두는 것입니다. 이미 편입돼 있는 적립금은 그대로 두고, 다음에 디폴트옵션이 작동할 시점부터 새 지정이 쓰인다는 뜻입니다.',
+      ],
+    },
+    {
+      heading: '이미 투자된 적립금이 만기까지 유지되는 이유',
+      paragraphs: [
+        '디폴트옵션 상품 중 정기예금·원리금보장형처럼 만기가 정해진 상품은 중도해지하면 약정된 이자보다 낮은 이자만 받게 되는 경우가 많습니다. 이 때문에 재지정을 하더라도 이미 들어간 자금은 보유 상품의 만기까지 그대로 운용되도록 설계돼 있습니다.',
+        '실제로 퇴직연금사업자를 옮기거나 디폴트 상품을 바꾸고 싶어 하는 가입자들이 자주 받는 안내도 같은 내용입니다. 기존 자산은 만기가 될 때까지 운용되고, 만기가 지나야 현금성 자산으로 바뀐 뒤 새 지정 상품으로 넘어갑니다.',
+      ],
+    },
+    {
+      heading: '만기 후 실제 적용까지 왜 6주나 걸리나',
+      paragraphs: [
+        '보유 상품의 만기가 돌아온 뒤에도 곧바로 디폴트옵션이 적용되지는 않습니다. 만기 후 4주 동안 가입자가 별도의 운용지시를 하지 않으면, 퇴직연금사업자는 "2주 안에 지시가 없으면 디폴트옵션으로 운용된다"는 사실을 통지합니다.',
+        '통지 후에도 2주 동안 지시가 없으면 그때 비로소 새로 지정한 디폴트옵션 상품이 매수됩니다. 4주 유예와 2주 대기를 더하면 만기 후 최소 약 6주가 지나야 실제 적용이 끝나는 셈입니다.',
+      ],
+    },
+    {
+      heading: '신규 가입자와 기존 가입자는 대기 기간이 다르다',
+      paragraphs: [
+        '위 6주 구조는 이미 만기가 있는 상품을 굴리고 있던 가입자에게 적용되는 절차입니다. 반면 새로 가입해 처음부터 아무 운용지시도 하지 않은 경우에는 만기 자체가 없으므로 4주 유예 없이 통지 후 2주만 지나면 디폴트옵션이 적용됩니다.',
+        '또한 한 번 디폴트옵션이 적용된 이후 매달 들어오는 신규 부담금(회사 납입분 등)은 통지나 대기 없이 곧바로 디폴트옵션 상품으로 운용됩니다. 최초 적용 이후부터는 절차가 훨씬 단순해진다는 뜻입니다.',
+      ],
+    },
+    {
+      heading: '디폴트옵션도 원금손실 위험에서 자유롭지 않다',
+      paragraphs: [
+        '디폴트옵션 상품은 원리금보장형과 TDF 같은 실적배당형으로 나뉩니다. 원리금보장형을 지정했다면 만기까지 유지되는 구간에서 원금 손실 걱정은 없지만, 실적배당형을 새로 지정했다면 실제 적용된 이후 시장 상황에 따라 평가손이 날 수 있습니다.',
+        '재지정을 검토할 때는 "언제 적용되는가"뿐 아니라 "새로 지정하는 상품이 원금을 보장하는지"도 함께 확인해야 합니다. 은퇴 시점이 가까운데 위험 등급이 높은 실적배당형으로 바꾸면, 적용 시점의 시장 상황에 따라 결과가 크게 갈릴 수 있습니다.',
+      ],
+    },
+    {
+      heading: '재지정 전에 확인해야 할 것',
+      paragraphs: [
+        '디폴트옵션을 바꾸기 전에는 지금 보유한 상품의 만기일부터 확인하는 것이 순서입니다. 만기가 한참 남았다면 재지정을 해둬도 실제 반영은 그 만기 이후이므로 급하게 서두를 이유가 없습니다.',
+        'DC형과 IRP를 동시에 갖고 있다면 두 계좌의 디폴트옵션을 각각 따로 지정해야 한다는 점과, 가입한 퇴직연금사업자마다 통지 방식과 세부 절차가 조금씩 다를 수 있다는 점은 콜센터나 앱 공지로 다시 확인하는 편이 안전합니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '디폴트옵션은 몇 번이든 다시 지정할 수 있나요?', answer: '네. 디폴트옵션은 횟수 제한 없이 언제든 다시 지정할 수 있습니다. 다만 재지정한 상품이 실제로 적용되는 시점은 보유 상품의 만기와 통지·대기 절차에 따라 달라집니다.' },
+    { question: 'DC형과 IRP를 둘 다 갖고 있으면 디폴트옵션도 따로 정하나요?', answer: '네. DC형 퇴직연금과 IRP는 별개의 계좌이므로 디폴트옵션도 각 계좌마다 따로 지정해야 합니다.' },
+    { question: '만기가 오기 전에 미리 재지정해두면 더 빨리 적용되나요?', answer: '아니요. 만기 전에 미리 재지정해도 실제 적용 절차는 보유 상품의 만기가 지난 뒤부터 시작됩니다. 조기 적용은 되지 않습니다.' },
+    { question: '디폴트옵션 상품은 전부 원금이 보장되나요?', answer: '아닙니다. 디폴트옵션에는 원리금보장형과 TDF 같은 실적배당형이 함께 있어, 실적배당형을 지정하면 원금 손실이 날 수 있습니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  defaultOptionChangeEffect,
   isaDomesticEquityEtfBenefit,
   nasdaq100EtfKoreaUsGap,
   giftBeforeDeathInheritanceTaxMerge,
@@ -23970,6 +24060,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-22 · 지식iN 질문 수요 기반 (퇴직연금 디폴트옵션 변경 시 기존 적립금 처리와 실제 적용 시점)
+  'default-option-change-effect': '2026-09-22',
   // 2026-09-21 · 지식iN 질문 수요 기반 (ISA계좌에 코덱스200 같은 국내 ETF를 담는 것이 혜택이 없는지)
   'isa-domestic-equity-etf-benefit': '2026-09-21',
   // 2026-09-20 · 지식iN 질문 수요 기반 (국내 나스닥100 ETF가 미국 지수는 오르는데 왜 내려가는지)
@@ -24332,7 +24424,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax', 'isa-contract-period-long-term', 'gift-before-death-inheritance-tax-merge', 'isa-domestic-equity-etf-benefit'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'default-option-change-effect', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax', 'isa-contract-period-long-term', 'gift-before-death-inheritance-tax-merge', 'isa-domestic-equity-etf-benefit'],
   },
   {
     title: '배당·인컴',
