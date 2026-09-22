@@ -23788,7 +23788,103 @@ const defaultOptionChangeEffect: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-23 · 퇴직금 IRP 의무이전과 예외, 바로 인출 가능 여부 */
+const severancePayIrpImmediateWithdrawal: GuideDef = {
+  slug: 'severance-pay-irp-immediate-withdrawal',
+  title: '퇴직금 IRP로 받으면 바로 인출 가능한가',
+  tagline: '의무이전 규정과 예외, 해지 절차를 확인해야 합니다',
+  description:
+    '퇴사하면 퇴직금은 원칙적으로 근로자 명의 IRP 계좌로 이전되어 지급됩니다. 근로자퇴직급여보장법 제9조가 정한 의무이전 규정과 예외 사유, IRP에 들어온 돈을 바로 해지해 인출할 수 있는지와 그때 세금이 달라지는 점을 정리했습니다.',
+  keywords: ['퇴직금 IRP', 'IRP 의무이전', '퇴직급여 지급', 'IRP 해지 인출', '퇴직소득세', 'DC형 퇴직연금 수령'],
+  section: '은퇴 자산 가이드',
+  lastReviewed: '2026-09-23',
+  answer:
+    '퇴직금은 근로자퇴직급여보장법 제9조에 따라 원칙적으로 근로자 명의 IRP 계좌로 이전되어 지급되지만, 만 55세 이후 퇴직이나 300만원 이하 소액 등 예외 사유가 있으면 본인 계좌로 바로 받을 수 있습니다. IRP로 들어온 돈도 근로자가 원하면 즉시 해지해 인출할 수 있으나, 연금으로 나눠 받을 때 주는 퇴직소득세 감면은 받지 못합니다.',
+  keyPoints: [
+    '근로자퇴직급여보장법 제9조에 따라 사용자는 퇴직금 지급사유가 발생한 날부터 14일 이내에, 근로자가 지정한 개인형퇴직연금제도(IRP) 계좌로 이전하는 방식으로 퇴직급여를 지급해야 합니다.',
+    '만 55세 이후 퇴직해 급여를 받는 경우, 퇴직급여액이 고용노동부장관이 고시한 금액(300만원) 이하인 경우, 사망으로 인한 당연퇴직, 외국인 근로자의 국외 출국 등에는 IRP를 거치지 않고 본인 계좌로 바로 받을 수 있습니다.',
+    'IRP로 이전된 퇴직급여는 법정 인출 제한이 있는 세액공제분과 달리 근로자가 원하면 즉시 전액 해지해 인출할 수 있지만, 보유 상품을 매도·결제하는 절차가 있어 실제 입금까지는 금융회사·상품에 따라 며칠 걸릴 수 있습니다.',
+    '퇴직급여를 IRP에 그대로 두고 연금 형태 요건을 채워 나눠 받으면 퇴직소득세가 실제 수령연차에 따라 30~50% 줄어들지만, 즉시 일시금으로 인출하면 이 감면 없이 원래 퇴직소득세가 그대로 부과됩니다.',
+  ],
+  sources: [
+    { label: '고용노동부 민원마당 · 퇴직금 IRP 의무지급', url: 'https://www.moel.go.kr' },
+    { label: '국가법령정보센터 · 근로자퇴직급여 보장법 제9조', url: 'https://www.law.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'DC형 퇴직연금을 수령한 후 바로 사용할 수 있는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=6100402&docId=494576861&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: '퇴직급여 수령 경로, 예외 해당 여부로 비교',
+    columns: ['구분', 'IRP 의무이전 대상', '예외 사유 해당', '확인할 점'],
+    rows: [
+      ['지급 방법', '근로자 명의 IRP 계좌로 이전', '본인 계좌로 직접 지급 가능', '회사에 예외 해당 여부부터 확인'],
+      ['해당 사례', '일반적인 퇴직(만 55세 미만 등)', '만 55세 이후 퇴직, 300만원 이하, 사망, 외국인 국외 출국 등', '나이·금액 기준을 함께 확인'],
+      ['받은 뒤 인출', 'IRP 해지 신청 후 매도·결제 거쳐 인출', '지급과 동시에 바로 사용 가능', 'IRP는 신청 즉시가 아니라 절차가 걸림'],
+      ['세금', '일시금으로 즉시 인출하면 감면 없는 퇴직소득세', '동일하게 퇴직소득세 과세', '어느 경로든 세액 자체는 같고 감면은 연금 수령에서만 발생'],
+    ],
+  },
+  sections: [
+    {
+      heading: '퇴직금이 자동으로 IRP 계좌에 들어가는 이유',
+      paragraphs: [
+        '퇴직금은 2022년 4월 14일부터 근로자퇴직급여보장법 제9조에 따라 원칙적으로 근로자 명의의 개인형퇴직연금제도(IRP) 계좌로 이전하는 방식으로 지급됩니다. 사용자는 지급사유가 발생한 날부터 14일 이내에 이 절차를 마쳐야 하며, 특별한 사정이 있으면 당사자 합의로 기일을 늦출 수 있습니다.',
+        '이 규정은 확정급여형(DB)과 확정기여형(DC) 모두에 적용됩니다. 퇴직금을 한꺼번에 현금으로 써 버려 노후 자금이 남지 않는 사례가 많았던 것이 도입 배경이라, 일단 연금계좌를 거치게 해 두고 그 안에서 어떻게 받을지 선택하도록 만든 구조입니다.',
+      ],
+    },
+    {
+      heading: 'IRP를 거치지 않고 바로 받을 수 있는 경우',
+      paragraphs: [
+        '모든 퇴직금이 IRP를 거치는 것은 아닙니다. 근로자가 만 55세 이후에 퇴직해 급여를 받는 경우, 퇴직급여액이 고용노동부장관이 고시한 금액(300만원) 이하인 경우, 근로자의 사망으로 퇴직급여를 지급하는 경우, 외국인 근로자가 출국하면서 받는 경우에는 IRP를 거치지 않고 본인이 지정한 계좌로 바로 받을 수 있습니다.',
+        '이 가운데 실무에서 가장 자주 걸리는 기준은 나이와 금액입니다. 55세를 넘겨 퇴직했거나 근속 기간이 짧아 퇴직급여가 300만원을 넘지 않는다면, 회사에 요청해 IRP 없이 통장으로 바로 받을 수 있는지 먼저 확인해 볼 만합니다.',
+      ],
+    },
+    {
+      heading: 'IRP로 들어온 퇴직금도 바로 인출은 가능하다',
+      paragraphs: [
+        'IRP를 거쳐야 하는 경우라도 그 돈이 55세까지 묶인다는 뜻은 아닙니다. 퇴직급여만 들어 있는 IRP는 세액공제를 받은 자기부담금이 섞인 일반 IRP와 달리 법정 인출 사유가 없어도 근로자가 원하면 언제든 전액 해지를 신청할 수 있습니다.',
+        '다만 신청 즉시 입금되는 것은 아닙니다. 예금형 상품이면 비교적 빠르지만 ETF 같은 실적배당 상품을 담고 있었다면 매도와 결제를 거쳐야 하고, 같은 금융회사의 IRP로 현물 그대로 옮겨졌는지 다른 회사로 옮기며 현금화됐는지에 따라서도 걸리는 시간이 달라집니다. 정확한 소요일수는 가입한 금융회사에 확인하는 것이 정확합니다.',
+      ],
+    },
+    {
+      heading: '세액공제받은 돈이 섞여 있으면 얘기가 달라진다',
+      paragraphs: [
+        '문제는 이 IRP 계좌에 퇴직급여만 있는 것이 아니라 근로자가 세액공제를 받으려고 추가로 납입한 돈까지 함께 들어 있는 경우입니다. 이때는 계좌 전체가 아니라 자금의 성격별로 인출 규칙이 나뉩니다.',
+        '세액공제받은 자기부담금과 그 운용수익은 주택 구입이나 전세보증금처럼 법으로 정한 사유가 아니면 부분 인출이 되지 않고, 55세 전에 중도해지하면 기타소득세 16.5%가 부과됩니다. 반면 회사가 넣어준 퇴직급여 부분은 이런 제한 없이 인출할 수 있어, 인출 전에 계좌 안에서 두 돈이 어떻게 구분되는지부터 확인해야 합니다.',
+      ],
+    },
+    {
+      heading: '바로 빼면 퇴직소득세가 달라진다',
+      paragraphs: [
+        'IRP에 들어온 퇴직급여를 그대로 두고 연금 형태 요건을 채워 나눠 받으면 이연된 퇴직소득세가 실제 연금 수령연차에 따라 10년까지는 30%, 20년까지는 40%, 그 이후는 50% 줄어듭니다. 반면 요건을 채우지 않고 즉시 일시금으로 인출하면 이 감면이 적용되지 않고 이연됐던 퇴직소득세가 원래 세액 그대로 원천징수됩니다.',
+        '세율 자체가 더 무거워지는 벌칙성 세금은 아니며, 감면받을 기회를 쓰지 않는 것에 가깝습니다. 연차별 감면 구조와 계산 방법은 이연퇴직소득세 가이드에서 더 자세히 확인할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '그래도 지금 당장 필요하다면',
+      paragraphs: [
+        '감면을 포기하더라도 일시금으로 받는 편이 합리적인 상황은 있습니다. 근속 기간이 짧아 애초에 퇴직소득세 자체가 크지 않거나, 당장 갚아야 할 대출·의료비처럼 유동성이 급한 경우에는 몇 년 뒤의 세금 감면보다 지금 손에 쥐는 현금이 더 중요할 수 있습니다.',
+        '반대로 근속 기간이 길어 퇴직급여 규모가 크고 당장 쓸 곳이 없다면, IRP에 그대로 두고 연금 수령 요건을 채워가는 쪽이 세금 면에서 유리한 경우가 많습니다. 본인의 근속 기간과 자금 계획을 함께 놓고 판단할 문제입니다.',
+      ],
+    },
+    {
+      heading: '받기 전에 회사와 금융회사에 확인할 두 가지',
+      paragraphs: [
+        '퇴직을 앞두고 있다면 두 가지를 먼저 확인하는 것이 순서입니다. 하나는 본인이 만 55세 이후 퇴직이나 300만원 이하 소액처럼 예외 사유에 해당해 IRP 없이 바로 받을 수 있는지이고, 다른 하나는 IRP로 받게 된다면 그 계좌를 개설한 금융회사의 해지·인출 절차와 소요 기간입니다.',
+        '두 질문의 답에 따라 퇴직 직후 현금이 언제 손에 들어오는지가 달라집니다. 인사팀에는 지급 방법과 예외 해당 여부를, 금융회사에는 보유 상품 매도부터 실제 입금까지 걸리는 기간을 미리 물어두면 급하게 알아보는 상황을 피할 수 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: 'DB형 퇴직연금도 이 규정이 똑같이 적용되나요?', answer: '네. IRP 의무이전 규정은 퇴직급여제도의 종류(DB형·DC형)와 무관하게 동일하게 적용됩니다. 운용 주체가 다를 뿐 지급 시점의 이전 규정은 같습니다.' },
+    { question: '이미 가진 IRP 계좌로 퇴직금을 받아도 되나요?', answer: '가능합니다. 근로자가 IRP 계좌를 새로 지정하지 않으면 근로자 명의의 기존 IRP 계좌로 자동 이전되며, 여러 직장에서 받은 퇴직급여를 한 계좌로 모아 관리할 수도 있습니다.' },
+    { question: '55세 이후 퇴직인데도 IRP로 받고 싶다면 어떻게 하나요?', answer: '예외 사유는 선택 사항이지 강제가 아닙니다. 55세 이후 퇴직이라도 본인이 원하면 회사에 요청해 IRP 계좌로 이전받을 수 있습니다.' },
+    { question: 'DC형 계좌에 담아둔 ETF도 그대로 IRP로 넘어가나요?', answer: '같은 금융회사의 IRP라면 보유 상품을 매도하지 않고 그대로 옮기는 현물이전이 가능한 경우가 많지만, 다른 금융회사로 옮기면 대부분 매도해 현금으로 이전됩니다. 가입한 회사에 현물이전 가능 여부를 확인해야 합니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  severancePayIrpImmediateWithdrawal,
   defaultOptionChangeEffect,
   isaDomesticEquityEtfBenefit,
   nasdaq100EtfKoreaUsGap,
@@ -24060,6 +24156,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-23 · 지식iN 질문 수요 기반 (DC형 퇴직연금 수령 후 바로 사용 가능한지)
+  'severance-pay-irp-immediate-withdrawal': '2026-09-23',
   // 2026-09-22 · 지식iN 질문 수요 기반 (퇴직연금 디폴트옵션 변경 시 기존 적립금 처리와 실제 적용 시점)
   'default-option-change-effect': '2026-09-22',
   // 2026-09-21 · 지식iN 질문 수요 기반 (ISA계좌에 코덱스200 같은 국내 ETF를 담는 것이 혜택이 없는지)
@@ -24424,7 +24522,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'default-option-change-effect', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax', 'isa-contract-period-long-term', 'gift-before-death-inheritance-tax-merge', 'isa-domestic-equity-etf-benefit'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'default-option-change-effect', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax', 'isa-contract-period-long-term', 'gift-before-death-inheritance-tax-merge', 'isa-domestic-equity-etf-benefit', 'severance-pay-irp-immediate-withdrawal'],
   },
   {
     title: '배당·인컴',
