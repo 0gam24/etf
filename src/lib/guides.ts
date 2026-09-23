@@ -23883,7 +23883,119 @@ const severancePayIrpImmediateWithdrawal: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-24 · 미국 상장 ETF 상장폐지(청산) 절차와 국내 ETF 청산의 차이 */
+const usEtfDelistingVsDomestic: GuideDef = {
+  slug: 'us-etf-delisting-vs-domestic',
+  title: '미국 ETF 상장폐지되면 내 돈은, 국내 ETF와 다른 점',
+  tagline: '청산 절차는 있어도 법으로 못박은 기간은 없다는 게 핵심입니다',
+  description:
+    '미국 상장 ETF도 운용사가 청산을 결정하면 최종거래일을 공지하고, 그 이후에는 순자산가치만큼 현금으로 돌려받습니다. 국내 ETF의 정리매매·환급 절차와 무엇이 같고 다른지, 세금 신고와 지급 시점에서 미리 확인해야 할 점을 정리했습니다.',
+  keywords: ['미국 ETF 상장폐지', 'ETF 청산', '해외 ETF 청산분배금', '미국 ETF 상장폐지 세금', '국내 ETF 상장폐지 차이', 'ETF 청산 절차'],
+  section: 'ETF 입문 가이드',
+  lastReviewed: '2026-09-24',
+  answer:
+    '미국 상장 ETF도 운용사가 청산을 결정하면 신규 매수 중단일과 최종거래일을 공지하고, 최종거래일까지 팔지 않은 보유분은 청산일 기준 순자산가치(NAV)에서 비용을 뺀 금액을 현금으로 돌려받습니다. 국내 ETF의 정리매매·청산 환급과 뼈대는 같지만, 발표부터 최종거래일까지 걸리는 기간이 법으로 정해져 있지 않고 펀드마다 다르다는 점, 그리고 청산분배금의 세금 신고 방식이 국세청 공식 안내로 명확히 정리돼 있지 않다는 점에서 국내 ETF보다 직접 확인할 것이 많습니다.',
+  keyPoints: [
+    '미국 ETF 청산은 운용사가 신규 매수 중단일과 최종거래일을 먼저 공지하고, 그 이후 보유분은 순자산가치(NAV) 기준으로 현금 지급됩니다.',
+    '국내 ETF는 한국거래소 관리종목 지정과 정리매매 기간이 정해진 절차로 진행되지만, 미국 ETF는 발표부터 최종거래일까지 기간이 법정 고정값이 아니라 펀드별로 다릅니다.',
+    '일반적인 매도라면 해외주식 양도소득세(22%, 연 250만원 공제) 틀을 따르지만, 청산분배금 자체를 같은 방식으로 신고하는지는 국세청 공식 유권해석으로 명확히 확인되지 않아 직접 확인이 필요합니다.',
+    '순자산총액이 작고 거래량이 부진한 ETF일수록 청산 위험이 크다는 점은 국내외 ETF가 동일하며, 매수 전 규모와 거래량을 확인하는 것이 가장 확실한 예방책입니다.',
+  ],
+  sources: [
+    { label: 'SEC 투자자 안내 · Fund Liquidation', url: 'https://www.sec.gov/resources-for-investors/investor-alerts-bulletins/investor-bulletin-fund-liquidation' },
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '금융감독원 금융소비자 정보포털 파인', url: 'https://fine.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ETF가 상장폐지되면 어떻게 되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=488312128&answerNo=1' },
+    { summary: '미국 ETF가 상장폐지되면 어떻게 되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=474327014&answerNo=1' },
+    { summary: 'ETF 상장폐지 시 원금 회수 가능 여부와 거래정지 기간을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=403&docId=489722460&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: '미국 상장 ETF 청산 vs 국내 상장 ETF 청산',
+    columns: ['구분', '미국 상장 ETF', '국내 상장 ETF', '확인할 점'],
+    rows: [
+      ['절차 근거', '운용사가 자체 공지(보도자료·공시서류)', '한국거래소 관리종목 지정 후 정리매매', '누가 절차를 정하고 공지하는지 다름'],
+      ['발표~최종거래일', '법정 고정 기간 없음, 펀드마다 다름', '정리매매 기간이 정해진 절차로 진행', '미국은 공지문에서 직접 날짜 확인 필요'],
+      ['못 판 돈 처리', '청산일 NAV 기준 현금 분배', '청산 후 NAV 기준 현금 지급(청산 분배금)', '둘 다 자산이 남아 있어 휴지는 아님'],
+      ['세금 신고', '청산분배금 신고 방식이 공식 확정 안 됨', '국내 상장 상품 기준의 배당·양도 구분 적용', '미국 ETF 보유자는 신고 전 직접 확인 권장'],
+      ['위험 신호', '순자산 축소·거래량 급감·운용사 폐쇄 공지', '순자산 미달·거래 부진·관리종목 지정', '매수 전 규모·거래량 확인은 공통'],
+    ],
+  },
+  sections: [
+    {
+      heading: '미국 ETF도 상장폐지된다, 뼈대는 국내와 같다',
+      paragraphs: [
+        '미국 증시에 상장된 ETF도 순자산이 너무 작아지거나 거래가 부진하면 운용사가 청산을 결정합니다. 국내 ETF와 마찬가지로 ETF는 주식·채권 같은 실물 자산을 담고 있어, 청산되더라도 그 자산을 처분한 순자산가치(NAV)만큼 현금으로 돌려받습니다.',
+        '즉 개별 주식이 부실로 상장폐지돼 가치가 거의 사라지는 것과 달리, ETF 청산은 국내외를 막론하고 "강제 환급"에 가깝다는 큰 틀은 같습니다. 차이는 그 절차를 누가 정하고, 얼마나 예측 가능한 일정으로 진행되는지에 있습니다.',
+      ],
+    },
+    {
+      heading: '미국 ETF 청산 절차는 운용사 공지에서 시작한다',
+      paragraphs: [
+        '미국에서는 운용사가 펀드 청산을 결정하면 보도자료와 증권신고서 보충서류로 신규 매수 중단일, 최종거래일, 청산일을 공지합니다. 미국 증권거래위원회(SEC)의 투자자 안내에 따르면 최종거래일까지 팔지 않은 보유분은 청산일 기준 순자산가치에 비례해 현금으로 분배됩니다.',
+        '국내 ETF는 한국거래소가 관리종목으로 지정한 뒤 정해진 정리매매 기간을 두는 절차로 진행됩니다. 미국은 이런 정형화된 거래소 절차보다 운용사 자체 공지가 기준이 되는 구조라, 투자자 입장에서는 공지문을 직접 챙겨 봐야 하는 부담이 더 있습니다.',
+      ],
+    },
+    {
+      heading: '발표부터 최종거래일까지, 정해진 기간은 없다',
+      paragraphs: [
+        '국내 ETF는 정리매매 기간이 절차상 정해져 있어 대략적인 일정을 예상할 수 있습니다. 반면 미국 ETF는 청산 발표부터 최종거래일까지의 간격을 법으로 못박은 고정 기간이 없고, 펀드 이사회 판단에 따라 사례마다 다르게 진행됩니다.',
+        '그래서 "보통 몇 주 걸린다"는 식의 일반화는 위험합니다. 보유 중인 ETF에 청산 공지가 뜨면, 그 공지문에 적힌 최종거래일과 청산 예정일을 직접 확인하는 것이 유일하게 정확한 방법입니다.',
+      ],
+    },
+    {
+      heading: '최종거래일 이후 남은 돈은 어떻게 받나',
+      paragraphs: [
+        '최종거래일까지 매도하지 않으면 거래는 그대로 정지되고, 이후 운용사가 남은 자산을 처분해 청산일 기준 순자산가치에서 청산 비용을 뺀 금액을 계좌로 지급합니다. 이 금액에는 청산일까지 쌓인 미지급 배당이나 자본이득이 포함될 수 있습니다.',
+        '지급까지 걸리는 기간도 펀드마다 다르므로, 국내 증권사를 통해 미국 ETF를 보유하고 있다면 국내 계좌 입금까지 추가로 며칠이 더 걸릴 수 있다는 점을 감안해야 합니다. 정확한 입금 예정일은 거래 중인 증권사 고객센터에서 확인하는 편이 빠릅니다.',
+      ],
+    },
+    {
+      heading: '세금 신고, 확정된 공식 답이 없는 지점',
+      paragraphs: [
+        '해외주식을 팔아 이익이 나면 양도소득세 22%(지방소득세 포함)를 내고, 한 해 순이익 250만원까지는 공제받는 것이 일반적인 틀입니다. 최종거래일 전에 직접 매도했다면 이 틀이 그대로 적용됩니다.',
+        '문제는 최종거래일을 넘겨 받는 청산분배금입니다. 실무에서는 이를 매도와 같은 방식으로 신고하는 경우가 많지만, 해외 상장 ETF의 청산 분배를 국내 세법상 정확히 어떤 소득으로 다루는지 국세청이 명시적으로 정리한 공식 해석은 확인되지 않습니다. 금액이 크다면 신고 전에 홈택스 상담이나 세무사를 통해 본인 사례를 직접 확인하는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '반대로 볼 지점, 청산이 곧 손실 확정은 아니다',
+      paragraphs: [
+        '청산 소식을 들으면 손해부터 걱정하기 쉽지만, ETF 청산은 자산을 나눠 돌려주는 절차일 뿐 투자금이 사라지는 사건은 아닙니다. 오히려 평가이익 상태라면 청산으로 그 이익이 그대로 확정되는 경우도 있습니다.',
+        '다만 원하는 시점에 팔지 못하고 강제로 정리된다는 점은 국내외 ETF 모두 같은 단점입니다. 손실 구간에서 청산되면 회복을 기다릴 기회 자체가 없어진다는 점은 염두에 둬야 합니다.',
+      ],
+    },
+    {
+      heading: '다음에 확인할 것',
+      paragraphs: [
+        '보유 중인 미국 ETF에 청산 공지가 떴다면 가장 먼저 공지문에서 최종거래일과 청산 예정일을 확인하고, 그 전에 팔지 계속 들고 있다가 청산 분배금을 받을지 정합니다. 세금 신고는 금액이 애매하면 미루지 말고 국세청 상담이나 세무사에게 먼저 물어보는 편이 안전합니다.',
+        '아직 매수 전이라면 순자산총액과 거래량이 충분히 크고 오래 상장돼 있는 대표 ETF를 고르는 것이 청산 위험 자체를 줄이는 가장 확실한 방법입니다. 이 기준은 국내 ETF든 미국 ETF든 똑같이 적용됩니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '미국 ETF가 청산되면 원금을 아예 못 받을 수도 있나요?',
+      answer: 'ETF는 주식·채권 같은 실물 자산을 보유하고 있어, 청산되더라도 그 자산을 처분한 순자산가치만큼 현금으로 돌려받습니다. 다만 청산 시점의 시세가 매입가보다 낮으면 그 손실은 그대로 확정됩니다.',
+    },
+    {
+      question: '발표부터 청산까지 보통 며칠이나 걸리나요?',
+      answer: '법으로 정해진 고정 기간이 없어 펀드마다 다릅니다. 보유 중인 ETF에 청산 공지가 뜨면 운용사 공지문에 적힌 최종거래일과 청산 예정일을 직접 확인해야 합니다.',
+    },
+    {
+      question: '청산분배금도 해외주식 양도소득세로 신고하면 되나요?',
+      answer: '실무에서 매도와 같은 방식으로 신고하는 경우가 많지만, 국세청이 이 경우를 명시적으로 정리한 공식 해석은 확인되지 않습니다. 금액이 크다면 홈택스 상담이나 세무사를 통해 확인하는 편이 안전합니다.',
+    },
+    {
+      question: '국내 증권사에서 미국 ETF를 보유 중인데 청산 공지를 놓칠 수도 있나요?',
+      answer: '거래소 공시보다 운용사 자체 공지가 기준이라, 국내 증권사 앱의 공지·메일 알림을 켜두고 보유 종목의 운용사 홈페이지를 가끔 확인하는 습관이 필요합니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  usEtfDelistingVsDomestic,
   severancePayIrpImmediateWithdrawal,
   defaultOptionChangeEffect,
   isaDomesticEquityEtfBenefit,
@@ -24156,6 +24268,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-24 · 지식iN 질문 수요 기반 (미국 ETF 상장폐지 시 국내 ETF와 절차·세금이 어떻게 다른지)
+  'us-etf-delisting-vs-domestic': '2026-09-24',
   // 2026-09-23 · 지식iN 질문 수요 기반 (DC형 퇴직연금 수령 후 바로 사용 가능한지)
   'severance-pay-irp-immediate-withdrawal': '2026-09-23',
   // 2026-09-22 · 지식iN 질문 수요 기반 (퇴직연금 디폴트옵션 변경 시 기존 적립금 처리와 실제 적용 시점)
@@ -24517,7 +24631,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'us-etf-nav-discount-check', 'etf-fee-discount-relation', 'etf-lp-liquidity', 'overseas-etf-geopolitical-discount-spike', 'etf-discount-rate-buy-signal', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'us-etf-nav-discount-check', 'etf-fee-discount-relation', 'etf-lp-liquidity', 'overseas-etf-geopolitical-discount-spike', 'etf-discount-rate-buy-signal', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'us-etf-delisting-vs-domestic', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
   },
   {
     title: '세금·절세 계좌',
