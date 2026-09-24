@@ -23994,7 +23994,99 @@ const usEtfDelistingVsDomestic: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-25 · 미국 주식 배당락일이 배당기준일과 같은 날이 된 이유(2024년 T+1 결제 전환) */
+const usStockExDividendDateCheck: GuideDef = {
+  slug: 'us-stock-ex-dividend-date-check',
+  title: '미국주식 배당락일, 배당기준일과 같아진 이유',
+  tagline: '2024년 5월 T+1 결제 전환으로 두 날짜가 하루 차이에서 같은 날로 바뀌었습니다',
+  description:
+    '미국 주식은 2024년 5월 28일 T+1 결제로 바뀌면서 배당락일이 배당기준일과 같은 날이 되었습니다. 국내 주식(T+2)과 다른 이 구조에서 배당을 받으려면 언제까지 매수해야 하는지, 배당락일은 어디서 확인하는지 정리했습니다.',
+  keywords: ['미국주식 배당락일', '미국 배당기준일', 'T+1 결제', '배당락일 확인', '미국 ETF 배당락', '배당 매수 타이밍'],
+  section: '배당주 가이드',
+  lastReviewed: '2026-09-25',
+  answer:
+    '미국 주식은 2024년 5월 T+1 결제로 바뀌면서 배당락일이 배당기준일과 같은 날이 되었습니다. 배당을 받으려면 배당기준일 전 거래일 장마감까지 매수해 체결해야 하며, 기준일 당일 매수는 결제가 늦어 배당을 받지 못합니다.',
+  keyPoints: [
+    '2024년 5월 28일 미국 증시가 T+2에서 T+1 결제로 바뀌면서 미국 상장 종목의 배당락일이 배당기준일과 같은 날로 합쳐졌습니다.',
+    '배당을 받으려면 배당기준일(=배당락일) 전 거래일 장마감까지 매수를 체결해야 하며, 당일 매수는 결제가 하루 늦어 배당 대상에서 빠집니다.',
+    '국내 주식은 여전히 T+2 결제라 배당락일이 배당기준일 하루 전이므로, 미국·국내 주식을 같은 기준으로 계산하면 하루 차이로 착오가 생깁니다.',
+    '배당락일·배당기준일은 종목마다 다르고 회사가 일정을 바꿀 수 있어, 매매 전 운용사나 나스닥 공시로 해당 종목 날짜를 개별 확인하는 편이 안전합니다.',
+  ],
+  sources: [
+    { label: '미국 증권거래위원회(SEC) Investor.gov · 배당락일 안내', url: 'https://www.investor.gov/introduction-investing/investing-basics/glossary/ex-dividend-dates-when-are-you-entitled-stock-and' },
+    { label: 'SEC · 결제주기 단축(T+1) 규정 안내', url: 'https://www.sec.gov/investment/settlement-cycle-small-entity-compliance-guide-15c6-1-15c6-2-204-2' },
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '미국 주식 배당락일이 언제인지, 배당기준일과 같은 날인지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=489998926&answerNo=3' },
+    { summary: '미국주식 배당락일과 배당일을 쉽게 찾는 방법을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=483740490&answerNo=1' },
+    { summary: '미국 주식 배당락일을 확인할 수 있는 곳을 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=473680968&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: '국내 주식과 미국 주식, 배당락일 계산이 어떻게 다른가',
+    columns: ['구분', '국내 주식(T+2)', '미국 주식(T+1)', '확인할 점'],
+    rows: [
+      ['결제 주기', '매수 후 2거래일 뒤 결제', '매수 후 1거래일 뒤 결제', '결제 주기가 배당락일 계산의 기준'],
+      ['배당락일 위치', '배당기준일 하루 전 거래일', '배당기준일과 같은 날', '두 시장의 배당락일 개념 자체가 다름'],
+      ['배당 받는 매수 마감', '배당기준일 2거래일 전(배당락일 전날)까지', '배당기준일(=배당락일) 전 거래일 장마감까지', '기준을 헷갈리면 하루 차이로 배당을 놓침'],
+      ['적용 시작', '오래전부터 T+2 결제', '2024년 5월 28일부터 T+1 결제', '변경 시점 이전 자료는 하루 차이로 어긋남'],
+      ['확인 방법', 'KRX 정보데이터시스템·증권사 앱 공시', '나스닥·운용사 홈페이지·증권사 해외주식 화면', '종목마다 개별 공시로 최종 확인'],
+    ],
+  },
+  sections: [
+    {
+      heading: '미국주식 배당락일이 배당기준일과 같아진 이유',
+      paragraphs: [
+        '미국 증시는 2024년 5월 28일부터 결제 주기를 매수 후 2거래일 뒤(T+2)에서 1거래일 뒤(T+1)로 단축했습니다. 결제가 하루 빨라지면서, 배당받을 주주를 정하는 배당기준일 전날에 사도 기준일 안에 결제가 끝나게 되어 배당 권리가 빠지는 배당락일이 배당기준일과 같은 날로 합쳐졌습니다.',
+        'SEC 규정 개정 자료에 따르면 이 변경 이후 미국 배당 사례의 99% 이상에서 배당기준일과 배당락일이 같은 날입니다. 예전처럼 배당락일을 기준일보다 하루 앞선 날로 생각하면 미국 주식에서는 계산이 어긋납니다.',
+      ],
+    },
+    {
+      heading: '배당을 받으려면 언제까지 사야 하나',
+      paragraphs: [
+        '배당기준일이 곧 배당락일이므로, 그날 매수하면 결제가 다음 거래일에 이뤄져 이미 주주명부 확정이 끝난 뒤입니다. 배당을 받으려면 배당기준일 전 거래일 장마감까지 매수를 체결해 두어야 합니다.',
+        '반대로 배당기준일(배당락일) 당일이나 그 이후에 사면 이번 배당은 받지 못하고, 다음 배당 주기를 기다려야 합니다. 매수 시점을 하루만 착각해도 결과가 갈리는 구조라 날짜를 미리 확인하는 습관이 필요합니다.',
+      ],
+    },
+    {
+      heading: '국내 주식과 무엇이 다른가',
+      paragraphs: [
+        '국내 주식은 여전히 T+2 결제를 쓰고 있어 배당락일이 배당기준일 하루 전 거래일에 옵니다. 그래서 국내 주식에 익숙한 투자자가 같은 감각으로 미국 주식 배당락일을 계산하면 하루씩 어긋나기 쉽습니다.',
+        '두 시장 모두 "기준일에 결제가 끝나 있어야 배당을 받는다"는 원리는 같지만, 결제 주기가 다르니 배당락일이 기준일 대비 며칠 전인지가 달라진다고 이해하는 편이 정확합니다.',
+      ],
+    },
+    {
+      heading: '배당락일과 지급일 확인하는 방법',
+      paragraphs: [
+        '국내 증권사 해외주식 화면에서 곧바로 안 보일 때는 나스닥닷컴 같은 시세 정보 사이트의 종목별 배당(Dividends) 탭이나 해당 기업·ETF 운용사 홈페이지의 투자자 정보(IR) 페이지에서 배당기준일·배당락일·지급일을 확인할 수 있습니다.',
+        '증권사 앱마다 배당 일정을 보여주는 메뉴 이름이 달라, 처음이라면 고객센터에 위치를 물어보는 편이 빠릅니다. 실제 매매 전에는 반드시 해당 종목의 최신 공시로 날짜를 재확인해야 합니다.',
+      ],
+    },
+    {
+      heading: '배당락일 주가 조정과 매매 실익',
+      paragraphs: [
+        '배당락일에는 이론상 주가가 배당금만큼 낮게 출발합니다. 그날 시장 상황과 거래량에 따라 실제 낙폭은 배당금과 정확히 일치하지 않을 수 있지만, 배당 권리가 빠졌다는 사실 자체는 가격에 반영됩니다.',
+        '배당만 받으려고 기준일 직전에 사서 배당락 후 바로 파는 방식은 주가 조정분과 매매 비용을 감안하면 실익이 크지 않은 경우가 많습니다. 배당을 받는 것과 그 배당으로 돈을 버는 것은 다른 문제입니다.',
+      ],
+    },
+    {
+      heading: '매수 전 확인해야 할 것',
+      paragraphs: [
+        '배당락일 계산은 결제 주기가 바뀌면 함께 바뀌는 구조라, 이번처럼 앞으로도 제도가 달라지면 기준이 또 달라질 수 있습니다. 지금 시점의 규칙을 외우기보다 매매 전 해당 종목의 최신 배당 공시를 확인하는 습관을 들이는 편이 안전합니다.',
+        '특히 여러 ETF에 나눠 투자하고 있다면 종목마다 배당기준일이 달라 한 번에 챙기기 어려우므로, 보유 종목의 배당 일정을 달력에 미리 표시해 두면 매수·매도 타이밍을 놓치는 일을 줄일 수 있습니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '배당기준일 당일에 사면 정말 배당을 못 받나요?', answer: '배당기준일이 곧 배당락일이라, 그날 산 주식은 결제가 다음 거래일에 이뤄져 이미 권리가 빠진 뒤입니다. 최소 하루 전 장마감까지는 매수를 마쳐야 합니다.' },
+    { question: '미국 ETF도 개별주와 똑같이 적용되나요?', answer: '네, 미국 상장 ETF도 T+1 결제를 따르므로 배당락일이 배당기준일과 같은 날인 경우가 대부분입니다. 다만 운용사가 분배 일정을 별도로 공지하는 경우도 있어 개별 확인이 필요합니다.' },
+    { question: '배당락일에 주가가 항상 배당금만큼 정확히 떨어지나요?', answer: '이론상 배당금만큼 조정되지만 그날 시장 상황과 거래량에 따라 실제 낙폭은 다를 수 있어, 반드시 일치하지는 않습니다.' },
+    { question: '모든 미국 배당 종목이 예외 없이 배당락일과 배당기준일이 같나요?', answer: '대부분 그렇지만 주식배당처럼 결제 구조가 다른 특수한 경우는 예외가 있을 수 있습니다. 확실하지 않으면 해당 종목의 최신 공시로 확인하는 편이 낫습니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  usStockExDividendDateCheck,
   usEtfDelistingVsDomestic,
   severancePayIrpImmediateWithdrawal,
   defaultOptionChangeEffect,
@@ -24268,6 +24360,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-25 · 지식iN 질문 수요 기반 (미국 주식 배당락일이 배당기준일과 같은 날인지, 어디서 확인하는지)
+  'us-stock-ex-dividend-date-check': '2026-09-25',
   // 2026-09-24 · 지식iN 질문 수요 기반 (미국 ETF 상장폐지 시 국내 ETF와 절차·세금이 어떻게 다른지)
   'us-etf-delisting-vs-domestic': '2026-09-24',
   // 2026-09-23 · 지식iN 질문 수요 기반 (DC형 퇴직연금 수령 후 바로 사용 가능한지)
@@ -24641,7 +24735,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'reit-etf-types-tax', 'reit-inverse-etf-real-estate-drop', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'reit-etf-types-tax', 'reit-inverse-etf-real-estate-drop', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income', 'us-stock-ex-dividend-date-check'],
   },
   {
     title: '테마·섹터',
