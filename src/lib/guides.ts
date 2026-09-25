@@ -24085,7 +24085,113 @@ const usStockExDividendDateCheck: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-26 · 지식iN 질문 수요 기반 (ISA 만기일 전, 의무가입기간 3년 이후 해지는 문제없는지) */
+const isaTerminationAfter3Years: GuideDef = {
+  slug: 'isa-termination-after-3-years',
+  title: 'ISA 중도해지, 3년 지나면 만기 전에도 괜찮나',
+  tagline: '의무가입기간과 계약 만기는 다른 기준입니다',
+  description:
+    'ISA는 의무가입기간인 3년이 지나면 계약 만기 전에 해지해도 정상 만기와 같은 방식으로 그동안 쌓인 비과세·저율과세 혜택을 그대로 받습니다. 3년 이전에 해지하면 무엇이 달라지는지, 특별해지 예외 사유와 재가입 제한까지 정리했습니다.',
+  keywords: ['ISA 중도해지', 'ISA 3년 이후 해지', 'ISA 의무가입기간', 'ISA 만기 전 해지', 'ISA 특별해지 사유', 'ISA 재가입 제한'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-09-26',
+  answer:
+    'ISA는 의무가입기간 3년을 채운 뒤라면 계약 만기 전에 해지해도 그 시점 손익을 정산해 비과세와 9.9% 분리과세를 그대로 받습니다. 3년 전 해지는 이미 받은 세제 혜택 세액이 추징될 수 있어, 해지 시점이 3년을 넘었는지부터 확인해야 합니다.',
+  keyPoints: [
+    'ISA는 가입일로부터 3년이 지나면 계약 만기 전이라도 해지 시점의 손익을 정산해 비과세 200만원(서민형 400만원)과 초과분 9.9% 분리과세를 그대로 적용받습니다.',
+    '3년을 채우기 전에 해지하면 원칙적으로 중도해지로 처리되어, 그동안 적용받은 비과세·저율과세에 해당하는 세액이 추징될 수 있습니다.',
+    '사망·해외이주·퇴직·3개월 이상 요양처럼 조세특례제한법 시행령이 정한 부득이한 사유가 있으면 3년을 채우기 전에 해지해도 세제 혜택이 유지되는 특별해지 절차를 따로 둡니다.',
+    '3년 이후 해지하고 새로 재가입하려면 가입일이 속한 과세기간의 직전 3개 과세기간 중 금융소득종합과세 대상자였던 해가 없어야 합니다.',
+  ],
+  sources: [
+    { label: '국가법령정보센터 · 조세특례제한법 제91조의18', url: 'https://www.law.go.kr' },
+    { label: '금융위원회 · ISA 주요정책문답', url: 'https://www.fsc.go.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA 계좌를 만기일 전, 의무가입기간 3년 이후에 해지하면 아무 문제 없는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=494588251&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: 'ISA 해지, 3년 이전과 3년 이후는 무엇이 다른가',
+    columns: ['구분', '3년 이전 일반해지', '3년 이후 해지(만기 전 포함)', '확인할 점'],
+    rows: [
+      ['세제 혜택', '과세특례로 받은 세액 추징 가능', '비과세·9.9% 분리과세 그대로 유지', '해지일이 가입일로부터 3년을 넘었는지'],
+      ['처리 방식', '중도해지로 분류', '정상 만기와 동일하게 정산', '계약서상 만기일과 혼동하지 않기'],
+      ['손익 정산', '해지 시점까지 손익 계산, 혜택은 별개로 추징 대상', '계좌 안 손익을 통산해 순이익 기준으로 과세', '순이익 계산 방식은 거래 증권사 안내로 확인'],
+      ['예외', '특별해지 사유면 혜택 유지 가능', '해당 없음(이미 혜택이 확정된 상태)', '사망·해외이주 등 사유별 증빙 서류 필요'],
+      ['재가입', '사유에 따라 제한 여부가 갈림', '직전 3개 과세기간 금융소득종합과세 대상이면 제한', '재가입 전 본인 대상 여부부터 확인'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'ISA 중도해지와 중도인출은 서로 다른 이야기다',
+      paragraphs: [
+        'ISA에서 돈을 빼는 방법은 두 가지입니다. 계좌를 유지한 채 납입 원금 범위 안에서 일부만 찾는 중도인출과, 계좌 자체를 끝내는 해지입니다. 원금 범위 안 중도인출은 계약 기간과 무관하게 세제 혜택이 유지되지만, 해지는 계좌를 정리하며 그동안의 운용 손익 전체를 정산한다는 점에서 성격이 다릅니다.',
+        '이 글은 계좌를 완전히 끝내는 해지, 그중에서도 정해둔 계약 만기가 오기 전에 해지하는 경우를 다룹니다. 원금 범위 안 인출 규칙은 별도로 정리돼 있으니, 일부만 찾을 계획이라면 그쪽을 먼저 확인하는 편이 맞습니다.',
+      ],
+    },
+    {
+      heading: '의무가입기간 3년, 왜 이 시점이 기준인가',
+      paragraphs: [
+        'ISA의 비과세·저율분리과세 혜택은 조세특례제한법이 정한 의무가입기간인 3년을 채워야 확정됩니다. 계좌를 개설할 때 정하는 계약기간(만기)과는 별개 개념으로, 만기를 10년으로 잡아 두었더라도 세제 혜택 자체는 가입일로부터 3년이 지난 시점에 이미 발생한 상태입니다.',
+        '그래서 3년이라는 숫자는 "돈을 찾을 수 있는 시점"이 아니라 "세제 혜택이 확정되는 시점"으로 이해하는 편이 정확합니다. 3년을 넘기고부터는 계약 만기와 상관없이 원하는 시점에 계좌를 정리해도 이미 확정된 혜택이 그대로 적용됩니다.',
+      ],
+    },
+    {
+      heading: '3년을 넘겨 해지하면 정상 만기와 같은 방식으로 처리된다',
+      paragraphs: [
+        '가입일로부터 3년이 지난 뒤 계좌를 해지하면, 이는 중도해지가 아니라 정상적인 만기 처리와 같은 방식으로 다뤄집니다. 그 시점까지 계좌 안에서 난 손익을 전부 통산해 순이익을 계산하고, 순이익 중 비과세 한도(일반형 200만원, 서민형·농어민 400만원)까지는 세금이 없고 초과분은 9.9%로 분리과세됩니다.',
+        '즉 계약서에 적힌 만기일까지 기다릴 의무는 없습니다. 만기를 채우든, 3년만 지나 곧바로 정리하든 적용되는 세제 혜택은 같습니다. 다만 계좌를 해지하면 그 이후로는 손익통산이나 재예치 같은 ISA 특유의 기능을 더 쓸 수 없다는 점은 함께 고려해야 합니다.',
+      ],
+    },
+    {
+      heading: '3년을 채우기 전에 해지하면 어떻게 되나',
+      paragraphs: [
+        '가입일로부터 3년이 되기 전에 계좌를 해지하면 원칙적으로 중도해지로 처리됩니다. 이 경우 그동안 비과세·저율과세로 받은 혜택에 해당하는 세액이 추징될 수 있어, 3년 안에 급하게 해지하면 세제 혜택을 온전히 누리지 못하고 계좌를 정리하게 될 수 있습니다.',
+        '다만 예외가 있습니다. 가입자 사망·해외이주, 해지 전 일정 기간 안에 생긴 천재지변·퇴직·폐업, 3개월 이상 요양이 필요한 상해·질병, 취급 금융회사의 영업정지·파산처럼 시행령이 정한 부득이한 사유에 해당하면 3년을 채우기 전에 해지해도 특별해지로 인정돼 세제 혜택과 손익통산이 유지됩니다. 정확한 사유 범위와 필요한 증빙 서류는 거래 증권사나 국세청 안내로 확인하는 것이 정확합니다.',
+      ],
+    },
+    {
+      heading: '3년 지나 바로 해지하는 것이 늘 유리하지는 않다',
+      paragraphs: [
+        '3년을 넘겼다고 곧바로 해지하는 것이 항상 최선은 아닙니다. 계좌를 유지하면 계속 손익통산이 이어져 한 종목에서 난 손실로 다른 종목의 이익을 상계할 수 있는데, 해지하는 순간 그 시점까지의 손익으로 정산이 끝나 버립니다. 아직 손실 구간에 있는 자산이 있다면 조금 더 유지해 회복을 기다리는 편이 유리할 수 있습니다.',
+        '또한 만기 자금을 연금계좌로 옮기면 이체 금액의 일정 비율만큼 추가 세액공제를 받을 수 있는 제도가 따로 있어, 단순히 현금으로 찾는 해지보다 연금 이체가 세제상 유리한 경우도 있습니다. 반대로 지금 계좌 수익률이 낮은 상품에 묶여 있고 더 나은 조건으로 갈아탈 곳이 있다면, 3년을 넘긴 시점에 정리하는 쪽이 합리적일 수 있습니다. 어느 쪽이 맞는지는 남은 손익 구조와 향후 자금 계획에 따라 달라집니다.',
+      ],
+    },
+    {
+      heading: '해지 전에 확인해야 할 절차',
+      paragraphs: [
+        '해지는 보통 계좌를 개설한 증권사나 은행 창구·앱에서 신청하며, 부득이한 사유로 인한 특별해지라면 사유를 증명하는 서류를 함께 제출해야 합니다. 신청 전에 가입일로부터 정확히 며칠이 지났는지, 현재까지의 순이익이 얼마인지를 거래 기관 화면에서 먼저 확인하는 편이 안전합니다.',
+        '해지 후 다시 ISA에 가입하려면 가입일이 속한 과세기간의 직전 3개 과세기간 중 한 번이라도 금융소득종합과세 대상자였던 해가 없어야 신규가입이 가능합니다. 최근 금융소득이 늘어난 상태라면 해지 전에 재가입 가능 여부부터 점검하는 것이 순서에 맞습니다. 본 내용은 정보 제공 목적이며 세부 기준은 해지 시점의 최신 법령과 거래 기관 안내로 다시 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA 중도해지와 중도인출은 뭐가 다른가요?',
+      answer:
+        '중도인출은 계좌를 유지한 채 납입 원금 범위 안에서 일부만 찾는 것이고, 중도해지는 계좌 자체를 끝내며 전체 손익을 정산하는 것입니다. 원금 범위 안 인출은 기간과 무관하게 혜택이 유지되지만, 해지는 3년을 넘겼는지에 따라 결과가 달라집니다.',
+    },
+    {
+      question: '특별해지 사유는 구체적으로 어떤 경우인가요?',
+      answer:
+        '가입자 사망·해외이주, 해지 전 일정 기간 안의 천재지변·퇴직·폐업, 3개월 이상 요양이 필요한 상해·질병, 취급 금융회사의 영업정지·파산 등이 해당합니다. 정확한 인정 범위와 필요 서류는 거래 증권사나 국세청 안내로 확인하는 것이 정확합니다.',
+    },
+    {
+      question: '3년 이후 해지하면 세금 신고를 따로 해야 하나요?',
+      answer:
+        '보통 해지 시 증권사가 순이익을 계산해 비과세·9.9% 분리과세를 원천징수로 처리하므로 별도 신고가 필요 없는 경우가 많습니다. 다만 다른 금융소득과 합쳐 금융소득종합과세 대상이 되는 경우라면 종합소득세 신고 때 함께 반영해야 할 수 있습니다.',
+    },
+    {
+      question: '해지하고 바로 다음 날 새 ISA에 가입할 수 있나요?',
+      answer:
+        '가입일이 속한 과세기간의 직전 3개 과세기간 중 금융소득종합과세 대상자였던 해가 없다면 재가입할 수 있습니다. 최근 몇 년간 금융소득이 컸다면 재가입이 막힐 수 있어 해지 전에 미리 확인하는 편이 좋습니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  isaTerminationAfter3Years,
   usStockExDividendDateCheck,
   usEtfDelistingVsDomestic,
   severancePayIrpImmediateWithdrawal,
@@ -24360,6 +24466,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-26 · 지식iN 질문 수요 기반 (ISA 만기일 전, 의무가입기간 3년 이후 해지는 문제없는지)
+  'isa-termination-after-3-years': '2026-09-26',
   // 2026-09-25 · 지식iN 질문 수요 기반 (미국 주식 배당락일이 배당기준일과 같은 날인지, 어디서 확인하는지)
   'us-stock-ex-dividend-date-check': '2026-09-25',
   // 2026-09-24 · 지식iN 질문 수요 기반 (미국 ETF 상장폐지 시 국내 ETF와 절차·세금이 어떻게 다른지)
@@ -24730,7 +24838,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'default-option-change-effect', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax', 'isa-contract-period-long-term', 'gift-before-death-inheritance-tax-merge', 'isa-domestic-equity-etf-benefit', 'severance-pay-irp-immediate-withdrawal'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'default-option-change-effect', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax', 'isa-contract-period-long-term', 'gift-before-death-inheritance-tax-merge', 'isa-domestic-equity-etf-benefit', 'severance-pay-irp-immediate-withdrawal', 'isa-termination-after-3-years'],
   },
   {
     title: '배당·인컴',
