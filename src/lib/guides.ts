@@ -24190,7 +24190,97 @@ const isaTerminationAfter3Years: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-27 · ETF 분배금 지급일을 어디서 확인하는지 (지식iN 질문 수요 기반) */
+const etfDistributionPaymentDateLookup: GuideDef = {
+  slug: 'etf-distribution-payment-date-lookup',
+  title: 'ETF 분배금 지급일 확인법, 운용사마다 다른 이유',
+  tagline: '지수처럼 한곳에 모인 표가 없어 공시와 운용사 페이지를 함께 봐야 합니다',
+  description:
+    'TIGER·KODEX 같은 ETF의 분배금 지급일은 한곳에 모여 있지 않아 헷갈리기 쉽습니다. 한국거래소 공시채널 KIND의 분배금 안내 공시와 운용사 홈페이지를 함께 봐야 하는 이유, 예정일과 확정일이 달라질 수 있는 지점을 정리했습니다.',
+  keywords: ['ETF 분배금 지급일', 'ETF 분배금 확인', 'TIGER ETF 분배금', 'ETF 분배 공시', 'KIND ETF 공시', '분배금 지급 기준일'],
+  section: 'ETF 분배금 가이드',
+  lastReviewed: '2026-09-27',
+  answer:
+    'ETF 분배금 지급일은 증권사 앱마다 표시가 달라 한곳에서 확인하기 어렵고, 한국거래소 공시채널 KIND의 이익금분배신고와 운용사 홈페이지 공지를 함께 봐야 정확합니다. 지급기준일이 정해져도 실제 지급은 며칠 뒤 영업일 기준이라 예정일과 확정일을 구분해야 합니다.',
+  keyPoints: [
+    'ETF 분배금 지급일은 개별주식 배당과 달리 거래소가 한곳에 모아 보여주는 표가 없어, 증권사 앱 화면 하나만으로는 정확한 날짜를 놓치기 쉽습니다.',
+    '한국거래소 공시채널 KIND에는 운용사나 예탁결제원이 올리는 이익금분배신고(분배금안내) 공시가 있어, 종목명으로 검색하면 원문을 볼 수 있습니다.',
+    'TIGER 같은 브랜드는 운용사 홈페이지에 분배금 현황 페이지를 따로 두므로, 보유한 ETF의 운용사 이름을 알아두면 가장 빠르게 확인됩니다.',
+    '지급기준일이 정해진 뒤에도 실제 입금일은 영업일 기준으로 며칠 더 걸리므로, 화면에 뜬 날짜가 예정치인지 확정치인지 구분해서 봐야 합니다.',
+  ],
+  sources: [
+    { label: '한국거래소 기업공시채널 KIND', url: 'https://kind.krx.co.kr' },
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '미래에셋자산운용 TIGER ETF', url: 'https://www.tigeretf.com' },
+  ],
+  sourceQuestions: [
+    { summary: '미래에셋자산운용 TIGER ETF의 분배금 지급일을 어디서 확인하는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=485611134&answerNo=0' },
+  ],
+  comparisonTable: {
+    caption: 'ETF 분배금 지급일 확인 채널 비교',
+    columns: ['채널', '무엇을 보여주나', '장점', '확인할 점'],
+    rows: [
+      ['한국거래소 KIND 공시', '운용사·예탁결제원이 올리는 이익금분배신고 원문', '공식 공시라 가장 신뢰할 수 있음', '종목명이나 공시유형으로 직접 검색해야 함'],
+      ['운용사 홈페이지', '자사 ETF의 분배금 현황·공지사항', '지급기준일·지급일을 종목별 표로 정리해 보여줌', '운용사마다 페이지 구성이 달라 이름을 알아야 찾기 쉬움'],
+      ['증권사 MTS·HTS', '종목 상세화면의 배당·분배 정보', '보유 종목을 앱에서 바로 확인 가능', '증권사마다 반영 시점이 달라 공시보다 늦게 뜰 수 있음'],
+      ['포털 증권 정보', '종목별 분배수익률·최근 분배 이력', '검색만으로 빠르게 개요를 파악', '예정일 표시가 이후 확정일과 달라질 수 있음'],
+      ['KRX 정보데이터시스템', 'ETF 기준가·순자산가치 등 시세 데이터', '분배락 전후 가격 변화를 직접 대조 가능', '분배금 지급일 자체를 표로 제공하진 않음'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'ETF 분배금 지급일은 왜 한곳에 모여 있지 않을까',
+      paragraphs: [
+        'ETF는 종목 하나하나가 별도의 펀드라서, 지급기준일과 지급일도 각 상품의 약관에 따라 운용사가 정합니다. 그래서 개별주식 배당처럼 거래소가 전체 종목을 묶어 한 화면에 보여주는 표가 없고, 상품마다 흩어진 정보를 따로 찾아야 합니다.',
+        '증권사 앱에 표시되는 날짜도 각 사가 공시나 운용사 자료를 받아 반영한 값이라, 업데이트 시점에 따라 서로 조금씩 다르게 보일 수 있습니다. 정확한 날짜가 필요하다면 앱 화면만 보지 말고 공시나 운용사 원문을 확인하는 습관이 필요합니다.',
+      ],
+    },
+    {
+      heading: '한국거래소 공시채널 KIND에서 찾는 법',
+      paragraphs: [
+        '한국거래소의 기업공시채널 KIND에는 ETF이익금분배신고(분배금안내)라는 공시 유형이 있습니다. 예탁결제원이나 사무수탁회사가 여러 ETF를 묶어 한 번에 올리는 일괄공시 형태가 많아, 첨부 문서를 열어야 원하는 종목의 지급기준일과 지급 예정일을 확인할 수 있습니다.',
+        '검색은 공시 검색 화면에서 종목명을 넣거나 공시유형을 이익금분배신고로 좁히는 방식이 편합니다. 여러 ETF가 한 문서에 묶여 있을 때는 표에서 보유 종목명을 찾아야 하므로, 정확한 정식 종목명을 미리 알아두면 시간이 줄어듭니다.',
+      ],
+    },
+    {
+      heading: '운용사 홈페이지가 가장 자세하다',
+      paragraphs: [
+        '분배금 정보는 대개 각 운용사 홈페이지에 가장 상세히 정리돼 있습니다. 예를 들어 미래에셋자산운용은 TIGER ETF 전용 사이트에 종목별 분배금 현황 페이지를 따로 두고, 지급기준일과 지급일을 표로 안내합니다.',
+        '삼성자산운용(KODEX), 한국투자신탁운용(ACE), 신한자산운용(SOL) 등 다른 운용사도 각자 홈페이지에 비슷한 성격의 페이지를 운영합니다. 다만 페이지 이름과 구성이 운용사마다 달라, 보유한 ETF의 운용사가 어디인지부터 확인하고 그 회사 홈페이지에서 검색하는 순서가 가장 빠릅니다.',
+      ],
+    },
+    {
+      heading: '지급기준일과 지급일은 같은 날이 아니다',
+      paragraphs: [
+        '월지급형 ETF의 약관에서 흔히 보이는 방식은, 지급기준일을 매월 마지막 영업일이나 회계기간 종료일(휴장일이면 직전 영업일)로 정하고, 실제 지급 시기는 그 기준일 다음 영업일로부터 일정 영업일 이내로 정하는 구조입니다. 즉 기준일에 보유하고 있어야 대상이 되지만, 통장에 실제로 들어오는 날은 그보다 며칠 뒤입니다.',
+        '이 며칠 사이 기간과 정확한 영업일 수는 상품마다 약관에서 다르게 정해져 있으므로, 화면에 뜬 지급일이 예정치인지 확정치인지, 어느 기준일에 대한 지급인지를 함께 봐야 헷갈리지 않습니다.',
+      ],
+    },
+    {
+      heading: '화면에 뜬 예정일을 그대로 믿기 어려운 이유',
+      paragraphs: [
+        '증권사 앱이나 포털에 뜨는 지급 예정일은 공시가 확정되기 전 추정치로 표시되는 경우가 있습니다. 분배 재원이나 회계 처리 일정에 따라 실제 확정일이 며칠 늦춰지는 일도 드물지 않습니다.',
+        '반대로 분배 재원이 부족한 달에는 아예 분배가 건너뛰어질 수도 있습니다. 이런 변동 가능성이 있는 만큼, 지급일 하루 전후로 정확한 금액이 중요한 상황이라면 예정 화면보다 가장 최근 공시나 운용사 공지를 우선으로 보는 편이 안전합니다.',
+      ],
+    },
+    {
+      heading: '지금 확인해야 할 것',
+      paragraphs: [
+        '보유한 ETF의 다음 분배금 날짜가 궁금하다면, 먼저 그 종목의 운용사가 어디인지 확인하고 운용사 홈페이지의 분배금 안내 페이지를 찾아보는 것이 가장 빠릅니다. 날짜가 임박했는데 확정 여부가 궁금하다면 KIND에서 해당 종목명으로 최근 공시를 검색해 원문을 대조해 보시기 바랍니다.',
+        '여러 종목을 같이 들고 있다면 운용사별로 확인 경로가 달라 매번 번거로울 수 있으니, 자주 보는 운용사 페이지 몇 곳을 즐겨찾기해 두거나 증권사 앱의 종목 알림을 켜 두면 다음부터 훨씬 수월합니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: 'KIND에서 어떻게 검색하나요?', answer: '공시 검색창에 종목명을 넣거나 공시유형에서 이익금분배신고를 선택해 필터링합니다. 예탁결제원 명의로 여러 ETF가 묶여 올라온 경우 첨부 문서를 열어야 해당 종목이 보입니다.' },
+    { question: '증권사 앱에 뜬 예정일이 확정일과 다르면 어떻게 하나요?', answer: '공시나 운용사 홈페이지의 최신 공지를 우선으로 보시면 됩니다. 아직 확정 전이라면 다음 공지가 올라올 때까지는 참고용 예정치로만 보는 편이 안전합니다.' },
+    { question: '분배금이 매달 들어오지 않고 건너뛰는 달도 있나요?', answer: '상품 약관상 분배 재원이 부족하면 해당 월 분배가 없을 수 있습니다. 이 부분은 각 ETF의 투자설명서나 운용사 안내자료의 분배 정책 항목에 나와 있습니다.' },
+    { question: '여러 운용사 ETF를 같이 들고 있으면 어떻게 관리하나요?', answer: '운용사마다 공지 방식과 페이지 구성이 달라, 보유 종목의 운용사 홈페이지를 각각 즐겨찾기해 두거나 증권사 앱의 종목 알림 기능을 켜 두는 방법이 있습니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  etfDistributionPaymentDateLookup,
   isaTerminationAfter3Years,
   usStockExDividendDateCheck,
   usEtfDelistingVsDomestic,
@@ -24466,6 +24556,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-27 · 지식iN 질문 수요 기반 (미래에셋자산운용 TIGER ETF 분배금 지급일을 어디서 확인하는지)
+  'etf-distribution-payment-date-lookup': '2026-09-27',
   // 2026-09-26 · 지식iN 질문 수요 기반 (ISA 만기일 전, 의무가입기간 3년 이후 해지는 문제없는지)
   'isa-termination-after-3-years': '2026-09-26',
   // 2026-09-25 · 지식iN 질문 수요 기반 (미국 주식 배당락일이 배당기준일과 같은 날인지, 어디서 확인하는지)
@@ -24843,7 +24935,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '배당·인컴',
     description: '월배당·커버드콜·위클리 커버드콜·미국배당·배당성장·은행 고배당·밸류업·리츠·미국 리츠·분배락 등 현금 흐름 중심 ETF와 분배금 이해.',
-    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'reit-etf-types-tax', 'reit-inverse-etf-real-estate-drop', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income', 'us-stock-ex-dividend-date-check'],
+    slugs: ['monthly-dividend', 'covered-call', 'weekly-covered-call-etf', 'us-covered-call-etf', 'us-dividend', 'schd-etf', 'dividend-growth-etf', 'etf-dividend', 'etf-distribution-date', 'reit-etf', 'us-reit-etf', 'reit-etf-types-tax', 'reit-inverse-etf-real-estate-drop', 'high-dividend-etf', 'bank-etf', 'value-up-etf', 'tr-etf', 'covered-call-nav-erosion', 'dividend-growth-vs-high-dividend', 'dividend-reinvestment', 'dividend-payment-date', 'ex-dividend-price-drop', 'preferred-vs-common-stock-dividend', 'individual-stock-dividend-schedule', 'domestic-dividend-income-tax', 'dividend-record-date-reform', 'retiree-dividend-etf-monthly-income', 'us-stock-ex-dividend-date-check', 'etf-distribution-payment-date-lookup'],
   },
   {
     title: '테마·섹터',
