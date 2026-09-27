@@ -24279,7 +24279,116 @@ const etfDistributionPaymentDateLookup: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-28 · 지식iN 질문 수요 기반 (해외주식 양도소득세 분납금을 낼 때 고지서의 국세계좌 번호가 어느 은행인지 몰라 혼란스러워하는 질문) */
+const overseasStockTaxSplitPayment: GuideDef = {
+  slug: 'overseas-stock-tax-split-payment',
+  title: '해외주식 양도세 분납, 국세계좌 아무 은행이나 되나',
+  tagline: '고지서의 낯선 계좌번호는 특정 은행이 아니라 국세청 수납 계좌입니다',
+  description:
+    '해외주식 양도소득세 분납금은 고지서에 적힌 하나·국민·기업·신한·우리은행 등 어느 국세계좌로 이체해도 수수료 없이 처리됩니다. 소득세법상 분납 기준(세액 1천만원 초과)과 계산법, 2개월 분납 기한, 신용카드 납부 수수료까지 정리했습니다.',
+  keywords: ['해외주식 양도세 분납', '양도소득세 국세계좌', '해외주식 세금 납부', '양도소득세 분할납부', '국세계좌 은행 조회', '양도소득세 카드납부'],
+  section: 'ETF 세금 가이드',
+  lastReviewed: '2026-09-28',
+  answer:
+    '해외주식 양도소득세 고지서의 국세계좌 번호는 국세청이 관리하는 공용 계좌라 하나·국민·기업·신한·우리은행 등 어디로 이체해도 수수료 없이 처리되며, 세액이 1천만원을 넘으면 소득세법에 따라 최대 절반까지 나눠 낼 수 있습니다.',
+  keyPoints: [
+    '해외주식 양도소득세 고지서의 국세계좌 번호는 하나·국민·기업·신한·우리은행 등 어디로 이체해도 수수료 없이 같은 세금으로 들어갑니다.',
+    '소득세법 제112조에 따라 세액이 1천만원을 넘으면 분납 가능하며, 2천만원 이하는 1천만원 초과분만, 넘으면 세액 절반까지 나눠 낼 수 있습니다.',
+    '분납은 확정신고서에 분납할 세액을 적어 5월 31일까지 제출하면 되고, 나머지 세액은 그 뒤 2개월 안에 내면 됩니다.',
+    '양도소득세를 냈어도 세액의 10%인 지방소득세는 위택스에서 따로 신고·납부해야 하므로, 국세와 지방세 두 갈래를 함께 챙겨야 합니다.',
+  ],
+  sources: [
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+    { label: '국가법령정보센터 · 소득세법', url: 'https://www.law.go.kr' },
+    { label: '위택스', url: 'https://www.wetax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '해외주식 양도소득세 분납금을 납부할 때 고지서에 처음 보는 국세계좌 번호가 있어 어느 은행 계좌인지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40301&docId=493611743&answerNo=5' },
+    { summary: '주식 매매이익에 부과된 세금을 형편상 할부로 낼 수 있는지, 분할납부 가능 여부를 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40301&docId=484503187' },
+  ],
+  comparisonTable: {
+    caption: '해외주식 양도소득세 분납 가능 금액 계산',
+    columns: ['총 납부세액', '분납 가능 금액', '즉시 납부 금액', '확인할 점'],
+    rows: [
+      ['1,000만원 이하', '0원', '전액', '분납 대상 아님, 5/31까지 전액 납부'],
+      ['1,500만원', '500만원', '1,000만원', '2천만원 이하 구간, 1천만원 초과분만 분납'],
+      ['2,000만원', '1,000만원', '1,000만원', '2천만원 이하 구간의 상한'],
+      ['3,000만원', '1,500만원', '1,500만원', '2천만원 초과 구간, 세액의 50% 한도'],
+      ['5,000만원', '2,500만원', '2,500만원', '금액이 커도 분납 비율은 50%로 동일'],
+    ],
+  },
+  sections: [
+    {
+      heading: '해외주식 양도세 국세계좌 번호, 아무 은행이나 써도 된다',
+      paragraphs: [
+        '고지서에 적힌 국세계좌 번호는 특정 은행 소유가 아니라 국세청이 운영하는 수납 전용 계좌 번호입니다. 그래서 하나·국민·기업·신한·우리은행 등 나열된 은행 중 어디로 이체하든 같은 세금으로 처리됩니다.',
+        '이 방식은 가상계좌와 이체 방법은 같지만, 인터넷전문은행과 증권사를 제외한 모든 금융기관과 우체국에서 이체수수료 없이 낼 수 있다는 점이 다릅니다. 평소 쓰는 은행 앱에서 공과금 메뉴로 들어가 전자납부번호를 입력하면 됩니다.',
+        '국세청 홈택스에서도 365일 전자납부가 가능해, 은행 창구나 앱을 따로 열지 않아도 신고 화면에서 바로 이체할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '분납 대상은 세액 1천만원 초과, 계산법은 구간별로 다르다',
+      paragraphs: [
+        '분납 여부를 가르는 기준은 총 납부세액이 1천만원을 넘는지입니다. 소득세법 제112조는 세액이 1천만원을 초과하는 경우에 한해 납부기한이 지난 후 2개월 이내로 세액 일부를 나눠 낼 수 있도록 정하고 있습니다.',
+        '구체적인 분납 가능 금액은 시행령 제175조가 구간별로 나눕니다. 세액이 2천만원 이하면 1천만원을 초과하는 금액만 분납할 수 있고, 2천만원을 넘으면 세액의 100분의 50 이하 금액까지 분납할 수 있습니다.',
+        '세액이 많다고 무조건 더 큰 비율을 나눠 낼 수 있는 것은 아니며, 2천만원을 기준으로 계산 방식 자체가 바뀝니다.',
+      ],
+    },
+    {
+      heading: '분납 신청은 확정신고서에 함께 적어 5월 31일까지',
+      paragraphs: [
+        '분납은 별도 신청서를 따로 제출하는 절차가 아니라, 확정신고서를 작성할 때 분납할 세액을 함께 기재해 제출하는 방식입니다. 해외주식 양도소득세의 확정신고 기한은 양도한 다음 해 5월 1일부터 31일까지입니다.',
+        '이 기한 안에 분납 세액을 적어 신고하면 나머지 세액은 법정 납부기한이 지난 후 2개월 안에만 내면 되므로, 6월 1일에 일부를 냈다면 남은 세액의 납부기한은 그로부터 2개월 후가 됩니다.',
+        '기한 안에 분납을 신청하지 않고 신고를 마치면 이후에 따로 분납을 신청하기는 어려워, 신고 시점에 분납 여부와 금액을 함께 정해야 합니다.',
+      ],
+    },
+    {
+      heading: '이체 말고 카드로도 낼 수 있다, 다만 수수료가 붙는다',
+      paragraphs: [
+        '국세계좌 이체 외에 신용카드나 체크카드로도 납부할 수 있습니다. 홈택스나 카드로택스에서 카드 정보를 입력하면 되고, 카드사에 따라 무이자 할부 이벤트를 운영하는 경우도 있어 확인해 볼 만합니다.',
+        '다만 국세를 카드로 낼 때는 결제대행 수수료가 붙습니다. 국세청 안내에 따르면 신용카드는 0.8%, 체크카드는 0.5%의 수수료를 납세자가 부담합니다. 국세계좌 이체가 수수료 없이 처리되는 것과 다른 점입니다.',
+        '세액이 크다면 카드 할부 이벤트로 얻는 이득과 수수료를 비교해 보고, 수수료 없이 내고 싶다면 국세계좌 이체를 택하는 편이 유리합니다.',
+      ],
+    },
+    {
+      heading: '양도소득세를 냈어도 지방소득세는 따로 남는다',
+      paragraphs: [
+        '양도소득세를 국세계좌나 카드로 완납했다고 절차가 끝난 것은 아닙니다. 양도소득에는 별도로 세액의 10%에 해당하는 개인지방소득세가 부과되고, 이는 국세청 홈택스가 아니라 지방자치단체 위택스에서 따로 신고·납부합니다.',
+        '홈택스에서 양도소득세 신고를 마치면 신고내역 조회 화면에서 지방소득세 신고 화면으로 연결되는 경우가 많아, 이 단계를 놓치지 않고 넘어가는 것이 중요합니다.',
+        '지방소득세의 정확한 신고·납부 기한과 절차는 위택스 안내나 관할 지방자치단체에 확인하는 것이 가장 정확합니다.',
+      ],
+    },
+    {
+      heading: '분납을 놓쳤거나 납부 기한을 넘겼다면',
+      paragraphs: [
+        '분납을 신청하지 않고 확정신고를 마쳤다면 산정된 세액 전부를 법정 납부기한 안에 내야 합니다. 자금 사정이 어렵다면 기한 내 신고부터 마치고, 분납이 필요한 상황이라면 신고서 작성 단계에서 금액을 미리 계산해 두는 것이 안전합니다.',
+        '이미 납부기한을 넘겼다면 무신고·무납부에 따른 가산세가 붙을 수 있으므로, 국세청 홈택스의 기한후신고 메뉴를 확인하거나 국번 없이 126번 국세상담센터에 문의해 정확한 가산세와 남은 절차를 확인하는 것이 먼저입니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: '국세계좌로 다른 은행에 잘못 이체하면 세금이 남에게 들어가나요?',
+      answer: '아닙니다. 국세계좌는 은행이 아니라 국세청이 관리하는 수납 전용 계좌라, 고지서에 나열된 은행 중 어디로 이체하든 동일한 세금으로 처리됩니다. 다만 인터넷전문은행과 증권사는 국세계좌 이체 대상에서 제외되어 있어 이용할 수 없습니다.',
+    },
+    {
+      question: '분납 신청을 깜빡하고 확정신고를 마쳤는데 나중에 추가로 신청할 수 있나요?',
+      answer: '분납 신청은 확정신고 기한인 5월 31일까지 신고서에 함께 기재해야 하므로, 기한을 넘기면 별도로 추가 신청하기 어렵습니다. 이 경우 산정된 세액 전부를 납부기한 안에 내야 합니다.',
+    },
+    {
+      question: '분납한 나머지 세액에 이자가 붙나요?',
+      answer: '분납 자체에는 이자가 붙지 않습니다. 다만 분납 기한인 납부기한 후 2개월을 넘겨 납부가 늦어지면 그때부터는 별도 가산세가 붙을 수 있어 기한 관리가 필요합니다.',
+    },
+    {
+      question: '여러 증권사에서 낸 손익을 하나의 국세계좌로 합쳐서 내면 되나요?',
+      answer: '네. 국세청이 신고 내용을 바탕으로 산정한 총 세액을 기준으로 세액이 계산되므로, 이용한 증권사 수와 관계없이 국세계좌 하나로 납부하면 됩니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  overseasStockTaxSplitPayment,
   etfDistributionPaymentDateLookup,
   isaTerminationAfter3Years,
   usStockExDividendDateCheck,
@@ -24556,6 +24665,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-28 · 지식iN 질문 수요 기반 (해외주식 양도소득세 분납금을 낼 때 고지서의 국세계좌 번호가 어느 은행인지 몰라 혼란스러워하는 질문)
+  'overseas-stock-tax-split-payment': '2026-09-28',
   // 2026-09-27 · 지식iN 질문 수요 기반 (미래에셋자산운용 TIGER ETF 분배금 지급일을 어디서 확인하는지)
   'etf-distribution-payment-date-lookup': '2026-09-27',
   // 2026-09-26 · 지식iN 질문 수요 기반 (ISA 만기일 전, 의무가입기간 3년 이후 해지는 문제없는지)
@@ -24930,7 +25041,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'default-option-change-effect', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax', 'isa-contract-period-long-term', 'gift-before-death-inheritance-tax-merge', 'isa-domestic-equity-etf-benefit', 'severance-pay-irp-immediate-withdrawal', 'isa-termination-after-3-years'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'default-option-change-effect', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax', 'isa-contract-period-long-term', 'gift-before-death-inheritance-tax-merge', 'isa-domestic-equity-etf-benefit', 'severance-pay-irp-immediate-withdrawal', 'isa-termination-after-3-years', 'overseas-stock-tax-split-payment'],
   },
   {
     title: '배당·인컴',
