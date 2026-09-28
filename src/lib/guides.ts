@@ -24387,7 +24387,113 @@ const overseasStockTaxSplitPayment: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-29 · ISA·연금저축 인출 시 실제 수령액 */
+const isaPensionActualWithdrawalAmount: GuideDef = {
+  slug: 'isa-pension-actual-withdrawal-amount',
+  title: 'ISA·연금저축 인출 시 실제로 얼마 받나',
+  tagline: '세율표만 봐서는 안 보이던 차이가 숫자를 넣어보면 드러납니다',
+  description:
+    'ISA와 연금저축·IRP를 해지하거나 인출할 때 실제로 통장에 들어오는 금액은 세율과 비과세 한도에 따라 크게 갈립니다. 순이익 1000만원을 기준으로 계좌별 세후 실수령액을 계산하는 방법과 중도인출 시 차이를 정리했습니다.',
+  keywords: ['ISA 연금저축 인출', 'ISA 실수령액', '연금저축 해지 세금', 'ISA 비과세 한도', '연금소득세 3.3%', '기타소득세 16.5%'],
+  section: 'ISA 계좌 가이드',
+  lastReviewed: '2026-09-29',
+  answer:
+    'ISA는 계좌 안 순이익 중 비과세 한도(일반형 200만원·서민형 400만원)를 넘는 부분에만 9.9%를 떼고 나머지는 그대로 돌려받습니다. 연금저축·IRP는 정해진 나이 이후 연금 형태로 받으면 3.3~5.5%만 떼지만, 중도에 해지하면 세액공제받은 원금과 수익 전체에 16.5%가 붙어 같은 금액이라도 실수령액 차이가 커집니다.',
+  keyPoints: [
+    'ISA는 순이익 1000만원(일반형)이면 200만원까지 비과세, 나머지 800만원에 9.9%(79만 2000원)를 떼 921만원 안팎을 실수령하는 구조입니다.',
+    '연금저축·IRP를 만 55세 이후 연금으로 받으면 세액공제 원금+수익 1000만원 기준 세금이 33만~55만원(3.3~5.5%)에 그치지만, 같은 금액을 중도해지하면 기타소득세 16.5%인 165만원이 빠집니다.',
+    '연금저축에서 세액공제를 받지 않은 원금은 애초에 과세 대상이 아니므로, 실수령액을 계산하기 전에 이 부분을 먼저 빼고 세율을 적용해야 합니다.',
+    'ISA는 원금과 순이익을 손익통산한 뒤 세금이 순이익에만 붙는 구조이고, 연금저축 중도해지는 세액공제받은 원금까지 과세 대상에 들어가 두 계좌의 셈법 자체가 다릅니다.',
+  ],
+  sources: [
+    { label: '국세청', url: 'https://www.nts.go.kr' },
+    { label: '금융감독원 통합연금포털', url: 'https://100lifeplan.fss.or.kr' },
+  ],
+  sourceQuestions: [
+    { summary: 'ISA·연금저축 계좌 돈을 뺄 때 실제로 받는 돈이 얼마인지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=494701383&answerNo=3' },
+  ],
+  comparisonTable: {
+    caption: 'ISA vs 연금저축·IRP, 순이익 1000만원 인출 시 실수령액 비교',
+    columns: ['구분', 'ISA(일반형)', '연금저축·IRP', '어느 경우에 유리한가'],
+    rows: [
+      ['정상 인출 조건', '가입 3년 경과 후 해지·만기', '만 55세 이후 연금 형태 수령', '조건을 채웠는지 먼저 확인'],
+      ['과세 대상', '비과세 한도 초과분(800만원)', '세액공제받은 원금+수익 전체', 'ISA는 순이익만, 연금저축은 원금도 포함될 수 있음'],
+      ['세율', '9.9% 분리과세', '3.3~5.5%(수령 나이에 따라 차등)', '두 세율 모두 낮은 편이지만 과세 대상 범위가 다름'],
+      ['세후 실수령(예시)', '약 921만원', '약 945만~967만원', '단순 세율만 보면 연금저축이 낮아 보일 수 있음'],
+      ['조건 못 채우고 뺄 때', '한도 내 원금 인출은 혜택 유지', '기타소득세 16.5%(약 165만원)', '연금저축은 중도해지 손해가 ISA보다 훨씬 큼'],
+    ],
+  },
+  sections: [
+    {
+      heading: 'ISA는 비과세 200만원을 넘는 부분에만 9.9%를 뗀다',
+      paragraphs: [
+        'ISA를 해지하거나 만기 처리할 때는 계좌 안에서 난 손익을 먼저 통산합니다. 이렇게 나온 순이익 중 일반형은 200만원, 서민형·농어민형은 400만원까지 비과세이고, 그 한도를 넘는 부분에만 9.9%(지방소득세 포함) 분리과세가 붙습니다.',
+        '예를 들어 순이익이 1000만원(일반형 기준)이라면 200만원은 세금이 없고, 나머지 800만원에 9.9%인 79만 2000원이 세금으로 빠집니다. 원금은 애초에 과세 대상이 아니므로 그대로 돌려받고, 결과적으로 순이익 1000만원 중 약 921만원을 실수령하는 셈입니다.',
+        '원금 손실 없이 순이익만 났다는 전제의 계산이며, 실제로는 손실이 섞인 손익통산 결과에 따라 과세 대상 순이익 자체가 달라질 수 있습니다.',
+      ],
+    },
+    {
+      heading: '연금저축은 연금으로 받으면 3.3~5.5%, 깨면 16.5%다',
+      paragraphs: [
+        '연금저축·IRP는 가입 5년이 지나고 만 55세 이후 연금 형태로 나눠 받으면 연금소득세 3.3~5.5%가 적용됩니다. 세율은 수령 나이가 많을수록 낮아져, 세액공제받은 원금과 운용수익을 합쳐 1000만원을 받는다면 세금은 33만~55만원 수준입니다.',
+        '반대로 같은 1000만원을 연금 요건을 채우지 못하고 중도에 해지해서 받으면 기타소득세 16.5%가 붙어 165만원이 빠집니다. 연금으로 나눠 받을 때보다 100만원 넘게 더 내는 셈이라, 세율 차이가 단순히 숫자 몇 퍼센트가 아니라 실수령액 자체를 크게 바꿉니다.',
+        '사적연금 수령액이 연 1500만원을 넘으면 그 전액을 종합과세하거나 16.5%로 분리과세하는 것 중 유리한 쪽을 선택해야 해 계산이 한 단계 더 복잡해집니다.',
+      ],
+    },
+    {
+      heading: '세액공제 안 받은 원금은 애초에 세금이 없다',
+      paragraphs: [
+        '연금저축 실수령액을 계산할 때 자주 놓치는 부분이 원금의 성격입니다. 한도를 넘겨 추가로 납입했거나 세액공제를 신청하지 않은 원금은 처음부터 세액공제 혜택을 받지 않았으므로, 나중에 인출할 때도 과세 대상에서 빠집니다.',
+        '반면 세액공제를 받은 납입 원금과 그 운용수익은 연금으로 받든 중도해지하든 과세 대상에 포함됩니다. 그래서 실수령액을 정확히 셈하려면 전체 잔고에서 세액공제 안 받은 원금을 먼저 제외한 뒤, 남은 금액에만 연금소득세나 기타소득세를 적용해야 합니다.',
+        '금융회사 계좌 조회 화면이나 연말정산 자료에서 세액공제 받은 납입액 누계를 확인할 수 있어, 해지 전에 이 숫자부터 확인하는 것이 순서입니다.',
+      ],
+    },
+    {
+      heading: '만기 전에 급하게 빼야 한다면 어느 쪽 손해가 큰가',
+      paragraphs: [
+        'ISA는 납입 원금 범위 안에서 중도 인출해도 비과세·분리과세 혜택이 그대로 유지됩니다. 급전이 필요할 때 원금 한도 안에서 빼는 정도라면 실수령액에 큰 손해가 생기지 않습니다.',
+        '반면 연금저축·IRP는 조건을 못 채우고 해지하면 세액공제받은 원금까지 포함해 16.5% 기타소득세가 부과되므로, 같은 금액을 급하게 빼야 하는 상황이라면 연금저축 쪽 손해가 대체로 더 큽니다.',
+        '그래서 급전이 필요할 가능성이 있는 자금은 ISA에, 노후까지 묻어둘 자금은 연금저축·IRP에 나눠 넣는 방식이 두 계좌를 함께 쓰는 투자자들 사이에서 흔한 접근입니다.',
+      ],
+    },
+    {
+      heading: '실제 수령액은 금융회사 조회로 미리 확인할 수 있다',
+      paragraphs: [
+        '두 계좌 모두 해지·인출을 신청하기 전에 금융회사 앱이나 창구에서 예상 세액과 실수령액을 미리 조회할 수 있습니다. ISA는 손익통산 결과와 비과세 한도 적용 후 세액을, 연금저축·IRP는 수령 방식(연금 또는 일시금)에 따른 세액을 각각 보여줍니다.',
+        '연금저축·IRP의 세액공제 받은 누계액과 수령 나이별 세율은 금융감독원 통합연금포털에서도 조회할 수 있어, 해지 전 여러 경로로 금액을 교차 확인해 두면 실제 입금액과 예상치가 크게 어긋나는 상황을 줄일 수 있습니다.',
+      ],
+    },
+    {
+      heading: '세율 차이만 보고 계좌를 고르면 안 되는 이유',
+      paragraphs: [
+        'ISA와 연금저축·IRP는 애초에 만들어진 목적이 다른 계좌입니다. 지금 계산한 실수령액 차이는 두 계좌를 이미 가진 사람이 인출 시점을 판단하는 데 참고할 수치이지, 어느 계좌가 절대적으로 더 나은지를 가리는 기준은 아닙니다.',
+        '세후 금액이 조금 더 크다는 이유로 노후 자금 계좌를 중도해지하면, 당장의 세율 차이보다 훨씬 큰 노후 준비 공백이 생길 수 있습니다. 반대로 가까운 미래에 쓸 자금을 연금계좌에 넣어뒀다면 중도해지 손해를 감수하기보다 애초에 ISA처럼 인출이 자유로운 계좌로 옮겨 관리하는 편이 낫습니다.',
+        '이 글은 세금 계산 구조를 설명하는 정보 제공 목적이며, 개별 세액은 가입 시점·납입 이력·소득 수준에 따라 달라지므로 실제 해지·인출 전에는 가입한 금융회사나 세무 전문가를 통해 정확한 금액을 확인하는 것이 안전합니다.',
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'ISA 비과세 한도를 넘으면 무조건 손해인가요?',
+      answer: '아닙니다. 한도를 넘는 부분도 9.9% 분리과세로, 일반 계좌의 배당소득세 15.4%보다 낮은 세율입니다. 순이익이 클수록 ISA의 절세 효과는 오히려 더 커집니다.',
+    },
+    {
+      question: '연금저축에 세액공제 안 받은 돈도 섞여 있으면 어떻게 계산하나요?',
+      answer: '세액공제를 받지 않은 원금은 인출해도 과세 대상이 아닙니다. 전체 잔고에서 이 금액을 먼저 빼고, 남은 세액공제 원금과 운용수익에만 연금소득세나 기타소득세를 적용해 계산합니다.',
+    },
+    {
+      question: 'ISA 만기 자금을 연금계좌로 옮기면 실수령액이 달라지나요?',
+      answer: '이전 시점에는 추가 세액공제를 받을 수 있고, 이후 연금으로 받을 때는 연금소득세로 저율 과세됩니다. 다만 이전 즉시 실수령액이 늘어나는 것은 아니고 향후 수령 시점의 세율이 낮아지는 방식이라, 당장의 현금이 필요한 경우와는 셈법이 다릅니다.',
+    },
+    {
+      question: '사적연금 수령액이 연 1500만원을 넘으면 실수령액이 더 줄어드나요?',
+      answer: '넘는 순간 저율 분리과세가 끝나고 전액을 종합과세하거나 16.5%로 분리과세하는 것 중 골라야 해, 다른 소득이 많은 사람일수록 실수령액이 예상보다 줄어들 수 있습니다. 구체적인 세율 갈림길은 별도 은퇴 자산 가이드에서 확인할 수 있습니다.',
+    },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  isaPensionActualWithdrawalAmount,
   overseasStockTaxSplitPayment,
   etfDistributionPaymentDateLookup,
   isaTerminationAfter3Years,
@@ -24665,6 +24771,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-29 · 지식iN 질문 수요 기반 (ISA, 연금저축 같은 계좌 돈을 뺄 때 실제로 얼마를 받는지 궁금해하는 질문)
+  'isa-pension-actual-withdrawal-amount': '2026-09-29',
   // 2026-09-28 · 지식iN 질문 수요 기반 (해외주식 양도소득세 분납금을 낼 때 고지서의 국세계좌 번호가 어느 은행인지 몰라 혼란스러워하는 질문)
   'overseas-stock-tax-split-payment': '2026-09-28',
   // 2026-09-27 · 지식iN 질문 수요 기반 (미래에셋자산운용 TIGER ETF 분배금 지급일을 어디서 확인하는지)
@@ -25041,7 +25149,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: '세금·절세 계좌',
     description: 'ETF 세금과 ISA·연금저축·증여 같은 절세·노후 자산 — 계좌별 과세와 세후 수익을 지키는 법.',
-    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'default-option-change-effect', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax', 'isa-contract-period-long-term', 'gift-before-death-inheritance-tax-merge', 'isa-domestic-equity-etf-benefit', 'severance-pay-irp-immediate-withdrawal', 'isa-termination-after-3-years', 'overseas-stock-tax-split-payment'],
+    slugs: ['etf-tax', 'domestic-vs-overseas-tax', 'isa-account-etf', 'isa-account-types', 'isa-vs-pension', 'retirement', 'tdf-etf', 'isa-vs-general-account-etf', 'us-direct-vs-isa-etf', 'isa-to-pension-transfer', 'isa-maturity-etf', 'isa-withdrawal-rules', 'pension-fund-etf-trading', 'pension-fund-cash-drag', 'child-investment-gift-tax', 'irp-disadvantages', 'pension-savings-vs-fund', 'pension-savings-early-termination', 'db-vs-dc-pension', 'pension-account-etf-restrictions', 'default-option-pension', 'default-option-change-effect', 'pension-withdrawal-tax', 'pension-health-insurance', 'overseas-capital-gains-netting', 'tax-free-savings-account', 'pension-etf-auto-invest', 'etf-holding-period-tax', 'domestic-equity-etf-tax', 'corporate-account-etf', 'pension-savings-vs-irp', 'isa-to-pension-tax-credit', 'pension-isa-priority-order', 'isa-sell-rebuy-limit', 'voo-vs-domestic-sp500-tax', 'crypto-tax-2026', 'pension-us-etf-alternatives', 'financial-income-health-insurance', 'overseas-etf-loss-offset', 'pension-fund-etf-portfolio', 'isa-maturity-extend-vs-pension', 'us-etf-tax-saving-checklist', 'isa-us-index-etf', 'adult-child-gift-tax', 'crypto-inheritance-gift-tax', 'pension-savings-excess-contribution', 'living-education-expense-gift-tax', 'rental-income-separate-vs-comprehensive-tax', 'pension-savings-insurance-vs-fund', 'isa-contribution-limit-carryover', 'spouse-gift-tax-exemption', 'pension-savings-insurance-to-fund-transfer', 'us-stock-dividend-withholding-tax', 'korea-bitcoin-etf-status-tax', 'isa-broker-vs-trust-type', 'financial-income-dependent-eligibility', 'isa-restricted-products', 'pension-irp-combined-tax-credit', 'us-stock-capital-gains-tax-filing', 'national-pension-lump-sum', 'isa-dividend-tax-benefit', 'isa-pension-same-etf-overlap', 'pension-monthly-contribution-amount', 'financial-income-tax', 'inheritance-tax-payment-in-kind', 'corporate-retained-earnings-tax', 'isa-sp500-nasdaq100-together', 'basic-pension-with-private-pension', 'company-irp-vs-individual-irp', 'irp-severance-pay-tax-deferral', 'etf-distribution-tax-base-zero', 'related-party-stock-trade-gift-tax', 'overseas-stock-under-250-no-filing', 'overseas-stock-year-end-sell-amount', 'child-gifted-stock-sale-tax', 'national-pension-income-tax', 'isa-contract-period-long-term', 'gift-before-death-inheritance-tax-merge', 'isa-domestic-equity-etf-benefit', 'severance-pay-irp-immediate-withdrawal', 'isa-termination-after-3-years', 'overseas-stock-tax-split-payment', 'isa-pension-actual-withdrawal-amount'],
   },
   {
     title: '배당·인컴',
