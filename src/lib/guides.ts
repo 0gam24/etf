@@ -24492,7 +24492,99 @@ const isaPensionActualWithdrawalAmount: GuideDef = {
   ],
 };
 
+/** Q&A · 2026-09-30 · 지식iN 질문 수요 기반 (배당 ETF 수익률이 어떻게 계산되는지, 증권사 앱마다 다르게 보이는 이유를 묻는 질문) */
+const etfReturnRateDifference: GuideDef = {
+  slug: 'etf-return-rate-difference',
+  title: 'ETF 수익률 계산, 증권사 앱마다 다르게 보이는 이유',
+  tagline: '차트 등락률과 내 계좌 수익률이 다른 값을 가리키고 있을 수 있습니다',
+  description:
+    'ETF 가격은 올랐는데 계좌 수익률은 왜 그보다 낮게 보일까요. 매입단가 기준 평가손익률과 기준가(NAV) 등락률, 분배금을 더한 총수익률이 서로 다른 값을 가리키는 이유와 계좌에서 직접 확인하는 방법을 정리했습니다.',
+  keywords: ['ETF 수익률 계산', 'ETF 평가손익률', 'ETF 기준가 수익률', '배당 ETF 수익률', 'ETF 총수익률', 'ETF 매입단가'],
+  section: 'ETF 비교 가이드',
+  lastReviewed: '2026-09-30',
+  answer:
+    '증권사 앱의 수익률은 대부분 내 매입단가 대비 평가손익률이라 분배금이 반영되지 않고, ETF 기준가(NAV) 등락률에는 분배금을 지급하며 그만큼 기준가가 빠지는 분배락이 담겨 있습니다. 실제 총수익을 보려면 가격 변동분에 받은 분배금을 더해야 합니다.',
+  keyPoints: [
+    '증권사 앱에 뜨는 수익률은 대부분 매입단가 대비 평가손익률이라, 보유 기간 받은 분배금은 그 수치에 자동으로 더해지지 않습니다.',
+    'ETF가 분배금을 지급하면 다음 거래일 기준가가 분배금만큼 낮아지는 분배락이 생겨, 가격 등락률만 보면 실제보다 수익률이 낮아 보일 수 있습니다.',
+    '분배금에는 배당소득세 15.4%가 원천징수되므로, 세전 기준 총수익률과 통장에 실제로 남는 세후 수익률은 같은 기간이라도 값이 달라집니다.',
+    '분배율이 높다고 총수익률까지 높다고 볼 근거는 없으며, 가격 변동과 분배금을 같은 기간으로 더해 비교해야 정확합니다.',
+  ],
+  sources: [
+    { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
+    { label: '금융투자협회 전자공시서비스', url: 'https://dis.kofia.or.kr' },
+    { label: '국세청 홈택스', url: 'https://www.hometax.go.kr' },
+  ],
+  sourceQuestions: [
+    { summary: '배당 ETF 수익률이 어떻게 계산되는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=458738685&answerNo=2' },
+    { summary: '미래에셋증권 앱에 뜨는 ETF 수익률이 무엇을 나타내는지 묻는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=488327451&answerNo=3' },
+    { summary: 'ETF 수익률 산정 방법을 알려달라는 질문', url: 'https://kin.naver.com/qna/detail.naver?dirId=40102&docId=490737007&answerNo=1' },
+  ],
+  comparisonTable: {
+    caption: '수익률 종류별 계산 기준 비교',
+    columns: ['수익률 종류', '계산 기준', '분배금 반영', '확인할 점'],
+    rows: [
+      ['증권사 앱 평가손익률', '매입단가 대비 현재 평가금액', '반영 안 됨(현금으로 별도 지급)', '분배금 받은 내역은 거래내역에서 따로 확인'],
+      ['ETF 기준가(NAV) 등락률', '전일 대비 순자산가치 변화', '분배 지급일에 분배락으로 반영', '기간 중 분배가 있었는지 공시로 확인'],
+      ['시장가 등락률(차트)', '실제 거래된 시장가격 기준', '반영 안 됨', 'NAV와의 괴리율만큼 달라질 수 있음'],
+      ['운용사·펀드평가사 총수익률', '가격 변동에 분배금 재투자를 더한 값', '반영됨(대체로 세전 기준)', '세전·세후 표기 여부 확인'],
+      ['세후 실수령 기준 수익률', '가격 변동에 분배금(세후)을 더한 값', '반영됨(세후 기준)', '종합과세 대상이면 실제 세율은 달라질 수 있음'],
+    ],
+  },
+  sections: [
+    {
+      heading: '계좌 수익률 계산은 매입단가 기준 평가손익률에서 시작한다',
+      paragraphs: [
+        '증권사 앱이나 MTS에 뜨는 ETF 수익률은 대부분 내가 산 매입단가와 현재 평가금액을 비교한 평가손익률입니다. 여러 번 나눠 산 경우에는 매수 시점마다 다른 가격을 평균한 매입단가가 기준이 됩니다.',
+        '이 수익률은 순전히 가격 변동만 담습니다. 보유 기간 중 분배금을 현금으로 받았더라도 그 금액은 주식 잔고의 평가손익률에 자동으로 더해지지 않고 예수금이나 별도 거래내역으로 들어가므로, 분배를 자주 하는 ETF일수록 앱에 보이는 수익률만으로는 실제로 받은 돈을 다 헤아리기 어렵습니다.',
+      ],
+    },
+    {
+      heading: 'ETF 기준가(NAV) 등락률과 시장가 등락률은 또 다른 값이다',
+      paragraphs: [
+        'ETF에는 순자산가치를 좌수로 나눈 기준가(NAV)와 거래소에서 실제로 체결되는 시장가, 두 가지 가격이 있습니다. 한국거래소는 기준가와 시장가를 함께 공시하며, 둘의 차이를 괴리율이라 부릅니다.',
+        '차트에 표시되는 등락률이 기준가 기준인지 시장가 기준인지에 따라서도 수치가 갈립니다. 유동성이 낮은 ETF는 괴리율이 커질 수 있어, 정확히 비교하려면 어느 쪽 값을 보고 있는지부터 확인하는 편이 좋습니다.',
+      ],
+    },
+    {
+      heading: '분배금을 지급하면 그만큼 기준가가 빠지는 분배락 구조',
+      paragraphs: [
+        'ETF가 분배금을 지급하면 분배 기준일 다음 거래일에 그 금액만큼 기준가가 낮아집니다. 분배금으로 나간 자산이 순자산에서 빠지기 때문에 생기는 조정으로, 개별 주식의 배당락과 같은 원리입니다.',
+        '그래서 기준가나 시장가 등락률만 따로 떼어 보면, 분배를 많이 한 ETF일수록 가격만으로는 수익률이 낮게 나타나는 착시가 생깁니다. 가격이 못 오른 것이 아니라 그만큼을 분배금으로 이미 나눠준 것일 수 있습니다.',
+      ],
+    },
+    {
+      heading: '가격 변동과 분배금을 더해야 총수익률에 가깝다',
+      paragraphs: [
+        '실제로 어떤 ETF에 넣은 돈이 얼마나 불었는지 보려면 가격 변동분과 보유 기간 받은 분배금을 함께 더해야 합니다. 운용사나 펀드평가사가 제공하는 총수익률 수치는 대체로 이 방식으로, 분배금을 재투자했다고 가정해 계산합니다.',
+        '반면 개인이 앱에서 확인하는 평가손익률은 이 재투자 가정 없이 가격 변동만 반영하므로, 두 수치를 나란히 놓고 비교하면 항상 차이가 날 수밖에 없습니다. 총수익률과 평가손익률 중 어느 하나가 틀린 것이 아니라 서로 다른 것을 보여주는 값입니다.',
+      ],
+    },
+    {
+      heading: '분배율이 높다고 총수익률까지 높은 것은 아니다',
+      paragraphs: [
+        '분배율(기준가 대비 연간 분배금 비율)이 높은 ETF를 총수익률도 높은 상품으로 오해하기 쉽습니다. 하지만 분배금은 ETF가 보유한 자산에서 나오는 것이라, 분배를 많이 할수록 그만큼 기준가가 빠질 여지도 커집니다.',
+        '특히 옵션 매도로 분배 재원을 만드는 상품은 분배율과 기초자산의 가격 상승 여력이 서로 맞물려 있어, 분배금만 보고 총수익률까지 앞선다고 단정하기는 어렵습니다. 같은 기간의 가격 변동과 분배금을 함께 봐야 비교가 됩니다.',
+      ],
+    },
+    {
+      heading: '내 ETF 수익률을 직접 확인하려면 어디를 보면 되나',
+      paragraphs: [
+        '거래내역에서 매수 시점과 가격, 그동안 받은 분배금 내역을 함께 모으면 세전 기준 총수익을 직접 계산할 수 있습니다. 분배금에는 배당소득세 15.4%가 원천징수되므로, 세후 실수령액 기준으로 보고 싶다면 받은 금액을 그대로 더하면 됩니다.',
+        '기준가나 총수익률 같은 공식 수치는 한국거래소 정보데이터시스템이나 운용사·펀드평가사 페이지에서 확인할 수 있습니다. 어느 수치를 인용한 자료인지 표기가 없다면, 가격만 반영한 값인지 분배금까지 더한 값인지를 먼저 확인하시기 바랍니다.',
+      ],
+    },
+  ],
+  faq: [
+    { question: '분배금을 재투자하지 않고 현금으로 받으면 총수익률 계산이 달라지나요?', answer: '받은 현금을 그 뒤 어떻게 굴렸느냐는 개인 선택의 영역이고, ETF 자체의 총수익률을 계산할 때는 보통 분배금을 받은 시점의 금액 그대로를 가격 변동분에 더합니다. 재투자 여부는 그다음 단계의 문제입니다.' },
+    { question: '괴리율이 크면 수익률도 그만큼 차이 나나요?', answer: '괴리율은 매매 체결 시점의 시장가와 NAV 차이라, 산 시점과 판 시점의 괴리율이 반대 방향으로 움직이면 오히려 상쇄될 수도 있습니다. 다만 유동성이 낮은 ETF일수록 괴리율이 벌어지는 폭이 커질 수 있어 매매 시점의 호가를 확인하는 편이 안전합니다.' },
+    { question: '분배율이 높으면 총수익률도 높다고 봐도 되나요?', answer: '아닙니다. 분배율은 기준가 대비 분배금 비율만 보여줄 뿐 가격 변동분은 포함하지 않아서, 분배율이 높아도 기준가가 그만큼 빠지면 총수익률은 낮을 수 있습니다.' },
+    { question: '증권사 앱 수익률이 마이너스인데 분배금을 꽤 받았다면 실제로는 손실이 아닌가요?', answer: '평가손익률만 보면 가격 하락분만 잡히므로, 받은 분배금을 더해 직접 계산해봐야 실제 손익을 알 수 있습니다. 거래내역에서 분배금 지급 이력을 확인해 합산해보시기 바랍니다.' },
+  ],
+};
+
 export const GUIDES: GuideDef[] = [
+  etfReturnRateDifference,
   isaPensionActualWithdrawalAmount,
   overseasStockTaxSplitPayment,
   etfDistributionPaymentDateLookup,
@@ -24771,6 +24863,8 @@ export const GUIDES: GuideDef[] = [
  *   초기 기반 가이드(일별 기록 이전)는 미포함 → 아카이브에서 '기본 가이드'로 분류.
  */
 export const GUIDE_PUBLISHED_AT: Record<string, string> = {
+  // 2026-09-30 · 지식iN 질문 수요 기반 (배당 ETF 수익률이 어떻게 계산되는지, 증권사 앱마다 다르게 보이는 이유를 묻는 질문)
+  'etf-return-rate-difference': '2026-09-30',
   // 2026-09-29 · 지식iN 질문 수요 기반 (ISA, 연금저축 같은 계좌 돈을 뺄 때 실제로 얼마를 받는지 궁금해하는 질문)
   'isa-pension-actual-withdrawal-amount': '2026-09-29',
   // 2026-09-28 · 지식iN 질문 수요 기반 (해외주식 양도소득세 분납금을 낼 때 고지서의 국세계좌 번호가 어느 은행인지 몰라 혼란스러워하는 질문)
@@ -25144,7 +25238,7 @@ export const GUIDE_CLUSTERS: GuideCluster[] = [
   {
     title: 'ETF 기초·입문',
     description: 'ETF가 무엇인지부터 펀드·개별주식과의 차이, 비용·괴리율, 운용사 비교, 사회초년생 포트폴리오까지 — 시작 전 꼭 보는 기본기.',
-    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'us-etf-nav-discount-check', 'etf-fee-discount-relation', 'etf-lp-liquidity', 'overseas-etf-geopolitical-discount-spike', 'etf-discount-rate-buy-signal', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'us-etf-delisting-vs-domestic', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money'],
+    slugs: ['etf-basics', 'how-to-buy-etf', 'etf-broker-choice', 'account-transfer-etf', 'foreign-stock-settlement', 'minor-student-etf', 'etf-ticker-code', 'etf-name-suffix', 'etf-vs-fund', 'etf-vs-etn', 'etf-vs-stock', 'etf-fee', 'etf-nav-tracking', 'us-etf-nav-discount-check', 'etf-fee-discount-relation', 'etf-lp-liquidity', 'overseas-etf-geopolitical-discount-spike', 'etf-discount-rate-buy-signal', 'synthetic-etf', 'kodex-vs-tiger', 'active-etf', 'etf-delisting', 'us-etf-delisting-vs-domestic', 'young-investor-etf-portfolio', 'kospi200-vs-kosdaq150', 'etf-trading-cost', 'same-index-etf-choice', 'etf-share-price-meaning', 'etf-order-timing', 'isa-foreign-etf-currency', 'cd-rate-synthetic-etf-safety', 'stock-leading-room-scam', 'saving-vs-investing-inflation', 'investing-fomo-meaning', 'stock-order-types-guide', 'stock-market-volatility-causes', 'adjusted-stock-price-chart', 'market-circuit-breaker-vi', 'stock-order-rejected-reasons', 'investing-with-borrowed-money', 'etf-return-rate-difference'],
   },
   {
     title: '세금·절세 계좌',
