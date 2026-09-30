@@ -24,7 +24,7 @@ const PORTFOLIOS = {
     type: 'basket',
     name: 'KODEX 방산TOP10',
     updated: '2026-Q1',
-    source: 'Mirae Asset KODEX PDP',
+    source: '삼성자산운용 KODEX 구성종목 공시(PDF)',
     desc: '국내 방위산업 대표 10개 기업에 동일 비중 가까이 투자',
     holdings: [
       { rank: 1, name: '한화에어로스페이스', code: '012450', weight: 18.4, note: '🎯 대장주 · K9자주포·누리호' },
@@ -46,7 +46,7 @@ const PORTFOLIOS = {
     type: 'basket',
     name: 'SOL 조선TOP3플러스레버리지',
     updated: '2026-Q1',
-    source: 'Shinhan SOL PDP',
+    source: '신한자산운용 SOL 구성종목 공시(PDF)',
     desc: '국내 조선업 빅3 레버리지 (시세 변동 1.5~2배)',
     holdings: [
       { rank: 1, name: 'HD현대중공업', code: '329180', weight: 39.8, note: '🎯 대장주 · LNG선' },
@@ -61,7 +61,7 @@ const PORTFOLIOS = {
     type: 'single-option',
     name: 'SOL 팔란티어커버드콜OTM채권혼합',
     updated: '2026-Q1',
-    source: 'Shinhan SOL PDP',
+    source: '신한자산운용 SOL 구성종목 공시(PDF)',
     underlying: { name: '팔란티어 테크놀로지스', code: 'PLTR (미국)', weight: 70, note: 'AI 데이터분석 플랫폼' },
     strategy: {
       name: 'OTM 콜옵션 매도 커버드콜 + 채권 혼합',
@@ -76,7 +76,7 @@ const PORTFOLIOS = {
     type: 'basket',
     name: 'KODEX 200',
     updated: '2026-Q1',
-    source: 'Mirae Asset KODEX PDP',
+    source: '삼성자산운용 KODEX 구성종목 공시(PDF)',
     desc: 'KOSPI 200 지수 추종 — 국내 대형주 시가총액 상위 200개',
     holdings: [
       { rank: 1, name: '삼성전자',       code: '005930', weight: 26.4, note: '🎯 대장주' },
@@ -94,7 +94,7 @@ const PORTFOLIOS = {
     type: 'basket',
     name: 'KODEX 미국배당다우존스',
     updated: '2026-Q1',
-    source: 'Mirae Asset KODEX PDP',
+    source: '삼성자산운용 KODEX 구성종목 공시(PDF)',
     desc: 'Dow Jones US Dividend 100 지수 추종 — 고배당 우량주 100개',
     holdings: [
       { rank: 1, name: 'Home Depot',           code: 'HD',   weight: 4.3, note: '🎯 소매 대장' },
@@ -111,7 +111,7 @@ const PORTFOLIOS = {
     type: 'basket',
     name: 'ACE 미국배당다우존스',
     updated: '2026-Q1',
-    source: 'Hanwha ACE PDP',
+    source: '한국투자신탁운용 ACE 구성종목 공시(PDF)',
     desc: 'Dow Jones US Dividend 100 지수 추종 (동일 지수, 운용사만 다름)',
     holdings: [
       { rank: 1, name: 'Home Depot',           code: 'HD',   weight: 4.2, note: '🎯 소매 대장' },
@@ -131,7 +131,7 @@ const PORTFOLIOS = {
     type: 'basket',
     name: 'KODEX 2차전지산업',
     updated: '2026-Q1',
-    source: 'Mirae Asset KODEX PDP',
+    source: '삼성자산운용 KODEX 구성종목 공시(PDF)',
     desc: 'KRX 2차전지 TOP10 지수 추종 — 배터리·소재 대표 기업',
     holdings: [
       { rank: 1, name: 'LG에너지솔루션', code: '373220', weight: 20.5, note: '🎯 대장주 · 셀 1위' },
@@ -148,7 +148,7 @@ const PORTFOLIOS = {
     type: 'basket',
     name: 'KODEX 반도체',
     updated: '2026-Q1',
-    source: 'Mirae Asset KODEX PDP',
+    source: '삼성자산운용 KODEX 구성종목 공시(PDF)',
     desc: 'KRX 반도체 지수 추종 — 반도체·장비 대표 기업',
     holdings: [
       { rank: 1, name: '삼성전자',       code: '005930', weight: 22.4, note: '🎯 대장주 · HBM·파운드리' },

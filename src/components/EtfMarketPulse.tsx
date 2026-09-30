@@ -158,7 +158,8 @@ export default function EtfMarketPulse() {
     try {
       const res = await fetch('/api/etf');
       const json = await res.json();
-      setData(json);
+      // 실제 종가가 아니거나 비어 있으면 위젯을 그리지 않는다 (만든 가격 표시 금지)
+      setData(json?.isRealData === true && Array.isArray(json?.trending) && json.trending.length > 0 ? json : null);
     } catch (err) {
       console.error('ETF 데이터 로딩 실패:', err);
     } finally {

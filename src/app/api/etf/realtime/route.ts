@@ -102,7 +102,8 @@ async function loadDailyMap(origin: string): Promise<{ map: Map<string, DailyIte
       const res = await fetch(`${origin}/api/etf`);
       if (res.ok) {
         const data = await res.json();
-        const list: DailyItem[] = Array.isArray(data?.allETFs) ? data.allETFs : [];
+        // 실제 종가 응답만 쓴다 (2026-09-30: 예전 /api/etf 는 실패 시 표본 시세를 돌려줬다)
+        const list: DailyItem[] = data?.isRealData === true && Array.isArray(data?.allETFs) ? data.allETFs : [];
         if (list.length > 0) {
           const map = new Map<string, DailyItem>();
           for (const e of list) if (e?.code) map.set(String(e.code).toUpperCase(), e);

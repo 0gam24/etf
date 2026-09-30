@@ -6,11 +6,16 @@
  * 
  * ✅ CORS 문제 없음 (서버에서 호출하니까!)
  * ✅ 30분 캐싱으로 API 호출 횟수 절약
- * ✅ API 키 미설정 시 샘플 데이터 자동 전환
+ * ✅ API 호출이 실패하면 저장소에 커밋된 최신 종가 스냅샷으로 응답(source: 'snapshot')
+ *
+ * 2026-09-30: 예전에는 실패 시 하드코딩 표본 시세(KODEX 200 35,250원 등)를 돌려줬다.
+ *   홈 위젯과 /api/etf/realtime 이 isRealData 를 거르지 않아 운영 화면에 가짜 가격이
+ *   표시될 수 있었다(YMYL). 표본 시세를 없애고, 스냅샷도 없으면 503 + 빈 목록을 준다.
  */
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import { getLatestEtfData } from '@/lib/data';
 
 // ── 캐시 파일 경로 ──
 const CACHE_DIR = path.join(process.cwd(), 'data', 'raw');
@@ -33,10 +38,8 @@ export async function GET() {
     const apiKey = process.env.DATA_GO_KR_API_KEY;
 
     if (!apiKey || apiKey === '여기에_공공데이터포털_API키_입력') {
-      // API 키 없으면 샘플 데이터
-      const sample = getSampleData();
-      writeCache(sample);
-      return NextResponse.json(sample);
+      // API 키가 없으면 커밋된 스냅샷으로 응답 (캐시에 쓰지 않는다)
+      return snapshotFallbackResponse('api-key-missing');
     }
 
     // 3. 실제 API 호출 (최근 5영업일까지 탐색)
@@ -66,13 +69,11 @@ export async function GET() {
       }
     }
 
-    // 4. 데이터 파싱 및 분석
-    let result;
-    if (etfList.length > 0) {
-      result = parseAndAnalyze(etfList, foundDate);
-    } else {
-      result = getSampleData();
+    // 4. 데이터 파싱 및 분석 — 원자료가 없으면 스냅샷으로 (캐시에 쓰지 않아 다음 요청이 다시 시도)
+    if (etfList.length === 0) {
+      return snapshotFallbackResponse('api-empty');
     }
+    const result = parseAndAnalyze(etfList, foundDate);
 
     // 5. 캐시에 저장
     writeCache(result);
@@ -81,8 +82,49 @@ export async function GET() {
 
   } catch (error: any) {
     console.error('ETF API 에러:', error.message);
-    return NextResponse.json(getSampleData());
+    return snapshotFallbackResponse('api-error');
   }
+}
+
+/**
+ * API 실패 시 응답 — 저장소에 커밋된 최신 etf_prices_*.json 스냅샷(실제 종가, 기준일 표기).
+ *   source: 'snapshot' 을 달아 scripts/snapshot-etf-prices.mjs 가 이 응답을 다시 저장하지 않게 한다.
+ *   스냅샷도 없으면 503 과 빈 목록. 어떤 경우에도 만든 가격을 돌려주지 않는다.
+ */
+function snapshotFallbackResponse(reason: string) {
+  try {
+    const snap = getLatestEtfData() as { etfList?: any[]; baseDate?: string; fetchedAt?: string } | null;
+    const list = Array.isArray(snap?.etfList) ? snap!.etfList : [];
+    if (list.length > 0 && snap?.baseDate) {
+      const analyzed = parseAndAnalyze(list.map(e => ({
+        srtnCd: e.code, itmsNm: e.name, clpr: e.price, vs: e.change, fltRt: e.changeRate,
+        trqu: e.volume, trPrc: e.tradeAmount, mrktTotAmt: e.marketCap, nav: e.nav,
+        hipr: e.highPrice, lopr: e.lowPrice, mkp: e.openPrice, basDt: e.date || snap.baseDate,
+      })), String(snap.baseDate));
+      return NextResponse.json({
+        ...analyzed,
+        fetchedAt: snap.fetchedAt || analyzed.fetchedAt,
+        source: 'snapshot',
+        fallbackReason: reason,
+      });
+    }
+  } catch (err: any) {
+    console.error('ETF 스냅샷 폴백 실패:', err?.message);
+  }
+  return NextResponse.json({
+    isRealData: false,
+    source: 'none',
+    fallbackReason: reason,
+    baseDate: '',
+    fetchedAt: new Date().toISOString(),
+    totalCount: 0,
+    trending: [],
+    topGainers: [],
+    topLosers: [],
+    categories: {},
+    topMarketCap: [],
+    allETFs: [],
+  }, { status: 503 });
 }
 
 // ── 데이터 파싱 + 분석 ──
@@ -200,6 +242,7 @@ function readCache() {
     if (!fs.existsSync(CACHE_FILE)) return null;
     const raw = fs.readFileSync(CACHE_FILE, 'utf-8');
     const cached = JSON.parse(raw);
+    if (cached?.isRealData !== true) return null; // 예전 표본 시세 캐시는 쓰지 않는다
     const age = Date.now() - new Date(cached.fetchedAt).getTime();
     if (age > CACHE_TTL) return null; // 만료
     return cached;
@@ -234,43 +277,3 @@ function getBusinessDate(daysBack: number) {
   return `${y}${m}${d}`;
 }
 
-// ── 샘플 데이터 ──
-function getSampleData() {
-  const sampleETFs = [
-    { code: '069500', name: 'KODEX 200', price: 35250, change: 150, changeRate: 0.43, volume: 3254000, tradeAmount: 1145, marketCap: 52340, highPrice: 35400, lowPrice: 35100, openPrice: 35200 },
-    { code: '379800', name: 'KODEX 미국S&P500TR', price: 18520, change: -80, changeRate: -0.43, volume: 1520000, tradeAmount: 282, marketCap: 38200, highPrice: 18600, lowPrice: 18450, openPrice: 18560 },
-    { code: '448290', name: 'KODEX 미국배당다우존스', price: 12850, change: 45, changeRate: 0.35, volume: 890000, tradeAmount: 114, marketCap: 21500, highPrice: 12900, lowPrice: 12800, openPrice: 12830 },
-    { code: '411060', name: 'ACE 미국배당다우존스', price: 13200, change: 30, changeRate: 0.23, volume: 1120000, tradeAmount: 148, marketCap: 19800, highPrice: 13250, lowPrice: 13150, openPrice: 13180 },
-    { code: '261240', name: 'KODEX 미국채울트라30년선물(H)', price: 8950, change: -120, changeRate: -1.32, volume: 2300000, tradeAmount: 206, marketCap: 15600, highPrice: 9000, lowPrice: 8900, openPrice: 8980 },
-    { code: '305720', name: 'KODEX 2차전지산업', price: 7850, change: 210, changeRate: 2.75, volume: 4100000, tradeAmount: 322, marketCap: 12300, highPrice: 7900, lowPrice: 7640, openPrice: 7660 },
-    { code: '091160', name: 'KODEX 반도체', price: 42300, change: 800, changeRate: 1.93, volume: 1890000, tradeAmount: 799, marketCap: 28700, highPrice: 42500, lowPrice: 41500, openPrice: 41600 },
-    { code: '381170', name: 'TIGER 미국테크TOP10 INDXX', price: 16800, change: -250, changeRate: -1.47, volume: 980000, tradeAmount: 165, marketCap: 17200, highPrice: 17050, lowPrice: 16750, openPrice: 17000 },
-    { code: '132030', name: 'KODEX 골드선물(H)', price: 18400, change: 320, changeRate: 1.77, volume: 560000, tradeAmount: 103, marketCap: 9800, highPrice: 18500, lowPrice: 18080, openPrice: 18100 },
-    { code: '364970', name: 'KODEX 은행', price: 9100, change: 50, changeRate: 0.55, volume: 450000, tradeAmount: 41, marketCap: 5400, highPrice: 9150, lowPrice: 9050, openPrice: 9060 },
-  ];
-
-  const trending = [...sampleETFs].sort((a, b) => b.volume - a.volume).slice(0, 10);
-  const sorted = [...sampleETFs].sort((a, b) => b.changeRate - a.changeRate);
-  const topGainers = sorted.slice(0, 5);
-  const topLosers = sorted.slice(-5).reverse();
-
-  return {
-    isRealData: false,
-    baseDate: getBusinessDate(1),
-    fetchedAt: new Date().toISOString(),
-    totalCount: sampleETFs.length,
-    trending,
-    topGainers,
-    topLosers,
-    categories: {
-      domestic: { name: '국내주식', icon: '🇰🇷', count: 2, avgChange: 0.49, totalVolume: 3704000 },
-      us: { name: '해외(미국)', icon: '🇺🇸', count: 2, avgChange: -0.95, totalVolume: 2500000 },
-      dividend: { name: '배당', icon: '💰', count: 2, avgChange: 0.29, totalVolume: 2010000 },
-      bond: { name: '채권', icon: '📜', count: 1, avgChange: -1.32, totalVolume: 2300000 },
-      tech: { name: '테크/AI', icon: '🤖', count: 2, avgChange: 2.34, totalVolume: 5990000 },
-      commodity: { name: '원자재', icon: '🛢️', count: 1, avgChange: 1.77, totalVolume: 560000 },
-    },
-    topMarketCap: [...sampleETFs].sort((a, b) => b.marketCap - a.marketCap).slice(0, 5),
-    allETFs: sampleETFs,
-  };
-}

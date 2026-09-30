@@ -88,7 +88,7 @@ export default function HoldingsPanel({
         })}
       </ol>
       <div className="holdings-panel-foot">
-        출처: {data.source} · 비중은 정기 갱신
+        출처: {data.source} · 비중은 공시 기준 근사치이며 최신 비중은 운용사 공시에서 확인하세요
       </div>
     </div>
   );

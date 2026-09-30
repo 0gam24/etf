@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import { ArrowRight } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ToolLinkCard, { SISTER_TOOLS } from '@/components/ToolLinkCard';
-import MainBackrefBox from '@/components/MainBackrefBox';
 import { jsonLd } from '@/lib/schema';
 import { PERSONAS, ALL_PERSONAS, type PersonaSlug } from '@/lib/personas-config';
 import { getAllPosts } from '@/lib/posts';
@@ -181,11 +180,7 @@ export default async function PersonaPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* 5. 자매 backref */}
-      <MainBackrefBox
-        variant="inline"
-        mainCategoryUrl={config.mainSiteCategoryUrl}
-      />
+      {/* 자매 사이트 백링크 상자는 2026-09-30 제거 (전역 네트워크 링크 축소). 위 도구 섹션은 주제 관련 링크라 유지 */}
     </article>
   );
 }

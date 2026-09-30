@@ -18,13 +18,9 @@ const PUBLISHER_URLS: Record<string, string> = {
 };
 const ORG_LOGO = `${SITE}/og-logo.png`;
 
-// smartdatashop network 자매 backref — 메인 사이트(1차 출처 데이터 저널) parentOrganization.
-//   schema.org/Organization spec: 자매가 메인의 sub-organization이라는 신뢰 신호 + 검색엔진 entity 연결.
-const PARENT_ORG = {
-  '@type': 'Organization',
-  name: '스마트데이터샵',
-  url: 'https://smartdatashop.kr',
-};
+// parentOrganization(스마트데이터샵) 선언은 2026-09-30 제거. 자매 사이트끼리 모든 페이지에서
+//   서로를 가리키는 네트워크 신호를 줄이기 위해 layout Organization 스키마·푸터 백링크와 함께 뺐다.
+//   (형제 사이트 smartdatashop 이 이 패턴을 AdSense 거절 원인으로 기록: 05 smartdatashop.kr/CLAUDE.md)
 
 function abs(path: string): string {
   if (!path) return SITE;
@@ -130,12 +126,10 @@ export function buildArticleSchema(input: ArticleSchemaInput) {
       },
       publishingPrinciples: `${SITE}/about`,
       correctionsPolicy: `${SITE}/about`,
-      parentOrganization: PARENT_ORG, // smartdatashop network 자매 신호
     },
     // isBasedOn(자매 사이트 backref)은 뺐다. 가이드 본문은 그 사이트에서 파생된 글이
     // 아닌데도 238편 전부가 "원본은 smartdatashop"이라고 선언하고 있었다. 같은 노드에
-    // "출처는 국세청"과 함께 실려 인용 신호가 흐려진다. 자매 관계는 아래
-    // publisher.parentOrganization이 이미 정확히 표현한다. (2026-08-12)
+    // "출처는 국세청"과 함께 실려 인용 신호가 흐려진다. (2026-08-12)
     mainEntityOfPage: { '@type': 'WebPage', '@id': abs(input.url) },
     ...(input.keywords?.length ? { keywords: input.keywords.join(', ') } : {}),
     ...(input.section ? { articleSection: input.section } : {}),

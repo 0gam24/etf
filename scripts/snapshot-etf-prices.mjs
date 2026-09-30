@@ -44,6 +44,9 @@ const RAW_DIR = path.join(ROOT, 'data', 'raw');
 const FILE_RE = /^etf_prices_(\d{8})\.json$/;
 
 const DRY = process.argv.includes('--dry');
+// --force: 같은 baseDate 의 오늘 파일을 다시 쓴다 (예: /api/etf 에 nav 가 추가 배포된 뒤 재수집).
+//   더 이른 baseDate 로 덮어쓰는 것은 여전히 막는다.
+const FORCE = process.argv.includes('--force');
 const SITE_URL = (process.env.SITE_URL || 'https://iknowhowinfo.com').replace(/\/+$/, '');
 const MIN_ETF_COUNT = 1000;
 const FETCH_TIMEOUT_MS = 60_000;
@@ -197,6 +200,7 @@ async function main() {
 
   // ── 안전장치 ──
   if (body.isRealData !== true) skip(`isRealData=${JSON.stringify(body.isRealData)} (실제 종가 응답이 아님)`);
+  if (body.source === 'snapshot') skip(`API 가 저장소 스냅샷으로 응답함(${body.fallbackReason || '원자료 호출 실패'}) — 새 원자료가 아님`);
   if (body.allETFs.length < MIN_ETF_COUNT) skip(`종목 수 ${body.allETFs.length} < ${MIN_ETF_COUNT}`);
   if (baseDate > today) skip(`baseDate ${baseDate} 가 오늘(KST ${today})보다 뒤`);
 
@@ -205,9 +209,11 @@ async function main() {
     if (prev.fileName > fileName) {
       skip(`더 뒤 날짜 파일(${prev.fileName})이 이미 있어 ${fileName} 이 최신으로 선택되지 않음`);
     }
-    if (prev.baseDate && baseDate <= prev.baseDate) {
+    const sameFileRewrite = FORCE && prev.fileName === fileName && prev.baseDate === baseDate;
+    if (prev.baseDate && baseDate <= prev.baseDate && !sameFileRewrite) {
       skip(`baseDate ${baseDate} 가 직전 스냅샷 ${prev.fileName}(baseDate ${prev.baseDate}) 이하`);
     }
+    if (sameFileRewrite) console.log(`♻️  --force: 같은 기준일(${baseDate}) 오늘 파일을 다시 씀`);
   }
 
   const etfList = body.allETFs.map(e => toSnapshotItem(e, baseDate));
