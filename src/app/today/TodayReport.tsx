@@ -56,7 +56,7 @@ export default function TodayReport({ report }: { report: Report | null }) {
     return (
       <section style={{ padding: 'var(--space-8)', background: 'var(--bg-card)', borderRadius: 'var(--radius)', textAlign: 'center' }}>
         <p style={{ color: 'var(--text-dim)' }}>
-          오늘의 리포트가 아직 발행되지 않았습니다. 매 영업일 KST 16:00 자동 발행됩니다.
+          표시할 종합 리포트가 없습니다. 새 글은 매일 아침 <Link href="/guide">ETF 가이드</Link>에 올라옵니다.
         </p>
       </section>
     );
@@ -66,7 +66,7 @@ export default function TodayReport({ report }: { report: Report | null }) {
     <div style={{ display: 'grid', gap: 'var(--space-6)' }}>
       {/* 1. 시그널 도달 */}
       {report.signals?.length > 0 && (
-        <Section title={`🎯 오늘 시그널 도달 (${report.signals.length}건)`}>
+        <Section title={`🎯 기준일 시그널 도달 (${report.signals.length}건)`}>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.5rem' }}>
             {report.signals.map(s => (
               <li key={s.code} style={cardStyle}>
@@ -133,7 +133,7 @@ export default function TodayReport({ report }: { report: Report | null }) {
 
       {/* 6. 어제 시그널 결과 */}
       {report.outcomes?.length > 0 && (
-        <Section title={`📊 어제 시그널 결과 (${report.outcomes.length}건)`}>
+        <Section title={`📊 직전 거래일 시그널 결과 (${report.outcomes.length}건)`}>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.5rem' }}>
             {report.outcomes.slice(0, 5).map(o => (
               <li key={`${o.code}-${o.date}`} style={cardStyle}>
@@ -152,7 +152,7 @@ export default function TodayReport({ report }: { report: Report | null }) {
 
       {/* Footer */}
       <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textAlign: 'center', marginTop: 'var(--space-4)' }}>
-        생성: {new Date(report.generatedAt).toLocaleString('ko-KR')} · KRX baseDate: {report.baseDate}
+        작성: {new Date(report.generatedAt).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })} · KRX 종가 기준일: {report.baseDate}
       </p>
     </div>
   );

@@ -17,13 +17,19 @@ const GA4_ID = 'G-P2ZYD31B29';
 //   이 스니펫 자체가 애드센스 사이트 소유권 확인·승인 심사의 전제.
 const ADSENSE_PUB_ID = 'ca-pub-7830821732287404';
 
+// 사이트 전역 소개 문구 — 기본 description·Twitter·Organization 스키마가 공유.
+//   2026-09-30: 일일 시황 코너가 멈춘 뒤에도 '매일 오전 9시 전 업데이트'를 약속하고 있어
+//   실제로 매일 올라오는 가이드 기준으로 교체. 정확한 시각은 적지 않는다.
+const SITE_DESCRIPTION =
+  'ETF·연금·세금 궁금증에 국세청·금감원·KRX 같은 1차 출처로 답하는 가이드를 매일 아침 새로 발행합니다. 월배당·커버드콜 ETF 고르는 법, ISA·연금저축 절세, KRX 상장 ETF 종목 사전까지 한곳에서 확인하세요.';
+
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL || 'https://iknowhowinfo.com'),
   title: {
     default: "Daily ETF Pulse, 오늘 뜨는 ETF의 진짜 이유",
     template: "%s | Daily ETF Pulse",
   },
-  description: "거래량 1위 ETF의 급등 사유, 섹터별 자금 흐름, 월배당·커버드콜 전략까지. 매일 오전 9시 전 업데이트되는 ETF 투자 의사결정 플랫폼.",
+  description: SITE_DESCRIPTION,
   // ⚠️ 여기에 keywords를 두지 않는다.
   //   Next.js는 자식이 keywords를 정의하지 않으면 layout 값을 그대로 물려준다. 그 결과
   //   /privacy·/contact·/disclaimer 같은 페이지까지 "월배당 ETF·IRP ETF·커버드콜"을
@@ -55,7 +61,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Daily ETF Pulse, 오늘 뜨는 ETF의 진짜 이유',
-    description: '거래량 1위 ETF의 급등 사유, 섹터별 자금 흐름, 월배당·커버드콜 전략. 매일 아침 9시 갱신.',
+    description: SITE_DESCRIPTION,
     images: [{
       url: '/og/default.png',
       width: 1200,
@@ -115,7 +121,7 @@ const ORG_SCHEMA = {
     width: 600,
     height: 60,
   },
-  description: '거래량 1위 ETF의 급등 사유, 섹터별 자금 흐름, 월배당·커버드콜 전략까지. 매일 오전 9시 전 업데이트되는 ETF 투자 의사결정 플랫폼.',
+  description: SITE_DESCRIPTION,
   inLanguage: 'ko-KR',
   // E-E-A-T 정책 페이지 (Google 권장)
   publishingPrinciples: `${SITE_URL}/about`,

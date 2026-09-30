@@ -7,7 +7,7 @@ import {
   computeRecurringThemes,
   computeTickerDiff,
 } from '@/lib/pulse';
-import PulseTodayHero from '@/components/PulseTodayHero';
+import PulseTodayHero, { archivedSinceLabel } from '@/components/PulseTodayHero';
 import PulseDiff from '@/components/PulseDiff';
 import PulseWeekTimeline from '@/components/PulseWeekTimeline';
 import PulseRecurringThemes from '@/components/PulseRecurringThemes';
@@ -21,7 +21,7 @@ import { buildPageMetadata } from '@/lib/site-meta';
 export const metadata: Metadata = buildPageMetadata({
   title: '오늘의 관전포인트',
   description:
-    '매일 오전 9시 전, 오늘 시장을 움직일 ETF 핵심 포인트를 정리합니다. 어제와 무엇이 달라졌는지, 이번 주 반복해서 올라온 종목은 무엇인지, 거래량 상위 종목의 움직임까지 한눈에 확인하세요.',
+    '거래일마다 시장을 움직인 ETF 핵심 포인트를 정리한 관전포인트 기록입니다. 전일과 무엇이 달라졌는지, 한 주 동안 반복해서 등장한 종목은 무엇인지, 거래량 상위 종목의 움직임까지 날짜별로 다시 찾아볼 수 있습니다.',
   url: '/pulse',
   keywords: ['오늘의 ETF 관전포인트', 'ETF 시황 브리핑', '오늘 ETF 거래량', 'ETF 아침 브리핑', 'ETF 섹터 흐름'],
 });
@@ -49,6 +49,8 @@ export default function PulseLandingPage() {
   const todayIso = today ? new Date(today.meta.date).toISOString().slice(0, 10) : '';
 
   const recent = posts.slice(0, RECENT_LIST_LIMIT);
+  // 마지막 글이 오래됐으면 '언제까지의 기록인지'만 알린다 (새 글이 오면 자동으로 사라짐)
+  const archivedSince = archivedSinceLabel(today?.meta.date);
 
   return (
     <div className="pulse-landing animate-fade-in">
@@ -92,7 +94,9 @@ export default function PulseLandingPage() {
         <section className="pulse-archive">
           <div className="pulse-section-head">
             <h2 className="pulse-section-title">최근 발행</h2>
-            <p className="pulse-section-hint">총 {posts.length}편 · 매일 오전 9시 전 업데이트</p>
+            <p className="pulse-section-hint">
+              총 {posts.length}편{archivedSince ? ` · ${archivedSince}까지의 기록` : ''}
+            </p>
           </div>
           {recent.length === 0 ? (
             <p className="pulse-section-empty">아직 발행된 글이 없습니다.</p>
@@ -117,7 +121,7 @@ export default function PulseLandingPage() {
 
         <NextChapterCta
           label="다음 챕터"
-          copy="오늘 거래량 1위 ETF가 왜 올랐는지 분석 보러 가기"
+          copy="거래량 1위 ETF가 왜 올랐는지 급등 분석 보러 가기"
           href="/surge"
         />
 

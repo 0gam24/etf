@@ -1,0 +1,348 @@
+{
+  "site": "sc-domain:iknowhowinfo.com",
+  "range": {
+    "start": "2026-08-31",
+    "end": "2026-09-28"
+  },
+  "total": 42,
+  "striking": [],
+  "lowCtr": [],
+  "all": [
+    {
+      "query": "\"미국배당다우존스데일리커버드콜\" etf",
+      "page": "https://iknowhowinfo.com/guide/us-dividend",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "query": "ace 미국배당퀄리티채권혼합50",
+      "page": "https://iknowhowinfo.com/etf/ace-us-dividend-qualitybond-blend50",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 65
+    },
+    {
+      "query": "etf lp",
+      "page": "https://iknowhowinfo.com/guide/etf-lp-liquidity",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 75
+    },
+    {
+      "query": "etf 상폐",
+      "page": "https://iknowhowinfo.com/guide/etf-delisting",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 78
+    },
+    {
+      "query": "etf 합성",
+      "page": "https://iknowhowinfo.com/guide/synthetic-etf",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 74
+    },
+    {
+      "query": "irp 계좌 단점",
+      "page": "https://iknowhowinfo.com/guide/irp-disadvantages",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 64
+    },
+    {
+      "query": "irp 단점",
+      "page": "https://iknowhowinfo.com/guide/irp-disadvantages",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 57
+    },
+    {
+      "query": "plus k 방산",
+      "page": "https://iknowhowinfo.com/etf/plus-kdefense-449450",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 78
+    },
+    {
+      "query": "plus k 방산 etf",
+      "page": "https://iknowhowinfo.com/etf/plus-kdefense-449450",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 92
+    },
+    {
+      "query": "plus k방산",
+      "page": "https://iknowhowinfo.com/etf/plus-kdefense-449450",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 75
+    },
+    {
+      "query": "plus k방산 주가",
+      "page": "https://iknowhowinfo.com/etf/plus-kdefense-449450",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 44
+    },
+    {
+      "query": "sol 미국 양자컴퓨팅 top10",
+      "page": "https://iknowhowinfo.com/etf/sol-ustop10",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 74
+    },
+    {
+      "query": "tdf2045",
+      "page": "https://iknowhowinfo.com/etf/tiger-tdf2045-qualified",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 67
+    },
+    {
+      "query": "tiger krx",
+      "page": "https://iknowhowinfo.com/etf/tiger-krx",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 67
+    },
+    {
+      "query": "tiger 미국배당다우존스 주가",
+      "page": "https://iknowhowinfo.com/etf/tiger-0052d0",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 94
+    },
+    {
+      "query": "tiger 미국배당다우존스 커버드콜",
+      "page": "https://iknowhowinfo.com/etf/tiger-us-dividend-djonescovered-call",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 88
+    },
+    {
+      "query": "tiger 미국배당다우존스타겟커버드콜",
+      "page": "https://iknowhowinfo.com/etf/tiger-us-dividend-djonescovered-call",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 87
+    },
+    {
+      "query": "tiger 코리아배당다우존스",
+      "page": "https://iknowhowinfo.com/etf/tiger-0052d0",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 85
+    },
+    {
+      "query": "닛케이 지수 etf",
+      "page": "https://iknowhowinfo.com/guide/japan-etf",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 73
+    },
+    {
+      "query": "대만 반도체 etf",
+      "page": "https://iknowhowinfo.com/guide/taiwan-etf",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 56
+    },
+    {
+      "query": "만기 매칭형 채권 etf",
+      "page": "https://iknowhowinfo.com/guide/target-maturity-bond-etf",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 89
+    },
+    {
+      "query": "만기매칭형 채권 etf",
+      "page": "https://iknowhowinfo.com/guide/target-maturity-bond-etf",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 90
+    },
+    {
+      "query": "물 etf",
+      "page": "https://iknowhowinfo.com/guide/water-etf",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 62
+    },
+    {
+      "query": "미국 smr etf",
+      "page": "https://iknowhowinfo.com/etf/sol-ussmr",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 93
+    },
+    {
+      "query": "미국 가치주 etf",
+      "page": "https://iknowhowinfo.com/guide/us-value-vs-growth-etf",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 92.5
+    },
+    {
+      "query": "미국 초단기 국채 etf",
+      "page": "https://iknowhowinfo.com/etf/tiger-us3",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 75
+    },
+    {
+      "query": "반도체 etf 주가",
+      "page": "https://iknowhowinfo.com/etf/kodex-semiconductor",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 82
+    },
+    {
+      "query": "보유기간과세란",
+      "page": "https://iknowhowinfo.com/guide/etf-holding-period-tax",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 73
+    },
+    {
+      "query": "삼성전자 분기 배당",
+      "page": "https://iknowhowinfo.com/guide/individual-stock-dividend-schedule",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 70.5
+    },
+    {
+      "query": "삼성전자 분기배당",
+      "page": "https://iknowhowinfo.com/guide/individual-stock-dividend-schedule",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 69.5
+    },
+    {
+      "query": "양자컴퓨팅 etf",
+      "page": "https://iknowhowinfo.com/guide/quantum-computing-etf",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 84
+    },
+    {
+      "query": "은행 etf",
+      "page": "https://iknowhowinfo.com/guide/bank-etf",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 85
+    },
+    {
+      "query": "은행주 etf",
+      "page": "https://iknowhowinfo.com/guide/bank-etf",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 67
+    },
+    {
+      "query": "자동차 etf",
+      "page": "https://iknowhowinfo.com/guide/auto-etf",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 61
+    },
+    {
+      "query": "중국 etf",
+      "page": "https://iknowhowinfo.com/guide/china-etf",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 78.3
+    },
+    {
+      "query": "중국 주식 etf",
+      "page": "https://iknowhowinfo.com/guide/china-etf",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 76.6
+    },
+    {
+      "query": "중국etf",
+      "page": "https://iknowhowinfo.com/guide/china-etf",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 73
+    },
+    {
+      "query": "차이나휴머노이드",
+      "page": "https://iknowhowinfo.com/stock/0053L0",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 87
+    },
+    {
+      "query": "차이나휴머노이드 etf",
+      "page": "https://iknowhowinfo.com/stock/0053L0",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 89
+    },
+    {
+      "query": "태양광 etf",
+      "page": "https://iknowhowinfo.com/guide/solar-energy-etf",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 70
+    },
+    {
+      "query": "퇴직연금 커버드콜",
+      "page": "https://iknowhowinfo.com/income/income-20260531-0000d0",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 51
+    },
+    {
+      "query": "휴머노이드 etf",
+      "page": "https://iknowhowinfo.com/guide/humanoid-robot-etf",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 90
+    }
+  ]
+}

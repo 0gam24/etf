@@ -60,7 +60,7 @@ const FREQ_LABEL: Record<string, string> = {
 };
 
 export async function generateStaticParams() {
-  // SEO 친화 슬러그(이름 기반) 1095종 prerender.
+  // SEO 친화 슬러그(이름 기반) 전 종목 prerender (종목 수는 data/etf-slug-map.json 기준).
   //   - 코드 기반 URL(/etf/0080g0)은 next.config.ts redirects로 슬러그 URL로 301 이동.
   return getAllEtfSlugs().map(slug => ({ ticker: slug }));
 }

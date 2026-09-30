@@ -4,7 +4,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import { jsonLd } from '@/lib/schema';
 import { buildPageMetadata } from '@/lib/site-meta';
 
-const LAST_UPDATED = '2026-05-22';
+const LAST_UPDATED = '2026-09-30';
 
 export const metadata: Metadata = buildPageMetadata({
   title: '면책조항',
@@ -110,7 +110,8 @@ export default function DisclaimerPage() {
       <section className="about-section">
         <h2 className="about-h2">5. 광고·제휴 링크 고지</h2>
         <p className="about-desc">
-          사이트는 운영비 충당을 위해 다음 형태의 광고·제휴 수익을 받고 있습니다.
+          사이트는 운영비 충당을 위해 아래 두 가지 광고·제휴 수익을 받고 있습니다. 현재 운영 중인 수익 채널은
+          이 둘뿐입니다.
         </p>
         <ul className="about-list">
           <li>
@@ -118,18 +119,18 @@ export default function DisclaimerPage() {
             이용자 관심사에 맞게 자동 선정합니다.
           </li>
           <li>
-            <strong>쿠팡 파트너스</strong>: 일부 자료 페이지(/resources, /guide 등)의 책·도구 추천 링크.
-            이용자가 링크를 통해 구매 시 사이트에 일정 수수료가 발생합니다. 해당 페이지에는 별도 고지
-            문구가 노출됩니다.
-          </li>
-          <li>
-            <strong>금융 제휴</strong>: 일부 콘텐츠에 운용사·증권사 제휴 카드가 포함될 수 있으며, 이 경우
-            카드 상단에 제휴 사실이 표시됩니다.
+            <strong>쿠팡 파트너스</strong>: 페이지 하단 추천 자료 영역과 자료 페이지(/resources 등)의 책·도구
+            추천 링크. 이용자가 링크를 통해 구매 시 사이트에 일정 수수료가 발생합니다. 링크가 노출되는 영역과
+            페이지에는 별도 고지 문구가 함께 표시됩니다.
           </li>
         </ul>
         <p className="about-desc" style={{ marginTop: '1rem' }}>
-          광고·제휴 수익은 콘텐츠의 객관성·편집권에 영향을 주지 않으며, 분석 대상 ETF 선정은 거래량·뉴스·검색
-          의도에 따라 자동 결정됩니다.
+          증권사·운용사 계좌개설 제휴 등 새 제휴를 도입하는 경우, 적용 전에 이 문서와 해당 링크가 노출되는
+          페이지에 먼저 고지합니다.
+        </p>
+        <p className="about-desc" style={{ marginTop: '1rem' }}>
+          광고·제휴 수익은 콘텐츠의 객관성·편집권에 영향을 주지 않습니다. 다루는 주제와 종목은 광고주·제휴사와
+          무관하게 독자 질문 수요와 공개 데이터를 기준으로 정합니다.
         </p>
       </section>
 

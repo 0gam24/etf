@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getPostsByCategory, CATEGORY_NAMES, TOP_LEVEL_CATEGORIES } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -11,7 +12,7 @@ interface PageProps {
 const CATEGORY_META: Record<string, { icon: React.ReactNode; desc: string; tagline: string }> = {
   pulse: {
     icon: <Zap size={36} strokeWidth={2.2} aria-hidden />,
-    desc: '매일 오전 9시, 오늘 시장을 움직일 ETF 핵심 포인트를 3줄로 요약합니다.',
+    desc: '거래일마다 시장을 움직인 ETF 핵심 포인트를 3줄로 요약한 브리핑 기록입니다.',
     tagline: '오늘의 ETF 관전포인트',
   },
   surge: {
@@ -77,7 +78,10 @@ export default async function CategoryPage({ params }: PageProps) {
       <section className="post-list">
         {posts.length === 0 ? (
           <div className="empty-state">
-            <p>이 카테고리의 새 분석이 곧 올라옵니다. 매일 아침 9시 전 갱신됩니다.</p>
+            <p>
+              이 카테고리에는 아직 표시할 글이 없습니다. 새 글은 매일 아침{' '}
+              <Link href="/guide">ETF 가이드</Link>에 올라옵니다.
+            </p>
           </div>
         ) : (
           <div className="post-list-items">

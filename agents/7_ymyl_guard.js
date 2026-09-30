@@ -5,6 +5,7 @@
  *   - 급등주 "지금 매수" 유도 표현 차단 (Daily Pulse 핵심)
  *   - 메타 데이터(CPC/애드센스 등) 본문 노출 차단
  *   - 면책조항 자동 삽입
+ *   - 제휴 고지는 실제 제휴 URL이 발급된 상품이 있을 때만, 그 채널에 맞는 문구로 삽입
  */
 
 const state = require('../pipeline/state_manager');
@@ -42,7 +43,48 @@ const RISK_LABEL_DISCLAIMER = `
 > 분할 진입·본인 목표 수익률·손절 기준을 먼저 세우신 뒤 참고 용도로만 활용하세요.
 `;
 
-const DISCLAIMER = `
+/**
+ * 제휴 고지 — 실제 제휴 URL이 있는 상품이 있을 때만 붙인다.
+ *   CpaDealMaker 는 URL 미발급 상품에 '#' 를 넣으므로 빈 값·'#'·http(s) 아닌 값은 "링크 없음"으로 본다.
+ *   채널별 문구:
+ *     - CPA(증권사·연금 계좌개설) → 증권사명 + "계좌개설 시 수수료". 증권사 CPA URL 이 있을 때만.
+ *     - CPS 쿠팡(도서)           → 쿠팡 파트너스 표준 문구
+ *     - 그 외 CPS                → 제휴사명 + "구매 시 수수료"
+ *   2026-09 기준 프론트는 frontmatter affiliates 를 카드로 그리지 않는다. 카드 컴포넌트를 붙일 때
+ *   이 문구·위치를 함께 점검한다. (배경: 링크 없는 글 94편에 고지가 붙어 있던 것을 2026-09-30 제거)
+ */
+const hasRealAffiliateUrl = (p) => {
+  const url = typeof p?.url === 'string' ? p.url.trim() : '';
+  return url !== '' && url !== '#' && /^https?:\/\//i.test(url);
+};
+
+const isCoupang = (p) => /쿠팡|coupang/i.test(`${p?.name || ''} ${p?.url || ''}`);
+
+const uniqueNames = (list) => [...new Set(list.map(p => p.name).filter(Boolean))].join(', ');
+
+function buildAffiliateNotice(products = []) {
+  const live = (Array.isArray(products) ? products : []).filter(hasRealAffiliateUrl);
+  if (live.length === 0) return '';
+
+  const sentences = [];
+  const accountCpa = live.filter(p => p.type === 'CPA');
+  if (accountCpa.length > 0) {
+    sentences.push(`본 포스팅에는 증권사 제휴 링크(${uniqueNames(accountCpa)})가 포함되어 있으며, 링크를 통해 계좌를 개설하면 일정 수수료를 받을 수 있습니다.`);
+  }
+  const cps = live.filter(p => p.type !== 'CPA');
+  if (cps.some(isCoupang)) {
+    sentences.push('이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.');
+  }
+  const otherCps = cps.filter(p => !isCoupang(p));
+  if (otherCps.length > 0) {
+    sentences.push(`본 포스팅에는 ${uniqueNames(otherCps)} 제휴 링크가 포함되어 있으며, 구매 시 일정 수수료를 받을 수 있습니다.`);
+  }
+  // 인용 블록 안에 들어가므로 각 문장은 "> *…*" 한 줄 + 빈 인용 줄로 닫는다.
+  return sentences.map(s => `> *${s}*`).join('\n>\n') + '\n>\n';
+}
+
+function buildDisclaimer(affiliateNotice = '') {
+  return `
 ---
 
 > **⚠️ 투자자 유의사항**
@@ -54,10 +96,9 @@ const DISCLAIMER = `
 > 본 포스팅에 기재된 가격·등락률·거래량은 **공공데이터포털(data.go.kr)** 기준이며,
 > 실시간 데이터와 차이가 있을 수 있습니다.
 >
-> *본 포스팅에는 제휴 마케팅 링크가 포함되어 있으며, 구매·계좌개설 시 일정 수수료를 받을 수 있습니다.*
->
-> 📅 데이터 기준일: ${new Date().toLocaleDateString('ko-KR')} | 출처: KRX · 한국은행 · DART
+${affiliateNotice}> 📅 데이터 기준일: ${new Date().toLocaleDateString('ko-KR')} | 출처: KRX · 한국은행 · DART
 `;
+}
 
 /**
  * 금지 표현 → 안전 대체 표현 자동 매핑.
@@ -155,18 +196,26 @@ function validateArticle(article) {
   };
 }
 
-function addDisclaimer(article) {
+function addDisclaimer(article, affiliateProducts = []) {
   // surge/pulse 포스트이거나 본문에 위험 라벨 용어가 쓰인 경우, 추가 면책을 함께 부착.
   const usesRiskTerminology = RISK_LABEL_TERMS.some(t => article.content.includes(t));
   const isSurgeOrPulse = ['surge', 'pulse'].includes(article.templateType);
   const extraRiskBlock = (usesRiskTerminology || isSurgeOrPulse) ? RISK_LABEL_DISCLAIMER : '';
-  return { ...article, content: article.content + extraRiskBlock + DISCLAIMER };
+  // 제휴 고지는 이 글에 매칭된 상품 중 실제 URL 이 있는 것이 있을 때만 (CpaDealMaker 결과 기준).
+  const affiliateNotice = buildAffiliateNotice(affiliateProducts);
+  return {
+    ...article,
+    content: article.content + extraRiskBlock + buildDisclaimer(affiliateNotice),
+    _affiliateNoticeAdded: affiliateNotice !== '',
+  };
 }
 
 async function run({ today, previousResults }) {
   logger.log(AGENT_NAME, '🛡️  YMYL 검증 시작');
   const articles = previousResults?.LogicSpecialist?.articles || [];
   if (articles.length === 0) return { summary: '검증할 글 없음', verifiedArticles: [] };
+  // CpaDealMaker(6번)가 앞서 실행되며 글별 매칭 상품(url 포함)을 남긴다. 없으면 제휴 고지 없이 진행.
+  const affiliateMatches = previousResults?.CpaDealMaker?.affiliateMatches || [];
 
   const verifiedArticles = [];
   const rejectedArticles = [];
@@ -192,10 +241,12 @@ async function run({ today, previousResults }) {
     if (result.issues.length > 0) {
       result.issues.forEach(i => logger.warn(AGENT_NAME, `  ⚠️ ${i.detail}`));
     }
-    const withDisclaimer = addDisclaimer(autoFixed);
+    const affiliateProducts = affiliateMatches.find(m => m.articleSlug === article.slug)?.products || [];
+    const withDisclaimer = addDisclaimer(autoFixed, affiliateProducts);
     verifiedArticles.push(withDisclaimer);
     state.saveData(AGENT_NAME, 'processed', `verified_${today}_${article.slug}.json`, withDisclaimer);
-    logger.success(AGENT_NAME, `✅ "${article.keyword}" 통과 + 면책조항`);
+    const noticeTag = withDisclaimer._affiliateNoticeAdded ? ' + 제휴 고지' : ' (제휴 URL 없음 → 고지 생략)';
+    logger.success(AGENT_NAME, `✅ "${article.keyword}" 통과 + 면책조항${noticeTag}`);
   }
 
   logger.success(AGENT_NAME, `통과 ${verifiedArticles.length} / 차단 ${blockedCount}`);
@@ -206,4 +257,4 @@ async function run({ today, previousResults }) {
   };
 }
 
-module.exports = { run, BANNED_PHRASES, autoFixArticle, validateArticle };
+module.exports = { run, BANNED_PHRASES, autoFixArticle, validateArticle, addDisclaimer, buildAffiliateNotice, buildDisclaimer };

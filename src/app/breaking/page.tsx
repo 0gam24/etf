@@ -17,12 +17,13 @@ import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 import { pickLatestTradeDayBreaking, tradeDateOf } from '@/lib/breaking';
 import RecommendBox from '@/components/RecommendBox';
 import FreshnessPill from '@/components/FreshnessPill';
+import { archivedSinceLabel } from '@/components/PulseTodayHero';
 import { buildPageMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = buildPageMetadata({
   title: '오늘의 ETF 속보·거래량 TOP',
   description:
-    '오늘 거래량 상위 3개 ETF가 왜 움직였는지 당일 뉴스와 함께 정리했습니다. 어떤 소식이 수급을 밀었는지, 구성종목과 섹터는 어떻게 연결되는지, 매수 전 확인할 점까지 담았습니다.',
+    '거래일마다 거래량 상위 3개 ETF가 왜 움직였는지 당일 뉴스와 함께 정리한 속보 기록입니다. 어떤 소식이 수급을 밀었는지, 구성종목과 섹터는 어떻게 연결되는지, 매수 전에 확인할 점은 무엇인지 날짜별로 다시 볼 수 있습니다.',
   url: '/breaking',
   keywords: ['ETF 속보', '거래량 TOP ETF', '오늘 ETF 뉴스', 'ETF 급등 속보', '당일 ETF 분석'],
 });
@@ -45,8 +46,10 @@ export default function BreakingLandingPage() {
   const headTradeDate = todayPosts[0] ? tradeDateOf(todayPosts[0]) : '';
   const todayDate = headTradeDate
     ? new Date(`${headTradeDate.slice(0, 4)}-${headTradeDate.slice(4, 6)}-${headTradeDate.slice(6, 8)}T00:00:00+09:00`)
-        .toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short' })
+        .toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short', timeZone: 'Asia/Seoul' })
     : '오늘';
+  // 마지막 속보가 오래됐으면 지난 기록임을 알린다 (새 속보가 올라오면 자동으로 사라짐)
+  const archivedSince = archivedSinceLabel(todayPosts[0]?.meta.date);
 
   return (
     <div className="breaking-landing animate-fade-in">
@@ -61,7 +64,7 @@ export default function BreakingLandingPage() {
         <div className="breaking-hero-inner">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
             <span className="breaking-hero-badge">
-              <Radio size={13} strokeWidth={3} aria-hidden /> ETF 속보 · 매일 오전 9시
+              <Radio size={13} strokeWidth={3} aria-hidden /> {archivedSince ? 'ETF 속보 · 지난 기록' : 'ETF 속보'}
             </span>
             <FreshnessPill isoDate={todayPosts[0]?.meta.date} />
           </div>
@@ -69,12 +72,18 @@ export default function BreakingLandingPage() {
             오늘의 ETF 속보, <span className="breaking-hero-accent">거래량 TOP 3 ETF가 왜 움직였나</span>
           </h1>
           <p className="breaking-hero-sub">
-            오늘 가장 많이 거래된 ETF 3종의 등락 원인·관련 뉴스·구성종목을 한 편에 정리한 ETF 속보.
-            출근 전 5분, 오늘의 ETF 속보 한 페이지로 시장 핵심이 잡힙니다.
+            거래일마다 가장 많이 거래된 ETF 3종의 등락 원인과 관련 뉴스, 구성종목을 한 편에 정리한 ETF 속보입니다.
+            어떤 소식이 수급을 움직였는지 날짜별로 다시 볼 수 있습니다.
           </p>
           <div className="breaking-hero-meta">
             {todayDate} 기준 · 총 {posts.length}편 누적
           </div>
+          {archivedSince && (
+            <p className="etf-dict-status-banner" role="note">
+              ETF 속보는 {archivedSince}까지 발행된 지난 기록입니다.
+              새 글은 매일 아침 <Link href="/guide">ETF 가이드</Link>에 올라옵니다.
+            </p>
+          )}
         </div>
       </section>
 
@@ -85,7 +94,9 @@ export default function BreakingLandingPage() {
         {todayPosts.length > 0 ? (
           <section className="breaking-today">
             <div className="pulse-section-head">
-              <h2 className="pulse-section-title">오늘의 속보 · 거래량 TOP {todayPosts.length}</h2>
+              <h2 className="pulse-section-title">
+                {archivedSince ? `${todayDate} 속보` : '오늘의 속보'} · 거래량 TOP {todayPosts.length}
+              </h2>
               <p className="pulse-section-hint">어떤 뉴스가 어떤 종목을 어떻게 움직였는지 한 편에</p>
             </div>
 
@@ -150,7 +161,7 @@ export default function BreakingLandingPage() {
         ) : (
           <section className="breaking-today">
             <p className="pulse-section-empty">
-              오늘의 속보가 곧 올라옵니다. 매일 아침 9시 전 새 분석이 갱신됩니다.
+              아직 표시할 속보가 없습니다. 새 글은 매일 아침 <Link href="/guide">ETF 가이드</Link>에 올라옵니다.
             </p>
           </section>
         )}
@@ -182,7 +193,7 @@ export default function BreakingLandingPage() {
 
         <NextChapterCta
           label="다음 챕터"
-          copy="출근 전 5분, 오늘 시장의 무게중심을 한 호흡에 잡기"
+          copy="시장의 무게중심이 어디로 옮겨 갔는지 관전포인트로 보기"
           href="/pulse"
         />
 

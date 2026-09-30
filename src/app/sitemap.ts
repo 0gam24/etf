@@ -16,7 +16,7 @@ import { ALL_PERSONAS } from '@/lib/personas-config';
 /**
  * Daily ETF Pulse — 메인 sitemap.xml (홈·카테고리·글·가이드·저자 ~200 URL)
  *
- *   ⚠️ /etf/{slug} 1095종은 별도 분리 → /sitemap-etf.xml (크롤링 효율 + Naver 안정성)
+ *   ⚠️ /etf/{slug} 전 종목은 별도 분리 → /sitemap-etf.xml (크롤링 효율 + Naver 안정성)
  *   sitemap-index.xml에서 둘을 함께 노출.
  *
  *   Google 가이드 (developers.google.com/search/docs/crawling-indexing/sitemaps):
@@ -150,7 +150,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // 종목 사전 인덱스 페이지 (/etf) — 1095 ETF는 별도 sitemap-etf.xml에서 처리
+  // 종목 사전 인덱스 페이지 (/etf) — 개별 ETF 전 종목은 별도 sitemap-etf.xml에서 처리
   const etfData = getLatestEtfData();
   function ymdToDate(ymd?: string): Date | null {
     if (!ymd || ymd.length !== 8) return null;

@@ -1,6 +1,8 @@
 import { getAllPosts } from '@/lib/posts';
 import { GUIDES } from '@/lib/guides';
 import { ALL_PERSONAS } from '@/lib/personas-config';
+// /etf 타이틀의 종목 수 — data/etf-slug-map.json 에서 파생 (숫자 하드코딩 금지, 번들 포함이라 런타임 fs 불필요)
+import etfSlugMap from '../../../data/etf-slug-map.json';
 
 /**
  * Daily ETF Pulse, Image sitemap.
@@ -80,7 +82,7 @@ export async function GET() {
     { path: '/feeds',      title: '구독 · 피드 (RSS·Atom·JSON), Daily ETF Pulse',   category: 'pulse' },
     { path: '/resources',  title: 'ETF 학습 자료실, 도서·도구 큐레이션',           category: 'income' },
     { path: '/compare',    title: 'ETF 1:1 비교 허브, 운용사·섹터·환헤지',         category: 'flow' },
-    { path: '/etf',        title: 'KRX 1095종 ETF 종목 사전',                      category: 'surge' },
+    { path: '/etf',        title: `ETF 종목 사전, KRX 상장 ${etfSlugMap.count > 0 ? `${etfSlugMap.count.toLocaleString('ko-KR')}종` : '전 종목'}`, category: 'surge' },
     { path: '/guide',      title: 'ETF 투자 가이드, 월배당·커버드콜·세금·수수료·입문', category: 'pulse' },
     { path: '/guide/latest', title: '전체 ETF 가이드, 최신 발행순 모아보기',           category: 'pulse' },
     { path: '/today',      title: '오늘의 ETF 종합 리포트, 시그널·분배락·거래량', category: 'pulse' },

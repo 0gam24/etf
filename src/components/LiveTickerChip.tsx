@@ -30,7 +30,7 @@ interface RealtimeResponse {
  *
  *   초기 렌더: 서버사이드 마감 데이터 (있으면)
  *   페이지 진입 후 1회: /api/etf/realtime fetch → 최신 시세 표시
- *   ⚠️ polling 없음 (글 페이지는 1099 × 사용자 수 = 호출량 폭증 위험)
+ *   ⚠️ polling 없음 (글·종목 페이지 수 × 사용자 수 = 호출량 폭증 위험)
  */
 export default function LiveTickerChip({ code, name, slug, initialPrice, initialChangeRate }: Props) {
   const [price, setPrice] = useState<number | undefined>(initialPrice);

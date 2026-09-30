@@ -148,7 +148,7 @@ export default function Header() {
           </Link>
         ))}
         <div style={{ marginTop: 'auto', paddingTop: 'var(--space-6)', borderTop: '1px solid var(--border-color)', color: 'var(--text-dim)', fontSize: 'var(--fs-xs)' }}>
-          매일 오전 9시 전 자동 업데이트
+          매일 아침 새 가이드
         </div>
       </aside>
 

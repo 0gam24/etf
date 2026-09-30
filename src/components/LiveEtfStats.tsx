@@ -46,7 +46,7 @@ interface RealtimeResponse {
  *   본 컴포넌트는 페이지 진입 후 라벨 ("장중 14:32:15 갱신" 등) 만 동적 표시.
  *   실제 시세 polling 은 사용자가 새로고침 시 SSR + edge 캐시 (30s) 로 자동 갱신.
  *
- *   ※ /etf/{slug} 는 1099 페이지라 클라이언트 polling 으로 모든 페이지에 시세 갱신하면
+ *   ※ /etf/{slug} 는 전 종목 페이지라 클라이언트 polling 으로 모든 페이지에 시세 갱신하면
  *      한투 분당 한도 초과 위험. 따라서 라벨 표시 + 사용자 새로고침 기반 갱신 패턴 채택.
  */
 export default function LiveEtfStats({ initial, onLive }: Props) {

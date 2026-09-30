@@ -5,6 +5,9 @@
  *   글 매칭은 frontmatter personas 태그 또는 카테고리 기반 fallback.
  */
 import type { ToolSlug } from '@/components/ToolLinkCard';
+// 종목 수는 숫자를 박지 않고 data/etf-slug-map.json(주간 KRX 신규 ETF 반영)에서 파생한다.
+//   정적 import 라 번들에 포함 → Workers 런타임에서도 fs 없이 값이 유지된다 (llms.txt 등 동적 라우트 대비).
+import etfSlugMap from '../../data/etf-slug-map.json';
 
 export type PersonaSlug =
   | 'retiree'
@@ -34,6 +37,10 @@ export interface PersonaConfig {
   mainSiteCategoryUrl?: string;
 }
 
+/** 'KRX 상장 ETF 1,168종' 형태의 종목 수 문구. 매핑이 비면 숫자 없이 '전 종목'. */
+const ETF_UNIVERSE_LABEL =
+  etfSlugMap.count > 0 ? `${etfSlugMap.count.toLocaleString('ko-KR')}종` : '전 종목';
+
 export const PERSONAS: Record<PersonaSlug, PersonaConfig> = {
   retiree: {
     slug: 'retiree',
@@ -48,7 +55,7 @@ export const PERSONAS: Record<PersonaSlug, PersonaConfig> = {
     categoryPriority: ['income', 'flow'],
     internalLinks: [
       { href: '/income', label: '월배당·커버드콜 인덱스', description: '연간 분배 캘린더 + 안정성 등급 매트릭스' },
-      { href: '/etf', label: '종목 사전', description: '1099 ETF 의 분배 정보·구성종목' },
+      { href: '/etf', label: '종목 사전', description: `KRX 상장 ETF ${ETF_UNIVERSE_LABEL}의 분배 정보·구성종목` },
     ],
     mainSiteCategoryUrl: 'https://smartdatashop.kr/category/tax-finance/',
   },
@@ -66,7 +73,7 @@ export const PERSONAS: Record<PersonaSlug, PersonaConfig> = {
     categoryPriority: ['guide', 'pulse'],
     internalLinks: [
       { href: '/guide/monthly-dividend', label: '월배당 ETF 완전 가이드', description: '첫 ETF 로 추천하는 안정성 S 등급 5종' },
-      { href: '/etf', label: '종목 사전', description: 'KRX 1099 ETF 검색·필터' },
+      { href: '/etf', label: '종목 사전', description: `KRX 상장 ETF ${ETF_UNIVERSE_LABEL} 검색·필터` },
     ],
     mainSiteCategoryUrl: 'https://smartdatashop.kr/category/market/',
   },

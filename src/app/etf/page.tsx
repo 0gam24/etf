@@ -167,7 +167,7 @@ export default function EtfIndexPage() {
         </p>
       </header>
 
-      {/* 검색·필터 (client-side 1095종 facet) */}
+      {/* 검색·필터 (client-side 전 종목 facet) */}
       <EtfIndexSearch
         rows={rows.map(r => ({
           shortcode: r.shortcode,

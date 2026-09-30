@@ -26,7 +26,8 @@ interface Props {
  *   - position: top = hero 직후, bottom = 푸터 직전
  *   - category prop으로 페이지 의도와 매칭 (income·retirement 등)
  *   - production에서 deeplink 없는 상품 자동 숨김
- *   - 박스 하단 면책 한 줄 — 모든 affiliate 노출 페이지에 자동 적용
+ *   - 박스 하단 제휴 고지 한 줄 (쿠팡 파트너스 표준 문구) — 모든 affiliate 노출 페이지에 자동 적용.
+ *     스타일은 .recommend-box-disclaimer (본문 동등 가시성, muted·xs 금지 — CLAUDE.md Affiliate 규칙)
  *
  *   디자인은 푸터 미니 섹션과 동일 톤 (사용자 요청 디자인).
  *   /resources 페이지에는 자기 참조 회피로 사용 안 함.
@@ -108,7 +109,7 @@ export default function RecommendBox({ position, category, limit }: Props) {
       )}
 
       <p className="recommend-box-disclaimer">
-        이 영역은 쿠팡 파트너스 활동의 일환으로, 클릭 후 24시간 내 발생한 구매에 대해 일정 수수료를 받습니다.
+        이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
       </p>
     </section>
   );

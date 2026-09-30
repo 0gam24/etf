@@ -9,12 +9,12 @@ import {
 import { getAllPosts } from '@/lib/posts';
 
 /**
- * Daily ETF Pulse — /etf/{slug} 1095종 전용 sitemap.
+ * Daily ETF Pulse — /etf/{slug} 전 종목 전용 sitemap.
  *
  *   메인 sitemap.ts에서 분리 (크롤링 효율 + Naver Yeti 안정성):
- *     - 1095+ URL을 별도 XML로 분리해 변경 신호 명확화
- *     - data-rich (시세 있는 100종): priority 0.9 daily — 최신성 강조
- *     - minimal (시세 없는 995종): priority 0.6 weekly — 크롤 budget 보호
+ *     - 전 종목 URL을 별도 XML로 분리해 변경 신호 명확화 (종목 수는 data/etf-slug-map.json 기준)
+ *     - data-rich (시세 있는 종목): priority 0.9 daily — 최신성 강조
+ *     - minimal (시세 없는 종목): priority 0.6 weekly — 크롤 budget 보호
  *
  *   Google: priority/changefreq 무시 (lastmod만 사용). Naver Yeti는 사용.
  *   sitemap-index.xml에서 함께 노출.

@@ -170,7 +170,7 @@ export interface EtfSnapshot {
 }
 
 // ─────────────────────────────────────────────────────────────────────
-// KRX 공식 단축코드 매핑 — data/krx-etf-codes.json (1095종)
+// KRX 공식 단축코드 매핑 — data/krx-etf-codes.json (KRX 상장 ETF 전 종목)
 // scripts/fetch-etf-codes.mjs로 갱신. KRX 공공데이터 srtnCd 기준.
 // ─────────────────────────────────────────────────────────────────────
 const KRX_CODES_FILE = path.join(process.cwd(), 'data', 'krx-etf-codes.json');
@@ -396,7 +396,7 @@ export function getEtfsBySector(
 ): RelatedEtfRow[] {
   if (!sector || sector === '기타') return [];
   const upperExclude = excludeCode.toUpperCase();
-  // KRX 1095종 중 같은 섹터 매칭 (시세 sector 또는 이름 기반 분류)
+  // KRX 전 종목 중 같은 섹터 매칭 (시세 sector 또는 이름 기반 분류)
   const krx = loadKrxRegistry();
   const candidates: RelatedEtfRow[] = [];
   for (const e of krx.list) {

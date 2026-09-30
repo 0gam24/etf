@@ -11,7 +11,8 @@ import { GUIDES, getGuidePublishedAt } from '@/lib/guides';
 
 export const SITE_URL = process.env.SITE_URL || 'https://iknowhowinfo.com';
 export const SITE_NAME = 'Daily ETF Pulse';
-const SITE_DESC = '오늘 뜨는 ETF의 진짜 이유. 급등 테마·자금 흐름·월배당 전략을 매일 오전 9시 전에.';
+// 피드 채널 소개 — 매일 아침 올라오는 가이드 기준 (layout.tsx SITE_DESCRIPTION과 같은 문구 유지)
+const SITE_DESC = 'ETF·연금·세금 궁금증에 국세청·금감원·KRX 같은 1차 출처로 답하는 가이드를 매일 아침 새로 발행합니다. 월배당·커버드콜 ETF 고르는 법, ISA·연금저축 절세, KRX 상장 ETF 종목 사전까지 한곳에서 확인하세요.';
 
 // 카테고리별 RSS 노출 대상 (메인 일별 카테고리)
 export const FEED_CATEGORIES = TOP_LEVEL_CATEGORIES.map(slug => ({

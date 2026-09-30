@@ -22,7 +22,7 @@ interface Props {
 }
 
 /**
- * /etf 인덱스 검색·필터 — 1095종 client-side 필터.
+ * /etf 인덱스 검색·필터 — KRX 전 종목 client-side 필터.
  *
  *   - 텍스트 검색 (이름·코드 양쪽)
  *   - 섹터 facet (단일 선택)

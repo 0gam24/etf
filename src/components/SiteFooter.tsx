@@ -44,8 +44,8 @@ export default function SiteFooter() {
             <span>DAILY ETF PULSE</span>
           </Link>
           <p style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)', lineHeight: 1.6 }}>
-            오늘 뜨는 ETF의 진짜 이유를<br />
-            매일 오전 9시 전 업데이트.
+            ETF·연금·세금 궁금증에 1차 출처로 답하는<br />
+            가이드를 매일 아침 새로 올립니다.
           </p>
         </div>
 
@@ -54,6 +54,8 @@ export default function SiteFooter() {
             카테고리
           </h4>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+            {/* 매일 새 글이 올라오는 곳을 맨 위에 둔다 (일일 시황 코너는 지난 기록) */}
+            <Link href="/guide" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>ETF 가이드</Link>
             <Link href="/pulse" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>오늘의 관전포인트</Link>
             <Link href="/surge" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>급등 테마 분석</Link>
             <Link href="/flow" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>자금 흐름 리포트</Link>
@@ -99,7 +101,7 @@ export default function SiteFooter() {
             유의사항
           </h4>
           <p style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-xs)', lineHeight: 1.7 }}>
-            본 사이트의 분석은 KRX 공공데이터를 기반으로 자동 생성되며, 발행·검수 책임은 Daily ETF Pulse 편집팀에 있습니다. 투자 참고 자료이며, 모든 투자 결정의 책임은 투자자 본인에게 있습니다. 출처: KRX · 한국은행 · DART.
+            본 사이트의 글은 KRX·국세청·금융감독원 등 1차 출처 자료를 바탕으로 데이터 기반 AI 분석 에이전트가 작성하며, 발행·검수 책임은 Daily ETF Pulse 편집팀에 있습니다. 투자 참고 자료이며, 모든 투자 결정의 책임은 투자자 본인에게 있습니다. 출처: KRX · 한국은행 · DART.
           </p>
         </div>
       </div>
@@ -132,11 +134,15 @@ export default function SiteFooter() {
               전체 자료실 →
             </Link>
           </div>
+          {/* 제휴 고지 — 공정위 지침: 카드 바로 위, 본문 이상 가시성(text-secondary·0.86rem·옅은 골드 박스). 회색·작은 글씨 금지 */}
+          <p className="affiliate-disclaimer-line">
+            이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+          </p>
           <ul
             style={{
               listStyle: 'none',
               padding: 0,
-              margin: 0,
+              margin: 'var(--space-3) 0 0',
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
               gap: 'var(--space-3)',
@@ -184,9 +190,6 @@ export default function SiteFooter() {
               </li>
             ))}
           </ul>
-          <p style={{ marginTop: 'var(--space-3)', color: 'var(--text-muted)', fontSize: 'var(--fs-xs)', lineHeight: 1.6 }}>
-            이 영역은 쿠팡 파트너스 활동의 일환으로, 클릭 후 24시간 내 발생한 구매에 대해 일정 수수료를 받습니다.
-          </p>
         </div>
       )}
 
