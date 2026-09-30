@@ -4,6 +4,8 @@
 
 이 문서는 **매일 새벽 루틴이 따라야 할 기준**이다. 루틴이 어느 경로로 실행되든(클라우드 루틴·앱 세션 예약·수동) 이 기준은 동일하게 적용된다. 기계로 검사 가능한 항목은 [scripts/validate-guide-structure.mjs](scripts/validate-guide-structure.mjs)가 빌드에서 막는다.
 
+루틴의 실행 절차 본문은 [.claude/routines/04-iknowhowinfo-0600.prompt.md](.claude/routines/04-iknowhowinfo-0600.prompt.md), 보조 도구는 [scripts/routine.cjs](scripts/routine.cjs)에 있다. 클라우드 루틴 설정은 그 파일을 읽으라는 짧은 지시만 담는다. 루틴을 바꿀 때는 대화 세션에서 이 두 파일과 이 문서를 함께 고친다.
+
 v1.0·v1.1의 제목·메타(§4), 본문 골격·문체·정보 밀도·사실과 해석 구분·필수 필드(§5) 규칙은 그대로 유지한다. 검증기의 `SPEC_RULE_FROM = '2026-08-12'` 이후 발행분만 기계 검사 대상이라는 점도 같다. 기존 발행분은 여전히 소급 수정하지 않고, §6이 허용한 두 경우(사실 오류 정정, GSC 8~40위 보강)에만 손댄다.
 
 **v2.0 변경 배경 (2026-09-30 진단)**
@@ -55,7 +57,7 @@ v1.0·v1.1의 제목·메타(§4), 본문 골격·문체·정보 밀도·사실�
 
 ### 1-2. GSC 스냅샷
 
-- 클라우드 루틴은 GSC 인증이 없어 새로 받지 못하고, 커밋된 파일만 읽는다. **운영자가 주 1회(일요일 권장) 로컬에서 `npm run keywords:gsc`를 돌려 `data/keywords/gsc_YYYYMMDD.json`을 커밋한다.**
+- 클라우드 루틴은 GSC 인증이 없어 새로 받지 못하고, 커밋된 파일만 읽는다. **로컬 예약 작업 `iknowhowinfo-weekly-gsc-indexnow`(매주 일요일 20시대, 이 PC 에서 Claude 앱이 켜져 있을 때)가 `npm run keywords:gsc` 로 `data/keywords/gsc_YYYYMMDD.json` 을 커밋하고, 같은 작업이 `push:guides --days=7`·`push:etf` 로 IndexNow 통보까지 한다.** 앱이 꺼져 있던 주는 켜질 때 실행된다.
 - 형식: `{ site, range: { start, end }, total, striking, lowCtr, all: [{ query, page, clicks, impressions, ctr, position }] }`
 - 보강 후보: 가장 최근 파일의 `all`에서 `8 <= position <= 40`이고 `impressions >= 1`인 행. page 단위로 묶어 노출 합이 큰 순서로 본다.
 - 파일 날짜가 실행일보다 14일 넘게 오래됐거나 후보가 0건이면, 그날 월요일 슬롯은 데이터 QA(§2-4)로 대체한다.
