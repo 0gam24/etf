@@ -38,11 +38,21 @@ const nextConfig: NextConfig = {
     // 0. 도메인 표준화 — www → non-www 301 (2026-07-19 실측: www가 200으로 그대로
     //    서빙되어 도메인 중복 상태였음. canonical 태그만으론 링크 신호가 분산됨).
     //    Cloudflare 대시보드 redirect rule이 더 앞단이지만, 코드 레벨에도 명시해 이중 방어.
+    //    2026-09-30 실측: 단일 규칙('/:path*')은 루트에서 path가 비어 Location이
+    //    'https://iknowhowinfo.com/:path*' 글자 그대로 나가 404였다(하위 경로는 정상).
+    //    그래서 루트('/')와 하위 경로('/:path+')를 두 규칙으로 나눈다.
+    const WWW_HOST = [{ type: 'host' as const, value: 'www.iknowhowinfo.com' }];
     const hostCanonical = [
       {
-        source: '/:path*',
-        has: [{ type: 'host' as const, value: 'www.iknowhowinfo.com' }],
-        destination: 'https://iknowhowinfo.com/:path*',
+        source: '/',
+        has: WWW_HOST,
+        destination: 'https://iknowhowinfo.com/',
+        permanent: true,
+      },
+      {
+        source: '/:path+',
+        has: WWW_HOST,
+        destination: 'https://iknowhowinfo.com/:path+',
         permanent: true,
       },
     ];

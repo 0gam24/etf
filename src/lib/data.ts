@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 // etf_portfolios는 CommonJS · 정적 import로 NFT 추적 범위 최소화
 import portfoliosModule from '../../agents/etf_portfolios';
+import { getIncomeRegistry } from './income-server';
+import type { IncomeEtf } from './income';
 
 // 데이터 폴더 경로
 const RAW_DATA_DIR = path.join(process.cwd(), 'data', 'raw');
@@ -96,18 +98,31 @@ export function getEtfHoldings(code: string): EtfHoldings | null {
 
 /**
  * /etf/{ticker} 색인 여부 단일 판정 (SSoT).
- *   generateMetadata(robots)·본문 렌더·sitemap-etf.xml 세 곳이 동일 기준을 쓰도록 통일.
- *   thin content(시세도 구성종목도 관련 분석글도 없는 메타 전용 페이지)는 색인 제외 →
- *   scaled-content/doorway 신호 차단(애드센스 승인·사이트 품질 보호).
- *   13에이전트 심의(2026-06-01) 만장일치 옵션 B: 시세 OR 구성종목 OR 관련글 ≥1 이면 색인.
- *   순수 함수 — 순환참조 회피를 위해 호출자가 3개 신호를 boolean/개수로 전달.
+ *   generateMetadata(robots)와 sitemap-etf.xml이 getEtfPageFacts()를 거쳐 이 함수 하나로 판정한다.
+ *
+ *   2026-09-30 재설계:
+ *   - 이전 규칙(시세 OR 구성종목 OR 관련글)은 "그날 수집된 시세 파일에 있느냐"에 묶여 있어서,
+ *     2026-06-01 수집 상한 버그(100종만 수신)와 맞물려 약 1,009쪽이 noindex로 떨어졌다(08-12 해소).
+ *     → 시세는 "그 종목이 들어 있는 가장 최근 스냅샷"(나이 무관)에서 찾는다. 수집이 며칠 실패하거나
+ *       한 번 일부만 받아도 직전 스냅샷을 쓰므로 수집 실패가 noindex로 번지지 않는다.
+ *   - 반대로 가격 숫자만 다른 페이지(고유 수치가 가격뿐)는 색인하지 않는다.
+ *     가격 외 고유 수치 = NAV로 계산한 괴리율(이상치 제외) 또는 구성종목 또는 분배 정보.
+ *   - 관련 분석글 수는 더 이상 쓰지 않는다(글이 붙어도 종목 데이터가 비면 빈 페이지다).
  */
 export function shouldIndexEtf(args: {
+  /** data/etf-slug-map.json에 정식 슬러그가 있는가 */
+  hasSlug: boolean;
+  /** 가장 최근 스냅샷(나이 무관)에 시세가 있는가 */
   hasPrice: boolean;
+  /** NAV로 계산한 괴리율이 표시 가능한가 (|괴리율| ≤ NAV_GAP_MAX_ABS) */
+  hasNavGap: boolean;
+  /** 구성종목 데이터 1건 이상 */
   hasHoldings: boolean;
-  relatedPostCount: number;
+  /** 분배 정보(dividend-registry) 보유 */
+  hasIncome: boolean;
 }): boolean {
-  return args.hasPrice || args.hasHoldings || args.relatedPostCount > 0;
+  if (!args.hasSlug || !args.hasPrice) return false;
+  return args.hasNavGap || args.hasHoldings || args.hasIncome;
 }
 
 interface PortfolioEntry {
@@ -153,20 +168,29 @@ function getEtfHoldingsFromPortfolios(code: string): EtfHoldings | null {
  *   파일명 규칙: etf_prices_YYYYMMDD.json
  *   파이프라인이 매일 적재하면 자동으로 시계열이 늘어납니다.
  */
+export interface EtfPriceRow {
+  code: string;
+  name: string;
+  price: number;
+  change: number;
+  changeRate: number;
+  volume: number;
+  tradeAmount?: number;
+  marketCap?: number;
+  /** 기준일 순자산가치(NAV). data.go.kr 증권상품시세 응답의 nav */
+  nav?: number;
+  openPrice?: number;
+  highPrice?: number;
+  lowPrice?: number;
+  sector?: string;
+  /** 시세 기준일 YYYYMMDD (스냅샷 baseDate와 같다) */
+  date?: string;
+}
+
 export interface EtfSnapshot {
   baseDate: string;
   fetchedAt: string;
-  etfList: {
-    code: string;
-    name: string;
-    price: number;
-    change: number;
-    changeRate: number;
-    volume: number;
-    tradeAmount?: number;
-    marketCap?: number;
-    sector?: string;
-  }[];
+  etfList: EtfPriceRow[];
 }
 
 // ─────────────────────────────────────────────────────────────────────
@@ -448,24 +472,31 @@ export function getKrxEtfMeta(input: string): KrxEtfCode | null {
   return loadKrxRegistry().byShortcode[r.shortcode] || null;
 }
 
+/** KRX 상장 종목 목록(data/krx-etf-codes.json)의 기준일 YYYY-MM-DD. 시세가 없는 페이지의 데이터 날짜로 쓴다. */
+export function getKrxRegistryBaseDate(): string | null {
+  return ymdToIsoDate(loadKrxRegistry().baseDate);
+}
+
 /**
  * ETF 이름에서 운용사(브랜드) 추출 — 첫 단어가 거의 항상 브랜드.
  *   예: 'KODEX 200' → 'KODEX', 'TIGER 미국나스닥100' → 'TIGER', 'SOL 조선TOP3' → 'SOL'
  */
+// 2026-09-30 운용사 표기 정정: KODEX(삼성)·KOSEF(키움)·TIME(타임폴리오)·KoAct(삼성액티브)가
+//   다른 운용사로 잘못 적혀 있었고, 이 라벨이 종목 사전 페이지의 운용사 카드와 meta description에 그대로 노출됐다.
 const ISSUER_LABELS: Record<string, string> = {
-  KODEX: 'KODEX (미래에셋)',
-  TIGER: 'TIGER (미래에셋)',
+  KODEX: 'KODEX (삼성자산운용)',
+  TIGER: 'TIGER (미래에셋자산운용)',
   SOL: 'SOL (신한자산운용)',
   ACE: 'ACE (한국투자신탁운용)',
   PLUS: 'PLUS (한화자산운용)',
   RISE: 'RISE (KB자산운용)',
   HANARO: 'HANARO (NH아문디)',
-  KOSEF: 'KOSEF (삼성자산운용)',
+  KOSEF: 'KOSEF (키움투자자산운용)',
   HK: 'HK (흥국자산운용)',
   KIWOOM: 'KIWOOM (키움투자자산운용)',
-  TIME: 'TIME (한화자산운용)',
+  TIME: 'TIME (타임폴리오자산운용)',
   '1Q': '1Q (하나자산운용)',
-  KoAct: 'KoAct (한국투자신탁운용)',
+  KoAct: 'KoAct (삼성액티브자산운용)',
 };
 
 export function extractIssuerLabel(etfName: string): string | null {
@@ -483,11 +514,12 @@ const ISSUER_OFFICIAL_URL: Record<string, string> = {
   PLUS: 'https://www.hanwhaplusetf.com',
   RISE: 'https://www.kbam.co.kr/etf',
   HANARO: 'https://www.amundi.co.kr',
-  KOSEF: 'https://www.samsungfund.com',
+  // KOSEF는 키움투자자산운용 브랜드라 KIWOOM과 같은 곳으로 보낸다(이전: 삼성 사이트로 잘못 연결).
+  KOSEF: 'https://www.kiwoomam.com',
   HK: 'https://www.heungkukfund.com',
   KIWOOM: 'https://www.kiwoomam.com',
-  TIME: 'https://www.hanwhaplusetf.com',
-  KoAct: 'https://www.kiminvestment.com',
+  // TIME(타임폴리오)·KoAct(삼성액티브)는 다른 운용사 사이트로 잘못 연결돼 있어 뺐다.
+  //   정확한 공식 주소를 확인한 뒤에만 다시 넣는다. 없으면 링크 자체를 렌더하지 않는다.
 };
 
 export function getIssuerOfficialUrl(etfName: string): string | null {
@@ -539,4 +571,257 @@ export function getRecentEtfSnapshots(limit = 20): EtfSnapshot[] {
     } catch { /* silent: 손상된 파일 스킵 */ }
   }
   return snapshots;
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// 종목 사전(/etf/[ticker]) 전용: 종목별 최신 시세 · 스냅샷 나이 · 괴리율 · 색인 판정
+//   page.tsx(generateMetadata·본문)와 sitemap-etf.xml이 getEtfPageFacts() 하나를 공유한다.
+// ─────────────────────────────────────────────────────────────────────
+
+/** 종목별 시세를 찾을 때 거슬러 올라가는 스냅샷 파일 수 상한 (빌드 시간 보호) */
+const PRICE_LOOKBACK_FILES = 30;
+/** 시세 기준일이 이 일수(달력 기준)를 넘기면 오래된 시세로 표기한다 */
+export const ETF_STALE_DAYS = 7;
+/** |괴리율|이 이 값(%)을 넘으면 데이터 이상일 수 있어 괴리율·NAV 표시를 보류한다 */
+export const NAV_GAP_MAX_ABS = 10;
+
+let _snapshotFiles: string[] | null = null;
+const _snapshotIndex = new Map<string, { baseDate: string; byCode: Map<string, EtfPriceRow> } | null>();
+
+/** etf_prices_*.json 파일명 목록 (최신순). getLatestEtfData와 같은 정렬 기준. */
+function listEtfSnapshotFiles(): string[] {
+  if (_snapshotFiles) return _snapshotFiles;
+  if (!fs.existsSync(RAW_DATA_DIR)) {
+    _snapshotFiles = [];
+    return _snapshotFiles;
+  }
+  _snapshotFiles = fs.readdirSync(RAW_DATA_DIR)
+    .filter(f => f.startsWith('etf_prices_') && f.endsWith('.json'))
+    .sort()
+    .reverse();
+  return _snapshotFiles;
+}
+
+/** 스냅샷 1개를 코드 색인으로 읽는다. 손상 파일은 null (다음 파일로 넘어간다). */
+function readSnapshotIndex(file: string) {
+  if (_snapshotIndex.has(file)) return _snapshotIndex.get(file) ?? null;
+  let out: { baseDate: string; byCode: Map<string, EtfPriceRow> } | null = null;
+  try {
+    const parsed = JSON.parse(fs.readFileSync(path.join(RAW_DATA_DIR, file), 'utf-8'));
+    const d = parsed?.data as EtfSnapshot | undefined;
+    if (d && Array.isArray(d.etfList)) {
+      const byCode = new Map<string, EtfPriceRow>();
+      for (const e of d.etfList) {
+        if (e && typeof e.code === 'string') byCode.set(e.code.toUpperCase(), e);
+      }
+      out = { baseDate: d.baseDate || '', byCode };
+    }
+  } catch { /* 손상 파일은 건너뛴다 */ }
+  _snapshotIndex.set(file, out);
+  return out;
+}
+
+export interface EtfPriceRecord {
+  etf: EtfPriceRow;
+  /** 이 시세가 들어 있던 스냅샷의 기준일 YYYYMMDD */
+  baseDate: string;
+  /** 가장 최신 스냅샷에서 찾았는가 (false면 그 종목이 있는 직전 스냅샷을 쓴 것) */
+  fromLatestSnapshot: boolean;
+}
+
+/**
+ * 종목 1개의 시세를 "그 종목이 들어 있는 가장 최근 스냅샷"에서 찾는다 (나이 무관).
+ *   수집이 며칠 실패하거나 일부 종목만 받은 날이 있어도 직전 시세를 쓰므로
+ *   페이지가 빈 상태·noindex로 떨어지지 않는다. 오래된 시세는 화면에 기준일을 그대로 밝힌다.
+ *   최신 파일보다 이전 파일로 거슬러 가는 것은 현재 KRX 상장 목록에 있는 종목만 허용한다
+ *   (상장폐지 종목이 옛 시세로 되살아나지 않게).
+ */
+export function getEtfPriceRecord(code: string): EtfPriceRecord | null {
+  if (!code) return null;
+  const resolved = resolveEtfTicker(code);
+  const candidates = [resolved.shortcode, resolved.issueCode, code]
+    .filter((x): x is string => Boolean(x))
+    .map(c => c.toUpperCase());
+  const listed = !!resolved.shortcode;
+  const files = listEtfSnapshotFiles().slice(0, PRICE_LOOKBACK_FILES);
+  let seenValid = false;
+  for (const file of files) {
+    const snap = readSnapshotIndex(file);
+    if (!snap) continue;
+    const isLatest = !seenValid;
+    if (!isLatest && !listed) break;
+    seenValid = true;
+    for (const c of candidates) {
+      const row = snap.byCode.get(c);
+      if (row && Number.isFinite(row.price) && row.price > 0) {
+        return { etf: row, baseDate: snap.baseDate || row.date || '', fromLatestSnapshot: isLatest };
+      }
+    }
+  }
+  return null;
+}
+
+/** 'YYYYMMDD' · 'YYYY-MM-DD' · 'YYYYMMDDT…' → 'YYYY-MM-DD' (형식이 아니면 null) */
+export function ymdToIsoDate(ymd?: string | null): string | null {
+  if (!ymd) return null;
+  const digits = ymd.replace(/[^0-9]/g, '').slice(0, 8);
+  if (digits.length !== 8) return null;
+  return `${digits.slice(0, 4)}-${digits.slice(4, 6)}-${digits.slice(6, 8)}`;
+}
+
+export interface EtfSnapshotAge {
+  /** 시세 기준일 YYYYMMDD */
+  baseDate: string;
+  /** 시세 기준일 YYYY-MM-DD */
+  isoDate: string;
+  /** KST 오늘 - 기준일 (달력 일수) */
+  calendarDays: number;
+  /** 주말만 뺀 대략적 영업일 수 (공휴일은 반영하지 않는다) */
+  businessDays: number;
+  /** calendarDays > ETF_STALE_DAYS */
+  isStale: boolean;
+}
+
+/**
+ * 시세 기준일이 오늘(KST)로부터 얼마나 지났는지.
+ *   페이지는 빌드 시점에 구워지므로 now는 빌드 시각이다(매 배포마다 다시 계산된다).
+ */
+export function getEtfSnapshotAge(baseDate: string | undefined | null, now: Date = new Date()): EtfSnapshotAge | null {
+  const iso = ymdToIsoDate(baseDate);
+  if (!iso) return null;
+  const [y, m, d] = iso.split('-').map(Number);
+  const base = Date.UTC(y, m - 1, d);
+  if (!Number.isFinite(base)) return null;
+  const kst = new Date(now.getTime() + 9 * 3600 * 1000);
+  const today = Date.UTC(kst.getUTCFullYear(), kst.getUTCMonth(), kst.getUTCDate());
+  const calendarDays = Math.max(0, Math.round((today - base) / 86400000));
+  let businessDays = 0;
+  for (let i = 1; i <= Math.min(calendarDays, 400); i++) {
+    const dow = new Date(base + i * 86400000).getUTCDay();
+    if (dow !== 0 && dow !== 6) businessDays++;
+  }
+  return {
+    baseDate: iso.split('-').join(''),
+    isoDate: iso,
+    calendarDays,
+    businessDays,
+    isStale: calendarDays > ETF_STALE_DAYS,
+  };
+}
+
+/** 화면 표기용. 7일 이내면 "{날짜} 종가 기준", 넘기면 "최근 시세 기준일 {날짜}"(오래됐음을 숨기지 않는다). */
+export function formatEtfPriceAsOf(age: EtfSnapshotAge): string {
+  return age.isStale ? `최근 시세 기준일 ${age.isoDate}` : `${age.isoDate} 종가 기준`;
+}
+
+/** 가장 최신 ETF 스냅샷의 나이 (/etf 목록 페이지 등 전체 기준일 표기용) */
+export function getLatestEtfSnapshotAge(now?: Date): EtfSnapshotAge | null {
+  for (const file of listEtfSnapshotFiles()) {
+    const snap = readSnapshotIndex(file);
+    if (snap) return getEtfSnapshotAge(snap.baseDate, now);
+  }
+  return null;
+}
+
+export interface EtfNavGap {
+  /** 기준일 NAV (원) */
+  nav: number;
+  /** 괴리율 % = (종가 - NAV) / NAV × 100, 소수 둘째 자리 */
+  gapPct: number;
+  /** 이 NAV·종가 쌍의 기준일 YYYY-MM-DD (시세 기준일과 다를 수 있다) */
+  isoDate: string;
+}
+
+function hasValidNav(row: { nav?: number } | null | undefined): boolean {
+  return !!row && typeof row.nav === 'number' && Number.isFinite(row.nav) && row.nav > 0;
+}
+
+/**
+ * 같은 행(같은 날)의 종가와 NAV로 괴리율을 계산한다.
+ *   NAV가 있고 |괴리율| ≤ NAV_GAP_MAX_ABS 일 때만 값을 준다. 그 밖(값 없음·이상치)은 null → 행을 렌더하지 않는다.
+ */
+export function getEtfNavGap(
+  row: { price: number; nav?: number } | null | undefined,
+  baseDate?: string,
+): EtfNavGap | null {
+  if (!row || !hasValidNav(row)) return null;
+  const { price } = row;
+  const nav = row.nav as number;
+  if (typeof price !== 'number' || !Number.isFinite(price) || price <= 0) return null;
+  const gap = ((price - nav) / nav) * 100;
+  if (!Number.isFinite(gap) || Math.abs(gap) > NAV_GAP_MAX_ABS) return null;
+  return { nav, gapPct: Number(gap.toFixed(2)) || 0, isoDate: ymdToIsoDate(baseDate) || '' };
+}
+
+/**
+ * 종목의 괴리율을 "NAV가 들어 있는 가장 최근 스냅샷"에서 구한다 (시세와 같은 원칙).
+ *   2026-09-30 스냅샷처럼 응답에 nav 필드가 통째로 빠진 날이 있다. 그날 하루의 수집 누락 때문에
+ *   전 종목이 "가격만 있는 페이지"로 떨어져 noindex 되지 않도록, 직전 스냅샷의 같은 날 종가·NAV 쌍으로 계산한다.
+ *   다른 날의 NAV와 오늘 종가를 섞지 않는다. 기준일(isoDate)을 함께 돌려주어 화면에 그대로 밝힌다.
+ *   가장 최근 NAV가 이상치(|괴리율| > NAV_GAP_MAX_ABS)면 더 옛 값을 찾지 않고 null.
+ */
+export function getEtfNavGapRecord(code: string): EtfNavGap | null {
+  if (!code) return null;
+  const resolved = resolveEtfTicker(code);
+  const candidates = [resolved.shortcode, resolved.issueCode, code]
+    .filter((x): x is string => Boolean(x))
+    .map(c => c.toUpperCase());
+  for (const file of listEtfSnapshotFiles().slice(0, PRICE_LOOKBACK_FILES)) {
+    const snap = readSnapshotIndex(file);
+    if (!snap) continue;
+    for (const c of candidates) {
+      const row = snap.byCode.get(c);
+      if (row && hasValidNav(row)) return getEtfNavGap(row, snap.baseDate || row.date);
+    }
+  }
+  return null;
+}
+
+export interface EtfPageFacts {
+  /** 대문자 단축코드 */
+  code: string;
+  hasSlug: boolean;
+  price: EtfPriceRecord | null;
+  age: EtfSnapshotAge | null;
+  navGap: EtfNavGap | null;
+  /** 구성종목 1건 이상일 때만 */
+  holdings: EtfHoldings | null;
+  income: IncomeEtf | null;
+  /** 분배 정보 기준일 YYYY-MM-DD (dividend-registry _meta.asOf) */
+  incomeAsOf: string | null;
+  /** max(시세 기준일, 분배 기준일) YYYY-MM-DD. 실제 데이터 날짜만 쓴다 (없으면 null) */
+  lastModified: string | null;
+  indexable: boolean;
+}
+
+/**
+ * 종목 사전 1쪽이 실제로 가진 데이터 + 색인 여부.
+ *   generateMetadata(robots·제목·설명)와 sitemap-etf.xml(포함 여부·lastmod)이 같은 결과를 쓴다.
+ */
+export function getEtfPageFacts(code: string, now?: Date): EtfPageFacts {
+  const upper = (code || '').toUpperCase();
+  const hasSlug = !!upper && !!loadSlugRegistry().byCode[upper];
+  const price = upper ? getEtfPriceRecord(upper) : null;
+  const age = price ? getEtfSnapshotAge(price.baseDate, now) : null;
+  // 시세 행에 NAV가 있으면 같은 날 쌍으로, 없으면 NAV가 있는 가장 최근 스냅샷의 같은 날 쌍으로 (기준일 표기)
+  const navGap = !price
+    ? null
+    : hasValidNav(price.etf)
+      ? getEtfNavGap(price.etf, price.baseDate)
+      : getEtfNavGapRecord(upper);
+  const h = upper ? getEtfHoldings(upper) : null;
+  const holdings = h && Array.isArray(h.holdings) && h.holdings.length > 0 ? h : null;
+  const registry = upper ? getIncomeRegistry() : null;
+  const income = registry?.etfs.find(e => (e.code || '').toUpperCase() === upper) || null;
+  const incomeAsOf = income ? ymdToIsoDate(registry?.asOf) : null;
+  const dates = [age?.isoDate, incomeAsOf].filter((x): x is string => !!x).sort();
+  const lastModified = dates.length ? dates[dates.length - 1] : null;
+  const indexable = shouldIndexEtf({
+    hasSlug,
+    hasPrice: !!price,
+    hasNavGap: !!navGap,
+    hasHoldings: !!holdings,
+    hasIncome: !!income,
+  });
+  return { code: upper, hasSlug, price, age, navGap, holdings, income, incomeAsOf, lastModified, indexable };
 }

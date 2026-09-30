@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Zap, BookOpen } from 'lucide-react';
 import { getAllProducts } from '@/lib/products';
-import MainBackrefBox from './MainBackrefBox';
 
 export default function SiteFooter() {
   // 추천 자료 미니 — 상위 4개 (이미 visible 필터됨)
@@ -106,16 +105,8 @@ export default function SiteFooter() {
         </div>
       </div>
 
-      {/* smartdatashop network 자매 backref — 메인(1차 출처 데이터 저널)으로 자연 funnel */}
-      <div
-        style={{
-          maxWidth: '80rem',
-          margin: 'var(--space-10) auto 0',
-          padding: '0 var(--space-6)',
-        }}
-      >
-        <MainBackrefBox variant="footer" />
-      </div>
+      {/* 자매 사이트(smartdatashop.kr) 백링크 상자는 2026-09-30 제거. 모든 페이지 푸터에
+          붙는 전역 자매 링크는 형제 사이트가 AdSense 거절 원인(doorway 네트워크)으로 기록한 패턴. */}
 
       {/* 추천 자료 미니 섹션 — 사이트 전체 푸터에 가벼운 큐레이션 */}
       {featured.length > 0 && (

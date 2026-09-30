@@ -17,7 +17,6 @@ import HoldingsPanel from '@/components/HoldingsPanel';
 import PostRelatedEtfs from '@/components/PostRelatedEtfs';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
-import MainBackrefBox, { getBackrefUrlForCategory } from '@/components/MainBackrefBox';
 import LiveTickerChip from '@/components/LiveTickerChip';
 import PublishedVsLive from '@/components/PublishedVsLive';
 import AnswerBox from '@/components/AnswerBox';
@@ -302,7 +301,7 @@ export default async function PostPage({ params }: PageProps) {
               <span className="post-v2-meta-author">
                 <span className="post-v2-avatar">D</span>
                 <span>Daily ETF Pulse 편집팀</span>
-                <AiAgentDisclosure variant="compact" />
+                <AiAgentDisclosure variant="compact" kind="data" />
               </span>
               <span>{date}</span>
               <span>· {post.readingTime}분 읽기</span>
@@ -437,12 +436,10 @@ export default async function PostPage({ params }: PageProps) {
 
           <HelpfulFeedback contentId={`${category}/${slug}`} category={category} />
 
-          <MainBackrefBox
-            variant="inline"
-            mainCategoryUrl={getBackrefUrlForCategory(category)}
-          />
+          {/* 자매 사이트(smartdatashop.kr) 백링크 상자는 2026-09-30 제거.
+              사이트 전역 자매 링크 네트워크가 형제 사이트의 AdSense 거절 원인으로 기록됨. */}
 
-          <AiAgentDisclosure variant="inline" />
+          <AiAgentDisclosure variant="inline" kind="data" />
 
           <RecommendBox position="bottom" category={postCategoryToProductCategory(category)} />
         </article>

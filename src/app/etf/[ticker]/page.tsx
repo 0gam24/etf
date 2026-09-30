@@ -3,27 +3,25 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
   getLatestEtfData,
-  getEtfHoldings,
-  findEtfByAnyCode,
   getAllEtfSlugs,
   resolveEtfTickerOrSlug,
   getKrxEtfMeta,
+  getKrxRegistryBaseDate,
   extractIssuerLabel,
   classifyEtfSector,
   getEtfsBySector,
   getEtfsByIssuer,
   getIssuerOfficialUrl,
-  shouldIndexEtf,
+  getEtfPageFacts,
+  formatEtfPriceAsOf,
 } from '@/lib/data';
 import { getInvestmentPoints } from '@/lib/etf-investment-points';
-import { getIncomeRegistry } from '@/lib/income-server';
 import { getAllPosts } from '@/lib/posts';
 import { getGuidesForSector } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import HoldingsPanel from '@/components/HoldingsPanel';
 import RecommendBox from '@/components/RecommendBox';
 import AnswerBox from '@/components/AnswerBox';
-import MainBackrefBox, { getBackrefUrlForCategory } from '@/components/MainBackrefBox';
 import LiveEtfStats from '@/components/LiveEtfStats';
 import {
   buildFinancialProductSchema,
@@ -59,6 +57,24 @@ const FREQ_LABEL: Record<string, string> = {
   annual: '연',
 };
 
+/** meta description용 지급 주기 문구 ("분배금은 {x} 지급됩니다") */
+const FREQ_DESC: Record<string, string> = {
+  monthly: '매월',
+  quarterly: '분기마다',
+  'semi-annual': '반기마다',
+  annual: '1년에 한 번',
+};
+
+/** 부호 붙은 퍼센트 (+1.23% / -0.45% / 0.00%) */
+function signedPct(v: number): string {
+  return `${v > 0 ? '+' : ''}${v.toFixed(2)}%`;
+}
+
+/** NAV 표기: 소수점이 있으면 둘째 자리까지 */
+function formatNav(v: number): string {
+  return v.toLocaleString('ko-KR', { maximumFractionDigits: 2 });
+}
+
 export async function generateStaticParams() {
   // SEO 친화 슬러그(이름 기반) 전 종목 prerender (종목 수는 data/etf-slug-map.json 기준).
   //   - 코드 기반 URL(/etf/0080g0)은 next.config.ts redirects로 슬러그 URL로 301 이동.
@@ -69,9 +85,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { ticker } = await params;
   const resolved = resolveEtfTickerOrSlug(ticker);
   const code = resolved.shortcode;
-  const etfData = getLatestEtfData();
-  const list = (etfData?.etfList || []) as RawEtf[];
-  const etf = code ? findEtfByAnyCode(list, code) : null;
+  // 시세·괴리율·구성종목·분배·색인 판정을 sitemap-etf.xml과 같은 함수에서 받는다 (SSoT).
+  const facts = code ? getEtfPageFacts(code) : null;
+  const etf = facts?.price?.etf ?? null;
   const krxMeta = code ? getKrxEtfMeta(code) : null;
 
   // KRX 매핑조차 없으면 진짜 404
@@ -84,7 +100,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const sector = etf?.sector && etf.sector !== '기타' ? etf.sector : undefined;
 
   // 제목·설명이 "실제로 이 페이지에 있는 것"만 약속하도록, 데이터 보유 여부를 먼저 확정한다.
-  const holdingsForMeta = code ? getEtfHoldings(code)?.holdings || [] : [];
+  const holdingsForMeta = facts?.holdings?.holdings || [];
+  const income = facts?.income ?? null;
+  const navGap = facts?.navGap ?? null;
+  const age = facts?.age ?? null;
+  // 시세 기준일이 ETF_STALE_DAYS를 넘기면 "현재가"라고 부르지 않는다(지킬 수 없는 약속).
+  const isFresh = !!age && !age.isStale;
+  const priceWord = isFresh ? '현재가' : '종가';
 
   // 1A. Title — CTR 수술 (2026-07-19, GSC 실측 기반):
   //   실제 유입 쿼리 문구를 반영 — "{ETF명} etf 구성종목"(6~10위 다수),
@@ -101,109 +123,108 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   //   나머지 1,146쪽은 제목이 없는 것을 약속하는 상태라 클릭 후 이탈을 부르고,
   //   대량 페이지에서 반복되면 doorway 신호로 읽힐 수 있다.
   //   → 실제 보유한 데이터로만 제목을 만든다.
+  //
+  //   2026-09-30 재정비: 과거 구글 노출의 92~94%가 "상품명·코드 + 구성종목·분배금·종목코드" 쿼리였다.
+  //   앞부분은 항상 "{ETF명}({코드}) ETF", 뒤에는 페이지에 실제로 있는 속성만 붙인다.
+  //     구성종목(데이터 있을 때) · 분배금(분배 정보 있을 때) · 현재가(시세 있을 때, 오래된 시세면 "종가")
+  //     · 종목코드(항상) · 괴리율(NAV로 계산 가능할 때)
+  //   60자를 넘으면 검색 수요가 적은 속성부터 뺀다: 괴리율 → 현재가 → 종목코드 → 분배금 → 구성종목.
   const hasHoldingsData = holdingsForMeta.length > 0;
-  const hasIncomeData = !!(code && getIncomeRegistry()?.etfs.some(e => e.code === code));
-  const titleTail = hasHoldingsData && hasIncomeData ? '구성종목·분배금·현재가'
-    : hasHoldingsData ? '구성종목·현재가·거래량'
-    : hasIncomeData ? '분배금·현재가·거래량'
-    : etf ? '현재가·거래량·투자 포인트'
-    : '종목코드·운용사·투자 포인트';
-  const rawTitle = `${name}(${displayCode}) ETF ${titleTail}`;
-  // 아주 긴 ETF명(최대 30자)은 이름만으로도 한계를 넘으므로 꼬리를 한 번 더 축약
-  const titleTailShort = hasHoldingsData ? '구성종목·현재가' : hasIncomeData ? '분배금·현재가' : '현재가·거래량';
-  const title = rawTitle.length > 60
-    ? `${name}(${displayCode}) ETF ${titleTailShort}`
-    : rawTitle;
-
-  // 1D. Meta — 첫 100자에 키워드 압축 (Naver snippet + Google CTR 최적화)
-  //   "종목코드"·"krx" 문구를 앞에 배치 — "krx: {코드}"·"{ETF명} 종목코드" 쿼리
-  //   (GSC 노출 1·4위)가 스니펫에서 정답을 즉시 확인하도록.
-  //   2026-08-11 수술 3건 (prerender HTML 실측 기반):
-  //     ① 긴 줄표(—) 제거 — 시청자 가시 텍스트 금지 규칙(CLAUDE.md "AI 티 제거"). 1147종 전부 위반이었다.
-  //     ② 선두 이모지 제거 — 구글이 스니펫에서 이모지를 자주 제거해 첫 글자가 낭비됐다.
-  //     ③ 길이 보강 — 평균 75자로 목표(120~155자)에 한참 못 미쳐 스니펫 공간을 버리고 있었다.
-  //        구성종목을 3개로 늘려 롱테일("라인메탈 ETF" 류) 매칭 면적도 함께 확대.
-  const sectorClause = sector ? ` ${sector} 섹터` : '';
-  // 구성종목 데이터가 없는 종목(1147종 중 다수)은 넣을 재료가 적어 설명이 107자에서 멈춘다.
-  // 운용사를 문장에 넣어 "{운용사} ETF" 검색도 함께 받고 목표 길이를 채운다.
+  const hasIncomeData = !!income;
   const issuerForMeta = extractIssuerLabel(name);
-  const issuerClause = issuerForMeta ? ` 운용사는 ${issuerForMeta}입니다.` : '';
+  const TITLE_MAX = 60;
+  const titleHead = `${name}(${displayCode}) ETF`;
+  // dropOrder가 작을수록 먼저 뺀다
+  const titleAttrs: Array<{ label: string; dropOrder: number }> = [];
+  if (hasHoldingsData) titleAttrs.push({ label: '구성종목', dropOrder: 5 });
+  if (hasIncomeData) titleAttrs.push({ label: '분배금', dropOrder: 4 });
+  if (etf) titleAttrs.push({ label: priceWord, dropOrder: 2 });
+  titleAttrs.push({ label: '종목코드', dropOrder: 3 });
+  if (navGap) titleAttrs.push({ label: '괴리율', dropOrder: 1 });
+  // 시세가 없는 종목(색인 제외)은 운용사 카드가 있으면 운용사를 붙인다
+  if (!etf && issuerForMeta) titleAttrs.push({ label: '운용사', dropOrder: 0 });
+  const composeTitle = (attrs: typeof titleAttrs) =>
+    attrs.length ? `${titleHead} ${attrs.map(a => a.label).join('·')}` : titleHead;
+  let keptAttrs = [...titleAttrs];
+  while (keptAttrs.length > 0 && composeTitle(keptAttrs).length > TITLE_MAX) {
+    const drop = keptAttrs.reduce((a, b) => (b.dropOrder < a.dropOrder ? b : a));
+    keptAttrs = keptAttrs.filter(a => a !== drop);
+  }
+  const title = composeTitle(keptAttrs);
 
-  // 구성종목 이름 길이가 종목마다 크게 달라(해외 ETF는 영문 사명이 길다) 고정 개수로는
-  // 120~155자 목표를 못 맞춘다. 목표 상한에 들어가는 만큼만 이름을 채운다.
-  //   구성종목 이름은 롱테일 검색("라인메탈 ETF" 류)을 직접 물어오므로 꼬리 문구보다 우선한다.
-  //   구성종목이 있으면 짧은 꼬리를, 없으면 긴 꼬리를 써서 어느 쪽이든 120~155자에 안착시킨다.
+  // 1D. Meta: 첫 100자에 기준일과(있으면) 분배 주기를 넣는다.
+  //   "종목코드" 문구를 앞에 배치: "krx: {코드}"·"{ETF명} 종목코드" 쿼리(GSC 노출 상위)가
+  //   스니펫에서 정답을 바로 확인하도록.
+  //   2026-08-11 수술(긴 줄표·선두 이모지 제거, 120~155자 확보)은 유지.
+  //   2026-09-30: "매일 갱신" 약속 제거(시세가 멈춘 날에도 그렇게 적혀 있었다), 시세 문장은 기준일 표기,
+  //   구성종목 "TOP 10" 문구 제거(실제 보유 데이터는 대표 종목 일부뿐), 괴리율·분배 주기 추가.
   const DESC_MAX = 155;
-  const head = etf
-    ? `${name} 종목코드 ${displayCode}(KRX)${sectorClause}. 현재가 ${etf.price.toLocaleString()}원, 전일대비 ${etf.changeRate >= 0 ? '+' : ''}${etf.changeRate.toFixed(2)}%.`
-    : `${name} 종목코드 ${displayCode}(KRX)${sectorClause}에 상장된 ETF입니다.`;
-  // 꼬리도 실제 보유 데이터에 맞춘다. 분배 정보는 10종에만 있는데 전 종목이 약속하고 있었다.
-  const shortTail = hasIncomeData
-    ? ' 분배금 지급주기·분배락일·투자 포인트를 정리했습니다.'
-    : ' 거래량·시가총액과 섹터 투자 포인트를 정리했습니다.';
-  const longTail = hasIncomeData
-    ? ' 분배금 지급주기와 분배락일, 운용사·섹터 정보, 관련 분석까지 한 페이지에 정리했습니다. KRX 공공데이터 기준 매일 갱신.'
-    : ' 거래량과 시가총액, 운용사·섹터 정보, 같은 섹터의 다른 ETF와 관련 분석까지 한 페이지에 정리했습니다. KRX 공공데이터 기준 매일 갱신.';
-  // 구성종목이 없어 짧아지는 경우에만 덧붙이는 보강 문구
-  const padTail = etf
-    ? ' 매수 전 확인할 기본 정보를 한자리에 모았습니다.'
-    : ' 매수 전 확인할 기본 정보를 한자리에 모아 매일 점검합니다.';
+  const asOfIso = age?.isoDate || '';
+  let head: string;
+  if (etf && asOfIso) {
+    const priceSentence = isFresh
+      ? ` ${asOfIso} 종가 ${etf.price.toLocaleString()}원(전일대비 ${signedPct(etf.changeRate)}).`
+      : ` 최근 시세 기준일 ${asOfIso}, 종가 ${etf.price.toLocaleString()}원.`;
+    const freqSentence = income
+      ? ` 분배금은 ${FREQ_DESC[income.frequency] || `${FREQ_LABEL[income.frequency] || income.frequency} 단위로`} 지급됩니다.`
+      : '';
+    head = `${name} 종목코드 ${displayCode}.${priceSentence}${freqSentence}`;
+  } else {
+    head = `${name} 종목코드 ${displayCode}(KRX)${sector ? ` ${sector} 섹터` : ''}에 상장된 ETF입니다.`;
+  }
 
-  // 구성종목을 최대 4개까지 넣되, 짧은 꼬리 기준으로 155자를 넘지 않는 범위에서 최대한 채운다.
-  let holdingsClause = '';
+  let description = head;
+  const addToDesc = (s: string): boolean => {
+    if (!s || description.length + s.length > DESC_MAX) return false;
+    description += s;
+    return true;
+  };
+  // 가격 외 고유 수치를 먼저: 괴리율 → 구성종목(롱테일 "라인메탈 ETF" 류 매칭) → 섹터 → 운용사 → 꼬리
+  // 괴리율이 시세와 다른 날짜의 NAV·종가 쌍이면 그 날짜를 밝힌다
+  if (navGap) {
+    const navDateNote = navGap.isoDate && navGap.isoDate !== asOfIso ? `(${navGap.isoDate} 기준)` : '';
+    addToDesc(` NAV 대비 괴리율 ${signedPct(navGap.gapPct)}${navDateNote}.`);
+  }
   for (let n = 4; n >= 1; n--) {
     const names = holdingsForMeta.slice(0, n).map(h => h.name).join('·');
     if (!names) continue;
-    const candidate = ` 주요 구성종목은 ${names} 등 TOP 10입니다.`;
-    if (head.length + candidate.length + shortTail.length <= DESC_MAX) { holdingsClause = candidate; break; }
+    if (addToDesc(` 주요 구성종목은 ${names} 등입니다.`)) break;
   }
-  // 꼬리는 남는 자리에 맞춰 긴 버전을 우선 시도 (짧으면 스니펫 공간을 버리게 된다)
-  const tail = head.length + holdingsClause.length + longTail.length <= DESC_MAX ? longTail : shortTail;
-  let description = head + holdingsClause + tail;
-  // 아직 목표(120자)에 못 미치면 운용사 문구 → 보강 문구 순으로 채운다.
-  for (const pad of [issuerClause, padTail]) {
-    if (description.length >= 120 || !pad) continue;
-    if (description.length + pad.length <= DESC_MAX) description += pad;
-  }
+  if (etf && sector) addToDesc(` ${sector} 섹터로 분류됩니다.`);
+  if (issuerForMeta) addToDesc(` 운용사는 ${issuerForMeta}입니다.`);
+  // 꼬리: 실제로 페이지에 있는 섹션만 말한다
+  const longTail = hasIncomeData
+    ? ' 분배율과 지급 월, 같은 운용사의 다른 ETF를 함께 정리했습니다.'
+    : etf
+      ? ' 거래량과 시가총액, 같은 운용사의 다른 ETF를 함께 정리했습니다.'
+      : ' 같은 운용사의 다른 ETF와 투자 포인트를 함께 정리했습니다.';
+  const shortTail = ' 투자 포인트를 함께 정리했습니다.';
+  if (!addToDesc(longTail)) addToDesc(shortTail);
+  if (description.length < 120) addToDesc(' 매수 전 확인할 기본 정보를 한자리에 모았습니다.');
 
   const ogImage = ogImageUrl({ category: 'stock' });
 
-  // thin content 가드 (SSoT: shouldIndexEtf) — 시세·구성종목·관련 분석글이 모두 없는
-  //   메타 전용 minimal 종목은 noindex. 관련 분석글이 붙은 인기 테마 종목은 고유 콘텐츠가
-  //   있으므로 색인 유지(13에이전트 심의 옵션 B). scaled-content/doorway 신호 차단.
-  const relatedPostCount = code
-    ? getAllPosts().filter(p =>
-        (p.meta.tickers || []).some(t => t.toUpperCase() === code.toUpperCase()),
-      ).length
-    : 0;
-  const indexable = shouldIndexEtf({
-    hasPrice: !!etf,
-    hasHoldings: holdingsForMeta.length > 0,
-    relatedPostCount,
-  });
-  const robots = indexable ? undefined : { index: false, follow: true };
+  // 색인 판정 (SSoT: getEtfPageFacts → shouldIndexEtf, sitemap-etf.xml과 동일).
+  //   슬러그 매핑 + 가장 최근 스냅샷(나이 무관)의 시세 + 가격 외 고유 수치(괴리율·구성종목·분배) 1개 이상.
+  const robots = facts?.indexable ? undefined : { index: false, follow: true };
 
   return {
     // absolute — layout template(' | Daily ETF Pulse')이 덧붙는 것을 끊는다.
     //   브랜드 18자를 되찾아 ETF명·구성종목 키워드가 잘리지 않게 한다.
     title: { absolute: title },
     description,
-    // 2026-08-12 키워드 정리:
-    //   ① 9개 → 7개. SEO.md 규칙(3~7개)을 넘어 104쪽이 위반 상태였다.
-    //      "{이름} 시세"는 "{이름} 주가"와 사실상 같은 의도라 중복 제거.
-    //   ② 섹터 폴백이 '기타'였다. 검색어로 아무 가치가 없고 한국어에서 악기 '기타'와도
-    //      겹쳐 오히려 잘못된 매칭을 부른다(26쪽). 섹터가 없거나 '기타'면 아예 뺀다.
+    // 2026-08-12 키워드 정리: 3~7개, '기타' 섹터 폴백 금지.
+    // 2026-09-30: 페이지에 없는 데이터(구성종목·분배금)는 키워드로도 약속하지 않는다.
     keywords: [
       name,
       `${name} 주가`,
-      `${name} 분배금 지급 주기`,
-      `${name} 구성종목`,
       `${name} 종목코드`,
       `${displayCode} ETF`,
-      //   섹터가 없으면 공통 폴백을 넣지 않고 그냥 6개로 둔다(3~7 규칙 내).
-      //   폴백을 쓰면 34쪽이 같은 키워드를 공유해 또 다른 중복이 된다.
+      ...(hasHoldingsData ? [`${name} 구성종목`] : []),
+      ...(hasIncomeData ? [`${name} 분배금`] : []),
+      ...(navGap ? [`${name} 괴리율`] : []),
       ...(sector && sector !== '기타' ? [`${sector} ETF`] : []),
-    ],
+    ].slice(0, 7),
     ...(robots ? { robots } : {}),
     alternates: { canonical: canonicalPath },
     // buildOg 경유 — siteName·locale이 빠지지 않게 한다.
@@ -216,9 +237,12 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
   const { ticker } = await params;
   const resolved = resolveEtfTickerOrSlug(ticker);
   const code = resolved.shortcode;
+  // 같은 섹터·운용사 카드용 시세 목록 (가장 최신 스냅샷)
   const etfData = getLatestEtfData();
   const list = (etfData?.etfList || []) as RawEtf[];
-  const etf = code ? findEtfByAnyCode(list, code) : null;
+  // 이 종목의 시세·괴리율·구성종목·분배 (generateMetadata·sitemap-etf.xml과 같은 판정)
+  const facts = code ? getEtfPageFacts(code) : null;
+  const etf = facts?.price?.etf ?? null;
   const krxMeta = code ? getKrxEtfMeta(code) : null;
 
   // KRX 매핑조차 없으면 404 (오타·폐지·신규 등)
@@ -238,9 +262,11 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
   const displaySector = rawSector && rawSector !== '기타' ? rawSector : undefined;
   const issuerLabel = extractIssuerLabel(displayName);
 
-  const holdings = getEtfHoldings(displayCode);
-  const incomeRegistry = getIncomeRegistry();
-  const incomeEntry = incomeRegistry?.etfs.find(e => e.code === displayCode) || null;
+  const holdings = facts?.holdings ?? null;
+  const incomeEntry = facts?.income ?? null;
+  const navGap = facts?.navGap ?? null;
+  // 괴리율이 시세 기준일과 다른 날의 NAV·종가 쌍인지 (그 날 NAV 자료가 빠진 경우)
+  const navDateDiffers = !!navGap && !!navGap.isoDate && navGap.isoDate !== (facts?.age?.isoDate || '');
 
   // 관련 분석 글 (티커 기준)
   const allPosts = getAllPosts();
@@ -250,20 +276,44 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
 
   const isUp = etf ? etf.change > 0 : false;
   const isDown = etf ? etf.change < 0 : false;
-  const baseDate = etfData?.baseDate || '';
-  const formattedBaseDate = baseDate
-    ? `${baseDate.slice(0, 4)}-${baseDate.slice(4, 6)}-${baseDate.slice(6, 8)}`
-    : new Date().toISOString().slice(0, 10);
+  // 시세 기준일 표기: 7일 이내 "{날짜} 종가 기준", 넘기면 "최근 시세 기준일 {날짜}" (오래됐음을 숨기지 않는다)
+  const age = facts?.age ?? null;
+  const isFresh = !!age && !age.isStale;
+  const asOfIso = age?.isoDate || '';
+  const priceAsOfLabel = age ? formatEtfPriceAsOf(age) : '';
+  const priceWord = isFresh ? '현재가' : '종가';
+  // 실제 데이터 날짜만 쓴다 (이전에는 시세가 없으면 빌드 시각을 넣었다)
+  const dataDate = facts?.lastModified || getKrxRegistryBaseDate() || undefined;
+  // 구성종목·분배 정보를 직접 확인할 공식 출처 (운용사 사이트가 없으면 KRX 종목정보)
+  const issuerOfficialUrl = getIssuerOfficialUrl(displayName);
+  const krxInfoUrl = `https://kind.krx.co.kr/common/disclsviewer.do?method=search&searchCodeType=&forward=corpsearch&searchCorpName=${encodeURIComponent(displayName)}`;
+  const disclosureUrl = issuerOfficialUrl || krxInfoUrl;
+  const disclosureLabel = issuerOfficialUrl && issuerLabel ? `${issuerLabel.split(' ')[0]} 공식 사이트` : 'KRX 종목정보';
+  // HoldingsPanel(detail)은 최대 5개를 그린다. 제목의 개수도 실제 렌더 개수와 맞춘다.
+  const HOLDINGS_SHOWN_MAX = 5;
+  const holdingsShown = holdings ? Math.min(HOLDINGS_SHOWN_MAX, holdings.holdings.length) : 0;
 
   // ── Schemas ──
   // AEO 정답블록 — 시세 데이터 있는 종목만(doorway 방지: minimal 종목은 자동 생략).
-  const answerData = (hasPriceData && etf) ? (() => {
-    const dir = etf.changeRate > 0 ? '상승' : etf.changeRate < 0 ? '하락' : '보합';
-    const summary = `${displayName}은 ${formattedBaseDate} 기준 ${Math.abs(etf.changeRate).toFixed(2)}% ${dir}했습니다.`;
-    const ks = [
-      { label: '현재가', value: `${etf.price.toLocaleString()}원`, sub: `${etf.changeRate >= 0 ? '+' : ''}${etf.changeRate.toFixed(2)}%` },
+  const answerData = (hasPriceData && etf && asOfIso) ? (() => {
+    const dir = etf.changeRate > 0 ? '상승' : '하락';
+    const absRate = Math.abs(etf.changeRate).toFixed(2);
+    const priceText = `${etf.price.toLocaleString()}원`;
+    const move = etf.changeRate === 0 ? '전일과 같았습니다' : `전일보다 ${absRate}% ${dir}했습니다`;
+    const summary = isFresh
+      ? `${displayName}의 ${asOfIso} 종가는 ${priceText}으로 ${move}.`
+      : `${displayName}의 최근 시세 기준일(${asOfIso}) 종가는 ${priceText}이며, 그날 ${move}.`;
+    const ks: Array<{ label: string; value: string; sub?: string }> = [
+      { label: priceWord, value: priceText, sub: signedPct(etf.changeRate) },
       { label: '거래량', value: `${etf.volume.toLocaleString()}주` },
     ];
+    if (navGap) {
+      ks.push({
+        label: navDateDiffers ? `괴리율(${navGap.isoDate})` : '괴리율',
+        value: signedPct(navGap.gapPct),
+        sub: `NAV ${formatNav(navGap.nav)}원`,
+      });
+    }
     if (typeof etf.marketCap === 'number' && etf.marketCap > 0) {
       ks.push({ label: '시가총액', value: `${Math.round(etf.marketCap / 1e8).toLocaleString()}억원` });
     } else if (holdings && holdings.holdings[0]) {
@@ -278,22 +328,35 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
     name: displayName,
     code: displayCode,
     description: hasPriceData
-      ? `${displayName}, 한국거래소(KRX) 상장 ETF. 섹터: ${displaySector || '-'}, 현재가 ${etf!.price.toLocaleString()}원, 거래량 ${etf!.volume.toLocaleString()}주.`
+      ? `${displayName}, 한국거래소(KRX) 상장 ETF. 섹터: ${displaySector || '-'}, ${asOfIso} 종가 ${etf!.price.toLocaleString()}원, 거래량 ${etf!.volume.toLocaleString()}주.`
       : `${displayName}, 한국거래소(KRX) 상장 ETF. 단축코드 ${displayCode}.`,
     url: `/etf/${canonicalSlug}`,
     category: 'ETF',
-    ...(hasPriceData ? { price: etf!.price, priceDate: formattedBaseDate } : {}),
+    ...(hasPriceData && asOfIso ? { price: etf!.price, priceDate: asOfIso } : {}),
   });
 
+  // Dataset 설명도 실제로 들어 있는 데이터만 나열한다 (구성종목 TOP 10·분배 정보를 일괄 약속하지 않는다)
+  const datasetParts = [
+    hasPriceData ? '일별 종가·등락률·거래량·거래대금' : '단축코드·운용사 등 종목 기본 정보',
+    navGap ? 'NAV·괴리율' : '',
+    holdings ? `대표 구성종목 ${holdingsShown}개` : '',
+    incomeEntry ? '분배 정보' : '',
+  ].filter(Boolean);
   const datasetSchema = buildDatasetSchema({
     name: `${displayName} (${displayCode}) ETF 종목 정보`,
-    description: hasPriceData
-      ? `${displayName} ETF의 일별 종가·등락률·거래량·거래대금 + 구성종목 TOP 10 + 분배 정보. 한국거래소(KRX) 공공데이터 기준.`
-      : `${displayName} ETF의 단축코드·운용사·종목 메타 정보. 한국거래소(KRX) 공공데이터 기준.`,
+    description: `${displayName} ETF의 ${datasetParts.join(', ')}. 시세는 한국거래소(KRX) 공공데이터 기준${asOfIso ? `(${asOfIso})` : ''}.`,
     url: `/etf/${canonicalSlug}`,
-    dateModified: formattedBaseDate,
+    // dataDate가 없으면 이 스키마는 렌더하지 않는다 (아래 JSX 참고)
+    dateModified: dataDate || '',
     publisher: '한국거래소(KRX) 공공데이터 포털',
-    keywords: [displayName, displayCode, 'ETF', '시세', '구성종목', '분배금', displaySector || ''],
+    keywords: [
+      displayName, displayCode, 'ETF',
+      ...(hasPriceData ? ['시세'] : []),
+      ...(navGap ? ['괴리율'] : []),
+      ...(holdings ? ['구성종목'] : []),
+      ...(incomeEntry ? ['분배금'] : []),
+      ...(displaySector ? [displaySector] : []),
+    ],
   });
 
   // H2 섹션 번호 — 실제로 렌더되는 섹션에만 순번을 매긴다.
@@ -308,7 +371,9 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
     <article className="etf-dict animate-fade-in">
       {/* JSON-LD (BreadcrumbList는 <Breadcrumbs>가 발행) */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(financialProductSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(datasetSchema) }} />
+      {dataDate && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(datasetSchema) }} />
+      )}
 
       <Breadcrumbs items={[
         { name: '홈', href: '/' },
@@ -320,10 +385,16 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
         <div className="etf-dict-eyebrow">
           <span className="etf-dict-code">{displayCode}</span>
           {displaySector && <span className="etf-dict-sector">{displaySector}</span>}
-          {hasPriceData ? (
-            <span className="etf-dict-fresh-pill" title={`기준일 ${formattedBaseDate}`}>
-              📅 {formattedBaseDate} 갱신
-            </span>
+          {hasPriceData && asOfIso ? (
+            isFresh ? (
+              <span className="etf-dict-fresh-pill" title={`시세 기준일 ${asOfIso}`}>
+                📅 {asOfIso} 종가 기준
+              </span>
+            ) : (
+              <span className="etf-dict-status-pill" title={`시세 기준일 ${asOfIso}`}>
+                최근 시세 기준일 {asOfIso}
+              </span>
+            )
           ) : (
             <span className="etf-dict-status-pill">KRX 상장 종목</span>
           )}
@@ -333,8 +404,15 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
           {displayName} <span className="etf-dict-title-code">(Ticker: {displayCode})</span> 분석 리포트
         </h1>
         <p className="etf-dict-tagline">
-          {hasPriceData
-            ? `${displayName}의 오늘 시세, 구성종목, 분배금, 투자 포인트를 한 페이지에 정리했습니다. 매일 09:00 갱신.`
+          {hasPriceData && asOfIso
+            ? isFresh
+              ? `${displayName}의 ${asOfIso} 종가 기준 시세와 ${[
+                  navGap ? '괴리율' : '',
+                  holdings ? '대표 구성종목' : '',
+                  incomeEntry ? '분배 정보' : '',
+                  '투자 포인트',
+                ].filter(Boolean).join(', ')}를 정리했습니다.`
+              : `${displayName}의 최근 시세 기준일은 ${asOfIso}입니다. 그 이후 가격은 반영되지 않았으니 최신 시세는 아래 KRX 종목정보에서 확인하세요.`
             : `${displayName} ETF. ${issuerLabel ? `${issuerLabel.split(' ')[0]} 운용 · ` : ''}단축코드 ${displayCode}. 한국거래소(KRX) 상장 종목 정보.`}
         </p>
 
@@ -342,7 +420,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
         <div className="etf-dict-authority" aria-label="공식 자료 출처">
           <span className="etf-dict-authority-label">공식 자료:</span>
           <a
-            href={`https://kind.krx.co.kr/common/disclsviewer.do?method=search&searchCodeType=&forward=corpsearch&searchCorpName=${encodeURIComponent(displayName)}`}
+            href={krxInfoUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="etf-dict-authority-link"
@@ -380,25 +458,38 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
 
       {/* AEO 정답블록 — AI Overview·스니펫 인용용 (시세 종목만) */}
       {answerData && (
-        <AnswerBox summary={answerData.summary} keyStats={answerData.keyStats} asOf={`${formattedBaseDate} KRX`} source="KRX 공공데이터" />
+        <AnswerBox summary={answerData.summary} keyStats={answerData.keyStats} asOf={`${asOfIso} KRX`} source="KRX 공공데이터" />
       )}
 
       {/* 시세 요약 — 시세 데이터가 있을 때만 */}
       {hasPriceData && etf && (
         <section className="etf-dict-section">
-          {/* 1C. H2 번호 + "시세 및 수익률" 키워드 (KRX 종가 기준) */}
-          <h2 className="etf-dict-h2">{no()}. 시세 및 수익률 ({formattedBaseDate} 종가 기준)</h2>
+          {/* 1C. H2 번호 + "시세 및 수익률" 키워드 (KRX 종가 기준 · 오래된 시세면 기준일을 그대로 밝힌다) */}
+          <h2 className="etf-dict-h2">{no()}. 시세 및 수익률 ({priceAsOfLabel})</h2>
           <div className="etf-dict-stats">
             <div className="etf-dict-stat">
-              <div className="etf-dict-stat-label">현재가</div>
+              <div className="etf-dict-stat-label">{priceWord}</div>
               <div className="etf-dict-stat-value">{etf.price.toLocaleString()}<small>원</small></div>
             </div>
             <div className="etf-dict-stat">
               <div className="etf-dict-stat-label">전일대비</div>
               <div className={`etf-dict-stat-value ${isUp ? 'is-up' : isDown ? 'is-down' : ''}`}>
-                {isUp ? '▲' : isDown ? '▼' : '–'} {Math.abs(etf.change).toLocaleString()}원 ({isUp ? '+' : ''}{etf.changeRate.toFixed(2)}%)
+                {isUp ? '▲ ' : isDown ? '▼ ' : ''}{Math.abs(etf.change).toLocaleString()}원 ({signedPct(etf.changeRate)})
               </div>
             </div>
+            {/* NAV·괴리율: NAV가 있고 |괴리율| ≤ 10%일 때만. 없거나 이상치면 카드 자체를 그리지 않는다. */}
+            {navGap && (
+              <>
+                <div className="etf-dict-stat">
+                  <div className="etf-dict-stat-label">NAV(순자산가치){navDateDiffers ? ` · ${navGap.isoDate}` : ''}</div>
+                  <div className="etf-dict-stat-value">{formatNav(navGap.nav)}<small>원</small></div>
+                </div>
+                <div className="etf-dict-stat">
+                  <div className="etf-dict-stat-label">괴리율{navDateDiffers ? ` · ${navGap.isoDate}` : ''}</div>
+                  <div className="etf-dict-stat-value">{signedPct(navGap.gapPct)}</div>
+                </div>
+              </>
+            )}
             <div className="etf-dict-stat">
               <div className="etf-dict-stat-label">거래량</div>
               <div className="etf-dict-stat-value">{etf.volume.toLocaleString()}<small>주</small></div>
@@ -421,8 +512,28 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
             )}
           </div>
           <p className="etf-dict-source">
-            출처: 한국거래소(KRX) 공공데이터 포털 · 기준일 {formattedBaseDate}
+            출처: 한국거래소(KRX) 공공데이터 포털 · 시세 기준일 {asOfIso}
           </p>
+          {navGap && (
+            <p className="etf-dict-note">
+              괴리율은 같은 날 종가와 NAV를 비교한 값입니다: (종가 - NAV) ÷ NAV × 100.
+              플러스면 시장가격이 순자산가치보다 비싸게, 마이너스면 싸게 거래됐다는 뜻입니다.
+              {navDateDiffers
+                ? ` ${asOfIso} 자료에는 NAV가 없어, NAV가 있는 가장 최근 날짜(${navGap.isoDate})의 종가와 NAV로 계산했습니다.`
+                : ''}
+            </p>
+          )}
+          {!isFresh && (
+            <p className="etf-dict-note">
+              시세 기준일({asOfIso}) 이후의 가격은 이 페이지에 반영되지 않았습니다. 최신 시세는 위 KRX 종목정보 링크에서 확인하세요.
+            </p>
+          )}
+          {!holdings && (
+            <p className="etf-dict-note">
+              구성종목은 운용사 공시에서 확인하세요:{' '}
+              <a href={disclosureUrl} target="_blank" rel="noopener noreferrer">{disclosureLabel} ↗</a>
+            </p>
+          )}
           {etf && (
             <LiveEtfStats
               initial={{
@@ -467,7 +578,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
             <strong>{displayName}</strong>은(는) 한국거래소(KRX)에 상장된 ETF입니다.
             {issuerLabel ? ` ${issuerLabel.split(' ')[0]}이(가) 운용하며,` : ''}
             {displaySector ? ` ${displaySector} 관련 종목으로 분류됩니다.` : ' 아래에서 같은 섹터·운용사의 ETF와 투자 포인트를 함께 확인할 수 있습니다.'}
-            {' '}시세·구성종목 데이터는 거래량 상위 종목을 우선 제공하며, 공식 시세는 KRX·운용사 공시에서 확인하실 수 있습니다(아래 공식 자료 링크).
+            {' '}이 종목은 최근 시세 자료에 포함되어 있지 않습니다. 공식 시세와 구성종목은 위 공식 자료 링크의 KRX·운용사 공시에서 확인하실 수 있습니다.
           </div>
         </section>
       )}
@@ -475,21 +586,24 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
       {/* 추천 자료는 첫 정보 섹션 이후에 노출 — 빈 페이지 인상 회피 */}
       <RecommendBox position="top" />
 
-      {/* 구성종목 */}
-      {holdings && holdings.holdings.length > 0 && (
+      {/* 구성종목: 보유한 대표 종목만 표시하고, 전체 구성은 운용사 공시로 안내한다.
+          (보유 데이터는 종목별 대표 몇 개뿐이라 "TOP 10"·"전체 구성"을 약속하지 않는다) */}
+      {holdings && holdingsShown > 0 ? (
         <section className="etf-dict-section">
-          <h2 className="etf-dict-h2">{no()}. 주요 구성 종목 (Top {Math.min(10, holdings.holdings.length)})</h2>
+          <h2 className="etf-dict-h2">{no()}. 주요 구성 종목 (Top {holdingsShown})</h2>
           <HoldingsPanel
             code={displayCode}
             variant="detail"
-            label={`${displayCode} 구성종목 (기준일 ${holdings.asOf})`}
+            limit={HOLDINGS_SHOWN_MAX}
+            label={`${displayCode} 대표 구성종목 (기준일 ${holdings.asOf})`}
             asOfOverride={holdings.asOf}
           />
           <p className="etf-dict-note">
-            구성종목 비중은 운용사 공시 기준이며 수시로 변동될 수 있습니다.
+            대표 종목 {holdingsShown}개와 {holdings.asOf} 기준 비중만 보여 드립니다. 비중은 수시로 바뀌니 전체 구성종목과 최신 비중은{' '}
+            <a href={disclosureUrl} target="_blank" rel="noopener noreferrer">{disclosureLabel} ↗</a>의 공시에서 확인하세요.
           </p>
         </section>
-      )}
+      ) : null}
 
       {/* 분배 정보 (income ETF인 경우) */}
       {incomeEntry && (
@@ -497,7 +611,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
           <h2 className="etf-dict-h2">{no()}. 분배금·분배락일 정보</h2>
           <div className="etf-dict-stats">
             <div className="etf-dict-stat">
-              <div className="etf-dict-stat-label">연 분배율</div>
+              <div className="etf-dict-stat-label">연 분배율(추정)</div>
               <div className="etf-dict-stat-value">{incomeEntry.yield.toFixed(2)}<small>%</small></div>
             </div>
             <div className="etf-dict-stat">
@@ -524,9 +638,12 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
           <p className="etf-dict-note">
             기초자산: {incomeEntry.underlying} · 운용사: {incomeEntry.issuer}
             {incomeEntry.note ? ` · ${incomeEntry.note}` : ''}
-            {!incomeEntry.nextExDividendDate && (
-              <> · 다음 분배락일은 운용사 공시 갱신 시 표시됩니다.</>
-            )}
+          </p>
+          <p className="etf-dict-note">
+            {facts?.incomeAsOf ? `분배 정보 기준일 ${facts.incomeAsOf}. ` : ''}
+            연 분배율은 최근 12개월 분배 실적으로 추정한 값이라 실제 분배금과 다를 수 있습니다.
+            {!incomeEntry.nextExDividendDate ? ' 다음 분배락일과 확정 분배금은' : ' 확정 분배금은'}{' '}
+            <a href={disclosureUrl} target="_blank" rel="noopener noreferrer">{disclosureLabel} ↗</a>의 공시에서 확인하세요.
           </p>
         </section>
       )}
@@ -664,17 +781,18 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
         );
       })()}
 
-      <MainBackrefBox
-        variant="inline"
-        mainCategoryUrl={getBackrefUrlForCategory('etf')}
-        pulseTitle={`${displayName} 시세·정책·산업 배경은 메인 데이터 저널에서 검증·해설됩니다.`}
-      />
+      {/* 2026-09-30: 자매 사이트 백링크 상자(MainBackrefBox) 제거. 종목 정보와 무관한 외부 유도였다. */}
 
       <RecommendBox position="bottom" category="general" />
 
       <p className="etf-dict-disclaimer">
-        본 페이지의 시세·구성종목·분배 정보는 KRX·운용사 공식 데이터를 기반으로 매일 09:00에 갱신됩니다.
-        투자 포인트 코멘트는 일반 정보 제공 목적이며 특정 종목 매수·매도 권유가 아닙니다.
+        {hasPriceData && asOfIso
+          ? `시세는 한국거래소(KRX) 공공데이터의 일별 종가 기준이며, 이 페이지의 시세 기준일은 ${asOfIso}입니다.`
+          : '이 페이지는 한국거래소(KRX) 상장 종목 목록을 기준으로 정리했습니다.'}
+        {holdings || incomeEntry
+          ? ' 구성종목과 분배 정보는 운용사 공시를 참고해 정리한 것으로 기준일이 시세와 다를 수 있으니, 최신 내용은 운용사 공시에서 확인하세요.'
+          : ''}
+        {' '}투자 포인트 코멘트는 일반 정보 제공 목적이며 특정 종목 매수·매도 권유가 아닙니다.
         모든 투자 결정과 그에 따른 손익의 책임은 본인에게 있습니다.
       </p>
     </article>

@@ -96,6 +96,7 @@ function parseAndAnalyze(items: any[], date: string) {
     volume: Number(item.trqu) || 0,
     tradeAmount: Number(item.trPrc) || 0,
     marketCap: Number(item.mrktTotAmt) || 0,
+    nav: Number(item.nav) || 0, // 순자산가치(원자료 nav). 저장소 스냅샷(scripts/snapshot-etf-prices.mjs)이 이 값을 싣는다
     highPrice: Number(item.hipr) || 0,
     lowPrice: Number(item.lopr) || 0,
     openPrice: Number(item.mkp) || 0,

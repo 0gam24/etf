@@ -7,15 +7,14 @@ import SiteFooter from "@/components/SiteFooter";
 import ScrollRevealProvider from "@/components/ScrollRevealProvider";
 import SiteLiveBar from "@/components/SiteLiveBar";
 import NaverAnalytics from "@/components/NaverAnalytics";
+// Google AdSense 자동 광고 — publisher ID는 src/lib/ads.ts 단일 소스(AdBanner와 공유).
+//   자동 광고를 사용하므로 본문에 수동 광고 슬롯을 넣지 않는다(구글이 위치·밀도 자동 최적화).
+//   이 스니펫 자체가 애드센스 사이트 소유권 확인·승인 심사의 전제.
+import { ADSENSE_PUB_ID } from "@/lib/ads";
 
 // Google Analytics 4 — 사이트 트래픽·HelpfulFeedback·Threads UTM 추적
 //   iknowhowinfo.com 전용 GA4 속성(2026-06 신설).
 const GA4_ID = 'G-P2ZYD31B29';
-
-// Google AdSense 자동 광고 — publisher ID (ads.txt에 공개된 값, 비밀 아님).
-//   자동 광고를 사용하므로 본문에 수동 광고 슬롯을 넣지 않는다(구글이 위치·밀도 자동 최적화).
-//   이 스니펫 자체가 애드센스 사이트 소유권 확인·승인 심사의 전제.
-const ADSENSE_PUB_ID = 'ca-pub-7830821732287404';
 
 // 사이트 전역 소개 문구 — 기본 description·Twitter·Organization 스키마가 공유.
 //   2026-09-30: 일일 시황 코너가 멈춘 뒤에도 '매일 오전 9시 전 업데이트'를 약속하고 있어
@@ -133,12 +132,8 @@ const ORG_SCHEMA = {
   sameAs: [
     `${SITE_URL}/rss.xml`,
   ] as string[],
-  // smartdatashop network 자매 — 메인(1차 출처 데이터 저널) parentOrganization
-  parentOrganization: {
-    '@type': 'Organization',
-    name: '스마트데이터샵',
-    url: 'https://smartdatashop.kr',
-  },
+  // parentOrganization(smartdatashop.kr)은 2026-09-30 제거. 형제 사이트가 '사이트 전역
+  //   자매 링크 네트워크'를 AdSense 거절 원인으로 기록했다. 운영 주체 표기는 /about에 있다.
 };
 
 const WEBSITE_SCHEMA = {

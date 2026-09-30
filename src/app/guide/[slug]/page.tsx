@@ -188,7 +188,7 @@ export default async function GuidePage({ params }: PageProps) {
           <span>발행: Daily ETF Pulse 편집팀</span>
           <span aria-hidden> · </span>
           <span>발행일: {new Date(publishedAt).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-          <AiAgentDisclosure variant="compact" />
+          <AiAgentDisclosure variant="compact" kind="guide" />
         </div>
       </header>
 
@@ -341,7 +341,7 @@ export default async function GuidePage({ params }: PageProps) {
       </nav>
 
       {/* 본문 하단 공시 — 무엇을 근거로 쓰고 누가 발행을 책임지는지. 일별 글과 동일 정책 적용. */}
-      <AiAgentDisclosure variant="inline" />
+      <AiAgentDisclosure variant="inline" kind="guide" />
 
       <RecommendBox position="bottom" category={guideToProductCategory(g.slug)} />
     </article>

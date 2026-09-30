@@ -41,7 +41,8 @@
     "generate:og": "node scripts/generate-og-images.mjs",
     "push:etf": "node scripts/push-etf-pages.mjs",
     "validate:guides": "node scripts/validate-guide-structure.mjs",
-    "topic:kin": "node scripts/pick-kin-topic.mjs"
+    "topic:kin": "node scripts/pick-kin-topic.mjs",
+    "snapshot:etf": "node scripts/snapshot-etf-prices.mjs"
   },
   "dependencies": {
     "@vercel/og": "^0.11.1",

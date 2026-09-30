@@ -2,7 +2,16 @@
   "_meta": {
     "description": "월배당·커버드콜 ETF 레지스트리 (수기 시드). 실제 분배율·지급일은 각 운용사 공시 기준으로 정기 갱신이 필요합니다.",
     "asOf": "2026-04-22",
-    "disclaimer": "분배율은 최근 12개월 실적 기반 추정치로, 실제 수익률은 시장 상황·기초자산 변동성에 따라 달라질 수 있습니다. stabilityGrade는 과거 분배 변동성 추정이며 미래 분배를 보장하지 않습니다."
+    "disclaimer": "분배율은 최근 12개월 실적 기반 추정치로, 실제 수익률은 시장 상황·기초자산 변동성에 따라 달라질 수 있습니다. stabilityGrade는 과거 분배 변동성 추정이며 미래 분배를 보장하지 않습니다.",
+    "corrections": [
+      "2026-09-30 사실 정정: 0040Y0·0040X0 운용사 한화자산운용 → 신한자산운용 (SOL은 신한자산운용 브랜드). 근거: https://www.funetf.co.kr/product/etf/view/KR70040Y0006 , https://www.funetf.co.kr/product/etf/view/KR70040X0007 , https://www.fnnews.com/news/202604010934030951",
+      "2026-09-30 사실 정정: 'TIGER 미국배당다우존스타겟커버드콜2호' 코드 448290 → 458760. 448290은 KRX상 TIGER 미국S&P500(H)라 그 종목 사전 페이지에 엉뚱한 분배 정보가 붙고 있었다. 근거: data/krx-etf-codes.json , https://www.funetf.co.kr/product/etf/view/KR7458760006 (월분배, 기초지수 DowJones U.S. Dividend 100 7% Premium Covered Call)",
+      "2026-09-30 사실 정정: 'KODEX 미국배당커버드콜액티브' 코드 462900 → 441640. 462900은 KRX상 KoAct 바이오헬스케어액티브. 근거: data/krx-etf-codes.json , https://www.funetf.co.kr/product/etf/view/KR7441640000 , https://m.samsungfund.com/etf/lounge/notice-view.do?no=65853 (월중배당 공지 대상)",
+      "2026-09-30 사실 정정: 'RISE 200고배당커버드콜ATM' 코드 481190 → 290080. 481190은 KRX상 SOL 미국테크TOP10. 근거: data/krx-etf-codes.json , https://www.funetf.co.kr/product/etf/view/KR7290080001 (KB운용, 월분배)",
+      "2026-09-30 사실 정정: 'KBSTAR 미국S&P500고정배당형'(458760) 항목 삭제. KRX 상장 ETF 1,168종 목록에 해당 종목명이 없고 458760은 TIGER 미국배당다우존스타겟커버드콜2호의 코드다. 근거: data/krx-etf-codes.json (baseDate 20260910, 해당 종목명 없음) , https://www.funetf.co.kr/product/etf/view/KR7458760006 (458760 = TIGER 미국배당다우존스타겟커버드콜2호)",
+      "2026-09-30 사실 정정: PLUS 고배당주(161510) 분기 분배 → 월분배(2024년 5월 14일 효력, 매월 마지막 영업일 기준). 근거: https://www.plusetf.co.kr/product/detail?n=006273 , https://www.fnnews.com/news/202405160944487712 , https://www.mt.co.kr/stock/2024/05/16/2024051609263410950",
+      "2026-09-30 사실 정정: 279530 종목명 KODEX 고배당 → KODEX 고배당주(2025년 6월 25일 변경), 분기 분배 → 월분배, note의 보수 0.15% → 총보수 연 0.30%. 근거: https://www.sisaon.co.kr/news/articleView.html?idxno=172252 , https://www.samsungfund.com/etf/lounge/notice-view.do?no=72274 (25년 12월 월말배당 공지 대상) , https://www.funetf.co.kr/product/etf/view/KR7279530000 (작년 12회 분배, 연 0.3000%)"
+    ]
   },
   "etfs": [
     {
@@ -19,7 +28,7 @@
     {
       "code": "0040Y0",
       "name": "SOL 팔란티어커버드콜OTM채권혼합",
-      "issuer": "한화자산운용",
+      "issuer": "신한자산운용",
       "yield": 13.6,
       "frequency": "monthly",
       "payMonths": [1,2,3,4,5,6,7,8,9,10,11,12],
@@ -30,7 +39,7 @@
     {
       "code": "0040X0",
       "name": "SOL 팔란티어미국채커버드콜혼합",
-      "issuer": "한화자산운용",
+      "issuer": "신한자산운용",
       "yield": 12.4,
       "frequency": "monthly",
       "payMonths": [1,2,3,4,5,6,7,8,9,10,11,12],
@@ -39,14 +48,14 @@
       "note": "0040Y0 대비 OTM 전략이 아닌 표준 커버드콜."
     },
     {
-      "code": "448290",
+      "code": "458760",
       "name": "TIGER 미국배당다우존스타겟커버드콜2호",
       "issuer": "미래에셋자산운용",
       "yield": 10.8,
       "frequency": "monthly",
       "payMonths": [1,2,3,4,5,6,7,8,9,10,11,12],
       "stabilityGrade": "S",
-      "underlying": "Schwab US Dividend Equity(SCHD) + 커버드콜",
+      "underlying": "Dow Jones U.S. Dividend 100(SCHD 기초지수) + 커버드콜",
       "note": "SCHD 기반으로 변동성이 낮고, 분배 안정성 최상위권."
     },
     {
@@ -61,7 +70,7 @@
       "note": "국내 커버드콜 시장 대표 상품. 거래량·AUM 안정적."
     },
     {
-      "code": "462900",
+      "code": "441640",
       "name": "KODEX 미국배당커버드콜액티브",
       "issuer": "삼성자산운용",
       "yield": 9.6,
@@ -72,7 +81,7 @@
       "note": "액티브 운용으로 시장 국면별 콜옵션 매도 비중 조정."
     },
     {
-      "code": "481190",
+      "code": "290080",
       "name": "RISE 200고배당커버드콜ATM",
       "issuer": "KB자산운용",
       "yield": 10.2,
@@ -80,40 +89,29 @@
       "payMonths": [1,2,3,4,5,6,7,8,9,10,11,12],
       "stabilityGrade": "B",
       "underlying": "KOSPI 200 고배당 · ATM 커버드콜",
-      "note": "국내주식 기반. 환율 노출 없음 — 달러 변동성 회피 투자자에게 적합."
-    },
-    {
-      "code": "458760",
-      "name": "KBSTAR 미국S&P500고정배당형",
-      "issuer": "KB자산운용",
-      "yield": 7.0,
-      "frequency": "monthly",
-      "payMonths": [1,2,3,4,5,6,7,8,9,10,11,12],
-      "stabilityGrade": "S",
-      "underlying": "S&P 500 · 고정 배당 구조",
-      "note": "연 7% 고정 타겟 분배 설계. 커버드콜 대비 원금 변동 완화."
+      "note": "국내주식 기반이라 환율 노출이 없어, 달러 변동성을 피하려는 투자자가 검토할 만하다."
     },
     {
       "code": "161510",
       "name": "PLUS 고배당주",
       "issuer": "한화자산운용",
       "yield": 5.4,
-      "frequency": "quarterly",
-      "payMonths": [3,6,9,12],
+      "frequency": "monthly",
+      "payMonths": [1,2,3,4,5,6,7,8,9,10,11,12],
       "stabilityGrade": "A",
       "underlying": "국내 고배당주 바스켓",
-      "note": "전통 고배당 ETF. 분기 지급이지만 커버드콜 대비 원금 안정성 높음."
+      "note": "전통 고배당 ETF. 2024년 5월 분기 분배에서 월 분배로 바뀌었고, 매월 마지막 영업일이 분배 기준일이다."
     },
     {
       "code": "279530",
-      "name": "KODEX 고배당",
+      "name": "KODEX 고배당주",
       "issuer": "삼성자산운용",
       "yield": 4.8,
-      "frequency": "quarterly",
-      "payMonths": [3,6,9,12],
+      "frequency": "monthly",
+      "payMonths": [1,2,3,4,5,6,7,8,9,10,11,12],
       "stabilityGrade": "A",
       "underlying": "국내 고배당주 바스켓",
-      "note": "보수 0.15%로 저비용. 은퇴자 코어 포지션 후보."
+      "note": "2025년 6월 KODEX 고배당에서 이름이 바뀌었다. 매월 분배, 총보수 연 0.30%."
     }
   ]
 }

@@ -1,20 +1,18 @@
 import {
-  getLatestEtfData,
   getAllEtfSlugs,
-  getKrxEtfMeta,
-  getEtfHoldings,
   slugToCode,
-  shouldIndexEtf,
+  getEtfPageFacts,
 } from '@/lib/data';
-import { getAllPosts } from '@/lib/posts';
 
 /**
  * Daily ETF Pulse — /etf/{slug} 전 종목 전용 sitemap.
  *
  *   메인 sitemap.ts에서 분리 (크롤링 효율 + Naver Yeti 안정성):
  *     - 전 종목 URL을 별도 XML로 분리해 변경 신호 명확화 (종목 수는 data/etf-slug-map.json 기준)
- *     - data-rich (시세 있는 종목): priority 0.9 daily — 최신성 강조
- *     - minimal (시세 없는 종목): priority 0.6 weekly — 크롤 budget 보호
+ *     - 포함 여부는 page.tsx의 robots와 같은 getEtfPageFacts().indexable (noindex URL은 넣지 않는다)
+ *     - lastmod는 종목별 max(시세 기준일, 분배 정보 기준일). 실제 데이터 날짜만 쓰고,
+ *       날짜가 없으면 lastmod 태그를 생략한다(빌드 시각 같은 가짜 날짜 금지).
+ *     - 시세 기준일이 오래됐으면(ETF_STALE_DAYS 초과) changefreq를 weekly로 낮춘다.
  *
  *   Google: priority/changefreq 무시 (lastmod만 사용). Naver Yeti는 사용.
  *   sitemap-index.xml에서 함께 노출.
@@ -40,50 +38,29 @@ function escapeXml(s: string): string {
 }
 
 export async function GET() {
-  const etfData = getLatestEtfData();
-  const lastmod = ymdToIso(etfData?.baseDate) || new Date().toISOString();
-
-  // 시세 있는 코드 set (data-rich로 priority 분화 기준)
-  const priceCodes = new Set<string>(
-    (etfData?.etfList || []).map((e: { code: string }) => e.code.toUpperCase()),
-  );
-
-  // 티커별 관련 분석글 개수 (색인 판정용 — page.tsx와 동일 SSoT)
-  const postCountByTicker = new Map<string, number>();
-  for (const p of getAllPosts()) {
-    for (const t of p.meta.tickers || []) {
-      const u = t.toUpperCase();
-      postCountByTicker.set(u, (postCountByTicker.get(u) || 0) + 1);
-    }
-  }
-
   const slugs = getAllEtfSlugs();
   const entries: string[] = [];
 
   for (const slug of slugs) {
-    // KRX 매핑 → 시세 유무 확인
     const code = slugToCode(slug);
-    const meta = code ? getKrxEtfMeta(code) : null;
-    const upperCode = code?.toUpperCase() || '';
-    const hasPrice = priceCodes.has(upperCode);
-    const hasHoldings = code ? (getEtfHoldings(code)?.holdings?.length || 0) > 0 : false;
-    const relatedPostCount = postCountByTicker.get(upperCode) || 0;
+    if (!code) continue;
+    const facts = getEtfPageFacts(code);
 
-    // thin content 제외 (SSoT: shouldIndexEtf) — noindex 종목은 sitemap 에서도 제외
-    //   (noindex URL 을 sitemap 에 두면 GSC 'submitted but noindex' 경고). page.tsx 와 동일 기준.
-    if (!shouldIndexEtf({ hasPrice, hasHoldings, relatedPostCount })) continue;
+    // 색인 제외 종목은 sitemap에서도 뺀다 (SSoT: getEtfPageFacts → shouldIndexEtf).
+    //   noindex URL을 sitemap에 두면 GSC 'submitted but noindex' 경고. page.tsx robots와 같은 판정.
+    if (!facts.indexable) continue;
 
-    // Priority + changefreq 분화 (시세 有 0.9 / 그 외 색인 종목 0.5)
-    const priority = hasPrice ? '0.9' : '0.5';
-    const changefreq = hasPrice ? 'daily' : 'weekly';
+    // lastmod: 종목별 max(시세 기준일, 분배 기준일). 전 종목이 같은 날짜로 찍혀도 그게 사실이면 그대로 둔다.
+    const lastmod = ymdToIso(facts.lastModified?.split('-').join(''));
+    // 색인 종목은 모두 시세가 있다. 시세 기준일이 오래됐으면 갱신 주기 신호를 낮춘다.
+    const changefreq = facts.age && !facts.age.isStale ? 'daily' : 'weekly';
 
     entries.push(`  <url>
-    <loc>${SITE}/etf/${escapeXml(slug)}</loc>
-    <lastmod>${lastmod}</lastmod>
+    <loc>${SITE}/etf/${escapeXml(slug)}</loc>${lastmod ? `
+    <lastmod>${lastmod}</lastmod>` : ''}
     <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
+    <priority>0.9</priority>
   </url>`);
-    void meta; // 향후 imageObject 추가 시 사용
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

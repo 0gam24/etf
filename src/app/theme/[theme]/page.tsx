@@ -103,7 +103,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const names = etfs.map(e => e.name).join('·');
   const desc = names
     ? `${name} 테마에 투자하는 국내 상장 ETF를 한 페이지에 정리했습니다. ${names} 등 주요 종목의 시세와 구성종목, 고를 때 봐야 할 기준과 관련 가이드까지 함께 확인하세요.`
-    : `${name} 테마 ETF의 구성종목과 시세, 고를 때 확인할 기준, 관련 투자 가이드를 한 페이지에 정리했습니다. KRX 공공데이터 기준으로 매일 갱신합니다.`;
+    : `${name} 테마 ETF의 종류와 시세, 고를 때 확인할 기준, 관련 투자 가이드를 한 페이지에 정리했습니다. 시세는 한국거래소(KRX) 공공데이터의 일별 종가 기준입니다.`;
   return buildPageMetadata({
     title: `${name} 테마 ETF`,
     description: desc,

@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     // 페르소나 소개문만으로는 평균 51자라 스니펫 자리를 못 채운다(2026-08-11 감사).
     description: padDescription(p.hero.subtitle, [
       '상황에 맞는 ETF와 계좌 조합, 확인할 지표를 한 페이지에 모았습니다.',
-      'KRX 공공데이터 기준으로 매일 갱신합니다.',
+      // 2026-09-30: "매일 갱신" 약속 제거 (이 페이지는 시세를 보여 주지 않는다)
+      '상황에 맞는 관련 분석 글도 함께 안내합니다.',
     ]),
     url: `/for/${persona}`,
   });

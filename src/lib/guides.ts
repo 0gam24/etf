@@ -538,13 +538,18 @@ const usDividend: GuideDef = {
   description:
     '미국 배당주 ETF의 기초자산(SCHD·NOBL·VYM 등 추종 지수), KODEX·ACE·TIGER 운용사별 차이, 환헷지 여부, 분배 캘린더, ISA·연금저축 매수 가이드를 정리한 가이드.',
   keywords: ['미국 배당주 ETF', '배당주 ETF 추천', 'SCHD 한국판', 'KODEX 미국배당다우존스', 'ACE 미국배당다우존스', '미국 배당귀족 ETF', '환헤지 배당 ETF'],
-  answer: '국내 상장 미국 배당주 ETF는 SCHD(Dow Jones US Dividend 100) 등 미국 배당지수를 추종하며 KODEX·ACE·TIGER 등 운용사별로 환헤지 여부·총보수·분배 주기가 다릅니다. ISA·연금계좌에서 매수할 수 있다는 점이 미국 직구 대비 큰 장점입니다.',
+  // 2026-09-30 사실 정정: 국내 상장 미국배당다우존스 4종은 모두 월분배라 '분배 주기'가 아니라 '분배 기준일'이 다르다.
+  //   근거: https://investments.miraeasset.com/tigeretf/ko/product/search/detail/index.do?ksdFund=KR7458730009 (TIGER 매월 마지막영업일)
+  //         https://www.soletf.com/ko/fund/etf/210942 (SOL 매월 마지막 영업일)
+  //         https://www.fnnews.com/news/202408301425301147 (ACE 매월 15일로 변경)
+  //         https://samsungfundblog.com/archives/50696 (KODEX 매월 15일)
+  answer: '국내 상장 미국 배당주 ETF는 SCHD(Dow Jones US Dividend 100) 등 미국 배당지수를 추종하며 KODEX·ACE·TIGER 등 운용사별로 환헤지 여부·총보수·분배 기준일이 다릅니다. ISA·연금계좌에서 매수할 수 있다는 점이 미국 직구 대비 큰 장점입니다.',
   section: '배당주 가이드',
   sources: [
     { label: '한국거래소(KRX) 정보데이터시스템', url: 'https://data.krx.co.kr' },
     { label: '금융감독원 전자공시시스템 DART', url: 'https://dart.fss.or.kr' },
   ],
-  lastReviewed: '2026-08-01',
+  lastReviewed: '2026-09-30',
   howTo: {
     totalTime: 'PT15M',
     description: '미국 배당주 ETF의 기초자산·운용사·환헷지·계좌별 세후 수익률을 4단계로 따라가는 가이드.',
@@ -562,9 +567,17 @@ const usDividend: GuideDef = {
       heading: 'KODEX vs ACE vs TIGER — 같은 지수, 다른 운용사 비교',
       paragraphs: [
         '같은 Dow Jones US Dividend 100 지수를 추종하는 ETF여도 운용사별 총보수·환헷지 옵션·분배 정책이 다릅니다.',
-        '아래 표는 등록된 미국 배당주 ETF의 핵심 특성을 비교합니다.',
+        // 2026-09-30 사실 정정: 이 자리의 dataBlock 'income-yield-ranking'은 분배율 상위 커버드콜 ETF 순위를 그려
+        //   "미국 배당주 ETF 비교 표"라는 문장과 맞지 않았다. 블록을 빼고 1차 출처로 확인한 비교 내용을 문장으로 옮긴다.
+        //   근거: https://investments.miraeasset.com/tigeretf/ko/product/search/detail/index.do?ksdFund=KR7458730009 (TIGER 월분배·매월 마지막영업일·연 0.01%)
+        //         https://www.soletf.com/ko/fund/etf/210942 (SOL 월 1회·매월 마지막 영업일·0.01%)
+        //         https://www.etoday.co.kr/news/view/2395835 (ACE 매월 15일 기준으로 변경)
+        //         https://www.funetf.co.kr/product/etf/view/KR7402970008 (ACE 월배당·연 0.0100%)
+        //         https://m.sedaily.com/NewsViewAmp/2DD013P30M (KODEX 매월 15일 기준·연 0.0099%)
+        //         https://www.soletf.com/ko/fund/etf/210972 · data/krx-etf-codes.json 452360 (SOL 미국배당다우존스(H))
+        '국내 상장 4종(TIGER·SOL·ACE·KODEX 미국배당다우존스)은 2026년 9월 기준 모두 매월 분배하고, 차이는 분배금 지급기준일에서 납니다. TIGER와 SOL은 매월 마지막 영업일, ACE와 KODEX는 매월 15일(비영업일이면 직전 영업일)이 기준입니다.',
+        '총보수는 KODEX가 연 0.0099%, 나머지 세 상품이 연 0.01%로 사실상 같습니다. 환율 변동을 막은 환헤지형은 SOL 미국배당다우존스(H)가 따로 상장돼 있습니다.',
       ],
-      dataBlock: 'income-yield-ranking',
     },
     {
       heading: '환헷지(H) 종목 vs 비헷지 — 어떤 게 유리할까',
@@ -606,11 +619,22 @@ const usDividend: GuideDef = {
   faq: [
     {
       question: 'KODEX 미국배당다우존스와 ACE 미국배당다우존스 중 무엇을 살까요?',
-      answer: '기초 지수가 같으므로 총보수가 낮은 종목을 선호하는 게 일반적입니다. ACE가 KODEX 시리즈 대비 총보수가 다소 낮은 편이지만, 거래량·순자산이 큰 KODEX가 매매 편의성이 높습니다.',
+      // 2026-09-30 사실 정정: 기존 답은 "ACE 총보수가 더 낮고 KODEX 순자산이 더 크다"고 했으나 둘 다 사실과 반대였다
+      //   (KODEX 연 0.0099%, ACE 연 0.01%. 2026-09-29 순자산 KODEX 5,889억원, ACE 9,342억원). 순자산은 수시로 바뀌어 본문에는 싣지 않는다.
+      //   근거: https://www.funetf.co.kr/product/etf/view/KR7489250001 · https://www.funetf.co.kr/product/etf/view/KR7402970008
+      //         https://samsungfundblog.com/archives/50696 (KODEX 연 0.0099%·매월 15일) · https://www.fnnews.com/news/202408301425301147 (ACE 매월 15일)
+      answer: '두 상품은 기초지수가 같고 총보수도 KODEX 연 0.0099%, ACE 연 0.01%로 사실상 같습니다. 분배금 지급기준일도 둘 다 매월 15일이라 분배 일정 차이가 없습니다. 그래서 실제로 가르는 기준은 순자산 규모와 호가 스프레드 같은 매매 편의성이고, 이 값은 수시로 바뀌니 매수 직전에 운용사 홈페이지와 증권사 호가 창에서 확인하는 편이 정확합니다.',
     },
     {
       question: '미국 배당주 ETF는 매월 분배되나요?',
-      answer: '대부분 분기 분배(3·6·9·12월)입니다. 월배당이 필요하다면 같은 SCHD 기초자산에 커버드콜 전략을 더한 월배당 ETF(예: KODEX 미국배당다우존스데일리커버드콜OTM)를 검토하세요.',
+      // 2026-09-30 사실 정정: 국내 상장 미국배당다우존스 ETF를 분기 분배로 적었으나 4종 모두 월분배다.
+      //   예시로 든 'KODEX 미국배당다우존스데일리커버드콜OTM'은 KRX 상장 목록(data/krx-etf-codes.json)에 없는 종목명이라 뺀다.
+      //   근거: https://investments.miraeasset.com/tigeretf/ko/product/search/detail/index.do?ksdFund=KR7458730009 (TIGER 매월 마지막영업일)
+      //         https://www.soletf.com/ko/fund/etf/210942 (SOL 매월 마지막 영업일)
+      //         https://www.etoday.co.kr/news/view/2395835 (ACE 매월 15일)
+      //         https://m.samsungfund.com/etf/lounge/notice-view.do?no=65853 (KODEX 미국배당다우존스, 월중배당 공지 대상)
+      //         https://stockanalysis.com/etf/schd/dividend/ (미국 상장 SCHD는 분기 분배)
+      answer: '국내에 상장된 미국배당다우존스 ETF(TIGER·SOL·ACE·KODEX)는 모두 매월 분배합니다. 분배금 지급기준일은 TIGER·SOL이 매월 마지막 영업일, ACE·KODEX가 매월 15일(비영업일이면 직전 영업일)이어서, 월말형과 월중형을 함께 담으면 한 달에 두 번 분배금을 받는 구성도 가능합니다. 3·6·9·12월 분기 분배는 미국 시장에 상장된 SCHD 원본의 방식입니다.',
     },
     {
       question: '환헷지(H)와 비헷지 중 무엇이 좋을까요?',

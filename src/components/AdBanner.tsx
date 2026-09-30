@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { ADSENSE_PUB_ID } from '@/lib/ads';
 
 interface AdBannerProps {
-  slot: string; // 애드센스 광고 슬롯 ID
+  slot: string; // 애드센스 광고 슬롯 ID (AD_SLOTS.* — src/lib/ads.ts)
   format?: 'auto' | 'fluid' | 'rectangle';
   style?: React.CSSProperties;
 }
@@ -16,14 +17,17 @@ interface AdBannerProps {
  *     - 초기 로드 시 광고 요청 X → LCP·FID·INP 모두 개선
  *     - 모바일 환경에서 특히 효과 큼 (광고가 LCP element가 되는 패턴 회피)
  *
- *   실제 배포 시에는 pub-id 등을 환경변수에서 읽어와 적용합니다.
+ *   pub id는 layout 자동 광고 로더와 같은 src/lib/ads.ts 값을 쓴다.
+ *   slot이 비었거나 pub id가 없으면 아무것도 그리지 않는다(빈 광고 틀·가짜 ID 요청 방지).
  */
 export default function AdBanner({ slot, format = 'auto', style }: AdBannerProps) {
+  const pubId = ADSENSE_PUB_ID;
+  const enabled = Boolean(slot && slot.trim() && pubId);
   const ref = useRef<HTMLDivElement>(null);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    if (!ref.current || hydrated) return;
+    if (!enabled || !ref.current || hydrated) return;
     if (typeof IntersectionObserver === 'undefined') {
       // 구형 브라우저 폴백 — 즉시 로드
       setHydrated(true);
@@ -43,19 +47,20 @@ export default function AdBanner({ slot, format = 'auto', style }: AdBannerProps
     );
     obs.observe(ref.current);
     return () => obs.disconnect();
-  }, [hydrated]);
+  }, [enabled, hydrated]);
 
   useEffect(() => {
-    if (!hydrated) return;
+    if (!enabled || !hydrated) return;
     try {
       // @ts-expect-error — adsbygoogle 글로벌 (window.adsbygoogle)
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch (err) {
       console.error('애드센스 로드 실패:', err);
     }
-  }, [hydrated]);
+  }, [enabled, hydrated]);
 
-  const pubId = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID || 'ca-pub-xxxxxxxxxxxxxx';
+  // 훅 호출 순서를 지키기 위해 조기 반환은 훅 뒤에 둔다.
+  if (!enabled) return null;
 
   return (
     <div ref={ref} className="ad-wrapper" style={{ margin: '2rem 0', textAlign: 'center', overflow: 'hidden', minHeight: '90px' }}>

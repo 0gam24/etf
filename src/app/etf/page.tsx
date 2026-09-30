@@ -9,6 +9,8 @@ import {
   classifyEtfSector,
   extractIssuerLabel,
   codeToSlug,
+  getEtfSnapshotAge,
+  formatEtfPriceAsOf,
 } from '@/lib/data';
 import { buildItemListSchema, jsonLd } from '@/lib/schema';
 import EtfIndexSearch from '@/components/EtfIndexSearch';
@@ -129,19 +131,19 @@ export default function EtfIndexPage() {
 
   const totalCount = rows.length;
   const sectorCount = sectorMap.size;
-  const baseDate = etfData?.baseDate || '';
-  const formattedBaseDate = baseDate
-    ? `${baseDate.slice(0, 4)}-${baseDate.slice(4, 6)}-${baseDate.slice(6, 8)}`
-    : '';
-
+  // 시세 기준일: 7일 이내 "{날짜} 종가 기준", 넘기면 "최근 시세 기준일 {날짜}" (오래됐음을 숨기지 않는다)
+  const snapshotAge = getEtfSnapshotAge(etfData?.baseDate);
+  const formattedBaseDate = snapshotAge?.isoDate || '';
+  const priceAsOfLabel = snapshotAge ? formatEtfPriceAsOf(snapshotAge) : '';
 
   // Google Carousel rich result — 거래량 TOP 20 ItemList
+  //   "오늘"은 시세 기준일이 오늘이 아닐 때 사실이 아니므로 기준일을 이름에 넣는다.
   const itemListSchema = buildItemListSchema(
     topByVolume.slice(0, 20).map(r => ({
       url: `/etf/${codeToSlug(r.shortcode)}`,
       name: r.name,
     })),
-    `오늘 거래량 TOP ${Math.min(20, topByVolume.length)} ETF`,
+    `거래량 TOP ${Math.min(20, topByVolume.length)} ETF${formattedBaseDate ? ` (${formattedBaseDate} 종가 기준)` : ''}`,
   );
 
   return (
@@ -162,8 +164,8 @@ export default function EtfIndexPage() {
           KRX 상장 ETF 종목 사전, <span className="etf-index-title-accent">전 종목 한 페이지</span>
         </h1>
         <p className="etf-index-tagline">
-          한국거래소(KRX) 상장 ETF 전체를 거래량·섹터·운용사 기준으로 정리. 종목별 페이지에서 시세·구성종목·분배금까지 한눈에 확인.
-          {formattedBaseDate && <> 시세 기준일 {formattedBaseDate}.</>}
+          한국거래소(KRX) 상장 ETF 전체를 거래량·섹터·운용사 기준으로 정리. 종목별 페이지에서 종가와 괴리율을, 자료가 있는 종목은 구성종목·분배금까지 확인할 수 있습니다.
+          {priceAsOfLabel && <> {snapshotAge?.isStale ? `${priceAsOfLabel}.` : `시세는 ${priceAsOfLabel}입니다.`}</>}
         </p>
       </header>
 
@@ -184,7 +186,9 @@ export default function EtfIndexPage() {
       {/* 거래량 TOP 20 */}
       {topByVolume.length > 0 && (
         <section className="etf-index-section">
-          <h2 className="etf-index-h2">오늘 거래량 TOP {topByVolume.length}</h2>
+          <h2 className="etf-index-h2">
+            거래량 TOP {topByVolume.length}{formattedBaseDate ? ` (${priceAsOfLabel})` : ''}
+          </h2>
           <ul className="etf-index-top">
             {topByVolume.map((r, i) => {
               const isUp = (r.changeRate || 0) > 0;
@@ -274,8 +278,9 @@ export default function EtfIndexPage() {
       <RecommendBox position="bottom" />
 
       <p className="etf-index-disclaimer">
-        본 페이지는 한국거래소(KRX) 공공데이터 포털의 ETF 종목 메타와 일별 시세를 기반으로 매일 09:00에 갱신됩니다.
-        시세는 거래량 상위 100종 중심으로 노출되며, 그 외 종목은 운용사 공시 기준 메타 정보만 표시됩니다.
+        본 페이지는 한국거래소(KRX) 공공데이터 포털의 ETF 종목 목록과 일별 종가를 바탕으로 정리했습니다.
+        {formattedBaseDate ? ` 시세 기준일은 ${formattedBaseDate}이며, 그 이후 가격은 반영되지 않았습니다.` : ''}
+        {' '}시세 자료에 없는 종목은 종목코드·운용사 등 기본 정보만 표시됩니다.
         모든 투자 결정과 그에 따른 손익의 책임은 본인에게 있습니다.
       </p>
     </article>
