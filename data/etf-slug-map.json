@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-13T03:44:05.313Z",
-  "sourceBaseDate": "20260910",
-  "count": 1168,
+  "generatedAt": "2026-10-04T04:48:10.096Z",
+  "sourceBaseDate": "20261001",
+  "count": 1171,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -596,7 +596,6 @@
     "453850": "ace-us30year-treasury-activeh",
     "453870": "tiger-india50",
     "453950": "tiger-tsmc",
-    "454180": "kiwoom-chinatop-csi",
     "454320": "hanaro-capexiselect",
     "454780": "kiwoom-total-bondaa-plusactive",
     "455030": "kodex-usdsofrrate-activesynthetic",
@@ -651,7 +650,6 @@
     "463640": "kodex-us-sp500-463640",
     "463680": "kodex-us-sp500tech",
     "463690": "kodex-us-sp500-463690",
-    "464240": "kiwoom-26-09corporate-bondaa-plusactive",
     "464310": "tiger-globalai-indxx",
     "464470": "plus-us-treasury30active",
     "464600": "sol-autofn",
@@ -665,7 +663,6 @@
     "465620": "ace-ustechtop7-plusinversesynthetic",
     "465660": "tiger-japansemiconductorfactset",
     "465670": "tiger-us100",
-    "465780": "mighty-26-09-aaaactive",
     "466810": "bnk-battery",
     "466920": "sol-shipbuilding-top3plus",
     "466930": "sol-autotop3plus",
@@ -785,8 +782,6 @@
     "487920": "ace-indiabig5active",
     "487950": "kodex-tech",
     "488080": "tiger-semiconductortop10leverage",
-    "488200": "kiwoom-k-battery",
-    "488210": "kiwoom-k-semiconductor",
     "488290": "midas-japantechactive",
     "488480": "rise-japantop4plus",
     "488500": "tiger-us-sp500-488500",
@@ -1170,7 +1165,15 @@
     "0232A0": "midas-mma-active",
     "0233N0": "rise-globalaisemiconductor",
     "0234N0": "kiwoom-sktop4",
-    "0238P0": "tiger-us-sp500us-treasury-blend50"
+    "0238P0": "tiger-us-sp500us-treasury-blend50",
+    "0227L0": "hanaro-usai-top2",
+    "0238C0": "ibk-top2bond-blend50active",
+    "0238F0": "kodex-usaitop2plus",
+    "0239Y0": "plus-hbmsemiconductor",
+    "0239Z0": "plus-aisemiconductoractive",
+    "0240J0": "rise-sk",
+    "0241R0": "tiger-lgai",
+    "0242S0": "power-sk"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -3545,10 +3548,6 @@
       "code": "453950",
       "name": "TIGER TSMC파운드리밸류체인"
     },
-    "kiwoom-chinatop-csi": {
-      "code": "454180",
-      "name": "KIWOOM 차이나내수소비TOP CSI"
-    },
     "hanaro-capexiselect": {
       "code": "454320",
       "name": "HANARO CAPEX설비투자iSelect"
@@ -3765,10 +3764,6 @@
       "code": "463690",
       "name": "KODEX 미국S&P500커뮤니케이션"
     },
-    "kiwoom-26-09corporate-bondaa-plusactive": {
-      "code": "464240",
-      "name": "KIWOOM 26-09회사채(AA-이상)액티브"
-    },
     "tiger-globalai-indxx": {
       "code": "464310",
       "name": "TIGER 글로벌AI&로보틱스 INDXX"
@@ -3820,10 +3815,6 @@
     "tiger-us100": {
       "code": "465670",
       "name": "TIGER 미국캐시카우100"
-    },
-    "mighty-26-09-aaaactive": {
-      "code": "465780",
-      "name": "마이티 26-09 특수채(AAA)액티브"
     },
     "bnk-battery": {
       "code": "466810",
@@ -4300,14 +4291,6 @@
     "tiger-semiconductortop10leverage": {
       "code": "488080",
       "name": "TIGER 반도체TOP10레버리지"
-    },
-    "kiwoom-k-battery": {
-      "code": "488200",
-      "name": "KIWOOM K-2차전지북미공급망"
-    },
-    "kiwoom-k-semiconductor": {
-      "code": "488210",
-      "name": "KIWOOM K-반도체북미공급망"
     },
     "midas-japantechactive": {
       "code": "488290",
@@ -5844,6 +5827,38 @@
     "tiger-us-sp500us-treasury-blend50": {
       "code": "0238P0",
       "name": "TIGER 미국S&P500미국채혼합50"
+    },
+    "hanaro-usai-top2": {
+      "code": "0227L0",
+      "name": "HANARO 미국에이전틱AI TOP2+"
+    },
+    "ibk-top2bond-blend50active": {
+      "code": "0238C0",
+      "name": "IBK 한미대표기업TOP2+채권혼합50액티브"
+    },
+    "kodex-usaitop2plus": {
+      "code": "0238F0",
+      "name": "KODEX 미국AI메모리TOP2플러스"
+    },
+    "plus-hbmsemiconductor": {
+      "code": "0239Y0",
+      "name": "PLUS 코리아HBM반도체"
+    },
+    "plus-aisemiconductoractive": {
+      "code": "0239Z0",
+      "name": "PLUS AI반도체소부장액티브"
+    },
+    "rise-sk": {
+      "code": "0240J0",
+      "name": "RISE 삼성SK그룹"
+    },
+    "tiger-lgai": {
+      "code": "0241R0",
+      "name": "TIGER 현대차LG전자고정피지컬AI밸류체인"
+    },
+    "power-sk": {
+      "code": "0242S0",
+      "name": "파워 SK그룹"
     }
   }
 }

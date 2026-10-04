@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-09-13T03:44:05.153Z",
-  "baseDate": "20260910",
-  "count": 1168,
+  "fetchedAt": "2026-10-04T04:48:09.931Z",
+  "baseDate": "20261001",
+  "count": 1171,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -2968,11 +2968,6 @@
       "issueCode": "KR7453950008",
       "name": "TIGER TSMC파운드리밸류체인"
     },
-    "454180": {
-      "shortcode": "454180",
-      "issueCode": "KR7454180001",
-      "name": "KIWOOM 차이나내수소비TOP CSI"
-    },
     "454320": {
       "shortcode": "454320",
       "issueCode": "KR7454320003",
@@ -3243,11 +3238,6 @@
       "issueCode": "KR7463690008",
       "name": "KODEX 미국S&P500커뮤니케이션"
     },
-    "464240": {
-      "shortcode": "464240",
-      "issueCode": "KR7464240001",
-      "name": "KIWOOM 26-09회사채(AA-이상)액티브"
-    },
     "464310": {
       "shortcode": "464310",
       "issueCode": "KR7464310002",
@@ -3312,11 +3302,6 @@
       "shortcode": "465670",
       "issueCode": "KR7465670008",
       "name": "TIGER 미국캐시카우100"
-    },
-    "465780": {
-      "shortcode": "465780",
-      "issueCode": "KR7465780005",
-      "name": "마이티 26-09 특수채(AAA)액티브"
     },
     "466810": {
       "shortcode": "466810",
@@ -3912,16 +3897,6 @@
       "shortcode": "488080",
       "issueCode": "KR7488080003",
       "name": "TIGER 반도체TOP10레버리지"
-    },
-    "488200": {
-      "shortcode": "488200",
-      "issueCode": "KR7488200007",
-      "name": "KIWOOM K-2차전지북미공급망"
-    },
-    "488210": {
-      "shortcode": "488210",
-      "issueCode": "KR7488210006",
-      "name": "KIWOOM K-반도체북미공급망"
     },
     "488290": {
       "shortcode": "488290",
@@ -5758,6 +5733,11 @@
       "issueCode": "KR70227K0007",
       "name": "RISE 미국우주위성통신"
     },
+    "0227L0": {
+      "shortcode": "0227L0",
+      "issueCode": "KR70227L0006",
+      "name": "HANARO 미국에이전틱AI TOP2+"
+    },
     "0228G0": {
       "shortcode": "0228G0",
       "issueCode": "KR70228G0002",
@@ -5798,10 +5778,45 @@
       "issueCode": "KR70234N0005",
       "name": "KIWOOM 삼성SK그룹TOP4+"
     },
+    "0238C0": {
+      "shortcode": "0238C0",
+      "issueCode": "KR70238C0004",
+      "name": "IBK 한미대표기업TOP2+채권혼합50액티브"
+    },
+    "0238F0": {
+      "shortcode": "0238F0",
+      "issueCode": "KR70238F0001",
+      "name": "KODEX 미국AI메모리TOP2플러스"
+    },
     "0238P0": {
       "shortcode": "0238P0",
       "issueCode": "KR70238P0009",
       "name": "TIGER 미국S&P500미국채혼합50"
+    },
+    "0239Y0": {
+      "shortcode": "0239Y0",
+      "issueCode": "KR70239Y0007",
+      "name": "PLUS 코리아HBM반도체"
+    },
+    "0239Z0": {
+      "shortcode": "0239Z0",
+      "issueCode": "KR70239Z0006",
+      "name": "PLUS AI반도체소부장액티브"
+    },
+    "0240J0": {
+      "shortcode": "0240J0",
+      "issueCode": "KR70240J0003",
+      "name": "RISE 삼성SK그룹"
+    },
+    "0241R0": {
+      "shortcode": "0241R0",
+      "issueCode": "KR70241R0002",
+      "name": "TIGER 현대차LG전자고정피지컬AI밸류체인"
+    },
+    "0242S0": {
+      "shortcode": "0242S0",
+      "issueCode": "KR70242S0000",
+      "name": "파워 SK그룹"
     },
     "069500": {
       "shortcode": "069500",
@@ -7320,6 +7335,11 @@
       "issueCode": "KR70227K0007",
       "name": "RISE 미국우주위성통신"
     },
+    "KR70227L0006": {
+      "shortcode": "0227L0",
+      "issueCode": "KR70227L0006",
+      "name": "HANARO 미국에이전틱AI TOP2+"
+    },
     "KR70228G0002": {
       "shortcode": "0228G0",
       "issueCode": "KR70228G0002",
@@ -7360,10 +7380,45 @@
       "issueCode": "KR70234N0005",
       "name": "KIWOOM 삼성SK그룹TOP4+"
     },
+    "KR70238C0004": {
+      "shortcode": "0238C0",
+      "issueCode": "KR70238C0004",
+      "name": "IBK 한미대표기업TOP2+채권혼합50액티브"
+    },
+    "KR70238F0001": {
+      "shortcode": "0238F0",
+      "issueCode": "KR70238F0001",
+      "name": "KODEX 미국AI메모리TOP2플러스"
+    },
     "KR70238P0009": {
       "shortcode": "0238P0",
       "issueCode": "KR70238P0009",
       "name": "TIGER 미국S&P500미국채혼합50"
+    },
+    "KR70239Y0007": {
+      "shortcode": "0239Y0",
+      "issueCode": "KR70239Y0007",
+      "name": "PLUS 코리아HBM반도체"
+    },
+    "KR70239Z0006": {
+      "shortcode": "0239Z0",
+      "issueCode": "KR70239Z0006",
+      "name": "PLUS AI반도체소부장액티브"
+    },
+    "KR70240J0003": {
+      "shortcode": "0240J0",
+      "issueCode": "KR70240J0003",
+      "name": "RISE 삼성SK그룹"
+    },
+    "KR70241R0002": {
+      "shortcode": "0241R0",
+      "issueCode": "KR70241R0002",
+      "name": "TIGER 현대차LG전자고정피지컬AI밸류체인"
+    },
+    "KR70242S0000": {
+      "shortcode": "0242S0",
+      "issueCode": "KR70242S0000",
+      "name": "파워 SK그룹"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -10370,11 +10425,6 @@
       "issueCode": "KR7453950008",
       "name": "TIGER TSMC파운드리밸류체인"
     },
-    "KR7454180001": {
-      "shortcode": "454180",
-      "issueCode": "KR7454180001",
-      "name": "KIWOOM 차이나내수소비TOP CSI"
-    },
     "KR7454320003": {
       "shortcode": "454320",
       "issueCode": "KR7454320003",
@@ -10645,11 +10695,6 @@
       "issueCode": "KR7463690008",
       "name": "KODEX 미국S&P500커뮤니케이션"
     },
-    "KR7464240001": {
-      "shortcode": "464240",
-      "issueCode": "KR7464240001",
-      "name": "KIWOOM 26-09회사채(AA-이상)액티브"
-    },
     "KR7464310002": {
       "shortcode": "464310",
       "issueCode": "KR7464310002",
@@ -10714,11 +10759,6 @@
       "shortcode": "465670",
       "issueCode": "KR7465670008",
       "name": "TIGER 미국캐시카우100"
-    },
-    "KR7465780005": {
-      "shortcode": "465780",
-      "issueCode": "KR7465780005",
-      "name": "마이티 26-09 특수채(AAA)액티브"
     },
     "KR7466810009": {
       "shortcode": "466810",
@@ -11314,16 +11354,6 @@
       "shortcode": "488080",
       "issueCode": "KR7488080003",
       "name": "TIGER 반도체TOP10레버리지"
-    },
-    "KR7488200007": {
-      "shortcode": "488200",
-      "issueCode": "KR7488200007",
-      "name": "KIWOOM K-2차전지북미공급망"
-    },
-    "KR7488210006": {
-      "shortcode": "488210",
-      "issueCode": "KR7488210006",
-      "name": "KIWOOM K-반도체북미공급망"
     },
     "KR7488290008": {
       "shortcode": "488290",
@@ -13163,6 +13193,11 @@
       "name": "RISE 미국우주위성통신"
     },
     {
+      "shortcode": "0227L0",
+      "issueCode": "KR70227L0006",
+      "name": "HANARO 미국에이전틱AI TOP2+"
+    },
+    {
       "shortcode": "0228G0",
       "issueCode": "KR70228G0002",
       "name": "ACE 반도체Plus전략산업"
@@ -13203,9 +13238,44 @@
       "name": "KIWOOM 삼성SK그룹TOP4+"
     },
     {
+      "shortcode": "0238C0",
+      "issueCode": "KR70238C0004",
+      "name": "IBK 한미대표기업TOP2+채권혼합50액티브"
+    },
+    {
+      "shortcode": "0238F0",
+      "issueCode": "KR70238F0001",
+      "name": "KODEX 미국AI메모리TOP2플러스"
+    },
+    {
       "shortcode": "0238P0",
       "issueCode": "KR70238P0009",
       "name": "TIGER 미국S&P500미국채혼합50"
+    },
+    {
+      "shortcode": "0239Y0",
+      "issueCode": "KR70239Y0007",
+      "name": "PLUS 코리아HBM반도체"
+    },
+    {
+      "shortcode": "0239Z0",
+      "issueCode": "KR70239Z0006",
+      "name": "PLUS AI반도체소부장액티브"
+    },
+    {
+      "shortcode": "0240J0",
+      "issueCode": "KR70240J0003",
+      "name": "RISE 삼성SK그룹"
+    },
+    {
+      "shortcode": "0241R0",
+      "issueCode": "KR70241R0002",
+      "name": "TIGER 현대차LG전자고정피지컬AI밸류체인"
+    },
+    {
+      "shortcode": "0242S0",
+      "issueCode": "KR70242S0000",
+      "name": "파워 SK그룹"
     },
     {
       "shortcode": "069500",
@@ -16213,11 +16283,6 @@
       "name": "TIGER TSMC파운드리밸류체인"
     },
     {
-      "shortcode": "454180",
-      "issueCode": "KR7454180001",
-      "name": "KIWOOM 차이나내수소비TOP CSI"
-    },
-    {
       "shortcode": "454320",
       "issueCode": "KR7454320003",
       "name": "HANARO CAPEX설비투자iSelect"
@@ -16488,11 +16553,6 @@
       "name": "KODEX 미국S&P500커뮤니케이션"
     },
     {
-      "shortcode": "464240",
-      "issueCode": "KR7464240001",
-      "name": "KIWOOM 26-09회사채(AA-이상)액티브"
-    },
-    {
       "shortcode": "464310",
       "issueCode": "KR7464310002",
       "name": "TIGER 글로벌AI&로보틱스 INDXX"
@@ -16556,11 +16616,6 @@
       "shortcode": "465670",
       "issueCode": "KR7465670008",
       "name": "TIGER 미국캐시카우100"
-    },
-    {
-      "shortcode": "465780",
-      "issueCode": "KR7465780005",
-      "name": "마이티 26-09 특수채(AAA)액티브"
     },
     {
       "shortcode": "466810",
@@ -17156,16 +17211,6 @@
       "shortcode": "488080",
       "issueCode": "KR7488080003",
       "name": "TIGER 반도체TOP10레버리지"
-    },
-    {
-      "shortcode": "488200",
-      "issueCode": "KR7488200007",
-      "name": "KIWOOM K-2차전지북미공급망"
-    },
-    {
-      "shortcode": "488210",
-      "issueCode": "KR7488210006",
-      "name": "KIWOOM K-반도체북미공급망"
     },
     {
       "shortcode": "488290",
