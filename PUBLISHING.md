@@ -25,7 +25,7 @@ v1.0·v1.1의 제목·메타(§4), 본문 골격·문체·정보 밀도·사실�
 
 **트래픽 레버** (우선순위 순)
 
-1. `/etf` 데이터 신선도: 매일 06시 루틴이 `npm run snapshot:etf`로 시세 스냅샷(`data/raw/etf_prices_YYYYMMDD.json`)을 커밋한다.
+1. `/etf` 데이터 신선도: GitHub Actions `daily-etf-snapshot.yml`이 월~토 오후·저녁에 `npm run snapshot:etf`로 시세 스냅샷(`data/raw/etf_prices_YYYYMMDD.json`)을 커밋하고, 일요일에 `/etf` 전체를 IndexNow로 통보한다(2026-10-06 이관. 클라우드 루틴 환경은 사이트 접속이 막혀 있다).
 2. GSC 8~40위 기존 URL 보강
 3. 같은 지수 비교 페어
 4. 데이터 판단형 신규 가이드 (격주)
@@ -57,7 +57,7 @@ v1.0·v1.1의 제목·메타(§4), 본문 골격·문체·정보 밀도·사실�
 
 ### 1-2. GSC 스냅샷
 
-- 클라우드 루틴은 GSC 인증이 없어 새로 받지 못하고, 커밋된 파일만 읽는다. **로컬 예약 작업 `iknowhowinfo-weekly-gsc-indexnow`(매주 일요일 20시대, 이 PC 에서 Claude 앱이 켜져 있을 때)가 `npm run keywords:gsc` 로 `data/keywords/gsc_YYYYMMDD.json` 을 커밋하고, 같은 작업이 `push:guides --days=7`·`push:etf` 로 IndexNow 통보까지 한다.** 앱이 꺼져 있던 주는 켜질 때 실행된다.
+- 클라우드 루틴은 GSC 인증이 없어 새로 받지 못하고, 커밋된 파일만 읽는다. **로컬 예약 작업 `iknowhowinfo-weekly-gsc-indexnow`(매주 일요일 20시대, 이 PC 에서 Claude 앱이 켜져 있을 때)가 `npm run keywords:gsc` 로 `data/keywords/gsc_YYYYMMDD.json` 을 커밋하고, `/etf` IndexNow 통보는 GitHub Actions 가 맡는다.** 앱이 꺼져 있던 주는 켜질 때 실행된다.
 - 형식: `{ site, range: { start, end }, total, striking, lowCtr, all: [{ query, page, clicks, impressions, ctr, position }] }`
 - 보강 후보: 가장 최근 파일의 `all`에서 `8 <= position <= 40`이고 `impressions >= 1`인 행. page 단위로 묶어 노출 합이 큰 순서로 본다.
 - 파일 날짜가 실행일보다 14일 넘게 오래됐거나 후보가 0건이면, 그날 월요일 슬롯은 데이터 QA(§2-4)로 대체한다.
@@ -85,7 +85,7 @@ v1.0·v1.1의 제목·메타(§4), 본문 골격·문체·정보 밀도·사실�
 
 | 요일 | 슬롯 | 하는 일 | 새 URL | 루틴이 고치는 파일 |
 |---|---|---|---|---|
-| 매일 공통 | 시세 스냅샷 | `npm run snapshot:etf`. 새 스냅샷이 생기면 커밋. 실패해도 그날 슬롯은 계속 | 0 | `data/raw/etf_prices_*.json` |
+| 매일 공통 | 시세 스냅샷 | GitHub Actions(`daily-etf-snapshot.yml`)가 맡는다. 루틴은 하지 않는다 | 0 | 루틴은 없음 |
 | 월 | GSC 보강 | §1-2 후보 중 가이드 1편 보강. 스냅샷이 14일 넘었거나 후보가 없으면 데이터 QA로 대체 | 0 | `src/lib/guides.ts` |
 | 화 | 비교 페어 | 같은 기초지수를 추종하는 ETF 1쌍 추가 | 1 | `src/lib/etf-compare-pairs.ts` |
 | 수 | 데이터 QA 보고 | `/etf` 데이터 점검 결과만 보고. 발행·파일 수정 없음 | 0 | 없음 |
@@ -96,7 +96,7 @@ v1.0·v1.1의 제목·메타(§4), 본문 골격·문체·정보 밀도·사실�
 
 ### 2-1. 시세 스냅샷 (매일)
 
-- `npm run snapshot:etf`는 운영 중인 사이트의 `/api/etf` 응답을 기존 스냅샷 형식 그대로 저장한다. 키가 필요 없어 클라우드 컨테이너에서도 돈다.
+- `npm run snapshot:etf`는 운영 중인 사이트의 `/api/etf` 응답을 기존 스냅샷 형식 그대로 저장한다. 2026-10-06부터 GitHub Actions `daily-etf-snapshot.yml`이 돌린다(클라우드 루틴 환경은 네트워크 정책상 사이트 접속이 막혀 매번 HTTP 403, 로컬 예약 작업은 커밋 승인 대기로 멈췄다).
 - 스크립트가 스스로 막는 경우(파일을 쓰지 않음): 실데이터가 아님, 종목 수 1,000 미만, 기준일이 직전 스냅샷보다 새롭지 않음. 주말·휴장일에는 새 파일이 없는 게 정상이다.
 - 사이트는 파일명이 가장 큰 스냅샷 하나만 읽는다(`getLatestEtfData`). 비거나 깨진 파일이 올라가면 `/etf` 전체가 한 번에 빈다. 그래서 루틴은 새 파일의 종목 수와 기준일을 한 번 더 확인한 뒤에만 커밋한다.
 

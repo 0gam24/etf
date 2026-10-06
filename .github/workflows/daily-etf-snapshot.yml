@@ -1,0 +1,96 @@
+name: Daily ETF Price Snapshot
+
+# /etf 종목 사전 1,160여 쪽의 시세 신선도 유지 (2026-10-06).
+#   npm run snapshot:etf 가 운영 사이트 /api/etf(data.go.kr 일별 종가)를 기존 스냅샷 형식으로
+#   data/raw/etf_prices_YYYYMMDD.json 에 저장한다. 새 기준일이 없으면 스스로 건너뛴다.
+#   새 파일이 생기면 커밋·push → Cloudflare 자동 배포 → 전 /etf 페이지가 새 종가로 다시 생성된다.
+#
+#   왜 여기서 돌리나: 06시 클라우드 루틴 환경은 네트워크 정책상 iknowhowinfo.com 에 접속하지 못하고,
+#   로컬 예약 작업은 PC·앱·커밋 승인에 매여 10-02 부터 멈췄다. Actions 러너는 사이트 접속이 되고
+#   (guide-index-push 가 매번 배포 확인 성공) 사람 승인이 필요 없다.
+#
+#   일요일 실행은 같은 주 /etf 전체를 IndexNow(Bing·네이버)에 한 번 통보한다(가격이 매일 바뀌는 페이지라
+#   주 1회 통보가 적당). 키는 Secrets 에서만 읽는다.
+on:
+  schedule:
+    # data.go.kr 일별 종가는 다음 영업일 낮 이후 공개되는 경우가 많아 오후·저녁 두 번 본다.
+    # UTC 05:23·11:23 = KST 14:23·20:23, 월~토
+    - cron: '23 5,11 * * 1-6'
+    # UTC 일요일 01:41 = KST 일요일 10:41, /etf IndexNow 주간 통보
+    - cron: '41 1 * * 0'
+  workflow_dispatch:
+    inputs:
+      indexnow:
+        description: '스냅샷 뒤 /etf 전체 IndexNow 통보도 할지 (true/false)'
+        required: false
+        default: 'false'
+
+concurrency:
+  group: daily-etf-snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    permissions:
+      contents: write
+
+    env:
+      TZ: Asia/Seoul
+      SITE_URL: https://iknowhowinfo.com
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Snapshot ETF prices
+        id: snap
+        run: |
+          set +e
+          npm run snapshot:etf 2>&1 | tee /tmp/snap.log
+          code=${PIPESTATUS[0]}
+          set -e
+          if [ "$code" -ne 0 ]; then
+            echo "⚠️ 스냅샷 실패(exit $code). 다음 실행에서 다시 시도한다."
+          fi
+          NEW=$(git status --porcelain data/raw | grep -E '^\?\? data/raw/etf_prices_[0-9]{8}[.]json$' | sed 's/^?? //' || true)
+          echo "file=$NEW" >> "$GITHUB_OUTPUT"
+
+      - name: Commit snapshot (only if a new file was written)
+        if: steps.snap.outputs.file != ''
+        run: |
+          F="${{ steps.snap.outputs.file }}"
+          BASE=$(node -e "const j=require('./$F');const b=String(j.data.baseDate);console.log(b.slice(0,4)+'-'+b.slice(4,6)+'-'+b.slice(6,8))")
+          COUNT=$(node -e "console.log(require('./$F').data.etfCount)")
+          if [ "$COUNT" -lt 1000 ]; then
+            echo "❌ 종목 수 $COUNT < 1000 — 커밋하지 않음"; exit 1
+          fi
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$F"
+          git commit -m "chore(data): ETF 시세 스냅샷 $BASE"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin main && break
+            sleep 10
+          done
+          echo "✅ $F (기준일 $BASE, $COUNT종) push"
+
+      - name: IndexNow /etf (Sunday or manual)
+        if: github.event.schedule == '41 1 * * 0' || github.event.inputs.indexnow == 'true'
+        run: npm run push:etf

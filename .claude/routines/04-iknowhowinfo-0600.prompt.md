@@ -72,23 +72,9 @@ node scripts/routine.cjs env
 
 슬롯 파일을 고치지 않은 날의 scope 모드는 항상 `snapshot`이다.
 
-## 3. 시세 스냅샷 (매일, 슬롯보다 먼저)
+## 3. 시세 스냅샷 (루틴은 하지 않는다)
 
-`/etf` 1,160쪽의 데이터 신선도가 트래픽 레버 1순위다. 실패해도 루틴은 계속한다.
-
-```bash
-SITE_URL=https://iknowhowinfo.com npm run snapshot:etf
-```
-- 인자 없이만 실행한다. `--force`·`--dry`는 쓰지 않는다.
-- exit 1(`❌ 스냅샷 실패`)이거나 `Missing script`면 "스냅샷 실패: {사유}"를 적어 두고 계속한다.
-- `⏭️ 스냅샷 저장 건너뜀`이면 "새 기준일 없음"(주말·휴장일에 정상)으로 적고 계속한다.
-- `✅ 저장`이면 한 번 더 점검한다:
-
-```bash
-node scripts/routine.cjs snapcheck
-```
-- `ok` true → 그 파일(`file`) 하나를 커밋 목록에 넣고 `baseDate`(YYYY-MM-DD)를 적어 둔다.
-- `ok` false → 커밋하지 않는다. `untracked`가 true일 때만 `rm data/raw/<file>`로 치운다(남겨 두면 빌드가 그 파일을 읽는다). false면 지우지 않는다. 보고에 "스냅샷 보류" 한 줄.
+2026-10-06부터 시세 스냅샷은 GitHub Actions `.github/workflows/daily-etf-snapshot.yml`이 평일·토요일 오후와 저녁에 커밋한다. 이 루틴 환경은 네트워크 정책상 iknowhowinfo.com 에 접속하지 못해 매번 실패했다. **루틴은 `npm run snapshot:etf`를 돌리지 않고 `data/raw/`를 커밋하지 않는다.** 아래 §8~§11의 스냅샷 관련 행(스냅샷 파일 add, 스냅샷 커밋 제목, 스냅샷 배포 확인, 시세 줄 보고)은 모두 건너뛴다. 슬롯 파일을 고치지 않은 날은 커밋할 것이 없으므로 §8~§10을 건너뛰고 §11 보고만 한다.
 
 ## 4. 필독 (Read 도구)
 
