@@ -23,6 +23,11 @@ import etfSlugMap from '../../../data/etf-slug-map.json';
 
 const SITE = process.env.SITE_URL || 'https://iknowhowinfo.com';
 
+// ★ 빌드타임 정적 생성: 요청 시점(Cloudflare Workers)에 만들면 getAllPosts()가 빈 배열을
+//   돌려줘 글 98편이 통째로 빠진 채 나가고 있었다(2026-10-06 라이브 점검: 296개 중 글 0개).
+//   sitemap-index.xml·sitemap-etf.xml·rss.xml 과 같은 방식으로 빌드 때 굽는다.
+export const dynamic = 'force-static';
+
 function escapeXml(s: string): string {
   return s.replace(/[<>&'"]/g, c => {
     switch (c) {
@@ -78,7 +83,8 @@ export async function GET() {
   //   (about·newsletter·resources·compare·etf 인덱스 모두 OG 이미지 동적 생성됨)
   const STATIC_PAGES: Array<{ path: string; title: string; category?: string }> = [
     { path: '/about',      title: 'Daily ETF Pulse 편집팀, 발행 원칙·데이터 출처',  category: 'pulse' },
-    { path: '/newsletter', title: 'Daily ETF Pulse 뉴스레터, 매일 아침 9시 갱신',  category: 'pulse' },
+    // 2026-10-06: 이메일 발송이 없어 '매일 아침 9시 갱신' 약속을 페이지 실제 제목에 맞춰 고침
+    { path: '/newsletter', title: '뉴스레터·RSS 구독, 새 ETF 가이드 받아보기',  category: 'pulse' },
     { path: '/feeds',      title: '구독 · 피드 (RSS·Atom·JSON), Daily ETF Pulse',   category: 'pulse' },
     { path: '/resources',  title: 'ETF 학습 자료실, 도서·도구 큐레이션',           category: 'income' },
     { path: '/compare',    title: 'ETF 1:1 비교 허브, 운용사·섹터·환헤지',         category: 'flow' },
@@ -89,8 +95,10 @@ export async function GET() {
     { path: '/weekly',     title: '주간 ETF 펄스 리포트 · 주차별 자금 흐름',        category: 'flow' },
     { path: '/strategy/kospi200-breakout', title: '코스피200 변동성 돌파 시그널, Andrea Unger',  category: 'surge' },
     { path: '/strategy/track-record',      title: '시그널 트랙 레코드, Transparent 결과 공개', category: 'surge' },
-    { path: '/tools/portfolio',  title: 'ETF 포트폴리오 실시간 시뮬레이션',                category: 'pulse' },
+    // 2026-10-06: 실시간 시세는 중단(일별 종가 운영)이라 '실시간' 대신 페이지 실제 제목을 쓴다
+    { path: '/tools/portfolio',  title: 'ETF 포트폴리오 손익 계산기',                      category: 'pulse' },
     { path: '/tools/tax-compare', title: '계좌별 세후 수익률 비교, IRP·ISA·연금저축',   category: 'income' },
+    { path: '/tools/dividend-calculator', title: 'ETF 분배금 계산기',                     category: 'income' },
   ];
 
   // ── 페르소나 entry pages 7종 (Phase 4), Image Sitemap 등록 ───────

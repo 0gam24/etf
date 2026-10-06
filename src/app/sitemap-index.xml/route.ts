@@ -1,6 +1,7 @@
 import { getSiteLastModified, getAllPosts } from '@/lib/posts';
 import { getLatestEtfData } from '@/lib/data';
 import { GUIDE_PUBLISHED_AT } from '@/lib/guides';
+import mainSitemap from '../sitemap';
 
 /**
  * Daily ETF Pulse — Sitemap index.
@@ -22,6 +23,12 @@ const SITE = process.env.SITE_URL || 'https://iknowhowinfo.com';
 //   sitemap-etf.xml·rss.xml이 같은 이유로 이미 이 설정을 쓴다. (2026-08-12)
 export const dynamic = 'force-static';
 
+function toTime(v: string | Date | undefined): number {
+  if (!v) return 0;
+  const t = (v instanceof Date ? v : new Date(v)).getTime();
+  return isNaN(t) ? 0 : t;
+}
+
 export async function GET() {
   /**
    * 갱신일은 자식 sitemap마다 따로 계산한다.
@@ -30,38 +37,53 @@ export async function GET() {
    *   글 sitemap이 갱신된 것처럼 보이고, 반대로 가이드를 발행해도 종목 쪽 날짜가
    *   같이 움직인다. 검색엔진은 이런 갱신일을 신뢰하지 않게 되고, 그러면
    *   재수집 우선순위가 내려간다. 각자 실제로 바뀐 시점을 쓴다. (2026-08-12)
+   *
+   *   날짜를 데이터에서 얻지 못하면 <lastmod> 를 생략한다. 빌드 시각(Date.now())을
+   *   넣으면 빌드마다 "방금 바뀜"으로 신고된다. (2026-10-06)
    */
-  //   sitemap.xml에는 일별 글과 가이드가 함께 들어간다. 글만 보면 일별 발행이 멈춘
-  //   6월이 최신으로 잡혀서, 8월에 가이드를 발행해도 "6월 이후 안 바뀜"이라고 신고하게 된다.
-  //   그러면 검색엔진이 다시 가져가지 않는다. 둘 중 나중 것을 쓴다.
+  //   sitemap.xml에는 일별 글·가이드·/etf 인덱스·/compare·도구가 함께 들어간다.
+  //   그 안 항목 lastmod 의 최댓값을 그대로 쓴다. 예전에는 글·가이드 날짜만 봐서
+  //   시세 기준일로 갱신되는 /etf·/compare 항목보다 index 날짜가 앞서는 일이 있었다. (2026-10-06)
+  const mainLastmodTs = mainSitemap()
+    .map(e => toTime(e.lastModified))
+    .reduce((a, b) => Math.max(a, b), 0);
+
+  //   이미지 sitemap은 글과 가이드 목록에서 만들어지므로 둘 중 나중 날짜를 쓴다.
   const latestPost = getSiteLastModified()?.getTime() ?? 0;
   const latestGuide = Object.values(GUIDE_PUBLISHED_AT)
     .map(d => new Date(`${d}T09:00:00+09:00`).getTime())
+    .filter(t => !isNaN(t))
     .reduce((a, b) => Math.max(a, b), 0);
-  const contentLastmod = new Date(Math.max(latestPost, latestGuide) || Date.now()).toISOString();
+  const contentLastmodTs = Math.max(latestPost, latestGuide);
 
   // 종목 사전은 KRX 시세 기준일이 곧 갱신일이다 (YYYYMMDD → ISO)
   const baseDate = getLatestEtfData()?.baseDate;
-  const etfLastmod = baseDate && /^\d{8}$/.test(baseDate)
-    ? new Date(`${baseDate.slice(0, 4)}-${baseDate.slice(4, 6)}-${baseDate.slice(6, 8)}T09:00:00+09:00`).toISOString()
-    : contentLastmod;
+  const etfLastmodTs = baseDate && /^\d{8}$/.test(baseDate)
+    ? new Date(`${baseDate.slice(0, 4)}-${baseDate.slice(4, 6)}-${baseDate.slice(6, 8)}T09:00:00+09:00`).getTime()
+    : 0;
 
-  // 속보 sitemap은 최근 2일 글만 담으므로, 최신 속보 발행일이 갱신일이다
+  /**
+   * 속보 sitemap(Google News 형식)은 최근 2일 안의 속보 글만 담는다.
+   *   2026-10-06: 속보 글이 6월 이후 없어 이 sitemap 은 늘 빈 목록이었다. 빈 자식 sitemap 을
+   *   index 에 계속 두면 검색엔진이 매번 받아 가지만 얻는 주소가 없다. 빌드 시점에 최근 2일
+   *   안의 속보가 있을 때만 index 에 넣는다. 속보를 새로 내면 그 배포의 빌드에서 다시 들어온다.
+   */
   const latestBreaking = getAllPosts().find(p => p.meta.category === 'breaking');
-  const newsLastmod = latestBreaking ? new Date(latestBreaking.meta.date).toISOString() : contentLastmod;
+  const latestBreakingTs = latestBreaking ? toTime(latestBreaking.meta.date) : 0;
+  const hasRecentBreaking = latestBreakingTs > 0 && latestBreakingTs >= Date.now() - 2 * 86400 * 1000;
 
-  const children: Array<[string, string]> = [
-    ['sitemap.xml', contentLastmod],
-    ['sitemap-etf.xml', etfLastmod],
-    ['sitemap-images.xml', contentLastmod],
-    ['sitemap-news.xml', newsLastmod],
+  const children: Array<[string, number]> = [
+    ['sitemap.xml', mainLastmodTs],
+    ['sitemap-etf.xml', etfLastmodTs],
+    ['sitemap-images.xml', contentLastmodTs],
   ];
+  if (hasRecentBreaking) children.push(['sitemap-news.xml', latestBreakingTs]);
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${children.map(([name, mod]) => `  <sitemap>
-    <loc>${SITE}/${name}</loc>
-    <lastmod>${mod}</lastmod>
+${children.map(([name, ts]) => `  <sitemap>
+    <loc>${SITE}/${name}</loc>${ts > 0 ? `
+    <lastmod>${new Date(ts).toISOString()}</lastmod>` : ''}
   </sitemap>`).join('\n')}
 </sitemapindex>`;
   // 참고: /llms.txt 는 sitemap 스펙상 XML sitemap 에 넣는 자산이 아니라

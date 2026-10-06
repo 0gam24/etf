@@ -16,6 +16,8 @@ import {
   formatEtfPriceAsOf,
 } from '@/lib/data';
 import { getInvestmentPoints } from '@/lib/etf-investment-points';
+import { getEtfSiblings } from '@/lib/etf-siblings';
+import EtfSiblingLinks from '@/components/EtfSiblingLinks';
 import { getAllPosts } from '@/lib/posts';
 import { getGuidesForSector } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -267,6 +269,11 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
   const navGap = facts?.navGap ?? null;
   // 괴리율이 시세 기준일과 다른 날의 NAV·종가 쌍인지 (그 날 NAV 자료가 빠진 경우)
   const navDateDiffers = !!navGap && !!navGap.isoDate && navGap.isoDate !== (facts?.age?.isoDate || '');
+
+  // 같은 지수 이름을 쓰는 다른 운용사 상품 · 괄호 표기만 다른 상품 · 1:1 비교 페이지 (2026-10-06)
+  //   "상품명·코드 + 속성" 검색으로 들어온 사람이 같은 지수의 다른 상품과 바로 견줄 수 있게 하고,
+  //   같은 지수 상품끼리 서로 링크해 /etf·/compare 페이지의 크롤 경로를 만든다. 셋 다 없으면 null.
+  const siblings = getEtfSiblings(displayCode);
 
   // 관련 분석 글 (티커 기준)
   const allPosts = getAllPosts();
@@ -646,6 +653,11 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
             <a href={disclosureUrl} target="_blank" rel="noopener noreferrer">{disclosureLabel} ↗</a>의 공시에서 확인하세요.
           </p>
         </section>
+      )}
+
+      {/* 같은 지수 이름의 다른 ETF: 같은 섹터·같은 운용사 블록보다 검색 의도가 가까워 투자 포인트보다 먼저 둔다 */}
+      {siblings && (
+        <EtfSiblingLinks info={siblings} sectionNo={no()} currentName={displayName} />
       )}
 
       {/* 4. 투자 포인트 — Phase 2C 섹터별 정형 템플릿 */}

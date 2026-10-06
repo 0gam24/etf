@@ -7,7 +7,7 @@ import {
   getCategoryLastModified,
   getSiteLastModified,
 } from '@/lib/posts';
-import { GUIDES, getGuidePublishedAt } from '@/lib/guides';
+import { GUIDES, GUIDE_PUBLISHED_AT, getGuidePublishedAt } from '@/lib/guides';
 import { getProductsRegistry } from '@/lib/products';
 import { getLatestEtfData, getKrxEtfMeta } from '@/lib/data';
 import { COMPARE_PAIRS } from '@/lib/etf-compare-pairs';
@@ -27,14 +27,40 @@ import { ALL_PERSONAS } from '@/lib/personas-config';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.SITE_URL || 'https://iknowhowinfo.com';
   const allPosts = getAllPosts();
-  const fallback = new Date(); // 콘텐츠 0개일 때만 사용
+  // 갱신일을 데이터에서 얻지 못하면 lastmod 를 아예 생략한다.
+  //   예전에는 new Date()(빌드 시각)를 넣었는데, 빌드할 때마다 "방금 바뀜"으로 신고되어
+  //   검색엔진이 이 사이트의 lastmod 전체를 믿지 않게 된다. (SEO.md §5, 2026-10-06)
+  const fallback: Date | undefined = undefined;
 
   const routes: MetadataRoute.Sitemap = [];
 
-  // 홈 — 사이트 전체 최신 글 발행일
+  // 종목 시세 기준일 (YYYYMMDD → Date). 홈·/etf·/compare 의 갱신일로 쓴다.
+  const etfData = getLatestEtfData();
+  function ymdToDate(ymd?: string): Date | null {
+    if (!ymd || ymd.length !== 8) return null;
+    const iso = `${ymd.slice(0, 4)}-${ymd.slice(4, 6)}-${ymd.slice(6, 8)}T00:00:00+09:00`;
+    const d = new Date(iso);
+    return isNaN(d.getTime()) ? null : d;
+  }
+  const etfLastModified = ymdToDate(etfData?.baseDate) || fallback;
+
+  // 가이드 최신 발행일 (홈 갱신일 계산용)
+  const latestGuidePublished = Object.values(GUIDE_PUBLISHED_AT)
+    .map(d => new Date(`${d}T09:00:00+09:00`).getTime())
+    .filter(t => !isNaN(t))
+    .reduce((a, b) => Math.max(a, b), 0);
+
+  // 홈: 최신 글·최신 가이드·시세 기준일 중 가장 늦은 날.
+  //   홈은 시세 요약과 새 가이드를 함께 보여 주므로, 글 발행일(6월에 멈춤)만 쓰면
+  //   매일 바뀌는 페이지를 "6월 이후 그대로"라고 신고하게 된다. (2026-10-06)
+  const homeLastModifiedTs = Math.max(
+    getSiteLastModified()?.getTime() ?? 0,
+    latestGuidePublished,
+    etfLastModified?.getTime() ?? 0,
+  );
   routes.push({
     url: baseUrl,
-    lastModified: getSiteLastModified() || fallback,
+    lastModified: homeLastModifiedTs > 0 ? new Date(homeLastModifiedTs) : fallback,
     changeFrequency: 'daily',
     priority: 1.0,
   });
@@ -85,10 +111,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   });
 
-  // 구독 · 피드 허브 (RSS·AI/검색 엔진 파일 안내)
+  // 구독 · 피드 허브 (RSS·AI/검색 엔진 파일 안내). 안내 문구를 실제 운영에 맞춰 고친 날.
   routes.push({
     url: `${baseUrl}/feeds`,
-    lastModified: getSiteLastModified() || fallback,
+    lastModified: new Date('2026-10-06'),
     changeFrequency: 'monthly',
     priority: 0.6,
   });
@@ -151,14 +177,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   // 종목 사전 인덱스 페이지 (/etf) — 개별 ETF 전 종목은 별도 sitemap-etf.xml에서 처리
-  const etfData = getLatestEtfData();
-  function ymdToDate(ymd?: string): Date | null {
-    if (!ymd || ymd.length !== 8) return null;
-    const iso = `${ymd.slice(0, 4)}-${ymd.slice(4, 6)}-${ymd.slice(6, 8)}T00:00:00+09:00`;
-    const d = new Date(iso);
-    return isNaN(d.getTime()) ? null : d;
-  }
-  const etfLastModified = ymdToDate(etfData?.baseDate) || fallback;
   routes.push({
     url: `${baseUrl}/etf`,
     lastModified: etfLastModified,
@@ -207,32 +225,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   // ── /today 종합 리포트 (Phase 4) ──────────────────────────────────
-  // /today (latest) + /today/{YYYY-MM-DD} 영구 보관 일별 리포트들
+  // /today 한 주소만 등록한다. 갱신일은 페이지가 실제로 읽는 data/today/latest.json 의 date.
+  //
+  //   2026-10-06: 예전에는 data/today/{YYYY-MM-DD}.json 마다 /today/{날짜} 주소를 넣었는데,
+  //   그 날짜별 라우트는 존재하지 않아 10개 전부 404 였다(라이브 점검). 크롤러가 404 를
+  //   반복해서 받으면 사이트 전체 크롤 수요가 줄어든다. 라우트를 만들기 전까지 넣지 않는다.
+  let todayLastModified: Date | undefined;
+  try {
+    const latest = JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'data', 'today', 'latest.json'), 'utf-8'),
+    ) as { date?: string };
+    if (latest.date && /^\d{4}-\d{2}-\d{2}$/.test(latest.date)) {
+      todayLastModified = new Date(`${latest.date}T07:00:00+09:00`);
+    }
+  } catch { /* latest.json 이 없으면 lastmod 생략 */ }
   routes.push({
     url: `${baseUrl}/today`,
-    lastModified: getSiteLastModified() || fallback,
-    changeFrequency: 'daily',
-    priority: 0.9,
+    lastModified: todayLastModified,
+    changeFrequency: 'weekly',
+    priority: 0.6,
   });
-  try {
-    const todayDir = path.join(process.cwd(), 'data', 'today');
-    if (fs.existsSync(todayDir)) {
-      const dailyFiles = fs.readdirSync(todayDir)
-        .filter(f => /^\d{4}-\d{2}-\d{2}\.json$/.test(f))
-        .sort()
-        .reverse(); // 최신 우선
-      // 최근 90일만 sitemap 등록 (오래된 건 검색 가치 낮음)
-      dailyFiles.slice(0, 90).forEach(f => {
-        const date = f.replace('.json', '');
-        routes.push({
-          url: `${baseUrl}/today/${date}`,
-          lastModified: new Date(date),
-          changeFrequency: 'never', // 일별 리포트는 발행 후 불변
-          priority: 0.6,
-        });
-      });
-    }
-  } catch { /* silent — today dir 없으면 skip */ }
 
   // ── /strategy/* (Phase 3) ──────────────────────────────────────────
   const strategies = [
@@ -250,14 +262,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ── /tools/* (Phase 2~3 — 자매 사이트 호스팅 전 자체 도구) ────────
   // 자매 redirect (Phase 4D) 완료 후 본 sitemap 에서 제거 필요.
-  const tools = [
+  //   updated: 도구 페이지를 실제로 만들거나 고친 날(YYYY-MM-DD). 없으면 기존처럼 사이트 최신 글 날짜.
+  const tools: Array<{ slug: string; priority: number; updated?: string }> = [
     { slug: 'portfolio', priority: 0.7 },
     { slug: 'tax-compare', priority: 0.7 },
+    { slug: 'dividend-calculator', priority: 0.7, updated: '2026-10-06' }, // ETF 분배금 계산기
   ];
   tools.forEach(t => {
     routes.push({
       url: `${baseUrl}/tools/${t.slug}`,
-      lastModified: getSiteLastModified() || fallback,
+      lastModified: t.updated ? new Date(`${t.updated}T09:00:00+09:00`) : (getSiteLastModified() || fallback),
       changeFrequency: 'monthly',
       priority: t.priority,
     });

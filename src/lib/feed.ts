@@ -1,18 +1,21 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import { getAllPosts, getPostsByCategory, CATEGORY_NAMES, TOP_LEVEL_CATEGORIES } from '@/lib/posts';
 import { GUIDES, getGuidePublishedAt } from '@/lib/guides';
 
 /**
  * 구독 피드 공용 빌더 — RSS 2.0 · Atom 1.0 · JSON Feed 1.1 + 카테고리별 RSS.
  *   /rss.xml · /atom.xml · /feed.json · /rss/{category}.xml 라우트가 공유.
- *   콘텐츠 소스는 getAllPosts() + /today 일별 리포트로 rss.xml 기존 동작과 동일.
+ *   콘텐츠 소스는 getAllPosts() + 가이드(GUIDE_PUBLISHED_AT 에 발행일이 있는 것).
+ *
+ *   2026-10-06: /today/{YYYY-MM-DD} 일별 리포트 항목을 뺐다. 그 날짜별 라우트가 없어
+ *   피드에 들어가면 수집기가 404 를 받는다(같은 주소 10개가 sitemap 에서 404 로 확인됨).
  */
 
 export const SITE_URL = process.env.SITE_URL || 'https://iknowhowinfo.com';
 export const SITE_NAME = 'Daily ETF Pulse';
-// 피드 채널 소개 — 매일 아침 올라오는 가이드 기준 (layout.tsx SITE_DESCRIPTION과 같은 문구 유지)
-const SITE_DESC = 'ETF·연금·세금 궁금증에 국세청·금감원·KRX 같은 1차 출처로 답하는 가이드를 매일 아침 새로 발행합니다. 월배당·커버드콜 ETF 고르는 법, ISA·연금저축 절세, KRX 상장 ETF 종목 사전까지 한곳에서 확인하세요.';
+// 피드 채널 소개.
+//   2026-10-06: '가이드를 매일 아침 새로 발행' 문구는 운영 v2(새 주소 주 2개 이하)와 맞지 않아
+//   지킬 수 있는 문장으로 바꿨다. layout.tsx SITE_DESCRIPTION 에는 아직 옛 문구가 남아 있다.
+const SITE_DESC = 'ETF·연금·세금 궁금증에 국세청·금감원·KRX 같은 1차 출처로 답하는 가이드와, KRX 상장 ETF 종목 사전을 함께 운영합니다. 월배당·커버드콜 ETF 고르는 법, ISA·연금저축 절세, 같은 지수를 따르는 ETF 비교까지 한곳에서 확인하세요.';
 
 // 카테고리별 RSS 노출 대상 (메인 일별 카테고리)
 export const FEED_CATEGORIES = TOP_LEVEL_CATEGORIES.map(slug => ({
@@ -140,25 +143,6 @@ export function escapeXml(unsafe: string): string {
   });
 }
 
-interface TodayReportSummary { date: string; url: string; pubDate: Date }
-
-function loadTodayReports(): TodayReportSummary[] {
-  try {
-    const dir = path.join(process.cwd(), 'data', 'today');
-    if (!fs.existsSync(dir)) return [];
-    const files = fs.readdirSync(dir)
-      .filter(f => /^\d{4}-\d{2}-\d{2}\.json$/.test(f))
-      .sort()
-      .reverse();
-    return files.slice(0, 30).map(f => {
-      const date = f.replace('.json', '');
-      return { date, url: `/today/${date}`, pubDate: new Date(`${date}T07:00:00+09:00`) };
-    });
-  } catch {
-    return [];
-  }
-}
-
 /**
  * OG 이미지 절대 URL (1200×630 PNG) — RSS enclosure·구독 리더 썸네일용
  *
@@ -175,7 +159,7 @@ function ogImageUrl(title: string, category: string): string {
   return `${SITE_URL}/og/${c}.png`;
 }
 
-/** 전체 피드 항목 — 모든 분석 글 + 가이드 + /today 일별 리포트 (최신순, 상위 100). */
+/** 전체 피드 항목: 모든 분석 글 + 가이드 (최신순, 상위 100). */
 export function getAllFeedItems(): FeedItem[] {
   const postItems: FeedItem[] = getAllPosts().map(post => ({
     title: post.meta.title,
@@ -205,15 +189,7 @@ export function getAllFeedItems(): FeedItem[] {
     }];
   });
 
-  const todayItems: FeedItem[] = loadTodayReports().map(r => ({
-    title: `${r.date} 오늘의 ETF 종합 리포트: 시그널·분배락·거래량 TOP`,
-    url: `${SITE_URL}${r.url}`,
-    pubDate: r.pubDate,
-    description: `${r.date} KRX 마감 기준 거래량 TOP·상승/하락·시그널 도달 ETF·분배락일 임박·어제 시그널 결과를 한 페이지에.`,
-    categoryName: 'TODAY · 일별 리포트',
-  }));
-
-  return [...postItems, ...guideItems, ...todayItems]
+  return [...postItems, ...guideItems]
     .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime())
     .slice(0, 100);
 }

@@ -10,7 +10,7 @@ import { buildPageMetadata } from '@/lib/site-meta';
 export const metadata: Metadata = buildPageMetadata({
   title: '뉴스레터·RSS 구독: 새 ETF 가이드 받아보기',
   description:
-    '지금은 이메일 뉴스레터를 보내지 않습니다. 매일 아침 새로 올라오는 ETF·연금·세금 가이드는 RSS 피드로 가장 먼저 받아볼 수 있습니다. Feedly 같은 RSS 리더에 주소 하나만 등록해 두면 새 글이 올라올 때마다 리더가 알아서 가져옵니다.',
+    '지금은 이메일 뉴스레터를 보내지 않습니다. 새로 올라오는 ETF·연금·세금 가이드와 비교 페이지는 RSS 피드로 가장 먼저 받아볼 수 있습니다. Feedly 같은 RSS 리더에 주소 하나만 등록해 두면 새 글이 올라올 때마다 리더가 알아서 가져옵니다.',
   url: '/newsletter',
   keywords: ['ETF 뉴스레터', 'ETF RSS 구독', 'ETF 가이드 구독', 'ETF 소식 받기'],
 });
@@ -24,7 +24,7 @@ export default function NewsletterPage() {
         <div className="about-eyebrow">NEWSLETTER · 구독</div>
         <h1 className="about-title">새 ETF 가이드, RSS로 가장 먼저 받아보기</h1>
         <p className="about-tagline">
-          이메일 뉴스레터는 지금 보내지 않습니다. 매일 아침 새로 올라오는 가이드는 RSS를 구독하면
+          이메일 뉴스레터는 지금 보내지 않습니다. 새로 올라오는 가이드는 RSS를 구독하면
           빠짐없이 받아볼 수 있습니다.
         </p>
       </header>
@@ -35,7 +35,7 @@ export default function NewsletterPage() {
         <h2 className="about-h2">RSS에 담기는 글</h2>
         <ul className="about-list">
           <li>
-            <strong>매일 아침 새 가이드</strong>: ETF·연금·세금 궁금증에 국세청·금감원·KRX 같은 1차 출처로 답한 글.
+            <strong>새 가이드</strong>: ETF·연금·세금 궁금증에 국세청·금감원·KRX 같은 1차 출처로 답한 글.
           </li>
           <li>
             <strong>본문 전체</strong>: 요약만이 아니라 핵심 포인트·비교표·자주 묻는 질문까지 리더에서 바로 읽을 수 있습니다.

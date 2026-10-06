@@ -43,8 +43,8 @@ export default function SiteFooter() {
             <span>DAILY ETF PULSE</span>
           </Link>
           <p style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)', lineHeight: 1.6 }}>
-            ETF·연금·세금 궁금증에 1차 출처로 답하는<br />
-            가이드를 매일 아침 새로 올립니다.
+            KRX 상장 ETF 종목 사전과 같은 지수 ETF 비교,<br />
+            1차 출처로 답하는 ETF·연금·세금 가이드.
           </p>
         </div>
 

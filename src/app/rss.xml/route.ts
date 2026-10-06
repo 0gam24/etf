@@ -1,7 +1,8 @@
 import { getAllFeedItems, renderRss, DEFAULT_CHANNEL } from '@/lib/feed';
 
 /** Daily ETF Pulse — 동적 RSS 2.0 피드 (네이버 웹마스터도구·다음 검색등록용)
- *   포함: 모든 분석 글(pulse·surge·flow·income·breaking) + /today 일별 리포트.
+ *   포함: 모든 분석 글(pulse·surge·flow·income·breaking) + 발행일이 있는 가이드.
+ *   (/today/{날짜} 항목은 라우트가 없어 404 라 2026-10-06 에 뺐다. src/lib/feed.ts 참고)
  *   Atom·JSON·카테고리별 RSS는 /atom.xml · /feed.json · /rss/{category}.xml.
  */
 // 빌드 시점 prerender — content/* 파일시스템 접근이 빌드에서만 가능(런타임 Worker엔 없음).

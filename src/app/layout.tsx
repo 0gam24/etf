@@ -19,8 +19,13 @@ const GA4_ID = 'G-P2ZYD31B29';
 // 사이트 전역 소개 문구 — 기본 description·Twitter·Organization 스키마가 공유.
 //   2026-09-30: 일일 시황 코너가 멈춘 뒤에도 '매일 오전 9시 전 업데이트'를 약속하고 있어
 //   실제로 매일 올라오는 가이드 기준으로 교체. 정확한 시각은 적지 않는다.
+//   2026-10-06: 운영 사양 v2.0(PUBLISHING.md)부터 새 가이드는 매일이 아니라 주 2개 이하라
+//   "가이드를 매일 아침 새로 발행"도 지킬 수 없는 약속이 됐다. 사이트가 실제로 거래일마다
+//   새로 고치는 것(ETF 종목 사전의 종가·괴리율)을 앞에 두고 빈도 약속은 빼는 쪽으로 교체.
+//   네이버 콘텐츠 마크업 가이드(searchadvisor.naver.com/guide/markup-content)의 "키워드 2회 이상
+//   반복 금지"에 맞춰 ETF·KRX를 한 번씩만 쓴다. 피드 채널 소개(src/lib/feed.ts SITE_DESC)도 같은 문구로 맞출 것.
 const SITE_DESCRIPTION =
-  'ETF·연금·세금 궁금증에 국세청·금감원·KRX 같은 1차 출처로 답하는 가이드를 매일 아침 새로 발행합니다. 월배당·커버드콜 ETF 고르는 법, ISA·연금저축 절세, KRX 상장 ETF 종목 사전까지 한곳에서 확인하세요.';
+  'KRX 상장 ETF의 종목코드·종가·NAV 괴리율을 최근 거래일 기준으로 정리한 종목 사전입니다. 비슷한 상품끼리의 1:1 비교, 월배당·커버드콜 분배 정보, ISA·연금저축 절세 가이드를 국세청·금감원·한국거래소 같은 1차 출처와 함께 확인하세요.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL || 'https://iknowhowinfo.com'),
@@ -36,13 +41,12 @@ export const metadata: Metadata = {
   //   (2026-08-12 키워드 감사). 네이버는 meta keywords를 참고하므로 페이지별로
   //   자기 주제에 맞는 키워드를 직접 지정한다.
   authors: [{ name: "Daily ETF Pulse" }],
+  // 피드 자동 발견 링크(application/rss+xml 등)는 여기 두지 않고 아래 <head>에 직접 넣는다.
+  //   Next.js 메타데이터는 얕게 병합돼서, 모든 페이지가 alternates.canonical을 정의하는 순간
+  //   이 alternates 객체 전체(types 포함)가 교체된다. 2026-10-06 운영 HTML 실측(/, /etf/kodex-200,
+  //   /guide/china-etf, /compare, /income)에서 rel="alternate" 피드 링크가 한 쪽도 없었다.
   alternates: {
     canonical: '/',
-    types: {
-      'application/rss+xml': '/rss.xml',
-      'application/atom+xml': '/atom.xml',
-      'application/feed+json': '/feed.json',
-    },
   },
   openGraph: {
     type: "website",
@@ -158,6 +162,17 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        {/* 피드 자동 발견 링크, 모든 페이지에 한 번씩. 위 metadata.alternates 주석 참고.
+            네이버 서치어드바이저는 RSS를 제출로 받지만, 피드 리더·다음 등은 이 링크로 피드를 찾는다. */}
+        <link rel="alternate" type="application/rss+xml" title="Daily ETF Pulse" href={`${SITE_URL}/rss.xml`} />
+        <link rel="alternate" type="application/atom+xml" title="Daily ETF Pulse" href={`${SITE_URL}/atom.xml`} />
+        <link rel="alternate" type="application/feed+json" title="Daily ETF Pulse" href={`${SITE_URL}/feed.json`} />
+        {/* 네이버 검색 결과 파비콘 (2026-10-06)
+            파일 규칙(src/app/favicon.ico·icon.svg)이 만드는 링크는 rel="icon"이 2개이고 상대 경로다.
+            네이버 파비콘 가이드(searchadvisor.naver.com/guide/markup-favicon)는 절대 경로를 쓰고
+            같은 rel 값은 하나만 두라고 하며, 여러 개면 반영이 안 될 수 있다고 적는다.
+            네이버가 가장 먼저 보는 rel="shortcut icon"을 절대 경로로 하나 둬서 우선 적용되게 한다. */}
+        <link rel="shortcut icon" href={`${SITE_URL}/favicon.ico`} />
         {/* Google Analytics 4 — afterInteractive 전략으로 LCP 영향 최소화 */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}

@@ -472,6 +472,11 @@ export function getKrxEtfMeta(input: string): KrxEtfCode | null {
   return loadKrxRegistry().byShortcode[r.shortcode] || null;
 }
 
+/** KRX 상장 ETF 전 종목 목록 (data/krx-etf-codes.json의 list). 같은 지수 묶음(etf-siblings.ts) 등 전수 순회용. */
+export function getKrxEtfList(): KrxEtfCode[] {
+  return loadKrxRegistry().list;
+}
+
 /** KRX 상장 종목 목록(data/krx-etf-codes.json)의 기준일 YYYY-MM-DD. 시세가 없는 페이지의 데이터 날짜로 쓴다. */
 export function getKrxRegistryBaseDate(): string | null {
   return ymdToIsoDate(loadKrxRegistry().baseDate);

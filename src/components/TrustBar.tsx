@@ -15,7 +15,7 @@ export default function TrustBar({ etfCount }: Props) {
         <span className="trust-divider" aria-hidden>·</span>
         <span className="trust-item">
           <Clock size={13} strokeWidth={2.4} aria-hidden />
-          매일 아침 새 가이드
+          기준일 함께 표기
         </span>
         <span className="trust-divider" aria-hidden>·</span>
         <span className="trust-item">

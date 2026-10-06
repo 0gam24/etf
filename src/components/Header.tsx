@@ -148,7 +148,7 @@ export default function Header() {
           </Link>
         ))}
         <div style={{ marginTop: 'auto', paddingTop: 'var(--space-6)', borderTop: '1px solid var(--border-color)', color: 'var(--text-dim)', fontSize: 'var(--fs-xs)' }}>
-          매일 아침 새 가이드
+          1차 출처로 확인한 ETF 정보
         </div>
       </aside>
 

@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -12,6 +13,8 @@ import GuideDataBlock from '@/components/GuideDataBlock';
 import AffiliateInline from '@/components/AffiliateInline';
 import AiAgentDisclosure from '@/components/AiAgentDisclosure';
 import RecommendBox from '@/components/RecommendBox';
+import AdBanner from '@/components/AdBanner';
+import { planGuideAds } from '@/lib/ads';
 import type { ProductCategory } from '@/lib/products';
 import { buildArticleSchema, buildHowToSchema, jsonLd } from '@/lib/schema';
 import { SITE_NAME, SITE_LOCALE, articleTitle , padDescription, ogImageUrl } from '@/lib/site-meta';
@@ -107,6 +110,11 @@ export default async function GuidePage({ params }: PageProps) {
   // 본문 h2에 붙일 앵커. 문단을 개별 주소로 가리킬 수 있어야 검색·답변엔진이 청크 단위로 인용한다.
   //   한글 id는 HTML5에서 유효하다. 링크에 쓸 때만 브라우저가 자동 인코딩한다.
   const sectionIds = g.sections.map((sec, i) => headingAnchor(sec.heading, i));
+
+  // 수동 광고 자리 (2026-10-06). 슬롯 env(NEXT_PUBLIC_AD_SLOT_IN_ARTICLE·_BOTTOM)가 비면 빈 배열이라
+  //   아무것도 그리지 않는다. 규칙은 src/lib/ads.ts planGuideAds: 2번째 섹션 이후 문단으로 끝나는
+  //   섹션 뒤 1곳 + 본문 끝(참고 자료·FAQ 앞) 1곳, 섹션 5개 미만이면 1곳만.
+  const adsAfterSection = new Map(planGuideAds(g.sections).map(a => [a.afterSection, a]));
 
   // datePublished는 안정적 원발행일(불변) — lastReviewed는 격주 점검 크론이 갱신하므로 dateModified로.
   const publishedAt = getGuidePublishedAt(slug) || g.lastReviewed;
@@ -255,26 +263,40 @@ export default async function GuidePage({ params }: PageProps) {
       )}
 
       <div className="guide-article-body">
-        {g.sections.map((sec, i) => (
-          <section key={i} className="guide-article-section-block">
-            <h2 className="guide-article-h2" id={sectionIds[i]}>{sec.heading}</h2>
-            {sec.paragraphs.map((p, pi) => (
-              <p key={pi} className="guide-article-p">{p}</p>
-            ))}
-            {sec.dataBlock && (
-              <div className="guide-article-data">
-                <GuideDataBlock block={sec.dataBlock} />
-              </div>
-            )}
-            {sec.affiliateInline && (
-              <AffiliateInline
-                leadIn={sec.affiliateInline.leadIn}
-                productId={sec.affiliateInline.productId}
-                style={sec.affiliateInline.style}
-              />
-            )}
-          </section>
-        ))}
+        {g.sections.map((sec, i) => {
+          const ad = adsAfterSection.get(i);
+          return (
+            <Fragment key={i}>
+              <section className="guide-article-section-block">
+                <h2 className="guide-article-h2" id={sectionIds[i]}>{sec.heading}</h2>
+                {sec.paragraphs.map((p, pi) => (
+                  <p key={pi} className="guide-article-p">{p}</p>
+                ))}
+                {sec.dataBlock && (
+                  <div className="guide-article-data">
+                    <GuideDataBlock block={sec.dataBlock} />
+                  </div>
+                )}
+                {sec.affiliateInline && (
+                  <AffiliateInline
+                    leadIn={sec.affiliateInline.leadIn}
+                    productId={sec.affiliateInline.productId}
+                    style={sec.affiliateInline.style}
+                  />
+                )}
+              </section>
+              {/* 수동 광고: 문단으로 끝난 섹션과 다음 섹션 제목 사이에만. key에 slug를 넣어
+                  가이드 사이를 이동할 때 광고 단위가 새로 요청되게 한다. */}
+              {ad && (
+                <AdBanner
+                  key={`${slug}-${ad.slotKey}`}
+                  slot={ad.slot}
+                  className={`ad-slot--guide ad-slot--${ad.slotKey}`}
+                />
+              )}
+            </Fragment>
+          );
+        })}
       </div>
 
       {/* 주제 관련 ETF 종목 사전 — 가이드 → /etf/{slug} 연결(테마·자산군 가이드만) */}

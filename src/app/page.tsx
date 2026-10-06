@@ -26,12 +26,12 @@ import { buildOg, buildTwitter } from '@/lib/site-meta';
 
 /**
  * 홈 전용 메타데이터 — layout 기본값에 의존하지 않는다.
- *   블로그형 리뉴얼: "매일 발행"을 title·description에 명시해
- *   검색결과에서 살아있는 발행 매체임을 신호.
+ *   2026-10-06: "매일 발행"은 운영 v2.0(새 주소 주 2개 이하) 이후 지킬 수 없는 약속이라 사실 기준으로 한 번 바꾼다.
+ *   네이버는 메인 설명을 자주 바꾸는 것을 불리하게 보므로 이후에는 자주 바꾸지 않는다.
  */
-const HOME_TITLE = 'Daily ETF Pulse, 매일 발행하는 ETF 분석·투자 가이드';
+const HOME_TITLE = 'Daily ETF Pulse, ETF 종목 사전·비교·투자 가이드';
 const HOME_DESC =
-  'ETF 투자 가이드와 시장 분석을 매일 발행합니다. 월배당·커버드콜·ISA·연금저축 절세 전략, 급등 테마와 자금 흐름, KRX 전체 ETF 종목 사전까지 한곳에서 확인하세요.';
+  'KRX에 상장된 ETF 1,100여 종을 종목코드로 찾는 종목 사전, 같은 지수를 따르는 ETF의 운용사별 비교, 월배당·커버드콜·ISA·연금저축 절세 가이드를 관할 기관 문서와 기준일을 밝혀 한곳에 정리했습니다.';
 
 export const metadata: Metadata = {
   // absolute — layout의 template('%s | Daily ETF Pulse')을 무시하고 이 제목 그대로 사용
@@ -74,8 +74,8 @@ export default async function HomePage() {
   const collectionSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Daily ETF Pulse, 매일 발행하는 ETF 분석·투자 가이드',
-    description: 'ETF 투자 가이드와 시장 분석을 매일 발행하는 홈 피드.',
+    name: HOME_TITLE,
+    description: HOME_DESC,
     url: process.env.SITE_URL || 'https://iknowhowinfo.com',
     inLanguage: 'ko-KR',
   };
@@ -104,7 +104,7 @@ export default async function HomePage() {
       {/* 페이지 H1 — 홈의 검색 신호 (시각적으로는 작게, 의미상 최상위) */}
       <div className="home-bundle" style={{ paddingBottom: 0 }}>
         <h1 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-dim)', margin: 0 }}>
-          매일 발행하는 ETF 분석과 투자 가이드 · Daily ETF Pulse
+          ETF 종목 사전·비교·투자 가이드 · Daily ETF Pulse
         </h1>
       </div>
 

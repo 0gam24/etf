@@ -19,10 +19,16 @@ import { getPostsByCategory } from '@/lib/posts';
  *     - 시의성 강함
  *     - 출처 명시 (KRX·한국은행·Naver 뉴스)
  *
- *   현재는 코드 구조만 준비. Publisher 등록 시점에 robots.txt와 sitemap-index에 추가.
+ *   현재는 코드 구조만 준비. Publisher 등록 시점에 robots.txt에 추가.
+ *   sitemap-index.xml 은 빌드 시점에 최근 2일 안의 속보가 있을 때만 이 sitemap 을 넣는다
+ *   (빈 목록을 index 에 두지 않기 위해, 2026-10-06).
  */
 
 const SITE = process.env.SITE_URL || 'https://iknowhowinfo.com';
+
+// 빌드 시점 생성: 요청 시점(Cloudflare Workers)에는 글 파일을 읽지 못해 늘 빈 목록이 된다.
+//   sitemap-index.xml 의 포함 판정도 빌드 시점이라 둘을 맞춘다. 속보를 내면 그 배포에서 다시 만들어진다.
+export const dynamic = 'force-static';
 const PUBLICATION_NAME = 'Daily ETF Pulse';
 const LANGUAGE = 'ko';
 

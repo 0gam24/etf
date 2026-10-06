@@ -12,6 +12,14 @@ import { MetadataRoute } from 'next';
 //   해결: 봇별 allow 에 '/api/og' 명시. Allow 가 더 구체적 prefix 라 Disallow 보다 우선.
 const COMMON_ALLOW: string[] = ['/', '/api/og'];
 const COMMON_DISALLOW: string[] = ['/api/'];
+// 네이버 검색봇 전용 추가 차단 (2026-10-06)
+//   네이버 검색 API(웹문서) 실측: /llms.txt 가 제목·설명 없이 주소만 있는 문서로 색인돼
+//   'iknowhowinfo' 브랜드 검색 3위, 'iknowhowinfo.com' 검색 상위에 걸려 있었다.
+//   llms.txt 는 AI 에이전트용 안내 파일이라 검색 결과 문서로 보일 이유가 없고, 빈 결과가
+//   브랜드 검색 자리를 차지한다. Yeti 그룹에만 막고 AI 봇 그룹(인용 경로)은 그대로 둔다.
+//   더 구체적인 경로라 Allow '/' 보다 우선한다. 이미 색인된 문서는 서치어드바이저
+//   '웹 페이지 검색 제외'로 빼면 더 빨리 반영된다.
+const NAVER_DISALLOW: string[] = [...COMMON_DISALLOW, '/llms.txt'];
 // /_next/static/·/_next/image 는 페이지 렌더링에 필요한 CSS/JS/이미지 리소스 —
 // 차단하면 Googlebot 렌더링 품질 평가에 불리(구글 SEO 가이드 "CSS·JS 접근 가능해야").
 // 나머지 /_next/(data 등)만 차단 유지.
@@ -32,8 +40,8 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Mediapartners-Google', allow: ['/'], disallow: [] },
       { userAgent: 'AdsBot-Google',        allow: ['/'], disallow: [] },
       // Naver 검색봇 — 한국 검색 60% 점유, 명시적으로 허용 (모바일 크롤러 포함)
-      { userAgent: 'Yeti',           allow: COMMON_ALLOW, disallow: COMMON_DISALLOW },
-      { userAgent: 'Yeti-Mobile',    allow: COMMON_ALLOW, disallow: COMMON_DISALLOW },
+      { userAgent: 'Yeti',           allow: COMMON_ALLOW, disallow: NAVER_DISALLOW },
+      { userAgent: 'Yeti-Mobile',    allow: COMMON_ALLOW, disallow: NAVER_DISALLOW },
       // Daum 검색봇
       { userAgent: 'Daumoa',         allow: COMMON_ALLOW, disallow: COMMON_DISALLOW },
       // ── AI 봇 명시 allow ─────────────────────────────────────────────
