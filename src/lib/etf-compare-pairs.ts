@@ -111,6 +111,13 @@ export const COMPARE_PAIRS: ComparePair[] = [
     context: 'KODEX 200 일반 vs 레버리지(2배). 변동성·장기 보유 risk.',
     searchIntent: 'KOSPI 200 레버리지 비교',
   },
+  // 추가 2026-10-06 기초지수 Dow Jones U.S. Dividend 100 Price Return Index · 확인 https://investments.miraeasset.com/tigeretf/ko/product/search/detail/index.do?ksdFund=KR7458730009 · https://www.soletf.com/ko/fund/etf/summary/210942
+  {
+    slug: 'sol-us-dividend-djones-vs-tiger-us-dividend-djones',
+    codeA: '446720', codeB: '458730',
+    context: '같은 Dow Jones U.S. Dividend 100 지수를 환헤지 없이 따르고, 총보수 연 0.01%·월분배·매월 마지막 영업일 기준까지 같다. 차이는 상장 시점(SOL 2022년 11월, TIGER 2023년 6월)과 순자산·거래대금 규모다.',
+    searchIntent: 'SOL 미국배당다우존스 TIGER 미국배당다우존스 차이',
+  },
 ];
 
 export function getComparePairBySlug(slug: string): ComparePair | null {
