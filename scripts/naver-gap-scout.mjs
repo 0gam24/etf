@@ -144,6 +144,11 @@ const ISSUER_HOSTS = [
   'shinyoung-am.com', 'bnkam.co.kr', 'daishinam.co.kr', 'yuriam.co.kr', 'hdfund.co.kr',
   'hiam.co.kr', 'kyoboaxa.co.kr', 'nhamundi.com', 'nh-amundi.com', 'hkfund.co.kr',
 ];
+// 상장사 공식 IR·배당 안내: 그 회사 배당·실적 검색에서는 주인 자리라 운용사와 같게 본다 (2026-10-08 "삼성전자 분기 배당")
+const CORP_HOSTS = [
+  'samsung.com', 'skhynix.com', 'hyundai.com', 'lgcorp.com', 'kbfg.com', 'shinhangroup.com',
+  'hanafn.com', 'woorifg.com', 'posco-inc.com', 'sktelecom.com', 'kt.com', 'kia.com',
+];
 const BROKER_HOSTS = [
   'samsungpop.com', 'securities.miraeasset.com', 'miraeasset.com', 'kbsec.com', 'truefriend.com',
   'nhqv.com', 'shinhansec.com', 'kiwoom.com', 'daishin.com', 'eugenefn.com', 'iprovest.com',
@@ -185,7 +190,7 @@ function hostKind(host) {
   if (SISTER_HOSTS.has(host)) return 'sister';
   if (hostMatches(host, TOOL_HOSTS)) return 'tool';
   if (host.endsWith('.go.kr') || hostMatches(host, GOV_HOSTS)) return 'gov';
-  if (hostMatches(host, ISSUER_HOSTS)) return 'issuer';
+  if (hostMatches(host, ISSUER_HOSTS) || hostMatches(host, CORP_HOSTS)) return 'issuer';
   if (hostMatches(host, BROKER_HOSTS)) return 'broker';
   if (hostMatches(host, PRESS_HOSTS) || PRESS_HINT.test(host)) return 'press';
   if (host.endsWith('naver.com')) return 'naver';
@@ -435,6 +440,36 @@ async function scoutSerp(query) {
   };
 }
 
+// 저장된 결과를 지금의 호스트 분류표로 다시 판정 (--rescore). 분류표를 고친 날 재측정 없이 반영하려고
+function reclassify(s) {
+  if (!s?.above) return s;
+  for (const d of s.above) d.kind = hostKind(d.host);
+  const openKinds = new Set(['commercial', 'press', 'org']);
+  s.openSlots = s.above.filter(
+    (d) => d.kind !== 'own' && d.kind !== 'sister' && d.kind !== 'naver' && (openKinds.has(d.kind) || d.stale),
+  ).length;
+  s.authAbove = s.above.filter((d) => (d.kind === 'gov' || d.kind === 'issuer') && !d.stale).length;
+  s.govAbove = s.above.filter((d) => d.kind === 'gov' && !d.stale).length;
+  if (s.rank == null || s.rank > 3) s.toolTop3 = s.above.slice(0, 3).filter((d) => d.kind === 'tool').length;
+  s.sisterAbove = s.above.filter((d) => d.kind === 'sister').length;
+  s.reason = [];
+  let open = true;
+  if (s.openSlots < 2) {
+    open = false;
+    s.reason.push(`빈자리 ${s.openSlots}<2`);
+  }
+  if (s.authAbove > 1) {
+    open = false;
+    s.reason.push(`관공서·운용사 ${s.authAbove}곳`);
+  }
+  if (s.toolTop3 >= 2) {
+    open = false;
+    s.reason.push('상위 3위를 시세 도구가 차지');
+  }
+  s.verdict = open ? 'open' : 'closed';
+  return s;
+}
+
 async function measureCounts(query) {
   const blog = await naverGet('blog', query, 1);
   const kin = await naverGet('kin', query, 1);
@@ -615,6 +650,7 @@ async function main() {
     const prev = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/keywords', files.at(-1)), 'utf8'));
     items = prev.items;
     measuredAt = prev.measuredAt;
+    for (const it of items) reclassify(it.serp);
     const retry = items.filter((it) => it.volumeError);
     for (const it of retry) delete it.volumeError;
     if (retry.length) await measureVolumes(retry);
