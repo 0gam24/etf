@@ -1,0 +1,30 @@
+# 네이버 서치어드바이저 "웹 페이지 수집" 요청 목록 (2026-10-07)
+# 근거: naver-index-20261007.json 에서 네이버 웹문서 색인에 없는 주소 가운데
+#       naver-gap-20261007.json 빈틈 검색어가 가리키는 주소를 노출 가능성 점수 순으로.
+# 방법: searchadvisor.naver.com → 요청 → 웹 페이지 수집 → 주소 하나씩 입력 (위에서부터)
+# 가이드 3편(irp-disadvantages 등)은 본문 보강 배포 후 요청하는 편이 좋다.
+
+https://iknowhowinfo.com/guide/irp-disadvantages
+https://iknowhowinfo.com/etf/tiger-us-dividend-djones
+https://iknowhowinfo.com/guide/bank-etf
+https://iknowhowinfo.com/compare/kodex-us-nasdaq100-vs-tiger-us-nasdaq100
+https://iknowhowinfo.com/guide/isa-termination-after-3-years
+https://iknowhowinfo.com/etf/tiger-semiconductortop10
+https://iknowhowinfo.com/compare/kodex-battery-vs-tiger-battery
+https://iknowhowinfo.com/etf/tiger-us-nasdaq100
+https://iknowhowinfo.com/etf/kodex-kosdaq150
+https://iknowhowinfo.com/etf/tiger-ussemiconductor
+https://iknowhowinfo.com/etf/tiger-msci-korea-tr
+https://iknowhowinfo.com/etf/ace-us-sp500
+https://iknowhowinfo.com/etf/tiger-us-techtop10-indxx
+https://iknowhowinfo.com/etf/rise-200
+https://iknowhowinfo.com/guide/schd-etf
+https://iknowhowinfo.com/guide/pension-savings-excess-contribution
+https://iknowhowinfo.com/guide/gold-investment-methods
+https://iknowhowinfo.com/guide/isa-vs-general-account-etf
+https://iknowhowinfo.com/compare/kodex-semiconductor-vs-tiger-semiconductor
+https://iknowhowinfo.com/compare/kodex-us-sp500-vs-kodex-us-sp500-h
+https://iknowhowinfo.com/compare/tiger-us-dividend-monthly-vs-kodex-us-dividend-djones
+https://iknowhowinfo.com/compare/kodex-us-dividend-djones-vs-ace-us-dividend-djones
+https://iknowhowinfo.com/compare/kodex-defense-top10-vs-plus-k-defense
+https://iknowhowinfo.com/compare/sol-us-dividend-djones-vs-tiger-us-dividend-djones

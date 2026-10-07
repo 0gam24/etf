@@ -25243,6 +25243,29 @@ export function getGuidePublishedAt(slug: string): string | undefined {
   return GUIDE_PUBLISHED_AT[slug];
 }
 
+/**
+ * 가이드 본문을 실제로 고친 날 (slug → 'YYYY-MM-DD'). 2026-10-07 신설.
+ *
+ *   사실 정정·GSC 보강·네이버 빈틈 보강으로 본문·FAQ·표를 바꿨을 때만 넣는다. 날짜만 바꾸는 갱신은 넣지 않는다.
+ *   구조화 데이터 dateModified, 화면의 수정일, sitemap lastmod 가 이 값을 쓴다.
+ *   lastReviewed 는 쓰지 않는다. 격주 크론이 내용 확인 없이 208편에 같은 날짜를 덮어쓴 이력이 있어
+ *   (2026-08-12) 검색엔진이 수정 신호를 믿지 않게 되기 때문이다.
+ *   그동안 수정일을 발행일로 고정해 둬서, 고친 글도 검색엔진에는 "안 바뀐 글"로 보였다.
+ *   새 항목은 위에 쌓고, 같은 slug 를 다시 고치면 날짜만 바꾼다.
+ */
+export const GUIDE_MODIFIED_AT: Record<string, string> = {
+  // 2026-09-30 사실 정정 (미국배당다우존스 4종 월분배·분배 기준일)
+  'us-dividend': '2026-09-30',
+};
+
+/** 가이드를 실제로 고친 날. 발행일보다 늦을 때만 돌려준다. */
+export function getGuideModifiedAt(slug: string): string | undefined {
+  const m = GUIDE_MODIFIED_AT[slug];
+  if (!m) return undefined;
+  const p = GUIDE_PUBLISHED_AT[slug];
+  return !p || m > p ? m : undefined;
+}
+
 export function getGuideBySlug(slug: string): GuideDef | null {
   return GUIDES.find(g => g.slug === slug) || null;
 }

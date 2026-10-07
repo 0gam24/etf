@@ -7,7 +7,7 @@ import {
   getCategoryLastModified,
   getSiteLastModified,
 } from '@/lib/posts';
-import { GUIDES, GUIDE_PUBLISHED_AT, getGuidePublishedAt } from '@/lib/guides';
+import { GUIDES, GUIDE_PUBLISHED_AT, getGuidePublishedAt, getGuideModifiedAt } from '@/lib/guides';
 import { getProductsRegistry } from '@/lib/products';
 import { getLatestEtfData, getKrxEtfMeta } from '@/lib/data';
 import { COMPARE_PAIRS } from '@/lib/etf-compare-pairs';
@@ -128,9 +128,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
    *   않게 되고, 그러면 진짜로 바뀐 페이지의 재수집도 함께 늦어진다.
    *   (SEO.md §5 "lastmod는 콘텐츠 실제 갱신일에서 derive")
    *   크론은 중단시켰고, 발행일이 남아 있으면 그쪽을 쓴다. (2026-08-12)
+   *   본문을 실제로 고친 글은 GUIDE_MODIFIED_AT 의 날짜를 쓴다. (2026-10-07)
    */
   const guideLastModified = (slug: string, lastReviewed: string) =>
-    new Date(getGuidePublishedAt(slug) || lastReviewed);
+    new Date(getGuideModifiedAt(slug) || getGuidePublishedAt(slug) || lastReviewed);
 
   // 가이드 인덱스 — 가장 최근에 발행된 가이드 기준
   const guideMostRecent = GUIDES

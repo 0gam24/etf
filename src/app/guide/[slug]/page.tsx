@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { ArrowRight } from 'lucide-react';
-import { GUIDES, getGuideBySlug, getRelatedGuides, getSectorForGuide, getGuidePublishedAt } from '@/lib/guides';
+import { GUIDES, getGuideBySlug, getRelatedGuides, getSectorForGuide, getGuidePublishedAt, getGuideModifiedAt } from '@/lib/guides';
 import { getLatestEtfData, getEtfsBySector } from '@/lib/data';
 import type { RawEtf } from '@/lib/surge';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -70,6 +70,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // 설명이 120자에 못 미치는 가이드 35편은 태그라인·첫 핵심 포인트로 채운다.
   // 가이드가 이미 갖고 있는 문장만 쓰므로 새로 지어내지 않는다. (2026-08-11 온페이지 감사)
   const description = padDescription(g.description, [g.tagline, g.keyPoints?.[0]]);
+  // article:published_time·modified_time. 네이버·구글이 고친 글을 다시 읽어 갈 근거 (2026-10-07)
+  const publishedAt = getGuidePublishedAt(slug) || g.lastReviewed;
+  const modifiedAt = getGuideModifiedAt(slug) || publishedAt;
   return {
     // 제목이 길면 layout template이 붙이는 브랜드 18자를 끊어 잘림을 막는다.
     // 가이드 제목 자체는 그대로 둔다(발행분 소급 수정 금지).
@@ -82,6 +85,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       type: 'article',
       url: canonicalPath,
+      publishedTime: `${publishedAt}T09:00:00+09:00`,
+      modifiedTime: `${modifiedAt}T09:00:00+09:00`,
       images: [{ url: ogImage, width: 1200, height: 630, alt: g.title }],
     },
     twitter: {
@@ -118,6 +123,8 @@ export default async function GuidePage({ params }: PageProps) {
 
   // datePublished는 안정적 원발행일(불변) — lastReviewed는 격주 점검 크론이 갱신하므로 dateModified로.
   const publishedAt = getGuidePublishedAt(slug) || g.lastReviewed;
+  // 본문을 실제로 고친 날(GUIDE_MODIFIED_AT). 없으면 발행일과 같다.
+  const modifiedAt = getGuideModifiedAt(slug);
   const articleSchema = buildArticleSchema({
     type: 'Article',
     headline: g.title,
@@ -130,7 +137,8 @@ export default async function GuidePage({ params }: PageProps) {
     // dateModified에 lastReviewed를 쓰지 않는다. 그 값은 격주 크론이 내용 점검 없이
     // 일괄로 오늘 날짜를 덮어쓴 결과라 실제 수정일이 아니었다(208편이 같은 날짜).
     // 크론은 중단했고, 실제 수정 이력을 추적하기 전까지는 발행일과 같게 둔다. (2026-08-12)
-    dateModified: `${publishedAt}T09:00:00+09:00`,
+    // 2026-10-07: 실제로 고친 날을 GUIDE_MODIFIED_AT 으로 따로 적기 시작해 그 값을 쓴다.
+    dateModified: `${modifiedAt || publishedAt}T09:00:00+09:00`,
     author: {
       name: 'Daily ETF Pulse 편집팀',
     },
@@ -196,6 +204,12 @@ export default async function GuidePage({ params }: PageProps) {
           <span>발행: Daily ETF Pulse 편집팀</span>
           <span aria-hidden> · </span>
           <span>발행일: {new Date(publishedAt).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          {modifiedAt && (
+            <>
+              <span aria-hidden> · </span>
+              <span>수정일: {new Date(modifiedAt).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </>
+          )}
           <AiAgentDisclosure variant="compact" kind="guide" />
         </div>
       </header>
