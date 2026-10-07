@@ -28,8 +28,10 @@ import LiveEtfStats from '@/components/LiveEtfStats';
 import {
   buildFinancialProductSchema,
   buildDatasetSchema,
+  buildFaqSchema,
   jsonLd,
 } from '@/lib/schema';
+import EtfProfileSection from '@/components/EtfProfileSection';
 import type { RawEtf } from '@/lib/surge';
 import { buildOg, buildTwitter, ogImageUrl } from '@/lib/site-meta';
 
@@ -203,6 +205,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const shortTail = ' 투자 포인트를 함께 정리했습니다.';
   if (!addToDesc(longTail)) addToDesc(shortTail);
   if (description.length < 120) addToDesc(' 매수 전 확인할 기본 정보를 한자리에 모았습니다.');
+  // 상품 개요(src/lib/etf-profiles.ts)가 있는 종목은 그 설명을 쓴다. 1차 출처로 확인한 문장이고,
+  //   상품명 검색이 묻는 "무엇에 투자하는 상품인가"에 바로 답한다. (2026-10-08 네이버 빈틈 보강)
+  const profile = facts?.profile ?? null;
+  if (profile?.metaDescription && profile.metaDescription.length >= 120 && profile.metaDescription.length <= DESC_MAX) {
+    description = profile.metaDescription;
+  }
 
   const ogImage = ogImageUrl({ category: 'stock' });
 
@@ -219,6 +227,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     // 2026-09-30: 페이지에 없는 데이터(구성종목·분배금)는 키워드로도 약속하지 않는다.
     keywords: [
       name,
+      ...(profile?.keywords || []),
       `${name} 주가`,
       `${name} 종목코드`,
       `${displayCode} ETF`,
@@ -266,6 +275,8 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
 
   const holdings = facts?.holdings ?? null;
   const incomeEntry = facts?.income ?? null;
+  // 1차 출처로 확인한 상품 개요 (있는 종목만, src/lib/etf-profiles.ts)
+  const profile = facts?.profile ?? null;
   const navGap = facts?.navGap ?? null;
   // 괴리율이 시세 기준일과 다른 날의 NAV·종가 쌍인지 (그 날 NAV 자료가 빠진 경우)
   const navDateDiffers = !!navGap && !!navGap.isoDate && navGap.isoDate !== (facts?.age?.isoDate || '');
@@ -466,6 +477,16 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
       {/* AEO 정답블록 — AI Overview·스니펫 인용용 (시세 종목만) */}
       {answerData && (
         <AnswerBox summary={answerData.summary} keyStats={answerData.keyStats} asOf={`${asOfIso} KRX`} source="KRX 공공데이터" />
+      )}
+
+      {/* 상품 개요 — 1차 출처로 확인한 설명이 있는 종목만. 상품명 검색이 먼저 묻는 것이라 시세 표보다 위에 둔다 */}
+      {profile && (
+        <>
+          <EtfProfileSection profile={profile} name={displayName} />
+          {profile.faq && profile.faq.length > 0 && (
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(buildFaqSchema(profile.faq)) }} />
+          )}
+        </>
       )}
 
       {/* 시세 요약 — 시세 데이터가 있을 때만 */}

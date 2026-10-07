@@ -89,6 +89,7 @@
 - [ ] **네이버 빈틈 보강 순서** (naver-gap-20261007, §6-3 이 하루 1편씩 가져간다. 보강하면 줄을 지운다): ETF 괴리율 뜻(/guide/etf-fee-discount-relation, 작년 11월 7.1배) · 해외주식 양도세 250만원·연말 매도(/guide/overseas-stock-year-end-sell-amount) · 환헤지 ETF 환노출 차이(/guide/hedge-vs-unhedged) · ISA 연금저축 IRP 차이(/guide/isa-vs-pension) · 연금저축 ETF 매도 세금(/guide/pension-fund-etf-trading) · ISA 만기 해지 세금(/guide/isa-termination-after-3-years, 미색인) · 은행 etf(/guide/bank-etf, 미색인) · 삼성전자 분기 배당(/guide/individual-stock-dividend-schedule)
 - [ ] 사실 정정 후보 (2026-10-07 보강 조사 중 발견, 1차 출처 재확인 후 정정): `etf-fee` 가 "실부담비용(TER)"으로 두 개념을 같게 씀(TER 에는 매매·중개수수료가 빠진다, KB자산운용 안내)·"총보수 연 0.05~0.5%" 범위가 S&P500 상품(0.0047%)과 안 맞음 / `domestic-sp500-etf-comparison` 의 "TIGER 순자산 약 16조원대"는 기준일 경과로 낡은 수치(시세 이용 조건 결정 전이면 수치 대신 확인 경로로) / `pension-account-etf-restrictions` 의 연금저축 레버리지·인버스 매수 금지 근거(퇴직급여법이 아니라 연금저축 쪽 규정) 재확인 / `isa-to-pension-tax-credit` 의 "그전에 깨면 기타소득세 16.5%가 붙습니다"는 공제받은 납입액·운용수익만 과세라는 점이 빠짐(시행령 제40조의3)
 - [ ] 새 주소 후보(주 2개 상한 안, 같은 지수 확인 후): 고배당주 ETF 비교(비교 페어) · 퇴직연금 ETF 매수(가이드, 기존 IRP 글과 의도 구분 확인) · 연금저축 연말 납입(기존 "연금저축 vs IRP 차이, 세액공제 한도와 채우는 순서"와 겹침 확인)
+- [ ] `/etf` 상품 개요(src/lib/etf-profiles.ts, 2026-10-08 신설) 다음 대상: 네이버 빈틈에서 자리 열린 신규 상장 ETF(RISE 삼성SK그룹 · PLUS 코리아HBM반도체 · HANARO 미국에이전틱AI TOP2+ · RISE 글로벌AI낸드메모리반도체). 운용사 상품 페이지·투자설명서로 확인한 사실만, 구성종목·시세 숫자 없이. 한 번에 한 종목
 - [ ] 비교 페이지 네이버 색인 2/11: `/compare` 본문이 같은 틀의 숫자 표 위주라 얇게 읽힐 수 있다. 쌍마다 다른 정보(기초지수 설명·상장일·총보수·분배 기준일)를 더하는 템플릿 보강
 - [ ] `/etf` 네이버 색인(시가총액 상위 100쪽 중 31): 시세 이용 조건 결정 뒤 템플릿 차별화 작업과 묶어서
 - [ ] `/tools` 허브 페이지(도구 목록, 내부 링크 진입점)와 헤더·푸터 링크
@@ -151,3 +152,4 @@
 | 2026-10-07 | irp 단점 | /guide/irp-disadvantages | 30위 밖(미색인) | | |
 | 2026-10-07 | ETF 총보수 비교 | /guide/same-index-etf-choice | 30위 밖(색인됨) | | |
 | 2026-10-07 | ISA 만기 연금저축 이전 | /guide/isa-to-pension-transfer | 30위 밖(색인됨) | | |
+| 2026-10-08 | PLUS AI반도체소부장액티브 | /etf/plus-aisemiconductoractive (상품 개요 신설) | 30위 밖(색인 미확인) | | |

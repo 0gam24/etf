@@ -9268,6 +9268,60 @@ a.scenario-card:hover .scenario-card-cta {
 /* 가이드 본문은 flex gap(--space-10)이 섹션 간격을 잡으므로 여백을 더하지 않는다. */
 .guide-article-body > .ad-slot { margin: 0; }
 
+/* ── 상품 개요 (/etf/[ticker] EtfProfileSection, 2026-10-08) ── */
+.etf-profile-summary {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-primary);
+  word-break: keep-all;
+}
+.etf-profile-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 0.5rem;
+  margin: 0 0 1.25rem;
+}
+.etf-profile-fact {
+  min-width: 0;
+  padding: 0.625rem 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+}
+.etf-profile-fact dt { font-size: 0.78rem; color: var(--text-secondary); margin: 0 0 0.2rem; }
+.etf-profile-fact dd { margin: 0; font-size: 0.92rem; color: var(--text-primary); line-height: 1.5; word-break: keep-all; overflow-wrap: anywhere; }
+.etf-profile-block { margin: 0 0 1.25rem; }
+.etf-profile-h3 { margin: 0 0 0.5rem; font-size: 1.02rem; font-weight: 700; color: var(--text-primary); }
+.etf-profile-p {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.etf-profile .etf-sibling-table-wrap { margin: 0 0 1.25rem; }
+.etf-profile .etf-sibling-table th[scope="row"] { text-align: left; font-weight: 600; }
+/* 좁은 화면에서는 표가 래퍼 안에서 가로로 밀리게 한다(한 글자씩 줄바꿈되지 않도록) */
+.etf-profile .etf-sibling-table { min-width: 620px; }
+.etf-profile .etf-sibling-table td:nth-child(2),
+.etf-profile .etf-sibling-table td:nth-child(3),
+.etf-profile .etf-sibling-table td:last-child { white-space: nowrap; }
+.etf-profile-faq {
+  margin: 0 0 0.5rem;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--bg-card);
+}
+.etf-profile-faq summary { cursor: pointer; font-weight: 600; font-size: 0.95rem; color: var(--text-primary); }
+.etf-profile-faq .etf-profile-p { margin: 0.5rem 0 0; }
+.etf-profile-sources { font-size: 0.85rem; color: var(--text-secondary); }
+.etf-profile-sources ul { margin: 0.25rem 0 0; padding-left: 1.1rem; }
+.etf-profile-sources li { margin: 0.15rem 0; overflow-wrap: anywhere; }
+.etf-profile-sources a { color: var(--text-secondary); text-decoration: underline; }
+
 /* ── 같은 지수 이름의 다른 ETF (/etf/[ticker] EtfSiblingLinks, 2026-10-06) ── */
 .etf-sibling-lead {
   margin: 0 0 0.875rem;

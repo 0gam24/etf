@@ -4,6 +4,7 @@ import path from 'path';
 import portfoliosModule from '../../agents/etf_portfolios';
 import { getIncomeRegistry } from './income-server';
 import type { IncomeEtf } from './income';
+import { getEtfProfile, type EtfProfile } from './etf-profiles';
 
 // 데이터 폴더 경로
 const RAW_DATA_DIR = path.join(process.cwd(), 'data', 'raw');
@@ -120,9 +121,11 @@ export function shouldIndexEtf(args: {
   hasHoldings: boolean;
   /** 분배 정보(dividend-registry) 보유 */
   hasIncome: boolean;
+  /** 1차 출처로 확인한 상품 개요(src/lib/etf-profiles.ts) 보유. 2026-10-07 */
+  hasProfile?: boolean;
 }): boolean {
   if (!args.hasSlug || !args.hasPrice) return false;
-  return args.hasNavGap || args.hasHoldings || args.hasIncome;
+  return args.hasNavGap || args.hasHoldings || args.hasIncome || !!args.hasProfile;
 }
 
 interface PortfolioEntry {
@@ -794,8 +797,10 @@ export interface EtfPageFacts {
   income: IncomeEtf | null;
   /** 분배 정보 기준일 YYYY-MM-DD (dividend-registry _meta.asOf) */
   incomeAsOf: string | null;
-  /** max(시세 기준일, 분배 기준일) YYYY-MM-DD. 실제 데이터 날짜만 쓴다 (없으면 null) */
+  /** max(시세 기준일, 분배 기준일, 상품 개요 작성일) YYYY-MM-DD. 실제 데이터 날짜만 쓴다 (없으면 null) */
   lastModified: string | null;
+  /** 1차 출처로 확인한 상품 개요 (없으면 null) */
+  profile: EtfProfile | null;
   indexable: boolean;
 }
 
@@ -819,7 +824,8 @@ export function getEtfPageFacts(code: string, now?: Date): EtfPageFacts {
   const registry = upper ? getIncomeRegistry() : null;
   const income = registry?.etfs.find(e => (e.code || '').toUpperCase() === upper) || null;
   const incomeAsOf = income ? ymdToIsoDate(registry?.asOf) : null;
-  const dates = [age?.isoDate, incomeAsOf].filter((x): x is string => !!x).sort();
+  const profile = getEtfProfile(upper);
+  const dates = [age?.isoDate, incomeAsOf, profile?.updatedAt].filter((x): x is string => !!x).sort();
   const lastModified = dates.length ? dates[dates.length - 1] : null;
   const indexable = shouldIndexEtf({
     hasSlug,
@@ -827,6 +833,7 @@ export function getEtfPageFacts(code: string, now?: Date): EtfPageFacts {
     hasNavGap: !!navGap,
     hasHoldings: !!holdings,
     hasIncome: !!income,
+    hasProfile: !!profile,
   });
-  return { code: upper, hasSlug, price, age, navGap, holdings, income, incomeAsOf, lastModified, indexable };
+  return { code: upper, hasSlug, price, age, navGap, holdings, income, incomeAsOf, lastModified, profile, indexable };
 }
