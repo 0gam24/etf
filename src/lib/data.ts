@@ -5,6 +5,9 @@ import portfoliosModule from '../../agents/etf_portfolios';
 import { getIncomeRegistry } from './income-server';
 import type { IncomeEtf } from './income';
 import { getEtfProfile, type EtfProfile } from './etf-profiles';
+// etf-siblings 도 data.ts 를 import 한다(순환). 두 모듈 모두 최상위에서 서로의 함수를 호출하지 않고
+//   함수 안에서만 쓰므로 안전하다. hasEtfPeerGroup 은 색인 판정에서만 호출된다.
+import { hasEtfPeerGroup } from './etf-siblings';
 
 // 데이터 폴더 경로
 const RAW_DATA_DIR = path.join(process.cwd(), 'data', 'raw');
@@ -123,9 +126,38 @@ export function shouldIndexEtf(args: {
   hasIncome: boolean;
   /** 1차 출처로 확인한 상품 개요(src/lib/etf-profiles.ts) 보유. 2026-10-07 */
   hasProfile?: boolean;
+  /** 같은 지수 이름의 다른 운용사 상품 또는 1:1 비교 페이지가 있는가 (etf-siblings.hasEtfPeerGroup). 2026-10-08 */
+  hasPeerGroup?: boolean;
+  /** 네이버가 이미 색인한 종목 (data/etf-index-keep.json). 2026-10-08 */
+  inKeepList?: boolean;
 }): boolean {
-  if (!args.hasSlug || !args.hasPrice) return false;
-  return args.hasNavGap || args.hasHoldings || args.hasIncome || !!args.hasProfile;
+  // 2026-10-08 개정 (네이버 사이트 품질): 괴리율만으로는 색인하지 않는다.
+  //   괴리율 하나가 "가격 외 고유 수치"로 인정돼 1,171쪽 중 1,170쪽이 색인 대상이었는데,
+  //   그중 784쪽은 이름·숫자만 바뀐 같은 틀이었다(본문의 93%가 2% 이상 페이지에서 반복, 근접 중복 69%).
+  //   이 784쪽은 GSC 전 기간 노출 14·클릭 0이었고, 네이버 색인률도 5/36으로 낮았다.
+  //   같은 틀 페이지가 사이트 주소의 절반을 차지하면 네이버가 사이트 전체를 얇게 본다.
+  //   → 그 페이지만의 정보가 있을 때만 색인한다: 상품 개요·구성종목·분배 정보는 단독으로,
+  //     같은 지수 다른 상품 비교(또는 1:1 비교 페이지)는 시세가 있을 때.
+  //   noindex 여도 follow 는 유지해 링크는 따라간다. hasNavGap 은 호환용으로 받기만 한다.
+  //   다만 네이버가 이미 색인한 종목(data/etf-index-keep.json, 246쪽)은 그대로 둔다. 받아 준 주소를 빼면 있는 노출까지 잃는다.
+  if (!args.hasSlug) return false;
+  if (args.hasProfile || args.hasHoldings || args.hasIncome || args.inKeepList) return true;
+  return args.hasPrice && !!args.hasPeerGroup;
+}
+
+let _etfKeep: Set<string> | null = null;
+/** 네이버 색인 유지 목록 (data/etf-index-keep.json). 파일이 없으면 빈 목록. */
+function getEtfIndexKeepSet(): Set<string> {
+  if (_etfKeep) return _etfKeep;
+  try {
+    const raw = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'etf-index-keep.json'), 'utf8')) as {
+      codes?: string[];
+    };
+    _etfKeep = new Set((raw.codes || []).map(c => c.toUpperCase()));
+  } catch {
+    _etfKeep = new Set();
+  }
+  return _etfKeep;
 }
 
 interface PortfolioEntry {
@@ -834,6 +866,8 @@ export function getEtfPageFacts(code: string, now?: Date): EtfPageFacts {
     hasHoldings: !!holdings,
     hasIncome: !!income,
     hasProfile: !!profile,
+    hasPeerGroup: upper ? hasEtfPeerGroup(upper) : false,
+    inKeepList: upper ? getEtfIndexKeepSet().has(upper) : false,
   });
   return { code: upper, hasSlug, price, age, navGap, holdings, income, incomeAsOf, lastModified, profile, indexable };
 }

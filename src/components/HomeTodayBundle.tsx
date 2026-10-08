@@ -23,7 +23,7 @@ export default function HomeTodayBundle({ bundle }: { bundle: LatestBundle }) {
           {heading} <span className="home-bundle-count">새 글 {bundle.items.length}편</span>
         </h2>
         <p className="home-bundle-sub">
-          {dateLabel}에 발행된 분석과 가이드 전체입니다. 매일 새 글이 올라옵니다.
+          {dateLabel}에 발행된 가이드입니다. 기존 가이드는 최신 공시·법령에 맞춰 계속 고칩니다.
         </p>
       </div>
 

@@ -15,7 +15,7 @@ import {
   buildFinancialProductSchema,
   jsonLd,
 } from '@/lib/schema';
-import { SITE_NAME, SITE_LOCALE, articleTitle, padDescription, ogImageUrl } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, articleTitle, padDescription, ogImageUrl, RETIRED_ROBOTS } from '@/lib/site-meta';
 
 interface PageProps {
   params: Promise<{ ticker: string }>;
@@ -43,6 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     // 긴 제목일 때만 브랜드 접미사를 끊어 60자 안에 들어오게 한다.
     title: articleTitle({ title: post.meta.title }),
     description,
+    robots: RETIRED_ROBOTS, // 2026-10-08 일별 시황 글 은퇴 (site-meta 주석)
     alternates: { canonical: canonicalPath },
     openGraph: { siteName: SITE_NAME, locale: SITE_LOCALE,
       title: post.meta.title,

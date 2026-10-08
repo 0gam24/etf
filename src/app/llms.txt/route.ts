@@ -175,7 +175,7 @@ ${archiveLines}`
     [datedGuides[0]?.[1] || '', archiveUntil].sort().pop() || '';
 
   const categorySection = [
-    `- [ETF 가이드](${SITE}/guide): 입문·세금·배당·해외·전략을 주제별로 묶은 가이드 허브입니다. 새 가이드는 매일 아침 추가되며, 발행일순 전체 목록은 [최신 가이드 모아보기](${SITE}/guide/latest)에 있습니다.`,
+    `- [ETF 가이드](${SITE}/guide): 입문·세금·배당·해외·전략을 주제별로 묶은 가이드 허브입니다. 가이드는 최신 공시·법령에 맞춰 계속 고치며, 발행일순 전체 목록은 [최신 가이드 모아보기](${SITE}/guide/latest)에 있습니다.`,
     clusterLines,
     `- [ETF 종목 사전](${SITE}/etf): 한국거래소(KRX) 상장 ETF${etfCountLabel}의 코드·운용사·섹터·구성종목·분배 정보를 정리했습니다. 가격·등락률·거래량은 KRX 일별 종가 기준${etfDateLabel}이며 실시간 시세는 제공하지 않습니다.`,
     `  - 종목별 페이지는 \`${SITE}/etf/{슬러그}\` 형식이고, 코드 주소(\`${SITE}/etf/{코드}\`)는 슬러그 주소로 이동합니다. 전체 목록은 [sitemap-etf.xml](${SITE}/sitemap-etf.xml)에 있습니다.`,

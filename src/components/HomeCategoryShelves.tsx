@@ -17,12 +17,12 @@ export default function HomeCategoryShelves({ shelves }: { shelves: CategoryShel
           <LayoutGrid size={18} strokeWidth={2.4} aria-hidden style={{ verticalAlign: '-3px', marginRight: '0.4rem' }} />
           카테고리별 최신
         </h2>
-        <p className="section-subtitle">투자 가이드부터 속보·자금 흐름까지, 주제별 최근 글</p>
+        <p className="section-subtitle">ISA·연금·세금·월배당·ETF 비교, 주제별 가이드</p>
       </div>
 
       <div className="home-shelves-grid">
         {shelves.map(shelf => (
-          <div key={shelf.category} className="home-shelf">
+          <div key={`${shelf.category}-${shelf.label}`} className="home-shelf">
             <div className="home-shelf-head">
               <h3 className="home-shelf-title">{shelf.label}</h3>
               <Link href={shelf.href} prefetch={false} className="home-shelf-more">

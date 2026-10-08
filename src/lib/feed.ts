@@ -1,5 +1,8 @@
 import { getAllPosts, getPostsByCategory, CATEGORY_NAMES, TOP_LEVEL_CATEGORIES } from '@/lib/posts';
-import { GUIDES, getGuidePublishedAt } from '@/lib/guides';
+import { GUIDES, getGuidePublishedAt, getGuideModifiedAt } from '@/lib/guides';
+import { COMPARE_PAIRS } from '@/lib/etf-compare-pairs';
+import { ETF_PROFILES } from '@/lib/etf-profiles';
+import { getLatestEtfData, getKrxEtfMeta, codeToSlug } from '@/lib/data';
 
 /**
  * 구독 피드 공용 빌더 — RSS 2.0 · Atom 1.0 · JSON Feed 1.1 + 카테고리별 RSS.
@@ -173,15 +176,18 @@ export function getAllFeedItems(): FeedItem[] {
       markdownToHtml(post.content),
   }));
 
-  // 가이드 — 매일 발행되는 주력 콘텐츠. 발행일 기록이 있는 가이드만 포함.
-  // (기존엔 RSS에 가이드가 전혀 없어 일일 발행물이 구독·수집 채널에서 누락되던 공백 해소)
+  // 가이드 — 발행일 기록이 있는 가이드. 2026-10-08부터 본문을 실제로 고친 가이드(GUIDE_MODIFIED_AT)는
+  //   고친 날로 올린다. 네이버 서치어드바이저는 RSS 로 새 문서·바뀐 문서를 수집하는데, 그동안 보강·정정한 글이
+  //   피드에 다시 나타나지 않아 재수집 신호가 가지 않았다.
   const guideItems: FeedItem[] = GUIDES.flatMap(g => {
     const at = getGuidePublishedAt(g.slug);
-    if (!at) return [];
+    const mod = getGuideModifiedAt(g.slug);
+    const when = mod || at;
+    if (!when) return [];
     return [{
       title: g.title,
       url: `${SITE_URL}/guide/${g.slug}`,
-      pubDate: new Date(`${at}T09:00:00+09:00`),
+      pubDate: new Date(`${when}T09:00:00+09:00`),
       description: g.description,
       categoryName: g.section,
       image: ogImageUrl(g.title, 'guide'),
@@ -189,7 +195,46 @@ export function getAllFeedItems(): FeedItem[] {
     }];
   });
 
-  return [...postItems, ...guideItems]
+  // 같은 지수 비교 페이지 (2026-10-08 추가). 날짜는 sitemap 과 같은 시세 기준일.
+  const etfBase = getLatestEtfData()?.baseDate;
+  const etfBaseDate = etfBase && etfBase.length === 8
+    ? new Date(`${etfBase.slice(0, 4)}-${etfBase.slice(4, 6)}-${etfBase.slice(6, 8)}T16:00:00+09:00`)
+    : null;
+  const compareItems: FeedItem[] = etfBaseDate
+    ? COMPARE_PAIRS.flatMap(p => {
+        const a = getKrxEtfMeta(p.codeA);
+        const b = getKrxEtfMeta(p.codeB);
+        if (!a || !b) return [];
+        const title = `${a.name} ${b.name} 차이 비교`;
+        return [{
+          title,
+          url: `${SITE_URL}/compare/${p.slug}`,
+          pubDate: etfBaseDate,
+          description: `${title}. ${p.context}`,
+          categoryName: 'ETF 비교',
+          image: ogImageUrl(title, 'compare'),
+        }];
+      })
+    : [];
+
+  // 상품 개요가 있는 종목 사전 페이지 (2026-10-08 추가). 날짜는 개요를 쓰거나 고친 날.
+  const profileItems: FeedItem[] = Object.values(ETF_PROFILES).flatMap(pr => {
+    const meta = getKrxEtfMeta(pr.code);
+    if (!meta) return [];
+    const title = `${meta.name} 상품 개요: 운용사·비교지수·총보수·분배`;
+    return [{
+      title,
+      url: `${SITE_URL}/etf/${codeToSlug(pr.code)}`,
+      pubDate: new Date(`${pr.updatedAt}T09:00:00+09:00`),
+      description: pr.summary,
+      categoryName: 'ETF 종목 사전',
+      image: ogImageUrl(meta.name, 'stock'),
+    }];
+  });
+
+  // 일별 시황 글(postItems)은 2026-10-08 은퇴(noindex)라 피드에 넣지 않는다.
+  void postItems;
+  return [...guideItems, ...compareItems, ...profileItems]
     .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime())
     .slice(0, 100);
 }
@@ -233,7 +278,8 @@ export function renderRss(items: FeedItem[], opts: ChannelOpts): string {
     <title>${escapeXml(opts.title)}</title>
     <link>${SITE_URL}</link>
     <description>${escapeXml(opts.description)}</description>
-    <language>ko-KR</language>
+    <language>ko-KR</language>${items.length ? `
+    <lastBuildDate>${new Date(Math.max(...items.map(i => i.pubDate.getTime()))).toUTCString()}</lastBuildDate>` : ''}
     <atom:link href="${SITE_URL}${opts.selfPath}" rel="self" type="application/rss+xml" />
 ${itemsXml}
   </channel>

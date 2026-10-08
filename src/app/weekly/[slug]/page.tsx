@@ -7,7 +7,7 @@ import ReadingProgress from '@/components/ReadingProgress';
 import ShareRow from '@/components/ShareRow';
 import Toc from '@/components/Toc';
 import RecommendBox from '@/components/RecommendBox';
-import { SITE_NAME, SITE_LOCALE, articleTitle, padDescription, ogImageUrl } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, articleTitle, padDescription, ogImageUrl, RETIRED_ROBOTS } from '@/lib/site-meta';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: articleTitle({ title: post.meta.title }),
     description,
+    robots: RETIRED_ROBOTS, // 2026-10-08 일별·주간 시황 글 은퇴 (site-meta 주석)
     alternates: { canonical: canonicalPath },
     openGraph: { siteName: SITE_NAME, locale: SITE_LOCALE,
       title: post.meta.title,

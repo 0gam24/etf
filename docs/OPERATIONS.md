@@ -89,6 +89,14 @@
 - [!] 로컬 예약 작업 첫 실행 승인: 사이드바 Scheduled 에서 각 작업 "지금 실행" 후 git commit 등을 "항상 허용"
 
 ### 대기
+- [ ] **같은 지수 허브 페이지** (경쟁 조사 2026-10-08: topetf.app 이 308쪽으로 우리 빈틈 검색어 9개 1위. "지수 하나의 모든 ETF를 한 표"): `/compare` 아래 지수별 표(운용사·총보수·기타비용·매매중개수수료·실부담비용·분배주기·환헤지·상장일, 금융투자협회 공시 기준일 표기). 1차는 S&P500(총보수·TER 2026-08-31 확인 끝, same-index-etf-choice 보강 자료)·나스닥100·미국배당다우존스·코스피200. 새 주소라 주 2개 상한 안에서
+- [ ] **비교 페이지 개편**: 첫 화면을 시세표 대신 구조·비용표(기초지수·총보수·실부담비용·분배·환헤지)와 한 줄 판단 기준으로. 시세표는 아래로. 쌍별 사실은 `etf-compare-pairs.ts` 에 운용사 문서 근거와 함께
+- [ ] **/etf 상품 개요 확대**: 경쟁 조사의 1순위 차이(상품 페이지에 총보수·분배·구성종목이 없음). 네이버 빈틈 대상 ETF 42종부터 `etf-profiles.ts` 로 한 종목씩
+- [ ] **가이드 근접 중복 정리(301)**: 콘텐츠 구조 감사 2026-10-08 의 12쌍(네이버 미색인 → 색인된 쪽). 예: currency-hedge → hedge-vs-unhedged, etf-distribution-date → etf-dividend, isa-to-pension-tax-credit → isa-to-pension-transfer. 합칠 글의 고유 내용을 대상 글로 옮긴 뒤 301
+- [ ] **"X ETF 완전정리" 46편**: 네이버 색인 16/46. 수요 있는 3편(solar-energy·water·taiwan)은 빈틈 보강, 나머지는 데이터 보강 또는 noindex 판단
+- [ ] **가이드 주제 묶음 세분화**: `GUIDE_CLUSTERS` 6개 → 15~17개(감사 표). 관련 가이드 링크가 주제를 벗어나는 비율 56% 를 낮춘다. 본문 속 상품명 → /etf·/compare 링크
+- [ ] /theme/*·/account/* (사이트맵 밖, 가이드와 같은 검색어 경합): 주제 목록 허브로 바꾸거나 noindex
+- [ ] 은퇴시킨 일별 글 4편 301(/stock/0053L0 → /etf/tiger-china 등, 감사 목록), 8주 뒤 나머지 정리
 - [ ] **네이버 빈틈 보강 순서** (naver-gap-20261007, §6-3 이 하루 1편씩 가져간다. 보강하면 줄을 지운다): ETF 괴리율 뜻(/guide/etf-fee-discount-relation, 작년 11월 7.1배) · 해외주식 양도세 250만원·연말 매도(/guide/overseas-stock-year-end-sell-amount) · 환헤지 ETF 환노출 차이(/guide/hedge-vs-unhedged) · ISA 연금저축 IRP 차이(/guide/isa-vs-pension) · 연금저축 ETF 매도 세금(/guide/pension-fund-etf-trading) · ISA 만기 해지 세금(/guide/isa-termination-after-3-years, 미색인) · 은행 etf(/guide/bank-etf, 미색인) · 삼성전자 분기 배당(/guide/individual-stock-dividend-schedule)
 - [ ] 사실 정정 후보 (2026-10-07 보강 조사 중 발견, 1차 출처 재확인 후 정정): `etf-fee` 가 "실부담비용(TER)"으로 두 개념을 같게 씀(TER 에는 매매·중개수수료가 빠진다, KB자산운용 안내)·"총보수 연 0.05~0.5%" 범위가 S&P500 상품(0.0047%)과 안 맞음 / `domestic-sp500-etf-comparison` 의 "TIGER 순자산 약 16조원대"는 기준일 경과로 낡은 수치(시세 이용 조건 결정 전이면 수치 대신 확인 경로로) / `pension-account-etf-restrictions` 의 연금저축 레버리지·인버스 매수 금지 근거(퇴직급여법이 아니라 연금저축 쪽 규정) 재확인 / `isa-to-pension-tax-credit` 의 "그전에 깨면 기타소득세 16.5%가 붙습니다"는 공제받은 납입액·운용수익만 과세라는 점이 빠짐(시행령 제40조의3)
 - [ ] 새 주소 후보(주 2개 상한 안, 같은 지수 확인 후): 고배당주 ETF 비교(비교 페어) · 퇴직연금 ETF 매수(가이드, 기존 IRP 글과 의도 구분 확인) · 연금저축 연말 납입(기존 "연금저축 vs IRP 차이, 세액공제 한도와 채우는 순서"와 겹침 확인)
@@ -119,6 +127,7 @@
 - [x] 2026-10-06 비교 페어 SOL vs TIGER 미국배당다우존스
 - [x] 2026-10-06 성장 스프린트 1: sitemap·RSS 의 /today 404 10건 제거와 lastmod 실제 날짜화, 이미지 sitemap 296→395쪽, 같은 지수 ETF 운용사별 비교 블록(119개 지수 묶음, /etf 398쪽), /compare 같은 날 가격·NAV·괴리율 표와 설명 120~155자, ETF 분배금 계산기(/tools/dividend-calculator), 가이드 수동 광고 자리(slot ID 입력 전에는 렌더 안 함), 네이버용 RSS alternate·Yeti 의 /api·/llms.txt 제외, 지킬 수 없는 "매일 아침 새 가이드" 문구 정리, /etf 모바일 가로 넘침 수정
 - [x] 2026-10-06 시세 스냅샷 정지(이용 조건 확인 전 공개 저장소 재배포 중단)
+- [x] 2026-10-08 네이버 구조 스프린트 (감사 4종: 기술 SEO·경쟁 페이지·콘텐츠 구조·수익 UI/AEO): /etf 색인 1,170 → 521(상품 개요·구성종목·분배·같은 지수 비교가 있거나 네이버가 이미 색인한 종목, data/etf-index-keep.json), 일별 시황 98편·목록·/today·/weekly·/strategy noindex 와 sitemap·이미지 sitemap·RSS 에서 제외, 헤더·푸터 메뉴 개편(종목 사전·ETF 비교·가이드·월배당·분배금 계산기), 상단 시세 띠·시장 상태 띠 제거(모바일 첫 화면 약 66px·CLS), 상단 제휴 회전 상자 제거와 고지 위치를 카드 위로, 수동 광고 자리 사전 배선(가이드 상단·/etf·/compare, slot env 입력 시 작동), 직답 상자를 section 으로 바꾸고 기준일·1차 출처 표시, 관련 가이드를 FAQ 앞으로, 홈을 주제별 가이드·비교·도구 링크로, sitemap 우선순위(가이드 0.9·비교 0.8·종목 0.6~0.8), RSS 에 고친 가이드·비교·상품 개요와 lastBuildDate, 비교 제목에 "차이", 폰트 dynamic subset, about 상위 조직 표기·지킬 수 없는 문구·자매 링크 정리, 빈틈 측정 분류(은행·지수 산출기관·위키) 보정
 
 ## 6. 성장 운영 작업 절차 (`iknowhowinfo-growth-operator`)
 

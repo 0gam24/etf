@@ -209,6 +209,20 @@ function compareRows(a: EtfSiblingRow, b: EtfSiblingRow): number {
 }
 
 /**
+ * 색인 판정용 가벼운 확인 (2026-10-08): 같은 지수 이름의 다른 운용사 상품이 있거나 1:1 비교 페이지가 있는가.
+ *   있으면 /etf 페이지에 "같은 지수 ETF 운용사별 비교" 표나 비교 페이지 링크가 그려져, 가격 외에
+ *   그 페이지만의 정보(같은 지수 상품 사이의 선택)가 생긴다. 시세를 읽지 않는다.
+ */
+export function hasEtfPeerGroup(code: string): boolean {
+  const upper = (code || '').toUpperCase();
+  if (!upper) return false;
+  const idx = loadSiblingIndex();
+  const k = idx.keyOf.get(upper);
+  if (k && (idx.byKey.get(k.key) || []).length >= 2) return true;
+  return comparePairsFor(upper).length > 0;
+}
+
+/**
  * /etf/[ticker] 블록용: 같은 지수 이름을 쓰는 다른 상품, 괄호 표기만 다른 상품, 1:1 비교 페이지.
  *   셋 다 없으면 null (블록을 그리지 않는다).
  */

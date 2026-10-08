@@ -143,6 +143,8 @@ const ISSUER_HOSTS = [
   'wooriam.co.kr', 'hanafn.com', '1qetf.com', 'hanaw.com', 'dbam.co.kr', 'heungkukfund.co.kr',
   'shinyoung-am.com', 'bnkam.co.kr', 'daishinam.co.kr', 'yuriam.co.kr', 'hdfund.co.kr',
   'hiam.co.kr', 'kyoboaxa.co.kr', 'nhamundi.com', 'nh-amundi.com', 'hkfund.co.kr',
+  // 2026-10-08 추가: 운용사·지수 산출기관
+  'ibkasset.com', 'spglobal.com', 'msci.com', 'fnindex.co.kr', 'solactive.com', 'indxx.com',
 ];
 // 상장사 공식 IR·배당 안내: 그 회사 배당·실적 검색에서는 주인 자리라 운용사와 같게 본다 (2026-10-08 "삼성전자 분기 배당")
 const CORP_HOSTS = [
@@ -156,7 +158,11 @@ const BROKER_HOSTS = [
   'yuantakorea.com', 'hi-ib.com', 'db-fi.com', 'hanwhawm.com', 'koreainvestment.com', 'toss.im',
   'kbstar.com', 'shinhan.com', 'wooribank.com', 'ibk.co.kr', 'kebhana.com', 'nonghyup.com',
   'tossbank.com', 'kakaobank.com', 'kbanknow.com', 'kakaopay.com', 'banksalad.com', 'hanabank.com',
+  // 2026-10-08 경쟁 조사에서 상업 블로그로 잘못 잡히던 금융회사
+  'kbthink.com', 'myasset.com', 'kbinsure.co.kr', 'samsunglife.com', 'hanwhalife.com',
 ];
+// 위키: 사람이 고친 백과라 웹문서 상위를 오래 지킨다. 뺏을 수 있는 자리로 세지 않는다
+const WIKI_HOSTS = ['namu.wiki', 'ko.wikipedia.org', 'wikipedia.org', 'wikidocs.net'];
 // 시세·데이터 도구: 상품명 검색을 점령하는 경우가 많다. 글로는 이기기 어렵다
 const TOOL_HOSTS = [
   'finance.naver.com', 'm.stock.naver.com', 'stock.naver.com', 'finance.daum.net', 'm.finance.daum.net',
@@ -192,6 +198,7 @@ function hostKind(host) {
   if (host.endsWith('.go.kr') || hostMatches(host, GOV_HOSTS)) return 'gov';
   if (hostMatches(host, ISSUER_HOSTS) || hostMatches(host, CORP_HOSTS)) return 'issuer';
   if (hostMatches(host, BROKER_HOSTS)) return 'broker';
+  if (hostMatches(host, WIKI_HOSTS)) return 'wiki';
   if (hostMatches(host, PRESS_HOSTS) || PRESS_HINT.test(host)) return 'press';
   if (host.endsWith('naver.com')) return 'naver';
   if (host.endsWith('.or.kr') || host.endsWith('.re.kr') || host.endsWith('.ac.kr')) return 'org';
@@ -199,7 +206,7 @@ function hostKind(host) {
 }
 const KIND_LABEL = {
   own: '자사', sister: '자매', tool: '시세·도구', gov: '관공서', issuer: '운용사', broker: '증권·은행',
-  press: '언론', naver: '네이버', org: '기관·협회', commercial: '블로그·상업',
+  press: '언론', naver: '네이버', org: '기관·협회', commercial: '블로그·상업', wiki: '위키',
 };
 
 const strip = (s) =>
@@ -406,7 +413,7 @@ async function scoutSerp(query) {
   const openSlots = above.filter(
     (d) => d.kind !== 'own' && d.kind !== 'sister' && d.kind !== 'naver' && (openKinds.has(d.kind) || d.stale),
   ).length;
-  const authAbove = above.filter((d) => (d.kind === 'gov' || d.kind === 'issuer') && !d.stale).length;
+  const authAbove = above.filter((d) => (d.kind === 'gov' || d.kind === 'issuer' || d.kind === 'wiki') && !d.stale).length;
   const govAbove = above.filter((d) => d.kind === 'gov' && !d.stale).length;
   const toolTop3 = docs.slice(0, 3).filter((d) => d.kind === 'tool').length;
   const sisterAbove = above.filter((d) => d.kind === 'sister').length;
@@ -448,7 +455,7 @@ function reclassify(s) {
   s.openSlots = s.above.filter(
     (d) => d.kind !== 'own' && d.kind !== 'sister' && d.kind !== 'naver' && (openKinds.has(d.kind) || d.stale),
   ).length;
-  s.authAbove = s.above.filter((d) => (d.kind === 'gov' || d.kind === 'issuer') && !d.stale).length;
+  s.authAbove = s.above.filter((d) => (d.kind === 'gov' || d.kind === 'issuer' || d.kind === 'wiki') && !d.stale).length;
   s.govAbove = s.above.filter((d) => d.kind === 'gov' && !d.stale).length;
   if (s.rank == null || s.rank > 3) s.toolTop3 = s.above.slice(0, 3).filter((d) => d.kind === 'tool').length;
   s.sisterAbove = s.above.filter((d) => d.kind === 'sister').length;

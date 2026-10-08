@@ -69,7 +69,8 @@ export async function GET() {
     </image:image>
   </url>`);
 
-  ['pulse', 'breaking', 'surge', 'flow', 'income'].forEach(cat => {
+  // 2026-10-08: 일별 시황 구역(pulse·breaking·surge·flow)은 noindex 라 빼고 /income 만 남긴다
+  ['income'].forEach(cat => {
     entries.push(`
   <url>
     <loc>${SITE}/${cat}</loc>
@@ -91,10 +92,7 @@ export async function GET() {
     { path: '/etf',        title: `ETF 종목 사전, KRX 상장 ${etfSlugMap.count > 0 ? `${etfSlugMap.count.toLocaleString('ko-KR')}종` : '전 종목'}`, category: 'surge' },
     { path: '/guide',      title: 'ETF 투자 가이드, 월배당·커버드콜·세금·수수료·입문', category: 'pulse' },
     { path: '/guide/latest', title: '전체 ETF 가이드, 최신 발행순 모아보기',           category: 'pulse' },
-    { path: '/today',      title: '오늘의 ETF 종합 리포트, 시그널·분배락·거래량', category: 'pulse' },
-    { path: '/weekly',     title: '주간 ETF 펄스 리포트 · 주차별 자금 흐름',        category: 'flow' },
-    { path: '/strategy/kospi200-breakout', title: '코스피200 변동성 돌파 시그널, Andrea Unger',  category: 'surge' },
-    { path: '/strategy/track-record',      title: '시그널 트랙 레코드, Transparent 결과 공개', category: 'surge' },
+    // /today·/weekly·/strategy/* 는 2026-10-08부터 noindex 라 넣지 않는다 (site-meta RETIRED_ROBOTS)
     // 2026-10-06: 실시간 시세는 중단(일별 종가 운영)이라 '실시간' 대신 페이지 실제 제목을 쓴다
     { path: '/tools/portfolio',  title: 'ETF 포트폴리오 손익 계산기',                      category: 'pulse' },
     { path: '/tools/tax-compare', title: '계좌별 세후 수익률 비교, IRP·ISA·연금저축',   category: 'income' },
@@ -134,8 +132,8 @@ export async function GET() {
   </url>`);
   });
 
-  // 글 상세, 각 글의 OG 이미지
-  allPosts.forEach(post => {
+  // 글 상세(일별 시황 98편)는 2026-10-08부터 noindex 라 넣지 않는다 (site-meta RETIRED_ROBOTS)
+  allPosts.filter(() => false).forEach(post => {
     const url = `${SITE}/${post.meta.category}/${encodeURI(post.meta.slug)}`;
     const ogParams: Record<string, string> = {
       title: post.meta.title.slice(0, 60),

@@ -52,14 +52,17 @@ export async function GET() {
 
     // lastmod: 종목별 max(시세 기준일, 분배 기준일). 전 종목이 같은 날짜로 찍혀도 그게 사실이면 그대로 둔다.
     const lastmod = ymdToIso(facts.lastModified?.split('-').join(''));
-    // 색인 종목은 모두 시세가 있다. 시세 기준일이 오래됐으면 갱신 주기 신호를 낮춘다.
+    // 시세 기준일이 오래됐으면 갱신 주기 신호를 낮춘다.
     const changefreq = facts.age && !facts.age.isStale ? 'daily' : 'weekly';
+    // 2026-10-08 우선순위: 가이드 0.9 > 비교 0.8 > 종목 사전. 상품 개요가 있는 종목은 0.8, 나머지 0.6.
+    //   예전에는 1,170쪽 전부 0.9 daily 라 가이드(0.85)보다 높게 신고됐다. 네이버 Yeti 는 이 값을 참고한다.
+    const priority = facts.profile ? '0.8' : '0.6';
 
     entries.push(`  <url>
     <loc>${SITE}/etf/${escapeXml(slug)}</loc>${lastmod ? `
     <lastmod>${lastmod}</lastmod>` : ''}
     <changefreq>${changefreq}</changefreq>
-    <priority>0.9</priority>
+    <priority>${priority}</priority>
   </url>`);
   }
 

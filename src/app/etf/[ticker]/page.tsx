@@ -32,6 +32,8 @@ import {
   jsonLd,
 } from '@/lib/schema';
 import EtfProfileSection from '@/components/EtfProfileSection';
+import AdBanner from '@/components/AdBanner';
+import { AD_SLOTS } from '@/lib/ads';
 import type { RawEtf } from '@/lib/surge';
 import { buildOg, buildTwitter, ogImageUrl } from '@/lib/site-meta';
 
@@ -611,8 +613,11 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
         </section>
       )}
 
-      {/* 추천 자료는 첫 정보 섹션 이후에 노출 — 빈 페이지 인상 회피 */}
-      <RecommendBox position="top" />
+      {/* 본문 수동 광고 1곳 (2026-10-08, 예전 제휴 회전 상자 자리). 첫 정보 섹션(시세 또는 종목 정보)의
+          안내 문단 뒤, 다음 섹션 제목 앞이라 버튼·카드에 붙지 않는다. 슬롯 env 가 비면 그리지 않는다. */}
+      {AD_SLOTS.inArticle && (
+        <AdBanner key={`${canonicalSlug}-in`} slot={AD_SLOTS.inArticle} className="ad-slot--etf ad-slot--inArticle" />
+      )}
 
       {/* 구성종목: 보유한 대표 종목만 표시하고, 전체 구성은 운용사 공시로 안내한다.
           (보유 데이터는 종목별 대표 몇 개뿐이라 "TOP 10"·"전체 구성"을 약속하지 않는다) */}

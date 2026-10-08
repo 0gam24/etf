@@ -108,7 +108,7 @@ export const COMPARE_PAIRS: ComparePair[] = [
   {
     slug: 'kodex-200-vs-kodex-leverage',
     codeA: '069500', codeB: '122630',
-    context: 'KODEX 200 일반 vs 레버리지(2배). 변동성·장기 보유 risk.',
+    context: 'KODEX 200 일반 vs 레버리지(2배). 변동성과 장기 보유 시 위험이 다르다.',
     searchIntent: 'KOSPI 200 레버리지 비교',
   },
   // 추가 2026-10-06 기초지수 Dow Jones U.S. Dividend 100 Price Return Index · 확인 https://investments.miraeasset.com/tigeretf/ko/product/search/detail/index.do?ksdFund=KR7458730009 · https://www.soletf.com/ko/fund/etf/summary/210942

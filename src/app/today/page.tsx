@@ -6,7 +6,7 @@ import TodayReport from './TodayReport';
 import { jsonLd } from '@/lib/schema';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FreshnessPill from '@/components/FreshnessPill';
-import { buildPageMetadata } from '@/lib/site-meta';
+import { buildPageMetadata, RETIRED_ROBOTS } from '@/lib/site-meta';
 
 function loadLatest() {
   try {
@@ -33,6 +33,7 @@ function reportBaseDate(report: { date?: string; baseDate?: string } | null): st
 export function generateMetadata(): Metadata {
   const baseDate = reportBaseDate(loadLatest());
   return buildPageMetadata({
+    robots: RETIRED_ROBOTS, // 2026-10-08 시세 기반 일일 리포트 은퇴 (site-meta 주석)
     title: '오늘의 ETF 종합 리포트',
     description: baseDate
       ? `${baseDate} KRX 종가 기준으로 거래량 상위 종목과 상승·하락 상위 ETF, 분배락일이 가까웠던 종목을 한 페이지에 모은 종합 리포트입니다. 기준일 이후의 시세 변화는 반영되지 않았으니 매매 전 최신 시세를 따로 확인하세요.`

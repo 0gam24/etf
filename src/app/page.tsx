@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
-import { getLatestEtfData } from '@/lib/data';
+import Link from 'next/link';
+import { getLatestEtfData, getKrxEtfMeta } from '@/lib/data';
+import { COMPARE_PAIRS } from '@/lib/etf-compare-pairs';
 import { getLatestBundle, getUnifiedFeed, getCategoryShelves, formatDateKeyKo } from '@/lib/home-feed';
 import { buildItemListSchema, jsonLd } from '@/lib/schema';
 import EtfMarketPulse from '@/components/EtfMarketPulse';
@@ -46,6 +48,11 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const etfData = getLatestEtfData();
+  // 홈 비교 링크: 두 코드가 모두 KRX 목록에 있는 페어만 (sitemap 과 같은 조건)
+  const krxNameOf = (code: string) => getKrxEtfMeta(code)?.name;
+  const comparePairs = COMPARE_PAIRS
+    .filter(p => krxNameOf(p.codeA) && krxNameOf(p.codeB))
+    .map(p => ({ slug: p.slug, label: `${krxNameOf(p.codeA)} vs ${krxNameOf(p.codeB)} 차이` }));
 
   // ── 블로그형 홈의 단일 데이터 소스: 통합 발행 피드 ──
   const bundle = getLatestBundle();
@@ -88,18 +95,10 @@ export default async function HomePage() {
       {/* TRUST: 신뢰 띠 */}
       <TrustBar etfCount={totalCount || 100} />
 
-      {/* 시장 요약 한 줄 — SSR initial(KRX 마감) + 장중 silent overlay.
-          "왜?" CTA → 오늘 발행 묶음(#daily-pulse-hero), "내 상황은?" → PersonaSelector. */}
-      <MarketPulseCondensed
-        initialTopVolume={topEtf ? { code: topEtf.code, name: topEtf.name, price: topEtf.price, changeRate: topEtf.changeRate || 0, volume: topEtf.volume } : null}
-        initialTopGainer={topGainer ? { code: topGainer.code, name: topGainer.name, price: topGainer.price, changeRate: topGainer.changeRate || 0 } : null}
-        initialMarketAvg={marketAvg}
-        initialCategories={Object.entries(etfData?.categories || {}).map(([key, c]) => ({ name: (c as { name?: string }).name || key, avgChange: (c as { avgChange?: number }).avgChange || 0 }))}
-        initialBaseline={(etfData?.byVolume || []).slice(0, 10).map((e: { code: string; name: string; price: number; changeRate?: number; volume: number }) => ({
-          code: e.code, name: e.name, price: e.price, changeRate: e.changeRate || 0, volume: e.volume,
-        }))}
-        fullWidgetAnchor="#market-pulse-full"
-      />
+      {/* 2026-10-08: 시장 요약 띠(MarketPulseCondensed)와 라이브 시세 위젯(EtfMarketPulse)을 뺐다.
+          시세가 10-01 에 멈춘 상태로 홈 첫 화면을 차지했고(이용 조건 결정 전), 종목 링크가 코드 주소(308)를 거쳤다.
+          홈은 검색으로 들어온 사람이 다음에 갈 곳(같은 지수 비교·도구·주제별 가이드)으로 바로 보낸다. */}
+      {void [MarketPulseCondensed, EtfMarketPulse, topGainer, topEtf, marketAvg]}
 
       {/* 페이지 H1 — 홈의 검색 신호 (시각적으로는 작게, 의미상 최상위) */}
       <div className="home-bundle" style={{ paddingBottom: 0 }}>
@@ -123,10 +122,20 @@ export default async function HomePage() {
       {/* 카테고리별 선반 — 헤더 메뉴 순서, 카테고리당 3편 */}
       <HomeCategoryShelves shelves={shelves} />
 
-      {/* LIVE: 라이브 시장 위젯 (유일한 풀 위젯 — Condensed anchor 대상) */}
-      <div id="market-pulse-full" style={{ scrollMarginTop: '5rem' }}>
-        <EtfMarketPulse />
-      </div>
+      {/* 같은 지수 ETF 비교와 계산 도구 — 홈에서 바로 닿게 (2026-10-08). 비교 페이지는 그동안 홈에서 4클릭이었다. */}
+      <section className="home-bundle" aria-labelledby="home-compare-title">
+        <h2 id="home-compare-title" className="home-bundle-title">같은 지수 ETF 비교와 계산 도구</h2>
+        <ul className="home-link-list">
+          {comparePairs.map(p => (
+            <li key={p.slug}>
+              <Link href={`/compare/${p.slug}`} prefetch={false}>{p.label}</Link>
+            </li>
+          ))}
+          <li><Link href="/compare" prefetch={false}>같은 지수 ETF 비교 전체 보기</Link></li>
+          <li><Link href="/tools/dividend-calculator" prefetch={false}>ETF 분배금 계산기</Link></li>
+          <li><Link href="/tools/tax-compare" prefetch={false}>계좌별 세후 수익률 비교 (ISA·연금저축·IRP)</Link></li>
+        </ul>
+      </section>
 
       {/* 페르소나 선택 — 7 상황별 entry page 라우팅 (Condensed "내 상황은?" anchor) */}
       <div id="persona-selector" style={{ scrollMarginTop: '5rem' }}>

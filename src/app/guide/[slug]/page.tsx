@@ -14,7 +14,7 @@ import AffiliateInline from '@/components/AffiliateInline';
 import AiAgentDisclosure from '@/components/AiAgentDisclosure';
 import RecommendBox from '@/components/RecommendBox';
 import AdBanner from '@/components/AdBanner';
-import { planGuideAds } from '@/lib/ads';
+import { planGuideAds, AD_SLOTS } from '@/lib/ads';
 import type { ProductCategory } from '@/lib/products';
 import { buildArticleSchema, buildHowToSchema, jsonLd } from '@/lib/schema';
 import { SITE_NAME, SITE_LOCALE, articleTitle , padDescription, ogImageUrl } from '@/lib/site-meta';
@@ -215,7 +215,15 @@ export default async function GuidePage({ params }: PageProps) {
       </header>
 
       {/* AEO 직답 — Hero 직후. 결론 1~2문장만(구체 수치·표는 본문). AI Overview·스니펫 인용용. */}
-      {g.answer && <AnswerBox summary={g.answer} source="Daily ETF Pulse 편집팀" />}
+      {/* 기준일은 실제로 고친 날(없으면 발행일), 출처는 이 글의 첫 1차 출처 (2026-10-08).
+          예전에는 출처를 "Daily ETF Pulse 편집팀"으로 적어 직답이 스스로를 근거로 드는 모양이었다. */}
+      {g.answer && (
+        <AnswerBox
+          summary={g.answer}
+          asOf={modifiedAt || publishedAt}
+          source={g.sources?.[0]?.label || 'Daily ETF Pulse 편집팀'}
+        />
+      )}
 
       {/* AEO 핵심 포인트 — 직답 아래 bullet. 리스트형 스니펫 + 생성형 검색 인용 단위. */}
       {g.keyPoints && g.keyPoints.length > 0 && (
@@ -258,8 +266,11 @@ export default async function GuidePage({ params }: PageProps) {
         </figure>
       )}
 
-      {/* Hero 직후 RecommendBox top — 4카드 박스 (가이드 카테고리 매칭) */}
-      <RecommendBox position="top" category={guideToProductCategory(g.slug)} />
+      {/* 상단 수동 광고 (2026-10-08, 예전 제휴 회전 상자 자리). 직답·핵심 포인트·비교표를 다 읽은 뒤,
+          목차 앞. 위는 표, 아래는 목차 제목이라 버튼·링크에 붙지 않는다. 슬롯 env 가 비면 아무것도 그리지 않는다. */}
+      {AD_SLOTS.top && (
+        <AdBanner key={`${slug}-top`} slot={AD_SLOTS.top} className="ad-slot--guide ad-slot--top" />
+      )}
 
       {/* 목차 — 문단별 앵커. 긴 글에서 원하는 대목으로 바로 가고,
           검색 결과에 문단 바로가기가 붙을 수 있는 구조를 만든다. */}
@@ -341,6 +352,25 @@ export default async function GuidePage({ params }: PageProps) {
         </section>
       )}
 
+      {/* 관련 가이드 — 본문을 다 읽은 바로 그 자리에 둔다 (2026-10-08 FAQ 뒤 맨 끝에서 이동).
+          한 번 들어온 독자가 다음 글로 넘어가야 방문당 페이지뷰(=광고 노출)가 늘어난다. */}
+      <nav className="guide-article-other" aria-label="관련 가이드">
+        <h2>관련 가이드</h2>
+        <ul>
+          {relatedGuides.map(o => (
+            <li key={o.slug}>
+              <Link href={`/guide/${o.slug}`} prefetch={false}>
+                <span className="guide-article-other-title">{o.title}</span>
+                <ArrowRight size={14} strokeWidth={2.5} />
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Link href="/guide" className="guide-article-other-all" prefetch={false}>
+          전체 ETF 가이드 보기 <ArrowRight size={14} strokeWidth={2.5} />
+        </Link>
+      </nav>
+
       {/* 참고 자료 — 공적 기관·운용사 1차 출처 (E-E-A-T + citation 스키마와 본문 일치) */}
       {g.sources && g.sources.length > 0 && (
         <section className="guide-sources" aria-label="참고 자료">
@@ -358,23 +388,6 @@ export default async function GuidePage({ params }: PageProps) {
       )}
 
       <FaqSection title={`${g.section} 자주 묻는 질문`} items={g.faq} />
-
-      <nav className="guide-article-other" aria-label="관련 가이드">
-        <h2>관련 가이드</h2>
-        <ul>
-          {relatedGuides.map(o => (
-            <li key={o.slug}>
-              <Link href={`/guide/${o.slug}`} prefetch={false}>
-                <span className="guide-article-other-title">{o.title}</span>
-                <ArrowRight size={14} strokeWidth={2.5} />
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <Link href="/guide" className="guide-article-other-all" prefetch={false}>
-          전체 ETF 가이드 보기 <ArrowRight size={14} strokeWidth={2.5} />
-        </Link>
-      </nav>
 
       {/* 본문 하단 공시 — 무엇을 근거로 쓰고 누가 발행을 책임지는지. 일별 글과 동일 정책 적용. */}
       <AiAgentDisclosure variant="inline" kind="guide" />

@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { jsonLd } from '@/lib/schema';
 import FreshnessPill from '@/components/FreshnessPill';
-import { buildPageMetadata } from '@/lib/site-meta';
+import { buildPageMetadata, RETIRED_ROBOTS } from '@/lib/site-meta';
 
 interface BreakoutSignal {
   code: string;
@@ -46,6 +46,7 @@ function loadLatest(): SignalFile | null {
 }
 
 export const metadata: Metadata = buildPageMetadata({
+  robots: RETIRED_ROBOTS, // 2026-10-08 거래 신호 페이지 은퇴 (site-meta 주석)
   title: '코스피200 변동성 breakout 시그널',
   description: 'Andrea Unger 변동성 돌파 공식을 KOSPI200 4종(KODEX 200·인버스·레버리지)에 매일 적용한 시그널. 정보 제공 목적이며 매매 권유 아님.',
   url: '/strategy/kospi200-breakout',

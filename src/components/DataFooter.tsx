@@ -28,7 +28,7 @@ export default function DataFooter({ etfFetchedAt, ecoFetchedAt, etfCount }: Pro
             <Database size={14} strokeWidth={2.4} aria-hidden /> 데이터 출처
           </div>
           <ul className="data-footer-list">
-            <li><strong>KRX 한국거래소</strong> · ETF 일별 시세 (공공데이터포털 · 30분 캐시)</li>
+            <li><strong>KRX 한국거래소</strong> · ETF 일별 시세 (공공데이터포털, 기준일 표기)</li>
             <li><strong>한국은행 ECOS</strong> · 기준금리·환율·소비자물가</li>
             <li><strong>DART 금융감독원</strong> · 운용사 공시 (구성종목·분배 일정)</li>
           </ul>

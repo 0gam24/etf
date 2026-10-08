@@ -16,9 +16,10 @@ import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 import RecommendBox from '@/components/RecommendBox';
 import SurgeRecentList from '@/components/SurgeRecentList';
-import { buildPageMetadata } from '@/lib/site-meta';
+import { buildPageMetadata, RETIRED_ROBOTS } from '@/lib/site-meta';
 
 export const metadata: Metadata = buildPageMetadata({
+  robots: RETIRED_ROBOTS, // 2026-10-08 일별 시황 구역 은퇴 (site-meta 주석)
   title: '급등 테마 분석',
   description:
     '오늘 거래량·등락률 1위 ETF가 왜 움직였는지, 무엇이 위험 신호인지 정리했습니다. 테마 트래커로 자금이 몰리는 섹터를 확인하고, 같은 테마의 다른 종목까지 한 페이지에서 비교해 보세요.',

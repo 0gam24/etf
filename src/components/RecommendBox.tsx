@@ -33,7 +33,12 @@ interface Props {
  *   /resources 페이지에는 자기 참조 회피로 사용 안 함.
  */
 export default function RecommendBox({ position, category, limit }: Props) {
-  const isTicker = position === 'top';
+  // 2026-10-08: 상단(top) 회전 상자는 그리지 않는다. 운영 목표(애드센스 수익·네이버 유입) 기준으로
+  //   직답 바로 아래의 가장 좋은 자리를 제휴 상자가 차지해 본문 시작을 모바일 2~3화면 뒤로 밀고,
+  //   본문 텍스트의 25~30%를 차지해 AI 요약·검색 발췌에 잡음이 됐다. 페이지 맨 아래(bottom) 한 곳만 남긴다.
+  //   21개 페이지의 position="top" 호출은 그대로 두고 여기서 끈다(되돌릴 때 이 줄만 지우면 된다).
+  if (position === 'top') return null;
+  const isTicker = false;
   const finalLimit = limit ?? (isTicker ? 8 : 4);
 
   // top(ticker): 여러 니즈에서 mix → 회전 시 카테고리 다양성 노출
@@ -94,6 +99,11 @@ export default function RecommendBox({ position, category, limit }: Props) {
         </Link>
       </div>
 
+      {/* 제휴 고지는 카드 바로 위에 둔다 (CLAUDE.md Affiliate 규칙 "카드 직상단", 2026-10-08 위치 정정) */}
+      <p className="recommend-box-disclaimer">
+        이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+      </p>
+
       {isTicker ? (
         // ticker 모드 — 카드 2번 복제로 seamless loop, 두 번째 set은 aria-hidden
         <div className="recommend-box-ticker-window" role="region" aria-label="추천 자료 회전 목록">
@@ -107,10 +117,6 @@ export default function RecommendBox({ position, category, limit }: Props) {
           {products.map(p => renderCard(p, 0))}
         </ul>
       )}
-
-      <p className="recommend-box-disclaimer">
-        이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
-      </p>
     </section>
   );
 }

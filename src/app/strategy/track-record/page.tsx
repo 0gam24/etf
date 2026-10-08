@@ -3,7 +3,7 @@ import path from 'node:path';
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FreshnessPill from '@/components/FreshnessPill';
-import { buildPageMetadata } from '@/lib/site-meta';
+import { buildPageMetadata, RETIRED_ROBOTS } from '@/lib/site-meta';
 
 interface Outcome {
   code: string;
@@ -31,6 +31,7 @@ function loadTrack(): TrackRecord | null {
 }
 
 export const metadata: Metadata = buildPageMetadata({
+  robots: RETIRED_ROBOTS, // 2026-10-08 거래 신호 페이지 은퇴 (site-meta 주석)
   title: '시그널 트랙 레코드',
   description: '변동성 돌파 시그널이 실제로 어떤 결과를 냈는지 다음 거래일 시세로 검증해 매일 기록합니다. 승률과 누적 손익, 성공한 날과 실패한 날을 가리지 않고 그대로 공개합니다. 가상 매매 기준입니다.',
   url: '/strategy/track-record',

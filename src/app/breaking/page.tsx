@@ -18,9 +18,10 @@ import { pickLatestTradeDayBreaking, tradeDateOf } from '@/lib/breaking';
 import RecommendBox from '@/components/RecommendBox';
 import FreshnessPill from '@/components/FreshnessPill';
 import { archivedSinceLabel } from '@/components/PulseTodayHero';
-import { buildPageMetadata } from '@/lib/site-meta';
+import { buildPageMetadata, RETIRED_ROBOTS } from '@/lib/site-meta';
 
 export const metadata: Metadata = buildPageMetadata({
+  robots: RETIRED_ROBOTS, // 2026-10-08 일별 시황 구역 은퇴 (site-meta 주석)
   title: '오늘의 ETF 속보·거래량 TOP',
   description:
     '거래일마다 거래량 상위 3개 ETF가 왜 움직였는지 당일 뉴스와 함께 정리한 속보 기록입니다. 어떤 소식이 수급을 밀었는지, 구성종목과 섹터는 어떻게 연결되는지, 매수 전에 확인할 점은 무엇인지 날짜별로 다시 볼 수 있습니다.',

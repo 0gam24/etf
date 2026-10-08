@@ -38,8 +38,10 @@ export default function AnswerBox({ summary, keyStats, asOf, source }: Props) {
 
   const stats = (keyStats || []).slice(0, 4);
 
+  // <section>으로 렌더한다 (2026-10-08). <aside>는 "본문과 별개인 곁가지"라는 뜻이라
+  //   본문 추출기(검색 발췌·AI 요약)가 통째로 빼는 경우가 있었다. 직답은 이 페이지의 핵심 본문이다.
   return (
-    <aside
+    <section
       className="answer-box"
       aria-label="핵심 요약"
       style={{
@@ -142,6 +144,6 @@ export default function AnswerBox({ summary, keyStats, asOf, source }: Props) {
           {source && <span>출처: {source}</span>}
         </div>
       )}
-    </aside>
+    </section>
   );
 }

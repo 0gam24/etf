@@ -16,9 +16,10 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 import RecommendBox from '@/components/RecommendBox';
-import { buildPageMetadata } from '@/lib/site-meta';
+import { buildPageMetadata, RETIRED_ROBOTS } from '@/lib/site-meta';
 
 export const metadata: Metadata = buildPageMetadata({
+  robots: RETIRED_ROBOTS, // 2026-10-08 일별 시황 구역 은퇴 (site-meta 주석)
   title: '오늘의 관전포인트',
   description:
     '거래일마다 시장을 움직인 ETF 핵심 포인트를 정리한 관전포인트 기록입니다. 전일과 무엇이 달라졌는지, 한 주 동안 반복해서 등장한 종목은 무엇인지, 거래량 상위 종목의 움직임까지 날짜별로 다시 찾아볼 수 있습니다.',

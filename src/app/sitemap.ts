@@ -65,13 +65,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 1.0,
   });
 
-  // 전용 카테고리 랜딩 — 그 카테고리의 최신 글 날짜
-  TOP_LEVEL_CATEGORIES.forEach(cat => {
+  // 전용 카테고리 랜딩 — 2026-10-08부터 /income(월배당·커버드콜 ETF 목록)만 남긴다.
+  //   pulse·surge·flow·breaking 은 06-13 이후 갱신이 없는 일별 시황 구역이라 noindex 로 돌렸다(site-meta RETIRED_ROBOTS).
+  //   noindex 주소를 sitemap 에 두면 검색엔진에 "색인해 달라"와 "하지 말라"를 동시에 보내게 된다.
+  TOP_LEVEL_CATEGORIES.filter(cat => cat === 'income').forEach(cat => {
     routes.push({
       url: `${baseUrl}/${cat}`,
       lastModified: getCategoryLastModified(cat) || fallback,
-      changeFrequency: 'daily',
-      priority: 0.9,
+      changeFrequency: 'weekly',
+      priority: 0.7,
     });
   });
 
@@ -141,7 +143,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/guide`,
     lastModified: guideMostRecent > 0 ? new Date(guideMostRecent) : fallback,
     changeFrequency: 'weekly',
-    priority: 0.85,
+    priority: 0.9,
   });
 
   // 가이드 전체 최신 발행순 아카이브 — 새 가이드 발행일에 갱신
@@ -152,45 +154,35 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   });
 
-  // 가이드 5종
+  // 가이드 — 사이트의 주력 색인 자산 (2026-10-08 우선순위 0.85 → 0.9, 네이버 Yeti 는 priority 를 참고한다)
   GUIDES.forEach(g => {
     routes.push({
       url: `${baseUrl}/guide/${g.slug}`,
       lastModified: guideLastModified(g.slug, g.lastReviewed),
       changeFrequency: 'weekly',
-      priority: 0.85,
+      priority: 0.9,
     });
   });
 
   // 저자 페이지 (/author/{id}) — 데이터 저널 톤으로 정리, robots noindex 처리됨. sitemap에서 제외.
 
-  // 포스트 상세 — 글 자체 발행일 (이미 정확)
-  const sevenDaysAgo = Date.now() - 7 * 86400000;
-  allPosts.forEach(post => {
-    const pubTs = new Date(post.meta.date).getTime();
-    const priority = pubTs >= sevenDaysAgo ? 0.9 : 0.7;
-    routes.push({
-      url: `${baseUrl}/${post.meta.category}/${encodeURI(post.meta.slug)}`,
-      lastModified: new Date(post.meta.date),
-      changeFrequency: 'weekly',
-      priority,
-    });
-  });
+  // 포스트 상세(일별 시황 98편)는 2026-10-08부터 넣지 않는다. 각 글은 noindex,follow (site-meta RETIRED_ROBOTS).
+  void allPosts;
 
   // 종목 사전 인덱스 페이지 (/etf) — 개별 ETF 전 종목은 별도 sitemap-etf.xml에서 처리
   routes.push({
     url: `${baseUrl}/etf`,
     lastModified: etfLastModified,
-    changeFrequency: 'daily',
-    priority: 0.85,
+    changeFrequency: 'weekly',
+    priority: 0.8,
   });
 
-  // /compare 인덱스 + 각 비교 페어
+  // /compare 인덱스 + 각 비교 페어 (2026-10-08 0.75/0.7 → 0.8. 선택·판단 의도를 받는 페이지)
   routes.push({
     url: `${baseUrl}/compare`,
     lastModified: etfLastModified,
     changeFrequency: 'weekly',
-    priority: 0.75,
+    priority: 0.8,
   });
   // 두 코드가 모두 KRX에 존재하는 페어만 제출한다.
   //   KRX 코드가 바뀌거나 상장폐지되면 비교 페이지가 404로 렌더되는데, 기존에는 sitemap이
@@ -201,7 +193,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/compare/${p.slug}`,
       lastModified: etfLastModified,
       changeFrequency: 'weekly',
-      priority: 0.7,
+      priority: 0.8,
     });
   });
 
@@ -216,50 +208,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // ── /weekly 주간 리포트 인덱스 (2026-08-11 신설) ────────────────────
-  // 개별 글(/weekly/{slug})은 위 포스트 루프에서 이미 등록된다. 인덱스만 추가.
-  routes.push({
-    url: `${baseUrl}/weekly`,
-    lastModified: getCategoryLastModified('weekly') || fallback,
-    changeFrequency: 'weekly',
-    priority: 0.8,
-  });
-
-  // ── /today 종합 리포트 (Phase 4) ──────────────────────────────────
-  // /today 한 주소만 등록한다. 갱신일은 페이지가 실제로 읽는 data/today/latest.json 의 date.
-  //
-  //   2026-10-06: 예전에는 data/today/{YYYY-MM-DD}.json 마다 /today/{날짜} 주소를 넣었는데,
-  //   그 날짜별 라우트는 존재하지 않아 10개 전부 404 였다(라이브 점검). 크롤러가 404 를
-  //   반복해서 받으면 사이트 전체 크롤 수요가 줄어든다. 라우트를 만들기 전까지 넣지 않는다.
-  let todayLastModified: Date | undefined;
-  try {
-    const latest = JSON.parse(
-      fs.readFileSync(path.join(process.cwd(), 'data', 'today', 'latest.json'), 'utf-8'),
-    ) as { date?: string };
-    if (latest.date && /^\d{4}-\d{2}-\d{2}$/.test(latest.date)) {
-      todayLastModified = new Date(`${latest.date}T07:00:00+09:00`);
-    }
-  } catch { /* latest.json 이 없으면 lastmod 생략 */ }
-  routes.push({
-    url: `${baseUrl}/today`,
-    lastModified: todayLastModified,
-    changeFrequency: 'weekly',
-    priority: 0.6,
-  });
-
-  // ── /strategy/* (Phase 3) ──────────────────────────────────────────
-  const strategies = [
-    { slug: 'kospi200-breakout', priority: 0.85, changeFrequency: 'daily' as const },
-    { slug: 'track-record', priority: 0.75, changeFrequency: 'daily' as const },
-  ];
-  strategies.forEach(s => {
-    routes.push({
-      url: `${baseUrl}/strategy/${s.slug}`,
-      lastModified: getSiteLastModified() || fallback,
-      changeFrequency: s.changeFrequency,
-      priority: s.priority,
-    });
-  });
+  // /weekly·/today·/strategy/* 는 2026-10-08부터 넣지 않는다 (noindex,follow, site-meta RETIRED_ROBOTS).
+  //   주간·일일 시황과 거래 신호 페이지는 갱신이 멈췄고 시세 데이터에 기대며 지금의 주제 규칙과 맞지 않는다.
+  void fs;
+  void path;
 
   // ── /tools/* (Phase 2~3 — 자매 사이트 호스팅 전 자체 도구) ────────
   // 자매 redirect (Phase 4D) 완료 후 본 sitemap 에서 제거 필요.

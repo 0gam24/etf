@@ -90,7 +90,10 @@ function getDatedGuideItems(): HomeFeedItem[] {
 
 /** 전 카테고리(글+가이드) 통합 최신순 피드. */
 export function getUnifiedFeed(limit?: number): HomeFeedItem[] {
-  const items = [...getAllPosts().map(postToFeedItem), ...getDatedGuideItems()]
+  // 2026-10-08: 일별 시황 글(04~06월, noindex 로 은퇴)은 홈에서 뺀다. 홈 본문 링크 45개 중 22개가
+  //   멈춘 시황 구역으로 가고 있었다. 홈은 가이드(와 아래 별도 블록의 비교·도구)로 링크 힘을 보낸다.
+  void getAllPosts;
+  const items = [...getDatedGuideItems()]
     .sort((a, b) => b.dateKey.localeCompare(a.dateKey) || b.date.localeCompare(a.date));
   return typeof limit === 'number' ? items.slice(0, limit) : items;
 }
@@ -129,17 +132,36 @@ export interface CategoryShelf {
 /** 메인 카테고리 선반 구성 — 헤더 메뉴 순서를 따른다 (콘텐츠 있는 카테고리만). */
 const SHELF_CONFIG: { category: string; label: string; href: string }[] = [
   { category: 'guide', label: '투자 가이드', href: '/guide/latest' },
-  { category: 'pulse', label: CATEGORY_NAMES.pulse, href: '/pulse' },
-  { category: 'breaking', label: CATEGORY_NAMES.breaking, href: '/breaking' },
-  { category: 'surge', label: CATEGORY_NAMES.surge, href: '/surge' },
-  { category: 'flow', label: CATEGORY_NAMES.flow, href: '/flow' },
-  { category: 'income', label: CATEGORY_NAMES.income, href: '/income' },
-  { category: 'weekly', label: CATEGORY_NAMES.weekly, href: '/weekly' },
+];
+
+/**
+ * 2026-10-08: 일별 시황 선반(관전포인트·속보·급등·자금 흐름·월배당 시황·주간)을 빼고
+ *   가이드를 주제(section)별 선반으로 나눈다. 홈에서 주제마다 대표 가이드로 바로 링크가 나가
+ *   ISA·연금·세금·월배당 같은 묶음이 홈에서 2클릭 안에 닿는다.
+ */
+const GUIDE_SECTION_SHELVES: GuideDef['section'][] = [
+  'ISA 계좌 가이드',
+  '은퇴 자산 가이드',
+  'ETF 세금 가이드',
+  '월배당 가이드',
+  'ETF 비교 가이드',
+  'ETF 비용 가이드',
 ];
 
 export function getCategoryShelves(perShelf = 3): CategoryShelf[] {
+  void CATEGORY_NAMES;
   const shelves: CategoryShelf[] = [];
-  for (const cfg of SHELF_CONFIG) {
+  for (const section of GUIDE_SECTION_SHELVES) {
+    const inSection = GUIDES.filter(g => g.section === section);
+    if (inSection.length === 0) continue;
+    // 고친 날(실제 보강·정정) 또는 발행일이 최근인 글부터
+    const items = inSection
+      .map(g => guideToFeedItem(g, getGuidePublishedAt(g.slug) || g.lastReviewed))
+      .sort((a, b) => b.dateKey.localeCompare(a.dateKey))
+      .slice(0, perShelf);
+    shelves.push({ category: 'guide', label: section, href: '/guide', items, total: inSection.length });
+  }
+  for (const cfg of SHELF_CONFIG.filter(c => c.category !== 'guide')) {
     let items: HomeFeedItem[];
     let total: number;
     if (cfg.category === 'guide') {

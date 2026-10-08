@@ -29,6 +29,8 @@ export type AdSlotKey = keyof typeof AD_SLOTS;
  *   문단으로 끝나는 섹션 뒤에만 둔다. 광고 바로 아래는 항상 다음 섹션의 h2 제목이다.
  *   근거: AdSense 광고 게재위치 정책 https://support.google.com/adsense/answer/1346295
  */
+//   2026-10-08: 가이드는 상단 슬롯(top, 직답·핵심 포인트 뒤)이 따로 생겨 본문 계획(planGuideAds)은 2개까지,
+//   페이지 전체로는 최대 3개다. 본문 계획이 이 상수를 쓰므로 값은 그대로 둔다.
 export const MANUAL_ADS_MAX_PER_PAGE = 2;
 
 /** 본문 섹션이 이 수보다 적은 가이드는 수동 광고를 1개만 둔다. */

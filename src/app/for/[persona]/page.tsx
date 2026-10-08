@@ -101,8 +101,9 @@ export default async function PersonaPage({ params }: PageProps) {
         </section>
       )}
 
-      {/* 2. 자매 도구 link (smartdatashop.kr) */}
-      {config.tools.length > 0 && (
+      {/* 2. 자매 도구 link (smartdatashop.kr) — 2026-10-08 뺐다. 09-30 에 사이트 전역 자매 백링크를 뺄 때
+          이 페이지들(7쪽)만 남아 있었다. 사이트 사이 상호 링크는 검색엔진에 링크 조작으로 읽힐 수 있다. */}
+      {false && config.tools.length > 0 && (
         <section style={{ marginBottom: 'var(--space-8)' }}>
           <h2 style={{ fontSize: 'var(--fs-h2)', marginBottom: 'var(--space-4)' }}>
             자매 사이트 계산기·도구

@@ -2,10 +2,8 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
-import TickerStrip from "@/components/TickerStrip";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollRevealProvider from "@/components/ScrollRevealProvider";
-import SiteLiveBar from "@/components/SiteLiveBar";
 import NaverAnalytics from "@/components/NaverAnalytics";
 // Google AdSense 자동 광고 — publisher ID는 src/lib/ads.ts 단일 소스(AdBanner와 공유).
 //   자동 광고를 사용하므로 본문에 수동 광고 슬롯을 넣지 않는다(구글이 위치·밀도 자동 최적화).
@@ -202,8 +200,11 @@ gtag('config', '${GA4_ID}');`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
         />
-        <SiteLiveBar />
-        <TickerStrip />
+        {/* 2026-10-08: 상단 시장 상태 띠(SiteLiveBar)와 흐르는 시세 띠(TickerStrip)를 뺐다.
+            모바일 첫 화면 약 66px을 차지하고(그중 36px은 sticky로 늘 남음), SiteLiveBar는 서버에서 비어 있다가
+            하이드레이션 뒤 나타나 모든 페이지에서 레이아웃이 밀렸다(CLS). TickerStrip은 페이지마다 /api/etf 전체(1,171행)를
+            받아 14개만 보여 줬고, HTML 첫 텍스트가 "ETF 시세 불러오는 중…"이 되어 검색엔진이 본문보다 먼저 읽었다.
+            시세 이용 조건이 정리되기 전에 모든 페이지에 시세 숫자를 띄우는 문제도 함께 없어진다. */}
         <Header />
         <main className="main">{children}</main>
         <SiteFooter />

@@ -19,9 +19,10 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 import RecommendBox from '@/components/RecommendBox';
-import { buildPageMetadata } from '@/lib/site-meta';
+import { buildPageMetadata, RETIRED_ROBOTS } from '@/lib/site-meta';
 
 export const metadata: Metadata = buildPageMetadata({
+  robots: RETIRED_ROBOTS, // 2026-10-08 일별 시황 구역 은퇴 (site-meta 주석)
   title: 'ETF 섹터 자금 흐름 리포트',
   description:
     '오늘 어느 섹터로 돈이 들어오고 어디서 빠져나갔는지 정리했습니다. 가장 뜨거운 섹터와 차가운 섹터, 각 섹터의 대장 ETF, 이번 주 추세까지 확인해 중장기 포지션을 잡아 보세요.',

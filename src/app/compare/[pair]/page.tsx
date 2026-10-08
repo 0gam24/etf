@@ -13,6 +13,8 @@ import {
 import { COMPARE_PAIRS, getComparePairBySlug, type ComparePair } from '@/lib/etf-compare-pairs';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
+import AdBanner from '@/components/AdBanner';
+import { AD_SLOTS } from '@/lib/ads';
 import AnswerBox from '@/components/AnswerBox';
 import FaqSection from '@/components/FaqSection';
 import { SITE_NAME, SITE_LOCALE, ogImageUrl } from '@/lib/site-meta';
@@ -109,7 +111,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (d.bothCap) attrs.push('시가총액');
   if (d.bothNavGap) attrs.push('괴리율');
   if (d.bothPrice) attrs.push('종가');
-  const head = `${metaA.name} vs ${metaB.name} 비교`;
+  // 2026-10-08: "A B 차이" 가 실제 검색 문구라(네이버 빈틈 측정 naver-gap-20261008.json 의 비교 검색어)
+  //   제목에 "차이"를 넣는다. 주소는 그대로라 새 글로 오인되지 않는다.
+  const head = `${metaA.name} ${metaB.name} 차이 비교`;
   const compose = (a: string[]) => (a.length ? `${head}: ${a.join('·')}` : head);
   let kept = [...attrs];
   while (kept.length > 0 && compose(kept).length > TITLE_MAX) kept = kept.slice(0, -1);
@@ -414,7 +418,10 @@ export default async function ComparePairPage({ params }: PageProps) {
         </section>
       ) : null}
 
-      <RecommendBox position="top" />
+      {/* 본문 수동 광고 1곳 (2026-10-08, 예전 제휴 회전 상자 자리). 슬롯 env 가 비면 그리지 않는다. */}
+      {AD_SLOTS.inArticle && (
+        <AdBanner key={`${pair}-in`} slot={AD_SLOTS.inArticle} className="ad-slot--compare ad-slot--inArticle" />
+      )}
 
       {/* 고를 때 확인할 기준: 확인하지 않은 수치는 쓰지 않는다 */}
       <section className="compare-section">

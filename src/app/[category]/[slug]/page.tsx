@@ -24,7 +24,7 @@ import FaqSection from '@/components/FaqSection';
 import type { ProductCategory } from '@/lib/products';
 import { AUTHORS } from '@/lib/authors';
 import { buildArticleSchema, buildPersonSchema, jsonLd } from '@/lib/schema';
-import { SITE_NAME, SITE_LOCALE, articleTitle, articleDescription, toReportYmd, padDescription, ogImageUrl } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, articleTitle, articleDescription, toReportYmd, padDescription, ogImageUrl, RETIRED_ROBOTS } from '@/lib/site-meta';
 
 /** 글 카테고리 → 추천 자료 매칭 */
 function postCategoryToProductCategory(category: string): ProductCategory | undefined {
@@ -123,6 +123,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: metaDesc,
     keywords: post.meta.keywords,
     authors: [{ name: post.meta.author }],
+    // 2026-10-08 일별 시황 글 은퇴: 색인 제외, 링크는 따라감 (site-meta RETIRED_ROBOTS 주석)
+    robots: RETIRED_ROBOTS,
     alternates: { canonical: canonicalPath },
     openGraph: { siteName: SITE_NAME, locale: SITE_LOCALE,
       title: ogTitle,

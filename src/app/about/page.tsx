@@ -59,11 +59,8 @@ export default function AboutPage() {
     correctionsPolicy: `${SITE_URL}/about`,
     actionableFeedbackPolicy: `${SITE_URL}/about`,
     inLanguage: 'ko-KR',
-    parentOrganization: {
-      '@type': 'Organization',
-      name: '스마트데이터샵',
-      url: 'https://smartdatashop.kr',
-    },
+    // parentOrganization(스마트데이터샵) 표기는 2026-10-08 뺐다. layout 의 Organization 스키마는 09-30 에 이미 뺐는데
+    //   이 페이지에만 남아 두 스키마가 서로 다른 조직 관계를 말하고 있었다.
   };
 
   return (
@@ -76,7 +73,7 @@ export default function AboutPage() {
         <div className="about-eyebrow">ABOUT</div>
         <h1 className="about-title">Daily ETF Pulse 편집팀 소개</h1>
         <p className="about-tagline">
-          Daily ETF Pulse는 ETF·세금·연금 계좌에 관한 궁금증을 공식 데이터와 1차 출처로 풀어 쓰는 데이터 저널입니다. 매일 아침 투자자들이 실제로 묻는 질문을 골라 새 가이드로 정리하고, 한국거래소(KRX) 상장 ETF를 같은 구조로 모은 종목 사전을 운영합니다. 모든 글에 출처와 기준일을 밝히며, 발행·검수 책임은 편집팀에 있습니다.
+          Daily ETF Pulse는 ETF·세금·연금 계좌에 관한 궁금증을 공식 데이터와 1차 출처로 풀어 쓰는 데이터 저널입니다. 투자자들이 실제로 검색하는 질문을 골라 가이드로 정리하고 최신 공시·법령에 맞춰 계속 고치며, 한국거래소(KRX) 상장 ETF 종목 사전과 같은 지수 ETF 비교를 운영합니다. 모든 글에 출처와 기준일을 밝히며, 발행·검수 책임은 편집팀에 있습니다.
         </p>
       </header>
 

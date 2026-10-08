@@ -53,14 +53,12 @@ export default function SiteFooter() {
             카테고리
           </h4>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-            {/* 매일 새 글이 올라오는 곳을 맨 위에 둔다 (일일 시황 코너는 지난 기록) */}
+            {/* 2026-10-08: 갱신이 멈춘 일별 시황 구역(관전포인트·급등·자금 흐름·종합·주간)은 색인에서 빼고 링크도 내렸다 */}
             <Link href="/guide" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>ETF 가이드</Link>
-            <Link href="/pulse" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>오늘의 관전포인트</Link>
-            <Link href="/surge" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>급등 테마 분석</Link>
-            <Link href="/flow" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>자금 흐름 리포트</Link>
+            <Link href="/etf" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>ETF 종목 사전</Link>
+            <Link href="/compare" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>같은 지수 ETF 비교</Link>
             <Link href="/income" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>월배당·커버드콜</Link>
-            <Link href="/today" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>오늘의 종합 리포트</Link>
-            <Link href="/weekly" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>주간 펄스 리포트</Link>
+            <Link href="/tools/dividend-calculator" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>ETF 분배금 계산기</Link>
           </div>
         </div>
 

@@ -169,12 +169,22 @@ export function articleDescription(input: {
  *   title은 layout의 template('%s | Daily ETF Pulse')이 자동으로 브랜드를 붙이므로
  *   **브랜드명을 넣지 않는다.** (넣으면 "제목 | Daily ETF Pulse | Daily ETF Pulse")
  */
-export function buildPageMetadata(input: OgInput & { keywords?: string[] }): Metadata {
-  const { keywords, ...og } = input;
+/**
+ * 운영을 멈춘 구역의 robots (2026-10-08).
+ *   04-23~06-13 의 일별 시황 글 98편(pulse·surge·flow·income·breaking·weekly·stock)과 그 목록,
+ *   거래 신호 페이지(/strategy/*), 시세로 만든 /today 는 더 갱신하지 않는다. 거래량·단기 등락을 쫓는
+ *   주제라 지금의 주제 규칙에도 맞지 않고, 거의 같은 글이 이어져(근접 중복 0.8~1.0) 네이버가 사이트를
+ *   얇게 보게 만드는 쪽이었다(GSC 28일 노출 2·클릭 0). 색인에서는 빼되 follow 는 남겨 링크는 따라가게 한다.
+ */
+export const RETIRED_ROBOTS = { index: false, follow: true } as const;
+
+export function buildPageMetadata(input: OgInput & { keywords?: string[]; robots?: Metadata['robots'] }): Metadata {
+  const { keywords, robots, ...og } = input;
   return {
     title: og.title,
     description: og.description,
     ...(keywords?.length ? { keywords } : {}),
+    ...(robots ? { robots } : {}),
     alternates: { canonical: og.url },
     openGraph: buildOg(og),
     twitter: buildTwitter(og),

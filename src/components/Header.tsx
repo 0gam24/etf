@@ -17,15 +17,15 @@ const CAT_ICON: Record<string, React.ReactNode> = {
 };
 import SearchModal from './SearchModal';
 
+// 2026-10-08 메뉴 개편: 06-13 이후 멈춘 일별 시황 4개(관전포인트·속보·급등 테마·자금 흐름)와 제휴 자료실을 빼고,
+//   검색으로 들어온 사람이 다음에 가는 곳(종목 사전·같은 지수 비교·가이드·월배당·계산기)을 둔다.
+//   헤더 링크는 1,500여 쪽 전부에서 나가므로, 여기에 무엇이 있느냐가 사이트 안 링크 힘의 배분을 정한다.
 const NAV_ITEMS = [
-  { href: '/pulse',     label: '오늘의 관전포인트', cat: 'pulse' },
-  { href: '/breaking',  label: 'ETF 속보',          cat: 'breaking' },
-  { href: '/surge',     label: '급등 테마',         cat: 'surge' },
-  { href: '/flow',      label: '자금 흐름',          cat: 'flow' },
-  { href: '/income',    label: '월배당·커버드콜',   cat: 'income' },
-  { href: '/etf',       label: '종목 사전',          cat: 'etf' },
-  { href: '/guide',     label: '가이드',             cat: 'guide' },
-  { href: '/resources', label: '추천 자료',          cat: 'resources' },
+  { href: '/etf',                        label: '종목 사전',        cat: 'etf' },
+  { href: '/compare',                    label: 'ETF 비교',         cat: 'flow' },
+  { href: '/guide',                      label: '가이드',           cat: 'guide' },
+  { href: '/income',                     label: '월배당·커버드콜',  cat: 'income' },
+  { href: '/tools/dividend-calculator',  label: '분배금 계산기',    cat: 'resources' },
 ];
 
 export default function Header() {
