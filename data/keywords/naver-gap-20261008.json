@@ -1,6 +1,6 @@
 {
   "measuredAt": "2026-10-07T21:16:10.536Z",
-  "rescoredAt": "2026-10-07T21:23:24.524Z",
+  "rescoredAt": "2026-10-08T07:52:58.991Z",
   "method": "네이버 공식 오픈 API(webkr 상위 30·blog·kin·datalab). 통합검색 화면 위치는 미측정(운영자 눈 확인)",
   "reference": "실업급여 = 100 (최근 30일 합)",
   "newUrlWeek": {
@@ -10,99 +10,6 @@
   },
   "calls": 0,
   "items": [
-    {
-      "query": "타이거 s&p 500 주가",
-      "track": "gsc",
-      "gscImpressions": 1,
-      "gscFile": "gsc_20261004.json",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 30570,
-        "webDocCount": 18,
-        "openSlots": 9,
-        "authAbove": 0,
-        "govAbove": 0,
-        "toolTop3": 1,
-        "sisterAbove": 0,
-        "verdict": "open",
-        "reason": [],
-        "above": [
-          {
-            "host": "tossinvest.com",
-            "kind": "broker",
-            "title": "TIGER 미국S&P500의 실시간 주가를 확인해보세요"
-          },
-          {
-            "host": "kr.investing.com",
-            "kind": "tool",
-            "title": "TIGER 미국S&P500 ETF | 360750 ETF",
-            "stale": true
-          },
-          {
-            "host": "etfshopping.com",
-            "kind": "commercial",
-            "title": "TIGER 미국S&P500 특징과 장단점",
-            "stale": true
-          },
-          {
-            "host": "ko.wikipedia.org",
-            "kind": "commercial",
-            "title": "S&P 500 - 위키백과 한국어"
-          },
-          {
-            "host": "pflow.keywordegg.com",
-            "kind": "commercial",
-            "title": "TIGER 미국S&P500 주가 전망·실시간 시세"
-          },
-          {
-            "host": "stockray.app",
-            "kind": "commercial",
-            "title": "TIGER 미국S&P500 주가·시세 · ETF 정보"
-          },
-          {
-            "host": "therich.io",
-            "kind": "commercial",
-            "title": "TIGER 미국S&P500배당귀족(429000) ETF 주가·분배금·배당일"
-          },
-          {
-            "host": "investments.miraeasset.com",
-            "kind": "issuer",
-            "title": "TIGER 미국S&P500 선물(H) | ETF 상품",
-            "stale": true
-          },
-          {
-            "host": "stocklabs.co.kr",
-            "kind": "commercial",
-            "title": "TIGER 미국S&P500 시세"
-          },
-          {
-            "host": "tradingmain.com",
-            "kind": "commercial",
-            "title": "TIGER 미국S&P500선물(H) ETF 주가 및 배당금 조회"
-          }
-        ]
-      },
-      "blogTotal": 10157,
-      "kinTotal": 338,
-      "volumeIndex": 4.83,
-      "trend": 0.9,
-      "exposure": {
-        "score": 75,
-        "label": "높음",
-        "reasons": [
-          "자리 열림",
-          "빈자리 9",
-          "위에 관공서·운용사 없음",
-          "지식iN 질문 338건"
-        ]
-      },
-      "target": {
-        "type": "etf",
-        "url": "/etf/tiger-us-sp500"
-      },
-      "action": "기존 주소 보강"
-    },
     {
       "query": "PLUS AI반도체소부장액티브",
       "track": "new",
@@ -441,7 +348,7 @@
           },
           {
             "host": "namu.wiki",
-            "kind": "commercial",
+            "kind": "wiki",
             "title": "SK/계열사 - 나무위키",
             "stale": true
           }
@@ -756,94 +663,94 @@
       "action": "기존 주소 보강"
     },
     {
-      "query": "tiger 미국배당다우존스 커버드콜",
+      "query": "타이거 s&p 500 주가",
       "track": "gsc",
       "gscImpressions": 1,
       "gscFile": "gsc_20261004.json",
       "serp": {
         "rank": null,
         "ownUrl": null,
-        "webDocTotal": 24925,
-        "webDocCount": 16,
-        "openSlots": 6,
-        "authAbove": 0,
+        "webDocTotal": 30570,
+        "webDocCount": 18,
+        "openSlots": 8,
+        "authAbove": 1,
         "govAbove": 0,
-        "toolTop3": 0,
+        "toolTop3": 1,
         "sisterAbove": 0,
         "verdict": "open",
         "reason": [],
         "above": [
           {
-            "host": "investments.miraeasset.com",
-            "kind": "issuer",
-            "title": "TIGER 미국배당다우존스타겟커버드콜1호 | ETF 상품",
-            "stale": true
-          },
-          {
             "host": "tossinvest.com",
             "kind": "broker",
-            "title": "TIGER 미국배당다우존스타겟데일리커버드콜의 실시간 주가를 확인해보세요"
-          },
-          {
-            "host": "stockplus.com",
-            "kind": "commercial",
-            "title": "TIGER 미국배당다우존스타겟커버드콜1호 종목 상세 정보 확인하기"
-          },
-          {
-            "host": "topetf.app",
-            "kind": "commercial",
-            "title": "미국배당다우존스 ETF 실부담비용 비교 | TOP ETF"
-          },
-          {
-            "host": "kind.krx.co.kr",
-            "kind": "tool",
-            "title": "[TIGER 미국배당다우존스타겟커버드콜2호] ETF 분배락 기준가격 안내"
-          },
-          {
-            "host": "thinkpool.com",
-            "kind": "tool",
-            "title": "TIGER 미국배당다우존스타겟데일리커버드콜(0008S0)"
+            "title": "TIGER 미국S&P500의 실시간 주가를 확인해보세요"
           },
           {
             "host": "kr.investing.com",
             "kind": "tool",
-            "title": "Mirae Asset TIGER US Dividend +7% Premium ETF | 458760 ETF",
+            "title": "TIGER 미국S&P500 ETF | 360750 ETF",
             "stale": true
           },
           {
             "host": "etfshopping.com",
             "kind": "commercial",
-            "title": "TIGER 미국배당다우존스타겟커버드콜2호 특징과 장단점"
+            "title": "TIGER 미국S&P500 특징과 장단점",
+            "stale": true
           },
           {
-            "host": "google.com",
-            "kind": "tool",
-            "title": "TIGER 미국배당다우존스타겟커버드콜2호(458760) 가격 및 뉴스 - Google Finance"
+            "host": "ko.wikipedia.org",
+            "kind": "wiki",
+            "title": "S&P 500 - 위키백과 한국어"
           },
           {
-            "host": "spglobal.com",
+            "host": "pflow.keywordegg.com",
             "kind": "commercial",
-            "title": "Dow Jones U.S. Dividend 100 7% Premium Covered Call 지수 | S&P 다우존스 지수"
+            "title": "TIGER 미국S&P500 주가 전망·실시간 시세"
+          },
+          {
+            "host": "stockray.app",
+            "kind": "commercial",
+            "title": "TIGER 미국S&P500 주가·시세 · ETF 정보"
+          },
+          {
+            "host": "therich.io",
+            "kind": "commercial",
+            "title": "TIGER 미국S&P500배당귀족(429000) ETF 주가·분배금·배당일"
+          },
+          {
+            "host": "investments.miraeasset.com",
+            "kind": "issuer",
+            "title": "TIGER 미국S&P500 선물(H) | ETF 상품",
+            "stale": true
+          },
+          {
+            "host": "stocklabs.co.kr",
+            "kind": "commercial",
+            "title": "TIGER 미국S&P500 시세"
+          },
+          {
+            "host": "tradingmain.com",
+            "kind": "commercial",
+            "title": "TIGER 미국S&P500선물(H) ETF 주가 및 배당금 조회"
           }
         ]
       },
-      "blogTotal": 20840,
-      "kinTotal": 458,
-      "volumeIndex": 0.85,
-      "trend": 0.6,
+      "blogTotal": 10157,
+      "kinTotal": 338,
+      "volumeIndex": 4.83,
+      "trend": 0.9,
       "exposure": {
         "score": 70,
         "label": "높음",
         "reasons": [
           "자리 열림",
-          "빈자리 6",
-          "위에 관공서·운용사 없음",
-          "지식iN 질문 458건"
+          "빈자리 8",
+          "지식iN 질문 338건"
         ]
       },
       "target": {
         "type": "etf",
-        "url": "/etf/tiger-us-dividend-djones"
+        "url": "/etf/tiger-us-sp500"
       },
       "action": "기존 주소 보강"
     },
@@ -1121,189 +1028,6 @@
       "action": "기존 주소 보강"
     },
     {
-      "query": "IBK 한미대표기업TOP2+채권혼합50액티브",
-      "track": "new",
-      "code": "0238C0",
-      "born": true,
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 17160,
-        "webDocCount": 13,
-        "openSlots": 8,
-        "authAbove": 0,
-        "govAbove": 0,
-        "toolTop3": 1,
-        "sisterAbove": 0,
-        "verdict": "open",
-        "reason": [],
-        "above": [
-          {
-            "host": "ibkasset.com",
-            "kind": "commercial",
-            "title": "IBK자산운용 > ETF상품 > IBK 한미대표기업TOP2+채권혼합50액티브상장지수투자신탁[...."
-          },
-          {
-            "host": "kind.krx.co.kr",
-            "kind": "tool",
-            "title": "상세검색 - 대한민국 대표 기업공시채널 KIND"
-          },
-          {
-            "host": "newswell.co.kr",
-            "kind": "press",
-            "title": "‘한미 대표기업·피지컬 AI’ 등 ETF 4종, 코스피 상장"
-          },
-          {
-            "host": "etfshopping.com",
-            "kind": "commercial",
-            "title": "IBK 한미대표기업TOP2+채권혼합50액티브 특징과 장단점"
-          },
-          {
-            "host": "thinkpool.com",
-            "kind": "tool",
-            "title": "IBK 한미대표기업TOP2+채권혼합50액티브(0238C0)"
-          },
-          {
-            "host": "stockeasy.intellio.kr",
-            "kind": "commercial",
-            "title": "스탁이지 - IBK 한미대표기업TOP2+채권혼합50액티브 (0238C0)"
-          },
-          {
-            "host": "stock.mk.co.kr",
-            "kind": "press",
-            "title": "IBK 한미대표기업TOP2+채권혼합50액티브(0238C0)"
-          },
-          {
-            "host": "stockhub.kr",
-            "kind": "commercial",
-            "title": "IBK 한미대표기업TOP2+채권혼합50액티브 (0238C0) 10,180원 -0.20%"
-          },
-          {
-            "host": "yna.co.kr",
-            "kind": "press",
-            "title": "IBK운용, 한미 대표기업TOP2+채권혼합50액티브 ETF 상장"
-          },
-          {
-            "host": "thebell.co.kr",
-            "kind": "press",
-            "title": "[신규 ETF 리뷰 | ITF 한미대표기업TOP2+채권혼합50액티브] IBK운용, 반도체 대신 '한...."
-          }
-        ]
-      },
-      "blogTotal": 194,
-      "kinTotal": 0,
-      "volumeIndex": 0.01,
-      "trend": null,
-      "trendBorn": true,
-      "exposure": {
-        "score": 70,
-        "label": "높음",
-        "reasons": [
-          "자리 열림",
-          "빈자리 8",
-          "위에 관공서·운용사 없음",
-          "신규 상장"
-        ]
-      },
-      "target": {
-        "type": "etf",
-        "url": "/etf/ibk-top2bond-blend50active"
-      },
-      "action": "기존 주소 보강"
-    },
-    {
-      "query": "반도체 etf 주가",
-      "track": "gsc",
-      "gscImpressions": 1,
-      "gscFile": "gsc_20261004.json",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 797989,
-        "webDocCount": 10,
-        "openSlots": 7,
-        "authAbove": 1,
-        "govAbove": 0,
-        "toolTop3": 0,
-        "sisterAbove": 0,
-        "verdict": "open",
-        "reason": [],
-        "above": [
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "필라델피아 반도체지수"
-          },
-          {
-            "host": "soletf.com",
-            "kind": "issuer",
-            "title": "SOL AI반도체TOP2플러스 (0167A0)"
-          },
-          {
-            "host": "tossinvest.com",
-            "kind": "broker",
-            "title": "KODEX 반도체레버리지의 실시간 주가를 확인해보세요"
-          },
-          {
-            "host": "tradingmain.com",
-            "kind": "commercial",
-            "title": "KODEX 반도체 ETF 주가 및 배당금 조회"
-          },
-          {
-            "host": "kr.investing.com",
-            "kind": "tool",
-            "title": "Direxion Dly Semiconductor Bull 3X ETF | SOXL ETF",
-            "stale": true
-          },
-          {
-            "host": "stockplus.com",
-            "kind": "commercial",
-            "title": "SOL AI반도체소부장 종목 상세 정보 확인하기"
-          },
-          {
-            "host": "etfshopping.com",
-            "kind": "commercial",
-            "title": "KODEX 반도체 특징과 장단점"
-          },
-          {
-            "host": "alphasquare.co.kr",
-            "kind": "tool",
-            "title": "KODEX AI반도체TOP2플러스 주가 📈"
-          },
-          {
-            "host": "soletf.co.kr",
-            "kind": "commercial",
-            "title": "SOL ETF"
-          },
-          {
-            "host": "etf-rebalancing.com",
-            "kind": "commercial",
-            "title": "SMH ETF | SOXX SOXQ SOXL·국내상장 반도체 비교 2026"
-          }
-        ]
-      },
-      "blogTotal": 410481,
-      "kinTotal": 1546,
-      "volumeIndex": 0.01,
-      "trend": null,
-      "trendBorn": true,
-      "exposure": {
-        "score": 70,
-        "label": "높음",
-        "reasons": [
-          "자리 열림",
-          "빈자리 7",
-          "지식iN 질문 1,546건",
-          "최근 처음 잡힘"
-        ]
-      },
-      "target": {
-        "type": "none",
-        "url": null
-      },
-      "action": "새 주소 필요"
-    },
-    {
       "query": "KODEX 200 TIGER 200 차이",
       "track": "pair",
       "pairSlug": "kodex-200-vs-tiger-200",
@@ -1393,185 +1117,6 @@
       "action": "기존 주소 보강"
     },
     {
-      "query": "퇴직연금 ETF 매수",
-      "track": "account",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 204439,
-        "webDocCount": 24,
-        "openSlots": 8,
-        "authAbove": 0,
-        "govAbove": 0,
-        "toolTop3": 0,
-        "sisterAbove": 0,
-        "verdict": "open",
-        "reason": [],
-        "above": [
-          {
-            "host": "kbthink.com",
-            "kind": "commercial",
-            "title": "퇴직연금 ETF 상품 투자 방법 | 매수 방법부터 상품 종류까지"
-          },
-          {
-            "host": "samsunglife.com",
-            "kind": "commercial",
-            "title": "삼성생명 퇴직연금 ETF 매매"
-          },
-          {
-            "host": "kbsec.com",
-            "kind": "broker",
-            "title": "퇴직연금 유의사항"
-          },
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "퇴직연금 - 나무위키"
-          },
-          {
-            "host": "toss.im",
-            "kind": "broker",
-            "title": "퇴직연금으로 ETF 투자, 8가지 필수상식 - 금융이 알고 싶을 때, 토스피드"
-          },
-          {
-            "host": "zdnet.co.kr",
-            "kind": "press",
-            "title": "KB국민은행, 퇴직연금 ETF 당일 매수·매도로…9월 중 하나은행 합류"
-          },
-          {
-            "host": "korcham.net",
-            "kind": "commercial",
-            "title": "NH투자, 퇴직연금 ETF 적립식 자동 투자 서비스 출시"
-          },
-          {
-            "host": "trustonasset.com",
-            "kind": "commercial",
-            "title": "[여성경제신문] 하나證, 퇴직연금 ETF 매수시 모바일 상품권 지급 이벤트 - 트러...."
-          },
-          {
-            "host": "ssp2021.kr",
-            "kind": "commercial",
-            "title": "신한은행 퇴직연금 ETF 추천 종목 수익률"
-          },
-          {
-            "host": "namsieon.com",
-            "kind": "commercial",
-            "title": "미래에셋증권 퇴직연금 IRP계좌에서 TDF ETF 2050 매수 방법"
-          }
-        ]
-      },
-      "blogTotal": 84621,
-      "kinTotal": 2590,
-      "volumeIndex": null,
-      "trend": null,
-      "exposure": {
-        "score": 70,
-        "label": "높음",
-        "reasons": [
-          "자리 열림",
-          "빈자리 8",
-          "위에 관공서·운용사 없음",
-          "지식iN 질문 2,590건"
-        ]
-      },
-      "target": {
-        "type": "none",
-        "url": null
-      },
-      "action": "새 주소 필요"
-    },
-    {
-      "query": "irp 단점",
-      "track": "gsc",
-      "gscImpressions": 1,
-      "gscFile": "gsc_20261004.json",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 49758,
-        "webDocCount": 26,
-        "openSlots": 7,
-        "authAbove": 0,
-        "govAbove": 0,
-        "toolTop3": 0,
-        "sisterAbove": 0,
-        "verdict": "open",
-        "reason": [],
-        "above": [
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "퇴직연금 - 나무위키"
-          },
-          {
-            "host": "shinhansec.com",
-            "kind": "broker",
-            "title": "IRP안내 - 신한투자증권"
-          },
-          {
-            "host": "svc.wooribank.com",
-            "kind": "broker",
-            "title": "개인형퇴직연금제도(IRP) - 우리은행"
-          },
-          {
-            "host": "thetip.co.kr",
-            "kind": "commercial",
-            "title": "IRP 계좌 개설 가입조건 및 필요서류, 장점과 단점 6가지 요약"
-          },
-          {
-            "host": "banksalad.com",
-            "kind": "broker",
-            "title": "퇴직금 수령 필수템, IRP 계좌 개설부터 해지 방법까지 총정리"
-          },
-          {
-            "host": "blog.onestopsamsungpop.co.kr",
-            "kind": "commercial",
-            "title": "IRP 꼭 만들어야 할까요? 장점·단점 한눈에 정리 - 삼성증권 블로그 | ISA·IRP·연...."
-          },
-          {
-            "host": "pension.comwel.or.kr",
-            "kind": "org",
-            "title": "확정급여형퇴직연금(DB) - 퇴직연금의 종류"
-          },
-          {
-            "host": "xn--zf0b677a8no.com",
-            "kind": "commercial",
-            "title": "IRP vs 연금저축 차이점과 장단점 | 상품권닷컴 | 대한민국 대표 상품권 정보 플...."
-          },
-          {
-            "host": "sdbl1.com",
-            "kind": "commercial",
-            "title": "연금저축펀드 IRP 차이 장단점 투자상품 중도인출 대출 요건"
-          },
-          {
-            "host": "krprofit.com",
-            "kind": "commercial",
-            "title": "개인형 IRP 단점 5가지, 장점과 비교하면? - 정책사용설명서"
-          }
-        ]
-      },
-      "blogTotal": 46823,
-      "kinTotal": 2399,
-      "volumeIndex": null,
-      "trend": null,
-      "exposure": {
-        "score": 70,
-        "label": "높음",
-        "reasons": [
-          "자리 열림",
-          "빈자리 7",
-          "위에 관공서·운용사 없음",
-          "지식iN 질문 2,399건"
-        ]
-      },
-      "target": {
-        "type": "guide",
-        "url": "/guide/irp-disadvantages",
-        "title": "IRP 단점 총정리 — 중도해지 세금과 가입 전 확인사항"
-      },
-      "action": "기존 주소 보강"
-    },
-    {
       "query": "tiger krx",
       "track": "gsc",
       "gscImpressions": 1,
@@ -1612,7 +1157,7 @@
           },
           {
             "host": "namu.wiki",
-            "kind": "commercial",
+            "kind": "wiki",
             "title": "KRX300 - 나무위키",
             "stale": true
           },
@@ -1932,6 +1477,97 @@
       "action": "기존 주소 보강"
     },
     {
+      "query": "tiger 미국배당다우존스 커버드콜",
+      "track": "gsc",
+      "gscImpressions": 1,
+      "gscFile": "gsc_20261004.json",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 24925,
+        "webDocCount": 16,
+        "openSlots": 5,
+        "authAbove": 1,
+        "govAbove": 0,
+        "toolTop3": 0,
+        "sisterAbove": 0,
+        "verdict": "open",
+        "reason": [],
+        "above": [
+          {
+            "host": "investments.miraeasset.com",
+            "kind": "issuer",
+            "title": "TIGER 미국배당다우존스타겟커버드콜1호 | ETF 상품",
+            "stale": true
+          },
+          {
+            "host": "tossinvest.com",
+            "kind": "broker",
+            "title": "TIGER 미국배당다우존스타겟데일리커버드콜의 실시간 주가를 확인해보세요"
+          },
+          {
+            "host": "stockplus.com",
+            "kind": "commercial",
+            "title": "TIGER 미국배당다우존스타겟커버드콜1호 종목 상세 정보 확인하기"
+          },
+          {
+            "host": "topetf.app",
+            "kind": "commercial",
+            "title": "미국배당다우존스 ETF 실부담비용 비교 | TOP ETF"
+          },
+          {
+            "host": "kind.krx.co.kr",
+            "kind": "tool",
+            "title": "[TIGER 미국배당다우존스타겟커버드콜2호] ETF 분배락 기준가격 안내"
+          },
+          {
+            "host": "thinkpool.com",
+            "kind": "tool",
+            "title": "TIGER 미국배당다우존스타겟데일리커버드콜(0008S0)"
+          },
+          {
+            "host": "kr.investing.com",
+            "kind": "tool",
+            "title": "Mirae Asset TIGER US Dividend +7% Premium ETF | 458760 ETF",
+            "stale": true
+          },
+          {
+            "host": "etfshopping.com",
+            "kind": "commercial",
+            "title": "TIGER 미국배당다우존스타겟커버드콜2호 특징과 장단점"
+          },
+          {
+            "host": "google.com",
+            "kind": "tool",
+            "title": "TIGER 미국배당다우존스타겟커버드콜2호(458760) 가격 및 뉴스 - Google Finance"
+          },
+          {
+            "host": "spglobal.com",
+            "kind": "issuer",
+            "title": "Dow Jones U.S. Dividend 100 7% Premium Covered Call 지수 | S&P 다우존스 지수"
+          }
+        ]
+      },
+      "blogTotal": 20840,
+      "kinTotal": 458,
+      "volumeIndex": 0.85,
+      "trend": 0.6,
+      "exposure": {
+        "score": 65,
+        "label": "중간",
+        "reasons": [
+          "자리 열림",
+          "빈자리 5",
+          "지식iN 질문 458건"
+        ]
+      },
+      "target": {
+        "type": "etf",
+        "url": "/etf/tiger-us-dividend-djones"
+      },
+      "action": "기존 주소 보강"
+    },
+    {
       "query": "TIGER 삼성전자SK하이닉스미국채혼합50",
       "track": "new",
       "code": "0233J0",
@@ -2209,7 +1845,7 @@
         "ownUrl": null,
         "webDocTotal": 95710,
         "webDocCount": 19,
-        "openSlots": 7,
+        "openSlots": 6,
         "authAbove": 1,
         "govAbove": 0,
         "toolTop3": 1,
@@ -2234,7 +1870,7 @@
           },
           {
             "host": "kbthink.com",
-            "kind": "commercial",
+            "kind": "broker",
             "title": "ETF 괴리율이란? - 뜻 & 정의"
           },
           {
@@ -2282,7 +1918,7 @@
         "label": "중간",
         "reasons": [
           "자리 열림",
-          "빈자리 7",
+          "빈자리 6",
           "작년 11월에 7.1배"
         ]
       },
@@ -2290,6 +1926,273 @@
         "type": "guide",
         "url": "/guide/etf-fee-discount-relation",
         "title": "ETF 총보수가 괴리율에 영향을 줄까"
+      },
+      "action": "기존 주소 보강"
+    },
+    {
+      "query": "IBK 한미대표기업TOP2+채권혼합50액티브",
+      "track": "new",
+      "code": "0238C0",
+      "born": true,
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 17160,
+        "webDocCount": 13,
+        "openSlots": 7,
+        "authAbove": 1,
+        "govAbove": 0,
+        "toolTop3": 1,
+        "sisterAbove": 0,
+        "verdict": "open",
+        "reason": [],
+        "above": [
+          {
+            "host": "ibkasset.com",
+            "kind": "issuer",
+            "title": "IBK자산운용 > ETF상품 > IBK 한미대표기업TOP2+채권혼합50액티브상장지수투자신탁[...."
+          },
+          {
+            "host": "kind.krx.co.kr",
+            "kind": "tool",
+            "title": "상세검색 - 대한민국 대표 기업공시채널 KIND"
+          },
+          {
+            "host": "newswell.co.kr",
+            "kind": "press",
+            "title": "‘한미 대표기업·피지컬 AI’ 등 ETF 4종, 코스피 상장"
+          },
+          {
+            "host": "etfshopping.com",
+            "kind": "commercial",
+            "title": "IBK 한미대표기업TOP2+채권혼합50액티브 특징과 장단점"
+          },
+          {
+            "host": "thinkpool.com",
+            "kind": "tool",
+            "title": "IBK 한미대표기업TOP2+채권혼합50액티브(0238C0)"
+          },
+          {
+            "host": "stockeasy.intellio.kr",
+            "kind": "commercial",
+            "title": "스탁이지 - IBK 한미대표기업TOP2+채권혼합50액티브 (0238C0)"
+          },
+          {
+            "host": "stock.mk.co.kr",
+            "kind": "press",
+            "title": "IBK 한미대표기업TOP2+채권혼합50액티브(0238C0)"
+          },
+          {
+            "host": "stockhub.kr",
+            "kind": "commercial",
+            "title": "IBK 한미대표기업TOP2+채권혼합50액티브 (0238C0) 10,180원 -0.20%"
+          },
+          {
+            "host": "yna.co.kr",
+            "kind": "press",
+            "title": "IBK운용, 한미 대표기업TOP2+채권혼합50액티브 ETF 상장"
+          },
+          {
+            "host": "thebell.co.kr",
+            "kind": "press",
+            "title": "[신규 ETF 리뷰 | ITF 한미대표기업TOP2+채권혼합50액티브] IBK운용, 반도체 대신 '한...."
+          }
+        ]
+      },
+      "blogTotal": 194,
+      "kinTotal": 0,
+      "volumeIndex": 0.01,
+      "trend": null,
+      "trendBorn": true,
+      "exposure": {
+        "score": 65,
+        "label": "중간",
+        "reasons": [
+          "자리 열림",
+          "빈자리 7",
+          "신규 상장"
+        ]
+      },
+      "target": {
+        "type": "etf",
+        "url": "/etf/ibk-top2bond-blend50active"
+      },
+      "action": "기존 주소 보강"
+    },
+    {
+      "query": "퇴직연금 ETF 매수",
+      "track": "account",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 204439,
+        "webDocCount": 24,
+        "openSlots": 5,
+        "authAbove": 1,
+        "govAbove": 0,
+        "toolTop3": 0,
+        "sisterAbove": 0,
+        "verdict": "open",
+        "reason": [],
+        "above": [
+          {
+            "host": "kbthink.com",
+            "kind": "broker",
+            "title": "퇴직연금 ETF 상품 투자 방법 | 매수 방법부터 상품 종류까지"
+          },
+          {
+            "host": "samsunglife.com",
+            "kind": "broker",
+            "title": "삼성생명 퇴직연금 ETF 매매"
+          },
+          {
+            "host": "kbsec.com",
+            "kind": "broker",
+            "title": "퇴직연금 유의사항"
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "퇴직연금 - 나무위키"
+          },
+          {
+            "host": "toss.im",
+            "kind": "broker",
+            "title": "퇴직연금으로 ETF 투자, 8가지 필수상식 - 금융이 알고 싶을 때, 토스피드"
+          },
+          {
+            "host": "zdnet.co.kr",
+            "kind": "press",
+            "title": "KB국민은행, 퇴직연금 ETF 당일 매수·매도로…9월 중 하나은행 합류"
+          },
+          {
+            "host": "korcham.net",
+            "kind": "commercial",
+            "title": "NH투자, 퇴직연금 ETF 적립식 자동 투자 서비스 출시"
+          },
+          {
+            "host": "trustonasset.com",
+            "kind": "commercial",
+            "title": "[여성경제신문] 하나證, 퇴직연금 ETF 매수시 모바일 상품권 지급 이벤트 - 트러...."
+          },
+          {
+            "host": "ssp2021.kr",
+            "kind": "commercial",
+            "title": "신한은행 퇴직연금 ETF 추천 종목 수익률"
+          },
+          {
+            "host": "namsieon.com",
+            "kind": "commercial",
+            "title": "미래에셋증권 퇴직연금 IRP계좌에서 TDF ETF 2050 매수 방법"
+          }
+        ]
+      },
+      "blogTotal": 84621,
+      "kinTotal": 2590,
+      "volumeIndex": null,
+      "trend": null,
+      "exposure": {
+        "score": 65,
+        "label": "중간",
+        "reasons": [
+          "자리 열림",
+          "빈자리 5",
+          "지식iN 질문 2,590건"
+        ]
+      },
+      "target": {
+        "type": "none",
+        "url": null
+      },
+      "action": "새 주소 필요"
+    },
+    {
+      "query": "irp 단점",
+      "track": "gsc",
+      "gscImpressions": 1,
+      "gscFile": "gsc_20261004.json",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 49758,
+        "webDocCount": 26,
+        "openSlots": 6,
+        "authAbove": 1,
+        "govAbove": 0,
+        "toolTop3": 0,
+        "sisterAbove": 0,
+        "verdict": "open",
+        "reason": [],
+        "above": [
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "퇴직연금 - 나무위키"
+          },
+          {
+            "host": "shinhansec.com",
+            "kind": "broker",
+            "title": "IRP안내 - 신한투자증권"
+          },
+          {
+            "host": "svc.wooribank.com",
+            "kind": "broker",
+            "title": "개인형퇴직연금제도(IRP) - 우리은행"
+          },
+          {
+            "host": "thetip.co.kr",
+            "kind": "commercial",
+            "title": "IRP 계좌 개설 가입조건 및 필요서류, 장점과 단점 6가지 요약"
+          },
+          {
+            "host": "banksalad.com",
+            "kind": "broker",
+            "title": "퇴직금 수령 필수템, IRP 계좌 개설부터 해지 방법까지 총정리"
+          },
+          {
+            "host": "blog.onestopsamsungpop.co.kr",
+            "kind": "commercial",
+            "title": "IRP 꼭 만들어야 할까요? 장점·단점 한눈에 정리 - 삼성증권 블로그 | ISA·IRP·연...."
+          },
+          {
+            "host": "pension.comwel.or.kr",
+            "kind": "org",
+            "title": "확정급여형퇴직연금(DB) - 퇴직연금의 종류"
+          },
+          {
+            "host": "xn--zf0b677a8no.com",
+            "kind": "commercial",
+            "title": "IRP vs 연금저축 차이점과 장단점 | 상품권닷컴 | 대한민국 대표 상품권 정보 플...."
+          },
+          {
+            "host": "sdbl1.com",
+            "kind": "commercial",
+            "title": "연금저축펀드 IRP 차이 장단점 투자상품 중도인출 대출 요건"
+          },
+          {
+            "host": "krprofit.com",
+            "kind": "commercial",
+            "title": "개인형 IRP 단점 5가지, 장점과 비교하면? - 정책사용설명서"
+          }
+        ]
+      },
+      "blogTotal": 46823,
+      "kinTotal": 2399,
+      "volumeIndex": null,
+      "trend": null,
+      "exposure": {
+        "score": 65,
+        "label": "중간",
+        "reasons": [
+          "자리 열림",
+          "빈자리 6",
+          "지식iN 질문 2,399건"
+        ]
+      },
+      "target": {
+        "type": "guide",
+        "url": "/guide/irp-disadvantages",
+        "title": "IRP 단점 총정리 — 중도해지 세금과 가입 전 확인사항"
       },
       "action": "기존 주소 보강"
     },
@@ -2665,94 +2568,6 @@
       "action": "기존 주소 보강"
     },
     {
-      "query": "ISA 만기 해지 세금",
-      "track": "account",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 58816,
-        "webDocCount": 23,
-        "openSlots": 3,
-        "authAbove": 0,
-        "govAbove": 0,
-        "toolTop3": 0,
-        "sisterAbove": 0,
-        "verdict": "open",
-        "reason": [],
-        "above": [
-          {
-            "host": "kbsec.com",
-            "kind": "broker",
-            "title": "KB증권 | 금융상품 > ISA > ISA 해지 예상 세금 조회 > 적용 세율 알기[S1]"
-          },
-          {
-            "host": "kcie.or.kr",
-            "kind": "org",
-            "title": "ISA 계좌 완벽 정리"
-          },
-          {
-            "host": "m.shinhansec.com",
-            "kind": "broker",
-            "title": "ISA - 신한투자증권"
-          },
-          {
-            "host": "truefriend.com",
-            "kind": "broker",
-            "title": "ISA 중개형 - ISA - 금융상품 | 한국투자증권"
-          },
-          {
-            "host": "kiwoom.com",
-            "kind": "broker",
-            "title": "ISA 주요내용 - 키움증권"
-          },
-          {
-            "host": "shinhansec.com",
-            "kind": "broker",
-            "title": "중개형ISA 만기연장 이벤트"
-          },
-          {
-            "host": "securities.miraeasset.com",
-            "kind": "broker",
-            "title": "ISA란? | ISA 제도안내 | ISA종합 | 금융상품"
-          },
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "개인종합자산관리계좌"
-          },
-          {
-            "host": "obank.kbstar.com",
-            "kind": "broker",
-            "title": "ISA란? - ISA 계좌 종류, 상품내용, 가입대상"
-          },
-          {
-            "host": "watax.kr",
-            "kind": "commercial",
-            "title": "ISA 계좌 세제혜택, 비과세 한도와 중도해지 주의사항 - 세금고민 해결은 세무법...."
-          }
-        ]
-      },
-      "blogTotal": 40960,
-      "kinTotal": 2855,
-      "volumeIndex": null,
-      "trend": null,
-      "exposure": {
-        "score": 65,
-        "label": "중간",
-        "reasons": [
-          "자리 열림",
-          "위에 관공서·운용사 없음",
-          "지식iN 질문 2,855건"
-        ]
-      },
-      "target": {
-        "type": "guide",
-        "url": "/guide/isa-termination-after-3-years",
-        "title": "ISA 중도해지, 3년 지나면 만기 전에도 괜찮나"
-      },
-      "action": "기존 주소 보강"
-    },
-    {
       "query": "연금저축 ETF 매도 세금",
       "track": "account",
       "serp": {
@@ -2760,7 +2575,7 @@
         "ownUrl": null,
         "webDocTotal": 212265,
         "webDocCount": 23,
-        "openSlots": 7,
+        "openSlots": 6,
         "authAbove": 1,
         "govAbove": 0,
         "toolTop3": 0,
@@ -2805,7 +2620,7 @@
           },
           {
             "host": "kbthink.com",
-            "kind": "commercial",
+            "kind": "broker",
             "title": "퇴직연금 ETF 상품 투자 방법 | 매수 방법부터 상품 종류까지"
           },
           {
@@ -2829,7 +2644,7 @@
         "label": "중간",
         "reasons": [
           "자리 열림",
-          "빈자리 7",
+          "빈자리 6",
           "지식iN 질문 1,839건"
         ]
       },
@@ -2848,7 +2663,7 @@
         "ownUrl": null,
         "webDocTotal": 136611,
         "webDocCount": 21,
-        "openSlots": 5,
+        "openSlots": 4,
         "authAbove": 1,
         "govAbove": 1,
         "toolTop3": 0,
@@ -2899,7 +2714,7 @@
           },
           {
             "host": "direct.samsunglife.com",
-            "kind": "commercial",
+            "kind": "broker",
             "title": "삼성생명 연금저축보험 수령액 조회 - 삼성생명 다이렉트보험"
           },
           {
@@ -2918,96 +2733,8 @@
         "label": "중간",
         "reasons": [
           "자리 열림",
-          "빈자리 5",
-          "지식iN 질문 25,153건"
-        ]
-      },
-      "target": {
-        "type": "none",
-        "url": null
-      },
-      "action": "새 주소 필요"
-    },
-    {
-      "query": "IRP ETF 매수 방법",
-      "track": "account",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 46747,
-        "webDocCount": 24,
-        "openSlots": 4,
-        "authAbove": 1,
-        "govAbove": 0,
-        "toolTop3": 0,
-        "sisterAbove": 0,
-        "verdict": "open",
-        "reason": [],
-        "above": [
-          {
-            "host": "kbthink.com",
-            "kind": "commercial",
-            "title": "퇴직연금 ETF 상품 투자 방법 | 매수 방법부터 상품 종류까지"
-          },
-          {
-            "host": "shinhansec.com",
-            "kind": "broker",
-            "title": "IRP안내 - 신한투자증권"
-          },
-          {
-            "host": "securities.miraeasset.com",
-            "kind": "broker",
-            "title": "[개인연금] 연금저축계좌에서 ETF를 매 월 정기적으로 자동 매수를 설정할 수 있...."
-          },
-          {
-            "host": "namsieon.com",
-            "kind": "commercial",
-            "title": "미래에셋증권 개인형IRP에서 ETF와 예금 매수하는 방법"
-          },
-          {
-            "host": "in.naver.com",
-            "kind": "naver",
-            "title": "퇴직연금 개인형 IRP 계좌로 ETF 적립식 매수 하는 방법"
-          },
-          {
-            "host": "toss.im",
-            "kind": "broker",
-            "title": "퇴직연금으로 ETF 투자, 8가지 필수상식 - 금융이 알고 싶을 때, 토스피드"
-          },
-          {
-            "host": "cboard.net",
-            "kind": "commercial",
-            "title": "IRP계좌로 etf매수방법 - 삼성증권 어플 쓰고 있구요,삼성증권으로 Irp개설했습니...."
-          },
-          {
-            "host": "samsungpop.com",
-            "kind": "broker",
-            "title": "개인연금저축 안내 > 개인연금저축 > 연금/절세 > 삼성증권 SAMSUNGPOP []"
-          },
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "퇴직연금 - 나무위키",
-            "stale": true
-          },
-          {
-            "host": "investments.miraeasset.com",
-            "kind": "issuer",
-            "title": "연금제도안내 | ETF 연금투자 방법 | 연금투자 가이드"
-          }
-        ]
-      },
-      "blogTotal": 42189,
-      "kinTotal": 1315,
-      "volumeIndex": null,
-      "trend": null,
-      "exposure": {
-        "score": 65,
-        "label": "중간",
-        "reasons": [
-          "자리 열림",
           "빈자리 4",
-          "지식iN 질문 1,315건"
+          "지식iN 질문 25,153건"
         ]
       },
       "target": {
@@ -3113,7 +2840,7 @@
         "ownUrl": null,
         "webDocTotal": 538454,
         "webDocCount": 22,
-        "openSlots": 6,
+        "openSlots": 5,
         "authAbove": 1,
         "govAbove": 1,
         "toolTop3": 0,
@@ -3149,7 +2876,7 @@
           },
           {
             "host": "kbthink.com",
-            "kind": "commercial",
+            "kind": "broker",
             "title": "해외주식 양도소득세 | 미국 주식 세금 언제 얼마나 내야 할까?"
           },
           {
@@ -3183,7 +2910,7 @@
         "label": "중간",
         "reasons": [
           "자리 열림",
-          "빈자리 6",
+          "빈자리 5",
           "지식iN 질문 717건"
         ]
       },
@@ -3202,7 +2929,7 @@
         "ownUrl": null,
         "webDocTotal": 101583,
         "webDocCount": 26,
-        "openSlots": 9,
+        "openSlots": 8,
         "authAbove": 1,
         "govAbove": 0,
         "toolTop3": 0,
@@ -3212,7 +2939,7 @@
         "above": [
           {
             "host": "kbthink.com",
-            "kind": "commercial",
+            "kind": "broker",
             "title": "환헤지 vs 환노출 ETF 원리와 장단점, 투자 전략 살펴봐요"
           },
           {
@@ -3271,7 +2998,7 @@
         "label": "중간",
         "reasons": [
           "자리 열림",
-          "빈자리 9",
+          "빈자리 8",
           "지식iN 질문 174건"
         ]
       },
@@ -3281,183 +3008,6 @@
         "title": "환헤지 vs 환노출 ETF 차이 — (H) 붙은 게 나을까"
       },
       "action": "기존 주소 보강"
-    },
-    {
-      "query": "ISA 연금저축 IRP 차이",
-      "track": "account",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 45879,
-        "webDocCount": 24,
-        "openSlots": 4,
-        "authAbove": 1,
-        "govAbove": 1,
-        "toolTop3": 0,
-        "sisterAbove": 0,
-        "verdict": "open",
-        "reason": [],
-        "above": [
-          {
-            "host": "sll.seoul.go.kr",
-            "kind": "gov",
-            "title": "(화)절세계좌 3총사 300% 활용하기 : ISA, IRP, 연금저축"
-          },
-          {
-            "host": "toss.im",
-            "kind": "broker",
-            "title": "연금저축 vs IRP, 내게 맞는 노후대비 연금 상품은? - 금융이 알고 싶을 때, 토스...."
-          },
-          {
-            "host": "banksalad.com",
-            "kind": "broker",
-            "title": "연금저축·IRP 세액공제 총정리 | 방법, 한도, 최대 환급액까지"
-          },
-          {
-            "host": "blog.koreainvestment.com",
-            "kind": "broker",
-            "title": "연금저축 IRP 차이는? 절세계좌 3가지, 연금저축 IRP ISA 투자 순서 - 한국투자증권...."
-          },
-          {
-            "host": "in.naver.com",
-            "kind": "naver",
-            "title": "연금저축 IRP ISA 비교 정리"
-          },
-          {
-            "host": "frism.io",
-            "kind": "commercial",
-            "title": "개인연금(IRP, 연금저축)과 ISA 계좌의 차이점 - 프리즘(Frism) ,국민 모두를 위한 ...."
-          },
-          {
-            "host": "watax.kr",
-            "kind": "commercial",
-            "title": "연금저축 vs IRP 세액공제 한도 총정리 — 600만 원과 900만 원, 어디에 얼마를 넣...."
-          },
-          {
-            "host": "kbthink.com",
-            "kind": "commercial",
-            "title": "IRP(개인형 퇴직연금)란? 계좌 개설부터 퇴직금 수령, 세액공제 혜택까지!"
-          },
-          {
-            "host": "okbfex.kbstar.com",
-            "kind": "broker",
-            "title": "개인형퇴직연금제도(IRP) ( KB퇴직연금 | 퇴직연금 알아보기 | 퇴직연금 제도의 ...."
-          },
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "개인종합자산관리계좌"
-          }
-        ]
-      },
-      "blogTotal": 46091,
-      "kinTotal": 1123,
-      "volumeIndex": null,
-      "trend": null,
-      "exposure": {
-        "score": 65,
-        "label": "중간",
-        "reasons": [
-          "자리 열림",
-          "빈자리 4",
-          "지식iN 질문 1,123건"
-        ]
-      },
-      "target": {
-        "type": "guide",
-        "url": "/guide/isa-vs-pension",
-        "title": "ISA vs 연금저축·IRP 차이 — 절세계좌 고르는 법"
-      },
-      "action": "기존 주소 보강"
-    },
-    {
-      "query": "닛케이 지수 etf",
-      "track": "gsc",
-      "gscImpressions": 1,
-      "gscFile": "gsc_20261004.json",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 379841,
-        "webDocCount": 18,
-        "openSlots": 9,
-        "authAbove": 0,
-        "govAbove": 0,
-        "toolTop3": 1,
-        "sisterAbove": 0,
-        "verdict": "open",
-        "reason": [],
-        "above": [
-          {
-            "host": "kr.investing.com",
-            "kind": "tool",
-            "title": "니케이 225 지수"
-          },
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "닛케이 225 - 나무위키"
-          },
-          {
-            "host": "ko.wikipedia.org",
-            "kind": "commercial",
-            "title": "닛케이 평균주가 - 위키백과 한국어"
-          },
-          {
-            "host": "mk.co.kr",
-            "kind": "press",
-            "title": "일학개미, 글로벌X 닛케이ETF에 몰렸다…‘버핏 픽’ 종합상사도 줍줍"
-          },
-          {
-            "host": "smedaily.co.kr",
-            "kind": "press",
-            "title": "3년 만에 아시아 1위 탈환 日증시 '닛케이 추종 ETF' 수익률도 뛴다"
-          },
-          {
-            "host": "stockheyu.com",
-            "kind": "commercial",
-            "title": "일본 주식 종목 TOP10 추천 │ 닛케이225 지수"
-          },
-          {
-            "host": "etfshopping.com",
-            "kind": "commercial",
-            "title": "넥스트펀드 닛케이평균고배당주50지수연동형상장투신"
-          },
-          {
-            "host": "trader.ai.kr",
-            "kind": "commercial",
-            "title": "닛케이지수란? 뜻과 전망, 투자 방법 정리"
-          },
-          {
-            "host": "joongang.co.kr",
-            "kind": "press",
-            "title": "키옥시아 -12%에도 닛케이는 1%대 하락…똑같은 반도체 급락인데 조용했던 日"
-          },
-          {
-            "host": "plus.hankyung.com",
-            "kind": "press",
-            "title": "日 ETF, 닛케이 지수 고공행진 타고 수익률 톱10 진입"
-          }
-        ]
-      },
-      "blogTotal": 16558,
-      "kinTotal": 55,
-      "volumeIndex": null,
-      "trend": null,
-      "exposure": {
-        "score": 65,
-        "label": "중간",
-        "reasons": [
-          "자리 열림",
-          "빈자리 9",
-          "위에 관공서·운용사 없음"
-        ]
-      },
-      "target": {
-        "type": "none",
-        "url": null
-      },
-      "action": "새 주소 필요"
     },
     {
       "query": "ace 미국배당퀄리티채권혼합50",
@@ -3732,6 +3282,180 @@
         "url": "/etf/hanaro-fn-k-semiconductor"
       },
       "action": "기존 주소 보강"
+    },
+    {
+      "query": "ISA 만기 해지 세금",
+      "track": "account",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 58816,
+        "webDocCount": 23,
+        "openSlots": 2,
+        "authAbove": 1,
+        "govAbove": 0,
+        "toolTop3": 0,
+        "sisterAbove": 0,
+        "verdict": "open",
+        "reason": [],
+        "above": [
+          {
+            "host": "kbsec.com",
+            "kind": "broker",
+            "title": "KB증권 | 금융상품 > ISA > ISA 해지 예상 세금 조회 > 적용 세율 알기[S1]"
+          },
+          {
+            "host": "kcie.or.kr",
+            "kind": "org",
+            "title": "ISA 계좌 완벽 정리"
+          },
+          {
+            "host": "m.shinhansec.com",
+            "kind": "broker",
+            "title": "ISA - 신한투자증권"
+          },
+          {
+            "host": "truefriend.com",
+            "kind": "broker",
+            "title": "ISA 중개형 - ISA - 금융상품 | 한국투자증권"
+          },
+          {
+            "host": "kiwoom.com",
+            "kind": "broker",
+            "title": "ISA 주요내용 - 키움증권"
+          },
+          {
+            "host": "shinhansec.com",
+            "kind": "broker",
+            "title": "중개형ISA 만기연장 이벤트"
+          },
+          {
+            "host": "securities.miraeasset.com",
+            "kind": "broker",
+            "title": "ISA란? | ISA 제도안내 | ISA종합 | 금융상품"
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "개인종합자산관리계좌"
+          },
+          {
+            "host": "obank.kbstar.com",
+            "kind": "broker",
+            "title": "ISA란? - ISA 계좌 종류, 상품내용, 가입대상"
+          },
+          {
+            "host": "watax.kr",
+            "kind": "commercial",
+            "title": "ISA 계좌 세제혜택, 비과세 한도와 중도해지 주의사항 - 세금고민 해결은 세무법...."
+          }
+        ]
+      },
+      "blogTotal": 40960,
+      "kinTotal": 2855,
+      "volumeIndex": null,
+      "trend": null,
+      "exposure": {
+        "score": 60,
+        "label": "중간",
+        "reasons": [
+          "자리 열림",
+          "지식iN 질문 2,855건"
+        ]
+      },
+      "target": {
+        "type": "guide",
+        "url": "/guide/isa-termination-after-3-years",
+        "title": "ISA 중도해지, 3년 지나면 만기 전에도 괜찮나"
+      },
+      "action": "기존 주소 보강"
+    },
+    {
+      "query": "IRP ETF 매수 방법",
+      "track": "account",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 46747,
+        "webDocCount": 24,
+        "openSlots": 3,
+        "authAbove": 1,
+        "govAbove": 0,
+        "toolTop3": 0,
+        "sisterAbove": 0,
+        "verdict": "open",
+        "reason": [],
+        "above": [
+          {
+            "host": "kbthink.com",
+            "kind": "broker",
+            "title": "퇴직연금 ETF 상품 투자 방법 | 매수 방법부터 상품 종류까지"
+          },
+          {
+            "host": "shinhansec.com",
+            "kind": "broker",
+            "title": "IRP안내 - 신한투자증권"
+          },
+          {
+            "host": "securities.miraeasset.com",
+            "kind": "broker",
+            "title": "[개인연금] 연금저축계좌에서 ETF를 매 월 정기적으로 자동 매수를 설정할 수 있...."
+          },
+          {
+            "host": "namsieon.com",
+            "kind": "commercial",
+            "title": "미래에셋증권 개인형IRP에서 ETF와 예금 매수하는 방법"
+          },
+          {
+            "host": "in.naver.com",
+            "kind": "naver",
+            "title": "퇴직연금 개인형 IRP 계좌로 ETF 적립식 매수 하는 방법"
+          },
+          {
+            "host": "toss.im",
+            "kind": "broker",
+            "title": "퇴직연금으로 ETF 투자, 8가지 필수상식 - 금융이 알고 싶을 때, 토스피드"
+          },
+          {
+            "host": "cboard.net",
+            "kind": "commercial",
+            "title": "IRP계좌로 etf매수방법 - 삼성증권 어플 쓰고 있구요,삼성증권으로 Irp개설했습니...."
+          },
+          {
+            "host": "samsungpop.com",
+            "kind": "broker",
+            "title": "개인연금저축 안내 > 개인연금저축 > 연금/절세 > 삼성증권 SAMSUNGPOP []"
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "퇴직연금 - 나무위키",
+            "stale": true
+          },
+          {
+            "host": "investments.miraeasset.com",
+            "kind": "issuer",
+            "title": "연금제도안내 | ETF 연금투자 방법 | 연금투자 가이드"
+          }
+        ]
+      },
+      "blogTotal": 42189,
+      "kinTotal": 1315,
+      "volumeIndex": null,
+      "trend": null,
+      "exposure": {
+        "score": 60,
+        "label": "중간",
+        "reasons": [
+          "자리 열림",
+          "지식iN 질문 1,315건"
+        ]
+      },
+      "target": {
+        "type": "none",
+        "url": null
+      },
+      "action": "새 주소 필요"
     },
     {
       "query": "KODEX 2차전지산업 TIGER 2차전지테마 차이",
@@ -4012,7 +3736,7 @@
         "ownUrl": null,
         "webDocTotal": 107156,
         "webDocCount": 26,
-        "openSlots": 7,
+        "openSlots": 6,
         "authAbove": 1,
         "govAbove": 0,
         "toolTop3": 0,
@@ -4032,7 +3756,7 @@
           },
           {
             "host": "kbthink.com",
-            "kind": "commercial",
+            "kind": "broker",
             "title": "ETF 가격 결정 원리는?｜NAV, 괴리율, 추적오차 용어 정리"
           },
           {
@@ -4081,7 +3805,7 @@
         "label": "중간",
         "reasons": [
           "자리 열림",
-          "빈자리 7"
+          "빈자리 6"
         ]
       },
       "target": {
@@ -4141,96 +3865,6 @@
         "url": null
       },
       "action": "새 주소 필요"
-    },
-    {
-      "query": "KODEX 코스닥150 구성종목",
-      "track": "product",
-      "code": "229200",
-      "attr": "구성종목",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 23883,
-        "webDocCount": 16,
-        "openSlots": 6,
-        "authAbove": 1,
-        "govAbove": 0,
-        "toolTop3": 1,
-        "sisterAbove": 0,
-        "verdict": "open",
-        "reason": [],
-        "above": [
-          {
-            "host": "m.samsungfund.com",
-            "kind": "issuer",
-            "title": "KODEX 코스닥 150 ETF | Kodex"
-          },
-          {
-            "host": "funetf.co.kr",
-            "kind": "tool",
-            "title": "KODEX 코스닥150(229200)주가, 분배금,구성종목"
-          },
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "KOSDAQ150"
-          },
-          {
-            "host": "etfshopping.com",
-            "kind": "commercial",
-            "title": "KODEX 코스닥150 특징과 장단점"
-          },
-          {
-            "host": "stockplus.com",
-            "kind": "commercial",
-            "title": "KODEX 코스닥150레버리지 종목 상세 정보 확인하기"
-          },
-          {
-            "host": "therich.io",
-            "kind": "commercial",
-            "title": "KODEX 코스닥150(229200) ETF 주가·분배금·배당일"
-          },
-          {
-            "host": "alphasquare.co.kr",
-            "kind": "tool",
-            "title": "KODEX 코스닥150선물인버스 주가 📈"
-          },
-          {
-            "host": "kind.krx.co.kr",
-            "kind": "tool",
-            "title": "KODEX 코스닥150"
-          },
-          {
-            "host": "nongnong.co.kr",
-            "kind": "commercial",
-            "title": "KODEX 코스닥 150 ETF 사는법, 분석, 주가, 구성종목 분석, 투자 전략 및 유의사항 - ...."
-          },
-          {
-            "host": "scoreport.kr",
-            "kind": "commercial",
-            "title": "KODEX 코스닥150 — 구성종목·수익률·괴리율 분석"
-          }
-        ]
-      },
-      "blogTotal": 6063,
-      "kinTotal": 66,
-      "volumeIndex": 0.07,
-      "trend": 2.8,
-      "exposure": {
-        "score": 55,
-        "label": "중간",
-        "reasons": [
-          "자리 열림",
-          "빈자리 6",
-          "3주 전보다 2.8배",
-          "구성종목 자료 없음(운용사 허락 필요)"
-        ]
-      },
-      "target": {
-        "type": "etf",
-        "url": "/etf/kodex-kosdaq150"
-      },
-      "action": "기존 주소 보강"
     },
     {
       "query": "KODEX 200 구성종목",
@@ -4324,189 +3958,6 @@
       "action": "기존 주소 보강"
     },
     {
-      "query": "TIGER 미국S&P500 구성종목",
-      "track": "product",
-      "code": "360750",
-      "attr": "구성종목",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 63040,
-        "webDocCount": 15,
-        "openSlots": 8,
-        "authAbove": 1,
-        "govAbove": 0,
-        "toolTop3": 1,
-        "sisterAbove": 0,
-        "verdict": "open",
-        "reason": [],
-        "above": [
-          {
-            "host": "etfshopping.com",
-            "kind": "commercial",
-            "title": "TIGER 미국S&P500 특징과 장단점",
-            "stale": true
-          },
-          {
-            "host": "kind.krx.co.kr",
-            "kind": "tool",
-            "title": "TIGER 미국S&P500"
-          },
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "S&P 500 - 나무위키"
-          },
-          {
-            "host": "investments.miraeasset.com",
-            "kind": "issuer",
-            "title": "TIGER 미국S&P500배당귀족 | ETF 상품",
-            "stale": true
-          },
-          {
-            "host": "therich.io",
-            "kind": "commercial",
-            "title": "TIGER 미국S&P500(360750) ETF 주가·분배금·배당일"
-          },
-          {
-            "host": "kiwoometf.com",
-            "kind": "issuer",
-            "title": "KIWOOM 미국S&P500모멘텀"
-          },
-          {
-            "host": "stockplus.com",
-            "kind": "commercial",
-            "title": "TIGER 미국S&P500 종목 상세 정보 확인하기"
-          },
-          {
-            "host": "stockray.app",
-            "kind": "commercial",
-            "title": "TIGER 미국S&P500 주가·시세 · ETF 정보"
-          },
-          {
-            "host": "refininfo.com",
-            "kind": "commercial",
-            "title": "TIGER 미국S&P500이란, 어떤 지수를 추종하는지 자세히 확인해보세요 - 실속노트"
-          },
-          {
-            "host": "stocklabs.co.kr",
-            "kind": "commercial",
-            "title": "TIGER 미국S&P500 시세"
-          }
-        ]
-      },
-      "blogTotal": 28261,
-      "kinTotal": 771,
-      "volumeIndex": null,
-      "trend": null,
-      "exposure": {
-        "score": 55,
-        "label": "중간",
-        "reasons": [
-          "자리 열림",
-          "빈자리 8",
-          "지식iN 질문 771건",
-          "구성종목 자료 없음(운용사 허락 필요)"
-        ]
-      },
-      "target": {
-        "type": "etf",
-        "url": "/etf/tiger-us-sp500"
-      },
-      "action": "기존 주소 보강"
-    },
-    {
-      "query": "KODEX 미국S&P500 구성종목",
-      "track": "product",
-      "code": "379800",
-      "attr": "구성종목",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 2274254,
-        "webDocCount": 11,
-        "openSlots": 8,
-        "authAbove": 1,
-        "govAbove": 0,
-        "toolTop3": 1,
-        "sisterAbove": 0,
-        "verdict": "open",
-        "reason": [],
-        "above": [
-          {
-            "host": "m.samsungfund.com",
-            "kind": "issuer",
-            "title": "KODEX 미국S&P500 ETF | Kodex"
-          },
-          {
-            "host": "funetf.co.kr",
-            "kind": "tool",
-            "title": "KODEX 미국S&P500데일리커버드콜OTM(0005A0)주가, 분배금,구성종목"
-          },
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "S&P 500 - 나무위키"
-          },
-          {
-            "host": "therich.io",
-            "kind": "commercial",
-            "title": "KODEX 미국S&P500(379800) ETF 주가·분배금·배당일"
-          },
-          {
-            "host": "etfshopping.com",
-            "kind": "commercial",
-            "title": "TIGER 미국S&P500 특징과 장단점",
-            "stale": true
-          },
-          {
-            "host": "spglobal.com",
-            "kind": "commercial",
-            "title": "S&P 500® 지수 | S&P 다우존스 지수"
-          },
-          {
-            "host": "stockplus.com",
-            "kind": "commercial",
-            "title": "KODEX 미국S&P500 종목 상세 정보 확인하기"
-          },
-          {
-            "host": "goinsider.kr",
-            "kind": "commercial",
-            "title": "KODEX 미국S&P500 (379800) - 구성종목·분배금·추적오차"
-          },
-          {
-            "host": "stocklabs.co.kr",
-            "kind": "commercial",
-            "title": "KODEX 미국S&P500 시세"
-          },
-          {
-            "host": "stockray.app",
-            "kind": "commercial",
-            "title": "KODEX 미국S&P500선물(H) 주가·시세 · ETF 정보"
-          }
-        ]
-      },
-      "blogTotal": 26266,
-      "kinTotal": 619,
-      "volumeIndex": null,
-      "trend": null,
-      "exposure": {
-        "score": 55,
-        "label": "중간",
-        "reasons": [
-          "자리 열림",
-          "빈자리 8",
-          "지식iN 질문 619건",
-          "구성종목 자료 없음(운용사 허락 필요)"
-        ]
-      },
-      "target": {
-        "type": "etf",
-        "url": "/etf/kodex-us-sp500"
-      },
-      "action": "기존 주소 보강"
-    },
-    {
       "query": "KODEX 미국나스닥100 구성종목",
       "track": "product",
       "code": "379810",
@@ -4593,97 +4044,6 @@
       "target": {
         "type": "etf",
         "url": "/etf/kodex-us-nasdaq100"
-      },
-      "action": "기존 주소 보강"
-    },
-    {
-      "query": "TIGER 미국필라델피아반도체나스닥 구성종목",
-      "track": "product",
-      "code": "381180",
-      "attr": "구성종목",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 16542,
-        "webDocCount": 20,
-        "openSlots": 6,
-        "authAbove": 0,
-        "govAbove": 0,
-        "toolTop3": 1,
-        "sisterAbove": 0,
-        "verdict": "open",
-        "reason": [],
-        "above": [
-          {
-            "host": "investments.miraeasset.com",
-            "kind": "issuer",
-            "title": "TIGER 미국필라델피아AI반도체나스닥 | ETF 상품",
-            "stale": true
-          },
-          {
-            "host": "k-etf.com",
-            "kind": "commercial",
-            "title": "K-ETF - TIGER 미국필라델피아반도체나스닥"
-          },
-          {
-            "host": "alphasquare.co.kr",
-            "kind": "tool",
-            "title": "TIGER 미국필라델피아AI반도체나스닥 주가 📈"
-          },
-          {
-            "host": "etfshopping.com",
-            "kind": "commercial",
-            "title": "TIGER 미국필라델피아반도체나스닥 특징과 장단점"
-          },
-          {
-            "host": "funetf.co.kr",
-            "kind": "tool",
-            "title": "TIGER 미국필라델피아반도체나스닥(381180)주가, 분배금,구성종목"
-          },
-          {
-            "host": "tossinvest.com",
-            "kind": "broker",
-            "title": "TIGER 미국필라델피아반도체나스닥의 실시간 주가를 확인해보세요"
-          },
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "필라델피아 반도체지수"
-          },
-          {
-            "host": "kind.krx.co.kr",
-            "kind": "tool",
-            "title": "TIGER 미국필라델피아AI반도체나스닥"
-          },
-          {
-            "host": "stockplus.com",
-            "kind": "commercial",
-            "title": "TIGER 미국필라델피아AI반도체나스닥 종목 상세 정보 확인하기"
-          },
-          {
-            "host": "therich.io",
-            "kind": "commercial",
-            "title": "TIGER 미국필라델피아반도체나스닥(381180) ETF 주가·분배금·배당일"
-          }
-        ]
-      },
-      "blogTotal": 4046,
-      "kinTotal": 51,
-      "volumeIndex": null,
-      "trend": null,
-      "exposure": {
-        "score": 55,
-        "label": "중간",
-        "reasons": [
-          "자리 열림",
-          "빈자리 6",
-          "위에 관공서·운용사 없음",
-          "구성종목 자료 없음(운용사 허락 필요)"
-        ]
-      },
-      "target": {
-        "type": "etf",
-        "url": "/etf/tiger-ussemiconductor"
       },
       "action": "기존 주소 보강"
     },
@@ -4868,96 +4228,6 @@
       "action": "기존 주소 보강"
     },
     {
-      "query": "ACE 미국S&P500 구성종목",
-      "track": "product",
-      "code": "360200",
-      "attr": "구성종목",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 2266726,
-        "webDocCount": 19,
-        "openSlots": 9,
-        "authAbove": 1,
-        "govAbove": 0,
-        "toolTop3": 0,
-        "sisterAbove": 0,
-        "verdict": "open",
-        "reason": [],
-        "above": [
-          {
-            "host": "ko.wikipedia.org",
-            "kind": "commercial",
-            "title": "S&P 500 - 위키백과 한국어"
-          },
-          {
-            "host": "etfshopping.com",
-            "kind": "commercial",
-            "title": "ACE 미국S&P500 특징과 장단점"
-          },
-          {
-            "host": "stockplus.com",
-            "kind": "commercial",
-            "title": "ACE 미국S&P500미국채혼합50액티브 종목 상세 정보 확인하기"
-          },
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "S&P 500 - 나무위키"
-          },
-          {
-            "host": "stockray.app",
-            "kind": "commercial",
-            "title": "ACE 미국S&P500 주가·시세 · ETF 정보"
-          },
-          {
-            "host": "spglobal.com",
-            "kind": "commercial",
-            "title": "S&P 500® 지수 | S&P 다우존스 지수"
-          },
-          {
-            "host": "soletf.com",
-            "kind": "issuer",
-            "title": "SOL 미국S&P500ESG (399110)"
-          },
-          {
-            "host": "financefairy.co.kr",
-            "kind": "commercial",
-            "title": "ACE 미국 S&P500 배당일, 수수료, 수익률 알아보기"
-          },
-          {
-            "host": "nongnong.co.kr",
-            "kind": "commercial",
-            "title": "ACE 미국S&P500 ETF 사는법, 분석, 주가, 구성종목 분석, 투자 전략 및 유의사항 - 금...."
-          },
-          {
-            "host": "mokdon.kr",
-            "kind": "commercial",
-            "title": "ACE 미국S&P500(360200) 실시간 차트·수익률·구성 종목"
-          }
-        ]
-      },
-      "blogTotal": 11809,
-      "kinTotal": 197,
-      "volumeIndex": null,
-      "trend": null,
-      "exposure": {
-        "score": 55,
-        "label": "중간",
-        "reasons": [
-          "자리 열림",
-          "빈자리 9",
-          "지식iN 질문 197건",
-          "구성종목 자료 없음(운용사 허락 필요)"
-        ]
-      },
-      "target": {
-        "type": "etf",
-        "url": "/etf/ace-us-sp500"
-      },
-      "action": "기존 주소 보강"
-    },
-    {
       "query": "TIGER 미국테크TOP10 INDXX 구성종목",
       "track": "product",
       "code": "381170",
@@ -5045,6 +4315,96 @@
       "target": {
         "type": "etf",
         "url": "/etf/tiger-us-techtop10-indxx"
+      },
+      "action": "기존 주소 보강"
+    },
+    {
+      "query": "TIGER 미국필라델피아반도체나스닥 구성종목",
+      "track": "product",
+      "code": "381180",
+      "attr": "구성종목",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 16542,
+        "webDocCount": 20,
+        "openSlots": 5,
+        "authAbove": 1,
+        "govAbove": 0,
+        "toolTop3": 1,
+        "sisterAbove": 0,
+        "verdict": "open",
+        "reason": [],
+        "above": [
+          {
+            "host": "investments.miraeasset.com",
+            "kind": "issuer",
+            "title": "TIGER 미국필라델피아AI반도체나스닥 | ETF 상품",
+            "stale": true
+          },
+          {
+            "host": "k-etf.com",
+            "kind": "commercial",
+            "title": "K-ETF - TIGER 미국필라델피아반도체나스닥"
+          },
+          {
+            "host": "alphasquare.co.kr",
+            "kind": "tool",
+            "title": "TIGER 미국필라델피아AI반도체나스닥 주가 📈"
+          },
+          {
+            "host": "etfshopping.com",
+            "kind": "commercial",
+            "title": "TIGER 미국필라델피아반도체나스닥 특징과 장단점"
+          },
+          {
+            "host": "funetf.co.kr",
+            "kind": "tool",
+            "title": "TIGER 미국필라델피아반도체나스닥(381180)주가, 분배금,구성종목"
+          },
+          {
+            "host": "tossinvest.com",
+            "kind": "broker",
+            "title": "TIGER 미국필라델피아반도체나스닥의 실시간 주가를 확인해보세요"
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "필라델피아 반도체지수"
+          },
+          {
+            "host": "kind.krx.co.kr",
+            "kind": "tool",
+            "title": "TIGER 미국필라델피아AI반도체나스닥"
+          },
+          {
+            "host": "stockplus.com",
+            "kind": "commercial",
+            "title": "TIGER 미국필라델피아AI반도체나스닥 종목 상세 정보 확인하기"
+          },
+          {
+            "host": "therich.io",
+            "kind": "commercial",
+            "title": "TIGER 미국필라델피아반도체나스닥(381180) ETF 주가·분배금·배당일"
+          }
+        ]
+      },
+      "blogTotal": 4046,
+      "kinTotal": 51,
+      "volumeIndex": null,
+      "trend": null,
+      "exposure": {
+        "score": 50,
+        "label": "중간",
+        "reasons": [
+          "자리 열림",
+          "빈자리 5",
+          "구성종목 자료 없음(운용사 허락 필요)"
+        ]
+      },
+      "target": {
+        "type": "etf",
+        "url": "/etf/tiger-ussemiconductor"
       },
       "action": "기존 주소 보강"
     },
@@ -5692,7 +5052,7 @@
         "ownUrl": null,
         "webDocTotal": 66168,
         "webDocCount": 22,
-        "openSlots": 6,
+        "openSlots": 5,
         "authAbove": 2,
         "govAbove": 0,
         "toolTop3": 0,
@@ -5704,7 +5064,7 @@
         "above": [
           {
             "host": "kbthink.com",
-            "kind": "commercial",
+            "kind": "broker",
             "title": "커버드콜이란? 커버드콜 ETF로 위험 관리하는 방법"
           },
           {
@@ -5767,7 +5127,7 @@
         "score": 30,
         "label": "낮음",
         "reasons": [
-          "빈자리 6",
+          "빈자리 5",
           "지식iN 질문 931건",
           "최근 처음 잡힘",
           "작년 11월에 3.2배"
@@ -5883,19 +5243,19 @@
         "ownUrl": null,
         "webDocTotal": 4290705,
         "webDocCount": 22,
-        "openSlots": 7,
-        "authAbove": 3,
+        "openSlots": 5,
+        "authAbove": 4,
         "govAbove": 0,
         "toolTop3": 0,
         "sisterAbove": 0,
         "verdict": "closed",
         "reason": [
-          "관공서·운용사 3곳"
+          "관공서·운용사 4곳"
         ],
         "above": [
           {
             "host": "myasset.com",
-            "kind": "commercial",
+            "kind": "broker",
             "title": "중국주식안내 - 유안타증권"
           },
           {
@@ -5906,7 +5266,7 @@
           },
           {
             "host": "namu.wiki",
-            "kind": "commercial",
+            "kind": "wiki",
             "title": "미래에셋 TIGER ETF"
           },
           {
@@ -5954,7 +5314,7 @@
         "score": 25,
         "label": "낮음",
         "reasons": [
-          "빈자리 7",
+          "빈자리 5",
           "지식iN 질문 3,906건"
         ]
       },
@@ -6065,7 +5425,7 @@
         "ownUrl": null,
         "webDocTotal": 296792,
         "webDocCount": 26,
-        "openSlots": 5,
+        "openSlots": 4,
         "authAbove": 3,
         "govAbove": 1,
         "toolTop3": 0,
@@ -6077,7 +5437,7 @@
         "above": [
           {
             "host": "kbthink.com",
-            "kind": "commercial",
+            "kind": "broker",
             "title": "ETF 세금 | 국내·해외상장 ETF 매매차익과 분배금 과세 비교"
           },
           {
@@ -6139,7 +5499,7 @@
         "score": 25,
         "label": "낮음",
         "reasons": [
-          "빈자리 5",
+          "빈자리 4",
           "지식iN 질문 6,842건",
           "작년 1월에 8.1배"
         ]
@@ -6148,100 +5508,6 @@
         "type": "guide",
         "url": "/guide/overseas-etf-loss-offset",
         "title": "국내 상장 해외 ETF, 손실 나도 세금 내는 이유"
-      },
-      "action": "기존 주소 보강"
-    },
-    {
-      "query": "IRP 세액공제 한도",
-      "track": "account",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 118212,
-        "webDocCount": 17,
-        "openSlots": 4,
-        "authAbove": 2,
-        "govAbove": 2,
-        "toolTop3": 0,
-        "sisterAbove": 0,
-        "verdict": "closed",
-        "reason": [
-          "관공서·운용사 2곳"
-        ],
-        "above": [
-          {
-            "host": "nts.go.kr",
-            "kind": "gov",
-            "title": "연금계좌 세액공제 안내"
-          },
-          {
-            "host": "kcie.or.kr",
-            "kind": "org",
-            "title": "IRP 세액공제 활용법"
-          },
-          {
-            "host": "fss.or.kr",
-            "kind": "gov",
-            "title": "세액공제 | 퇴직연금 세제 | 연금세제 안내 | 통합연금포털"
-          },
-          {
-            "host": "banksalad.com",
-            "kind": "broker",
-            "title": "연금저축·IRP 세액공제 총정리 | 방법, 한도, 최대 환급액까지"
-          },
-          {
-            "host": "m.shinhansec.com",
-            "kind": "broker",
-            "title": "퇴직연금(IRP) - 신한투자증권"
-          },
-          {
-            "host": "watax.kr",
-            "kind": "commercial",
-            "title": "연금저축 vs IRP 세액공제 한도 총정리 — 600만 원과 900만 원, 어디에 얼마를 넣...."
-          },
-          {
-            "host": "portal.barogov.kr",
-            "kind": "commercial",
-            "title": "정부정책포털 - IRP 세액공제 한도·공제율·연말정산 총정리 | 900만원 한도 기준"
-          },
-          {
-            "host": "shinhansec.com",
-            "kind": "broker",
-            "title": "연금저축이란? - 신한투자증권"
-          },
-          {
-            "host": "okbfex.kbstar.com",
-            "kind": "broker",
-            "title": "개인형퇴직연금제도(IRP) ( KB퇴직연금 | 퇴직연금 알아보기 | 퇴직연금 제도의 ...."
-          },
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "퇴직연금 - 나무위키"
-          }
-        ]
-      },
-      "blogTotal": 117343,
-      "kinTotal": 8045,
-      "volumeIndex": 0.78,
-      "trend": 0.9,
-      "season": {
-        "peakMonth": 12,
-        "multiple": 14.8
-      },
-      "exposure": {
-        "score": 25,
-        "label": "낮음",
-        "reasons": [
-          "빈자리 4",
-          "지식iN 질문 8,045건",
-          "작년 12월에 14.8배"
-        ]
-      },
-      "target": {
-        "type": "guide",
-        "url": "/guide/pension-savings-vs-irp",
-        "title": "연금저축 vs IRP 차이, 세액공제 한도와 채우는 순서"
       },
       "action": "기존 주소 보강"
     },
@@ -6260,14 +5526,14 @@
         "ownUrl": null,
         "webDocTotal": 106170,
         "webDocCount": 18,
-        "openSlots": 8,
-        "authAbove": 2,
+        "openSlots": 7,
+        "authAbove": 3,
         "govAbove": 0,
         "toolTop3": 0,
         "sisterAbove": 0,
         "verdict": "closed",
         "reason": [
-          "관공서·운용사 2곳"
+          "관공서·운용사 3곳"
         ],
         "above": [
           {
@@ -6308,7 +5574,7 @@
           },
           {
             "host": "spglobal.com",
-            "kind": "commercial",
+            "kind": "issuer",
             "title": "Dow Jones U.S. Dividend 100 Index"
           },
           {
@@ -6335,7 +5601,7 @@
         "score": 25,
         "label": "낮음",
         "reasons": [
-          "빈자리 8",
+          "빈자리 7",
           "지식iN 질문 614건",
           "작년 1월에 4.7배"
         ]
@@ -6439,109 +5705,6 @@
         "type": "guide",
         "url": "/guide/solar-energy-etf",
         "title": "태양광 ETF 완전정리 — 신재생에너지 테마에 투자하는 법"
-      },
-      "action": "기존 주소 보강"
-    },
-    {
-      "query": "미국S&P500 ETF 비교",
-      "track": "group",
-      "groupKey": "미국S&P500",
-      "members": [
-        "TIGER 미국S&P500",
-        "KODEX 미국S&P500",
-        "ACE 미국S&P500",
-        "RISE 미국S&P500"
-      ],
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 403519,
-        "webDocCount": 19,
-        "openSlots": 5,
-        "authAbove": 2,
-        "govAbove": 0,
-        "toolTop3": 0,
-        "sisterAbove": 0,
-        "verdict": "closed",
-        "reason": [
-          "관공서·운용사 2곳"
-        ],
-        "above": [
-          {
-            "host": "topetf.app",
-            "kind": "commercial",
-            "title": "S&P 500 ETF 실부담비용 비교 | TOP ETF"
-          },
-          {
-            "host": "contents.premium.naver.com",
-            "kind": "naver",
-            "title": "[ETF입문] S&P500 ETF 7종 완전비교 | 한국 vs 미국, 적립식 장기투자에는 뭐가 진짜 ...."
-          },
-          {
-            "host": "spglobal.com",
-            "kind": "commercial",
-            "title": "S&P 500® 지수 | S&P 다우존스 지수"
-          },
-          {
-            "host": "ko.wikipedia.org",
-            "kind": "commercial",
-            "title": "S&P 500 - 위키백과 한국어",
-            "stale": true
-          },
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "S&P 500 - 나무위키"
-          },
-          {
-            "host": "etfshopping.com",
-            "kind": "commercial",
-            "title": "TIGER 미국S&P500 특징과 장단점",
-            "stale": true
-          },
-          {
-            "host": "kr.investing.com",
-            "kind": "tool",
-            "title": "SPDR S&P 500 ETF | SPY ETF"
-          },
-          {
-            "host": "soletf.com",
-            "kind": "issuer",
-            "title": "SOL 미국S&P500ESG (399110)"
-          },
-          {
-            "host": "kind.krx.co.kr",
-            "kind": "tool",
-            "title": "[ACE 미국S&P500미국채혼합50액티브] ETF기타시장안내"
-          },
-          {
-            "host": "m.samsungfund.com",
-            "kind": "issuer",
-            "title": "KODEX 미국S&P500 ETF | Kodex"
-          }
-        ]
-      },
-      "blogTotal": 142881,
-      "kinTotal": 2627,
-      "volumeIndex": 0.31,
-      "trend": null,
-      "season": {
-        "peakMonth": 11,
-        "multiple": 2.4
-      },
-      "exposure": {
-        "score": 25,
-        "label": "낮음",
-        "reasons": [
-          "빈자리 5",
-          "지식iN 질문 2,627건",
-          "작년 11월에 2.4배"
-        ]
-      },
-      "target": {
-        "type": "guide",
-        "url": "/guide/domestic-sp500-etf-comparison",
-        "title": "국내 상장 미국 S&P500 ETF 비교, 어떤 걸 고를까"
       },
       "action": "기존 주소 보강"
     },
@@ -6831,98 +5994,6 @@
       "action": "기존 주소 보강"
     },
     {
-      "query": "중국 주식 etf",
-      "track": "gsc",
-      "gscImpressions": 3,
-      "gscFile": "gsc_20261004.json",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 3914774,
-        "webDocCount": 17,
-        "openSlots": 5,
-        "authAbove": 2,
-        "govAbove": 0,
-        "toolTop3": 0,
-        "sisterAbove": 0,
-        "verdict": "closed",
-        "reason": [
-          "관공서·운용사 2곳"
-        ],
-        "above": [
-          {
-            "host": "hanwhawm.com",
-            "kind": "broker",
-            "title": "[ETF 전략] 중국 주식, 국채 ETF 자금 유입세 지속"
-          },
-          {
-            "host": "myasset.com",
-            "kind": "commercial",
-            "title": "중국주식안내 - 유안타증권"
-          },
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "미래에셋 TIGER ETF"
-          },
-          {
-            "host": "in.naver.com",
-            "kind": "naver",
-            "title": "중국ETF BEST 3 추천 안 보면 손해! 쉽게 중국주식 사는법"
-          },
-          {
-            "host": "m.samsungfund.com",
-            "kind": "issuer",
-            "title": "KODEX 차이나휴머노이드로봇 ETF | Kodex"
-          },
-          {
-            "host": "joongang.co.kr",
-            "kind": "press",
-            "title": "中 창신메모리 476% 상장 대박…“지금 젤 싸다” ETF 2개 묻어라"
-          },
-          {
-            "host": "aceetf.co.kr",
-            "kind": "issuer",
-            "title": "ACE 중국본토CSI300레버리지(합성) ETF (219900) | ACE ETF"
-          },
-          {
-            "host": "investments.miraeasset.com",
-            "kind": "issuer",
-            "title": "TIGER 차이나전기차 SOLACTIVE | ETF 상품",
-            "stale": true
-          },
-          {
-            "host": "techtrends.kr",
-            "kind": "commercial",
-            "title": "중국 주식 추천 순위 및 현지 실시간 인기 개별주 ETF TOP20"
-          },
-          {
-            "host": "kr.tradingview.com",
-            "kind": "tool",
-            "title": "Tongtai Machine & Tool Co., Ltd 주식에 투자하는 ETF"
-          }
-        ]
-      },
-      "blogTotal": 301222,
-      "kinTotal": 3671,
-      "volumeIndex": 0.06,
-      "trend": 3.6,
-      "exposure": {
-        "score": 25,
-        "label": "낮음",
-        "reasons": [
-          "빈자리 5",
-          "지식iN 질문 3,671건",
-          "3주 전보다 3.6배"
-        ]
-      },
-      "target": {
-        "type": "none",
-        "url": null
-      },
-      "action": "새 주소 필요"
-    },
-    {
       "query": "TIGER 미국배당다우존스 분배금",
       "track": "product",
       "code": "458730",
@@ -7016,6 +6087,99 @@
       "action": "기존 주소 보강"
     },
     {
+      "query": "반도체 etf 주가",
+      "track": "gsc",
+      "gscImpressions": 1,
+      "gscFile": "gsc_20261004.json",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 797989,
+        "webDocCount": 10,
+        "openSlots": 6,
+        "authAbove": 2,
+        "govAbove": 0,
+        "toolTop3": 0,
+        "sisterAbove": 0,
+        "verdict": "closed",
+        "reason": [
+          "관공서·운용사 2곳"
+        ],
+        "above": [
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "필라델피아 반도체지수"
+          },
+          {
+            "host": "soletf.com",
+            "kind": "issuer",
+            "title": "SOL AI반도체TOP2플러스 (0167A0)"
+          },
+          {
+            "host": "tossinvest.com",
+            "kind": "broker",
+            "title": "KODEX 반도체레버리지의 실시간 주가를 확인해보세요"
+          },
+          {
+            "host": "tradingmain.com",
+            "kind": "commercial",
+            "title": "KODEX 반도체 ETF 주가 및 배당금 조회"
+          },
+          {
+            "host": "kr.investing.com",
+            "kind": "tool",
+            "title": "Direxion Dly Semiconductor Bull 3X ETF | SOXL ETF",
+            "stale": true
+          },
+          {
+            "host": "stockplus.com",
+            "kind": "commercial",
+            "title": "SOL AI반도체소부장 종목 상세 정보 확인하기"
+          },
+          {
+            "host": "etfshopping.com",
+            "kind": "commercial",
+            "title": "KODEX 반도체 특징과 장단점"
+          },
+          {
+            "host": "alphasquare.co.kr",
+            "kind": "tool",
+            "title": "KODEX AI반도체TOP2플러스 주가 📈"
+          },
+          {
+            "host": "soletf.co.kr",
+            "kind": "commercial",
+            "title": "SOL ETF"
+          },
+          {
+            "host": "etf-rebalancing.com",
+            "kind": "commercial",
+            "title": "SMH ETF | SOXX SOXQ SOXL·국내상장 반도체 비교 2026"
+          }
+        ]
+      },
+      "blogTotal": 410481,
+      "kinTotal": 1546,
+      "volumeIndex": 0.01,
+      "trend": null,
+      "trendBorn": true,
+      "exposure": {
+        "score": 25,
+        "label": "낮음",
+        "reasons": [
+          "빈자리 6",
+          "지식iN 질문 1,546건",
+          "최근 처음 잡힘"
+        ]
+      },
+      "target": {
+        "type": "none",
+        "url": null
+      },
+      "action": "새 주소 필요"
+    },
+    {
       "query": "반도체 ETF 비교",
       "track": "group",
       "groupKey": "반도체",
@@ -7028,14 +6192,14 @@
         "ownUrl": null,
         "webDocTotal": 445195,
         "webDocCount": 19,
-        "openSlots": 5,
-        "authAbove": 3,
+        "openSlots": 4,
+        "authAbove": 4,
         "govAbove": 0,
         "toolTop3": 0,
         "sisterAbove": 0,
         "verdict": "closed",
         "reason": [
-          "관공서·운용사 3곳"
+          "관공서·운용사 4곳"
         ],
         "above": [
           {
@@ -7085,7 +6249,7 @@
           },
           {
             "host": "ibkasset.com",
-            "kind": "commercial",
+            "kind": "issuer",
             "title": "IBK자산운용 > ETF상품 > IBK K-AI반도체 코어테크 증권상장지수투자신탁[주식]"
           }
         ]
@@ -7102,7 +6266,7 @@
         "score": 25,
         "label": "낮음",
         "reasons": [
-          "빈자리 5",
+          "빈자리 4",
           "지식iN 질문 615건",
           "작년 1월에 38.8배"
         ]
@@ -7111,106 +6275,6 @@
         "type": "guide",
         "url": "/guide/ai-semi-etf",
         "title": "AI·반도체 ETF 가이드 — 엔비디아·HBM·데이터센터 노출 ETF 비교"
-      },
-      "action": "기존 주소 보강"
-    },
-    {
-      "query": "KRX금현물 ETF 비교",
-      "track": "group",
-      "groupKey": "KRX금현물",
-      "members": [
-        "ACE KRX금현물",
-        "TIGER KRX금현물"
-      ],
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 19955,
-        "webDocCount": 24,
-        "openSlots": 4,
-        "authAbove": 3,
-        "govAbove": 2,
-        "toolTop3": 1,
-        "sisterAbove": 0,
-        "verdict": "closed",
-        "reason": [
-          "관공서·운용사 3곳"
-        ],
-        "above": [
-          {
-            "host": "open.krx.co.kr",
-            "kind": "gov",
-            "title": "일반상품 - KRX Market"
-          },
-          {
-            "host": "kr.investing.com",
-            "kind": "tool",
-            "title": "ACE KRX금현물 ETF | 411060 ETF"
-          },
-          {
-            "host": "investments.miraeasset.com",
-            "kind": "issuer",
-            "title": "TIGER KRX금현물 | ETF 상품",
-            "stale": true
-          },
-          {
-            "host": "goldkimp.com",
-            "kind": "commercial",
-            "title": "금 김치프리미엄(김프) 괴리율 차트 - 실시간 금시세 조회 | 금프리미엄닷컴"
-          },
-          {
-            "host": "kbthink.com",
-            "kind": "commercial",
-            "title": "금 ETF 투자 방법 | 금 현물, 선물 ETF 차이점과 장점, 주의할 점은?"
-          },
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "KRX금현물 - 나무위키"
-          },
-          {
-            "host": "krx.co.kr",
-            "kind": "gov",
-            "title": "한국거래소, KRX금시장 매매제도와 세제"
-          },
-          {
-            "host": "funetf.co.kr",
-            "kind": "tool",
-            "title": "TIGER KRX금현물(0072R0)주가, 분배금,구성종목"
-          },
-          {
-            "host": "aceetf.co.kr",
-            "kind": "issuer",
-            "title": "한국투자 ACE ETF > 고객서비스 > 공지사항 - ACE KRX금현물 ETF 관련 투자 시 유의사...."
-          },
-          {
-            "host": "alphasquare.co.kr",
-            "kind": "tool",
-            "title": "ACE KRX금현물 주가 📈"
-          }
-        ]
-      },
-      "blogTotal": 16188,
-      "kinTotal": 247,
-      "volumeIndex": 0.01,
-      "trend": null,
-      "season": {
-        "peakMonth": 1,
-        "multiple": 63.4
-      },
-      "exposure": {
-        "score": 25,
-        "label": "낮음",
-        "reasons": [
-          "빈자리 4",
-          "지식iN 질문 247건",
-          "작년 1월에 63.4배"
-        ]
-      },
-      "target": {
-        "type": "guide",
-        "url": "/guide/gold-investment-methods",
-        "title": "금 투자 방법 4가지 비교 — 세금 가장 적은 건?"
       },
       "action": "기존 주소 보강"
     },
@@ -7493,98 +6557,6 @@
       "action": "기존 주소 보강"
     },
     {
-      "query": "은행 etf",
-      "track": "gsc",
-      "gscImpressions": 1,
-      "gscFile": "gsc_20261004.json",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 4970327,
-        "webDocCount": 24,
-        "openSlots": 4,
-        "authAbove": 2,
-        "govAbove": 0,
-        "toolTop3": 0,
-        "sisterAbove": 0,
-        "verdict": "closed",
-        "reason": [
-          "관공서·운용사 2곳"
-        ],
-        "above": [
-          {
-            "host": "kbthink.com",
-            "kind": "commercial",
-            "title": "퇴직연금 ETF 상품 투자 방법 | 매수 방법부터 상품 종류까지"
-          },
-          {
-            "host": "investments.miraeasset.com",
-            "kind": "issuer",
-            "title": "TIGER 은행고배당플러스TOP10 | ETF 상품",
-            "stale": true
-          },
-          {
-            "host": "m.samsungfund.com",
-            "kind": "issuer",
-            "title": "ETF 투자기초가이드 | Kodex"
-          },
-          {
-            "host": "economic22.com",
-            "kind": "commercial",
-            "title": "은행 ETF 추천 비교 2026 — KODEX·TIGER 배당 수익률 총정리"
-          },
-          {
-            "host": "mybank.ibk.co.kr",
-            "kind": "broker",
-            "title": "퇴직연금 - 실적배당형상품 | IBK기업은행_개인인터넷뱅킹 - 3"
-          },
-          {
-            "host": "soletf.com",
-            "kind": "issuer",
-            "title": "SOL 금융지주플러스고배당 (484880)"
-          },
-          {
-            "host": "shinhansec.com",
-            "kind": "broker",
-            "title": "IRP안내 - 신한투자증권"
-          },
-          {
-            "host": "ibkasset.com",
-            "kind": "commercial",
-            "title": "IBK자산운용 > ETF상품 > 전체상품"
-          },
-          {
-            "host": "okbfex.kbstar.com",
-            "kind": "broker",
-            "title": "KB국민은행 퇴직연금"
-          },
-          {
-            "host": "kr.investing.com",
-            "kind": "tool",
-            "title": "KODEX 은행 ETF | 091170 ETF"
-          }
-        ]
-      },
-      "blogTotal": 606803,
-      "kinTotal": 17614,
-      "volumeIndex": 0.98,
-      "trend": 0.4,
-      "exposure": {
-        "score": 20,
-        "label": "낮음",
-        "reasons": [
-          "빈자리 4",
-          "지식iN 질문 17,614건"
-        ]
-      },
-      "target": {
-        "type": "guide",
-        "url": "/guide/bank-etf",
-        "title": "은행 ETF 완전정리 — 고배당·밸류업 금융주에 투자하는 법"
-      },
-      "action": "기존 주소 보강"
-    },
-    {
       "query": "KODEX 200타겟위클리커버드콜 분배금",
       "track": "product",
       "code": "498400",
@@ -7675,95 +6647,95 @@
       "action": "기존 주소 보강"
     },
     {
-      "query": "ISA 비과세 한도",
+      "query": "IRP 세액공제 한도",
       "track": "account",
       "serp": {
         "rank": null,
         "ownUrl": null,
-        "webDocTotal": 116861,
+        "webDocTotal": 118212,
         "webDocCount": 17,
-        "openSlots": 2,
-        "authAbove": 2,
+        "openSlots": 3,
+        "authAbove": 3,
         "govAbove": 2,
         "toolTop3": 0,
         "sisterAbove": 0,
         "verdict": "closed",
         "reason": [
-          "관공서·운용사 2곳"
+          "관공서·운용사 3곳"
         ],
         "above": [
           {
+            "host": "nts.go.kr",
+            "kind": "gov",
+            "title": "연금계좌 세액공제 안내"
+          },
+          {
             "host": "kcie.or.kr",
             "kind": "org",
-            "title": "한국금융투자교육원의 절세 금융상품 가이드북"
+            "title": "IRP 세액공제 활용법"
           },
           {
-            "host": "obank.kbstar.com",
-            "kind": "broker",
-            "title": "ISA 세제 혜택 - 비과세 한도, 절세 효과"
-          },
-          {
-            "host": "finlife.fss.or.kr",
+            "host": "fss.or.kr",
             "kind": "gov",
-            "title": "ISA | 절세금융상품 | 저축 | 금융감독원 금융상품통합비교공시 금융상품한눈에"
+            "title": "세액공제 | 퇴직연금 세제 | 연금세제 안내 | 통합연금포털"
           },
           {
-            "host": "dis.kofia.or.kr",
-            "kind": "tool",
-            "title": "ISA 제도 개요"
-          },
-          {
-            "host": "securities.miraeasset.com",
+            "host": "banksalad.com",
             "kind": "broker",
-            "title": "ISA란? | ISA 제도안내 | ISA종합 | 금융상품"
+            "title": "연금저축·IRP 세액공제 총정리 | 방법, 한도, 최대 환급액까지"
           },
           {
-            "host": "truefriend.com",
+            "host": "m.shinhansec.com",
             "kind": "broker",
-            "title": "ISA 투자자가이드 - ISA 상품가이드 - ISA - 금융상품 | 한국투자증권"
+            "title": "퇴직연금(IRP) - 신한투자증권"
           },
           {
-            "host": "kbsec.com",
-            "kind": "broker",
-            "title": "KB증권 | 금융상품 > ISA > ISA 알아보기 > ISA란?[S1]"
-          },
-          {
-            "host": "namu.wiki",
+            "host": "watax.kr",
             "kind": "commercial",
-            "title": "개인종합자산관리계좌"
+            "title": "연금저축 vs IRP 세액공제 한도 총정리 — 600만 원과 900만 원, 어디에 얼마를 넣...."
           },
           {
-            "host": "law.go.kr",
-            "kind": "gov",
-            "title": "개인종합자산관리계좌 과세특례 규정"
+            "host": "portal.barogov.kr",
+            "kind": "commercial",
+            "title": "정부정책포털 - IRP 세액공제 한도·공제율·연말정산 총정리 | 900만원 한도 기준"
           },
           {
             "host": "shinhansec.com",
             "kind": "broker",
-            "title": "가입대상 및 절차"
+            "title": "연금저축이란? - 신한투자증권"
+          },
+          {
+            "host": "okbfex.kbstar.com",
+            "kind": "broker",
+            "title": "개인형퇴직연금제도(IRP) ( KB퇴직연금 | 퇴직연금 알아보기 | 퇴직연금 제도의 ...."
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "퇴직연금 - 나무위키"
           }
         ]
       },
-      "blogTotal": 108627,
-      "kinTotal": 7591,
-      "volumeIndex": 0.62,
+      "blogTotal": 117343,
+      "kinTotal": 8045,
+      "volumeIndex": 0.78,
       "trend": 0.9,
       "season": {
-        "peakMonth": 1,
-        "multiple": 7
+        "peakMonth": 12,
+        "multiple": 14.8
       },
       "exposure": {
         "score": 20,
         "label": "낮음",
         "reasons": [
-          "지식iN 질문 7,591건",
-          "작년 1월에 7배"
+          "지식iN 질문 8,045건",
+          "작년 12월에 14.8배"
         ]
       },
       "target": {
         "type": "guide",
-        "url": "/guide/isa-dividend-tax-benefit",
-        "title": "ISA 배당소득 비과세 한도, 200만 400만 절세 정리"
+        "url": "/guide/pension-savings-vs-irp",
+        "title": "연금저축 vs IRP 차이, 세액공제 한도와 채우는 순서"
       },
       "action": "기존 주소 보강"
     },
@@ -7950,6 +6922,108 @@
       "action": "기존 주소 보강"
     },
     {
+      "query": "미국S&P500 ETF 비교",
+      "track": "group",
+      "groupKey": "미국S&P500",
+      "members": [
+        "TIGER 미국S&P500",
+        "KODEX 미국S&P500",
+        "ACE 미국S&P500",
+        "RISE 미국S&P500"
+      ],
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 403519,
+        "webDocCount": 19,
+        "openSlots": 3,
+        "authAbove": 4,
+        "govAbove": 0,
+        "toolTop3": 0,
+        "sisterAbove": 0,
+        "verdict": "closed",
+        "reason": [
+          "관공서·운용사 4곳"
+        ],
+        "above": [
+          {
+            "host": "topetf.app",
+            "kind": "commercial",
+            "title": "S&P 500 ETF 실부담비용 비교 | TOP ETF"
+          },
+          {
+            "host": "contents.premium.naver.com",
+            "kind": "naver",
+            "title": "[ETF입문] S&P500 ETF 7종 완전비교 | 한국 vs 미국, 적립식 장기투자에는 뭐가 진짜 ...."
+          },
+          {
+            "host": "spglobal.com",
+            "kind": "issuer",
+            "title": "S&P 500® 지수 | S&P 다우존스 지수"
+          },
+          {
+            "host": "ko.wikipedia.org",
+            "kind": "wiki",
+            "title": "S&P 500 - 위키백과 한국어",
+            "stale": true
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "S&P 500 - 나무위키"
+          },
+          {
+            "host": "etfshopping.com",
+            "kind": "commercial",
+            "title": "TIGER 미국S&P500 특징과 장단점",
+            "stale": true
+          },
+          {
+            "host": "kr.investing.com",
+            "kind": "tool",
+            "title": "SPDR S&P 500 ETF | SPY ETF"
+          },
+          {
+            "host": "soletf.com",
+            "kind": "issuer",
+            "title": "SOL 미국S&P500ESG (399110)"
+          },
+          {
+            "host": "kind.krx.co.kr",
+            "kind": "tool",
+            "title": "[ACE 미국S&P500미국채혼합50액티브] ETF기타시장안내"
+          },
+          {
+            "host": "m.samsungfund.com",
+            "kind": "issuer",
+            "title": "KODEX 미국S&P500 ETF | Kodex"
+          }
+        ]
+      },
+      "blogTotal": 142881,
+      "kinTotal": 2627,
+      "volumeIndex": 0.31,
+      "trend": null,
+      "season": {
+        "peakMonth": 11,
+        "multiple": 2.4
+      },
+      "exposure": {
+        "score": 20,
+        "label": "낮음",
+        "reasons": [
+          "지식iN 질문 2,627건",
+          "작년 11월에 2.4배"
+        ]
+      },
+      "target": {
+        "type": "guide",
+        "url": "/guide/domestic-sp500-etf-comparison",
+        "title": "국내 상장 미국 S&P500 ETF 비교, 어떤 걸 고를까"
+      },
+      "action": "기존 주소 보강"
+    },
+    {
       "query": "tdf2045",
       "track": "gsc",
       "gscImpressions": 1,
@@ -8047,7 +7121,7 @@
         "ownUrl": null,
         "webDocTotal": 206380,
         "webDocCount": 23,
-        "openSlots": 5,
+        "openSlots": 4,
         "authAbove": 4,
         "govAbove": 2,
         "toolTop3": 0,
@@ -8074,7 +7148,7 @@
           },
           {
             "host": "kbthink.com",
-            "kind": "commercial",
+            "kind": "broker",
             "title": "ETF 세금 | 국내·해외상장 ETF 매매차익과 분배금 과세 비교"
           },
           {
@@ -8122,7 +7196,7 @@
         "score": 20,
         "label": "낮음",
         "reasons": [
-          "빈자리 5",
+          "빈자리 4",
           "지식iN 질문 2,827건"
         ]
       },
@@ -8130,6 +7204,196 @@
         "type": "guide",
         "url": "/guide/etf-distribution-tax-base-zero",
         "title": "해외 ETF 분배금 세금 0원, 과표기준가로 보는 이유"
+      },
+      "action": "기존 주소 보강"
+    },
+    {
+      "query": "중국 주식 etf",
+      "track": "gsc",
+      "gscImpressions": 3,
+      "gscFile": "gsc_20261004.json",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 3914774,
+        "webDocCount": 17,
+        "openSlots": 3,
+        "authAbove": 3,
+        "govAbove": 0,
+        "toolTop3": 0,
+        "sisterAbove": 0,
+        "verdict": "closed",
+        "reason": [
+          "관공서·운용사 3곳"
+        ],
+        "above": [
+          {
+            "host": "hanwhawm.com",
+            "kind": "broker",
+            "title": "[ETF 전략] 중국 주식, 국채 ETF 자금 유입세 지속"
+          },
+          {
+            "host": "myasset.com",
+            "kind": "broker",
+            "title": "중국주식안내 - 유안타증권"
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "미래에셋 TIGER ETF"
+          },
+          {
+            "host": "in.naver.com",
+            "kind": "naver",
+            "title": "중국ETF BEST 3 추천 안 보면 손해! 쉽게 중국주식 사는법"
+          },
+          {
+            "host": "m.samsungfund.com",
+            "kind": "issuer",
+            "title": "KODEX 차이나휴머노이드로봇 ETF | Kodex"
+          },
+          {
+            "host": "joongang.co.kr",
+            "kind": "press",
+            "title": "中 창신메모리 476% 상장 대박…“지금 젤 싸다” ETF 2개 묻어라"
+          },
+          {
+            "host": "aceetf.co.kr",
+            "kind": "issuer",
+            "title": "ACE 중국본토CSI300레버리지(합성) ETF (219900) | ACE ETF"
+          },
+          {
+            "host": "investments.miraeasset.com",
+            "kind": "issuer",
+            "title": "TIGER 차이나전기차 SOLACTIVE | ETF 상품",
+            "stale": true
+          },
+          {
+            "host": "techtrends.kr",
+            "kind": "commercial",
+            "title": "중국 주식 추천 순위 및 현지 실시간 인기 개별주 ETF TOP20"
+          },
+          {
+            "host": "kr.tradingview.com",
+            "kind": "tool",
+            "title": "Tongtai Machine & Tool Co., Ltd 주식에 투자하는 ETF"
+          }
+        ]
+      },
+      "blogTotal": 301222,
+      "kinTotal": 3671,
+      "volumeIndex": 0.06,
+      "trend": 3.6,
+      "exposure": {
+        "score": 20,
+        "label": "낮음",
+        "reasons": [
+          "지식iN 질문 3,671건",
+          "3주 전보다 3.6배"
+        ]
+      },
+      "target": {
+        "type": "none",
+        "url": null
+      },
+      "action": "새 주소 필요"
+    },
+    {
+      "query": "KRX금현물 ETF 비교",
+      "track": "group",
+      "groupKey": "KRX금현물",
+      "members": [
+        "ACE KRX금현물",
+        "TIGER KRX금현물"
+      ],
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 19955,
+        "webDocCount": 24,
+        "openSlots": 2,
+        "authAbove": 4,
+        "govAbove": 2,
+        "toolTop3": 1,
+        "sisterAbove": 0,
+        "verdict": "closed",
+        "reason": [
+          "관공서·운용사 4곳"
+        ],
+        "above": [
+          {
+            "host": "open.krx.co.kr",
+            "kind": "gov",
+            "title": "일반상품 - KRX Market"
+          },
+          {
+            "host": "kr.investing.com",
+            "kind": "tool",
+            "title": "ACE KRX금현물 ETF | 411060 ETF"
+          },
+          {
+            "host": "investments.miraeasset.com",
+            "kind": "issuer",
+            "title": "TIGER KRX금현물 | ETF 상품",
+            "stale": true
+          },
+          {
+            "host": "goldkimp.com",
+            "kind": "commercial",
+            "title": "금 김치프리미엄(김프) 괴리율 차트 - 실시간 금시세 조회 | 금프리미엄닷컴"
+          },
+          {
+            "host": "kbthink.com",
+            "kind": "broker",
+            "title": "금 ETF 투자 방법 | 금 현물, 선물 ETF 차이점과 장점, 주의할 점은?"
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "KRX금현물 - 나무위키"
+          },
+          {
+            "host": "krx.co.kr",
+            "kind": "gov",
+            "title": "한국거래소, KRX금시장 매매제도와 세제"
+          },
+          {
+            "host": "funetf.co.kr",
+            "kind": "tool",
+            "title": "TIGER KRX금현물(0072R0)주가, 분배금,구성종목"
+          },
+          {
+            "host": "aceetf.co.kr",
+            "kind": "issuer",
+            "title": "한국투자 ACE ETF > 고객서비스 > 공지사항 - ACE KRX금현물 ETF 관련 투자 시 유의사...."
+          },
+          {
+            "host": "alphasquare.co.kr",
+            "kind": "tool",
+            "title": "ACE KRX금현물 주가 📈"
+          }
+        ]
+      },
+      "blogTotal": 16188,
+      "kinTotal": 247,
+      "volumeIndex": 0.01,
+      "trend": null,
+      "season": {
+        "peakMonth": 1,
+        "multiple": 63.4
+      },
+      "exposure": {
+        "score": 20,
+        "label": "낮음",
+        "reasons": [
+          "지식iN 질문 247건",
+          "작년 1월에 63.4배"
+        ]
+      },
+      "target": {
+        "type": "guide",
+        "url": "/guide/gold-investment-methods",
+        "title": "금 투자 방법 4가지 비교 — 세금 가장 적은 건?"
       },
       "action": "기존 주소 보강"
     },
@@ -8510,95 +7774,6 @@
       "action": "기존 주소 보강"
     },
     {
-      "query": "KODEX 미국S&P500 KODEX 미국S&P500(H) 차이",
-      "track": "pair",
-      "pairSlug": "kodex-us-sp500-vs-kodex-us-sp500-h",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 235973,
-        "webDocCount": 14,
-        "openSlots": 5,
-        "authAbove": 2,
-        "govAbove": 0,
-        "toolTop3": 0,
-        "sisterAbove": 0,
-        "verdict": "closed",
-        "reason": [
-          "관공서·운용사 2곳"
-        ],
-        "above": [
-          {
-            "host": "m.samsungfund.com",
-            "kind": "issuer",
-            "title": "KODEX 미국S&P500 ETF | Kodex"
-          },
-          {
-            "host": "spglobal.com",
-            "kind": "commercial",
-            "title": "S&P 500® 지수 | S&P 다우존스 지수"
-          },
-          {
-            "host": "namu.wiki",
-            "kind": "commercial",
-            "title": "S&P 500 - 나무위키"
-          },
-          {
-            "host": "kind.krx.co.kr",
-            "kind": "tool",
-            "title": "KODEX 미국S&P500(H)"
-          },
-          {
-            "host": "pandarank.net",
-            "kind": "commercial",
-            "title": "S&P500 사는법"
-          },
-          {
-            "host": "topetf.app",
-            "kind": "commercial",
-            "title": "S&P 500 ETF 실부담비용 비교 | TOP ETF"
-          },
-          {
-            "host": "kr.investing.com",
-            "kind": "tool",
-            "title": "Samsung KODEX S&P500(H) ETF | 449180 ETF"
-          },
-          {
-            "host": "etfsim.kr",
-            "kind": "commercial",
-            "title": "타이거 코덱스 S&P500 차이 | TIGER vs KODEX 미국S&P500, VOO·SPY까지 ETF 비교 (보수·분...."
-          },
-          {
-            "host": "funetf.co.kr",
-            "kind": "tool",
-            "title": "KODEX 미국S&P500데일리커버드콜OTM(0005A0)주가, 분배금,구성종목"
-          },
-          {
-            "host": "soletf.com",
-            "kind": "issuer",
-            "title": "SOL 미국S&P500ESG (399110)"
-          }
-        ]
-      },
-      "blogTotal": 6969,
-      "kinTotal": 160,
-      "volumeIndex": null,
-      "trend": null,
-      "exposure": {
-        "score": 20,
-        "label": "낮음",
-        "reasons": [
-          "빈자리 5",
-          "지식iN 질문 160건"
-        ]
-      },
-      "target": {
-        "type": "compare",
-        "url": "/compare/kodex-us-sp500-vs-kodex-us-sp500-h"
-      },
-      "action": "기존 주소 보강"
-    },
-    {
       "query": "TIGER 미국배당다우존스 KODEX 미국배당다우존스 차이",
       "track": "pair",
       "pairSlug": "tiger-us-dividend-monthly-vs-kodex-us-dividend-djones",
@@ -8607,14 +7782,14 @@
         "ownUrl": null,
         "webDocTotal": 6305,
         "webDocCount": 19,
-        "openSlots": 6,
-        "authAbove": 2,
+        "openSlots": 5,
+        "authAbove": 3,
         "govAbove": 0,
         "toolTop3": 0,
         "sisterAbove": 0,
         "verdict": "closed",
         "reason": [
-          "관공서·운용사 2곳"
+          "관공서·운용사 3곳"
         ],
         "above": [
           {
@@ -8655,7 +7830,7 @@
           },
           {
             "host": "namu.wiki",
-            "kind": "commercial",
+            "kind": "wiki",
             "title": "Schwab U.S. Dividend Equity ETF"
           },
           {
@@ -8678,7 +7853,7 @@
         "score": 20,
         "label": "낮음",
         "reasons": [
-          "빈자리 6",
+          "빈자리 5",
           "지식iN 질문 179건"
         ]
       },
@@ -8874,7 +8049,7 @@
         "ownUrl": null,
         "webDocTotal": 208946,
         "webDocCount": 23,
-        "openSlots": 6,
+        "openSlots": 5,
         "authAbove": 3,
         "govAbove": 2,
         "toolTop3": 0,
@@ -8896,7 +8071,7 @@
           },
           {
             "host": "kbthink.com",
-            "kind": "commercial",
+            "kind": "broker",
             "title": "ETF 세금 | 국내·해외상장 ETF 매매차익과 분배금 과세 비교"
           },
           {
@@ -8945,7 +8120,7 @@
         "score": 20,
         "label": "낮음",
         "reasons": [
-          "빈자리 6",
+          "빈자리 5",
           "지식iN 질문 1,671건"
         ]
       },
@@ -8964,7 +8139,7 @@
         "ownUrl": null,
         "webDocTotal": 210967,
         "webDocCount": 17,
-        "openSlots": 5,
+        "openSlots": 4,
         "authAbove": 4,
         "govAbove": 3,
         "toolTop3": 0,
@@ -9006,7 +8181,7 @@
           },
           {
             "host": "kbthink.com",
-            "kind": "commercial",
+            "kind": "broker",
             "title": "배당주 투자 방법 | 고배당주부터 배당소득 분리과세까지 알아봐요"
           },
           {
@@ -9034,7 +8209,7 @@
         "score": 20,
         "label": "낮음",
         "reasons": [
-          "빈자리 5",
+          "빈자리 4",
           "지식iN 질문 1,940건"
         ]
       },
@@ -9053,14 +8228,14 @@
         "ownUrl": null,
         "webDocTotal": 297958,
         "webDocCount": 16,
-        "openSlots": 8,
-        "authAbove": 2,
+        "openSlots": 6,
+        "authAbove": 3,
         "govAbove": 2,
         "toolTop3": 0,
         "sisterAbove": 0,
         "verdict": "closed",
         "reason": [
-          "관공서·운용사 2곳"
+          "관공서·운용사 3곳"
         ],
         "above": [
           {
@@ -9075,12 +8250,12 @@
           },
           {
             "host": "ko.wikipedia.org",
-            "kind": "commercial",
+            "kind": "wiki",
             "title": "금융소득종합과세 - 위키백과 한국어"
           },
           {
             "host": "namu.wiki",
-            "kind": "commercial",
+            "kind": "wiki",
             "title": "금융소득종합과세 - 나무위키",
             "stale": true
           },
@@ -9101,7 +8276,7 @@
           },
           {
             "host": "kbthink.com",
-            "kind": "commercial",
+            "kind": "broker",
             "title": "금융소득종합과세 | 누가 얼마나 내야 할까요?"
           },
           {
@@ -9124,7 +8299,7 @@
         "score": 20,
         "label": "낮음",
         "reasons": [
-          "빈자리 8",
+          "빈자리 6",
           "지식iN 질문 6,962건"
         ]
       },
@@ -9134,94 +8309,6 @@
         "title": "금융소득종합과세와 ETF — 2천만원 넘으면 달라지는 세금"
       },
       "action": "기존 주소 보강"
-    },
-    {
-      "query": "월배당 ETF 분배금 지급일",
-      "track": "account",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 464770,
-        "webDocCount": 13,
-        "openSlots": 4,
-        "authAbove": 5,
-        "govAbove": 1,
-        "toolTop3": 0,
-        "sisterAbove": 0,
-        "verdict": "closed",
-        "reason": [
-          "관공서·운용사 5곳"
-        ],
-        "above": [
-          {
-            "host": "m.samsungfund.com",
-            "kind": "issuer",
-            "title": "ETF 투자정보 | Kodex"
-          },
-          {
-            "host": "seibro.or.kr",
-            "kind": "gov",
-            "title": "분배금지급현황 - 증권정보포털 세이브로"
-          },
-          {
-            "host": "search-etf.com",
-            "kind": "commercial",
-            "title": "ETF 분배금 조회 | 월·분기·연간 배당금 한눈에 | SearchETF"
-          },
-          {
-            "host": "aceetf.co.kr",
-            "kind": "issuer",
-            "title": "한국투자 ACE ETF > 고객서비스 > 공지사항 - 2026년 6월 분배금 안내"
-          },
-          {
-            "host": "investments.miraeasset.com",
-            "kind": "issuer",
-            "title": "TIGER ETF 2026년 8월 중순 분배금 지급 안내 - 상세 | 공지사항"
-          },
-          {
-            "host": "kiwoometf.com",
-            "kind": "issuer",
-            "title": "KIWOOM ETF | 공시/공지 | 공지사항"
-          },
-          {
-            "host": "ko.wikipedia.org",
-            "kind": "commercial",
-            "title": "배당 - 위키백과 한국어"
-          },
-          {
-            "host": "kind.krx.co.kr",
-            "kind": "tool",
-            "title": "68659_ETF이익금분배 신고(분배금 안내)(일괄공시)"
-          },
-          {
-            "host": "bebooja.com",
-            "kind": "commercial",
-            "title": "JEPI 배당금 계산기 | 월배당 고배당 ETF 투자하기"
-          },
-          {
-            "host": "smarttoday.co.kr",
-            "kind": "commercial",
-            "title": "[표] 삼성자산운용 KODEX 월배당 ETF 10월 분배금 내역"
-          }
-        ]
-      },
-      "blogTotal": 13154,
-      "kinTotal": 107,
-      "volumeIndex": null,
-      "trend": null,
-      "exposure": {
-        "score": 20,
-        "label": "낮음",
-        "reasons": [
-          "빈자리 4",
-          "지식iN 질문 107건"
-        ]
-      },
-      "target": {
-        "type": "none",
-        "url": null
-      },
-      "action": "새 주소 필요"
     },
     {
       "query": "ETF 상장폐지 기준",
@@ -9303,94 +8390,6 @@
         "reasons": [
           "빈자리 4",
           "지식iN 질문 726건"
-        ]
-      },
-      "target": {
-        "type": "none",
-        "url": null
-      },
-      "action": "새 주소 필요"
-    },
-    {
-      "query": "연금계좌 해외 ETF 과세이연",
-      "track": "account",
-      "serp": {
-        "rank": null,
-        "ownUrl": null,
-        "webDocTotal": 332697,
-        "webDocCount": 26,
-        "openSlots": 4,
-        "authAbove": 3,
-        "govAbove": 1,
-        "toolTop3": 0,
-        "sisterAbove": 0,
-        "verdict": "closed",
-        "reason": [
-          "관공서·운용사 3곳"
-        ],
-        "above": [
-          {
-            "host": "kcie.or.kr",
-            "kind": "org",
-            "title": "해외 ETF, 연금계좌로 투자하면 어떤 혜택이?"
-          },
-          {
-            "host": "shinhansec.com",
-            "kind": "broker",
-            "title": "연금저축이란? - 신한투자증권"
-          },
-          {
-            "host": "aceetf.co.kr",
-            "kind": "issuer",
-            "title": "한국투자 ACE ETF > ETF로 연금투자 > 연금투자 가이드"
-          },
-          {
-            "host": "tossbank.com",
-            "kind": "broker",
-            "title": "배당소득 과세 방식 변경! 연금계좌에서 해외 ETF 투자할 때 세제 혜택 줄어든다...."
-          },
-          {
-            "host": "kiwoom.com",
-            "kind": "broker",
-            "title": "매매가능 연금ETF"
-          },
-          {
-            "host": "nts.go.kr",
-            "kind": "gov",
-            "title": "국세청>국세신고안내>법인신고안내>원천세>연금소득> 연금소득의 범위"
-          },
-          {
-            "host": "kbthink.com",
-            "kind": "commercial",
-            "title": "퇴직연금 세금, 언제 얼마나 낼까? 과세이연 및 절세 혜택 알아보기"
-          },
-          {
-            "host": "kiwoomam.com",
-            "kind": "issuer",
-            "title": "키움투자자산운용 | 키움라운지 | 투자정보 | 키자매거진 | [연금술사] 해외 ETF, ...."
-          },
-          {
-            "host": "kukinews.com",
-            "kind": "press",
-            "title": "‘이중과세 논란’ 연금계좌 해외 EFT…투자자는 불만, 증권사는 고심"
-          },
-          {
-            "host": "economist.co.kr",
-            "kind": "commercial",
-            "title": "해외 ETF 복리효과 사라진 ‘ISA‧연금계좌’…투자자 ‘이중과세’ 불만↑[머...."
-          }
-        ]
-      },
-      "blogTotal": 25718,
-      "kinTotal": 1210,
-      "volumeIndex": null,
-      "trend": null,
-      "exposure": {
-        "score": 20,
-        "label": "낮음",
-        "reasons": [
-          "빈자리 4",
-          "지식iN 질문 1,210건"
         ]
       },
       "target": {
@@ -9488,6 +8487,97 @@
       "action": "기존 주소 보강"
     },
     {
+      "query": "은행 etf",
+      "track": "gsc",
+      "gscImpressions": 1,
+      "gscFile": "gsc_20261004.json",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 4970327,
+        "webDocCount": 24,
+        "openSlots": 2,
+        "authAbove": 3,
+        "govAbove": 0,
+        "toolTop3": 0,
+        "sisterAbove": 0,
+        "verdict": "closed",
+        "reason": [
+          "관공서·운용사 3곳"
+        ],
+        "above": [
+          {
+            "host": "kbthink.com",
+            "kind": "broker",
+            "title": "퇴직연금 ETF 상품 투자 방법 | 매수 방법부터 상품 종류까지"
+          },
+          {
+            "host": "investments.miraeasset.com",
+            "kind": "issuer",
+            "title": "TIGER 은행고배당플러스TOP10 | ETF 상품",
+            "stale": true
+          },
+          {
+            "host": "m.samsungfund.com",
+            "kind": "issuer",
+            "title": "ETF 투자기초가이드 | Kodex"
+          },
+          {
+            "host": "economic22.com",
+            "kind": "commercial",
+            "title": "은행 ETF 추천 비교 2026 — KODEX·TIGER 배당 수익률 총정리"
+          },
+          {
+            "host": "mybank.ibk.co.kr",
+            "kind": "broker",
+            "title": "퇴직연금 - 실적배당형상품 | IBK기업은행_개인인터넷뱅킹 - 3"
+          },
+          {
+            "host": "soletf.com",
+            "kind": "issuer",
+            "title": "SOL 금융지주플러스고배당 (484880)"
+          },
+          {
+            "host": "shinhansec.com",
+            "kind": "broker",
+            "title": "IRP안내 - 신한투자증권"
+          },
+          {
+            "host": "ibkasset.com",
+            "kind": "issuer",
+            "title": "IBK자산운용 > ETF상품 > 전체상품"
+          },
+          {
+            "host": "okbfex.kbstar.com",
+            "kind": "broker",
+            "title": "KB국민은행 퇴직연금"
+          },
+          {
+            "host": "kr.investing.com",
+            "kind": "tool",
+            "title": "KODEX 은행 ETF | 091170 ETF"
+          }
+        ]
+      },
+      "blogTotal": 606803,
+      "kinTotal": 17614,
+      "volumeIndex": 0.98,
+      "trend": 0.4,
+      "exposure": {
+        "score": 15,
+        "label": "낮음",
+        "reasons": [
+          "지식iN 질문 17,614건"
+        ]
+      },
+      "target": {
+        "type": "guide",
+        "url": "/guide/bank-etf",
+        "title": "은행 ETF 완전정리 — 고배당·밸류업 금융주에 투자하는 법"
+      },
+      "action": "기존 주소 보강"
+    },
+    {
       "query": "만기 매칭형 채권 etf",
       "track": "gsc",
       "gscImpressions": 1,
@@ -9497,14 +8587,14 @@
         "ownUrl": null,
         "webDocTotal": 27617,
         "webDocCount": 29,
-        "openSlots": 6,
-        "authAbove": 2,
+        "openSlots": 4,
+        "authAbove": 3,
         "govAbove": 0,
         "toolTop3": 0,
         "sisterAbove": 0,
         "verdict": "closed",
         "reason": [
-          "관공서·운용사 2곳"
+          "관공서·운용사 3곳"
         ],
         "above": [
           {
@@ -9524,7 +8614,7 @@
           },
           {
             "host": "kbthink.com",
-            "kind": "commercial",
+            "kind": "broker",
             "title": "만기매칭형 채권 ETF란? - 뜻 & 정의"
           },
           {
@@ -9544,7 +8634,7 @@
           },
           {
             "host": "namu.wiki",
-            "kind": "commercial",
+            "kind": "wiki",
             "title": "미국 재무부채권 - 나무위키"
           },
           {
@@ -9568,13 +8658,107 @@
         "score": 15,
         "label": "낮음",
         "reasons": [
-          "빈자리 6"
+          "빈자리 4"
         ]
       },
       "target": {
         "type": "guide",
         "url": "/guide/target-maturity-bond-etf",
         "title": "만기매칭형 채권 ETF, 만기에 청산되는 채권 투자"
+      },
+      "action": "기존 주소 보강"
+    },
+    {
+      "query": "ISA 비과세 한도",
+      "track": "account",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 116861,
+        "webDocCount": 17,
+        "openSlots": 1,
+        "authAbove": 3,
+        "govAbove": 2,
+        "toolTop3": 0,
+        "sisterAbove": 0,
+        "verdict": "closed",
+        "reason": [
+          "빈자리 1<2",
+          "관공서·운용사 3곳"
+        ],
+        "above": [
+          {
+            "host": "kcie.or.kr",
+            "kind": "org",
+            "title": "한국금융투자교육원의 절세 금융상품 가이드북"
+          },
+          {
+            "host": "obank.kbstar.com",
+            "kind": "broker",
+            "title": "ISA 세제 혜택 - 비과세 한도, 절세 효과"
+          },
+          {
+            "host": "finlife.fss.or.kr",
+            "kind": "gov",
+            "title": "ISA | 절세금융상품 | 저축 | 금융감독원 금융상품통합비교공시 금융상품한눈에"
+          },
+          {
+            "host": "dis.kofia.or.kr",
+            "kind": "tool",
+            "title": "ISA 제도 개요"
+          },
+          {
+            "host": "securities.miraeasset.com",
+            "kind": "broker",
+            "title": "ISA란? | ISA 제도안내 | ISA종합 | 금융상품"
+          },
+          {
+            "host": "truefriend.com",
+            "kind": "broker",
+            "title": "ISA 투자자가이드 - ISA 상품가이드 - ISA - 금융상품 | 한국투자증권"
+          },
+          {
+            "host": "kbsec.com",
+            "kind": "broker",
+            "title": "KB증권 | 금융상품 > ISA > ISA 알아보기 > ISA란?[S1]"
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "개인종합자산관리계좌"
+          },
+          {
+            "host": "law.go.kr",
+            "kind": "gov",
+            "title": "개인종합자산관리계좌 과세특례 규정"
+          },
+          {
+            "host": "shinhansec.com",
+            "kind": "broker",
+            "title": "가입대상 및 절차"
+          }
+        ]
+      },
+      "blogTotal": 108627,
+      "kinTotal": 7591,
+      "volumeIndex": 0.62,
+      "trend": 0.9,
+      "season": {
+        "peakMonth": 1,
+        "multiple": 7
+      },
+      "exposure": {
+        "score": 15,
+        "label": "낮음",
+        "reasons": [
+          "지식iN 질문 7,591건",
+          "작년 1월에 7배"
+        ]
+      },
+      "target": {
+        "type": "guide",
+        "url": "/guide/isa-dividend-tax-benefit",
+        "title": "ISA 배당소득 비과세 한도, 200만 400만 절세 정리"
       },
       "action": "기존 주소 보강"
     },
@@ -9768,7 +8952,7 @@
         "ownUrl": null,
         "webDocTotal": 92511,
         "webDocCount": 12,
-        "openSlots": 3,
+        "openSlots": 2,
         "authAbove": 4,
         "govAbove": 0,
         "toolTop3": 0,
@@ -9816,7 +9000,7 @@
           },
           {
             "host": "kbthink.com",
-            "kind": "commercial",
+            "kind": "broker",
             "title": "커버드콜이란? 커버드콜 ETF로 위험 관리하는 방법"
           },
           {
@@ -9840,6 +9024,445 @@
         "label": "낮음",
         "reasons": [
           "지식iN 질문 161건"
+        ]
+      },
+      "target": {
+        "type": "none",
+        "url": null
+      },
+      "action": "새 주소 필요"
+    },
+    {
+      "query": "ISA 연금저축 IRP 차이",
+      "track": "account",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 45879,
+        "webDocCount": 24,
+        "openSlots": 2,
+        "authAbove": 2,
+        "govAbove": 1,
+        "toolTop3": 0,
+        "sisterAbove": 0,
+        "verdict": "closed",
+        "reason": [
+          "관공서·운용사 2곳"
+        ],
+        "above": [
+          {
+            "host": "sll.seoul.go.kr",
+            "kind": "gov",
+            "title": "(화)절세계좌 3총사 300% 활용하기 : ISA, IRP, 연금저축"
+          },
+          {
+            "host": "toss.im",
+            "kind": "broker",
+            "title": "연금저축 vs IRP, 내게 맞는 노후대비 연금 상품은? - 금융이 알고 싶을 때, 토스...."
+          },
+          {
+            "host": "banksalad.com",
+            "kind": "broker",
+            "title": "연금저축·IRP 세액공제 총정리 | 방법, 한도, 최대 환급액까지"
+          },
+          {
+            "host": "blog.koreainvestment.com",
+            "kind": "broker",
+            "title": "연금저축 IRP 차이는? 절세계좌 3가지, 연금저축 IRP ISA 투자 순서 - 한국투자증권...."
+          },
+          {
+            "host": "in.naver.com",
+            "kind": "naver",
+            "title": "연금저축 IRP ISA 비교 정리"
+          },
+          {
+            "host": "frism.io",
+            "kind": "commercial",
+            "title": "개인연금(IRP, 연금저축)과 ISA 계좌의 차이점 - 프리즘(Frism) ,국민 모두를 위한 ...."
+          },
+          {
+            "host": "watax.kr",
+            "kind": "commercial",
+            "title": "연금저축 vs IRP 세액공제 한도 총정리 — 600만 원과 900만 원, 어디에 얼마를 넣...."
+          },
+          {
+            "host": "kbthink.com",
+            "kind": "broker",
+            "title": "IRP(개인형 퇴직연금)란? 계좌 개설부터 퇴직금 수령, 세액공제 혜택까지!"
+          },
+          {
+            "host": "okbfex.kbstar.com",
+            "kind": "broker",
+            "title": "개인형퇴직연금제도(IRP) ( KB퇴직연금 | 퇴직연금 알아보기 | 퇴직연금 제도의 ...."
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "개인종합자산관리계좌"
+          }
+        ]
+      },
+      "blogTotal": 46091,
+      "kinTotal": 1123,
+      "volumeIndex": null,
+      "trend": null,
+      "exposure": {
+        "score": 15,
+        "label": "낮음",
+        "reasons": [
+          "지식iN 질문 1,123건"
+        ]
+      },
+      "target": {
+        "type": "guide",
+        "url": "/guide/isa-vs-pension",
+        "title": "ISA vs 연금저축·IRP 차이 — 절세계좌 고르는 법"
+      },
+      "action": "기존 주소 보강"
+    },
+    {
+      "query": "닛케이 지수 etf",
+      "track": "gsc",
+      "gscImpressions": 1,
+      "gscFile": "gsc_20261004.json",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 379841,
+        "webDocCount": 18,
+        "openSlots": 7,
+        "authAbove": 2,
+        "govAbove": 0,
+        "toolTop3": 1,
+        "sisterAbove": 0,
+        "verdict": "closed",
+        "reason": [
+          "관공서·운용사 2곳"
+        ],
+        "above": [
+          {
+            "host": "kr.investing.com",
+            "kind": "tool",
+            "title": "니케이 225 지수"
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "닛케이 225 - 나무위키"
+          },
+          {
+            "host": "ko.wikipedia.org",
+            "kind": "wiki",
+            "title": "닛케이 평균주가 - 위키백과 한국어"
+          },
+          {
+            "host": "mk.co.kr",
+            "kind": "press",
+            "title": "일학개미, 글로벌X 닛케이ETF에 몰렸다…‘버핏 픽’ 종합상사도 줍줍"
+          },
+          {
+            "host": "smedaily.co.kr",
+            "kind": "press",
+            "title": "3년 만에 아시아 1위 탈환 日증시 '닛케이 추종 ETF' 수익률도 뛴다"
+          },
+          {
+            "host": "stockheyu.com",
+            "kind": "commercial",
+            "title": "일본 주식 종목 TOP10 추천 │ 닛케이225 지수"
+          },
+          {
+            "host": "etfshopping.com",
+            "kind": "commercial",
+            "title": "넥스트펀드 닛케이평균고배당주50지수연동형상장투신"
+          },
+          {
+            "host": "trader.ai.kr",
+            "kind": "commercial",
+            "title": "닛케이지수란? 뜻과 전망, 투자 방법 정리"
+          },
+          {
+            "host": "joongang.co.kr",
+            "kind": "press",
+            "title": "키옥시아 -12%에도 닛케이는 1%대 하락…똑같은 반도체 급락인데 조용했던 日"
+          },
+          {
+            "host": "plus.hankyung.com",
+            "kind": "press",
+            "title": "日 ETF, 닛케이 지수 고공행진 타고 수익률 톱10 진입"
+          }
+        ]
+      },
+      "blogTotal": 16558,
+      "kinTotal": 55,
+      "volumeIndex": null,
+      "trend": null,
+      "exposure": {
+        "score": 15,
+        "label": "낮음",
+        "reasons": [
+          "빈자리 7"
+        ]
+      },
+      "target": {
+        "type": "none",
+        "url": null
+      },
+      "action": "새 주소 필요"
+    },
+    {
+      "query": "KODEX 미국S&P500 KODEX 미국S&P500(H) 차이",
+      "track": "pair",
+      "pairSlug": "kodex-us-sp500-vs-kodex-us-sp500-h",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 235973,
+        "webDocCount": 14,
+        "openSlots": 3,
+        "authAbove": 4,
+        "govAbove": 0,
+        "toolTop3": 0,
+        "sisterAbove": 0,
+        "verdict": "closed",
+        "reason": [
+          "관공서·운용사 4곳"
+        ],
+        "above": [
+          {
+            "host": "m.samsungfund.com",
+            "kind": "issuer",
+            "title": "KODEX 미국S&P500 ETF | Kodex"
+          },
+          {
+            "host": "spglobal.com",
+            "kind": "issuer",
+            "title": "S&P 500® 지수 | S&P 다우존스 지수"
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "S&P 500 - 나무위키"
+          },
+          {
+            "host": "kind.krx.co.kr",
+            "kind": "tool",
+            "title": "KODEX 미국S&P500(H)"
+          },
+          {
+            "host": "pandarank.net",
+            "kind": "commercial",
+            "title": "S&P500 사는법"
+          },
+          {
+            "host": "topetf.app",
+            "kind": "commercial",
+            "title": "S&P 500 ETF 실부담비용 비교 | TOP ETF"
+          },
+          {
+            "host": "kr.investing.com",
+            "kind": "tool",
+            "title": "Samsung KODEX S&P500(H) ETF | 449180 ETF"
+          },
+          {
+            "host": "etfsim.kr",
+            "kind": "commercial",
+            "title": "타이거 코덱스 S&P500 차이 | TIGER vs KODEX 미국S&P500, VOO·SPY까지 ETF 비교 (보수·분...."
+          },
+          {
+            "host": "funetf.co.kr",
+            "kind": "tool",
+            "title": "KODEX 미국S&P500데일리커버드콜OTM(0005A0)주가, 분배금,구성종목"
+          },
+          {
+            "host": "soletf.com",
+            "kind": "issuer",
+            "title": "SOL 미국S&P500ESG (399110)"
+          }
+        ]
+      },
+      "blogTotal": 6969,
+      "kinTotal": 160,
+      "volumeIndex": null,
+      "trend": null,
+      "exposure": {
+        "score": 15,
+        "label": "낮음",
+        "reasons": [
+          "지식iN 질문 160건"
+        ]
+      },
+      "target": {
+        "type": "compare",
+        "url": "/compare/kodex-us-sp500-vs-kodex-us-sp500-h"
+      },
+      "action": "기존 주소 보강"
+    },
+    {
+      "query": "월배당 ETF 분배금 지급일",
+      "track": "account",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 464770,
+        "webDocCount": 13,
+        "openSlots": 3,
+        "authAbove": 6,
+        "govAbove": 1,
+        "toolTop3": 0,
+        "sisterAbove": 0,
+        "verdict": "closed",
+        "reason": [
+          "관공서·운용사 6곳"
+        ],
+        "above": [
+          {
+            "host": "m.samsungfund.com",
+            "kind": "issuer",
+            "title": "ETF 투자정보 | Kodex"
+          },
+          {
+            "host": "seibro.or.kr",
+            "kind": "gov",
+            "title": "분배금지급현황 - 증권정보포털 세이브로"
+          },
+          {
+            "host": "search-etf.com",
+            "kind": "commercial",
+            "title": "ETF 분배금 조회 | 월·분기·연간 배당금 한눈에 | SearchETF"
+          },
+          {
+            "host": "aceetf.co.kr",
+            "kind": "issuer",
+            "title": "한국투자 ACE ETF > 고객서비스 > 공지사항 - 2026년 6월 분배금 안내"
+          },
+          {
+            "host": "investments.miraeasset.com",
+            "kind": "issuer",
+            "title": "TIGER ETF 2026년 8월 중순 분배금 지급 안내 - 상세 | 공지사항"
+          },
+          {
+            "host": "kiwoometf.com",
+            "kind": "issuer",
+            "title": "KIWOOM ETF | 공시/공지 | 공지사항"
+          },
+          {
+            "host": "ko.wikipedia.org",
+            "kind": "wiki",
+            "title": "배당 - 위키백과 한국어"
+          },
+          {
+            "host": "kind.krx.co.kr",
+            "kind": "tool",
+            "title": "68659_ETF이익금분배 신고(분배금 안내)(일괄공시)"
+          },
+          {
+            "host": "bebooja.com",
+            "kind": "commercial",
+            "title": "JEPI 배당금 계산기 | 월배당 고배당 ETF 투자하기"
+          },
+          {
+            "host": "smarttoday.co.kr",
+            "kind": "commercial",
+            "title": "[표] 삼성자산운용 KODEX 월배당 ETF 10월 분배금 내역"
+          }
+        ]
+      },
+      "blogTotal": 13154,
+      "kinTotal": 107,
+      "volumeIndex": null,
+      "trend": null,
+      "exposure": {
+        "score": 15,
+        "label": "낮음",
+        "reasons": [
+          "지식iN 질문 107건"
+        ]
+      },
+      "target": {
+        "type": "none",
+        "url": null
+      },
+      "action": "새 주소 필요"
+    },
+    {
+      "query": "연금계좌 해외 ETF 과세이연",
+      "track": "account",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 332697,
+        "webDocCount": 26,
+        "openSlots": 3,
+        "authAbove": 3,
+        "govAbove": 1,
+        "toolTop3": 0,
+        "sisterAbove": 0,
+        "verdict": "closed",
+        "reason": [
+          "관공서·운용사 3곳"
+        ],
+        "above": [
+          {
+            "host": "kcie.or.kr",
+            "kind": "org",
+            "title": "해외 ETF, 연금계좌로 투자하면 어떤 혜택이?"
+          },
+          {
+            "host": "shinhansec.com",
+            "kind": "broker",
+            "title": "연금저축이란? - 신한투자증권"
+          },
+          {
+            "host": "aceetf.co.kr",
+            "kind": "issuer",
+            "title": "한국투자 ACE ETF > ETF로 연금투자 > 연금투자 가이드"
+          },
+          {
+            "host": "tossbank.com",
+            "kind": "broker",
+            "title": "배당소득 과세 방식 변경! 연금계좌에서 해외 ETF 투자할 때 세제 혜택 줄어든다...."
+          },
+          {
+            "host": "kiwoom.com",
+            "kind": "broker",
+            "title": "매매가능 연금ETF"
+          },
+          {
+            "host": "nts.go.kr",
+            "kind": "gov",
+            "title": "국세청>국세신고안내>법인신고안내>원천세>연금소득> 연금소득의 범위"
+          },
+          {
+            "host": "kbthink.com",
+            "kind": "broker",
+            "title": "퇴직연금 세금, 언제 얼마나 낼까? 과세이연 및 절세 혜택 알아보기"
+          },
+          {
+            "host": "kiwoomam.com",
+            "kind": "issuer",
+            "title": "키움투자자산운용 | 키움라운지 | 투자정보 | 키자매거진 | [연금술사] 해외 ETF, ...."
+          },
+          {
+            "host": "kukinews.com",
+            "kind": "press",
+            "title": "‘이중과세 논란’ 연금계좌 해외 EFT…투자자는 불만, 증권사는 고심"
+          },
+          {
+            "host": "economist.co.kr",
+            "kind": "commercial",
+            "title": "해외 ETF 복리효과 사라진 ‘ISA‧연금계좌’…투자자 ‘이중과세’ 불만↑[머...."
+          }
+        ]
+      },
+      "blogTotal": 25718,
+      "kinTotal": 1210,
+      "volumeIndex": null,
+      "trend": null,
+      "exposure": {
+        "score": 15,
+        "label": "낮음",
+        "reasons": [
+          "지식iN 질문 1,210건"
         ]
       },
       "target": {
@@ -10240,14 +9863,14 @@
         "ownUrl": null,
         "webDocTotal": 686104,
         "webDocCount": 12,
-        "openSlots": 5,
-        "authAbove": 3,
+        "openSlots": 4,
+        "authAbove": 4,
         "govAbove": 0,
         "toolTop3": 0,
         "sisterAbove": 0,
         "verdict": "closed",
         "reason": [
-          "관공서·운용사 3곳"
+          "관공서·운용사 4곳"
         ],
         "above": [
           {
@@ -10257,7 +9880,7 @@
           },
           {
             "host": "ibkasset.com",
-            "kind": "commercial",
+            "kind": "issuer",
             "title": "IBK자산운용 > ETF상품 > IBK 중기종합채권(AA-이상)액티브증권상장지수투자신탁[...."
           },
           {
@@ -10310,7 +9933,7 @@
         "score": 15,
         "label": "낮음",
         "reasons": [
-          "빈자리 5"
+          "빈자리 4"
         ]
       },
       "target": {
@@ -10518,14 +10141,14 @@
         "ownUrl": null,
         "webDocTotal": 3189,
         "webDocCount": 18,
-        "openSlots": 8,
-        "authAbove": 2,
+        "openSlots": 6,
+        "authAbove": 4,
         "govAbove": 0,
         "toolTop3": 0,
         "sisterAbove": 0,
         "verdict": "closed",
         "reason": [
-          "관공서·운용사 2곳"
+          "관공서·운용사 4곳"
         ],
         "above": [
           {
@@ -10551,7 +10174,7 @@
           },
           {
             "host": "spglobal.com",
-            "kind": "commercial",
+            "kind": "issuer",
             "title": "S&P 500® 지수 | S&P 다우존스 지수"
           },
           {
@@ -10566,7 +10189,7 @@
           },
           {
             "host": "namu.wiki",
-            "kind": "commercial",
+            "kind": "wiki",
             "title": "Schwab U.S. Dividend Equity ETF"
           },
           {
@@ -10589,7 +10212,7 @@
         "score": 15,
         "label": "낮음",
         "reasons": [
-          "빈자리 8"
+          "빈자리 6"
         ]
       },
       "target": {
@@ -10629,7 +10252,7 @@
           },
           {
             "host": "namu.wiki",
-            "kind": "commercial",
+            "kind": "wiki",
             "title": "PLUS ETF - 나무위키",
             "stale": true
           },
@@ -11125,6 +10748,97 @@
       "action": "새 주소 필요"
     },
     {
+      "query": "KODEX 코스닥150 구성종목",
+      "track": "product",
+      "code": "229200",
+      "attr": "구성종목",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 23883,
+        "webDocCount": 16,
+        "openSlots": 5,
+        "authAbove": 2,
+        "govAbove": 0,
+        "toolTop3": 1,
+        "sisterAbove": 0,
+        "verdict": "closed",
+        "reason": [
+          "관공서·운용사 2곳"
+        ],
+        "above": [
+          {
+            "host": "m.samsungfund.com",
+            "kind": "issuer",
+            "title": "KODEX 코스닥 150 ETF | Kodex"
+          },
+          {
+            "host": "funetf.co.kr",
+            "kind": "tool",
+            "title": "KODEX 코스닥150(229200)주가, 분배금,구성종목"
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "KOSDAQ150"
+          },
+          {
+            "host": "etfshopping.com",
+            "kind": "commercial",
+            "title": "KODEX 코스닥150 특징과 장단점"
+          },
+          {
+            "host": "stockplus.com",
+            "kind": "commercial",
+            "title": "KODEX 코스닥150레버리지 종목 상세 정보 확인하기"
+          },
+          {
+            "host": "therich.io",
+            "kind": "commercial",
+            "title": "KODEX 코스닥150(229200) ETF 주가·분배금·배당일"
+          },
+          {
+            "host": "alphasquare.co.kr",
+            "kind": "tool",
+            "title": "KODEX 코스닥150선물인버스 주가 📈"
+          },
+          {
+            "host": "kind.krx.co.kr",
+            "kind": "tool",
+            "title": "KODEX 코스닥150"
+          },
+          {
+            "host": "nongnong.co.kr",
+            "kind": "commercial",
+            "title": "KODEX 코스닥 150 ETF 사는법, 분석, 주가, 구성종목 분석, 투자 전략 및 유의사항 - ...."
+          },
+          {
+            "host": "scoreport.kr",
+            "kind": "commercial",
+            "title": "KODEX 코스닥150 — 구성종목·수익률·괴리율 분석"
+          }
+        ]
+      },
+      "blogTotal": 6063,
+      "kinTotal": 66,
+      "volumeIndex": 0.07,
+      "trend": 2.8,
+      "exposure": {
+        "score": 10,
+        "label": "낮음",
+        "reasons": [
+          "빈자리 5",
+          "3주 전보다 2.8배",
+          "구성종목 자료 없음(운용사 허락 필요)"
+        ]
+      },
+      "target": {
+        "type": "etf",
+        "url": "/etf/kodex-kosdaq150"
+      },
+      "action": "기존 주소 보강"
+    },
+    {
       "query": "SOL AI반도체TOP2플러스 구성종목",
       "track": "product",
       "code": "0167A0",
@@ -11305,6 +11019,282 @@
       "target": {
         "type": "etf",
         "url": "/etf/kodex-aisemiconductor"
+      },
+      "action": "기존 주소 보강"
+    },
+    {
+      "query": "TIGER 미국S&P500 구성종목",
+      "track": "product",
+      "code": "360750",
+      "attr": "구성종목",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 63040,
+        "webDocCount": 15,
+        "openSlots": 7,
+        "authAbove": 2,
+        "govAbove": 0,
+        "toolTop3": 1,
+        "sisterAbove": 0,
+        "verdict": "closed",
+        "reason": [
+          "관공서·운용사 2곳"
+        ],
+        "above": [
+          {
+            "host": "etfshopping.com",
+            "kind": "commercial",
+            "title": "TIGER 미국S&P500 특징과 장단점",
+            "stale": true
+          },
+          {
+            "host": "kind.krx.co.kr",
+            "kind": "tool",
+            "title": "TIGER 미국S&P500"
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "S&P 500 - 나무위키"
+          },
+          {
+            "host": "investments.miraeasset.com",
+            "kind": "issuer",
+            "title": "TIGER 미국S&P500배당귀족 | ETF 상품",
+            "stale": true
+          },
+          {
+            "host": "therich.io",
+            "kind": "commercial",
+            "title": "TIGER 미국S&P500(360750) ETF 주가·분배금·배당일"
+          },
+          {
+            "host": "kiwoometf.com",
+            "kind": "issuer",
+            "title": "KIWOOM 미국S&P500모멘텀"
+          },
+          {
+            "host": "stockplus.com",
+            "kind": "commercial",
+            "title": "TIGER 미국S&P500 종목 상세 정보 확인하기"
+          },
+          {
+            "host": "stockray.app",
+            "kind": "commercial",
+            "title": "TIGER 미국S&P500 주가·시세 · ETF 정보"
+          },
+          {
+            "host": "refininfo.com",
+            "kind": "commercial",
+            "title": "TIGER 미국S&P500이란, 어떤 지수를 추종하는지 자세히 확인해보세요 - 실속노트"
+          },
+          {
+            "host": "stocklabs.co.kr",
+            "kind": "commercial",
+            "title": "TIGER 미국S&P500 시세"
+          }
+        ]
+      },
+      "blogTotal": 28261,
+      "kinTotal": 771,
+      "volumeIndex": null,
+      "trend": null,
+      "exposure": {
+        "score": 10,
+        "label": "낮음",
+        "reasons": [
+          "빈자리 7",
+          "지식iN 질문 771건",
+          "구성종목 자료 없음(운용사 허락 필요)"
+        ]
+      },
+      "target": {
+        "type": "etf",
+        "url": "/etf/tiger-us-sp500"
+      },
+      "action": "기존 주소 보강"
+    },
+    {
+      "query": "KODEX 미국S&P500 구성종목",
+      "track": "product",
+      "code": "379800",
+      "attr": "구성종목",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 2274254,
+        "webDocCount": 11,
+        "openSlots": 6,
+        "authAbove": 3,
+        "govAbove": 0,
+        "toolTop3": 1,
+        "sisterAbove": 0,
+        "verdict": "closed",
+        "reason": [
+          "관공서·운용사 3곳"
+        ],
+        "above": [
+          {
+            "host": "m.samsungfund.com",
+            "kind": "issuer",
+            "title": "KODEX 미국S&P500 ETF | Kodex"
+          },
+          {
+            "host": "funetf.co.kr",
+            "kind": "tool",
+            "title": "KODEX 미국S&P500데일리커버드콜OTM(0005A0)주가, 분배금,구성종목"
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "S&P 500 - 나무위키"
+          },
+          {
+            "host": "therich.io",
+            "kind": "commercial",
+            "title": "KODEX 미국S&P500(379800) ETF 주가·분배금·배당일"
+          },
+          {
+            "host": "etfshopping.com",
+            "kind": "commercial",
+            "title": "TIGER 미국S&P500 특징과 장단점",
+            "stale": true
+          },
+          {
+            "host": "spglobal.com",
+            "kind": "issuer",
+            "title": "S&P 500® 지수 | S&P 다우존스 지수"
+          },
+          {
+            "host": "stockplus.com",
+            "kind": "commercial",
+            "title": "KODEX 미국S&P500 종목 상세 정보 확인하기"
+          },
+          {
+            "host": "goinsider.kr",
+            "kind": "commercial",
+            "title": "KODEX 미국S&P500 (379800) - 구성종목·분배금·추적오차"
+          },
+          {
+            "host": "stocklabs.co.kr",
+            "kind": "commercial",
+            "title": "KODEX 미국S&P500 시세"
+          },
+          {
+            "host": "stockray.app",
+            "kind": "commercial",
+            "title": "KODEX 미국S&P500선물(H) 주가·시세 · ETF 정보"
+          }
+        ]
+      },
+      "blogTotal": 26266,
+      "kinTotal": 619,
+      "volumeIndex": null,
+      "trend": null,
+      "exposure": {
+        "score": 10,
+        "label": "낮음",
+        "reasons": [
+          "빈자리 6",
+          "지식iN 질문 619건",
+          "구성종목 자료 없음(운용사 허락 필요)"
+        ]
+      },
+      "target": {
+        "type": "etf",
+        "url": "/etf/kodex-us-sp500"
+      },
+      "action": "기존 주소 보강"
+    },
+    {
+      "query": "ACE 미국S&P500 구성종목",
+      "track": "product",
+      "code": "360200",
+      "attr": "구성종목",
+      "serp": {
+        "rank": null,
+        "ownUrl": null,
+        "webDocTotal": 2266726,
+        "webDocCount": 19,
+        "openSlots": 6,
+        "authAbove": 4,
+        "govAbove": 0,
+        "toolTop3": 0,
+        "sisterAbove": 0,
+        "verdict": "closed",
+        "reason": [
+          "관공서·운용사 4곳"
+        ],
+        "above": [
+          {
+            "host": "ko.wikipedia.org",
+            "kind": "wiki",
+            "title": "S&P 500 - 위키백과 한국어"
+          },
+          {
+            "host": "etfshopping.com",
+            "kind": "commercial",
+            "title": "ACE 미국S&P500 특징과 장단점"
+          },
+          {
+            "host": "stockplus.com",
+            "kind": "commercial",
+            "title": "ACE 미국S&P500미국채혼합50액티브 종목 상세 정보 확인하기"
+          },
+          {
+            "host": "namu.wiki",
+            "kind": "wiki",
+            "title": "S&P 500 - 나무위키"
+          },
+          {
+            "host": "stockray.app",
+            "kind": "commercial",
+            "title": "ACE 미국S&P500 주가·시세 · ETF 정보"
+          },
+          {
+            "host": "spglobal.com",
+            "kind": "issuer",
+            "title": "S&P 500® 지수 | S&P 다우존스 지수"
+          },
+          {
+            "host": "soletf.com",
+            "kind": "issuer",
+            "title": "SOL 미국S&P500ESG (399110)"
+          },
+          {
+            "host": "financefairy.co.kr",
+            "kind": "commercial",
+            "title": "ACE 미국 S&P500 배당일, 수수료, 수익률 알아보기"
+          },
+          {
+            "host": "nongnong.co.kr",
+            "kind": "commercial",
+            "title": "ACE 미국S&P500 ETF 사는법, 분석, 주가, 구성종목 분석, 투자 전략 및 유의사항 - 금...."
+          },
+          {
+            "host": "mokdon.kr",
+            "kind": "commercial",
+            "title": "ACE 미국S&P500(360200) 실시간 차트·수익률·구성 종목"
+          }
+        ]
+      },
+      "blogTotal": 11809,
+      "kinTotal": 197,
+      "volumeIndex": null,
+      "trend": null,
+      "exposure": {
+        "score": 10,
+        "label": "낮음",
+        "reasons": [
+          "빈자리 6",
+          "지식iN 질문 197건",
+          "구성종목 자료 없음(운용사 허락 필요)"
+        ]
+      },
+      "target": {
+        "type": "etf",
+        "url": "/etf/ace-us-sp500"
       },
       "action": "기존 주소 보강"
     },
