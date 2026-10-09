@@ -256,7 +256,7 @@ function findEtfInQuery(q) {
   let n = normName(q);
   for (const [ko, en] of BRAND_ALIAS) if (n.startsWith(ko)) n = en + n.slice(ko.length);
   const exact = etfByNorm.find((e) => e.norm.length >= 5 && n.includes(e.norm));
-  if (exact) return exact;
+  if (exact) return refineByRest(n, exact);
   // "미국"을 빼고 쓰는 검색("tiger s&p500")까지. 브랜드로 시작하는 쿼리만
   const loose = n.replace(/미국/g, '');
   return (
@@ -265,6 +265,18 @@ function findEtfInQuery(q) {
       return en.length >= 8 && loose.includes(en) && loose.startsWith(en.slice(0, 3));
     }) || null
   );
+}
+
+// 상품명 뒤에 다른 상품을 가르는 말("커버드콜", "타겟커버드콜")이 붙은 검색을 기본 상품에 잇지 않는다.
+// "tiger 미국배당다우존스 커버드콜"은 TIGER 미국배당다우존스가 아니라 커버드콜 1호·2호·데일리 중 하나를 찾는다 (2026-10-10)
+const ATTR_WORDS = /(주가|분배금|배당금|배당|구성종목|종목코드|총보수|수익률|차이|비교|전망|etf)/g;
+function refineByRest(n, base) {
+  const rest = n.replace(base.norm, '').replace(ATTR_WORDS, '');
+  if (!rest) return base;
+  const cands = etfByNorm.filter((c) => c.norm !== base.norm && c.norm.startsWith(base.norm) && c.norm.includes(rest));
+  if (cands.length === 1) return cands[0];
+  if (cands.length > 1) return { ambiguous: cands.map((c) => c.name) };
+  return base;
 }
 
 const SPECULATIVE = /(레버리지|인버스|2X|선물)/;
@@ -612,6 +624,7 @@ function exposureOf(it) {
 function siteTarget(it) {
   if (it.pairSlug) return { type: 'compare', url: `/compare/${it.pairSlug}` };
   const etf = it.code ? { code: it.code } : findEtfInQuery(it.query);
+  if (etf?.ambiguous) return { type: 'none', url: null, candidates: etf.ambiguous };
   if (etf && it.track !== 'group' && it.track !== 'account') {
     const slug = slugOf(etf.code);
     if (slug) return { type: 'etf', url: `/etf/${slug}` };
