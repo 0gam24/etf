@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getLatestEtfData, getKrxEtfMeta } from '@/lib/data';
+import { getLatestEtfData, getKrxEtfMeta, codeToSlug } from '@/lib/data';
+import { listEtfProfiles } from '@/lib/etf-profiles';
 import { COMPARE_PAIRS } from '@/lib/etf-compare-pairs';
 import { getLatestBundle, getUnifiedFeed, getCategoryShelves, formatDateKeyKo } from '@/lib/home-feed';
 import { buildItemListSchema, jsonLd } from '@/lib/schema';
@@ -53,6 +54,9 @@ export default async function HomePage() {
   const comparePairs = COMPARE_PAIRS
     .filter(p => krxNameOf(p.codeA) && krxNameOf(p.codeB))
     .map(p => ({ slug: p.slug, label: `${krxNameOf(p.codeA)} vs ${krxNameOf(p.codeB)} 차이` }));
+  const profiledEtfs = listEtfProfiles()
+    .filter(p => krxNameOf(p.code))
+    .map(p => ({ slug: codeToSlug(p.code), name: krxNameOf(p.code)!, code: p.code }));
 
   // ── 블로그형 홈의 단일 데이터 소스: 통합 발행 피드 ──
   const bundle = getLatestBundle();
@@ -136,6 +140,20 @@ export default async function HomePage() {
           <li><Link href="/tools/tax-compare" prefetch={false}>계좌별 세후 수익률 비교 (ISA·연금저축·IRP)</Link></li>
         </ul>
       </section>
+
+      {/* 상품 개요를 정리한 ETF (2026-10-10). 개요 페이지가 홈에서 한 번에 닿아야 검색 로봇이 찾아온다. */}
+      {profiledEtfs.length > 0 && (
+        <section className="home-bundle" aria-labelledby="home-profile-title">
+          <h2 id="home-profile-title" className="home-bundle-title">투자 대상과 총보수를 정리한 ETF</h2>
+          <ul className="home-link-list">
+            {profiledEtfs.map(p => (
+              <li key={p.code}>
+                <Link href={`/etf/${p.slug}`} prefetch={false}>{p.name} ({p.code}) 투자 대상·총보수·분배</Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {/* 페르소나 선택 — 7 상황별 entry page 라우팅 (Condensed "내 상황은?" anchor) */}
       <div id="persona-selector" style={{ scrollMarginTop: '5rem' }}>

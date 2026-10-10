@@ -1,10 +1,23 @@
+import Link from 'next/link';
 import type { EtfProfile } from '@/lib/etf-profiles';
 
 /**
  * 종목 사전 상품 개요 (src/lib/etf-profiles.ts 에 확인된 설명이 있는 종목만).
  *   상품명 검색에 먼저 답하도록 시세 표보다 위에 둔다. 사실표 → 본문 → 비슷한 상품 비교 → 자주 묻는 질문 → 출처.
  */
-export default function EtfProfileSection({ profile, name }: { profile: EtfProfile; name: string }) {
+export default function EtfProfileSection({
+  profile,
+  name,
+  rowLinks = [],
+  others = [],
+}: {
+  profile: EtfProfile;
+  name: string;
+  /** 비교표 행마다 그 상품 페이지 주소 (없으면 null) */
+  rowLinks?: (string | null)[];
+  /** 개요를 정리한 다른 종목 */
+  others?: { href: string; label: string }[];
+}) {
   const updated = new Date(`${profile.updatedAt}T00:00:00+09:00`).toLocaleDateString('ko-KR', {
     year: 'numeric',
     month: 'long',
@@ -49,7 +62,15 @@ export default function EtfProfileSection({ profile, name }: { profile: EtfProfi
             <tbody>
               {profile.comparison.rows.map((r, i) => (
                 <tr key={i}>
-                  {r.map((cell, j) => (j === 0 ? <th key={j} scope="row">{cell}</th> : <td key={j}>{cell}</td>))}
+                  {r.map((cell, j) =>
+                    j === 0 ? (
+                      <th key={j} scope="row">
+                        {rowLinks[i] ? <Link href={rowLinks[i]!} prefetch={false}>{cell}</Link> : cell}
+                      </th>
+                    ) : (
+                      <td key={j}>{cell}</td>
+                    ),
+                  )}
                 </tr>
               ))}
             </tbody>
@@ -76,6 +97,19 @@ export default function EtfProfileSection({ profile, name }: { profile: EtfProfi
             {profile.sources.map(s => (
               <li key={s.url}>
                 <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {others.length > 0 && (
+        <div className="etf-profile-block">
+          <h3 className="etf-profile-h3">투자 대상과 총보수를 정리한 다른 ETF</h3>
+          <ul className="home-link-list">
+            {others.map(o => (
+              <li key={o.href}>
+                <Link href={o.href} prefetch={false}>{o.label}</Link>
               </li>
             ))}
           </ul>

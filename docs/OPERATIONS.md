@@ -84,6 +84,7 @@
 - [!] Search Console: sitemap-index.xml 재제출, 인기 /etf 10쪽 "색인 생성 요청", 수동 조치·보안 문제 확인
 - [!] 네이버 서치어드바이저: 사이트맵·RSS 재제출, 08~09월 노출·클릭 CSV 를 data/keywords/ 에 저장
 - [!] 네이버 서치어드바이저 "웹 페이지 수집" 요청: `data/keywords/naver-collect-request-20261007.txt` 의 24개 주소를 위에서부터(빈틈 검색어가 가리키는데 색인이 안 된 주소)
+- [!] 네이버 서치어드바이저 "웹 페이지 수집" 요청 추가 (2026-10-10, 상품 개요를 쓴 /etf 5쪽 중 4쪽 미색인): /etf/plus-aisemiconductoractive · /etf/rise-sk · /etf/tiger-lgai · /etf/tiger-us-dividend-djones · /etf/power-sk(색인됨, 갱신 요청)
 - [!] (선택) 네이버 검색광고 API 키 발급: 키워드별 월간 검색 수 절대값을 알려면 필요하다. searchad.naver.com 계정 → 도구 → API 사용 관리. 발급 후 `.env.local` 에 넣는다(채팅에 원문을 붙이지 않는다)
 - [!] AdSense: 사이트 상태 "준비됨" 확인, 정책 센터 확인, 디스플레이 광고 단위 2개(본문 중간·하단) 생성 후 slot ID 를 .env.local 과 Cloudflare 환경변수 `NEXT_PUBLIC_AD_SLOT_IN_ARTICLE`·`NEXT_PUBLIC_AD_SLOT_BOTTOM` 에 입력(채팅에 원문을 붙이지 않는다)
 - [!] 로컬 예약 작업 첫 실행 승인: 사이드바 Scheduled 에서 각 작업 "지금 실행" 후 git commit 등을 "항상 허용"
@@ -100,7 +101,8 @@
 - [ ] **네이버 빈틈 보강 순서** (naver-gap-20261007, §6-3 이 하루 1편씩 가져간다. 보강하면 줄을 지운다): ETF 괴리율 뜻(/guide/etf-fee-discount-relation, 작년 11월 7.1배) · 해외주식 양도세 250만원·연말 매도(/guide/overseas-stock-year-end-sell-amount) · 환헤지 ETF 환노출 차이(/guide/hedge-vs-unhedged) · ISA 연금저축 IRP 차이(/guide/isa-vs-pension) · 연금저축 ETF 매도 세금(/guide/pension-fund-etf-trading) · ISA 만기 해지 세금(/guide/isa-termination-after-3-years, 미색인) · 은행 etf(/guide/bank-etf, 미색인) · 삼성전자 분기 배당(/guide/individual-stock-dividend-schedule)
 - [ ] 사실 정정 후보 (2026-10-07 보강 조사 중 발견, 1차 출처 재확인 후 정정): `etf-fee` 가 "실부담비용(TER)"으로 두 개념을 같게 씀(TER 에는 매매·중개수수료가 빠진다, KB자산운용 안내)·"총보수 연 0.05~0.5%" 범위가 S&P500 상품(0.0047%)과 안 맞음 / `domestic-sp500-etf-comparison` 의 "TIGER 순자산 약 16조원대"는 기준일 경과로 낡은 수치(시세 이용 조건 결정 전이면 수치 대신 확인 경로로) / `pension-account-etf-restrictions` 의 연금저축 레버리지·인버스 매수 금지 근거(퇴직급여법이 아니라 연금저축 쪽 규정) 재확인 / `isa-to-pension-tax-credit` 의 "그전에 깨면 기타소득세 16.5%가 붙습니다"는 공제받은 납입액·운용수익만 과세라는 점이 빠짐(시행령 제40조의3)
 - [ ] 새 주소 후보(주 2개 상한 안, 같은 지수 확인 후): 고배당주 ETF 비교(비교 페어) · 퇴직연금 ETF 매수(가이드, 기존 IRP 글과 의도 구분 확인) · 연금저축 연말 납입(기존 "연금저축 vs IRP 차이, 세액공제 한도와 채우는 순서"와 겹침 확인)
-- [ ] `/etf` 상품 개요(src/lib/etf-profiles.ts, 2026-10-08 신설) 다음 대상: 네이버 빈틈에서 자리 열린 신규 상장 ETF(RISE 삼성SK그룹 · PLUS 코리아HBM반도체 · HANARO 미국에이전틱AI TOP2+ · RISE 글로벌AI낸드메모리반도체). 운용사 상품 페이지·투자설명서로 확인한 사실만, 구성종목·시세 숫자 없이. 한 번에 한 종목
+- [ ] `/etf` 상품 개요(src/lib/etf-profiles.ts, 2026-10-08 신설) 다음 대상 (naver-gap-20261010 점수순): sol 미국양자컴퓨팅top10(검색량 3.8) · PLUS 코리아HBM반도체 · RISE 글로벌AI낸드메모리반도체 · TIGER 삼성전자SK하이닉스미국채혼합50 · ACE 삼성전자SK하이닉스플러스채권혼합50 · HANARO 미국에이전틱AI TOP2+ · TIGER 미국배당다우존스 분배금(10-10 개요로 일부 답함). 운용사 상품 페이지·투자설명서로 확인한 사실만, 구성종목·시세 숫자 없이. 쓴 뒤 `npx tsx scripts/check-etf-profiles.mts` 로 점검
+- [ ] 새 주소 후보 (naver-gap-20261010 점수 70): "tiger 미국배당다우존스 커버드콜"·"tiger 미국배당다우존스타겟커버드콜" 은 1호·2호·데일리 세 상품 사이의 선택 의도라 상품 페이지 하나로 받지 못한다. 세 상품 비교(지수 3%·7%·10% 프리미엄, 총보수 0.39·0.39·0.25%, 분배 기준일 15일·말일·15일, 2026-10-10 확인)를 새 비교 주소로. 같은 지수가 아니라 비교 페어 규칙(§2-3) 밖이니 가이드 또는 /compare 예외로 운영자 판단
 - [ ] 비교 페이지 네이버 색인 2/11: `/compare` 본문이 같은 틀의 숫자 표 위주라 얇게 읽힐 수 있다. 쌍마다 다른 정보(기초지수 설명·상장일·총보수·분배 기준일)를 더하는 템플릿 보강
 - [ ] `/etf` 네이버 색인(시가총액 상위 100쪽 중 31): 시세 이용 조건 결정 뒤 템플릿 차별화 작업과 묶어서
 - [ ] `/tools` 허브 페이지(도구 목록, 내부 링크 진입점)와 헤더·푸터 링크
@@ -122,6 +124,7 @@
 - [ ] D30 판정 (2026-10-30): 9월 가이드 색인 비율, /etf 노출 → PUBLISHING.md §8
 
 ### 완료
+- [x] 2026-10-10 상품 개요 4종 신설(파워 SK그룹·RISE 삼성SK그룹·TIGER 현대차LG전자고정피지컬AI밸류체인·TIGER 미국배당다우존스)과 PLUS AI반도체소부장액티브 추가 보강. 개요를 쓴 종목을 홈·종목 사전 허브·개요 페이지끼리 서로 잇고 비교표 상품명을 각 종목 페이지로 연결(10-08 개요를 붙인 0239Z0 가 링크가 없어 네이버 미색인이었다). 점검 스크립트 `scripts/check-etf-profiles.mts`. 빈틈 측정에서 상품명 뒤에 다른 상품을 가르는 말이 붙은 검색어(커버드콜 등)를 기본 상품에 잇지 않도록 수정
 - [x] 2026-09-30 시세 복구·색인 규칙 재설계·사실 오류 정정·www 404·가짜 시세 폴백 제거
 - [x] 2026-10-06 시세 스냅샷을 GitHub Actions 로 이관(클라우드 루틴 403, 로컬 작업 승인 대기로 10-02 이후 정지)
 - [x] 2026-10-06 비교 페어 SOL vs TIGER 미국배당다우존스
@@ -165,3 +168,8 @@
 | 2026-10-07 | ETF 총보수 비교 | /guide/same-index-etf-choice | 30위 밖(색인됨) | | |
 | 2026-10-07 | ISA 만기 연금저축 이전 | /guide/isa-to-pension-transfer | 30위 밖(색인됨) | | |
 | 2026-10-08 | PLUS AI반도체소부장액티브 | /etf/plus-aisemiconductoractive (상품 개요 신설) | 30위 밖(색인 미확인) | | |
+| 2026-10-10 | PLUS AI반도체소부장액티브 (추가 보강) | /etf/plus-aisemiconductoractive (운용역 관점·과세·첫 분배 일정) | 30위 밖(네이버 미색인 확인, `site:` 0건) | | |
+| 2026-10-10 | 파워 SK그룹 | /etf/power-sk (상품 개요 신설) | 30위 밖(색인됨) | | |
+| 2026-10-10 | RISE 삼성SK그룹 | /etf/rise-sk (상품 개요 신설) | 30위 밖(미색인) | | |
+| 2026-10-10 | TIGER 현대차LG전자고정피지컬AI밸류체인 | /etf/tiger-lgai (상품 개요 신설) | 30위 밖(미색인) | | |
+| 2026-10-10 | tiger 미국배당다우존스 주가·분배금 | /etf/tiger-us-dividend-djones (상품 개요 신설, 시세 숫자 없이 가격 결정 요인) | 30위 밖(미색인) | | |

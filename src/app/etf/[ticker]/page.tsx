@@ -14,7 +14,9 @@ import {
   getIssuerOfficialUrl,
   getEtfPageFacts,
   formatEtfPriceAsOf,
+  codeToSlug,
 } from '@/lib/data';
+import { listEtfProfiles } from '@/lib/etf-profiles';
 import { getInvestmentPoints } from '@/lib/etf-investment-points';
 import { getEtfSiblings } from '@/lib/etf-siblings';
 import EtfSiblingLinks from '@/components/EtfSiblingLinks';
@@ -484,7 +486,19 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
       {/* 상품 개요 — 1차 출처로 확인한 설명이 있는 종목만. 상품명 검색이 먼저 묻는 것이라 시세 표보다 위에 둔다 */}
       {profile && (
         <>
-          <EtfProfileSection profile={profile} name={displayName} />
+          <EtfProfileSection
+            profile={profile}
+            name={displayName}
+            // 비교표 첫 칸의 "(코드)"를 그 종목 페이지로 잇고, 개요를 쓴 다른 종목도 함께 잇는다 (2026-10-10, 크롤 경로)
+            rowLinks={(profile.comparison?.rows || []).map(r => {
+              const c = r[0].match(/\(([0-9A-Z]{6})\)/)?.[1];
+              return c && c !== profile.code && getKrxEtfMeta(c) ? `/etf/${codeToSlug(c)}` : null;
+            })}
+            others={listEtfProfiles()
+              .filter(p => p.code !== profile.code)
+              .map(p => ({ href: `/etf/${codeToSlug(p.code)}`, label: getKrxEtfMeta(p.code)?.name || '' }))
+              .filter(o => o.label)}
+          />
           {profile.faq && profile.faq.length > 0 && (
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(buildFaqSchema(profile.faq)) }} />
           )}

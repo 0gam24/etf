@@ -14,6 +14,7 @@ import {
 } from '@/lib/data';
 import { buildItemListSchema, jsonLd } from '@/lib/schema';
 import EtfIndexSearch from '@/components/EtfIndexSearch';
+import { listEtfProfiles } from '@/lib/etf-profiles';
 import { buildPageMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = buildPageMetadata({
@@ -131,6 +132,9 @@ export default function EtfIndexPage() {
 
   const totalCount = rows.length;
   const sectorCount = sectorMap.size;
+  const profiled = listEtfProfiles()
+    .map(p => ({ code: p.code, name: getKrxEtfMeta(p.code)?.name }))
+    .filter((p): p is { code: string; name: string } => !!p.name);
   // 시세 기준일: 7일 이내 "{날짜} 종가 기준", 넘기면 "최근 시세 기준일 {날짜}" (오래됐음을 숨기지 않는다)
   const snapshotAge = getEtfSnapshotAge(etfData?.baseDate);
   const formattedBaseDate = snapshotAge?.isoDate || '';
@@ -182,6 +186,20 @@ export default function EtfIndexPage() {
         sectors={Array.from(new Set(rows.map(r => r.sector).filter((s): s is string => !!s))).sort()}
         issuers={Array.from(new Set(rows.map(r => r.issuer).filter((i): i is string => !!i))).sort()}
       />
+
+      {/* 상품 개요를 정리한 종목 (2026-10-10). 운용사 공시로 확인한 투자 대상·총보수·분배를 따로 쓴 페이지라 허브에서 바로 잇는다. */}
+      {profiled.length > 0 && (
+        <section className="etf-index-section">
+          <h2 className="etf-index-h2">투자 대상과 총보수를 정리한 ETF</h2>
+          <ul className="home-link-list">
+            {profiled.map(p => (
+              <li key={p.code}>
+                <Link href={`/etf/${codeToSlug(p.code)}`} prefetch={false}>{p.name} ({p.code})</Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {/* 거래량 TOP 20 */}
       {topByVolume.length > 0 && (
