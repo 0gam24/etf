@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-10-04T04:48:09.931Z",
-  "baseDate": "20261001",
-  "count": 1171,
+  "fetchedAt": "2026-10-11T04:36:24.900Z",
+  "baseDate": "20261007",
+  "count": 1172,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -5818,6 +5818,11 @@
       "issueCode": "KR70242S0000",
       "name": "파워 SK그룹"
     },
+    "0246X0": {
+      "shortcode": "0246X0",
+      "issueCode": "KR70246X0009",
+      "name": "SOL 글로벌DRAM반도체플러스"
+    },
     "069500": {
       "shortcode": "069500",
       "issueCode": "KR7069500007",
@@ -7419,6 +7424,11 @@
       "shortcode": "0242S0",
       "issueCode": "KR70242S0000",
       "name": "파워 SK그룹"
+    },
+    "KR70246X0009": {
+      "shortcode": "0246X0",
+      "issueCode": "KR70246X0009",
+      "name": "SOL 글로벌DRAM반도체플러스"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -13276,6 +13286,11 @@
       "shortcode": "0242S0",
       "issueCode": "KR70242S0000",
       "name": "파워 SK그룹"
+    },
+    {
+      "shortcode": "0246X0",
+      "issueCode": "KR70246X0009",
+      "name": "SOL 글로벌DRAM반도체플러스"
     },
     {
       "shortcode": "069500",

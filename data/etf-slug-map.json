@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-04T04:48:10.096Z",
-  "sourceBaseDate": "20261001",
-  "count": 1171,
+  "generatedAt": "2026-10-11T04:36:25.066Z",
+  "sourceBaseDate": "20261007",
+  "count": 1172,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -1173,7 +1173,8 @@
     "0239Z0": "plus-aisemiconductoractive",
     "0240J0": "rise-sk",
     "0241R0": "tiger-lgai",
-    "0242S0": "power-sk"
+    "0242S0": "power-sk",
+    "0246X0": "sol-globaldramsemiconductorplus"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -5859,6 +5860,10 @@
     "power-sk": {
       "code": "0242S0",
       "name": "파워 SK그룹"
+    },
+    "sol-globaldramsemiconductorplus": {
+      "code": "0246X0",
+      "name": "SOL 글로벌DRAM반도체플러스"
     }
   }
 }
