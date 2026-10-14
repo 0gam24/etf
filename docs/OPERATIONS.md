@@ -48,7 +48,7 @@
 3. **ETF 전용 계산 도구** (`/tools`): 도구 검색은 수요가 크고 반복 방문이 생긴다. 형제 사이트 calculatorhost 실측에서 도구 페이지는 가이드보다 쪽당 노출이 약 6.6배였다.
 4. **크롤 회복**: 구글이 7월 말부터 새 주소를 크롤하지 않는다(9월 가이드 31편 미크롤). sitemap·RSS 의 404 제거, 같은 지수 상품끼리의 내부 링크, 얇은 페이지 정리로 크롤 수요를 되살린다.
 5. **네이버**: 08월 노출 6.8만으로 구글보다 큰 채널이었다. 제목·요약 문구, 서치어드바이저 신호를 네이버 검색 결과에 맞춘다.
-6. **수익화 배치**: 트래픽이 생긴 페이지부터 수동 광고 단위(본문 중간·표 아래)를 더해 페이지당 수익을 올린다. 광고 단위 ID 는 운영자가 AdSense 콘솔에서 만든다.
+6. **수익화**: 애드센스 자동 광고만 쓴다(2026-10-14 운영자 지시, 수동 광고 단위 코드는 삭제). 광고 위치·밀도는 애드센스 콘솔의 자동 광고 설정에서 조정한다.
 7. **재방문**: RSS·웹푸시 구독, 월간 분배 캘린더처럼 다시 올 이유가 있는 페이지.
 
 ## 3. 넘지 않는 선
@@ -86,7 +86,9 @@
 - [!] 네이버 서치어드바이저 "웹 페이지 수집" 요청: `data/keywords/naver-collect-request-20261007.txt` 의 24개 주소를 위에서부터(빈틈 검색어가 가리키는데 색인이 안 된 주소)
 - [!] 네이버 서치어드바이저 "웹 페이지 수집" 요청 추가 (2026-10-10, 상품 개요를 쓴 /etf 5쪽 중 4쪽 미색인): /etf/plus-aisemiconductoractive · /etf/rise-sk · /etf/tiger-lgai · /etf/tiger-us-dividend-djones · /etf/power-sk(색인됨, 갱신 요청)
 - [!] (선택) 네이버 검색광고 API 키 발급: 키워드별 월간 검색 수 절대값을 알려면 필요하다. searchad.naver.com 계정 → 도구 → API 사용 관리. 발급 후 `.env.local` 에 넣는다(채팅에 원문을 붙이지 않는다)
-- [!] AdSense: 사이트 상태 "준비됨" 확인, 정책 센터 확인, 디스플레이 광고 단위 2개(본문 중간·하단) 생성 후 slot ID 를 .env.local 과 Cloudflare 환경변수 `NEXT_PUBLIC_AD_SLOT_IN_ARTICLE`·`NEXT_PUBLIC_AD_SLOT_BOTTOM` 에 입력(채팅에 원문을 붙이지 않는다)
+- [!] AdSense: 사이트 상태 "준비됨"·정책 센터 확인, 자동 광고 켜짐과 광고 밀도 확인. 수동 광고 단위는 만들지 않는다(2026-10-14 운영자 지시)
+- [!] Search Console URL 검사 → "색인 생성 요청" (2026-10-14 URL 검사 실측: 마지막 방문 때 404·noindex 이던 기록이 남은 주소와 처음 보는 주소): /etf/tiger-us-dividend-djones(06-15 noindex 기록, 지금은 색인 대상) · /compare/kodex-us-nasdaq100-vs-tiger-us-nasdaq100(06-09 404 기록) · /compare/tiger-us-dividend-monthly-vs-kodex-us-dividend-djones(05-14 404 기록) · /compare/sol-us-dividend-djones-vs-tiger-us-dividend-djones(구글 미인지) · /compare/kodex-battery-vs-tiger-battery · /guide/etf-return-rate-difference · /guide/category/isa · /guide/category/pension · /guide/category/tax · /guide/category/dividend (하루 10건 안팎)
+- [!] Cloudflare 보안 → 봇 설정 확인: "AI 봇 차단(Block AI bots)"·AI Crawl Control 이 켜져 있으면 AI 도구(제미나이 등)의 페이지 열람이 403 으로 막힐 수 있다(운영자가 받은 PERMISSION_DENIED 의 후보 원인). 구글 검색 색인(Googlebot)과는 별개이며 서버·robots 는 Google-Extended 를 허용하고 있다
 - [!] 로컬 예약 작업 첫 실행 승인: 사이드바 Scheduled 에서 각 작업 "지금 실행" 후 git commit 등을 "항상 허용"
 
 ### 대기
@@ -113,17 +115,17 @@
 - [ ] 비교 페어 설명 사실 점검: 나스닥100·레버리지 페어 `context` 문구를 운용사 문서로 재확인
 - [ ] `/today/{date}` 처리 결정(현재 404, sitemap 에서는 제거됨): 301 대상 또는 410
 - [ ] 분배 레지스트리 수익률 재확인 후 분배금 계산기 예시표 켜기(`USE_REGISTRY_YIELD_EXAMPLES`)
-- [ ] `/etf`·`/compare` 수동 광고 위치(운영자 slot ID 발급 후)
 - [ ] 정리: layout.tsx 광고 주석, 쓰지 않는 `.ad-wrapper` CSS
 - [!] 구성종목 데이터 확대: 운용사 6곳(KODEX·TIGER·ACE·SOL·RISE·PLUS) 모두 PDF·구성종목 이용에 사전 허락이 필요하다. KRX 정보데이터시스템·Open API 는 상업적 이용·자동 수집 금지. 운영자 허락 확보 또는 KRX 데이터 마켓플레이스 구매 전까지 진행하지 않는다(현재 9종)
 - [ ] 분배 이력: 운용사 분배 공시 기반 12개월 이력(현재 수기 9종). 이용 조건 확인 후
 - [ ] 총보수·기초지수 필드: 같은 지수 상품 묶음과 실부담비용 비교
 - [ ] 월간 분배 캘린더 고정 URL(`/income` 하위)
 - [ ] 가이드 정리: data/audit/guide-prune-20260930.json 기준 noindex 후보 4편, 보강 대상 77편 순차 처리
-- [ ] 수동 광고 단위 배치(운영자 slot ID 발급 후, 트래픽 있는 페이지부터)
 - [ ] D30 판정 (2026-10-30): 9월 가이드 색인 비율, /etf 노출 → PUBLISHING.md §8
 
 ### 완료
+- [x] 2026-10-14 저녁 운영자 지시 "광고는 자동 광고만": 수동 광고 단위 전부 삭제(AdBanner·AD_SLOTS·planGuideAds·가이드 상단/본문/하단·/etf·/compare·계산기 2곳 자리, 관련 CSS). 남긴 것은 head 의 자동 광고 로더 1줄과 ads.txt
+- [x] 2026-10-14 저녁 2차 지시서(하위 페이지 색인 0건 주장) 점검: 서치콘솔 URL 검사 실측으로 비교 7/11·가이드·/etf 색인 확인(0건 아님). 모든 로봇 UA 에 200·index,follow·X-Robots-Tag 없음, http→https 301(robots·sitemap 포함), 미래 날짜 0건. 고친 것: /for/* 3쪽·/income 이 06-13 시황 글을 대표 링크로 걸던 것을 주제 허브 최신 가이드로, 색인되는 /etf 14쪽의 "관련 분석" 칸과 가이드 8편의 "함께 보면 좋은 데일리 분석" 목록(모두 06월 시황 글) 제거, 비교 페이지 dateModified·sitemap lastmod 에 본문 수정일(10-14) 반영, sitemap 우선순위 정렬, 예전 파이프라인 코드의 "자동 분석 리포트"·"AI 에이전트 K" 문구 제거
 - [x] 2026-10-14 오후 운영자 지시서(긴급 SEO 아키텍처 개편 8개 과제) 반영: ① robots 에 Googlebot 그룹 명시(Host·사이트맵 4종은 기존), 사이트맵에 주제 허브 11곳과 실제 수정일(소개·정책 3종·계산기 2종 10-14) ② 발행 주체 이름 편집팀 → "Daily ETF Pulse 리서치팀"(코드·예전 글 118개 파일, CLAUDE.md·SEO.md), 가이드·비교 페이지 발행 정보 상자(발행·정정 주체, 발행일·수정일, 근거 자료 링크) ③ 제휴 완전 삭제: /resources → /guide 301, RecommendBox·AffiliateNotice·ProductCard·products.ts·coupang.ts·data/affiliates·fetch-products 삭제, 가이드 데이터의 도서 섹션 3개·제휴 필드 삭제, 면책·개인정보 페이지 쿠팡 항목 삭제(네이버 애널리틱스 항목 추가) ④ 주제 허브 /guide/category/{isa,pension,tax,dividend,compare,cost,overseas,theme,bond,basics,alternative}(고유 title·description·H1·소개글, ItemList·BreadcrumbList), 홈 더보기 → 허브, 가이드 하단 관련 가이드 4·비교 2·계산기 1, 가이드 이동 경로에 주제 단계 ⑤ 비교 페이지 핵심 요약 3줄(일반·ISA·연금저축/IRP 세금, 시세 숫자 없음)과 Article 구조화 데이터 ⑥ 계좌별 세후 수익률 계산기 재작성(계산 방식·세율표·예시 3개·FAQ 5)과 분배금 계산기 세율표, 두 계산기 SoftwareApplication ⑦ 사이트 SearchAction 대상을 실제 검색이 되는 /etf?q= 로 ⑧ 애드센스 로더를 next/script 에서 안내 코드 그대로의 async 태그로(preload·data-nscript 경고), 계산기 광고 자리를 설명 문단 뒤로, /about 일일 시황 중단 문장 삭제
 - [ ] (10-14 오후 지시서 중 하지 않은 것과 이유) "금융·세무 에디터 이중 검수"·"7대 정량 분석 모듈" 문구: 실제로 하지 않은 일이라 쓰면 허위 표기 / 기존 가이드 제목 일괄 공식화(키워드+수치+2026년): 제목 변경은 새 글 오인 위험(CLAUDE.md 규칙), 새 글·허브·계산기에만 적용 / /etf 색인 50~100쪽 축소: 과거 노출의 92~94% 가 상품명 검색이라 지금 규칙(521쪽 색인, 650쪽 noindex·사이트맵 제외) 유지 / 핵심 포인트 없는 가이드 108편 일괄 생성: 확장형 콘텐츠 신호, 모든 가이드에 직답 상자는 있음 / /_next/ 전체 차단: 구글 렌더링에 필요 / RSS 50개 축소: 보강한 글이 피드에서 빠져 100개 유지
 - [x] 2026-10-14 운영자 지시서(8단계 리팩토링) 반영: ① 저자 페르소나(AI 에이전트 K~H)·"AI 분석 에이전트 작성" 공시·"10년 실전 후기" 저자 카드 제거, 저자는 편집팀 하나로, 작성 방식은 /about·푸터에 사실대로(AI 도구로 초안, 1차 출처 대조), /author/* → /about 301 ② 예전 일별 글 94편 설명 꼬리 "— Daily ETF Pulse 자동 분석 리포트"·본문 페르소나 언급 정리 ③ 태그만 지우는 추출기에서 낱말이 붙던 자리(헤더·드로어·푸터 메뉴, ETF 카드 코드+운용사, 거래량 목록, 직답 상자 값+등락, 비교표, 홈 카드) 공백 분리 ④ "📅 N일 전 발행" → "데이터 기준일 YYYY.MM.DD" ⑤ 본문·푸터의 쿠팡 파트너스 상자·도서 섹션 제거(/resources 한 곳만) ⑥ /etf 전 종목에 계좌별 세금 표(과세 구분 4갈래, 이름 규칙 추정·운용사 확인값 우선)와 세후 계산기, 계산 결과 아래 광고 자리, 제목에 "ISA·연금 세금"(개요 종목은 "총보수·분배금"), H1 "분석 리포트" 제거 ⑦ 계좌·세금 가이드 131편에 세후 계산기 ⑧ /ranking/*·/appliances_ranking/* 410, 푸터·데이터 출처 실제 기관 링크, Organization·WebSite alternateName, FinancialProduct provider

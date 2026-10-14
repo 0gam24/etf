@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
-import AdBanner from '@/components/AdBanner';
-import { AD_SLOTS } from '@/lib/ads';
 import { TAX_RULES } from '@/lib/account-tax-rules';
 import DividendCalculator, { type DividendCalcEtf } from '@/components/DividendCalculator';
 import { buildPageMetadata } from '@/lib/site-meta';
@@ -337,9 +335,6 @@ export default function DividendCalculatorPage() {
           매매 수수료, 환율 변화, 분배금 재투자 효과는 넣지 않았습니다.
         </p>
       </section>
-
-      {/* 광고는 계산기·예시표 바로 아래를 피해 계산식 문단 뒤에 둔다(오클릭 방지, src/lib/ads.ts 배치 규칙). */}
-      {AD_SLOTS.bottom && <AdBanner key="dividend-calc-bottom" slot={AD_SLOTS.bottom} className="ad-slot--tool ad-slot--bottom" />}
 
       <section style={sectionStyle}>
         <h2 style={h2Style}>계좌마다 분배금 세금이 다릅니다</h2>

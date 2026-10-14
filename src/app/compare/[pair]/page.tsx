@@ -10,12 +10,10 @@ import {
   getEtfPageFacts,
   type EtfPageFacts,
 } from '@/lib/data';
-import { COMPARE_PAIRS, getComparePairBySlug, type ComparePair, COMPARE_PAIR_ADDED_AT, COMPARE_PAIR_FIRST_BATCH_DATE } from '@/lib/etf-compare-pairs';
+import { COMPARE_PAIRS, getComparePairBySlug, type ComparePair, COMPARE_PAIR_ADDED_AT, COMPARE_PAIR_FIRST_BATCH_DATE, COMPARE_CONTENT_UPDATED_AT } from '@/lib/etf-compare-pairs';
 import { buildArticleSchema, jsonLd } from '@/lib/schema';
 import { PUBLISHER } from '@/lib/authors';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import AdBanner from '@/components/AdBanner';
-import { AD_SLOTS } from '@/lib/ads';
 import AnswerBox from '@/components/AnswerBox';
 import FaqSection from '@/components/FaqSection';
 import { SITE_NAME, SITE_LOCALE, ogImageUrl } from '@/lib/site-meta';
@@ -340,7 +338,11 @@ export default async function ComparePairPage({ params }: PageProps) {
     description: p.context,
     url: `/compare/${p.slug}`,
     datePublished: `${addedAt}T09:00:00+09:00`,
-    dateModified: commonIso && commonIso > addedAt ? `${commonIso}T16:00:00+09:00` : `${addedAt}T09:00:00+09:00`,
+    // 시세 기준일·본문 수정일·처음 발행일 중 가장 늦은 날 (2026-10-14 본문 수정일 반영)
+    dateModified: (() => {
+      const latest = [addedAt, COMPARE_CONTENT_UPDATED_AT, commonIso || ''].sort().slice(-1)[0];
+      return latest === commonIso ? `${commonIso}T16:00:00+09:00` : `${latest}T09:00:00+09:00`;
+    })(),
     images: [ogImageUrl({ category: 'compare' })],
     author: { name: PUBLISHER.name },
     keywords: [metaA.name, metaB.name, `${metaA.name} ${metaB.name} 차이`],
@@ -506,11 +508,6 @@ export default async function ComparePairPage({ params }: PageProps) {
           </div>
         </section>
       ) : null}
-
-      {/* 본문 수동 광고 1곳 (2026-10-08, 예전 제휴 회전 상자 자리). 슬롯 env 가 비면 그리지 않는다. */}
-      {AD_SLOTS.inArticle && (
-        <AdBanner key={`${pair}-in`} slot={AD_SLOTS.inArticle} className="ad-slot--compare ad-slot--inArticle" />
-      )}
 
       {/* 고를 때 확인할 기준: 확인하지 않은 수치는 쓰지 않는다 */}
       <section className="compare-section">

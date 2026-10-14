@@ -1356,37 +1356,6 @@ a:hover { color: var(--blue-500); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── 애드센스 광고 영역 스타일 ── */
-.ad-wrapper {
-  position: relative;
-  min-height: 100px;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 0.5rem;
-  border: 1px dashed rgba(255, 255, 255, 0.1);
-  margin: 3rem 0;
-}
-.ad-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-.ad-badge {
-  font-size: 0.625rem;
-  font-weight: 700;
-  color: var(--text-dim);
-  letter-spacing: 0.1em;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0.125rem 0.375rem;
-  border-radius: 2px;
-  margin-bottom: 0.5rem;
-}
-.ad-notice {
-  font-size: 0.75rem;
-  color: var(--text-dim);
-}
-
 /* ── 아티클 가독성 및 프리미엄 스타일 ── */
 .post-container {
   max-width: 720px; /* 읽기 가장 좋은 너비 */
@@ -9233,41 +9202,6 @@ a.scenario-card:hover .scenario-card-cta {
   color: var(--text-dim);
   font-variant-numeric: tabular-nums;
 }
-
-/* ── 수동 광고 단위 (2026-10-06) ──
-   AdBanner(src/components/AdBanner.tsx)가 쓴다. 위에 '광고' 라벨과 가는 구분선을 두어
-   본문과 구분하고, 틀은 처음부터 보이게 둔 채 min-height 로 자리를 잡아 CLS 를 막는다.
-   채울 광고가 없으면(data-ad-status="unfilled") 라벨까지 통째로 접는다.
-   근거: https://support.google.com/adsense/answer/1346295 · https://support.google.com/adsense/answer/10762946 */
-.ad-slot {
-  display: block;
-  margin: var(--space-10) 0;
-  padding-top: var(--space-2);
-  border-top: 1px solid var(--border-color);
-  text-align: center;
-  clear: both;
-}
-.ad-slot-label {
-  display: block;
-  margin-bottom: var(--space-2);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  line-height: 1.4;
-  color: var(--text-dim);
-  text-align: left;
-}
-.ad-slot-frame {
-  width: 100%;
-  min-height: 250px;
-}
-@media (max-width: 640px) {
-  .ad-slot-frame { min-height: 280px; }
-}
-.ad-slot ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
-.ad-slot:has(ins.adsbygoogle[data-ad-status="unfilled"]) { display: none; }
-/* 가이드 본문은 flex gap(--space-10)이 섹션 간격을 잡으므로 여백을 더하지 않는다. */
-.guide-article-body > .ad-slot { margin: 0; }
 
 /* ── 홈: 같은 지수 비교·도구 링크 목록 (2026-10-08) ── */
 .home-link-list {

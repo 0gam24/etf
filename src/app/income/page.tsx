@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { getPostsByCategory } from '@/lib/posts';
+import { getGuideCategory, getGuidesInCategory, categoryHref, guideDate } from '@/lib/guide-categories';
 import { buildMonthlyMatrix } from '@/lib/income';
 import { getIncomeRegistry } from '@/lib/income-server';
 import IncomeHero from '@/components/IncomeHero';
@@ -25,7 +25,9 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function IncomeLandingPage() {
   const registry = getIncomeRegistry();
-  const posts = getPostsByCategory('income');
+  // 2026-10-14: 06-13 에 멈춘 일별 월배당 글(noindex) 대신, 지금도 고치는 배당·분배금 가이드를 건다.
+  const dividendHub = getGuideCategory('dividend');
+  const guides = dividendHub ? getGuidesInCategory(dividendHub).slice(0, 8) : [];
 
   if (!registry) {
     return (
@@ -48,8 +50,6 @@ export default function IncomeLandingPage() {
     (a, b) => gradeOrder[a.stabilityGrade] - gradeOrder[b.stabilityGrade] || b.yield - a.yield,
   );
 
-  const latestPost = posts[0];
-
   return (
     <div className="income-landing animate-fade-in">
       <Breadcrumbs
@@ -58,7 +58,7 @@ export default function IncomeLandingPage() {
           { name: '월배당·커버드콜', href: '/income' },
         ]}
       />
-      <IncomeHero etfCount={etfs.length} topYield={topYield} monthlyCount={monthlyCount} asOf={asOf} latestPostDate={posts[0]?.meta.date} />
+      <IncomeHero etfCount={etfs.length} topYield={topYield} monthlyCount={monthlyCount} asOf={asOf} />
 
       {/* 분배락일 D-5 이내 임박 ETF 알림 (자동 분기) */}
       <ExDividendAlert etfs={etfs} windowDays={5} />
@@ -76,39 +76,36 @@ export default function IncomeLandingPage() {
         {/* 저자 후기 카드 */}
         {/* 저자 카드(AI 에이전트 페르소나·"10년 실전 후기" 같은 경력 표기)는 2026-10-14 뺐다. 발행 책임은 리서치팀 */}
 
-        {/* 최근 income 발행 */}
-        <section className="pulse-archive">
-          <div className="pulse-section-head">
-            <h2 className="pulse-section-title">월배당·커버드콜 최근 리포트</h2>
-            <p className="pulse-section-hint">총 {posts.length}편</p>
-          </div>
-          {posts.length === 0 ? (
-            <p className="pulse-section-empty">아직 발행된 글이 없습니다.</p>
-          ) : (
+        {/* 배당·분배금 가이드 (2026-10-14: 예전 일별 리포트 목록을 주제 허브의 최신 가이드로 바꿨다) */}
+        {dividendHub && guides.length > 0 && (
+          <section className="pulse-archive">
+            <div className="pulse-section-head">
+              <h2 className="pulse-section-title">월배당·분배금 가이드</h2>
+              <p className="pulse-section-hint">
+                <Link href={categoryHref(dividendHub)} prefetch={false}>전체 보기</Link>
+              </p>
+            </div>
             <ul className="pulse-archive-list">
-              {posts.slice(0, 8).map(p => (
-                <li key={p.meta.slug}>
-                  <Link href={`/${p.meta.category}/${p.meta.slug}`} className="pulse-archive-row">
-                    <span className="pulse-archive-date">
-                      {new Date(p.meta.date).toLocaleDateString('ko-KR', { month: 'short', day: 'numeric' })}
-                    </span>
-                    <span className="pulse-archive-title">{p.meta.title}</span>
-                    <span className="pulse-archive-meta">{p.readingTime}분</span>
+              {guides.map(g => (
+                <li key={g.slug}>
+                  <Link href={`/guide/${g.slug}`} className="pulse-archive-row" prefetch={false}>
+                    <span className="pulse-archive-date">{guideDate(g)}</span>{' '}
+                    <span className="pulse-archive-title">{g.title}</span>
                   </Link>
                 </li>
               ))}
             </ul>
-          )}
-        </section>
+          </section>
+        )}
 
         <p className="income-disclaimer">{registry.disclaimer}</p>
 
         <FaqSection title={CATEGORY_FAQ_TITLE.income} items={CATEGORY_FAQ.income} />
 
         <NextChapterCta
-          label="다음 챕터"
-          copy="오늘 시장을 움직인 속보 한 줄로 다시 짚어보기"
-          href="/breaking"
+          label="다음으로"
+          copy="보유 수량으로 받을 분배금을 직접 계산해 보기"
+          href="/tools/dividend-calculator"
         />
 
       </div>

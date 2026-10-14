@@ -6,11 +6,44 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import ToolLinkCard, { SISTER_TOOLS } from '@/components/ToolLinkCard';
 import { jsonLd } from '@/lib/schema';
 import { PERSONAS, ALL_PERSONAS, type PersonaSlug } from '@/lib/personas-config';
-import { getAllPosts } from '@/lib/posts';
+import type { GuideDef } from '@/lib/guides';
+import { getGuideCategory, getGuidesInCategory, categoryHref, guideDate, type GuideCategory } from '@/lib/guide-categories';
 import { buildPageMetadata , padDescription } from '@/lib/site-meta';
 
 interface PageProps {
   params: Promise<{ persona: string }>;
+}
+
+/**
+ * 상황별로 먼저 볼 가이드 주제 허브 (2026-10-14).
+ *   예전에는 "관련 분석"에 06-13 에 멈춘 일별 시황 글(noindex)을 걸었다. 색인되는 이 페이지가 갱신이 끝난 글로
+ *   방문자와 검색엔진을 보내던 것을 끊고, 지금도 고치는 주제 허브의 최신 가이드로 바꾼다.
+ */
+const PERSONA_HUBS: Record<string, string[]> = {
+  retiree: ['dividend', 'pension'],
+  newbie: ['basics', 'cost'],
+  freelancer: ['tax', 'pension'],
+  trader: ['compare', 'theme'],
+  'working-couple': ['isa', 'tax'],
+  global: ['overseas', 'compare'],
+  'early-retire': ['pension', 'tax'],
+};
+
+/** 주제 허브마다 최근에 쓰거나 고친 가이드를 2편씩 번갈아 고르고, 모자라면 앞 허브부터 채운다. */
+function pickGuides(hubs: GuideCategory[], n: number): { g: GuideDef; hub: GuideCategory }[] {
+  const lists = hubs.map(h => ({ hub: h, items: getGuidesInCategory(h) }));
+  const picked: { g: GuideDef; hub: GuideCategory }[] = [];
+  const has = (slug: string) => picked.some(p => p.g.slug === slug);
+  for (const { hub, items } of lists) {
+    for (const g of items.filter(x => !has(x.slug)).slice(0, 2)) picked.push({ g, hub });
+  }
+  for (const { hub, items } of lists) {
+    for (const g of items) {
+      if (picked.length >= n) break;
+      if (!has(g.slug)) picked.push({ g, hub });
+    }
+  }
+  return picked.slice(0, n);
 }
 
 export async function generateStaticParams() {
@@ -27,7 +60,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: padDescription(p.hero.subtitle, [
       '상황에 맞는 ETF와 계좌 조합, 확인할 지표를 한 페이지에 모았습니다.',
       // 2026-09-30: "매일 갱신" 약속 제거 (이 페이지는 시세를 보여 주지 않는다)
-      '상황에 맞는 관련 분석 글도 함께 안내합니다.',
+      '상황에 맞는 주제별 가이드도 함께 안내합니다.',
     ]),
     url: `/for/${persona}`,
   });
@@ -39,18 +72,11 @@ export default async function PersonaPage({ params }: PageProps) {
   if (!config) notFound();
 
 
-  // 관련 글 추천: frontmatter personas 매칭 우선, 없으면 카테고리 우선순위 fallback
-  const allPosts = getAllPosts();
-  type PostMetaExt = { personas?: string[] };
-  const taggedPosts = allPosts.filter(p => {
-    const meta = p.meta as unknown as PostMetaExt;
-    return Array.isArray(meta.personas) && meta.personas.includes(config.slug);
-  });
-  const fallbackPosts = allPosts.filter(p =>
-    config.categoryPriority.includes(p.meta.category),
-  );
-  const recommended = [...taggedPosts, ...fallbackPosts.filter(f => !taggedPosts.some(t => t.meta.slug === f.meta.slug))]
-    .slice(0, 4);
+  // 관련 가이드: 상황에 맞는 주제 허브의 최신 가이드 4편 (예전 일별 시황 글 대신)
+  const hubs = (PERSONA_HUBS[config.slug] || ['basics'])
+    .map(k => getGuideCategory(k))
+    .filter((c): c is GuideCategory => !!c);
+  const recommended = pickGuides(hubs, 4);
 
   return (
     <article style={{ maxWidth: '64rem', margin: '0 auto', padding: 'var(--space-8) var(--space-6)' }}>
@@ -129,16 +155,16 @@ export default async function PersonaPage({ params }: PageProps) {
         </section>
       )}
 
-      {/* 3. 관련 분석 글 */}
+      {/* 3. 관련 가이드 (2026-10-14: 예전 일별 시황 글 → 주제 허브의 최신 가이드) */}
       {recommended.length > 0 && (
         <section style={{ marginBottom: 'var(--space-8)' }}>
           <h2 style={{ fontSize: 'var(--fs-h2)', marginBottom: 'var(--space-4)' }}>
-            관련 분석
+            이 상황에 맞는 가이드
           </h2>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 'var(--space-3)' }}>
-            {recommended.map(p => (
-              <li key={p.meta.slug}>
-                <Link href={`/${p.meta.category}/${p.meta.slug}`} prefetch={false} style={{
+            {recommended.map(({ g, hub }) => (
+              <li key={g.slug}>
+                <Link href={`/guide/${g.slug}`} prefetch={false} style={{
                   display: 'block',
                   padding: 'var(--space-4)',
                   background: 'var(--bg-card)',
@@ -147,15 +173,22 @@ export default async function PersonaPage({ params }: PageProps) {
                   textDecoration: 'none',
                   color: 'var(--text-primary)',
                 }}>
-                  <div style={{ fontSize: '0.7rem', color: 'var(--accent-gold)', marginBottom: '0.3rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                    {p.categoryName}
+                  <div style={{ fontSize: '0.7rem', color: 'var(--accent-gold)', marginBottom: '0.3rem', letterSpacing: '0.05em' }}>
+                    {hub.label}{guideDate(g) ? ` · ${guideDate(g)}` : ''}
                   </div>
-                  <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.3rem' }}>{p.meta.title}</h3>
-                  {/* 카드 요약문은 2026-10-14 뺐다: 목록마다 같은 설명문이 반복돼 글 본문과 겹쳤다 (제목만) */}
+                  <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.3rem' }}>{g.title}</h3>
                 </Link>
               </li>
             ))}
           </ul>
+          <p style={{ marginTop: 'var(--space-3)', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
+            {hubs.map((h, i) => (
+              <span key={h.key}>
+                {i > 0 && ' · '}
+                <Link href={categoryHref(h)} prefetch={false} style={{ color: 'var(--accent-gold)' }}>{h.label} 가이드 전체 보기</Link>
+              </span>
+            ))}
+          </p>
         </section>
       )}
 

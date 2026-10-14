@@ -237,6 +237,12 @@ npm run push:guides -- --dry # 대상 확인만
 - 신규 글과 보강 문단 모두 사이트 데이터 수치 1개 이상(기준일·출처 표기), 계산 예시 1개, 관할 기관 문서 딥링크(도메인 루트 금지)를 넣는다 (PUBLISHING.md §5)
 - 문체 규칙(em dash 금지·상투구 변주)·SEO 필드·검증·push 절차는 기존과 동일
 
+# 💰 광고 운영 · 애드센스 자동 광고만 (2026-10-14 운영자 지시)
+
+- 광고는 애드센스 **자동 광고만** 쓴다. 운영자 지시: "광고는 모두 자동으로만 할꺼야 수동 만든거 있으면 모두 삭제해 오토광고 중이야".
+- 페이지 코드에 수동 광고 단위(`<ins class="adsbygoogle">`, `AdBanner`, `AD_SLOTS`, `NEXT_PUBLIC_AD_SLOT_*`)를 다시 만들지 않는다. 광고 위치·밀도는 애드센스 콘솔의 자동 광고 설정에서 조정한다.
+- 유지하는 것: `src/app/layout.tsx` head 의 자동 광고 로더 1줄(애드센스 안내 코드 그대로의 async 태그, publisher ID 는 `src/lib/ads.ts`)과 `public/ads.txt`.
+
 # 💼 Affiliate 경제적 이해관계 표시 (쿠팡 파트너스 등) · 공정위 가이드 강제
 
 > **현재 상태 (2026-10-14 운영자 지시)**: 사이트의 제휴 링크를 모두 걷어 냈다. 추천 자료실 `/resources`는 `/guide`로 301, `AffiliateNotice`·`RecommendBox`·`ProductCard`·`src/lib/products.ts`·`data/affiliates/`는 삭제, 면책·개인정보 페이지에서 쿠팡 파트너스 항목을 뺐다. 수익원은 애드센스 하나다. 아래 규칙은 제휴를 다시 들일 때 그대로 적용한다(그때 고지 컴포넌트를 다시 만든다).

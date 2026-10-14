@@ -7,7 +7,7 @@ import { jsonLd } from '@/lib/schema';
 import { buildPageMetadata, SITE_NAME, SITE_URL } from '@/lib/site-meta';
 
 // title에 브랜드명을 넣지 않는다 — layout의 template이 '| Daily ETF Pulse'를 자동으로 붙인다.
-// 2026-10-14: 예전 일별 시황 체계(거래량 z-score·AI 분석 에이전트 7명) 설명을 걷어 내고 지금 운영하는 내용으로 다시 썼다.
+// 2026-10-14: 예전 일별 시황 체계(거래량 z-score·분석 페르소나 7명) 설명을 걷어 내고 지금 운영하는 내용으로 다시 썼다.
 //   같은 날 오후: 발행 주체 이름을 리서치팀으로 바꾸고, 일일 시황 글 중단 안내 문장을 뺐다(운영자 지시).
 export const metadata: Metadata = buildPageMetadata({
   title: '리서치팀 소개',

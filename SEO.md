@@ -96,7 +96,7 @@
 - `generateStaticParams`: 거래량 상위 100 issueCode + `PORTFOLIOS`의 모든 shortcode (둘 다 prerender).
 - 라우팅: shortcode(449450) ↔ issueCode(0080G0) 양방향. `findEtfByAnyCode` + `resolveEtfTicker` 사용.
 - canonical URL: shortcode가 있으면 shortcode 우선 (사용자 친숙).
-- 필수 섹션: hero(H1=ETF명) → 시세 stats → 구성종목 TOP 10 → 분배 정보(income ETF만) → 관련 분석 글 → RecommendBox.
+- 필수 섹션: hero(H1=ETF명) → 시세 stats → 구성종목 TOP 10 → 분배 정보(income ETF만) → 관련 분석 글. (RecommendBox 는 2026-10-14 삭제)
 - 필수 스키마: BreadcrumbList + FinancialProduct + Dataset.
 
 ## 9. Affiliate 면책 (SEO+공정위 동시)

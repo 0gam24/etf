@@ -100,7 +100,7 @@
 - `IncomeHero`/`IncomeCalendar`/`IncomeStabilityTable`/`IncomeTaxCompare`/`IncomeMiniCalculator`/`IncomeGoalCalculator` — income (월배당 캘린더 + 세후 비교 + 캐시플로 계산기)
 - `HoldingsPanel` — ETF 구성종목 TOP 10 패널
 - `PostRelatedEtfs` — 글 관련 ETF 카드
-- `RecommendBox`/`NextChapterCta` — 다음 글 추천
+- `NextChapterCta` — 다음 글 추천 (`RecommendBox`는 2026-10-14 제휴 링크와 함께 삭제)
 - `FaqSection` — FAQPage 스키마 + 본문 FAQ 카드
 - `HelpfulFeedback` — 글 끝 도움됐어요 피드백 (GA4 이벤트)
 - `ShareRow` — SNS 공유
@@ -111,7 +111,6 @@
 - `CountUpNumber` — 숫자 카운트업 애니
 - `AffiliateNotice`/`AffiliateInline`/`ProductRecommendBlock`/`ProductCard` — 제휴 면책 + 카드 (공정위 가이드 준수)
 - `AiAgentDisclosure` — AI 작성 투명 공개 배지 (variant: top/inline/compact — E-E-A-T)
-- `AdBanner` — 애드센스 배너 (IntersectionObserver lazy hydrate)
 - `MainBackrefBox` — smartdatashop network 자매 backref (variant: inline/sidebar/footer · 메인 토큰 #8b1538/#faf7f0 · `getBackrefUrlForCategory()` 헬퍼 export)
 
 ### 7.2 차트·viz
@@ -344,7 +343,7 @@ charts[] · affiliates[] · adPlacements · schemas[] (인라인 JSON-LD)
 - 영구 301 리다이렉트: 한글 슬러그 → 영문 슬러그 (legacy 5건) + `/etf/{code}` → `/etf/{slug}` (1099건 자동)
 
 ## 19. 광고
-- AdSense: ✓ (`src/components/AdBanner.tsx`)
+- AdSense: ✓ 자동 광고만 (`src/app/layout.tsx` 로더, publisher ID `src/lib/ads.ts`). 수동 광고 단위(AdBanner)는 2026-10-14 운영자 지시로 삭제
 - AdSense client ID: ca-pub-****xxxx (코드 fallback은 placeholder · 실제 값은 `NEXT_PUBLIC_ADSENSE_PUB_ID` env에서만 주입 — repo에 노출 X)
 - LCP 최적화: IntersectionObserver lazy hydrate (뷰포트 진입 200px 전 push)
 - DEV 모드: `NODE_ENV !== 'production'`에서만 `[DEV] AD AREA` placeholder 노출

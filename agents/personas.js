@@ -1,5 +1,5 @@
 /**
- * Daily ETF Pulse — 7개 AI 분석 에이전트 DB
+ * Daily ETF Pulse — 예전 일별 시황 글의 분석 유형 7종 (2026-10-14 은퇴, 사이트 화면에는 쓰지 않는다)
  *
  *   각 에이전트는 데이터·분석 영역이 다른 AI 모델 (실존 인물 X).
  *   글마다 카테고리·섹터에 적합한 에이전트가 분석을 담당.
@@ -19,7 +19,7 @@ const PERSONAS = {
     id: 'pb_kim',
     isAi: true,
     callsign: 'K',
-    name: 'AI 에이전트 K',
+    name: '분석 유형 K',
     title: '은퇴 자산 설계 분석 모델',
     modelDescription:
       'KRX 공공데이터·운용사 공식 공시·한국은행 ECOS를 입력으로, 분배 안정성 등급(12개월 분배 변동성 + 기초자산 변동성)과 계좌별(IRP·ISA·연금저축·일반) 세후 수익률을 산출하는 분석 모델.',
@@ -41,7 +41,7 @@ const PERSONAS = {
     id: 'mom_park',
     isAi: true,
     callsign: 'P',
-    name: 'AI 에이전트 P',
+    name: '분석 유형 P',
     title: 'ISA·연금저축 비교 분석 모델',
     modelDescription:
       '계좌 유형별 한도·세제·인출 조건을 데이터화하여 동일 종목·금액 기준 ISA / 연금저축 / IRP / 일반계좌의 누적 세후 수익률 차이를 산출하는 모델.',
@@ -62,7 +62,7 @@ const PERSONAS = {
     id: 'data_lee',
     isAi: true,
     callsign: 'L',
-    name: 'AI 에이전트 L',
+    name: '분석 유형 L',
     title: '퀀트 시그널·거래량 분석 모델',
     modelDescription:
       'KRX 일별 거래량·등락률·거래대금 시계열에서 5/20/60일 이동평균 대비 이탈률을 계산해 섹터 로테이션·이상 거래 시그널을 추출하는 퀀트 모델.',
@@ -83,7 +83,7 @@ const PERSONAS = {
     id: 'homemaker_jung',
     isAi: true,
     callsign: 'J',
-    name: 'AI 에이전트 J',
+    name: '분석 유형 J',
     title: '월배당 캐시플로 시뮬레이션 모델',
     modelDescription:
       '목표 월 현금흐름(예: 월 100만원)을 입력받아 분배율·계좌·종목 조합에 따라 필요 원금을 역산하고, 월별 분배 캘린더를 분산 매칭하는 시뮬레이션 모델.',
@@ -104,7 +104,7 @@ const PERSONAS = {
     id: 'biz_cho',
     isAi: true,
     callsign: 'C',
-    name: 'AI 에이전트 C',
+    name: '분석 유형 C',
     title: '개인사업자 절세·노란우산·IRP 분석 모델',
     modelDescription:
       '개인사업자의 종합소득·노란우산 납입·IRP 기여를 결합해 연간 절세 효과(과표·세액공제)를 산출하고, ETF 매수 권장 계좌를 제안하는 모델.',
@@ -125,7 +125,7 @@ const PERSONAS = {
     id: 'dev_song',
     isAi: true,
     callsign: 'S',
-    name: 'AI 에이전트 S',
+    name: '분석 유형 S',
     title: 'AI·반도체 공급망 분석 모델',
     modelDescription:
       '엔비디아·HBM·CXL 등 AI 인프라 공급망 키워드 뉴스 빈도와 KRX 반도체·AI ETF 거래량을 결합해 테마 모멘텀을 산출하는 모델.',
@@ -146,7 +146,7 @@ const PERSONAS = {
     id: 'analyst_han',
     isAi: true,
     callsign: 'H',
-    name: 'AI 에이전트 H',
+    name: '분석 유형 H',
     title: '매크로·외국인 수급 분석 모델',
     modelDescription:
       '외국인·기관 매매동향과 환율·금리·CPI 등 매크로 지표를 결합해 섹터 자금 흐름과 리스크 신호를 산출하는 모델.',
@@ -172,7 +172,7 @@ const PERSONAS = {
 const PUBLISHER = {
   name: 'Daily ETF Pulse 리서치팀',
   url: '/about',
-  // 2026-10-14: 사이트 소개 문구를 지금 운영하는 내용으로 (AI 분석 에이전트 체계는 은퇴)
+  // 2026-10-14: 사이트 소개 문구를 지금 운영하는 내용으로 (예전 분석 페르소나 체계는 은퇴)
   description:
     'Daily ETF Pulse는 한국거래소에 상장된 ETF의 종목 사전, 같은 지수 ETF 비교, 계좌별 세금 가이드를 운용사 공시와 관할 기관 자료 같은 1차 출처로 정리하는 ETF 정보 사이트입니다.',
 };

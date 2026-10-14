@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollRevealProvider from "@/components/ScrollRevealProvider";
 import NaverAnalytics from "@/components/NaverAnalytics";
-// Google AdSense 자동 광고 — publisher ID는 src/lib/ads.ts 단일 소스(AdBanner와 공유).
+// Google AdSense 자동 광고 — publisher ID는 src/lib/ads.ts 단일 소스. 광고는 자동 광고만 쓴다(2026-10-14 운영자 지시).
 //   자동 광고를 사용하므로 본문에 수동 광고 슬롯을 넣지 않는다(구글이 위치·밀도 자동 최적화).
 //   이 스니펫 자체가 애드센스 사이트 소유권 확인·승인 심사의 전제.
 import { ADSENSE_PUB_ID } from "@/lib/ads";

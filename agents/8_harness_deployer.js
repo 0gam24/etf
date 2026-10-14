@@ -265,7 +265,7 @@ category: "${article.category}"
 templateType: "${article.templateType || article.category}"
 date: "${new Date().toISOString()}"
 pulseDate: "${today}"
-description: "${yamlEscape(article.keyword)} — Daily ETF Pulse 자동 분석 리포트"
+description: "${yamlEscape(article.keyword)} 관련 ETF 정보를 1차 출처 기준으로 정리했습니다."
 keywords:
 ${keywordsYaml}
 tickers:

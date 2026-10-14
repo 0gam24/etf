@@ -3,8 +3,6 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import EtfTaxSimulator from '@/components/EtfTaxSimulator';
 import FaqSection from '@/components/FaqSection';
-import AdBanner from '@/components/AdBanner';
-import { AD_SLOTS } from '@/lib/ads';
 import { buildPageMetadata } from '@/lib/site-meta';
 import { jsonLd, buildSoftwareAppSchema } from '@/lib/schema';
 import { TAX_RULES, TAX_SOURCES, formatWon } from '@/lib/account-tax-rules';
@@ -112,9 +110,6 @@ export default function TaxComparePage() {
           금융소득 종합과세, 건강보험료, 연금저축·IRP 세액공제, 증권사 수수료는 넣지 않은 단순 계산입니다. 실제 세액은 거래하는 증권사가 계산합니다.
         </p>
       </section>
-
-      {/* 광고는 계산기 입력·버튼 바로 아래를 피해 계산 방식 문단 뒤에 둔다(오클릭 방지, src/lib/ads.ts 배치 규칙). */}
-      {AD_SLOTS.bottom && <AdBanner key="tax-compare-bottom" slot={AD_SLOTS.bottom} className="ad-slot--tool ad-slot--bottom" />}
 
       <section style={{ marginTop: 'var(--space-8)' }}>
         <h2 style={{ fontSize: 'var(--fs-h2)', marginBottom: 'var(--space-3)' }}>계좌별 ETF 세금 비교표</h2>

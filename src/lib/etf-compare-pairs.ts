@@ -130,6 +130,14 @@ export const COMPARE_PAIR_ADDED_AT: Record<string, string> = {
 /** 2026-04-27 첫 묶음 10쌍 */
 export const COMPARE_PAIR_FIRST_BATCH_DATE = '2026-04-27';
 
+/**
+ * 비교 페이지 본문을 모든 쌍에 걸쳐 실제로 고친 마지막 날.
+ *   2026-10-14: 본문 위 핵심 요약(계좌별 세금 3줄)과 발행 정보 상자를 넣었다.
+ *   구조화 데이터 dateModified 와 sitemap lastmod 가 시세 기준일과 이 날짜 중 늦은 쪽을 쓴다.
+ *   쌍 하나만 고쳤을 때는 이 값을 바꾸지 않는다(모든 비교 페이지의 수정일이 같이 바뀐다).
+ */
+export const COMPARE_CONTENT_UPDATED_AT = '2026-10-14';
+
 export function getComparePairBySlug(slug: string): ComparePair | null {
   return COMPARE_PAIRS.find(p => p.slug === slug) || null;
 }

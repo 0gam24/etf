@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -15,8 +14,6 @@ import AnswerBox from '@/components/AnswerBox';
 import GuideDataBlock from '@/components/GuideDataBlock';
 import EditorialNote from '@/components/EditorialNote';
 import EtfTaxSimulator from '@/components/EtfTaxSimulator';
-import AdBanner from '@/components/AdBanner';
-import { planGuideAds, AD_SLOTS } from '@/lib/ads';
 import { buildArticleSchema, buildHowToSchema, jsonLd } from '@/lib/schema';
 import { SITE_NAME, SITE_LOCALE, articleTitle , padDescription, ogImageUrl } from '@/lib/site-meta';
 
@@ -107,17 +104,14 @@ export default async function GuidePage({ params }: PageProps) {
     : [];
 
   // 제휴 도서 추천 섹션과 링크는 2026-10-14 사이트에서 모두 걷어 냈다(가이드 데이터에서도 삭제).
-  //   목차·광고 위치·HowTo 단계도 같은 목록을 쓴다.
-  const sections = g.sections.filter(sec => !(sec.dataBlock && /^(product|book)-rec:/.test(sec.dataBlock)));
+  //   목차·HowTo 단계도 같은 목록을 쓴다.
+  // 2026-10-14: "함께 보면 좋은 데일리 분석"(related-posts, 06-13 에 멈춘 일별 시황 글 목록)도 그리지 않는다.
+  //   관련 읽을거리는 본문 아래 관련 가이드·비교·계산기 묶음이 맡는다.
+  const sections = g.sections.filter(sec => !(sec.dataBlock && /^(product|book)-rec:|^related-posts:/.test(sec.dataBlock)));
 
   // 본문 h2에 붙일 앵커. 문단을 개별 주소로 가리킬 수 있어야 검색·답변엔진이 청크 단위로 인용한다.
   //   한글 id는 HTML5에서 유효하다. 링크에 쓸 때만 브라우저가 자동 인코딩한다.
   const sectionIds = sections.map((sec, i) => headingAnchor(sec.heading, i));
-
-  // 수동 광고 자리 (2026-10-06). 슬롯 env(NEXT_PUBLIC_AD_SLOT_IN_ARTICLE·_BOTTOM)가 비면 빈 배열이라
-  //   아무것도 그리지 않는다. 규칙은 src/lib/ads.ts planGuideAds: 2번째 섹션 이후 문단으로 끝나는
-  //   섹션 뒤 1곳 + 본문 끝(참고 자료·FAQ 앞) 1곳, 섹션 5개 미만이면 1곳만.
-  const adsAfterSection = new Map(planGuideAds(sections).map(a => [a.afterSection, a]));
 
   // datePublished는 안정적 원발행일(불변) — lastReviewed는 격주 점검 크론이 갱신하므로 dateModified로.
   const publishedAt = getGuidePublishedAt(slug) || g.lastReviewed;
@@ -301,12 +295,6 @@ export default async function GuidePage({ params }: PageProps) {
         </section>
       )}
 
-      {/* 상단 수동 광고 (2026-10-08, 예전 제휴 회전 상자 자리). 직답·핵심 포인트·비교표를 다 읽은 뒤,
-          목차 앞. 위는 표, 아래는 목차 제목이라 버튼·링크에 붙지 않는다. 슬롯 env 가 비면 아무것도 그리지 않는다. */}
-      {AD_SLOTS.top && (
-        <AdBanner key={`${slug}-top`} slot={AD_SLOTS.top} className="ad-slot--guide ad-slot--top" />
-      )}
-
       {/* 목차 — 문단별 앵커. 긴 글에서 원하는 대목으로 바로 가고,
           검색 결과에 문단 바로가기가 붙을 수 있는 구조를 만든다. */}
       {sections.length >= 3 && (
@@ -323,33 +311,20 @@ export default async function GuidePage({ params }: PageProps) {
       )}
 
       <div className="guide-article-body">
-        {sections.map((sec, i) => {
-          const ad = adsAfterSection.get(i);
-          return (
-            <Fragment key={i}>
-              <section className="guide-article-section-block">
-                <h2 className="guide-article-h2" id={sectionIds[i]}>{sec.heading}</h2>
-                {sec.paragraphs.map((p, pi) => (
-                  <p key={pi} className="guide-article-p">{p}</p>
-                ))}
-                {sec.dataBlock && (
-                  <div className="guide-article-data">
-                    <GuideDataBlock block={sec.dataBlock} />
-                  </div>
-                )}
-              </section>
-              {/* 수동 광고: 문단으로 끝난 섹션과 다음 섹션 제목 사이에만. key에 slug를 넣어
-                  가이드 사이를 이동할 때 광고 단위가 새로 요청되게 한다. */}
-              {ad && (
-                <AdBanner
-                  key={`${slug}-${ad.slotKey}`}
-                  slot={ad.slot}
-                  className={`ad-slot--guide ad-slot--${ad.slotKey}`}
-                />
-              )}
-            </Fragment>
-          );
-        })}
+        {/* 광고는 애드센스 자동 광고만 쓴다(2026-10-14 운영자 지시). 본문 사이에 수동 광고 자리를 두지 않는다. */}
+        {sections.map((sec, i) => (
+          <section key={i} className="guide-article-section-block">
+            <h2 className="guide-article-h2" id={sectionIds[i]}>{sec.heading}</h2>
+            {sec.paragraphs.map((p, pi) => (
+              <p key={pi} className="guide-article-p">{p}</p>
+            ))}
+            {sec.dataBlock && (
+              <div className="guide-article-data">
+                <GuideDataBlock block={sec.dataBlock} />
+              </div>
+            )}
+          </section>
+        ))}
       </div>
 
       {/* 주제 관련 ETF 종목 사전 — 가이드 → /etf/{slug} 연결(테마·자산군 가이드만) */}

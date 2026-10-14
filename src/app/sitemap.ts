@@ -9,7 +9,7 @@ import {
 } from '@/lib/posts';
 import { GUIDES, GUIDE_PUBLISHED_AT, getGuidePublishedAt, getGuideModifiedAt } from '@/lib/guides';
 import { getLatestEtfData, getKrxEtfMeta } from '@/lib/data';
-import { COMPARE_PAIRS } from '@/lib/etf-compare-pairs';
+import { COMPARE_PAIRS, COMPARE_CONTENT_UPDATED_AT } from '@/lib/etf-compare-pairs';
 import { ALL_PERSONAS } from '@/lib/personas-config';
 import { GUIDE_CATEGORIES, categoryHref, getGuidesInCategory, guideDate } from '@/lib/guide-categories';
 
@@ -196,10 +196,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   //   KRX 코드가 바뀌거나 상장폐지되면 비교 페이지가 404로 렌더되는데, 기존에는 sitemap이
   //   무조건 전 페어를 제출해 "제출된 URL을 찾을 수 없음(404)" 오류를 만들었다.
   //   (2026-08-12 감사에서 10쌍 중 2쌍이 이 상태였음)
+  //   갱신일은 시세 기준일과 본문 수정일(COMPARE_CONTENT_UPDATED_AT) 중 늦은 날. 페이지 dateModified 와 같은 규칙.
+  const compareContentUpdated = new Date(`${COMPARE_CONTENT_UPDATED_AT}T09:00:00+09:00`);
+  const compareLastModified = etfLastModified && etfLastModified > compareContentUpdated ? etfLastModified : compareContentUpdated;
   COMPARE_PAIRS.filter(p => getKrxEtfMeta(p.codeA) && getKrxEtfMeta(p.codeB)).forEach(p => {
     routes.push({
       url: `${baseUrl}/compare/${p.slug}`,
-      lastModified: etfLastModified,
+      lastModified: compareLastModified,
       changeFrequency: 'weekly',
       priority: 0.8,
     });
@@ -237,6 +240,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: t.priority,
     });
   });
+
+  // 우선순위 높은 주소부터 적는다 (2026-10-14): 홈 → 가이드 → 주제 허브 → 비교·도구 → 나머지.
+  //   구글은 순서를 쓰지 않지만 사람이 열어 볼 때와 일부 수집기가 앞부분만 읽을 때를 위해 정렬한다(안정 정렬).
+  routes.sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0));
 
   return routes;
 }

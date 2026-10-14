@@ -91,7 +91,7 @@ etf-platform/
 ├── pipeline/            # orchestrator · OCR · Indexing · scheduler
 ├── src/
 │   ├── app/             # Next.js App Router (pulse/surge/flow/income/theme/account)
-│   ├── components/      # EtfMarketPulse, DividendCalculator, AdBanner
+│   ├── components/      # EtfMarketPulse, DividendCalculator
 │   └── lib/             # posts.ts (MDX 파싱), data.ts (데이터 로드)
 ├── content/             # 발행된 MDX (파이프라인이 생성)
 ├── data/                # 파이프라인 중간 산출물 (gitignore)

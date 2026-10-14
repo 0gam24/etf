@@ -23,7 +23,6 @@ import EtfTaxSimulator from '@/components/EtfTaxSimulator';
 import { getInvestmentPoints } from '@/lib/etf-investment-points';
 import { getEtfSiblings } from '@/lib/etf-siblings';
 import EtfSiblingLinks from '@/components/EtfSiblingLinks';
-import { getAllPosts } from '@/lib/posts';
 import { getGuidesForSector } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import HoldingsPanel from '@/components/HoldingsPanel';
@@ -36,8 +35,6 @@ import {
   jsonLd,
 } from '@/lib/schema';
 import EtfProfileSection from '@/components/EtfProfileSection';
-import AdBanner from '@/components/AdBanner';
-import { AD_SLOTS } from '@/lib/ads';
 import type { RawEtf } from '@/lib/surge';
 import { buildOg, buildTwitter, ogImageUrl } from '@/lib/site-meta';
 
@@ -302,12 +299,6 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
   //   "상품명·코드 + 속성" 검색으로 들어온 사람이 같은 지수의 다른 상품과 바로 견줄 수 있게 하고,
   //   같은 지수 상품끼리 서로 링크해 /etf·/compare 페이지의 크롤 경로를 만든다. 셋 다 없으면 null.
   const siblings = getEtfSiblings(displayCode);
-
-  // 관련 분석 글 (티커 기준)
-  const allPosts = getAllPosts();
-  const relatedPosts = allPosts
-    .filter(p => (p.meta.tickers || []).some(t => t.toUpperCase() === displayCode.toUpperCase()))
-    .slice(0, 6);
 
   const isUp = etf ? etf.change > 0 : false;
   const isDown = etf ? etf.change < 0 : false;
@@ -643,12 +634,6 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
         </section>
       )}
 
-      {/* 본문 수동 광고 1곳 (2026-10-08, 예전 제휴 회전 상자 자리). 첫 정보 섹션(시세 또는 종목 정보)의
-          안내 문단 뒤, 다음 섹션 제목 앞이라 버튼·카드에 붙지 않는다. 슬롯 env 가 비면 그리지 않는다. */}
-      {AD_SLOTS.inArticle && (
-        <AdBanner key={`${canonicalSlug}-in`} slot={AD_SLOTS.inArticle} className="ad-slot--etf ad-slot--inArticle" />
-      )}
-
       {/* 구성종목: 보유한 대표 종목만 표시하고, 전체 구성은 운용사 공시로 안내한다.
           (보유 데이터는 종목별 대표 몇 개뿐이라 "TOP 10"·"전체 구성"을 약속하지 않는다) */}
       {holdings && holdingsShown > 0 ? (
@@ -730,11 +715,6 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
           yieldFromRecord={!!incomeEntry}
         />
       </section>
-
-      {/* 수동 광고: 계산 결과 바로 아래 (2026-10-14). 슬롯 env 가 비면 그리지 않는다 */}
-      {AD_SLOTS.bottom && (
-        <AdBanner key={`${canonicalSlug}-tax`} slot={AD_SLOTS.bottom} className="ad-slot--etf ad-slot--bottom" />
-      )}
 
       {/* 같은 지수 이름의 다른 ETF: 같은 섹터·같은 운용사 블록보다 검색 의도가 가까워 투자 포인트보다 먼저 둔다 */}
       {siblings && (
@@ -821,26 +801,8 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
         );
       })()}
 
-      {/* 7. 관련 분석 글 */}
-      {relatedPosts.length > 0 && (
-        <section className="etf-dict-section">
-          <h2 className="etf-dict-h2">{no()}. {displayName} 관련 분석 ({relatedPosts.length}편)</h2>
-          <ul className="etf-dict-related">
-            {relatedPosts.map(p => (
-              <li key={p.meta.slug}>
-                <Link href={`/${p.meta.category}/${p.meta.slug}`} prefetch={false}>
-                  <span className="etf-dict-related-cat">{p.categoryName}</span>{' '}
-                  <span className="etf-dict-related-title">{p.meta.title}</span>{' '}
-                  <span className="etf-dict-related-date">
-                    {new Date(p.meta.date).toLocaleDateString('ko-KR', { month: 'short', day: 'numeric' })}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
+      {/* 예전 "관련 분석 글" 칸(06-13 에 멈춘 일별 시황 글, noindex)은 2026-10-14 뺐다.
+          색인되는 종목 페이지가 갱신이 끝난 글을 대표 링크로 걸면 사이트가 멈춘 것처럼 보인다. 관련 읽을거리는 아래 가이드가 맡는다. */}
       {/* 8. 관련 ETF 가이드 — 종목사전 → 가이드 클러스터 연결(섹터 매칭 + 기초 가이드) */}
       {(() => {
         const sectorGuides = getGuidesForSector(displaySector, 4);
