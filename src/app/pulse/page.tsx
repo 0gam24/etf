@@ -15,7 +15,6 @@ import NextChapterCta from '@/components/NextChapterCta';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
-import RecommendBox from '@/components/RecommendBox';
 import { buildPageMetadata, RETIRED_ROBOTS } from '@/lib/site-meta';
 
 export const metadata: Metadata = buildPageMetadata({
@@ -63,7 +62,6 @@ export default function PulseLandingPage() {
       />
       <PulseTodayHero today={today} />
 
-      <RecommendBox position="top" category="general" />
 
       <div className="pulse-landing-body">
         <PulseDiff diff={diff} hasYesterday={!!yesterday} />
@@ -73,7 +71,7 @@ export default function PulseLandingPage() {
         <PulseRecurringThemes themes={themes} windowDays={RECURRING_WINDOW_DAYS} />
 
         {/* 저자 인사이트 카드 */}
-        {/* 저자 카드(AI 에이전트 페르소나·"10년 실전 후기" 같은 경력 표기)는 2026-10-14 뺐다. 발행 책임은 편집팀 */}
+        {/* 저자 카드(AI 에이전트 페르소나·"10년 실전 후기" 같은 경력 표기)는 2026-10-14 뺐다. 발행 책임은 리서치팀 */}
 
         {/* 최근 발행 아카이브 */}
         <section className="pulse-archive">
@@ -110,7 +108,6 @@ export default function PulseLandingPage() {
           href="/surge"
         />
 
-        <RecommendBox position="bottom" category="general" />
       </div>
     </div>
   );

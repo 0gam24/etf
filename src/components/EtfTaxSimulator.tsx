@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import type { GainTaxMode } from '@/lib/etf-tax';
 import { TAX_RULES, formatWon } from '@/lib/account-tax-rules';
+import { simulateAccountTax, type PensionAge } from '@/lib/tax-sim';
 
 interface Props {
   name: string;
@@ -17,8 +18,6 @@ interface Props {
   /** 가이드처럼 특정 종목이 없는 곳에서는 과세 구분을 독자가 고른다 */
   kindSelectable?: boolean;
 }
-
-type PensionAge = 'u70' | '70s' | '80p';
 
 const PENSION_AGE_LABEL: Record<PensionAge, string> = { u70: '70세 미만', '70s': '70~79세', '80p': '80세 이상' };
 
@@ -39,29 +38,11 @@ export default function EtfTaxSimulator({ name, gainTax: initialGainTax, pension
   const [isaLowIncome, setIsaLowIncome] = useState(false);
   const [pensionAge, setPensionAge] = useState<PensionAge>('u70');
 
+  // 계산식은 src/lib/tax-sim.ts 한 곳 (/tools/tax-compare 계산 예시와 같은 식)
   const r = useMemo(() => {
     const P = principalMan * 10_000;
-    const dist = P * (yieldPct / 100) * years; // 받는 분배금 합계 (세전)
-    const gain = P * (Math.pow(1 + growthPct / 100, years) - 1); // 팔 때 가격 차익 (세전)
-    // 해외·채권·원자재처럼 차익이 과세표준에 그대로 잡히는 경우만 매매차익을 과세로 계산한다.
-    //   국내주식형은 비과세, 국내 주식 액티브·커버드콜·TR·국내 지수 선물은 과세표준에서 차익이 빠져 0 으로 근사한다.
-    const gainTaxable = gainTax === 'taxable';
-
-    // 일반 계좌: 분배금 15.4%, 매매차익은 과세 구분에 따라 (손실은 분배금과 통산 안 됨)
-    const generalTax = dist * R.dividendTaxRate + (gainTaxable ? Math.max(0, gain) * R.dividendTaxRate : 0);
-
-    // 중개형 ISA: 계좌 순이익(과세 대상 소득끼리 손익 통산) 중 비과세 한도 초과분만 9.9%
-    const isaLimit = isaLowIncome ? R.isa.taxFreeLowIncome : R.isa.taxFreeGeneral;
-    const isaBase = Math.max(0, dist + (gainTaxable ? gain : 0));
-    const isaTax = Math.max(0, isaBase - isaLimit) * R.isa.excessRate;
-
-    // 연금저축·IRP: 운용 중 과세이연, 연금으로 받을 때 운용수익 전체에 연금소득세
-    const pensionRate = pensionAge === 'u70' ? R.pension.rateUnder70 : pensionAge === '70s' ? R.pension.rate70to79 : R.pension.rate80plus;
-    const pensionTax = Math.max(0, dist + gain) * pensionRate;
-
-    const gross = dist + gain;
-    return { P, dist, gain, gross, generalTax, isaTax, isaLimit, pensionTax, pensionRate, gainTaxable };
-  }, [principalMan, yieldPct, growthPct, years, isaLowIncome, pensionAge, gainTax, R]);
+    return { P, ...simulateAccountTax({ principal: P, yieldPct, growthPct, years, gainTax, isaLowIncome, pensionAge }) };
+  }, [principalMan, yieldPct, growthPct, years, isaLowIncome, pensionAge, gainTax]);
 
   const rows = [
     { account: '일반 계좌', tax: r.generalTax, available: true },

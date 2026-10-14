@@ -27,7 +27,6 @@ import { getAllPosts } from '@/lib/posts';
 import { getGuidesForSector } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import HoldingsPanel from '@/components/HoldingsPanel';
-import RecommendBox from '@/components/RecommendBox';
 import AnswerBox from '@/components/AnswerBox';
 import LiveEtfStats from '@/components/LiveEtfStats';
 import {
@@ -877,7 +876,6 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
 
       {/* 2026-09-30: 자매 사이트 백링크 상자(MainBackrefBox) 제거. 종목 정보와 무관한 외부 유도였다. */}
 
-      <RecommendBox position="bottom" category="general" />
 
       <p className="etf-dict-disclaimer">
         {hasPriceData && asOfIso

@@ -8,10 +8,10 @@ import {
   getSiteLastModified,
 } from '@/lib/posts';
 import { GUIDES, GUIDE_PUBLISHED_AT, getGuidePublishedAt, getGuideModifiedAt } from '@/lib/guides';
-import { getProductsRegistry } from '@/lib/products';
 import { getLatestEtfData, getKrxEtfMeta } from '@/lib/data';
 import { COMPARE_PAIRS } from '@/lib/etf-compare-pairs';
 import { ALL_PERSONAS } from '@/lib/personas-config';
+import { GUIDE_CATEGORIES, categoryHref, getGuidesInCategory, guideDate } from '@/lib/guide-categories';
 
 /**
  * Daily ETF Pulse — 메인 sitemap.xml (홈·카테고리·글·가이드·저자 ~200 URL)
@@ -77,25 +77,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // 추천 자료실 — products.json reviewedAt
-  const productsReviewedAt = getProductsRegistry().reviewedAt;
-  routes.push({
-    url: `${baseUrl}/resources`,
-    lastModified: productsReviewedAt ? new Date(productsReviewedAt) : fallback,
-    changeFrequency: 'weekly',
-    priority: 0.7,
-  });
+  // 추천 자료실(/resources, 쿠팡 파트너스 도서 큐레이션)은 2026-10-14 은퇴: /guide 로 301 (next.config.ts)
 
-  // About — 편집팀 소개 (E-E-A-T 핵심 페이지)
+  // About — 리서치팀 소개 (E-E-A-T 핵심 페이지). 본문을 실제로 고친 날(2026-10-14 발행 주체 이름·소개 문구 정리)
   routes.push({
     url: `${baseUrl}/about`,
-    lastModified: getSiteLastModified() || fallback,
+    lastModified: new Date('2026-10-14T09:00:00+09:00'),
     changeFrequency: 'monthly',
     priority: 0.7,
   });
 
   // 정책 페이지 3종 — AdSense·공정위 형식 요건 (모든 페이지 footer에 일관 노출)
-  const policyLastModified = new Date('2026-05-22');
+  //   2026-10-14: 제휴 링크 항목 삭제(면책·개인정보), 발행 주체 이름 변경(연락처) — 세 페이지 모두 이날 고쳤다.
+  const policyLastModified = new Date('2026-10-14T09:00:00+09:00');
   ['privacy', 'disclaimer', 'contact'].forEach(slug => {
     routes.push({
       url: `${baseUrl}/${slug}`,
@@ -152,6 +146,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: guideMostRecent > 0 ? new Date(guideMostRecent) : fallback,
     changeFrequency: 'daily',
     priority: 0.7,
+  });
+
+  // 주제별 가이드 허브 (/guide/category/{key}, 2026-10-14 신설)
+  //   갱신일은 허브에 속한 가이드 가운데 가장 최근에 쓰거나 고친 날. 가이드 목록이 그 날짜에 바뀐다.
+  GUIDE_CATEGORIES.forEach(c => {
+    const items = getGuidesInCategory(c);
+    if (!items.length) return;
+    const latest = guideDate(items[0]);
+    routes.push({
+      url: `${baseUrl}${categoryHref(c)}`,
+      lastModified: latest ? new Date(`${latest}T09:00:00+09:00`) : fallback,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    });
   });
 
   // 가이드 — 사이트의 주력 색인 자산 (2026-10-08 우선순위 0.85 → 0.9, 네이버 Yeti 는 priority 를 참고한다)
@@ -218,8 +226,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   //   updated: 도구 페이지를 실제로 만들거나 고친 날(YYYY-MM-DD). 없으면 기존처럼 사이트 최신 글 날짜.
   const tools: Array<{ slug: string; priority: number; updated?: string }> = [
     { slug: 'portfolio', priority: 0.7 },
-    { slug: 'tax-compare', priority: 0.7 },
-    { slug: 'dividend-calculator', priority: 0.7, updated: '2026-10-06' }, // ETF 분배금 계산기
+    { slug: 'tax-compare', priority: 0.8, updated: '2026-10-14' }, // 계좌별 세후 수익률 계산기 (계산 방식·세율표·예시·FAQ 추가)
+    { slug: 'dividend-calculator', priority: 0.8, updated: '2026-10-14' }, // ETF 분배금 계산기 (구조화 데이터·설명 보강)
   ];
   tools.forEach(t => {
     routes.push({

@@ -18,7 +18,6 @@ import NextChapterCta from '@/components/NextChapterCta';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
-import RecommendBox from '@/components/RecommendBox';
 import { buildPageMetadata, RETIRED_ROBOTS } from '@/lib/site-meta';
 
 export const metadata: Metadata = buildPageMetadata({
@@ -59,7 +58,6 @@ export default function FlowLandingPage() {
         latestPost={latestPost}
       />
 
-      <RecommendBox position="top" category="general" />
 
       <div className="flow-landing-body">
         <FlowExtremes hottest={hottest} coldest={coldest} />
@@ -73,7 +71,7 @@ export default function FlowLandingPage() {
         <FlowRecentList posts={posts} />
 
         {/* 저자 카드 */}
-        {/* 저자 카드(AI 에이전트 페르소나·"10년 실전 후기" 같은 경력 표기)는 2026-10-14 뺐다. 발행 책임은 편집팀 */}
+        {/* 저자 카드(AI 에이전트 페르소나·"10년 실전 후기" 같은 경력 표기)는 2026-10-14 뺐다. 발행 책임은 리서치팀 */}
 
         <p className="flow-disclaimer">
           오늘 1일치 시세 기반 스냅샷입니다. 주간·월간 누적 자금 흐름은 시계열 데이터가 누적된 후 자동 보강될 예정입니다.
@@ -87,7 +85,6 @@ export default function FlowLandingPage() {
           href="/income"
         />
 
-        <RecommendBox position="bottom" category="general" />
       </div>
     </div>
   );

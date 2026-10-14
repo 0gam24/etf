@@ -12,6 +12,7 @@
 
 import { getAllPosts, getPostsByCategory, CATEGORY_NAMES, type Post } from './posts';
 import { GUIDES, getGuidePublishedAt, type GuideDef } from './guides';
+import { getGuideCategory, getGuidesInCategory, categoryHref } from './guide-categories';
 
 export interface HomeFeedItem {
   kind: 'post' | 'guide';
@@ -139,27 +140,26 @@ const SHELF_CONFIG: { category: string; label: string; href: string }[] = [
  *   가이드를 주제(section)별 선반으로 나눈다. 홈에서 주제마다 대표 가이드로 바로 링크가 나가
  *   ISA·연금·세금·월배당 같은 묶음이 홈에서 2클릭 안에 닿는다.
  */
-const GUIDE_SECTION_SHELVES: GuideDef['section'][] = [
-  'ISA 계좌 가이드',
-  '은퇴 자산 가이드',
-  'ETF 세금 가이드',
-  '월배당 가이드',
-  'ETF 비교 가이드',
-  'ETF 비용 가이드',
-];
+/**
+ * 2026-10-14: 선반을 가이드 주제 허브(src/lib/guide-categories.ts) 단위로 바꿨다. 예전에는 선반마다 section 하나를 보여 주고
+ *   "전체 보기"가 모두 /guide 로 가서, 주제별 묶음 페이지가 없었다. 이제 각 선반은 /guide/category/{key} 로 간다.
+ */
+const HOME_SHELF_CATEGORIES = ['isa', 'pension', 'tax', 'dividend', 'compare', 'cost'];
 
 export function getCategoryShelves(perShelf = 3): CategoryShelf[] {
   void CATEGORY_NAMES;
   const shelves: CategoryShelf[] = [];
-  for (const section of GUIDE_SECTION_SHELVES) {
-    const inSection = GUIDES.filter(g => g.section === section);
-    if (inSection.length === 0) continue;
+  for (const key of HOME_SHELF_CATEGORIES) {
+    const cat = getGuideCategory(key);
+    if (!cat) continue;
+    const inCat = getGuidesInCategory(cat);
+    if (inCat.length === 0) continue;
     // 고친 날(실제 보강·정정) 또는 발행일이 최근인 글부터
-    const items = inSection
+    const items = inCat
       .map(g => guideToFeedItem(g, getGuidePublishedAt(g.slug) || g.lastReviewed))
-      .sort((a, b) => b.dateKey.localeCompare(a.dateKey))
+      .sort((x, y) => y.dateKey.localeCompare(x.dateKey))
       .slice(0, perShelf);
-    shelves.push({ category: 'guide', label: section, href: '/guide', items, total: inSection.length });
+    shelves.push({ category: 'guide', label: `${cat.label} 가이드`, href: categoryHref(cat), items, total: inCat.length });
   }
   for (const cfg of SHELF_CONFIG.filter(c => c.category !== 'guide')) {
     let items: HomeFeedItem[];

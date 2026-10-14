@@ -8,7 +8,6 @@ import { getLatestEtfData, getEtfsBySector } from '@/lib/data';
 import type { RawEtf } from '@/lib/surge';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
-import RecommendBox from '@/components/RecommendBox';
 import { buildItemListSchema, jsonLd } from '@/lib/schema';
 import { buildPageMetadata } from '@/lib/site-meta';
 
@@ -221,7 +220,6 @@ export default async function AccountPage({ params }: PageProps) {
         )}
       </div>
 
-      <RecommendBox position="top" category="retirement" />
 
       {meta?.faq && <FaqSection title={`${name} 자주 묻는 질문`} items={meta.faq} />}
 
@@ -242,7 +240,6 @@ export default async function AccountPage({ params }: PageProps) {
         </Link>
       </nav>
 
-      <RecommendBox position="bottom" category="retirement" />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import { jsonLd } from '@/lib/schema';
 import { buildPageMetadata } from '@/lib/site-meta';
 
-const LAST_UPDATED = '2026-09-30';
+const LAST_UPDATED = '2026-10-14';
 
 export const metadata: Metadata = buildPageMetadata({
   title: '면책조항',
@@ -102,7 +102,7 @@ export default function DisclaimerPage() {
         <h2 className="about-h2">4. 손익 책임</h2>
         <p className="about-desc">
           사이트 콘텐츠를 참고한 투자 결정으로 발생한 <strong>손익·기회비용·세금 등 모든 결과의 책임은
-          전적으로 투자자 본인에게 있습니다.</strong> Daily ETF Pulse 편집팀·운영자는 이용자의 투자 결과에 대해
+          전적으로 투자자 본인에게 있습니다.</strong> Daily ETF Pulse 리서치팀·운영자는 이용자의 투자 결과에 대해
           어떠한 법적·재정적 책임도 지지 않습니다.
         </p>
       </section>
@@ -110,18 +110,13 @@ export default function DisclaimerPage() {
       <section className="about-section">
         <h2 className="about-h2">5. 광고·제휴 링크 고지</h2>
         <p className="about-desc">
-          사이트는 운영비 충당을 위해 아래 두 가지 광고·제휴 수익을 받고 있습니다. 현재 운영 중인 수익 채널은
-          이 둘뿐입니다.
+          사이트는 운영비 충당을 위해 아래 광고 수익을 받고 있습니다. 2026년 10월 14일부터 상품 구매로 수수료를 받는
+          제휴(어필리에이트) 링크는 운영하지 않습니다.
         </p>
         <ul className="about-list">
           <li>
             <strong>Google AdSense</strong>: 페이지 내 디스플레이 광고. 광고 내용·게재 위치는 Google이
             이용자 관심사에 맞게 자동 선정합니다.
-          </li>
-          <li>
-            <strong>쿠팡 파트너스</strong>: 페이지 하단 추천 자료 영역과 자료 페이지(/resources 등)의 책·도구
-            추천 링크. 이용자가 링크를 통해 구매 시 사이트에 일정 수수료가 발생합니다. 링크가 노출되는 영역과
-            페이지에는 별도 고지 문구가 함께 표시됩니다.
           </li>
         </ul>
         <p className="about-desc" style={{ marginTop: '1rem' }}>
@@ -155,7 +150,7 @@ export default function DisclaimerPage() {
 
       <section className="about-section">
         <p className="about-desc" style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-dim)' }}>
-          관련 페이지: <Link href="/about" style={{ color: 'var(--accent-gold)', textDecoration: 'underline' }}>편집팀 소개</Link>{' · '}
+          관련 페이지: <Link href="/about" style={{ color: 'var(--accent-gold)', textDecoration: 'underline' }}>리서치팀 소개</Link>{' · '}
           <Link href="/privacy" style={{ color: 'var(--accent-gold)', textDecoration: 'underline' }}>개인정보처리방침</Link>{' · '}
           <Link href="/contact" style={{ color: 'var(--accent-gold)', textDecoration: 'underline' }}>연락처</Link>
         </p>

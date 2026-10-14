@@ -14,7 +14,6 @@ import NextChapterCta from '@/components/NextChapterCta';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
-import RecommendBox from '@/components/RecommendBox';
 import SurgeRecentList from '@/components/SurgeRecentList';
 import { buildPageMetadata, RETIRED_ROBOTS } from '@/lib/site-meta';
 
@@ -64,7 +63,6 @@ export default function SurgeLandingPage() {
         baseDate={etfData?.baseDate}
       />
 
-      <RecommendBox position="top" category="general" />
 
       <div className="surge-landing-body">
         <SurgeThemeTracker groups={themeGroups} />
@@ -76,7 +74,7 @@ export default function SurgeLandingPage() {
         />
 
         {/* 저자 카드 */}
-        {/* 저자 카드(AI 에이전트 페르소나·"10년 실전 후기" 같은 경력 표기)는 2026-10-14 뺐다. 발행 책임은 편집팀 */}
+        {/* 저자 카드(AI 에이전트 페르소나·"10년 실전 후기" 같은 경력 표기)는 2026-10-14 뺐다. 발행 책임은 리서치팀 */}
 
         <FaqSection title={CATEGORY_FAQ_TITLE.surge} items={CATEGORY_FAQ.surge} />
 
@@ -86,7 +84,6 @@ export default function SurgeLandingPage() {
           href="/flow"
         />
 
-        <RecommendBox position="bottom" category="general" />
       </div>
     </div>
   );

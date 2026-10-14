@@ -40,7 +40,9 @@ export default function EtfIndexSearch({ rows, sectors, issuers }: Props) {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.hash.slice(1));
-    const _q = params.get('q') || '';
+    // ?q= 로 들어와도 검색되게 한다 (2026-10-14). 사이트 구조화 데이터 SearchAction 이 /etf?q= 를 가리킨다.
+    const search = new URLSearchParams(window.location.search);
+    const _q = params.get('q') || search.get('q') || '';
     const _s = params.get('sector') || '';
     const _i = params.get('issuer') || '';
     const _p = params.get('priced') === '1';

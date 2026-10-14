@@ -13,7 +13,6 @@ import HomeTodayBundle from '@/components/HomeTodayBundle';
 import HomeLatestFeed from '@/components/HomeLatestFeed';
 import HomeCategoryShelves from '@/components/HomeCategoryShelves';
 import DataFooter from '@/components/DataFooter';
-import RecommendBox from '@/components/RecommendBox';
 import { buildOg, buildTwitter } from '@/lib/site-meta';
 
 // ⚠️ `export const revalidate`를 두지 않는다. (2026-08-12)
@@ -121,7 +120,6 @@ export default async function HomePage() {
       {/* 최신 글 통합 피드 — 전 카테고리 최신순 12편 (히어로 날짜 중복 제거) */}
       <HomeLatestFeed items={latestFeed} excludeDateKey={bundle?.dateKey} />
 
-      <RecommendBox position="top" />
 
       {/* 카테고리별 선반 — 헤더 메뉴 순서, 카테고리당 3편 */}
       <HomeCategoryShelves shelves={shelves} />
@@ -160,7 +158,6 @@ export default async function HomePage() {
         <PersonaSelector />
       </div>
 
-      <RecommendBox position="bottom" />
 
       {/* TRUST: 데이터 출처/면책 */}
       <DataFooter

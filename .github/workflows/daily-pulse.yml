@@ -38,9 +38,6 @@ jobs:
       GOOGLE_INDEXING_KEY:     ${{ secrets.GOOGLE_INDEXING_KEY }}
       THREADS_USER_ID:         ${{ secrets.THREADS_USER_ID }}
       THREADS_ACCESS_TOKEN:    ${{ secrets.THREADS_ACCESS_TOKEN }}
-      # Coupang Partners Open API (선택 — 없으면 fetch:products가 dry-run으로 자동 폴백)
-      COUPANG_PARTNERS_ACCESS_KEY: ${{ secrets.COUPANG_PARTNERS_ACCESS_KEY }}
-      COUPANG_PARTNERS_SECRET_KEY: ${{ secrets.COUPANG_PARTNERS_SECRET_KEY }}
       # 한국투자증권 OpenAPI (선택 — 장중 분단위 시세 보강용. 미등록 시 자동 mock 폴백.)
       KIS_APP_KEY:     ${{ secrets.KIS_APP_KEY }}
       KIS_APP_SECRET:  ${{ secrets.KIS_APP_SECRET }}
@@ -65,10 +62,6 @@ jobs:
 
       - name: Run pipeline (npm run pulse)
         run: npm run pulse
-
-      - name: Refresh Coupang Partners products (merge with manual curation)
-        # 키 없으면 자동으로 dry-run 폴백 → step 실패 안 함
-        run: npm run fetch:products:merge || true
 
       - name: Accumulate OHLC history (시그널 발행용 시계열 축적)
         # KOSPI200 추적 종목 9 종의 OHLC 일봉을 data/ohlc/{code}.json 에 누적.

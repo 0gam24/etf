@@ -36,6 +36,9 @@ export default function robots(): MetadataRoute.Robots {
         allow: ALL_ALLOW,
         disallow: ALL_DISALLOW,
       },
+      // Googlebot 명시 (2026-10-14). 이름이 있는 그룹이 생기면 Googlebot 은 * 그룹을 보지 않으므로
+      //   * 와 같은 규칙(렌더링에 필요한 /_next/static·/_next/image 허용)을 그대로 준다.
+      { userAgent: 'Googlebot',           allow: ALL_ALLOW, disallow: ALL_DISALLOW },
       // Google AdSense 크롤러 — 광고 게재·심사용. 와일드카드(*)로도 허용되나 명시해 누락 위험 0.
       { userAgent: 'Mediapartners-Google', allow: ['/'], disallow: [] },
       { userAgent: 'AdsBot-Google',        allow: ['/'], disallow: [] },

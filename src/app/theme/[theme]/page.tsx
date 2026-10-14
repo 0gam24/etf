@@ -9,9 +9,7 @@ import { getGuidesForSector } from '@/lib/guides';
 import type { RawEtf } from '@/lib/surge';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
-import RecommendBox from '@/components/RecommendBox';
 import { buildItemListSchema, jsonLd } from '@/lib/schema';
-import type { ProductCategory } from '@/lib/products';
 import { buildPageMetadata } from '@/lib/site-meta';
 
 /**
@@ -22,16 +20,6 @@ import { buildPageMetadata } from '@/lib/site-meta';
  *   답하지 못하는 상태라, 이미 보유한 KRX 종목 데이터·섹터 투자 포인트·가이드를 엮어
  *   실제 내용이 있는 허브로 재구성한다.
  */
-
-function themeToProductCategory(theme: string): ProductCategory | undefined {
-  const map: Record<string, ProductCategory> = {
-    'ai':           'ai-semi-etf',
-    'semi':         'ai-semi-etf',
-    'defense':      'defense-etf',
-    'shipbuilding': 'general',
-  };
-  return map[theme];
-}
 
 /** 테마 슬러그 → 시세·이름 기반 섹터 분류값 (data.ts SECTOR_RULES와 동일 표기) */
 const THEME_SECTOR: Record<string, string> = {
@@ -236,7 +224,6 @@ export default async function ThemePage({ params }: PageProps) {
         )}
       </div>
 
-      <RecommendBox position="top" category={themeToProductCategory(theme)} />
 
       {meta?.faq && <FaqSection title={`${name} 테마 ETF 자주 묻는 질문`} items={meta.faq} />}
 
@@ -257,7 +244,6 @@ export default async function ThemePage({ params }: PageProps) {
         </Link>
       </nav>
 
-      <RecommendBox position="bottom" category={themeToProductCategory(theme)} />
     </div>
   );
 }

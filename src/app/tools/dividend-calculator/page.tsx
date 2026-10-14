@@ -2,9 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
+import AdBanner from '@/components/AdBanner';
+import { AD_SLOTS } from '@/lib/ads';
+import { TAX_RULES } from '@/lib/account-tax-rules';
 import DividendCalculator, { type DividendCalcEtf } from '@/components/DividendCalculator';
 import { buildPageMetadata } from '@/lib/site-meta';
-import { buildHowToSchema, jsonLd, type FaqItem } from '@/lib/schema';
+import { buildHowToSchema, buildSoftwareAppSchema, jsonLd, type FaqItem } from '@/lib/schema';
 import { getIncomeRegistry } from '@/lib/income-server';
 import {
   formatEtfPriceAsOf,
@@ -214,6 +217,7 @@ export default function DividendCalculatorPage() {
   return (
     <article style={{ maxWidth: '60rem', margin: '0 auto', padding: 'var(--space-8) var(--space-6)' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(buildSoftwareAppSchema({ name: 'ETF 분배금 계산기', url: '/tools/dividend-calculator', description: 'ETF 보유 수량이나 투자금으로 1회·연간 분배금과 세후 금액을 계산하는 계산기' })) }} />
       <Breadcrumbs items={[
         { name: '홈', href: '/' },
         { name: '도구', href: '/tools/portfolio' },
@@ -334,11 +338,55 @@ export default function DividendCalculatorPage() {
         </p>
       </section>
 
+      {/* 광고는 계산기·예시표 바로 아래를 피해 계산식 문단 뒤에 둔다(오클릭 방지, src/lib/ads.ts 배치 규칙). */}
+      {AD_SLOTS.bottom && <AdBanner key="dividend-calc-bottom" slot={AD_SLOTS.bottom} className="ad-slot--tool ad-slot--bottom" />}
+
       <section style={sectionStyle}>
         <h2 style={h2Style}>계좌마다 분배금 세금이 다릅니다</h2>
         <p style={pStyle}>
           계산기의 세후 금액은 일반 증권계좌에서 분배금 전액에 15.4%가 원천징수된다고 가정한 값입니다. 계좌와 소득 규모에 따라 실제 세금은 이렇게 달라집니다.
         </p>
+        <div style={{ overflowX: 'auto', marginBottom: 'var(--space-4)' }}>
+          <table style={tableStyle}>
+            <caption style={{ captionSide: 'bottom', textAlign: 'left', fontSize: '0.8rem', color: 'var(--text-dim)', paddingTop: '0.4rem' }}>
+              계좌별 분배금 세금 ({TAX_RULES.asOf} 법령 기준, 세율은 지방소득세 포함)
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col" style={thStyle}>계좌</th>
+                <th scope="col" style={thStyle}>분배금 받을 때</th>
+                <th scope="col" style={thStyle}>세금을 내는 때와 세율</th>
+                <th scope="col" style={thStyle}>한도·조건</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" style={tdStyle}>일반계좌</th>
+                <td style={tdStyle}>{taxPct(TAX_RULES.dividendTaxRate)} 원천징수</td>
+                <td style={tdStyle}>받을 때 바로 (소득세 14% + 지방소득세 1.4%)</td>
+                <td style={tdStyle}>이자·배당 합계 연 {manWon(TAX_RULES.financialIncomeThreshold)} 초과분은 종합과세</td>
+              </tr>
+              <tr>
+                <th scope="row" style={tdStyle}>중개형 ISA</th>
+                <td style={tdStyle}>떼지 않음</td>
+                <td style={tdStyle}>만기나 해지 때 계좌 안 손익을 합쳐 {manWon(TAX_RULES.isa.taxFreeGeneral)}(서민형 {manWon(TAX_RULES.isa.taxFreeLowIncome)})까지 비과세, 넘는 부분 {taxPct(TAX_RULES.isa.excessRate)}</td>
+                <td style={tdStyle}>의무 가입 {TAX_RULES.isa.minYears}년</td>
+              </tr>
+              <tr>
+                <th scope="row" style={tdStyle}>연금저축</th>
+                <td style={tdStyle}>떼지 않음</td>
+                <td style={tdStyle}>연금으로 받을 때 {taxPct(TAX_RULES.pension.rate80plus)}~{taxPct(TAX_RULES.pension.rateUnder70)}(나이별), 연금 외로 꺼내면 {taxPct(TAX_RULES.pension.otherWithdrawalRate)}</td>
+                <td style={tdStyle}>사적연금 연 {manWon(TAX_RULES.pension.separateTaxThreshold)} 초과 수령 시 종합과세 또는 {taxPct(TAX_RULES.pension.otherWithdrawalRate)} 분리과세 선택</td>
+              </tr>
+              <tr>
+                <th scope="row" style={tdStyle}>IRP</th>
+                <td style={tdStyle}>떼지 않음</td>
+                <td style={tdStyle}>연금저축과 같음</td>
+                <td style={tdStyle}>위험자산 {Math.round(TAX_RULES.retirementRiskAssetLimit * 100)}% 한도, 레버리지·인버스 ETF는 담을 수 없음</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <ul style={olStyle}>
           <li>
             <strong style={strongStyle}>일반계좌</strong>: 분배금이 들어올 때 소득세 14%와 지방소득세 1.4%를 떼고 입금됩니다.
@@ -434,6 +482,16 @@ export default function DividendCalculatorPage() {
       </section>
     </article>
   );
+}
+
+/** 0.154 → "15.4%" */
+function taxPct(rate: number): string {
+  return `${Math.round(rate * 1000) / 10}%`;
+}
+
+/** 2000000 → "200만원" */
+function manWon(n: number): string {
+  return `${(n / 10_000).toLocaleString('ko-KR')}만원`;
 }
 
 const sectionStyle: React.CSSProperties = {

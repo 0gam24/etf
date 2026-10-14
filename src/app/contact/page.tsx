@@ -9,7 +9,7 @@ const CONTACT_EMAIL = 'smartdatashop@gmail.com';
 export const metadata: Metadata = buildPageMetadata({
   title: '연락처',
   description:
-    'Daily ETF Pulse 편집팀 연락처. 데이터 오류 제보·일반 문의·제휴·광고 문의를 이메일로 보내주시면 영업일 기준 1~3일 내 답변드립니다.',
+    'Daily ETF Pulse 리서치팀 연락처. 데이터 오류 제보·일반 문의·제휴·광고 문의를 이메일로 보내주시면 영업일 기준 1~3일 내 답변드립니다.',
   url: '/contact',
   keywords: ['Daily ETF Pulse 문의', '데이터 오류 제보', '제휴 문의'],
 });
@@ -47,7 +47,7 @@ export default function ContactPage() {
         <div className="about-eyebrow">CONTACT</div>
         <h1 className="about-title">연락처</h1>
         <p className="about-tagline">
-          Daily ETF Pulse 편집팀에 직접 연락하실 수 있습니다. 오류 제보·일반 문의·제휴 제안 모두 환영합니다.
+          Daily ETF Pulse 리서치팀에 직접 연락하실 수 있습니다. 오류 제보·일반 문의·제휴 제안 모두 환영합니다.
         </p>
       </header>
 
@@ -102,7 +102,7 @@ export default function ContactPage() {
       <section className="about-section">
         <h2 className="about-h2">발행 책임</h2>
         <ul className="about-list">
-          <li><strong>발행자</strong>: Daily ETF Pulse 편집팀</li>
+          <li><strong>발행자</strong>: Daily ETF Pulse 리서치팀</li>
           <li><strong>사이트</strong>: https://iknowhowinfo.com</li>
           <li><strong>대표 연락처</strong>: {CONTACT_EMAIL}</li>
         </ul>
@@ -110,7 +110,7 @@ export default function ContactPage() {
 
       <section className="about-section">
         <p className="about-desc" style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-dim)' }}>
-          관련 페이지: <Link href="/about" style={{ color: 'var(--accent-gold)', textDecoration: 'underline' }}>편집팀 소개</Link>{' · '}
+          관련 페이지: <Link href="/about" style={{ color: 'var(--accent-gold)', textDecoration: 'underline' }}>리서치팀 소개</Link>{' · '}
           <Link href="/privacy" style={{ color: 'var(--accent-gold)', textDecoration: 'underline' }}>개인정보처리방침</Link>{' · '}
           <Link href="/disclaimer" style={{ color: 'var(--accent-gold)', textDecoration: 'underline' }}>면책조항</Link>
         </p>

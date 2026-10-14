@@ -88,12 +88,6 @@ export default function GuideDataBlock({ block }: Props) {
     return <ThemeEtfList etfs={matched} />;
   }
 
-  // ── product-rec:{category} ── 쿠팡 파트너스 상품 추천 (책 + 학습 도구)
-  //   2026-10-14: 가이드 본문의 제휴 상품 추천은 그리지 않는다 (가이드 페이지가 이 섹션 자체를 걸러 낸다).
-  if (block.startsWith('product-rec:') || block.startsWith('book-rec:')) {
-    return null;
-  }
-
   // ── related-posts:{category} ──
   if (block.startsWith('related-posts:')) {
     const category = block.replace('related-posts:', '');

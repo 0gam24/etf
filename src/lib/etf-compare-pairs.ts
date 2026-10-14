@@ -120,6 +120,16 @@ export const COMPARE_PAIRS: ComparePair[] = [
   },
 ];
 
+/**
+ * 비교 페이지를 처음 낸 날 (git 이력에서 확인, 2026-10-14 정리). Article 구조화 데이터의 datePublished 로 쓴다.
+ * 새 쌍을 넣을 때는 "// 추가 YYYY-MM-DD" 주석과 함께 여기에도 날짜를 적는다. 없으면 시세 기준일을 쓴다.
+ */
+export const COMPARE_PAIR_ADDED_AT: Record<string, string> = {
+  'sol-us-dividend-djones-vs-tiger-us-dividend-djones': '2026-10-06',
+};
+/** 2026-04-27 첫 묶음 10쌍 */
+export const COMPARE_PAIR_FIRST_BATCH_DATE = '2026-04-27';
+
 export function getComparePairBySlug(slug: string): ComparePair | null {
   return COMPARE_PAIRS.find(p => p.slug === slug) || null;
 }

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import RecommendBox from '@/components/RecommendBox';
 import {
   getLatestEtfData,
   getKnownShortcodes,
@@ -237,7 +236,6 @@ export default function EtfIndexPage() {
         </section>
       )}
 
-      <RecommendBox position="top" />
 
       {/* 운용사별 (퀵 필터 인덱스) */}
       <section className="etf-index-section">
@@ -294,7 +292,6 @@ export default function EtfIndexPage() {
         </section>
       ))}
 
-      <RecommendBox position="bottom" />
 
       <p className="etf-index-disclaimer">
         본 페이지는 한국거래소(KRX) 공공데이터 포털의 ETF 종목 목록과 일별 종가를 바탕으로 정리했습니다.

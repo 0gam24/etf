@@ -59,7 +59,7 @@ export async function GET() {
   const allPosts = getAllPosts();
   const entries: string[] = [];
 
-  // 홈 + 카테고리 랜딩 + 가이드 인덱스 + /resources
+  // 홈 + 카테고리 랜딩 + 가이드 인덱스
   entries.push(`
   <url>
     <loc>${SITE}</loc>
@@ -83,11 +83,10 @@ export async function GET() {
   // 정적 신뢰·자료실 페이지, Google Image Search 노출 가능성 + OG 카드 양호 유지.
   //   (about·newsletter·resources·compare·etf 인덱스 모두 OG 이미지 동적 생성됨)
   const STATIC_PAGES: Array<{ path: string; title: string; category?: string }> = [
-    { path: '/about',      title: 'Daily ETF Pulse 편집팀, 발행 원칙·데이터 출처',  category: 'pulse' },
+    { path: '/about',      title: 'Daily ETF Pulse 리서치팀, 발행 원칙·데이터 출처',  category: 'pulse' },
     // 2026-10-06: 이메일 발송이 없어 '매일 아침 9시 갱신' 약속을 페이지 실제 제목에 맞춰 고침
     { path: '/newsletter', title: '뉴스레터·RSS 구독, 새 ETF 가이드 받아보기',  category: 'pulse' },
     { path: '/feeds',      title: '구독 · 피드 (RSS·Atom·JSON), Daily ETF Pulse',   category: 'pulse' },
-    { path: '/resources',  title: 'ETF 학습 자료실, 도서·도구 큐레이션',           category: 'income' },
     { path: '/compare',    title: 'ETF 1:1 비교 허브, 운용사·섹터·환헤지',         category: 'flow' },
     { path: '/etf',        title: `ETF 종목 사전, KRX 상장 ${etfSlugMap.count > 0 ? `${etfSlugMap.count.toLocaleString('ko-KR')}종` : '전 종목'}`, category: 'surge' },
     { path: '/guide',      title: 'ETF 투자 가이드, 월배당·커버드콜·세금·수수료·입문', category: 'pulse' },

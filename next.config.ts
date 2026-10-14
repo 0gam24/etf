@@ -41,19 +41,20 @@ const nextConfig: NextConfig = {
     //    2026-09-30 실측: 단일 규칙('/:path*')은 루트에서 path가 비어 Location이
     //    'https://iknowhowinfo.com/:path*' 글자 그대로 나가 404였다(하위 경로는 정상).
     //    그래서 루트('/')와 하위 경로('/:path+')를 두 규칙으로 나눈다.
+    //    2026-10-14: permanent(308) 대신 301 을 명시한다. 네이버 서치어드바이저 안내가 301 기준이다.
     const WWW_HOST = [{ type: 'host' as const, value: 'www.iknowhowinfo.com' }];
     const hostCanonical = [
       {
         source: '/',
         has: WWW_HOST,
         destination: 'https://iknowhowinfo.com/',
-        permanent: true,
+        statusCode: 301 as const,
       },
       {
         source: '/:path+',
         has: WWW_HOST,
         destination: 'https://iknowhowinfo.com/:path+',
-        permanent: true,
+        statusCode: 301 as const,
       },
     ];
 
@@ -65,6 +66,9 @@ const nextConfig: NextConfig = {
       { source: '/surge/449450-kodex-방산top10-surge', destination: '/surge/449450-kodex-defense-top10-surge', permanent: true },
       // 2026-10-14: 예전 일별 시황 글의 저자 페르소나(AI 에이전트 K~H) 소개 페이지는 은퇴. 작성 방식은 /about 한 곳에서 밝힌다.
       { source: '/author', destination: '/about', permanent: true },
+      // 추천 자료실(제휴 도서 큐레이션)은 2026-10-14 은퇴. 제휴 링크를 사이트에서 모두 걷어 냈다
+      { source: '/resources', destination: '/guide', permanent: true },
+      { source: '/resources/:path*', destination: '/guide', permanent: true },
       { source: '/author/:id', destination: '/about', permanent: true },
     ];
 

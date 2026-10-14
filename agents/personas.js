@@ -6,7 +6,7 @@
  *
  *   ⚠️ Google E-E-A-T (2026 정책) 준수:
  *      - 'isAi: true' 명시 — 모든 콘텐츠에 AI 작성 공개 의무.
- *      - 발행·검수 책임은 'Daily ETF Pulse 편집팀' (publisher).
+ *      - 발행·검수 책임은 'Daily ETF Pulse 리서치팀' (publisher).
  *      - AI 에이전트는 데이터 분석 모델로 정의 — '실존 인물 사칭' 절대 금지.
  *
  *   ⚠️ 이 파일이 저자 프로필의 단일 마스터 소스입니다.
@@ -35,7 +35,7 @@ const PERSONAS = {
       '계좌별 세후 수익률 시뮬레이션 결과,',
       '운용사 공시 기준 분배 일정을 분석하면,',
     ],
-    closingSignature: '— Daily ETF Pulse 편집팀 · 출처: KRX 공공데이터·운용사 공시·한국은행 ECOS',
+    closingSignature: '— Daily ETF Pulse 리서치팀 · 출처: KRX 공공데이터·운용사 공시·한국은행 ECOS',
   },
   mom_park: {
     id: 'mom_park',
@@ -56,7 +56,7 @@ const PERSONAS = {
       '동일 종목을 일반 vs ISA에서 받을 때,',
       '5년 누적 세후 수익률 차이는,',
     ],
-    closingSignature: '— Daily ETF Pulse 편집팀 · 출처: 국세청 세법·운용사 분배 데이터·KRX 시세',
+    closingSignature: '— Daily ETF Pulse 리서치팀 · 출처: 국세청 세법·운용사 분배 데이터·KRX 시세',
   },
   data_lee: {
     id: 'data_lee',
@@ -77,7 +77,7 @@ const PERSONAS = {
       '최근 5일 평균 대비 거래량이 340% 증가했는데,',
       '섹터 자금 흐름 누적합은,',
     ],
-    closingSignature: '— Daily ETF Pulse 편집팀 · 출처: KRX 일별 시세·한국은행 ECOS 거시지표',
+    closingSignature: '— Daily ETF Pulse 리서치팀 · 출처: KRX 일별 시세·한국은행 ECOS 거시지표',
   },
   homemaker_jung: {
     id: 'homemaker_jung',
@@ -98,7 +98,7 @@ const PERSONAS = {
       '연 분배율 7% 기준 누적 캐시플로는,',
       '월별 분배 시점이 겹치지 않게 조합하면,',
     ],
-    closingSignature: '— Daily ETF Pulse 편집팀 · 출처: 운용사 분배 캘린더·국세청 분배소득 세율',
+    closingSignature: '— Daily ETF Pulse 리서치팀 · 출처: 운용사 분배 캘린더·국세청 분배소득 세율',
   },
   biz_cho: {
     id: 'biz_cho',
@@ -119,7 +119,7 @@ const PERSONAS = {
       '소득 8천만원 구간 기준 시뮬레이션 결과,',
       '공제 한도를 모두 활용하면,',
     ],
-    closingSignature: '— Daily ETF Pulse 편집팀 · 출처: 국세청 종합소득세 세법·노란우산공제 한도',
+    closingSignature: '— Daily ETF Pulse 리서치팀 · 출처: 국세청 종합소득세 세법·노란우산공제 한도',
   },
   dev_song: {
     id: 'dev_song',
@@ -140,7 +140,7 @@ const PERSONAS = {
       'AI 인프라 공급망 모멘텀 모델 기준,',
       '엔비디아 관련 뉴스 빈도 변화는,',
     ],
-    closingSignature: '— Daily ETF Pulse 편집팀 · 출처: 운용사 종목 비중·반도체 산업 매출 데이터',
+    closingSignature: '— Daily ETF Pulse 리서치팀 · 출처: 운용사 종목 비중·반도체 산업 매출 데이터',
   },
   analyst_han: {
     id: 'analyst_han',
@@ -161,7 +161,7 @@ const PERSONAS = {
       '기관 매매동향 3개월 추적 결과,',
       '환율·금리 지표 결합 시,',
     ],
-    closingSignature: '— Daily ETF Pulse 편집팀 · 출처: 한국은행 ECOS·KRX 외국인 순매수 데이터',
+    closingSignature: '— Daily ETF Pulse 리서치팀 · 출처: 한국은행 ECOS·KRX 외국인 순매수 데이터',
   },
 };
 
@@ -170,7 +170,7 @@ const PERSONAS = {
  *   Google E-E-A-T: AI가 작성하더라도 발행·검수 책임자는 명확한 인격체여야 함.
  */
 const PUBLISHER = {
-  name: 'Daily ETF Pulse 편집팀',
+  name: 'Daily ETF Pulse 리서치팀',
   url: '/about',
   // 2026-10-14: 사이트 소개 문구를 지금 운영하는 내용으로 (AI 분석 에이전트 체계는 은퇴)
   description:
@@ -179,7 +179,7 @@ const PUBLISHER = {
 
 /** 표준 AI 공시 문구 — 모든 article 하단에 노출 */
 const AI_DISCLOSURE =
-  '본 분석은 데이터 기반 AI 분석 에이전트가 작성했으며, 실존 인물이 아닙니다. 발행·검수 책임은 Daily ETF Pulse 편집팀에 있으며, 모든 투자 판단의 책임은 본인에게 있습니다.';
+  '수치와 조항은 글에 밝힌 1차 출처를 근거로 하며, 발행·정정 책임은 Daily ETF Pulse 리서치팀에 있습니다. 모든 투자 판단의 책임은 본인에게 있습니다.';
 
 /**
  * 카테고리 + 섹터 + 날짜로 에이전트를 선택 (로테이션)

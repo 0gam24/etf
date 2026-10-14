@@ -348,3 +348,19 @@ export function jsonLd(obj: object): string {
   // </script> 인젝션 방지
   return JSON.stringify(obj).replace(/</g, '\\u003c');
 }
+
+// ── SoftwareApplication 스키마 (계산기 도구 페이지, 2026-10-14) ──
+export function buildSoftwareAppSchema(input: { name: string; url: string; description: string }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: input.name,
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'Web',
+    url: abs(input.url),
+    inLanguage: 'ko-KR',
+    description: input.description,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' },
+    publisher: { '@type': 'Organization', '@id': `${SITE}/#organization`, name: SITE_NAME },
+  };
+}

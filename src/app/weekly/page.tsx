@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { CalendarRange, ArrowRight } from 'lucide-react';
 import { getPostsByCategory, CATEGORY_NAMES } from '@/lib/posts';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import RecommendBox from '@/components/RecommendBox';
 import { buildItemListSchema, jsonLd } from '@/lib/schema';
 import { buildPageMetadata, RETIRED_ROBOTS } from '@/lib/site-meta';
 
@@ -62,7 +61,6 @@ export default function WeeklyIndexPage() {
         </p>
       </header>
 
-      <RecommendBox position="top" category="general" />
 
       <div className="pulse-landing-body">
         <section className="pulse-archive">
@@ -112,7 +110,6 @@ export default function WeeklyIndexPage() {
           </ul>
         </nav>
 
-        <RecommendBox position="bottom" category="general" />
       </div>
     </div>
   );

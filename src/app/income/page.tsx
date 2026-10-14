@@ -13,7 +13,6 @@ import NextChapterCta from '@/components/NextChapterCta';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
-import RecommendBox from '@/components/RecommendBox';
 import { buildPageMetadata } from '@/lib/site-meta';
 
 export const metadata: Metadata = buildPageMetadata({
@@ -64,7 +63,6 @@ export default function IncomeLandingPage() {
       {/* 분배락일 D-5 이내 임박 ETF 알림 (자동 분기) */}
       <ExDividendAlert etfs={etfs} windowDays={5} />
 
-      <RecommendBox position="top" category="income" />
 
       <div className="income-landing-body">
         <IncomeGoalCalculator etfs={etfs} />
@@ -76,7 +74,7 @@ export default function IncomeLandingPage() {
         <IncomeTaxCompare etfs={topStable} basePrincipal={100000000} />
 
         {/* 저자 후기 카드 */}
-        {/* 저자 카드(AI 에이전트 페르소나·"10년 실전 후기" 같은 경력 표기)는 2026-10-14 뺐다. 발행 책임은 편집팀 */}
+        {/* 저자 카드(AI 에이전트 페르소나·"10년 실전 후기" 같은 경력 표기)는 2026-10-14 뺐다. 발행 책임은 리서치팀 */}
 
         {/* 최근 income 발행 */}
         <section className="pulse-archive">
@@ -113,7 +111,6 @@ export default function IncomeLandingPage() {
           href="/breaking"
         />
 
-        <RecommendBox position="bottom" category="income" />
       </div>
     </div>
   );

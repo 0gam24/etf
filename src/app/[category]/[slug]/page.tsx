@@ -16,27 +16,13 @@ import HelpfulFeedback from '@/components/HelpfulFeedback';
 import HoldingsPanel from '@/components/HoldingsPanel';
 import PostRelatedEtfs from '@/components/PostRelatedEtfs';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import RecommendBox from '@/components/RecommendBox';
 import LiveTickerChip from '@/components/LiveTickerChip';
 import PublishedVsLive from '@/components/PublishedVsLive';
 import AnswerBox from '@/components/AnswerBox';
 import FaqSection from '@/components/FaqSection';
-import type { ProductCategory } from '@/lib/products';
 import { PUBLISHER } from '@/lib/authors';
 import { buildArticleSchema, jsonLd } from '@/lib/schema';
 import { SITE_NAME, SITE_LOCALE, articleTitle, articleDescription, toReportYmd, padDescription, ogImageUrl, RETIRED_ROBOTS } from '@/lib/site-meta';
-
-/** 글 카테고리 → 추천 자료 매칭 */
-function postCategoryToProductCategory(category: string): ProductCategory | undefined {
-  const map: Record<string, ProductCategory> = {
-    'income':   'income',
-    'breaking': 'general',
-    'pulse':    'general',
-    'surge':    'general',
-    'flow':     'general',
-  };
-  return map[category];
-}
 
 interface PageProps {
   params: Promise<{ category: string; slug: string }>;
@@ -284,7 +270,7 @@ export default async function PostPage({ params }: PageProps) {
             <div className="post-v2-meta">
               <span className="post-v2-meta-author">
                 <span className="post-v2-avatar">D</span>
-                <span>Daily ETF Pulse 편집팀</span>
+                <span>Daily ETF Pulse 리서치팀</span>
                 <EditorialNote variant="compact" kind="data" />
               </span>
               <span>{date}</span>
@@ -338,7 +324,6 @@ export default async function PostPage({ params }: PageProps) {
             source="KRX 공공데이터"
           />
 
-          <RecommendBox position="top" category={postCategoryToProductCategory(category)} />
 
           {category === 'surge' && post.meta.tickers && post.meta.tickers[0] && (
             <section className="holdings-detail-section">
@@ -425,7 +410,6 @@ export default async function PostPage({ params }: PageProps) {
 
           <EditorialNote variant="inline" kind="data" />
 
-          <RecommendBox position="bottom" category={postCategoryToProductCategory(category)} />
         </article>
 
         <Toc />

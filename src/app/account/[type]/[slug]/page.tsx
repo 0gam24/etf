@@ -1,7 +1,6 @@
 import { getPostBySlug, getAllPostSlugs, CATEGORY_NAMES } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import RecommendBox from '@/components/RecommendBox';
 import { SITE_NAME, SITE_LOCALE, ogImageUrl } from '@/lib/site-meta';
 
 interface PageProps {
@@ -66,13 +65,11 @@ export default async function AccountPostPage({ params }: PageProps) {
           <div className="post-meta-item">⏱️ {post.readingTime}분 읽기</div>
         </div>
       </section>
-      <RecommendBox position="top" category="retirement" />
       <section className="post-body" style={{ marginTop: '2rem' }}>
         <article className="post-content prose" style={{ whiteSpace: 'pre-wrap' }}>
           {post.content}
         </article>
       </section>
-      <RecommendBox position="bottom" category="retirement" />
     </div>
   );
 }

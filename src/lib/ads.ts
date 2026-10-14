@@ -25,7 +25,7 @@ export type AdSlotKey = keyof typeof AD_SLOTS;
  * 수동 광고 배치 규칙 (2026-10-06).
  *   자동 광고가 layout에서 계속 돌기 때문에 수동 광고까지 겹치면 화면이 과밀해진다.
  *   그래서 수동 광고는 페이지당 2개를 넘기지 않고, 짧은 글에는 1개만 둔다.
- *   광고 바로 위가 표·카드·링크 목록·제휴 카드면 오클릭이 생기기 쉬우므로
+ *   광고 바로 위가 표·카드·링크 목록이면 오클릭이 생기기 쉬우므로
  *   문단으로 끝나는 섹션 뒤에만 둔다. 광고 바로 아래는 항상 다음 섹션의 h2 제목이다.
  *   근거: AdSense 광고 게재위치 정책 https://support.google.com/adsense/answer/1346295
  */
@@ -40,7 +40,6 @@ export const GUIDE_SECTIONS_FOR_TWO_ADS = 5;
 export interface AdPlacementSection {
   paragraphs: string[];
   dataBlock?: unknown;
-  affiliateInline?: unknown;
 }
 
 export interface PlannedAd {
@@ -52,10 +51,10 @@ export interface PlannedAd {
   slot: string;
 }
 
-/** 섹션이 일반 문단으로 끝나는가. 데이터 블록(표·목록)·제휴 카드로 끝나면 false. */
+/** 섹션이 일반 문단으로 끝나는가. 데이터 블록(표·목록)으로 끝나면 false. */
 function endsWithParagraph(sec: AdPlacementSection | undefined): boolean {
   if (!sec) return false;
-  if (sec.dataBlock || sec.affiliateInline) return false;
+  if (sec.dataBlock) return false;
   return Array.isArray(sec.paragraphs) && sec.paragraphs.length > 0;
 }
 

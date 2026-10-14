@@ -7,7 +7,6 @@ import ReadingProgress from '@/components/ReadingProgress';
 import ShareRow from '@/components/ShareRow';
 import Toc from '@/components/Toc';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import RecommendBox from '@/components/RecommendBox';
 import { PUBLISHER } from '@/lib/authors';
 import {
   buildArticleSchema,
@@ -132,16 +131,14 @@ export default async function StockMasterPage({ params }: PageProps) {
             <div className="post-v2-meta">
               <span className="post-v2-meta-author">
                 <span className="post-v2-avatar">D</span>
-                <span>Daily ETF Pulse 편집팀</span>
+                <span>Daily ETF Pulse 리서치팀</span>
               </span>
               <span>{new Date(post.meta.date).toLocaleDateString('ko-KR')}</span>
               <span>· {post.readingTime}분 읽기</span>
             </div>
           </header>
-          <RecommendBox position="top" category="general" />
           <MarkdownRenderer content={post.content} />
           <ShareRow title={post.meta.title} path={`/stock/${ticker}`} />
-          <RecommendBox position="bottom" category="general" />
         </article>
         <Toc />
       </div>

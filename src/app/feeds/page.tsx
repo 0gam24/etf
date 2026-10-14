@@ -148,7 +148,7 @@ export default function FeedsPage() {
           <li><strong>3) 새 글 받기</strong>: 새 글이 올라오면 리더가 가져오므로, 사이트를 일일이 열어 보지 않아도 됩니다.</li>
         </ul>
         <p className="about-desc" style={{ marginTop: '0.75rem' }}>
-          이메일 뉴스레터는 지금 보내지 않습니다. 새 가이드를 가장 먼저 받아보려면 위 RSS 주소를 피드 리더에 등록해 두세요. 사이트 전반이 궁금하다면 <Link href="/about"><strong>편집팀 소개</strong></Link>를 참고하세요. 모든 콘텐츠는 정보 제공 목적이며 투자 권유가 아닙니다.
+          이메일 뉴스레터는 지금 보내지 않습니다. 새 가이드를 가장 먼저 받아보려면 위 RSS 주소를 피드 리더에 등록해 두세요. 사이트 전반이 궁금하다면 <Link href="/about"><strong>리서치팀 소개</strong></Link>를 참고하세요. 모든 콘텐츠는 정보 제공 목적이며 투자 권유가 아닙니다.
         </p>
       </section>
     </article>

@@ -150,7 +150,8 @@ const WEBSITE_SCHEMA = {
   publisher: { '@type': 'NewsMediaOrganization', '@id': `${SITE_URL}/#organization`, name: 'Daily ETF Pulse', url: SITE_URL },
   potentialAction: {
     '@type': 'SearchAction',
-    target: `${SITE_URL}/?q={search_term_string}`,
+    // 2026-10-14: 홈(/?q=)은 검색을 받지 않아 실제로 검색되는 ETF 사전 검색으로 바꿨다 (EtfIndexSearch 가 ?q= 를 읽는다).
+    target: `${SITE_URL}/etf?q={search_term_string}`,
     'query-input': 'required name=search_term_string',
   },
 };
@@ -186,11 +187,14 @@ gtag('js', new Date());
 gtag('config', '${GA4_ID}');`}
         </Script>
         {/* Google AdSense 자동 광고 로더 — head에 1줄. 자동 광고가 위치·밀도를 최적화.
-            애드센스 사이트 승인 심사 + 소유권 확인의 전제이기도 함. */}
-        <Script
-          id="adsense-auto-ads"
+            애드센스 사이트 승인 심사 + 소유권 확인의 전제이기도 함.
+            2026-10-14: next/script(afterInteractive)를 걷어 내고 AdSense 안내 코드 그대로의 async 태그로 바꿨다.
+            next/script 는 head 에 preload 링크를 따로 넣고 data-nscript 속성을 붙여, AdSense 가 콘솔에
+            "AdSense head tag doesn't support data-nscript attribute" 경고를 냈다. async 라 렌더링을 막지 않고,
+            서버 HTML 에 태그가 그대로 있어 애드센스 크롤러도 바로 읽는다. */}
+        <script
+          async
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_PUB_ID}`}
-          strategy="afterInteractive"
           crossOrigin="anonymous"
         />
       </head>

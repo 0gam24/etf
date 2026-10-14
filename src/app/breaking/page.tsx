@@ -15,7 +15,6 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import { CATEGORY_FAQ, CATEGORY_FAQ_TITLE } from '@/lib/category-faq';
 import { pickLatestTradeDayBreaking, tradeDateOf } from '@/lib/breaking';
-import RecommendBox from '@/components/RecommendBox';
 import FreshnessPill from '@/components/FreshnessPill';
 import { archivedSinceLabel } from '@/components/PulseTodayHero';
 import { buildPageMetadata, RETIRED_ROBOTS } from '@/lib/site-meta';
@@ -88,7 +87,6 @@ export default function BreakingLandingPage() {
         </div>
       </section>
 
-      <RecommendBox position="top" category="general" />
 
       <div className="breaking-landing-body">
         {/* 오늘의 속보 3카드 */}
@@ -198,7 +196,6 @@ export default function BreakingLandingPage() {
           href="/pulse"
         />
 
-        <RecommendBox position="bottom" category="general" />
       </div>
     </div>
   );

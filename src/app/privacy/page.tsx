@@ -4,7 +4,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import { jsonLd } from '@/lib/schema';
 import { buildPageMetadata } from '@/lib/site-meta';
 
-const LAST_UPDATED = '2026-05-22';
+const LAST_UPDATED = '2026-10-14';
 
 export const metadata: Metadata = buildPageMetadata({
   title: '개인정보처리방침',
@@ -49,7 +49,7 @@ export default function PrivacyPage() {
         <h2 className="about-h2">2. 정보 이용 목적</h2>
         <ul className="about-list">
           <li>웹사이트 운영 및 기술적 안정성 유지 (장애 분석·보안 모니터링)</li>
-          <li>방문 통계 분석 및 콘텐츠 개선 (Google Analytics)</li>
+          <li>방문 통계 분석 및 콘텐츠 개선 (Google Analytics·네이버 애널리틱스)</li>
           <li>맞춤형 광고 게재 (Google AdSense)</li>
           <li>이용자 문의에 대한 응대</li>
         </ul>
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
         <ul className="about-list">
           <li><strong>Google AdSense, Google Analytics</strong>: Google LLC (미국)</li>
           <li><strong>Cloudflare Pages</strong>: 호스팅·CDN, Cloudflare Inc. (미국)</li>
-          <li><strong>쿠팡 파트너스</strong>: 일부 페이지의 제휴 링크 클릭 시 쿠팡 측 추적 쿠키 발생 가능</li>
+          <li><strong>네이버 애널리틱스</strong>: 방문 통계, 네이버 주식회사 (대한민국)</li>
         </ul>
       </section>
 
@@ -135,7 +135,7 @@ export default function PrivacyPage() {
       <section className="about-section">
         <h2 className="about-h2">7. 책임자 및 연락처</h2>
         <ul className="about-list">
-          <li><strong>개인정보 보호 책임자</strong>: Daily ETF Pulse 편집팀</li>
+          <li><strong>개인정보 보호 책임자</strong>: Daily ETF Pulse 리서치팀</li>
           <li>
             <strong>이메일</strong>:{' '}
             <a
@@ -159,7 +159,7 @@ export default function PrivacyPage() {
 
       <section className="about-section">
         <p className="about-desc" style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-dim)' }}>
-          관련 페이지: <Link href="/about" style={{ color: 'var(--accent-gold)', textDecoration: 'underline' }}>편집팀 소개</Link>{' · '}
+          관련 페이지: <Link href="/about" style={{ color: 'var(--accent-gold)', textDecoration: 'underline' }}>리서치팀 소개</Link>{' · '}
           <Link href="/disclaimer" style={{ color: 'var(--accent-gold)', textDecoration: 'underline' }}>면책조항</Link>{' · '}
           <Link href="/contact" style={{ color: 'var(--accent-gold)', textDecoration: 'underline' }}>연락처</Link>
         </p>

@@ -6,7 +6,6 @@ import MarkdownRenderer from '@/components/MarkdownRenderer';
 import ReadingProgress from '@/components/ReadingProgress';
 import ShareRow from '@/components/ShareRow';
 import Toc from '@/components/Toc';
-import RecommendBox from '@/components/RecommendBox';
 import { SITE_NAME, SITE_LOCALE, articleTitle, padDescription, ogImageUrl, RETIRED_ROBOTS } from '@/lib/site-meta';
 
 interface PageProps {
@@ -39,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       url: canonicalPath,
       publishedTime: post.meta.date,
-      authors: ['Daily ETF Pulse 편집팀'],
+      authors: ['Daily ETF Pulse 리서치팀'],
       images: [ogImage],
     },
     twitter: {
@@ -79,16 +78,14 @@ export default async function WeeklyPage({ params }: PageProps) {
             <div className="post-v2-meta">
               <span className="post-v2-meta-author">
                 <span className="post-v2-avatar">D</span>
-                <span>Daily ETF Pulse 편집팀</span>
+                <span>Daily ETF Pulse 리서치팀</span>
               </span>
               <span>📅 {date}</span>
               <span>⏱️ {post.readingTime}분 읽기</span>
             </div>
           </header>
-          <RecommendBox position="top" category="general" />
           <MarkdownRenderer content={post.content} />
           <ShareRow title={post.meta.title} path={`/weekly/${slug}`} />
-          <RecommendBox position="bottom" category="general" />
         </article>
         <Toc />
       </div>

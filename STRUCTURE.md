@@ -13,7 +13,7 @@
 - 메인: smartdatashop.kr 의 자매
 - repo: github.com/0gam24/etf
 - package name: `etf-platform` (v0.1.0)
-- 발행 책임자: Daily ETF Pulse 편집팀
+- 발행 책임자: Daily ETF Pulse 리서치팀
 
 ## 2. 기술 스택
 - Next.js 16.2.4 (App Router · React Server Components)
@@ -32,7 +32,7 @@
 
 ## 3. 라우트 (정적)
 - `/` — 홈 (Hero / TickerStrip / 일일 분석 슬라이더 / 시나리오 라우터)
-- `/about` — 편집팀 소개 + 7개 AI 에이전트 + Organization 스키마
+- `/about` — 리서치팀 소개 + 7개 AI 에이전트 + Organization 스키마
 - `/breaking` — ETF 속보
 - `/compare` — ETF 비교 인덱스
 - `/etf` — 종목 사전 인덱스 (1099종)
@@ -323,7 +323,7 @@ charts[] · affiliates[] · adPlacements · schemas[] (인라인 JSON-LD)
   - **C** (biz_cho) — 개인사업자 절세·노란우산·IRP 모델 · amber
   - **S** (dev_song) — (sectorFocus 기반 추정) · violet
   - **H** (analyst_han) — (sectorFocus 기반 추정) · red
-- 검수·발행 책임: Daily ETF Pulse 편집팀 (publisher)
+- 검수·발행 책임: Daily ETF Pulse 리서치팀 (publisher)
 
 ## 18. JSON-LD / SEO
 - Schema.org 사용: ✓ (`src/lib/schema.ts` 빌더 · 직접 JSON 작성 금지)
@@ -479,10 +479,10 @@ ETF·종목·시장 = YMYL (Your Money Your Life) 도메인.
   - `TrustBar`: "저자 N명 (前 PB·애널리스트·실전 투자자)" 항목 제거
   - `SiteFooter`: "AI 분석 에이전트" 섹션 → "데이터 출처" (KRX·ECOS·DART·운용사 공시)
   - `/about`: 7개 에이전트 카드 제거 → "분석 방법론" 섹션 (정량 지표 4종)
-  - 글 페이지 byline: "AI 에이전트 K" + 페르소나 link → "Daily ETF Pulse 편집팀" 단일 표기
+  - 글 페이지 byline: "AI 에이전트 K" + 페르소나 link → "Daily ETF Pulse 리서치팀" 단일 표기
   - `AiAgentDisclosure`: 인물 페르소나 카드 → "자동 분석 공시" (단일 publisher 책임 명시)
   - `/author/{id}`: `robots: { index: false }` + sitemap·sitemap-images 에서 제외 (schema entity 신호만 유지)
-  - `agents/personas.js`: 7명 `closingSignature` 모두 "Daily ETF Pulse 편집팀 · 출처:..." 으로 통일 (다음 발행부터 글 끝 표기 일괄 적용)
+  - `agents/personas.js`: 7명 `closingSignature` 모두 "Daily ETF Pulse 리서치팀 · 출처:..." 으로 통일 (다음 발행부터 글 끝 표기 일괄 적용)
 - 2026-05-12 — `MarketPulseCondensed` 최상단 5초 스냅샷 (옵션 C — 압축 + 풀 위젯 분리)
   - `src/components/MarketPulseCondensed.tsx` 신설 — 메인페이지 최상단 압축 2줄 위젯. SSR initial (KRX 마감) 항상 표시 + 한투 silent overlay (장중 30s · 마감 5min). 거래량 1위 + 시장 평균 + 가장 큰 카테고리 + LIVE 펄스 + 3 CTA.
   - `src/app/page.tsx` 통합: `VolumeSurgeAlert` 다음에 `MarketPulseCondensed` 렌더. SSR props (topVolume / topGainer / marketAvg / categories) 전달.

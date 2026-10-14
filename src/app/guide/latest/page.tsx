@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { ArrowRight, CalendarDays, LayoutGrid, BookOpen } from 'lucide-react';
 import { GUIDES, getGuidePublishedAt, type GuideDef } from '@/lib/guides';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import RecommendBox from '@/components/RecommendBox';
 import { buildItemListSchema, jsonLd } from '@/lib/schema';
 import { buildOg } from '@/lib/site-meta';
 
@@ -96,7 +95,6 @@ export default function GuideLatestPage() {
         </Link>
       </section>
 
-      <RecommendBox position="top" />
 
       {groups.map(group => (
         <section key={group.key} className="guide-cluster">
@@ -133,7 +131,6 @@ export default function GuideLatestPage() {
         </section>
       ))}
 
-      <RecommendBox position="bottom" />
     </div>
   );
 }

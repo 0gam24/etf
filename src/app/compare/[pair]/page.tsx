@@ -10,14 +10,18 @@ import {
   getEtfPageFacts,
   type EtfPageFacts,
 } from '@/lib/data';
-import { COMPARE_PAIRS, getComparePairBySlug, type ComparePair } from '@/lib/etf-compare-pairs';
+import { COMPARE_PAIRS, getComparePairBySlug, type ComparePair, COMPARE_PAIR_ADDED_AT, COMPARE_PAIR_FIRST_BATCH_DATE } from '@/lib/etf-compare-pairs';
+import { buildArticleSchema, jsonLd } from '@/lib/schema';
+import { PUBLISHER } from '@/lib/authors';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import RecommendBox from '@/components/RecommendBox';
 import AdBanner from '@/components/AdBanner';
 import { AD_SLOTS } from '@/lib/ads';
 import AnswerBox from '@/components/AnswerBox';
 import FaqSection from '@/components/FaqSection';
 import { SITE_NAME, SITE_LOCALE, ogImageUrl } from '@/lib/site-meta';
+import { classifyEtfTax, CONFIRMED_TAX_KIND, type EtfTaxClass } from '@/lib/etf-tax';
+import { getEtfProfile } from '@/lib/etf-profiles';
+import { TAX_RULES } from '@/lib/account-tax-rules';
 
 /**
  * /compare/{pair}: 1:1 ETF 비교 페이지
@@ -212,6 +216,34 @@ export default async function ComparePairPage({ params }: PageProps) {
     (!!factsA.navGap?.isoDate && factsA.navGap.isoDate !== isoA) ||
     (!!factsB.navGap?.isoDate && factsB.navGap.isoDate !== isoB);
 
+  // 핵심 요약 (2026-10-14): 본문 위 3줄. 시세 숫자 없이 계좌별 세금과 연금계좌 가능 여부만 쓴다.
+  //   과세 구분은 종목 사전 세금 표와 같은 규칙(classifyEtfTax, 운용사 문서로 확인한 종목은 그 값이 우선).
+  //   조사 오류가 없게 상품명 뒤에 조사를 붙이지 않는다.
+  const taxOf = (code: string, name: string) =>
+    classifyEtfTax(name, getEtfProfile(code)?.taxKind ?? CONFIRMED_TAX_KIND[code]);
+  const taxA = taxOf(metaA.shortcode, metaA.name);
+  const taxB = taxOf(metaB.shortcode, metaB.name);
+  const pctText = (r: number) => `${Math.round(r * 1000) / 10}%`;
+  const manText = (n: number) => `${(n / 10_000).toLocaleString('ko-KR')}만원`;
+  const R = TAX_RULES;
+  const isaLimit = `${manText(R.isa.taxFreeGeneral)}(서민형 ${manText(R.isa.taxFreeLowIncome)})`;
+  const generalText = (t: EtfTaxClass) =>
+    t.gainTax === 'exempt' ? `팔 때 매매차익은 비과세, 분배금은 ${pctText(R.dividendTaxRate)} 원천징수`
+    : t.gainTax === 'base-excludes-domestic' ? `국내 주식 차익은 과세표준에서 빠져 매매차익 세금이 작고, 분배금은 ${pctText(R.dividendTaxRate)} 원천징수`
+    : `매매차익과 분배금에 배당소득세 ${pctText(R.dividendTaxRate)}`;
+  const isaText = (t: EtfTaxClass) =>
+    t.gainTax === 'exempt' ? `매매차익은 원래 비과세라 비과세 한도(${isaLimit})는 분배금에 쓰임`
+    : t.gainTax === 'base-excludes-domestic' ? `국내 주식 차익은 과세 대상에서 빠지므로 비과세 한도(${isaLimit})는 주로 분배금에 쓰임`
+    : `매매차익과 분배금을 합쳐 ${isaLimit}까지 비과세, 넘는 부분 ${pctText(R.isa.excessRate)}`;
+  const pensionText = (t: EtfTaxClass) =>
+    t.pensionAllowed
+      ? `담을 수 있음, 운용 중에는 세금을 떼지 않고 연금으로 받을 때 ${pctText(R.pension.rate80plus)}~${pctText(R.pension.rateUnder70)}`
+      : '레버리지·인버스라 담을 수 없음';
+  const sameTax = taxA.kind === taxB.kind && taxA.pensionAllowed === taxB.pensionAllowed;
+  const tldrLine = (f: (t: EtfTaxClass) => string) =>
+    sameTax ? `두 상품 모두 ${f(taxA)}` : `${metaA.name}(${taxA.label}) ${f(taxA)} / ${metaB.name}(${taxB.label}) ${f(taxB)}`;
+  const taxConfirmed = taxA.confirmed && taxB.confirmed;
+
   // H2 순번: 렌더되는 섹션에만 매긴다 (구성종목 섹션이 빠질 때 번호가 건너뛰지 않게)
   let sectionNo = 0;
   const no = () => ++sectionNo;
@@ -301,8 +333,25 @@ export default async function ComparePairPage({ params }: PageProps) {
     answer: `두 상품이 같은 지수를 따른다면 장기 성과 차이는 주로 총보수·기타비용과 추적오차에서 생깁니다. 그다음으로 거래대금(사고팔기 쉬운 정도)과 분배 기준일을 봅니다.${hasHedgeName ? ' 이름에 (H)가 붙은 쪽은 환헤지형이라 환율 변동이 수익률에 덜 반영됩니다.' : ''} 이 페이지는 정보 제공용이며 투자 판단과 책임은 본인에게 있습니다.`,
   });
 
+  // Article 구조화 데이터 (2026-10-14): 처음 발행일은 git 이력의 추가일, 수정일은 같은 날 시세 기준일
+  const addedAt = COMPARE_PAIR_ADDED_AT[p.slug] || COMPARE_PAIR_FIRST_BATCH_DATE;
+  const articleSchema = buildArticleSchema({
+    headline: `${metaA.name} ${metaB.name} 차이 비교`,
+    description: p.context,
+    url: `/compare/${p.slug}`,
+    datePublished: `${addedAt}T09:00:00+09:00`,
+    dateModified: commonIso && commonIso > addedAt ? `${commonIso}T16:00:00+09:00` : `${addedAt}T09:00:00+09:00`,
+    images: [ogImageUrl({ category: 'compare' })],
+    author: { name: PUBLISHER.name },
+    keywords: [metaA.name, metaB.name, `${metaA.name} ${metaB.name} 차이`],
+    section: 'ETF 비교',
+    citations: [{ name: '공공데이터포털 금융위원회 증권상품시세정보', url: 'https://www.data.go.kr/data/15094806/openapi.do' }],
+    speakable: !!answerSummary,
+  });
+
   return (
     <article className="compare-page animate-fade-in">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(articleSchema) }} />
       <Breadcrumbs items={[
         { name: '홈', href: '/' },
         { name: '비교', href: '/compare' },
@@ -315,7 +364,47 @@ export default async function ComparePairPage({ params }: PageProps) {
           {metaA.name} <span className="compare-vs">vs</span> {metaB.name}
         </h1>
         <p className="compare-tagline">{p.context}</p>
+        {/* 발행 정보 상자 (2026-10-14): 발행·정정 주체, 처음 낸 날, 시세 기준일, 근거 자료 */}
+        <div className="guide-byline" aria-label="발행 정보">
+          <div className="guide-article-meta">
+            <span>발행·정정: {PUBLISHER.name}</span>
+            <span aria-hidden> · </span>
+            <span>처음 발행: {addedAt}</span>
+            {commonIso && (
+              <>
+                <span aria-hidden> · </span>
+                <span>시세 기준일: {commonIso}</span>
+              </>
+            )}
+          </div>
+          <p className="guide-byline-sources">
+            <span>근거 자료: </span>
+            <a href="https://www.data.go.kr/data/15094806/openapi.do" target="_blank" rel="noopener noreferrer">공공데이터포털 증권상품시세정보</a>
+            {' · '}
+            <Link href={`/etf/${slugA}`} prefetch={false}>{metaA.name} 종목 정보</Link>
+            {' · '}
+            <Link href={`/etf/${slugB}`} prefetch={false}>{metaB.name} 종목 정보</Link>
+          </p>
+        </div>
       </header>
+
+      {/* 핵심 요약 (2026-10-14): 본문 첫 표 위 3줄. 일반 계좌·중개형 ISA·연금저축/IRP 순 */}
+      <section className="guide-key-points" aria-label="핵심 요약">
+        <h2 className="guide-key-points-title">핵심 요약</h2>
+        <ul>
+          <li><strong>일반 계좌</strong>: {tldrLine(generalText)}</li>
+          <li><strong>중개형 ISA</strong>: {tldrLine(isaText)}</li>
+          <li><strong>연금저축·IRP</strong>: {tldrLine(pensionText)}</li>
+        </ul>
+        <p className="compare-note">
+          {sameTax ? `과세 구분: 두 상품 모두 ${taxA.label}. ` : ''}
+          {taxConfirmed
+            ? '운용사 상품 페이지의 과세 항목으로 확인한 구분입니다. '
+            : '상품 이름과 투자 대상으로 나눈 일반 규칙이라, 최종 확인은 운용사 상품 페이지의 과세 항목에서 하세요. '}
+          세율·한도는 {R.asOf} 법령 기준이며 지방소득세를 포함합니다.{' '}
+          <Link href="/tools/tax-compare" prefetch={false}>계좌별 세후 수익률 계산기</Link>
+        </p>
+      </section>
 
       {/* AEO 정답블록: 두 상품 모두 시세가 있을 때만 */}
       {answerSummary && (
@@ -458,7 +547,6 @@ export default async function ComparePairPage({ params }: PageProps) {
       {/* AEO FAQ: "A vs B" 질문형 롱테일 + FAQPage JSON-LD */}
       <FaqSection title="자주 묻는 질문" items={compareFaqs} />
 
-      <RecommendBox position="bottom" />
 
       <p className="compare-disclaimer">
         본 비교는 한국거래소(KRX) 공공데이터와 운용사 공시를 바탕으로 정리한 정보이며 투자 권유가 아닙니다. 매수·매도 결정의 책임은 투자자 본인에게 있습니다.

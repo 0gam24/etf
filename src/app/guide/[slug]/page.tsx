@@ -7,15 +7,16 @@ import { GUIDES, getGuideBySlug, getRelatedGuides, getSectorForGuide, getGuidePu
 import { getLatestEtfData, getEtfsBySector } from '@/lib/data';
 import type { RawEtf } from '@/lib/surge';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { getGuideLinkCluster, categoryHref } from '@/lib/guide-categories';
+import { getComparePairBySlug } from '@/lib/etf-compare-pairs';
+import { getKrxEtfMeta } from '@/lib/data';
 import FaqSection from '@/components/FaqSection';
 import AnswerBox from '@/components/AnswerBox';
 import GuideDataBlock from '@/components/GuideDataBlock';
 import EditorialNote from '@/components/EditorialNote';
 import EtfTaxSimulator from '@/components/EtfTaxSimulator';
-import RecommendBox from '@/components/RecommendBox';
 import AdBanner from '@/components/AdBanner';
 import { planGuideAds, AD_SLOTS } from '@/lib/ads';
-import type { ProductCategory } from '@/lib/products';
 import { buildArticleSchema, buildHowToSchema, jsonLd } from '@/lib/schema';
 import { SITE_NAME, SITE_LOCALE, articleTitle , padDescription, ogImageUrl } from '@/lib/site-meta';
 
@@ -33,22 +34,6 @@ function headingAnchor(heading: string, index: number): string {
     .slice(0, 40)
     .replace(/-+$/, '');
   return base ? `${base}-${index + 1}` : `section-${index + 1}`;
-}
-
-/** 가이드 슬러그 → 추천 자료 매칭 카테고리 */
-function guideToProductCategory(slug: string): ProductCategory | undefined {
-  const map: Record<string, ProductCategory> = {
-    'monthly-dividend': 'income',
-    'covered-call':     'covered-call',
-    'defense-etf':      'defense-etf',
-    'ai-semi-etf':      'ai-semi-etf',
-    'retirement':       'retirement',
-    // 신규 가이드 (2026-04-27) — 가장 가까운 카테고리에 매핑
-    'us-dividend':      'income',          // 배당 → income
-    'currency-hedge':   'general',         // 환헤지 → 일반
-    'overseas-etf':     'general',         // 해외 직구 → 일반
-  };
-  return map[slug];
 }
 
 interface PageProps {
@@ -108,6 +93,12 @@ export default async function GuidePage({ params }: PageProps) {
 
   // 같은 주제 클러스터의 관련 가이드 (hub-and-spoke 내부링크)
   const relatedGuides = getRelatedGuides(slug, 4);
+  // 하단 링크 묶음 (2026-10-14): 같은 주제 허브 · 관련 비교 2 · 관련 계산기 1 (src/lib/guide-categories.ts)
+  const linkCluster = getGuideLinkCluster(g);
+  const clusterCompares = linkCluster.comparePairs
+    .map(p => getComparePairBySlug(p))
+    .filter((p): p is NonNullable<typeof p> => !!p)
+    .map(p => ({ slug: p.slug, label: `${getKrxEtfMeta(p.codeA)?.name || p.codeA} vs ${getKrxEtfMeta(p.codeB)?.name || p.codeB} 차이` }));
 
   // 테마·자산군 가이드 → 종목 사전(/etf/{slug}) 연결. 일반 가이드는 빈 배열.
   const guideSector = getSectorForGuide(slug);
@@ -115,8 +106,8 @@ export default async function GuidePage({ params }: PageProps) {
     ? getEtfsBySector(guideSector, '', 6, (getLatestEtfData()?.etfList || []) as RawEtf[])
     : [];
 
-  // 제휴(쿠팡 파트너스) 도서 추천 섹션은 그리지 않는다 (2026-10-14). 투자 정보 본문에서 상품 판매 링크를 걷어 내고
-  //   추천 자료는 /resources 한 곳에만 둔다. 목차·광고 위치·HowTo 단계도 같은 목록을 쓴다.
+  // 제휴 도서 추천 섹션과 링크는 2026-10-14 사이트에서 모두 걷어 냈다(가이드 데이터에서도 삭제).
+  //   목차·광고 위치·HowTo 단계도 같은 목록을 쓴다.
   const sections = g.sections.filter(sec => !(sec.dataBlock && /^(product|book)-rec:/.test(sec.dataBlock)));
 
   // 본문 h2에 붙일 앵커. 문단을 개별 주소로 가리킬 수 있어야 검색·답변엔진이 청크 단위로 인용한다.
@@ -147,7 +138,7 @@ export default async function GuidePage({ params }: PageProps) {
     // 2026-10-07: 실제로 고친 날을 GUIDE_MODIFIED_AT 으로 따로 적기 시작해 그 값을 쓴다.
     dateModified: `${modifiedAt || publishedAt}T09:00:00+09:00`,
     author: {
-      name: 'Daily ETF Pulse 편집팀',
+      name: 'Daily ETF Pulse 리서치팀',
     },
     keywords: g.keywords,
     section: g.section,
@@ -169,7 +160,7 @@ export default async function GuidePage({ params }: PageProps) {
             // 본문 단락이 있고, 보조 섹션(관련 글·책 추천)이 아닌 것만 단계화
             if (!sec.paragraphs?.length) return false;
             if (/함께\s*보면|책으로\s*더\s*깊이|관련\s*분석/.test(h)) return false;
-            if (sec.dataBlock && /related-posts|product-rec/.test(sec.dataBlock)) return false;
+            if (sec.dataBlock && /related-posts/.test(sec.dataBlock)) return false;
             return true;
           })
           .map((sec, idx) => ({
@@ -196,7 +187,9 @@ export default async function GuidePage({ params }: PageProps) {
         items={[
           { name: '홈', href: '/' },
           { name: '가이드', href: '/guide' },
-          { name: g.section, href: '/guide' },
+          linkCluster.category
+            ? { name: linkCluster.category.label, href: categoryHref(linkCluster.category) }
+            : { name: g.section, href: '/guide' },
           { name: g.title, href: `/guide/${slug}` },
         ]}
       />
@@ -207,28 +200,44 @@ export default async function GuidePage({ params }: PageProps) {
         <p className="guide-article-tagline">{g.tagline}</p>
         {/* 바이라인 — 가이드 238편에 발행 주체 표기가 아예 없었다(SEO.md §10 위반).
             일별 글에는 있는데 가이드에만 빠져 있었고, 가이드가 사이트 최대 색인 자산이다. */}
-        <div className="guide-article-meta">
-          <span>발행: Daily ETF Pulse 편집팀</span>
-          <span aria-hidden> · </span>
-          <span>발행일: {new Date(publishedAt).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-          {modifiedAt && (
-            <>
-              <span aria-hidden> · </span>
-              <span>수정일: {new Date(modifiedAt).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-            </>
+        {/* 발행 정보 상자 (2026-10-14): 누가 발행·정정하는지, 언제 쓰고 고쳤는지, 무엇을 근거로 했는지를 첫 화면에 둔다.
+            근거 문서는 글 아래 참고 자료와 같은 목록에서 앞의 3개를 보여 준다. */}
+        <div className="guide-byline" aria-label="발행 정보">
+          <div className="guide-article-meta">
+            <span>발행·정정: Daily ETF Pulse 리서치팀</span>
+            <span aria-hidden> · </span>
+            <span>발행일: {new Date(publishedAt).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            {modifiedAt && (
+              <>
+                <span aria-hidden> · </span>
+                <span>수정일: {new Date(modifiedAt).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+              </>
+            )}{' '}
+            <EditorialNote variant="compact" kind="guide" />
+          </div>
+          {g.sources && g.sources.length > 0 && (
+            <p className="guide-byline-sources">
+              <span>근거 자료: </span>
+              {g.sources.slice(0, 3).map((s, i) => (
+                <span key={s.url}>
+                  {i > 0 ? ' · ' : ''}
+                  <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+                </span>
+              ))}
+              {g.sources.length > 3 && <span> 외 {g.sources.length - 3}건 (<a href="#guide-sources">아래 참고 자료</a>)</span>}
+            </p>
           )}
-          <EditorialNote variant="compact" kind="guide" />
         </div>
       </header>
 
       {/* AEO 직답 — Hero 직후. 결론 1~2문장만(구체 수치·표는 본문). AI Overview·스니펫 인용용. */}
       {/* 기준일은 실제로 고친 날(없으면 발행일), 출처는 이 글의 첫 1차 출처 (2026-10-08).
-          예전에는 출처를 "Daily ETF Pulse 편집팀"으로 적어 직답이 스스로를 근거로 드는 모양이었다. */}
+          예전에는 출처를 "Daily ETF Pulse 리서치팀"으로 적어 직답이 스스로를 근거로 드는 모양이었다. */}
       {g.answer && (
         <AnswerBox
           summary={g.answer}
           asOf={modifiedAt || publishedAt}
-          source={g.sources?.[0]?.label || 'Daily ETF Pulse 편집팀'}
+          source={g.sources?.[0]?.label || 'Daily ETF Pulse 리서치팀'}
         />
       )}
 
@@ -385,14 +394,39 @@ export default async function GuidePage({ params }: PageProps) {
             </li>
           ))}
         </ul>
-        <Link href="/guide" className="guide-article-other-all" prefetch={false}>
-          전체 ETF 가이드 보기 <ArrowRight size={14} strokeWidth={2.5} />
+        {(clusterCompares.length > 0 || linkCluster.tool) && (
+          <>
+            <h3 className="guide-article-other-sub">관련 비교와 계산기</h3>
+            <ul>
+              {clusterCompares.map(p => (
+                <li key={p.slug}>
+                  <Link href={`/compare/${p.slug}`} prefetch={false}>
+                    <span className="guide-article-other-title">{p.label}</span>
+                    <ArrowRight size={14} strokeWidth={2.5} />
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link href={linkCluster.tool.href} prefetch={false}>
+                  <span className="guide-article-other-title">{linkCluster.tool.label}</span>
+                  <ArrowRight size={14} strokeWidth={2.5} />
+                </Link>
+              </li>
+            </ul>
+          </>
+        )}
+        <Link
+          href={linkCluster.category ? categoryHref(linkCluster.category) : '/guide'}
+          className="guide-article-other-all"
+          prefetch={false}
+        >
+          {linkCluster.category ? `${linkCluster.category.label} 가이드 전체 보기` : '전체 ETF 가이드 보기'} <ArrowRight size={14} strokeWidth={2.5} />
         </Link>
       </nav>
 
       {/* 참고 자료 — 공적 기관·운용사 1차 출처 (E-E-A-T + citation 스키마와 본문 일치) */}
       {g.sources && g.sources.length > 0 && (
-        <section className="guide-sources" aria-label="참고 자료">
+        <section className="guide-sources" id="guide-sources" aria-label="참고 자료">
           <h2 className="guide-article-h2">참고 자료·출처</h2>
           <ul>
             {g.sources.map((s, i) => (
@@ -411,7 +445,6 @@ export default async function GuidePage({ params }: PageProps) {
       {/* 본문 하단 공시 — 무엇을 근거로 쓰고 누가 발행을 책임지는지. 일별 글과 동일 정책 적용. */}
       <EditorialNote variant="inline" kind="guide" />
 
-      <RecommendBox position="bottom" category={guideToProductCategory(g.slug)} />
     </article>
   );
 }
