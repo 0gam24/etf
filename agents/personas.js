@@ -172,8 +172,9 @@ const PERSONAS = {
 const PUBLISHER = {
   name: 'Daily ETF Pulse 편집팀',
   url: '/about',
+  // 2026-10-14: 사이트 소개 문구를 지금 운영하는 내용으로 (AI 분석 에이전트 체계는 은퇴)
   description:
-    'Daily ETF Pulse는 KRX 공공데이터를 기반으로 한 ETF 분석 사이트입니다. AI 분석 에이전트의 산출물은 편집팀이 검수·발행하며, 시장의 객관적 데이터 해석을 목표로 합니다.',
+    'Daily ETF Pulse는 한국거래소에 상장된 ETF의 종목 사전, 같은 지수 ETF 비교, 계좌별 세금 가이드를 운용사 공시와 관할 기관 자료 같은 1차 출처로 정리하는 ETF 정보 사이트입니다.',
 };
 
 /** 표준 AI 공시 문구 — 모든 article 하단에 노출 */
