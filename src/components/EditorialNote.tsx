@@ -35,9 +35,9 @@ const COPY: Record<EditorialKind, { badge: string; body: string }> = {
 /**
  * 작성·정정 안내 (2026-10-14, 예전 AiAgentDisclosure 대체).
  *
- *   예전 안내는 글마다 "AI 분석 에이전트가 작성, 실존 인물이 아님"을 내세웠다. 사이트 전체의 작성 방식
- *   (자료 정리와 초안에 AI 도구 사용)은 /about 과 모든 페이지 푸터에 그대로 밝히고, 글 하단에는 독자에게
- *   쓸모 있는 것만 둔다: 무엇을 근거로 했는지, 누가 발행·정정을 책임지는지, 틀린 내용을 어디로 알리는지.
+ *   예전 안내는 글마다 작성 주체(페르소나)를 내세웠다. 2026-10-14 운영자 지시로 작성 도구에 관한 문구는
+ *   사이트에 두지 않는다. 글 하단에는 독자에게 쓸모 있는 것만 둔다: 무엇을 근거로 했는지,
+ *   누가 발행·정정을 책임지는지, 틀린 내용을 어디로 알리는지. 사실이 아닌 사람 저자·경력·검수 표현도 쓰지 않는다.
  */
 export default function EditorialNote({ variant = 'inline', kind = 'neutral' }: Props) {
   const copy = COPY[kind] ?? COPY.neutral;

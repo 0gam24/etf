@@ -22,7 +22,7 @@ const W = 1200, H = 630;
 
 /** 카테고리 → 강조색·라벨. /api/og/route.tsx의 CATEGORY_META와 같은 색 체계를 쓴다. */
 const CATEGORIES = [
-  { key: 'default',  accent: '#F5C451', label: 'DAILY ETF PULSE', ko: '매일 발행하는 ETF 분석과 투자 가이드' },
+  { key: 'default',  accent: '#F5C451', label: 'DAILY ETF PULSE', ko: 'ETF 종목 사전·비교·세금 가이드' },
   { key: 'pulse',    accent: '#F59E0B', label: 'DAILY PULSE',     ko: '오늘의 ETF 관전포인트' },
   { key: 'surge',    accent: '#EF4444', label: 'SURGE',           ko: '급등 테마 분석' },
   { key: 'flow',     accent: '#3B82F6', label: 'FLOW',            ko: 'ETF 섹터 자금 흐름' },
@@ -50,7 +50,7 @@ function svgFor({ accent, label, ko }) {
   <text x="80" y="310" font-family="${FONT}" font-size="66" font-weight="800" fill="#FFFFFF">${esc(ko)}</text>
   <rect x="80" y="368" width="120" height="5" fill="${accent}"/>
   <text x="80" y="452" font-family="${FONT}" font-size="30" fill="#9AA4B2">한국거래소(KRX) 공공데이터 기준</text>
-  <text x="80" y="500" font-family="${FONT}" font-size="30" fill="#9AA4B2">매일 아침 갱신</text>
+  <text x="80" y="500" font-family="${FONT}" font-size="30" fill="#9AA4B2">기준일과 출처를 함께 표기</text>
   <text x="80" y="574" font-family="${FONT}" font-size="32" font-weight="700" fill="#FFFFFF">Daily ETF Pulse</text>
   <text x="330" y="574" font-family="${FONT}" font-size="28" fill="#6B7280">iknowhowinfo.com</text>
 </svg>`;

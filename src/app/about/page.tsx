@@ -80,7 +80,7 @@ export default function AboutPage() {
         <h2 className="about-h2">발행 원칙</h2>
         <ul className="about-list">
           <li><strong>1차 출처 우선</strong>: 수치와 제도 설명은 한국거래소, 금융감독원 전자공시(DART), 금융투자협회 공시, 운용사 투자설명서, 국세청·법령 같은 관할 기관 자료를 근거로 하고, 근거 문서의 주소를 글에 남깁니다.</li>
-          <li><strong>작성 방식</strong>: 자료 수집·정리와 초안 작성에 AI 도구를 씁니다. 공개 전에 수치·조항을 글에 적은 1차 출처 문서와 대조하고, 확인하지 못한 값은 싣지 않습니다.</li>
+          <li><strong>출처 대조</strong>: 수치와 조항은 글에 적은 1차 출처 문서를 근거로 하고, 확인하지 못한 값은 싣지 않습니다.</li>
           <li><strong>발행·정정 책임</strong>: 발행과 정정의 책임은 Daily ETF Pulse 편집팀에 있습니다.</li>
           <li><strong>투자 권유 아님</strong>: 모든 콘텐츠는 정보 제공 목적이며 매수·매도 권유가 아닙니다. 투자 결정과 손익의 책임은 투자자 본인에게 있습니다.</li>
         </ul>

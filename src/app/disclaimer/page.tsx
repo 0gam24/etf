@@ -66,7 +66,7 @@ export default function DisclaimerPage() {
         <ul className="about-list">
           <li>외부 데이터 API의 갱신 지연 또는 일시적 오류</li>
           <li>장 마감 후 데이터 수집 시점과 사용자 열람 시점의 시차</li>
-          <li>자동 분석 과정의 표현 오류</li>
+          <li>자료를 정리·요약하는 과정의 표현 오류</li>
         </ul>
         <p className="about-desc" style={{ marginTop: '1rem' }}>
           데이터 오류를 발견하시면{' '}
@@ -92,8 +92,8 @@ export default function DisclaimerPage() {
             있습니다.
           </li>
           <li>
-            <strong>자동 분석</strong>: 본문은 데이터 기반 자동 분석으로 작성되며, 모든 글 하단에 작성 방식이
-            투명하게 공개됩니다.
+            <strong>일반 정보</strong>: 본문은 공개 자료를 바탕으로 한 일반 정보이며, 개인의 재무 상황과 투자 목적을
+            반영한 투자 자문이 아닙니다.
           </li>
         </ul>
       </section>
