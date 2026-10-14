@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -7,6 +8,7 @@ import { getLatestEtfData, getEtfsBySector } from '@/lib/data';
 import type { RawEtf } from '@/lib/surge';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { getGuideLinkCluster, categoryHref } from '@/lib/guide-categories';
+import { pickUnindexedGuides } from '@/lib/crawl-priority';
 import { getComparePairBySlug } from '@/lib/etf-compare-pairs';
 import { getKrxEtfMeta } from '@/lib/data';
 import FaqSection from '@/components/FaqSection';
@@ -55,15 +57,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // article:published_time·modified_time. 네이버·구글이 고친 글을 다시 읽어 갈 근거 (2026-10-07)
   const publishedAt = getGuidePublishedAt(slug) || g.lastReviewed;
   const modifiedAt = getGuideModifiedAt(slug) || publishedAt;
+  // 검색 결과 제목: CTR 수술로 seoTitle 을 둔 가이드만 그 값을 쓴다(H1·headline 은 title 그대로).
+  const searchTitle = g.seoTitle || g.title;
   return {
     // 제목이 길면 layout template이 붙이는 브랜드 18자를 끊어 잘림을 막는다.
     // 가이드 제목 자체는 그대로 둔다(발행분 소급 수정 금지).
-    title: articleTitle({ title: g.title }),
+    title: articleTitle({ title: searchTitle }),
     description,
     keywords: g.keywords,
     alternates: { canonical: canonicalPath },
     openGraph: { siteName: SITE_NAME, locale: SITE_LOCALE,
-      title: g.title,
+      title: searchTitle,
       description,
       type: 'article',
       url: canonicalPath,
@@ -73,7 +77,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: 'summary_large_image',
-      title: g.title,
+      title: searchTitle,
       description,
       images: [ogImage],
     },
@@ -92,6 +96,14 @@ export default async function GuidePage({ params }: PageProps) {
   const relatedGuides = getRelatedGuides(slug, 4);
   // 하단 링크 묶음 (2026-10-14): 같은 주제 허브 · 관련 비교 2 · 관련 계산기 1 (src/lib/guide-categories.ts)
   const linkCluster = getGuideLinkCluster(g);
+  // 함께 읽으면 좋은 글 (2026-10-14): 같은 주제 허브에서 구글이 아직 색인하지 않은 가이드 2편을 본문 중간에 잇는다.
+  //   아래 관련 가이드와 겹치지 않게 뺀다. 목록과 이유는 src/lib/crawl-priority.ts.
+  const alsoRead = pickUnindexedGuides({
+    categories: [linkCluster.category],
+    exclude: [g.slug, ...relatedGuides.map(r => r.slug)],
+    n: 2,
+    seed: g.slug,
+  });
   const clusterCompares = linkCluster.comparePairs
     .map(p => getComparePairBySlug(p))
     .filter((p): p is NonNullable<typeof p> => !!p)
@@ -313,17 +325,32 @@ export default async function GuidePage({ params }: PageProps) {
       <div className="guide-article-body">
         {/* 광고는 애드센스 자동 광고만 쓴다(2026-10-14 운영자 지시). 본문 사이에 수동 광고 자리를 두지 않는다. */}
         {sections.map((sec, i) => (
-          <section key={i} className="guide-article-section-block">
-            <h2 className="guide-article-h2" id={sectionIds[i]}>{sec.heading}</h2>
-            {sec.paragraphs.map((p, pi) => (
-              <p key={pi} className="guide-article-p">{p}</p>
-            ))}
-            {sec.dataBlock && (
-              <div className="guide-article-data">
-                <GuideDataBlock block={sec.dataBlock} />
-              </div>
+          <Fragment key={i}>
+            <section className="guide-article-section-block">
+              <h2 className="guide-article-h2" id={sectionIds[i]}>{sec.heading}</h2>
+              {sec.paragraphs.map((p, pi) => (
+                <p key={pi} className="guide-article-p">{p}</p>
+              ))}
+              {sec.dataBlock && (
+                <div className="guide-article-data">
+                  <GuideDataBlock block={sec.dataBlock} />
+                </div>
+              )}
+            </section>
+            {/* 두 번째 섹션 뒤: 같은 주제의 다른 가이드 2편 (본문이 3섹션 이상일 때만) */}
+            {i === 1 && sections.length >= 3 && alsoRead.length > 0 && (
+              <aside className="guide-also-read" aria-label="함께 읽으면 좋은 글">
+                <p className="guide-also-read-title">함께 읽으면 좋은 글</p>
+                <ul>
+                  {alsoRead.map(o => (
+                    <li key={o.slug}>
+                      <Link href={`/guide/${o.slug}`} prefetch={false}>{o.title}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
             )}
-          </section>
+          </Fragment>
         ))}
       </div>
 

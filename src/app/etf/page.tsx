@@ -16,12 +16,14 @@ import EtfIndexSearch from '@/components/EtfIndexSearch';
 import { listEtfProfiles } from '@/lib/etf-profiles';
 import { buildPageMetadata } from '@/lib/site-meta';
 
+// CTR 2026-10-14 GSC 90일(07-15~10-12) 이 페이지 노출 938 · 평균 6.1위 · 클릭 0 (검색어는 개인정보 보호로 비공개 처리됨).
+//   1페이지에 뜨는데 아무도 누르지 않아, 검색 결과 제목을 "전 종목 목록 + 찾는 방법"으로 바꾸고 설명 첫 문장에 할 수 있는 일을 적는다.
 export const metadata: Metadata = buildPageMetadata({
-  title: 'ETF 종목 사전: KRX 상장 1000+종 정리',
+  title: 'ETF 전 종목 목록: 종목코드·운용사·테마로 찾는 ETF 사전',
   description:
-    '한국거래소(KRX) 상장 ETF 1000+종을 거래량·섹터·운용사로 정리한 종목 사전. KODEX·TIGER·SOL·ACE·PLUS 등 운용사별, 방산·반도체·커버드콜·월배당 섹터별 빠른 검색.',
+    '국내 상장 ETF 전 종목을 종목코드·운용사(KODEX·TIGER·ACE·SOL·RISE·PLUS)·테마로 찾을 수 있는 목록입니다. 종목을 누르면 상품 정보와 일반·ISA·연금 계좌별 세금을 한 페이지에서 확인할 수 있습니다.',
   url: '/etf',
-  keywords: ['ETF 종목 사전', 'KRX 상장 ETF', 'ETF 종목코드 조회', '운용사별 ETF', 'ETF 전체 목록'],
+  keywords: ['ETF 전체 목록', 'ETF 종목코드 조회', 'ETF 종목 사전', 'KRX 상장 ETF', '운용사별 ETF', 'ETF 목록'],
 });
 
 interface EtfRow {

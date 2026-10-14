@@ -1,0 +1,759 @@
+{
+  "_comment": "구글 검색에서 최근 90일 노출이 1회 이상 있던 /etf 종목 (서치콘솔 검색 실적, 페이지 기준). 2026-10-14 측정. 10-08 에 색인 기준을 좁히면서 이 중 40쪽이 noindex 가 됐는데, 구글이 실제로 보여 주던 주소라 색인을 되돌린다(data/etf-index-keep.json 의 네이버 색인 목록과 같은 취급). sitemap-etf.xml 은 가이드 색인이 따라잡을 때까지 이 목록과 상품 개요 종목만 싣는다. 다시 잴 때 갱신한다.",
+  "measuredAt": "2026-10-14",
+  "source": "Search Console searchAnalytics 2026-07-15~2026-10-12 dimensions=page",
+  "count": 107,
+  "codes": [
+    "0060H0",
+    "449450",
+    "0052D0",
+    "0048K0",
+    "0046A0",
+    "0008S0",
+    "0047A0",
+    "0000D0",
+    "0064K0",
+    "0005G0",
+    "489250",
+    "0080G0",
+    "0072R0",
+    "0074K0",
+    "0005D0",
+    "0051G0",
+    "0085P0",
+    "0041E0",
+    "0043Y0",
+    "402970",
+    "0046Y0",
+    "0038A0",
+    "0015B0",
+    "0007F0",
+    "0005A0",
+    "0050E0",
+    "0053L0",
+    "0067Y0",
+    "0043B0",
+    "0086B0",
+    "448290",
+    "0069M0",
+    "069500",
+    "091160",
+    "0082V0",
+    "0080Y0",
+    "0023A0",
+    "0083S0",
+    "0000Y0",
+    "433970",
+    "0028X0",
+    "0089B0",
+    "0061Z0",
+    "0040X0",
+    "0025N0",
+    "0026S0",
+    "0079X0",
+    "0008E0",
+    "0049M0",
+    "0073X0",
+    "0015F0",
+    "0051A0",
+    "305720",
+    "0065G0",
+    "229720",
+    "0048J0",
+    "0007G0",
+    "0018Z0",
+    "0036R0",
+    "0086C0",
+    "0142D0",
+    "0019K0",
+    "0088N0",
+    "0004G0",
+    "0049K0",
+    "0053M0",
+    "0082F0",
+    "0040S0",
+    "0020H0",
+    "273130",
+    "0001P0",
+    "388280",
+    "0013P0",
+    "0066W0",
+    "0040Y0",
+    "0008T0",
+    "0080X0",
+    "0015K0",
+    "0052T0",
+    "0017Y0",
+    "0052S0",
+    "0085N0",
+    "0002C0",
+    "495750",
+    "0084D0",
+    "117680",
+    "275290",
+    "271060",
+    "446690",
+    "251340",
+    "122630",
+    "445150",
+    "487950",
+    "411420",
+    "455030",
+    "0000J0",
+    "0047N0",
+    "301400",
+    "0057H0",
+    "0023B0",
+    "0000Z0",
+    "0036Z0",
+    "227560",
+    "139320",
+    "453870",
+    "228820",
+    "0154F0"
+  ],
+  "detail": [
+    {
+      "code": "0060H0",
+      "slug": "tiger-active",
+      "impressions": 46,
+      "position": 8.3
+    },
+    {
+      "code": "449450",
+      "slug": "plus-kdefense-449450",
+      "impressions": 30,
+      "position": 25.5
+    },
+    {
+      "code": "0052D0",
+      "slug": "tiger-0052d0",
+      "impressions": 30,
+      "position": 35.8
+    },
+    {
+      "code": "0048K0",
+      "slug": "kodex-china",
+      "impressions": 28,
+      "position": 5.8
+    },
+    {
+      "code": "0046A0",
+      "slug": "tiger-us3",
+      "impressions": 22,
+      "position": 14.8
+    },
+    {
+      "code": "0008S0",
+      "slug": "tiger-us-dividend-djonescovered-call",
+      "impressions": 21,
+      "position": 21.3
+    },
+    {
+      "code": "0047A0",
+      "slug": "tiger-chinatechtop10",
+      "impressions": 17,
+      "position": 6.9
+    },
+    {
+      "code": "0000D0",
+      "slug": "tiger-us-treasurycovered-callsynthetic",
+      "impressions": 16,
+      "position": 15.8
+    },
+    {
+      "code": "0064K0",
+      "slug": "kodex-active",
+      "impressions": 15,
+      "position": 12.3
+    },
+    {
+      "code": "0005G0",
+      "slug": "itf-k-aisemiconductortech",
+      "impressions": 13,
+      "position": 4.5
+    },
+    {
+      "code": "489250",
+      "slug": "kodex-us-dividend-djones",
+      "impressions": 11,
+      "position": 14.3
+    },
+    {
+      "code": "0080G0",
+      "slug": "kodex-defense-top10",
+      "impressions": 10,
+      "position": 7.7
+    },
+    {
+      "code": "0072R0",
+      "slug": "tiger-krx",
+      "impressions": 10,
+      "position": 15.6
+    },
+    {
+      "code": "0074K0",
+      "slug": "koact-ktop30active",
+      "impressions": 9,
+      "position": 55.7
+    },
+    {
+      "code": "0005D0",
+      "slug": "sol-solid-state-batterysilicon-anode",
+      "impressions": 9,
+      "position": 7.3
+    },
+    {
+      "code": "0051G0",
+      "slug": "sol-ussmr",
+      "impressions": 9,
+      "position": 57.8
+    },
+    {
+      "code": "0085P0",
+      "slug": "ace-us10year-treasury-active",
+      "impressions": 8,
+      "position": 8.5
+    },
+    {
+      "code": "0041E0",
+      "slug": "kodex-us-sp500active",
+      "impressions": 8,
+      "position": 21.6
+    },
+    {
+      "code": "0043Y0",
+      "slug": "time-chinaaitechactive",
+      "impressions": 8,
+      "position": 6.6
+    },
+    {
+      "code": "402970",
+      "slug": "ace-us-dividend-djones",
+      "impressions": 7,
+      "position": 22.1
+    },
+    {
+      "code": "0046Y0",
+      "slug": "ace-us-dividend-quality",
+      "impressions": 7,
+      "position": 9.4
+    },
+    {
+      "code": "0038A0",
+      "slug": "kodex-us",
+      "impressions": 7,
+      "position": 26.3
+    },
+    {
+      "code": "0015B0",
+      "slug": "koact-us-nasdaqactive",
+      "impressions": 6,
+      "position": 8.5
+    },
+    {
+      "code": "0007F0",
+      "slug": "kodex-27-12-corporate-bondaa-plusactive",
+      "impressions": 6,
+      "position": 3.8
+    },
+    {
+      "code": "0005A0",
+      "slug": "kodex-us-sp500covered-callotm",
+      "impressions": 6,
+      "position": 21.3
+    },
+    {
+      "code": "0050E0",
+      "slug": "plus-usai",
+      "impressions": 6,
+      "position": 10.5
+    },
+    {
+      "code": "0053L0",
+      "slug": "tiger-china",
+      "impressions": 6,
+      "position": 15.3
+    },
+    {
+      "code": "0067Y0",
+      "slug": "tiger-chinaaisoftware",
+      "impressions": 6,
+      "position": 8.5
+    },
+    {
+      "code": "0043B0",
+      "slug": "tiger-mma-active",
+      "impressions": 6,
+      "position": 7
+    },
+    {
+      "code": "0086B0",
+      "slug": "tiger-reitinfrastructuretop10active",
+      "impressions": 6,
+      "position": 9.3
+    },
+    {
+      "code": "448290",
+      "slug": "tiger-us-sp500h-448290",
+      "impressions": 6,
+      "position": 19.2
+    },
+    {
+      "code": "0069M0",
+      "slug": "1q-us-nasdaq100",
+      "impressions": 5,
+      "position": 8.6
+    },
+    {
+      "code": "069500",
+      "slug": "kodex-200",
+      "impressions": 5,
+      "position": 32.6
+    },
+    {
+      "code": "091160",
+      "slug": "kodex-semiconductor",
+      "impressions": 5,
+      "position": 22.4
+    },
+    {
+      "code": "0082V0",
+      "slug": "kodex-tdf2060active-qualified",
+      "impressions": 5,
+      "position": 36.8
+    },
+    {
+      "code": "0080Y0",
+      "slug": "sol-shipbuilding-top3plus-leverage",
+      "impressions": 5,
+      "position": 5.8
+    },
+    {
+      "code": "0023A0",
+      "slug": "sol-ustop10",
+      "impressions": 5,
+      "position": 31.6
+    },
+    {
+      "code": "0083S0",
+      "slug": "1q-usai",
+      "impressions": 4,
+      "position": 18
+    },
+    {
+      "code": "0000Y0",
+      "slug": "hk-26-12-corporate-bondaa-plusactive",
+      "impressions": 4,
+      "position": 6.3
+    },
+    {
+      "code": "433970",
+      "slug": "kodex-tdf2030active-qualified",
+      "impressions": 4,
+      "position": 6
+    },
+    {
+      "code": "0028X0",
+      "slug": "kodex-usfinancetechactive",
+      "impressions": 4,
+      "position": 18
+    },
+    {
+      "code": "0089B0",
+      "slug": "plus-us-nasdaq100us-treasury-blend50",
+      "impressions": 4,
+      "position": 22.5
+    },
+    {
+      "code": "0061Z0",
+      "slug": "rise-active",
+      "impressions": 4,
+      "position": 6.8
+    },
+    {
+      "code": "0040X0",
+      "slug": "sol-us-treasurycovered-call",
+      "impressions": 4,
+      "position": 38
+    },
+    {
+      "code": "0025N0",
+      "slug": "tiger-tdf2045-qualified",
+      "impressions": 4,
+      "position": 23
+    },
+    {
+      "code": "0026S0",
+      "slug": "1q-us-sp500",
+      "impressions": 3,
+      "position": 9
+    },
+    {
+      "code": "0079X0",
+      "slug": "ace-bydactive",
+      "impressions": 3,
+      "position": 8
+    },
+    {
+      "code": "0008E0",
+      "slug": "ace-us",
+      "impressions": 3,
+      "position": 17.3
+    },
+    {
+      "code": "0049M0",
+      "slug": "ace-us-dividend-qualitycovered-callactive",
+      "impressions": 3,
+      "position": 29
+    },
+    {
+      "code": "0073X0",
+      "slug": "focus-us-treasurycovered-call",
+      "impressions": 3,
+      "position": 8
+    },
+    {
+      "code": "0015F0",
+      "slug": "kiwoom-us30yactiveh-0015f0",
+      "impressions": 3,
+      "position": 6.3
+    },
+    {
+      "code": "0051A0",
+      "slug": "koact-active",
+      "impressions": 3,
+      "position": 6.7
+    },
+    {
+      "code": "305720",
+      "slug": "kodex-battery",
+      "impressions": 3,
+      "position": 66
+    },
+    {
+      "code": "0065G0",
+      "slug": "kodex-chinatechtop10",
+      "impressions": 3,
+      "position": 38.3
+    },
+    {
+      "code": "229720",
+      "slug": "kodex-ktop30",
+      "impressions": 3,
+      "position": 8.7
+    },
+    {
+      "code": "0048J0",
+      "slug": "kodex-usmma-active",
+      "impressions": 3,
+      "position": 8
+    },
+    {
+      "code": "0007G0",
+      "slug": "plus-global",
+      "impressions": 3,
+      "position": 34
+    },
+    {
+      "code": "0018Z0",
+      "slug": "rise-us",
+      "impressions": 3,
+      "position": 16.3
+    },
+    {
+      "code": "0036R0",
+      "slug": "rise-us-0036r0",
+      "impressions": 3,
+      "position": 12.3
+    },
+    {
+      "code": "0086C0",
+      "slug": "tiger-reitinfrastructure10bond-blendactive",
+      "impressions": 3,
+      "position": 7.7
+    },
+    {
+      "code": "0142D0",
+      "slug": "tiger-usaidatatop4plus",
+      "impressions": 3,
+      "position": 9
+    },
+    {
+      "code": "0019K0",
+      "slug": "time-us-nasdaq100bond-blend50active",
+      "impressions": 3,
+      "position": 31.7
+    },
+    {
+      "code": "0088N0",
+      "slug": "won-k-global",
+      "impressions": 3,
+      "position": 43.7
+    },
+    {
+      "code": "0004G0",
+      "slug": "1q-ustop30",
+      "impressions": 2,
+      "position": 14.5
+    },
+    {
+      "code": "0049K0",
+      "slug": "ace-us-dividend-qualitybond-blend50",
+      "impressions": 2,
+      "position": 36.5
+    },
+    {
+      "code": "0053M0",
+      "slug": "active",
+      "impressions": 2,
+      "position": 8
+    },
+    {
+      "code": "0082F0",
+      "slug": "hanaro-defense",
+      "impressions": 2,
+      "position": 22.5
+    },
+    {
+      "code": "0040S0",
+      "slug": "hanaro-globalaiactive",
+      "impressions": 2,
+      "position": 40.5
+    },
+    {
+      "code": "0020H0",
+      "slug": "koact-globalactive",
+      "impressions": 2,
+      "position": 56
+    },
+    {
+      "code": "273130",
+      "slug": "kodex-total-bondaa-plusactive",
+      "impressions": 2,
+      "position": 5
+    },
+    {
+      "code": "0001P0",
+      "slug": "mighty-biotechcdmoactive",
+      "impressions": 2,
+      "position": 7
+    },
+    {
+      "code": "388280",
+      "slug": "rise-k",
+      "impressions": 2,
+      "position": 10
+    },
+    {
+      "code": "0013P0",
+      "slug": "rise-ustop10",
+      "impressions": 2,
+      "position": 9
+    },
+    {
+      "code": "0066W0",
+      "slug": "sol-0066w0",
+      "impressions": 2,
+      "position": 15
+    },
+    {
+      "code": "0040Y0",
+      "slug": "sol-covered-callotmbond-blend",
+      "impressions": 2,
+      "position": 2
+    },
+    {
+      "code": "0008T0",
+      "slug": "sol-top3plus",
+      "impressions": 2,
+      "position": 18.5
+    },
+    {
+      "code": "0080X0",
+      "slug": "sol-us-sp500us-treasury-blend50",
+      "impressions": 2,
+      "position": 7
+    },
+    {
+      "code": "0015K0",
+      "slug": "tiger-usactive",
+      "impressions": 2,
+      "position": 6
+    },
+    {
+      "code": "0052T0",
+      "slug": "1q-corporate-bonda-plusactive",
+      "impressions": 1,
+      "position": 10
+    },
+    {
+      "code": "0017Y0",
+      "slug": "1q-total-bondaa-plusactive",
+      "impressions": 1,
+      "position": 5
+    },
+    {
+      "code": "0052S0",
+      "slug": "1q-us-sp500us-treasury-blend50active",
+      "impressions": 1,
+      "position": 9
+    },
+    {
+      "code": "0085N0",
+      "slug": "ace-us10year-treasury-activeh",
+      "impressions": 1,
+      "position": 1
+    },
+    {
+      "code": "0002C0",
+      "slug": "asset-plus-india20active",
+      "impressions": 1,
+      "position": 9
+    },
+    {
+      "code": "495750",
+      "slug": "hanaro-korea-valueup",
+      "impressions": 1,
+      "position": 2
+    },
+    {
+      "code": "0084D0",
+      "slug": "kiwoom-us-tech100active",
+      "impressions": 1,
+      "position": 3
+    },
+    {
+      "code": "117680",
+      "slug": "kodex-117680",
+      "impressions": 1,
+      "position": 6
+    },
+    {
+      "code": "275290",
+      "slug": "kodex-275290",
+      "impressions": 1,
+      "position": 7
+    },
+    {
+      "code": "271060",
+      "slug": "kodex-3h",
+      "impressions": 1,
+      "position": 20
+    },
+    {
+      "code": "446690",
+      "slug": "kodex-aisemiconductorexchinaactive",
+      "impressions": 1,
+      "position": 11
+    },
+    {
+      "code": "251340",
+      "slug": "kodex-kosdaq150futures-inverse",
+      "impressions": 1,
+      "position": 7
+    },
+    {
+      "code": "122630",
+      "slug": "kodex-leverage",
+      "impressions": 1,
+      "position": 56
+    },
+    {
+      "code": "445150",
+      "slug": "kodex-shipbuildingactive",
+      "impressions": 1,
+      "position": 7
+    },
+    {
+      "code": "487950",
+      "slug": "kodex-tech",
+      "impressions": 1,
+      "position": 9
+    },
+    {
+      "code": "411420",
+      "slug": "kodex-us-nasdaqaitechactive",
+      "impressions": 1,
+      "position": 11
+    },
+    {
+      "code": "455030",
+      "slug": "kodex-usdsofrrate-activesynthetic",
+      "impressions": 1,
+      "position": 3
+    },
+    {
+      "code": "0000J0",
+      "slug": "plus-0000j0",
+      "impressions": 1,
+      "position": 10
+    },
+    {
+      "code": "0047N0",
+      "slug": "plus-chinaaitechtop10",
+      "impressions": 1,
+      "position": 4
+    },
+    {
+      "code": "301400",
+      "slug": "plus-kosdaq150",
+      "impressions": 1,
+      "position": 10
+    },
+    {
+      "code": "0057H0",
+      "slug": "plus-us-sp500us-treasury-blend50active",
+      "impressions": 1,
+      "position": 6
+    },
+    {
+      "code": "0023B0",
+      "slug": "plus-ustop10",
+      "impressions": 1,
+      "position": 9
+    },
+    {
+      "code": "0000Z0",
+      "slug": "rise-biotechtop10active",
+      "impressions": 1,
+      "position": 47
+    },
+    {
+      "code": "0036Z0",
+      "slug": "rise-us-0036z0",
+      "impressions": 1,
+      "position": 3
+    },
+    {
+      "code": "227560",
+      "slug": "tiger-200-227560",
+      "impressions": 1,
+      "position": 11
+    },
+    {
+      "code": "139320",
+      "slug": "tiger-h",
+      "impressions": 1,
+      "position": 9
+    },
+    {
+      "code": "453870",
+      "slug": "tiger-india50",
+      "impressions": 1,
+      "position": 5
+    },
+    {
+      "code": "228820",
+      "slug": "tiger-ktop30",
+      "impressions": 1,
+      "position": 9
+    },
+    {
+      "code": "0154F0",
+      "slug": "won-ibfinance",
+      "impressions": 1,
+      "position": 7
+    }
+  ]
+}

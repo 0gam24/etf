@@ -140,23 +140,35 @@ export function shouldIndexEtf(args: {
   //     같은 지수 다른 상품 비교(또는 1:1 비교 페이지)는 시세가 있을 때.
   //   noindex 여도 follow 는 유지해 링크는 따라간다. hasNavGap 은 호환용으로 받기만 한다.
   //   다만 네이버가 이미 색인한 종목(data/etf-index-keep.json, 246쪽)은 그대로 둔다. 받아 준 주소를 빼면 있는 노출까지 잃는다.
+  //   2026-10-14: 구글 검색에서 최근 90일 노출이 있던 종목(data/etf-google-keep.json, 107쪽)도 같은 취급.
+  //     10-08 기준으로 그중 40쪽(노출 176회, /etf/tiger-active 46회·8위 등)이 noindex 가 돼 있었다.
   if (!args.hasSlug) return false;
   if (args.hasProfile || args.hasHoldings || args.hasIncome || args.inKeepList) return true;
   return args.hasPrice && !!args.hasPeerGroup;
 }
 
+/** data/ 의 코드 목록 파일({ codes: string[] })을 읽는다. 파일이 없거나 깨졌으면 빈 목록. */
+function readCodeList(file: string): string[] {
+  try {
+    const raw = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', file), 'utf8')) as { codes?: string[] };
+    return (raw.codes || []).map(c => c.toUpperCase());
+  } catch {
+    return [];
+  }
+}
+
+let _etfGoogleKeep: Set<string> | null = null;
+/** 구글 검색 노출이 최근 90일 안에 있던 종목 (data/etf-google-keep.json, 2026-10-14). sitemap-etf.xml 도 쓴다. */
+export function getEtfGoogleKeepSet(): Set<string> {
+  if (!_etfGoogleKeep) _etfGoogleKeep = new Set(readCodeList('etf-google-keep.json'));
+  return _etfGoogleKeep;
+}
+
 let _etfKeep: Set<string> | null = null;
-/** 네이버 색인 유지 목록 (data/etf-index-keep.json). 파일이 없으면 빈 목록. */
+/** 색인 유지 목록: 네이버가 색인한 종목(data/etf-index-keep.json) + 구글 노출이 있던 종목(data/etf-google-keep.json). */
 function getEtfIndexKeepSet(): Set<string> {
   if (_etfKeep) return _etfKeep;
-  try {
-    const raw = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'etf-index-keep.json'), 'utf8')) as {
-      codes?: string[];
-    };
-    _etfKeep = new Set((raw.codes || []).map(c => c.toUpperCase()));
-  } catch {
-    _etfKeep = new Set();
-  }
+  _etfKeep = new Set([...readCodeList('etf-index-keep.json'), ...getEtfGoogleKeepSet()]);
   return _etfKeep;
 }
 

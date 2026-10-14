@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ArrowRight, BookOpen, CalendarDays } from 'lucide-react';
 import { GUIDES, getGuideClusters } from '@/lib/guides';
+import { GUIDE_CATEGORIES, categoryHref, getGuidesInCategory } from '@/lib/guide-categories';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { buildItemListSchema, jsonLd } from '@/lib/schema';
 import { buildOg } from '@/lib/site-meta';
@@ -54,6 +55,21 @@ export default function GuideIndexPage() {
           <CalendarDays size={14} strokeWidth={2.5} aria-hidden /> 최신 발행순으로 전체 보기
         </Link>
       </section>
+
+      {/* 주제별 허브 (2026-10-14): 주제마다 소개와 그 주제의 가이드 전체를 모은 페이지 */}
+      <nav className="home-bundle" aria-labelledby="guide-hub-title">
+        <h2 id="guide-hub-title" className="home-bundle-title">주제별 가이드 허브</h2>
+        <ul className="home-link-list">
+          {GUIDE_CATEGORIES.map(c => {
+            const n = getGuidesInCategory(c).length;
+            return n > 0 ? (
+              <li key={c.key}>
+                <Link href={categoryHref(c)} prefetch={false}>{c.label} 가이드 {n}편</Link>
+              </li>
+            ) : null;
+          })}
+        </ul>
+      </nav>
 
 
       {clusters.map(cluster => (

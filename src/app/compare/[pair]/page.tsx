@@ -19,6 +19,8 @@ import FaqSection from '@/components/FaqSection';
 import { SITE_NAME, SITE_LOCALE, ogImageUrl } from '@/lib/site-meta';
 import { classifyEtfTax, CONFIRMED_TAX_KIND, type EtfTaxClass } from '@/lib/etf-tax';
 import { getEtfProfile } from '@/lib/etf-profiles';
+import { getGuideCategory } from '@/lib/guide-categories';
+import { pickUnindexedGuides } from '@/lib/crawl-priority';
 import { TAX_RULES } from '@/lib/account-tax-rules';
 
 /**
@@ -241,6 +243,13 @@ export default async function ComparePairPage({ params }: PageProps) {
   const tldrLine = (f: (t: EtfTaxClass) => string) =>
     sameTax ? `두 상품 모두 ${f(taxA)}` : `${metaA.name}(${taxA.label}) ${f(taxA)} / ${metaB.name}(${taxB.label}) ${f(taxB)}`;
   const taxConfirmed = taxA.confirmed && taxB.confirmed;
+
+  // 함께 읽으면 좋은 글 (2026-10-14): 비교·비용·해외 투자 주제에서 구글이 아직 색인하지 않은 가이드 3편 (src/lib/crawl-priority.ts)
+  const alsoRead = pickUnindexedGuides({
+    categories: [getGuideCategory('compare'), getGuideCategory('cost'), getGuideCategory('overseas')],
+    n: 3,
+    seed: p.slug,
+  });
 
   // H2 순번: 렌더되는 섹션에만 매긴다 (구성종목 섹션이 빠질 때 번호가 건너뛰지 않게)
   let sectionNo = 0;
@@ -508,6 +517,19 @@ export default async function ComparePairPage({ params }: PageProps) {
           </div>
         </section>
       ) : null}
+
+      {alsoRead.length > 0 && (
+        <aside className="guide-also-read" aria-label="함께 읽으면 좋은 글">
+          <p className="guide-also-read-title">함께 읽으면 좋은 글</p>
+          <ul>
+            {alsoRead.map(o => (
+              <li key={o.slug}>
+                <Link href={`/guide/${o.slug}`} prefetch={false}>{o.title}</Link>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )}
 
       {/* 고를 때 확인할 기준: 확인하지 않은 수치는 쓰지 않는다 */}
       <section className="compare-section">

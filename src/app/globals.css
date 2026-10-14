@@ -9226,6 +9226,46 @@ a.scenario-card:hover .scenario-card-cta {
 }
 .home-link-list a:hover { border-color: var(--accent-gold); }
 
+/* ── 주제별로 더 읽어 볼 가이드 (홈, 2026-10-14) ── */
+.home-more-guides-group { margin-top: var(--space-5); }
+.home-more-guides-label {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.home-more-guides-label a { color: var(--accent-gold); }
+
+/* ── 함께 읽으면 좋은 글 (가이드 본문 중간·비교 페이지, 2026-10-14) ── */
+.guide-also-read {
+  margin: 0;
+  padding: var(--space-4) var(--space-5);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--accent-gold);
+  border-radius: 0.7rem;
+}
+.compare-page > .guide-also-read { margin: var(--space-8) 0; }
+.guide-also-read-title {
+  margin: 0 0 var(--space-2);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+.guide-also-read ul {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.guide-also-read li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+.guide-also-read a { color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px; }
+.guide-also-read a:hover { color: var(--accent-gold); }
+
 /* ── 상품 개요 (/etf/[ticker] EtfProfileSection, 2026-10-08) ── */
 .etf-profile-summary {
   margin: 0 0 1rem;

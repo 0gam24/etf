@@ -3,6 +3,7 @@ import { GUIDES, getGuidePublishedAt, getGuideModifiedAt } from '@/lib/guides';
 import { COMPARE_PAIRS } from '@/lib/etf-compare-pairs';
 import { ETF_PROFILES } from '@/lib/etf-profiles';
 import { getLatestEtfData, getKrxEtfMeta, codeToSlug } from '@/lib/data';
+import { isUnindexedGuide } from '@/lib/crawl-priority';
 
 /**
  * 구독 피드 공용 빌더 — RSS 2.0 · Atom 1.0 · JSON Feed 1.1 + 카테고리별 RSS.
@@ -234,9 +235,14 @@ export function getAllFeedItems(): FeedItem[] {
 
   // 일별 시황 글(postItems)은 2026-10-08 은퇴(noindex)라 피드에 넣지 않는다.
   void postItems;
-  return [...guideItems, ...compareItems, ...profileItems]
-    .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime())
-    .slice(0, 100);
+  const all = [...guideItems, ...compareItems, ...profileItems]
+    .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
+  const top = all.slice(0, 100);
+  // 구글이 아직 색인하지 않은 가이드(src/lib/crawl-priority.ts)는 최신 100개 밖이어도 피드에 남긴다 (2026-10-14).
+  //   날짜는 실제 발행·수정일 그대로라 피드 순서만 뒤쪽에 놓인다. 네이버·빙이 피드로 이 글들을 다시 찾게 한다.
+  const inTop = new Set(top.map(i => i.url));
+  const extra = all.filter(i => !inTop.has(i.url) && isUnindexedGuide(i.url.split('/guide/')[1] || ''));
+  return [...top, ...extra].sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
 }
 
 /** 특정 카테고리(top-level) 피드 항목 — 해당 카테고리 글만 (최신순, 상위 100). */

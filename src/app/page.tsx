@@ -14,6 +14,8 @@ import HomeLatestFeed from '@/components/HomeLatestFeed';
 import HomeCategoryShelves from '@/components/HomeCategoryShelves';
 import DataFooter from '@/components/DataFooter';
 import { buildOg, buildTwitter } from '@/lib/site-meta';
+import { unindexedGuidesByCategory } from '@/lib/crawl-priority';
+import { categoryHref } from '@/lib/guide-categories';
 
 // ⚠️ `export const revalidate`를 두지 않는다. (2026-08-12)
 //
@@ -61,6 +63,8 @@ export default async function HomePage() {
   const bundle = getLatestBundle();
   const latestFeed = getUnifiedFeed(40); // 히어로 날짜 제외 후 12편 표시 여유분
   const shelves = getCategoryShelves(3);
+  // 주제별로 더 읽어 볼 가이드 (2026-10-14): 구글이 아직 색인하지 않은 가이드를 홈에서 바로 잇는다 (src/lib/crawl-priority.ts)
+  const moreGuides = unindexedGuidesByCategory();
 
   // 시장 요약 띠(MarketPulseCondensed)용 최소 데이터
   const sortedByChange = (etfData?.etfList || []).slice().sort(
@@ -123,6 +127,27 @@ export default async function HomePage() {
 
       {/* 카테고리별 선반 — 헤더 메뉴 순서, 카테고리당 3편 */}
       <HomeCategoryShelves shelves={shelves} />
+
+      {/* 주제별로 더 읽어 볼 가이드 (2026-10-14). 카테고리 선반의 3편 밖에 있는 글을 주제별로 한 번씩 잇는다. */}
+      {moreGuides.length > 0 && (
+        <section className="home-bundle" aria-labelledby="home-more-guides-title">
+          <h2 id="home-more-guides-title" className="home-bundle-title">주제별로 더 읽어 볼 가이드</h2>
+          {moreGuides.map(({ category, guides }) => (
+            <div key={category.key} className="home-more-guides-group">
+              <h3 className="home-more-guides-label">
+                <Link href={categoryHref(category)} prefetch={false}>{category.label}</Link>
+              </h3>
+              <ul className="home-link-list">
+                {guides.map(g => (
+                  <li key={g.slug}>
+                    <Link href={`/guide/${g.slug}`} prefetch={false}>{g.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+      )}
 
       {/* 같은 지수 ETF 비교와 계산 도구 — 홈에서 바로 닿게 (2026-10-08). 비교 페이지는 그동안 홈에서 4클릭이었다. */}
       <section className="home-bundle" aria-labelledby="home-compare-title">

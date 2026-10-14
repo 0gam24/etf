@@ -1,4 +1,5 @@
 import { getAllPosts } from '@/lib/posts';
+import { GUIDE_CATEGORIES, categoryHref, getGuidesInCategory } from '@/lib/guide-categories';
 import { GUIDES } from '@/lib/guides';
 import { ALL_PERSONAS } from '@/lib/personas-config';
 // /etf 타이틀의 종목 수 — data/etf-slug-map.json 에서 파생 (숫자 하드코딩 금지, 번들 포함이라 런타임 fs 불필요)
@@ -97,6 +98,10 @@ export async function GET() {
     { path: '/tools/tax-compare', title: '계좌별 세후 수익률 비교, IRP·ISA·연금저축',   category: 'income' },
     { path: '/tools/dividend-calculator', title: 'ETF 분배금 계산기',                     category: 'income' },
   ];
+  // 주제별 가이드 허브 (2026-10-14, /guide/category/*). 제목은 허브 페이지 title 과 같다.
+  for (const c of GUIDE_CATEGORIES) {
+    if (getGuidesInCategory(c).length) STATIC_PAGES.push({ path: categoryHref(c), title: c.title, category: 'pulse' });
+  }
 
   // ── 페르소나 entry pages 7종 (Phase 4), Image Sitemap 등록 ───────
   ALL_PERSONAS.forEach(p => {

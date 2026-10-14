@@ -39,6 +39,13 @@ export interface GuideDef {
   slug: string;
   /** 검색 결과 노출용 짧은 제목 */
   title: string;
+  /**
+   * 검색 결과 <title> 만 바꿀 때 쓴다 (CLAUDE.md "데이터 기반 CTR 수술", 2026-10-14 신설).
+   *   GSC 에서 노출은 있는데 클릭이 0인 가이드의 meta title 을 실제 검색어 문구로 앞당긴다.
+   *   화면 H1·구조화 데이터 headline·주소는 title 그대로라 발행분 제목 소급 수정이 아니다.
+   *   근거(검색어·노출·순위·스냅샷)는 가이드 객체의 slug 줄 아래 주석으로 남긴다.
+   */
+  seoTitle?: string;
   /** 한 줄 부제 */
   tagline: string;
   description: string;
@@ -10601,11 +10608,13 @@ const sp500AllInRisk: GuideDef = {
 /** Q&A 3 — 해외주식·ETF 결제일과 매도대금 */
 const foreignStockSettlement: GuideDef = {
   slug: 'foreign-stock-settlement',
+  // CTR 2026-10-14 GSC 90일(07-15~10-12) 이 글 노출 109 · 평균 7.1위 · 클릭 0. 검색어 20개 대부분 "국내 etf 결제일 t+2"·"국내 etf 매도대금 결제일 t+2"(2.5~10.5위). 본문·표·FAQ 는 이미 국내 T+2 를 답하므로 검색 결과 제목·설명만 앞당김
   title: '해외주식·ETF 결제일 — 매도 후 돈 언제 들어올까',
+  seoTitle: '국내 ETF 결제일 T+2, 미국 T+1: 매도대금 들어오는 날',
   tagline: '"미국 ETF 팔았는데 달러가 며칠 뒤에 들어와요"의 이유',
   description:
-    '미국 ETF·주식을 매도했는데 대금이 바로 안 들어오는 이유, 미국 T+1과 국내 상장 T+2 결제일 차이, 매도대금이 달러(외화)로 들어와 환전해야 하는 과정, 출금 가능일과 예수금 개념까지 실제 질문 순서로 정리했습니다.',
-  keywords: ['해외주식 결제일', '미국주식 매도 대금', '해외 ETF 매도 출금', 'T+1 결제', '예수금', '해외주식 환전'],
+    '국내 상장 ETF는 매도한 날을 포함해 3영업일째(T+2), 미국 ETF는 다음 영업일(T+1)에 매도대금이 결제됩니다. 출금 가능일과 예수금의 차이, 해외 ETF 대금이 달러로 들어와 환전해야 하는 이유까지 질문 순서로 정리했습니다.',
+  keywords: ['해외주식 결제일', '국내 ETF 결제일 T+2', 'ETF 매도대금 결제일', '미국주식 매도 대금', '해외 ETF 매도 출금', 'T+1 결제', '예수금', '해외주식 환전'],
   section: 'ETF 매매 가이드',
   lastReviewed: '2026-08-01',
   answer:
@@ -12557,12 +12566,14 @@ const overseasEtfTradingHours: GuideDef = {
 /** Q&A - 연금계좌에서 살 수 없는 ETF */
 const pensionAccountEtfRestrictions: GuideDef = {
   slug: 'pension-account-etf-restrictions',
+  // CTR 2026-10-14 GSC 90일(07-15~10-12) 이 글 노출 62 · 평균 9.2위 · 클릭 0. 검색어 "퇴직연금 계좌 레버리지 인버스 etf 제한"·"투자 불가"·"투자 제한" 8위. 검색 결과 제목·설명만 검색어 순서로
   // 정정 2026-10-07 위험자산 70% 한도는 IRP·DC 퇴직연금만 해당, 연금저축은 비중 한도 없음 · 출처 근로자퇴직급여 보장법 시행규칙 제10조 law.go.kr
   title: '연금계좌에서 못 사는 ETF, 레버리지·인버스 금지',
+  seoTitle: '퇴직연금·연금저축 레버리지·인버스 ETF 투자 제한 이유와 대안',
   tagline: '연금저축·IRP에서 곱버스가 안 잡히는 이유',
   description:
-    '연금저축과 IRP, DC형 퇴직연금에서 레버리지·인버스 같은 파생형 ETF를 살 수 없는 이유를 파생상품 위험평가액 40% 규정으로 풀어내고, 위험자산 70% 한도, 대신 담을 수 있는 ETF까지 실제 질문 순서로 정리했습니다.',
-  keywords: ['연금계좌 ETF', '연금저축 레버리지 ETF', 'IRP 인버스', '퇴직연금 ETF 제한', '위험자산 70%', '파생형 ETF 금지'],
+    '퇴직연금(IRP·DC)과 연금저축에서는 레버리지·인버스 ETF를 살 수 없습니다. 근거인 파생상품 위험평가액 40% 규정과 IRP·DC에만 있는 위험자산 70% 한도, 대신 담을 수 있는 ETF까지 질문 순서로 정리했습니다.',
+  keywords: ['연금계좌 ETF', '퇴직연금 레버리지 인버스 ETF', '연금저축 레버리지 ETF', 'IRP 인버스', '퇴직연금 ETF 제한', '위험자산 70%', '파생형 ETF 금지', '연금계좌 레버리지 투자 불가'],
   section: '은퇴 자산 가이드',
   lastReviewed: '2026-10-07',
   answer:
