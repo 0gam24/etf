@@ -151,9 +151,7 @@ export default async function PersonaPage({ params }: PageProps) {
                     {p.categoryName}
                   </div>
                   <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.3rem' }}>{p.meta.title}</h3>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)', lineHeight: 1.5, margin: 0 }}>
-                    {p.meta.description}
-                  </p>
+                  {/* 카드 요약문은 2026-10-14 뺐다: 목록마다 같은 설명문이 반복돼 글 본문과 겹쳤다 (제목만) */}
                 </Link>
               </li>
             ))}

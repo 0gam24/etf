@@ -17,6 +17,9 @@ import {
   codeToSlug,
 } from '@/lib/data';
 import { listEtfProfiles } from '@/lib/etf-profiles';
+import { classifyEtfTax, CONFIRMED_TAX_KIND } from '@/lib/etf-tax';
+import EtfAccountTaxTable from '@/components/EtfAccountTaxTable';
+import EtfTaxSimulator from '@/components/EtfTaxSimulator';
 import { getInvestmentPoints } from '@/lib/etf-investment-points';
 import { getEtfSiblings } from '@/lib/etf-siblings';
 import EtfSiblingLinks from '@/components/EtfSiblingLinks';
@@ -146,6 +149,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const titleAttrs: Array<{ label: string; dropOrder: number }> = [];
   if (hasHoldingsData) titleAttrs.push({ label: '구성종목', dropOrder: 5 });
   if (hasIncomeData) titleAttrs.push({ label: '분배금', dropOrder: 4 });
+  // 상품 개요가 있으면 총보수와 분배 기준일이 페이지에 실제로 있다 (src/lib/etf-profiles.ts)
+  const profileForTitle = facts?.profile ?? null;
+  if (profileForTitle) {
+    titleAttrs.push({ label: '총보수', dropOrder: 4.5 });
+    if (!hasIncomeData) titleAttrs.push({ label: '분배금', dropOrder: 4 });
+  }
+  // 2026-10-14: 모든 종목에 계좌별 세금 표·세후 계산기가 붙어 "ISA·연금 세금"을 약속할 수 있다 ("{ETF명} ISA"·"연금저축 {ETF명}" 검색)
+  titleAttrs.push({ label: 'ISA·연금 세금', dropOrder: 3.5 });
   if (etf) titleAttrs.push({ label: priceWord, dropOrder: 2 });
   titleAttrs.push({ label: '종목코드', dropOrder: 3 });
   if (navGap) titleAttrs.push({ label: '괴리율', dropOrder: 1 });
@@ -202,11 +213,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (issuerForMeta) addToDesc(` 운용사는 ${issuerForMeta}입니다.`);
   // 꼬리: 실제로 페이지에 있는 섹션만 말한다
   const longTail = hasIncomeData
-    ? ' 분배율과 지급 월, 같은 운용사의 다른 ETF를 함께 정리했습니다.'
+    ? ' 분배율과 지급 월, ISA·연금 계좌별 세금을 함께 정리했습니다.'
     : etf
-      ? ' 거래량과 시가총액, 같은 운용사의 다른 ETF를 함께 정리했습니다.'
-      : ' 같은 운용사의 다른 ETF와 투자 포인트를 함께 정리했습니다.';
-  const shortTail = ' 투자 포인트를 함께 정리했습니다.';
+      ? ' 일반·ISA·연금 계좌별 세금과 세후 계산기를 함께 정리했습니다.'
+      : ' 일반·ISA·연금 계좌별 세금과 같은 운용사의 다른 ETF를 정리했습니다.';
+  const shortTail = ' 계좌별 세금을 함께 정리했습니다.';
   if (!addToDesc(longTail)) addToDesc(shortTail);
   if (description.length < 120) addToDesc(' 매수 전 확인할 기본 정보를 한자리에 모았습니다.');
   // 상품 개요(src/lib/etf-profiles.ts)가 있는 종목은 그 설명을 쓴다. 1차 출처로 확인한 문장이고,
@@ -237,6 +248,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `${displayCode} ETF`,
       ...(hasHoldingsData ? [`${name} 구성종목`] : []),
       ...(hasIncomeData ? [`${name} 분배금`] : []),
+      `${name} ISA 연금저축 세금`,
       ...(navGap ? [`${name} 괴리율`] : []),
       ...(sector && sector !== '기타' ? [`${sector} ETF`] : []),
     ].slice(0, 7),
@@ -281,6 +293,8 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
   const incomeEntry = facts?.income ?? null;
   // 1차 출처로 확인한 상품 개요 (있는 종목만, src/lib/etf-profiles.ts)
   const profile = facts?.profile ?? null;
+  // 과세 구분: 운용사 문서로 확인한 값(상품 개요 → 코드별 확인값)이 이름 규칙 추정보다 먼저 (src/lib/etf-tax.ts)
+  const taxClass = classifyEtfTax(displayName, profile?.taxKind ?? CONFIRMED_TAX_KIND[displayCode]);
   const navGap = facts?.navGap ?? null;
   // 괴리율이 시세 기준일과 다른 날의 NAV·종가 쌍인지 (그 날 NAV 자료가 빠진 경우)
   const navDateDiffers = !!navGap && !!navGap.isoDate && navGap.isoDate !== (facts?.age?.isoDate || '');
@@ -354,6 +368,8 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
       : `${displayName}, 한국거래소(KRX) 상장 ETF. 단축코드 ${displayCode}.`,
     url: `/etf/${canonicalSlug}`,
     category: 'ETF',
+    // 운용사 법인명 (ISSUER_LABELS 의 괄호 안, 예: "KODEX (삼성자산운용)" → 삼성자산운용). 모르는 브랜드는 넣지 않는다 (2026-10-14)
+    ...(issuerLabel?.match(/\(([^)]+)\)/)?.[1] ? { provider: issuerLabel.match(/\(([^)]+)\)/)![1] } : {}),
     ...(hasPriceData && asOfIso ? { price: etf!.price, priceDate: asOfIso } : {}),
   });
 
@@ -423,7 +439,8 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
         </div>
         {/* 1B. H1 — 코드 병기 + "분석 리포트" 키워드 */}
         <h1 className="etf-dict-title">
-          {displayName} <span className="etf-dict-title-code">(Ticker: {displayCode})</span> 분석 리포트
+          {/* 2026-10-14: "분석 리포트" 대신 페이지가 실제로 답하는 것(종목 정보·계좌별 세금)을 적는다 */}
+          {displayName} <span className="etf-dict-title-code">({displayCode})</span> ETF 정보와 계좌별 세금
         </h1>
         <p className="etf-dict-tagline">
           {hasPriceData && asOfIso
@@ -695,6 +712,31 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
         </section>
       )}
 
+      {/* 계좌별 세금 표 + 세후 계산기 (2026-10-14). 상품명 + ISA·연금저축·세금 검색에 답하고, 같은 ETF를 어느 계좌에서
+          굴릴지 숫자로 비교하게 한다. 과세 구분은 이름 규칙 추정(운용사 문서로 확인한 종목은 확인값), 세율은 account-tax-rules 한 곳. */}
+      <section className="etf-dict-section" aria-labelledby="etf-tax-heading">
+        <h2 className="etf-dict-h2" id="etf-tax-heading">{no()}. {displayName} 계좌별 세금 (일반·ISA·연금저축·IRP)</h2>
+        <EtfAccountTaxTable
+          name={displayName}
+          tax={taxClass}
+          issuerUrl={getIssuerOfficialUrl(displayName)}
+          issuerLabel={issuerLabel ? issuerLabel.split(' ')[0] : null}
+        />
+        <h3 className="etf-profile-h3">{displayName} 계좌별 세후 계산기</h3>
+        <EtfTaxSimulator
+          name={displayName}
+          gainTax={taxClass.gainTax}
+          pensionAllowed={taxClass.pensionAllowed}
+          defaultYieldPct={incomeEntry ? incomeEntry.yield : 3}
+          yieldFromRecord={!!incomeEntry}
+        />
+      </section>
+
+      {/* 수동 광고: 계산 결과 바로 아래 (2026-10-14). 슬롯 env 가 비면 그리지 않는다 */}
+      {AD_SLOTS.bottom && (
+        <AdBanner key={`${canonicalSlug}-tax`} slot={AD_SLOTS.bottom} className="ad-slot--etf ad-slot--bottom" />
+      )}
+
       {/* 같은 지수 이름의 다른 ETF: 같은 섹터·같은 운용사 블록보다 검색 의도가 가까워 투자 포인트보다 먼저 둔다 */}
       {siblings && (
         <EtfSiblingLinks info={siblings} sectionNo={no()} currentName={displayName} />
@@ -734,7 +776,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
                 <li key={r.shortcode}>
                   <Link href={`/etf/${r.slug}`} prefetch={false} className="etf-dict-related-card">
                     <div className="etf-dict-related-card-head">
-                      <span className="etf-dict-related-card-code">{r.shortcode}</span>
+                      <span className="etf-dict-related-card-code">{r.shortcode}</span>{' '}
                       {r.issuer && <span className="etf-dict-related-card-issuer">{r.issuer}</span>}
                     </div>
                     <div className="etf-dict-related-card-name">{r.name}</div>
@@ -788,8 +830,8 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
             {relatedPosts.map(p => (
               <li key={p.meta.slug}>
                 <Link href={`/${p.meta.category}/${p.meta.slug}`} prefetch={false}>
-                  <span className="etf-dict-related-cat">{p.categoryName}</span>
-                  <span className="etf-dict-related-title">{p.meta.title}</span>
+                  <span className="etf-dict-related-cat">{p.categoryName}</span>{' '}
+                  <span className="etf-dict-related-title">{p.meta.title}</span>{' '}
                   <span className="etf-dict-related-date">
                     {new Date(p.meta.date).toLocaleDateString('ko-KR', { month: 'short', day: 'numeric' })}
                   </span>
@@ -811,7 +853,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
               {sectorGuides.map(g => (
                 <li key={g.slug}>
                   <Link href={`/guide/${g.slug}`} prefetch={false}>
-                    <span className="etf-dict-related-cat">가이드</span>
+                    <span className="etf-dict-related-cat">가이드</span>{' '}
                     <span className="etf-dict-related-title">{g.title}</span>
                   </Link>
                 </li>

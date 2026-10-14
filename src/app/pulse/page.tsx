@@ -73,23 +73,7 @@ export default function PulseLandingPage() {
         <PulseRecurringThemes themes={themes} windowDays={RECURRING_WINDOW_DAYS} />
 
         {/* 저자 인사이트 카드 */}
-        {today && today.meta.authorId && (
-          <section className="pulse-author-card">
-            <div className="pulse-author-head">
-              <span className="pulse-author-avatar">{today.meta.author.charAt(0)}</span>
-              <div>
-                <div className="pulse-author-name">{today.meta.author}</div>
-                <div className="pulse-author-role">오늘의 관전포인트 집필</div>
-              </div>
-              <Link href={`/author/${today.meta.authorId}`} className="pulse-author-link">
-                프로필 보기 →
-              </Link>
-            </div>
-            <p className="pulse-author-quote">
-              &ldquo;{today.meta.description}&rdquo;
-            </p>
-          </section>
-        )}
+        {/* 저자 카드(AI 에이전트 페르소나·"10년 실전 후기" 같은 경력 표기)는 2026-10-14 뺐다. 발행 책임은 편집팀 */}
 
         {/* 최근 발행 아카이브 */}
         <section className="pulse-archive">

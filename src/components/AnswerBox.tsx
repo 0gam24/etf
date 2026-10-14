@@ -112,6 +112,8 @@ export default function AnswerBox({ summary, keyStats, asOf, source }: Props) {
                 }}
               >
                 {s.value}
+                {/* 공백: 화면에선 sub 가 줄바꿈 블록이지만 CSS 를 안 보는 추출기에선 값과 붙는다 ("10,120원+3.32%") */}
+                {s.sub && ' '}
                 {s.sub && (
                   <span
                     style={{

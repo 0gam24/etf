@@ -6,8 +6,6 @@ import { getLatestEtfData, codeToSlug } from '@/lib/data';
 import { getPostsByCategory } from '@/lib/posts';
 import IncomeTaxCompare from './IncomeTaxCompare';
 import IncomeCalendar from './IncomeCalendar';
-import ProductRecommendBlock from './ProductRecommendBlock';
-import type { ProductCategory } from '@/lib/products';
 
 interface Props {
   block: NonNullable<import('@/lib/guides').GuideSection['dataBlock']>;
@@ -91,9 +89,9 @@ export default function GuideDataBlock({ block }: Props) {
   }
 
   // ── product-rec:{category} ── 쿠팡 파트너스 상품 추천 (책 + 학습 도구)
+  //   2026-10-14: 가이드 본문의 제휴 상품 추천은 그리지 않는다 (가이드 페이지가 이 섹션 자체를 걸러 낸다).
   if (block.startsWith('product-rec:') || block.startsWith('book-rec:')) {
-    const cat = block.replace(/^(product|book)-rec:/, '') as ProductCategory;
-    return <ProductRecommendBlock category={cat} limit={3} />;
+    return null;
   }
 
   // ── related-posts:{category} ──
@@ -143,7 +141,7 @@ function StabilityTable({ etfs }: { etfs: IncomeEtf[] }) {
             return (
               <tr key={e.code}>
                 <td className="guide-block-table-name">
-                  <strong>{e.name}</strong>
+                  <strong>{e.name}</strong>{' '}
                   <span className="guide-block-table-code">{e.code}</span>
                 </td>
                 <td>{e.issuer}</td>
@@ -187,7 +185,7 @@ function ThemeEtfList({ etfs }: {
                 종목 사전 /etf/{slug}는 1161종 전부 존재하므로 그쪽으로 연결한다. (2026-08-11 SEO 감사) */}
             <Link href={`/etf/${codeToSlug(e.code)}`} prefetch={false}>
               <div className="guide-theme-name">
-                <strong>{e.name}</strong>
+                <strong>{e.name}</strong>{' '}
                 <span className="guide-theme-code">{e.code}</span>
               </div>
               <div className="guide-theme-stats">

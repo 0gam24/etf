@@ -76,23 +76,7 @@ export default function SurgeLandingPage() {
         />
 
         {/* 저자 카드 */}
-        {featuredPost && featuredPost.meta.authorId && (
-          <section className="pulse-author-card">
-            <div className="pulse-author-head">
-              <span className="pulse-author-avatar">{featuredPost.meta.author.charAt(0)}</span>
-              <div>
-                <div className="pulse-author-name">{featuredPost.meta.author}</div>
-                <div className="pulse-author-role">급등 테마 집필</div>
-              </div>
-              <Link href={`/author/${featuredPost.meta.authorId}`} className="pulse-author-link">
-                프로필 보기 →
-              </Link>
-            </div>
-            <p className="pulse-author-quote">
-              &ldquo;거래량과 도화선만으로 매수 결정을 내리지 말고, 위험 신호와 구성종목까지 함께 보세요.&rdquo;
-            </p>
-          </section>
-        )}
+        {/* 저자 카드(AI 에이전트 페르소나·"10년 실전 후기" 같은 경력 표기)는 2026-10-14 뺐다. 발행 책임은 편집팀 */}
 
         <FaqSection title={CATEGORY_FAQ_TITLE.surge} items={CATEGORY_FAQ.surge} />
 

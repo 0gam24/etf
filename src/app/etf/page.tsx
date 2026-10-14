@@ -161,7 +161,7 @@ export default function EtfIndexPage() {
 
       <header className="etf-index-hero">
         <div className="etf-index-eyebrow">
-          <span className="etf-index-eyebrow-tag">ETF DICTIONARY</span>
+          <span className="etf-index-eyebrow-tag">ETF DICTIONARY</span>{' '}
           <span className="etf-index-eyebrow-stat">{totalCount.toLocaleString()}종 · {sectorCount}개 섹터</span>
         </div>
         <h1 className="etf-index-title">
@@ -214,17 +214,18 @@ export default function EtfIndexPage() {
               return (
                 <li key={r.shortcode}>
                   <Link href={`/etf/${codeToSlug(r.shortcode)}`} className="etf-index-top-row">
-                    <span className="etf-index-top-rank">{i + 1}</span>
+                    {/* 칸 사이 공백: 그리드라 화면엔 영향이 없고, 태그만 지우는 추출기에서 "4KODEX…2337408,150원+11.72%" 처럼 붙지 않게 한다 (2026-10-14) */}
+                    <span className="etf-index-top-rank">{i + 1}</span>{' '}
                     <span className="etf-index-top-name">
-                      <strong>{r.name}</strong>
+                      <strong>{r.name}</strong>{' '}
                       <span className="etf-index-top-code">· {r.shortcode}</span>
-                    </span>
+                    </span>{' '}
                     <span className="etf-index-top-price">
                       {r.price?.toLocaleString()}<small>원</small>
-                    </span>
+                    </span>{' '}
                     <span className={`etf-index-top-change ${isUp ? 'is-up' : isDown ? 'is-down' : ''}`}>
                       {isUp ? '+' : ''}{r.changeRate?.toFixed(2)}%
-                    </span>
+                    </span>{' '}
                     <span className="etf-index-top-volume">
                       {((r.volume || 0) / 10000).toFixed(0)}만주
                     </span>
@@ -244,7 +245,7 @@ export default function EtfIndexPage() {
         <ul className="etf-index-issuers">
           {issuers.map(i => (
             <li key={i.issuer}>
-              <span className="etf-index-issuer-name">{i.issuer}</span>
+              <span className="etf-index-issuer-name">{i.issuer}</span>{' '}
               <span className="etf-index-issuer-count">{i.count}종</span>
             </li>
           ))}
@@ -258,7 +259,7 @@ export default function EtfIndexPage() {
       {sectorEntries.map(([sector, list]) => (
         <section key={sector} className="etf-index-section">
           <h2 className="etf-index-h2">
-            {sector}
+            {sector}{' '}
             <span className="etf-index-h2-count">{list.length}종</span>
           </h2>
           <ul className="etf-index-grid">
@@ -269,13 +270,13 @@ export default function EtfIndexPage() {
                 <li key={r.shortcode}>
                   <Link href={`/etf/${codeToSlug(r.shortcode)}`} className="etf-index-card">
                     <div className="etf-index-card-head">
-                      <span className="etf-index-card-code">{r.shortcode}</span>
+                      <span className="etf-index-card-code">{r.shortcode}</span>{' '}
                       {r.issuer && <span className="etf-index-card-issuer">{r.issuer}</span>}
                     </div>
                     <div className="etf-index-card-name">{r.name}</div>
                     {typeof r.price === 'number' ? (
                       <div className="etf-index-card-meta">
-                        <span className="etf-index-card-price">{r.price.toLocaleString()}원</span>
+                        <span className="etf-index-card-price">{r.price.toLocaleString()}원</span>{' '}
                         <span className={`etf-index-card-change ${isUp ? 'is-up' : isDown ? 'is-down' : ''}`}>
                           {isUp ? '+' : ''}{r.changeRate?.toFixed(2)}%
                         </span>

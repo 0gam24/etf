@@ -11,7 +11,7 @@ import ChartRenderer from '@/components/ChartRenderer';
 import ReadingProgress from '@/components/ReadingProgress';
 import ShareRow from '@/components/ShareRow';
 import Toc from '@/components/Toc';
-import AiAgentDisclosure from '@/components/AiAgentDisclosure';
+import EditorialNote from '@/components/EditorialNote';
 import HelpfulFeedback from '@/components/HelpfulFeedback';
 import HoldingsPanel from '@/components/HoldingsPanel';
 import PostRelatedEtfs from '@/components/PostRelatedEtfs';
@@ -22,8 +22,8 @@ import PublishedVsLive from '@/components/PublishedVsLive';
 import AnswerBox from '@/components/AnswerBox';
 import FaqSection from '@/components/FaqSection';
 import type { ProductCategory } from '@/lib/products';
-import { AUTHORS } from '@/lib/authors';
-import { buildArticleSchema, buildPersonSchema, jsonLd } from '@/lib/schema';
+import { PUBLISHER } from '@/lib/authors';
+import { buildArticleSchema, jsonLd } from '@/lib/schema';
 import { SITE_NAME, SITE_LOCALE, articleTitle, articleDescription, toReportYmd, padDescription, ogImageUrl, RETIRED_ROBOTS } from '@/lib/site-meta';
 
 /** 글 카테고리 → 추천 자료 매칭 */
@@ -122,7 +122,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: metaTitle,
     description: metaDesc,
     keywords: post.meta.keywords,
-    authors: [{ name: post.meta.author }],
+    // 저자는 발행 조직으로 (2026-10-14). 예전 일별 글의 frontmatter 저자(AI 에이전트 페르소나)는 쓰지 않는다
+    authors: [{ name: PUBLISHER.name }],
     // 2026-10-08 일별 시황 글 은퇴: 색인 제외, 링크는 따라감 (site-meta RETIRED_ROBOTS 주석)
     robots: RETIRED_ROBOTS,
     alternates: { canonical: canonicalPath },
@@ -132,7 +133,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       url: canonicalPath,
       publishedTime: post.meta.date,
-      authors: [post.meta.author],
+      authors: [PUBLISHER.name],
       images: [{ url: ogImage, width: 1200, height: 630, alt: post.meta.title }],
     },
     twitter: {
@@ -210,7 +211,6 @@ export default async function PostPage({ params }: PageProps) {
   });
   if (post.meta.tickers?.length) ogParams.set('tickers', post.meta.tickers.slice(0, 3).join(','));
   const ogImage = ogImageUrl({ category });
-  const authorMeta = post.meta.authorId ? AUTHORS[post.meta.authorId] : null;
 
   // dateModified — 글 자체는 발행일 그대로지만, 시세 데이터는 매 영업일 cron 갱신.
   // KRX baseDate 가 글보다 최근이면 그 시점을 dateModified 로 사용 (검색결과 freshness 신호).
@@ -230,11 +230,8 @@ export default async function PostPage({ params }: PageProps) {
     datePublished: post.meta.date,
     dateModified,
     images: [ogImage],
-    author: {
-      name: post.meta.author,
-      authorId: post.meta.authorId,
-      title: authorMeta?.title,
-    },
+    // authorId 를 넘기지 않으면 발행 조직이 저자로 잡힌다 (페르소나 Person 스키마는 2026-10-14 뺐다)
+    author: { name: PUBLISHER.name },
     keywords: post.meta.keywords,
     section: post.categoryName,
     // AnswerBox는 summary가 있을 때만 렌더된다. 렌더되지 않는 글에 speakable을 붙이면
@@ -242,15 +239,6 @@ export default async function PostPage({ params }: PageProps) {
     speakable: !!post.meta.summary,
   });
 
-  const personSchema = authorMeta
-    ? buildPersonSchema({
-        name: authorMeta.name,
-        jobTitle: authorMeta.title,
-        description: authorMeta.bio,
-        knowsAbout: authorMeta.expertise,
-        url: `/author/${authorMeta.id}`,
-      })
-    : null;
 
   return (
     <>
@@ -261,12 +249,6 @@ export default async function PostPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLd(articleSchema) }}
       />
-      {personSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: jsonLd(personSchema) }}
-        />
-      )}
       {/* MDX frontmatter에 발행 시점 스키마가 함께 저장돼 있는데, 이 페이지가 이미
           더 완전한 버전(이미지 포함 Article/NewsArticle, Breadcrumbs 컴포넌트의 BreadcrumbList)을
           내보내고 있어 같은 종류가 두 번 실렸다. 실측: 94쪽에 Article 계열 2개, 130쪽에
@@ -303,7 +285,7 @@ export default async function PostPage({ params }: PageProps) {
               <span className="post-v2-meta-author">
                 <span className="post-v2-avatar">D</span>
                 <span>Daily ETF Pulse 편집팀</span>
-                <AiAgentDisclosure variant="compact" kind="data" />
+                <EditorialNote variant="compact" kind="data" />
               </span>
               <span>{date}</span>
               <span>· {post.readingTime}분 읽기</span>
@@ -441,7 +423,7 @@ export default async function PostPage({ params }: PageProps) {
           {/* 자매 사이트(smartdatashop.kr) 백링크 상자는 2026-09-30 제거.
               사이트 전역 자매 링크 네트워크가 형제 사이트의 AdSense 거절 원인으로 기록됨. */}
 
-          <AiAgentDisclosure variant="inline" kind="data" />
+          <EditorialNote variant="inline" kind="data" />
 
           <RecommendBox position="bottom" category={postCategoryToProductCategory(category)} />
         </article>

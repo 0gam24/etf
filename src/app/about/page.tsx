@@ -1,19 +1,20 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import { AUTHOR_LIST, PUBLISHER, AI_DISCLOSURE } from '@/lib/authors';
+import { PUBLISHER } from '@/lib/authors';
 import { getAllEtfSlugs } from '@/lib/data';
 import { getSiteLastModified } from '@/lib/posts';
 import { jsonLd } from '@/lib/schema';
 import { buildPageMetadata, SITE_NAME, SITE_URL } from '@/lib/site-meta';
 
 // title에 브랜드명을 넣지 않는다 — layout의 template이 '| Daily ETF Pulse'를 자동으로 붙인다.
+// 2026-10-14: 예전 일별 시황 체계(거래량 z-score·AI 분석 에이전트 7명) 설명을 걷어 내고 지금 운영하는 내용으로 다시 썼다.
 export const metadata: Metadata = buildPageMetadata({
   title: '편집팀 소개',
   description:
-    'Daily ETF Pulse의 발행·검수 책임, 분석을 맡는 AI 분석 에이전트, 데이터 출처(KRX·한국은행 ECOS·DART), 콘텐츠 선정 기준과 정정 정책을 한 페이지에 정리합니다. 모든 글은 편집팀이 검수해 발행합니다.',
+    'Daily ETF Pulse가 어떤 자료로 ETF 종목 사전·같은 지수 비교·세금 가이드를 만드는지, 데이터 산출과 검증 원칙, 출처 표기, 정정 정책, 발행 책임을 한 페이지에 정리했습니다.',
   url: '/about',
-  keywords: ['Daily ETF Pulse 소개', 'AI 분석 에이전트', 'ETF 정보 출처', '데이터 출처 공개', '발행 원칙'],
+  keywords: ['Daily ETF Pulse 소개', 'ETF 정보 출처', '데이터 검증 원칙', '정정 정책', '발행 원칙'],
 });
 
 /** 일일 시황 글이 이 기간(일) 넘게 새로 나오지 않으면 '지난 기록' 안내를 붙인다. */
@@ -22,7 +23,6 @@ const DAILY_ARCHIVE_AFTER_DAYS = 30;
 /**
  * 일일 시황 글(pulse·surge·flow·income·breaking 등)의 발행 상태.
  *   날짜를 문구에 박지 않고 content/ 의 마지막 글 날짜에서 파생한다.
- *   빌드 시점 기준으로 계산 (/about 은 정적 페이지, 매 배포마다 다시 구워짐).
  */
 function getDailyPostStatus(): { archived: boolean; lastLabel: string | null } {
   const last = getSiteLastModified();
@@ -45,22 +45,19 @@ export default function AboutPage() {
     : 'KRX 상장 ETF 전 종목';
   const daily = getDailyPostStatus();
 
-  // 사이트 운영 Organization schema (E-E-A-T 강화)
-  //   layout.tsx ORG_SCHEMA 와 같은 entity — @id 를 공유하고 이름·url·parentOrganization 을 맞춘다.
+  // 사이트 운영 Organization schema — layout.tsx ORG_SCHEMA 와 같은 entity(@id 공유)
   const orgSchema = {
     '@context': 'https://schema.org',
     '@type': 'NewsMediaOrganization',
     '@id': `${SITE_URL}/#organization`,
     name: SITE_NAME,
+    alternateName: ['데일리 ETF 펄스', 'iknowhowinfo.com'],
     url: SITE_URL,
     description: PUBLISHER.description,
     publishingPrinciples: `${SITE_URL}/about`,
-    diversityPolicy: `${SITE_URL}/about`,
-    correctionsPolicy: `${SITE_URL}/about`,
-    actionableFeedbackPolicy: `${SITE_URL}/about`,
+    correctionsPolicy: `${SITE_URL}/about#corrections`,
+    actionableFeedbackPolicy: `${SITE_URL}/contact`,
     inLanguage: 'ko-KR',
-    // parentOrganization(스마트데이터샵) 표기는 2026-10-08 뺐다. layout 의 Organization 스키마는 09-30 에 이미 뺐는데
-    //   이 페이지에만 남아 두 스키마가 서로 다른 조직 관계를 말하고 있었다.
   };
 
   return (
@@ -73,90 +70,65 @@ export default function AboutPage() {
         <div className="about-eyebrow">ABOUT</div>
         <h1 className="about-title">Daily ETF Pulse 편집팀 소개</h1>
         <p className="about-tagline">
-          Daily ETF Pulse는 ETF·세금·연금 계좌에 관한 궁금증을 공식 데이터와 1차 출처로 풀어 쓰는 데이터 저널입니다. 투자자들이 실제로 검색하는 질문을 골라 가이드로 정리하고 최신 공시·법령에 맞춰 계속 고치며, 한국거래소(KRX) 상장 ETF 종목 사전과 같은 지수 ETF 비교를 운영합니다. 모든 글에 출처와 기준일을 밝히며, 발행·검수 책임은 편집팀에 있습니다.
+          Daily ETF Pulse는 한국거래소(KRX)에 상장된 ETF를 상품별로 정리한 종목 사전, 같은 지수를 따르는 ETF 사이의 비교,
+          그리고 ETF를 어느 계좌에서 사고팔 때 세금이 어떻게 달라지는지를 1차 출처로 풀어 쓰는 가이드를 운영합니다.
+          모든 수치에는 기준일과 출처를 붙이고, 틀린 내용은 확인하는 대로 고칩니다.
         </p>
       </header>
 
       <section className="about-section">
         <h2 className="about-h2">발행 원칙</h2>
         <ul className="about-list">
-          <li><strong>데이터 우선</strong>: 모든 분석은 KRX 일별 시세, 운용사 공시, 한국은행 ECOS, 국세청·금융감독원 안내 등 공식 출처를 명시합니다.</li>
-          <li><strong>AI 작성 투명 공개</strong>: 본문은 데이터 기반 AI 분석 에이전트가 작성하며, 글마다 데이터 출처와 갱신 시점을 함께 표시합니다.</li>
-          <li><strong>발행 책임</strong>: 검수·정정·발행 책임은 Daily ETF Pulse 편집팀에 있습니다. 오류 제보는 환영합니다.</li>
-          <li><strong>투자 권유 아님</strong>: 모든 콘텐츠는 정보 제공 목적이며, 투자 권유가 아닙니다. 결정과 손익의 책임은 투자자 본인에게 있습니다.</li>
+          <li><strong>1차 출처 우선</strong>: 수치와 제도 설명은 한국거래소, 금융감독원 전자공시(DART), 금융투자협회 공시, 운용사 투자설명서, 국세청·법령 같은 관할 기관 자료를 근거로 하고, 근거 문서의 주소를 글에 남깁니다.</li>
+          <li><strong>작성 방식</strong>: 자료 수집·정리와 초안 작성에 AI 도구를 씁니다. 공개 전에 수치·조항을 글에 적은 1차 출처 문서와 대조하고, 확인하지 못한 값은 싣지 않습니다.</li>
+          <li><strong>발행·정정 책임</strong>: 발행과 정정의 책임은 Daily ETF Pulse 편집팀에 있습니다.</li>
+          <li><strong>투자 권유 아님</strong>: 모든 콘텐츠는 정보 제공 목적이며 매수·매도 권유가 아닙니다. 투자 결정과 손익의 책임은 투자자 본인에게 있습니다.</li>
         </ul>
       </section>
 
-      {/* Why 투명화 — Google "유용한 콘텐츠" 가이드 권장: 사용자 의도 vs SEO 의도 구분 */}
-      <section className="about-section">
-        <h2 className="about-h2">왜 이 ETF·이 주제를 다루나, 콘텐츠 선택 기준</h2>
+      <section className="about-section" id="editorial-method" aria-labelledby="about-method-heading">
+        <h2 id="about-method-heading" className="about-h2">데이터 산출과 검증 원칙</h2>
         <p className="about-desc">
-          주제는 검색 순위를 노리고 고르지 않습니다. <strong>투자자들이 실제로 반복해서 묻는 질문과 시장 데이터</strong>에서 출발하며, 자료 종류별 기준은 다음과 같습니다.
-        </p>
-        <ul className="about-list">
-          <li><strong>가이드 (guide)</strong>: 검색에서 실제로 반복되는 ETF·세금·연금 질문 가운데 종목 사전과 비교 페이지로는 답할 수 없는 판단·계산 질문을 골라 씁니다. 새 글보다 기존 글의 수치를 최신 공시와 법령에 맞춰 고치는 일을 먼저 합니다. 국세청·금융감독원·국민연금공단·KRX·운용사 공시처럼 주제를 관할하는 기관 자료로 확인한 내용만 싣습니다.</li>
-          <li><strong>종목 사전 (/etf)</strong>: {etfUniverse}. 어떤 종목을 찾아도 같은 구조로 정보를 정리하며, 시세는 실시간이 아닌 KRX 일별 종가 기준입니다.</li>
-          <li><strong>오늘의 관전포인트 (pulse)</strong>: KRX 일별 거래량 TOP 3 + 섹터 자금 흐름 1위. 시장이 실제로 움직인 종목·섹터를 대상으로 합니다.</li>
-          <li><strong>급등 분석 (surge)</strong>: 거래량 z-score 80+ 또는 등락률 상위 1종. 단기 변동성이 큰 종목의 원인 검증.</li>
-          <li><strong>속보 (breaking)</strong>: 거래량 TOP 3 ETF + 관련 뉴스. 사용자가 &quot;왜 움직였나&quot; 즉시 알고 싶을 만한 종목.</li>
-          <li><strong>자금 흐름 (flow)</strong>: 섹터별 거래대금 누적 1위 + 외국인 순매매. 주간 추세를 추적하는 사용자가 필요로 하는 자료.</li>
-          <li><strong>월배당·커버드콜 (income)</strong>: 분배율 + 안정성 등급 + 계좌별 세후 시뮬레이션. 4050·은퇴자 캐시플로 설계 의도.</li>
-        </ul>
-        <p className="about-desc" style={{ marginTop: '1rem' }}>
-          ※ 특정 상품을 알리려고 주제를 고르지 않으며, 모든 글은 편집팀이 검수한 뒤 발행합니다.
-          {daily.archived && daily.lastLabel && (
-            <> 일일 시황 글(오늘의 관전포인트·급등·속보·자금 흐름·월배당)은 {daily.lastLabel} 이후 새로 발행하지 않으며, 지난 글은 기준일과 함께 그대로 열람할 수 있습니다.</>
-          )}
-        </p>
-      </section>
-
-      <section className="about-section">
-        <h2 className="about-h2">분석 방법론</h2>
-        <p className="about-desc">
-          공식 데이터셋(KRX 일별 시세·운용사 공시·한국은행 ECOS·국세청 세법)을 입력으로, 정량 지표(거래량 z-score·섹터 자금 흐름 누적·분배 변동성·계좌별 세후 시뮬레이션 등)를 계산해 분석 결과를 산출합니다. 편집팀이 산출물을 검수한 뒤 발행하며, 출처와 갱신 시점을 글마다 함께 노출합니다.
+          페이지 종류마다 쓰는 자료와 확인 방법이 다릅니다. 공통으로, 계산에 쓴 입력값과 기준일을 화면에 함께 적어 독자가 같은 계산을 다시 해 볼 수 있게 합니다.
         </p>
         <ul className="about-list" style={{ marginTop: '0.75rem' }}>
-          <li><strong>거래량·등락률 시계열</strong>: KRX 일별 시세에서 5/20/60일 이동평균 대비 이탈률 계산.</li>
-          <li><strong>분배 안정성</strong>: 12개월 분배 변동성 + 기초자산 변동성 가중 결합.</li>
-          <li><strong>계좌별 세후 수익률</strong>: IRP·ISA·연금저축·일반계좌 한도·세제 매트릭스 적용 시뮬레이션.</li>
-          <li><strong>거시 지표 결합</strong>: 한국은행 ECOS 기준금리·환율·CPI 변화를 섹터 자금 흐름과 함께 해석.</li>
-          <li><strong>세금·계좌 제도</strong>: 법령과 국세청·금융감독원·국민연금공단 안내를 기준일과 함께 인용.</li>
+          <li><strong>종목 사전 ({etfUniverse})</strong>: 종목코드·표준코드는 한국거래소 상장 목록, 종가·NAV·괴리율은 공공데이터포털의 금융위원회 증권상품시세정보를 쓰며 시세 기준일을 표시합니다. 실시간 시세가 아닙니다. 투자 대상·총보수·분배 기준일 같은 상품 개요는 운용사 상품 페이지와 투자설명서로 확인한 종목에만 싣습니다.</li>
+          <li><strong>계좌별 세금 표와 계산기</strong>: 일반 계좌, 중개형 ISA, 연금저축·IRP의 과세 방식은 소득세법·조세특례제한법과 국세청 안내를 기준으로 합니다. 상품별 과세 구분은 상품 이름과 투자 대상으로 나눈 일반 규칙이라, 최종 확인은 운용사 상품 페이지의 과세 항목으로 하도록 안내합니다.</li>
+          <li><strong>같은 지수 ETF 비교</strong>: 두 상품이 같은 기초지수를 따르는지 운용사 문서로 확인한 쌍만 비교합니다.</li>
+          <li><strong>가이드</strong>: 관할 기관의 안내와 법령 조문, 운용사 공시를 근거로 쓰고, 근거 문서를 글 아래 참고 자료에 남깁니다. 본문을 실제로 고친 날은 수정일로 따로 표시합니다.</li>
         </ul>
+        {daily.archived && daily.lastLabel && (
+          <p className="about-desc" style={{ marginTop: '1rem' }}>
+            예전에 쓰던 일일 시황 글(오늘의 관전포인트·급등·속보·자금 흐름)은 {daily.lastLabel} 이후 새로 쓰지 않으며, 지난 글은 작성 당시 기준일과 함께 보관 자료로 남겨 두었습니다.
+          </p>
+        )}
       </section>
 
-      {/* SEO.md §10 — AI 분석 에이전트 투명 공개. 단일 소스: agents/personas.js → src/lib/authors.ts */}
-      <section className="about-section" aria-labelledby="about-agents-heading">
-        <h2 id="about-agents-heading" className="about-h2">분석을 맡는 AI 에이전트</h2>
+      <section className="about-section">
+        <h2 className="about-h2">다루는 주제를 고르는 기준</h2>
         <p className="about-desc">
-          이 사이트의 글은 실존 인물이 아닌 데이터 기반 AI 분석 에이전트가 작성하고, 편집팀이 검수해 발행합니다. 시황 분석 글은 아래 에이전트가 다루는 데이터와 분석 영역에 따라 나눠 맡으며, 에이전트마다 입력 데이터와 분석 방법을 상세 페이지에 공개합니다.
-        </p>
-        <ul className="about-list">
-          {AUTHOR_LIST.map(a => (
-            <li key={a.id}>
-              <strong><Link href={`/author/${a.id}`}>{a.name}</Link></strong> · {a.title}: {a.modelDescription}
-            </li>
-          ))}
-        </ul>
-        <p className="about-desc" style={{ marginTop: '1rem', marginBottom: 0 }}>
-          {AI_DISCLOSURE}
+          검색창에 실제로 반복해서 입력되는 질문 가운데, 상품 공시나 기관 안내를 찾아 읽어야만 답할 수 있는 것을 고릅니다.
+          상품명으로 묻는 질문(투자 대상, 총보수, 분배 일정)은 종목 사전이, 비슷한 상품 사이의 선택은 비교 페이지가,
+          계좌·세금처럼 판단과 계산이 필요한 질문은 가이드와 계산기가 받습니다. 특정 상품을 알리려고 주제를 고르지 않습니다.
         </p>
       </section>
 
       <section className="about-section">
-        <h2 className="about-h2">발행·검수 책임</h2>
+        <h2 className="about-h2">발행·정정 책임</h2>
         <div className="about-publisher-card">
           <h3 className="about-publisher-name">{PUBLISHER.name}</h3>
           <p className="about-publisher-desc">{PUBLISHER.description}</p>
           <p className="about-publisher-disclosure">
-            발행·검수·정정 책임은 Daily ETF Pulse 편집팀에 있습니다. 투자 참고 자료이며, 모든 투자 결정의 책임은 투자자 본인에게 있습니다.
+            발행·정정 책임은 Daily ETF Pulse 편집팀에 있습니다. 투자 참고 자료이며, 모든 투자 결정의 책임은 투자자 본인에게 있습니다.
           </p>
         </div>
       </section>
 
-      <section className="about-section">
-        <h2 className="about-h2">오류 제보·문의</h2>
+      <section className="about-section" id="corrections">
+        <h2 className="about-h2">오류 제보와 정정</h2>
         <p className="about-desc">
-          분석 오류·데이터 정정 요청은 환영합니다. <Link href="/contact">연락처</Link> 페이지의 이메일로 알려 주시면 검토 후 정정 사항을 글에 반영합니다.
+          수치나 제도 설명이 틀렸거나 기준일이 지난 내용을 발견하시면 <Link href="/contact">연락처</Link>로 알려 주세요.
+          1차 출처로 다시 확인한 뒤 본문을 고치고, 고친 날을 수정일로 표시합니다.
         </p>
       </section>
     </article>

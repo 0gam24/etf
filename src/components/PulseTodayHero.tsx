@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Zap, ArrowRight } from 'lucide-react';
 import type { Post } from '@/lib/posts';
 import { extractPulseBullets, freshnessLabel } from '@/lib/pulse';
+import { formatKstDate } from './FreshnessPill';
 
 interface Props {
   today: Post | null;
@@ -36,13 +37,14 @@ export function archivedSinceLabel(latestIsoDate?: string): string | null {
   });
 }
 
-/** 메인 HomeBreakingStrip 와 통일 — KST 기준 오늘/어제/N일 전 발행 pill */
+/**
+ * 기준일 pill. 2026-10-14: 'N일 전 발행' 상대 날짜는 갱신이 멈춘 뒤 날마다 커지는 숫자만 남겨
+ * 'YYYY.MM.DD' 기준일로 바꿨다 (FreshnessPill 과 같은 표기).
+ */
 function freshnessPill(isoDate?: string): { label: string; tone: 'fresh' | 'stale' } {
-  const diff = kstDaysAgo(isoDate);
-  if (diff === null) return { label: '발행일 미상', tone: 'stale' };
-  if (diff <= 0) return { label: '🔴 오늘 발행', tone: 'fresh' };
-  if (diff === 1) return { label: '📅 어제 발행', tone: 'stale' };
-  return { label: `📅 ${diff}일 전 발행`, tone: 'stale' };
+  const day = formatKstDate(isoDate);
+  if (!day) return { label: '기준일 미상', tone: 'stale' };
+  return { label: `데이터 기준일 ${day}`, tone: kstDaysAgo(isoDate) === 0 ? 'fresh' : 'stale' };
 }
 
 export default function PulseTodayHero({ today }: Props) {

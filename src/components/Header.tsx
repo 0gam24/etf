@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Menu, X, Search, Zap, TrendingUp, Waves, Coins, Radio, BookOpen, Notebook, Library } from 'lucide-react';
@@ -81,15 +81,18 @@ export default function Header() {
           </Link>
 
           <nav className="header-v2-nav" aria-label="주 메뉴">
+            {/* 링크 사이 공백 (2026-10-14): 플렉스라 화면은 같고, 태그만 지우는 추출기에서
+                "종목 사전ETF 비교가이드…" 처럼 메뉴 이름이 붙지 않게 한다 */}
             {NAV_ITEMS.map(item => (
-              <Link
-                key={item.href}
-                href={item.href}
-                data-category={item.cat}
-                className={`header-v2-link ${isActive(item.href) ? 'is-active' : ''}`}
-              >
-                {item.label}
-              </Link>
+              <Fragment key={item.href}>
+                <Link
+                  href={item.href}
+                  data-category={item.cat}
+                  className={`header-v2-link ${isActive(item.href) ? 'is-active' : ''}`}
+                >
+                  {item.label}
+                </Link>{' '}
+              </Fragment>
             ))}
           </nav>
 
@@ -135,17 +138,18 @@ export default function Header() {
           <X size={20} aria-hidden />
         </button>
         {NAV_ITEMS.map(item => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className={`mobile-drawer-link ${isActive(item.href) ? 'is-active' : ''}`}
-            onClick={() => setMenuOpen(false)}
-          >
-            <span className="mobile-drawer-icon" aria-hidden>
-              {CAT_ICON[item.cat]}
-            </span>
-            {item.label}
-          </Link>
+          <Fragment key={item.href}>
+            <Link
+              href={item.href}
+              className={`mobile-drawer-link ${isActive(item.href) ? 'is-active' : ''}`}
+              onClick={() => setMenuOpen(false)}
+            >
+              <span className="mobile-drawer-icon" aria-hidden>
+                {CAT_ICON[item.cat]}
+              </span>
+              {item.label}
+            </Link>{' '}
+          </Fragment>
         ))}
         <div style={{ marginTop: 'auto', paddingTop: 'var(--space-6)', borderTop: '1px solid var(--border-color)', color: 'var(--text-dim)', fontSize: 'var(--fs-xs)' }}>
           1차 출처로 확인한 ETF 정보

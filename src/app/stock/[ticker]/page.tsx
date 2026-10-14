@@ -8,10 +8,9 @@ import ShareRow from '@/components/ShareRow';
 import Toc from '@/components/Toc';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RecommendBox from '@/components/RecommendBox';
-import { AUTHORS } from '@/lib/authors';
+import { PUBLISHER } from '@/lib/authors';
 import {
   buildArticleSchema,
-  buildPersonSchema,
   buildFinancialProductSchema,
   jsonLd,
 } from '@/lib/schema';
@@ -67,7 +66,6 @@ export default async function StockMasterPage({ params }: PageProps) {
   if (!post) notFound();
 
   const ogImage = ogImageUrl({ category: 'stock' });
-  const authorMeta = post.meta.authorId ? AUTHORS[post.meta.authorId] : null;
 
   const articleSchema = buildArticleSchema({
     type: 'Article',
@@ -76,24 +74,11 @@ export default async function StockMasterPage({ params }: PageProps) {
     url: `/stock/${ticker}`,
     datePublished: post.meta.date,
     images: [ogImage],
-    author: {
-      name: post.meta.author,
-      authorId: post.meta.authorId,
-      title: authorMeta?.title,
-    },
+    // 저자는 발행 조직 (2026-10-14, 예전 AI 에이전트 페르소나 Person 스키마는 뺐다)
+    author: { name: PUBLISHER.name },
     keywords: post.meta.keywords,
     section: '종목 완벽 가이드',
   });
-
-  const personSchema = authorMeta
-    ? buildPersonSchema({
-        name: authorMeta.name,
-        jobTitle: authorMeta.title,
-        description: authorMeta.bio,
-        knowsAbout: authorMeta.expertise,
-        url: `/author/${authorMeta.id}`,
-      })
-    : null;
 
   const productSchema = post.meta.ticker
     ? buildFinancialProductSchema({
@@ -112,12 +97,6 @@ export default async function StockMasterPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLd(articleSchema) }}
       />
-      {personSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: jsonLd(personSchema) }}
-        />
-      )}
       {productSchema && (
         <script
           type="application/ld+json"
@@ -151,12 +130,10 @@ export default async function StockMasterPage({ params }: PageProps) {
             </span>
             <h1 className="post-v2-title">{post.meta.title}</h1>
             <div className="post-v2-meta">
-              {post.meta.authorId && (
-                <Link href={`/author/${post.meta.authorId}`} className="post-v2-meta-author">
-                  <span className="post-v2-avatar">{post.meta.author.charAt(0)}</span>
-                  <span>{post.meta.author}</span>
-                </Link>
-              )}
+              <span className="post-v2-meta-author">
+                <span className="post-v2-avatar">D</span>
+                <span>Daily ETF Pulse 편집팀</span>
+              </span>
               <span>{new Date(post.meta.date).toLocaleDateString('ko-KR')}</span>
               <span>· {post.readingTime}분 읽기</span>
             </div>

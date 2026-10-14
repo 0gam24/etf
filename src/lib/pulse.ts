@@ -127,6 +127,6 @@ export function freshnessLabel(iso: string, now = new Date()): string {
   if (m < 60) return `${m}분 전`;
   const h = Math.floor(m / 60);
   if (h < 24) return `${h}시간 전`;
-  const d = Math.floor(h / 24);
-  return `${d}일 전`;
+  // 하루가 지나면 날짜 그대로 (2026-10-14). '117일 전 발행' 처럼 날마다 커지는 상대 날짜는 방치 신호였다.
+  return new Date(new Date(iso).getTime() + 9 * 3600 * 1000).toISOString().slice(0, 10).replace(/-/g, '.');
 }

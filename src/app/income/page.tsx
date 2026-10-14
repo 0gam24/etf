@@ -76,23 +76,7 @@ export default function IncomeLandingPage() {
         <IncomeTaxCompare etfs={topStable} basePrincipal={100000000} />
 
         {/* 저자 후기 카드 */}
-        {latestPost && latestPost.meta.authorId && (
-          <section className="pulse-author-card">
-            <div className="pulse-author-head">
-              <span className="pulse-author-avatar">{latestPost.meta.author.charAt(0)}</span>
-              <div>
-                <div className="pulse-author-name">{latestPost.meta.author}</div>
-                <div className="pulse-author-role">월배당 포트폴리오 10년 실전 후기</div>
-              </div>
-              <Link href={`/author/${latestPost.meta.authorId}`} className="pulse-author-link">
-                프로필 보기 →
-              </Link>
-            </div>
-            <p className="pulse-author-quote">
-              &ldquo;{latestPost.meta.description}&rdquo;
-            </p>
-          </section>
-        )}
+        {/* 저자 카드(AI 에이전트 페르소나·"10년 실전 후기" 같은 경력 표기)는 2026-10-14 뺐다. 발행 책임은 편집팀 */}
 
         {/* 최근 income 발행 */}
         <section className="pulse-archive">

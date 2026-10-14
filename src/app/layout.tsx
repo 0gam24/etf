@@ -109,6 +109,8 @@ const ORG_SCHEMA = {
   // @id — 사이트 전역에서 동일 entity 참조용 anchor (Article publisher 등과 상호참조 가능)
   '@id': `${SITE_URL}/#organization`,
   name: 'Daily ETF Pulse',
+  // 한글 표기·도메인으로 검색하는 경우도 같은 사이트로 묶이게 (2026-10-14)
+  alternateName: ['데일리 ETF 펄스', 'iknowhowinfo.com'],
   url: SITE_URL,
   contactPoint: {
     '@type': 'ContactPoint',
@@ -126,9 +128,8 @@ const ORG_SCHEMA = {
   inLanguage: 'ko-KR',
   // E-E-A-T 정책 페이지 (Google 권장)
   publishingPrinciples: `${SITE_URL}/about`,
-  correctionsPolicy: `${SITE_URL}/about`,
-  diversityPolicy: `${SITE_URL}/about`,
-  actionableFeedbackPolicy: `${SITE_URL}/about`,
+  correctionsPolicy: `${SITE_URL}/about#corrections`,
+  actionableFeedbackPolicy: `${SITE_URL}/contact`,
   // sameAs — 같은 entity의 외부 채널 명시 (Knowledge Panel 자격 신호)
   // RSS는 항상 활성, Threads는 토큰 등록 후 자동 발행
   sameAs: [
@@ -141,7 +142,9 @@ const ORG_SCHEMA = {
 const WEBSITE_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': `${SITE_URL}/#website`,
   name: 'Daily ETF Pulse',
+  alternateName: ['데일리 ETF 펄스', 'iknowhowinfo.com'],
   url: SITE_URL,
   inLanguage: 'ko-KR',
   publisher: { '@type': 'NewsMediaOrganization', '@id': `${SITE_URL}/#organization`, name: 'Daily ETF Pulse', url: SITE_URL },

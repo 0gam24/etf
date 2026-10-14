@@ -33,7 +33,7 @@ export default function HomeCategoryShelves({ shelves }: { shelves: CategoryShel
               {shelf.items.map(item => (
                 <li key={item.href}>
                   <Link href={item.href} prefetch={false} className="home-shelf-item">
-                    <span className="home-shelf-item-title">{item.title}</span>
+                    <span className="home-shelf-item-title">{item.title}</span>{' '}
                     <time className="home-shelf-item-date" dateTime={item.dateKey}>
                       {formatDateKeyKo(item.dateKey)}
                     </time>

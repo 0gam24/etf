@@ -73,23 +73,7 @@ export default function FlowLandingPage() {
         <FlowRecentList posts={posts} />
 
         {/* 저자 카드 */}
-        {latestPost && latestPost.meta.authorId && (
-          <section className="pulse-author-card">
-            <div className="pulse-author-head">
-              <span className="pulse-author-avatar">{latestPost.meta.author.charAt(0)}</span>
-              <div>
-                <div className="pulse-author-name">{latestPost.meta.author}</div>
-                <div className="pulse-author-role">자금 흐름 리포트 집필</div>
-              </div>
-              <Link href={`/author/${latestPost.meta.authorId}`} className="pulse-author-link">
-                프로필 보기 →
-              </Link>
-            </div>
-            <p className="pulse-author-quote">
-              &ldquo;{latestPost.meta.description}&rdquo;
-            </p>
-          </section>
-        )}
+        {/* 저자 카드(AI 에이전트 페르소나·"10년 실전 후기" 같은 경력 표기)는 2026-10-14 뺐다. 발행 책임은 편집팀 */}
 
         <p className="flow-disclaimer">
           오늘 1일치 시세 기반 스냅샷입니다. 주간·월간 누적 자금 흐름은 시계열 데이터가 누적된 후 자동 보강될 예정입니다.

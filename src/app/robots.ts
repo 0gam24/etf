@@ -45,7 +45,7 @@ export default function robots(): MetadataRoute.Robots {
       // Daum 검색봇
       { userAgent: 'Daumoa',         allow: COMMON_ALLOW, disallow: COMMON_DISALLOW },
       // ── AI 봇 명시 allow ─────────────────────────────────────────────
-      //   허용 이유: AI 작성을 투명하게 공개(<AiAgentDisclosure>)하는 정책이므로
+      //   허용 이유: 작성 방식을 /about 과 푸터에 공개하고(2026-10-14 EditorialNote 로 정리)
       //   AI 검색엔진을 통한 인용도 수용한다. /api/og만 추가 허용, 나머지 /api/* 보호.
       //
       //   2026-08-12 보강 — 각 사가 봇을 "학습용"과 "검색 인출용"으로 분리 운영한다.

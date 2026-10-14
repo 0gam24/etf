@@ -1,11 +1,67 @@
+import { Fragment, type CSSProperties } from 'react';
 import Link from 'next/link';
-import { Zap, BookOpen } from 'lucide-react';
-import { getAllProducts } from '@/lib/products';
+import { Zap } from 'lucide-react';
 
+const H4_STYLE: CSSProperties = {
+  color: 'var(--text-primary)',
+  fontSize: 'var(--fs-sm)',
+  letterSpacing: '0.12em',
+  textTransform: 'uppercase',
+  marginBottom: 'var(--space-4)',
+};
+const COLUMN_STYLE: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' };
+const LINK_STYLE: CSSProperties = { color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' };
+
+const CATEGORY_LINKS = [
+  { href: '/guide', label: 'ETF 가이드' },
+  { href: '/etf', label: 'ETF 종목 사전' },
+  { href: '/compare', label: '같은 지수 ETF 비교' },
+  { href: '/income', label: '월배당·커버드콜' },
+  { href: '/tools/dividend-calculator', label: 'ETF 분배금 계산기' },
+];
+
+// 테마·계좌·도구 진입점 — 이 페이지들은 어디서도 링크되지 않아 고아 상태였다.
+//   (2026-08-11 SEO 감사: /theme/* 4개·/account/* 3개·/tools/tax-compare)
+const THEME_ACCOUNT_LINKS = [
+  { href: '/theme/defense', label: '방산 테마 ETF' },
+  { href: '/theme/semi', label: '반도체 테마 ETF' },
+  { href: '/theme/ai', label: 'AI 테마 ETF' },
+  { href: '/theme/shipbuilding', label: '조선 테마 ETF' },
+  { href: '/account/irp', label: 'IRP ETF 가이드' },
+  { href: '/account/isa', label: 'ISA ETF 가이드' },
+  { href: '/account/pension', label: '연금저축 ETF 가이드' },
+  { href: '/tools/tax-compare', label: '계좌별 세후 수익률 비교' },
+];
+
+// 데이터 출처는 실제 기관 사이트로 잇는다 (2026-10-14). 글자만 있던 출처 목록은 확인할 길이 없었다.
+//   시세 원천은 공공데이터포털의 금융위원회 증권상품시세정보(한국거래소 자료)라 데이터셋 주소를 그대로 밝힌다.
+const SOURCE_LINKS = [
+  { href: 'https://data.krx.co.kr', label: '한국거래소(KRX) 정보데이터시스템' },
+  { href: 'https://www.data.go.kr/data/15094806/openapi.do', label: '공공데이터포털 증권상품시세정보' },
+  { href: 'https://dart.fss.or.kr', label: '금융감독원 전자공시(DART)' },
+  { href: 'https://dis.kofia.or.kr', label: '금융투자협회 전자공시' },
+  { href: 'https://ecos.bok.or.kr', label: '한국은행 경제통계(ECOS)' },
+];
+
+const POLICY_LINKS = [
+  { href: '/about', label: '편집팀 소개' },
+  { href: '/feeds', label: '구독 · 피드' },
+  { href: '/privacy', label: '개인정보처리방침' },
+  { href: '/disclaimer', label: '면책조항' },
+  { href: '/contact', label: '연락처' },
+];
+
+/**
+ * 사이트 공통 푸터.
+ *
+ * 2026-10-14
+ *   - 링크 사이에 공백을 넣었다. 화면(플렉스 세로 배치)은 같고, 태그만 지우는 추출기에서
+ *     "ETF 가이드ETF 종목 사전…" 처럼 링크 이름이 붙어 읽히던 문제를 막는다.
+ *   - 모든 페이지에 붙던 제휴(쿠팡 파트너스) 추천 자료 카드를 뺐다. 투자 정보 페이지의 본문·푸터에서
+ *     상품 판매 링크를 걷어 내고, 추천 자료는 /resources 한 곳(페이지 첫머리에 고지)에만 둔다.
+ *   - 유의사항 문구를 작성 방식 그대로 적는다(자료 정리와 초안에 AI 도구를 쓰고 수치는 1차 출처로 대조).
+ */
 export default function SiteFooter() {
-  // 추천 자료 미니 — 상위 4개 (이미 visible 필터됨)
-  const featured = getAllProducts().slice(0, 4);
-
   return (
     <footer
       style={{
@@ -48,142 +104,52 @@ export default function SiteFooter() {
           </p>
         </div>
 
-        <div>
-          <h4 style={{ color: 'var(--text-primary)', fontSize: 'var(--fs-sm)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 'var(--space-4)' }}>
-            카테고리
-          </h4>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-            {/* 2026-10-08: 갱신이 멈춘 일별 시황 구역(관전포인트·급등·자금 흐름·종합·주간)은 색인에서 빼고 링크도 내렸다 */}
-            <Link href="/guide" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>ETF 가이드</Link>
-            <Link href="/etf" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>ETF 종목 사전</Link>
-            <Link href="/compare" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>같은 지수 ETF 비교</Link>
-            <Link href="/income" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>월배당·커버드콜</Link>
-            <Link href="/tools/dividend-calculator" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>ETF 분배금 계산기</Link>
+        <nav aria-label="카테고리">
+          <h4 style={H4_STYLE}>카테고리</h4>
+          <div style={COLUMN_STYLE}>
+            {CATEGORY_LINKS.map(l => (
+              <Fragment key={l.href}>
+                <Link href={l.href} style={LINK_STYLE}>{l.label}</Link>{' '}
+              </Fragment>
+            ))}
           </div>
-        </div>
+        </nav>
 
-        {/* 테마·계좌·도구 진입점 — 이 페이지들은 어디서도 링크되지 않아 고아 상태였다.
-            (2026-08-11 SEO 감사: /theme/* 4개·/account/* 3개·/today·/tools/tax-compare) */}
-        <div>
-          <h4 style={{ color: 'var(--text-primary)', fontSize: 'var(--fs-sm)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 'var(--space-4)' }}>
-            테마 · 계좌
-          </h4>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-            <Link href="/theme/defense" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>방산 테마 ETF</Link>
-            <Link href="/theme/semi" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>반도체 테마 ETF</Link>
-            <Link href="/theme/ai" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>AI 테마 ETF</Link>
-            <Link href="/theme/shipbuilding" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>조선 테마 ETF</Link>
-            <Link href="/account/irp" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>IRP ETF 가이드</Link>
-            <Link href="/account/isa" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>ISA ETF 가이드</Link>
-            <Link href="/account/pension" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>연금저축 ETF 가이드</Link>
-            <Link href="/tools/tax-compare" style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>계좌별 세후 수익률 비교</Link>
+        <nav aria-label="테마와 계좌">
+          <h4 style={H4_STYLE}>테마 · 계좌</h4>
+          <div style={COLUMN_STYLE}>
+            {THEME_ACCOUNT_LINKS.map(l => (
+              <Fragment key={l.href}>
+                <Link href={l.href} style={LINK_STYLE}>{l.label}</Link>{' '}
+              </Fragment>
+            ))}
           </div>
-        </div>
+        </nav>
 
         <div>
-          <h4 style={{ color: 'var(--text-primary)', fontSize: 'var(--fs-sm)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 'var(--space-4)' }}>
-            데이터 출처
-          </h4>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-            <span style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>한국거래소(KRX) 공공데이터</span>
-            <span style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>한국은행 ECOS</span>
-            <span style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>DART 금융감독원</span>
-            <span style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-sm)' }}>운용사 공식 공시</span>
+          <h4 style={H4_STYLE}>데이터 출처</h4>
+          <div style={COLUMN_STYLE}>
+            {SOURCE_LINKS.map(s => (
+              <Fragment key={s.href}>
+                <a href={s.href} target="_blank" rel="noopener noreferrer" style={LINK_STYLE}>{s.label}</a>{' '}
+              </Fragment>
+            ))}
+            <span style={LINK_STYLE}>각 운용사 상품 페이지·투자설명서</span>{' '}
             <Link href="/about" style={{ color: 'var(--accent-gold)', fontSize: 'var(--fs-sm)', marginTop: 'var(--space-2)' }}>발행 원칙 →</Link>
           </div>
         </div>
 
         <div>
-          <h4 style={{ color: 'var(--text-primary)', fontSize: 'var(--fs-sm)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 'var(--space-4)' }}>
-            유의사항
-          </h4>
+          <h4 style={H4_STYLE}>유의사항</h4>
           <p style={{ color: 'var(--text-dim)', fontSize: 'var(--fs-xs)', lineHeight: 1.7 }}>
-            본 사이트의 글은 KRX·국세청·금융감독원 등 1차 출처 자료를 바탕으로 데이터 기반 AI 분석 에이전트가 작성하며, 발행·검수 책임은 Daily ETF Pulse 편집팀에 있습니다. 투자 참고 자료이며, 모든 투자 결정의 책임은 투자자 본인에게 있습니다. 출처: KRX · 한국은행 · DART.
+            이 사이트의 수치와 제도 설명은 한국거래소·금융감독원·국세청·운용사 공시 같은 1차 출처를 근거로 하고, 글마다 기준일과 출처를 밝힙니다. 자료 정리와 초안 작성에 AI 도구를 쓰며, 발행·정정 책임은 Daily ETF Pulse 편집팀에 있습니다. 정보 제공 목적의 자료이고 투자 판단과 그 결과의 책임은 투자자 본인에게 있습니다.
           </p>
         </div>
       </div>
 
-      {/* 자매 사이트(smartdatashop.kr) 백링크 상자는 2026-09-30 제거. 모든 페이지 푸터에
-          붙는 전역 자매 링크는 형제 사이트가 AdSense 거절 원인(doorway 네트워크)으로 기록한 패턴. */}
-
-      {/* 추천 자료 미니 섹션 — 사이트 전체 푸터에 가벼운 큐레이션 */}
-      {featured.length > 0 && (
-        <div
-          style={{
-            maxWidth: '80rem',
-            margin: 'var(--space-10) auto 0',
-            padding: '0 var(--space-6)',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 'var(--space-4)' }}>
-            <h4 style={{ color: 'var(--text-primary)', fontSize: 'var(--fs-sm)', letterSpacing: '0.12em', textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-              <BookOpen size={13} strokeWidth={2.4} aria-hidden /> 추천 자료
-            </h4>
-            <Link href="/resources" style={{ color: 'var(--accent-gold)', fontSize: 'var(--fs-xs)', fontWeight: 600 }}>
-              전체 자료실 →
-            </Link>
-          </div>
-          {/* 제휴 고지 — 공정위 지침: 카드 바로 위, 본문 이상 가시성(text-secondary·0.86rem·옅은 골드 박스). 회색·작은 글씨 금지 */}
-          <p className="affiliate-disclaimer-line">
-            이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
-          </p>
-          <ul
-            style={{
-              listStyle: 'none',
-              padding: 0,
-              margin: 'var(--space-3) 0 0',
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-              gap: 'var(--space-3)',
-            }}
-          >
-            {featured.map(p => (
-              <li key={p.id}>
-                {p.deeplink ? (
-                  <a
-                    href={p.deeplink}
-                    target="_blank"
-                    rel="nofollow sponsored noopener noreferrer"
-                    style={{
-                      display: 'block',
-                      padding: 'var(--space-3)',
-                      background: 'var(--bg-card)',
-                      border: '1px solid var(--border-color)',
-                      borderRadius: '0.5rem',
-                      color: 'var(--text-secondary)',
-                      fontSize: 'var(--fs-xs)',
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    <div style={{ color: 'var(--text-muted)', fontSize: '0.65rem', marginBottom: '0.25rem', fontWeight: 600 }}>
-                      {p.tone === 'book' ? '도서' : '학습 도구'}
-                    </div>
-                    <div style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{p.title}</div>
-                    {p.subtitle && <div style={{ color: 'var(--text-dim)', marginTop: '0.2rem' }}>{p.subtitle}</div>}
-                  </a>
-                ) : (
-                  <div
-                    style={{
-                      padding: 'var(--space-3)',
-                      background: 'var(--bg-card)',
-                      border: '1px dashed var(--border-color)',
-                      borderRadius: '0.5rem',
-                      fontSize: 'var(--fs-xs)',
-                      color: 'var(--text-muted)',
-                    }}
-                  >
-                    <div style={{ fontSize: '0.65rem', marginBottom: '0.25rem' }}>[준비 중]</div>
-                    <div style={{ color: 'var(--text-dim)', fontWeight: 600 }}>{p.title}</div>
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {/* 정책 링크 — AdSense·공정위 형식 요건 충족 (모든 페이지 일관 노출) */}
-      <div
+      {/* 정책 링크 — AdSense 형식 요건 (모든 페이지 일관 노출) */}
+      <nav
+        aria-label="사이트 정책"
         style={{
           maxWidth: '80rem',
           margin: 'var(--space-12) auto 0',
@@ -196,16 +162,18 @@ export default function SiteFooter() {
           fontSize: 'var(--fs-sm)',
         }}
       >
-        <Link href="/about" style={{ color: 'var(--text-secondary)' }}>편집팀 소개</Link>
-        <span style={{ color: 'var(--text-muted)' }} aria-hidden>·</span>
-        <Link href="/feeds" style={{ color: 'var(--text-secondary)' }}>구독 · 피드</Link>
-        <span style={{ color: 'var(--text-muted)' }} aria-hidden>·</span>
-        <Link href="/privacy" style={{ color: 'var(--text-secondary)' }}>개인정보처리방침</Link>
-        <span style={{ color: 'var(--text-muted)' }} aria-hidden>·</span>
-        <Link href="/disclaimer" style={{ color: 'var(--text-secondary)' }}>면책조항</Link>
-        <span style={{ color: 'var(--text-muted)' }} aria-hidden>·</span>
-        <Link href="/contact" style={{ color: 'var(--text-secondary)' }}>연락처</Link>
-      </div>
+        {POLICY_LINKS.map((l, i) => (
+          <Fragment key={l.href}>
+            {i > 0 && (
+              <>
+                {' '}
+                <span style={{ color: 'var(--text-muted)' }} aria-hidden>·</span>{' '}
+              </>
+            )}
+            <Link href={l.href} style={{ color: 'var(--text-secondary)' }}>{l.label}</Link>
+          </Fragment>
+        ))}
+      </nav>
 
       <div
         style={{

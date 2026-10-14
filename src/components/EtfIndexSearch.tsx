@@ -145,7 +145,7 @@ export default function EtfIndexSearch({ rows, sectors, issuers }: Props) {
             <li key={r.shortcode}>
               <a href={`/etf/${r.slug}`} className="etf-index-card">
                 <div className="etf-index-card-head">
-                  <span className="etf-index-card-code">{r.shortcode}</span>
+                  <span className="etf-index-card-code">{r.shortcode}</span>{' '}
                   {r.issuer && <span className="etf-index-card-issuer">{r.issuer}</span>}
                 </div>
                 <div className="etf-index-card-name">{r.name}</div>

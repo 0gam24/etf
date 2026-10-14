@@ -35,8 +35,8 @@ export default function HomeLatestFeed({
             <Link href={item.href} prefetch={false} className="home-latest-link">
               <span className={`badge badge-${item.kind === 'guide' ? 'guide' : item.category} home-latest-badge`}>
                 {item.kind === 'guide' ? '가이드' : item.categoryName}
-              </span>
-              <span className="home-latest-title">{item.title}</span>
+              </span>{' '}
+              <span className="home-latest-title">{item.title}</span>{' '}
               <time className="home-latest-date" dateTime={item.dateKey}>
                 {formatDateKeyKo(item.dateKey)}
               </time>

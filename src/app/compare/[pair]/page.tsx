@@ -341,11 +341,11 @@ export default async function ComparePairPage({ params }: PageProps) {
                   <tr>
                     <th scope="col">항목</th>
                     <th scope="col">
-                      <Link href={`/etf/${slugA}`}>{metaA.name}</Link>
+                      <Link href={`/etf/${slugA}`}>{metaA.name}</Link>{' '}
                       <small className="compare-table-code">{metaA.shortcode}</small>
                     </th>
                     <th scope="col">
-                      <Link href={`/etf/${slugB}`}>{metaB.name}</Link>
+                      <Link href={`/etf/${slugB}`}>{metaB.name}</Link>{' '}
                       <small className="compare-table-code">{metaB.shortcode}</small>
                     </th>
                   </tr>

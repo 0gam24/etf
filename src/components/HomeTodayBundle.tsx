@@ -39,9 +39,11 @@ export default function HomeTodayBundle({ bundle }: { bundle: LatestBundle }) {
             <div className="post-card-meta">
               <span className={`badge badge-${item.kind === 'guide' ? 'guide' : item.category}`}>
                 {item.kind === 'guide' ? '가이드' : item.categoryName}
-              </span>
+              </span>{' '}
               {item.kind === 'guide' && (
-                <span className="post-card-date">{item.categoryName}</span>
+                <>
+                  <span className="post-card-date">{item.categoryName}</span>{' '}
+                </>
               )}
               {item.readingTime ? (
                 <span className="post-card-date">{item.readingTime}분 읽기</span>

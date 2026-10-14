@@ -38,6 +38,10 @@ export default function RecommendBox({ position, category, limit }: Props) {
   //   본문 텍스트의 25~30%를 차지해 AI 요약·검색 발췌에 잡음이 됐다. 페이지 맨 아래(bottom) 한 곳만 남긴다.
   //   21개 페이지의 position="top" 호출은 그대로 두고 여기서 끈다(되돌릴 때 이 줄만 지우면 된다).
   if (position === 'top') return null;
+  // 2026-10-14: 하단(bottom) 상자도 그리지 않는다. 금융 정보 본문(가이드·종목 사전·비교)에서 상품 판매 링크를
+  //   걷어 내고 광고 수익은 애드센스 한 갈래로 모은다. 추천 자료는 /resources 페이지(첫머리 고지)에만 남긴다.
+  //   되돌릴 때는 아래 줄을 지운다.
+  if (position === 'bottom') return null;
   const isTicker = false;
   const finalLimit = limit ?? (isTicker ? 8 : 4);
 

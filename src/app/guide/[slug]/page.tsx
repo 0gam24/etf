@@ -10,8 +10,8 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FaqSection from '@/components/FaqSection';
 import AnswerBox from '@/components/AnswerBox';
 import GuideDataBlock from '@/components/GuideDataBlock';
-import AffiliateInline from '@/components/AffiliateInline';
-import AiAgentDisclosure from '@/components/AiAgentDisclosure';
+import EditorialNote from '@/components/EditorialNote';
+import EtfTaxSimulator from '@/components/EtfTaxSimulator';
 import RecommendBox from '@/components/RecommendBox';
 import AdBanner from '@/components/AdBanner';
 import { planGuideAds, AD_SLOTS } from '@/lib/ads';
@@ -98,6 +98,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+/** 계좌별 세후 계산기를 붙이는 가이드 분류 (계좌·세금·분배가 주제인 곳) */
+const CALC_SECTIONS = new Set(['ETF 세금 가이드', '은퇴 자산 가이드', 'ISA 계좌 가이드', '배당주 가이드', 'ETF 분배금 가이드', '커버드콜 가이드', '월배당 가이드', '해외상장 가이드']);
+
 export default async function GuidePage({ params }: PageProps) {
   const { slug } = await params;
   const g = getGuideBySlug(slug);
@@ -112,14 +115,18 @@ export default async function GuidePage({ params }: PageProps) {
     ? getEtfsBySector(guideSector, '', 6, (getLatestEtfData()?.etfList || []) as RawEtf[])
     : [];
 
+  // 제휴(쿠팡 파트너스) 도서 추천 섹션은 그리지 않는다 (2026-10-14). 투자 정보 본문에서 상품 판매 링크를 걷어 내고
+  //   추천 자료는 /resources 한 곳에만 둔다. 목차·광고 위치·HowTo 단계도 같은 목록을 쓴다.
+  const sections = g.sections.filter(sec => !(sec.dataBlock && /^(product|book)-rec:/.test(sec.dataBlock)));
+
   // 본문 h2에 붙일 앵커. 문단을 개별 주소로 가리킬 수 있어야 검색·답변엔진이 청크 단위로 인용한다.
   //   한글 id는 HTML5에서 유효하다. 링크에 쓸 때만 브라우저가 자동 인코딩한다.
-  const sectionIds = g.sections.map((sec, i) => headingAnchor(sec.heading, i));
+  const sectionIds = sections.map((sec, i) => headingAnchor(sec.heading, i));
 
   // 수동 광고 자리 (2026-10-06). 슬롯 env(NEXT_PUBLIC_AD_SLOT_IN_ARTICLE·_BOTTOM)가 비면 빈 배열이라
   //   아무것도 그리지 않는다. 규칙은 src/lib/ads.ts planGuideAds: 2번째 섹션 이후 문단으로 끝나는
   //   섹션 뒤 1곳 + 본문 끝(참고 자료·FAQ 앞) 1곳, 섹션 5개 미만이면 1곳만.
-  const adsAfterSection = new Map(planGuideAds(g.sections).map(a => [a.afterSection, a]));
+  const adsAfterSection = new Map(planGuideAds(sections).map(a => [a.afterSection, a]));
 
   // datePublished는 안정적 원발행일(불변) — lastReviewed는 격주 점검 크론이 갱신하므로 dateModified로.
   const publishedAt = getGuidePublishedAt(slug) || g.lastReviewed;
@@ -156,7 +163,7 @@ export default async function GuidePage({ params }: PageProps) {
         description: g.howTo.description || g.description,
         url: `/guide/${slug}`,
         ...(g.howTo.totalTime ? { totalTime: g.howTo.totalTime } : {}),
-        steps: g.sections
+        steps: sections
           .filter(sec => {
             const h = sec.heading;
             // 본문 단락이 있고, 보조 섹션(관련 글·책 추천)이 아닌 것만 단계화
@@ -210,7 +217,7 @@ export default async function GuidePage({ params }: PageProps) {
               <span>수정일: {new Date(modifiedAt).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
             </>
           )}
-          <AiAgentDisclosure variant="compact" kind="guide" />
+          <EditorialNote variant="compact" kind="guide" />
         </div>
       </header>
 
@@ -266,6 +273,25 @@ export default async function GuidePage({ params }: PageProps) {
         </figure>
       )}
 
+      {/* 계좌별 세후 계산기 (2026-10-14). 계좌·세금·분배를 다루는 가이드에만 붙인다. 글을 읽다 바로 자기 숫자로
+          확인하게 하고, 상단 광고는 계산 결과 바로 아래에 온다. 세율은 src/lib/account-tax-rules.ts 한 곳. */}
+      {CALC_SECTIONS.has(g.section) && (
+        <section className="guide-calc" aria-labelledby="guide-calc-heading">
+          <h2 id="guide-calc-heading" className="guide-calc-h2">계좌별 세후 수익 계산기</h2>
+          <p className="guide-calc-desc">
+            투자금과 분배율, 보유 기간을 넣으면 같은 ETF를 일반 계좌·중개형 ISA·연금저축·IRP에서 굴릴 때 세금과 세후 수익이 얼마나 달라지는지 바로 계산합니다.
+          </p>
+          <EtfTaxSimulator
+            name="ETF"
+            gainTax={g.section === '해외상장 가이드' ? 'taxable' : g.section === '커버드콜 가이드' ? 'base-excludes-domestic' : 'exempt'}
+            pensionAllowed
+            defaultYieldPct={g.section === '커버드콜 가이드' || g.section === '월배당 가이드' ? 8 : 3}
+            yieldFromRecord={false}
+            kindSelectable
+          />
+        </section>
+      )}
+
       {/* 상단 수동 광고 (2026-10-08, 예전 제휴 회전 상자 자리). 직답·핵심 포인트·비교표를 다 읽은 뒤,
           목차 앞. 위는 표, 아래는 목차 제목이라 버튼·링크에 붙지 않는다. 슬롯 env 가 비면 아무것도 그리지 않는다. */}
       {AD_SLOTS.top && (
@@ -274,11 +300,11 @@ export default async function GuidePage({ params }: PageProps) {
 
       {/* 목차 — 문단별 앵커. 긴 글에서 원하는 대목으로 바로 가고,
           검색 결과에 문단 바로가기가 붙을 수 있는 구조를 만든다. */}
-      {g.sections.length >= 3 && (
+      {sections.length >= 3 && (
         <nav className="guide-toc" aria-label="목차">
           <h2 className="guide-toc-title">이 글에서 다루는 내용</h2>
           <ol className="guide-toc-list">
-            {g.sections.map((sec, i) => (
+            {sections.map((sec, i) => (
               <li key={i}>
                 <a href={`#${sectionIds[i]}`}>{sec.heading}</a>
               </li>
@@ -288,7 +314,7 @@ export default async function GuidePage({ params }: PageProps) {
       )}
 
       <div className="guide-article-body">
-        {g.sections.map((sec, i) => {
+        {sections.map((sec, i) => {
           const ad = adsAfterSection.get(i);
           return (
             <Fragment key={i}>
@@ -301,13 +327,6 @@ export default async function GuidePage({ params }: PageProps) {
                   <div className="guide-article-data">
                     <GuideDataBlock block={sec.dataBlock} />
                   </div>
-                )}
-                {sec.affiliateInline && (
-                  <AffiliateInline
-                    leadIn={sec.affiliateInline.leadIn}
-                    productId={sec.affiliateInline.productId}
-                    style={sec.affiliateInline.style}
-                  />
                 )}
               </section>
               {/* 수동 광고: 문단으로 끝난 섹션과 다음 섹션 제목 사이에만. key에 slug를 넣어
@@ -336,7 +355,7 @@ export default async function GuidePage({ params }: PageProps) {
               <li key={r.shortcode}>
                 <Link href={`/etf/${r.slug}`} prefetch={false} className="etf-dict-related-card">
                   <div className="etf-dict-related-card-head">
-                    <span className="etf-dict-related-card-code">{r.shortcode}</span>
+                    <span className="etf-dict-related-card-code">{r.shortcode}</span>{' '}
                     {r.issuer && <span className="etf-dict-related-card-issuer">{r.issuer}</span>}
                   </div>
                   <div className="etf-dict-related-card-name">{r.name}</div>
@@ -390,7 +409,7 @@ export default async function GuidePage({ params }: PageProps) {
       <FaqSection title={`${g.section} 자주 묻는 질문`} items={g.faq} />
 
       {/* 본문 하단 공시 — 무엇을 근거로 쓰고 누가 발행을 책임지는지. 일별 글과 동일 정책 적용. */}
-      <AiAgentDisclosure variant="inline" kind="guide" />
+      <EditorialNote variant="inline" kind="guide" />
 
       <RecommendBox position="bottom" category={guideToProductCategory(g.slug)} />
     </article>

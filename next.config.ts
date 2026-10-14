@@ -63,6 +63,9 @@ const nextConfig: NextConfig = {
       { source: '/flow/flow-20260425-조선', destination: '/flow/flow-20260425-shipbuilding', permanent: true },
       { source: '/surge/0080g0-kodex-방산top10-surge', destination: '/surge/0080g0-kodex-defense-top10-surge', permanent: true },
       { source: '/surge/449450-kodex-방산top10-surge', destination: '/surge/449450-kodex-defense-top10-surge', permanent: true },
+      // 2026-10-14: 예전 일별 시황 글의 저자 페르소나(AI 에이전트 K~H) 소개 페이지는 은퇴. 작성 방식은 /about 한 곳에서 밝힌다.
+      { source: '/author', destination: '/about', permanent: true },
+      { source: '/author/:id', destination: '/about', permanent: true },
     ];
 
     // 1095종 코드 URL → SEO 슬러그 URL 영구 이동.

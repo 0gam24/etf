@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       url: canonicalPath,
       publishedTime: post.meta.date,
-      authors: [post.meta.author],
+      authors: ['Daily ETF Pulse 편집팀'],
       images: [ogImage],
     },
     twitter: {
@@ -77,12 +77,10 @@ export default async function WeeklyPage({ params }: PageProps) {
             </span>
             <h1 className="post-v2-title">{post.meta.title}</h1>
             <div className="post-v2-meta">
-              {post.meta.authorId && (
-                <Link href={`/author/${post.meta.authorId}`} className="post-v2-meta-author">
-                  <span className="post-v2-avatar">{post.meta.author.charAt(0)}</span>
-                  <span>{post.meta.author}</span>
-                </Link>
-              )}
+              <span className="post-v2-meta-author">
+                <span className="post-v2-avatar">D</span>
+                <span>Daily ETF Pulse 편집팀</span>
+              </span>
               <span>📅 {date}</span>
               <span>⏱️ {post.readingTime}분 읽기</span>
             </div>

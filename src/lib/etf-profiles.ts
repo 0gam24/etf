@@ -15,6 +15,8 @@
  *   - updatedAt 은 실제로 쓰거나 고친 날. 이 값이 sitemap lastmod 와 색인 판정에 들어간다.
  */
 
+import type { EtfTaxKind } from './etf-tax';
+
 export interface EtfProfile {
   /** KRX 단축코드 */
   code: string;
@@ -34,6 +36,8 @@ export interface EtfProfile {
   sources: { label: string; url: string }[];
   /** 근거(측정 파일·검색어). 화면에 나오지 않는다 */
   basis?: string;
+  /** 운용사 문서로 확인한 과세 구분 (있으면 이름 규칙 추정보다 먼저, src/lib/etf-tax.ts) */
+  taxKind?: EtfTaxKind;
 }
 
 export const ETF_PROFILES: Record<string, EtfProfile> = {
@@ -239,6 +243,8 @@ export const ETF_PROFILES: Record<string, EtfProfile> = {
   '0241R0': {
     code: '0241R0',
     updatedAt: '2026-10-10',
+    // 운용사 상품 페이지 과세 항목 "매매차익 배당소득세 과세(보유기간 과세)" (지수에 미국 상장 종목 포함)
+    taxKind: 'domestic-other',
     basis:
       '네이버 빈틈 "TIGER 현대차LG전자고정피지컬AI밸류체인" 자리 열림 빈자리 8 · 관공서·운용사 0 · 3주 새 34.6배 · 신규 상장 · naver-gap-20261010.json · 확인 2026-10-10 미래에셋 상품 페이지·투자설명서(2026-09-10 효력발생)·간이투자설명서·월간운용보고서(2026-09-30)',
     summary:
@@ -342,6 +348,8 @@ export const ETF_PROFILES: Record<string, EtfProfile> = {
   '458730': {
     code: '458730',
     updatedAt: '2026-10-10',
+    // 운용사 상품 페이지 과세 항목 "매매차익은 배당소득세 과세(보유기간 과세)"
+    taxKind: 'foreign-or-other',
     basis:
       '네이버 빈틈 "tiger 미국배당다우존스 주가" 자리 열림 빈자리 6 · 관공서·운용사 0 · 지식iN 407, "TIGER 미국배당다우존스 분배금" 빈자리 7 · naver-gap-20261010.json · 주가 검색이지만 시세 숫자 없이 가격 결정 요인으로 답한다 · 확인 2026-10-10 미래에셋 상품 페이지·투자설명서(2026-05-28 효력발생)·S&P DJI 방법론(2026-09)',
     summary:
