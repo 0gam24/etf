@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-10-11T04:36:24.900Z",
-  "baseDate": "20261007",
-  "count": 1172,
+  "fetchedAt": "2026-10-18T03:31:27.153Z",
+  "baseDate": "20261015",
+  "count": 1176,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -5808,6 +5808,11 @@
       "issueCode": "KR70240J0003",
       "name": "RISE 삼성SK그룹"
     },
+    "0241D0": {
+      "shortcode": "0241D0",
+      "issueCode": "KR70241D0008",
+      "name": "KODEX 미국AI에이전트액티브"
+    },
     "0241R0": {
       "shortcode": "0241R0",
       "issueCode": "KR70241R0002",
@@ -5818,10 +5823,25 @@
       "issueCode": "KR70242S0000",
       "name": "파워 SK그룹"
     },
+    "0243M0": {
+      "shortcode": "0243M0",
+      "issueCode": "KR70243M0005",
+      "name": "DS AI반도체액티브"
+    },
     "0246X0": {
       "shortcode": "0246X0",
       "issueCode": "KR70246X0009",
       "name": "SOL 글로벌DRAM반도체플러스"
+    },
+    "0247S0": {
+      "shortcode": "0247S0",
+      "issueCode": "KR70247S0005",
+      "name": "KIWOOM 글로벌MLCC&AI기판TOP4+"
+    },
+    "0254W0": {
+      "shortcode": "0254W0",
+      "issueCode": "KR70254W0009",
+      "name": "ACE 29-11 회사채(AA-이상)액티브"
     },
     "069500": {
       "shortcode": "069500",
@@ -7415,6 +7435,11 @@
       "issueCode": "KR70240J0003",
       "name": "RISE 삼성SK그룹"
     },
+    "KR70241D0008": {
+      "shortcode": "0241D0",
+      "issueCode": "KR70241D0008",
+      "name": "KODEX 미국AI에이전트액티브"
+    },
     "KR70241R0002": {
       "shortcode": "0241R0",
       "issueCode": "KR70241R0002",
@@ -7425,10 +7450,25 @@
       "issueCode": "KR70242S0000",
       "name": "파워 SK그룹"
     },
+    "KR70243M0005": {
+      "shortcode": "0243M0",
+      "issueCode": "KR70243M0005",
+      "name": "DS AI반도체액티브"
+    },
     "KR70246X0009": {
       "shortcode": "0246X0",
       "issueCode": "KR70246X0009",
       "name": "SOL 글로벌DRAM반도체플러스"
+    },
+    "KR70247S0005": {
+      "shortcode": "0247S0",
+      "issueCode": "KR70247S0005",
+      "name": "KIWOOM 글로벌MLCC&AI기판TOP4+"
+    },
+    "KR70254W0009": {
+      "shortcode": "0254W0",
+      "issueCode": "KR70254W0009",
+      "name": "ACE 29-11 회사채(AA-이상)액티브"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -13278,6 +13318,11 @@
       "name": "RISE 삼성SK그룹"
     },
     {
+      "shortcode": "0241D0",
+      "issueCode": "KR70241D0008",
+      "name": "KODEX 미국AI에이전트액티브"
+    },
+    {
       "shortcode": "0241R0",
       "issueCode": "KR70241R0002",
       "name": "TIGER 현대차LG전자고정피지컬AI밸류체인"
@@ -13288,9 +13333,24 @@
       "name": "파워 SK그룹"
     },
     {
+      "shortcode": "0243M0",
+      "issueCode": "KR70243M0005",
+      "name": "DS AI반도체액티브"
+    },
+    {
       "shortcode": "0246X0",
       "issueCode": "KR70246X0009",
       "name": "SOL 글로벌DRAM반도체플러스"
+    },
+    {
+      "shortcode": "0247S0",
+      "issueCode": "KR70247S0005",
+      "name": "KIWOOM 글로벌MLCC&AI기판TOP4+"
+    },
+    {
+      "shortcode": "0254W0",
+      "issueCode": "KR70254W0009",
+      "name": "ACE 29-11 회사채(AA-이상)액티브"
     },
     {
       "shortcode": "069500",

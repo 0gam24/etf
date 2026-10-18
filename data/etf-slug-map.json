@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-11T04:36:25.066Z",
-  "sourceBaseDate": "20261007",
-  "count": 1172,
+  "generatedAt": "2026-10-18T03:31:27.264Z",
+  "sourceBaseDate": "20261015",
+  "count": 1176,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -1174,7 +1174,11 @@
     "0240J0": "rise-sk",
     "0241R0": "tiger-lgai",
     "0242S0": "power-sk",
-    "0246X0": "sol-globaldramsemiconductorplus"
+    "0246X0": "sol-globaldramsemiconductorplus",
+    "0241D0": "kodex-usaiactive",
+    "0243M0": "ds-aisemiconductoractive",
+    "0247S0": "kiwoom-globalmlccaitop4",
+    "0254W0": "ace-29-11-corporate-bondaa-plusactive"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -5864,6 +5868,22 @@
     "sol-globaldramsemiconductorplus": {
       "code": "0246X0",
       "name": "SOL 글로벌DRAM반도체플러스"
+    },
+    "kodex-usaiactive": {
+      "code": "0241D0",
+      "name": "KODEX 미국AI에이전트액티브"
+    },
+    "ds-aisemiconductoractive": {
+      "code": "0243M0",
+      "name": "DS AI반도체액티브"
+    },
+    "kiwoom-globalmlccaitop4": {
+      "code": "0247S0",
+      "name": "KIWOOM 글로벌MLCC&AI기판TOP4+"
+    },
+    "ace-29-11-corporate-bondaa-plusactive": {
+      "code": "0254W0",
+      "name": "ACE 29-11 회사채(AA-이상)액티브"
     }
   }
 }
