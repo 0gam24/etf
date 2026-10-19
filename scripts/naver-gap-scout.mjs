@@ -22,6 +22,7 @@
  *   product  시가총액 상위 상품 × 분배금·구성종목
  *   account  ETF 세금·절세 계좌 롱테일 (연말 시즌 선점 포함)
  *   gsc      구글 Search Console 에서 실제 노출된 검색어
+ *   longtail 3어절 안팎의 세부 질문 검색어 (data/keywords/naver-longtail-seeds.json, 받을 주소를 직접 적어 둔다)
  *
  * 사용:
  *   node scripts/naver-gap-scout.mjs                 전체 측정, data/keywords/naver-gap-YYYYMMDD.json 저장
@@ -44,6 +45,8 @@ const REF_KEYWORD = '실업급여'; // 자매 사이트 목록과 같은 눈금
 const DEPTH = 30;
 const ABOVE_WINDOW = 10;
 const DELAY_MS = 130;
+// 응답 없이 연결만 붙잡힌 요청을 끊고 다시 보낸다 (2026-10-19 측정이 260/276 에서 10분 넘게 멈춤)
+const FETCH_TIMEOUT_MS = 20000;
 const NOW = new Date();
 const THIS_YEAR = Number(kstYmd(NOW).slice(0, 4));
 
@@ -82,9 +85,12 @@ async function naverGet(kind, query, display) {
     calls++;
     let res;
     try {
-      res = await fetch(url, { headers: { 'X-Naver-Client-Id': ID, 'X-Naver-Client-Secret': SECRET } });
+      res = await fetch(url, {
+        headers: { 'X-Naver-Client-Id': ID, 'X-Naver-Client-Secret': SECRET },
+        signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+      });
     } catch {
-      await sleep(1500 * (attempt + 1)); // 일시적인 연결 끊김
+      await sleep(1500 * (attempt + 1)); // 일시적인 연결 끊김·응답 없음
       continue;
     }
     if (res.status === 429) {
@@ -108,6 +114,7 @@ async function datalab(groups, startDate, endDate, timeUnit) {
         method: 'POST',
         headers: { 'X-Naver-Client-Id': ID, 'X-Naver-Client-Secret': SECRET, 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
+        signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
       });
     } catch {
       await sleep(1500 * (attempt + 1));
@@ -226,6 +233,7 @@ const siblings = await jiti.import('./src/lib/etf-siblings.ts');
 const guidesMod = await jiti.import('./src/lib/guides.ts');
 const pairsMod = await jiti.import('./src/lib/etf-compare-pairs.ts');
 const GUIDES = guidesMod.GUIDES;
+const GUIDE_SLUGS = new Set(GUIDES.map((g) => g.slug));
 const PUBLISHED = guidesMod.GUIDE_PUBLISHED_AT;
 const PAIRS = pairsMod.COMPARE_PAIRS;
 
@@ -393,6 +401,15 @@ function buildCandidates() {
       add(q, 'gsc', { gscImpressions: imp, gscFile: gscFiles.at(-1) });
     }
   }
+
+  // 7) 롱테일 (2026-10-19 운영자 "네이버 상위 노출 할 수 있는 롱키워드 빈틈 키워드 나열").
+  // 세부 질문은 제목 일치(guideMatch)로 주소를 찾기 어려워, 받을 주소를 씨앗 파일에 직접 적는다
+  const ltFile = path.join(ROOT, 'data/keywords/naver-longtail-seeds.json');
+  if (fs.existsSync(ltFile)) {
+    for (const s of JSON.parse(fs.readFileSync(ltFile, 'utf8')).items || []) {
+      add(s.query, 'longtail', s.target ? { targetPath: s.target } : {});
+    }
+  }
   return out;
 }
 
@@ -538,6 +555,7 @@ async function measureVolumes(items) {
   }
 }
 
+const SEASON_TRACKS = new Set(['account', 'group', 'longtail']);
 async function measureSeason(items) {
   // 작년 같은 철(11~1월) 최고 달이 지난달의 몇 배였나. 세금·계좌 주제의 선점 판단용
   const end = new Date(NOW.getFullYear(), NOW.getMonth(), 0); // 지난달 말일
@@ -623,6 +641,11 @@ function exposureOf(it) {
 
 function siteTarget(it) {
   if (it.pairSlug) return { type: 'compare', url: `/compare/${it.pairSlug}` };
+  if (it.targetPath) {
+    const [, type, slug] = it.targetPath.split('/');
+    if (type !== 'guide' || GUIDE_SLUGS.has(slug)) return { type, url: it.targetPath };
+    console.error(`씨앗 주소 없음: ${it.query} → ${it.targetPath}`);
+  }
   const etf = it.code ? { code: it.code } : findEtfInQuery(it.query);
   if (etf?.ambiguous) return { type: 'none', url: null, candidates: etf.ambiguous };
   if (etf && it.track !== 'group' && it.track !== 'account') {
@@ -674,7 +697,7 @@ async function main() {
     const retry = items.filter((it) => it.volumeError);
     for (const it of retry) delete it.volumeError;
     if (retry.length) await measureVolumes(retry);
-    const seasonRetry = retry.filter((it) => (it.track === 'account' || it.track === 'group') && !it.season);
+    const seasonRetry = retry.filter((it) => SEASON_TRACKS.has(it.track) && !it.season);
     if (seasonRetry.length) await measureSeason(seasonRetry);
   } else {
     items = one ? [{ query: one, track: 'manual' }] : buildCandidates().slice(0, limit);
@@ -689,7 +712,7 @@ async function main() {
       if ((i + 1) % 20 === 0) console.error(`  ${i + 1}/${items.length}`);
     }
     await measureVolumes(items);
-    await measureSeason(items.filter((it) => it.track === 'account' || it.track === 'group'));
+    await measureSeason(items.filter((it) => SEASON_TRACKS.has(it.track)));
   }
 
   for (const it of items) {

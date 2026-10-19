@@ -18,7 +18,7 @@
 | 주 채널 | 네이버 통합검색 웹문서·AI 브리핑 | 같은 지시. 08월 네이버 노출 6.8만으로 구글보다 큰 채널이었다 |
 | Page RPM 가정 | 1,000 페이지뷰당 약 2.3~4달러 | 형제 사이트 asiatop 실측 2.31달러(02 asiatop/docs/23-adsense-revenue-ops.md), 금융 주제 상단 추정 4달러 |
 | 필요한 페이지뷰 | **하루 약 2.5만~4.3만** | 100 ÷ RPM × 1,000 |
-| 현재 (2026-10-08 기준) | 구글 28일 노출 42 · 클릭 0. 네이버 웹문서 색인 약 507건(가이드 160/269, 비교 2/11, 시가총액 상위 /etf 31/100), 빈틈 검색어 128건 중 자사 30위 안 4건 | data/keywords/gsc_20261004.json, naver-index-20261007.json, naver-gap-20261008.json |
+| 현재 (2026-10-19 기준) | 구글 28일 노출 494 · 클릭 0. 네이버 웹문서 색인 약 396건(10-08 약 507건), 가이드 51/269(10-07 160/269), 빈틈 검색어 276건 중 자사 30위 안 14건(롱테일 159건 중 자리 열림 81) | data/keywords/gsc_20261012.json, naver-index-20261019.json, naver-gap-20261019.json |
 
 격차는 약 1,000배다. 한 번의 수정으로 메울 수 없고, 아래 레버를 겹겹이 쌓아 몇 달 단위로 키워야 한다. 그래서 중간 이정표로 진행을 판정한다.
 
@@ -34,7 +34,7 @@
 
 검색량 큰 키워드가 아니라 **자리가 열린 키워드**를 고른다. 판단은 네이버 공식 API 실측으로만 한다(`search.naver.com` 수집 안 함).
 
-1. **찾기**: `npm run keywords:naver-gap` → `data/keywords/naver-gap-YYYYMMDD.json`. 웹문서 상위 30에서 자사 순위, 빈자리(블로그·상업·언론·지난해 문서), 위에 있는 관공서·운용사, 시세 도구 점령 여부, 블로그·지식iN 문서 수, 데이터랩 검색량(실업급여 = 100)·3주 추세·작년 같은 철 배수를 잰다.
+1. **찾기**: `npm run keywords:naver-gap` → `data/keywords/naver-gap-YYYYMMDD.json`. 웹문서 상위 30에서 자사 순위, 빈자리(블로그·상업·언론·지난해 문서), 위에 있는 관공서·운용사, 시세 도구 점령 여부, 블로그·지식iN 문서 수, 데이터랩 검색량(실업급여 = 100)·3주 추세·작년 같은 철 배수를 잰다. 롱테일(3어절 안팎 세부 질문)은 `data/keywords/naver-longtail-seeds.json` 에 검색어와 받을 주소를 함께 적어 두면 같은 측정에 들어간다(2026-10-19). 롱테일은 데이터랩 검색량이 대부분 잡히지 않으니 지식iN 질문 수를 수요로 본다.
 2. **색인 확인**: `node scripts/naver-index-audit.mjs` → `naver-index-YYYYMMDD.json`. 받을 주소가 네이버 색인에 없으면 보강보다 수집 요청이 먼저다(IndexNow + 서치어드바이저 수집 요청 목록을 운영자에게).
 3. **보강**: 자리 열림이고 기존 주소로 받을 수 있으면 PUBLISHING.md §6 예외 3(네이버 빈틈 보강)으로 그 글을 고친다. 1차 출처 확인, 검색어 문구가 들어간 소제목, 수치 1개 이상과 계산 예시, `GUIDE_MODIFIED_AT` 기록.
 4. **새 주소**: 기존 주소가 받을 수 없는 비교·판단 의도만, 주 2개 상한 안에서.
@@ -79,6 +79,8 @@
 상태: `[ ]` 대기 · `[~]` 진행 · `[x]` 완료(날짜) · `[!]` 운영자 조치 필요. 위에서부터 처리한다.
 
 ### 운영자 조치 (Claude 가 대신할 수 없음)
+- [!] **(최우선) 네이버 가이드 색인 급감 원인 확인** (2026-10-19 실측): `naver-index-audit` 가이드 160/269(10-07) → 51/269, `site:` 전체 약 505 → 396건. 발행월별로 9월 21/30 → 1/30, 8월 22/31 → 4/31, 7월 73/115 → 21/115, 6월 36/81 → 18/81. 빠진 표본 8편은 제목을 그대로 검색해도 30위 밖이라(유지 표본 4편 중 3편은 1~3위) 측정 오류가 아니다. 사이트 쪽은 Yeti 응답 200·`index, follow`·자기 canonical·robots 허용으로 막힌 흔적이 없다. 서치어드바이저 → 웹마스터 도구에서 수집 현황·수집 오류·사이트 진단(저품질·유사 문서 안내 여부)을 확인하고, "웹 페이지 수집"에 아래 대기열 "네이버 빈틈 보강 순서"의 미색인 가이드부터 요청
+- [!] **로컬 예약 작업이 앱 예약 목록에 없음** (2026-10-19 확인): `iknowhowinfo-growth-operator`·`iknowhowinfo-weekly-gsc-indexnow` 는 `~/.claude/scheduled-tasks/` 에 폴더(SKILL.md)만 남아 있고 앱 예약 목록에는 없다. 10-10 이후 네이버 빈틈 측정(월·목)·하루 1편 보강·GSC 주간 수집이 돌지 않았다. 다시 등록할지 운영자 결정
 - [!] **(최우선) 시세 데이터 이용 조건**: 사이트 시세 원천인 data.go.kr 「금융위원회_증권상품시세정보」(15094806)가 2026-09-07 페이지 수정으로 공공누리 4유형(출처표시·상업적 이용금지·변경금지)이 됐고, 상업적 이용은 KRX 데이터 마켓플레이스 구매로 안내하며 "상업적 목적 여부와 상관 없이 제3자 무단 제공 및 재배포"를 금지한다고 적혀 있다. 이 저장소는 공개(PUBLIC)이고 `data/raw/etf_prices_*.json` 원본이 커밋돼 있다. 결정할 것: ① 저장소를 비공개로 전환(GitHub Settings, Cloudflare 연동은 그대로 동작) ② krxdata@krx.co.kr 에 광고 수익 사이트의 일별 종가 게시 가능 범위·비용 문의 ③ 답을 받을 때까지 시세 스냅샷 정지 유지(2026-10-06 `daily-etf-snapshot.yml` 비활성화). 구성종목은 운용사 6곳 모두 사전 허락이 필요해 같은 문의에 포함한다
 - [!] 클라우드 루틴 환경 네트워크 열기: 루틴 실행 세션 제목 표시줄의 환경 메뉴 → Edit → Network access 를 Full 로(또는 Custom 에 iknowhowinfo.com, investments.miraeasset.com, www.samsungfund.com, www.soletf.com, www.aceetf.co.kr, data.krx.co.kr, www.krx.co.kr, finance.naver.com 추가)
 - [!] Search Console: sitemap-index.xml 재제출, 인기 /etf 10쪽 "색인 생성 요청", 수동 조치·보안 문제 확인
@@ -102,9 +104,14 @@
 - [ ] **가이드 주제 묶음 세분화**: `GUIDE_CLUSTERS` 6개 → 15~17개(감사 표). 관련 가이드 링크가 주제를 벗어나는 비율 56% 를 낮춘다. 본문 속 상품명 → /etf·/compare 링크
 - [ ] /theme/*·/account/* (사이트맵 밖, 가이드와 같은 검색어 경합): 주제 목록 허브로 바꾸거나 noindex
 - [ ] 은퇴시킨 일별 글 4편 301(/stock/0053L0 → /etf/tiger-china 등, 감사 목록), 8주 뒤 나머지 정리
-- [ ] **네이버 빈틈 보강 순서** (naver-gap-20261007, §6-3 이 하루 1편씩 가져간다. 보강하면 줄을 지운다): ETF 괴리율 뜻(/guide/etf-fee-discount-relation, 작년 11월 7.1배) · 해외주식 양도세 250만원·연말 매도(/guide/overseas-stock-year-end-sell-amount) · 환헤지 ETF 환노출 차이(/guide/hedge-vs-unhedged) · ISA 연금저축 IRP 차이(/guide/isa-vs-pension) · 연금저축 ETF 매도 세금(/guide/pension-fund-etf-trading) · ISA 만기 해지 세금(/guide/isa-termination-after-3-years, 미색인) · 은행 etf(/guide/bank-etf, 미색인) · 삼성전자 분기 배당(/guide/individual-stock-dividend-schedule)
+- [ ] **네이버 빈틈 보강 순서** (2026-10-19 갱신: naver-gap-20261019 의 롱테일·계좌 묶음과 naver-index-20261019. §6-3 이 하루 1편씩 가져간다. 보강하면 그 항목을 지운다. 미색인 주소는 보강 뒤 IndexNow 를 보내고 운영자 수집 요청 목록에 올린다)
+  - ① 시기 먼저: 미국주식 서머타임 해제 거래시간(/guide/overseas-etf-trading-hours, 미색인, 11-01 해제라 이번 주) · 해외주식 양도세 250만원·연말 매도·연말 매도 마감일·연말 매도 결제일 기준(/guide/overseas-stock-year-end-sell-amount, 미색인, 지식iN 9,236) · ISA 만기 해지 후 재가입·ISA 만기 연장 해지 차이(/guide/isa-maturity-extend-vs-pension, 미색인, 작년 11월 15.4배) · ETF 괴리율 뜻(/guide/etf-fee-discount-relation, 미색인, 작년 11월 7.1배)
+  - ② 이미 30위 안: 연금저축 QQQ 매수 안되는 이유 3위·연금저축 미국 ETF 대체 상품 15위(/guide/pension-us-etf-alternatives) · SGOV 환차익 세금 9위·달러 파킹 ETF 세금 14위(/guide/sgov-dollar-parking-etf) · ETF 이름 H 뜻 18위(/guide/etf-name-suffix) · ETF 분배금 받으려면 언제 사야 3위(/guide/etf-distribution-date)
+  - ③ 네이버 색인된 글: 해외주식 매도 대금 입금일(/guide/foreign-stock-settlement, 지식iN 2,963) · 연금저축보험 펀드 이전·연금저축 계약이전 방법(/guide/pension-savings-insurance-to-fund-transfer, 지식iN 1.4만) · ISA 연금저축 IRP 차이(/guide/isa-vs-pension) · 금 ETF 금통장 세금 차이(/guide/gold-investment-methods) · VOO 국내상장 S&P500 세금 차이(/guide/voo-vs-domestic-sp500-tax) · 배당락일 당일 매도 배당금(/guide/ex-dividend-price-drop) · 배우자 증여 해외주식 양도세 절세(/guide/spouse-gift-tax-exemption) · ETF 총보수 기타비용 차이·ETF 실부담비용 확인(/guide/etf-fee) · ETF 괴리율 확인 방법(/guide/etf-nav-tracking) · S&P500 환헤지 환노출 선택(/guide/hedge-vs-unhedged) · ETF 장 마감 동시호가(/guide/etf-order-timing)
+  - ④ 미색인 글(지식iN 많은 순): 금융소득 2천만원 초과 건강보험료·ISA 배당 건강보험료(/guide/financial-income-health-insurance) · 연금저축 매달 얼마 넣어야(/guide/pension-monthly-contribution-amount) · 배당금 입금일 언제(/guide/dividend-payment-date) · 나스닥100 미국 오르는데 국내 하락(/guide/nasdaq100-etf-korea-us-gap) · IRP 세액공제 300만원 추가(/guide/pension-savings-vs-irp) · ISA 3년 지나면 해지·ISA 만기 해지 세금(/guide/isa-termination-after-3-years) · 해외주식 양도세 증권사 신고대행·홈택스 신고 방법·환율 적용 기준(/guide/us-stock-capital-gains-tax-filing). 나머지는 naver-gap-20261019.json 의 longtail 열림 항목
+  - 10-07 순서 중 이번 측정에서 닫힌 것(관공서·운용사 2곳 이상)은 뺐다: 환헤지 ETF 환노출 차이, 연금저축 ETF 매도 세금, 은행주 etf
 - [ ] 사실 정정 후보 (2026-10-07 보강 조사 중 발견, 1차 출처 재확인 후 정정): `etf-fee` 가 "실부담비용(TER)"으로 두 개념을 같게 씀(TER 에는 매매·중개수수료가 빠진다, KB자산운용 안내)·"총보수 연 0.05~0.5%" 범위가 S&P500 상품(0.0047%)과 안 맞음 / `domestic-sp500-etf-comparison` 의 "TIGER 순자산 약 16조원대"는 기준일 경과로 낡은 수치(시세 이용 조건 결정 전이면 수치 대신 확인 경로로) / `pension-account-etf-restrictions` 의 연금저축 레버리지·인버스 매수 금지 근거(퇴직급여법이 아니라 연금저축 쪽 규정) 재확인 / `isa-to-pension-tax-credit` 의 "그전에 깨면 기타소득세 16.5%가 붙습니다"는 공제받은 납입액·운용수익만 과세라는 점이 빠짐(시행령 제40조의3)
-- [ ] 새 주소 후보(주 2개 상한 안, 같은 지수 확인 후): 고배당주 ETF 비교(비교 페어) · 퇴직연금 ETF 매수(가이드, 기존 IRP 글과 의도 구분 확인) · 연금저축 연말 납입(기존 "연금저축 vs IRP 차이, 세액공제 한도와 채우는 순서"와 겹침 확인)
+- [ ] 새 주소 후보(주 2개 상한 안, 2026-10-19 갱신 naver-gap-20261019): ① **IRP·퇴직연금 DC형 ETF 매수 가이드 1편**: 같은 의도 검색어 6개가 모두 자리 열림이고 받을 글이 없다(퇴직연금 ETF 매수 지식iN 2,628 · IRP ETF 매수 방법 1,452 · IRP 안전자산 30% ETF 838 · 퇴직연금 DC형 ETF 매수 방법 399 · IRP ETF 분배금 재투자 179 · 퇴직연금 DC형 분배금 출금). irp-disadvantages·retirement·db-vs-dc-pension·default-option-pension 과 핵심 질문이 겹치지 않게 "어디서 어떻게 사나"에 맞춘다 ② 연금계좌 해외 ETF 이중과세(지식iN 164, 빈자리 7. 국내 상장 해외 ETF 외국납부세액 처리 변경이라 1차 출처 확인 필수) ③ 삼성그룹 ETF 비교(같은 지수 묶음, 지식iN 376, 빈자리 7). 고배당주 ETF 비교·연금저축 연말 납입은 10-19 측정에서 관공서·운용사 3곳으로 닫혀 뺐다
 - [ ] `/etf` 상품 개요(src/lib/etf-profiles.ts, 2026-10-08 신설) 다음 대상 (naver-gap-20261010 점수순): sol 미국양자컴퓨팅top10(검색량 3.8) · PLUS 코리아HBM반도체 · RISE 글로벌AI낸드메모리반도체 · TIGER 삼성전자SK하이닉스미국채혼합50 · ACE 삼성전자SK하이닉스플러스채권혼합50 · HANARO 미국에이전틱AI TOP2+ · TIGER 미국배당다우존스 분배금(10-10 개요로 일부 답함). 운용사 상품 페이지·투자설명서로 확인한 사실만, 구성종목·시세 숫자 없이. 쓴 뒤 `npx tsx scripts/check-etf-profiles.mts` 로 점검
 - [ ] 새 주소 후보 (naver-gap-20261010 점수 70): "tiger 미국배당다우존스 커버드콜"·"tiger 미국배당다우존스타겟커버드콜" 은 1호·2호·데일리 세 상품 사이의 선택 의도라 상품 페이지 하나로 받지 못한다. 세 상품 비교(지수 3%·7%·10% 프리미엄, 총보수 0.39·0.39·0.25%, 분배 기준일 15일·말일·15일, 2026-10-10 확인)를 새 비교 주소로. 같은 지수가 아니라 비교 페어 규칙(§2-3) 밖이니 가이드 또는 /compare 예외로 운영자 판단
 - [ ] 비교 페이지 네이버 색인 2/11: `/compare` 본문이 같은 틀의 숫자 표 위주라 얇게 읽힐 수 있다. 쌍마다 다른 정보(기초지수 설명·상장일·총보수·분배 기준일)를 더하는 템플릿 보강
@@ -126,6 +133,7 @@
 - [ ] D30 판정 (2026-10-30): 9월 가이드 색인 비율, /etf 노출 → PUBLISHING.md §8
 
 ### 완료
+- [x] 2026-10-19 네이버 롱테일 빈틈 측정(운영자 "네이버 상위 노출 할 수 있는 롱키워드 빈틈 키워드 나열"): `naver-gap-scout` 에 롱테일 묶음(`data/keywords/naver-longtail-seeds.json` 159개, 받을 주소를 직접 적음)과 응답 없는 요청 20초 재시도를 더했다(같은 재시도를 `naver-index-audit` 에도). 전체 276건(API 950회) 중 롱테일 159건 자리 열림 81, 롱테일에서 자사 30위 안 8건(연금저축 QQQ 매수 안되는 이유 3위·ETF 분배금 받으려면 언제 사야 3위 등). 닫힌 78건은 대부분 국세청·금감원·운용사 문서가 2곳 이상 위에 있다(연금저축 연말 납입 마감일·연말정산 연금저축 세액공제 환급 등). 같은 날 가이드 네이버 색인 51/269(10-07 160)을 확인해 운영자 조치에 올렸다
 - [x] 2026-10-14 밤 3차 지시서(미색인 가이드·크롤 버짓·CTR·네이버): 서치콘솔 URL 검사로 가이드 269편 전수 실측(색인 189·발견됨 65·미인지 14·색인 보류 1). 미색인 80편 중 61편이 08~09월 발행이고 79편은 한 번도 수집되지 않음(색인된 글은 9~10월에도 재수집, 즉 새 글 수집 우선순위 문제). 반영: src/lib/crawl-priority.ts(미색인 80편) → 가이드 본문 둘째 섹션 뒤 "함께 읽으면 좋은 글" 2편(같은 주제 허브, 링크가 고르게 돌도록 시작 위치 회전)·비교 페이지 3편·홈 "주제별로 더 읽어 볼 가이드"(80편 전부)·/guide 상단 주제 허브 11곳 링크·RSS 에 최신 100개 밖 미색인 8편 추가. GSC 90일 노출이 있던 /etf 107쪽을 색인 유지 목록에 넣음(data/etf-google-keep.json, 그중 40쪽이 10-08 기준으로 noindex 였음), sitemap-etf.xml 을 523 → 노출 종목+상품 개요만(한시). CTR 수술: GuideDef.seoTitle 신설, foreign-stock-settlement("국내 etf 결제일 t+2" 노출 109·7.1위)·pension-account-etf-restrictions(노출 62·9.2위) 검색 결과 제목·설명, /etf(노출 938·6.1위·클릭 0)·/guide/latest(198·5.3위) 제목. 이미지 사이트맵에 주제 허브
 - [x] 2026-10-14 저녁 운영자 지시 "광고는 자동 광고만": 수동 광고 단위 전부 삭제(AdBanner·AD_SLOTS·planGuideAds·가이드 상단/본문/하단·/etf·/compare·계산기 2곳 자리, 관련 CSS). 남긴 것은 head 의 자동 광고 로더 1줄과 ads.txt
 - [x] 2026-10-14 저녁 2차 지시서(하위 페이지 색인 0건 주장) 점검: 서치콘솔 URL 검사 실측으로 비교 7/11·가이드·/etf 색인 확인(0건 아님). 모든 로봇 UA 에 200·index,follow·X-Robots-Tag 없음, http→https 301(robots·sitemap 포함), 미래 날짜 0건. 고친 것: /for/* 3쪽·/income 이 06-13 시황 글을 대표 링크로 걸던 것을 주제 허브 최신 가이드로, 색인되는 /etf 14쪽의 "관련 분석" 칸과 가이드 8편의 "함께 보면 좋은 데일리 분석" 목록(모두 06월 시황 글) 제거, 비교 페이지 dateModified·sitemap lastmod 에 본문 수정일(10-14) 반영, sitemap 우선순위 정렬, 예전 파이프라인 코드의 "자동 분석 리포트"·"AI 에이전트 K" 문구 제거
@@ -172,13 +180,13 @@
 
 | 보강일 | 검색어 | 주소 | 보강 전 자사 순위 | 7일 뒤 | 14일 뒤 |
 |---|---|---|---|---|---|
-| 2026-10-07 | IRP 위험자산 70% | /guide/irp-disadvantages | 30위 밖(미색인) | 30위 밖 (10-14, 자리 열림 유지·빈자리 7) | |
-| 2026-10-07 | irp 단점 | /guide/irp-disadvantages | 30위 밖(미색인) | 30위 밖 (10-14, 빈자리 5) | |
-| 2026-10-07 | ETF 총보수 비교 | /guide/same-index-etf-choice | 30위 밖(색인됨) | 30위 밖 (10-14, 빈자리 10) | |
-| 2026-10-07 | ISA 만기 연금저축 이전 | /guide/isa-to-pension-transfer | 30위 밖(색인됨) | 30위 밖 (10-14, 빈자리 6) | |
-| 2026-10-08 | PLUS AI반도체소부장액티브 | /etf/plus-aisemiconductoractive (상품 개요 신설) | 30위 밖(색인 미확인) | | |
-| 2026-10-10 | PLUS AI반도체소부장액티브 (추가 보강) | /etf/plus-aisemiconductoractive (운용역 관점·과세·첫 분배 일정) | 30위 밖(네이버 미색인 확인, `site:` 0건) | | |
-| 2026-10-10 | 파워 SK그룹 | /etf/power-sk (상품 개요 신설) | 30위 밖(색인됨) | | |
-| 2026-10-10 | RISE 삼성SK그룹 | /etf/rise-sk (상품 개요 신설) | 30위 밖(미색인) | | |
-| 2026-10-10 | TIGER 현대차LG전자고정피지컬AI밸류체인 | /etf/tiger-lgai (상품 개요 신설) | 30위 밖(미색인) | | |
-| 2026-10-10 | tiger 미국배당다우존스 주가·분배금 | /etf/tiger-us-dividend-djones (상품 개요 신설, 시세 숫자 없이 가격 결정 요인) | 30위 밖(미색인) | | |
+| 2026-10-07 | IRP 위험자산 70% | /guide/irp-disadvantages | 30위 밖(미색인) | 30위 밖 (10-14, 자리 열림 유지·빈자리 7) | 30위 밖 (10-19, 12일째, 가이드 네이버 미색인) |
+| 2026-10-07 | irp 단점 | /guide/irp-disadvantages | 30위 밖(미색인) | 30위 밖 (10-14, 빈자리 5) | 30위 밖 (10-19, 12일째, 가이드 네이버 미색인) |
+| 2026-10-07 | ETF 총보수 비교 | /guide/same-index-etf-choice | 30위 밖(색인됨) | 30위 밖 (10-14, 빈자리 10) | 30위 밖 (10-19, 12일째, 가이드가 네이버 색인에서 빠짐) |
+| 2026-10-07 | ISA 만기 연금저축 이전 | /guide/isa-to-pension-transfer | 30위 밖(색인됨) | 30위 밖 (10-14, 빈자리 6) | 30위 밖 (10-19, 12일째, 가이드가 네이버 색인에서 빠짐·관공서 2곳으로 닫힘) |
+| 2026-10-08 | PLUS AI반도체소부장액티브 | /etf/plus-aisemiconductoractive (상품 개요 신설) | 30위 밖(색인 미확인) | 30위 밖 (10-19) | |
+| 2026-10-10 | PLUS AI반도체소부장액티브 (추가 보강) | /etf/plus-aisemiconductoractive (운용역 관점·과세·첫 분배 일정) | 30위 밖(네이버 미색인 확인, `site:` 0건) | 30위 밖 (10-19) | |
+| 2026-10-10 | 파워 SK그룹 | /etf/power-sk (상품 개요 신설) | 30위 밖(색인됨) | 30위 밖 (10-19) | |
+| 2026-10-10 | RISE 삼성SK그룹 | /etf/rise-sk (상품 개요 신설) | 30위 밖(미색인) | 30위 밖 (10-19) | |
+| 2026-10-10 | TIGER 현대차LG전자고정피지컬AI밸류체인 | /etf/tiger-lgai (상품 개요 신설) | 30위 밖(미색인) | 30위 밖 (10-19) | |
+| 2026-10-10 | tiger 미국배당다우존스 주가·분배금 | /etf/tiger-us-dividend-djones (상품 개요 신설, 시세 숫자 없이 가격 결정 요인) | 30위 밖(미색인) | 30위 밖 (10-19, 주가 자리 열림 빈자리 6) | |

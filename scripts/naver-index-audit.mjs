@@ -49,7 +49,11 @@ async function webkr(query) {
     calls++;
     let res;
     try {
-      res = await fetch(url, { headers: { 'X-Naver-Client-Id': ID, 'X-Naver-Client-Secret': SECRET } });
+      // 응답 없이 붙잡힌 연결은 20초 뒤 끊고 다시 보낸다 (2026-10-19 빈틈 측정이 이렇게 멈췄다)
+      res = await fetch(url, {
+        headers: { 'X-Naver-Client-Id': ID, 'X-Naver-Client-Secret': SECRET },
+        signal: AbortSignal.timeout(20000),
+      });
     } catch {
       await sleep(1500 * (attempt + 1));
       continue;
