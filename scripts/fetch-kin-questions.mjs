@@ -17,6 +17,7 @@
  *
  *   실행: npm run keywords:kin
  *         npm run keywords:kin -- --seeds=20 --pages=3
+ *         npm run keywords:kin -- --sort=date --pages=1   (최신 질문 순)
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -59,6 +60,8 @@ const args = Object.fromEntries(
 const SEED_LIMIT = Number(args.seeds) || SEEDS.length;
 const PAGES = Number(args.pages) || 3;   // start = 1, 101, 201
 const DRY = args.dry === 'true';
+// --sort=date: 최신 질문 순(지금 철에 몰리는 질문을 보려고, 2026-10-19). 기본은 정확도 순
+const SORT = args.sort === 'date' ? 'date' : 'sim';
 
 const id = readEnv('NAVER_CLIENT_ID');
 const secret = readEnv('NAVER_CLIENT_SECRET');
@@ -76,9 +79,10 @@ const DOMAIN_RE = /ETF|etf|주식|증권|코인|비트코인|가상자산|배당
 const EXCLUDE_RE = /이혼|위자료|양육비|경매|임차권|전세사기|월드컵|운세|만화|게임 아이템|중고차|성형|다이어트/;
 
 async function search(query, start) {
-  const url = `https://openapi.naver.com/v1/search/kin.json?query=${encodeURIComponent(query)}&display=100&start=${start}&sort=sim`;
+  const url = `https://openapi.naver.com/v1/search/kin.json?query=${encodeURIComponent(query)}&display=100&start=${start}&sort=${SORT}`;
   const r = await fetch(url, {
     headers: { 'X-Naver-Client-Id': id, 'X-Naver-Client-Secret': secret },
+    signal: AbortSignal.timeout(20000),
   });
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   return r.json();
