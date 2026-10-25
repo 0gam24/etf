@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-18T03:31:27.264Z",
-  "sourceBaseDate": "20261015",
-  "count": 1176,
+  "generatedAt": "2026-10-25T03:39:52.954Z",
+  "sourceBaseDate": "20261022",
+  "count": 1183,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -1178,7 +1178,14 @@
     "0241D0": "kodex-usaiactive",
     "0243M0": "ds-aisemiconductoractive",
     "0247S0": "kiwoom-globalmlccaitop4",
-    "0254W0": "ace-29-11-corporate-bondaa-plusactive"
+    "0254W0": "ace-29-11-corporate-bondaa-plusactive",
+    "0236J0": "mighty-usaiactive",
+    "0252V0": "ace-uscpusemiconductortop3",
+    "0254C0": "kodex-27-12-financeaa-plusactive",
+    "0254H0": "rise-semiconductoractive-0254h0",
+    "0254S0": "kodex-us-dividend-djonesactive",
+    "0255E0": "tiger-globalmlcc",
+    "0256C0": "1q-usaisemiconductor"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -5884,6 +5891,34 @@
     "ace-29-11-corporate-bondaa-plusactive": {
       "code": "0254W0",
       "name": "ACE 29-11 회사채(AA-이상)액티브"
+    },
+    "mighty-usaiactive": {
+      "code": "0236J0",
+      "name": "마이티 미국피지컬AI액티브"
+    },
+    "ace-uscpusemiconductortop3": {
+      "code": "0252V0",
+      "name": "ACE 미국CPU반도체TOP3+"
+    },
+    "kodex-27-12-financeaa-plusactive": {
+      "code": "0254C0",
+      "name": "KODEX 27-12 금융채(AA-이상)액티브"
+    },
+    "rise-semiconductoractive-0254h0": {
+      "code": "0254H0",
+      "name": "RISE 반도체소부장액티브"
+    },
+    "kodex-us-dividend-djonesactive": {
+      "code": "0254S0",
+      "name": "KODEX 미국배당다우존스액티브"
+    },
+    "tiger-globalmlcc": {
+      "code": "0255E0",
+      "name": "TIGER 글로벌MLCC&기판"
+    },
+    "1q-usaisemiconductor": {
+      "code": "0256C0",
+      "name": "1Q 엔비디아고정미국AI반도체"
     }
   }
 }

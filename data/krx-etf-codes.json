@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-10-18T03:31:27.153Z",
-  "baseDate": "20261015",
-  "count": 1176,
+  "fetchedAt": "2026-10-25T03:39:52.778Z",
+  "baseDate": "20261022",
+  "count": 1183,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -5778,6 +5778,11 @@
       "issueCode": "KR70234N0005",
       "name": "KIWOOM 삼성SK그룹TOP4+"
     },
+    "0236J0": {
+      "shortcode": "0236J0",
+      "issueCode": "KR70236J0009",
+      "name": "마이티 미국피지컬AI액티브"
+    },
     "0238C0": {
       "shortcode": "0238C0",
       "issueCode": "KR70238C0004",
@@ -5838,10 +5843,40 @@
       "issueCode": "KR70247S0005",
       "name": "KIWOOM 글로벌MLCC&AI기판TOP4+"
     },
+    "0252V0": {
+      "shortcode": "0252V0",
+      "issueCode": "KR70252V0002",
+      "name": "ACE 미국CPU반도체TOP3+"
+    },
+    "0254C0": {
+      "shortcode": "0254C0",
+      "issueCode": "KR70254C0003",
+      "name": "KODEX 27-12 금융채(AA-이상)액티브"
+    },
+    "0254H0": {
+      "shortcode": "0254H0",
+      "issueCode": "KR70254H0008",
+      "name": "RISE 반도체소부장액티브"
+    },
+    "0254S0": {
+      "shortcode": "0254S0",
+      "issueCode": "KR70254S0005",
+      "name": "KODEX 미국배당다우존스액티브"
+    },
     "0254W0": {
       "shortcode": "0254W0",
       "issueCode": "KR70254W0009",
       "name": "ACE 29-11 회사채(AA-이상)액티브"
+    },
+    "0255E0": {
+      "shortcode": "0255E0",
+      "issueCode": "KR70255E0000",
+      "name": "TIGER 글로벌MLCC&기판"
+    },
+    "0256C0": {
+      "shortcode": "0256C0",
+      "issueCode": "KR70256C0001",
+      "name": "1Q 엔비디아고정미국AI반도체"
     },
     "069500": {
       "shortcode": "069500",
@@ -7405,6 +7440,11 @@
       "issueCode": "KR70234N0005",
       "name": "KIWOOM 삼성SK그룹TOP4+"
     },
+    "KR70236J0009": {
+      "shortcode": "0236J0",
+      "issueCode": "KR70236J0009",
+      "name": "마이티 미국피지컬AI액티브"
+    },
     "KR70238C0004": {
       "shortcode": "0238C0",
       "issueCode": "KR70238C0004",
@@ -7465,10 +7505,40 @@
       "issueCode": "KR70247S0005",
       "name": "KIWOOM 글로벌MLCC&AI기판TOP4+"
     },
+    "KR70252V0002": {
+      "shortcode": "0252V0",
+      "issueCode": "KR70252V0002",
+      "name": "ACE 미국CPU반도체TOP3+"
+    },
+    "KR70254C0003": {
+      "shortcode": "0254C0",
+      "issueCode": "KR70254C0003",
+      "name": "KODEX 27-12 금융채(AA-이상)액티브"
+    },
+    "KR70254H0008": {
+      "shortcode": "0254H0",
+      "issueCode": "KR70254H0008",
+      "name": "RISE 반도체소부장액티브"
+    },
+    "KR70254S0005": {
+      "shortcode": "0254S0",
+      "issueCode": "KR70254S0005",
+      "name": "KODEX 미국배당다우존스액티브"
+    },
     "KR70254W0009": {
       "shortcode": "0254W0",
       "issueCode": "KR70254W0009",
       "name": "ACE 29-11 회사채(AA-이상)액티브"
+    },
+    "KR70255E0000": {
+      "shortcode": "0255E0",
+      "issueCode": "KR70255E0000",
+      "name": "TIGER 글로벌MLCC&기판"
+    },
+    "KR70256C0001": {
+      "shortcode": "0256C0",
+      "issueCode": "KR70256C0001",
+      "name": "1Q 엔비디아고정미국AI반도체"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -13288,6 +13358,11 @@
       "name": "KIWOOM 삼성SK그룹TOP4+"
     },
     {
+      "shortcode": "0236J0",
+      "issueCode": "KR70236J0009",
+      "name": "마이티 미국피지컬AI액티브"
+    },
+    {
       "shortcode": "0238C0",
       "issueCode": "KR70238C0004",
       "name": "IBK 한미대표기업TOP2+채권혼합50액티브"
@@ -13348,9 +13423,39 @@
       "name": "KIWOOM 글로벌MLCC&AI기판TOP4+"
     },
     {
+      "shortcode": "0252V0",
+      "issueCode": "KR70252V0002",
+      "name": "ACE 미국CPU반도체TOP3+"
+    },
+    {
+      "shortcode": "0254C0",
+      "issueCode": "KR70254C0003",
+      "name": "KODEX 27-12 금융채(AA-이상)액티브"
+    },
+    {
+      "shortcode": "0254H0",
+      "issueCode": "KR70254H0008",
+      "name": "RISE 반도체소부장액티브"
+    },
+    {
+      "shortcode": "0254S0",
+      "issueCode": "KR70254S0005",
+      "name": "KODEX 미국배당다우존스액티브"
+    },
+    {
       "shortcode": "0254W0",
       "issueCode": "KR70254W0009",
       "name": "ACE 29-11 회사채(AA-이상)액티브"
+    },
+    {
+      "shortcode": "0255E0",
+      "issueCode": "KR70255E0000",
+      "name": "TIGER 글로벌MLCC&기판"
+    },
+    {
+      "shortcode": "0256C0",
+      "issueCode": "KR70256C0001",
+      "name": "1Q 엔비디아고정미국AI반도체"
     },
     {
       "shortcode": "069500",
