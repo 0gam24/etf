@@ -10,7 +10,6 @@ import {
 import { GUIDES, GUIDE_PUBLISHED_AT, getGuidePublishedAt, getGuideModifiedAt } from '@/lib/guides';
 import { getLatestEtfData, getKrxEtfMeta } from '@/lib/data';
 import { COMPARE_PAIRS, COMPARE_CONTENT_UPDATED_AT } from '@/lib/etf-compare-pairs';
-import { ALL_PERSONAS } from '@/lib/personas-config';
 import { GUIDE_CATEGORIES, categoryHref, getGuidesInCategory, guideDate } from '@/lib/guide-categories';
 
 /**
@@ -71,7 +70,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   TOP_LEVEL_CATEGORIES.filter(cat => cat === 'income').forEach(cat => {
     routes.push({
       url: `${baseUrl}/${cat}`,
-      lastModified: getCategoryLastModified(cat) || fallback,
+      // 일별 글 날짜만 보면 06-12 에 멈춰 있다. 목록 페이지 자체를 마지막으로 고친 날(2026-10-14, 링크 목록 정리)과 비교해 늦은 쪽
+      lastModified: new Date(Math.max(
+        getCategoryLastModified(cat)?.getTime() ?? 0,
+        new Date('2026-10-14T09:00:00+09:00').getTime(),
+      )),
       changeFrequency: 'weekly',
       priority: 0.7,
     });
@@ -100,9 +103,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   // 뉴스레터 구독 페이지 (재방문 채널)
+  //   페이지 문구를 마지막으로 고친 날(2026-10-06). 예전에는 일별 글 날짜를 써서 06-12 로 남아 있었다.
   routes.push({
     url: `${baseUrl}/newsletter`,
-    lastModified: getSiteLastModified() || fallback,
+    lastModified: new Date('2026-10-06T09:00:00+09:00'),
     changeFrequency: 'monthly',
     priority: 0.6,
   });
@@ -208,16 +212,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // ── 페르소나 entry pages (Phase 4) — 7종 ────────────────────────────
-  // PERSONAS 가 personas-config.ts 에서 single source of truth → 추가 시 자동 sitemap 반영.
-  ALL_PERSONAS.forEach(p => {
-    routes.push({
-      url: `${baseUrl}/for/${p.slug}`,
-      lastModified: getSiteLastModified() || fallback,
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    });
-  });
+  // /for/* (페르소나 7쪽)는 2026-10-30부터 noindex,follow 라 넣지 않는다 (src/app/for/[persona]/page.tsx).
 
   // /weekly·/today·/strategy/* 는 2026-10-08부터 넣지 않는다 (noindex,follow, site-meta RETIRED_ROBOTS).
   //   주간·일일 시황과 거래 신호 페이지는 갱신이 멈췄고 시세 데이터에 기대며 지금의 주제 규칙과 맞지 않는다.

@@ -1,5 +1,5 @@
 import { getSiteLastModified, getAllPosts } from '@/lib/posts';
-import { getLatestEtfData } from '@/lib/data';
+import { getLatestEtfData, getAllEtfSlugs, slugToCode, getEtfPageFacts, getEtfGoogleKeepSet } from '@/lib/data';
 import { GUIDE_PUBLISHED_AT } from '@/lib/guides';
 import mainSitemap from '../sitemap';
 
@@ -56,11 +56,25 @@ export async function GET() {
     .reduce((a, b) => Math.max(a, b), 0);
   const contentLastmodTs = Math.max(latestPost, latestGuide);
 
-  // 종목 사전은 KRX 시세 기준일이 곧 갱신일이다 (YYYYMMDD → ISO)
+  // 종목 사전 sitemap 은 종목별 max(시세 기준일, 분배 기준일)을 쓴다. 같은 종목·같은 계산으로 최댓값을 잡는다.
+  //   예전에는 시세 기준일만 봐서 sitemap-etf 안 항목(분배일 10-09)보다 index 날짜(10-01)가 앞섰다
+  //   (구글 large-sitemaps.md "해당 사이트맵 파일이 수정된 시간", 2026-10-30)
   const baseDate = getLatestEtfData()?.baseDate;
-  const etfLastmodTs = baseDate && /^\d{8}$/.test(baseDate)
-    ? new Date(`${baseDate.slice(0, 4)}-${baseDate.slice(4, 6)}-${baseDate.slice(6, 8)}T09:00:00+09:00`).getTime()
+  const priceLastmodTs = baseDate && /^\d{8}$/.test(baseDate)
+    ? new Date(`${baseDate.slice(0, 4)}-${baseDate.slice(4, 6)}-${baseDate.slice(6, 8)}T00:00:00+09:00`).getTime()
     : 0;
+  const keep = getEtfGoogleKeepSet();
+  const etfLastmodTs = getAllEtfSlugs().reduce((max, slug) => {
+    const code = slugToCode(slug);
+    if (!code) return max;
+    const facts = getEtfPageFacts(code);
+    if (!facts.indexable) return max;
+    if (!facts.profile && !keep.has(code.toUpperCase())) return max;
+    const ymd = facts.lastModified?.split('-').join('');
+    if (!ymd || ymd.length !== 8) return max;
+    const t = new Date(`${ymd.slice(0, 4)}-${ymd.slice(4, 6)}-${ymd.slice(6, 8)}T00:00:00+09:00`).getTime();
+    return isNaN(t) ? max : Math.max(max, t);
+  }, priceLastmodTs);
 
   /**
    * 속보 sitemap(Google News 형식)은 최근 2일 안의 속보 글만 담는다.

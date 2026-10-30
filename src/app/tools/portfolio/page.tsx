@@ -15,7 +15,6 @@ export default function PortfolioPage() {
     <article style={{ maxWidth: '60rem', margin: '0 auto', padding: 'var(--space-8) var(--space-6)' }}>
       <Breadcrumbs items={[
         { name: '홈', href: '/' },
-        { name: '도구', href: '/tools/portfolio' },
         { name: '포트폴리오 시뮬레이션', href: '/tools/portfolio' },
       ]} />
 

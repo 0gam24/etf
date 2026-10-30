@@ -8,6 +8,7 @@ import { jsonLd, buildSoftwareAppSchema } from '@/lib/schema';
 import { TAX_RULES, TAX_SOURCES, formatWon } from '@/lib/account-tax-rules';
 import { simulateAccountTax } from '@/lib/tax-sim';
 import { GUIDE_CATEGORIES, categoryHref } from '@/lib/guide-categories';
+import { toAsciiHref } from '@/lib/href';
 
 // 2026-10-14 개편: 계산기만 있던 페이지에 계산 방식·계좌별 세율표·계산 예시·FAQ 를 서버 렌더 본문으로 더했다.
 //   예전 요약에 있던 "ISA 5년 의무"(현행 3년), "테마 ETF 15.4%"(국내 주식 테마는 매매차익 비과세) 같은 오류도 함께 고쳤다.
@@ -78,7 +79,6 @@ export default function TaxComparePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(appSchema) }} />
       <Breadcrumbs items={[
         { name: '홈', href: '/' },
-        { name: '도구', href: '/tools/portfolio' },
         { name: '계좌별 세후 비교', href: '/tools/tax-compare' },
       ]} />
 
@@ -212,7 +212,7 @@ export default function TaxComparePage() {
           {TAX_SOURCES.map((s, i) => (
             <span key={s.url}>
               {i > 0 ? ' · ' : ''}
-              <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+              <a href={toAsciiHref(s.url)} target="_blank" rel="noopener noreferrer">{s.label}</a>
             </span>
           ))}
         </p>

@@ -22,13 +22,17 @@ const GA4_ID = 'G-P2ZYD31B29';
 //   새로 고치는 것(ETF 종목 사전의 종가·괴리율)을 앞에 두고 빈도 약속은 빼는 쪽으로 교체.
 //   네이버 콘텐츠 마크업 가이드(searchadvisor.naver.com/guide/markup-content)의 "키워드 2회 이상
 //   반복 금지"에 맞춰 ETF·KRX를 한 번씩만 쓴다. 피드 채널 소개(src/lib/feed.ts SITE_DESC)도 같은 문구로 맞출 것.
+//   2026-10-30: 시세 수집이 10-02 로 멈춰 "최근 거래일 기준"·"종가"는 지킬 수 없는 약속이 됐다. 구글 helpful content
+//   "쉽게 검증할 수 있는 사실 정보 오류", 네이버 "가격… 최신 상태로". 시세를 약속하지 않는 문장으로 바꿨다.
 const SITE_DESCRIPTION =
-  'KRX 상장 ETF의 종목코드·종가·NAV 괴리율을 최근 거래일 기준으로 정리한 종목 사전입니다. 비슷한 상품끼리의 1:1 비교, 월배당·커버드콜 분배 정보, ISA·연금저축 절세 가이드를 국세청·금감원·한국거래소 같은 1차 출처와 함께 확인하세요.';
+  'KRX 상장 ETF를 종목코드로 찾는 종목 사전과 같은 지수 상품 1:1 비교, 월배당·커버드콜 분배 정보, ISA·연금저축 절세 가이드를 국세청·금감원 같은 1차 출처와 함께 정리했습니다.';
+// 기본 제목. 예전 "오늘 뜨는 ETF의 진짜 이유"는 접은 일일 시황 코너의 문구라 404 등 제목 없는 화면에 그대로 나갔다 (2026-10-30)
+const SITE_DEFAULT_TITLE = 'Daily ETF Pulse, 종목 사전·같은 지수 비교·절세 가이드';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL || 'https://iknowhowinfo.com'),
   title: {
-    default: "Daily ETF Pulse, 오늘 뜨는 ETF의 진짜 이유",
+    default: SITE_DEFAULT_TITLE,
     template: "%s | Daily ETF Pulse",
   },
   description: SITE_DESCRIPTION,
@@ -56,18 +60,18 @@ export const metadata: Metadata = {
       url: '/og/default.png',
       width: 1200,
       height: 630,
-      alt: 'Daily ETF Pulse, 오늘 뜨는 ETF의 진짜 이유',
+      alt: SITE_DEFAULT_TITLE,
     }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Daily ETF Pulse, 오늘 뜨는 ETF의 진짜 이유',
+    title: SITE_DEFAULT_TITLE,
     description: SITE_DESCRIPTION,
     images: [{
       url: '/og/default.png',
       width: 1200,
       height: 630,
-      alt: 'Daily ETF Pulse, 오늘 뜨는 ETF의 진짜 이유',
+      alt: SITE_DEFAULT_TITLE,
     }],
   },
   robots: {
@@ -102,10 +106,11 @@ export const viewport: Viewport = {
 
 const SITE_URL = process.env.SITE_URL || 'https://iknowhowinfo.com';
 
-// Organization 강화 — Google E-E-A-T 신뢰 신호. NewsMediaOrganization으로 publisher type 일관화.
+// Organization — 발행처 엔티티. 2026-10-30 NewsMediaOrganization → Organization (뉴스 매체가 아닌 정보 사이트,
+//   구글 organization.md "가장 구체적인 하위유형"). src/lib/schema.ts 의 publisher 와 같은 유형·로고를 쓴다.
 const ORG_SCHEMA = {
   '@context': 'https://schema.org',
-  '@type': 'NewsMediaOrganization',
+  '@type': 'Organization',
   // @id — 사이트 전역에서 동일 entity 참조용 anchor (Article publisher 등과 상호참조 가능)
   '@id': `${SITE_URL}/#organization`,
   name: 'Daily ETF Pulse',
@@ -118,11 +123,12 @@ const ORG_SCHEMA = {
     email: 'smartdatashop@gmail.com',
     availableLanguage: ['Korean'],
   },
+  // 정사각형 180x180 (구글 로고 최소 112x112). 예전 og-logo.png 는 600x60 이었다
   logo: {
     '@type': 'ImageObject',
-    url: `${SITE_URL}/og-logo.png`,
-    width: 600,
-    height: 60,
+    url: `${SITE_URL}/logo-square.png`,
+    width: 180,
+    height: 180,
   },
   description: SITE_DESCRIPTION,
   inLanguage: 'ko-KR',
@@ -130,11 +136,8 @@ const ORG_SCHEMA = {
   publishingPrinciples: `${SITE_URL}/about`,
   correctionsPolicy: `${SITE_URL}/about#corrections`,
   actionableFeedbackPolicy: `${SITE_URL}/contact`,
-  // sameAs — 같은 entity의 외부 채널 명시 (Knowledge Panel 자격 신호)
-  // RSS는 항상 활성, Threads는 토큰 등록 후 자동 발행
-  sameAs: [
-    `${SITE_URL}/rss.xml`,
-  ] as string[],
+  // sameAs 는 실제로 운영하는 외부 채널(블로그·유튜브 등)만 넣는다. 자기 사이트 RSS 는 채널이 아니라 2026-10-30 뺐다
+  //   (네이버 "사이트 연관채널" 마크업, 구글 organization.md "다른 웹사이트의 페이지 URL"). 피드 안내는 <link rel="alternate"> 가 맡는다.
   // parentOrganization(smartdatashop.kr)은 2026-09-30 제거. 형제 사이트가 '사이트 전역
   //   자매 링크 네트워크'를 AdSense 거절 원인으로 기록했다. 운영 주체 표기는 /about에 있다.
 };
@@ -147,7 +150,7 @@ const WEBSITE_SCHEMA = {
   alternateName: ['데일리 ETF 펄스', 'iknowhowinfo.com'],
   url: SITE_URL,
   inLanguage: 'ko-KR',
-  publisher: { '@type': 'NewsMediaOrganization', '@id': `${SITE_URL}/#organization`, name: 'Daily ETF Pulse', url: SITE_URL },
+  publisher: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: 'Daily ETF Pulse', url: SITE_URL },
   potentialAction: {
     '@type': 'SearchAction',
     // 2026-10-14: 홈(/?q=)은 검색을 받지 않아 실제로 검색되는 ETF 사전 검색으로 바꿨다 (EtfIndexSearch 가 ?q= 를 읽는다).

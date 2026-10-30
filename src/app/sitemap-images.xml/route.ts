@@ -1,7 +1,6 @@
 import { getAllPosts } from '@/lib/posts';
 import { GUIDE_CATEGORIES, categoryHref, getGuidesInCategory } from '@/lib/guide-categories';
 import { GUIDES } from '@/lib/guides';
-import { ALL_PERSONAS } from '@/lib/personas-config';
 // /etf 타이틀의 종목 수 — data/etf-slug-map.json 에서 파생 (숫자 하드코딩 금지, 번들 포함이라 런타임 fs 불필요)
 import etfSlugMap from '../../../data/etf-slug-map.json';
 
@@ -56,6 +55,14 @@ function ogImageUrl(params: Record<string, string>): string {
   return `${SITE}/og/${c}.png`;
 }
 
+/*
+ * 2026-10-30: 각 주소가 그 페이지의 실제 og:image 를 가리키게 고쳤다. 전에는 홈·허브·가이드 282개 주소가
+ *   접은 일일 시황 코너 카드(/og/pulse.png "오늘의 ETF 관전포인트")를 가리켜, 페이지에 없는 이미지를 알리고 있었다.
+ *   구글 google-images.md: 이미지 사이트맵은 그 페이지의 이미지를 알리는 용도. 가이드는 /og/guide.png,
+ *   홈·허브·도구는 /og/default.png (운영 HTML og:image 실측). image:title·caption 은 구글이 더 쓰지 않아 뺐다.
+ *   /for/* 는 같은 날 noindex 로 돌려 뺐다.
+ */
+
 export async function GET() {
   const allPosts = getAllPosts();
   const entries: string[] = [];
@@ -65,8 +72,7 @@ export async function GET() {
   <url>
     <loc>${SITE}</loc>
     <image:image>
-      <image:loc>${ogImageUrl({ title: 'Daily ETF Pulse, 오늘 뜨는 ETF의 진짜 이유', category: 'pulse' })}</image:loc>
-      <image:title>${escapeXml('Daily ETF Pulse, 오늘 뜨는 ETF의 진짜 이유')}</image:title>
+      <image:loc>${ogImageUrl({ category: 'default' })}</image:loc>
     </image:image>
   </url>`);
 
@@ -76,7 +82,7 @@ export async function GET() {
   <url>
     <loc>${SITE}/${cat}</loc>
     <image:image>
-      <image:loc>${ogImageUrl({ title: cat.toUpperCase(), category: cat })}</image:loc>
+      <image:loc>${ogImageUrl({ category: 'default' })}</image:loc>
     </image:image>
   </url>`);
   });
@@ -103,21 +109,12 @@ export async function GET() {
     if (getGuidesInCategory(c).length) STATIC_PAGES.push({ path: categoryHref(c), title: c.title, category: 'pulse' });
   }
 
-  // ── 페르소나 entry pages 7종 (Phase 4), Image Sitemap 등록 ───────
-  ALL_PERSONAS.forEach(p => {
-    STATIC_PAGES.push({
-      path: `/for/${p.slug}`,
-      title: `${p.hero.title} | ${p.displayName}`,
-      category: 'pulse',
-    });
-  });
   STATIC_PAGES.forEach(p => {
     entries.push(`
   <url>
     <loc>${SITE}${p.path}</loc>
     <image:image>
-      <image:loc>${ogImageUrl({ title: p.title.slice(0, 60), category: p.category || 'pulse' })}</image:loc>
-      <image:title>${escapeXml(p.title)}</image:title>
+      <image:loc>${ogImageUrl({ category: 'default' })}</image:loc>
     </image:image>
   </url>`);
   });
@@ -129,9 +126,7 @@ export async function GET() {
   <url>
     <loc>${SITE}/guide/${g.slug}</loc>
     <image:image>
-      <image:loc>${ogImageUrl({ title: g.title.slice(0, 60), category: 'pulse' })}</image:loc>
-      <image:title>${escapeXml(g.title)}</image:title>
-      <image:caption>${escapeXml(g.tagline)}</image:caption>
+      <image:loc>${ogImageUrl({ category: 'guide' })}</image:loc>
     </image:image>
   </url>`);
   });

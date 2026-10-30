@@ -52,6 +52,8 @@ export default function EtfIndexSearch({ rows, sectors, issuers }: Props) {
     if (_p) setPricedOnly(_p);
   }, []);
 
+  // 필터가 비어 있고 주소의 # 부분에도 필터가 없으면 주소를 건드리지 않는다. 예전에는 첫 렌더에서 # 부분이 지워졌다
+  //   (구글 snippet.md "URL에서 해시 프래그먼트를 삭제하지 마세요", 2026-10-30)
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams();
@@ -61,6 +63,8 @@ export default function EtfIndexSearch({ rows, sectors, issuers }: Props) {
     if (pricedOnly) params.set('priced', '1');
     const next = params.toString();
     const current = window.location.hash.slice(1);
+    const currentHasFilter = /(^|&)(q|sector|issuer|priced)=/.test(current);
+    if (!next && !currentHasFilter) return;
     if (next !== current) {
       window.history.replaceState(null, '', next ? `#${next}` : window.location.pathname);
     }

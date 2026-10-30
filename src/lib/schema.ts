@@ -9,14 +9,15 @@ const SITE = process.env.SITE_URL || 'https://iknowhowinfo.com';
 const SITE_NAME = 'Daily ETF Pulse';
 
 /**
- * Dataset의 외부 publisher 이름 → 공식 URL.
- *   시세 원천은 공공데이터포털(data.go.kr) ETF 시세 API다(src/app/api/etf/route.ts).
- *   여기에 없는 이름은 자사 URL로 폴백한다.
+ * 로고는 정사각형이어야 한다. 구글 Organization 가이드: "이미지는 최소 112x112픽셀"
+ *   (docs/G-구글-공식가이드/05-structured-data-구조화데이터/organization.md). 예전 og-logo.png 는 600x60 가로형이라
+ *   기준에 못 미쳤다. 2026-10-30 앱 아이콘(180x180)을 고정 주소로 복사해 쓴다.
  */
-const PUBLISHER_URLS: Record<string, string> = {
-  '한국거래소(KRX) 공공데이터 포털': 'https://www.data.go.kr',
-};
-const ORG_LOGO = `${SITE}/og-logo.png`;
+const ORG_LOGO = `${SITE}/logo-square.png`;
+const ORG_LOGO_SIZE = 180;
+/** 화면 바이라인의 저자(리서치팀). 발행처(#organization)와 이름이 달라 같은 @id 를 쓰면 한 엔티티에 이름이 둘이 된다 */
+const RESEARCH_TEAM_ID = `${SITE}/#research-team`;
+const RESEARCH_TEAM_NAME = 'Daily ETF Pulse 리서치팀';
 
 // parentOrganization(스마트데이터샵) 선언은 2026-09-30 제거. 자매 사이트끼리 모든 페이지에서
 //   서로를 가리키는 네트워크 신호를 줄이기 위해 layout Organization 스키마·푸터 백링크와 함께 뺐다.
@@ -37,7 +38,9 @@ export function buildBreadcrumbSchema(items: BreadcrumbItem[]) {
     itemListElement: items.map((it, idx) => ({
       '@type': 'ListItem',
       position: idx + 1,
-      name: it.name,
+      // 첫 단계가 홈이면 "홈" 대신 사이트 이름. 네이버 BreadcrumbList 가이드: "\"top\", \"홈\" 등 일반적인 단어가 아닌"
+      //   설명 텍스트 (docs/H-네이버-공식가이드/08-구조화된 데이터 마크업). 화면의 "홈" 표기는 그대로 둔다 (2026-10-30)
+      name: idx === 0 && it.href === '/' ? SITE_NAME : it.name,
       // 마지막 항목(현재 페이지)은 item 생략 — Google 가이드 허용 규칙,
       // 현재 URL이 canonical과 중복 명시되는 것을 피함 (D3 문서 규칙)
       ...(idx < items.length - 1 ? { item: abs(it.href) } : {}),
@@ -97,10 +100,13 @@ export function buildArticleSchema(input: ArticleSchemaInput) {
         url: abs(`/author/${input.author.authorId}`),
       }
     : {
+        // 2026-10-30: 저자(리서치팀)와 발행처(사이트)를 다른 @id 로 나눴다. 같은 @id 에 이름이 둘이면
+        //   구글이 한 엔티티로 합치며 이름이 흔들린다(article.md 저자 권장사항, site-names.md 일관된 이름).
         '@type': 'Organization',
-        '@id': `${SITE}/#organization`,
+        '@id': input.author.name === RESEARCH_TEAM_NAME ? RESEARCH_TEAM_ID : `${SITE}/#organization`,
         name: input.author.name,
         url: abs('/about'),
+        ...(input.author.name === RESEARCH_TEAM_NAME ? { parentOrganization: { '@id': `${SITE}/#organization` } } : {}),
       };
 
   return {
@@ -114,18 +120,19 @@ export function buildArticleSchema(input: ArticleSchemaInput) {
     dateModified: input.dateModified || input.datePublished,
     author,
     publisher: {
-      '@type': 'NewsMediaOrganization', // Google E-E-A-T 신뢰 신호
+      // 뉴스 매체가 아니라 정보 사이트라 가장 맞는 유형은 Organization (organization.md "가장 구체적인 하위유형", 2026-10-30)
+      '@type': 'Organization',
       '@id': `${SITE}/#organization`,   // RootLayout Organization과 동일 entity 상호참조
       name: SITE_NAME,
       url: SITE,
       logo: {
         '@type': 'ImageObject',
         url: ORG_LOGO,
-        width: 600,  // Google 권장 — 최소 폭 명시
-        height: 60,
+        width: ORG_LOGO_SIZE,
+        height: ORG_LOGO_SIZE,
       },
       publishingPrinciples: `${SITE}/about`,
-      correctionsPolicy: `${SITE}/about`,
+      correctionsPolicy: `${SITE}/about#corrections`,
     },
     // isBasedOn(자매 사이트 backref)은 뺐다. 가이드 본문은 그 사이트에서 파생된 글이
     // 아닌데도 238편 전부가 "원본은 smartdatashop"이라고 선언하고 있었다. 같은 노드에
@@ -202,23 +209,13 @@ export interface FinancialProductInput {
   description: string;
   url: string;
   category?: string; // ETF / 인덱스펀드 등
-  /** 현재가 (마감 데이터). 있으면 offers 필드 추가 — Google 금융 리치 스니펫 */
-  price?: number;
-  /** 가격 기준일 (YYYY-MM-DD) */
-  priceDate?: string;
 }
 
+// 2026-10-30: offers(가격·InStock·priceValidUntil)를 뺐다. 이 사이트는 ETF를 팔지 않는데 판매가처럼 표시됐고,
+//   priceValidUntil 이 지난 날짜였다. 구글 merchant-listing.md "쇼핑객이 제품을 구매할 수 있는 페이지에서만",
+//   sd-policies.md "소유권, 제휴, 기본 목적을 왜곡하지 않습니다". 시세를 기계가 읽는 형태로 1,171쪽에 다시 내보내는
+//   것도 줄인다(시세 원천 이용 조건 문제).
 export function buildFinancialProductSchema(input: FinancialProductInput) {
-  const offers = (input.price && input.price > 0) ? {
-    offers: {
-      '@type': 'Offer',
-      price: input.price,
-      priceCurrency: 'KRW',
-      ...(input.priceDate ? { priceValidUntil: input.priceDate } : {}),
-      availability: 'https://schema.org/InStock',
-    },
-  } : {};
-
   return {
     '@context': 'https://schema.org',
     '@type': 'FinancialProduct',
@@ -229,7 +226,6 @@ export function buildFinancialProductSchema(input: FinancialProductInput) {
     url: abs(input.url),
     category: input.category || 'ETF',
     ...(input.provider ? { provider: { '@type': 'Organization', name: input.provider } } : {}),
-    ...offers,
   };
 }
 
@@ -241,14 +237,18 @@ export interface DatasetSchemaInput {
   url: string;
   /** 데이터 갱신일 ISO */
   dateModified: string;
-  /** 출처 (예: "한국거래소(KRX) 공공데이터 포털") */
-  publisher?: string;
+  /** 원본 데이터 (다시 게시한 공공데이터의 원본 페이지) */
+  basedOn?: { name: string; url: string };
   /** 데이터 키워드 */
   keywords?: string[];
   /** 라이선스 (선택) */
   license?: string;
 }
 
+// 2026-10-30: 이 페이지를 만든 곳은 이 사이트이고, 시세는 공공데이터포털의 금융위원회 증권상품시세정보를 받아 다시
+//   게시한 것이다. 예전에는 publisher 를 "한국거래소(KRX) 공공데이터 포털"로 적어 원천과 발행처가 뒤섞였다.
+//   구글 dataset.md: 재게시한 데이터는 원본을 밝힌다(isBasedOn·sameAs). isAccessibleForFree 는 원천 이용 조건이
+//   정리되기 전까지 단정하지 않는다.
 export function buildDatasetSchema(input: DatasetSchemaInput) {
   return {
     '@context': 'https://schema.org',
@@ -258,23 +258,13 @@ export function buildDatasetSchema(input: DatasetSchemaInput) {
     url: abs(input.url),
     dateModified: input.dateModified,
     inLanguage: 'ko-KR',
-    isAccessibleForFree: true,
     ...(input.keywords?.length ? { keywords: input.keywords.join(', ') } : {}),
     ...(input.license ? { license: input.license } : {}),
-    // 외부 출처를 publisher로 넘길 때도 url을 붙여 entity가 해석되게 한다.
-    //   기존에는 custom publisher일 때 url을 빼서, /etf 1,160쪽의 publisher Organization이
-    //   name만 있는 상태였다(2026-08-11 스키마 감사). 출처를 실제로 확인 가능하게 만드는
-    //   신호라 E-E-A-T에도 유리하다.
-    publisher: {
-      '@type': 'Organization',
-      name: input.publisher || SITE_NAME,
-      url: input.publisher ? (PUBLISHER_URLS[input.publisher] || SITE) : SITE,
-    },
-    creator: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-      url: SITE,
-    },
+    ...(input.basedOn
+      ? { isBasedOn: { '@type': 'Dataset', name: input.basedOn.name, url: input.basedOn.url } }
+      : {}),
+    publisher: { '@type': 'Organization', '@id': `${SITE}/#organization`, name: SITE_NAME, url: SITE },
+    creator: { '@type': 'Organization', '@id': `${SITE}/#organization`, name: SITE_NAME, url: SITE },
   };
 }
 
@@ -317,9 +307,9 @@ export function buildHowToSchema(input: HowToSchemaInput) {
   };
 }
 
-// ── ItemList / Carousel 스키마 (인덱스 페이지 — Google Carousel rich result) ──
-//   /etf 인덱스 (TOP 거래량) · /guide 인덱스 (8 가이드) 같은 list 페이지에 부착.
-//   Google Search Carousel 자격 (모바일 SERP에서 가로 스크롤 카드 노출).
+// ── ItemList 스키마 (인덱스 페이지의 목록 구조 표시) ──
+//   /etf 인덱스 · /guide 인덱스 같은 list 페이지에 부착.
+//   캐러셀 리치 결과 대상은 아니다. 구글 carousel.md: Course·Movie·Recipe·Restaurant 와 함께 쓸 때만 나온다 (2026-10-30 정정).
 
 export interface CarouselItemInput {
   url: string;
@@ -350,6 +340,8 @@ export function jsonLd(obj: object): string {
 }
 
 // ── SoftwareApplication 스키마 (계산기 도구 페이지, 2026-10-14) ──
+//   네이버 소프트웨어 마크업은 name·applicationCategory 가 필수라 충족한다. 구글은 평점(aggregateRating)이나
+//   리뷰가 있어야 리치 결과 대상인데, 평점을 지어낼 수 없으므로 구글 리치 결과는 기대하지 않고 네이버용으로 둔다 (2026-10-30).
 export function buildSoftwareAppSchema(input: { name: string; url: string; description: string }) {
   return {
     '@context': 'https://schema.org',

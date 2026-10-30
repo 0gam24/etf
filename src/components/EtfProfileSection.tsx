@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { EtfProfile } from '@/lib/etf-profiles';
+import { toAsciiHref } from '@/lib/href';
 
 /**
  * 종목 사전 상품 개요 (src/lib/etf-profiles.ts 에 확인된 설명이 있는 종목만).
@@ -96,7 +97,7 @@ export default function EtfProfileSection({
           <ul>
             {profile.sources.map(s => (
               <li key={s.url}>
-                <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+                <a href={toAsciiHref(s.url)} target="_blank" rel="noopener noreferrer">{s.label}</a>
               </li>
             ))}
           </ul>

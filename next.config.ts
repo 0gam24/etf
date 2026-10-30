@@ -21,15 +21,9 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
 
-  // 외부 이미지 도메인 허용 (포스팅 내 AI 생성 이미지용)
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'image.pollinations.ai',
-      },
-    ],
-  },
+  // 외부 이미지 도메인 허용(remotePatterns)은 2026-10-30 뺐다. 예전 일별 글용으로 열어 둔 이미지 생성 서비스가
+  //   어디서도 쓰이지 않는데, /_next/image?url=... 로 누구나 그 서비스의 아무 그림이나 우리 도메인 주소로 내보낼 수
+  //   있었다(구글 security/social-engineering.md·explicit/troubleshooting.md: 외부 리소스로 들어오는 사기·선정성 위험).
 
   // 영구 redirect (301) — SEO 가치 보존
   //   1. 한글 슬러그 → 영문 슬러그 (2026-04-26 마이그레이션)
@@ -77,11 +71,15 @@ const nextConfig: NextConfig = {
     const slugMap = loadEtfSlugMap();
     const etfRedirects = Object.entries(slugMap)
       .filter(([code, slug]) => slug && slug !== code.toLowerCase())
-      .map(([code, slug]) => ({
-        source: `/etf/${code.toLowerCase()}`,
-        destination: `/etf/${slug}`,
-        permanent: true,
-      }));
+      .flatMap(([code, slug]) => {
+        const lower = { source: `/etf/${code.toLowerCase()}`, destination: `/etf/${slug}`, permanent: true };
+        // 영문이 섞인 코드(0080G0 등)는 화면에 대문자로 보여 준다. 그대로 쳐서 들어와도 404 가 나지 않게 대문자 주소도 받는다
+        //   (구글 url-structure.md 대소문자 통일, 2026-10-30)
+        const upper = code.toUpperCase();
+        return upper !== code.toLowerCase()
+          ? [lower, { source: `/etf/${upper}`, destination: `/etf/${slug}`, permanent: true }]
+          : [lower];
+      });
 
     return [...hostCanonical, ...legacy, ...etfRedirects];
   },

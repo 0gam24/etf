@@ -227,6 +227,8 @@ ${compareLines}
     headers: {
       'Content-Type': 'text/markdown; charset=utf-8',
       'Cache-Control': 's-maxage=3600, stale-while-revalidate=86400',
+      // 안내 파일이라 검색 결과 문서로는 내보내지 않는다. 파일을 직접 읽는 데는 영향이 없다 (2026-10-30)
+      'X-Robots-Tag': 'noindex',
     },
   });
 }

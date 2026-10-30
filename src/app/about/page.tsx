@@ -24,19 +24,25 @@ export default function AboutPage() {
     ? `KRX 상장 ETF ${etfCount.toLocaleString('ko-KR')}종`
     : 'KRX 상장 ETF 전 종목';
 
-  // 사이트 운영 Organization schema — layout.tsx ORG_SCHEMA 와 같은 entity(@id 공유)
+  // 저자(리서치팀) 프로필 페이지. 가이드·비교 글 Article 의 author url 이 이 페이지라 ProfilePage 로 표시한다
+  //   (구글 article.md "URL이 내부 프로필 페이지인 경우 구조화된 프로필 페이지 데이터를 사용", profile-page.md mainEntity 에 Organization 가능).
+  //   사이트 Organization(#organization)은 layout.tsx 가 한 번만 정의한다. 사람·경력은 넣지 않는다 (2026-10-30)
   const orgSchema = {
     '@context': 'https://schema.org',
-    '@type': 'NewsMediaOrganization',
-    '@id': `${SITE_URL}/#organization`,
-    name: SITE_NAME,
-    alternateName: ['데일리 ETF 펄스', 'iknowhowinfo.com'],
-    url: SITE_URL,
-    description: PUBLISHER.description,
-    publishingPrinciples: `${SITE_URL}/about`,
-    correctionsPolicy: `${SITE_URL}/about#corrections`,
-    actionableFeedbackPolicy: `${SITE_URL}/contact`,
+    '@type': 'ProfilePage',
+    url: `${SITE_URL}/about`,
     inLanguage: 'ko-KR',
+    mainEntity: {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#research-team`,
+      name: PUBLISHER.name,
+      url: `${SITE_URL}/about`,
+      description: PUBLISHER.description,
+      parentOrganization: { '@id': `${SITE_URL}/#organization`, name: SITE_NAME },
+      publishingPrinciples: `${SITE_URL}/about`,
+      correctionsPolicy: `${SITE_URL}/about#corrections`,
+      actionableFeedbackPolicy: `${SITE_URL}/contact`,
+    },
   };
 
   return (

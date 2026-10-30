@@ -153,7 +153,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
   // 2026-10-14: 모든 종목에 계좌별 세금 표·세후 계산기가 붙어 "ISA·연금 세금"을 약속할 수 있다 ("{ETF명} ISA"·"연금저축 {ETF명}" 검색)
   titleAttrs.push({ label: 'ISA·연금 세금', dropOrder: 3.5 });
-  if (etf) titleAttrs.push({ label: priceWord, dropOrder: 2 });
+  // 2026-10-30: 시세가 오래됐으면 제목에서 가격 속성을 뺀다. 네이버 콘텐츠 가이드 "가격… 자주 변경되는 정보는 최신 상태로"
+  //   (docs/H-네이버-공식가이드/03-콘텐츠 가이드라인). 시세 수집이 2026-10-02 로 멈춰 있다.
+  if (etf && isFresh) titleAttrs.push({ label: priceWord, dropOrder: 2 });
   titleAttrs.push({ label: '종목코드', dropOrder: 3 });
   if (navGap) titleAttrs.push({ label: '괴리율', dropOrder: 1 });
   // 시세가 없는 종목(색인 제외)은 운용사 카드가 있으면 운용사를 붙인다
@@ -177,9 +179,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const asOfIso = age?.isoDate || '';
   let head: string;
   if (etf && asOfIso) {
+    // 2026-10-30: 오래된 시세는 설명에 가격을 적지 않는다 (제목과 같은 이유, 네이버 콘텐츠 가이드 "최신 상태로")
     const priceSentence = isFresh
       ? ` ${asOfIso} 종가 ${etf.price.toLocaleString()}원(전일대비 ${signedPct(etf.changeRate)}).`
-      : ` 최근 시세 기준일 ${asOfIso}, 종가 ${etf.price.toLocaleString()}원.`;
+      : '';
     const freqSentence = income
       ? ` 분배금은 ${FREQ_DESC[income.frequency] || `${FREQ_LABEL[income.frequency] || income.frequency} 단위로`} 지급됩니다.`
       : '';
@@ -196,7 +199,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
   // 가격 외 고유 수치를 먼저: 괴리율 → 구성종목(롱테일 "라인메탈 ETF" 류 매칭) → 섹터 → 운용사 → 꼬리
   // 괴리율이 시세와 다른 날짜의 NAV·종가 쌍이면 그 날짜를 밝힌다
-  if (navGap) {
+  if (navGap && isFresh) {
     const navDateNote = navGap.isoDate && navGap.isoDate !== asOfIso ? `(${navGap.isoDate} 기준)` : '';
     addToDesc(` NAV 대비 괴리율 ${signedPct(navGap.gapPct)}${navDateNote}.`);
   }
@@ -353,14 +356,12 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
   const financialProductSchema = buildFinancialProductSchema({
     name: displayName,
     code: displayCode,
-    description: hasPriceData
-      ? `${displayName}, 한국거래소(KRX) 상장 ETF. 섹터: ${displaySector || '-'}, ${asOfIso} 종가 ${etf!.price.toLocaleString()}원, 거래량 ${etf!.volume.toLocaleString()}주.`
-      : `${displayName}, 한국거래소(KRX) 상장 ETF. 단축코드 ${displayCode}.`,
+    // 2026-10-30: 가격·거래량을 빼고 화면과 같은 기본 정보만 둔다 (src/lib/schema.ts buildFinancialProductSchema 주석)
+    description: `${displayName}, 한국거래소(KRX) 상장 ETF. 단축코드 ${displayCode}${displaySector ? `, 섹터 ${displaySector}` : ''}.`,
     url: `/etf/${canonicalSlug}`,
     category: 'ETF',
     // 운용사 법인명 (ISSUER_LABELS 의 괄호 안, 예: "KODEX (삼성자산운용)" → 삼성자산운용). 모르는 브랜드는 넣지 않는다 (2026-10-14)
     ...(issuerLabel?.match(/\(([^)]+)\)/)?.[1] ? { provider: issuerLabel.match(/\(([^)]+)\)/)![1] } : {}),
-    ...(hasPriceData && asOfIso ? { price: etf!.price, priceDate: asOfIso } : {}),
   });
 
   // Dataset 설명도 실제로 들어 있는 데이터만 나열한다 (구성종목 TOP 10·분배 정보를 일괄 약속하지 않는다)
@@ -372,11 +373,11 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
   ].filter(Boolean);
   const datasetSchema = buildDatasetSchema({
     name: `${displayName} (${displayCode}) ETF 종목 정보`,
-    description: `${displayName} ETF의 ${datasetParts.join(', ')}. 시세는 한국거래소(KRX) 공공데이터 기준${asOfIso ? `(${asOfIso})` : ''}.`,
+    description: `${displayName} ETF의 ${datasetParts.join(', ')}. 시세는 공공데이터포털 금융위원회 증권상품시세정보 기준${asOfIso ? `(${asOfIso})` : ''}.`,
     url: `/etf/${canonicalSlug}`,
     // dataDate가 없으면 이 스키마는 렌더하지 않는다 (아래 JSX 참고)
     dateModified: dataDate || '',
-    publisher: '한국거래소(KRX) 공공데이터 포털',
+    basedOn: { name: '공공데이터포털 금융위원회 증권상품시세정보', url: 'https://www.data.go.kr/data/15094806/openapi.do' },
     keywords: [
       displayName, displayCode, 'ETF',
       ...(hasPriceData ? ['시세'] : []),
@@ -563,7 +564,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
             )}
           </div>
           <p className="etf-dict-source">
-            출처: 한국거래소(KRX) 공공데이터 포털 · 시세 기준일 {asOfIso}
+            출처: 공공데이터포털 금융위원회 증권상품시세정보(한국거래소 시세) · 시세 기준일 {asOfIso}
           </p>
           {navGap && (
             <p className="etf-dict-note">
@@ -841,7 +842,7 @@ export default async function EtfDictionaryPage({ params }: PageProps) {
 
       <p className="etf-dict-disclaimer">
         {hasPriceData && asOfIso
-          ? `시세는 한국거래소(KRX) 공공데이터의 일별 종가 기준이며, 이 페이지의 시세 기준일은 ${asOfIso}입니다.`
+          ? `시세는 공공데이터포털 금융위원회 증권상품시세정보의 일별 종가 기준이며, 이 페이지의 시세 기준일은 ${asOfIso}입니다.`
           : '이 페이지는 한국거래소(KRX) 상장 종목 목록을 기준으로 정리했습니다.'}
         {holdings || incomeEntry
           ? ' 구성종목과 분배 정보는 운용사 공시를 참고해 정리한 것으로 기준일이 시세와 다를 수 있으니, 최신 내용은 운용사 공시에서 확인하세요.'

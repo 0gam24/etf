@@ -19,7 +19,9 @@ const COMMON_DISALLOW: string[] = ['/api/'];
 //   브랜드 검색 자리를 차지한다. Yeti 그룹에만 막고 AI 봇 그룹(인용 경로)은 그대로 둔다.
 //   더 구체적인 경로라 Allow '/' 보다 우선한다. 이미 색인된 문서는 서치어드바이저
 //   '웹 페이지 검색 제외'로 빼면 더 빨리 반영된다.
-const NAVER_DISALLOW: string[] = [...COMMON_DISALLOW, '/llms.txt'];
+//   2026-10-30: robots.txt 로 막으면 검색봇이 파일을 다시 읽지 못해, 이미 색인된 문서가 결과에 그대로 남는다
+//   (구글 block-indexing.md, 네이버 robots 안내). 차단을 풀고 llms.txt 응답에 X-Robots-Tag: noindex 를 붙였다.
+const NAVER_DISALLOW: string[] = [...COMMON_DISALLOW];
 // /_next/static/·/_next/image 는 페이지 렌더링에 필요한 CSS/JS/이미지 리소스 —
 // 차단하면 Googlebot 렌더링 품질 평가에 불리(구글 SEO 가이드 "CSS·JS 접근 가능해야").
 // 나머지 /_next/(data 등)만 차단 유지.
@@ -39,7 +41,8 @@ export default function robots(): MetadataRoute.Robots {
       // Googlebot 명시 (2026-10-14). 이름이 있는 그룹이 생기면 Googlebot 은 * 그룹을 보지 않으므로
       //   * 와 같은 규칙(렌더링에 필요한 /_next/static·/_next/image 허용)을 그대로 준다.
       { userAgent: 'Googlebot',           allow: ALL_ALLOW, disallow: ALL_DISALLOW },
-      // Google AdSense 크롤러 — 광고 게재·심사용. 와일드카드(*)로도 허용되나 명시해 누락 위험 0.
+      // Google AdSense 크롤러 — 광고 게재·심사용. Mediapartners-Google·AdsBot 은 * 그룹을 따르지 않으므로 이름을 적어야 한다
+      //   (docs/G-구글-공식가이드/08-crawling-크롤링전문/crawlers-fetchers/google-special-case-crawlers.md, 2026-10-30 주석 정정).
       { userAgent: 'Mediapartners-Google', allow: ['/'], disallow: [] },
       { userAgent: 'AdsBot-Google',        allow: ['/'], disallow: [] },
       // Naver 검색봇 — 한국 검색 60% 점유, 명시적으로 허용 (모바일 크롤러 포함)

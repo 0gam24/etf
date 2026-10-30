@@ -48,7 +48,8 @@ export const PERSONAS: Record<PersonaSlug, PersonaConfig> = {
     hero: {
       eyebrow: 'FOR · RETIREE',
       title: '매월 분배금으로 생활하는 분들께',
-      subtitle: '월 200만~500만 분배 현금흐름을 안정적으로 받으려면. 분배락일 캘린더 + 안정성 등급 + 인출 시뮬을 한 페이지에.',
+      // 2026-10-30: 페이지에 없는 "인출 시뮬" 약속을 뺐다 (구글 spam-policies 도어웨이·혼동, 네이버 낚시성 제목)
+      subtitle: '분배금으로 생활비를 받으려는 분께 월배당 ETF의 분배 일정과 안정성, 계좌별 세금을 정리한 가이드를 모았습니다.',
     },
     scenario: '월 분배금으로 생활합니다',
     tools: ['dividend-goal', 'withdrawal', 'portfolio'],
@@ -72,7 +73,7 @@ export const PERSONAS: Record<PersonaSlug, PersonaConfig> = {
     tools: ['budget-etf', 'sip', 'portfolio'],
     categoryPriority: ['guide', 'pulse'],
     internalLinks: [
-      { href: '/guide/monthly-dividend', label: '월배당 ETF 완전 가이드', description: '첫 ETF 로 추천하는 안정성 S 등급 5종' },
+      { href: '/guide/monthly-dividend', label: '월배당 ETF 완전 가이드', description: '월배당 ETF 구조와 고를 때 확인할 점' },
       { href: '/etf', label: '종목 사전', description: `KRX 상장 ETF ${ETF_UNIVERSE_LABEL} 검색·필터` },
     ],
     mainSiteCategoryUrl: 'https://smartdatashop.kr/category/market/',
@@ -84,7 +85,7 @@ export const PERSONAS: Record<PersonaSlug, PersonaConfig> = {
     hero: {
       eyebrow: 'FOR · FREELANCER',
       title: '개인사업자·프리랜서의 절세 ETF',
-      subtitle: '종합소득 한계세율 기반 노란우산·IRP·ISA 최적 조합. 연간 절세 효과 수백만원.',
+      subtitle: '종합소득이 있는 개인사업자·프리랜서가 IRP·ISA·연금저축을 어떤 순서로 채우면 좋은지 정리한 가이드를 모았습니다.',
     },
     scenario: '자영업이고 절세가 중요합니다',
     tools: ['tax-compare', 'portfolio'],
@@ -100,15 +101,16 @@ export const PERSONAS: Record<PersonaSlug, PersonaConfig> = {
     displayName: '전문가·트레이더',
     hero: {
       eyebrow: 'FOR · TRADER',
-      title: '장중 시그널·트랙 레코드 모니터링',
-      subtitle: 'Unger 변동성 돌파 시그널 + 거래량 급증 알림 + transparent 백테스트 결과.',
+      // 2026-10-30: 장중 시그널·트랙 레코드 코너는 운영을 접고 noindex 다. 지금 있는 비교·매매 비용 자료로 바꿨다
+      title: '매매가 잦은 투자자를 위한 ETF 비교',
+      subtitle: '같은 지수 ETF의 비용·괴리율 비교와 매매 비용, 레버리지 ETF 매매 조건을 정리한 자료를 모았습니다.',
     },
-    scenario: '시그널·트래킹 중심으로 봅니다',
+    scenario: '비용·괴리율 비교 중심으로 봅니다',
     tools: ['atr-calc', 'portfolio'],
     categoryPriority: ['surge', 'flow', 'breaking'],
     internalLinks: [
-      { href: '/strategy/kospi200-breakout', label: '코스피200 변동성 돌파 시그널', description: '매일 시초가 기반 Long/Short Trigger 산출' },
-      { href: '/strategy/track-record', label: '트랙 레코드', description: '시그널 결과 자동 검증 + 누적 통계' },
+      { href: '/compare', label: '같은 지수 ETF 비교', description: '운용사별 같은 지수 상품을 1:1로 비교' },
+      { href: '/guide/etf-trading-cost', label: 'ETF 매매 비용', description: '증권거래세·수수료·호가 차이 정리' },
     ],
     mainSiteCategoryUrl: 'https://smartdatashop.kr/category/market/',
   },
@@ -154,7 +156,7 @@ export const PERSONAS: Record<PersonaSlug, PersonaConfig> = {
     hero: {
       eyebrow: 'FOR · EARLY RETIRE',
       title: '55세 인출 시 세금·시점 결정',
-      subtitle: '연금소득세 시점별 비교 + 분할 인출 vs 일시 인출 + 노후 자금 유지 기간 시뮬.',
+      subtitle: '연금소득세가 인출 시점과 방식에 따라 어떻게 달라지는지, 분할 인출과 일시 인출을 비교한 가이드를 모았습니다.',
     },
     scenario: '곧 연금 인출 시작합니다',
     tools: ['withdrawal', 'tax-compare', 'dividend-goal'],

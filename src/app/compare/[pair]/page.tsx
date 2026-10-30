@@ -342,16 +342,16 @@ export default async function ComparePairPage({ params }: PageProps) {
 
   // Article 구조화 데이터 (2026-10-14): 처음 발행일은 git 이력의 추가일, 수정일은 같은 날 시세 기준일
   const addedAt = COMPARE_PAIR_ADDED_AT[p.slug] || COMPARE_PAIR_FIRST_BATCH_DATE;
+  // 시세 기준일·본문 수정일·처음 발행일 중 가장 늦은 날. 구조화 데이터와 화면 발행 정보 상자가 같은 값을 쓴다
+  //   (구글 publication-dates.md "사용자에게 표시되는 값과 구조화된 값 사이의 날짜가 일치", 2026-10-30)
+  const compareModified = [addedAt, COMPARE_CONTENT_UPDATED_AT, commonIso || ''].sort().slice(-1)[0];
   const articleSchema = buildArticleSchema({
     headline: `${metaA.name} ${metaB.name} 차이 비교`,
     description: p.context,
     url: `/compare/${p.slug}`,
     datePublished: `${addedAt}T09:00:00+09:00`,
     // 시세 기준일·본문 수정일·처음 발행일 중 가장 늦은 날 (2026-10-14 본문 수정일 반영)
-    dateModified: (() => {
-      const latest = [addedAt, COMPARE_CONTENT_UPDATED_AT, commonIso || ''].sort().slice(-1)[0];
-      return latest === commonIso ? `${commonIso}T16:00:00+09:00` : `${latest}T09:00:00+09:00`;
-    })(),
+    dateModified: compareModified === commonIso ? `${commonIso}T16:00:00+09:00` : `${compareModified}T09:00:00+09:00`,
     images: [ogImageUrl({ category: 'compare' })],
     author: { name: PUBLISHER.name },
     keywords: [metaA.name, metaB.name, `${metaA.name} ${metaB.name} 차이`],
@@ -381,6 +381,12 @@ export default async function ComparePairPage({ params }: PageProps) {
             <span>발행·정정: {PUBLISHER.name}</span>
             <span aria-hidden> · </span>
             <span>처음 발행: {addedAt}</span>
+            {compareModified > addedAt && (
+              <>
+                <span aria-hidden> · </span>
+                <span>수정일: {compareModified}</span>
+              </>
+            )}
             {commonIso && (
               <>
                 <span aria-hidden> · </span>

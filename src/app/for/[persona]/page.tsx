@@ -63,6 +63,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       '상황에 맞는 주제별 가이드도 함께 안내합니다.',
     ]),
     url: `/for/${persona}`,
+    // 2026-10-30: 본문이 주제 허브로 보내는 링크 위주라 검색 노출 대상에서 뺀다 (구글 spam-policies 도어웨이:
+    //   "방문자를 실제로 유용하거나 관련성 있는 부분으로 유도하도록 페이지 생성"). 링크는 따라가게 둔다. sitemap 에서도 뺐다.
+    robots: { index: false, follow: true },
   });
 }
 

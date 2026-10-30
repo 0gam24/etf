@@ -218,7 +218,6 @@ export default function DividendCalculatorPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(buildSoftwareAppSchema({ name: 'ETF 분배금 계산기', url: '/tools/dividend-calculator', description: 'ETF 보유 수량이나 투자금으로 1회·연간 분배금과 세후 금액을 계산하는 계산기' })) }} />
       <Breadcrumbs items={[
         { name: '홈', href: '/' },
-        { name: '도구', href: '/tools/portfolio' },
         { name: PAGE_TITLE, href: PAGE_URL },
       ]} />
 

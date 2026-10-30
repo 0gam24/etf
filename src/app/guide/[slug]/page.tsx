@@ -17,7 +17,8 @@ import GuideDataBlock from '@/components/GuideDataBlock';
 import EditorialNote from '@/components/EditorialNote';
 import EtfTaxSimulator from '@/components/EtfTaxSimulator';
 import { buildArticleSchema, buildHowToSchema, jsonLd } from '@/lib/schema';
-import { SITE_NAME, SITE_LOCALE, articleTitle , padDescription, ogImageUrl } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, articleTitle, ogImageUrl } from '@/lib/site-meta';
+import { toAsciiHref } from '@/lib/href';
 
 /**
  * 본문 소제목 → 앵커 id.
@@ -43,6 +44,30 @@ export async function generateStaticParams() {
   return GUIDES.map(g => ({ slug: g.slug }));
 }
 
+/**
+ * 출처 주소가 문서·조문·공시 페이지까지 들어간 링크인가. 도메인 첫 화면(https://www.nts.go.kr 등)만 있는 출처는
+ * 무엇을 근거로 삼았는지 알려 주지 못한다(구글 seo-starter-guide "내가 작성하고 있는 내용을 입증하는 다른 리소스에 연결").
+ * 그런 주소는 citation 구조화 데이터와 정답 상자의 "출처" 표시에서 뺀다. 목록 화면(참고 자료)에는 그대로 둔다 (2026-10-30)
+ */
+function isDocLink(url: string): boolean {
+  try {
+    const u = new URL(url);
+    return (u.pathname !== '' && u.pathname !== '/') || u.search !== '';
+  } catch {
+    return false;
+  }
+}
+
+/** 섹션이 실제 행동 순서(가입·검색·주문·신고 등)로 이어지는 절차형 가이드. 새 절차형 가이드를 내면 여기에 더한다 */
+const HOWTO_SCHEMA_SLUGS = new Set([
+  'how-to-buy-etf',
+  'etf-ticker-code',
+  'same-index-etf-choice',
+  'isa-to-pension-transfer',
+  'us-stock-capital-gains-tax-filing',
+  'bitcoin-krw-buy-withdrawal',
+]);
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const g = getGuideBySlug(slug);
@@ -51,9 +76,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // 가이드도 동적 OG 이미지 발급 — 소셜/메신저 미리보기 + 이미지 검색 인입
   // (기존엔 가이드에만 og:image가 없어 매일 발행 주력 콘텐츠의 공유 미리보기가 비어 있었음)
   const ogImage = ogImageUrl({ category: 'guide' });
-  // 설명이 120자에 못 미치는 가이드 35편은 태그라인·첫 핵심 포인트로 채운다.
-  // 가이드가 이미 갖고 있는 문장만 쓰므로 새로 지어내지 않는다. (2026-08-11 온페이지 감사)
-  const description = padDescription(g.description, [g.tagline, g.keyPoints?.[0]]);
+  // 설명은 가이드에 적은 문장 그대로 쓴다. 2026-08-11부터 120자 미만이면 태그라인·핵심 포인트를 이어 붙였는데,
+  //   그 결과 28편이 문장 끝맺음 없이 끝나고 같은 단어가 되풀이됐다. 네이버 콘텐츠 마크업 가이드
+  //   "설명은 1-2개의 문장", "2회 이상 반복적인 키워드"는 불이익 (docs/H-네이버-공식가이드/04-HTML 마크업, 2026-10-30)
+  const description = g.description;
   // article:published_time·modified_time. 네이버·구글이 고친 글을 다시 읽어 갈 근거 (2026-10-07)
   const publishedAt = getGuidePublishedAt(slug) || g.lastReviewed;
   const modifiedAt = getGuideModifiedAt(slug) || publishedAt;
@@ -148,13 +174,18 @@ export default async function GuidePage({ params }: PageProps) {
     },
     keywords: g.keywords,
     section: g.section,
-    ...(g.sources?.length ? { citations: g.sources.map(s => ({ name: s.label, url: s.url })) } : {}),
+    ...(g.sources?.some(s => isDocLink(s.url))
+      ? { citations: g.sources.filter(s => isDocLink(s.url)).map(s => ({ name: s.label, url: toAsciiHref(s.url) })) }
+      : {}),
     // 정답블록(AnswerBox)이 실제로 렌더될 때만 speakable을 붙인다.
     speakable: !!g.answer,
   });
 
-  // HowTo 스키마 (가이드가 단계형일 때만) — 보조 섹션은 자동 제외
-  const howToSchema = g.howTo
+  // HowTo 스키마는 실제로 순서대로 따라 하는 절차를 다루는 가이드에만 붙인다 (HOWTO_SCHEMA_SLUGS).
+  //   2026-10-30 전에는 howTo 가 있는 115편 전부에 붙어, "X ETF란 / 왜 주목받나 / 위험" 같은 설명형 섹션까지
+  //   단계로 표시됐다. 네이버 HowTo 마크업 가이드 "단계가 있는 방법을 담고 있는 정보를 표기", 단계가 적거나 없는 글은 쓰지 않는다.
+  //   구글은 HowTo 리치 결과를 더 보여 주지 않아 영향이 없다. 화면과 본문은 그대로다.
+  const howToSchema = g.howTo && HOWTO_SCHEMA_SLUGS.has(slug)
     ? buildHowToSchema({
         name: g.title,
         description: g.howTo.description || g.description,
@@ -227,7 +258,7 @@ export default async function GuidePage({ params }: PageProps) {
               {g.sources.slice(0, 3).map((s, i) => (
                 <span key={s.url}>
                   {i > 0 ? ' · ' : ''}
-                  <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+                  <a href={toAsciiHref(s.url)} target="_blank" rel="noopener noreferrer">{s.label}</a>
                 </span>
               ))}
               {g.sources.length > 3 && <span> 외 {g.sources.length - 3}건 (<a href="#guide-sources">아래 참고 자료</a>)</span>}
@@ -243,7 +274,7 @@ export default async function GuidePage({ params }: PageProps) {
         <AnswerBox
           summary={g.answer}
           asOf={modifiedAt || publishedAt}
-          source={g.sources?.[0]?.label || 'Daily ETF Pulse 리서치팀'}
+          source={g.sources?.find(s => isDocLink(s.url))?.label || 'Daily ETF Pulse 리서치팀'}
         />
       )}
 
@@ -433,7 +464,7 @@ export default async function GuidePage({ params }: PageProps) {
           <ul>
             {g.sources.map((s, i) => (
               <li key={i}>
-                <a href={s.url} target="_blank" rel="noopener noreferrer">
+                <a href={toAsciiHref(s.url)} target="_blank" rel="noopener noreferrer">
                   {s.label}
                 </a>
               </li>

@@ -1,6 +1,6 @@
 import { getAllPosts, getPostsByCategory, CATEGORY_NAMES, TOP_LEVEL_CATEGORIES } from '@/lib/posts';
 import { GUIDES, getGuidePublishedAt, getGuideModifiedAt } from '@/lib/guides';
-import { COMPARE_PAIRS } from '@/lib/etf-compare-pairs';
+import { COMPARE_PAIRS, COMPARE_PAIR_ADDED_AT, COMPARE_PAIR_FIRST_BATCH_DATE, COMPARE_CONTENT_UPDATED_AT } from '@/lib/etf-compare-pairs';
 import { ETF_PROFILES } from '@/lib/etf-profiles';
 import { getLatestEtfData, getKrxEtfMeta, codeToSlug } from '@/lib/data';
 import { isUnindexedGuide } from '@/lib/crawl-priority';
@@ -196,33 +196,57 @@ export function getAllFeedItems(): FeedItem[] {
     }];
   });
 
-  // 같은 지수 비교 페이지 (2026-10-08 추가). 날짜는 sitemap 과 같은 시세 기준일.
+  // 같은 지수 비교 페이지 (2026-10-08 추가).
+  //   2026-10-30: 날짜를 비교 페이지 Article dateModified 와 같은 계산(처음 발행일·본문 수정일·시세 기준일 중 가장 늦은 날)으로
+  //   맞추고, 페이지에 있는 시세 숫자 없는 문단(비교 맥락, 고정 FAQ 두 개)을 본문으로 넣었다. 네이버 RSS 제출 안내
+  //   "각 item의 본문은 일부가 아닌 모든 내용(본문 전체 공개)" (docs/H-네이버-공식가이드/05-웹사이트 검색연동).
   const etfBase = getLatestEtfData()?.baseDate;
-  const etfBaseDate = etfBase && etfBase.length === 8
-    ? new Date(`${etfBase.slice(0, 4)}-${etfBase.slice(4, 6)}-${etfBase.slice(6, 8)}T16:00:00+09:00`)
-    : null;
-  const compareItems: FeedItem[] = etfBaseDate
-    ? COMPARE_PAIRS.flatMap(p => {
-        const a = getKrxEtfMeta(p.codeA);
-        const b = getKrxEtfMeta(p.codeB);
-        if (!a || !b) return [];
-        const title = `${a.name} ${b.name} 차이 비교`;
-        return [{
-          title,
-          url: `${SITE_URL}/compare/${p.slug}`,
-          pubDate: etfBaseDate,
-          description: `${title}. ${p.context}`,
-          categoryName: 'ETF 비교',
-          image: ogImageUrl(title, 'compare'),
-        }];
-      })
-    : [];
+  const etfBaseIso = etfBase && etfBase.length === 8
+    ? `${etfBase.slice(0, 4)}-${etfBase.slice(4, 6)}-${etfBase.slice(6, 8)}`
+    : '';
+  const compareItems: FeedItem[] = COMPARE_PAIRS.flatMap(p => {
+    const a = getKrxEtfMeta(p.codeA);
+    const b = getKrxEtfMeta(p.codeB);
+    if (!a || !b) return [];
+    const title = `${a.name} ${b.name} 차이 비교`;
+    const addedAt = COMPARE_PAIR_ADDED_AT[p.slug] || COMPARE_PAIR_FIRST_BATCH_DATE;
+    const modified = [addedAt, COMPARE_CONTENT_UPDATED_AT, etfBaseIso].sort().slice(-1)[0];
+    const pubDate = modified === etfBaseIso
+      ? new Date(`${etfBaseIso}T16:00:00+09:00`)
+      : new Date(`${modified}T09:00:00+09:00`);
+    const hedgeNote = /\((?:[^)]*\s)?H\)/.test(`${a.name} ${b.name}`)
+      ? ' 이름에 (H)가 붙은 쪽은 환헤지형이라 환율 변동이 수익률에 덜 반영됩니다.'
+      : '';
+    const content =
+      toHtmlParagraphs([p.context]) +
+      `<h2>${escapeHtml(`${a.name} vs ${b.name}, 무엇이 다른가요?`)}</h2>` +
+      toHtmlParagraphs([`${p.context} 기초지수·총보수·분배 기준일은 각 운용사 상품 페이지와 투자설명서에서 함께 확인하세요.`]) +
+      `<h2>${escapeHtml(`${a.name}, ${b.name} 가운데 어느 쪽을 골라야 하나요?`)}</h2>` +
+      toHtmlParagraphs([`두 상품이 같은 지수를 따른다면 장기 성과 차이는 주로 총보수·기타비용과 추적오차에서 생깁니다. 그다음으로 거래대금(사고팔기 쉬운 정도)과 분배 기준일을 봅니다.${hedgeNote} 이 페이지는 정보 제공용이며 투자 판단과 책임은 본인에게 있습니다.`]);
+    return [{
+      title,
+      url: `${SITE_URL}/compare/${p.slug}`,
+      pubDate,
+      description: `${title}. ${p.context}`,
+      categoryName: 'ETF 비교',
+      image: ogImageUrl(title, 'compare'),
+      content,
+    }];
+  });
 
   // 상품 개요가 있는 종목 사전 페이지 (2026-10-08 추가). 날짜는 개요를 쓰거나 고친 날.
   const profileItems: FeedItem[] = Object.values(ETF_PROFILES).flatMap(pr => {
     const meta = getKrxEtfMeta(pr.code);
     if (!meta) return [];
     const title = `${meta.name} 상품 개요: 운용사·비교지수·총보수·분배`;
+    // 2026-10-30: 상품 개요 본문(요약·사실표·섹션·FAQ)을 그대로 본문으로 넣는다 (위 비교 항목과 같은 이유)
+    const content =
+      toHtmlParagraphs([pr.summary]) +
+      `<ul>${pr.facts.map(f => `<li>${escapeHtml(f.label)}: ${escapeHtml(f.value)}</li>`).join('')}</ul>` +
+      pr.sections.map(sec => `<h2>${escapeHtml(sec.heading)}</h2>${toHtmlParagraphs(sec.paragraphs)}`).join('') +
+      (pr.faq?.length
+        ? `<h2>자주 묻는 질문</h2>${pr.faq.map(q => `<h3>${escapeHtml(q.question)}</h3>${toHtmlParagraphs([q.answer])}`).join('')}`
+        : '');
     return [{
       title,
       url: `${SITE_URL}/etf/${codeToSlug(pr.code)}`,
@@ -230,6 +254,7 @@ export function getAllFeedItems(): FeedItem[] {
       description: pr.summary,
       categoryName: 'ETF 종목 사전',
       image: ogImageUrl(meta.name, 'stock'),
+      content,
     }];
   });
 

@@ -1,5 +1,6 @@
 import type { EtfTaxClass } from '@/lib/etf-tax';
 import { TAX_RULES, TAX_SOURCES, formatWon } from '@/lib/account-tax-rules';
+import { toAsciiHref } from '@/lib/href';
 
 interface Props {
   name: string;
@@ -133,7 +134,7 @@ export default function EtfAccountTaxTable({ name, tax, issuerUrl, issuerLabel }
         {TAX_SOURCES.map((s, i) => (
           <span key={s.url}>
             {i > 0 ? ' · ' : ''}
-            <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+            <a href={toAsciiHref(s.url)} target="_blank" rel="noopener noreferrer">{s.label}</a>
           </span>
         ))}
       </p>
