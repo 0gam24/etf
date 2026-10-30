@@ -36,7 +36,7 @@ const ID = process.env.NAVER_CLIENT_ID;
 const SECRET = process.env.NAVER_CLIENT_SECRET;
 
 function die(msg) {
-  console.error('\n❌ ' + msg + '\n   → 설정 방법: docs/KEYWORD-RESEARCH-SETUP.md\n');
+  console.error('\n❌ ' + msg + '\n   → 설정 방법: .env.example 의 키워드 리서치 항목\n');
   process.exit(1);
 }
 if (!ID || !SECRET) die('NAVER_CLIENT_ID / NAVER_CLIENT_SECRET 가 .env.local 에 없습니다.');

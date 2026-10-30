@@ -4,6 +4,7 @@ import { COMPARE_PAIRS, COMPARE_PAIR_ADDED_AT, COMPARE_PAIR_FIRST_BATCH_DATE, CO
 import { ETF_PROFILES } from '@/lib/etf-profiles';
 import { getLatestEtfData, getKrxEtfMeta, codeToSlug } from '@/lib/data';
 import { isUnindexedGuide } from '@/lib/crawl-priority';
+import { guideOgPath } from '@/lib/og-images';
 
 /**
  * 구독 피드 공용 빌더 — RSS 2.0 · Atom 1.0 · JSON Feed 1.1 + 카테고리별 RSS.
@@ -121,7 +122,11 @@ function guideToHtml(g: (typeof GUIDES)[number], image: string): string {
   }
   for (const sec of g.sections) {
     if (!sec.paragraphs?.length) continue;
-    parts.push(`<h2>${escapeHtml(sec.heading)}</h2>${toHtmlParagraphs(sec.paragraphs)}`);
+    const tag = sec.list?.ordered ? 'ol' : 'ul';
+    const list = sec.list?.items.length
+      ? `<${tag}>${sec.list.items.map(it => `<li>${escapeHtml(it)}</li>`).join('')}</${tag}>`
+      : '';
+    parts.push(`<h2>${escapeHtml(sec.heading)}</h2>${toHtmlParagraphs(sec.paragraphs)}${list}`);
   }
   if (g.sources?.length) {
     parts.push('<h2>참고 자료·출처</h2><ul>' +
@@ -191,8 +196,8 @@ export function getAllFeedItems(): FeedItem[] {
       pubDate: new Date(`${when}T09:00:00+09:00`),
       description: g.description,
       categoryName: g.section,
-      image: ogImageUrl(g.title, 'guide'),
-      content: guideToHtml(g, ogImageUrl(g.title, 'guide')),
+      image: `${SITE_URL}${guideOgPath(g.slug)}`,
+      content: guideToHtml(g, `${SITE_URL}${guideOgPath(g.slug)}`),
     }];
   });
 

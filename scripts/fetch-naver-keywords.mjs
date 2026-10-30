@@ -8,7 +8,7 @@
  *   실행: npm run keywords:naver -- "ETF" "월배당 ETF" "금 ETF"
  *         (씨앗 키워드 여러 개. 안 적으면 기본 ETF 씨앗으로 조회)
  *
- *   필요한 것(한 번만 세팅 — docs/KEYWORD-RESEARCH-SETUP.md 참고):
+ *   필요한 것(한 번만 세팅 — .env.example 의 키워드 리서치 항목 참고):
  *     네이버 검색광고(searchad.naver.com) → 도구 → API 관리에서 발급.
  *     환경변수(.env.local):
  *       NAVER_AD_API_KEY=발급된 액세스라이선스
@@ -45,7 +45,7 @@ const SECRET = process.env.NAVER_AD_SECRET;
 const CUSTOMER = process.env.NAVER_AD_CUSTOMER_ID;
 
 function die(msg) {
-  console.error('\n❌ ' + msg + '\n   → 설정 방법: docs/KEYWORD-RESEARCH-SETUP.md\n');
+  console.error('\n❌ ' + msg + '\n   → 설정 방법: .env.example 의 키워드 리서치 항목\n');
   process.exit(1);
 }
 if (!API_KEY || !SECRET || !CUSTOMER) {

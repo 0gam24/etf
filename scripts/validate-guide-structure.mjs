@@ -60,6 +60,16 @@ const isNewContent = slug => (publishedAt[slug] || '2000-01-01') > STYLE_RULE_FR
 const SPEC_RULE_FROM = '2026-08-12';
 const isNewSpec = slug => (publishedAt[slug] || '2000-01-01') > SPEC_RULE_FROM;
 
+/**
+ * 발행 사양 v2.1 시행일 (2026-10-30, 구글·네이버 공식 가이드 대조). 이 날 다음 발행분부터 ERROR, 이전 발행분은 WARN.
+ *   네이버 「콘텐츠 마크업」: title·description 에 2회 이상 반복되는 키워드, 제목과 같은 설명, 본문을 그대로 옮긴 설명,
+ *   사이트 안에서 같은 설명은 검색 노출에 불이익이 있을 수 있다. 구글 title-link.md·snippet.md 도 유인 키워드 반복과
+ *   페이지마다 같은 설명을 피하라고 한다.
+ */
+const STRUCT_RULE_FROM = '2026-10-30';
+const isStructSpec = slug => (publishedAt[slug] || '2000-01-01') > STRUCT_RULE_FROM;
+const countOf = (s, k) => (k ? s.split(k).length - 1 : 0);
+
 /** 클러스터 배정 여부 — 배정되지 않으면 관련 가이드 링크가 주제와 무관해진다 */
 const clusteredSlugs = new Set();
 {
@@ -73,6 +83,7 @@ const CLICHE_TITLE = /완전정리|완전 정리|완전 가이드|총정리|완�
 const errors = [];
 const warns = [];
 const BRAND_SUFFIX = ' | Daily ETF Pulse'.length;
+const descSeen = new Map();
 
 for (let i = 0; i < marks.length; i++) {
   const slug = marks[i].slug;
@@ -162,6 +173,23 @@ for (let i = 0; i < marks.length; i++) {
     const CHECKLIST_HEADING = /체크리스트|최종 점검|핵심 정리|확인할 것|체크포인트/;
     const checklistHeadings = headings.filter(h => CHECKLIST_HEADING.test(h));
     if (checklistHeadings.length > 1) W(`체크리스트성 소제목 ${checklistHeadings.length}개 (최대 1개 권장)`);
+  }
+
+  // ── 발행 사양 v2.1 (2026-10-30) — 제목·설명 반복과 중복 (공식 가이드 근거는 STRUCT_RULE_FROM 주석) ──
+  {
+    const S = isStructSpec(slug) ? E : W;
+    const kwList = kwm ? [...kwm[1].matchAll(/'([^']+)'/g)].map(x => x[1]) : [];
+    const k0 = kwList[0] || '';
+    if (countOf(title, k0) >= 2) S(`title에 대표 검색어 반복 (${k0})`);
+    if (countOf(desc, k0) >= 2) S(`description에 대표 검색어 2회 이상 (${k0})`);
+    const heavy = kwList.find(k => countOf(desc, k) >= 3);
+    if (heavy) S(`description에 같은 검색어 3회 이상 (${heavy})`);
+    if (desc && desc === title) S('description이 title과 같음');
+    if (desc && desc === grab(blk, 'answer')) S('description이 직답(answer)을 그대로 옮김');
+    if (desc && descSeen.has(desc)) S(`description이 ${descSeen.get(desc)}와 같음`);
+    if (desc) descSeen.set(desc, slug);
+    // 자주 묻는 질문은 4개 이상 (PUBLISHING.md §5). v2.1 전 발행분은 그대로 둔다
+    if (isStructSpec(slug) && (blk.match(/question:/g) || []).length < 4) E('faq 4개 미만');
   }
 
   // 발행일이 없으면 최신순 목록과 sitemap 갱신일에서 빠진다

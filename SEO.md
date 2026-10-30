@@ -88,6 +88,7 @@
 - 모든 `<img>`·`<Image>`에 `alt` 의무 (시청자 가치 표현 — "차트 1" 같은 빈 alt 금지).
 - /sitemap-images.xml에 OG 이미지·차트 이미지 등록.
 - OG 이미지: 1200×630, `/api/og?title=…&category=…&tickers=…` 동적 생성.
+- 가이드 OG 이미지 (2026-10-30): 글마다 고유한 카드 `public/og/guide/{slug}.png` (`npm run og:guides`, 로컬에서 굽고 커밋). 네이버 「콘텐츠 마크업」은 여러 페이지에 반복되는 대표 이미지를 섬네일로 쓰지 않을 수 있다고 적는다. 굽지 않은 새 글은 공통 카드 `/og/guide.png`로 나간다(`src/lib/og-images.ts`).
 
 ## 8. /etf/{ticker} 종목 사전
 

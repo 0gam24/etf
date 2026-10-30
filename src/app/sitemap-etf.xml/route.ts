@@ -54,7 +54,7 @@ export async function GET() {
     // 2026-10-14 (운영자 지시, 한시 조치): 가이드·비교 색인이 따라잡을 때까지 이 sitemap 에는
     //   구글 노출이 최근 90일 안에 있던 종목(data/etf-google-keep.json)과 상품 개요 종목만 싣는다(523 → 약 110).
     //   나머지 색인 대상 종목도 noindex 가 아니고 링크로 계속 이어지므로 색인에서 빠지지 않는다.
-    //   되돌리는 조건: 서치콘솔 URL 검사에서 가이드 색인 비율이 80% 를 넘으면 이 두 줄을 지운다(docs/OPERATIONS.md).
+    //   되돌리는 조건: 서치콘솔 URL 검사에서 가이드 색인 비율이 80% 를 넘으면 이 두 줄을 지운다.
     if (!facts.profile && !getEtfGoogleKeepSet().has(code.toUpperCase())) continue;
 
     // lastmod: 종목별 max(시세 기준일, 분배 기준일). 전 종목이 같은 날짜로 찍혀도 그게 사실이면 그대로 둔다.

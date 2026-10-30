@@ -17,6 +17,12 @@ export interface GuideSection {
   heading: string;
   /** 본문 단락(들). HTML/MD 미사용, 순수 텍스트. */
   paragraphs: string[];
+  /**
+   * 번호·글머리 목록 (2026-10-30). 절차·조건·항목 나열은 긴 문단 대신 목록으로 쓴다. 문단 다음에 나온다.
+   *   네이버 「콘텐츠 작성시 권장 사항」 ④ 소제목·문단 나누기·번호 매기기 활용, 구글 SEO 기본 가이드 "긴 콘텐츠를 단락과 섹션으로".
+   *   ordered 가 true 면 번호 목록. 항목은 한 문장 안팎의 순수 텍스트.
+   */
+  list?: { ordered?: boolean; items: string[] };
   /** 동적 데이터 블록 키 — 페이지에서 컴포넌트로 처리 */
   dataBlock?:
     | 'income-stability-table'   // 안정성 등급 표

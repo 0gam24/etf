@@ -37,6 +37,7 @@
     "validate:schema": "node scripts/validate-schema.mjs",
     "keywords:kin": "node scripts/fetch-kin-questions.mjs",
     "generate:og": "node scripts/generate-og-images.mjs",
+    "og:guides": "node scripts/generate-guide-og.mjs",
     "push:etf": "node scripts/push-etf-pages.mjs",
     "validate:guides": "node scripts/validate-guide-structure.mjs",
     "topic:kin": "node scripts/pick-kin-topic.mjs",

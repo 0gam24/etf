@@ -11,7 +11,7 @@
  *     3) 자동으로 refresh token을 받아 .env.local 에 저장
  *
  *   필요한 것(1회): 구글 클라우드에서 "OAuth 클라이언트 ID"(애플리케이션 유형: 데스크톱 앱) 발급.
- *     → docs/KEYWORD-RESEARCH-SETUP.md 참고. .env.local 에:
+ *     → .env.example 의 키워드 리서치 항목 참고. .env.local 에:
  *         GSC_OAUTH_CLIENT_ID=...
  *         GSC_OAUTH_CLIENT_SECRET=...
  */
@@ -43,7 +43,7 @@ const CLIENT_ID = process.env.GSC_OAUTH_CLIENT_ID;
 const CLIENT_SECRET = process.env.GSC_OAUTH_CLIENT_SECRET;
 
 function die(msg) {
-  console.error('\n❌ ' + msg + '\n   → 설정 방법: docs/KEYWORD-RESEARCH-SETUP.md\n');
+  console.error('\n❌ ' + msg + '\n   → 설정 방법: .env.example 의 키워드 리서치 항목\n');
   process.exit(1);
 }
 if (!CLIENT_ID || !CLIENT_SECRET) {

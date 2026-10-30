@@ -7,7 +7,7 @@
  *
  *   실행: npm run keywords:gsc
  *
- *   인증(둘 중 하나 — docs/KEYWORD-RESEARCH-SETUP.md 참고):
+ *   인증(둘 중 하나 — .env.example 의 키워드 리서치 항목 참고):
  *     [권장] OAuth(내 구글 계정): npm run keywords:gsc-auth 로 1회 인증 → GSC_REFRESH_TOKEN 저장.
  *            .env.local 에 GSC_OAUTH_CLIENT_ID / GSC_OAUTH_CLIENT_SECRET / GSC_REFRESH_TOKEN.
  *            서비스 계정 "이메일 추가"가 안 될 때 이 방식 사용(내 계정이 이미 GSC 주인).
@@ -45,7 +45,7 @@ const SA_PATH = path.join(ROOT, process.env.GSC_SA_JSON || 'gsc-service-account.
 const SCOPE = 'https://www.googleapis.com/auth/webmasters.readonly';
 
 function die(msg) {
-  console.error('\n❌ ' + msg + '\n   → 설정 방법: docs/KEYWORD-RESEARCH-SETUP.md\n');
+  console.error('\n❌ ' + msg + '\n   → 설정 방법: .env.example 의 키워드 리서치 항목\n');
   process.exit(1);
 }
 

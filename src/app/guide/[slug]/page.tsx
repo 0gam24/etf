@@ -17,8 +17,9 @@ import GuideDataBlock from '@/components/GuideDataBlock';
 import EditorialNote from '@/components/EditorialNote';
 import EtfTaxSimulator from '@/components/EtfTaxSimulator';
 import { buildArticleSchema, buildHowToSchema, jsonLd } from '@/lib/schema';
-import { SITE_NAME, SITE_LOCALE, articleTitle, ogImageUrl } from '@/lib/site-meta';
+import { SITE_NAME, SITE_LOCALE, articleTitle } from '@/lib/site-meta';
 import { toAsciiHref } from '@/lib/href';
+import { guideOgPath } from '@/lib/og-images';
 
 /**
  * 본문 소제목 → 앵커 id.
@@ -75,7 +76,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonicalPath = `/guide/${slug}`;
   // 가이드도 동적 OG 이미지 발급 — 소셜/메신저 미리보기 + 이미지 검색 인입
   // (기존엔 가이드에만 og:image가 없어 매일 발행 주력 콘텐츠의 공유 미리보기가 비어 있었음)
-  const ogImage = ogImageUrl({ category: 'guide' });
+  const ogImage = guideOgPath(slug);
   // 설명은 가이드에 적은 문장 그대로 쓴다. 2026-08-11부터 120자 미만이면 태그라인·핵심 포인트를 이어 붙였는데,
   //   그 결과 28편이 문장 끝맺음 없이 끝나고 같은 단어가 되풀이됐다. 네이버 콘텐츠 마크업 가이드
   //   "설명은 1-2개의 문장", "2회 이상 반복적인 키워드"는 불이익 (docs/H-네이버-공식가이드/04-HTML 마크업, 2026-10-30)
@@ -161,7 +162,7 @@ export default async function GuidePage({ params }: PageProps) {
     description: g.description,
     // 페이지 og:image와 같은 파일을 가리킨다. 이 인자를 빼면 스키마 기본값 /og/default.png가
     // 잡혀서, 공유 미리보기(/og/guide.png)와 구조화 데이터가 서로 다른 그림을 가리켰다.
-    images: [ogImageUrl({ category: 'guide' })],
+    images: [guideOgPath(slug)],
     url: `/guide/${slug}`,
     datePublished: `${publishedAt}T09:00:00+09:00`,
     // dateModified에 lastReviewed를 쓰지 않는다. 그 값은 격주 크론이 내용 점검 없이
@@ -362,6 +363,15 @@ export default async function GuidePage({ params }: PageProps) {
               {sec.paragraphs.map((p, pi) => (
                 <p key={pi} className="guide-article-p">{p}</p>
               ))}
+              {sec.list && sec.list.items.length > 0 && (sec.list.ordered ? (
+                <ol className="guide-article-list">
+                  {sec.list.items.map((it, li) => <li key={li}>{it}</li>)}
+                </ol>
+              ) : (
+                <ul className="guide-article-list">
+                  {sec.list.items.map((it, li) => <li key={li}>{it}</li>)}
+                </ul>
+              ))}
               {sec.dataBlock && (
                 <div className="guide-article-data">
                   <GuideDataBlock block={sec.dataBlock} />
@@ -473,7 +483,7 @@ export default async function GuidePage({ params }: PageProps) {
         </section>
       )}
 
-      <FaqSection title={`${g.section} 자주 묻는 질문`} items={g.faq} />
+      <FaqSection title={`${g.section} 자주 묻는 질문`} items={g.faq} openAll />
 
       {/* 본문 하단 공시 — 무엇을 근거로 쓰고 누가 발행을 책임지는지. 일별 글과 동일 정책 적용. */}
       <EditorialNote variant="inline" kind="guide" />

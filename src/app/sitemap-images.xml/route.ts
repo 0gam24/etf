@@ -1,6 +1,7 @@
 import { getAllPosts } from '@/lib/posts';
 import { GUIDE_CATEGORIES, categoryHref, getGuidesInCategory } from '@/lib/guide-categories';
 import { GUIDES } from '@/lib/guides';
+import { guideOgPath } from '@/lib/og-images';
 // /etf 타이틀의 종목 수 — data/etf-slug-map.json 에서 파생 (숫자 하드코딩 금지, 번들 포함이라 런타임 fs 불필요)
 import etfSlugMap from '../../../data/etf-slug-map.json';
 
@@ -126,7 +127,7 @@ export async function GET() {
   <url>
     <loc>${SITE}/guide/${g.slug}</loc>
     <image:image>
-      <image:loc>${ogImageUrl({ category: 'guide' })}</image:loc>
+      <image:loc>${SITE}${guideOgPath(g.slug)}</image:loc>
     </image:image>
   </url>`);
   });

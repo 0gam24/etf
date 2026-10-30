@@ -5,6 +5,11 @@ interface Props {
   /** 섹션 제목 (h2) */
   title: string;
   items: FaqItem[];
+  /**
+   * 모든 문답을 펼친 채로 둔다 (가이드, 2026-10-30).
+   *   구글 snippet.md: 검색결과에서 페이지 특정 대목으로 바로 가는 링크는 접히는 섹션·탭 뒤에 숨은 내용에는 잘 붙지 않는다.
+   */
+  openAll?: boolean;
 }
 
 /**
@@ -17,7 +22,7 @@ interface Props {
  *     노출 표면으로 전혀 쓰이지 못하고 있었다. 앞 두 개만 펼쳐도
  *     글을 한 자도 더 쓰지 않고 인용 가능한 청크가 드러난다. (2026-08-12)
  */
-export default function FaqSection({ title, items }: Props) {
+export default function FaqSection({ title, items, openAll = false }: Props) {
   if (!items.length) return null;
   return (
     <section className="faq-section" aria-label="자주 묻는 질문">
@@ -29,7 +34,7 @@ export default function FaqSection({ title, items }: Props) {
       <ul className="faq-list">
         {items.map((q, i) => (
           <li key={i} className="faq-item">
-            <details open={i < 2}>
+            <details open={openAll || i < 2}>
               <summary>
                 <span className="faq-q">{q.question}</span>
                 <ChevronDown size={16} strokeWidth={2.4} className="faq-chevron" aria-hidden />
