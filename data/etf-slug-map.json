@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-25T03:39:52.954Z",
-  "sourceBaseDate": "20261022",
+  "generatedAt": "2026-11-01T04:54:27.478Z",
+  "sourceBaseDate": "20261029",
   "count": 1183,
   "byCode": {
     "100910": "kiwoom-krx100",
@@ -203,7 +203,6 @@
     "261250": "kodex-usd-futuresleverage",
     "261260": "kodex-usd-futures-inverse2x",
     "261270": "kodex-usd-futures-inverse",
-    "261920": "ace-mscisynthetic",
     "265690": "ace-mscisynthetic-265690",
     "266160": "rise-266160",
     "266360": "kodex-k",
@@ -249,7 +248,6 @@
     "278620": "plus-bondactive",
     "279530": "kodex-279530",
     "279540": "kodex-279540",
-    "280320": "ace-usitsynthetic-h",
     "280920": "plus-280920",
     "280930": "kodex-us2000h",
     "280940": "kodex-futures-inverseh",
@@ -660,7 +658,6 @@
     "465350": "rise-batterytop10inversesynthetic",
     "465580": "ace-ustechtop7-plus",
     "465610": "ace-ustechtop7-plusleveragesynthetic",
-    "465620": "ace-ustechtop7-plusinversesynthetic",
     "465660": "tiger-japansemiconductorfactset",
     "465670": "tiger-us100",
     "466810": "bnk-battery",
@@ -1185,7 +1182,10 @@
     "0254H0": "rise-semiconductoractive-0254h0",
     "0254S0": "kodex-us-dividend-djonesactive",
     "0255E0": "tiger-globalmlcc",
-    "0256C0": "1q-usaisemiconductor"
+    "0256C0": "1q-usaisemiconductor",
+    "0252P0": "koact-top5plusbond-blend50active",
+    "0255D0": "focus-x",
+    "0258B0": "1q-usaitechtop10"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -1988,10 +1988,6 @@
       "code": "261270",
       "name": "KODEX 미국달러선물인버스"
     },
-    "ace-mscisynthetic": {
-      "code": "261920",
-      "name": "ACE MSCI필리핀(합성)"
-    },
     "ace-mscisynthetic-265690": {
       "code": "265690",
       "name": "ACE 러시아MSCI(합성)"
@@ -2171,10 +2167,6 @@
     "kodex-279540": {
       "code": "279540",
       "name": "KODEX 최소변동성"
-    },
-    "ace-usitsynthetic-h": {
-      "code": "280320",
-      "name": "ACE 미국IT인터넷(합성 H)"
     },
     "plus-280920": {
       "code": "280920",
@@ -3815,10 +3807,6 @@
     "ace-ustechtop7-plusleveragesynthetic": {
       "code": "465610",
       "name": "ACE 미국빅테크TOP7 Plus레버리지(합성)"
-    },
-    "ace-ustechtop7-plusinversesynthetic": {
-      "code": "465620",
-      "name": "ACE 미국빅테크TOP7 Plus인버스(합성)"
     },
     "tiger-japansemiconductorfactset": {
       "code": "465660",
@@ -5919,6 +5907,18 @@
     "1q-usaisemiconductor": {
       "code": "0256C0",
       "name": "1Q 엔비디아고정미국AI반도체"
+    },
+    "koact-top5plusbond-blend50active": {
+      "code": "0252P0",
+      "name": "KoAct 코리아TOP5플러스채권혼합50액티브"
+    },
+    "focus-x": {
+      "code": "0255D0",
+      "name": "FOCUS 스페이스X밸류체인"
+    },
+    "1q-usaitechtop10": {
+      "code": "0258B0",
+      "name": "1Q 미국AI테크플랫폼TOP10"
     }
   }
 }

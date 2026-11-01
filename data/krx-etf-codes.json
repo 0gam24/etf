@@ -1,6 +1,6 @@
 {
-  "fetchedAt": "2026-10-25T03:39:52.778Z",
-  "baseDate": "20261022",
+  "fetchedAt": "2026-11-01T04:54:27.286Z",
+  "baseDate": "20261029",
   "count": 1183,
   "byShortcode": {
     "100910": {
@@ -1003,11 +1003,6 @@
       "issueCode": "KR7261270003",
       "name": "KODEX 미국달러선물인버스"
     },
-    "261920": {
-      "shortcode": "261920",
-      "issueCode": "KR7261920003",
-      "name": "ACE MSCI필리핀(합성)"
-    },
     "265690": {
       "shortcode": "265690",
       "issueCode": "KR7265690008",
@@ -1232,11 +1227,6 @@
       "shortcode": "279540",
       "issueCode": "KR7279540009",
       "name": "KODEX 최소변동성"
-    },
-    "280320": {
-      "shortcode": "280320",
-      "issueCode": "KR7280320003",
-      "name": "ACE 미국IT인터넷(합성 H)"
     },
     "280920": {
       "shortcode": "280920",
@@ -3287,11 +3277,6 @@
       "shortcode": "465610",
       "issueCode": "KR7465610004",
       "name": "ACE 미국빅테크TOP7 Plus레버리지(합성)"
-    },
-    "465620": {
-      "shortcode": "465620",
-      "issueCode": "KR7465620003",
-      "name": "ACE 미국빅테크TOP7 Plus인버스(합성)"
     },
     "465660": {
       "shortcode": "465660",
@@ -5843,6 +5828,11 @@
       "issueCode": "KR70247S0005",
       "name": "KIWOOM 글로벌MLCC&AI기판TOP4+"
     },
+    "0252P0": {
+      "shortcode": "0252P0",
+      "issueCode": "KR70252P0000",
+      "name": "KoAct 코리아TOP5플러스채권혼합50액티브"
+    },
     "0252V0": {
       "shortcode": "0252V0",
       "issueCode": "KR70252V0002",
@@ -5868,6 +5858,11 @@
       "issueCode": "KR70254W0009",
       "name": "ACE 29-11 회사채(AA-이상)액티브"
     },
+    "0255D0": {
+      "shortcode": "0255D0",
+      "issueCode": "KR70255D0001",
+      "name": "FOCUS 스페이스X밸류체인"
+    },
     "0255E0": {
       "shortcode": "0255E0",
       "issueCode": "KR70255E0000",
@@ -5877,6 +5872,11 @@
       "shortcode": "0256C0",
       "issueCode": "KR70256C0001",
       "name": "1Q 엔비디아고정미국AI반도체"
+    },
+    "0258B0": {
+      "shortcode": "0258B0",
+      "issueCode": "KR70258B0000",
+      "name": "1Q 미국AI테크플랫폼TOP10"
     },
     "069500": {
       "shortcode": "069500",
@@ -7505,6 +7505,11 @@
       "issueCode": "KR70247S0005",
       "name": "KIWOOM 글로벌MLCC&AI기판TOP4+"
     },
+    "KR70252P0000": {
+      "shortcode": "0252P0",
+      "issueCode": "KR70252P0000",
+      "name": "KoAct 코리아TOP5플러스채권혼합50액티브"
+    },
     "KR70252V0002": {
       "shortcode": "0252V0",
       "issueCode": "KR70252V0002",
@@ -7530,6 +7535,11 @@
       "issueCode": "KR70254W0009",
       "name": "ACE 29-11 회사채(AA-이상)액티브"
     },
+    "KR70255D0001": {
+      "shortcode": "0255D0",
+      "issueCode": "KR70255D0001",
+      "name": "FOCUS 스페이스X밸류체인"
+    },
     "KR70255E0000": {
       "shortcode": "0255E0",
       "issueCode": "KR70255E0000",
@@ -7539,6 +7549,11 @@
       "shortcode": "0256C0",
       "issueCode": "KR70256C0001",
       "name": "1Q 엔비디아고정미국AI반도체"
+    },
+    "KR70258B0000": {
+      "shortcode": "0258B0",
+      "issueCode": "KR70258B0000",
+      "name": "1Q 미국AI테크플랫폼TOP10"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -8580,11 +8595,6 @@
       "issueCode": "KR7261270003",
       "name": "KODEX 미국달러선물인버스"
     },
-    "KR7261920003": {
-      "shortcode": "261920",
-      "issueCode": "KR7261920003",
-      "name": "ACE MSCI필리핀(합성)"
-    },
     "KR7265690008": {
       "shortcode": "265690",
       "issueCode": "KR7265690008",
@@ -8809,11 +8819,6 @@
       "shortcode": "279540",
       "issueCode": "KR7279540009",
       "name": "KODEX 최소변동성"
-    },
-    "KR7280320003": {
-      "shortcode": "280320",
-      "issueCode": "KR7280320003",
-      "name": "ACE 미국IT인터넷(합성 H)"
     },
     "KR7280920000": {
       "shortcode": "280920",
@@ -10864,11 +10869,6 @@
       "shortcode": "465610",
       "issueCode": "KR7465610004",
       "name": "ACE 미국빅테크TOP7 Plus레버리지(합성)"
-    },
-    "KR7465620003": {
-      "shortcode": "465620",
-      "issueCode": "KR7465620003",
-      "name": "ACE 미국빅테크TOP7 Plus인버스(합성)"
     },
     "KR7465660009": {
       "shortcode": "465660",
@@ -13423,6 +13423,11 @@
       "name": "KIWOOM 글로벌MLCC&AI기판TOP4+"
     },
     {
+      "shortcode": "0252P0",
+      "issueCode": "KR70252P0000",
+      "name": "KoAct 코리아TOP5플러스채권혼합50액티브"
+    },
+    {
       "shortcode": "0252V0",
       "issueCode": "KR70252V0002",
       "name": "ACE 미국CPU반도체TOP3+"
@@ -13448,6 +13453,11 @@
       "name": "ACE 29-11 회사채(AA-이상)액티브"
     },
     {
+      "shortcode": "0255D0",
+      "issueCode": "KR70255D0001",
+      "name": "FOCUS 스페이스X밸류체인"
+    },
+    {
       "shortcode": "0255E0",
       "issueCode": "KR70255E0000",
       "name": "TIGER 글로벌MLCC&기판"
@@ -13456,6 +13466,11 @@
       "shortcode": "0256C0",
       "issueCode": "KR70256C0001",
       "name": "1Q 엔비디아고정미국AI반도체"
+    },
+    {
+      "shortcode": "0258B0",
+      "issueCode": "KR70258B0000",
+      "name": "1Q 미국AI테크플랫폼TOP10"
     },
     {
       "shortcode": "069500",
@@ -14498,11 +14513,6 @@
       "name": "KODEX 미국달러선물인버스"
     },
     {
-      "shortcode": "261920",
-      "issueCode": "KR7261920003",
-      "name": "ACE MSCI필리핀(합성)"
-    },
-    {
       "shortcode": "265690",
       "issueCode": "KR7265690008",
       "name": "ACE 러시아MSCI(합성)"
@@ -14726,11 +14736,6 @@
       "shortcode": "279540",
       "issueCode": "KR7279540009",
       "name": "KODEX 최소변동성"
-    },
-    {
-      "shortcode": "280320",
-      "issueCode": "KR7280320003",
-      "name": "ACE 미국IT인터넷(합성 H)"
     },
     {
       "shortcode": "280920",
@@ -16781,11 +16786,6 @@
       "shortcode": "465610",
       "issueCode": "KR7465610004",
       "name": "ACE 미국빅테크TOP7 Plus레버리지(합성)"
-    },
-    {
-      "shortcode": "465620",
-      "issueCode": "KR7465620003",
-      "name": "ACE 미국빅테크TOP7 Plus인버스(합성)"
     },
     {
       "shortcode": "465660",
