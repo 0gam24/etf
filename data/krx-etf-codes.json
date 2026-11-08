@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-11-01T04:54:27.286Z",
-  "baseDate": "20261029",
-  "count": 1183,
+  "fetchedAt": "2026-11-08T04:58:13.385Z",
+  "baseDate": "20261105",
+  "count": 1184,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -4448,11 +4448,6 @@
       "issueCode": "KR70038A0008",
       "name": "KODEX 미국휴머노이드로봇"
     },
-    "0040S0": {
-      "shortcode": "0040S0",
-      "issueCode": "KR70040S0004",
-      "name": "HANARO 글로벌피지컬AI액티브"
-    },
     "0040X0": {
       "shortcode": "0040X0",
       "issueCode": "KR70040X0007",
@@ -5868,6 +5863,11 @@
       "issueCode": "KR70255E0000",
       "name": "TIGER 글로벌MLCC&기판"
     },
+    "0255G0": {
+      "shortcode": "0255G0",
+      "issueCode": "KR70255G0008",
+      "name": "마이티 삼성그룹테크TOP3&하드웨어"
+    },
     "0256C0": {
       "shortcode": "0256C0",
       "issueCode": "KR70256C0001",
@@ -5877,6 +5877,11 @@
       "shortcode": "0258B0",
       "issueCode": "KR70258B0000",
       "name": "1Q 미국AI테크플랫폼TOP10"
+    },
+    "0259R0": {
+      "shortcode": "0259R0",
+      "issueCode": "KR70259R0001",
+      "name": "ACE 글로벌메모리반도체TOP3채권혼합액티브"
     },
     "069500": {
       "shortcode": "069500",
@@ -6124,11 +6129,6 @@
       "shortcode": "0038A0",
       "issueCode": "KR70038A0008",
       "name": "KODEX 미국휴머노이드로봇"
-    },
-    "KR70040S0004": {
-      "shortcode": "0040S0",
-      "issueCode": "KR70040S0004",
-      "name": "HANARO 글로벌피지컬AI액티브"
     },
     "KR70040X0007": {
       "shortcode": "0040X0",
@@ -7545,6 +7545,11 @@
       "issueCode": "KR70255E0000",
       "name": "TIGER 글로벌MLCC&기판"
     },
+    "KR70255G0008": {
+      "shortcode": "0255G0",
+      "issueCode": "KR70255G0008",
+      "name": "마이티 삼성그룹테크TOP3&하드웨어"
+    },
     "KR70256C0001": {
       "shortcode": "0256C0",
       "issueCode": "KR70256C0001",
@@ -7554,6 +7559,11 @@
       "shortcode": "0258B0",
       "issueCode": "KR70258B0000",
       "name": "1Q 미국AI테크플랫폼TOP10"
+    },
+    "KR70259R0001": {
+      "shortcode": "0259R0",
+      "issueCode": "KR70259R0001",
+      "name": "ACE 글로벌메모리반도체TOP3채권혼합액티브"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -12043,11 +12053,6 @@
       "name": "KODEX 미국휴머노이드로봇"
     },
     {
-      "shortcode": "0040S0",
-      "issueCode": "KR70040S0004",
-      "name": "HANARO 글로벌피지컬AI액티브"
-    },
-    {
       "shortcode": "0040X0",
       "issueCode": "KR70040X0007",
       "name": "SOL 팔란티어미국채커버드콜혼합"
@@ -13463,6 +13468,11 @@
       "name": "TIGER 글로벌MLCC&기판"
     },
     {
+      "shortcode": "0255G0",
+      "issueCode": "KR70255G0008",
+      "name": "마이티 삼성그룹테크TOP3&하드웨어"
+    },
+    {
       "shortcode": "0256C0",
       "issueCode": "KR70256C0001",
       "name": "1Q 엔비디아고정미국AI반도체"
@@ -13471,6 +13481,11 @@
       "shortcode": "0258B0",
       "issueCode": "KR70258B0000",
       "name": "1Q 미국AI테크플랫폼TOP10"
+    },
+    {
+      "shortcode": "0259R0",
+      "issueCode": "KR70259R0001",
+      "name": "ACE 글로벌메모리반도체TOP3채권혼합액티브"
     },
     {
       "shortcode": "069500",

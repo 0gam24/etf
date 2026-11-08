@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-01T04:54:27.478Z",
-  "sourceBaseDate": "20261029",
-  "count": 1183,
+  "generatedAt": "2026-11-08T04:58:13.560Z",
+  "sourceBaseDate": "20261105",
+  "count": 1184,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -892,7 +892,6 @@
     "0036R0": "rise-us-0036r0",
     "0036Z0": "rise-us-0036z0",
     "0038A0": "kodex-us",
-    "0040S0": "hanaro-globalaiactive",
     "0040X0": "sol-us-treasurycovered-call",
     "0040Y0": "sol-covered-callotmbond-blend",
     "0041D0": "kodex-usaisoftwaretop10",
@@ -1185,7 +1184,9 @@
     "0256C0": "1q-usaisemiconductor",
     "0252P0": "koact-top5plusbond-blend50active",
     "0255D0": "focus-x",
-    "0258B0": "1q-usaitechtop10"
+    "0258B0": "1q-usaitechtop10",
+    "0255G0": "mighty-techtop3",
+    "0259R0": "ace-globalsemiconductortop3bond-blendactive"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -4744,10 +4745,6 @@
       "code": "0038A0",
       "name": "KODEX 미국휴머노이드로봇"
     },
-    "hanaro-globalaiactive": {
-      "code": "0040S0",
-      "name": "HANARO 글로벌피지컬AI액티브"
-    },
     "sol-us-treasurycovered-call": {
       "code": "0040X0",
       "name": "SOL 팔란티어미국채커버드콜혼합"
@@ -5919,6 +5916,14 @@
     "1q-usaitechtop10": {
       "code": "0258B0",
       "name": "1Q 미국AI테크플랫폼TOP10"
+    },
+    "mighty-techtop3": {
+      "code": "0255G0",
+      "name": "마이티 삼성그룹테크TOP3&하드웨어"
+    },
+    "ace-globalsemiconductortop3bond-blendactive": {
+      "code": "0259R0",
+      "name": "ACE 글로벌메모리반도체TOP3채권혼합액티브"
     }
   }
 }
