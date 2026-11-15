@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-11-08T04:58:13.385Z",
-  "baseDate": "20261105",
-  "count": 1184,
+  "fetchedAt": "2026-11-15T05:21:45.395Z",
+  "baseDate": "20261112",
+  "count": 1190,
   "byShortcode": {
     "100910": {
       "shortcode": "100910",
@@ -5873,15 +5873,45 @@
       "issueCode": "KR70256C0001",
       "name": "1Q 엔비디아고정미국AI반도체"
     },
+    "0256E0": {
+      "shortcode": "0256E0",
+      "issueCode": "KR70256E0009",
+      "name": "HANARO 삼성전기고정AI핵심기판"
+    },
     "0258B0": {
       "shortcode": "0258B0",
       "issueCode": "KR70258B0000",
       "name": "1Q 미국AI테크플랫폼TOP10"
     },
+    "0258N0": {
+      "shortcode": "0258N0",
+      "issueCode": "KR70258N0006",
+      "name": "MIDAS 중기채권(AA-이상)액티브"
+    },
     "0259R0": {
       "shortcode": "0259R0",
       "issueCode": "KR70259R0001",
       "name": "ACE 글로벌메모리반도체TOP3채권혼합액티브"
+    },
+    "0260F0": {
+      "shortcode": "0260F0",
+      "issueCode": "KR70260F0002",
+      "name": "IBK 현대차로보틱스채권혼합50"
+    },
+    "0261H0": {
+      "shortcode": "0261H0",
+      "issueCode": "KR70261H0009",
+      "name": "KODEX 미국나스닥100미국채혼합50"
+    },
+    "0262B0": {
+      "shortcode": "0262B0",
+      "issueCode": "KR70262B0004",
+      "name": "TIGER 200커버드콜액티브"
+    },
+    "0262Y0": {
+      "shortcode": "0262Y0",
+      "issueCode": "KR70262Y0007",
+      "name": "SOL 200커버드콜액티브"
     },
     "069500": {
       "shortcode": "069500",
@@ -7555,15 +7585,45 @@
       "issueCode": "KR70256C0001",
       "name": "1Q 엔비디아고정미국AI반도체"
     },
+    "KR70256E0009": {
+      "shortcode": "0256E0",
+      "issueCode": "KR70256E0009",
+      "name": "HANARO 삼성전기고정AI핵심기판"
+    },
     "KR70258B0000": {
       "shortcode": "0258B0",
       "issueCode": "KR70258B0000",
       "name": "1Q 미국AI테크플랫폼TOP10"
     },
+    "KR70258N0006": {
+      "shortcode": "0258N0",
+      "issueCode": "KR70258N0006",
+      "name": "MIDAS 중기채권(AA-이상)액티브"
+    },
     "KR70259R0001": {
       "shortcode": "0259R0",
       "issueCode": "KR70259R0001",
       "name": "ACE 글로벌메모리반도체TOP3채권혼합액티브"
+    },
+    "KR70260F0002": {
+      "shortcode": "0260F0",
+      "issueCode": "KR70260F0002",
+      "name": "IBK 현대차로보틱스채권혼합50"
+    },
+    "KR70261H0009": {
+      "shortcode": "0261H0",
+      "issueCode": "KR70261H0009",
+      "name": "KODEX 미국나스닥100미국채혼합50"
+    },
+    "KR70262B0004": {
+      "shortcode": "0262B0",
+      "issueCode": "KR70262B0004",
+      "name": "TIGER 200커버드콜액티브"
+    },
+    "KR70262Y0007": {
+      "shortcode": "0262Y0",
+      "issueCode": "KR70262Y0007",
+      "name": "SOL 200커버드콜액티브"
     },
     "KR7069500007": {
       "shortcode": "069500",
@@ -13478,14 +13538,44 @@
       "name": "1Q 엔비디아고정미국AI반도체"
     },
     {
+      "shortcode": "0256E0",
+      "issueCode": "KR70256E0009",
+      "name": "HANARO 삼성전기고정AI핵심기판"
+    },
+    {
       "shortcode": "0258B0",
       "issueCode": "KR70258B0000",
       "name": "1Q 미국AI테크플랫폼TOP10"
     },
     {
+      "shortcode": "0258N0",
+      "issueCode": "KR70258N0006",
+      "name": "MIDAS 중기채권(AA-이상)액티브"
+    },
+    {
       "shortcode": "0259R0",
       "issueCode": "KR70259R0001",
       "name": "ACE 글로벌메모리반도체TOP3채권혼합액티브"
+    },
+    {
+      "shortcode": "0260F0",
+      "issueCode": "KR70260F0002",
+      "name": "IBK 현대차로보틱스채권혼합50"
+    },
+    {
+      "shortcode": "0261H0",
+      "issueCode": "KR70261H0009",
+      "name": "KODEX 미국나스닥100미국채혼합50"
+    },
+    {
+      "shortcode": "0262B0",
+      "issueCode": "KR70262B0004",
+      "name": "TIGER 200커버드콜액티브"
+    },
+    {
+      "shortcode": "0262Y0",
+      "issueCode": "KR70262Y0007",
+      "name": "SOL 200커버드콜액티브"
     },
     {
       "shortcode": "069500",

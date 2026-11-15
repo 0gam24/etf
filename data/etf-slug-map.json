@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-08T04:58:13.560Z",
-  "sourceBaseDate": "20261105",
-  "count": 1184,
+  "generatedAt": "2026-11-15T05:21:45.563Z",
+  "sourceBaseDate": "20261112",
+  "count": 1190,
   "byCode": {
     "100910": "kiwoom-krx100",
     "101280": "kodex-japantopix100",
@@ -1186,7 +1186,13 @@
     "0255D0": "focus-x",
     "0258B0": "1q-usaitechtop10",
     "0255G0": "mighty-techtop3",
-    "0259R0": "ace-globalsemiconductortop3bond-blendactive"
+    "0259R0": "ace-globalsemiconductortop3bond-blendactive",
+    "0256E0": "hanaro-ai",
+    "0258N0": "midas-bondaa-plusactive",
+    "0260F0": "ibk-bond-blend50",
+    "0261H0": "kodex-us-nasdaq100us-treasury-blend50",
+    "0262B0": "tiger-200covered-callactive",
+    "0262Y0": "sol-200covered-callactive"
   },
   "bySlug": {
     "kiwoom-krx100": {
@@ -5924,6 +5930,30 @@
     "ace-globalsemiconductortop3bond-blendactive": {
       "code": "0259R0",
       "name": "ACE 글로벌메모리반도체TOP3채권혼합액티브"
+    },
+    "hanaro-ai": {
+      "code": "0256E0",
+      "name": "HANARO 삼성전기고정AI핵심기판"
+    },
+    "midas-bondaa-plusactive": {
+      "code": "0258N0",
+      "name": "MIDAS 중기채권(AA-이상)액티브"
+    },
+    "ibk-bond-blend50": {
+      "code": "0260F0",
+      "name": "IBK 현대차로보틱스채권혼합50"
+    },
+    "kodex-us-nasdaq100us-treasury-blend50": {
+      "code": "0261H0",
+      "name": "KODEX 미국나스닥100미국채혼합50"
+    },
+    "tiger-200covered-callactive": {
+      "code": "0262B0",
+      "name": "TIGER 200커버드콜액티브"
+    },
+    "sol-200covered-callactive": {
+      "code": "0262Y0",
+      "name": "SOL 200커버드콜액티브"
     }
   }
 }
